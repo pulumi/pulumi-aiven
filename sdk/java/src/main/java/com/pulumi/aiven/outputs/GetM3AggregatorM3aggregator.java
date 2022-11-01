@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetM3AggregatorM3aggregator {
-    @CustomType.Constructor
-    private GetM3AggregatorM3aggregator() {
-    }
-
+    private GetM3AggregatorM3aggregator() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetM3AggregatorM3aggregator {
     public static Builder builder(GetM3AggregatorM3aggregator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3AggregatorM3aggregator defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetM3AggregatorM3aggregator build() {
-            return new GetM3AggregatorM3aggregator();
+            final var o = new GetM3AggregatorM3aggregator();
+            return o;
         }
     }
 }

@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
-    private final @Nullable String accessKey;
-    private final @Nullable String namespace;
-    private final @Nullable String region;
-    private final @Nullable String secretKey;
+    private @Nullable String accessKey;
+    private @Nullable String namespace;
+    private @Nullable String region;
+    private @Nullable String secretKey;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey) {
-        this.accessKey = accessKey;
-        this.namespace = namespace;
-        this.region = region;
-        this.secretKey = secretKey;
-    }
-
+    private GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig() {}
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -48,17 +37,13 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUser
     public static Builder builder(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private @Nullable String namespace;
         private @Nullable String region;
         private @Nullable String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -67,23 +52,33 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUser
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
-        }        public GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig build() {
-            return new GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(accessKey, namespace, region, secretKey);
+        }
+        public GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig build() {
+            final var o = new GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig();
+            o.accessKey = accessKey;
+            o.namespace = namespace;
+            o.region = region;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

@@ -11,21 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRedisRedisUserConfigPrivateAccess {
-    private final @Nullable String prometheus;
+    private @Nullable String prometheus;
     /**
      * @return Redis server provided values
      * 
      */
-    private final @Nullable String redis;
+    private @Nullable String redis;
 
-    @CustomType.Constructor
-    private GetRedisRedisUserConfigPrivateAccess(
-        @CustomType.Parameter("prometheus") @Nullable String prometheus,
-        @CustomType.Parameter("redis") @Nullable String redis) {
-        this.prometheus = prometheus;
-        this.redis = redis;
-    }
-
+    private GetRedisRedisUserConfigPrivateAccess() {}
     public Optional<String> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -44,30 +37,32 @@ public final class GetRedisRedisUserConfigPrivateAccess {
     public static Builder builder(GetRedisRedisUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String prometheus;
         private @Nullable String redis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRedisRedisUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prometheus = defaults.prometheus;
     	      this.redis = defaults.redis;
         }
 
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
         }
+        @CustomType.Setter
         public Builder redis(@Nullable String redis) {
             this.redis = redis;
             return this;
-        }        public GetRedisRedisUserConfigPrivateAccess build() {
-            return new GetRedisRedisUserConfigPrivateAccess(prometheus, redis);
+        }
+        public GetRedisRedisUserConfigPrivateAccess build() {
+            final var o = new GetRedisRedisUserConfigPrivateAccess();
+            o.prometheus = prometheus;
+            o.redis = redis;
+            return o;
         }
     }
 }

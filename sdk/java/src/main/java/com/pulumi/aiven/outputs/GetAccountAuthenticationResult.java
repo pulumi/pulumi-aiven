@@ -16,140 +16,99 @@ public final class GetAccountAuthenticationResult {
      * @return The unique id of the account.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return Account authentication id
      * 
      */
-    private final String authenticationId;
+    private String authenticationId;
     /**
      * @return Team ID
      * 
      */
-    private final String autoJoinTeamId;
+    private String autoJoinTeamId;
     /**
      * @return Time of creation
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Status of account authentication method. The default value is `false`.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the account authentication.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return SAML Assertion Consumer Service URL
      * 
      */
-    private final String samlAcsUrl;
+    private String samlAcsUrl;
     /**
      * @return SAML Certificate
      * 
      */
-    private final String samlCertificate;
+    private String samlCertificate;
     /**
      * @return Digest algorithm. This is an advanced option that typically does not need to be set.
      * 
      */
-    private final String samlDigestAlgorithm;
+    private String samlDigestAlgorithm;
     /**
      * @return SAML Entity id
      * 
      */
-    private final String samlEntityId;
+    private String samlEntityId;
     /**
      * @return Map IdP fields
      * 
      */
-    private final List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings;
+    private List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings;
     /**
      * @return Set to &#39;true&#39; to enable IdP initiated login
      * 
      */
-    private final Boolean samlIdpLoginAllowed;
+    private Boolean samlIdpLoginAllowed;
     /**
      * @return SAML Idp URL
      * 
      */
-    private final String samlIdpUrl;
+    private String samlIdpUrl;
     /**
      * @return SAML Metadata URL
      * 
      */
-    private final String samlMetadataUrl;
+    private String samlMetadataUrl;
     /**
      * @return Signature algorithm. This is an advanced option that typically does not need to be set.
      * 
      */
-    private final String samlSignatureAlgorithm;
+    private String samlSignatureAlgorithm;
     /**
      * @return SAML server variant
      * 
      */
-    private final String samlVariant;
+    private String samlVariant;
     /**
      * @return The account authentication type. The possible values are `internal` and `saml`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Time of last update
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetAccountAuthenticationResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("authenticationId") String authenticationId,
-        @CustomType.Parameter("autoJoinTeamId") String autoJoinTeamId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("samlAcsUrl") String samlAcsUrl,
-        @CustomType.Parameter("samlCertificate") String samlCertificate,
-        @CustomType.Parameter("samlDigestAlgorithm") String samlDigestAlgorithm,
-        @CustomType.Parameter("samlEntityId") String samlEntityId,
-        @CustomType.Parameter("samlFieldMappings") List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings,
-        @CustomType.Parameter("samlIdpLoginAllowed") Boolean samlIdpLoginAllowed,
-        @CustomType.Parameter("samlIdpUrl") String samlIdpUrl,
-        @CustomType.Parameter("samlMetadataUrl") String samlMetadataUrl,
-        @CustomType.Parameter("samlSignatureAlgorithm") String samlSignatureAlgorithm,
-        @CustomType.Parameter("samlVariant") String samlVariant,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.accountId = accountId;
-        this.authenticationId = authenticationId;
-        this.autoJoinTeamId = autoJoinTeamId;
-        this.createTime = createTime;
-        this.enabled = enabled;
-        this.id = id;
-        this.name = name;
-        this.samlAcsUrl = samlAcsUrl;
-        this.samlCertificate = samlCertificate;
-        this.samlDigestAlgorithm = samlDigestAlgorithm;
-        this.samlEntityId = samlEntityId;
-        this.samlFieldMappings = samlFieldMappings;
-        this.samlIdpLoginAllowed = samlIdpLoginAllowed;
-        this.samlIdpUrl = samlIdpUrl;
-        this.samlMetadataUrl = samlMetadataUrl;
-        this.samlSignatureAlgorithm = samlSignatureAlgorithm;
-        this.samlVariant = samlVariant;
-        this.type = type;
-        this.updateTime = updateTime;
-    }
-
+    private GetAccountAuthenticationResult() {}
     /**
      * @return The unique id of the account.
      * 
@@ -291,7 +250,7 @@ public final class GetAccountAuthenticationResult {
     public static Builder builder(GetAccountAuthenticationResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String authenticationId;
@@ -312,11 +271,7 @@ public final class GetAccountAuthenticationResult {
         private String samlVariant;
         private String type;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountAuthenticationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -340,50 +295,62 @@ public final class GetAccountAuthenticationResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder authenticationId(String authenticationId) {
             this.authenticationId = Objects.requireNonNull(authenticationId);
             return this;
         }
+        @CustomType.Setter
         public Builder autoJoinTeamId(String autoJoinTeamId) {
             this.autoJoinTeamId = Objects.requireNonNull(autoJoinTeamId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder samlAcsUrl(String samlAcsUrl) {
             this.samlAcsUrl = Objects.requireNonNull(samlAcsUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder samlCertificate(String samlCertificate) {
             this.samlCertificate = Objects.requireNonNull(samlCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder samlDigestAlgorithm(String samlDigestAlgorithm) {
             this.samlDigestAlgorithm = Objects.requireNonNull(samlDigestAlgorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder samlEntityId(String samlEntityId) {
             this.samlEntityId = Objects.requireNonNull(samlEntityId);
             return this;
         }
+        @CustomType.Setter
         public Builder samlFieldMappings(List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings) {
             this.samlFieldMappings = Objects.requireNonNull(samlFieldMappings);
             return this;
@@ -391,35 +358,63 @@ public final class GetAccountAuthenticationResult {
         public Builder samlFieldMappings(GetAccountAuthenticationSamlFieldMapping... samlFieldMappings) {
             return samlFieldMappings(List.of(samlFieldMappings));
         }
+        @CustomType.Setter
         public Builder samlIdpLoginAllowed(Boolean samlIdpLoginAllowed) {
             this.samlIdpLoginAllowed = Objects.requireNonNull(samlIdpLoginAllowed);
             return this;
         }
+        @CustomType.Setter
         public Builder samlIdpUrl(String samlIdpUrl) {
             this.samlIdpUrl = Objects.requireNonNull(samlIdpUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder samlMetadataUrl(String samlMetadataUrl) {
             this.samlMetadataUrl = Objects.requireNonNull(samlMetadataUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder samlSignatureAlgorithm(String samlSignatureAlgorithm) {
             this.samlSignatureAlgorithm = Objects.requireNonNull(samlSignatureAlgorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder samlVariant(String samlVariant) {
             this.samlVariant = Objects.requireNonNull(samlVariant);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetAccountAuthenticationResult build() {
-            return new GetAccountAuthenticationResult(accountId, authenticationId, autoJoinTeamId, createTime, enabled, id, name, samlAcsUrl, samlCertificate, samlDigestAlgorithm, samlEntityId, samlFieldMappings, samlIdpLoginAllowed, samlIdpUrl, samlMetadataUrl, samlSignatureAlgorithm, samlVariant, type, updateTime);
+        }
+        public GetAccountAuthenticationResult build() {
+            final var o = new GetAccountAuthenticationResult();
+            o.accountId = accountId;
+            o.authenticationId = authenticationId;
+            o.autoJoinTeamId = autoJoinTeamId;
+            o.createTime = createTime;
+            o.enabled = enabled;
+            o.id = id;
+            o.name = name;
+            o.samlAcsUrl = samlAcsUrl;
+            o.samlCertificate = samlCertificate;
+            o.samlDigestAlgorithm = samlDigestAlgorithm;
+            o.samlEntityId = samlEntityId;
+            o.samlFieldMappings = samlFieldMappings;
+            o.samlIdpLoginAllowed = samlIdpLoginAllowed;
+            o.samlIdpUrl = samlIdpUrl;
+            o.samlMetadataUrl = samlMetadataUrl;
+            o.samlSignatureAlgorithm = samlSignatureAlgorithm;
+            o.samlVariant = samlVariant;
+            o.type = type;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

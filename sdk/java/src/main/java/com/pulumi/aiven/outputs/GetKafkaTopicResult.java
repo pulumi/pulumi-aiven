@@ -18,66 +18,45 @@ public final class GetKafkaTopicResult {
      * @return Kafka topic configuration
      * 
      */
-    private final List<GetKafkaTopicConfig> configs;
+    private List<GetKafkaTopicConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of partitions to create in the topic.
      * 
      */
-    private final Integer partitions;
+    private Integer partitions;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return The replication factor for the topic.
      * 
      */
-    private final Integer replication;
+    private Integer replication;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Kafka Topic tag.
      * 
      */
-    private final List<GetKafkaTopicTag> tags;
-    private final Boolean terminationProtection;
+    private List<GetKafkaTopicTag> tags;
+    private Boolean terminationProtection;
     /**
      * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String topicName;
+    private String topicName;
 
-    @CustomType.Constructor
-    private GetKafkaTopicResult(
-        @CustomType.Parameter("configs") List<GetKafkaTopicConfig> configs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("partitions") Integer partitions,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("replication") Integer replication,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("tags") List<GetKafkaTopicTag> tags,
-        @CustomType.Parameter("terminationProtection") Boolean terminationProtection,
-        @CustomType.Parameter("topicName") String topicName) {
-        this.configs = configs;
-        this.id = id;
-        this.partitions = partitions;
-        this.project = project;
-        this.replication = replication;
-        this.serviceName = serviceName;
-        this.tags = tags;
-        this.terminationProtection = terminationProtection;
-        this.topicName = topicName;
-    }
-
+    private GetKafkaTopicResult() {}
     /**
      * @return Kafka topic configuration
      * 
@@ -145,7 +124,7 @@ public final class GetKafkaTopicResult {
     public static Builder builder(GetKafkaTopicResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetKafkaTopicConfig> configs;
         private String id;
@@ -156,11 +135,7 @@ public final class GetKafkaTopicResult {
         private List<GetKafkaTopicTag> tags;
         private Boolean terminationProtection;
         private String topicName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
@@ -174,6 +149,7 @@ public final class GetKafkaTopicResult {
     	      this.topicName = defaults.topicName;
         }
 
+        @CustomType.Setter
         public Builder configs(List<GetKafkaTopicConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -181,26 +157,32 @@ public final class GetKafkaTopicResult {
         public Builder configs(GetKafkaTopicConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder partitions(Integer partitions) {
             this.partitions = Objects.requireNonNull(partitions);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder replication(Integer replication) {
             this.replication = Objects.requireNonNull(replication);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<GetKafkaTopicTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -208,15 +190,28 @@ public final class GetKafkaTopicResult {
         public Builder tags(GetKafkaTopicTag... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder topicName(String topicName) {
             this.topicName = Objects.requireNonNull(topicName);
             return this;
-        }        public GetKafkaTopicResult build() {
-            return new GetKafkaTopicResult(configs, id, partitions, project, replication, serviceName, tags, terminationProtection, topicName);
+        }
+        public GetKafkaTopicResult build() {
+            final var o = new GetKafkaTopicResult();
+            o.configs = configs;
+            o.id = id;
+            o.partitions = partitions;
+            o.project = project;
+            o.replication = replication;
+            o.serviceName = serviceName;
+            o.tags = tags;
+            o.terminationProtection = terminationProtection;
+            o.topicName = topicName;
+            return o;
         }
     }
 }

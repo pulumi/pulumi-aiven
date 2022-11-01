@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCassandaCassandraUserConfigCassandra {
-    private final @Nullable String batchSizeFailThresholdInKb;
-    private final @Nullable String batchSizeWarnThresholdInKb;
+    private @Nullable String batchSizeFailThresholdInKb;
+    private @Nullable String batchSizeWarnThresholdInKb;
 
-    @CustomType.Constructor
-    private GetCassandaCassandraUserConfigCassandra(
-        @CustomType.Parameter("batchSizeFailThresholdInKb") @Nullable String batchSizeFailThresholdInKb,
-        @CustomType.Parameter("batchSizeWarnThresholdInKb") @Nullable String batchSizeWarnThresholdInKb) {
-        this.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
-        this.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
-    }
-
+    private GetCassandaCassandraUserConfigCassandra() {}
     public Optional<String> batchSizeFailThresholdInKb() {
         return Optional.ofNullable(this.batchSizeFailThresholdInKb);
     }
@@ -36,30 +29,32 @@ public final class GetCassandaCassandraUserConfigCassandra {
     public static Builder builder(GetCassandaCassandraUserConfigCassandra defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String batchSizeFailThresholdInKb;
         private @Nullable String batchSizeWarnThresholdInKb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCassandaCassandraUserConfigCassandra defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchSizeFailThresholdInKb = defaults.batchSizeFailThresholdInKb;
     	      this.batchSizeWarnThresholdInKb = defaults.batchSizeWarnThresholdInKb;
         }
 
+        @CustomType.Setter
         public Builder batchSizeFailThresholdInKb(@Nullable String batchSizeFailThresholdInKb) {
             this.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             return this;
         }
+        @CustomType.Setter
         public Builder batchSizeWarnThresholdInKb(@Nullable String batchSizeWarnThresholdInKb) {
             this.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             return this;
-        }        public GetCassandaCassandraUserConfigCassandra build() {
-            return new GetCassandaCassandraUserConfigCassandra(batchSizeFailThresholdInKb, batchSizeWarnThresholdInKb);
+        }
+        public GetCassandaCassandraUserConfigCassandra build() {
+            final var o = new GetCassandaCassandraUserConfigCassandra();
+            o.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
+            o.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
+            return o;
         }
     }
 }

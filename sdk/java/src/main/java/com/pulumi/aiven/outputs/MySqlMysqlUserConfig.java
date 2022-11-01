@@ -21,119 +21,84 @@ public final class MySqlMysqlUserConfig {
      * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
      * 
      */
-    private final @Nullable String adminPassword;
+    private @Nullable String adminPassword;
     /**
      * @return Custom username for admin user. This must be set only when a new service is being created.
      * 
      */
-    private final @Nullable String adminUsername;
+    private @Nullable String adminUsername;
     /**
      * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
      * 
      */
-    private final @Nullable String backupHour;
+    private @Nullable String backupHour;
     /**
      * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      * 
      */
-    private final @Nullable String backupMinute;
+    private @Nullable String backupMinute;
     /**
      * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
      * 
      */
-    private final @Nullable String binlogRetentionPeriod;
+    private @Nullable String binlogRetentionPeriod;
     /**
      * @return IP filter
      * 
      */
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Migrate data from existing server
      * 
      */
-    private final @Nullable MySqlMysqlUserConfigMigration migration;
+    private @Nullable MySqlMysqlUserConfigMigration migration;
     /**
      * @return mysql.conf configuration values
      * 
      */
-    private final @Nullable MySqlMysqlUserConfigMysql mysql;
+    private @Nullable MySqlMysqlUserConfigMysql mysql;
     /**
      * @return MySQL major version
      * 
      */
-    private final @Nullable String mysqlVersion;
+    private @Nullable String mysqlVersion;
     /**
      * @return Allow access to selected service ports from private networks
      * 
      */
-    private final @Nullable MySqlMysqlUserConfigPrivateAccess privateAccess;
+    private @Nullable MySqlMysqlUserConfigPrivateAccess privateAccess;
     /**
      * @return Allow access to selected service components through Privatelink
      * 
      */
-    private final @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
     /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String projectToForkFrom;
+    private @Nullable String projectToForkFrom;
     /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
-    private final @Nullable MySqlMysqlUserConfigPublicAccess publicAccess;
+    private @Nullable MySqlMysqlUserConfigPublicAccess publicAccess;
     /**
      * @return Recovery target time when forking a service. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String recoveryTargetTime;
+    private @Nullable String recoveryTargetTime;
     /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IP addresses
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private MySqlMysqlUserConfig(
-        @CustomType.Parameter("adminPassword") @Nullable String adminPassword,
-        @CustomType.Parameter("adminUsername") @Nullable String adminUsername,
-        @CustomType.Parameter("backupHour") @Nullable String backupHour,
-        @CustomType.Parameter("backupMinute") @Nullable String backupMinute,
-        @CustomType.Parameter("binlogRetentionPeriod") @Nullable String binlogRetentionPeriod,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("migration") @Nullable MySqlMysqlUserConfigMigration migration,
-        @CustomType.Parameter("mysql") @Nullable MySqlMysqlUserConfigMysql mysql,
-        @CustomType.Parameter("mysqlVersion") @Nullable String mysqlVersion,
-        @CustomType.Parameter("privateAccess") @Nullable MySqlMysqlUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable MySqlMysqlUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("recoveryTargetTime") @Nullable String recoveryTargetTime,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.adminPassword = adminPassword;
-        this.adminUsername = adminUsername;
-        this.backupHour = backupHour;
-        this.backupMinute = backupMinute;
-        this.binlogRetentionPeriod = binlogRetentionPeriod;
-        this.ipFilters = ipFilters;
-        this.migration = migration;
-        this.mysql = mysql;
-        this.mysqlVersion = mysqlVersion;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.recoveryTargetTime = recoveryTargetTime;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private MySqlMysqlUserConfig() {}
     /**
      * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
      * 
@@ -254,7 +219,7 @@ public final class MySqlMysqlUserConfig {
     public static Builder builder(MySqlMysqlUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
@@ -272,11 +237,7 @@ public final class MySqlMysqlUserConfig {
         private @Nullable String recoveryTargetTime;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MySqlMysqlUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminPassword = defaults.adminPassword;
@@ -297,26 +258,32 @@ public final class MySqlMysqlUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
             this.adminUsername = adminUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder backupHour(@Nullable String backupHour) {
             this.backupHour = backupHour;
             return this;
         }
+        @CustomType.Setter
         public Builder backupMinute(@Nullable String backupMinute) {
             this.backupMinute = backupMinute;
             return this;
         }
+        @CustomType.Setter
         public Builder binlogRetentionPeriod(@Nullable String binlogRetentionPeriod) {
             this.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -324,47 +291,75 @@ public final class MySqlMysqlUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder migration(@Nullable MySqlMysqlUserConfigMigration migration) {
             this.migration = migration;
             return this;
         }
+        @CustomType.Setter
         public Builder mysql(@Nullable MySqlMysqlUserConfigMysql mysql) {
             this.mysql = mysql;
             return this;
         }
+        @CustomType.Setter
         public Builder mysqlVersion(@Nullable String mysqlVersion) {
             this.mysqlVersion = mysqlVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable MySqlMysqlUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable MySqlMysqlUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryTargetTime(@Nullable String recoveryTargetTime) {
             this.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public MySqlMysqlUserConfig build() {
-            return new MySqlMysqlUserConfig(adminPassword, adminUsername, backupHour, backupMinute, binlogRetentionPeriod, ipFilters, migration, mysql, mysqlVersion, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, staticIps);
+        }
+        public MySqlMysqlUserConfig build() {
+            final var o = new MySqlMysqlUserConfig();
+            o.adminPassword = adminPassword;
+            o.adminUsername = adminUsername;
+            o.backupHour = backupHour;
+            o.backupMinute = backupMinute;
+            o.binlogRetentionPeriod = binlogRetentionPeriod;
+            o.ipFilters = ipFilters;
+            o.migration = migration;
+            o.mysql = mysql;
+            o.mysqlVersion = mysqlVersion;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.recoveryTargetTime = recoveryTargetTime;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class KafkaTopicTag {
      * @return Topic tag key. Maximum Length: `64`.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Topic tag value. Maximum Length: `256`.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private KafkaTopicTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private KafkaTopicTag() {}
     /**
      * @return Topic tag key. Maximum Length: `64`.
      * 
@@ -52,30 +45,32 @@ public final class KafkaTopicTag {
     public static Builder builder(KafkaTopicTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaTopicTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public KafkaTopicTag build() {
-            return new KafkaTopicTag(key, value);
+        }
+        public KafkaTopicTag build() {
+            final var o = new KafkaTopicTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

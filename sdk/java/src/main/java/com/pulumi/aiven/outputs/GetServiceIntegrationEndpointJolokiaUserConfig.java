@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointJolokiaUserConfig {
-    private final @Nullable String basicAuthPassword;
-    private final @Nullable String basicAuthUsername;
+    private @Nullable String basicAuthPassword;
+    private @Nullable String basicAuthUsername;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointJolokiaUserConfig(
-        @CustomType.Parameter("basicAuthPassword") @Nullable String basicAuthPassword,
-        @CustomType.Parameter("basicAuthUsername") @Nullable String basicAuthUsername) {
-        this.basicAuthPassword = basicAuthPassword;
-        this.basicAuthUsername = basicAuthUsername;
-    }
-
+    private GetServiceIntegrationEndpointJolokiaUserConfig() {}
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
@@ -36,30 +29,32 @@ public final class GetServiceIntegrationEndpointJolokiaUserConfig {
     public static Builder builder(GetServiceIntegrationEndpointJolokiaUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String basicAuthPassword;
         private @Nullable String basicAuthUsername;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointJolokiaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicAuthPassword = defaults.basicAuthPassword;
     	      this.basicAuthUsername = defaults.basicAuthUsername;
         }
 
+        @CustomType.Setter
         public Builder basicAuthPassword(@Nullable String basicAuthPassword) {
             this.basicAuthPassword = basicAuthPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder basicAuthUsername(@Nullable String basicAuthUsername) {
             this.basicAuthUsername = basicAuthUsername;
             return this;
-        }        public GetServiceIntegrationEndpointJolokiaUserConfig build() {
-            return new GetServiceIntegrationEndpointJolokiaUserConfig(basicAuthPassword, basicAuthUsername);
+        }
+        public GetServiceIntegrationEndpointJolokiaUserConfig build() {
+            final var o = new GetServiceIntegrationEndpointJolokiaUserConfig();
+            o.basicAuthPassword = basicAuthPassword;
+            o.basicAuthUsername = basicAuthUsername;
+            return o;
         }
     }
 }

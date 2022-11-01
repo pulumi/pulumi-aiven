@@ -15,70 +15,49 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return PEM encoded CA certificate
      * 
      */
-    private final @Nullable String ca;
+    private @Nullable String ca;
     /**
      * @return PEM encoded client certificate
      * 
      */
-    private final @Nullable String cert;
+    private @Nullable String cert;
     /**
      * @return message format
      * 
      */
-    private final @Nullable String format;
+    private @Nullable String format;
     /**
      * @return PEM encoded client key
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return custom syslog message format
      * 
      */
-    private final @Nullable String logline;
+    private @Nullable String logline;
     /**
      * @return rsyslog server port
      * 
      */
-    private final @Nullable String port;
+    private @Nullable String port;
     /**
      * @return Structured data block for log message
      * 
      */
-    private final @Nullable String sd;
+    private @Nullable String sd;
     /**
      * @return rsyslog server IP address or hostname
      * 
      */
-    private final @Nullable String server;
+    private @Nullable String server;
     /**
      * @return Require TLS
      * 
      */
-    private final @Nullable String tls;
+    private @Nullable String tls;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointRsyslogUserConfig(
-        @CustomType.Parameter("ca") @Nullable String ca,
-        @CustomType.Parameter("cert") @Nullable String cert,
-        @CustomType.Parameter("format") @Nullable String format,
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("logline") @Nullable String logline,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("sd") @Nullable String sd,
-        @CustomType.Parameter("server") @Nullable String server,
-        @CustomType.Parameter("tls") @Nullable String tls) {
-        this.ca = ca;
-        this.cert = cert;
-        this.format = format;
-        this.key = key;
-        this.logline = logline;
-        this.port = port;
-        this.sd = sd;
-        this.server = server;
-        this.tls = tls;
-    }
-
+    private ServiceIntegrationEndpointRsyslogUserConfig() {}
     /**
      * @return PEM encoded CA certificate
      * 
@@ -150,7 +129,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
     public static Builder builder(ServiceIntegrationEndpointRsyslogUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable String cert;
@@ -161,11 +140,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         private @Nullable String sd;
         private @Nullable String server;
         private @Nullable String tls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointRsyslogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ca = defaults.ca;
@@ -179,43 +154,63 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
     	      this.tls = defaults.tls;
         }
 
+        @CustomType.Setter
         public Builder ca(@Nullable String ca) {
             this.ca = ca;
             return this;
         }
+        @CustomType.Setter
         public Builder cert(@Nullable String cert) {
             this.cert = cert;
             return this;
         }
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
         }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder logline(@Nullable String logline) {
             this.logline = logline;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder sd(@Nullable String sd) {
             this.sd = sd;
             return this;
         }
+        @CustomType.Setter
         public Builder server(@Nullable String server) {
             this.server = server;
             return this;
         }
+        @CustomType.Setter
         public Builder tls(@Nullable String tls) {
             this.tls = tls;
             return this;
-        }        public ServiceIntegrationEndpointRsyslogUserConfig build() {
-            return new ServiceIntegrationEndpointRsyslogUserConfig(ca, cert, format, key, logline, port, sd, server, tls);
+        }
+        public ServiceIntegrationEndpointRsyslogUserConfig build() {
+            final var o = new ServiceIntegrationEndpointRsyslogUserConfig();
+            o.ca = ca;
+            o.cert = cert;
+            o.format = format;
+            o.key = key;
+            o.logline = logline;
+            o.port = port;
+            o.sd = sd;
+            o.server = server;
+            o.tls = tls;
+            return o;
         }
     }
 }

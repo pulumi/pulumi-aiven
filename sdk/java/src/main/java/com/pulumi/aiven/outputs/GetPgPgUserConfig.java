@@ -20,97 +20,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfig {
-    private final @Nullable String adminPassword;
-    private final @Nullable String adminUsername;
-    private final @Nullable String backupHour;
-    private final @Nullable String backupMinute;
-    private final @Nullable String enableIpv6;
-    private final @Nullable List<String> ipFilters;
-    private final @Nullable GetPgPgUserConfigMigration migration;
+    private @Nullable String adminPassword;
+    private @Nullable String adminUsername;
+    private @Nullable String backupHour;
+    private @Nullable String backupMinute;
+    private @Nullable String enableIpv6;
+    private @Nullable List<String> ipFilters;
+    private @Nullable GetPgPgUserConfigMigration migration;
     /**
      * @return PostgreSQL specific server provided values
      * 
      */
-    private final @Nullable GetPgPgUserConfigPg pg;
-    private final @Nullable String pgReadReplica;
-    private final @Nullable String pgServiceToForkFrom;
-    private final @Nullable String pgStatMonitorEnable;
-    private final @Nullable String pgVersion;
-    private final @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
-    private final @Nullable GetPgPgUserConfigPglookout pglookout;
-    private final @Nullable GetPgPgUserConfigPrivateAccess privateAccess;
-    private final @Nullable GetPgPgUserConfigPrivatelinkAccess privatelinkAccess;
-    private final @Nullable String projectToForkFrom;
-    private final @Nullable GetPgPgUserConfigPublicAccess publicAccess;
-    private final @Nullable String recoveryTargetTime;
-    private final @Nullable String serviceToForkFrom;
-    private final @Nullable String sharedBuffersPercentage;
+    private @Nullable GetPgPgUserConfigPg pg;
+    private @Nullable String pgReadReplica;
+    private @Nullable String pgServiceToForkFrom;
+    private @Nullable String pgStatMonitorEnable;
+    private @Nullable String pgVersion;
+    private @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
+    private @Nullable GetPgPgUserConfigPglookout pglookout;
+    private @Nullable GetPgPgUserConfigPrivateAccess privateAccess;
+    private @Nullable GetPgPgUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable String projectToForkFrom;
+    private @Nullable GetPgPgUserConfigPublicAccess publicAccess;
+    private @Nullable String recoveryTargetTime;
+    private @Nullable String serviceToForkFrom;
+    private @Nullable String sharedBuffersPercentage;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
-    private final @Nullable String synchronousReplication;
-    private final @Nullable GetPgPgUserConfigTimescaledb timescaledb;
-    private final @Nullable String variant;
-    private final @Nullable String workMem;
+    private @Nullable String staticIps;
+    private @Nullable String synchronousReplication;
+    private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
+    private @Nullable String variant;
+    private @Nullable String workMem;
 
-    @CustomType.Constructor
-    private GetPgPgUserConfig(
-        @CustomType.Parameter("adminPassword") @Nullable String adminPassword,
-        @CustomType.Parameter("adminUsername") @Nullable String adminUsername,
-        @CustomType.Parameter("backupHour") @Nullable String backupHour,
-        @CustomType.Parameter("backupMinute") @Nullable String backupMinute,
-        @CustomType.Parameter("enableIpv6") @Nullable String enableIpv6,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("migration") @Nullable GetPgPgUserConfigMigration migration,
-        @CustomType.Parameter("pg") @Nullable GetPgPgUserConfigPg pg,
-        @CustomType.Parameter("pgReadReplica") @Nullable String pgReadReplica,
-        @CustomType.Parameter("pgServiceToForkFrom") @Nullable String pgServiceToForkFrom,
-        @CustomType.Parameter("pgStatMonitorEnable") @Nullable String pgStatMonitorEnable,
-        @CustomType.Parameter("pgVersion") @Nullable String pgVersion,
-        @CustomType.Parameter("pgbouncer") @Nullable GetPgPgUserConfigPgbouncer pgbouncer,
-        @CustomType.Parameter("pglookout") @Nullable GetPgPgUserConfigPglookout pglookout,
-        @CustomType.Parameter("privateAccess") @Nullable GetPgPgUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable GetPgPgUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable GetPgPgUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("recoveryTargetTime") @Nullable String recoveryTargetTime,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("sharedBuffersPercentage") @Nullable String sharedBuffersPercentage,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps,
-        @CustomType.Parameter("synchronousReplication") @Nullable String synchronousReplication,
-        @CustomType.Parameter("timescaledb") @Nullable GetPgPgUserConfigTimescaledb timescaledb,
-        @CustomType.Parameter("variant") @Nullable String variant,
-        @CustomType.Parameter("workMem") @Nullable String workMem) {
-        this.adminPassword = adminPassword;
-        this.adminUsername = adminUsername;
-        this.backupHour = backupHour;
-        this.backupMinute = backupMinute;
-        this.enableIpv6 = enableIpv6;
-        this.ipFilters = ipFilters;
-        this.migration = migration;
-        this.pg = pg;
-        this.pgReadReplica = pgReadReplica;
-        this.pgServiceToForkFrom = pgServiceToForkFrom;
-        this.pgStatMonitorEnable = pgStatMonitorEnable;
-        this.pgVersion = pgVersion;
-        this.pgbouncer = pgbouncer;
-        this.pglookout = pglookout;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.recoveryTargetTime = recoveryTargetTime;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.sharedBuffersPercentage = sharedBuffersPercentage;
-        this.staticIps = staticIps;
-        this.synchronousReplication = synchronousReplication;
-        this.timescaledb = timescaledb;
-        this.variant = variant;
-        this.workMem = workMem;
-    }
-
+    private GetPgPgUserConfig() {}
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
@@ -205,7 +150,7 @@ public final class GetPgPgUserConfig {
     public static Builder builder(GetPgPgUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
@@ -233,11 +178,7 @@ public final class GetPgPgUserConfig {
         private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
         private @Nullable String variant;
         private @Nullable String workMem;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPgPgUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminPassword = defaults.adminPassword;
@@ -268,26 +209,32 @@ public final class GetPgPgUserConfig {
     	      this.workMem = defaults.workMem;
         }
 
+        @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
             this.adminUsername = adminUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder backupHour(@Nullable String backupHour) {
             this.backupHour = backupHour;
             return this;
         }
+        @CustomType.Setter
         public Builder backupMinute(@Nullable String backupMinute) {
             this.backupMinute = backupMinute;
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpv6(@Nullable String enableIpv6) {
             this.enableIpv6 = enableIpv6;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -295,87 +242,135 @@ public final class GetPgPgUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder migration(@Nullable GetPgPgUserConfigMigration migration) {
             this.migration = migration;
             return this;
         }
+        @CustomType.Setter
         public Builder pg(@Nullable GetPgPgUserConfigPg pg) {
             this.pg = pg;
             return this;
         }
+        @CustomType.Setter
         public Builder pgReadReplica(@Nullable String pgReadReplica) {
             this.pgReadReplica = pgReadReplica;
             return this;
         }
+        @CustomType.Setter
         public Builder pgServiceToForkFrom(@Nullable String pgServiceToForkFrom) {
             this.pgServiceToForkFrom = pgServiceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder pgStatMonitorEnable(@Nullable String pgStatMonitorEnable) {
             this.pgStatMonitorEnable = pgStatMonitorEnable;
             return this;
         }
+        @CustomType.Setter
         public Builder pgVersion(@Nullable String pgVersion) {
             this.pgVersion = pgVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder pgbouncer(@Nullable GetPgPgUserConfigPgbouncer pgbouncer) {
             this.pgbouncer = pgbouncer;
             return this;
         }
+        @CustomType.Setter
         public Builder pglookout(@Nullable GetPgPgUserConfigPglookout pglookout) {
             this.pglookout = pglookout;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetPgPgUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetPgPgUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable GetPgPgUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryTargetTime(@Nullable String recoveryTargetTime) {
             this.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder sharedBuffersPercentage(@Nullable String sharedBuffersPercentage) {
             this.sharedBuffersPercentage = sharedBuffersPercentage;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
         }
+        @CustomType.Setter
         public Builder synchronousReplication(@Nullable String synchronousReplication) {
             this.synchronousReplication = synchronousReplication;
             return this;
         }
+        @CustomType.Setter
         public Builder timescaledb(@Nullable GetPgPgUserConfigTimescaledb timescaledb) {
             this.timescaledb = timescaledb;
             return this;
         }
+        @CustomType.Setter
         public Builder variant(@Nullable String variant) {
             this.variant = variant;
             return this;
         }
+        @CustomType.Setter
         public Builder workMem(@Nullable String workMem) {
             this.workMem = workMem;
             return this;
-        }        public GetPgPgUserConfig build() {
-            return new GetPgPgUserConfig(adminPassword, adminUsername, backupHour, backupMinute, enableIpv6, ipFilters, migration, pg, pgReadReplica, pgServiceToForkFrom, pgStatMonitorEnable, pgVersion, pgbouncer, pglookout, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, sharedBuffersPercentage, staticIps, synchronousReplication, timescaledb, variant, workMem);
+        }
+        public GetPgPgUserConfig build() {
+            final var o = new GetPgPgUserConfig();
+            o.adminPassword = adminPassword;
+            o.adminUsername = adminUsername;
+            o.backupHour = backupHour;
+            o.backupMinute = backupMinute;
+            o.enableIpv6 = enableIpv6;
+            o.ipFilters = ipFilters;
+            o.migration = migration;
+            o.pg = pg;
+            o.pgReadReplica = pgReadReplica;
+            o.pgServiceToForkFrom = pgServiceToForkFrom;
+            o.pgStatMonitorEnable = pgStatMonitorEnable;
+            o.pgVersion = pgVersion;
+            o.pgbouncer = pgbouncer;
+            o.pglookout = pglookout;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.recoveryTargetTime = recoveryTargetTime;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.sharedBuffersPercentage = sharedBuffersPercentage;
+            o.staticIps = staticIps;
+            o.synchronousReplication = synchronousReplication;
+            o.timescaledb = timescaledb;
+            o.variant = variant;
+            o.workMem = workMem;
+            return o;
         }
     }
 }

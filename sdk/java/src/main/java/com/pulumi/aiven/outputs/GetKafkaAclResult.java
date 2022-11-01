@@ -13,56 +13,39 @@ public final class GetKafkaAclResult {
      * @return Kafka ACL ID
      * 
      */
-    private final String aclId;
+    private String aclId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String permission;
+    private String permission;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String topic;
+    private String topic;
     /**
      * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetKafkaAclResult(
-        @CustomType.Parameter("aclId") String aclId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("permission") String permission,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("topic") String topic,
-        @CustomType.Parameter("username") String username) {
-        this.aclId = aclId;
-        this.id = id;
-        this.permission = permission;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.topic = topic;
-        this.username = username;
-    }
-
+    private GetKafkaAclResult() {}
     /**
      * @return Kafka ACL ID
      * 
@@ -120,7 +103,7 @@ public final class GetKafkaAclResult {
     public static Builder builder(GetKafkaAclResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String aclId;
         private String id;
@@ -129,11 +112,7 @@ public final class GetKafkaAclResult {
         private String serviceName;
         private String topic;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaAclResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclId = defaults.aclId;
@@ -145,35 +124,51 @@ public final class GetKafkaAclResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder aclId(String aclId) {
             this.aclId = Objects.requireNonNull(aclId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder permission(String permission) {
             this.permission = Objects.requireNonNull(permission);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetKafkaAclResult build() {
-            return new GetKafkaAclResult(aclId, id, permission, project, serviceName, topic, username);
+        }
+        public GetKafkaAclResult build() {
+            final var o = new GetKafkaAclResult();
+            o.aclId = aclId;
+            o.id = id;
+            o.permission = permission;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.topic = topic;
+            o.username = username;
+            return o;
         }
     }
 }

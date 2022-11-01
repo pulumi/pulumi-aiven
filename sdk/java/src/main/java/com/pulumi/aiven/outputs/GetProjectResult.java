@@ -16,105 +16,74 @@ public final class GetProjectResult {
      * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
-    private final Boolean addAccountOwnersAdminAccess;
+    private Boolean addAccountOwnersAdminAccess;
     /**
      * @return The amount of platform credits available to the project. This could be your free trial or other promotional credits.
      * 
      */
-    private final String availableCredits;
+    private String availableCredits;
     /**
      * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    private final String billingGroup;
+    private String billingGroup;
     /**
      * @return The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
      * 
      */
-    private final String caCert;
+    private String caCert;
     /**
      * @return is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    private final String copyFromProject;
+    private String copyFromProject;
     /**
      * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      * 
      */
-    private final String defaultCloud;
+    private String defaultCloud;
     /**
      * @return The current accumulated bill for this project in the current billing period.
      * 
      */
-    private final String estimatedBalance;
+    private String estimatedBalance;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The method of invoicing used for payments for this project, e.g. `card`.
      * 
      */
-    private final String paymentMethod;
+    private String paymentMethod;
     /**
      * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Tags are key-value pairs that allow you to categorize projects.
      * 
      */
-    private final List<GetProjectTag> tags;
+    private List<GetProjectTag> tags;
     /**
      * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
-    private final List<String> technicalEmails;
+    private List<String> technicalEmails;
     /**
      * @return Use the same billing group that is used in source project.
      * 
      */
-    private final Boolean useSourceProjectBillingGroup;
+    private Boolean useSourceProjectBillingGroup;
 
-    @CustomType.Constructor
-    private GetProjectResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("addAccountOwnersAdminAccess") Boolean addAccountOwnersAdminAccess,
-        @CustomType.Parameter("availableCredits") String availableCredits,
-        @CustomType.Parameter("billingGroup") String billingGroup,
-        @CustomType.Parameter("caCert") String caCert,
-        @CustomType.Parameter("copyFromProject") String copyFromProject,
-        @CustomType.Parameter("defaultCloud") String defaultCloud,
-        @CustomType.Parameter("estimatedBalance") String estimatedBalance,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("paymentMethod") String paymentMethod,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("tags") List<GetProjectTag> tags,
-        @CustomType.Parameter("technicalEmails") List<String> technicalEmails,
-        @CustomType.Parameter("useSourceProjectBillingGroup") Boolean useSourceProjectBillingGroup) {
-        this.accountId = accountId;
-        this.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
-        this.availableCredits = availableCredits;
-        this.billingGroup = billingGroup;
-        this.caCert = caCert;
-        this.copyFromProject = copyFromProject;
-        this.defaultCloud = defaultCloud;
-        this.estimatedBalance = estimatedBalance;
-        this.id = id;
-        this.paymentMethod = paymentMethod;
-        this.project = project;
-        this.tags = tags;
-        this.technicalEmails = technicalEmails;
-        this.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
-    }
-
+    private GetProjectResult() {}
     /**
      * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
@@ -221,7 +190,7 @@ public final class GetProjectResult {
     public static Builder builder(GetProjectResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private Boolean addAccountOwnersAdminAccess;
@@ -237,11 +206,7 @@ public final class GetProjectResult {
         private List<GetProjectTag> tags;
         private List<String> technicalEmails;
         private Boolean useSourceProjectBillingGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -260,50 +225,62 @@ public final class GetProjectResult {
     	      this.useSourceProjectBillingGroup = defaults.useSourceProjectBillingGroup;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder addAccountOwnersAdminAccess(Boolean addAccountOwnersAdminAccess) {
             this.addAccountOwnersAdminAccess = Objects.requireNonNull(addAccountOwnersAdminAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder availableCredits(String availableCredits) {
             this.availableCredits = Objects.requireNonNull(availableCredits);
             return this;
         }
+        @CustomType.Setter
         public Builder billingGroup(String billingGroup) {
             this.billingGroup = Objects.requireNonNull(billingGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder caCert(String caCert) {
             this.caCert = Objects.requireNonNull(caCert);
             return this;
         }
+        @CustomType.Setter
         public Builder copyFromProject(String copyFromProject) {
             this.copyFromProject = Objects.requireNonNull(copyFromProject);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultCloud(String defaultCloud) {
             this.defaultCloud = Objects.requireNonNull(defaultCloud);
             return this;
         }
+        @CustomType.Setter
         public Builder estimatedBalance(String estimatedBalance) {
             this.estimatedBalance = Objects.requireNonNull(estimatedBalance);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentMethod(String paymentMethod) {
             this.paymentMethod = Objects.requireNonNull(paymentMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<GetProjectTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -311,6 +288,7 @@ public final class GetProjectResult {
         public Builder tags(GetProjectTag... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder technicalEmails(List<String> technicalEmails) {
             this.technicalEmails = Objects.requireNonNull(technicalEmails);
             return this;
@@ -318,11 +296,28 @@ public final class GetProjectResult {
         public Builder technicalEmails(String... technicalEmails) {
             return technicalEmails(List.of(technicalEmails));
         }
+        @CustomType.Setter
         public Builder useSourceProjectBillingGroup(Boolean useSourceProjectBillingGroup) {
             this.useSourceProjectBillingGroup = Objects.requireNonNull(useSourceProjectBillingGroup);
             return this;
-        }        public GetProjectResult build() {
-            return new GetProjectResult(accountId, addAccountOwnersAdminAccess, availableCredits, billingGroup, caCert, copyFromProject, defaultCloud, estimatedBalance, id, paymentMethod, project, tags, technicalEmails, useSourceProjectBillingGroup);
+        }
+        public GetProjectResult build() {
+            final var o = new GetProjectResult();
+            o.accountId = accountId;
+            o.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
+            o.availableCredits = availableCredits;
+            o.billingGroup = billingGroup;
+            o.caCert = caCert;
+            o.copyFromProject = copyFromProject;
+            o.defaultCloud = defaultCloud;
+            o.estimatedBalance = estimatedBalance;
+            o.id = id;
+            o.paymentMethod = paymentMethod;
+            o.project = project;
+            o.tags = tags;
+            o.technicalEmails = technicalEmails;
+            o.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
+            return o;
         }
     }
 }

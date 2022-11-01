@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFlinkServiceIntegration {
-    private final String integrationType;
-    private final String sourceServiceName;
+    private String integrationType;
+    private String sourceServiceName;
 
-    @CustomType.Constructor
-    private GetFlinkServiceIntegration(
-        @CustomType.Parameter("integrationType") String integrationType,
-        @CustomType.Parameter("sourceServiceName") String sourceServiceName) {
-        this.integrationType = integrationType;
-        this.sourceServiceName = sourceServiceName;
-    }
-
+    private GetFlinkServiceIntegration() {}
     public String integrationType() {
         return this.integrationType;
     }
@@ -34,30 +27,32 @@ public final class GetFlinkServiceIntegration {
     public static Builder builder(GetFlinkServiceIntegration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String integrationType;
         private String sourceServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFlinkServiceIntegration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.integrationType = defaults.integrationType;
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
             this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
             return this;
-        }        public GetFlinkServiceIntegration build() {
-            return new GetFlinkServiceIntegration(integrationType, sourceServiceName);
+        }
+        public GetFlinkServiceIntegration build() {
+            final var o = new GetFlinkServiceIntegration();
+            o.integrationType = integrationType;
+            o.sourceServiceName = sourceServiceName;
+            return o;
         }
     }
 }

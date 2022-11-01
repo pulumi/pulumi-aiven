@@ -15,13 +15,9 @@ public final class ServiceIntegrationMirrormakerUserConfig {
      * @return Mirrormaker topic whitelist
      * 
      */
-    private final @Nullable String mirrormakerWhitelist;
+    private @Nullable String mirrormakerWhitelist;
 
-    @CustomType.Constructor
-    private ServiceIntegrationMirrormakerUserConfig(@CustomType.Parameter("mirrormakerWhitelist") @Nullable String mirrormakerWhitelist) {
-        this.mirrormakerWhitelist = mirrormakerWhitelist;
-    }
-
+    private ServiceIntegrationMirrormakerUserConfig() {}
     /**
      * @return Mirrormaker topic whitelist
      * 
@@ -37,24 +33,24 @@ public final class ServiceIntegrationMirrormakerUserConfig {
     public static Builder builder(ServiceIntegrationMirrormakerUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mirrormakerWhitelist;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationMirrormakerUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mirrormakerWhitelist = defaults.mirrormakerWhitelist;
         }
 
+        @CustomType.Setter
         public Builder mirrormakerWhitelist(@Nullable String mirrormakerWhitelist) {
             this.mirrormakerWhitelist = mirrormakerWhitelist;
             return this;
-        }        public ServiceIntegrationMirrormakerUserConfig build() {
-            return new ServiceIntegrationMirrormakerUserConfig(mirrormakerWhitelist);
+        }
+        public ServiceIntegrationMirrormakerUserConfig build() {
+            final var o = new ServiceIntegrationMirrormakerUserConfig();
+            o.mirrormakerWhitelist = mirrormakerWhitelist;
+            return o;
         }
     }
 }

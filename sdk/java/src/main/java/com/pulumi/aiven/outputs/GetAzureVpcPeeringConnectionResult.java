@@ -15,77 +15,54 @@ public final class GetAzureVpcPeeringConnectionResult {
      * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String azureSubscriptionId;
+    private String azureSubscriptionId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String peerAzureAppId;
+    private String peerAzureAppId;
     /**
      * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String peerAzureTenantId;
+    private String peerAzureTenantId;
     /**
      * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String peerResourceGroup;
+    private String peerResourceGroup;
     /**
      * @return Cloud provider identifier for the peering connection if available
      * 
      */
-    private final String peeringConnectionId;
+    private String peeringConnectionId;
     /**
      * @return State of the peering connection
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return State-specific help or error information
      * 
      */
-    private final Map<String,Object> stateInfo;
+    private Map<String,Object> stateInfo;
     /**
      * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String vnetName;
+    private String vnetName;
     /**
      * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetAzureVpcPeeringConnectionResult(
-        @CustomType.Parameter("azureSubscriptionId") String azureSubscriptionId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("peerAzureAppId") String peerAzureAppId,
-        @CustomType.Parameter("peerAzureTenantId") String peerAzureTenantId,
-        @CustomType.Parameter("peerResourceGroup") String peerResourceGroup,
-        @CustomType.Parameter("peeringConnectionId") String peeringConnectionId,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("stateInfo") Map<String,Object> stateInfo,
-        @CustomType.Parameter("vnetName") String vnetName,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.azureSubscriptionId = azureSubscriptionId;
-        this.id = id;
-        this.peerAzureAppId = peerAzureAppId;
-        this.peerAzureTenantId = peerAzureTenantId;
-        this.peerResourceGroup = peerResourceGroup;
-        this.peeringConnectionId = peeringConnectionId;
-        this.state = state;
-        this.stateInfo = stateInfo;
-        this.vnetName = vnetName;
-        this.vpcId = vpcId;
-    }
-
+    private GetAzureVpcPeeringConnectionResult() {}
     /**
      * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -164,7 +141,7 @@ public final class GetAzureVpcPeeringConnectionResult {
     public static Builder builder(GetAzureVpcPeeringConnectionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String azureSubscriptionId;
         private String id;
@@ -176,11 +153,7 @@ public final class GetAzureVpcPeeringConnectionResult {
         private Map<String,Object> stateInfo;
         private String vnetName;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAzureVpcPeeringConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.azureSubscriptionId = defaults.azureSubscriptionId;
@@ -195,47 +168,69 @@ public final class GetAzureVpcPeeringConnectionResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder azureSubscriptionId(String azureSubscriptionId) {
             this.azureSubscriptionId = Objects.requireNonNull(azureSubscriptionId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder peerAzureAppId(String peerAzureAppId) {
             this.peerAzureAppId = Objects.requireNonNull(peerAzureAppId);
             return this;
         }
+        @CustomType.Setter
         public Builder peerAzureTenantId(String peerAzureTenantId) {
             this.peerAzureTenantId = Objects.requireNonNull(peerAzureTenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder peerResourceGroup(String peerResourceGroup) {
             this.peerResourceGroup = Objects.requireNonNull(peerResourceGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder peeringConnectionId(String peeringConnectionId) {
             this.peeringConnectionId = Objects.requireNonNull(peeringConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
             this.stateInfo = Objects.requireNonNull(stateInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder vnetName(String vnetName) {
             this.vnetName = Objects.requireNonNull(vnetName);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetAzureVpcPeeringConnectionResult build() {
-            return new GetAzureVpcPeeringConnectionResult(azureSubscriptionId, id, peerAzureAppId, peerAzureTenantId, peerResourceGroup, peeringConnectionId, state, stateInfo, vnetName, vpcId);
+        }
+        public GetAzureVpcPeeringConnectionResult build() {
+            final var o = new GetAzureVpcPeeringConnectionResult();
+            o.azureSubscriptionId = azureSubscriptionId;
+            o.id = id;
+            o.peerAzureAppId = peerAzureAppId;
+            o.peerAzureTenantId = peerAzureTenantId;
+            o.peerResourceGroup = peerResourceGroup;
+            o.peeringConnectionId = peeringConnectionId;
+            o.state = state;
+            o.stateInfo = stateInfo;
+            o.vnetName = vnetName;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

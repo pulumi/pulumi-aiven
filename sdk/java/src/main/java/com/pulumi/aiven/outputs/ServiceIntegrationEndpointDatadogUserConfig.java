@@ -17,56 +17,39 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      * @return Datadog API key
      * 
      */
-    private final @Nullable String datadogApiKey;
+    private @Nullable String datadogApiKey;
     /**
      * @return Custom tags provided by user
      * 
      */
-    private final @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
+    private @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
     /**
      * @return Disable consumer group metrics
      * 
      */
-    private final @Nullable String disableConsumerStats;
+    private @Nullable String disableConsumerStats;
     /**
      * @return Number of separate instances to fetch kafka consumer statistics with
      * 
      */
-    private final @Nullable String kafkaConsumerCheckInstances;
+    private @Nullable String kafkaConsumerCheckInstances;
     /**
      * @return Number of seconds that datadog will wait to get consumer statistics from brokers
      * 
      */
-    private final @Nullable String kafkaConsumerStatsTimeout;
+    private @Nullable String kafkaConsumerStatsTimeout;
     /**
      * @return Maximum number of partition contexts to send
      * 
      */
-    private final @Nullable String maxPartitionContexts;
+    private @Nullable String maxPartitionContexts;
     /**
      * @return Datadog intake site. Defaults to datadoghq.com
      * 
      */
-    private final @Nullable String site;
+    private @Nullable String site;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointDatadogUserConfig(
-        @CustomType.Parameter("datadogApiKey") @Nullable String datadogApiKey,
-        @CustomType.Parameter("datadogTags") @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags,
-        @CustomType.Parameter("disableConsumerStats") @Nullable String disableConsumerStats,
-        @CustomType.Parameter("kafkaConsumerCheckInstances") @Nullable String kafkaConsumerCheckInstances,
-        @CustomType.Parameter("kafkaConsumerStatsTimeout") @Nullable String kafkaConsumerStatsTimeout,
-        @CustomType.Parameter("maxPartitionContexts") @Nullable String maxPartitionContexts,
-        @CustomType.Parameter("site") @Nullable String site) {
-        this.datadogApiKey = datadogApiKey;
-        this.datadogTags = datadogTags;
-        this.disableConsumerStats = disableConsumerStats;
-        this.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
-        this.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
-        this.maxPartitionContexts = maxPartitionContexts;
-        this.site = site;
-    }
-
+    private ServiceIntegrationEndpointDatadogUserConfig() {}
     /**
      * @return Datadog API key
      * 
@@ -124,7 +107,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
     public static Builder builder(ServiceIntegrationEndpointDatadogUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String datadogApiKey;
         private @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
@@ -133,11 +116,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         private @Nullable String kafkaConsumerStatsTimeout;
         private @Nullable String maxPartitionContexts;
         private @Nullable String site;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointDatadogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datadogApiKey = defaults.datadogApiKey;
@@ -149,10 +128,12 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
     	      this.site = defaults.site;
         }
 
+        @CustomType.Setter
         public Builder datadogApiKey(@Nullable String datadogApiKey) {
             this.datadogApiKey = datadogApiKey;
             return this;
         }
+        @CustomType.Setter
         public Builder datadogTags(@Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags) {
             this.datadogTags = datadogTags;
             return this;
@@ -160,27 +141,41 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         public Builder datadogTags(ServiceIntegrationEndpointDatadogUserConfigDatadogTag... datadogTags) {
             return datadogTags(List.of(datadogTags));
         }
+        @CustomType.Setter
         public Builder disableConsumerStats(@Nullable String disableConsumerStats) {
             this.disableConsumerStats = disableConsumerStats;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConsumerCheckInstances(@Nullable String kafkaConsumerCheckInstances) {
             this.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConsumerStatsTimeout(@Nullable String kafkaConsumerStatsTimeout) {
             this.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPartitionContexts(@Nullable String maxPartitionContexts) {
             this.maxPartitionContexts = maxPartitionContexts;
             return this;
         }
+        @CustomType.Setter
         public Builder site(@Nullable String site) {
             this.site = site;
             return this;
-        }        public ServiceIntegrationEndpointDatadogUserConfig build() {
-            return new ServiceIntegrationEndpointDatadogUserConfig(datadogApiKey, datadogTags, disableConsumerStats, kafkaConsumerCheckInstances, kafkaConsumerStatsTimeout, maxPartitionContexts, site);
+        }
+        public ServiceIntegrationEndpointDatadogUserConfig build() {
+            final var o = new ServiceIntegrationEndpointDatadogUserConfig();
+            o.datadogApiKey = datadogApiKey;
+            o.datadogTags = datadogTags;
+            o.disableConsumerStats = disableConsumerStats;
+            o.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
+            o.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
+            o.maxPartitionContexts = maxPartitionContexts;
+            o.site = site;
+            return o;
         }
     }
 }

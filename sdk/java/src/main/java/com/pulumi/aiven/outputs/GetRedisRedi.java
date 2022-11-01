@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRedisRedi {
-    @CustomType.Constructor
-    private GetRedisRedi() {
-    }
-
+    private GetRedisRedi() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetRedisRedi {
     public static Builder builder(GetRedisRedi defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRedisRedi defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetRedisRedi build() {
-            return new GetRedisRedi();
+            final var o = new GetRedisRedi();
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class PgServiceIntegration {
      * @return Type of the service integration. The only supported value at the moment is `read_replica`
      * 
      */
-    private final String integrationType;
+    private String integrationType;
     /**
      * @return Name of the source service
      * 
      */
-    private final String sourceServiceName;
+    private String sourceServiceName;
 
-    @CustomType.Constructor
-    private PgServiceIntegration(
-        @CustomType.Parameter("integrationType") String integrationType,
-        @CustomType.Parameter("sourceServiceName") String sourceServiceName) {
-        this.integrationType = integrationType;
-        this.sourceServiceName = sourceServiceName;
-    }
-
+    private PgServiceIntegration() {}
     /**
      * @return Type of the service integration. The only supported value at the moment is `read_replica`
      * 
@@ -50,30 +43,32 @@ public final class PgServiceIntegration {
     public static Builder builder(PgServiceIntegration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String integrationType;
         private String sourceServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PgServiceIntegration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.integrationType = defaults.integrationType;
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
             this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
             return this;
-        }        public PgServiceIntegration build() {
-            return new PgServiceIntegration(integrationType, sourceServiceName);
+        }
+        public PgServiceIntegration build() {
+            final var o = new PgServiceIntegration();
+            o.integrationType = integrationType;
+            o.sourceServiceName = sourceServiceName;
+            return o;
         }
     }
 }

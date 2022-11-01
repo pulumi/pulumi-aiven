@@ -15,175 +15,124 @@ public final class KafkaTopicConfig {
      * @return cleanup.policy value
      * 
      */
-    private final @Nullable String cleanupPolicy;
+    private @Nullable String cleanupPolicy;
     /**
      * @return compression.type value
      * 
      */
-    private final @Nullable String compressionType;
+    private @Nullable String compressionType;
     /**
      * @return delete.retention.ms value
      * 
      */
-    private final @Nullable String deleteRetentionMs;
+    private @Nullable String deleteRetentionMs;
     /**
      * @return file.delete.delay.ms value
      * 
      */
-    private final @Nullable String fileDeleteDelayMs;
+    private @Nullable String fileDeleteDelayMs;
     /**
      * @return flush.messages value
      * 
      */
-    private final @Nullable String flushMessages;
+    private @Nullable String flushMessages;
     /**
      * @return flush.ms value
      * 
      */
-    private final @Nullable String flushMs;
+    private @Nullable String flushMs;
     /**
      * @return index.interval.bytes value
      * 
      */
-    private final @Nullable String indexIntervalBytes;
+    private @Nullable String indexIntervalBytes;
     /**
      * @return max.compaction.lag.ms value
      * 
      */
-    private final @Nullable String maxCompactionLagMs;
+    private @Nullable String maxCompactionLagMs;
     /**
      * @return max.message.bytes value
      * 
      */
-    private final @Nullable String maxMessageBytes;
+    private @Nullable String maxMessageBytes;
     /**
      * @return message.downconversion.enable value
      * 
      */
-    private final @Nullable String messageDownconversionEnable;
+    private @Nullable String messageDownconversionEnable;
     /**
      * @return message.format.version value
      * 
      */
-    private final @Nullable String messageFormatVersion;
+    private @Nullable String messageFormatVersion;
     /**
      * @return message.timestamp.difference.max.ms value
      * 
      */
-    private final @Nullable String messageTimestampDifferenceMaxMs;
+    private @Nullable String messageTimestampDifferenceMaxMs;
     /**
      * @return message.timestamp.type value
      * 
      */
-    private final @Nullable String messageTimestampType;
+    private @Nullable String messageTimestampType;
     /**
      * @return min.cleanable.dirty.ratio value
      * 
      */
-    private final @Nullable String minCleanableDirtyRatio;
+    private @Nullable String minCleanableDirtyRatio;
     /**
      * @return min.compaction.lag.ms value
      * 
      */
-    private final @Nullable String minCompactionLagMs;
+    private @Nullable String minCompactionLagMs;
     /**
      * @return min.insync.replicas value
      * 
      */
-    private final @Nullable String minInsyncReplicas;
+    private @Nullable String minInsyncReplicas;
     /**
      * @return preallocate value
      * 
      */
-    private final @Nullable String preallocate;
+    private @Nullable String preallocate;
     /**
      * @return retention.bytes value
      * 
      */
-    private final @Nullable String retentionBytes;
+    private @Nullable String retentionBytes;
     /**
      * @return retention.ms value
      * 
      */
-    private final @Nullable String retentionMs;
+    private @Nullable String retentionMs;
     /**
      * @return segment.bytes value
      * 
      */
-    private final @Nullable String segmentBytes;
+    private @Nullable String segmentBytes;
     /**
      * @return segment.index.bytes value
      * 
      */
-    private final @Nullable String segmentIndexBytes;
+    private @Nullable String segmentIndexBytes;
     /**
      * @return segment.jitter.ms value
      * 
      */
-    private final @Nullable String segmentJitterMs;
+    private @Nullable String segmentJitterMs;
     /**
      * @return segment.ms value
      * 
      */
-    private final @Nullable String segmentMs;
+    private @Nullable String segmentMs;
     /**
      * @return unclean.leader.election.enable value
      * 
      */
-    private final @Nullable String uncleanLeaderElectionEnable;
+    private @Nullable String uncleanLeaderElectionEnable;
 
-    @CustomType.Constructor
-    private KafkaTopicConfig(
-        @CustomType.Parameter("cleanupPolicy") @Nullable String cleanupPolicy,
-        @CustomType.Parameter("compressionType") @Nullable String compressionType,
-        @CustomType.Parameter("deleteRetentionMs") @Nullable String deleteRetentionMs,
-        @CustomType.Parameter("fileDeleteDelayMs") @Nullable String fileDeleteDelayMs,
-        @CustomType.Parameter("flushMessages") @Nullable String flushMessages,
-        @CustomType.Parameter("flushMs") @Nullable String flushMs,
-        @CustomType.Parameter("indexIntervalBytes") @Nullable String indexIntervalBytes,
-        @CustomType.Parameter("maxCompactionLagMs") @Nullable String maxCompactionLagMs,
-        @CustomType.Parameter("maxMessageBytes") @Nullable String maxMessageBytes,
-        @CustomType.Parameter("messageDownconversionEnable") @Nullable String messageDownconversionEnable,
-        @CustomType.Parameter("messageFormatVersion") @Nullable String messageFormatVersion,
-        @CustomType.Parameter("messageTimestampDifferenceMaxMs") @Nullable String messageTimestampDifferenceMaxMs,
-        @CustomType.Parameter("messageTimestampType") @Nullable String messageTimestampType,
-        @CustomType.Parameter("minCleanableDirtyRatio") @Nullable String minCleanableDirtyRatio,
-        @CustomType.Parameter("minCompactionLagMs") @Nullable String minCompactionLagMs,
-        @CustomType.Parameter("minInsyncReplicas") @Nullable String minInsyncReplicas,
-        @CustomType.Parameter("preallocate") @Nullable String preallocate,
-        @CustomType.Parameter("retentionBytes") @Nullable String retentionBytes,
-        @CustomType.Parameter("retentionMs") @Nullable String retentionMs,
-        @CustomType.Parameter("segmentBytes") @Nullable String segmentBytes,
-        @CustomType.Parameter("segmentIndexBytes") @Nullable String segmentIndexBytes,
-        @CustomType.Parameter("segmentJitterMs") @Nullable String segmentJitterMs,
-        @CustomType.Parameter("segmentMs") @Nullable String segmentMs,
-        @CustomType.Parameter("uncleanLeaderElectionEnable") @Nullable String uncleanLeaderElectionEnable) {
-        this.cleanupPolicy = cleanupPolicy;
-        this.compressionType = compressionType;
-        this.deleteRetentionMs = deleteRetentionMs;
-        this.fileDeleteDelayMs = fileDeleteDelayMs;
-        this.flushMessages = flushMessages;
-        this.flushMs = flushMs;
-        this.indexIntervalBytes = indexIntervalBytes;
-        this.maxCompactionLagMs = maxCompactionLagMs;
-        this.maxMessageBytes = maxMessageBytes;
-        this.messageDownconversionEnable = messageDownconversionEnable;
-        this.messageFormatVersion = messageFormatVersion;
-        this.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
-        this.messageTimestampType = messageTimestampType;
-        this.minCleanableDirtyRatio = minCleanableDirtyRatio;
-        this.minCompactionLagMs = minCompactionLagMs;
-        this.minInsyncReplicas = minInsyncReplicas;
-        this.preallocate = preallocate;
-        this.retentionBytes = retentionBytes;
-        this.retentionMs = retentionMs;
-        this.segmentBytes = segmentBytes;
-        this.segmentIndexBytes = segmentIndexBytes;
-        this.segmentJitterMs = segmentJitterMs;
-        this.segmentMs = segmentMs;
-        this.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
-    }
-
+    private KafkaTopicConfig() {}
     /**
      * @return cleanup.policy value
      * 
@@ -360,7 +309,7 @@ public final class KafkaTopicConfig {
     public static Builder builder(KafkaTopicConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cleanupPolicy;
         private @Nullable String compressionType;
@@ -386,11 +335,7 @@ public final class KafkaTopicConfig {
         private @Nullable String segmentJitterMs;
         private @Nullable String segmentMs;
         private @Nullable String uncleanLeaderElectionEnable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaTopicConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cleanupPolicy = defaults.cleanupPolicy;
@@ -419,103 +364,153 @@ public final class KafkaTopicConfig {
     	      this.uncleanLeaderElectionEnable = defaults.uncleanLeaderElectionEnable;
         }
 
+        @CustomType.Setter
         public Builder cleanupPolicy(@Nullable String cleanupPolicy) {
             this.cleanupPolicy = cleanupPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder compressionType(@Nullable String compressionType) {
             this.compressionType = compressionType;
             return this;
         }
+        @CustomType.Setter
         public Builder deleteRetentionMs(@Nullable String deleteRetentionMs) {
             this.deleteRetentionMs = deleteRetentionMs;
             return this;
         }
+        @CustomType.Setter
         public Builder fileDeleteDelayMs(@Nullable String fileDeleteDelayMs) {
             this.fileDeleteDelayMs = fileDeleteDelayMs;
             return this;
         }
+        @CustomType.Setter
         public Builder flushMessages(@Nullable String flushMessages) {
             this.flushMessages = flushMessages;
             return this;
         }
+        @CustomType.Setter
         public Builder flushMs(@Nullable String flushMs) {
             this.flushMs = flushMs;
             return this;
         }
+        @CustomType.Setter
         public Builder indexIntervalBytes(@Nullable String indexIntervalBytes) {
             this.indexIntervalBytes = indexIntervalBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder maxCompactionLagMs(@Nullable String maxCompactionLagMs) {
             this.maxCompactionLagMs = maxCompactionLagMs;
             return this;
         }
+        @CustomType.Setter
         public Builder maxMessageBytes(@Nullable String maxMessageBytes) {
             this.maxMessageBytes = maxMessageBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder messageDownconversionEnable(@Nullable String messageDownconversionEnable) {
             this.messageDownconversionEnable = messageDownconversionEnable;
             return this;
         }
+        @CustomType.Setter
         public Builder messageFormatVersion(@Nullable String messageFormatVersion) {
             this.messageFormatVersion = messageFormatVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder messageTimestampDifferenceMaxMs(@Nullable String messageTimestampDifferenceMaxMs) {
             this.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
             return this;
         }
+        @CustomType.Setter
         public Builder messageTimestampType(@Nullable String messageTimestampType) {
             this.messageTimestampType = messageTimestampType;
             return this;
         }
+        @CustomType.Setter
         public Builder minCleanableDirtyRatio(@Nullable String minCleanableDirtyRatio) {
             this.minCleanableDirtyRatio = minCleanableDirtyRatio;
             return this;
         }
+        @CustomType.Setter
         public Builder minCompactionLagMs(@Nullable String minCompactionLagMs) {
             this.minCompactionLagMs = minCompactionLagMs;
             return this;
         }
+        @CustomType.Setter
         public Builder minInsyncReplicas(@Nullable String minInsyncReplicas) {
             this.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder preallocate(@Nullable String preallocate) {
             this.preallocate = preallocate;
             return this;
         }
+        @CustomType.Setter
         public Builder retentionBytes(@Nullable String retentionBytes) {
             this.retentionBytes = retentionBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder retentionMs(@Nullable String retentionMs) {
             this.retentionMs = retentionMs;
             return this;
         }
+        @CustomType.Setter
         public Builder segmentBytes(@Nullable String segmentBytes) {
             this.segmentBytes = segmentBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder segmentIndexBytes(@Nullable String segmentIndexBytes) {
             this.segmentIndexBytes = segmentIndexBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder segmentJitterMs(@Nullable String segmentJitterMs) {
             this.segmentJitterMs = segmentJitterMs;
             return this;
         }
+        @CustomType.Setter
         public Builder segmentMs(@Nullable String segmentMs) {
             this.segmentMs = segmentMs;
             return this;
         }
+        @CustomType.Setter
         public Builder uncleanLeaderElectionEnable(@Nullable String uncleanLeaderElectionEnable) {
             this.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
-        }        public KafkaTopicConfig build() {
-            return new KafkaTopicConfig(cleanupPolicy, compressionType, deleteRetentionMs, fileDeleteDelayMs, flushMessages, flushMs, indexIntervalBytes, maxCompactionLagMs, maxMessageBytes, messageDownconversionEnable, messageFormatVersion, messageTimestampDifferenceMaxMs, messageTimestampType, minCleanableDirtyRatio, minCompactionLagMs, minInsyncReplicas, preallocate, retentionBytes, retentionMs, segmentBytes, segmentIndexBytes, segmentJitterMs, segmentMs, uncleanLeaderElectionEnable);
+        }
+        public KafkaTopicConfig build() {
+            final var o = new KafkaTopicConfig();
+            o.cleanupPolicy = cleanupPolicy;
+            o.compressionType = compressionType;
+            o.deleteRetentionMs = deleteRetentionMs;
+            o.fileDeleteDelayMs = fileDeleteDelayMs;
+            o.flushMessages = flushMessages;
+            o.flushMs = flushMs;
+            o.indexIntervalBytes = indexIntervalBytes;
+            o.maxCompactionLagMs = maxCompactionLagMs;
+            o.maxMessageBytes = maxMessageBytes;
+            o.messageDownconversionEnable = messageDownconversionEnable;
+            o.messageFormatVersion = messageFormatVersion;
+            o.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
+            o.messageTimestampType = messageTimestampType;
+            o.minCleanableDirtyRatio = minCleanableDirtyRatio;
+            o.minCompactionLagMs = minCompactionLagMs;
+            o.minInsyncReplicas = minInsyncReplicas;
+            o.preallocate = preallocate;
+            o.retentionBytes = retentionBytes;
+            o.retentionMs = retentionMs;
+            o.segmentBytes = segmentBytes;
+            o.segmentIndexBytes = segmentIndexBytes;
+            o.segmentJitterMs = segmentJitterMs;
+            o.segmentMs = segmentMs;
+            o.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
+            return o;
         }
     }
 }

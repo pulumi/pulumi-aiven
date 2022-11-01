@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGoogle {
-    private final @Nullable String allowSignUp;
-    private final @Nullable List<String> allowedDomains;
-    private final @Nullable String clientId;
-    private final @Nullable String clientSecret;
+    private @Nullable String allowSignUp;
+    private @Nullable List<String> allowedDomains;
+    private @Nullable String clientId;
+    private @Nullable String clientSecret;
 
-    @CustomType.Constructor
-    private GetGrafanaGrafanaUserConfigAuthGoogle(
-        @CustomType.Parameter("allowSignUp") @Nullable String allowSignUp,
-        @CustomType.Parameter("allowedDomains") @Nullable List<String> allowedDomains,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret) {
-        this.allowSignUp = allowSignUp;
-        this.allowedDomains = allowedDomains;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-    }
-
+    private GetGrafanaGrafanaUserConfigAuthGoogle() {}
     public Optional<String> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
@@ -49,17 +38,13 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
     public static Builder builder(GetGrafanaGrafanaUserConfigAuthGoogle defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowSignUp;
         private @Nullable List<String> allowedDomains;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGoogle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSignUp = defaults.allowSignUp;
@@ -68,10 +53,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
     	      this.clientSecret = defaults.clientSecret;
         }
 
+        @CustomType.Setter
         public Builder allowSignUp(@Nullable String allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
             this.allowedDomains = allowedDomains;
             return this;
@@ -79,15 +66,23 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
-        }        public GetGrafanaGrafanaUserConfigAuthGoogle build() {
-            return new GetGrafanaGrafanaUserConfigAuthGoogle(allowSignUp, allowedDomains, clientId, clientSecret);
+        }
+        public GetGrafanaGrafanaUserConfigAuthGoogle build() {
+            final var o = new GetGrafanaGrafanaUserConfigAuthGoogle();
+            o.allowSignUp = allowSignUp;
+            o.allowedDomains = allowedDomains;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            return o;
         }
     }
 }

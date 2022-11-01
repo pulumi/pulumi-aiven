@@ -14,119 +14,84 @@ public final class GetBillingGroupResult {
      * @return Account id
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return Address lines
      * 
      */
-    private final List<String> addressLines;
+    private List<String> addressLines;
     /**
      * @return Billing currency
      * 
      */
-    private final String billingCurrency;
+    private String billingCurrency;
     /**
      * @return Billing contact emails
      * 
      */
-    private final List<String> billingEmails;
+    private List<String> billingEmails;
     /**
      * @return Billing extra text
      * 
      */
-    private final String billingExtraText;
+    private String billingExtraText;
     /**
      * @return The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    private final String billingGroupId;
+    private String billingGroupId;
     /**
      * @return Credit card id
      * 
      */
-    private final String cardId;
+    private String cardId;
     /**
      * @return City
      * 
      */
-    private final String city;
+    private String city;
     /**
      * @return Company name
      * 
      */
-    private final String company;
+    private String company;
     /**
      * @return ID of the billing group to copy from
      * 
      */
-    private final String copyFromBillingGroup;
+    private String copyFromBillingGroup;
     /**
      * @return Country code
      * 
      */
-    private final String countryCode;
+    private String countryCode;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Billing Group name
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return State
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return VAT id
      * 
      */
-    private final String vatId;
+    private String vatId;
     /**
      * @return Zip Code
      * 
      */
-    private final String zipCode;
+    private String zipCode;
 
-    @CustomType.Constructor
-    private GetBillingGroupResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("addressLines") List<String> addressLines,
-        @CustomType.Parameter("billingCurrency") String billingCurrency,
-        @CustomType.Parameter("billingEmails") List<String> billingEmails,
-        @CustomType.Parameter("billingExtraText") String billingExtraText,
-        @CustomType.Parameter("billingGroupId") String billingGroupId,
-        @CustomType.Parameter("cardId") String cardId,
-        @CustomType.Parameter("city") String city,
-        @CustomType.Parameter("company") String company,
-        @CustomType.Parameter("copyFromBillingGroup") String copyFromBillingGroup,
-        @CustomType.Parameter("countryCode") String countryCode,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("vatId") String vatId,
-        @CustomType.Parameter("zipCode") String zipCode) {
-        this.accountId = accountId;
-        this.addressLines = addressLines;
-        this.billingCurrency = billingCurrency;
-        this.billingEmails = billingEmails;
-        this.billingExtraText = billingExtraText;
-        this.billingGroupId = billingGroupId;
-        this.cardId = cardId;
-        this.city = city;
-        this.company = company;
-        this.copyFromBillingGroup = copyFromBillingGroup;
-        this.countryCode = countryCode;
-        this.id = id;
-        this.name = name;
-        this.state = state;
-        this.vatId = vatId;
-        this.zipCode = zipCode;
-    }
-
+    private GetBillingGroupResult() {}
     /**
      * @return Account id
      * 
@@ -247,7 +212,7 @@ public final class GetBillingGroupResult {
     public static Builder builder(GetBillingGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private List<String> addressLines;
@@ -265,11 +230,7 @@ public final class GetBillingGroupResult {
         private String state;
         private String vatId;
         private String zipCode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBillingGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -290,10 +251,12 @@ public final class GetBillingGroupResult {
     	      this.zipCode = defaults.zipCode;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder addressLines(List<String> addressLines) {
             this.addressLines = Objects.requireNonNull(addressLines);
             return this;
@@ -301,10 +264,12 @@ public final class GetBillingGroupResult {
         public Builder addressLines(String... addressLines) {
             return addressLines(List.of(addressLines));
         }
+        @CustomType.Setter
         public Builder billingCurrency(String billingCurrency) {
             this.billingCurrency = Objects.requireNonNull(billingCurrency);
             return this;
         }
+        @CustomType.Setter
         public Builder billingEmails(List<String> billingEmails) {
             this.billingEmails = Objects.requireNonNull(billingEmails);
             return this;
@@ -312,55 +277,85 @@ public final class GetBillingGroupResult {
         public Builder billingEmails(String... billingEmails) {
             return billingEmails(List.of(billingEmails));
         }
+        @CustomType.Setter
         public Builder billingExtraText(String billingExtraText) {
             this.billingExtraText = Objects.requireNonNull(billingExtraText);
             return this;
         }
+        @CustomType.Setter
         public Builder billingGroupId(String billingGroupId) {
             this.billingGroupId = Objects.requireNonNull(billingGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder cardId(String cardId) {
             this.cardId = Objects.requireNonNull(cardId);
             return this;
         }
+        @CustomType.Setter
         public Builder city(String city) {
             this.city = Objects.requireNonNull(city);
             return this;
         }
+        @CustomType.Setter
         public Builder company(String company) {
             this.company = Objects.requireNonNull(company);
             return this;
         }
+        @CustomType.Setter
         public Builder copyFromBillingGroup(String copyFromBillingGroup) {
             this.copyFromBillingGroup = Objects.requireNonNull(copyFromBillingGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder countryCode(String countryCode) {
             this.countryCode = Objects.requireNonNull(countryCode);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder vatId(String vatId) {
             this.vatId = Objects.requireNonNull(vatId);
             return this;
         }
+        @CustomType.Setter
         public Builder zipCode(String zipCode) {
             this.zipCode = Objects.requireNonNull(zipCode);
             return this;
-        }        public GetBillingGroupResult build() {
-            return new GetBillingGroupResult(accountId, addressLines, billingCurrency, billingEmails, billingExtraText, billingGroupId, cardId, city, company, copyFromBillingGroup, countryCode, id, name, state, vatId, zipCode);
+        }
+        public GetBillingGroupResult build() {
+            final var o = new GetBillingGroupResult();
+            o.accountId = accountId;
+            o.addressLines = addressLines;
+            o.billingCurrency = billingCurrency;
+            o.billingEmails = billingEmails;
+            o.billingExtraText = billingExtraText;
+            o.billingGroupId = billingGroupId;
+            o.cardId = cardId;
+            o.city = city;
+            o.company = company;
+            o.copyFromBillingGroup = copyFromBillingGroup;
+            o.countryCode = countryCode;
+            o.id = id;
+            o.name = name;
+            o.state = state;
+            o.vatId = vatId;
+            o.zipCode = zipCode;
+            return o;
         }
     }
 }

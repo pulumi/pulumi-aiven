@@ -23,126 +23,89 @@ public final class OpenSearchOpensearchUserConfig {
      * @return Custom domain
      * 
      */
-    private final @Nullable String customDomain;
+    private @Nullable String customDomain;
     /**
      * @return Disable replication factor adjustment
      * 
      */
-    private final @Nullable String disableReplicationFactorAdjustment;
+    private @Nullable String disableReplicationFactorAdjustment;
     /**
      * @return Index patterns
      * 
      */
-    private final @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+    private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
     /**
      * @return Template settings for all new indexes
      * 
      */
-    private final @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
+    private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
     /**
      * @return IP filter
      * 
      */
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Don&#39;t reset index.refresh_interval to the default value
      * 
      */
-    private final @Nullable String keepIndexRefreshInterval;
+    private @Nullable String keepIndexRefreshInterval;
     /**
      * @return Maximum index count
      * 
      */
-    private final @Nullable String maxIndexCount;
+    private @Nullable String maxIndexCount;
     /**
      * @return OpenSearch settings
      * 
      */
-    private final @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch;
+    private @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch;
     /**
      * @return OpenSearch Dashboards settings
      * 
      */
-    private final @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
+    private @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
     /**
      * @return OpenSearch major version
      * 
      */
-    private final @Nullable String opensearchVersion;
+    private @Nullable String opensearchVersion;
     /**
      * @return Allow access to selected service ports from private networks
      * 
      */
-    private final @Nullable OpenSearchOpensearchUserConfigPrivateAccess privateAccess;
+    private @Nullable OpenSearchOpensearchUserConfigPrivateAccess privateAccess;
     /**
      * @return Allow access to selected service components through Privatelink
      * 
      */
-    private final @Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
     /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String projectToForkFrom;
+    private @Nullable String projectToForkFrom;
     /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
-    private final @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
+    private @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
     /**
      * @return Name of the basebackup to restore in forked service
      * 
      */
-    private final @Nullable String recoveryBasebackupName;
+    private @Nullable String recoveryBasebackupName;
     /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IP addresses
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private OpenSearchOpensearchUserConfig(
-        @CustomType.Parameter("customDomain") @Nullable String customDomain,
-        @CustomType.Parameter("disableReplicationFactorAdjustment") @Nullable String disableReplicationFactorAdjustment,
-        @CustomType.Parameter("indexPatterns") @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns,
-        @CustomType.Parameter("indexTemplate") @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("keepIndexRefreshInterval") @Nullable String keepIndexRefreshInterval,
-        @CustomType.Parameter("maxIndexCount") @Nullable String maxIndexCount,
-        @CustomType.Parameter("opensearch") @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch,
-        @CustomType.Parameter("opensearchDashboards") @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards,
-        @CustomType.Parameter("opensearchVersion") @Nullable String opensearchVersion,
-        @CustomType.Parameter("privateAccess") @Nullable OpenSearchOpensearchUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("recoveryBasebackupName") @Nullable String recoveryBasebackupName,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.customDomain = customDomain;
-        this.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
-        this.indexPatterns = indexPatterns;
-        this.indexTemplate = indexTemplate;
-        this.ipFilters = ipFilters;
-        this.keepIndexRefreshInterval = keepIndexRefreshInterval;
-        this.maxIndexCount = maxIndexCount;
-        this.opensearch = opensearch;
-        this.opensearchDashboards = opensearchDashboards;
-        this.opensearchVersion = opensearchVersion;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.recoveryBasebackupName = recoveryBasebackupName;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private OpenSearchOpensearchUserConfig() {}
     /**
      * @return Custom domain
      * 
@@ -270,7 +233,7 @@ public final class OpenSearchOpensearchUserConfig {
     public static Builder builder(OpenSearchOpensearchUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
         private @Nullable String disableReplicationFactorAdjustment;
@@ -289,11 +252,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
@@ -315,14 +274,17 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder disableReplicationFactorAdjustment(@Nullable String disableReplicationFactorAdjustment) {
             this.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             return this;
         }
+        @CustomType.Setter
         public Builder indexPatterns(@Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns) {
             this.indexPatterns = indexPatterns;
             return this;
@@ -330,10 +292,12 @@ public final class OpenSearchOpensearchUserConfig {
         public Builder indexPatterns(OpenSearchOpensearchUserConfigIndexPattern... indexPatterns) {
             return indexPatterns(List.of(indexPatterns));
         }
+        @CustomType.Setter
         public Builder indexTemplate(@Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate) {
             this.indexTemplate = indexTemplate;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -341,55 +305,86 @@ public final class OpenSearchOpensearchUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder keepIndexRefreshInterval(@Nullable String keepIndexRefreshInterval) {
             this.keepIndexRefreshInterval = keepIndexRefreshInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIndexCount(@Nullable String maxIndexCount) {
             this.maxIndexCount = maxIndexCount;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearch(@Nullable OpenSearchOpensearchUserConfigOpensearch opensearch) {
             this.opensearch = opensearch;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearchDashboards(@Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards) {
             this.opensearchDashboards = opensearchDashboards;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearchVersion(@Nullable String opensearchVersion) {
             this.opensearchVersion = opensearchVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable OpenSearchOpensearchUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryBasebackupName(@Nullable String recoveryBasebackupName) {
             this.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public OpenSearchOpensearchUserConfig build() {
-            return new OpenSearchOpensearchUserConfig(customDomain, disableReplicationFactorAdjustment, indexPatterns, indexTemplate, ipFilters, keepIndexRefreshInterval, maxIndexCount, opensearch, opensearchDashboards, opensearchVersion, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryBasebackupName, serviceToForkFrom, staticIps);
+        }
+        public OpenSearchOpensearchUserConfig build() {
+            final var o = new OpenSearchOpensearchUserConfig();
+            o.customDomain = customDomain;
+            o.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
+            o.indexPatterns = indexPatterns;
+            o.indexTemplate = indexTemplate;
+            o.ipFilters = ipFilters;
+            o.keepIndexRefreshInterval = keepIndexRefreshInterval;
+            o.maxIndexCount = maxIndexCount;
+            o.opensearch = opensearch;
+            o.opensearchDashboards = opensearchDashboards;
+            o.opensearchVersion = opensearchVersion;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.recoveryBasebackupName = recoveryBasebackupName;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

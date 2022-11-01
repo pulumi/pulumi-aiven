@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigRulesMappingTag {
-    private final @Nullable String name;
-    private final @Nullable String value;
+    private @Nullable String name;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private GetM3DbM3dbUserConfigRulesMappingTag(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetM3DbM3dbUserConfigRulesMappingTag() {}
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -36,30 +29,32 @@ public final class GetM3DbM3dbUserConfigRulesMappingTag {
     public static Builder builder(GetM3DbM3dbUserConfigRulesMappingTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3DbM3dbUserConfigRulesMappingTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public GetM3DbM3dbUserConfigRulesMappingTag build() {
-            return new GetM3DbM3dbUserConfigRulesMappingTag(name, value);
+        }
+        public GetM3DbM3dbUserConfigRulesMappingTag build() {
+            final var o = new GetM3DbM3dbUserConfigRulesMappingTag();
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

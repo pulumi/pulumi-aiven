@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigRules {
-    private final @Nullable List<M3DbM3dbUserConfigRulesMapping> mappings;
+    private @Nullable List<M3DbM3dbUserConfigRulesMapping> mappings;
 
-    @CustomType.Constructor
-    private M3DbM3dbUserConfigRules(@CustomType.Parameter("mappings") @Nullable List<M3DbM3dbUserConfigRulesMapping> mappings) {
-        this.mappings = mappings;
-    }
-
+    private M3DbM3dbUserConfigRules() {}
     public List<M3DbM3dbUserConfigRulesMapping> mappings() {
         return this.mappings == null ? List.of() : this.mappings;
     }
@@ -29,27 +25,27 @@ public final class M3DbM3dbUserConfigRules {
     public static Builder builder(M3DbM3dbUserConfigRules defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<M3DbM3dbUserConfigRulesMapping> mappings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbM3dbUserConfigRules defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mappings = defaults.mappings;
         }
 
+        @CustomType.Setter
         public Builder mappings(@Nullable List<M3DbM3dbUserConfigRulesMapping> mappings) {
             this.mappings = mappings;
             return this;
         }
         public Builder mappings(M3DbM3dbUserConfigRulesMapping... mappings) {
             return mappings(List.of(mappings));
-        }        public M3DbM3dbUserConfigRules build() {
-            return new M3DbM3dbUserConfigRules(mappings);
+        }
+        public M3DbM3dbUserConfigRules build() {
+            final var o = new M3DbM3dbUserConfigRules();
+            o.mappings = mappings;
+            return o;
         }
     }
 }

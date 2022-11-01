@@ -11,33 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
-    private final @Nullable String jolokia;
+    private @Nullable String jolokia;
     /**
      * @return Kafka server provided values
      * 
      */
-    private final @Nullable String kafka;
-    private final @Nullable String kafkaConnect;
-    private final @Nullable String kafkaRest;
-    private final @Nullable String prometheus;
-    private final @Nullable String schemaRegistry;
+    private @Nullable String kafka;
+    private @Nullable String kafkaConnect;
+    private @Nullable String kafkaRest;
+    private @Nullable String prometheus;
+    private @Nullable String schemaRegistry;
 
-    @CustomType.Constructor
-    private GetKafkaKafkaUserConfigPrivatelinkAccess(
-        @CustomType.Parameter("jolokia") @Nullable String jolokia,
-        @CustomType.Parameter("kafka") @Nullable String kafka,
-        @CustomType.Parameter("kafkaConnect") @Nullable String kafkaConnect,
-        @CustomType.Parameter("kafkaRest") @Nullable String kafkaRest,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus,
-        @CustomType.Parameter("schemaRegistry") @Nullable String schemaRegistry) {
-        this.jolokia = jolokia;
-        this.kafka = kafka;
-        this.kafkaConnect = kafkaConnect;
-        this.kafkaRest = kafkaRest;
-        this.prometheus = prometheus;
-        this.schemaRegistry = schemaRegistry;
-    }
-
+    private GetKafkaKafkaUserConfigPrivatelinkAccess() {}
     public Optional<String> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
@@ -68,7 +53,7 @@ public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
     public static Builder builder(GetKafkaKafkaUserConfigPrivatelinkAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String jolokia;
         private @Nullable String kafka;
@@ -76,11 +61,7 @@ public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
         private @Nullable String kafkaRest;
         private @Nullable String prometheus;
         private @Nullable String schemaRegistry;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaKafkaUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jolokia = defaults.jolokia;
@@ -91,31 +72,45 @@ public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
     	      this.schemaRegistry = defaults.schemaRegistry;
         }
 
+        @CustomType.Setter
         public Builder jolokia(@Nullable String jolokia) {
             this.jolokia = jolokia;
             return this;
         }
+        @CustomType.Setter
         public Builder kafka(@Nullable String kafka) {
             this.kafka = kafka;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable String kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaRest(@Nullable String kafkaRest) {
             this.kafkaRest = kafkaRest;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistry(@Nullable String schemaRegistry) {
             this.schemaRegistry = schemaRegistry;
             return this;
-        }        public GetKafkaKafkaUserConfigPrivatelinkAccess build() {
-            return new GetKafkaKafkaUserConfigPrivatelinkAccess(jolokia, kafka, kafkaConnect, kafkaRest, prometheus, schemaRegistry);
+        }
+        public GetKafkaKafkaUserConfigPrivatelinkAccess build() {
+            final var o = new GetKafkaKafkaUserConfigPrivatelinkAccess();
+            o.jolokia = jolokia;
+            o.kafka = kafka;
+            o.kafkaConnect = kafkaConnect;
+            o.kafkaRest = kafkaRest;
+            o.prometheus = prometheus;
+            o.schemaRegistry = schemaRegistry;
+            return o;
         }
     }
 }

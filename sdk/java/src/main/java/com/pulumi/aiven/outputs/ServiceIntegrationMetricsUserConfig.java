@@ -16,42 +16,29 @@ public final class ServiceIntegrationMetricsUserConfig {
      * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
-    private final @Nullable String database;
+    private @Nullable String database;
     /**
      * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
      * 
      */
-    private final @Nullable String retentionDays;
+    private @Nullable String retentionDays;
     /**
      * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
-    private final @Nullable String roUsername;
+    private @Nullable String roUsername;
     /**
      * @return Configuration options for metrics where source service is MySQL
      * 
      */
-    private final @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
+    private @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
     /**
      * @return Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private ServiceIntegrationMetricsUserConfig(
-        @CustomType.Parameter("database") @Nullable String database,
-        @CustomType.Parameter("retentionDays") @Nullable String retentionDays,
-        @CustomType.Parameter("roUsername") @Nullable String roUsername,
-        @CustomType.Parameter("sourceMysql") @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.database = database;
-        this.retentionDays = retentionDays;
-        this.roUsername = roUsername;
-        this.sourceMysql = sourceMysql;
-        this.username = username;
-    }
-
+    private ServiceIntegrationMetricsUserConfig() {}
     /**
      * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
@@ -95,18 +82,14 @@ public final class ServiceIntegrationMetricsUserConfig {
     public static Builder builder(ServiceIntegrationMetricsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String database;
         private @Nullable String retentionDays;
         private @Nullable String roUsername;
         private @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationMetricsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
@@ -116,27 +99,39 @@ public final class ServiceIntegrationMetricsUserConfig {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder database(@Nullable String database) {
             this.database = database;
             return this;
         }
+        @CustomType.Setter
         public Builder retentionDays(@Nullable String retentionDays) {
             this.retentionDays = retentionDays;
             return this;
         }
+        @CustomType.Setter
         public Builder roUsername(@Nullable String roUsername) {
             this.roUsername = roUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceMysql(@Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql) {
             this.sourceMysql = sourceMysql;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public ServiceIntegrationMetricsUserConfig build() {
-            return new ServiceIntegrationMetricsUserConfig(database, retentionDays, roUsername, sourceMysql, username);
+        }
+        public ServiceIntegrationMetricsUserConfig build() {
+            final var o = new ServiceIntegrationMetricsUserConfig();
+            o.database = database;
+            o.retentionDays = retentionDays;
+            o.roUsername = roUsername;
+            o.sourceMysql = sourceMysql;
+            o.username = username;
+            return o;
         }
     }
 }

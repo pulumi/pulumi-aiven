@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenSearchOpensearch {
-    private final String opensearchDashboardsUri;
+    private String opensearchDashboardsUri;
 
-    @CustomType.Constructor
-    private GetOpenSearchOpensearch(@CustomType.Parameter("opensearchDashboardsUri") String opensearchDashboardsUri) {
-        this.opensearchDashboardsUri = opensearchDashboardsUri;
-    }
-
+    private GetOpenSearchOpensearch() {}
     public String opensearchDashboardsUri() {
         return this.opensearchDashboardsUri;
     }
@@ -27,24 +23,24 @@ public final class GetOpenSearchOpensearch {
     public static Builder builder(GetOpenSearchOpensearch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String opensearchDashboardsUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenSearchOpensearch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.opensearchDashboardsUri = defaults.opensearchDashboardsUri;
         }
 
+        @CustomType.Setter
         public Builder opensearchDashboardsUri(String opensearchDashboardsUri) {
             this.opensearchDashboardsUri = Objects.requireNonNull(opensearchDashboardsUri);
             return this;
-        }        public GetOpenSearchOpensearch build() {
-            return new GetOpenSearchOpensearch(opensearchDashboardsUri);
+        }
+        public GetOpenSearchOpensearch build() {
+            final var o = new GetOpenSearchOpensearch();
+            o.opensearchDashboardsUri = opensearchDashboardsUri;
+            return o;
         }
     }
 }

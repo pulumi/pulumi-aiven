@@ -11,53 +11,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
-    private final @Nullable String gatherEventWaits;
-    private final @Nullable String gatherFileEventsStats;
-    private final @Nullable String gatherIndexIoWaits;
-    private final @Nullable String gatherInfoSchemaAutoInc;
-    private final @Nullable String gatherInnodbMetrics;
-    private final @Nullable String gatherPerfEventsStatements;
-    private final @Nullable String gatherProcessList;
-    private final @Nullable String gatherSlaveStatus;
-    private final @Nullable String gatherTableIoWaits;
-    private final @Nullable String gatherTableLockWaits;
-    private final @Nullable String gatherTableSchema;
-    private final @Nullable String perfEventsStatementsDigestTextLimit;
-    private final @Nullable String perfEventsStatementsLimit;
-    private final @Nullable String perfEventsStatementsTimeLimit;
+    private @Nullable String gatherEventWaits;
+    private @Nullable String gatherFileEventsStats;
+    private @Nullable String gatherIndexIoWaits;
+    private @Nullable String gatherInfoSchemaAutoInc;
+    private @Nullable String gatherInnodbMetrics;
+    private @Nullable String gatherPerfEventsStatements;
+    private @Nullable String gatherProcessList;
+    private @Nullable String gatherSlaveStatus;
+    private @Nullable String gatherTableIoWaits;
+    private @Nullable String gatherTableLockWaits;
+    private @Nullable String gatherTableSchema;
+    private @Nullable String perfEventsStatementsDigestTextLimit;
+    private @Nullable String perfEventsStatementsLimit;
+    private @Nullable String perfEventsStatementsTimeLimit;
 
-    @CustomType.Constructor
-    private ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf(
-        @CustomType.Parameter("gatherEventWaits") @Nullable String gatherEventWaits,
-        @CustomType.Parameter("gatherFileEventsStats") @Nullable String gatherFileEventsStats,
-        @CustomType.Parameter("gatherIndexIoWaits") @Nullable String gatherIndexIoWaits,
-        @CustomType.Parameter("gatherInfoSchemaAutoInc") @Nullable String gatherInfoSchemaAutoInc,
-        @CustomType.Parameter("gatherInnodbMetrics") @Nullable String gatherInnodbMetrics,
-        @CustomType.Parameter("gatherPerfEventsStatements") @Nullable String gatherPerfEventsStatements,
-        @CustomType.Parameter("gatherProcessList") @Nullable String gatherProcessList,
-        @CustomType.Parameter("gatherSlaveStatus") @Nullable String gatherSlaveStatus,
-        @CustomType.Parameter("gatherTableIoWaits") @Nullable String gatherTableIoWaits,
-        @CustomType.Parameter("gatherTableLockWaits") @Nullable String gatherTableLockWaits,
-        @CustomType.Parameter("gatherTableSchema") @Nullable String gatherTableSchema,
-        @CustomType.Parameter("perfEventsStatementsDigestTextLimit") @Nullable String perfEventsStatementsDigestTextLimit,
-        @CustomType.Parameter("perfEventsStatementsLimit") @Nullable String perfEventsStatementsLimit,
-        @CustomType.Parameter("perfEventsStatementsTimeLimit") @Nullable String perfEventsStatementsTimeLimit) {
-        this.gatherEventWaits = gatherEventWaits;
-        this.gatherFileEventsStats = gatherFileEventsStats;
-        this.gatherIndexIoWaits = gatherIndexIoWaits;
-        this.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
-        this.gatherInnodbMetrics = gatherInnodbMetrics;
-        this.gatherPerfEventsStatements = gatherPerfEventsStatements;
-        this.gatherProcessList = gatherProcessList;
-        this.gatherSlaveStatus = gatherSlaveStatus;
-        this.gatherTableIoWaits = gatherTableIoWaits;
-        this.gatherTableLockWaits = gatherTableLockWaits;
-        this.gatherTableSchema = gatherTableSchema;
-        this.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
-        this.perfEventsStatementsLimit = perfEventsStatementsLimit;
-        this.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
-    }
-
+    private ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf() {}
     public Optional<String> gatherEventWaits() {
         return Optional.ofNullable(this.gatherEventWaits);
     }
@@ -108,7 +77,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
     public static Builder builder(ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String gatherEventWaits;
         private @Nullable String gatherFileEventsStats;
@@ -124,11 +93,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
         private @Nullable String perfEventsStatementsDigestTextLimit;
         private @Nullable String perfEventsStatementsLimit;
         private @Nullable String perfEventsStatementsTimeLimit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gatherEventWaits = defaults.gatherEventWaits;
@@ -147,63 +112,93 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
     	      this.perfEventsStatementsTimeLimit = defaults.perfEventsStatementsTimeLimit;
         }
 
+        @CustomType.Setter
         public Builder gatherEventWaits(@Nullable String gatherEventWaits) {
             this.gatherEventWaits = gatherEventWaits;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherFileEventsStats(@Nullable String gatherFileEventsStats) {
             this.gatherFileEventsStats = gatherFileEventsStats;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherIndexIoWaits(@Nullable String gatherIndexIoWaits) {
             this.gatherIndexIoWaits = gatherIndexIoWaits;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherInfoSchemaAutoInc(@Nullable String gatherInfoSchemaAutoInc) {
             this.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherInnodbMetrics(@Nullable String gatherInnodbMetrics) {
             this.gatherInnodbMetrics = gatherInnodbMetrics;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherPerfEventsStatements(@Nullable String gatherPerfEventsStatements) {
             this.gatherPerfEventsStatements = gatherPerfEventsStatements;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherProcessList(@Nullable String gatherProcessList) {
             this.gatherProcessList = gatherProcessList;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherSlaveStatus(@Nullable String gatherSlaveStatus) {
             this.gatherSlaveStatus = gatherSlaveStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherTableIoWaits(@Nullable String gatherTableIoWaits) {
             this.gatherTableIoWaits = gatherTableIoWaits;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherTableLockWaits(@Nullable String gatherTableLockWaits) {
             this.gatherTableLockWaits = gatherTableLockWaits;
             return this;
         }
+        @CustomType.Setter
         public Builder gatherTableSchema(@Nullable String gatherTableSchema) {
             this.gatherTableSchema = gatherTableSchema;
             return this;
         }
+        @CustomType.Setter
         public Builder perfEventsStatementsDigestTextLimit(@Nullable String perfEventsStatementsDigestTextLimit) {
             this.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder perfEventsStatementsLimit(@Nullable String perfEventsStatementsLimit) {
             this.perfEventsStatementsLimit = perfEventsStatementsLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder perfEventsStatementsTimeLimit(@Nullable String perfEventsStatementsTimeLimit) {
             this.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
             return this;
-        }        public ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf build() {
-            return new ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf(gatherEventWaits, gatherFileEventsStats, gatherIndexIoWaits, gatherInfoSchemaAutoInc, gatherInnodbMetrics, gatherPerfEventsStatements, gatherProcessList, gatherSlaveStatus, gatherTableIoWaits, gatherTableLockWaits, gatherTableSchema, perfEventsStatementsDigestTextLimit, perfEventsStatementsLimit, perfEventsStatementsTimeLimit);
+        }
+        public ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf build() {
+            final var o = new ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf();
+            o.gatherEventWaits = gatherEventWaits;
+            o.gatherFileEventsStats = gatherFileEventsStats;
+            o.gatherIndexIoWaits = gatherIndexIoWaits;
+            o.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
+            o.gatherInnodbMetrics = gatherInnodbMetrics;
+            o.gatherPerfEventsStatements = gatherPerfEventsStatements;
+            o.gatherProcessList = gatherProcessList;
+            o.gatherSlaveStatus = gatherSlaveStatus;
+            o.gatherTableIoWaits = gatherTableIoWaits;
+            o.gatherTableLockWaits = gatherTableLockWaits;
+            o.gatherTableSchema = gatherTableSchema;
+            o.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
+            o.perfEventsStatementsLimit = perfEventsStatementsLimit;
+            o.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
+            return o;
         }
     }
 }

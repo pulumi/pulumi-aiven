@@ -15,20 +15,11 @@ public final class MySqlMysqlUserConfigPublicAccess {
      * @return MySQL specific server provided values
      * 
      */
-    private final @Nullable String mysql;
-    private final @Nullable String mysqlx;
-    private final @Nullable String prometheus;
+    private @Nullable String mysql;
+    private @Nullable String mysqlx;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private MySqlMysqlUserConfigPublicAccess(
-        @CustomType.Parameter("mysql") @Nullable String mysql,
-        @CustomType.Parameter("mysqlx") @Nullable String mysqlx,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.mysql = mysql;
-        this.mysqlx = mysqlx;
-        this.prometheus = prometheus;
-    }
-
+    private MySqlMysqlUserConfigPublicAccess() {}
     /**
      * @return MySQL specific server provided values
      * 
@@ -50,16 +41,12 @@ public final class MySqlMysqlUserConfigPublicAccess {
     public static Builder builder(MySqlMysqlUserConfigPublicAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mysql;
         private @Nullable String mysqlx;
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MySqlMysqlUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mysql = defaults.mysql;
@@ -67,19 +54,27 @@ public final class MySqlMysqlUserConfigPublicAccess {
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder mysql(@Nullable String mysql) {
             this.mysql = mysql;
             return this;
         }
+        @CustomType.Setter
         public Builder mysqlx(@Nullable String mysqlx) {
             this.mysqlx = mysqlx;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public MySqlMysqlUserConfigPublicAccess build() {
-            return new MySqlMysqlUserConfigPublicAccess(mysql, mysqlx, prometheus);
+        }
+        public MySqlMysqlUserConfigPublicAccess build() {
+            final var o = new MySqlMysqlUserConfigPublicAccess();
+            o.mysql = mysql;
+            o.mysqlx = mysqlx;
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

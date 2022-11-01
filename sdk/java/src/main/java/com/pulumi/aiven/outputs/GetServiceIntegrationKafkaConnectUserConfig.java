@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationKafkaConnectUserConfig {
-    private final @Nullable GetServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
+    private @Nullable GetServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationKafkaConnectUserConfig(@CustomType.Parameter("kafkaConnect") @Nullable GetServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect) {
-        this.kafkaConnect = kafkaConnect;
-    }
-
+    private GetServiceIntegrationKafkaConnectUserConfig() {}
     public Optional<GetServiceIntegrationKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
@@ -29,24 +25,24 @@ public final class GetServiceIntegrationKafkaConnectUserConfig {
     public static Builder builder(GetServiceIntegrationKafkaConnectUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaConnect = defaults.kafkaConnect;
         }
 
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable GetServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
-        }        public GetServiceIntegrationKafkaConnectUserConfig build() {
-            return new GetServiceIntegrationKafkaConnectUserConfig(kafkaConnect);
+        }
+        public GetServiceIntegrationKafkaConnectUserConfig build() {
+            final var o = new GetServiceIntegrationKafkaConnectUserConfig();
+            o.kafkaConnect = kafkaConnect;
+            return o;
         }
     }
 }

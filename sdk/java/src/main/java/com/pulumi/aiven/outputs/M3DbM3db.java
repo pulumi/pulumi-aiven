@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class M3DbM3db {
-    @CustomType.Constructor
-    private M3DbM3db() {
-    }
-
+    private M3DbM3db() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class M3DbM3db {
     public static Builder builder(M3DbM3db defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbM3db defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public M3DbM3db build() {
-            return new M3DbM3db();
+            final var o = new M3DbM3db();
+            return o;
         }
     }
 }

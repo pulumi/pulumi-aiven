@@ -11,32 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenSearchComponent {
-    private final String component;
-    private final String host;
-    private final String kafkaAuthenticationMethod;
-    private final Integer port;
-    private final String route;
-    private final Boolean ssl;
-    private final String usage;
+    private String component;
+    private String host;
+    private String kafkaAuthenticationMethod;
+    private Integer port;
+    private String route;
+    private Boolean ssl;
+    private String usage;
 
-    @CustomType.Constructor
-    private GetOpenSearchComponent(
-        @CustomType.Parameter("component") String component,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("kafkaAuthenticationMethod") String kafkaAuthenticationMethod,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("route") String route,
-        @CustomType.Parameter("ssl") Boolean ssl,
-        @CustomType.Parameter("usage") String usage) {
-        this.component = component;
-        this.host = host;
-        this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-        this.port = port;
-        this.route = route;
-        this.ssl = ssl;
-        this.usage = usage;
-    }
-
+    private GetOpenSearchComponent() {}
     public String component() {
         return this.component;
     }
@@ -66,7 +49,7 @@ public final class GetOpenSearchComponent {
     public static Builder builder(GetOpenSearchComponent defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String component;
         private String host;
@@ -75,11 +58,7 @@ public final class GetOpenSearchComponent {
         private String route;
         private Boolean ssl;
         private String usage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenSearchComponent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.component = defaults.component;
@@ -91,35 +70,51 @@ public final class GetOpenSearchComponent {
     	      this.usage = defaults.usage;
         }
 
+        @CustomType.Setter
         public Builder component(String component) {
             this.component = Objects.requireNonNull(component);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaAuthenticationMethod(String kafkaAuthenticationMethod) {
             this.kafkaAuthenticationMethod = Objects.requireNonNull(kafkaAuthenticationMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder route(String route) {
             this.route = Objects.requireNonNull(route);
             return this;
         }
+        @CustomType.Setter
         public Builder ssl(Boolean ssl) {
             this.ssl = Objects.requireNonNull(ssl);
             return this;
         }
+        @CustomType.Setter
         public Builder usage(String usage) {
             this.usage = Objects.requireNonNull(usage);
             return this;
-        }        public GetOpenSearchComponent build() {
-            return new GetOpenSearchComponent(component, host, kafkaAuthenticationMethod, port, route, ssl, usage);
+        }
+        public GetOpenSearchComponent build() {
+            final var o = new GetOpenSearchComponent();
+            o.component = component;
+            o.host = host;
+            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            o.port = port;
+            o.route = route;
+            o.ssl = ssl;
+            o.usage = usage;
+            return o;
         }
     }
 }

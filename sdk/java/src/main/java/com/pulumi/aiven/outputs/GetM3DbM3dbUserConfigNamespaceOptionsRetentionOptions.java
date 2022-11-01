@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
-    private final @Nullable String blockDataExpiryDuration;
-    private final @Nullable String blocksizeDuration;
-    private final @Nullable String bufferFutureDuration;
-    private final @Nullable String bufferPastDuration;
-    private final @Nullable String retentionPeriodDuration;
+    private @Nullable String blockDataExpiryDuration;
+    private @Nullable String blocksizeDuration;
+    private @Nullable String bufferFutureDuration;
+    private @Nullable String bufferPastDuration;
+    private @Nullable String retentionPeriodDuration;
 
-    @CustomType.Constructor
-    private GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions(
-        @CustomType.Parameter("blockDataExpiryDuration") @Nullable String blockDataExpiryDuration,
-        @CustomType.Parameter("blocksizeDuration") @Nullable String blocksizeDuration,
-        @CustomType.Parameter("bufferFutureDuration") @Nullable String bufferFutureDuration,
-        @CustomType.Parameter("bufferPastDuration") @Nullable String bufferPastDuration,
-        @CustomType.Parameter("retentionPeriodDuration") @Nullable String retentionPeriodDuration) {
-        this.blockDataExpiryDuration = blockDataExpiryDuration;
-        this.blocksizeDuration = blocksizeDuration;
-        this.bufferFutureDuration = bufferFutureDuration;
-        this.bufferPastDuration = bufferPastDuration;
-        this.retentionPeriodDuration = retentionPeriodDuration;
-    }
-
+    private GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions() {}
     public Optional<String> blockDataExpiryDuration() {
         return Optional.ofNullable(this.blockDataExpiryDuration);
     }
@@ -54,18 +41,14 @@ public final class GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
     public static Builder builder(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String blockDataExpiryDuration;
         private @Nullable String blocksizeDuration;
         private @Nullable String bufferFutureDuration;
         private @Nullable String bufferPastDuration;
         private @Nullable String retentionPeriodDuration;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.blockDataExpiryDuration = defaults.blockDataExpiryDuration;
@@ -75,27 +58,39 @@ public final class GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
     	      this.retentionPeriodDuration = defaults.retentionPeriodDuration;
         }
 
+        @CustomType.Setter
         public Builder blockDataExpiryDuration(@Nullable String blockDataExpiryDuration) {
             this.blockDataExpiryDuration = blockDataExpiryDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder blocksizeDuration(@Nullable String blocksizeDuration) {
             this.blocksizeDuration = blocksizeDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder bufferFutureDuration(@Nullable String bufferFutureDuration) {
             this.bufferFutureDuration = bufferFutureDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder bufferPastDuration(@Nullable String bufferPastDuration) {
             this.bufferPastDuration = bufferPastDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder retentionPeriodDuration(@Nullable String retentionPeriodDuration) {
             this.retentionPeriodDuration = retentionPeriodDuration;
             return this;
-        }        public GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions build() {
-            return new GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions(blockDataExpiryDuration, blocksizeDuration, bufferFutureDuration, bufferPastDuration, retentionPeriodDuration);
+        }
+        public GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions build() {
+            final var o = new GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions();
+            o.blockDataExpiryDuration = blockDataExpiryDuration;
+            o.blocksizeDuration = blocksizeDuration;
+            o.bufferFutureDuration = bufferFutureDuration;
+            o.bufferPastDuration = bufferPastDuration;
+            o.retentionPeriodDuration = retentionPeriodDuration;
+            return o;
         }
     }
 }

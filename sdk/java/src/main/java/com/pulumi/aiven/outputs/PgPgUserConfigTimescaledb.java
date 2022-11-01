@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigTimescaledb {
-    private final @Nullable String maxBackgroundWorkers;
+    private @Nullable String maxBackgroundWorkers;
 
-    @CustomType.Constructor
-    private PgPgUserConfigTimescaledb(@CustomType.Parameter("maxBackgroundWorkers") @Nullable String maxBackgroundWorkers) {
-        this.maxBackgroundWorkers = maxBackgroundWorkers;
-    }
-
+    private PgPgUserConfigTimescaledb() {}
     public Optional<String> maxBackgroundWorkers() {
         return Optional.ofNullable(this.maxBackgroundWorkers);
     }
@@ -29,24 +25,24 @@ public final class PgPgUserConfigTimescaledb {
     public static Builder builder(PgPgUserConfigTimescaledb defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maxBackgroundWorkers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PgPgUserConfigTimescaledb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxBackgroundWorkers = defaults.maxBackgroundWorkers;
         }
 
+        @CustomType.Setter
         public Builder maxBackgroundWorkers(@Nullable String maxBackgroundWorkers) {
             this.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
-        }        public PgPgUserConfigTimescaledb build() {
-            return new PgPgUserConfigTimescaledb(maxBackgroundWorkers);
+        }
+        public PgPgUserConfigTimescaledb build() {
+            final var o = new PgPgUserConfigTimescaledb();
+            o.maxBackgroundWorkers = maxBackgroundWorkers;
+            return o;
         }
     }
 }

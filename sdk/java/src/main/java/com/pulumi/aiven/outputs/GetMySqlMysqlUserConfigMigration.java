@@ -11,35 +11,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMySqlMysqlUserConfigMigration {
-    private final @Nullable String dbname;
-    private final @Nullable String host;
-    private final @Nullable String ignoreDbs;
-    private final @Nullable String method;
-    private final @Nullable String password;
-    private final @Nullable String port;
-    private final @Nullable String ssl;
-    private final @Nullable String username;
+    private @Nullable String dbname;
+    private @Nullable String host;
+    private @Nullable String ignoreDbs;
+    private @Nullable String method;
+    private @Nullable String password;
+    private @Nullable String port;
+    private @Nullable String ssl;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private GetMySqlMysqlUserConfigMigration(
-        @CustomType.Parameter("dbname") @Nullable String dbname,
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("ignoreDbs") @Nullable String ignoreDbs,
-        @CustomType.Parameter("method") @Nullable String method,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("ssl") @Nullable String ssl,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.dbname = dbname;
-        this.host = host;
-        this.ignoreDbs = ignoreDbs;
-        this.method = method;
-        this.password = password;
-        this.port = port;
-        this.ssl = ssl;
-        this.username = username;
-    }
-
+    private GetMySqlMysqlUserConfigMigration() {}
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
@@ -72,7 +53,7 @@ public final class GetMySqlMysqlUserConfigMigration {
     public static Builder builder(GetMySqlMysqlUserConfigMigration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbname;
         private @Nullable String host;
@@ -82,11 +63,7 @@ public final class GetMySqlMysqlUserConfigMigration {
         private @Nullable String port;
         private @Nullable String ssl;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMySqlMysqlUserConfigMigration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbname = defaults.dbname;
@@ -99,39 +76,57 @@ public final class GetMySqlMysqlUserConfigMigration {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder dbname(@Nullable String dbname) {
             this.dbname = dbname;
             return this;
         }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreDbs(@Nullable String ignoreDbs) {
             this.ignoreDbs = ignoreDbs;
             return this;
         }
+        @CustomType.Setter
         public Builder method(@Nullable String method) {
             this.method = method;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder ssl(@Nullable String ssl) {
             this.ssl = ssl;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public GetMySqlMysqlUserConfigMigration build() {
-            return new GetMySqlMysqlUserConfigMigration(dbname, host, ignoreDbs, method, password, port, ssl, username);
+        }
+        public GetMySqlMysqlUserConfigMigration build() {
+            final var o = new GetMySqlMysqlUserConfigMigration();
+            o.dbname = dbname;
+            o.host = host;
+            o.ignoreDbs = ignoreDbs;
+            o.method = method;
+            o.password = password;
+            o.port = port;
+            o.ssl = ssl;
+            o.username = username;
+            return o;
         }
     }
 }

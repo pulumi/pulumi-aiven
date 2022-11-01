@@ -13,21 +13,14 @@ public final class ClickhouseTag {
      * @return Service tag key
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Service tag value
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ClickhouseTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private ClickhouseTag() {}
     /**
      * @return Service tag key
      * 
@@ -50,30 +43,32 @@ public final class ClickhouseTag {
     public static Builder builder(ClickhouseTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClickhouseTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ClickhouseTag build() {
-            return new ClickhouseTag(key, value);
+        }
+        public ClickhouseTag build() {
+            final var o = new ClickhouseTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

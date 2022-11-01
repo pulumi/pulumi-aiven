@@ -11,35 +11,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigDateFormats {
-    private final @Nullable String defaultTimezone;
-    private final @Nullable String fullDate;
-    private final @Nullable String intervalDay;
-    private final @Nullable String intervalHour;
-    private final @Nullable String intervalMinute;
-    private final @Nullable String intervalMonth;
-    private final @Nullable String intervalSecond;
-    private final @Nullable String intervalYear;
+    private @Nullable String defaultTimezone;
+    private @Nullable String fullDate;
+    private @Nullable String intervalDay;
+    private @Nullable String intervalHour;
+    private @Nullable String intervalMinute;
+    private @Nullable String intervalMonth;
+    private @Nullable String intervalSecond;
+    private @Nullable String intervalYear;
 
-    @CustomType.Constructor
-    private GetGrafanaGrafanaUserConfigDateFormats(
-        @CustomType.Parameter("defaultTimezone") @Nullable String defaultTimezone,
-        @CustomType.Parameter("fullDate") @Nullable String fullDate,
-        @CustomType.Parameter("intervalDay") @Nullable String intervalDay,
-        @CustomType.Parameter("intervalHour") @Nullable String intervalHour,
-        @CustomType.Parameter("intervalMinute") @Nullable String intervalMinute,
-        @CustomType.Parameter("intervalMonth") @Nullable String intervalMonth,
-        @CustomType.Parameter("intervalSecond") @Nullable String intervalSecond,
-        @CustomType.Parameter("intervalYear") @Nullable String intervalYear) {
-        this.defaultTimezone = defaultTimezone;
-        this.fullDate = fullDate;
-        this.intervalDay = intervalDay;
-        this.intervalHour = intervalHour;
-        this.intervalMinute = intervalMinute;
-        this.intervalMonth = intervalMonth;
-        this.intervalSecond = intervalSecond;
-        this.intervalYear = intervalYear;
-    }
-
+    private GetGrafanaGrafanaUserConfigDateFormats() {}
     public Optional<String> defaultTimezone() {
         return Optional.ofNullable(this.defaultTimezone);
     }
@@ -72,7 +53,7 @@ public final class GetGrafanaGrafanaUserConfigDateFormats {
     public static Builder builder(GetGrafanaGrafanaUserConfigDateFormats defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String defaultTimezone;
         private @Nullable String fullDate;
@@ -82,11 +63,7 @@ public final class GetGrafanaGrafanaUserConfigDateFormats {
         private @Nullable String intervalMonth;
         private @Nullable String intervalSecond;
         private @Nullable String intervalYear;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigDateFormats defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultTimezone = defaults.defaultTimezone;
@@ -99,39 +76,57 @@ public final class GetGrafanaGrafanaUserConfigDateFormats {
     	      this.intervalYear = defaults.intervalYear;
         }
 
+        @CustomType.Setter
         public Builder defaultTimezone(@Nullable String defaultTimezone) {
             this.defaultTimezone = defaultTimezone;
             return this;
         }
+        @CustomType.Setter
         public Builder fullDate(@Nullable String fullDate) {
             this.fullDate = fullDate;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalDay(@Nullable String intervalDay) {
             this.intervalDay = intervalDay;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalHour(@Nullable String intervalHour) {
             this.intervalHour = intervalHour;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalMinute(@Nullable String intervalMinute) {
             this.intervalMinute = intervalMinute;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalMonth(@Nullable String intervalMonth) {
             this.intervalMonth = intervalMonth;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalSecond(@Nullable String intervalSecond) {
             this.intervalSecond = intervalSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder intervalYear(@Nullable String intervalYear) {
             this.intervalYear = intervalYear;
             return this;
-        }        public GetGrafanaGrafanaUserConfigDateFormats build() {
-            return new GetGrafanaGrafanaUserConfigDateFormats(defaultTimezone, fullDate, intervalDay, intervalHour, intervalMinute, intervalMonth, intervalSecond, intervalYear);
+        }
+        public GetGrafanaGrafanaUserConfigDateFormats build() {
+            final var o = new GetGrafanaGrafanaUserConfigDateFormats();
+            o.defaultTimezone = defaultTimezone;
+            o.fullDate = fullDate;
+            o.intervalDay = intervalDay;
+            o.intervalHour = intervalHour;
+            o.intervalMinute = intervalMinute;
+            o.intervalMonth = intervalMonth;
+            o.intervalSecond = intervalSecond;
+            o.intervalYear = intervalYear;
+            return o;
         }
     }
 }

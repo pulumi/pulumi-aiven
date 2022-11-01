@@ -13,49 +13,34 @@ public final class GetAccountTeamResult {
      * @return The unique account id
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return Time of creation
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The account team name
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The auto-generated unique account team id
      * 
      */
-    private final String teamId;
+    private String teamId;
     /**
      * @return Time of last update
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetAccountTeamResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("teamId") String teamId,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.accountId = accountId;
-        this.createTime = createTime;
-        this.id = id;
-        this.name = name;
-        this.teamId = teamId;
-        this.updateTime = updateTime;
-    }
-
+    private GetAccountTeamResult() {}
     /**
      * @return The unique account id
      * 
@@ -106,7 +91,7 @@ public final class GetAccountTeamResult {
     public static Builder builder(GetAccountTeamResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String createTime;
@@ -114,11 +99,7 @@ public final class GetAccountTeamResult {
         private String name;
         private String teamId;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountTeamResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -129,31 +110,45 @@ public final class GetAccountTeamResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(String teamId) {
             this.teamId = Objects.requireNonNull(teamId);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetAccountTeamResult build() {
-            return new GetAccountTeamResult(accountId, createTime, id, name, teamId, updateTime);
+        }
+        public GetAccountTeamResult build() {
+            final var o = new GetAccountTeamResult();
+            o.accountId = accountId;
+            o.createTime = createTime;
+            o.id = id;
+            o.name = name;
+            o.teamId = teamId;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

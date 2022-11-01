@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInfluxDbInfluxdb {
-    private final String databaseName;
+    private String databaseName;
 
-    @CustomType.Constructor
-    private GetInfluxDbInfluxdb(@CustomType.Parameter("databaseName") String databaseName) {
-        this.databaseName = databaseName;
-    }
-
+    private GetInfluxDbInfluxdb() {}
     public String databaseName() {
         return this.databaseName;
     }
@@ -27,24 +23,24 @@ public final class GetInfluxDbInfluxdb {
     public static Builder builder(GetInfluxDbInfluxdb defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String databaseName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInfluxDbInfluxdb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseName = defaults.databaseName;
         }
 
+        @CustomType.Setter
         public Builder databaseName(String databaseName) {
             this.databaseName = Objects.requireNonNull(databaseName);
             return this;
-        }        public GetInfluxDbInfluxdb build() {
-            return new GetInfluxDbInfluxdb(databaseName);
+        }
+        public GetInfluxDbInfluxdb build() {
+            final var o = new GetInfluxDbInfluxdb();
+            o.databaseName = databaseName;
+            return o;
         }
     }
 }

@@ -15,28 +15,19 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
      * @return Google Cloud Logging log id
      * 
      */
-    private final @Nullable String logId;
+    private @Nullable String logId;
     /**
      * @return GCP project id.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return Google Service Account Credentials
      * 
      */
-    private final @Nullable String serviceAccountCredentials;
+    private @Nullable String serviceAccountCredentials;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(
-        @CustomType.Parameter("logId") @Nullable String logId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("serviceAccountCredentials") @Nullable String serviceAccountCredentials) {
-        this.logId = logId;
-        this.projectId = projectId;
-        this.serviceAccountCredentials = serviceAccountCredentials;
-    }
-
+    private ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig() {}
     /**
      * @return Google Cloud Logging log id
      * 
@@ -66,16 +57,12 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     public static Builder builder(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String logId;
         private @Nullable String projectId;
         private @Nullable String serviceAccountCredentials;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logId = defaults.logId;
@@ -83,19 +70,27 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     	      this.serviceAccountCredentials = defaults.serviceAccountCredentials;
         }
 
+        @CustomType.Setter
         public Builder logId(@Nullable String logId) {
             this.logId = logId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountCredentials(@Nullable String serviceAccountCredentials) {
             this.serviceAccountCredentials = serviceAccountCredentials;
             return this;
-        }        public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {
-            return new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(logId, projectId, serviceAccountCredentials);
+        }
+        public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {
+            final var o = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig();
+            o.logId = logId;
+            o.projectId = projectId;
+            o.serviceAccountCredentials = serviceAccountCredentials;
+            return o;
         }
     }
 }

@@ -15,105 +15,74 @@ public final class GetServiceUserResult {
      * @return Access certificate for the user if applicable for the service in question
      * 
      */
-    private final String accessCert;
+    private String accessCert;
     /**
      * @return Access certificate key for the user if applicable for the service in question
      * 
      */
-    private final String accessKey;
+    private String accessKey;
     /**
      * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
      * 
      */
-    private final String authentication;
+    private String authentication;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The password of the service user ( not applicable for all services ).
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final Boolean pgAllowReplication;
+    private Boolean pgAllowReplication;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclCategories;
+    private List<String> redisAclCategories;
     /**
      * @return Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclChannels;
+    private List<String> redisAclChannels;
     /**
      * @return Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclCommands;
+    private List<String> redisAclCommands;
     /**
      * @return Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclKeys;
+    private List<String> redisAclKeys;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Type of the user account. Tells wether the user is the primary account or a regular account.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetServiceUserResult(
-        @CustomType.Parameter("accessCert") String accessCert,
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("authentication") String authentication,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("pgAllowReplication") Boolean pgAllowReplication,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("redisAclCategories") List<String> redisAclCategories,
-        @CustomType.Parameter("redisAclChannels") List<String> redisAclChannels,
-        @CustomType.Parameter("redisAclCommands") List<String> redisAclCommands,
-        @CustomType.Parameter("redisAclKeys") List<String> redisAclKeys,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("username") String username) {
-        this.accessCert = accessCert;
-        this.accessKey = accessKey;
-        this.authentication = authentication;
-        this.id = id;
-        this.password = password;
-        this.pgAllowReplication = pgAllowReplication;
-        this.project = project;
-        this.redisAclCategories = redisAclCategories;
-        this.redisAclChannels = redisAclChannels;
-        this.redisAclCommands = redisAclCommands;
-        this.redisAclKeys = redisAclKeys;
-        this.serviceName = serviceName;
-        this.type = type;
-        this.username = username;
-    }
-
+    private GetServiceUserResult() {}
     /**
      * @return Access certificate for the user if applicable for the service in question
      * 
@@ -220,7 +189,7 @@ public final class GetServiceUserResult {
     public static Builder builder(GetServiceUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessCert;
         private String accessKey;
@@ -236,11 +205,7 @@ public final class GetServiceUserResult {
         private String serviceName;
         private String type;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessCert = defaults.accessCert;
@@ -259,34 +224,42 @@ public final class GetServiceUserResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder accessCert(String accessCert) {
             this.accessCert = Objects.requireNonNull(accessCert);
             return this;
         }
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder authentication(String authentication) {
             this.authentication = Objects.requireNonNull(authentication);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder pgAllowReplication(Boolean pgAllowReplication) {
             this.pgAllowReplication = Objects.requireNonNull(pgAllowReplication);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder redisAclCategories(List<String> redisAclCategories) {
             this.redisAclCategories = Objects.requireNonNull(redisAclCategories);
             return this;
@@ -294,6 +267,7 @@ public final class GetServiceUserResult {
         public Builder redisAclCategories(String... redisAclCategories) {
             return redisAclCategories(List.of(redisAclCategories));
         }
+        @CustomType.Setter
         public Builder redisAclChannels(List<String> redisAclChannels) {
             this.redisAclChannels = Objects.requireNonNull(redisAclChannels);
             return this;
@@ -301,6 +275,7 @@ public final class GetServiceUserResult {
         public Builder redisAclChannels(String... redisAclChannels) {
             return redisAclChannels(List.of(redisAclChannels));
         }
+        @CustomType.Setter
         public Builder redisAclCommands(List<String> redisAclCommands) {
             this.redisAclCommands = Objects.requireNonNull(redisAclCommands);
             return this;
@@ -308,6 +283,7 @@ public final class GetServiceUserResult {
         public Builder redisAclCommands(String... redisAclCommands) {
             return redisAclCommands(List.of(redisAclCommands));
         }
+        @CustomType.Setter
         public Builder redisAclKeys(List<String> redisAclKeys) {
             this.redisAclKeys = Objects.requireNonNull(redisAclKeys);
             return this;
@@ -315,19 +291,38 @@ public final class GetServiceUserResult {
         public Builder redisAclKeys(String... redisAclKeys) {
             return redisAclKeys(List.of(redisAclKeys));
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetServiceUserResult build() {
-            return new GetServiceUserResult(accessCert, accessKey, authentication, id, password, pgAllowReplication, project, redisAclCategories, redisAclChannels, redisAclCommands, redisAclKeys, serviceName, type, username);
+        }
+        public GetServiceUserResult build() {
+            final var o = new GetServiceUserResult();
+            o.accessCert = accessCert;
+            o.accessKey = accessKey;
+            o.authentication = authentication;
+            o.id = id;
+            o.password = password;
+            o.pgAllowReplication = pgAllowReplication;
+            o.project = project;
+            o.redisAclCategories = redisAclCategories;
+            o.redisAclChannels = redisAclChannels;
+            o.redisAclCommands = redisAclCommands;
+            o.redisAclKeys = redisAclKeys;
+            o.serviceName = serviceName;
+            o.type = type;
+            o.username = username;
+            return o;
         }
     }
 }

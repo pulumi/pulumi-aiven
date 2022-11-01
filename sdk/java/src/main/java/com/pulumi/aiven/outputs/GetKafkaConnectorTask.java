@@ -10,21 +10,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaConnectorTask {
-    private final String connector;
+    private String connector;
     /**
      * @return List of tasks of a connector.
      * 
      */
-    private final Integer task;
+    private Integer task;
 
-    @CustomType.Constructor
-    private GetKafkaConnectorTask(
-        @CustomType.Parameter("connector") String connector,
-        @CustomType.Parameter("task") Integer task) {
-        this.connector = connector;
-        this.task = task;
-    }
-
+    private GetKafkaConnectorTask() {}
     public String connector() {
         return this.connector;
     }
@@ -43,30 +36,32 @@ public final class GetKafkaConnectorTask {
     public static Builder builder(GetKafkaConnectorTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String connector;
         private Integer task;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaConnectorTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connector = defaults.connector;
     	      this.task = defaults.task;
         }
 
+        @CustomType.Setter
         public Builder connector(String connector) {
             this.connector = Objects.requireNonNull(connector);
             return this;
         }
+        @CustomType.Setter
         public Builder task(Integer task) {
             this.task = Objects.requireNonNull(task);
             return this;
-        }        public GetKafkaConnectorTask build() {
-            return new GetKafkaConnectorTask(connector, task);
+        }
+        public GetKafkaConnectorTask build() {
+            final var o = new GetKafkaConnectorTask();
+            o.connector = connector;
+            o.task = task;
+            return o;
         }
     }
 }

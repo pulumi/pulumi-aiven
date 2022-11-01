@@ -14,42 +14,29 @@ public final class GetProjectUserResult {
      * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      * 
      */
-    private final Boolean accepted;
+    private Boolean accepted;
     /**
      * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Project membership type. The possible values are `admin`, `developer` and `operator`.
      * 
      */
-    private final String memberType;
+    private String memberType;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
 
-    @CustomType.Constructor
-    private GetProjectUserResult(
-        @CustomType.Parameter("accepted") Boolean accepted,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("memberType") String memberType,
-        @CustomType.Parameter("project") String project) {
-        this.accepted = accepted;
-        this.email = email;
-        this.id = id;
-        this.memberType = memberType;
-        this.project = project;
-    }
-
+    private GetProjectUserResult() {}
     /**
      * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      * 
@@ -93,18 +80,14 @@ public final class GetProjectUserResult {
     public static Builder builder(GetProjectUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accepted;
         private String email;
         private String id;
         private String memberType;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accepted = defaults.accepted;
@@ -114,27 +97,39 @@ public final class GetProjectUserResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder accepted(Boolean accepted) {
             this.accepted = Objects.requireNonNull(accepted);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder memberType(String memberType) {
             this.memberType = Objects.requireNonNull(memberType);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public GetProjectUserResult build() {
-            return new GetProjectUserResult(accepted, email, id, memberType, project);
+        }
+        public GetProjectUserResult build() {
+            final var o = new GetProjectUserResult();
+            o.accepted = accepted;
+            o.email = email;
+            o.id = id;
+            o.memberType = memberType;
+            o.project = project;
+            return o;
         }
     }
 }

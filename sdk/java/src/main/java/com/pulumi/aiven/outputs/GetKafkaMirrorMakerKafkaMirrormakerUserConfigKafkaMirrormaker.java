@@ -11,41 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    private final @Nullable String emitCheckpointsEnabled;
-    private final @Nullable String emitCheckpointsIntervalSeconds;
-    private final @Nullable String refreshGroupsEnabled;
-    private final @Nullable String refreshGroupsIntervalSeconds;
-    private final @Nullable String refreshTopicsEnabled;
-    private final @Nullable String refreshTopicsIntervalSeconds;
-    private final @Nullable String syncGroupOffsetsEnabled;
-    private final @Nullable String syncGroupOffsetsIntervalSeconds;
-    private final @Nullable String syncTopicConfigsEnabled;
-    private final @Nullable String tasksMaxPerCpu;
+    private @Nullable String emitCheckpointsEnabled;
+    private @Nullable String emitCheckpointsIntervalSeconds;
+    private @Nullable String refreshGroupsEnabled;
+    private @Nullable String refreshGroupsIntervalSeconds;
+    private @Nullable String refreshTopicsEnabled;
+    private @Nullable String refreshTopicsIntervalSeconds;
+    private @Nullable String syncGroupOffsetsEnabled;
+    private @Nullable String syncGroupOffsetsIntervalSeconds;
+    private @Nullable String syncTopicConfigsEnabled;
+    private @Nullable String tasksMaxPerCpu;
 
-    @CustomType.Constructor
-    private GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(
-        @CustomType.Parameter("emitCheckpointsEnabled") @Nullable String emitCheckpointsEnabled,
-        @CustomType.Parameter("emitCheckpointsIntervalSeconds") @Nullable String emitCheckpointsIntervalSeconds,
-        @CustomType.Parameter("refreshGroupsEnabled") @Nullable String refreshGroupsEnabled,
-        @CustomType.Parameter("refreshGroupsIntervalSeconds") @Nullable String refreshGroupsIntervalSeconds,
-        @CustomType.Parameter("refreshTopicsEnabled") @Nullable String refreshTopicsEnabled,
-        @CustomType.Parameter("refreshTopicsIntervalSeconds") @Nullable String refreshTopicsIntervalSeconds,
-        @CustomType.Parameter("syncGroupOffsetsEnabled") @Nullable String syncGroupOffsetsEnabled,
-        @CustomType.Parameter("syncGroupOffsetsIntervalSeconds") @Nullable String syncGroupOffsetsIntervalSeconds,
-        @CustomType.Parameter("syncTopicConfigsEnabled") @Nullable String syncTopicConfigsEnabled,
-        @CustomType.Parameter("tasksMaxPerCpu") @Nullable String tasksMaxPerCpu) {
-        this.emitCheckpointsEnabled = emitCheckpointsEnabled;
-        this.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
-        this.refreshGroupsEnabled = refreshGroupsEnabled;
-        this.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
-        this.refreshTopicsEnabled = refreshTopicsEnabled;
-        this.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
-        this.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
-        this.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
-        this.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
-        this.tasksMaxPerCpu = tasksMaxPerCpu;
-    }
-
+    private GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker() {}
     public Optional<String> emitCheckpointsEnabled() {
         return Optional.ofNullable(this.emitCheckpointsEnabled);
     }
@@ -84,7 +61,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     public static Builder builder(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String emitCheckpointsEnabled;
         private @Nullable String emitCheckpointsIntervalSeconds;
@@ -96,11 +73,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
         private @Nullable String syncGroupOffsetsIntervalSeconds;
         private @Nullable String syncTopicConfigsEnabled;
         private @Nullable String tasksMaxPerCpu;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.emitCheckpointsEnabled = defaults.emitCheckpointsEnabled;
@@ -115,47 +88,69 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     	      this.tasksMaxPerCpu = defaults.tasksMaxPerCpu;
         }
 
+        @CustomType.Setter
         public Builder emitCheckpointsEnabled(@Nullable String emitCheckpointsEnabled) {
             this.emitCheckpointsEnabled = emitCheckpointsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder emitCheckpointsIntervalSeconds(@Nullable String emitCheckpointsIntervalSeconds) {
             this.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder refreshGroupsEnabled(@Nullable String refreshGroupsEnabled) {
             this.refreshGroupsEnabled = refreshGroupsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder refreshGroupsIntervalSeconds(@Nullable String refreshGroupsIntervalSeconds) {
             this.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder refreshTopicsEnabled(@Nullable String refreshTopicsEnabled) {
             this.refreshTopicsEnabled = refreshTopicsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder refreshTopicsIntervalSeconds(@Nullable String refreshTopicsIntervalSeconds) {
             this.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder syncGroupOffsetsEnabled(@Nullable String syncGroupOffsetsEnabled) {
             this.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder syncGroupOffsetsIntervalSeconds(@Nullable String syncGroupOffsetsIntervalSeconds) {
             this.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder syncTopicConfigsEnabled(@Nullable String syncTopicConfigsEnabled) {
             this.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder tasksMaxPerCpu(@Nullable String tasksMaxPerCpu) {
             this.tasksMaxPerCpu = tasksMaxPerCpu;
             return this;
-        }        public GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker build() {
-            return new GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(emitCheckpointsEnabled, emitCheckpointsIntervalSeconds, refreshGroupsEnabled, refreshGroupsIntervalSeconds, refreshTopicsEnabled, refreshTopicsIntervalSeconds, syncGroupOffsetsEnabled, syncGroupOffsetsIntervalSeconds, syncTopicConfigsEnabled, tasksMaxPerCpu);
+        }
+        public GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker build() {
+            final var o = new GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker();
+            o.emitCheckpointsEnabled = emitCheckpointsEnabled;
+            o.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
+            o.refreshGroupsEnabled = refreshGroupsEnabled;
+            o.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
+            o.refreshTopicsEnabled = refreshTopicsEnabled;
+            o.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
+            o.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            o.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
+            o.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
+            o.tasksMaxPerCpu = tasksMaxPerCpu;
+            return o;
         }
     }
 }

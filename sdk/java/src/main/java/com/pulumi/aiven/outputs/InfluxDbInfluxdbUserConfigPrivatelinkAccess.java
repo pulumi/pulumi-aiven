@@ -15,13 +15,9 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccess {
      * @return InfluxDB server provided values
      * 
      */
-    private final @Nullable String influxdb;
+    private @Nullable String influxdb;
 
-    @CustomType.Constructor
-    private InfluxDbInfluxdbUserConfigPrivatelinkAccess(@CustomType.Parameter("influxdb") @Nullable String influxdb) {
-        this.influxdb = influxdb;
-    }
-
+    private InfluxDbInfluxdbUserConfigPrivatelinkAccess() {}
     /**
      * @return InfluxDB server provided values
      * 
@@ -37,24 +33,24 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     public static Builder builder(InfluxDbInfluxdbUserConfigPrivatelinkAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String influxdb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InfluxDbInfluxdbUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.influxdb = defaults.influxdb;
         }
 
+        @CustomType.Setter
         public Builder influxdb(@Nullable String influxdb) {
             this.influxdb = influxdb;
             return this;
-        }        public InfluxDbInfluxdbUserConfigPrivatelinkAccess build() {
-            return new InfluxDbInfluxdbUserConfigPrivatelinkAccess(influxdb);
+        }
+        public InfluxDbInfluxdbUserConfigPrivatelinkAccess build() {
+            final var o = new InfluxDbInfluxdbUserConfigPrivatelinkAccess();
+            o.influxdb = influxdb;
+            return o;
         }
     }
 }

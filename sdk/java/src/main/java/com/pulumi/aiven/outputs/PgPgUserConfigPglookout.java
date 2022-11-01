@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigPglookout {
-    private final @Nullable String maxFailoverReplicationTimeLag;
+    private @Nullable String maxFailoverReplicationTimeLag;
 
-    @CustomType.Constructor
-    private PgPgUserConfigPglookout(@CustomType.Parameter("maxFailoverReplicationTimeLag") @Nullable String maxFailoverReplicationTimeLag) {
-        this.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
-    }
-
+    private PgPgUserConfigPglookout() {}
     public Optional<String> maxFailoverReplicationTimeLag() {
         return Optional.ofNullable(this.maxFailoverReplicationTimeLag);
     }
@@ -29,24 +25,24 @@ public final class PgPgUserConfigPglookout {
     public static Builder builder(PgPgUserConfigPglookout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maxFailoverReplicationTimeLag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PgPgUserConfigPglookout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxFailoverReplicationTimeLag = defaults.maxFailoverReplicationTimeLag;
         }
 
+        @CustomType.Setter
         public Builder maxFailoverReplicationTimeLag(@Nullable String maxFailoverReplicationTimeLag) {
             this.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
             return this;
-        }        public PgPgUserConfigPglookout build() {
-            return new PgPgUserConfigPglookout(maxFailoverReplicationTimeLag);
+        }
+        public PgPgUserConfigPglookout build() {
+            final var o = new PgPgUserConfigPglookout();
+            o.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
+            return o;
         }
     }
 }

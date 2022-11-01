@@ -9,26 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaKafka {
-    private final String accessCert;
-    private final String accessKey;
-    private final String connectUri;
-    private final String restUri;
-    private final String schemaRegistryUri;
+    private String accessCert;
+    private String accessKey;
+    private String connectUri;
+    private String restUri;
+    private String schemaRegistryUri;
 
-    @CustomType.Constructor
-    private GetKafkaKafka(
-        @CustomType.Parameter("accessCert") String accessCert,
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("connectUri") String connectUri,
-        @CustomType.Parameter("restUri") String restUri,
-        @CustomType.Parameter("schemaRegistryUri") String schemaRegistryUri) {
-        this.accessCert = accessCert;
-        this.accessKey = accessKey;
-        this.connectUri = connectUri;
-        this.restUri = restUri;
-        this.schemaRegistryUri = schemaRegistryUri;
-    }
-
+    private GetKafkaKafka() {}
     public String accessCert() {
         return this.accessCert;
     }
@@ -52,18 +39,14 @@ public final class GetKafkaKafka {
     public static Builder builder(GetKafkaKafka defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessCert;
         private String accessKey;
         private String connectUri;
         private String restUri;
         private String schemaRegistryUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaKafka defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessCert = defaults.accessCert;
@@ -73,27 +56,39 @@ public final class GetKafkaKafka {
     	      this.schemaRegistryUri = defaults.schemaRegistryUri;
         }
 
+        @CustomType.Setter
         public Builder accessCert(String accessCert) {
             this.accessCert = Objects.requireNonNull(accessCert);
             return this;
         }
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder connectUri(String connectUri) {
             this.connectUri = Objects.requireNonNull(connectUri);
             return this;
         }
+        @CustomType.Setter
         public Builder restUri(String restUri) {
             this.restUri = Objects.requireNonNull(restUri);
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistryUri(String schemaRegistryUri) {
             this.schemaRegistryUri = Objects.requireNonNull(schemaRegistryUri);
             return this;
-        }        public GetKafkaKafka build() {
-            return new GetKafkaKafka(accessCert, accessKey, connectUri, restUri, schemaRegistryUri);
+        }
+        public GetKafkaKafka build() {
+            final var o = new GetKafkaKafka();
+            o.accessCert = accessCert;
+            o.accessKey = accessKey;
+            o.connectUri = connectUri;
+            o.restUri = restUri;
+            o.schemaRegistryUri = schemaRegistryUri;
+            return o;
         }
     }
 }

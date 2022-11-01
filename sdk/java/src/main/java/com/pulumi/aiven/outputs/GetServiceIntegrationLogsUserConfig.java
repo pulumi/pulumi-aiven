@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationLogsUserConfig {
-    private final @Nullable String elasticsearchIndexDaysMax;
-    private final @Nullable String elasticsearchIndexPrefix;
+    private @Nullable String elasticsearchIndexDaysMax;
+    private @Nullable String elasticsearchIndexPrefix;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationLogsUserConfig(
-        @CustomType.Parameter("elasticsearchIndexDaysMax") @Nullable String elasticsearchIndexDaysMax,
-        @CustomType.Parameter("elasticsearchIndexPrefix") @Nullable String elasticsearchIndexPrefix) {
-        this.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
-        this.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
-    }
-
+    private GetServiceIntegrationLogsUserConfig() {}
     public Optional<String> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
@@ -36,30 +29,32 @@ public final class GetServiceIntegrationLogsUserConfig {
     public static Builder builder(GetServiceIntegrationLogsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String elasticsearchIndexDaysMax;
         private @Nullable String elasticsearchIndexPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.elasticsearchIndexDaysMax = defaults.elasticsearchIndexDaysMax;
     	      this.elasticsearchIndexPrefix = defaults.elasticsearchIndexPrefix;
         }
 
+        @CustomType.Setter
         public Builder elasticsearchIndexDaysMax(@Nullable String elasticsearchIndexDaysMax) {
             this.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             return this;
         }
+        @CustomType.Setter
         public Builder elasticsearchIndexPrefix(@Nullable String elasticsearchIndexPrefix) {
             this.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
             return this;
-        }        public GetServiceIntegrationLogsUserConfig build() {
-            return new GetServiceIntegrationLogsUserConfig(elasticsearchIndexDaysMax, elasticsearchIndexPrefix);
+        }
+        public GetServiceIntegrationLogsUserConfig build() {
+            final var o = new GetServiceIntegrationLogsUserConfig();
+            o.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
+            o.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
+            return o;
         }
     }
 }

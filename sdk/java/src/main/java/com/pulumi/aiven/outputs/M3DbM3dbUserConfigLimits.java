@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigLimits {
-    private final @Nullable String queryDocs;
-    private final @Nullable String queryRequireExhaustive;
-    private final @Nullable String querySeries;
+    private @Nullable String queryDocs;
+    private @Nullable String queryRequireExhaustive;
+    private @Nullable String querySeries;
 
-    @CustomType.Constructor
-    private M3DbM3dbUserConfigLimits(
-        @CustomType.Parameter("queryDocs") @Nullable String queryDocs,
-        @CustomType.Parameter("queryRequireExhaustive") @Nullable String queryRequireExhaustive,
-        @CustomType.Parameter("querySeries") @Nullable String querySeries) {
-        this.queryDocs = queryDocs;
-        this.queryRequireExhaustive = queryRequireExhaustive;
-        this.querySeries = querySeries;
-    }
-
+    private M3DbM3dbUserConfigLimits() {}
     public Optional<String> queryDocs() {
         return Optional.ofNullable(this.queryDocs);
     }
@@ -42,16 +33,12 @@ public final class M3DbM3dbUserConfigLimits {
     public static Builder builder(M3DbM3dbUserConfigLimits defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String queryDocs;
         private @Nullable String queryRequireExhaustive;
         private @Nullable String querySeries;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbM3dbUserConfigLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryDocs = defaults.queryDocs;
@@ -59,19 +46,27 @@ public final class M3DbM3dbUserConfigLimits {
     	      this.querySeries = defaults.querySeries;
         }
 
+        @CustomType.Setter
         public Builder queryDocs(@Nullable String queryDocs) {
             this.queryDocs = queryDocs;
             return this;
         }
+        @CustomType.Setter
         public Builder queryRequireExhaustive(@Nullable String queryRequireExhaustive) {
             this.queryRequireExhaustive = queryRequireExhaustive;
             return this;
         }
+        @CustomType.Setter
         public Builder querySeries(@Nullable String querySeries) {
             this.querySeries = querySeries;
             return this;
-        }        public M3DbM3dbUserConfigLimits build() {
-            return new M3DbM3dbUserConfigLimits(queryDocs, queryRequireExhaustive, querySeries);
+        }
+        public M3DbM3dbUserConfigLimits build() {
+            final var o = new M3DbM3dbUserConfigLimits();
+            o.queryDocs = queryDocs;
+            o.queryRequireExhaustive = queryRequireExhaustive;
+            o.querySeries = querySeries;
+            return o;
         }
     }
 }

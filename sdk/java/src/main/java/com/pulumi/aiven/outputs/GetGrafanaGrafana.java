@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGrafanaGrafana {
-    @CustomType.Constructor
-    private GetGrafanaGrafana() {
-    }
-
+    private GetGrafanaGrafana() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetGrafanaGrafana {
     public static Builder builder(GetGrafanaGrafana defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaGrafana defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetGrafanaGrafana build() {
-            return new GetGrafanaGrafana();
+            final var o = new GetGrafanaGrafana();
+            return o;
         }
     }
 }

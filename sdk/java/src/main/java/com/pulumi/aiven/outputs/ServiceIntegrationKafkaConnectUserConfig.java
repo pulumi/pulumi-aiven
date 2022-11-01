@@ -15,13 +15,9 @@ public final class ServiceIntegrationKafkaConnectUserConfig {
      * @return Kafka Connect service configuration values
      * 
      */
-    private final @Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
+    private @Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
 
-    @CustomType.Constructor
-    private ServiceIntegrationKafkaConnectUserConfig(@CustomType.Parameter("kafkaConnect") @Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect) {
-        this.kafkaConnect = kafkaConnect;
-    }
-
+    private ServiceIntegrationKafkaConnectUserConfig() {}
     /**
      * @return Kafka Connect service configuration values
      * 
@@ -37,24 +33,24 @@ public final class ServiceIntegrationKafkaConnectUserConfig {
     public static Builder builder(ServiceIntegrationKafkaConnectUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaConnect = defaults.kafkaConnect;
         }
 
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
-        }        public ServiceIntegrationKafkaConnectUserConfig build() {
-            return new ServiceIntegrationKafkaConnectUserConfig(kafkaConnect);
+        }
+        public ServiceIntegrationKafkaConnectUserConfig build() {
+            final var o = new ServiceIntegrationKafkaConnectUserConfig();
+            o.kafkaConnect = kafkaConnect;
+            return o;
         }
     }
 }

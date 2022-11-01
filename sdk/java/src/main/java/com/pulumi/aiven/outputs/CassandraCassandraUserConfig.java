@@ -19,70 +19,49 @@ public final class CassandraCassandraUserConfig {
      * @return cassandra configuration values
      * 
      */
-    private final @Nullable CassandraCassandraUserConfigCassandra cassandra;
+    private @Nullable CassandraCassandraUserConfigCassandra cassandra;
     /**
      * @return Cassandra major version
      * 
      */
-    private final @Nullable String cassandraVersion;
+    private @Nullable String cassandraVersion;
     /**
      * @return IP filter
      * 
      */
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Migration mode for the sstableloader utility
      * 
      */
-    private final @Nullable String migrateSstableloader;
+    private @Nullable String migrateSstableloader;
     /**
      * @return Allow access to selected service ports from private networks
      * 
      */
-    private final @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
+    private @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
     /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String projectToForkFrom;
+    private @Nullable String projectToForkFrom;
     /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
-    private final @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
+    private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
     /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IP addresses
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private CassandraCassandraUserConfig(
-        @CustomType.Parameter("cassandra") @Nullable CassandraCassandraUserConfigCassandra cassandra,
-        @CustomType.Parameter("cassandraVersion") @Nullable String cassandraVersion,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("migrateSstableloader") @Nullable String migrateSstableloader,
-        @CustomType.Parameter("privateAccess") @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable CassandraCassandraUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.cassandra = cassandra;
-        this.cassandraVersion = cassandraVersion;
-        this.ipFilters = ipFilters;
-        this.migrateSstableloader = migrateSstableloader;
-        this.privateAccess = privateAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private CassandraCassandraUserConfig() {}
     /**
      * @return cassandra configuration values
      * 
@@ -154,7 +133,7 @@ public final class CassandraCassandraUserConfig {
     public static Builder builder(CassandraCassandraUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CassandraCassandraUserConfigCassandra cassandra;
         private @Nullable String cassandraVersion;
@@ -165,11 +144,7 @@ public final class CassandraCassandraUserConfig {
         private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CassandraCassandraUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cassandra = defaults.cassandra;
@@ -183,14 +158,17 @@ public final class CassandraCassandraUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder cassandra(@Nullable CassandraCassandraUserConfigCassandra cassandra) {
             this.cassandra = cassandra;
             return this;
         }
+        @CustomType.Setter
         public Builder cassandraVersion(@Nullable String cassandraVersion) {
             this.cassandraVersion = cassandraVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -198,31 +176,48 @@ public final class CassandraCassandraUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder migrateSstableloader(@Nullable String migrateSstableloader) {
             this.migrateSstableloader = migrateSstableloader;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable CassandraCassandraUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable CassandraCassandraUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public CassandraCassandraUserConfig build() {
-            return new CassandraCassandraUserConfig(cassandra, cassandraVersion, ipFilters, migrateSstableloader, privateAccess, projectToForkFrom, publicAccess, serviceToForkFrom, staticIps);
+        }
+        public CassandraCassandraUserConfig build() {
+            final var o = new CassandraCassandraUserConfig();
+            o.cassandra = cassandra;
+            o.cassandraVersion = cassandraVersion;
+            o.ipFilters = ipFilters;
+            o.migrateSstableloader = migrateSstableloader;
+            o.privateAccess = privateAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

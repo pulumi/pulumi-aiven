@@ -15,13 +15,9 @@ public final class GetInfluxDbInfluxdbUserConfigPrivateAccess {
      * @return InfluxDB server provided values
      * 
      */
-    private final @Nullable String influxdb;
+    private @Nullable String influxdb;
 
-    @CustomType.Constructor
-    private GetInfluxDbInfluxdbUserConfigPrivateAccess(@CustomType.Parameter("influxdb") @Nullable String influxdb) {
-        this.influxdb = influxdb;
-    }
-
+    private GetInfluxDbInfluxdbUserConfigPrivateAccess() {}
     /**
      * @return InfluxDB server provided values
      * 
@@ -37,24 +33,24 @@ public final class GetInfluxDbInfluxdbUserConfigPrivateAccess {
     public static Builder builder(GetInfluxDbInfluxdbUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String influxdb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.influxdb = defaults.influxdb;
         }
 
+        @CustomType.Setter
         public Builder influxdb(@Nullable String influxdb) {
             this.influxdb = influxdb;
             return this;
-        }        public GetInfluxDbInfluxdbUserConfigPrivateAccess build() {
-            return new GetInfluxDbInfluxdbUserConfigPrivateAccess(influxdb);
+        }
+        public GetInfluxDbInfluxdbUserConfigPrivateAccess build() {
+            final var o = new GetInfluxDbInfluxdbUserConfigPrivateAccess();
+            o.influxdb = influxdb;
+            return o;
         }
     }
 }

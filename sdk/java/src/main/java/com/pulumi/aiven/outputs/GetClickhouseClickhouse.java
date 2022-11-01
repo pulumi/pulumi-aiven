@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClickhouseClickhouse {
-    @CustomType.Constructor
-    private GetClickhouseClickhouse() {
-    }
-
+    private GetClickhouseClickhouse() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetClickhouseClickhouse {
     public static Builder builder(GetClickhouseClickhouse defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClickhouseClickhouse defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetClickhouseClickhouse build() {
-            return new GetClickhouseClickhouse();
+            final var o = new GetClickhouseClickhouse();
+            return o;
         }
     }
 }

@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGithub {
-    private final @Nullable String allowSignUp;
-    private final @Nullable List<String> allowedOrganizations;
-    private final @Nullable String clientId;
-    private final @Nullable String clientSecret;
-    private final @Nullable List<String> teamIds;
+    private @Nullable String allowSignUp;
+    private @Nullable List<String> allowedOrganizations;
+    private @Nullable String clientId;
+    private @Nullable String clientSecret;
+    private @Nullable List<String> teamIds;
 
-    @CustomType.Constructor
-    private GetGrafanaGrafanaUserConfigAuthGithub(
-        @CustomType.Parameter("allowSignUp") @Nullable String allowSignUp,
-        @CustomType.Parameter("allowedOrganizations") @Nullable List<String> allowedOrganizations,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret,
-        @CustomType.Parameter("teamIds") @Nullable List<String> teamIds) {
-        this.allowSignUp = allowSignUp;
-        this.allowedOrganizations = allowedOrganizations;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.teamIds = teamIds;
-    }
-
+    private GetGrafanaGrafanaUserConfigAuthGithub() {}
     public Optional<String> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
@@ -55,18 +42,14 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     public static Builder builder(GetGrafanaGrafanaUserConfigAuthGithub defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowSignUp;
         private @Nullable List<String> allowedOrganizations;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable List<String> teamIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGithub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSignUp = defaults.allowSignUp;
@@ -76,10 +59,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     	      this.teamIds = defaults.teamIds;
         }
 
+        @CustomType.Setter
         public Builder allowSignUp(@Nullable String allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedOrganizations(@Nullable List<String> allowedOrganizations) {
             this.allowedOrganizations = allowedOrganizations;
             return this;
@@ -87,22 +72,32 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
         public Builder allowedOrganizations(String... allowedOrganizations) {
             return allowedOrganizations(List.of(allowedOrganizations));
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder teamIds(@Nullable List<String> teamIds) {
             this.teamIds = teamIds;
             return this;
         }
         public Builder teamIds(String... teamIds) {
             return teamIds(List.of(teamIds));
-        }        public GetGrafanaGrafanaUserConfigAuthGithub build() {
-            return new GetGrafanaGrafanaUserConfigAuthGithub(allowSignUp, allowedOrganizations, clientId, clientSecret, teamIds);
+        }
+        public GetGrafanaGrafanaUserConfigAuthGithub build() {
+            final var o = new GetGrafanaGrafanaUserConfigAuthGithub();
+            o.allowSignUp = allowSignUp;
+            o.allowedOrganizations = allowedOrganizations;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.teamIds = teamIds;
+            return o;
         }
     }
 }

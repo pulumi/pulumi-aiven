@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
-    private final @Nullable String clusterAlias;
-    private final @Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
+    private @Nullable String clusterAlias;
+    private @Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationKafkaMirrormakerUserConfig(
-        @CustomType.Parameter("clusterAlias") @Nullable String clusterAlias,
-        @CustomType.Parameter("kafkaMirrormaker") @Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker) {
-        this.clusterAlias = clusterAlias;
-        this.kafkaMirrormaker = kafkaMirrormaker;
-    }
-
+    private GetServiceIntegrationKafkaMirrormakerUserConfig() {}
     public Optional<String> clusterAlias() {
         return Optional.ofNullable(this.clusterAlias);
     }
@@ -37,30 +30,32 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
     public static Builder builder(GetServiceIntegrationKafkaMirrormakerUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterAlias;
         private @Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationKafkaMirrormakerUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterAlias = defaults.clusterAlias;
     	      this.kafkaMirrormaker = defaults.kafkaMirrormaker;
         }
 
+        @CustomType.Setter
         public Builder clusterAlias(@Nullable String clusterAlias) {
             this.clusterAlias = clusterAlias;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaMirrormaker(@Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker) {
             this.kafkaMirrormaker = kafkaMirrormaker;
             return this;
-        }        public GetServiceIntegrationKafkaMirrormakerUserConfig build() {
-            return new GetServiceIntegrationKafkaMirrormakerUserConfig(clusterAlias, kafkaMirrormaker);
+        }
+        public GetServiceIntegrationKafkaMirrormakerUserConfig build() {
+            final var o = new GetServiceIntegrationKafkaMirrormakerUserConfig();
+            o.clusterAlias = clusterAlias;
+            o.kafkaMirrormaker = kafkaMirrormaker;
+            return o;
         }
     }
 }

@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
-    private final @Nullable String comment;
-    private final @Nullable String tag;
+    private @Nullable String comment;
+    private @Nullable String tag;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointDatadogUserConfigDatadogTag(
-        @CustomType.Parameter("comment") @Nullable String comment,
-        @CustomType.Parameter("tag") @Nullable String tag) {
-        this.comment = comment;
-        this.tag = tag;
-    }
-
+    private ServiceIntegrationEndpointDatadogUserConfigDatadogTag() {}
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -36,30 +29,32 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     public static Builder builder(ServiceIntegrationEndpointDatadogUserConfigDatadogTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
         private @Nullable String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointDatadogUserConfigDatadogTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
-        }        public ServiceIntegrationEndpointDatadogUserConfigDatadogTag build() {
-            return new ServiceIntegrationEndpointDatadogUserConfigDatadogTag(comment, tag);
+        }
+        public ServiceIntegrationEndpointDatadogUserConfigDatadogTag build() {
+            final var o = new ServiceIntegrationEndpointDatadogUserConfigDatadogTag();
+            o.comment = comment;
+            o.tag = tag;
+            return o;
         }
     }
 }

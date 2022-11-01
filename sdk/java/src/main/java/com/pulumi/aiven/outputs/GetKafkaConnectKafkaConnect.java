@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaConnectKafkaConnect {
-    @CustomType.Constructor
-    private GetKafkaConnectKafkaConnect() {
-    }
-
+    private GetKafkaConnectKafkaConnect() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetKafkaConnectKafkaConnect {
     public static Builder builder(GetKafkaConnectKafkaConnect defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaConnectKafkaConnect defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetKafkaConnectKafkaConnect build() {
-            return new GetKafkaConnectKafkaConnect();
+            final var o = new GetKafkaConnectKafkaConnect();
+            return o;
         }
     }
 }

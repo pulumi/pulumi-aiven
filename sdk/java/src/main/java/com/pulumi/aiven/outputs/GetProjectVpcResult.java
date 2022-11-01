@@ -15,42 +15,29 @@ public final class GetProjectVpcResult {
      * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String cloudName;
+    private String cloudName;
     /**
      * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Network address range used by the VPC like 192.168.0.0/24
      * 
      */
-    private final String networkCidr;
+    private String networkCidr;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
      * 
      */
-    private final String state;
+    private String state;
 
-    @CustomType.Constructor
-    private GetProjectVpcResult(
-        @CustomType.Parameter("cloudName") String cloudName,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("networkCidr") String networkCidr,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("state") String state) {
-        this.cloudName = cloudName;
-        this.id = id;
-        this.networkCidr = networkCidr;
-        this.project = project;
-        this.state = state;
-    }
-
+    private GetProjectVpcResult() {}
     /**
      * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -94,18 +81,14 @@ public final class GetProjectVpcResult {
     public static Builder builder(GetProjectVpcResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cloudName;
         private @Nullable String id;
         private String networkCidr;
         private String project;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectVpcResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudName = defaults.cloudName;
@@ -115,27 +98,39 @@ public final class GetProjectVpcResult {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder cloudName(String cloudName) {
             this.cloudName = Objects.requireNonNull(cloudName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder networkCidr(String networkCidr) {
             this.networkCidr = Objects.requireNonNull(networkCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public GetProjectVpcResult build() {
-            return new GetProjectVpcResult(cloudName, id, networkCidr, project, state);
+        }
+        public GetProjectVpcResult build() {
+            final var o = new GetProjectVpcResult();
+            o.cloudName = cloudName;
+            o.id = id;
+            o.networkCidr = networkCidr;
+            o.project = project;
+            o.state = state;
+            return o;
         }
     }
 }

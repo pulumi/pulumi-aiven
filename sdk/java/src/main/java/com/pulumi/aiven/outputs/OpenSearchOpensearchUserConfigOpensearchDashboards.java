@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
-    private final @Nullable String enabled;
-    private final @Nullable String maxOldSpaceSize;
-    private final @Nullable String opensearchRequestTimeout;
+    private @Nullable String enabled;
+    private @Nullable String maxOldSpaceSize;
+    private @Nullable String opensearchRequestTimeout;
 
-    @CustomType.Constructor
-    private OpenSearchOpensearchUserConfigOpensearchDashboards(
-        @CustomType.Parameter("enabled") @Nullable String enabled,
-        @CustomType.Parameter("maxOldSpaceSize") @Nullable String maxOldSpaceSize,
-        @CustomType.Parameter("opensearchRequestTimeout") @Nullable String opensearchRequestTimeout) {
-        this.enabled = enabled;
-        this.maxOldSpaceSize = maxOldSpaceSize;
-        this.opensearchRequestTimeout = opensearchRequestTimeout;
-    }
-
+    private OpenSearchOpensearchUserConfigOpensearchDashboards() {}
     public Optional<String> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -42,16 +33,12 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
     public static Builder builder(OpenSearchOpensearchUserConfigOpensearchDashboards defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String enabled;
         private @Nullable String maxOldSpaceSize;
         private @Nullable String opensearchRequestTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigOpensearchDashboards defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -59,19 +46,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
     	      this.opensearchRequestTimeout = defaults.opensearchRequestTimeout;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable String enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder maxOldSpaceSize(@Nullable String maxOldSpaceSize) {
             this.maxOldSpaceSize = maxOldSpaceSize;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearchRequestTimeout(@Nullable String opensearchRequestTimeout) {
             this.opensearchRequestTimeout = opensearchRequestTimeout;
             return this;
-        }        public OpenSearchOpensearchUserConfigOpensearchDashboards build() {
-            return new OpenSearchOpensearchUserConfigOpensearchDashboards(enabled, maxOldSpaceSize, opensearchRequestTimeout);
+        }
+        public OpenSearchOpensearchUserConfigOpensearchDashboards build() {
+            final var o = new OpenSearchOpensearchUserConfigOpensearchDashboards();
+            o.enabled = enabled;
+            o.maxOldSpaceSize = maxOldSpaceSize;
+            o.opensearchRequestTimeout = opensearchRequestTimeout;
+            return o;
         }
     }
 }

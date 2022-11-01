@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCassandaCassandra {
-    @CustomType.Constructor
-    private GetCassandaCassandra() {
-    }
-
+    private GetCassandaCassandra() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetCassandaCassandra {
     public static Builder builder(GetCassandaCassandra defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCassandaCassandra defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetCassandaCassandra build() {
-            return new GetCassandaCassandra();
+            final var o = new GetCassandaCassandra();
+            return o;
         }
     }
 }

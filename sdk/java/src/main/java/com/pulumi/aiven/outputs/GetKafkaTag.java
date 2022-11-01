@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaTag {
-    private final String key;
-    private final String value;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetKafkaTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetKafkaTag() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class GetKafkaTag {
     public static Builder builder(GetKafkaTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetKafkaTag build() {
-            return new GetKafkaTag(key, value);
+        }
+        public GetKafkaTag build() {
+            final var o = new GetKafkaTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

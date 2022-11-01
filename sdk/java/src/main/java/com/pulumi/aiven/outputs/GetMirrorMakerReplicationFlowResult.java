@@ -16,91 +16,64 @@ public final class GetMirrorMakerReplicationFlowResult {
      * @return Emit heartbeats enabled. The default value is `false`.
      * 
      */
-    private final Boolean emitHeartbeatsEnabled;
+    private Boolean emitHeartbeatsEnabled;
     /**
      * @return Enable of disable replication flows for a service.
      * 
      */
-    private final Boolean enable;
+    private Boolean enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
-    private final String replicationPolicyClass;
+    private String replicationPolicyClass;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Source cluster alias. Maximum Length: `128`.
      * 
      */
-    private final String sourceCluster;
+    private String sourceCluster;
     /**
      * @return Sync consumer group offsets. The default value is `false`.
      * 
      */
-    private final Boolean syncGroupOffsetsEnabled;
+    private Boolean syncGroupOffsetsEnabled;
     /**
      * @return Frequency of consumer group offset sync. The default value is `1`.
      * 
      */
-    private final Integer syncGroupOffsetsIntervalSeconds;
+    private Integer syncGroupOffsetsIntervalSeconds;
     /**
      * @return Target cluster alias. Maximum Length: `128`.
      * 
      */
-    private final String targetCluster;
+    private String targetCluster;
     /**
      * @return List of topics and/or regular expressions to replicate
      * 
      */
-    private final List<String> topics;
+    private List<String> topics;
     /**
      * @return List of topics and/or regular expressions to not replicate.
      * 
      */
-    private final List<String> topicsBlacklists;
+    private List<String> topicsBlacklists;
 
-    @CustomType.Constructor
-    private GetMirrorMakerReplicationFlowResult(
-        @CustomType.Parameter("emitHeartbeatsEnabled") Boolean emitHeartbeatsEnabled,
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("replicationPolicyClass") String replicationPolicyClass,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("sourceCluster") String sourceCluster,
-        @CustomType.Parameter("syncGroupOffsetsEnabled") Boolean syncGroupOffsetsEnabled,
-        @CustomType.Parameter("syncGroupOffsetsIntervalSeconds") Integer syncGroupOffsetsIntervalSeconds,
-        @CustomType.Parameter("targetCluster") String targetCluster,
-        @CustomType.Parameter("topics") List<String> topics,
-        @CustomType.Parameter("topicsBlacklists") List<String> topicsBlacklists) {
-        this.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
-        this.enable = enable;
-        this.id = id;
-        this.project = project;
-        this.replicationPolicyClass = replicationPolicyClass;
-        this.serviceName = serviceName;
-        this.sourceCluster = sourceCluster;
-        this.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
-        this.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
-        this.targetCluster = targetCluster;
-        this.topics = topics;
-        this.topicsBlacklists = topicsBlacklists;
-    }
-
+    private GetMirrorMakerReplicationFlowResult() {}
     /**
      * @return Emit heartbeats enabled. The default value is `false`.
      * 
@@ -193,7 +166,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     public static Builder builder(GetMirrorMakerReplicationFlowResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
@@ -207,11 +180,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private String targetCluster;
         private List<String> topics;
         private List<String> topicsBlacklists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMirrorMakerReplicationFlowResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
@@ -228,46 +197,57 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.topicsBlacklists = defaults.topicsBlacklists;
         }
 
+        @CustomType.Setter
         public Builder emitHeartbeatsEnabled(Boolean emitHeartbeatsEnabled) {
             this.emitHeartbeatsEnabled = Objects.requireNonNull(emitHeartbeatsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder replicationPolicyClass(String replicationPolicyClass) {
             this.replicationPolicyClass = Objects.requireNonNull(replicationPolicyClass);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceCluster(String sourceCluster) {
             this.sourceCluster = Objects.requireNonNull(sourceCluster);
             return this;
         }
+        @CustomType.Setter
         public Builder syncGroupOffsetsEnabled(Boolean syncGroupOffsetsEnabled) {
             this.syncGroupOffsetsEnabled = Objects.requireNonNull(syncGroupOffsetsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder syncGroupOffsetsIntervalSeconds(Integer syncGroupOffsetsIntervalSeconds) {
             this.syncGroupOffsetsIntervalSeconds = Objects.requireNonNull(syncGroupOffsetsIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder targetCluster(String targetCluster) {
             this.targetCluster = Objects.requireNonNull(targetCluster);
             return this;
         }
+        @CustomType.Setter
         public Builder topics(List<String> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
@@ -275,14 +255,29 @@ public final class GetMirrorMakerReplicationFlowResult {
         public Builder topics(String... topics) {
             return topics(List.of(topics));
         }
+        @CustomType.Setter
         public Builder topicsBlacklists(List<String> topicsBlacklists) {
             this.topicsBlacklists = Objects.requireNonNull(topicsBlacklists);
             return this;
         }
         public Builder topicsBlacklists(String... topicsBlacklists) {
             return topicsBlacklists(List.of(topicsBlacklists));
-        }        public GetMirrorMakerReplicationFlowResult build() {
-            return new GetMirrorMakerReplicationFlowResult(emitHeartbeatsEnabled, enable, id, project, replicationPolicyClass, serviceName, sourceCluster, syncGroupOffsetsEnabled, syncGroupOffsetsIntervalSeconds, targetCluster, topics, topicsBlacklists);
+        }
+        public GetMirrorMakerReplicationFlowResult build() {
+            final var o = new GetMirrorMakerReplicationFlowResult();
+            o.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
+            o.enable = enable;
+            o.id = id;
+            o.project = project;
+            o.replicationPolicyClass = replicationPolicyClass;
+            o.serviceName = serviceName;
+            o.sourceCluster = sourceCluster;
+            o.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            o.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
+            o.targetCluster = targetCluster;
+            o.topics = topics;
+            o.topicsBlacklists = topicsBlacklists;
+            return o;
         }
     }
 }

@@ -12,21 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectorTask {
-    private final @Nullable String connector;
+    private @Nullable String connector;
     /**
      * @return List of tasks of a connector.
      * 
      */
-    private final @Nullable Integer task;
+    private @Nullable Integer task;
 
-    @CustomType.Constructor
-    private KafkaConnectorTask(
-        @CustomType.Parameter("connector") @Nullable String connector,
-        @CustomType.Parameter("task") @Nullable Integer task) {
-        this.connector = connector;
-        this.task = task;
-    }
-
+    private KafkaConnectorTask() {}
     public Optional<String> connector() {
         return Optional.ofNullable(this.connector);
     }
@@ -45,30 +38,32 @@ public final class KafkaConnectorTask {
     public static Builder builder(KafkaConnectorTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connector;
         private @Nullable Integer task;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaConnectorTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connector = defaults.connector;
     	      this.task = defaults.task;
         }
 
+        @CustomType.Setter
         public Builder connector(@Nullable String connector) {
             this.connector = connector;
             return this;
         }
+        @CustomType.Setter
         public Builder task(@Nullable Integer task) {
             this.task = task;
             return this;
-        }        public KafkaConnectorTask build() {
-            return new KafkaConnectorTask(connector, task);
+        }
+        public KafkaConnectorTask build() {
+            final var o = new KafkaConnectorTask();
+            o.connector = connector;
+            o.task = task;
+            return o;
         }
     }
 }

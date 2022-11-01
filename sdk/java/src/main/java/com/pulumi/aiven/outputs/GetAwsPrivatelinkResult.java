@@ -14,49 +14,34 @@ public final class GetAwsPrivatelinkResult {
      * @return AWS service ID
      * 
      */
-    private final String awsServiceId;
+    private String awsServiceId;
     /**
      * @return AWS service name
      * 
      */
-    private final String awsServiceName;
+    private String awsServiceName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return List of allowed principals
      * 
      */
-    private final List<String> principals;
+    private List<String> principals;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
 
-    @CustomType.Constructor
-    private GetAwsPrivatelinkResult(
-        @CustomType.Parameter("awsServiceId") String awsServiceId,
-        @CustomType.Parameter("awsServiceName") String awsServiceName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("principals") List<String> principals,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName) {
-        this.awsServiceId = awsServiceId;
-        this.awsServiceName = awsServiceName;
-        this.id = id;
-        this.principals = principals;
-        this.project = project;
-        this.serviceName = serviceName;
-    }
-
+    private GetAwsPrivatelinkResult() {}
     /**
      * @return AWS service ID
      * 
@@ -107,7 +92,7 @@ public final class GetAwsPrivatelinkResult {
     public static Builder builder(GetAwsPrivatelinkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String awsServiceId;
         private String awsServiceName;
@@ -115,11 +100,7 @@ public final class GetAwsPrivatelinkResult {
         private List<String> principals;
         private String project;
         private String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsPrivatelinkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsServiceId = defaults.awsServiceId;
@@ -130,18 +111,22 @@ public final class GetAwsPrivatelinkResult {
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder awsServiceId(String awsServiceId) {
             this.awsServiceId = Objects.requireNonNull(awsServiceId);
             return this;
         }
+        @CustomType.Setter
         public Builder awsServiceName(String awsServiceName) {
             this.awsServiceName = Objects.requireNonNull(awsServiceName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder principals(List<String> principals) {
             this.principals = Objects.requireNonNull(principals);
             return this;
@@ -149,15 +134,25 @@ public final class GetAwsPrivatelinkResult {
         public Builder principals(String... principals) {
             return principals(List.of(principals));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }        public GetAwsPrivatelinkResult build() {
-            return new GetAwsPrivatelinkResult(awsServiceId, awsServiceName, id, principals, project, serviceName);
+        }
+        public GetAwsPrivatelinkResult build() {
+            final var o = new GetAwsPrivatelinkResult();
+            o.awsServiceId = awsServiceId;
+            o.awsServiceName = awsServiceName;
+            o.id = id;
+            o.principals = principals;
+            o.project = project;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

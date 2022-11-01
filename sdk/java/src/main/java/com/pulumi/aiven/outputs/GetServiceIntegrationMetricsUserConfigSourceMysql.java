@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationMetricsUserConfigSourceMysql {
-    private final @Nullable GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
+    private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationMetricsUserConfigSourceMysql(@CustomType.Parameter("telegraf") @Nullable GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf) {
-        this.telegraf = telegraf;
-    }
-
+    private GetServiceIntegrationMetricsUserConfigSourceMysql() {}
     public Optional<GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf> telegraf() {
         return Optional.ofNullable(this.telegraf);
     }
@@ -29,24 +25,24 @@ public final class GetServiceIntegrationMetricsUserConfigSourceMysql {
     public static Builder builder(GetServiceIntegrationMetricsUserConfigSourceMysql defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationMetricsUserConfigSourceMysql defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.telegraf = defaults.telegraf;
         }
 
+        @CustomType.Setter
         public Builder telegraf(@Nullable GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf) {
             this.telegraf = telegraf;
             return this;
-        }        public GetServiceIntegrationMetricsUserConfigSourceMysql build() {
-            return new GetServiceIntegrationMetricsUserConfigSourceMysql(telegraf);
+        }
+        public GetServiceIntegrationMetricsUserConfigSourceMysql build() {
+            final var o = new GetServiceIntegrationMetricsUserConfigSourceMysql();
+            o.telegraf = telegraf;
+            return o;
         }
     }
 }

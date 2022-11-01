@@ -15,13 +15,9 @@ public final class GrafanaGrafanaUserConfigPrivatelinkAccess {
      * @return Grafana server provided values
      * 
      */
-    private final @Nullable String grafana;
+    private @Nullable String grafana;
 
-    @CustomType.Constructor
-    private GrafanaGrafanaUserConfigPrivatelinkAccess(@CustomType.Parameter("grafana") @Nullable String grafana) {
-        this.grafana = grafana;
-    }
-
+    private GrafanaGrafanaUserConfigPrivatelinkAccess() {}
     /**
      * @return Grafana server provided values
      * 
@@ -37,24 +33,24 @@ public final class GrafanaGrafanaUserConfigPrivatelinkAccess {
     public static Builder builder(GrafanaGrafanaUserConfigPrivatelinkAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String grafana;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GrafanaGrafanaUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.grafana = defaults.grafana;
         }
 
+        @CustomType.Setter
         public Builder grafana(@Nullable String grafana) {
             this.grafana = grafana;
             return this;
-        }        public GrafanaGrafanaUserConfigPrivatelinkAccess build() {
-            return new GrafanaGrafanaUserConfigPrivatelinkAccess(grafana);
+        }
+        public GrafanaGrafanaUserConfigPrivatelinkAccess build() {
+            final var o = new GrafanaGrafanaUserConfigPrivatelinkAccess();
+            o.grafana = grafana;
+            return o;
         }
     }
 }

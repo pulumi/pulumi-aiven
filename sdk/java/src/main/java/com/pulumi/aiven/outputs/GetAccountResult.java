@@ -13,63 +13,44 @@ public final class GetAccountResult {
      * @return Account id
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return Time of creation
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Account name
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Owner team id
      * 
      */
-    private final String ownerTeamId;
+    private String ownerTeamId;
     /**
      * @return Billing group id
      * 
      */
-    private final String primaryBillingGroupId;
+    private String primaryBillingGroupId;
     /**
      * @return Tenant id
      * 
      */
-    private final String tenantId;
+    private String tenantId;
     /**
      * @return Time of last update
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetAccountResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("ownerTeamId") String ownerTeamId,
-        @CustomType.Parameter("primaryBillingGroupId") String primaryBillingGroupId,
-        @CustomType.Parameter("tenantId") String tenantId,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.accountId = accountId;
-        this.createTime = createTime;
-        this.id = id;
-        this.name = name;
-        this.ownerTeamId = ownerTeamId;
-        this.primaryBillingGroupId = primaryBillingGroupId;
-        this.tenantId = tenantId;
-        this.updateTime = updateTime;
-    }
-
+    private GetAccountResult() {}
     /**
      * @return Account id
      * 
@@ -134,7 +115,7 @@ public final class GetAccountResult {
     public static Builder builder(GetAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String createTime;
@@ -144,11 +125,7 @@ public final class GetAccountResult {
         private String primaryBillingGroupId;
         private String tenantId;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -161,39 +138,57 @@ public final class GetAccountResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerTeamId(String ownerTeamId) {
             this.ownerTeamId = Objects.requireNonNull(ownerTeamId);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryBillingGroupId(String primaryBillingGroupId) {
             this.primaryBillingGroupId = Objects.requireNonNull(primaryBillingGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetAccountResult build() {
-            return new GetAccountResult(accountId, createTime, id, name, ownerTeamId, primaryBillingGroupId, tenantId, updateTime);
+        }
+        public GetAccountResult build() {
+            final var o = new GetAccountResult();
+            o.accountId = accountId;
+            o.createTime = createTime;
+            o.id = id;
+            o.name = name;
+            o.ownerTeamId = ownerTeamId;
+            o.primaryBillingGroupId = primaryBillingGroupId;
+            o.tenantId = tenantId;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

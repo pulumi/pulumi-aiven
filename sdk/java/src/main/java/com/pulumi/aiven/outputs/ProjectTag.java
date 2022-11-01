@@ -13,21 +13,14 @@ public final class ProjectTag {
      * @return Project tag key
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Project tag value
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ProjectTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private ProjectTag() {}
     /**
      * @return Project tag key
      * 
@@ -50,30 +43,32 @@ public final class ProjectTag {
     public static Builder builder(ProjectTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ProjectTag build() {
-            return new ProjectTag(key, value);
+        }
+        public ProjectTag build() {
+            final var o = new ProjectTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

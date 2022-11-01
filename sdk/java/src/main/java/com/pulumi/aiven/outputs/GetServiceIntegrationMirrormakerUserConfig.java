@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationMirrormakerUserConfig {
-    private final @Nullable String mirrormakerWhitelist;
+    private @Nullable String mirrormakerWhitelist;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationMirrormakerUserConfig(@CustomType.Parameter("mirrormakerWhitelist") @Nullable String mirrormakerWhitelist) {
-        this.mirrormakerWhitelist = mirrormakerWhitelist;
-    }
-
+    private GetServiceIntegrationMirrormakerUserConfig() {}
     public Optional<String> mirrormakerWhitelist() {
         return Optional.ofNullable(this.mirrormakerWhitelist);
     }
@@ -29,24 +25,24 @@ public final class GetServiceIntegrationMirrormakerUserConfig {
     public static Builder builder(GetServiceIntegrationMirrormakerUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mirrormakerWhitelist;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationMirrormakerUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mirrormakerWhitelist = defaults.mirrormakerWhitelist;
         }
 
+        @CustomType.Setter
         public Builder mirrormakerWhitelist(@Nullable String mirrormakerWhitelist) {
             this.mirrormakerWhitelist = mirrormakerWhitelist;
             return this;
-        }        public GetServiceIntegrationMirrormakerUserConfig build() {
-            return new GetServiceIntegrationMirrormakerUserConfig(mirrormakerWhitelist);
+        }
+        public GetServiceIntegrationMirrormakerUserConfig build() {
+            final var o = new GetServiceIntegrationMirrormakerUserConfig();
+            o.mirrormakerWhitelist = mirrormakerWhitelist;
+            return o;
         }
     }
 }

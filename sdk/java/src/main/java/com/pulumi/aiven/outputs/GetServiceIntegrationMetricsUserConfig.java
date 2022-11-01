@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationMetricsUserConfig {
-    private final @Nullable String database;
-    private final @Nullable String retentionDays;
-    private final @Nullable String roUsername;
-    private final @Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
-    private final @Nullable String username;
+    private @Nullable String database;
+    private @Nullable String retentionDays;
+    private @Nullable String roUsername;
+    private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationMetricsUserConfig(
-        @CustomType.Parameter("database") @Nullable String database,
-        @CustomType.Parameter("retentionDays") @Nullable String retentionDays,
-        @CustomType.Parameter("roUsername") @Nullable String roUsername,
-        @CustomType.Parameter("sourceMysql") @Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.database = database;
-        this.retentionDays = retentionDays;
-        this.roUsername = roUsername;
-        this.sourceMysql = sourceMysql;
-        this.username = username;
-    }
-
+    private GetServiceIntegrationMetricsUserConfig() {}
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
@@ -55,18 +42,14 @@ public final class GetServiceIntegrationMetricsUserConfig {
     public static Builder builder(GetServiceIntegrationMetricsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String database;
         private @Nullable String retentionDays;
         private @Nullable String roUsername;
         private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationMetricsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
@@ -76,27 +59,39 @@ public final class GetServiceIntegrationMetricsUserConfig {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder database(@Nullable String database) {
             this.database = database;
             return this;
         }
+        @CustomType.Setter
         public Builder retentionDays(@Nullable String retentionDays) {
             this.retentionDays = retentionDays;
             return this;
         }
+        @CustomType.Setter
         public Builder roUsername(@Nullable String roUsername) {
             this.roUsername = roUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceMysql(@Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql) {
             this.sourceMysql = sourceMysql;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public GetServiceIntegrationMetricsUserConfig build() {
-            return new GetServiceIntegrationMetricsUserConfig(database, retentionDays, roUsername, sourceMysql, username);
+        }
+        public GetServiceIntegrationMetricsUserConfig build() {
+            final var o = new GetServiceIntegrationMetricsUserConfig();
+            o.database = database;
+            o.retentionDays = retentionDays;
+            o.roUsername = roUsername;
+            o.sourceMysql = sourceMysql;
+            o.username = username;
+            return o;
         }
     }
 }

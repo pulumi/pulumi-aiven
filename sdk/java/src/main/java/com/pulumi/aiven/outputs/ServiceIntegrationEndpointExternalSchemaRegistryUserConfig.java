@@ -15,35 +15,24 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
      * @return Authentication method
      * 
      */
-    private final @Nullable String authentication;
+    private @Nullable String authentication;
     /**
      * @return Basic authentication password
      * 
      */
-    private final @Nullable String basicAuthPassword;
+    private @Nullable String basicAuthPassword;
     /**
      * @return Basic authentication user name
      * 
      */
-    private final @Nullable String basicAuthUsername;
+    private @Nullable String basicAuthUsername;
     /**
      * @return Schema Registry URL
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(
-        @CustomType.Parameter("authentication") @Nullable String authentication,
-        @CustomType.Parameter("basicAuthPassword") @Nullable String basicAuthPassword,
-        @CustomType.Parameter("basicAuthUsername") @Nullable String basicAuthUsername,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.authentication = authentication;
-        this.basicAuthPassword = basicAuthPassword;
-        this.basicAuthUsername = basicAuthUsername;
-        this.url = url;
-    }
-
+    private ServiceIntegrationEndpointExternalSchemaRegistryUserConfig() {}
     /**
      * @return Authentication method
      * 
@@ -80,17 +69,13 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     public static Builder builder(ServiceIntegrationEndpointExternalSchemaRegistryUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authentication;
         private @Nullable String basicAuthPassword;
         private @Nullable String basicAuthUsername;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalSchemaRegistryUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authentication = defaults.authentication;
@@ -99,23 +84,33 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder authentication(@Nullable String authentication) {
             this.authentication = authentication;
             return this;
         }
+        @CustomType.Setter
         public Builder basicAuthPassword(@Nullable String basicAuthPassword) {
             this.basicAuthPassword = basicAuthPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder basicAuthUsername(@Nullable String basicAuthUsername) {
             this.basicAuthUsername = basicAuthUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ServiceIntegrationEndpointExternalSchemaRegistryUserConfig build() {
-            return new ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(authentication, basicAuthPassword, basicAuthUsername, url);
+        }
+        public ServiceIntegrationEndpointExternalSchemaRegistryUserConfig build() {
+            final var o = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfig();
+            o.authentication = authentication;
+            o.basicAuthPassword = basicAuthPassword;
+            o.basicAuthUsername = basicAuthUsername;
+            o.url = url;
+            return o;
         }
     }
 }

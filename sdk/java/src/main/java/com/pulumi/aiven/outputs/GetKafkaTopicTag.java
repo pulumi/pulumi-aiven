@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaTopicTag {
-    private final String key;
-    private final @Nullable String value;
+    private String key;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private GetKafkaTopicTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetKafkaTopicTag() {}
     public String key() {
         return this.key;
     }
@@ -36,30 +29,32 @@ public final class GetKafkaTopicTag {
     public static Builder builder(GetKafkaTopicTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaTopicTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public GetKafkaTopicTag build() {
-            return new GetKafkaTopicTag(key, value);
+        }
+        public GetKafkaTopicTag build() {
+            final var o = new GetKafkaTopicTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

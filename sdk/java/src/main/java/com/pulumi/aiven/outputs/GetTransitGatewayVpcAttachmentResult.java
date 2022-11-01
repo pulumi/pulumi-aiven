@@ -16,70 +16,49 @@ public final class GetTransitGatewayVpcAttachmentResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String peerCloudAccount;
+    private String peerCloudAccount;
     /**
      * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
      * 
      */
-    private final String peerRegion;
+    private String peerRegion;
     /**
      * @return Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String peerVpc;
+    private String peerVpc;
     /**
      * @return Cloud provider identifier for the peering connection if available
      * 
      */
-    private final String peeringConnectionId;
+    private String peeringConnectionId;
     /**
      * @return State of the peering connection
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return State-specific help or error information
      * 
      */
-    private final Map<String,Object> stateInfo;
+    private Map<String,Object> stateInfo;
     /**
      * @return List of private IPv4 ranges to route through the peering connection
      * 
      */
-    private final List<String> userPeerNetworkCidrs;
+    private List<String> userPeerNetworkCidrs;
     /**
      * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetTransitGatewayVpcAttachmentResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("peerCloudAccount") String peerCloudAccount,
-        @CustomType.Parameter("peerRegion") String peerRegion,
-        @CustomType.Parameter("peerVpc") String peerVpc,
-        @CustomType.Parameter("peeringConnectionId") String peeringConnectionId,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("stateInfo") Map<String,Object> stateInfo,
-        @CustomType.Parameter("userPeerNetworkCidrs") List<String> userPeerNetworkCidrs,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.id = id;
-        this.peerCloudAccount = peerCloudAccount;
-        this.peerRegion = peerRegion;
-        this.peerVpc = peerVpc;
-        this.peeringConnectionId = peeringConnectionId;
-        this.state = state;
-        this.stateInfo = stateInfo;
-        this.userPeerNetworkCidrs = userPeerNetworkCidrs;
-        this.vpcId = vpcId;
-    }
-
+    private GetTransitGatewayVpcAttachmentResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -151,7 +130,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
     public static Builder builder(GetTransitGatewayVpcAttachmentResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String peerCloudAccount;
@@ -162,11 +141,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
         private Map<String,Object> stateInfo;
         private List<String> userPeerNetworkCidrs;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitGatewayVpcAttachmentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -180,34 +155,42 @@ public final class GetTransitGatewayVpcAttachmentResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder peerCloudAccount(String peerCloudAccount) {
             this.peerCloudAccount = Objects.requireNonNull(peerCloudAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder peerRegion(String peerRegion) {
             this.peerRegion = Objects.requireNonNull(peerRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder peerVpc(String peerVpc) {
             this.peerVpc = Objects.requireNonNull(peerVpc);
             return this;
         }
+        @CustomType.Setter
         public Builder peeringConnectionId(String peeringConnectionId) {
             this.peeringConnectionId = Objects.requireNonNull(peeringConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
             this.stateInfo = Objects.requireNonNull(stateInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder userPeerNetworkCidrs(List<String> userPeerNetworkCidrs) {
             this.userPeerNetworkCidrs = Objects.requireNonNull(userPeerNetworkCidrs);
             return this;
@@ -215,11 +198,23 @@ public final class GetTransitGatewayVpcAttachmentResult {
         public Builder userPeerNetworkCidrs(String... userPeerNetworkCidrs) {
             return userPeerNetworkCidrs(List.of(userPeerNetworkCidrs));
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetTransitGatewayVpcAttachmentResult build() {
-            return new GetTransitGatewayVpcAttachmentResult(id, peerCloudAccount, peerRegion, peerVpc, peeringConnectionId, state, stateInfo, userPeerNetworkCidrs, vpcId);
+        }
+        public GetTransitGatewayVpcAttachmentResult build() {
+            final var o = new GetTransitGatewayVpcAttachmentResult();
+            o.id = id;
+            o.peerCloudAccount = peerCloudAccount;
+            o.peerRegion = peerRegion;
+            o.peerVpc = peerVpc;
+            o.peeringConnectionId = peeringConnectionId;
+            o.state = state;
+            o.stateInfo = stateInfo;
+            o.userPeerNetworkCidrs = userPeerNetworkCidrs;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

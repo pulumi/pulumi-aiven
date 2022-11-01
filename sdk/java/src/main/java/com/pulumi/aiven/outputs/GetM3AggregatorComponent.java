@@ -11,32 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetM3AggregatorComponent {
-    private final String component;
-    private final String host;
-    private final String kafkaAuthenticationMethod;
-    private final Integer port;
-    private final String route;
-    private final Boolean ssl;
-    private final String usage;
+    private String component;
+    private String host;
+    private String kafkaAuthenticationMethod;
+    private Integer port;
+    private String route;
+    private Boolean ssl;
+    private String usage;
 
-    @CustomType.Constructor
-    private GetM3AggregatorComponent(
-        @CustomType.Parameter("component") String component,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("kafkaAuthenticationMethod") String kafkaAuthenticationMethod,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("route") String route,
-        @CustomType.Parameter("ssl") Boolean ssl,
-        @CustomType.Parameter("usage") String usage) {
-        this.component = component;
-        this.host = host;
-        this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-        this.port = port;
-        this.route = route;
-        this.ssl = ssl;
-        this.usage = usage;
-    }
-
+    private GetM3AggregatorComponent() {}
     public String component() {
         return this.component;
     }
@@ -66,7 +49,7 @@ public final class GetM3AggregatorComponent {
     public static Builder builder(GetM3AggregatorComponent defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String component;
         private String host;
@@ -75,11 +58,7 @@ public final class GetM3AggregatorComponent {
         private String route;
         private Boolean ssl;
         private String usage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3AggregatorComponent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.component = defaults.component;
@@ -91,35 +70,51 @@ public final class GetM3AggregatorComponent {
     	      this.usage = defaults.usage;
         }
 
+        @CustomType.Setter
         public Builder component(String component) {
             this.component = Objects.requireNonNull(component);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaAuthenticationMethod(String kafkaAuthenticationMethod) {
             this.kafkaAuthenticationMethod = Objects.requireNonNull(kafkaAuthenticationMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder route(String route) {
             this.route = Objects.requireNonNull(route);
             return this;
         }
+        @CustomType.Setter
         public Builder ssl(Boolean ssl) {
             this.ssl = Objects.requireNonNull(ssl);
             return this;
         }
+        @CustomType.Setter
         public Builder usage(String usage) {
             this.usage = Objects.requireNonNull(usage);
             return this;
-        }        public GetM3AggregatorComponent build() {
-            return new GetM3AggregatorComponent(component, host, kafkaAuthenticationMethod, port, route, ssl, usage);
+        }
+        public GetM3AggregatorComponent build() {
+            final var o = new GetM3AggregatorComponent();
+            o.component = component;
+            o.host = host;
+            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            o.port = port;
+            o.route = route;
+            o.ssl = ssl;
+            o.usage = usage;
+            return o;
         }
     }
 }

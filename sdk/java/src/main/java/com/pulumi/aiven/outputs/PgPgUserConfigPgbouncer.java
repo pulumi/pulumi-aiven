@@ -12,38 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigPgbouncer {
-    private final @Nullable String autodbIdleTimeout;
-    private final @Nullable String autodbMaxDbConnections;
-    private final @Nullable String autodbPoolMode;
-    private final @Nullable String autodbPoolSize;
-    private final @Nullable List<String> ignoreStartupParameters;
-    private final @Nullable String minPoolSize;
-    private final @Nullable String serverIdleTimeout;
-    private final @Nullable String serverLifetime;
-    private final @Nullable String serverResetQueryAlways;
+    private @Nullable String autodbIdleTimeout;
+    private @Nullable String autodbMaxDbConnections;
+    private @Nullable String autodbPoolMode;
+    private @Nullable String autodbPoolSize;
+    private @Nullable List<String> ignoreStartupParameters;
+    private @Nullable String minPoolSize;
+    private @Nullable String serverIdleTimeout;
+    private @Nullable String serverLifetime;
+    private @Nullable String serverResetQueryAlways;
 
-    @CustomType.Constructor
-    private PgPgUserConfigPgbouncer(
-        @CustomType.Parameter("autodbIdleTimeout") @Nullable String autodbIdleTimeout,
-        @CustomType.Parameter("autodbMaxDbConnections") @Nullable String autodbMaxDbConnections,
-        @CustomType.Parameter("autodbPoolMode") @Nullable String autodbPoolMode,
-        @CustomType.Parameter("autodbPoolSize") @Nullable String autodbPoolSize,
-        @CustomType.Parameter("ignoreStartupParameters") @Nullable List<String> ignoreStartupParameters,
-        @CustomType.Parameter("minPoolSize") @Nullable String minPoolSize,
-        @CustomType.Parameter("serverIdleTimeout") @Nullable String serverIdleTimeout,
-        @CustomType.Parameter("serverLifetime") @Nullable String serverLifetime,
-        @CustomType.Parameter("serverResetQueryAlways") @Nullable String serverResetQueryAlways) {
-        this.autodbIdleTimeout = autodbIdleTimeout;
-        this.autodbMaxDbConnections = autodbMaxDbConnections;
-        this.autodbPoolMode = autodbPoolMode;
-        this.autodbPoolSize = autodbPoolSize;
-        this.ignoreStartupParameters = ignoreStartupParameters;
-        this.minPoolSize = minPoolSize;
-        this.serverIdleTimeout = serverIdleTimeout;
-        this.serverLifetime = serverLifetime;
-        this.serverResetQueryAlways = serverResetQueryAlways;
-    }
-
+    private PgPgUserConfigPgbouncer() {}
     public Optional<String> autodbIdleTimeout() {
         return Optional.ofNullable(this.autodbIdleTimeout);
     }
@@ -79,7 +58,7 @@ public final class PgPgUserConfigPgbouncer {
     public static Builder builder(PgPgUserConfigPgbouncer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String autodbIdleTimeout;
         private @Nullable String autodbMaxDbConnections;
@@ -90,11 +69,7 @@ public final class PgPgUserConfigPgbouncer {
         private @Nullable String serverIdleTimeout;
         private @Nullable String serverLifetime;
         private @Nullable String serverResetQueryAlways;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PgPgUserConfigPgbouncer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autodbIdleTimeout = defaults.autodbIdleTimeout;
@@ -108,22 +83,27 @@ public final class PgPgUserConfigPgbouncer {
     	      this.serverResetQueryAlways = defaults.serverResetQueryAlways;
         }
 
+        @CustomType.Setter
         public Builder autodbIdleTimeout(@Nullable String autodbIdleTimeout) {
             this.autodbIdleTimeout = autodbIdleTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder autodbMaxDbConnections(@Nullable String autodbMaxDbConnections) {
             this.autodbMaxDbConnections = autodbMaxDbConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder autodbPoolMode(@Nullable String autodbPoolMode) {
             this.autodbPoolMode = autodbPoolMode;
             return this;
         }
+        @CustomType.Setter
         public Builder autodbPoolSize(@Nullable String autodbPoolSize) {
             this.autodbPoolSize = autodbPoolSize;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreStartupParameters(@Nullable List<String> ignoreStartupParameters) {
             this.ignoreStartupParameters = ignoreStartupParameters;
             return this;
@@ -131,23 +111,38 @@ public final class PgPgUserConfigPgbouncer {
         public Builder ignoreStartupParameters(String... ignoreStartupParameters) {
             return ignoreStartupParameters(List.of(ignoreStartupParameters));
         }
+        @CustomType.Setter
         public Builder minPoolSize(@Nullable String minPoolSize) {
             this.minPoolSize = minPoolSize;
             return this;
         }
+        @CustomType.Setter
         public Builder serverIdleTimeout(@Nullable String serverIdleTimeout) {
             this.serverIdleTimeout = serverIdleTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder serverLifetime(@Nullable String serverLifetime) {
             this.serverLifetime = serverLifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder serverResetQueryAlways(@Nullable String serverResetQueryAlways) {
             this.serverResetQueryAlways = serverResetQueryAlways;
             return this;
-        }        public PgPgUserConfigPgbouncer build() {
-            return new PgPgUserConfigPgbouncer(autodbIdleTimeout, autodbMaxDbConnections, autodbPoolMode, autodbPoolSize, ignoreStartupParameters, minPoolSize, serverIdleTimeout, serverLifetime, serverResetQueryAlways);
+        }
+        public PgPgUserConfigPgbouncer build() {
+            final var o = new PgPgUserConfigPgbouncer();
+            o.autodbIdleTimeout = autodbIdleTimeout;
+            o.autodbMaxDbConnections = autodbMaxDbConnections;
+            o.autodbPoolMode = autodbPoolMode;
+            o.autodbPoolSize = autodbPoolSize;
+            o.ignoreStartupParameters = ignoreStartupParameters;
+            o.minPoolSize = minPoolSize;
+            o.serverIdleTimeout = serverIdleTimeout;
+            o.serverLifetime = serverLifetime;
+            o.serverResetQueryAlways = serverResetQueryAlways;
+            return o;
         }
     }
 }

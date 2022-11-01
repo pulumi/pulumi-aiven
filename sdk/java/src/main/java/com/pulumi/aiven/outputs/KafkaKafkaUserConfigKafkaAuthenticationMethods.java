@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
-    private final @Nullable String certificate;
-    private final @Nullable String sasl;
+    private @Nullable String certificate;
+    private @Nullable String sasl;
 
-    @CustomType.Constructor
-    private KafkaKafkaUserConfigKafkaAuthenticationMethods(
-        @CustomType.Parameter("certificate") @Nullable String certificate,
-        @CustomType.Parameter("sasl") @Nullable String sasl) {
-        this.certificate = certificate;
-        this.sasl = sasl;
-    }
-
+    private KafkaKafkaUserConfigKafkaAuthenticationMethods() {}
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
@@ -36,30 +29,32 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
     public static Builder builder(KafkaKafkaUserConfigKafkaAuthenticationMethods defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificate;
         private @Nullable String sasl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaKafkaUserConfigKafkaAuthenticationMethods defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
     	      this.sasl = defaults.sasl;
         }
 
+        @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
             this.certificate = certificate;
             return this;
         }
+        @CustomType.Setter
         public Builder sasl(@Nullable String sasl) {
             this.sasl = sasl;
             return this;
-        }        public KafkaKafkaUserConfigKafkaAuthenticationMethods build() {
-            return new KafkaKafkaUserConfigKafkaAuthenticationMethods(certificate, sasl);
+        }
+        public KafkaKafkaUserConfigKafkaAuthenticationMethods build() {
+            final var o = new KafkaKafkaUserConfigKafkaAuthenticationMethods();
+            o.certificate = certificate;
+            o.sasl = sasl;
+            return o;
         }
     }
 }

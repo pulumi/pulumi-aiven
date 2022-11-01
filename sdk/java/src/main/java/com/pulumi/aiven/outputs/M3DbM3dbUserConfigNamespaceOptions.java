@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigNamespaceOptions {
-    private final @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
-    private final @Nullable String snapshotEnabled;
-    private final @Nullable String writesToCommitlog;
+    private @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
+    private @Nullable String snapshotEnabled;
+    private @Nullable String writesToCommitlog;
 
-    @CustomType.Constructor
-    private M3DbM3dbUserConfigNamespaceOptions(
-        @CustomType.Parameter("retentionOptions") @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions,
-        @CustomType.Parameter("snapshotEnabled") @Nullable String snapshotEnabled,
-        @CustomType.Parameter("writesToCommitlog") @Nullable String writesToCommitlog) {
-        this.retentionOptions = retentionOptions;
-        this.snapshotEnabled = snapshotEnabled;
-        this.writesToCommitlog = writesToCommitlog;
-    }
-
+    private M3DbM3dbUserConfigNamespaceOptions() {}
     public Optional<M3DbM3dbUserConfigNamespaceOptionsRetentionOptions> retentionOptions() {
         return Optional.ofNullable(this.retentionOptions);
     }
@@ -43,16 +34,12 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
     public static Builder builder(M3DbM3dbUserConfigNamespaceOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
         private @Nullable String snapshotEnabled;
         private @Nullable String writesToCommitlog;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbM3dbUserConfigNamespaceOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retentionOptions = defaults.retentionOptions;
@@ -60,19 +47,27 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
     	      this.writesToCommitlog = defaults.writesToCommitlog;
         }
 
+        @CustomType.Setter
         public Builder retentionOptions(@Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions) {
             this.retentionOptions = retentionOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotEnabled(@Nullable String snapshotEnabled) {
             this.snapshotEnabled = snapshotEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder writesToCommitlog(@Nullable String writesToCommitlog) {
             this.writesToCommitlog = writesToCommitlog;
             return this;
-        }        public M3DbM3dbUserConfigNamespaceOptions build() {
-            return new M3DbM3dbUserConfigNamespaceOptions(retentionOptions, snapshotEnabled, writesToCommitlog);
+        }
+        public M3DbM3dbUserConfigNamespaceOptions build() {
+            final var o = new M3DbM3dbUserConfigNamespaceOptions();
+            o.retentionOptions = retentionOptions;
+            o.snapshotEnabled = snapshotEnabled;
+            o.writesToCommitlog = writesToCommitlog;
+            return o;
         }
     }
 }

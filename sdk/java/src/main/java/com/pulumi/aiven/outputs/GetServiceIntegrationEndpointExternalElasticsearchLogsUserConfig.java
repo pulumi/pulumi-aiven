@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
-    private final @Nullable String ca;
-    private final @Nullable String indexDaysMax;
-    private final @Nullable String indexPrefix;
-    private final @Nullable String timeout;
-    private final @Nullable String url;
+    private @Nullable String ca;
+    private @Nullable String indexDaysMax;
+    private @Nullable String indexPrefix;
+    private @Nullable String timeout;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(
-        @CustomType.Parameter("ca") @Nullable String ca,
-        @CustomType.Parameter("indexDaysMax") @Nullable String indexDaysMax,
-        @CustomType.Parameter("indexPrefix") @Nullable String indexPrefix,
-        @CustomType.Parameter("timeout") @Nullable String timeout,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.ca = ca;
-        this.indexDaysMax = indexDaysMax;
-        this.indexPrefix = indexPrefix;
-        this.timeout = timeout;
-        this.url = url;
-    }
-
+    private GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig() {}
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
@@ -54,18 +41,14 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
     public static Builder builder(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable String indexDaysMax;
         private @Nullable String indexPrefix;
         private @Nullable String timeout;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ca = defaults.ca;
@@ -75,27 +58,39 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder ca(@Nullable String ca) {
             this.ca = ca;
             return this;
         }
+        @CustomType.Setter
         public Builder indexDaysMax(@Nullable String indexDaysMax) {
             this.indexDaysMax = indexDaysMax;
             return this;
         }
+        @CustomType.Setter
         public Builder indexPrefix(@Nullable String indexPrefix) {
             this.indexPrefix = indexPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
             this.timeout = timeout;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {
-            return new GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(ca, indexDaysMax, indexPrefix, timeout, url);
+        }
+        public GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {
+            final var o = new GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig();
+            o.ca = ca;
+            o.indexDaysMax = indexDaysMax;
+            o.indexPrefix = indexPrefix;
+            o.timeout = timeout;
+            o.url = url;
+            return o;
         }
     }
 }

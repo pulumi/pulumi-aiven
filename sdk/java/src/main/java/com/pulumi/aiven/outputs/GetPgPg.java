@@ -10,38 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPgPg {
-    private final String dbname;
-    private final String host;
-    private final Integer maxConnections;
-    private final String password;
-    private final Integer port;
-    private final String replicaUri;
-    private final String sslmode;
-    private final String uri;
-    private final String user;
+    private String dbname;
+    private String host;
+    private Integer maxConnections;
+    private String password;
+    private Integer port;
+    private String replicaUri;
+    private String sslmode;
+    private String uri;
+    private String user;
 
-    @CustomType.Constructor
-    private GetPgPg(
-        @CustomType.Parameter("dbname") String dbname,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("maxConnections") Integer maxConnections,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("replicaUri") String replicaUri,
-        @CustomType.Parameter("sslmode") String sslmode,
-        @CustomType.Parameter("uri") String uri,
-        @CustomType.Parameter("user") String user) {
-        this.dbname = dbname;
-        this.host = host;
-        this.maxConnections = maxConnections;
-        this.password = password;
-        this.port = port;
-        this.replicaUri = replicaUri;
-        this.sslmode = sslmode;
-        this.uri = uri;
-        this.user = user;
-    }
-
+    private GetPgPg() {}
     public String dbname() {
         return this.dbname;
     }
@@ -77,7 +56,7 @@ public final class GetPgPg {
     public static Builder builder(GetPgPg defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbname;
         private String host;
@@ -88,11 +67,7 @@ public final class GetPgPg {
         private String sslmode;
         private String uri;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPgPg defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbname = defaults.dbname;
@@ -106,43 +81,63 @@ public final class GetPgPg {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder dbname(String dbname) {
             this.dbname = Objects.requireNonNull(dbname);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder replicaUri(String replicaUri) {
             this.replicaUri = Objects.requireNonNull(replicaUri);
             return this;
         }
+        @CustomType.Setter
         public Builder sslmode(String sslmode) {
             this.sslmode = Objects.requireNonNull(sslmode);
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public GetPgPg build() {
-            return new GetPgPg(dbname, host, maxConnections, password, port, replicaUri, sslmode, uri, user);
+        }
+        public GetPgPg build() {
+            final var o = new GetPgPg();
+            o.dbname = dbname;
+            o.host = host;
+            o.maxConnections = maxConnections;
+            o.password = password;
+            o.port = port;
+            o.replicaUri = replicaUri;
+            o.sslmode = sslmode;
+            o.uri = uri;
+            o.user = user;
+            return o;
         }
     }
 }

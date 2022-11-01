@@ -16,28 +16,19 @@ public final class ServiceIntegrationEndpointSignalfxUserConfig {
      * @return list of metrics to send
      * 
      */
-    private final @Nullable List<String> enabledMetrics;
+    private @Nullable List<String> enabledMetrics;
     /**
      * @return SignalFX API key
      * 
      */
-    private final @Nullable String signalfxApiKey;
+    private @Nullable String signalfxApiKey;
     /**
      * @return SignalFX realm
      * 
      */
-    private final @Nullable String signalfxRealm;
+    private @Nullable String signalfxRealm;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointSignalfxUserConfig(
-        @CustomType.Parameter("enabledMetrics") @Nullable List<String> enabledMetrics,
-        @CustomType.Parameter("signalfxApiKey") @Nullable String signalfxApiKey,
-        @CustomType.Parameter("signalfxRealm") @Nullable String signalfxRealm) {
-        this.enabledMetrics = enabledMetrics;
-        this.signalfxApiKey = signalfxApiKey;
-        this.signalfxRealm = signalfxRealm;
-    }
-
+    private ServiceIntegrationEndpointSignalfxUserConfig() {}
     /**
      * @return list of metrics to send
      * 
@@ -67,16 +58,12 @@ public final class ServiceIntegrationEndpointSignalfxUserConfig {
     public static Builder builder(ServiceIntegrationEndpointSignalfxUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> enabledMetrics;
         private @Nullable String signalfxApiKey;
         private @Nullable String signalfxRealm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointSignalfxUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabledMetrics = defaults.enabledMetrics;
@@ -84,6 +71,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfig {
     	      this.signalfxRealm = defaults.signalfxRealm;
         }
 
+        @CustomType.Setter
         public Builder enabledMetrics(@Nullable List<String> enabledMetrics) {
             this.enabledMetrics = enabledMetrics;
             return this;
@@ -91,15 +79,22 @@ public final class ServiceIntegrationEndpointSignalfxUserConfig {
         public Builder enabledMetrics(String... enabledMetrics) {
             return enabledMetrics(List.of(enabledMetrics));
         }
+        @CustomType.Setter
         public Builder signalfxApiKey(@Nullable String signalfxApiKey) {
             this.signalfxApiKey = signalfxApiKey;
             return this;
         }
+        @CustomType.Setter
         public Builder signalfxRealm(@Nullable String signalfxRealm) {
             this.signalfxRealm = signalfxRealm;
             return this;
-        }        public ServiceIntegrationEndpointSignalfxUserConfig build() {
-            return new ServiceIntegrationEndpointSignalfxUserConfig(enabledMetrics, signalfxApiKey, signalfxRealm);
+        }
+        public ServiceIntegrationEndpointSignalfxUserConfig build() {
+            final var o = new ServiceIntegrationEndpointSignalfxUserConfig();
+            o.enabledMetrics = enabledMetrics;
+            o.signalfxApiKey = signalfxApiKey;
+            o.signalfxRealm = signalfxRealm;
+            return o;
         }
     }
 }

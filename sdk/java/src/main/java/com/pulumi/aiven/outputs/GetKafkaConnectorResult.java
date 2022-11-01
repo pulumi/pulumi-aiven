@@ -16,91 +16,64 @@ public final class GetKafkaConnectorResult {
      * @return The Kafka Connector configuration parameters.
      * 
      */
-    private final Map<String,String> config;
+    private Map<String,String> config;
     /**
      * @return The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String connectorName;
+    private String connectorName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Kafka connector author.
      * 
      */
-    private final String pluginAuthor;
+    private String pluginAuthor;
     /**
      * @return The Kafka connector Java class.
      * 
      */
-    private final String pluginClass;
+    private String pluginClass;
     /**
      * @return The Kafka connector documentation URL.
      * 
      */
-    private final String pluginDocUrl;
+    private String pluginDocUrl;
     /**
      * @return The Kafka connector title.
      * 
      */
-    private final String pluginTitle;
+    private String pluginTitle;
     /**
      * @return The Kafka connector type.
      * 
      */
-    private final String pluginType;
+    private String pluginType;
     /**
      * @return The version of the kafka connector.
      * 
      */
-    private final String pluginVersion;
+    private String pluginVersion;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return List of tasks of a connector.
      * 
      */
-    private final List<GetKafkaConnectorTask> tasks;
+    private List<GetKafkaConnectorTask> tasks;
 
-    @CustomType.Constructor
-    private GetKafkaConnectorResult(
-        @CustomType.Parameter("config") Map<String,String> config,
-        @CustomType.Parameter("connectorName") String connectorName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("pluginAuthor") String pluginAuthor,
-        @CustomType.Parameter("pluginClass") String pluginClass,
-        @CustomType.Parameter("pluginDocUrl") String pluginDocUrl,
-        @CustomType.Parameter("pluginTitle") String pluginTitle,
-        @CustomType.Parameter("pluginType") String pluginType,
-        @CustomType.Parameter("pluginVersion") String pluginVersion,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("tasks") List<GetKafkaConnectorTask> tasks) {
-        this.config = config;
-        this.connectorName = connectorName;
-        this.id = id;
-        this.pluginAuthor = pluginAuthor;
-        this.pluginClass = pluginClass;
-        this.pluginDocUrl = pluginDocUrl;
-        this.pluginTitle = pluginTitle;
-        this.pluginType = pluginType;
-        this.pluginVersion = pluginVersion;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.tasks = tasks;
-    }
-
+    private GetKafkaConnectorResult() {}
     /**
      * @return The Kafka Connector configuration parameters.
      * 
@@ -193,7 +166,7 @@ public final class GetKafkaConnectorResult {
     public static Builder builder(GetKafkaConnectorResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> config;
         private String connectorName;
@@ -207,11 +180,7 @@ public final class GetKafkaConnectorResult {
         private String project;
         private String serviceName;
         private List<GetKafkaConnectorTask> tasks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -228,58 +197,84 @@ public final class GetKafkaConnectorResult {
     	      this.tasks = defaults.tasks;
         }
 
+        @CustomType.Setter
         public Builder config(Map<String,String> config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
+        @CustomType.Setter
         public Builder connectorName(String connectorName) {
             this.connectorName = Objects.requireNonNull(connectorName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder pluginAuthor(String pluginAuthor) {
             this.pluginAuthor = Objects.requireNonNull(pluginAuthor);
             return this;
         }
+        @CustomType.Setter
         public Builder pluginClass(String pluginClass) {
             this.pluginClass = Objects.requireNonNull(pluginClass);
             return this;
         }
+        @CustomType.Setter
         public Builder pluginDocUrl(String pluginDocUrl) {
             this.pluginDocUrl = Objects.requireNonNull(pluginDocUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder pluginTitle(String pluginTitle) {
             this.pluginTitle = Objects.requireNonNull(pluginTitle);
             return this;
         }
+        @CustomType.Setter
         public Builder pluginType(String pluginType) {
             this.pluginType = Objects.requireNonNull(pluginType);
             return this;
         }
+        @CustomType.Setter
         public Builder pluginVersion(String pluginVersion) {
             this.pluginVersion = Objects.requireNonNull(pluginVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder tasks(List<GetKafkaConnectorTask> tasks) {
             this.tasks = Objects.requireNonNull(tasks);
             return this;
         }
         public Builder tasks(GetKafkaConnectorTask... tasks) {
             return tasks(List.of(tasks));
-        }        public GetKafkaConnectorResult build() {
-            return new GetKafkaConnectorResult(config, connectorName, id, pluginAuthor, pluginClass, pluginDocUrl, pluginTitle, pluginType, pluginVersion, project, serviceName, tasks);
+        }
+        public GetKafkaConnectorResult build() {
+            final var o = new GetKafkaConnectorResult();
+            o.config = config;
+            o.connectorName = connectorName;
+            o.id = id;
+            o.pluginAuthor = pluginAuthor;
+            o.pluginClass = pluginClass;
+            o.pluginDocUrl = pluginDocUrl;
+            o.pluginTitle = pluginTitle;
+            o.pluginType = pluginType;
+            o.pluginVersion = pluginVersion;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.tasks = tasks;
+            return o;
         }
     }
 }

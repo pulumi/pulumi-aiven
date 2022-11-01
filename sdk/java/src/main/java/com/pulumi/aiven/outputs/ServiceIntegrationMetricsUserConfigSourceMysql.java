@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationMetricsUserConfigSourceMysql {
-    private final @Nullable ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
+    private @Nullable ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
 
-    @CustomType.Constructor
-    private ServiceIntegrationMetricsUserConfigSourceMysql(@CustomType.Parameter("telegraf") @Nullable ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf) {
-        this.telegraf = telegraf;
-    }
-
+    private ServiceIntegrationMetricsUserConfigSourceMysql() {}
     public Optional<ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf> telegraf() {
         return Optional.ofNullable(this.telegraf);
     }
@@ -29,24 +25,24 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysql {
     public static Builder builder(ServiceIntegrationMetricsUserConfigSourceMysql defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationMetricsUserConfigSourceMysql defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.telegraf = defaults.telegraf;
         }
 
+        @CustomType.Setter
         public Builder telegraf(@Nullable ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf) {
             this.telegraf = telegraf;
             return this;
-        }        public ServiceIntegrationMetricsUserConfigSourceMysql build() {
-            return new ServiceIntegrationMetricsUserConfigSourceMysql(telegraf);
+        }
+        public ServiceIntegrationMetricsUserConfigSourceMysql build() {
+            final var o = new ServiceIntegrationMetricsUserConfigSourceMysql();
+            o.telegraf = telegraf;
+            return o;
         }
     }
 }

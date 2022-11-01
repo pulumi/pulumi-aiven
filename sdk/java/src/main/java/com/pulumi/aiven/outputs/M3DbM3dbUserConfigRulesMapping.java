@@ -13,29 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigRulesMapping {
-    private final @Nullable List<String> aggregations;
-    private final @Nullable String drop;
-    private final @Nullable String filter;
-    private final @Nullable String name;
-    private final @Nullable List<String> namespaces;
-    private final @Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags;
+    private @Nullable List<String> aggregations;
+    private @Nullable String drop;
+    private @Nullable String filter;
+    private @Nullable String name;
+    private @Nullable List<String> namespaces;
+    private @Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags;
 
-    @CustomType.Constructor
-    private M3DbM3dbUserConfigRulesMapping(
-        @CustomType.Parameter("aggregations") @Nullable List<String> aggregations,
-        @CustomType.Parameter("drop") @Nullable String drop,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("namespaces") @Nullable List<String> namespaces,
-        @CustomType.Parameter("tags") @Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags) {
-        this.aggregations = aggregations;
-        this.drop = drop;
-        this.filter = filter;
-        this.name = name;
-        this.namespaces = namespaces;
-        this.tags = tags;
-    }
-
+    private M3DbM3dbUserConfigRulesMapping() {}
     public List<String> aggregations() {
         return this.aggregations == null ? List.of() : this.aggregations;
     }
@@ -62,7 +47,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
     public static Builder builder(M3DbM3dbUserConfigRulesMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> aggregations;
         private @Nullable String drop;
@@ -70,11 +55,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
         private @Nullable String name;
         private @Nullable List<String> namespaces;
         private @Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbM3dbUserConfigRulesMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregations = defaults.aggregations;
@@ -85,6 +66,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder aggregations(@Nullable List<String> aggregations) {
             this.aggregations = aggregations;
             return this;
@@ -92,18 +74,22 @@ public final class M3DbM3dbUserConfigRulesMapping {
         public Builder aggregations(String... aggregations) {
             return aggregations(List.of(aggregations));
         }
+        @CustomType.Setter
         public Builder drop(@Nullable String drop) {
             this.drop = drop;
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder namespaces(@Nullable List<String> namespaces) {
             this.namespaces = namespaces;
             return this;
@@ -111,14 +97,23 @@ public final class M3DbM3dbUserConfigRulesMapping {
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags) {
             this.tags = tags;
             return this;
         }
         public Builder tags(M3DbM3dbUserConfigRulesMappingTag... tags) {
             return tags(List.of(tags));
-        }        public M3DbM3dbUserConfigRulesMapping build() {
-            return new M3DbM3dbUserConfigRulesMapping(aggregations, drop, filter, name, namespaces, tags);
+        }
+        public M3DbM3dbUserConfigRulesMapping build() {
+            final var o = new M3DbM3dbUserConfigRulesMapping();
+            o.aggregations = aggregations;
+            o.drop = drop;
+            o.filter = filter;
+            o.name = name;
+            o.namespaces = namespaces;
+            o.tags = tags;
+            return o;
         }
     }
 }

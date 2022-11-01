@@ -17,67 +17,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMySqlMysqlUserConfig {
-    private final @Nullable String adminPassword;
-    private final @Nullable String adminUsername;
-    private final @Nullable String backupHour;
-    private final @Nullable String backupMinute;
-    private final @Nullable String binlogRetentionPeriod;
-    private final @Nullable List<String> ipFilters;
-    private final @Nullable GetMySqlMysqlUserConfigMigration migration;
+    private @Nullable String adminPassword;
+    private @Nullable String adminUsername;
+    private @Nullable String backupHour;
+    private @Nullable String backupMinute;
+    private @Nullable String binlogRetentionPeriod;
+    private @Nullable List<String> ipFilters;
+    private @Nullable GetMySqlMysqlUserConfigMigration migration;
     /**
      * @return MySQL specific server provided values
      * 
      */
-    private final @Nullable GetMySqlMysqlUserConfigMysql mysql;
-    private final @Nullable String mysqlVersion;
-    private final @Nullable GetMySqlMysqlUserConfigPrivateAccess privateAccess;
-    private final @Nullable GetMySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
-    private final @Nullable String projectToForkFrom;
-    private final @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess;
-    private final @Nullable String recoveryTargetTime;
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable GetMySqlMysqlUserConfigMysql mysql;
+    private @Nullable String mysqlVersion;
+    private @Nullable GetMySqlMysqlUserConfigPrivateAccess privateAccess;
+    private @Nullable GetMySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable String projectToForkFrom;
+    private @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess;
+    private @Nullable String recoveryTargetTime;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetMySqlMysqlUserConfig(
-        @CustomType.Parameter("adminPassword") @Nullable String adminPassword,
-        @CustomType.Parameter("adminUsername") @Nullable String adminUsername,
-        @CustomType.Parameter("backupHour") @Nullable String backupHour,
-        @CustomType.Parameter("backupMinute") @Nullable String backupMinute,
-        @CustomType.Parameter("binlogRetentionPeriod") @Nullable String binlogRetentionPeriod,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("migration") @Nullable GetMySqlMysqlUserConfigMigration migration,
-        @CustomType.Parameter("mysql") @Nullable GetMySqlMysqlUserConfigMysql mysql,
-        @CustomType.Parameter("mysqlVersion") @Nullable String mysqlVersion,
-        @CustomType.Parameter("privateAccess") @Nullable GetMySqlMysqlUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable GetMySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("recoveryTargetTime") @Nullable String recoveryTargetTime,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.adminPassword = adminPassword;
-        this.adminUsername = adminUsername;
-        this.backupHour = backupHour;
-        this.backupMinute = backupMinute;
-        this.binlogRetentionPeriod = binlogRetentionPeriod;
-        this.ipFilters = ipFilters;
-        this.migration = migration;
-        this.mysql = mysql;
-        this.mysqlVersion = mysqlVersion;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.recoveryTargetTime = recoveryTargetTime;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private GetMySqlMysqlUserConfig() {}
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
@@ -142,7 +107,7 @@ public final class GetMySqlMysqlUserConfig {
     public static Builder builder(GetMySqlMysqlUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
@@ -160,11 +125,7 @@ public final class GetMySqlMysqlUserConfig {
         private @Nullable String recoveryTargetTime;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMySqlMysqlUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminPassword = defaults.adminPassword;
@@ -185,26 +146,32 @@ public final class GetMySqlMysqlUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
             this.adminUsername = adminUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder backupHour(@Nullable String backupHour) {
             this.backupHour = backupHour;
             return this;
         }
+        @CustomType.Setter
         public Builder backupMinute(@Nullable String backupMinute) {
             this.backupMinute = backupMinute;
             return this;
         }
+        @CustomType.Setter
         public Builder binlogRetentionPeriod(@Nullable String binlogRetentionPeriod) {
             this.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -212,47 +179,75 @@ public final class GetMySqlMysqlUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder migration(@Nullable GetMySqlMysqlUserConfigMigration migration) {
             this.migration = migration;
             return this;
         }
+        @CustomType.Setter
         public Builder mysql(@Nullable GetMySqlMysqlUserConfigMysql mysql) {
             this.mysql = mysql;
             return this;
         }
+        @CustomType.Setter
         public Builder mysqlVersion(@Nullable String mysqlVersion) {
             this.mysqlVersion = mysqlVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetMySqlMysqlUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetMySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryTargetTime(@Nullable String recoveryTargetTime) {
             this.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetMySqlMysqlUserConfig build() {
-            return new GetMySqlMysqlUserConfig(adminPassword, adminUsername, backupHour, backupMinute, binlogRetentionPeriod, ipFilters, migration, mysql, mysqlVersion, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, staticIps);
+        }
+        public GetMySqlMysqlUserConfig build() {
+            final var o = new GetMySqlMysqlUserConfig();
+            o.adminPassword = adminPassword;
+            o.adminUsername = adminUsername;
+            o.backupHour = backupHour;
+            o.backupMinute = backupMinute;
+            o.binlogRetentionPeriod = binlogRetentionPeriod;
+            o.ipFilters = ipFilters;
+            o.migration = migration;
+            o.mysql = mysql;
+            o.mysqlVersion = mysqlVersion;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.recoveryTargetTime = recoveryTargetTime;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

@@ -13,49 +13,34 @@ public final class GetOpenSearchAclRuleResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String index;
+    private String index;
     /**
      * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      * 
      */
-    private final String permission;
+    private String permission;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetOpenSearchAclRuleResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("index") String index,
-        @CustomType.Parameter("permission") String permission,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("username") String username) {
-        this.id = id;
-        this.index = index;
-        this.permission = permission;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.username = username;
-    }
-
+    private GetOpenSearchAclRuleResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -106,7 +91,7 @@ public final class GetOpenSearchAclRuleResult {
     public static Builder builder(GetOpenSearchAclRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String index;
@@ -114,11 +99,7 @@ public final class GetOpenSearchAclRuleResult {
         private String project;
         private String serviceName;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenSearchAclRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -129,31 +110,45 @@ public final class GetOpenSearchAclRuleResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder index(String index) {
             this.index = Objects.requireNonNull(index);
             return this;
         }
+        @CustomType.Setter
         public Builder permission(String permission) {
             this.permission = Objects.requireNonNull(permission);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetOpenSearchAclRuleResult build() {
-            return new GetOpenSearchAclRuleResult(id, index, permission, project, serviceName, username);
+        }
+        public GetOpenSearchAclRuleResult build() {
+            final var o = new GetOpenSearchAclRuleResult();
+            o.id = id;
+            o.index = index;
+            o.permission = permission;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.username = username;
+            return o;
         }
     }
 }

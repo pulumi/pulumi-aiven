@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetM3DbTag {
-    private final String key;
-    private final String value;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetM3DbTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetM3DbTag() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class GetM3DbTag {
     public static Builder builder(GetM3DbTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3DbTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetM3DbTag build() {
-            return new GetM3DbTag(key, value);
+        }
+        public GetM3DbTag build() {
+            final var o = new GetM3DbTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }
