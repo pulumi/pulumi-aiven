@@ -11,7 +11,7 @@ replace (
 
 require (
 	github.com/aiven/terraform-provider-aiven/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.2-0.20230126023157-70901f5aa496
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.2
 	github.com/pulumi/pulumi/pkg/v3 v3.53.1 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.53.1
 )
