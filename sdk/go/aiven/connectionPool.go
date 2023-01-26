@@ -29,12 +29,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewConnectionPool(ctx, "mytestpool", &aiven.ConnectionPoolArgs{
 //				Project:      pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName:  pulumi.Any(aiven_service.Myservice.Service_name),
-//				DatabaseName: pulumi.Any(aiven_database.Mydatabase.Database_name),
+//				ServiceName:  pulumi.Any(aiven_pg.Mypg.Service_name),
+//				DatabaseName: pulumi.Any(aiven_pg_database.Mypgdatabase.Database_name),
 //				PoolMode:     pulumi.String("transaction"),
 //				PoolName:     pulumi.String("mypool"),
 //				PoolSize:     pulumi.Int(10),
-//				Username:     pulumi.Any(aiven_service_user.Myserviceuser.Username),
+//				Username:     pulumi.Any(aiven_pg_user.Mypguser.Username),
 //			})
 //			if err != nil {
 //				return err
@@ -92,6 +92,10 @@ func NewConnectionPool(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"connectionUri",
+	})
+	opts = append(opts, secrets)
 	var resource ConnectionPool
 	err := ctx.RegisterResource("aiven:index/connectionPool:ConnectionPool", name, args, &resource, opts...)
 	if err != nil {

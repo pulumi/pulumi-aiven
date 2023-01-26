@@ -15,13 +15,13 @@ namespace Pulumi.Aiven
         /// The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
         /// </summary>
         public static Task<GetKafkaSchemaRegistryAclResult> InvokeAsync(GetKafkaSchemaRegistryAclArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
         /// </summary>
         public static Output<GetKafkaSchemaRegistryAclResult> Invoke(GetKafkaSchemaRegistryAclInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclInvokeArgs(), options.WithDefaults());
     }
 
 

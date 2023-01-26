@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.PgPgUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.PgPgUserConfigMigration;
 import com.pulumi.aiven.outputs.PgPgUserConfigPg;
 import com.pulumi.aiven.outputs.PgPgUserConfigPgbouncer;
@@ -20,6 +21,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfig {
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
     /**
      * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
      * 
@@ -41,12 +47,17 @@ public final class PgPgUserConfig {
      */
     private @Nullable String backupMinute;
     /**
-     * @return Enable IPv6
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports
      * 
      */
     private @Nullable String enableIpv6;
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
@@ -61,9 +72,11 @@ public final class PgPgUserConfig {
      */
     private @Nullable PgPgUserConfigPg pg;
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @deprecated
+     * This setting is deprecated. Use read_replica service integration instead.
      * 
      */
+    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
     private @Nullable String pgReadReplica;
     /**
      * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
@@ -71,7 +84,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable String pgServiceToForkFrom;
     /**
-     * @return Enable pg*stat*monitor extension if available for the current cluster
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
      * 
      */
     private @Nullable String pgStatMonitorEnable;
@@ -121,12 +134,12 @@ public final class PgPgUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return shared*buffers*percentage
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
      * 
      */
     private @Nullable String sharedBuffersPercentage;
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     private @Nullable String staticIps;
@@ -146,12 +159,19 @@ public final class PgPgUserConfig {
      */
     private @Nullable String variant;
     /**
-     * @return work_mem
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      * 
      */
     private @Nullable String workMem;
 
     private PgPgUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     /**
      * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
      * 
@@ -181,14 +201,21 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.backupMinute);
     }
     /**
-     * @return Enable IPv6
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports
      * 
      */
     public Optional<String> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<PgPgUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
@@ -209,9 +236,11 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pg);
     }
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @deprecated
+     * This setting is deprecated. Use read_replica service integration instead.
      * 
      */
+    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
     public Optional<String> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
@@ -223,7 +252,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
     /**
-     * @return Enable pg*stat*monitor extension if available for the current cluster
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
      * 
      */
     public Optional<String> pgStatMonitorEnable() {
@@ -293,14 +322,14 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return shared*buffers*percentage
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
      * 
      */
     public Optional<String> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<String> staticIps() {
@@ -328,7 +357,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.variant);
     }
     /**
-     * @return work_mem
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      * 
      */
     public Optional<String> workMem() {
@@ -344,11 +373,13 @@ public final class PgPgUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
         private @Nullable String backupHour;
         private @Nullable String backupMinute;
         private @Nullable String enableIpv6;
+        private @Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable PgPgUserConfigMigration migration;
         private @Nullable PgPgUserConfigPg pg;
@@ -373,11 +404,13 @@ public final class PgPgUserConfig {
         public Builder() {}
         public Builder(PgPgUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.adminPassword = defaults.adminPassword;
     	      this.adminUsername = defaults.adminUsername;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
     	      this.enableIpv6 = defaults.enableIpv6;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.pg = defaults.pg;
@@ -402,6 +435,11 @@ public final class PgPgUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
             return this;
@@ -425,6 +463,14 @@ public final class PgPgUserConfig {
         public Builder enableIpv6(@Nullable String enableIpv6) {
             this.enableIpv6 = enableIpv6;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(PgPgUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -536,11 +582,13 @@ public final class PgPgUserConfig {
         }
         public PgPgUserConfig build() {
             final var o = new PgPgUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.adminPassword = adminPassword;
             o.adminUsername = adminUsername;
             o.backupHour = backupHour;
             o.backupMinute = backupMinute;
             o.enableIpv6 = enableIpv6;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.pg = pg;

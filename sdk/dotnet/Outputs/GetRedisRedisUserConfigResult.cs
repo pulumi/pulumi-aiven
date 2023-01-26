@@ -13,6 +13,8 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetRedisRedisUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
+        public readonly ImmutableArray<Outputs.GetRedisRedisUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetRedisRedisUserConfigMigrationResult? Migration;
         public readonly Outputs.GetRedisRedisUserConfigPrivateAccessResult? PrivateAccess;
@@ -39,6 +41,10 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetRedisRedisUserConfigResult(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.GetRedisRedisUserConfigIpFilterObjectResult> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.GetRedisRedisUserConfigMigrationResult? migration,
@@ -79,6 +85,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Migration = migration;
             PrivateAccess = privateAccess;

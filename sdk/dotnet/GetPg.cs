@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPgResult> InvokeAsync(GetPgArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgArgs(), options.WithDefaults());
 
         /// <summary>
         /// The PG data source provides information about the existing Aiven PostgreSQL service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPgResult> Invoke(GetPgInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgInvokeArgs(), options.WithDefaults());
     }
 
 

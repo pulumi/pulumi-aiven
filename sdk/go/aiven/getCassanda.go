@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupCassandra(ctx, &GetCassandraArgs{
+//			_, err := aiven.LookupCassandra(ctx, &aiven.LookupCassandraArgs{
 //				Project:     data.Aiven_project.Foo.Project,
 //				ServiceName: "<SERVICE_NAME>",
 //			}, nil)

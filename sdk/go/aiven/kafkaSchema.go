@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaSchema(ctx, "kafka-schema1", &aiven.KafkaSchemaArgs{
-//				Project:            pulumi.Any(aiven_project.Kafka - schemas - project1.Project),
-//				ServiceName:        pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
+//				Project:            pulumi.Any(aiven_project.KafkaSchemasProject1.Project),
+//				ServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),
 //				SubjectName:        pulumi.String("kafka-schema1"),
 //				CompatibilityLevel: pulumi.String("FORWARD"),
 //				Schema: pulumi.String(fmt.Sprintf(`    {

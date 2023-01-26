@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectUserResult> InvokeAsync(GetProjectUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Project User data source provides information about the existing Aiven Project User.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectUserResult> Invoke(GetProjectUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -26,11 +26,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &GetMirrorMakerReplicationFlowArgs{
-//				Project:       aiven_project.Kafka - mm - project1.Project,
-//				ServiceName:   aiven_service.Mm.Service_name,
-//				SourceCluster: aiven_service.Source.Service_name,
-//				TargetCluster: aiven_service.Target.Service_name,
+//			_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &aiven.LookupMirrorMakerReplicationFlowArgs{
+//				Project:       aiven_project.KafkaMmProject1.Project,
+//				ServiceName:   aiven_kafka.Mm.Service_name,
+//				SourceCluster: aiven_kafka.Source.Service_name,
+//				TargetCluster: aiven_kafka.Target.Service_name,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -69,6 +69,8 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	Enable bool `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Offset syncs topic location.
+	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -146,6 +148,11 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) Enable() pulumi.BoolOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupMirrorMakerReplicationFlowResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Offset syncs topic location.
+func (o LookupMirrorMakerReplicationFlowResultOutput) OffsetSyncsTopicLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.OffsetSyncsTopicLocation }).(pulumi.StringOutput)
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

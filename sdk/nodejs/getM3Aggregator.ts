@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getM3Aggregator(args: GetM3AggregatorArgs, opts?: pulumi.InvokeOptions): Promise<GetM3AggregatorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getM3Aggregator:getM3Aggregator", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetM3AggregatorResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const m3a = aiven.getM3Aggregator({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "my-m3a",
+ * });
+ * ```
+ */
 export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3AggregatorResult> {
-    return pulumi.output(args).apply(a => getM3Aggregator(a, opts))
+    return pulumi.output(args).apply((a: any) => getM3Aggregator(a, opts))
 }
 
 /**

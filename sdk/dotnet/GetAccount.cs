@@ -36,7 +36,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Account data source provides information about the existing Aiven Account.
@@ -63,7 +63,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -112,6 +112,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// If true, user is part of the owners team for this account
+        /// </summary>
+        public readonly bool IsAccountOwner;
+        /// <summary>
         /// Account name
         /// </summary>
         public readonly string Name;
@@ -140,6 +144,8 @@ namespace Pulumi.Aiven
 
             string id,
 
+            bool isAccountOwner,
+
             string name,
 
             string ownerTeamId,
@@ -153,6 +159,7 @@ namespace Pulumi.Aiven
             AccountId = accountId;
             CreateTime = createTime;
             Id = id;
+            IsAccountOwner = isAccountOwner;
             Name = name;
             OwnerTeamId = ownerTeamId;
             PrimaryBillingGroupId = primaryBillingGroupId;

@@ -152,7 +152,7 @@ def get_kafka_topic(project: Optional[str] = None,
     import pulumi_aiven as aiven
 
     mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"],
+        service_name=aiven_kafka["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
 
@@ -195,7 +195,7 @@ def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi_aiven as aiven
 
     mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"],
+        service_name=aiven_kafka["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
 

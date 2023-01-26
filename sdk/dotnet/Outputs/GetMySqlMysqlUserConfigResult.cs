@@ -13,11 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetMySqlMysqlUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? AdminPassword;
         public readonly string? AdminUsername;
         public readonly string? BackupHour;
         public readonly string? BackupMinute;
         public readonly string? BinlogRetentionPeriod;
+        public readonly ImmutableArray<Outputs.GetMySqlMysqlUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetMySqlMysqlUserConfigMigrationResult? Migration;
         /// <summary>
@@ -38,6 +40,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetMySqlMysqlUserConfigResult(
+            string? additionalBackupRegions,
+
             string? adminPassword,
 
             string? adminUsername,
@@ -47,6 +51,8 @@ namespace Pulumi.Aiven.Outputs
             string? backupMinute,
 
             string? binlogRetentionPeriod,
+
+            ImmutableArray<Outputs.GetMySqlMysqlUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -70,11 +76,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             BinlogRetentionPeriod = binlogRetentionPeriod;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Migration = migration;
             Mysql = mysql;

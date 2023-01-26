@@ -184,7 +184,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="kafkaMirrormakerUserConfigs")
     def kafka_mirrormaker_user_configs(self) -> Sequence['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult']:
         """
-        Kafka*mirrormaker user configurable settings
+        KafkaMirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_configs")
 

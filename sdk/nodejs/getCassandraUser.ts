@@ -13,19 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = pulumi.output(aiven.getCassandraUser({
+ * const user = aiven.getCassandraUser({
  *     project: "my-project",
  *     serviceName: "my-service",
  *     username: "user1",
- * }));
+ * });
  * ```
  */
 export function getCassandraUser(args: GetCassandraUserArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getCassandraUser:getCassandraUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -88,9 +85,24 @@ export interface GetCassandraUserResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getCassandraUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
+ */
 export function getCassandraUserOutput(args: GetCassandraUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraUserResult> {
-    return pulumi.output(args).apply(a => getCassandraUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getCassandraUser(a, opts))
 }
 
 /**

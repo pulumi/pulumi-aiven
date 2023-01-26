@@ -167,7 +167,16 @@ def get_service_component(component: Optional[str] = None,
 
     ## Example Usage
 
-    {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
+        service_name=aiven_kafka["service1"]["service_name"],
+        component="kafka",
+        route="dynamic",
+        kafka_authentication_method="certificate")
+    ```
 
 
     :param str component: Service component name
@@ -218,7 +227,16 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
+        service_name=aiven_kafka["service1"]["service_name"],
+        component="kafka",
+        route="dynamic",
+        kafka_authentication_method="certificate")
+    ```
 
 
     :param str component: Service component name

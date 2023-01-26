@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var mytesttopic = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_kafka.Myservice.Service_name,
         ///         TopicName = "&lt;TOPIC_NAME&gt;",
         ///     });
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaTopicResult> InvokeAsync(GetKafkaTopicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         ///     var mytesttopic = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_kafka.Myservice.Service_name,
         ///         TopicName = "&lt;TOPIC_NAME&gt;",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaTopicResult> Invoke(GetKafkaTopicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicInvokeArgs(), options.WithDefaults());
     }
 
 

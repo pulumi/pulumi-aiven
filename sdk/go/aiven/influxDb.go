@@ -34,8 +34,8 @@ import (
 //				ServiceName:           pulumi.String("my-inf1"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				InfluxdbUserConfig: &InfluxDbInfluxdbUserConfigArgs{
-//					PublicAccess: &InfluxDbInfluxdbUserConfigPublicAccessArgs{
+//				InfluxdbUserConfig: &aiven.InfluxDbInfluxdbUserConfigArgs{
+//					PublicAccess: &aiven.InfluxDbInfluxdbUserConfigPublicAccessArgs{
 //						Influxdb: pulumi.String("true"),
 //					},
 //				},
@@ -128,6 +128,11 @@ func NewInfluxDb(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource InfluxDb
 	err := ctx.RegisterResource("aiven:index/influxDb:InfluxDb", name, args, &resource, opts...)
 	if err != nil {

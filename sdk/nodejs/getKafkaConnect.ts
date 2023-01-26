@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaConnect(args: GetKafkaConnectArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaConnect:getKafkaConnect", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -87,7 +85,7 @@ export interface GetKafkaConnectResult {
      */
     readonly id: string;
     /**
-     * Kafka*connect user configurable settings
+     * KafkaConnect user configurable settings
      */
     readonly kafkaConnectUserConfigs: outputs.GetKafkaConnectKafkaConnectUserConfig[];
     /**
@@ -163,9 +161,23 @@ export interface GetKafkaConnectResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kc1 = aiven.getKafkaConnect({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-kc1",
+ * });
+ * ```
+ */
 export function getKafkaConnectOutput(args: GetKafkaConnectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConnectResult> {
-    return pulumi.output(args).apply(a => getKafkaConnect(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaConnect(a, opts))
 }
 
 /**

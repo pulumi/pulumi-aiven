@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const mytestacl = aiven.getKafkaAcl({
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_kafka.mykafka.service_name,
  *     topic: "<TOPIC_NAME_PATTERN>",
  *     permission: "<PERMISSON>",
  *     username: "<USERNAME_PATTERN>",
@@ -23,11 +23,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaAcl:getKafkaAcl", {
         "permission": args.permission,
         "project": args.project,
@@ -96,9 +93,26 @@ export interface GetKafkaAclResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestacl = aiven.getKafkaAcl({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.mykafka.service_name,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     permission: "<PERMISSON>",
+ *     username: "<USERNAME_PATTERN>",
+ * });
+ * ```
+ */
 export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
-    return pulumi.output(args).apply(a => getKafkaAcl(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaAcl(a, opts))
 }
 
 /**

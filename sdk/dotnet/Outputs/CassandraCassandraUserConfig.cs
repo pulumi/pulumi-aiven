@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class CassandraCassandraUserConfig
     {
         /// <summary>
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
         /// cassandra configuration values
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigCassandra? Cassandra;
@@ -22,11 +26,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CassandraVersion;
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CassandraCassandraUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Migration mode for the sstableloader utility
+        /// Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
         /// </summary>
         public readonly string? MigrateSstableloader;
         /// <summary>
@@ -46,15 +54,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Static IP addresses
+        /// When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+        /// </summary>
+        public readonly string? ServiceToJoinWith;
+        /// <summary>
+        /// Use static public IP addresses
         /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private CassandraCassandraUserConfig(
+            string? additionalBackupRegions,
+
             Outputs.CassandraCassandraUserConfigCassandra? cassandra,
 
             string? cassandraVersion,
+
+            ImmutableArray<Outputs.CassandraCassandraUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -68,16 +84,21 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
+            string? serviceToJoinWith,
+
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             Cassandra = cassandra;
             CassandraVersion = cassandraVersion;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
+            ServiceToJoinWith = serviceToJoinWith;
             StaticIps = staticIps;
         }
     }

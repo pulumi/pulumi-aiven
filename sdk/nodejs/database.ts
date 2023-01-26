@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const mydatabase = new aiven.Database("mydatabase", {
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_pg.mypg.service_name,
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```

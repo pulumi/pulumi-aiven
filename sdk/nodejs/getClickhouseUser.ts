@@ -21,11 +21,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getClickhouseUser:getClickhouseUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -84,9 +81,24 @@ export interface GetClickhouseUserResult {
      */
     readonly uuid: string;
 }
-
+/**
+ * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const ch-user = aiven.getClickhouseUser({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_clickhouse.myservice.service_name,
+ *     username: "<USERNAME>",
+ * });
+ * ```
+ */
 export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseUserResult> {
-    return pulumi.output(args).apply(a => getClickhouseUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getClickhouseUser(a, opts))
 }
 
 /**

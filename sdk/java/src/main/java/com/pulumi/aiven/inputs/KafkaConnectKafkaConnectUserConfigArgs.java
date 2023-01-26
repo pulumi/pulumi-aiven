@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs;
@@ -20,92 +21,58 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
 
     public static final KafkaConnectKafkaConnectUserConfigArgs Empty = new KafkaConnectKafkaConnectUserConfigArgs();
 
-    /**
-     * IP filter
-     * 
-     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    public Optional<Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
-    /**
-     * @return IP filter
-     * 
-     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
-    /**
-     * Kafka Connect configuration values
-     * 
-     */
     @Import(name="kafkaConnect")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigKafkaConnectArgs> kafkaConnect;
 
-    /**
-     * @return Kafka Connect configuration values
-     * 
-     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigKafkaConnectArgs>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
-    /**
-     * Allow access to selected service ports from private networks
-     * 
-     */
     @Import(name="privateAccess")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigPrivateAccessArgs> privateAccess;
 
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
-    /**
-     * Allow access to selected service components through Privatelink
-     * 
-     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
-    /**
-     * Allow access to selected service ports from the public Internet
-     * 
-     */
     @Import(name="publicAccess")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigPublicAccessArgs> publicAccess;
 
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
-    /**
-     * Static IP addresses
-     * 
-     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -113,6 +80,8 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     private KafkaConnectKafkaConnectUserConfigArgs() {}
 
     private KafkaConnectKafkaConnectUserConfigArgs(KafkaConnectKafkaConnectUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.kafkaConnect = $.kafkaConnect;
         this.privateAccess = $.privateAccess;
@@ -139,138 +108,82 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
             $ = new KafkaConnectKafkaConnectUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ipFilters IP filter
-         * 
-         * @return builder
-         * 
-         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        public Builder ipFilterObjects(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        public Builder ipFilterObjects(List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        public Builder ipFilterObjects(KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
-        /**
-         * @param ipFilters IP filter
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
-        /**
-         * @param ipFilters IP filter
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
-        /**
-         * @param kafkaConnect Kafka Connect configuration values
-         * 
-         * @return builder
-         * 
-         */
         public Builder kafkaConnect(@Nullable Output<KafkaConnectKafkaConnectUserConfigKafkaConnectArgs> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
-        /**
-         * @param kafkaConnect Kafka Connect configuration values
-         * 
-         * @return builder
-         * 
-         */
         public Builder kafkaConnect(KafkaConnectKafkaConnectUserConfigKafkaConnectArgs kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
-        /**
-         * @param privateAccess Allow access to selected service ports from private networks
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateAccess(@Nullable Output<KafkaConnectKafkaConnectUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
-        /**
-         * @param privateAccess Allow access to selected service ports from private networks
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateAccess(KafkaConnectKafkaConnectUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
-        /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
-         * 
-         * @return builder
-         * 
-         */
         public Builder privatelinkAccess(@Nullable Output<KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
-        /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
-         * 
-         * @return builder
-         * 
-         */
         public Builder privatelinkAccess(KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
-        /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
-         * 
-         * @return builder
-         * 
-         */
         public Builder publicAccess(@Nullable Output<KafkaConnectKafkaConnectUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
-        /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
-         * 
-         * @return builder
-         * 
-         */
         public Builder publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
-        /**
-         * @param staticIps Static IP addresses
-         * 
-         * @return builder
-         * 
-         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
-        /**
-         * @param staticIps Static IP addresses
-         * 
-         * @return builder
-         * 
-         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

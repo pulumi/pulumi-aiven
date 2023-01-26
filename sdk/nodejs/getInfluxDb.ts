@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getInfluxDb(args: GetInfluxDbArgs, opts?: pulumi.InvokeOptions): Promise<GetInfluxDbResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getInfluxDb:getInfluxDb", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetInfluxDbResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const inf1 = aiven.getInfluxDb({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-inf1",
+ * });
+ * ```
+ */
 export function getInfluxDbOutput(args: GetInfluxDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxDbResult> {
-    return pulumi.output(args).apply(a => getInfluxDb(a, opts))
+    return pulumi.output(args).apply((a: any) => getInfluxDb(a, opts))
 }
 
 /**

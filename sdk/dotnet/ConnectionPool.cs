@@ -24,12 +24,12 @@ namespace Pulumi.Aiven
     ///     var mytestpool = new Aiven.ConnectionPool("mytestpool", new()
     ///     {
     ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_service.Myservice.Service_name,
-    ///         DatabaseName = aiven_database.Mydatabase.Database_name,
+    ///         ServiceName = aiven_pg.Mypg.Service_name,
+    ///         DatabaseName = aiven_pg_database.Mypgdatabase.Database_name,
     ///         PoolMode = "transaction",
     ///         PoolName = "mypool",
     ///         PoolSize = 10,
-    ///         Username = aiven_service_user.Myserviceuser.Username,
+    ///         Username = aiven_pg_user.Mypguser.Username,
     ///     });
     /// 
     /// });
@@ -115,6 +115,10 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "connectionUri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -188,11 +192,21 @@ namespace Pulumi.Aiven
 
     public sealed class ConnectionPoolState : global::Pulumi.ResourceArgs
     {
+        [Input("connectionUri")]
+        private Input<string>? _connectionUri;
+
         /// <summary>
         /// The URI for connecting to the pool
         /// </summary>
-        [Input("connectionUri")]
-        public Input<string>? ConnectionUri { get; set; }
+        public Input<string>? ConnectionUri
+        {
+            get => _connectionUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _connectionUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

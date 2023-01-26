@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafka;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectConfig;
@@ -21,12 +22,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafkaUserConfig {
     /**
-     * @return Custom domain
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     private @Nullable String customDomain;
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
@@ -91,21 +102,35 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     private @Nullable String staticIps;
 
     private KafkaKafkaUserConfig() {}
     /**
-     * @return Custom domain
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
@@ -196,7 +221,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<String> staticIps() {
@@ -212,7 +237,9 @@ public final class KafkaKafkaUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
+        private @Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable KafkaKafkaUserConfigKafka kafka;
         private @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
@@ -230,7 +257,9 @@ public final class KafkaKafkaUserConfig {
         public Builder() {}
         public Builder(KafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafka = defaults.kafka;
     	      this.kafkaAuthenticationMethods = defaults.kafkaAuthenticationMethods;
@@ -248,9 +277,22 @@ public final class KafkaKafkaUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(KafkaKafkaUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -327,7 +369,9 @@ public final class KafkaKafkaUserConfig {
         }
         public KafkaKafkaUserConfig build() {
             final var o = new KafkaKafkaUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.kafka = kafka;
             o.kafkaAuthenticationMethods = kafkaAuthenticationMethods;

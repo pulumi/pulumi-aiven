@@ -28,9 +28,9 @@ namespace Pulumi.Aiven
         ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
         ///         Project = aiven_project.Kafka_mm_project1.Project,
-        ///         ServiceName = aiven_service.Mm.Service_name,
-        ///         SourceCluster = aiven_service.Source.Service_name,
-        ///         TargetCluster = aiven_service.Target.Service_name,
+        ///         ServiceName = aiven_kafka.Mm.Service_name,
+        ///         SourceCluster = aiven_kafka.Source.Service_name,
+        ///         TargetCluster = aiven_kafka.Target.Service_name,
         ///     });
         /// 
         /// });
@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMirrorMakerReplicationFlowResult> InvokeAsync(GetMirrorMakerReplicationFlowArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithDefaults());
 
         /// <summary>
         /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
@@ -58,9 +58,9 @@ namespace Pulumi.Aiven
         ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
         ///         Project = aiven_project.Kafka_mm_project1.Project,
-        ///         ServiceName = aiven_service.Mm.Service_name,
-        ///         SourceCluster = aiven_service.Source.Service_name,
-        ///         TargetCluster = aiven_service.Target.Service_name,
+        ///         ServiceName = aiven_kafka.Mm.Service_name,
+        ///         SourceCluster = aiven_kafka.Source.Service_name,
+        ///         TargetCluster = aiven_kafka.Target.Service_name,
         ///     });
         /// 
         /// });
@@ -69,7 +69,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMirrorMakerReplicationFlowResult> Invoke(GetMirrorMakerReplicationFlowInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -154,6 +154,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Offset syncs topic location.
+        /// </summary>
+        public readonly string OffsetSyncsTopicLocation;
+        /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly string Project;
@@ -198,6 +202,8 @@ namespace Pulumi.Aiven
 
             string id,
 
+            string offsetSyncsTopicLocation,
+
             string project,
 
             string replicationPolicyClass,
@@ -219,6 +225,7 @@ namespace Pulumi.Aiven
             EmitHeartbeatsEnabled = emitHeartbeatsEnabled;
             Enable = enable;
             Id = id;
+            OffsetSyncsTopicLocation = offsetSyncsTopicLocation;
             Project = project;
             ReplicationPolicyClass = replicationPolicyClass;
             ServiceName = serviceName;

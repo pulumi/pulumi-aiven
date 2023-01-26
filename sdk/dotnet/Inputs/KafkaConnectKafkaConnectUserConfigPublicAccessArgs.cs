@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaConnectKafkaConnectUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Kafka Connect server provided values
-        /// </summary>
         [Input("kafkaConnect")]
         public Input<string>? KafkaConnect { get; set; }
 

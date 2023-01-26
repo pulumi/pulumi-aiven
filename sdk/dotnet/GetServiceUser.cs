@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var myserviceuser = Aiven.GetServiceUser.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
         ///         Username = "&lt;USERNAME&gt;",
         ///     });
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceUserResult> InvokeAsync(GetServiceUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Service User data source provides information about the existing Aiven Service User.
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         ///     var myserviceuser = Aiven.GetServiceUser.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
         ///         Username = "&lt;USERNAME&gt;",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceUserResult> Invoke(GetServiceUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserInvokeArgs(), options.WithDefaults());
     }
 
 

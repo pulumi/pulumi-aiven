@@ -59,13 +59,13 @@ import (
 //				Project:     clickhouse.Project,
 //				ServiceName: clickhouse.ServiceName,
 //				Role:        demoClickhouseRole.Role,
-//				PrivilegeGrants: ClickhouseGrantPrivilegeGrantArray{
-//					&ClickhouseGrantPrivilegeGrantArgs{
+//				PrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{
+//					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("INSERT"),
 //						Database:  demodb.Name,
 //						Table:     pulumi.String("*"),
 //					},
-//					&ClickhouseGrantPrivilegeGrantArgs{
+//					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("SELECT"),
 //						Database:  demodb.Name,
 //						Table:     pulumi.String("*"),
@@ -87,8 +87,8 @@ import (
 //				Project:     clickhouse.Project,
 //				ServiceName: clickhouse.ServiceName,
 //				User:        demoClickhouseUser.Username,
-//				RoleGrants: ClickhouseGrantRoleGrantArray{
-//					&ClickhouseGrantRoleGrantArgs{
+//				RoleGrants: aiven.ClickhouseGrantRoleGrantArray{
+//					&aiven.ClickhouseGrantRoleGrantArgs{
 //						Role: demoClickhouseRole.Role,
 //					},
 //				},

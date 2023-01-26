@@ -21,11 +21,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaConfigurationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -83,9 +80,24 @@ export interface GetKafkaSchemaConfigurationResult {
      */
     readonly version: number;
 }
-
+/**
+ * The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const config = new aiven.KafkaSchemaConfiguration("config", {
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     compatibilityLevel: "BACKWARD",
+ * });
+ * ```
+ */
 export function getKafkaSchemaConfigurationOutput(args: GetKafkaSchemaConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaConfigurationResult> {
-    return pulumi.output(args).apply(a => getKafkaSchemaConfiguration(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaSchemaConfiguration(a, opts))
 }
 
 /**

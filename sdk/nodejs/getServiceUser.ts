@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  *
  * const myserviceuser = aiven.getServiceUser({
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_pg.mypg.service_name,
  *     username: "<USERNAME>",
  * });
  * ```
  */
 export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getServiceUser:getServiceUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -112,9 +109,24 @@ export interface GetServiceUserResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Service User data source provides information about the existing Aiven Service User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myserviceuser = aiven.getServiceUser({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_pg.mypg.service_name,
+ *     username: "<USERNAME>",
+ * });
+ * ```
+ */
 export function getServiceUserOutput(args: GetServiceUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceUserResult> {
-    return pulumi.output(args).apply(a => getServiceUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceUser(a, opts))
 }
 
 /**

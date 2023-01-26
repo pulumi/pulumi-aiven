@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafka(args: GetKafkaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafka:getKafka", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -171,9 +169,23 @@ export interface GetKafkaResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Kafka data source provides information about the existing Aiven Kafka services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka1 = aiven.getKafka({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-kafka1",
+ * });
+ * ```
+ */
 export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaResult> {
-    return pulumi.output(args).apply(a => getKafka(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafka(a, opts))
 }
 
 /**

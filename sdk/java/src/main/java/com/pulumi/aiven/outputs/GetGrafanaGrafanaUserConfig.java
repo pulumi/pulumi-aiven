@@ -10,6 +10,7 @@ import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigAuthGitlab;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigDateFormats;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
+import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfigPublicAccess;
@@ -23,6 +24,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String alertingEnabled;
     private @Nullable String alertingErrorOrTimeout;
     private @Nullable String alertingMaxAnnotationsToKeep;
@@ -36,6 +38,7 @@ public final class GetGrafanaGrafanaUserConfig {
     private @Nullable GetGrafanaGrafanaUserConfigAuthGoogle authGoogle;
     private @Nullable String cookieSamesite;
     private @Nullable String customDomain;
+    private @Nullable String dashboardPreviewsEnabled;
     private @Nullable String dashboardsMinRefreshInterval;
     private @Nullable String dashboardsVersionsToKeep;
     private @Nullable String dataproxySendUserHeader;
@@ -45,6 +48,7 @@ public final class GetGrafanaGrafanaUserConfig {
     private @Nullable String editorsCanAdmin;
     private @Nullable GetGrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
     private @Nullable String googleAnalyticsUaId;
+    private @Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable String metricsEnabled;
     private @Nullable GetGrafanaGrafanaUserConfigPrivateAccess privateAccess;
@@ -64,6 +68,9 @@ public final class GetGrafanaGrafanaUserConfig {
     private @Nullable String viewersCanEdit;
 
     private GetGrafanaGrafanaUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> alertingEnabled() {
         return Optional.ofNullable(this.alertingEnabled);
     }
@@ -103,6 +110,9 @@ public final class GetGrafanaGrafanaUserConfig {
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    public Optional<String> dashboardPreviewsEnabled() {
+        return Optional.ofNullable(this.dashboardPreviewsEnabled);
+    }
     public Optional<String> dashboardsMinRefreshInterval() {
         return Optional.ofNullable(this.dashboardsMinRefreshInterval);
     }
@@ -129,6 +139,9 @@ public final class GetGrafanaGrafanaUserConfig {
     }
     public Optional<String> googleAnalyticsUaId() {
         return Optional.ofNullable(this.googleAnalyticsUaId);
+    }
+    public List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -183,6 +196,7 @@ public final class GetGrafanaGrafanaUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String alertingEnabled;
         private @Nullable String alertingErrorOrTimeout;
         private @Nullable String alertingMaxAnnotationsToKeep;
@@ -196,6 +210,7 @@ public final class GetGrafanaGrafanaUserConfig {
         private @Nullable GetGrafanaGrafanaUserConfigAuthGoogle authGoogle;
         private @Nullable String cookieSamesite;
         private @Nullable String customDomain;
+        private @Nullable String dashboardPreviewsEnabled;
         private @Nullable String dashboardsMinRefreshInterval;
         private @Nullable String dashboardsVersionsToKeep;
         private @Nullable String dataproxySendUserHeader;
@@ -205,6 +220,7 @@ public final class GetGrafanaGrafanaUserConfig {
         private @Nullable String editorsCanAdmin;
         private @Nullable GetGrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
         private @Nullable String googleAnalyticsUaId;
+        private @Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String metricsEnabled;
         private @Nullable GetGrafanaGrafanaUserConfigPrivateAccess privateAccess;
@@ -221,6 +237,7 @@ public final class GetGrafanaGrafanaUserConfig {
         public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.alertingEnabled = defaults.alertingEnabled;
     	      this.alertingErrorOrTimeout = defaults.alertingErrorOrTimeout;
     	      this.alertingMaxAnnotationsToKeep = defaults.alertingMaxAnnotationsToKeep;
@@ -234,6 +251,7 @@ public final class GetGrafanaGrafanaUserConfig {
     	      this.authGoogle = defaults.authGoogle;
     	      this.cookieSamesite = defaults.cookieSamesite;
     	      this.customDomain = defaults.customDomain;
+    	      this.dashboardPreviewsEnabled = defaults.dashboardPreviewsEnabled;
     	      this.dashboardsMinRefreshInterval = defaults.dashboardsMinRefreshInterval;
     	      this.dashboardsVersionsToKeep = defaults.dashboardsVersionsToKeep;
     	      this.dataproxySendUserHeader = defaults.dataproxySendUserHeader;
@@ -243,6 +261,7 @@ public final class GetGrafanaGrafanaUserConfig {
     	      this.editorsCanAdmin = defaults.editorsCanAdmin;
     	      this.externalImageStorage = defaults.externalImageStorage;
     	      this.googleAnalyticsUaId = defaults.googleAnalyticsUaId;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.metricsEnabled = defaults.metricsEnabled;
     	      this.privateAccess = defaults.privateAccess;
@@ -258,6 +277,11 @@ public final class GetGrafanaGrafanaUserConfig {
     	      this.viewersCanEdit = defaults.viewersCanEdit;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder alertingEnabled(@Nullable String alertingEnabled) {
             this.alertingEnabled = alertingEnabled;
@@ -324,6 +348,11 @@ public final class GetGrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder dashboardPreviewsEnabled(@Nullable String dashboardPreviewsEnabled) {
+            this.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dashboardsMinRefreshInterval(@Nullable String dashboardsMinRefreshInterval) {
             this.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             return this;
@@ -367,6 +396,14 @@ public final class GetGrafanaGrafanaUserConfig {
         public Builder googleAnalyticsUaId(@Nullable String googleAnalyticsUaId) {
             this.googleAnalyticsUaId = googleAnalyticsUaId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetGrafanaGrafanaUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -438,6 +475,7 @@ public final class GetGrafanaGrafanaUserConfig {
         }
         public GetGrafanaGrafanaUserConfig build() {
             final var o = new GetGrafanaGrafanaUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.alertingEnabled = alertingEnabled;
             o.alertingErrorOrTimeout = alertingErrorOrTimeout;
             o.alertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
@@ -451,6 +489,7 @@ public final class GetGrafanaGrafanaUserConfig {
             o.authGoogle = authGoogle;
             o.cookieSamesite = cookieSamesite;
             o.customDomain = customDomain;
+            o.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
             o.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             o.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             o.dataproxySendUserHeader = dataproxySendUserHeader;
@@ -460,6 +499,7 @@ public final class GetGrafanaGrafanaUserConfig {
             o.editorsCanAdmin = editorsCanAdmin;
             o.externalImageStorage = externalImageStorage;
             o.googleAnalyticsUaId = googleAnalyticsUaId;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.metricsEnabled = metricsEnabled;
             o.privateAccess = privateAccess;

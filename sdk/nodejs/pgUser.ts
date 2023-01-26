@@ -20,6 +20,12 @@ import * as utilities from "./utilities";
  *     password: `Test$1234`,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/pgUser:PgUser user project/service_name/username
+ * ```
  */
 export class PgUser extends pulumi.CustomResource {
     /**
@@ -114,7 +120,7 @@ export class PgUser extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["pgAllowReplication"] = args ? args.pgAllowReplication : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -124,6 +130,8 @@ export class PgUser extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(PgUser.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -14,6 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetM3AggregatorM3aggregatorUserConfigResult
     {
         public readonly string? CustomDomain;
+        public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? M3Version;
         public readonly string? M3aggregatorVersion;
@@ -26,6 +27,8 @@ namespace Pulumi.Aiven.Outputs
         private GetM3AggregatorM3aggregatorUserConfigResult(
             string? customDomain,
 
+            ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             string? m3Version,
@@ -35,6 +38,7 @@ namespace Pulumi.Aiven.Outputs
             string? staticIps)
         {
             CustomDomain = customDomain;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             M3Version = m3Version;
             M3aggregatorVersion = m3aggregatorVersion;

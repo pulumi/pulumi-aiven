@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetM3dbUserResult> InvokeAsync(GetM3dbUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetM3dbUserResult>("aiven:index/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetM3dbUserResult>("aiven:index/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The M3DB User data source provides information about the existing Aiven M3DB User.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetM3dbUserResult> Invoke(GetM3dbUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetM3dbUserResult>("aiven:index/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetM3dbUserResult>("aiven:index/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserInvokeArgs(), options.WithDefaults());
     }
 
 

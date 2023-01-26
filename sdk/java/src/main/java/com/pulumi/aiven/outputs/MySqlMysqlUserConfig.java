@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.MySqlMysqlUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigMigration;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigMysql;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigPrivateAccess;
@@ -17,197 +18,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MySqlMysqlUserConfig {
-    /**
-     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     * 
-     */
+    private @Nullable String additionalBackupRegions;
     private @Nullable String adminPassword;
-    /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
-     * 
-     */
     private @Nullable String adminUsername;
-    /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-     * 
-     */
     private @Nullable String backupHour;
-    /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-     * 
-     */
     private @Nullable String backupMinute;
-    /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-     * 
-     */
     private @Nullable String binlogRetentionPeriod;
-    /**
-     * @return IP filter
-     * 
-     */
+    private @Nullable List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Migrate data from existing server
-     * 
-     */
     private @Nullable MySqlMysqlUserConfigMigration migration;
-    /**
-     * @return mysql.conf configuration values
-     * 
-     */
     private @Nullable MySqlMysqlUserConfigMysql mysql;
-    /**
-     * @return MySQL major version
-     * 
-     */
     private @Nullable String mysqlVersion;
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     private @Nullable MySqlMysqlUserConfigPrivateAccess privateAccess;
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     private @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
-    /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String projectToForkFrom;
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     private @Nullable MySqlMysqlUserConfigPublicAccess publicAccess;
-    /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String recoveryTargetTime;
-    /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String serviceToForkFrom;
-    /**
-     * @return Static IP addresses
-     * 
-     */
     private @Nullable String staticIps;
 
     private MySqlMysqlUserConfig() {}
-    /**
-     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     * 
-     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
-    /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
-     * 
-     */
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
-    /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-     * 
-     */
     public Optional<String> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
-    /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-     * 
-     */
     public Optional<String> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
-    /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-     * 
-     */
     public Optional<String> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
-    /**
-     * @return IP filter
-     * 
-     */
+    public List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Migrate data from existing server
-     * 
-     */
     public Optional<MySqlMysqlUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
-    /**
-     * @return mysql.conf configuration values
-     * 
-     */
     public Optional<MySqlMysqlUserConfigMysql> mysql() {
         return Optional.ofNullable(this.mysql);
     }
-    /**
-     * @return MySQL major version
-     * 
-     */
     public Optional<String> mysqlVersion() {
         return Optional.ofNullable(this.mysqlVersion);
     }
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     public Optional<MySqlMysqlUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     public Optional<MySqlMysqlUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
-    /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     public Optional<MySqlMysqlUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> recoveryTargetTime() {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
-    /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -221,11 +102,13 @@ public final class MySqlMysqlUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
         private @Nullable String backupHour;
         private @Nullable String backupMinute;
         private @Nullable String binlogRetentionPeriod;
+        private @Nullable List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable MySqlMysqlUserConfigMigration migration;
         private @Nullable MySqlMysqlUserConfigMysql mysql;
@@ -240,11 +123,13 @@ public final class MySqlMysqlUserConfig {
         public Builder() {}
         public Builder(MySqlMysqlUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.adminPassword = defaults.adminPassword;
     	      this.adminUsername = defaults.adminUsername;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
     	      this.binlogRetentionPeriod = defaults.binlogRetentionPeriod;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.mysql = defaults.mysql;
@@ -258,6 +143,11 @@ public final class MySqlMysqlUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
@@ -282,6 +172,14 @@ public final class MySqlMysqlUserConfig {
         public Builder binlogRetentionPeriod(@Nullable String binlogRetentionPeriod) {
             this.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(MySqlMysqlUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -343,11 +241,13 @@ public final class MySqlMysqlUserConfig {
         }
         public MySqlMysqlUserConfig build() {
             final var o = new MySqlMysqlUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.adminPassword = adminPassword;
             o.adminUsername = adminUsername;
             o.backupHour = backupHour;
             o.backupMinute = backupMinute;
             o.binlogRetentionPeriod = binlogRetentionPeriod;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.mysql = mysql;

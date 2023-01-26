@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class ClickhouseServiceIntegration {
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
      * 
      */
     private String integrationType;
@@ -22,7 +22,7 @@ public final class ClickhouseServiceIntegration {
 
     private ClickhouseServiceIntegration() {}
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
      * 
      */
     public String integrationType() {

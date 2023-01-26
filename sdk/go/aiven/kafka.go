@@ -34,16 +34,16 @@ import (
 //				ServiceName:           pulumi.String("my-kafka1"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				KafkaUserConfig: &KafkaKafkaUserConfigArgs{
+//				KafkaUserConfig: &aiven.KafkaKafkaUserConfigArgs{
 //					KafkaRest:      pulumi.String("true"),
 //					KafkaConnect:   pulumi.String("true"),
 //					SchemaRegistry: pulumi.String("true"),
 //					KafkaVersion:   pulumi.String("3.1"),
-//					Kafka: &KafkaKafkaUserConfigKafkaArgs{
+//					Kafka: &aiven.KafkaKafkaUserConfigKafkaArgs{
 //						GroupMaxSessionTimeoutMs: pulumi.String("70000"),
 //						LogRetentionBytes:        pulumi.String("1000000000"),
 //					},
-//					PublicAccess: &KafkaKafkaUserConfigPublicAccessArgs{
+//					PublicAccess: &aiven.KafkaKafkaUserConfigPublicAccessArgs{
 //						KafkaRest:    pulumi.String("true"),
 //						KafkaConnect: pulumi.String("true"),
 //					},
@@ -141,6 +141,11 @@ func NewKafka(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource Kafka
 	err := ctx.RegisterResource("aiven:index/kafka:Kafka", name, args, &resource, opts...)
 	if err != nil {

@@ -310,13 +310,11 @@ class VpcPeeringConnection(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        {{tffile "examples/resources/aiven_vpc_peering_connection/resource.tf"}}
-
         ## Import
 
-        {{codefile "shell" "examples/resources/aiven_vpc_peering_connection/import.sh"}}
+        ```sh
+         $ pulumi import aiven:index/vpcPeeringConnection:VpcPeeringConnection mypeeringconnection project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -335,13 +333,11 @@ class VpcPeeringConnection(pulumi.CustomResource):
                  args: VpcPeeringConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        {{tffile "examples/resources/aiven_vpc_peering_connection/resource.tf"}}
-
         ## Import
 
-        {{codefile "shell" "examples/resources/aiven_vpc_peering_connection/import.sh"}}
+        ```sh
+         $ pulumi import aiven:index/vpcPeeringConnection:VpcPeeringConnection mypeeringconnection project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+        ```
 
         :param str resource_name: The name of the resource.
         :param VpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

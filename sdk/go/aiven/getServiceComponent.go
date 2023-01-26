@@ -16,7 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetServiceComponent(ctx, &aiven.GetServiceComponentArgs{
+//				Project:                   aiven_kafka.Project1.Project,
+//				ServiceName:               pulumi.StringRef(aiven_kafka.Service1.Service_name),
+//				Component:                 "kafka",
+//				Route:                     pulumi.StringRef("dynamic"),
+//				KafkaAuthenticationMethod: pulumi.StringRef("certificate"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opts ...pulumi.InvokeOption) (*GetServiceComponentResult, error) {
 	var rv GetServiceComponentResult
 	err := ctx.Invoke("aiven:index/getServiceComponent:getServiceComponent", args, &rv, opts...)

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,77 +17,44 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
 
     public static final M3AggregatorM3aggregatorUserConfigArgs Empty = new M3AggregatorM3aggregatorUserConfigArgs();
 
-    /**
-     * Custom domain
-     * 
-     */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
-    /**
-     * @return Custom domain
-     * 
-     */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
 
-    /**
-     * IP filter
-     * 
-     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    public Optional<Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
-    /**
-     * @return IP filter
-     * 
-     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
-    /**
-     * M3 major version (deprecated, use m3aggregator_version)
-     * 
-     */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
-    /**
-     * @return M3 major version (deprecated, use m3aggregator_version)
-     * 
-     */
     public Optional<Output<String>> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
 
-    /**
-     * M3 major version (the minimum compatible version)
-     * 
-     */
     @Import(name="m3aggregatorVersion")
     private @Nullable Output<String> m3aggregatorVersion;
 
-    /**
-     * @return M3 major version (the minimum compatible version)
-     * 
-     */
     public Optional<Output<String>> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
 
-    /**
-     * Static IP addresses
-     * 
-     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -95,6 +63,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
 
     private M3AggregatorM3aggregatorUserConfigArgs(M3AggregatorM3aggregatorUserConfigArgs $) {
         this.customDomain = $.customDomain;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.m3Version = $.m3Version;
         this.m3aggregatorVersion = $.m3aggregatorVersion;
@@ -119,117 +88,64 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
             $ = new M3AggregatorM3aggregatorUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param customDomain Custom domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder customDomain(@Nullable Output<String> customDomain) {
             $.customDomain = customDomain;
             return this;
         }
 
-        /**
-         * @param customDomain Custom domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
         }
 
-        /**
-         * @param ipFilters IP filter
-         * 
-         * @return builder
-         * 
-         */
+        public Builder ipFilterObjects(@Nullable Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        public Builder ipFilterObjects(List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        public Builder ipFilterObjects(M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
-        /**
-         * @param ipFilters IP filter
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
-        /**
-         * @param ipFilters IP filter
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
-        /**
-         * @param m3Version M3 major version (deprecated, use m3aggregator_version)
-         * 
-         * @return builder
-         * 
-         */
         public Builder m3Version(@Nullable Output<String> m3Version) {
             $.m3Version = m3Version;
             return this;
         }
 
-        /**
-         * @param m3Version M3 major version (deprecated, use m3aggregator_version)
-         * 
-         * @return builder
-         * 
-         */
         public Builder m3Version(String m3Version) {
             return m3Version(Output.of(m3Version));
         }
 
-        /**
-         * @param m3aggregatorVersion M3 major version (the minimum compatible version)
-         * 
-         * @return builder
-         * 
-         */
         public Builder m3aggregatorVersion(@Nullable Output<String> m3aggregatorVersion) {
             $.m3aggregatorVersion = m3aggregatorVersion;
             return this;
         }
 
-        /**
-         * @param m3aggregatorVersion M3 major version (the minimum compatible version)
-         * 
-         * @return builder
-         * 
-         */
         public Builder m3aggregatorVersion(String m3aggregatorVersion) {
             return m3aggregatorVersion(Output.of(m3aggregatorVersion));
         }
 
-        /**
-         * @param staticIps Static IP addresses
-         * 
-         * @return builder
-         * 
-         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
-        /**
-         * @param staticIps Static IP addresses
-         * 
-         * @return builder
-         * 
-         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

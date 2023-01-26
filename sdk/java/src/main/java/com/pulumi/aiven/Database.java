@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydatabase = new Database(&#34;mydatabase&#34;, DatabaseArgs.builder()        
  *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_service.myservice().service_name())
+ *             .serviceName(aiven_pg.mypg().service_name())
  *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
  *             .build());
  * 

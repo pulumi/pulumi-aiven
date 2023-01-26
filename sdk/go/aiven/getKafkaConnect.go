@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafkaConnect(ctx, &GetKafkaConnectArgs{
+//			_, err := aiven.LookupKafkaConnect(ctx, &aiven.LookupKafkaConnectArgs{
 //				Project:     data.Aiven_project.Pr1.Project,
 //				ServiceName: "my-kc1",
 //			}, nil)
@@ -75,7 +75,7 @@ type LookupKafkaConnectResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Kafka*connect user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfigs []GetKafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfigs"`
 	// Kafka Connect server provided values
 	KafkaConnects []GetKafkaConnectKafkaConnect `pulumi:"kafkaConnects"`
@@ -200,7 +200,7 @@ func (o LookupKafkaConnectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kafka*connect user configurable settings
+// KafkaConnect user configurable settings
 func (o LookupKafkaConnectResultOutput) KafkaConnectUserConfigs() GetKafkaConnectKafkaConnectUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaConnectResult) []GetKafkaConnectKafkaConnectUserConfig {
 		return v.KafkaConnectUserConfigs

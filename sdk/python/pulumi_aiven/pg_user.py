@@ -259,6 +259,12 @@ class PgUser(pulumi.CustomResource):
             password="Test$1234")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/pgUser:PgUser user project/service_name/username
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The password of the PG User ( not applicable for all services ).
@@ -287,6 +293,12 @@ class PgUser(pulumi.CustomResource):
             project="my-project",
             username="user-1",
             password="Test$1234")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/pgUser:PgUser user project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.
@@ -318,7 +330,7 @@ class PgUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PgUserArgs.__new__(PgUserArgs)
 
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["pg_allow_replication"] = pg_allow_replication
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -332,6 +344,8 @@ class PgUser(pulumi.CustomResource):
             __props__.__dict__["access_cert"] = None
             __props__.__dict__["access_key"] = None
             __props__.__dict__["type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(PgUser, __self__).__init__(
             'aiven:index/pgUser:PgUser',
             resource_name,

@@ -34,13 +34,13 @@ import (
 //				ServiceName:           pulumi.String("my-os1"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				OpensearchUserConfig: &OpenSearchOpensearchUserConfigArgs{
+//				OpensearchUserConfig: &aiven.OpenSearchOpensearchUserConfigArgs{
 //					OpensearchVersion: pulumi.String("1"),
-//					OpensearchDashboards: &OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
+//					OpensearchDashboards: &aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
 //						Enabled:                  pulumi.String("true"),
 //						OpensearchRequestTimeout: pulumi.String("30000"),
 //					},
-//					PublicAccess: &OpenSearchOpensearchUserConfigPublicAccessArgs{
+//					PublicAccess: &aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{
 //						Opensearch:           pulumi.String("true"),
 //						OpensearchDashboards: pulumi.String("true"),
 //					},
@@ -134,6 +134,11 @@ func NewOpenSearch(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource OpenSearch
 	err := ctx.RegisterResource("aiven:index/openSearch:OpenSearch", name, args, &resource, opts...)
 	if err != nil {

@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -42,12 +43,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mytestpool = new ConnectionPool(&#34;mytestpool&#34;, ConnectionPoolArgs.builder()        
  *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_service.myservice().service_name())
- *             .databaseName(aiven_database.mydatabase().database_name())
+ *             .serviceName(aiven_pg.mypg().service_name())
+ *             .databaseName(aiven_pg_database.mypgdatabase().database_name())
  *             .poolMode(&#34;transaction&#34;)
  *             .poolName(&#34;mypool&#34;)
  *             .poolSize(10)
- *             .username(aiven_service_user.myserviceuser().username())
+ *             .username(aiven_pg_user.mypguser().username())
  *             .build());
  * 
  *     }
@@ -208,6 +209,9 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "connectionUri"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

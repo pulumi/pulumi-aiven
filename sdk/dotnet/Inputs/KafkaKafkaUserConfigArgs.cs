@@ -13,16 +13,34 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom domain
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectArgs>());
+            set => _ipFilterObjects = value;
+        }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -103,7 +121,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs>? SchemaRegistryConfig { get; set; }
 
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }

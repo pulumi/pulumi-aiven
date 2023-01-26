@@ -15,9 +15,6 @@ namespace Pulumi.Aiven.Inputs
         [Input("jolokia")]
         public Input<string>? Jolokia { get; set; }
 
-        /// <summary>
-        /// Kafka Connect server provided values
-        /// </summary>
         [Input("kafkaConnect")]
         public Input<string>? KafkaConnect { get; set; }
 

@@ -56,8 +56,8 @@ import * as utilities from "./utilities";
  *         permission: "readwrite",
  *     },
  * ];
- * const osAclRule: aiven.OpenSearchAclRule[];
- * for (const range of Object.entries(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => { ...__obj, [i]: v })).map(([k, v]) => {key: k, value: v})) {
+ * const osAclRule: aiven.OpenSearchAclRule[] = [];
+ * for (const range of Object.entries(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => { ...__obj, [i]: v })).map(([k, v]) => ({key: k, value: v}))) {
  *     osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {
  *         project: osAclsConfig.project,
  *         serviceName: osAclsConfig.serviceName,

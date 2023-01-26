@@ -55,6 +55,8 @@ type GcpVpcPeeringConnection struct {
 	GcpProjectId pulumi.StringOutput `pulumi:"gcpProjectId"`
 	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc pulumi.StringOutput `pulumi:"peerVpc"`
+	// Computed GCP network peering link
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// State of the peering connection
 	State pulumi.StringOutput `pulumi:"state"`
 	// State-specific help or error information
@@ -105,6 +107,8 @@ type gcpVpcPeeringConnectionState struct {
 	GcpProjectId *string `pulumi:"gcpProjectId"`
 	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc *string `pulumi:"peerVpc"`
+	// Computed GCP network peering link
+	SelfLink *string `pulumi:"selfLink"`
 	// State of the peering connection
 	State *string `pulumi:"state"`
 	// State-specific help or error information
@@ -118,6 +122,8 @@ type GcpVpcPeeringConnectionState struct {
 	GcpProjectId pulumi.StringPtrInput
 	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc pulumi.StringPtrInput
+	// Computed GCP network peering link
+	SelfLink pulumi.StringPtrInput
 	// State of the peering connection
 	State pulumi.StringPtrInput
 	// State-specific help or error information
@@ -244,6 +250,11 @@ func (o GcpVpcPeeringConnectionOutput) GcpProjectId() pulumi.StringOutput {
 // GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 func (o GcpVpcPeeringConnectionOutput) PeerVpc() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.PeerVpc }).(pulumi.StringOutput)
+}
+
+// Computed GCP network peering link
+func (o GcpVpcPeeringConnectionOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
 // State of the peering connection

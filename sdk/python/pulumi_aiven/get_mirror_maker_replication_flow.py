@@ -21,7 +21,7 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, emit_heartbeats_enabled=None, enable=None, id=None, project=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
         if emit_heartbeats_enabled and not isinstance(emit_heartbeats_enabled, bool):
             raise TypeError("Expected argument 'emit_heartbeats_enabled' to be a bool")
         pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
@@ -31,6 +31,9 @@ class GetMirrorMakerReplicationFlowResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if offset_syncs_topic_location and not isinstance(offset_syncs_topic_location, str):
+            raise TypeError("Expected argument 'offset_syncs_topic_location' to be a str")
+        pulumi.set(__self__, "offset_syncs_topic_location", offset_syncs_topic_location)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -82,6 +85,14 @@ class GetMirrorMakerReplicationFlowResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="offsetSyncsTopicLocation")
+    def offset_syncs_topic_location(self) -> str:
+        """
+        Offset syncs topic location.
+        """
+        return pulumi.get(self, "offset_syncs_topic_location")
 
     @property
     @pulumi.getter
@@ -165,6 +176,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             emit_heartbeats_enabled=self.emit_heartbeats_enabled,
             enable=self.enable,
             id=self.id,
+            offset_syncs_topic_location=self.offset_syncs_topic_location,
             project=self.project,
             replication_policy_class=self.replication_policy_class,
             service_name=self.service_name,
@@ -191,9 +203,9 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     import pulumi_aiven as aiven
 
     f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
-        service_name=aiven_service["mm"]["service_name"],
-        source_cluster=aiven_service["source"]["service_name"],
-        target_cluster=aiven_service["target"]["service_name"])
+        service_name=aiven_kafka["mm"]["service_name"],
+        source_cluster=aiven_kafka["source"]["service_name"],
+        target_cluster=aiven_kafka["target"]["service_name"])
     ```
 
 
@@ -214,6 +226,7 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
         emit_heartbeats_enabled=__ret__.emit_heartbeats_enabled,
         enable=__ret__.enable,
         id=__ret__.id,
+        offset_syncs_topic_location=__ret__.offset_syncs_topic_location,
         project=__ret__.project,
         replication_policy_class=__ret__.replication_policy_class,
         service_name=__ret__.service_name,
@@ -241,9 +254,9 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
     import pulumi_aiven as aiven
 
     f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
-        service_name=aiven_service["mm"]["service_name"],
-        source_cluster=aiven_service["source"]["service_name"],
-        target_cluster=aiven_service["target"]["service_name"])
+        service_name=aiven_kafka["mm"]["service_name"],
+        source_cluster=aiven_kafka["source"]["service_name"],
+        target_cluster=aiven_kafka["target"]["service_name"])
     ```
 
 

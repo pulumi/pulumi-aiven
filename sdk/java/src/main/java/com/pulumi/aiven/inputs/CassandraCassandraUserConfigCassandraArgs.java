@@ -29,11 +29,19 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
     }
 
+    @Import(name="datacenter")
+    private @Nullable Output<String> datacenter;
+
+    public Optional<Output<String>> datacenter() {
+        return Optional.ofNullable(this.datacenter);
+    }
+
     private CassandraCassandraUserConfigCassandraArgs() {}
 
     private CassandraCassandraUserConfigCassandraArgs(CassandraCassandraUserConfigCassandraArgs $) {
         this.batchSizeFailThresholdInKb = $.batchSizeFailThresholdInKb;
         this.batchSizeWarnThresholdInKb = $.batchSizeWarnThresholdInKb;
+        this.datacenter = $.datacenter;
     }
 
     public static Builder builder() {
@@ -70,6 +78,15 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
 
         public Builder batchSizeWarnThresholdInKb(String batchSizeWarnThresholdInKb) {
             return batchSizeWarnThresholdInKb(Output.of(batchSizeWarnThresholdInKb));
+        }
+
+        public Builder datacenter(@Nullable Output<String> datacenter) {
+            $.datacenter = datacenter;
+            return this;
+        }
+
+        public Builder datacenter(String datacenter) {
+            return datacenter(Output.of(datacenter));
         }
 
         public CassandraCassandraUserConfigCassandraArgs build() {

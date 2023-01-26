@@ -853,6 +853,8 @@ class InfluxDb(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InfluxDb, __self__).__init__(
             'aiven:index/influxDb:InfluxDb',
             resource_name,

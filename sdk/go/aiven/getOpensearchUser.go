@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOpensearchUser(ctx, &GetOpensearchUserArgs{
+//			_, err := aiven.LookupOpensearchUser(ctx, &aiven.LookupOpensearchUserArgs{
 //				Project:     "my-project",
 //				ServiceName: "my-service",
 //				Username:    "user1",

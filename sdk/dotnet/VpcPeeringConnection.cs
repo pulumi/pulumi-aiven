@@ -10,13 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// {{tffile "examples/resources/aiven_vpc_peering_connection/resource.tf"}}
-    /// 
     /// ## Import
     /// 
-    /// {{codefile "shell" "examples/resources/aiven_vpc_peering_connection/import.sh"}}
+    /// ```sh
+    ///  $ pulumi import aiven:index/vpcPeeringConnection:VpcPeeringConnection mypeeringconnection project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/vpcPeeringConnection:VpcPeeringConnection")]
     public partial class VpcPeeringConnection : global::Pulumi.CustomResource

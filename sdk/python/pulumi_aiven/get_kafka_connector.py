@@ -191,7 +191,7 @@ def get_kafka_connector(connector_name: Optional[str] = None,
     import pulumi_aiven as aiven
 
     kafka_es_con1 = aiven.get_kafka_connector(project=aiven_project["kafka-con-project1"]["project"],
-        service_name=aiven_service["kafka-service1"]["service_name"],
+        service_name=aiven_kafka["kafka-service1"]["service_name"],
         connector_name="kafka-es-con1")
     ```
 
@@ -237,7 +237,7 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
     import pulumi_aiven as aiven
 
     kafka_es_con1 = aiven.get_kafka_connector(project=aiven_project["kafka-con-project1"]["project"],
-        service_name=aiven_service["kafka-service1"]["service_name"],
+        service_name=aiven_kafka["kafka-service1"]["service_name"],
         connector_name="kafka-es-con1")
     ```
 

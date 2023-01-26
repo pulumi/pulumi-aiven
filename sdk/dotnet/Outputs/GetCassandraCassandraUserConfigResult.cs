@@ -13,17 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetCassandraCassandraUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         /// <summary>
         /// Cassandra server provided values
         /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigCassandraResult? Cassandra;
         public readonly string? CassandraVersion;
+        public readonly ImmutableArray<Outputs.GetCassandraCassandraUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? MigrateSstableloader;
         public readonly Outputs.GetCassandraCassandraUserConfigPrivateAccessResult? PrivateAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetCassandraCassandraUserConfigPublicAccessResult? PublicAccess;
         public readonly string? ServiceToForkFrom;
+        public readonly string? ServiceToJoinWith;
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
@@ -31,9 +34,13 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetCassandraCassandraUserConfigResult(
+            string? additionalBackupRegions,
+
             Outputs.GetCassandraCassandraUserConfigCassandraResult? cassandra,
 
             string? cassandraVersion,
+
+            ImmutableArray<Outputs.GetCassandraCassandraUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -47,16 +54,21 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
+            string? serviceToJoinWith,
+
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             Cassandra = cassandra;
             CassandraVersion = cassandraVersion;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
+            ServiceToJoinWith = serviceToJoinWith;
             StaticIps = staticIps;
         }
     }

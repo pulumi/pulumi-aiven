@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetRedisRedisUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetRedisRedisUserConfigMigration;
 import com.pulumi.aiven.outputs.GetRedisRedisUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetRedisRedisUserConfigPrivatelinkAccess;
@@ -16,6 +17,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRedisRedisUserConfig {
+    private @Nullable String additionalBackupRegions;
+    private @Nullable List<GetRedisRedisUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable GetRedisRedisUserConfigMigration migration;
     private @Nullable GetRedisRedisUserConfigPrivateAccess privateAccess;
@@ -42,6 +45,12 @@ public final class GetRedisRedisUserConfig {
     private @Nullable String staticIps;
 
     private GetRedisRedisUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    public List<GetRedisRedisUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -116,6 +125,8 @@ public final class GetRedisRedisUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
+        private @Nullable List<GetRedisRedisUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetRedisRedisUserConfigMigration migration;
         private @Nullable GetRedisRedisUserConfigPrivateAccess privateAccess;
@@ -139,6 +150,8 @@ public final class GetRedisRedisUserConfig {
         public Builder() {}
         public Builder(GetRedisRedisUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.privateAccess = defaults.privateAccess;
@@ -161,6 +174,19 @@ public final class GetRedisRedisUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetRedisRedisUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetRedisRedisUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
@@ -266,6 +292,8 @@ public final class GetRedisRedisUserConfig {
         }
         public GetRedisRedisUserConfig build() {
             final var o = new GetRedisRedisUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.privateAccess = privateAccess;

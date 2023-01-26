@@ -22,17 +22,9 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs exten
         return Optional.ofNullable(this.jolokia);
     }
 
-    /**
-     * Kafka Connect server provided values
-     * 
-     */
     @Import(name="kafkaConnect")
     private @Nullable Output<String> kafkaConnect;
 
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     public Optional<Output<String>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
@@ -79,23 +71,11 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs exten
             return jolokia(Output.of(jolokia));
         }
 
-        /**
-         * @param kafkaConnect Kafka Connect server provided values
-         * 
-         * @return builder
-         * 
-         */
         public Builder kafkaConnect(@Nullable Output<String> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
-        /**
-         * @param kafkaConnect Kafka Connect server provided values
-         * 
-         * @return builder
-         * 
-         */
         public Builder kafkaConnect(String kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }

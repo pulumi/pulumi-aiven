@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigInfluxdb;
+import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigPublicAccess;
@@ -17,7 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InfluxDbInfluxdbUserConfig {
     /**
-     * @return Custom domain
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     private @Nullable String customDomain;
@@ -27,7 +33,12 @@ public final class InfluxDbInfluxdbUserConfig {
      */
     private @Nullable InfluxDbInfluxdbUserConfigInfluxdb influxdb;
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
@@ -62,14 +73,21 @@ public final class InfluxDbInfluxdbUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     private @Nullable String staticIps;
 
     private InfluxDbInfluxdbUserConfig() {}
     /**
-     * @return Custom domain
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     public Optional<String> customDomain() {
@@ -83,7 +101,14 @@ public final class InfluxDbInfluxdbUserConfig {
         return Optional.ofNullable(this.influxdb);
     }
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
@@ -132,7 +157,7 @@ public final class InfluxDbInfluxdbUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<String> staticIps() {
@@ -148,8 +173,10 @@ public final class InfluxDbInfluxdbUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
         private @Nullable InfluxDbInfluxdbUserConfigInfluxdb influxdb;
+        private @Nullable List<InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable InfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
         private @Nullable InfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
@@ -161,8 +188,10 @@ public final class InfluxDbInfluxdbUserConfig {
         public Builder() {}
         public Builder(InfluxDbInfluxdbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
     	      this.influxdb = defaults.influxdb;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
@@ -174,6 +203,11 @@ public final class InfluxDbInfluxdbUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
@@ -182,6 +216,14 @@ public final class InfluxDbInfluxdbUserConfig {
         public Builder influxdb(@Nullable InfluxDbInfluxdbUserConfigInfluxdb influxdb) {
             this.influxdb = influxdb;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(InfluxDbInfluxdbUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -228,8 +270,10 @@ public final class InfluxDbInfluxdbUserConfig {
         }
         public InfluxDbInfluxdbUserConfig build() {
             final var o = new InfluxDbInfluxdbUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
             o.influxdb = influxdb;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.privateAccess = privateAccess;
             o.privatelinkAccess = privatelinkAccess;

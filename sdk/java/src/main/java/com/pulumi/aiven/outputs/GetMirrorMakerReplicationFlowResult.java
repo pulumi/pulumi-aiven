@@ -28,6 +28,11 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private String id;
     /**
+     * @return Offset syncs topic location.
+     * 
+     */
+    private String offsetSyncsTopicLocation;
+    /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
@@ -94,6 +99,13 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Offset syncs topic location.
+     * 
+     */
+    public String offsetSyncsTopicLocation() {
+        return this.offsetSyncsTopicLocation;
     }
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -171,6 +183,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
         private String id;
+        private String offsetSyncsTopicLocation;
         private String project;
         private String replicationPolicyClass;
         private String serviceName;
@@ -186,6 +199,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
     	      this.enable = defaults.enable;
     	      this.id = defaults.id;
+    	      this.offsetSyncsTopicLocation = defaults.offsetSyncsTopicLocation;
     	      this.project = defaults.project;
     	      this.replicationPolicyClass = defaults.replicationPolicyClass;
     	      this.serviceName = defaults.serviceName;
@@ -210,6 +224,11 @@ public final class GetMirrorMakerReplicationFlowResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offsetSyncsTopicLocation(String offsetSyncsTopicLocation) {
+            this.offsetSyncsTopicLocation = Objects.requireNonNull(offsetSyncsTopicLocation);
             return this;
         }
         @CustomType.Setter
@@ -268,6 +287,7 @@ public final class GetMirrorMakerReplicationFlowResult {
             o.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             o.enable = enable;
             o.id = id;
+            o.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             o.project = project;
             o.replicationPolicyClass = replicationPolicyClass;
             o.serviceName = serviceName;

@@ -13,19 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = pulumi.output(aiven.getKafkaUser({
+ * const user = aiven.getKafkaUser({
  *     project: "my-project",
  *     serviceName: "my-service",
  *     username: "user1",
- * }));
+ * });
  * ```
  */
 export function getKafkaUser(args: GetKafkaUserArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaUser:getKafkaUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -88,9 +85,24 @@ export interface GetKafkaUserResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Kafka User data source provides information about the existing Aiven Kafka User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getKafkaUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
+ */
 export function getKafkaUserOutput(args: GetKafkaUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaUserResult> {
-    return pulumi.output(args).apply(a => getKafkaUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaUser(a, opts))
 }
 
 /**

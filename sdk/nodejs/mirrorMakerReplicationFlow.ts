@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  *
  * const f1 = new aiven.MirrorMakerReplicationFlow("f1", {
  *     project: aiven_project["kafka-mm-project1"].project,
- *     serviceName: aiven_service.mm.service_name,
- *     sourceCluster: aiven_service.source.service_name,
- *     targetCluster: aiven_service.target.service_name,
+ *     serviceName: aiven_kafka.mm.service_name,
+ *     sourceCluster: aiven_kafka.source.service_name,
+ *     targetCluster: aiven_kafka.target.service_name,
  *     enable: true,
  *     topics: [".*"],
  *     topicsBlacklists: [
@@ -71,6 +71,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
+     * Offset syncs topic location.
+     */
+    public readonly offsetSyncsTopicLocation!: pulumi.Output<string | undefined>;
+    /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
             resourceInputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["offsetSyncsTopicLocation"] = state ? state.offsetSyncsTopicLocation : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["replicationPolicyClass"] = state ? state.replicationPolicyClass : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
@@ -150,6 +155,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             }
             resourceInputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["offsetSyncsTopicLocation"] = args ? args.offsetSyncsTopicLocation : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["replicationPolicyClass"] = args ? args.replicationPolicyClass : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -177,6 +183,10 @@ export interface MirrorMakerReplicationFlowState {
      * Enable of disable replication flows for a service.
      */
     enable?: pulumi.Input<boolean>;
+    /**
+     * Offset syncs topic location.
+     */
+    offsetSyncsTopicLocation?: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -227,6 +237,10 @@ export interface MirrorMakerReplicationFlowArgs {
      * Enable of disable replication flows for a service.
      */
     enable: pulumi.Input<boolean>;
+    /**
+     * Offset syncs topic location.
+     */
+    offsetSyncsTopicLocation?: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */

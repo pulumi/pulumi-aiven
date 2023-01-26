@@ -13,17 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const account1 = pulumi.output(aiven.getAccount({
+ * const account1 = aiven.getAccount({
  *     name: "<ACCOUNT_NAME>",
- * }));
+ * });
  * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAccount:getAccount", {
         "name": args.name,
     }, opts);
@@ -56,6 +53,10 @@ export interface GetAccountResult {
      */
     readonly id: string;
     /**
+     * If true, user is part of the owners team for this account
+     */
+    readonly isAccountOwner: boolean;
+    /**
      * Account name
      */
     readonly name: string;
@@ -76,9 +77,22 @@ export interface GetAccountResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * The Account data source provides information about the existing Aiven Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const account1 = aiven.getAccount({
+ *     name: "<ACCOUNT_NAME>",
+ * });
+ * ```
+ */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(args).apply(a => getAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccount(a, opts))
 }
 
 /**

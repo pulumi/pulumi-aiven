@@ -26,9 +26,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupConnectionPool(ctx, &GetConnectionPoolArgs{
+//			_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
 //				Project:     aiven_project.Myproject.Project,
-//				ServiceName: aiven_service.Myservice.Service_name,
+//				ServiceName: aiven_pg.Mypg.Service_name,
 //				PoolName:    "mypool",
 //			}, nil)
 //			if err != nil {

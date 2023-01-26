@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaConnectResult> InvokeAsync(GetKafkaConnectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaConnectResult> Invoke(GetKafkaConnectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kafka*connect user configurable settings
+        /// KafkaConnect user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigResult> KafkaConnectUserConfigs;
         /// <summary>

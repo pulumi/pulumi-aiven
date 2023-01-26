@@ -12,6 +12,8 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Service User resource allows the creation and management of Aiven Service Users.
     /// 
+    /// &gt; **Note:** This resource is deprecated. Please use service-specific resources instead of this one, for example: aiven_kafka_user, aiven.PgUser etc.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,7 +26,7 @@ namespace Pulumi.Aiven
     ///     var myserviceuser = new Aiven.ServiceUser("myserviceuser", new()
     ///     {
     ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_service.Myservice.Service_name,
+    ///         ServiceName = aiven_pg.Mypg.Service_name,
     ///         Username = "&lt;USERNAME&gt;",
     ///     });
     /// 
@@ -141,6 +143,12 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accessCert",
+                    "accessKey",
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -170,11 +178,21 @@ namespace Pulumi.Aiven
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the service user ( not applicable for all services ).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
@@ -256,17 +274,37 @@ namespace Pulumi.Aiven
 
     public sealed class ServiceUserState : global::Pulumi.ResourceArgs
     {
+        [Input("accessCert")]
+        private Input<string>? _accessCert;
+
         /// <summary>
         /// Access certificate for the user if applicable for the service in question
         /// </summary>
-        [Input("accessCert")]
-        public Input<string>? AccessCert { get; set; }
+        public Input<string>? AccessCert
+        {
+            get => _accessCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
 
         /// <summary>
         /// Access certificate key for the user if applicable for the service in question
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
@@ -274,11 +312,21 @@ namespace Pulumi.Aiven
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the service user ( not applicable for all services ).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.

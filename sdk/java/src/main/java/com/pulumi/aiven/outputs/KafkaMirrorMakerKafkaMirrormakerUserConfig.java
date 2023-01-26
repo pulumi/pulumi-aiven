@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -13,41 +14,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
-    /**
-     * @return IP filter
-     * 
-     */
+    private @Nullable String additionalBackupRegions;
+    private @Nullable List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Kafka MirrorMaker configuration values
-     * 
-     */
     private @Nullable KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
-    /**
-     * @return Static IP addresses
-     * 
-     */
     private @Nullable String staticIps;
 
     private KafkaMirrorMakerKafkaMirrormakerUserConfig() {}
-    /**
-     * @return IP filter
-     * 
-     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    public List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Kafka MirrorMaker configuration values
-     * 
-     */
     public Optional<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -61,17 +46,34 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
+        private @Nullable List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
         private @Nullable String staticIps;
         public Builder() {}
         public Builder(KafkaMirrorMakerKafkaMirrormakerUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafkaMirrormaker = defaults.kafkaMirrormaker;
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
@@ -92,6 +94,8 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
         }
         public KafkaMirrorMakerKafkaMirrormakerUserConfig build() {
             final var o = new KafkaMirrorMakerKafkaMirrormakerUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.kafkaMirrormaker = kafkaMirrormaker;
             o.staticIps = staticIps;

@@ -15,12 +15,12 @@ import * as utilities from "./utilities";
  *
  * const mytestpool = new aiven.ConnectionPool("mytestpool", {
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
- *     databaseName: aiven_database.mydatabase.database_name,
+ *     serviceName: aiven_pg.mypg.service_name,
+ *     databaseName: aiven_pg_database.mypgdatabase.database_name,
  *     poolMode: "transaction",
  *     poolName: "mypool",
  *     poolSize: 10,
- *     username: aiven_service_user.myserviceuser.username,
+ *     username: aiven_pg_user.mypguser.username,
  * });
  * ```
  *
@@ -136,6 +136,8 @@ export class ConnectionPool extends pulumi.CustomResource {
             resourceInputs["connectionUri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["connectionUri"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ConnectionPool.__pulumiType, name, resourceInputs, opts);
     }
 }

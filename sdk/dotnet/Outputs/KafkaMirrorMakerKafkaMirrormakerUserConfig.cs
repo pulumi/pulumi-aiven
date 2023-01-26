@@ -13,27 +13,26 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfig
     {
-        /// <summary>
-        /// IP filter
-        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        public readonly ImmutableArray<Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Kafka MirrorMaker configuration values
-        /// </summary>
         public readonly Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private KafkaMirrorMakerKafkaMirrormakerUserConfig(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? kafkaMirrormaker,
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             KafkaMirrormaker = kafkaMirrormaker;
             StaticIps = staticIps;

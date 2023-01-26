@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigMigration;
 import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigMysql;
 import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigPrivateAccess;
@@ -17,11 +18,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMySqlMysqlUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String adminPassword;
     private @Nullable String adminUsername;
     private @Nullable String backupHour;
     private @Nullable String backupMinute;
     private @Nullable String binlogRetentionPeriod;
+    private @Nullable List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable GetMySqlMysqlUserConfigMigration migration;
     /**
@@ -43,6 +46,9 @@ public final class GetMySqlMysqlUserConfig {
     private @Nullable String staticIps;
 
     private GetMySqlMysqlUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
@@ -57,6 +63,9 @@ public final class GetMySqlMysqlUserConfig {
     }
     public Optional<String> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
+    }
+    public List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -109,11 +118,13 @@ public final class GetMySqlMysqlUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
         private @Nullable String backupHour;
         private @Nullable String backupMinute;
         private @Nullable String binlogRetentionPeriod;
+        private @Nullable List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetMySqlMysqlUserConfigMigration migration;
         private @Nullable GetMySqlMysqlUserConfigMysql mysql;
@@ -128,11 +139,13 @@ public final class GetMySqlMysqlUserConfig {
         public Builder() {}
         public Builder(GetMySqlMysqlUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.adminPassword = defaults.adminPassword;
     	      this.adminUsername = defaults.adminUsername;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
     	      this.binlogRetentionPeriod = defaults.binlogRetentionPeriod;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.mysql = defaults.mysql;
@@ -146,6 +159,11 @@ public final class GetMySqlMysqlUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
@@ -170,6 +188,14 @@ public final class GetMySqlMysqlUserConfig {
         public Builder binlogRetentionPeriod(@Nullable String binlogRetentionPeriod) {
             this.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetMySqlMysqlUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -231,11 +257,13 @@ public final class GetMySqlMysqlUserConfig {
         }
         public GetMySqlMysqlUserConfig build() {
             final var o = new GetMySqlMysqlUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.adminPassword = adminPassword;
             o.adminUsername = adminUsername;
             o.backupHour = backupHour;
             o.backupMinute = backupMinute;
             o.binlogRetentionPeriod = binlogRetentionPeriod;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.mysql = mysql;

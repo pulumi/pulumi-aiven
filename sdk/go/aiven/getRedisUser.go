@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupRedisUser(ctx, &GetRedisUserArgs{
+//			_, err := aiven.LookupRedisUser(ctx, &aiven.LookupRedisUserArgs{
 //				Project:     "my-project",
 //				ServiceName: "my-service",
 //				Username:    "user1",

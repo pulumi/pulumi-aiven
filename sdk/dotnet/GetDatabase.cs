@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
         ///     var mydatabase = Aiven.GetDatabase.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Database data source provides information about the existing Aiven Database.
@@ -61,7 +61,7 @@ namespace Pulumi.Aiven
         ///     var mydatabase = Aiven.GetDatabase.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -71,7 +71,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

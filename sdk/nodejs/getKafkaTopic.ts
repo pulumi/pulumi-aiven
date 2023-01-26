@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,17 +17,14 @@ import * as utilities from "./utilities";
  *
  * const mytesttopic = aiven.getKafkaTopic({
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_kafka.myservice.service_name,
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -90,9 +88,24 @@ export interface GetKafkaTopicResult {
      */
     readonly topicName: string;
 }
-
+/**
+ * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytesttopic = aiven.getKafkaTopic({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.myservice.service_name,
+ *     topicName: "<TOPIC_NAME>",
+ * });
+ * ```
+ */
 export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
-    return pulumi.output(args).apply(a => getKafkaTopic(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaTopic(a, opts))
 }
 
 /**

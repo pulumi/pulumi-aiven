@@ -13,14 +13,17 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom domain
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
-        /// <summary>
-        /// Disable replication factor adjustment
-        /// </summary>
         [Input("disableReplicationFactorAdjustment")]
         public Input<string>? DisableReplicationFactorAdjustment { get; set; }
 
@@ -42,11 +45,23 @@ namespace Pulumi.Aiven.Inputs
         [Input("indexTemplate")]
         public Input<Inputs.OpenSearchOpensearchUserConfigIndexTemplateGetArgs>? IndexTemplate { get; set; }
 
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectGetArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectGetArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -55,14 +70,11 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Don't reset index.refresh_interval to the default value
+        /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         /// </summary>
         [Input("keepIndexRefreshInterval")]
         public Input<string>? KeepIndexRefreshInterval { get; set; }
 
-        /// <summary>
-        /// Maximum index count
-        /// </summary>
         [Input("maxIndexCount")]
         public Input<string>? MaxIndexCount { get; set; }
 
@@ -121,7 +133,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }

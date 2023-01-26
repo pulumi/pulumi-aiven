@@ -18,12 +18,30 @@ namespace Pulumi.Aiven
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
+        ///         IntegrationType = "datadog",
+        ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceIntegrationResult> InvokeAsync(GetServiceIntegrationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Service Integration data source provides information about the existing Aiven Service Integration.
@@ -32,12 +50,30 @@ namespace Pulumi.Aiven
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
+        ///         IntegrationType = "datadog",
+        ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceIntegrationResult> Invoke(GetServiceIntegrationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -110,6 +146,18 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationResult
     {
         /// <summary>
+        /// ClickhouseKafka user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult> ClickhouseKafkaUserConfigs;
+        /// <summary>
+        /// ClickhousePostgresql user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhousePostgresqlUserConfigResult> ClickhousePostgresqlUserConfigs;
+        /// <summary>
+        /// Datadog user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigResult> DatadogUserConfigs;
+        /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
         public readonly string DestinationEndpointId;
@@ -130,27 +178,27 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// KafkaConnect user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaConnectUserConfigResult> KafkaConnectUserConfigs;
         /// <summary>
-        /// Kafka Logs specific user configurable settings
+        /// KafkaLogs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaLogsUserConfigResult> KafkaLogsUserConfigs;
         /// <summary>
-        /// Mirrormaker 2 integration specific user configurable settings
+        /// KafkaMirrormaker user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult> KafkaMirrormakerUserConfigs;
         /// <summary>
-        /// Log integration specific user configurable settings
+        /// Logs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationLogsUserConfigResult> LogsUserConfigs;
         /// <summary>
-        /// Metrics specific user configurable settings
+        /// Metrics user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationMetricsUserConfigResult> MetricsUserConfigs;
         /// <summary>
-        /// Mirrormaker 1 integration specific user configurable settings
+        /// Mirrormaker user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationMirrormakerUserConfigResult> MirrormakerUserConfigs;
         /// <summary>
@@ -168,6 +216,12 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetServiceIntegrationResult(
+            ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult> clickhouseKafkaUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationClickhousePostgresqlUserConfigResult> clickhousePostgresqlUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigResult> datadogUserConfigs,
+
             string destinationEndpointId,
 
             string destinationServiceName,
@@ -196,6 +250,9 @@ namespace Pulumi.Aiven
 
             string sourceServiceName)
         {
+            ClickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
+            ClickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
+            DatadogUserConfigs = datadogUserConfigs;
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
             Id = id;

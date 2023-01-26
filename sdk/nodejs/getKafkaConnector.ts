@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,17 +17,14 @@ import * as utilities from "./utilities";
  *
  * const kafka-es-con1 = aiven.getKafkaConnector({
  *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
  *     connectorName: "kafka-es-con1",
  * });
  * ```
  */
 export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaConnector:getKafkaConnector", {
         "connectorName": args.connectorName,
         "project": args.project,
@@ -105,9 +103,24 @@ export interface GetKafkaConnectorResult {
      */
     readonly tasks: outputs.GetKafkaConnectorTask[];
 }
-
+/**
+ * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka-es-con1 = aiven.getKafkaConnector({
+ *     project: aiven_project["kafka-con-project1"].project,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     connectorName: "kafka-es-con1",
+ * });
+ * ```
+ */
 export function getKafkaConnectorOutput(args: GetKafkaConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConnectorResult> {
-    return pulumi.output(args).apply(a => getKafkaConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaConnector(a, opts))
 }
 
 /**

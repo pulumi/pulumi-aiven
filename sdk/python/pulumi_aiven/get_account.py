@@ -21,7 +21,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, create_time=None, id=None, name=None, owner_team_id=None, primary_billing_group_id=None, tenant_id=None, update_time=None):
+    def __init__(__self__, account_id=None, create_time=None, id=None, is_account_owner=None, name=None, owner_team_id=None, primary_billing_group_id=None, tenant_id=None, update_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -31,6 +31,9 @@ class GetAccountResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_account_owner and not isinstance(is_account_owner, bool):
+            raise TypeError("Expected argument 'is_account_owner' to be a bool")
+        pulumi.set(__self__, "is_account_owner", is_account_owner)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -70,6 +73,14 @@ class GetAccountResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isAccountOwner")
+    def is_account_owner(self) -> bool:
+        """
+        If true, user is part of the owners team for this account
+        """
+        return pulumi.get(self, "is_account_owner")
 
     @property
     @pulumi.getter
@@ -121,6 +132,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             account_id=self.account_id,
             create_time=self.create_time,
             id=self.id,
+            is_account_owner=self.is_account_owner,
             name=self.name,
             owner_team_id=self.owner_team_id,
             primary_billing_group_id=self.primary_billing_group_id,
@@ -154,6 +166,7 @@ def get_account(name: Optional[str] = None,
         account_id=__ret__.account_id,
         create_time=__ret__.create_time,
         id=__ret__.id,
+        is_account_owner=__ret__.is_account_owner,
         name=__ret__.name,
         owner_team_id=__ret__.owner_team_id,
         primary_billing_group_id=__ret__.primary_billing_group_id,

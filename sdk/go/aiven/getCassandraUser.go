@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupCassandraUser(ctx, &GetCassandraUserArgs{
+//			_, err := aiven.LookupCassandraUser(ctx, &aiven.LookupCassandraUserArgs{
 //				Project:     "my-project",
 //				ServiceName: "my-service",
 //				Username:    "user1",

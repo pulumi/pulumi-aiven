@@ -22,17 +22,9 @@ public final class RedisRedisUserConfigPrivatelinkAccessArgs extends com.pulumi.
         return Optional.ofNullable(this.prometheus);
     }
 
-    /**
-     * Redis server provided values
-     * 
-     */
     @Import(name="redis")
     private @Nullable Output<String> redis;
 
-    /**
-     * @return Redis server provided values
-     * 
-     */
     public Optional<Output<String>> redis() {
         return Optional.ofNullable(this.redis);
     }
@@ -71,23 +63,11 @@ public final class RedisRedisUserConfigPrivatelinkAccessArgs extends com.pulumi.
             return prometheus(Output.of(prometheus));
         }
 
-        /**
-         * @param redis Redis server provided values
-         * 
-         * @return builder
-         * 
-         */
         public Builder redis(@Nullable Output<String> redis) {
             $.redis = redis;
             return this;
         }
 
-        /**
-         * @param redis Redis server provided values
-         * 
-         * @return builder
-         * 
-         */
         public Builder redis(String redis) {
             return redis(Output.of(redis));
         }

@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaSchemaConfigurationResult> InvokeAsync(GetKafkaSchemaConfigurationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaConfigurationResult>("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args ?? new GetKafkaSchemaConfigurationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaConfigurationResult>("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args ?? new GetKafkaSchemaConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaSchemaConfigurationResult> Invoke(GetKafkaSchemaConfigurationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaConfigurationResult>("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args ?? new GetKafkaSchemaConfigurationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaConfigurationResult>("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args ?? new GetKafkaSchemaConfigurationInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -14,7 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ClickhouseClickhouseUserConfig
     {
         /// <summary>
-        /// IP filter
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClickhouseClickhouseUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -28,12 +36,18 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private ClickhouseClickhouseUserConfig(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             string? projectToForkFrom,
 
             string? serviceToForkFrom)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             ProjectToForkFrom = projectToForkFrom;
             ServiceToForkFrom = serviceToForkFrom;

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.FlinkFlinkUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.FlinkFlinkUserConfigPrivatelinkAccess;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -14,12 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FlinkFlinkUserConfig {
     /**
-     * @return Flink execution.checkpointing.interval in milliseconds
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
+    /**
+     * @return Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
      * 
      */
     private @Nullable String executionCheckpointingIntervalMs;
     /**
-     * @return Flink execution.checkpointing.timeout in milliseconds
+     * @return The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
      * 
      */
     private @Nullable String executionCheckpointingTimeoutMs;
@@ -29,17 +35,22 @@ public final class FlinkFlinkUserConfig {
      */
     private @Nullable String flinkVersion;
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Flink taskmanager.numberOfTaskSlots
+     * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value
      * 
      */
     private @Nullable String numberOfTaskSlots;
     /**
-     * @return Flink parallelism.default
+     * @return How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     private @Nullable String parallelismDefault;
@@ -49,36 +60,43 @@ public final class FlinkFlinkUserConfig {
      */
     private @Nullable FlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Flink restart-strategy
+     * @return failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
      * 
      */
     private @Nullable String restartStrategy;
     /**
-     * @return Flink restart-strategy.failure-rate.delay in seconds
+     * @return Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
      * 
      */
     private @Nullable String restartStrategyDelaySec;
     /**
-     * @return Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * @return Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
      * 
      */
     private @Nullable String restartStrategyFailureRateIntervalMin;
     /**
-     * @return Flink restart-strategy.failure-rate.max-failures-per-interval
+     * @return The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
      * 
      */
     private @Nullable String restartStrategyMaxFailures;
 
     private FlinkFlinkUserConfig() {}
     /**
-     * @return Flink execution.checkpointing.interval in milliseconds
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
      * 
      */
     public Optional<String> executionCheckpointingIntervalMs() {
         return Optional.ofNullable(this.executionCheckpointingIntervalMs);
     }
     /**
-     * @return Flink execution.checkpointing.timeout in milliseconds
+     * @return The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
      * 
      */
     public Optional<String> executionCheckpointingTimeoutMs() {
@@ -92,21 +110,28 @@ public final class FlinkFlinkUserConfig {
         return Optional.ofNullable(this.flinkVersion);
     }
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Flink taskmanager.numberOfTaskSlots
+     * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value
      * 
      */
     public Optional<String> numberOfTaskSlots() {
         return Optional.ofNullable(this.numberOfTaskSlots);
     }
     /**
-     * @return Flink parallelism.default
+     * @return How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     public Optional<String> parallelismDefault() {
@@ -120,28 +145,28 @@ public final class FlinkFlinkUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Flink restart-strategy
+     * @return failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
      * 
      */
     public Optional<String> restartStrategy() {
         return Optional.ofNullable(this.restartStrategy);
     }
     /**
-     * @return Flink restart-strategy.failure-rate.delay in seconds
+     * @return Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
      * 
      */
     public Optional<String> restartStrategyDelaySec() {
         return Optional.ofNullable(this.restartStrategyDelaySec);
     }
     /**
-     * @return Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * @return Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
      * 
      */
     public Optional<String> restartStrategyFailureRateIntervalMin() {
         return Optional.ofNullable(this.restartStrategyFailureRateIntervalMin);
     }
     /**
-     * @return Flink restart-strategy.failure-rate.max-failures-per-interval
+     * @return The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
      * 
      */
     public Optional<String> restartStrategyMaxFailures() {
@@ -157,9 +182,11 @@ public final class FlinkFlinkUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String executionCheckpointingIntervalMs;
         private @Nullable String executionCheckpointingTimeoutMs;
         private @Nullable String flinkVersion;
+        private @Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String numberOfTaskSlots;
         private @Nullable String parallelismDefault;
@@ -171,9 +198,11 @@ public final class FlinkFlinkUserConfig {
         public Builder() {}
         public Builder(FlinkFlinkUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.executionCheckpointingIntervalMs = defaults.executionCheckpointingIntervalMs;
     	      this.executionCheckpointingTimeoutMs = defaults.executionCheckpointingTimeoutMs;
     	      this.flinkVersion = defaults.flinkVersion;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
     	      this.parallelismDefault = defaults.parallelismDefault;
@@ -184,6 +213,11 @@ public final class FlinkFlinkUserConfig {
     	      this.restartStrategyMaxFailures = defaults.restartStrategyMaxFailures;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder executionCheckpointingIntervalMs(@Nullable String executionCheckpointingIntervalMs) {
             this.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
@@ -198,6 +232,14 @@ public final class FlinkFlinkUserConfig {
         public Builder flinkVersion(@Nullable String flinkVersion) {
             this.flinkVersion = flinkVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(FlinkFlinkUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -244,9 +286,11 @@ public final class FlinkFlinkUserConfig {
         }
         public FlinkFlinkUserConfig build() {
             final var o = new FlinkFlinkUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
             o.executionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             o.flinkVersion = flinkVersion;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.numberOfTaskSlots = numberOfTaskSlots;
             o.parallelismDefault = parallelismDefault;

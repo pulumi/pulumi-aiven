@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_kafka.Mykafka.Service_name,
         ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
         ///         Permission = "&lt;PERMISSON&gt;",
         ///         Username = "&lt;USERNAME_PATTERN&gt;",
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
@@ -59,7 +59,7 @@ namespace Pulumi.Aiven
         ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_kafka.Mykafka.Service_name,
         ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
         ///         Permission = "&lt;PERMISSON&gt;",
         ///         Username = "&lt;USERNAME_PATTERN&gt;",
@@ -71,7 +71,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaAclResult> Invoke(GetKafkaAclInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithDefaults());
     }
 
 

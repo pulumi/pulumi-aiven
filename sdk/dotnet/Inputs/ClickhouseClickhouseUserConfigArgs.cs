@@ -12,11 +12,29 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ClickhouseClickhouseUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.ClickhouseClickhouseUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.ClickhouseClickhouseUserConfigIpFilterObjectArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.ClickhouseClickhouseUserConfigIpFilterObjectArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {

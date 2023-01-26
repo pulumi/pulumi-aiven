@@ -12,45 +12,37 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaConnectKafkaConnectUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+        public InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Kafka Connect configuration values
-        /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs>? KafkaConnect { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

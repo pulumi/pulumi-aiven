@@ -12,11 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointPrometheusUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("basicAuthPassword")]
+        private Input<string>? _basicAuthPassword;
+
         /// <summary>
         /// Prometheus basic authentication password
         /// </summary>
-        [Input("basicAuthPassword")]
-        public Input<string>? BasicAuthPassword { get; set; }
+        public Input<string>? BasicAuthPassword
+        {
+            get => _basicAuthPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _basicAuthPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Prometheus basic authentication username

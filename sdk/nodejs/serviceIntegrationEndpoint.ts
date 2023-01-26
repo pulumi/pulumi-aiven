@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,7 +38,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * Datadog specific user configurable settings
+     * Datadog user configurable settings
      */
     public readonly datadogUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointDatadogUserConfig | undefined>;
     /**
@@ -53,31 +54,35 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
-     * external AWS CloudWatch Logs specific user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings
      */
     public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
-     * External AWS cloudwatch mertrics specific user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings
      */
     public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
-     * external elasticsearch specific user configurable settings
+     * ExternalElasticsearchLogs user configurable settings
      */
     public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
     /**
-     * external Google Cloud Logginig specific user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings
      */
     public readonly externalGoogleCloudLoggingUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
     /**
-     * external Kafka specific user configurable settings
+     * ExternalKafka user configurable settings
      */
     public readonly externalKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
     /**
-     * External schema registry specific user configurable settings
+     * ExternalOpensearchLogs user configurable settings
+     */
+    public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
+    /**
+     * ExternalSchemaRegistry user configurable settings
      */
     public readonly externalSchemaRegistryUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig | undefined>;
     /**
-     * Jolokia specific user configurable settings
+     * Jolokia user configurable settings
      */
     public readonly jolokiaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
@@ -85,15 +90,15 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Prometheus specific user configurable settings
+     * Prometheus user configurable settings
      */
     public readonly prometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointPrometheusUserConfig | undefined>;
     /**
-     * rsyslog specific user configurable settings
+     * Rsyslog user configurable settings
      */
     public readonly rsyslogUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
     /**
-     * Signalfx specific user configurable settings
+     * Signalfx user configurable settings
      */
     public readonly signalfxUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointSignalfxUserConfig | undefined>;
 
@@ -119,6 +124,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
             resourceInputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
+            resourceInputs["externalOpensearchLogsUserConfig"] = state ? state.externalOpensearchLogsUserConfig : undefined;
             resourceInputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
             resourceInputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -144,6 +150,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
             resourceInputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
+            resourceInputs["externalOpensearchLogsUserConfig"] = args ? args.externalOpensearchLogsUserConfig : undefined;
             resourceInputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
             resourceInputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -162,7 +169,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
  */
 export interface ServiceIntegrationEndpointState {
     /**
-     * Datadog specific user configurable settings
+     * Datadog user configurable settings
      */
     datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
     /**
@@ -178,31 +185,35 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointType?: pulumi.Input<string>;
     /**
-     * external AWS CloudWatch Logs specific user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings
      */
     externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
     /**
-     * External AWS cloudwatch mertrics specific user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings
      */
     externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
-     * external elasticsearch specific user configurable settings
+     * ExternalElasticsearchLogs user configurable settings
      */
     externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
     /**
-     * external Google Cloud Logginig specific user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings
      */
     externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
     /**
-     * external Kafka specific user configurable settings
+     * ExternalKafka user configurable settings
      */
     externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
-     * External schema registry specific user configurable settings
+     * ExternalOpensearchLogs user configurable settings
+     */
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
+    /**
+     * ExternalSchemaRegistry user configurable settings
      */
     externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
     /**
-     * Jolokia specific user configurable settings
+     * Jolokia user configurable settings
      */
     jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
@@ -210,15 +221,15 @@ export interface ServiceIntegrationEndpointState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Prometheus specific user configurable settings
+     * Prometheus user configurable settings
      */
     prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
     /**
-     * rsyslog specific user configurable settings
+     * Rsyslog user configurable settings
      */
     rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
     /**
-     * Signalfx specific user configurable settings
+     * Signalfx user configurable settings
      */
     signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }
@@ -228,7 +239,7 @@ export interface ServiceIntegrationEndpointState {
  */
 export interface ServiceIntegrationEndpointArgs {
     /**
-     * Datadog specific user configurable settings
+     * Datadog user configurable settings
      */
     datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
     /**
@@ -240,31 +251,35 @@ export interface ServiceIntegrationEndpointArgs {
      */
     endpointType: pulumi.Input<string>;
     /**
-     * external AWS CloudWatch Logs specific user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings
      */
     externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
     /**
-     * External AWS cloudwatch mertrics specific user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings
      */
     externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
-     * external elasticsearch specific user configurable settings
+     * ExternalElasticsearchLogs user configurable settings
      */
     externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
     /**
-     * external Google Cloud Logginig specific user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings
      */
     externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
     /**
-     * external Kafka specific user configurable settings
+     * ExternalKafka user configurable settings
      */
     externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
-     * External schema registry specific user configurable settings
+     * ExternalOpensearchLogs user configurable settings
+     */
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
+    /**
+     * ExternalSchemaRegistry user configurable settings
      */
     externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
     /**
-     * Jolokia specific user configurable settings
+     * Jolokia user configurable settings
      */
     jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
@@ -272,15 +287,15 @@ export interface ServiceIntegrationEndpointArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Prometheus specific user configurable settings
+     * Prometheus user configurable settings
      */
     prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
     /**
-     * rsyslog specific user configurable settings
+     * Rsyslog user configurable settings
      */
     rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
     /**
-     * Signalfx specific user configurable settings
+     * Signalfx user configurable settings
      */
     signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }

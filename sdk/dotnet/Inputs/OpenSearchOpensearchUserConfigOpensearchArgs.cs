@@ -28,7 +28,16 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? EmailSenderName { get; set; }
 
         [Input("emailSenderPassword")]
-        public Input<string>? EmailSenderPassword { get; set; }
+        private Input<string>? _emailSenderPassword;
+        public Input<string>? EmailSenderPassword
+        {
+            get => _emailSenderPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _emailSenderPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("emailSenderUsername")]
         public Input<string>? EmailSenderUsername { get; set; }

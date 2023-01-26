@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationKafkaMirrormakerUserConfig
     {
         /// <summary>
-        /// Kafka cluster alias
+        /// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
         /// </summary>
         public readonly string? ClusterAlias;
         /// <summary>

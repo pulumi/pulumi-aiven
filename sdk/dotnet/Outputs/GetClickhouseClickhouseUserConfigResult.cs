@@ -13,18 +13,26 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetClickhouseClickhouseUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
+        public readonly ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? ProjectToForkFrom;
         public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]
         private GetClickhouseClickhouseUserConfigResult(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             string? projectToForkFrom,
 
             string? serviceToForkFrom)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             ProjectToForkFrom = projectToForkFrom;
             ServiceToForkFrom = serviceToForkFrom;

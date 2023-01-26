@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupTransitGatewayVpcAttachment(ctx, &GetTransitGatewayVpcAttachmentArgs{
+//			_, err := aiven.LookupTransitGatewayVpcAttachment(ctx, &aiven.LookupTransitGatewayVpcAttachmentArgs{
 //				VpcId:            aiven_project_vpc.Bar.Id,
 //				PeerCloudAccount: "<PEER_ACCOUNT_ID>",
 //				PeerVpc:          "google-project1",

@@ -12,105 +12,76 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class MySqlMysqlUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
 
-        /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created.
-        /// </summary>
+        [Input("adminPassword")]
+        private Input<string>? _adminPassword;
+        public Input<string>? AdminPassword
+        {
+            get => _adminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
-        /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-        /// </summary>
         [Input("backupHour")]
         public Input<string>? BackupHour { get; set; }
 
-        /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        /// </summary>
         [Input("backupMinute")]
         public Input<string>? BackupMinute { get; set; }
 
-        /// <summary>
-        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-        /// </summary>
         [Input("binlogRetentionPeriod")]
         public Input<string>? BinlogRetentionPeriod { get; set; }
 
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.MySqlMysqlUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+        public InputList<Inputs.MySqlMysqlUserConfigIpFilterObjectGetArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.MySqlMysqlUserConfigIpFilterObjectGetArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Migrate data from existing server
-        /// </summary>
         [Input("migration")]
         public Input<Inputs.MySqlMysqlUserConfigMigrationGetArgs>? Migration { get; set; }
 
-        /// <summary>
-        /// mysql.conf configuration values
-        /// </summary>
         [Input("mysql")]
         public Input<Inputs.MySqlMysqlUserConfigMysqlGetArgs>? Mysql { get; set; }
 
-        /// <summary>
-        /// MySQL major version
-        /// </summary>
         [Input("mysqlVersion")]
         public Input<string>? MysqlVersion { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.MySqlMysqlUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.MySqlMysqlUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.MySqlMysqlUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
-        /// <summary>
-        /// Recovery target time when forking a service. This has effect only when a new service is being created.
-        /// </summary>
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
 
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

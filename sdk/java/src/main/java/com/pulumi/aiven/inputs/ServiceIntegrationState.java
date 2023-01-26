@@ -3,6 +3,9 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationClickhousePostgresqlUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaConnectUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaMirrormakerUserConfigArgs;
@@ -20,6 +23,51 @@ import javax.annotation.Nullable;
 public final class ServiceIntegrationState extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceIntegrationState Empty = new ServiceIntegrationState();
+
+    /**
+     * ClickhouseKafka user configurable settings
+     * 
+     */
+    @Import(name="clickhouseKafkaUserConfig")
+    private @Nullable Output<ServiceIntegrationClickhouseKafkaUserConfigArgs> clickhouseKafkaUserConfig;
+
+    /**
+     * @return ClickhouseKafka user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationClickhouseKafkaUserConfigArgs>> clickhouseKafkaUserConfig() {
+        return Optional.ofNullable(this.clickhouseKafkaUserConfig);
+    }
+
+    /**
+     * ClickhousePostgresql user configurable settings
+     * 
+     */
+    @Import(name="clickhousePostgresqlUserConfig")
+    private @Nullable Output<ServiceIntegrationClickhousePostgresqlUserConfigArgs> clickhousePostgresqlUserConfig;
+
+    /**
+     * @return ClickhousePostgresql user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationClickhousePostgresqlUserConfigArgs>> clickhousePostgresqlUserConfig() {
+        return Optional.ofNullable(this.clickhousePostgresqlUserConfig);
+    }
+
+    /**
+     * Datadog user configurable settings
+     * 
+     */
+    @Import(name="datadogUserConfig")
+    private @Nullable Output<ServiceIntegrationDatadogUserConfigArgs> datadogUserConfig;
+
+    /**
+     * @return Datadog user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationDatadogUserConfigArgs>> datadogUserConfig() {
+        return Optional.ofNullable(this.datadogUserConfig);
+    }
 
     /**
      * Destination endpoint for the integration (if any)
@@ -82,14 +130,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Kafka Connect specific user configurable settings
+     * KafkaConnect user configurable settings
      * 
      */
     @Import(name="kafkaConnectUserConfig")
     private @Nullable Output<ServiceIntegrationKafkaConnectUserConfigArgs> kafkaConnectUserConfig;
 
     /**
-     * @return Kafka Connect specific user configurable settings
+     * @return KafkaConnect user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaConnectUserConfigArgs>> kafkaConnectUserConfig() {
@@ -97,14 +145,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Kafka Logs specific user configurable settings
+     * KafkaLogs user configurable settings
      * 
      */
     @Import(name="kafkaLogsUserConfig")
     private @Nullable Output<ServiceIntegrationKafkaLogsUserConfigArgs> kafkaLogsUserConfig;
 
     /**
-     * @return Kafka Logs specific user configurable settings
+     * @return KafkaLogs user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaLogsUserConfigArgs>> kafkaLogsUserConfig() {
@@ -112,14 +160,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Mirrormaker 2 integration specific user configurable settings
+     * KafkaMirrormaker user configurable settings
      * 
      */
     @Import(name="kafkaMirrormakerUserConfig")
     private @Nullable Output<ServiceIntegrationKafkaMirrormakerUserConfigArgs> kafkaMirrormakerUserConfig;
 
     /**
-     * @return Mirrormaker 2 integration specific user configurable settings
+     * @return KafkaMirrormaker user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaMirrormakerUserConfigArgs>> kafkaMirrormakerUserConfig() {
@@ -127,14 +175,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Log integration specific user configurable settings
+     * Logs user configurable settings
      * 
      */
     @Import(name="logsUserConfig")
     private @Nullable Output<ServiceIntegrationLogsUserConfigArgs> logsUserConfig;
 
     /**
-     * @return Log integration specific user configurable settings
+     * @return Logs user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationLogsUserConfigArgs>> logsUserConfig() {
@@ -142,14 +190,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Metrics specific user configurable settings
+     * Metrics user configurable settings
      * 
      */
     @Import(name="metricsUserConfig")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigArgs> metricsUserConfig;
 
     /**
-     * @return Metrics specific user configurable settings
+     * @return Metrics user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationMetricsUserConfigArgs>> metricsUserConfig() {
@@ -157,14 +205,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Mirrormaker 1 integration specific user configurable settings
+     * Mirrormaker user configurable settings
      * 
      */
     @Import(name="mirrormakerUserConfig")
     private @Nullable Output<ServiceIntegrationMirrormakerUserConfigArgs> mirrormakerUserConfig;
 
     /**
-     * @return Mirrormaker 1 integration specific user configurable settings
+     * @return Mirrormaker user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationMirrormakerUserConfigArgs>> mirrormakerUserConfig() {
@@ -219,6 +267,9 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     private ServiceIntegrationState() {}
 
     private ServiceIntegrationState(ServiceIntegrationState $) {
+        this.clickhouseKafkaUserConfig = $.clickhouseKafkaUserConfig;
+        this.clickhousePostgresqlUserConfig = $.clickhousePostgresqlUserConfig;
+        this.datadogUserConfig = $.datadogUserConfig;
         this.destinationEndpointId = $.destinationEndpointId;
         this.destinationServiceName = $.destinationServiceName;
         this.integrationId = $.integrationId;
@@ -250,6 +301,69 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
 
         public Builder(ServiceIntegrationState defaults) {
             $ = new ServiceIntegrationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clickhouseKafkaUserConfig ClickhouseKafka user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseKafkaUserConfig(@Nullable Output<ServiceIntegrationClickhouseKafkaUserConfigArgs> clickhouseKafkaUserConfig) {
+            $.clickhouseKafkaUserConfig = clickhouseKafkaUserConfig;
+            return this;
+        }
+
+        /**
+         * @param clickhouseKafkaUserConfig ClickhouseKafka user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseKafkaUserConfig(ServiceIntegrationClickhouseKafkaUserConfigArgs clickhouseKafkaUserConfig) {
+            return clickhouseKafkaUserConfig(Output.of(clickhouseKafkaUserConfig));
+        }
+
+        /**
+         * @param clickhousePostgresqlUserConfig ClickhousePostgresql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhousePostgresqlUserConfig(@Nullable Output<ServiceIntegrationClickhousePostgresqlUserConfigArgs> clickhousePostgresqlUserConfig) {
+            $.clickhousePostgresqlUserConfig = clickhousePostgresqlUserConfig;
+            return this;
+        }
+
+        /**
+         * @param clickhousePostgresqlUserConfig ClickhousePostgresql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhousePostgresqlUserConfig(ServiceIntegrationClickhousePostgresqlUserConfigArgs clickhousePostgresqlUserConfig) {
+            return clickhousePostgresqlUserConfig(Output.of(clickhousePostgresqlUserConfig));
+        }
+
+        /**
+         * @param datadogUserConfig Datadog user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogUserConfig(@Nullable Output<ServiceIntegrationDatadogUserConfigArgs> datadogUserConfig) {
+            $.datadogUserConfig = datadogUserConfig;
+            return this;
+        }
+
+        /**
+         * @param datadogUserConfig Datadog user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogUserConfig(ServiceIntegrationDatadogUserConfigArgs datadogUserConfig) {
+            return datadogUserConfig(Output.of(datadogUserConfig));
         }
 
         /**
@@ -337,7 +451,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kafkaConnectUserConfig Kafka Connect specific user configurable settings
+         * @param kafkaConnectUserConfig KafkaConnect user configurable settings
          * 
          * @return builder
          * 
@@ -348,7 +462,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kafkaConnectUserConfig Kafka Connect specific user configurable settings
+         * @param kafkaConnectUserConfig KafkaConnect user configurable settings
          * 
          * @return builder
          * 
@@ -358,7 +472,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kafkaLogsUserConfig Kafka Logs specific user configurable settings
+         * @param kafkaLogsUserConfig KafkaLogs user configurable settings
          * 
          * @return builder
          * 
@@ -369,7 +483,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kafkaLogsUserConfig Kafka Logs specific user configurable settings
+         * @param kafkaLogsUserConfig KafkaLogs user configurable settings
          * 
          * @return builder
          * 
@@ -379,7 +493,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kafkaMirrormakerUserConfig Mirrormaker 2 integration specific user configurable settings
+         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings
          * 
          * @return builder
          * 
@@ -390,7 +504,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kafkaMirrormakerUserConfig Mirrormaker 2 integration specific user configurable settings
+         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings
          * 
          * @return builder
          * 
@@ -400,7 +514,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logsUserConfig Log integration specific user configurable settings
+         * @param logsUserConfig Logs user configurable settings
          * 
          * @return builder
          * 
@@ -411,7 +525,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logsUserConfig Log integration specific user configurable settings
+         * @param logsUserConfig Logs user configurable settings
          * 
          * @return builder
          * 
@@ -421,7 +535,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param metricsUserConfig Metrics specific user configurable settings
+         * @param metricsUserConfig Metrics user configurable settings
          * 
          * @return builder
          * 
@@ -432,7 +546,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param metricsUserConfig Metrics specific user configurable settings
+         * @param metricsUserConfig Metrics user configurable settings
          * 
          * @return builder
          * 
@@ -442,7 +556,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mirrormakerUserConfig Mirrormaker 1 integration specific user configurable settings
+         * @param mirrormakerUserConfig Mirrormaker user configurable settings
          * 
          * @return builder
          * 
@@ -453,7 +567,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mirrormakerUserConfig Mirrormaker 1 integration specific user configurable settings
+         * @param mirrormakerUserConfig Mirrormaker user configurable settings
          * 
          * @return builder
          * 

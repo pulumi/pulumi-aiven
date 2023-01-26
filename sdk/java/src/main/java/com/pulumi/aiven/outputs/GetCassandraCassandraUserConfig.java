@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigCassandra;
+import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
@@ -15,18 +16,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCassandraCassandraUserConfig {
+    private @Nullable String additionalBackupRegions;
     /**
      * @return Cassandra server provided values
      * 
      */
     private @Nullable GetCassandraCassandraUserConfigCassandra cassandra;
     private @Nullable String cassandraVersion;
+    private @Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable String migrateSstableloader;
     private @Nullable GetCassandraCassandraUserConfigPrivateAccess privateAccess;
     private @Nullable String projectToForkFrom;
     private @Nullable GetCassandraCassandraUserConfigPublicAccess publicAccess;
     private @Nullable String serviceToForkFrom;
+    private @Nullable String serviceToJoinWith;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
@@ -34,6 +38,9 @@ public final class GetCassandraCassandraUserConfig {
     private @Nullable String staticIps;
 
     private GetCassandraCassandraUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     /**
      * @return Cassandra server provided values
      * 
@@ -43,6 +50,9 @@ public final class GetCassandraCassandraUserConfig {
     }
     public Optional<String> cassandraVersion() {
         return Optional.ofNullable(this.cassandraVersion);
+    }
+    public List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -62,6 +72,9 @@ public final class GetCassandraCassandraUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    public Optional<String> serviceToJoinWith() {
+        return Optional.ofNullable(this.serviceToJoinWith);
+    }
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
@@ -79,29 +92,40 @@ public final class GetCassandraCassandraUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable GetCassandraCassandraUserConfigCassandra cassandra;
         private @Nullable String cassandraVersion;
+        private @Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String migrateSstableloader;
         private @Nullable GetCassandraCassandraUserConfigPrivateAccess privateAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable GetCassandraCassandraUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
+        private @Nullable String serviceToJoinWith;
         private @Nullable String staticIps;
         public Builder() {}
         public Builder(GetCassandraCassandraUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.cassandra = defaults.cassandra;
     	      this.cassandraVersion = defaults.cassandraVersion;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migrateSstableloader = defaults.migrateSstableloader;
     	      this.privateAccess = defaults.privateAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
+    	      this.serviceToJoinWith = defaults.serviceToJoinWith;
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder cassandra(@Nullable GetCassandraCassandraUserConfigCassandra cassandra) {
             this.cassandra = cassandra;
@@ -111,6 +135,14 @@ public final class GetCassandraCassandraUserConfig {
         public Builder cassandraVersion(@Nullable String cassandraVersion) {
             this.cassandraVersion = cassandraVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetCassandraCassandraUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -146,20 +178,28 @@ public final class GetCassandraCassandraUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceToJoinWith(@Nullable String serviceToJoinWith) {
+            this.serviceToJoinWith = serviceToJoinWith;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
         }
         public GetCassandraCassandraUserConfig build() {
             final var o = new GetCassandraCassandraUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.cassandra = cassandra;
             o.cassandraVersion = cassandraVersion;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migrateSstableloader = migrateSstableloader;
             o.privateAccess = privateAccess;
             o.projectToForkFrom = projectToForkFrom;
             o.publicAccess = publicAccess;
             o.serviceToForkFrom = serviceToForkFrom;
+            o.serviceToJoinWith = serviceToJoinWith;
             o.staticIps = staticIps;
             return o;
         }

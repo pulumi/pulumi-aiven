@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaResult> InvokeAsync(GetKafkaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka data source provides information about the existing Aiven Kafka services.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaResult> Invoke(GetKafkaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -48,6 +48,12 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// If true, user is part of the owners team for this account
+        /// </summary>
+        [Output("isAccountOwner")]
+        public Output<bool> IsAccountOwner { get; private set; } = null!;
+
+        /// <summary>
         /// Account name
         /// </summary>
         [Output("name")]
@@ -154,6 +160,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// If true, user is part of the owners team for this account
+        /// </summary>
+        [Input("isAccountOwner")]
+        public Input<bool>? IsAccountOwner { get; set; }
 
         /// <summary>
         /// Account name

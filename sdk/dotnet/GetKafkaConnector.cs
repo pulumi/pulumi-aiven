@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var kafka_es_con1 = Aiven.GetKafkaConnector.Invoke(new()
         ///     {
         ///         Project = aiven_project.Kafka_con_project1.Project,
-        ///         ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
         ///         ConnectorName = "kafka-es-con1",
         ///     });
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaConnectorResult> InvokeAsync(GetKafkaConnectorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         ///     var kafka_es_con1 = Aiven.GetKafkaConnector.Invoke(new()
         ///     {
         ///         Project = aiven_project.Kafka_con_project1.Project,
-        ///         ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
         ///         ConnectorName = "kafka-es-con1",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaConnectorResult> Invoke(GetKafkaConnectorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

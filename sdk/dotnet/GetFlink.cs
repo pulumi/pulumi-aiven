@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlinkResult> InvokeAsync(GetFlinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Flink data source provides information about the existing Aiven Flink service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlinkResult> Invoke(GetFlinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewMysqlDatabase(ctx, "mydatabase", &aiven.MysqlDatabaseArgs{
 //				Project:      pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName:  pulumi.Any(aiven_service.Myservice.Service_name),
+//				ServiceName:  pulumi.Any(aiven_mysql.Mymysql.Service_name),
 //				DatabaseName: pulumi.String("<DATABASE_NAME>"),
 //			})
 //			if err != nil {

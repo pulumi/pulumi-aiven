@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupGcpVpcPeeringConnection(ctx, &GetGcpVpcPeeringConnectionArgs{
+//			_, err := aiven.LookupGcpVpcPeeringConnection(ctx, &aiven.LookupGcpVpcPeeringConnectionArgs{
 //				VpcId:        data.Aiven_project_vpc.Vpc.Id,
 //				GcpProjectId: "xxxx",
 //				PeerVpc:      "xxxx",
@@ -66,6 +66,8 @@ type LookupGcpVpcPeeringConnectionResult struct {
 	Id string `pulumi:"id"`
 	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc string `pulumi:"peerVpc"`
+	// Computed GCP network peering link
+	SelfLink string `pulumi:"selfLink"`
 	// State of the peering connection
 	State string `pulumi:"state"`
 	// State-specific help or error information
@@ -129,6 +131,11 @@ func (o LookupGcpVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
 // GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupGcpVpcPeeringConnectionResultOutput) PeerVpc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.PeerVpc }).(pulumi.StringOutput)
+}
+
+// Computed GCP network peering link
+func (o LookupGcpVpcPeeringConnectionResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
 // State of the peering connection

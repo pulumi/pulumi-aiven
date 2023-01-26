@@ -21,7 +21,7 @@ class GetGcpVpcPeeringConnectionResult:
     """
     A collection of values returned by getGcpVpcPeeringConnection.
     """
-    def __init__(__self__, gcp_project_id=None, id=None, peer_vpc=None, state=None, state_info=None, vpc_id=None):
+    def __init__(__self__, gcp_project_id=None, id=None, peer_vpc=None, self_link=None, state=None, state_info=None, vpc_id=None):
         if gcp_project_id and not isinstance(gcp_project_id, str):
             raise TypeError("Expected argument 'gcp_project_id' to be a str")
         pulumi.set(__self__, "gcp_project_id", gcp_project_id)
@@ -31,6 +31,9 @@ class GetGcpVpcPeeringConnectionResult:
         if peer_vpc and not isinstance(peer_vpc, str):
             raise TypeError("Expected argument 'peer_vpc' to be a str")
         pulumi.set(__self__, "peer_vpc", peer_vpc)
+        if self_link and not isinstance(self_link, str):
+            raise TypeError("Expected argument 'self_link' to be a str")
+        pulumi.set(__self__, "self_link", self_link)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -66,6 +69,14 @@ class GetGcpVpcPeeringConnectionResult:
         return pulumi.get(self, "peer_vpc")
 
     @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        Computed GCP network peering link
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -99,6 +110,7 @@ class AwaitableGetGcpVpcPeeringConnectionResult(GetGcpVpcPeeringConnectionResult
             gcp_project_id=self.gcp_project_id,
             id=self.id,
             peer_vpc=self.peer_vpc,
+            self_link=self.self_link,
             state=self.state,
             state_info=self.state_info,
             vpc_id=self.vpc_id)
@@ -138,6 +150,7 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
         gcp_project_id=__ret__.gcp_project_id,
         id=__ret__.id,
         peer_vpc=__ret__.peer_vpc,
+        self_link=__ret__.self_link,
         state=__ret__.state,
         state_info=__ret__.state_info,
         vpc_id=__ret__.vpc_id)

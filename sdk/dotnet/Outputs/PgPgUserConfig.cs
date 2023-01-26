@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfig
     {
         /// <summary>
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
         /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         /// </summary>
         public readonly string? AdminPassword;
@@ -30,11 +34,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? BackupMinute;
         /// <summary>
-        /// Enable IPv6
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports
         /// </summary>
         public readonly string? EnableIpv6;
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PgPgUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -45,16 +53,13 @@ namespace Pulumi.Aiven.Outputs
         /// postgresql.conf configuration values
         /// </summary>
         public readonly Outputs.PgPgUserConfigPg? Pg;
-        /// <summary>
-        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        /// </summary>
         public readonly string? PgReadReplica;
         /// <summary>
         /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         /// </summary>
         public readonly string? PgServiceToForkFrom;
         /// <summary>
-        /// Enable pg*stat*monitor extension if available for the current cluster
+        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
         /// </summary>
         public readonly string? PgStatMonitorEnable;
         /// <summary>
@@ -94,11 +99,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// shared*buffers*percentage
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         /// </summary>
         public readonly string? SharedBuffersPercentage;
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         public readonly string? StaticIps;
         /// <summary>
@@ -114,12 +119,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Variant;
         /// <summary>
-        /// work_mem
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         /// </summary>
         public readonly string? WorkMem;
 
         [OutputConstructor]
         private PgPgUserConfig(
+            string? additionalBackupRegions,
+
             string? adminPassword,
 
             string? adminUsername,
@@ -129,6 +136,8 @@ namespace Pulumi.Aiven.Outputs
             string? backupMinute,
 
             string? enableIpv6,
+
+            ImmutableArray<Outputs.PgPgUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -172,11 +181,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? workMem)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             EnableIpv6 = enableIpv6;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Migration = migration;
             Pg = pg;

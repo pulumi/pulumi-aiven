@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -12,65 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3AggregatorM3aggregatorUserConfig {
-    /**
-     * @return Custom domain
-     * 
-     */
     private @Nullable String customDomain;
-    /**
-     * @return IP filter
-     * 
-     */
+    private @Nullable List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
-    /**
-     * @return M3 major version (deprecated, use m3aggregator_version)
-     * 
-     */
     private @Nullable String m3Version;
-    /**
-     * @return M3 major version (the minimum compatible version)
-     * 
-     */
     private @Nullable String m3aggregatorVersion;
-    /**
-     * @return Static IP addresses
-     * 
-     */
     private @Nullable String staticIps;
 
     private M3AggregatorM3aggregatorUserConfig() {}
-    /**
-     * @return Custom domain
-     * 
-     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
-    /**
-     * @return IP filter
-     * 
-     */
+    public List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return M3 major version (deprecated, use m3aggregator_version)
-     * 
-     */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
-    /**
-     * @return M3 major version (the minimum compatible version)
-     * 
-     */
     public Optional<String> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -85,6 +50,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
+        private @Nullable List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String m3Version;
         private @Nullable String m3aggregatorVersion;
@@ -93,6 +59,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
         public Builder(M3AggregatorM3aggregatorUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.m3Version = defaults.m3Version;
     	      this.m3aggregatorVersion = defaults.m3aggregatorVersion;
@@ -103,6 +70,14 @@ public final class M3AggregatorM3aggregatorUserConfig {
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(M3AggregatorM3aggregatorUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -130,6 +105,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
         public M3AggregatorM3aggregatorUserConfig build() {
             final var o = new M3AggregatorM3aggregatorUserConfig();
             o.customDomain = customDomain;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.m3Version = m3Version;
             o.m3aggregatorVersion = m3aggregatorVersion;

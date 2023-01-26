@@ -16,7 +16,7 @@ namespace Pulumi.Aiven
     public partial class ServiceIntegrationEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Datadog specific user configurable settings
+        /// Datadog user configurable settings
         /// </summary>
         [Output("datadogUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointDatadogUserConfig?> DatadogUserConfig { get; private set; } = null!;
@@ -40,43 +40,49 @@ namespace Pulumi.Aiven
         public Output<string> EndpointType { get; private set; } = null!;
 
         /// <summary>
-        /// external AWS CloudWatch Logs specific user configurable settings
+        /// ExternalAwsCloudwatchLogs user configurable settings
         /// </summary>
         [Output("externalAwsCloudwatchLogsUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig?> ExternalAwsCloudwatchLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// ExternalAwsCloudwatchMetrics user configurable settings
         /// </summary>
         [Output("externalAwsCloudwatchMetricsUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig?> ExternalAwsCloudwatchMetricsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// external elasticsearch specific user configurable settings
+        /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         [Output("externalElasticsearchLogsUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig?> ExternalElasticsearchLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// external Google Cloud Logginig specific user configurable settings
+        /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         [Output("externalGoogleCloudLoggingUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig?> ExternalGoogleCloudLoggingUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// external Kafka specific user configurable settings
+        /// ExternalKafka user configurable settings
         /// </summary>
         [Output("externalKafkaUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalKafkaUserConfig?> ExternalKafkaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// External schema registry specific user configurable settings
+        /// ExternalOpensearchLogs user configurable settings
+        /// </summary>
+        [Output("externalOpensearchLogsUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig?> ExternalOpensearchLogsUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ExternalSchemaRegistry user configurable settings
         /// </summary>
         [Output("externalSchemaRegistryUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig?> ExternalSchemaRegistryUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Jolokia specific user configurable settings
+        /// Jolokia user configurable settings
         /// </summary>
         [Output("jolokiaUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointJolokiaUserConfig?> JolokiaUserConfig { get; private set; } = null!;
@@ -88,19 +94,19 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Prometheus specific user configurable settings
+        /// Prometheus user configurable settings
         /// </summary>
         [Output("prometheusUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointPrometheusUserConfig?> PrometheusUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// rsyslog specific user configurable settings
+        /// Rsyslog user configurable settings
         /// </summary>
         [Output("rsyslogUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Signalfx specific user configurable settings
+        /// Signalfx user configurable settings
         /// </summary>
         [Output("signalfxUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointSignalfxUserConfig?> SignalfxUserConfig { get; private set; } = null!;
@@ -152,7 +158,7 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Datadog specific user configurable settings
+        /// Datadog user configurable settings
         /// </summary>
         [Input("datadogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
@@ -170,43 +176,49 @@ namespace Pulumi.Aiven
         public Input<string> EndpointType { get; set; } = null!;
 
         /// <summary>
-        /// external AWS CloudWatch Logs specific user configurable settings
+        /// ExternalAwsCloudwatchLogs user configurable settings
         /// </summary>
         [Input("externalAwsCloudwatchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
 
         /// <summary>
-        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// ExternalAwsCloudwatchMetrics user configurable settings
         /// </summary>
         [Input("externalAwsCloudwatchMetricsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
-        /// external elasticsearch specific user configurable settings
+        /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
 
         /// <summary>
-        /// external Google Cloud Logginig specific user configurable settings
+        /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         [Input("externalGoogleCloudLoggingUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
 
         /// <summary>
-        /// external Kafka specific user configurable settings
+        /// ExternalKafka user configurable settings
         /// </summary>
         [Input("externalKafkaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs>? ExternalKafkaUserConfig { get; set; }
 
         /// <summary>
-        /// External schema registry specific user configurable settings
+        /// ExternalOpensearchLogs user configurable settings
+        /// </summary>
+        [Input("externalOpensearchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>? ExternalOpensearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalSchemaRegistry user configurable settings
         /// </summary>
         [Input("externalSchemaRegistryUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs>? ExternalSchemaRegistryUserConfig { get; set; }
 
         /// <summary>
-        /// Jolokia specific user configurable settings
+        /// Jolokia user configurable settings
         /// </summary>
         [Input("jolokiaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs>? JolokiaUserConfig { get; set; }
@@ -218,19 +230,19 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Prometheus specific user configurable settings
+        /// Prometheus user configurable settings
         /// </summary>
         [Input("prometheusUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
-        /// rsyslog specific user configurable settings
+        /// Rsyslog user configurable settings
         /// </summary>
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
 
         /// <summary>
-        /// Signalfx specific user configurable settings
+        /// Signalfx user configurable settings
         /// </summary>
         [Input("signalfxUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointSignalfxUserConfigArgs>? SignalfxUserConfig { get; set; }
@@ -244,7 +256,7 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Datadog specific user configurable settings
+        /// Datadog user configurable settings
         /// </summary>
         [Input("datadogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointDatadogUserConfigGetArgs>? DatadogUserConfig { get; set; }
@@ -274,43 +286,49 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// external AWS CloudWatch Logs specific user configurable settings
+        /// ExternalAwsCloudwatchLogs user configurable settings
         /// </summary>
         [Input("externalAwsCloudwatchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigGetArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
 
         /// <summary>
-        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// ExternalAwsCloudwatchMetrics user configurable settings
         /// </summary>
         [Input("externalAwsCloudwatchMetricsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigGetArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
-        /// external elasticsearch specific user configurable settings
+        /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
 
         /// <summary>
-        /// external Google Cloud Logginig specific user configurable settings
+        /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         [Input("externalGoogleCloudLoggingUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
 
         /// <summary>
-        /// external Kafka specific user configurable settings
+        /// ExternalKafka user configurable settings
         /// </summary>
         [Input("externalKafkaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs>? ExternalKafkaUserConfig { get; set; }
 
         /// <summary>
-        /// External schema registry specific user configurable settings
+        /// ExternalOpensearchLogs user configurable settings
+        /// </summary>
+        [Input("externalOpensearchLogsUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigGetArgs>? ExternalOpensearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalSchemaRegistry user configurable settings
         /// </summary>
         [Input("externalSchemaRegistryUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigGetArgs>? ExternalSchemaRegistryUserConfig { get; set; }
 
         /// <summary>
-        /// Jolokia specific user configurable settings
+        /// Jolokia user configurable settings
         /// </summary>
         [Input("jolokiaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigGetArgs>? JolokiaUserConfig { get; set; }
@@ -322,19 +340,19 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Prometheus specific user configurable settings
+        /// Prometheus user configurable settings
         /// </summary>
         [Input("prometheusUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointPrometheusUserConfigGetArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
-        /// rsyslog specific user configurable settings
+        /// Rsyslog user configurable settings
         /// </summary>
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
 
         /// <summary>
-        /// Signalfx specific user configurable settings
+        /// Signalfx user configurable settings
         /// </summary>
         [Input("signalfxUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointSignalfxUserConfigGetArgs>? SignalfxUserConfig { get; set; }

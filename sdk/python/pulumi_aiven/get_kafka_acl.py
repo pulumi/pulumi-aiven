@@ -132,7 +132,7 @@ def get_kafka_acl(permission: Optional[str] = None,
     import pulumi_aiven as aiven
 
     mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"],
+        service_name=aiven_kafka["mykafka"]["service_name"],
         topic="<TOPIC_NAME_PATTERN>",
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
@@ -181,7 +181,7 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
     import pulumi_aiven as aiven
 
     mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"],
+        service_name=aiven_kafka["mykafka"]["service_name"],
         topic="<TOPIC_NAME_PATTERN>",
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")

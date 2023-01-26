@@ -15,13 +15,13 @@ namespace Pulumi.Aiven
         /// The Account Authentication data source provides information about the existing Aiven Account Authentication.
         /// </summary>
         public static Task<GetAccountAuthenticationResult> InvokeAsync(GetAccountAuthenticationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAuthenticationResult>("aiven:index/getAccountAuthentication:getAccountAuthentication", args ?? new GetAccountAuthenticationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAuthenticationResult>("aiven:index/getAccountAuthentication:getAccountAuthentication", args ?? new GetAccountAuthenticationArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Account Authentication data source provides information about the existing Aiven Account Authentication.
         /// </summary>
         public static Output<GetAccountAuthenticationResult> Invoke(GetAccountAuthenticationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountAuthenticationResult>("aiven:index/getAccountAuthentication:getAccountAuthentication", args ?? new GetAccountAuthenticationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAuthenticationResult>("aiven:index/getAccountAuthentication:getAccountAuthentication", args ?? new GetAccountAuthenticationInvokeArgs(), options.WithDefaults());
     }
 
 

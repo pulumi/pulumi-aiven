@@ -46,14 +46,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     }
 
     /**
-     * Google Service Account Credentials
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
     @Import(name="serviceAccountCredentials")
     private @Nullable Output<String> serviceAccountCredentials;
 
     /**
-     * @return Google Service Account Credentials
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
     public Optional<Output<String>> serviceAccountCredentials() {
@@ -129,7 +129,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param serviceAccountCredentials Google Service Account Credentials
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param serviceAccountCredentials Google Service Account Credentials
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
          * 
          * @return builder
          * 

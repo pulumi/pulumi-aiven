@@ -214,7 +214,7 @@ def get_service_user(project: Optional[str] = None,
     import pulumi_aiven as aiven
 
     myserviceuser = aiven.get_service_user(project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"],
+        service_name=aiven_pg["mypg"]["service_name"],
         username="<USERNAME>")
     ```
 
@@ -262,7 +262,7 @@ def get_service_user_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi_aiven as aiven
 
     myserviceuser = aiven.get_service_user(project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"],
+        service_name=aiven_pg["mypg"]["service_name"],
         username="<USERNAME>")
     ```
 

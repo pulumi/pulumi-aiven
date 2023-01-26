@@ -22,7 +22,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
      */
     private @Nullable String projectId;
     /**
-     * @return Google Service Account Credentials
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
     private @Nullable String serviceAccountCredentials;
@@ -43,7 +43,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Google Service Account Credentials
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
     public Optional<String> serviceAccountCredentials() {

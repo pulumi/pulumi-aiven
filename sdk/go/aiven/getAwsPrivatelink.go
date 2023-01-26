@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupAwsPrivatelink(ctx, &GetAwsPrivatelinkArgs{
+//			_, err := aiven.LookupAwsPrivatelink(ctx, &aiven.LookupAwsPrivatelinkArgs{
 //				Project:     data.Aiven_project.Foo.Project,
 //				ServiceName: aiven_kafka.Bar.Service_name,
 //			}, nil)

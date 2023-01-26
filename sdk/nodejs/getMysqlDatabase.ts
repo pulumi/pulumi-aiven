@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  *
  * const mydatabase = aiven.getMysqlDatabase({
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_mysql.mymysql.service_name,
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
  */
 export function getMysqlDatabase(args: GetMysqlDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", {
         "databaseName": args.databaseName,
         "project": args.project,
@@ -73,9 +70,24 @@ export interface GetMysqlDatabaseResult {
     readonly serviceName: string;
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mydatabase = aiven.getMysqlDatabase({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_mysql.mymysql.service_name,
+ *     databaseName: "<DATABASE_NAME>",
+ * });
+ * ```
+ */
 export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlDatabaseResult> {
-    return pulumi.output(args).apply(a => getMysqlDatabase(a, opts))
+    return pulumi.output(args).apply((a: any) => getMysqlDatabase(a, opts))
 }
 
 /**

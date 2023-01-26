@@ -13,6 +13,8 @@ import (
 
 // The Service User resource allows the creation and management of Aiven Service Users.
 //
+// > **Note:** This resource is deprecated. Please use service-specific resources instead of this one, for example: aiven_kafka_user, PgUser etc.
+//
 // ## Example Usage
 //
 // ```go
@@ -29,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewServiceUser(ctx, "myserviceuser", &aiven.ServiceUserArgs{
 //				Project:     pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
+//				ServiceName: pulumi.Any(aiven_pg.Mypg.Service_name),
 //				Username:    pulumi.String("<USERNAME>"),
 //			})
 //			if err != nil {
@@ -95,6 +97,15 @@ func NewServiceUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessCert",
+		"accessKey",
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource ServiceUser
 	err := ctx.RegisterResource("aiven:index/serviceUser:ServiceUser", name, args, &resource, opts...)
 	if err != nil {

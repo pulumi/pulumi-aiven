@@ -15,56 +15,56 @@ public final class GetProjectVpcPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetProjectVpcPlainArgs Empty = new GetProjectVpcPlainArgs();
 
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
      * 
      */
-    @Import(name="cloudName", required=true)
-    private String cloudName;
+    @Import(name="cloudName")
+    private @Nullable String cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
      * 
      */
-    public String cloudName() {
-        return this.cloudName;
+    public Optional<String> cloudName() {
+        return Optional.ofNullable(this.cloudName);
+    }
+
+    /**
+     * Identifies the project this resource belongs to.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable String project;
+
+    /**
+     * @return Identifies the project this resource belongs to.
+     * 
+     */
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
      * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
      * 
      */
-    @Import(name="id")
-    private @Nullable String id;
+    @Import(name="vpcId")
+    private @Nullable String vpcId;
 
     /**
      * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-    }
-
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
-    @Import(name="project", required=true)
-    private String project;
-
-    /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
-    public String project() {
-        return this.project;
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     private GetProjectVpcPlainArgs() {}
 
     private GetProjectVpcPlainArgs(GetProjectVpcPlainArgs $) {
         this.cloudName = $.cloudName;
-        this.id = $.id;
         this.project = $.project;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -86,41 +86,39 @@ public final class GetProjectVpcPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
          * 
          * @return builder
          * 
          */
-        public Builder cloudName(String cloudName) {
+        public Builder cloudName(@Nullable String cloudName) {
             $.cloudName = cloudName;
             return this;
         }
 
         /**
-         * @param id ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+         * @param project Identifies the project this resource belongs to.
          * 
          * @return builder
          * 
          */
-        public Builder id(@Nullable String id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(String project) {
+        public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param vpcId ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable String vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
         public GetProjectVpcPlainArgs build() {
-            $.cloudName = Objects.requireNonNull($.cloudName, "expected parameter 'cloudName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             return $;
         }
     }

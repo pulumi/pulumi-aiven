@@ -498,6 +498,8 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["estimated_balance"] = None
             __props__.__dict__["payment_method"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCert"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Project, __self__).__init__(
             'aiven:index/project:Project',
             resource_name,

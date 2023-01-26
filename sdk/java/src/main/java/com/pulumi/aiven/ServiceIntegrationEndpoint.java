@@ -12,6 +12,7 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchM
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalKafkaUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointPrometheusUserConfig;
@@ -33,14 +34,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")
 public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * Datadog specific user configurable settings
+     * Datadog user configurable settings
      * 
      */
     @Export(name="datadogUserConfig", type=ServiceIntegrationEndpointDatadogUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointDatadogUserConfig> datadogUserConfig;
 
     /**
-     * @return Datadog specific user configurable settings
+     * @return Datadog user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointDatadogUserConfig>> datadogUserConfig() {
@@ -89,98 +90,112 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return this.endpointType;
     }
     /**
-     * external AWS CloudWatch Logs specific user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings
      * 
      */
     @Export(name="externalAwsCloudwatchLogsUserConfig", type=ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfig;
 
     /**
-     * @return external AWS CloudWatch Logs specific user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>> externalAwsCloudwatchLogsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchLogsUserConfig);
     }
     /**
-     * External AWS cloudwatch mertrics specific user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
     @Export(name="externalAwsCloudwatchMetricsUserConfig", type=ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfig;
 
     /**
-     * @return External AWS cloudwatch mertrics specific user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>> externalAwsCloudwatchMetricsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchMetricsUserConfig);
     }
     /**
-     * external elasticsearch specific user configurable settings
+     * ExternalElasticsearchLogs user configurable settings
      * 
      */
     @Export(name="externalElasticsearchLogsUserConfig", type=ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfig;
 
     /**
-     * @return external elasticsearch specific user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>> externalElasticsearchLogsUserConfig() {
         return Codegen.optional(this.externalElasticsearchLogsUserConfig);
     }
     /**
-     * external Google Cloud Logginig specific user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings
      * 
      */
     @Export(name="externalGoogleCloudLoggingUserConfig", type=ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfig;
 
     /**
-     * @return external Google Cloud Logginig specific user configurable settings
+     * @return ExternalGoogleCloudLogging user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>> externalGoogleCloudLoggingUserConfig() {
         return Codegen.optional(this.externalGoogleCloudLoggingUserConfig);
     }
     /**
-     * external Kafka specific user configurable settings
+     * ExternalKafka user configurable settings
      * 
      */
     @Export(name="externalKafkaUserConfig", type=ServiceIntegrationEndpointExternalKafkaUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfig;
 
     /**
-     * @return external Kafka specific user configurable settings
+     * @return ExternalKafka user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalKafkaUserConfig>> externalKafkaUserConfig() {
         return Codegen.optional(this.externalKafkaUserConfig);
     }
     /**
-     * External schema registry specific user configurable settings
+     * ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    @Export(name="externalOpensearchLogsUserConfig", type=ServiceIntegrationEndpointExternalOpensearchLogsUserConfig.class, parameters={})
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfig;
+
+    /**
+     * @return ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>> externalOpensearchLogsUserConfig() {
+        return Codegen.optional(this.externalOpensearchLogsUserConfig);
+    }
+    /**
+     * ExternalSchemaRegistry user configurable settings
      * 
      */
     @Export(name="externalSchemaRegistryUserConfig", type=ServiceIntegrationEndpointExternalSchemaRegistryUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfig;
 
     /**
-     * @return External schema registry specific user configurable settings
+     * @return ExternalSchemaRegistry user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>> externalSchemaRegistryUserConfig() {
         return Codegen.optional(this.externalSchemaRegistryUserConfig);
     }
     /**
-     * Jolokia specific user configurable settings
+     * Jolokia user configurable settings
      * 
      */
     @Export(name="jolokiaUserConfig", type=ServiceIntegrationEndpointJolokiaUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfig;
 
     /**
-     * @return Jolokia specific user configurable settings
+     * @return Jolokia user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointJolokiaUserConfig>> jolokiaUserConfig() {
@@ -201,42 +216,42 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return this.project;
     }
     /**
-     * Prometheus specific user configurable settings
+     * Prometheus user configurable settings
      * 
      */
     @Export(name="prometheusUserConfig", type=ServiceIntegrationEndpointPrometheusUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfig;
 
     /**
-     * @return Prometheus specific user configurable settings
+     * @return Prometheus user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointPrometheusUserConfig>> prometheusUserConfig() {
         return Codegen.optional(this.prometheusUserConfig);
     }
     /**
-     * rsyslog specific user configurable settings
+     * Rsyslog user configurable settings
      * 
      */
     @Export(name="rsyslogUserConfig", type=ServiceIntegrationEndpointRsyslogUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfig;
 
     /**
-     * @return rsyslog specific user configurable settings
+     * @return Rsyslog user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointRsyslogUserConfig>> rsyslogUserConfig() {
         return Codegen.optional(this.rsyslogUserConfig);
     }
     /**
-     * Signalfx specific user configurable settings
+     * Signalfx user configurable settings
      * 
      */
     @Export(name="signalfxUserConfig", type=ServiceIntegrationEndpointSignalfxUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfig;
 
     /**
-     * @return Signalfx specific user configurable settings
+     * @return Signalfx user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointSignalfxUserConfig>> signalfxUserConfig() {

@@ -14,11 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class FlinkFlinkUserConfig
     {
         /// <summary>
-        /// Flink execution.checkpointing.interval in milliseconds
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
         /// </summary>
         public readonly string? ExecutionCheckpointingIntervalMs;
         /// <summary>
-        /// Flink execution.checkpointing.timeout in milliseconds
+        /// The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
         /// </summary>
         public readonly string? ExecutionCheckpointingTimeoutMs;
         /// <summary>
@@ -26,15 +30,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? FlinkVersion;
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FlinkFlinkUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Flink taskmanager.numberOfTaskSlots
+        /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value
         /// </summary>
         public readonly string? NumberOfTaskSlots;
         /// <summary>
-        /// Flink parallelism.default
+        /// How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
         /// </summary>
         public readonly string? ParallelismDefault;
         /// <summary>
@@ -42,29 +50,33 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.FlinkFlinkUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Flink restart-strategy
+        /// failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
         /// </summary>
         public readonly string? RestartStrategy;
         /// <summary>
-        /// Flink restart-strategy.failure-rate.delay in seconds
+        /// Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
         /// </summary>
         public readonly string? RestartStrategyDelaySec;
         /// <summary>
-        /// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+        /// Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
         /// </summary>
         public readonly string? RestartStrategyFailureRateIntervalMin;
         /// <summary>
-        /// Flink restart-strategy.failure-rate.max-failures-per-interval
+        /// The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
         /// </summary>
         public readonly string? RestartStrategyMaxFailures;
 
         [OutputConstructor]
         private FlinkFlinkUserConfig(
+            string? additionalBackupRegions,
+
             string? executionCheckpointingIntervalMs,
 
             string? executionCheckpointingTimeoutMs,
 
             string? flinkVersion,
+
+            ImmutableArray<Outputs.FlinkFlinkUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -82,9 +94,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? restartStrategyMaxFailures)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             ExecutionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
             ExecutionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             FlinkVersion = flinkVersion;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
             ParallelismDefault = parallelismDefault;

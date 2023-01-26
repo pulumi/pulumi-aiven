@@ -13,32 +13,16 @@ public final class M3AggregatorServiceIntegrationArgs extends com.pulumi.resourc
 
     public static final M3AggregatorServiceIntegrationArgs Empty = new M3AggregatorServiceIntegrationArgs();
 
-    /**
-     * Type of the service integration. The only supported value at the moment is `read_replica`
-     * 
-     */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
-    /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
-     * 
-     */
     public Output<String> integrationType() {
         return this.integrationType;
     }
 
-    /**
-     * Name of the source service
-     * 
-     */
     @Import(name="sourceServiceName", required=true)
     private Output<String> sourceServiceName;
 
-    /**
-     * @return Name of the source service
-     * 
-     */
     public Output<String> sourceServiceName() {
         return this.sourceServiceName;
     }
@@ -68,44 +52,20 @@ public final class M3AggregatorServiceIntegrationArgs extends com.pulumi.resourc
             $ = new M3AggregatorServiceIntegrationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationType(Output<String> integrationType) {
             $.integrationType = integrationType;
             return this;
         }
 
-        /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationType(String integrationType) {
             return integrationType(Output.of(integrationType));
         }
 
-        /**
-         * @param sourceServiceName Name of the source service
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceServiceName(Output<String> sourceServiceName) {
             $.sourceServiceName = sourceServiceName;
             return this;
         }
 
-        /**
-         * @param sourceServiceName Name of the source service
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceServiceName(String sourceServiceName) {
             return sourceServiceName(Output.of(sourceServiceName));
         }

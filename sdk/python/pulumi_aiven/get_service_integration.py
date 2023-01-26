@@ -22,7 +22,16 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, destination_endpoint_id=None, destination_service_name=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, mirrormaker_user_configs=None, project=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, mirrormaker_user_configs=None, project=None, source_endpoint_id=None, source_service_name=None):
+        if clickhouse_kafka_user_configs and not isinstance(clickhouse_kafka_user_configs, list):
+            raise TypeError("Expected argument 'clickhouse_kafka_user_configs' to be a list")
+        pulumi.set(__self__, "clickhouse_kafka_user_configs", clickhouse_kafka_user_configs)
+        if clickhouse_postgresql_user_configs and not isinstance(clickhouse_postgresql_user_configs, list):
+            raise TypeError("Expected argument 'clickhouse_postgresql_user_configs' to be a list")
+        pulumi.set(__self__, "clickhouse_postgresql_user_configs", clickhouse_postgresql_user_configs)
+        if datadog_user_configs and not isinstance(datadog_user_configs, list):
+            raise TypeError("Expected argument 'datadog_user_configs' to be a list")
+        pulumi.set(__self__, "datadog_user_configs", datadog_user_configs)
         if destination_endpoint_id and not isinstance(destination_endpoint_id, str):
             raise TypeError("Expected argument 'destination_endpoint_id' to be a str")
         pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
@@ -65,6 +74,30 @@ class GetServiceIntegrationResult:
         if source_service_name and not isinstance(source_service_name, str):
             raise TypeError("Expected argument 'source_service_name' to be a str")
         pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="clickhouseKafkaUserConfigs")
+    def clickhouse_kafka_user_configs(self) -> Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult']:
+        """
+        ClickhouseKafka user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_kafka_user_configs")
+
+    @property
+    @pulumi.getter(name="clickhousePostgresqlUserConfigs")
+    def clickhouse_postgresql_user_configs(self) -> Sequence['outputs.GetServiceIntegrationClickhousePostgresqlUserConfigResult']:
+        """
+        ClickhousePostgresql user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_postgresql_user_configs")
+
+    @property
+    @pulumi.getter(name="datadogUserConfigs")
+    def datadog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationDatadogUserConfigResult']:
+        """
+        Datadog user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_configs")
 
     @property
     @pulumi.getter(name="destinationEndpointId")
@@ -110,7 +143,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="kafkaConnectUserConfigs")
     def kafka_connect_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaConnectUserConfigResult']:
         """
-        Kafka Connect specific user configurable settings
+        KafkaConnect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_configs")
 
@@ -118,7 +151,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="kafkaLogsUserConfigs")
     def kafka_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaLogsUserConfigResult']:
         """
-        Kafka Logs specific user configurable settings
+        KafkaLogs user configurable settings
         """
         return pulumi.get(self, "kafka_logs_user_configs")
 
@@ -126,7 +159,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="kafkaMirrormakerUserConfigs")
     def kafka_mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult']:
         """
-        Mirrormaker 2 integration specific user configurable settings
+        KafkaMirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_configs")
 
@@ -134,7 +167,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="logsUserConfigs")
     def logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationLogsUserConfigResult']:
         """
-        Log integration specific user configurable settings
+        Logs user configurable settings
         """
         return pulumi.get(self, "logs_user_configs")
 
@@ -142,7 +175,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="metricsUserConfigs")
     def metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMetricsUserConfigResult']:
         """
-        Metrics specific user configurable settings
+        Metrics user configurable settings
         """
         return pulumi.get(self, "metrics_user_configs")
 
@@ -150,7 +183,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="mirrormakerUserConfigs")
     def mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMirrormakerUserConfigResult']:
         """
-        Mirrormaker 1 integration specific user configurable settings
+        Mirrormaker user configurable settings
         """
         return pulumi.get(self, "mirrormaker_user_configs")
 
@@ -185,6 +218,9 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
         if False:
             yield self
         return GetServiceIntegrationResult(
+            clickhouse_kafka_user_configs=self.clickhouse_kafka_user_configs,
+            clickhouse_postgresql_user_configs=self.clickhouse_postgresql_user_configs,
+            datadog_user_configs=self.datadog_user_configs,
             destination_endpoint_id=self.destination_endpoint_id,
             destination_service_name=self.destination_service_name,
             id=self.id,
@@ -213,7 +249,15 @@ def get_service_integration(destination_service_name: Optional[str] = None,
 
     ## Example Usage
 
-    {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
+        destination_service_name="<DESTINATION_SERVICE_NAME>",
+        integration_type="datadog",
+        source_service_name="<SOURCE_SERVICE_NAME>")
+    ```
 
 
     :param str destination_service_name: Destination service for the integration (if any)
@@ -230,6 +274,9 @@ def get_service_integration(destination_service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts, typ=GetServiceIntegrationResult).value
 
     return AwaitableGetServiceIntegrationResult(
+        clickhouse_kafka_user_configs=__ret__.clickhouse_kafka_user_configs,
+        clickhouse_postgresql_user_configs=__ret__.clickhouse_postgresql_user_configs,
+        datadog_user_configs=__ret__.datadog_user_configs,
         destination_endpoint_id=__ret__.destination_endpoint_id,
         destination_service_name=__ret__.destination_service_name,
         id=__ret__.id,
@@ -259,7 +306,15 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
 
     ## Example Usage
 
-    {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
+        destination_service_name="<DESTINATION_SERVICE_NAME>",
+        integration_type="datadog",
+        source_service_name="<SOURCE_SERVICE_NAME>")
+    ```
 
 
     :param str destination_service_name: Destination service for the integration (if any)

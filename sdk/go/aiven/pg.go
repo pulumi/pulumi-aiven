@@ -89,6 +89,11 @@ func NewPg(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource Pg
 	err := ctx.RegisterResource("aiven:index/pg:Pg", name, args, &resource, opts...)
 	if err != nil {

@@ -50,6 +50,8 @@ type Account struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// If true, user is part of the owners team for this account
+	IsAccountOwner pulumi.BoolOutput `pulumi:"isAccountOwner"`
 	// Account name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Owner team id
@@ -95,6 +97,8 @@ type accountState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
+	// If true, user is part of the owners team for this account
+	IsAccountOwner *bool `pulumi:"isAccountOwner"`
 	// Account name
 	Name *string `pulumi:"name"`
 	// Owner team id
@@ -112,6 +116,8 @@ type AccountState struct {
 	AccountId pulumi.StringPtrInput
 	// Time of creation
 	CreateTime pulumi.StringPtrInput
+	// If true, user is part of the owners team for this account
+	IsAccountOwner pulumi.BoolPtrInput
 	// Account name
 	Name pulumi.StringPtrInput
 	// Owner team id
@@ -238,6 +244,11 @@ func (o AccountOutput) AccountId() pulumi.StringOutput {
 // Time of creation
 func (o AccountOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// If true, user is part of the owners team for this account
+func (o AccountOutput) IsAccountOwner() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.IsAccountOwner }).(pulumi.BoolOutput)
 }
 
 // Account name

@@ -18,6 +18,9 @@ class ServiceIntegrationArgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
+                 clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
+                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
@@ -32,19 +35,28 @@ class ServiceIntegrationArgs:
         The set of arguments for constructing a ServiceIntegration resource.
         :param pulumi.Input[str] integration_type: Type of the service integration
         :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
+        :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
-        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: Kafka Logs specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Log integration specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
+        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
+        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
+        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "project", project)
+        if clickhouse_kafka_user_config is not None:
+            pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
+        if clickhouse_postgresql_user_config is not None:
+            pulumi.set(__self__, "clickhouse_postgresql_user_config", clickhouse_postgresql_user_config)
+        if datadog_user_config is not None:
+            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if destination_endpoint_id is not None:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
@@ -91,6 +103,42 @@ class ServiceIntegrationArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="clickhouseKafkaUserConfig")
+    def clickhouse_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
+        """
+        ClickhouseKafka user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_kafka_user_config")
+
+    @clickhouse_kafka_user_config.setter
+    def clickhouse_kafka_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_kafka_user_config", value)
+
+    @property
+    @pulumi.getter(name="clickhousePostgresqlUserConfig")
+    def clickhouse_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
+        """
+        ClickhousePostgresql user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_postgresql_user_config")
+
+    @clickhouse_postgresql_user_config.setter
+    def clickhouse_postgresql_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_postgresql_user_config", value)
+
+    @property
+    @pulumi.getter(name="datadogUserConfig")
+    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
+        """
+        Datadog user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_config")
+
+    @datadog_user_config.setter
+    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]):
+        pulumi.set(self, "datadog_user_config", value)
+
+    @property
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -118,7 +166,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]:
         """
-        Kafka Connect specific user configurable settings
+        KafkaConnect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -130,7 +178,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="kafkaLogsUserConfig")
     def kafka_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]:
         """
-        Kafka Logs specific user configurable settings
+        KafkaLogs user configurable settings
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
@@ -142,7 +190,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
         """
-        Mirrormaker 2 integration specific user configurable settings
+        KafkaMirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -154,7 +202,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="logsUserConfig")
     def logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]:
         """
-        Log integration specific user configurable settings
+        Logs user configurable settings
         """
         return pulumi.get(self, "logs_user_config")
 
@@ -166,7 +214,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="metricsUserConfig")
     def metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]:
         """
-        Metrics specific user configurable settings
+        Metrics user configurable settings
         """
         return pulumi.get(self, "metrics_user_config")
 
@@ -178,7 +226,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="mirrormakerUserConfig")
     def mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']]:
         """
-        Mirrormaker 1 integration specific user configurable settings
+        Mirrormaker user configurable settings
         """
         return pulumi.get(self, "mirrormaker_user_config")
 
@@ -214,6 +262,9 @@ class ServiceIntegrationArgs:
 @pulumi.input_type
 class _ServiceIntegrationState:
     def __init__(__self__, *,
+                 clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
+                 clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
+                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
@@ -229,20 +280,29 @@ class _ServiceIntegrationState:
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceIntegration resources.
+        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
+        :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
         :param pulumi.Input[str] integration_type: Type of the service integration
-        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: Kafka Logs specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Log integration specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
+        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
+        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
+        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
+        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
+        if clickhouse_kafka_user_config is not None:
+            pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
+        if clickhouse_postgresql_user_config is not None:
+            pulumi.set(__self__, "clickhouse_postgresql_user_config", clickhouse_postgresql_user_config)
+        if datadog_user_config is not None:
+            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if destination_endpoint_id is not None:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
@@ -269,6 +329,42 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
             pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="clickhouseKafkaUserConfig")
+    def clickhouse_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
+        """
+        ClickhouseKafka user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_kafka_user_config")
+
+    @clickhouse_kafka_user_config.setter
+    def clickhouse_kafka_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_kafka_user_config", value)
+
+    @property
+    @pulumi.getter(name="clickhousePostgresqlUserConfig")
+    def clickhouse_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
+        """
+        ClickhousePostgresql user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_postgresql_user_config")
+
+    @clickhouse_postgresql_user_config.setter
+    def clickhouse_postgresql_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_postgresql_user_config", value)
+
+    @property
+    @pulumi.getter(name="datadogUserConfig")
+    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
+        """
+        Datadog user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_config")
+
+    @datadog_user_config.setter
+    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]):
+        pulumi.set(self, "datadog_user_config", value)
 
     @property
     @pulumi.getter(name="destinationEndpointId")
@@ -322,7 +418,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]:
         """
-        Kafka Connect specific user configurable settings
+        KafkaConnect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -334,7 +430,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="kafkaLogsUserConfig")
     def kafka_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]:
         """
-        Kafka Logs specific user configurable settings
+        KafkaLogs user configurable settings
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
@@ -346,7 +442,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
         """
-        Mirrormaker 2 integration specific user configurable settings
+        KafkaMirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -358,7 +454,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="logsUserConfig")
     def logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]:
         """
-        Log integration specific user configurable settings
+        Logs user configurable settings
         """
         return pulumi.get(self, "logs_user_config")
 
@@ -370,7 +466,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="metricsUserConfig")
     def metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]:
         """
-        Metrics specific user configurable settings
+        Metrics user configurable settings
         """
         return pulumi.get(self, "metrics_user_config")
 
@@ -382,7 +478,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="mirrormakerUserConfig")
     def mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']]:
         """
-        Mirrormaker 1 integration specific user configurable settings
+        Mirrormaker user configurable settings
         """
         return pulumi.get(self, "mirrormaker_user_config")
 
@@ -432,6 +528,9 @@ class ServiceIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 clickhouse_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']]] = None,
+                 clickhouse_postgresql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]] = None,
+                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
@@ -457,23 +556,37 @@ class ServiceIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
-        {{tffile "examples/resources/aiven_service_integration/resource.tf"}}
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        my_integration_metrics = aiven.ServiceIntegration("myIntegrationMetrics",
+            project=aiven_project["myproject"]["project"],
+            integration_type="metrics",
+            source_service_name=aiven_kafka["kfk1"]["service_name"],
+            destination_service_name=aiven_m3db["m3db"]["service_name"])
+        ```
 
         ## Import
 
-        {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
+        ```sh
+         $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_type: Type of the service integration
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: Kafka Logs specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Log integration specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
@@ -496,11 +609,22 @@ class ServiceIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
-        {{tffile "examples/resources/aiven_service_integration/resource.tf"}}
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        my_integration_metrics = aiven.ServiceIntegration("myIntegrationMetrics",
+            project=aiven_project["myproject"]["project"],
+            integration_type="metrics",
+            source_service_name=aiven_kafka["kfk1"]["service_name"],
+            destination_service_name=aiven_m3db["m3db"]["service_name"])
+        ```
 
         ## Import
 
-        {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
+        ```sh
+         $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServiceIntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -517,6 +641,9 @@ class ServiceIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 clickhouse_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']]] = None,
+                 clickhouse_postgresql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]] = None,
+                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
@@ -538,6 +665,9 @@ class ServiceIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIntegrationArgs.__new__(ServiceIntegrationArgs)
 
+            __props__.__dict__["clickhouse_kafka_user_config"] = clickhouse_kafka_user_config
+            __props__.__dict__["clickhouse_postgresql_user_config"] = clickhouse_postgresql_user_config
+            __props__.__dict__["datadog_user_config"] = datadog_user_config
             __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
             __props__.__dict__["destination_service_name"] = destination_service_name
             if integration_type is None and not opts.urn:
@@ -565,6 +695,9 @@ class ServiceIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            clickhouse_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']]] = None,
+            clickhouse_postgresql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]] = None,
+            datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
             destination_service_name: Optional[pulumi.Input[str]] = None,
             integration_id: Optional[pulumi.Input[str]] = None,
@@ -585,16 +718,19 @@ class ServiceIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
         :param pulumi.Input[str] integration_type: Type of the service integration
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: Kafka Logs specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Mirrormaker 2 integration specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Log integration specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
@@ -603,6 +739,9 @@ class ServiceIntegration(pulumi.CustomResource):
 
         __props__ = _ServiceIntegrationState.__new__(_ServiceIntegrationState)
 
+        __props__.__dict__["clickhouse_kafka_user_config"] = clickhouse_kafka_user_config
+        __props__.__dict__["clickhouse_postgresql_user_config"] = clickhouse_postgresql_user_config
+        __props__.__dict__["datadog_user_config"] = datadog_user_config
         __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
         __props__.__dict__["destination_service_name"] = destination_service_name
         __props__.__dict__["integration_id"] = integration_id
@@ -617,6 +756,30 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["source_endpoint_id"] = source_endpoint_id
         __props__.__dict__["source_service_name"] = source_service_name
         return ServiceIntegration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clickhouseKafkaUserConfig")
+    def clickhouse_kafka_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationClickhouseKafkaUserConfig']]:
+        """
+        ClickhouseKafka user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_kafka_user_config")
+
+    @property
+    @pulumi.getter(name="clickhousePostgresqlUserConfig")
+    def clickhouse_postgresql_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationClickhousePostgresqlUserConfig']]:
+        """
+        ClickhousePostgresql user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_postgresql_user_config")
+
+    @property
+    @pulumi.getter(name="datadogUserConfig")
+    def datadog_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationDatadogUserConfig']]:
+        """
+        Datadog user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_config")
 
     @property
     @pulumi.getter(name="destinationEndpointId")
@@ -654,7 +817,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaConnectUserConfig']]:
         """
-        Kafka Connect specific user configurable settings
+        KafkaConnect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -662,7 +825,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="kafkaLogsUserConfig")
     def kafka_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaLogsUserConfig']]:
         """
-        Kafka Logs specific user configurable settings
+        KafkaLogs user configurable settings
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
@@ -670,7 +833,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaMirrormakerUserConfig']]:
         """
-        Mirrormaker 2 integration specific user configurable settings
+        KafkaMirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -678,7 +841,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="logsUserConfig")
     def logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationLogsUserConfig']]:
         """
-        Log integration specific user configurable settings
+        Logs user configurable settings
         """
         return pulumi.get(self, "logs_user_config")
 
@@ -686,7 +849,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="metricsUserConfig")
     def metrics_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationMetricsUserConfig']]:
         """
-        Metrics specific user configurable settings
+        Metrics user configurable settings
         """
         return pulumi.get(self, "metrics_user_config")
 
@@ -694,7 +857,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="mirrormakerUserConfig")
     def mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationMirrormakerUserConfig']]:
         """
-        Mirrormaker 1 integration specific user configurable settings
+        Mirrormaker user configurable settings
         """
         return pulumi.get(self, "mirrormaker_user_config")
 

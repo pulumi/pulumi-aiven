@@ -63,6 +63,10 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
      */
     public readonly peerVpc!: pulumi.Output<string>;
     /**
+     * Computed GCP network peering link
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
      * State of the peering connection
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -90,6 +94,7 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
             const state = argsOrState as GcpVpcPeeringConnectionState | undefined;
             resourceInputs["gcpProjectId"] = state ? state.gcpProjectId : undefined;
             resourceInputs["peerVpc"] = state ? state.peerVpc : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateInfo"] = state ? state.stateInfo : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -107,6 +112,7 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
             resourceInputs["gcpProjectId"] = args ? args.gcpProjectId : undefined;
             resourceInputs["peerVpc"] = args ? args.peerVpc : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateInfo"] = undefined /*out*/;
         }
@@ -127,6 +133,10 @@ export interface GcpVpcPeeringConnectionState {
      * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
      */
     peerVpc?: pulumi.Input<string>;
+    /**
+     * Computed GCP network peering link
+     */
+    selfLink?: pulumi.Input<string>;
     /**
      * State of the peering connection
      */

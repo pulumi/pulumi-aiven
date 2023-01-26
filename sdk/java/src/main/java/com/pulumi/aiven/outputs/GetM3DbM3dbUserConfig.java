@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigLimits;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigNamespace;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigPrivateAccess;
@@ -17,7 +18,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
+    private @Nullable List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable GetM3DbM3dbUserConfigLimits limits;
     private @Nullable String m3Version;
@@ -36,8 +39,14 @@ public final class GetM3DbM3dbUserConfig {
     private @Nullable String staticIps;
 
     private GetM3DbM3dbUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
+    }
+    public List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -89,7 +98,9 @@ public final class GetM3DbM3dbUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
+        private @Nullable List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetM3DbM3dbUserConfigLimits limits;
         private @Nullable String m3Version;
@@ -105,7 +116,9 @@ public final class GetM3DbM3dbUserConfig {
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.limits = defaults.limits;
     	      this.m3Version = defaults.m3Version;
@@ -121,9 +134,22 @@ public final class GetM3DbM3dbUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetM3DbM3dbUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -193,7 +219,9 @@ public final class GetM3DbM3dbUserConfig {
         }
         public GetM3DbM3dbUserConfig build() {
             final var o = new GetM3DbM3dbUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.limits = limits;
             o.m3Version = m3Version;

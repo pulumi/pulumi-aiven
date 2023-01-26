@@ -44,9 +44,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var f1 = new MirrorMakerReplicationFlow(&#34;f1&#34;, MirrorMakerReplicationFlowArgs.builder()        
  *             .project(aiven_project.kafka-mm-project1().project())
- *             .serviceName(aiven_service.mm().service_name())
- *             .sourceCluster(aiven_service.source().service_name())
- *             .targetCluster(aiven_service.target().service_name())
+ *             .serviceName(aiven_kafka.mm().service_name())
+ *             .sourceCluster(aiven_kafka.source().service_name())
+ *             .targetCluster(aiven_kafka.target().service_name())
  *             .enable(true)
  *             .topics(&#34;.*&#34;)
  *             .topicsBlacklists(            
@@ -95,6 +95,20 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      */
     public Output<Boolean> enable() {
         return this.enable;
+    }
+    /**
+     * Offset syncs topic location.
+     * 
+     */
+    @Export(name="offsetSyncsTopicLocation", type=String.class, parameters={})
+    private Output</* @Nullable */ String> offsetSyncsTopicLocation;
+
+    /**
+     * @return Offset syncs topic location.
+     * 
+     */
+    public Output<Optional<String>> offsetSyncsTopicLocation() {
+        return Codegen.optional(this.offsetSyncsTopicLocation);
     }
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

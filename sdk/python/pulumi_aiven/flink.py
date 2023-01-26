@@ -737,7 +737,7 @@ class Flink(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             flink_user_config=aiven.FlinkFlinkUserConfigArgs(
-                flink_version="1.13",
+                flink_version="1.15",
             ))
         ```
 
@@ -788,7 +788,7 @@ class Flink(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             flink_user_config=aiven.FlinkFlinkUserConfigArgs(
-                flink_version="1.13",
+                flink_version="1.15",
             ))
         ```
 
@@ -868,6 +868,8 @@ class Flink(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Flink, __self__).__init__(
             'aiven:index/flink:Flink',
             resource_name,

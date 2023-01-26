@@ -15,6 +15,27 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
 
     public static final M3DbM3dbUserConfigLimitsArgs Empty = new M3DbM3dbUserConfigLimitsArgs();
 
+    @Import(name="maxRecentlyQueriedSeriesBlocks")
+    private @Nullable Output<String> maxRecentlyQueriedSeriesBlocks;
+
+    public Optional<Output<String>> maxRecentlyQueriedSeriesBlocks() {
+        return Optional.ofNullable(this.maxRecentlyQueriedSeriesBlocks);
+    }
+
+    @Import(name="maxRecentlyQueriedSeriesDiskBytesRead")
+    private @Nullable Output<String> maxRecentlyQueriedSeriesDiskBytesRead;
+
+    public Optional<Output<String>> maxRecentlyQueriedSeriesDiskBytesRead() {
+        return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
+    }
+
+    @Import(name="maxRecentlyQueriedSeriesLookback")
+    private @Nullable Output<String> maxRecentlyQueriedSeriesLookback;
+
+    public Optional<Output<String>> maxRecentlyQueriedSeriesLookback() {
+        return Optional.ofNullable(this.maxRecentlyQueriedSeriesLookback);
+    }
+
     @Import(name="queryDocs")
     private @Nullable Output<String> queryDocs;
 
@@ -39,6 +60,9 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     private M3DbM3dbUserConfigLimitsArgs() {}
 
     private M3DbM3dbUserConfigLimitsArgs(M3DbM3dbUserConfigLimitsArgs $) {
+        this.maxRecentlyQueriedSeriesBlocks = $.maxRecentlyQueriedSeriesBlocks;
+        this.maxRecentlyQueriedSeriesDiskBytesRead = $.maxRecentlyQueriedSeriesDiskBytesRead;
+        this.maxRecentlyQueriedSeriesLookback = $.maxRecentlyQueriedSeriesLookback;
         this.queryDocs = $.queryDocs;
         this.queryRequireExhaustive = $.queryRequireExhaustive;
         this.querySeries = $.querySeries;
@@ -60,6 +84,33 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
 
         public Builder(M3DbM3dbUserConfigLimitsArgs defaults) {
             $ = new M3DbM3dbUserConfigLimitsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder maxRecentlyQueriedSeriesBlocks(@Nullable Output<String> maxRecentlyQueriedSeriesBlocks) {
+            $.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
+            return this;
+        }
+
+        public Builder maxRecentlyQueriedSeriesBlocks(String maxRecentlyQueriedSeriesBlocks) {
+            return maxRecentlyQueriedSeriesBlocks(Output.of(maxRecentlyQueriedSeriesBlocks));
+        }
+
+        public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable Output<String> maxRecentlyQueriedSeriesDiskBytesRead) {
+            $.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
+            return this;
+        }
+
+        public Builder maxRecentlyQueriedSeriesDiskBytesRead(String maxRecentlyQueriedSeriesDiskBytesRead) {
+            return maxRecentlyQueriedSeriesDiskBytesRead(Output.of(maxRecentlyQueriedSeriesDiskBytesRead));
+        }
+
+        public Builder maxRecentlyQueriedSeriesLookback(@Nullable Output<String> maxRecentlyQueriedSeriesLookback) {
+            $.maxRecentlyQueriedSeriesLookback = maxRecentlyQueriedSeriesLookback;
+            return this;
+        }
+
+        public Builder maxRecentlyQueriedSeriesLookback(String maxRecentlyQueriedSeriesLookback) {
+            return maxRecentlyQueriedSeriesLookback(Output.of(maxRecentlyQueriedSeriesLookback));
         }
 
         public Builder queryDocs(@Nullable Output<String> queryDocs) {

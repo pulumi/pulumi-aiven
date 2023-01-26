@@ -13,13 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class FlinkFlinkUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flink execution.checkpointing.interval in milliseconds
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        /// <summary>
+        /// Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
         /// </summary>
         [Input("executionCheckpointingIntervalMs")]
         public Input<string>? ExecutionCheckpointingIntervalMs { get; set; }
 
         /// <summary>
-        /// Flink execution.checkpointing.timeout in milliseconds
+        /// The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
         /// </summary>
         [Input("executionCheckpointingTimeoutMs")]
         public Input<string>? ExecutionCheckpointingTimeoutMs { get; set; }
@@ -30,11 +36,23 @@ namespace Pulumi.Aiven.Inputs
         [Input("flinkVersion")]
         public Input<string>? FlinkVersion { get; set; }
 
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectGetArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectGetArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -43,13 +61,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Flink taskmanager.numberOfTaskSlots
+        /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value
         /// </summary>
         [Input("numberOfTaskSlots")]
         public Input<string>? NumberOfTaskSlots { get; set; }
 
         /// <summary>
-        /// Flink parallelism.default
+        /// How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
         /// </summary>
         [Input("parallelismDefault")]
         public Input<string>? ParallelismDefault { get; set; }
@@ -61,25 +79,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.FlinkFlinkUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Flink restart-strategy
+        /// failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
         /// </summary>
         [Input("restartStrategy")]
         public Input<string>? RestartStrategy { get; set; }
 
         /// <summary>
-        /// Flink restart-strategy.failure-rate.delay in seconds
+        /// Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
         /// </summary>
         [Input("restartStrategyDelaySec")]
         public Input<string>? RestartStrategyDelaySec { get; set; }
 
         /// <summary>
-        /// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+        /// Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
         /// </summary>
         [Input("restartStrategyFailureRateIntervalMin")]
         public Input<string>? RestartStrategyFailureRateIntervalMin { get; set; }
 
         /// <summary>
-        /// Flink restart-strategy.failure-rate.max-failures-per-interval
+        /// The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
         /// </summary>
         [Input("restartStrategyMaxFailures")]
         public Input<string>? RestartStrategyMaxFailures { get; set; }

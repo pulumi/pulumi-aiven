@@ -12,11 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointDatadogUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("datadogApiKey")]
+        private Input<string>? _datadogApiKey;
+
         /// <summary>
         /// Datadog API key
         /// </summary>
-        [Input("datadogApiKey")]
-        public Input<string>? DatadogApiKey { get; set; }
+        public Input<string>? DatadogApiKey
+        {
+            get => _datadogApiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _datadogApiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("datadogTags")]
         private InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>? _datadogTags;

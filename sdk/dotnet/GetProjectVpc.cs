@@ -13,37 +13,91 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Project VPC data source provides information about the existing Aiven Project VPC.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myvpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         CloudName = "google-europe-west1",
+        ///     });
+        /// 
+        ///     var myvpcId = Aiven.GetProjectVpc.Invoke(new()
+        ///     {
+        ///         VpcId = aiven_project_vpc.Vpc.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Task<GetProjectVpcResult> InvokeAsync(GetProjectVpcArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcArgs(), options.WithDefaults());
+        public static Task<GetProjectVpcResult> InvokeAsync(GetProjectVpcArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Project VPC data source provides information about the existing Aiven Project VPC.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myvpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         CloudName = "google-europe-west1",
+        ///     });
+        /// 
+        ///     var myvpcId = Aiven.GetProjectVpc.Invoke(new()
+        ///     {
+        ///         VpcId = aiven_project_vpc.Vpc.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Output<GetProjectVpcResult> Invoke(GetProjectVpcInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcInvokeArgs(), options.WithDefaults());
+        public static Output<GetProjectVpcResult> Invoke(GetProjectVpcInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetProjectVpcArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
         /// </summary>
-        [Input("cloudName", required: true)]
-        public string CloudName { get; set; } = null!;
+        [Input("cloudName")]
+        public string? CloudName { get; set; }
+
+        /// <summary>
+        /// Identifies the project this resource belongs to.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
 
         /// <summary>
         /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
         /// </summary>
-        [Input("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("vpcId")]
+        public string? VpcId { get; set; }
 
         public GetProjectVpcArgs()
         {
@@ -54,22 +108,22 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
         /// </summary>
-        [Input("cloudName", required: true)]
-        public Input<string> CloudName { get; set; } = null!;
+        [Input("cloudName")]
+        public Input<string>? CloudName { get; set; }
+
+        /// <summary>
+        /// Identifies the project this resource belongs to.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public GetProjectVpcInvokeArgs()
         {
@@ -82,43 +136,50 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcResult
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
         /// </summary>
-        public readonly string CloudName;
+        public readonly string? CloudName;
         /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
         /// <summary>
         /// Network address range used by the VPC like 192.168.0.0/24
         /// </summary>
         public readonly string NetworkCidr;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to.
         /// </summary>
-        public readonly string Project;
+        public readonly string? Project;
         /// <summary>
         /// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// </summary>
+        public readonly string? VpcId;
 
         [OutputConstructor]
         private GetProjectVpcResult(
-            string cloudName,
+            string? cloudName,
 
-            string? id,
+            string id,
 
             string networkCidr,
 
-            string project,
+            string? project,
 
-            string state)
+            string state,
+
+            string? vpcId)
         {
             CloudName = cloudName;
             Id = id;
             NetworkCidr = networkCidr;
             Project = project;
             State = state;
+            VpcId = vpcId;
         }
     }
 }

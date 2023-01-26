@@ -53,6 +53,12 @@ namespace Pulumi.Aiven
         public Output<string> PeerVpc { get; private set; } = null!;
 
         /// <summary>
+        /// Computed GCP network peering link
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
         /// State of the peering connection
         /// </summary>
         [Output("state")]
@@ -153,6 +159,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("peerVpc")]
         public Input<string>? PeerVpc { get; set; }
+
+        /// <summary>
+        /// Computed GCP network peering link
+        /// </summary>
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// State of the peering connection

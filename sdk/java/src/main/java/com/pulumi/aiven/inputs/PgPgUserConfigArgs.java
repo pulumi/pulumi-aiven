@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.PgPgUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigMigrationArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgbouncerArgs;
@@ -23,6 +24,21 @@ import javax.annotation.Nullable;
 public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PgPgUserConfigArgs Empty = new PgPgUserConfigArgs();
+
+    /**
+     * Additional Cloud Regions for Backup Replication
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
 
     /**
      * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
@@ -85,14 +101,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable IPv6
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports
      * 
      */
     @Import(name="enableIpv6")
     private @Nullable Output<String> enableIpv6;
 
     /**
-     * @return Enable IPv6
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports
      * 
      */
     public Optional<Output<String>> enableIpv6() {
@@ -100,14 +116,29 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * IP filter
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<PgPgUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public Optional<Output<List<PgPgUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<String>>> ipFilters() {
@@ -145,16 +176,20 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @deprecated
+     * This setting is deprecated. Use read_replica service integration instead.
      * 
      */
+    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
     @Import(name="pgReadReplica")
     private @Nullable Output<String> pgReadReplica;
 
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @deprecated
+     * This setting is deprecated. Use read_replica service integration instead.
      * 
      */
+    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
     public Optional<Output<String>> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
@@ -175,14 +210,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable pg*stat*monitor extension if available for the current cluster
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
      * 
      */
     @Import(name="pgStatMonitorEnable")
     private @Nullable Output<String> pgStatMonitorEnable;
 
     /**
-     * @return Enable pg*stat*monitor extension if available for the current cluster
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
      * 
      */
     public Optional<Output<String>> pgStatMonitorEnable() {
@@ -325,14 +360,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * shared*buffers*percentage
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
      * 
      */
     @Import(name="sharedBuffersPercentage")
     private @Nullable Output<String> sharedBuffersPercentage;
 
     /**
-     * @return shared*buffers*percentage
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
      * 
      */
     public Optional<Output<String>> sharedBuffersPercentage() {
@@ -340,14 +375,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Static IP addresses
+     * Use static public IP addresses
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<Output<String>> staticIps() {
@@ -400,14 +435,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * work_mem
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      * 
      */
     @Import(name="workMem")
     private @Nullable Output<String> workMem;
 
     /**
-     * @return work_mem
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      * 
      */
     public Optional<Output<String>> workMem() {
@@ -417,11 +452,13 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     private PgPgUserConfigArgs() {}
 
     private PgPgUserConfigArgs(PgPgUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.adminPassword = $.adminPassword;
         this.adminUsername = $.adminUsername;
         this.backupHour = $.backupHour;
         this.backupMinute = $.backupMinute;
         this.enableIpv6 = $.enableIpv6;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.migration = $.migration;
         this.pg = $.pg;
@@ -461,6 +498,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(PgPgUserConfigArgs defaults) {
             $ = new PgPgUserConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
         /**
@@ -548,7 +606,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enableIpv6 Enable IPv6
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports
          * 
          * @return builder
          * 
@@ -559,7 +617,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enableIpv6 Enable IPv6
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports
          * 
          * @return builder
          * 
@@ -569,7 +627,38 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(@Nullable Output<List<PgPgUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(List<PgPgUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(PgPgUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -580,7 +669,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -590,7 +679,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -642,22 +731,26 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgReadReplica Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-         * 
          * @return builder
          * 
+         * @deprecated
+         * This setting is deprecated. Use read_replica service integration instead.
+         * 
          */
+        @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
         public Builder pgReadReplica(@Nullable Output<String> pgReadReplica) {
             $.pgReadReplica = pgReadReplica;
             return this;
         }
 
         /**
-         * @param pgReadReplica Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-         * 
          * @return builder
          * 
+         * @deprecated
+         * This setting is deprecated. Use read_replica service integration instead.
+         * 
          */
+        @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
         public Builder pgReadReplica(String pgReadReplica) {
             return pgReadReplica(Output.of(pgReadReplica));
         }
@@ -684,7 +777,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgStatMonitorEnable Enable pg*stat*monitor extension if available for the current cluster
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
          * 
          * @return builder
          * 
@@ -695,7 +788,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgStatMonitorEnable Enable pg*stat*monitor extension if available for the current cluster
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
          * 
          * @return builder
          * 
@@ -894,7 +987,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage shared*buffers*percentage
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
          * 
          * @return builder
          * 
@@ -905,7 +998,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage shared*buffers*percentage
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
          * 
          * @return builder
          * 
@@ -915,7 +1008,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 
@@ -926,7 +1019,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 
@@ -999,7 +1092,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workMem work_mem
+         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
          * 
          * @return builder
          * 
@@ -1010,7 +1103,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workMem work_mem
+         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupInfluxDb(ctx, &GetInfluxDbArgs{
+//			_, err := aiven.LookupInfluxDb(ctx, &aiven.LookupInfluxDbArgs{
 //				Project:     data.Aiven_project.Pr1.Project,
 //				ServiceName: "my-inf1",
 //			}, nil)

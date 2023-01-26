@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
  */
 export function getKafkaSchemaRegistryAcl(args: GetKafkaSchemaRegistryAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaRegistryAclResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", {
         "permission": args.permission,
         "project": args.project,
@@ -81,9 +78,11 @@ export interface GetKafkaSchemaRegistryAclResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+ */
 export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
-    return pulumi.output(args).apply(a => getKafkaSchemaRegistryAcl(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaSchemaRegistryAcl(a, opts))
 }
 
 /**

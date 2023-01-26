@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
  */
 export function getInfluxdbDatabase(args: GetInfluxdbDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetInfluxdbDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", {
         "databaseName": args.databaseName,
         "project": args.project,
@@ -60,9 +57,11 @@ export interface GetInfluxdbDatabaseResult {
     readonly serviceName: string;
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
+ */
 export function getInfluxdbDatabaseOutput(args: GetInfluxdbDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxdbDatabaseResult> {
-    return pulumi.output(args).apply(a => getInfluxdbDatabase(a, opts))
+    return pulumi.output(args).apply((a: any) => getInfluxdbDatabase(a, opts))
 }
 
 /**

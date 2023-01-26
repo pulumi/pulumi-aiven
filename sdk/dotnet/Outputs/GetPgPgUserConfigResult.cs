@@ -13,11 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? AdminPassword;
         public readonly string? AdminUsername;
         public readonly string? BackupHour;
         public readonly string? BackupMinute;
         public readonly string? EnableIpv6;
+        public readonly ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
         /// <summary>
@@ -48,6 +50,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetPgPgUserConfigResult(
+            string? additionalBackupRegions,
+
             string? adminPassword,
 
             string? adminUsername,
@@ -57,6 +61,8 @@ namespace Pulumi.Aiven.Outputs
             string? backupMinute,
 
             string? enableIpv6,
+
+            ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -100,11 +106,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? workMem)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             EnableIpv6 = enableIpv6;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Migration = migration;
             Pg = pg;

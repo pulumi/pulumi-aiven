@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ClickhouseServiceIntegrationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of the service integration. The only supported value at the moment is `read_replica`
+        /// Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;

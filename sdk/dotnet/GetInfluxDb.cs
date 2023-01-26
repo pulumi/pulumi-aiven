@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInfluxDbResult> InvokeAsync(GetInfluxDbArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbArgs(), options.WithDefaults());
 
         /// <summary>
         /// The InfluxDB data source provides information about the existing Aiven InfluxDB service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInfluxDbResult> Invoke(GetInfluxDbInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbInvokeArgs(), options.WithDefaults());
     }
 
 

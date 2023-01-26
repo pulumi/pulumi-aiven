@@ -59,6 +59,10 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * If true, user is part of the owners team for this account
+     */
+    public /*out*/ readonly isAccountOwner!: pulumi.Output<boolean>;
+    /**
      * Account name
      */
     public readonly name!: pulumi.Output<string>;
@@ -94,6 +98,7 @@ export class Account extends pulumi.CustomResource {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["isAccountOwner"] = state ? state.isAccountOwner : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ownerTeamId"] = state ? state.ownerTeamId : undefined;
             resourceInputs["primaryBillingGroupId"] = state ? state.primaryBillingGroupId : undefined;
@@ -105,6 +110,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["primaryBillingGroupId"] = args ? args.primaryBillingGroupId : undefined;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["isAccountOwner"] = undefined /*out*/;
             resourceInputs["ownerTeamId"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -126,6 +132,10 @@ export interface AccountState {
      * Time of creation
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * If true, user is part of the owners team for this account
+     */
+    isAccountOwner?: pulumi.Input<boolean>;
     /**
      * Account name
      */

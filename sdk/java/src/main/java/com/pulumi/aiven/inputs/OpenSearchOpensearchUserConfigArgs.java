@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexPatternArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexTemplateArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPrivateAccessArgs;
@@ -24,14 +25,29 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     public static final OpenSearchOpensearchUserConfigArgs Empty = new OpenSearchOpensearchUserConfigArgs();
 
     /**
-     * Custom domain
+     * Additional Cloud Regions for Backup Replication
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Custom domain
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -39,16 +55,20 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Disable replication factor adjustment
+     * @deprecated
+     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
      */
+    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
     @Import(name="disableReplicationFactorAdjustment")
     private @Nullable Output<String> disableReplicationFactorAdjustment;
 
     /**
-     * @return Disable replication factor adjustment
+     * @deprecated
+     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
      */
+    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
     public Optional<Output<String>> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
@@ -84,14 +104,29 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * IP filter
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public Optional<Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<String>>> ipFilters() {
@@ -99,14 +134,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Don&#39;t reset index.refresh_interval to the default value
+     * Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
      */
     @Import(name="keepIndexRefreshInterval")
     private @Nullable Output<String> keepIndexRefreshInterval;
 
     /**
-     * @return Don&#39;t reset index.refresh_interval to the default value
+     * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
      */
     public Optional<Output<String>> keepIndexRefreshInterval() {
@@ -114,16 +149,20 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Maximum index count
+     * @deprecated
+     * DEPRECATED: use index_patterns instead
      * 
      */
+    @Deprecated /* DEPRECATED: use index_patterns instead */
     @Import(name="maxIndexCount")
     private @Nullable Output<String> maxIndexCount;
 
     /**
-     * @return Maximum index count
+     * @deprecated
+     * DEPRECATED: use index_patterns instead
      * 
      */
+    @Deprecated /* DEPRECATED: use index_patterns instead */
     public Optional<Output<String>> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
@@ -264,14 +303,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Static IP addresses
+     * Use static public IP addresses
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<Output<String>> staticIps() {
@@ -281,10 +320,12 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     private OpenSearchOpensearchUserConfigArgs() {}
 
     private OpenSearchOpensearchUserConfigArgs(OpenSearchOpensearchUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.customDomain = $.customDomain;
         this.disableReplicationFactorAdjustment = $.disableReplicationFactorAdjustment;
         this.indexPatterns = $.indexPatterns;
         this.indexTemplate = $.indexTemplate;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.keepIndexRefreshInterval = $.keepIndexRefreshInterval;
         this.maxIndexCount = $.maxIndexCount;
@@ -319,7 +360,28 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customDomain Custom domain
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
          * 
          * @return builder
          * 
@@ -330,7 +392,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customDomain Custom domain
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
          * 
          * @return builder
          * 
@@ -340,22 +402,26 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param disableReplicationFactorAdjustment Disable replication factor adjustment
-         * 
          * @return builder
          * 
+         * @deprecated
+         * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+         * 
          */
+        @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
         public Builder disableReplicationFactorAdjustment(@Nullable Output<String> disableReplicationFactorAdjustment) {
             $.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             return this;
         }
 
         /**
-         * @param disableReplicationFactorAdjustment Disable replication factor adjustment
-         * 
          * @return builder
          * 
+         * @deprecated
+         * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+         * 
          */
+        @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
         public Builder disableReplicationFactorAdjustment(String disableReplicationFactorAdjustment) {
             return disableReplicationFactorAdjustment(Output.of(disableReplicationFactorAdjustment));
         }
@@ -413,7 +479,38 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(@Nullable Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(List<OpenSearchOpensearchUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(OpenSearchOpensearchUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -424,7 +521,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -434,7 +531,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -444,7 +541,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keepIndexRefreshInterval Don&#39;t reset index.refresh_interval to the default value
+         * @param keepIndexRefreshInterval Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
          * 
          * @return builder
          * 
@@ -455,7 +552,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keepIndexRefreshInterval Don&#39;t reset index.refresh_interval to the default value
+         * @param keepIndexRefreshInterval Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
          * 
          * @return builder
          * 
@@ -465,22 +562,26 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxIndexCount Maximum index count
-         * 
          * @return builder
          * 
+         * @deprecated
+         * DEPRECATED: use index_patterns instead
+         * 
          */
+        @Deprecated /* DEPRECATED: use index_patterns instead */
         public Builder maxIndexCount(@Nullable Output<String> maxIndexCount) {
             $.maxIndexCount = maxIndexCount;
             return this;
         }
 
         /**
-         * @param maxIndexCount Maximum index count
-         * 
          * @return builder
          * 
+         * @deprecated
+         * DEPRECATED: use index_patterns instead
+         * 
          */
+        @Deprecated /* DEPRECATED: use index_patterns instead */
         public Builder maxIndexCount(String maxIndexCount) {
             return maxIndexCount(Output.of(maxIndexCount));
         }
@@ -675,7 +776,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 
@@ -686,7 +787,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 

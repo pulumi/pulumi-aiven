@@ -81,6 +81,10 @@ func NewClickhouseUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource ClickhouseUser
 	err := ctx.RegisterResource("aiven:index/clickhouseUser:ClickhouseUser", name, args, &resource, opts...)
 	if err != nil {

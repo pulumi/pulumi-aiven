@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -80,6 +81,20 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * If true, user is part of the owners team for this account
+     * 
+     */
+    @Export(name="isAccountOwner", type=Boolean.class, parameters={})
+    private Output<Boolean> isAccountOwner;
+
+    /**
+     * @return If true, user is part of the owners team for this account
+     * 
+     */
+    public Output<Boolean> isAccountOwner() {
+        return this.isAccountOwner;
     }
     /**
      * Account name

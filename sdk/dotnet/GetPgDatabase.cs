@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPgDatabaseResult> InvokeAsync(GetPgDatabaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The PG Database data source provides information about the existing Aiven PostgreSQL Database.
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPgDatabaseResult> Invoke(GetPgDatabaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

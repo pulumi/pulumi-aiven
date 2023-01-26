@@ -22,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", {
         "index": args.index,
         "permission": args.permission,
@@ -91,9 +88,25 @@ export interface GetOpenSearchAclRuleResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const osAclRule = aiven.getOpenSearchAclRule({
+ *     project: aiven_opensearch_acl_config.os_acls_config.project,
+ *     serviceName: aiven_opensearch_acl_config.os_acls_config.service_name,
+ *     username: "<USERNAME>",
+ *     index: "<INDEX>",
+ * });
+ * ```
+ */
 export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclRuleResult> {
-    return pulumi.output(args).apply(a => getOpenSearchAclRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getOpenSearchAclRule(a, opts))
 }
 
 /**
