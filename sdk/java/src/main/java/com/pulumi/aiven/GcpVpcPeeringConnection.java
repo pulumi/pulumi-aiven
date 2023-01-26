@@ -88,6 +88,20 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
         return this.peerVpc;
     }
     /**
+     * Computed GCP network peering link
+     * 
+     */
+    @Export(name="selfLink", type=String.class, parameters={})
+    private Output<String> selfLink;
+
+    /**
+     * @return Computed GCP network peering link
+     * 
+     */
+    public Output<String> selfLink() {
+        return this.selfLink;
+    }
+    /**
      * State of the peering connection
      * 
      */

@@ -13,6 +13,8 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaConnectKafkaConnectUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
+        public readonly ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Kafka Connect server provided values
@@ -28,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetKafkaConnectKafkaConnectUserConfigResult(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObjectResult> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult? kafkaConnect,
@@ -40,6 +46,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             KafkaConnect = kafkaConnect;
             PrivateAccess = privateAccess;

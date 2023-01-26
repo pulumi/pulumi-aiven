@@ -123,6 +123,11 @@ func NewClickhouse(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource Clickhouse
 	err := ctx.RegisterResource("aiven:index/clickhouse:Clickhouse", name, args, &resource, opts...)
 	if err != nil {

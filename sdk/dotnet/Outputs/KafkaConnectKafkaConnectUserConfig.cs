@@ -13,33 +13,21 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaConnectKafkaConnectUserConfig
     {
-        /// <summary>
-        /// IP filter
-        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        public readonly ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Kafka Connect configuration values
-        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect? KafkaConnect;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private KafkaConnectKafkaConnectUserConfig(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect? kafkaConnect,
@@ -52,6 +40,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             KafkaConnect = kafkaConnect;
             PrivateAccess = privateAccess;

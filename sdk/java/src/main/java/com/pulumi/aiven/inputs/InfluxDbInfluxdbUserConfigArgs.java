@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigInfluxdbArgs;
+import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigPublicAccessArgs;
@@ -21,14 +22,29 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     public static final InfluxDbInfluxdbUserConfigArgs Empty = new InfluxDbInfluxdbUserConfigArgs();
 
     /**
-     * Custom domain
+     * Additional Cloud Regions for Backup Replication
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Custom domain
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -51,14 +67,29 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * IP filter
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<InfluxDbInfluxdbUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public Optional<Output<List<InfluxDbInfluxdbUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<String>>> ipFilters() {
@@ -156,14 +187,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Static IP addresses
+     * Use static public IP addresses
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<Output<String>> staticIps() {
@@ -173,8 +204,10 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     private InfluxDbInfluxdbUserConfigArgs() {}
 
     private InfluxDbInfluxdbUserConfigArgs(InfluxDbInfluxdbUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.customDomain = $.customDomain;
         this.influxdb = $.influxdb;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
@@ -204,7 +237,28 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customDomain Custom domain
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
          * 
          * @return builder
          * 
@@ -215,7 +269,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customDomain Custom domain
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
          * 
          * @return builder
          * 
@@ -246,7 +300,38 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(@Nullable Output<List<InfluxDbInfluxdbUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(List<InfluxDbInfluxdbUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(InfluxDbInfluxdbUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -257,7 +342,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -267,7 +352,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -403,7 +488,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 
@@ -414,7 +499,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 

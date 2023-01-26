@@ -13,7 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
+        public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetM3DbM3dbUserConfigLimitsResult? Limits;
         public readonly string? M3Version;
@@ -32,7 +34,11 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigResult(
+            string? additionalBackupRegions,
+
             string? customDomain,
+
+            ImmutableArray<Outputs.GetM3DbM3dbUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -58,7 +64,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Limits = limits;
             M3Version = m3Version;

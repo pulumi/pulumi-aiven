@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
         ///     {
         ///         Project = aiven_project.Kafka_schemas_project1.Project,
-        ///         ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaSchemaResult> InvokeAsync(GetKafkaSchemaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
@@ -56,7 +56,7 @@ namespace Pulumi.Aiven
         ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
         ///     {
         ///         Project = aiven_project.Kafka_schemas_project1.Project,
-        ///         ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
         ///     });
         /// 
         /// });
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaSchemaResult> Invoke(GetKafkaSchemaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithDefaults());
     }
 
 

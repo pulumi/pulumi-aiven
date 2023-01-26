@@ -18,12 +18,31 @@ namespace Pulumi.Aiven
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
+        ///     {
+        ///         Project = aiven_kafka.Project1.Project,
+        ///         ServiceName = aiven_kafka.Service1.Service_name,
+        ///         Component = "kafka",
+        ///         Route = "dynamic",
+        ///         KafkaAuthenticationMethod = "certificate",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceComponentResult> InvokeAsync(GetServiceComponentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Service Component data source provides information about the existing Aiven service Component.
@@ -32,12 +51,31 @@ namespace Pulumi.Aiven
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
+        ///     {
+        ///         Project = aiven_kafka.Project1.Project,
+        ///         ServiceName = aiven_kafka.Service1.Service_name,
+        ///         Component = "kafka",
+        ///         Route = "dynamic",
+        ///         KafkaAuthenticationMethod = "certificate",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceComponentResult> Invoke(GetServiceComponentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithDefaults());
     }
 
 

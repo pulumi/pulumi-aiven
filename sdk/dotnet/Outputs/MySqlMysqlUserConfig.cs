@@ -13,73 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class MySqlMysqlUserConfig
     {
-        /// <summary>
-        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        /// </summary>
+        public readonly string? AdditionalBackupRegions;
         public readonly string? AdminPassword;
-        /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created.
-        /// </summary>
         public readonly string? AdminUsername;
-        /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-        /// </summary>
         public readonly string? BackupHour;
-        /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        /// </summary>
         public readonly string? BackupMinute;
-        /// <summary>
-        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-        /// </summary>
         public readonly string? BinlogRetentionPeriod;
-        /// <summary>
-        /// IP filter
-        /// </summary>
+        public readonly ImmutableArray<Outputs.MySqlMysqlUserConfigIpFilterObject> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Migrate data from existing server
-        /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigMigration? Migration;
-        /// <summary>
-        /// mysql.conf configuration values
-        /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigMysql? Mysql;
-        /// <summary>
-        /// MySQL major version
-        /// </summary>
         public readonly string? MysqlVersion;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPrivatelinkAccess? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// Recovery target time when forking a service. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? RecoveryTargetTime;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private MySqlMysqlUserConfig(
+            string? additionalBackupRegions,
+
             string? adminPassword,
 
             string? adminUsername,
@@ -89,6 +45,8 @@ namespace Pulumi.Aiven.Outputs
             string? backupMinute,
 
             string? binlogRetentionPeriod,
+
+            ImmutableArray<Outputs.MySqlMysqlUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -112,11 +70,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
             BinlogRetentionPeriod = binlogRetentionPeriod;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Migration = migration;
             Mysql = mysql;

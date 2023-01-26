@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
         "endpointName": args.endpointName,
         "project": args.project,
@@ -51,7 +49,7 @@ export interface GetServiceIntegrationEndpointArgs {
  */
 export interface GetServiceIntegrationEndpointResult {
     /**
-     * Datadog specific user configurable settings
+     * Datadog user configurable settings
      */
     readonly datadogUserConfigs: outputs.GetServiceIntegrationEndpointDatadogUserConfig[];
     /**
@@ -67,27 +65,31 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly endpointType: string;
     /**
-     * external AWS CloudWatch Logs specific user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings
      */
     readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig[];
     /**
-     * External AWS cloudwatch mertrics specific user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings
      */
     readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig[];
     /**
-     * external elasticsearch specific user configurable settings
+     * ExternalElasticsearchLogs user configurable settings
      */
     readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig[];
     /**
-     * external Google Cloud Logginig specific user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings
      */
     readonly externalGoogleCloudLoggingUserConfigs: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig[];
     /**
-     * external Kafka specific user configurable settings
+     * ExternalKafka user configurable settings
      */
     readonly externalKafkaUserConfigs: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig[];
     /**
-     * External schema registry specific user configurable settings
+     * ExternalOpensearchLogs user configurable settings
+     */
+    readonly externalOpensearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig[];
+    /**
+     * ExternalSchemaRegistry user configurable settings
      */
     readonly externalSchemaRegistryUserConfigs: outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig[];
     /**
@@ -95,7 +97,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly id: string;
     /**
-     * Jolokia specific user configurable settings
+     * Jolokia user configurable settings
      */
     readonly jolokiaUserConfigs: outputs.GetServiceIntegrationEndpointJolokiaUserConfig[];
     /**
@@ -103,21 +105,35 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly project: string;
     /**
-     * Prometheus specific user configurable settings
+     * Prometheus user configurable settings
      */
     readonly prometheusUserConfigs: outputs.GetServiceIntegrationEndpointPrometheusUserConfig[];
     /**
-     * rsyslog specific user configurable settings
+     * Rsyslog user configurable settings
      */
     readonly rsyslogUserConfigs: outputs.GetServiceIntegrationEndpointRsyslogUserConfig[];
     /**
-     * Signalfx specific user configurable settings
+     * Signalfx user configurable settings
      */
     readonly signalfxUserConfigs: outputs.GetServiceIntegrationEndpointSignalfxUserConfig[];
 }
-
+/**
+ * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myendpoint = aiven.getServiceIntegrationEndpoint({
+ *     project: aiven_project.myproject.project,
+ *     endpointName: "<ENDPOINT_NAME>",
+ * });
+ * ```
+ */
 export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationEndpointResult> {
-    return pulumi.output(args).apply(a => getServiceIntegrationEndpoint(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceIntegrationEndpoint(a, opts))
 }
 
 /**

@@ -15,16 +15,13 @@ import * as utilities from "./utilities";
  *
  * const os-acl-config = aiven.getOpenSearchAclConfig({
  *     project: aiven_project["os-project"].project,
- *     serviceName: aiven_service.os.service_name,
+ *     serviceName: aiven_opensearch.os.service_name,
  * });
  * ```
  */
 export function getOpenSearchAclConfig(args: GetOpenSearchAclConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -70,9 +67,23 @@ export interface GetOpenSearchAclConfigResult {
      */
     readonly serviceName: string;
 }
-
+/**
+ * The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const os-acl-config = aiven.getOpenSearchAclConfig({
+ *     project: aiven_project["os-project"].project,
+ *     serviceName: aiven_opensearch.os.service_name,
+ * });
+ * ```
+ */
 export function getOpenSearchAclConfigOutput(args: GetOpenSearchAclConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclConfigResult> {
-    return pulumi.output(args).apply(a => getOpenSearchAclConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getOpenSearchAclConfig(a, opts))
 }
 
 /**

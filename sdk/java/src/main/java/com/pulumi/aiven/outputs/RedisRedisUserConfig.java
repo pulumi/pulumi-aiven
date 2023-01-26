@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.RedisRedisUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.RedisRedisUserConfigMigration;
 import com.pulumi.aiven.outputs.RedisRedisUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.RedisRedisUserConfigPrivatelinkAccess;
@@ -16,245 +17,93 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RedisRedisUserConfig {
-    /**
-     * @return IP filter
-     * 
-     */
+    private @Nullable String additionalBackupRegions;
+    private @Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Migrate data from existing server
-     * 
-     */
     private @Nullable RedisRedisUserConfigMigration migration;
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     private @Nullable RedisRedisUserConfigPrivateAccess privateAccess;
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     private @Nullable RedisRedisUserConfigPrivatelinkAccess privatelinkAccess;
-    /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String projectToForkFrom;
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     private @Nullable RedisRedisUserConfigPublicAccess publicAccess;
-    /**
-     * @return Name of the basebackup to restore in forked service
-     * 
-     */
     private @Nullable String recoveryBasebackupName;
-    /**
-     * @return Default ACL for pub/sub channels used when Redis user is created
-     * 
-     */
     private @Nullable String redisAclChannelsDefault;
-    /**
-     * @return Redis IO thread count
-     * 
-     */
     private @Nullable String redisIoThreads;
-    /**
-     * @return LFU maxmemory-policy counter decay time in minutes
-     * 
-     */
     private @Nullable String redisLfuDecayTime;
-    /**
-     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-     * 
-     */
     private @Nullable String redisLfuLogFactor;
-    /**
-     * @return Redis maxmemory-policy
-     * 
-     */
     private @Nullable String redisMaxmemoryPolicy;
-    /**
-     * @return Set notify-keyspace-events option
-     * 
-     */
     private @Nullable String redisNotifyKeyspaceEvents;
-    /**
-     * @return Number of redis databases
-     * 
-     */
     private @Nullable String redisNumberOfDatabases;
-    /**
-     * @return Redis persistence
-     * 
-     */
     private @Nullable String redisPersistence;
-    /**
-     * @return Pub/sub client output buffer hard limit in MB
-     * 
-     */
     private @Nullable String redisPubsubClientOutputBufferLimit;
-    /**
-     * @return Require SSL to access Redis
-     * 
-     */
     private @Nullable String redisSsl;
-    /**
-     * @return Redis idle connection timeout in seconds
-     * 
-     */
     private @Nullable String redisTimeout;
-    /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String serviceToForkFrom;
-    /**
-     * @return Static IP addresses
-     * 
-     */
     private @Nullable String staticIps;
 
     private RedisRedisUserConfig() {}
-    /**
-     * @return IP filter
-     * 
-     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    public List<RedisRedisUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Migrate data from existing server
-     * 
-     */
     public Optional<RedisRedisUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     public Optional<RedisRedisUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     public Optional<RedisRedisUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
-    /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     public Optional<RedisRedisUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    /**
-     * @return Name of the basebackup to restore in forked service
-     * 
-     */
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
-    /**
-     * @return Default ACL for pub/sub channels used when Redis user is created
-     * 
-     */
     public Optional<String> redisAclChannelsDefault() {
         return Optional.ofNullable(this.redisAclChannelsDefault);
     }
-    /**
-     * @return Redis IO thread count
-     * 
-     */
     public Optional<String> redisIoThreads() {
         return Optional.ofNullable(this.redisIoThreads);
     }
-    /**
-     * @return LFU maxmemory-policy counter decay time in minutes
-     * 
-     */
     public Optional<String> redisLfuDecayTime() {
         return Optional.ofNullable(this.redisLfuDecayTime);
     }
-    /**
-     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-     * 
-     */
     public Optional<String> redisLfuLogFactor() {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
-    /**
-     * @return Redis maxmemory-policy
-     * 
-     */
     public Optional<String> redisMaxmemoryPolicy() {
         return Optional.ofNullable(this.redisMaxmemoryPolicy);
     }
-    /**
-     * @return Set notify-keyspace-events option
-     * 
-     */
     public Optional<String> redisNotifyKeyspaceEvents() {
         return Optional.ofNullable(this.redisNotifyKeyspaceEvents);
     }
-    /**
-     * @return Number of redis databases
-     * 
-     */
     public Optional<String> redisNumberOfDatabases() {
         return Optional.ofNullable(this.redisNumberOfDatabases);
     }
-    /**
-     * @return Redis persistence
-     * 
-     */
     public Optional<String> redisPersistence() {
         return Optional.ofNullable(this.redisPersistence);
     }
-    /**
-     * @return Pub/sub client output buffer hard limit in MB
-     * 
-     */
     public Optional<String> redisPubsubClientOutputBufferLimit() {
         return Optional.ofNullable(this.redisPubsubClientOutputBufferLimit);
     }
-    /**
-     * @return Require SSL to access Redis
-     * 
-     */
     public Optional<String> redisSsl() {
         return Optional.ofNullable(this.redisSsl);
     }
-    /**
-     * @return Redis idle connection timeout in seconds
-     * 
-     */
     public Optional<String> redisTimeout() {
         return Optional.ofNullable(this.redisTimeout);
     }
-    /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -268,6 +117,8 @@ public final class RedisRedisUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
+        private @Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable RedisRedisUserConfigMigration migration;
         private @Nullable RedisRedisUserConfigPrivateAccess privateAccess;
@@ -291,6 +142,8 @@ public final class RedisRedisUserConfig {
         public Builder() {}
         public Builder(RedisRedisUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.privateAccess = defaults.privateAccess;
@@ -313,6 +166,19 @@ public final class RedisRedisUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(RedisRedisUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
@@ -418,6 +284,8 @@ public final class RedisRedisUserConfig {
         }
         public RedisRedisUserConfig build() {
             final var o = new RedisRedisUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.privateAccess = privateAccess;

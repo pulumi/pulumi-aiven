@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,11 +24,8 @@ import * as utilities from "./utilities";
 /** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandaResult> {
     pulumi.log.warn("getCassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra")
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getCassanda:getCassanda", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -165,9 +163,24 @@ export interface GetCassandaResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Cassandra data source provides information about the existing Aiven Cassandra service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const bar = aiven.getCassandra({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
+ */
+/** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandaResult> {
-    return pulumi.output(args).apply(a => getCassanda(a, opts))
+    return pulumi.output(args).apply((a: any) => getCassanda(a, opts))
 }
 
 /**

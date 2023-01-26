@@ -80,6 +80,15 @@ func NewMysqlUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessCert",
+		"accessKey",
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource MysqlUser
 	err := ctx.RegisterResource("aiven:index/mysqlUser:MysqlUser", name, args, &resource, opts...)
 	if err != nil {

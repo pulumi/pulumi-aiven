@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafkaMirrorMaker(ctx, &GetKafkaMirrorMakerArgs{
+//			_, err := aiven.LookupKafkaMirrorMaker(ctx, &aiven.LookupKafkaMirrorMakerArgs{
 //				Project:     data.Aiven_project.Pr1.Project,
 //				ServiceName: "my-mm1",
 //			}, nil)
@@ -75,7 +75,7 @@ type LookupKafkaMirrorMakerResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Kafka*mirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfigs []GetKafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfigs"`
 	// Kafka MirrorMaker 2 server provided values
 	KafkaMirrormakers []GetKafkaMirrorMakerKafkaMirrormaker `pulumi:"kafkaMirrormakers"`
@@ -200,7 +200,7 @@ func (o LookupKafkaMirrorMakerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kafka*mirrormaker user configurable settings
+// KafkaMirrormaker user configurable settings
 func (o LookupKafkaMirrorMakerResultOutput) KafkaMirrormakerUserConfigs() GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
 		return v.KafkaMirrormakerUserConfigs

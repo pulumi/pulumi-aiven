@@ -6,6 +6,9 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ServiceIntegrationArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ServiceIntegrationState;
+import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseKafkaUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationClickhousePostgresqlUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaMirrormakerUserConfig;
@@ -31,16 +34,89 @@ import javax.annotation.Nullable;
  * Elasticsearch, etc.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
  * 
- * {{tffile &#34;examples/resources/aiven_service_integration/resource.tf&#34;}}
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.ServiceIntegration;
+ * import com.pulumi.aiven.ServiceIntegrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myIntegrationMetrics = new ServiceIntegration(&#34;myIntegrationMetrics&#34;, ServiceIntegrationArgs.builder()        
+ *             .project(aiven_project.myproject().project())
+ *             .integrationType(&#34;metrics&#34;)
+ *             .sourceServiceName(aiven_kafka.kfk1().service_name())
+ *             .destinationServiceName(aiven_m3db.m3db().service_name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * {{codefile &#34;shell&#34; &#34;examples/resources/aiven_service_integration/import.sh&#34;}}
+ * ```sh
+ *  $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/serviceIntegration:ServiceIntegration")
 public class ServiceIntegration extends com.pulumi.resources.CustomResource {
+    /**
+     * ClickhouseKafka user configurable settings
+     * 
+     */
+    @Export(name="clickhouseKafkaUserConfig", type=ServiceIntegrationClickhouseKafkaUserConfig.class, parameters={})
+    private Output</* @Nullable */ ServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfig;
+
+    /**
+     * @return ClickhouseKafka user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationClickhouseKafkaUserConfig>> clickhouseKafkaUserConfig() {
+        return Codegen.optional(this.clickhouseKafkaUserConfig);
+    }
+    /**
+     * ClickhousePostgresql user configurable settings
+     * 
+     */
+    @Export(name="clickhousePostgresqlUserConfig", type=ServiceIntegrationClickhousePostgresqlUserConfig.class, parameters={})
+    private Output</* @Nullable */ ServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfig;
+
+    /**
+     * @return ClickhousePostgresql user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationClickhousePostgresqlUserConfig>> clickhousePostgresqlUserConfig() {
+        return Codegen.optional(this.clickhousePostgresqlUserConfig);
+    }
+    /**
+     * Datadog user configurable settings
+     * 
+     */
+    @Export(name="datadogUserConfig", type=ServiceIntegrationDatadogUserConfig.class, parameters={})
+    private Output</* @Nullable */ ServiceIntegrationDatadogUserConfig> datadogUserConfig;
+
+    /**
+     * @return Datadog user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationDatadogUserConfig>> datadogUserConfig() {
+        return Codegen.optional(this.datadogUserConfig);
+    }
     /**
      * Destination endpoint for the integration (if any)
      * 
@@ -98,84 +174,84 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return this.integrationType;
     }
     /**
-     * Kafka Connect specific user configurable settings
+     * KafkaConnect user configurable settings
      * 
      */
     @Export(name="kafkaConnectUserConfig", type=ServiceIntegrationKafkaConnectUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfig;
 
     /**
-     * @return Kafka Connect specific user configurable settings
+     * @return KafkaConnect user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationKafkaConnectUserConfig>> kafkaConnectUserConfig() {
         return Codegen.optional(this.kafkaConnectUserConfig);
     }
     /**
-     * Kafka Logs specific user configurable settings
+     * KafkaLogs user configurable settings
      * 
      */
     @Export(name="kafkaLogsUserConfig", type=ServiceIntegrationKafkaLogsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfig;
 
     /**
-     * @return Kafka Logs specific user configurable settings
+     * @return KafkaLogs user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationKafkaLogsUserConfig>> kafkaLogsUserConfig() {
         return Codegen.optional(this.kafkaLogsUserConfig);
     }
     /**
-     * Mirrormaker 2 integration specific user configurable settings
+     * KafkaMirrormaker user configurable settings
      * 
      */
     @Export(name="kafkaMirrormakerUserConfig", type=ServiceIntegrationKafkaMirrormakerUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfig;
 
     /**
-     * @return Mirrormaker 2 integration specific user configurable settings
+     * @return KafkaMirrormaker user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationKafkaMirrormakerUserConfig>> kafkaMirrormakerUserConfig() {
         return Codegen.optional(this.kafkaMirrormakerUserConfig);
     }
     /**
-     * Log integration specific user configurable settings
+     * Logs user configurable settings
      * 
      */
     @Export(name="logsUserConfig", type=ServiceIntegrationLogsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationLogsUserConfig> logsUserConfig;
 
     /**
-     * @return Log integration specific user configurable settings
+     * @return Logs user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationLogsUserConfig>> logsUserConfig() {
         return Codegen.optional(this.logsUserConfig);
     }
     /**
-     * Metrics specific user configurable settings
+     * Metrics user configurable settings
      * 
      */
     @Export(name="metricsUserConfig", type=ServiceIntegrationMetricsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationMetricsUserConfig> metricsUserConfig;
 
     /**
-     * @return Metrics specific user configurable settings
+     * @return Metrics user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationMetricsUserConfig>> metricsUserConfig() {
         return Codegen.optional(this.metricsUserConfig);
     }
     /**
-     * Mirrormaker 1 integration specific user configurable settings
+     * Mirrormaker user configurable settings
      * 
      */
     @Export(name="mirrormakerUserConfig", type=ServiceIntegrationMirrormakerUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfig;
 
     /**
-     * @return Mirrormaker 1 integration specific user configurable settings
+     * @return Mirrormaker user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationMirrormakerUserConfig>> mirrormakerUserConfig() {

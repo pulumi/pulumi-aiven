@@ -43,6 +43,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/pgUser:PgUser user project/service_name/username
+//
+// ```
 type PgUser struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +88,15 @@ func NewPgUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessCert",
+		"accessKey",
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource PgUser
 	err := ctx.RegisterResource("aiven:index/pgUser:PgUser", name, args, &resource, opts...)
 	if err != nil {

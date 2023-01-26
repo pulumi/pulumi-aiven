@@ -34,8 +34,8 @@ import (
 //				ServiceName:           pulumi.String("my-flink"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				FlinkUserConfig: &FlinkFlinkUserConfigArgs{
-//					FlinkVersion: pulumi.String("1.13"),
+//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
+//					FlinkVersion: pulumi.String("1.15"),
 //				},
 //			})
 //			if err != nil {
@@ -126,6 +126,11 @@ func NewFlink(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource Flink
 	err := ctx.RegisterResource("aiven:index/flink:Flink", name, args, &resource, opts...)
 	if err != nil {

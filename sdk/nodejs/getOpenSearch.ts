@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpenSearch(args: GetOpenSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpenSearch:getOpenSearch", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetOpenSearchResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Opensearch data source provides information about the existing Aiven Opensearch service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const os1 = aiven.getOpenSearch({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-os1",
+ * });
+ * ```
+ */
 export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchResult> {
-    return pulumi.output(args).apply(a => getOpenSearch(a, opts))
+    return pulumi.output(args).apply((a: any) => getOpenSearch(a, opts))
 }
 
 /**

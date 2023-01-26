@@ -26,9 +26,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafkaAcl(ctx, &GetKafkaAclArgs{
+//			_, err := aiven.LookupKafkaAcl(ctx, &aiven.LookupKafkaAclArgs{
 //				Project:     aiven_project.Myproject.Project,
-//				ServiceName: aiven_service.Myservice.Service_name,
+//				ServiceName: aiven_kafka.Mykafka.Service_name,
 //				Topic:       "<TOPIC_NAME_PATTERN>",
 //				Permission:  "<PERMISSON>",
 //				Username:    "<USERNAME_PATTERN>",

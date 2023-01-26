@@ -49,6 +49,21 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Offset syncs topic location.
+     * 
+     */
+    @Import(name="offsetSyncsTopicLocation")
+    private @Nullable Output<String> offsetSyncsTopicLocation;
+
+    /**
+     * @return Offset syncs topic location.
+     * 
+     */
+    public Optional<Output<String>> offsetSyncsTopicLocation() {
+        return Optional.ofNullable(this.offsetSyncsTopicLocation);
+    }
+
+    /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
@@ -188,6 +203,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     private MirrorMakerReplicationFlowArgs(MirrorMakerReplicationFlowArgs $) {
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
+        this.offsetSyncsTopicLocation = $.offsetSyncsTopicLocation;
         this.project = $.project;
         this.replicationPolicyClass = $.replicationPolicyClass;
         this.serviceName = $.serviceName;
@@ -257,6 +273,27 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
          */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
+        }
+
+        /**
+         * @param offsetSyncsTopicLocation Offset syncs topic location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder offsetSyncsTopicLocation(@Nullable Output<String> offsetSyncsTopicLocation) {
+            $.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
+            return this;
+        }
+
+        /**
+         * @param offsetSyncsTopicLocation Offset syncs topic location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder offsetSyncsTopicLocation(String offsetSyncsTopicLocation) {
+            return offsetSyncsTopicLocation(Output.of(offsetSyncsTopicLocation));
         }
 
         /**

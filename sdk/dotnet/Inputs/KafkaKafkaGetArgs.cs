@@ -12,35 +12,85 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessCert")]
+        private Input<string>? _accessCert;
+
         /// <summary>
         /// The Kafka client certificate
         /// </summary>
-        [Input("accessCert")]
-        public Input<string>? AccessCert { get; set; }
+        public Input<string>? AccessCert
+        {
+            get => _accessCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
 
         /// <summary>
         /// The Kafka client certificate key
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("connectUri")]
+        private Input<string>? _connectUri;
 
         /// <summary>
         /// The Kafka Connect URI, if any
         /// </summary>
-        [Input("connectUri")]
-        public Input<string>? ConnectUri { get; set; }
+        public Input<string>? ConnectUri
+        {
+            get => _connectUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _connectUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("restUri")]
+        private Input<string>? _restUri;
 
         /// <summary>
         /// The Kafka REST URI, if any
         /// </summary>
-        [Input("restUri")]
-        public Input<string>? RestUri { get; set; }
+        public Input<string>? RestUri
+        {
+            get => _restUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _restUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("schemaRegistryUri")]
+        private Input<string>? _schemaRegistryUri;
 
         /// <summary>
         /// The Schema Registry URI, if any
         /// </summary>
-        [Input("schemaRegistryUri")]
-        public Input<string>? SchemaRegistryUri { get; set; }
+        public Input<string>? SchemaRegistryUri
+        {
+            get => _schemaRegistryUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _schemaRegistryUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public KafkaKafkaGetArgs()
         {

@@ -15,18 +15,15 @@ import * as utilities from "./utilities";
  *
  * const f1 = aiven.getMirrorMakerReplicationFlow({
  *     project: aiven_project["kafka-mm-project1"].project,
- *     serviceName: aiven_service.mm.service_name,
- *     sourceCluster: aiven_service.source.service_name,
- *     targetCluster: aiven_service.target.service_name,
+ *     serviceName: aiven_kafka.mm.service_name,
+ *     sourceCluster: aiven_kafka.source.service_name,
+ *     targetCluster: aiven_kafka.target.service_name,
  * });
  * ```
  */
 export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetMirrorMakerReplicationFlowResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -74,6 +71,10 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly id: string;
     /**
+     * Offset syncs topic location.
+     */
+    readonly offsetSyncsTopicLocation: string;
+    /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly project: string;
@@ -110,9 +111,25 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly topicsBlacklists: string[];
 }
-
+/**
+ * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const f1 = aiven.getMirrorMakerReplicationFlow({
+ *     project: aiven_project["kafka-mm-project1"].project,
+ *     serviceName: aiven_kafka.mm.service_name,
+ *     sourceCluster: aiven_kafka.source.service_name,
+ *     targetCluster: aiven_kafka.target.service_name,
+ * });
+ * ```
+ */
 export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
-    return pulumi.output(args).apply(a => getMirrorMakerReplicationFlow(a, opts))
+    return pulumi.output(args).apply((a: any) => getMirrorMakerReplicationFlow(a, opts))
 }
 
 /**

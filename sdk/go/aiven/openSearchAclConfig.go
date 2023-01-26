@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooProject, err := aiven.LookupProject(ctx, &GetProjectArgs{
+//			fooProject, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
 //				Project: "example_project",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			bar, err := aiven.NewOpenSearch(ctx, "bar", &aiven.OpenSearchArgs{
-//				Project:               pulumi.String(fooProject.Project),
+//				Project:               *pulumi.String(fooProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("startup-4"),
 //				ServiceName:           pulumi.String("example_service_name"),
@@ -46,14 +46,14 @@ import (
 //			}
 //			_, err = aiven.NewServiceUser(ctx, "fooServiceUser", &aiven.ServiceUserArgs{
 //				ServiceName: bar.ServiceName,
-//				Project:     pulumi.String(fooProject.Project),
+//				Project:     *pulumi.String(fooProject.Project),
 //				Username:    pulumi.String("user-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = aiven.NewOpenSearchAclConfig(ctx, "fooOpenSearchAclConfig", &aiven.OpenSearchAclConfigArgs{
-//				Project:     pulumi.String(fooProject.Project),
+//				Project:     *pulumi.String(fooProject.Project),
 //				ServiceName: bar.ServiceName,
 //				Enabled:     pulumi.Bool(true),
 //				ExtendedAcl: pulumi.Bool(false),

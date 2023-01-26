@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenSearchAclRuleResult> InvokeAsync(GetOpenSearchAclRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
@@ -69,7 +69,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenSearchAclRuleResult> Invoke(GetOpenSearchAclRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleInvokeArgs(), options.WithDefaults());
     }
 
 

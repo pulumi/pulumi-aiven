@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
+import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
@@ -16,12 +17,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
     /**
      * @return InfluxDB server provided values
      * 
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
+    private @Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable GetInfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
     private @Nullable GetInfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
@@ -36,6 +39,9 @@ public final class GetInfluxDbInfluxdbUserConfig {
     private @Nullable String staticIps;
 
     private GetInfluxDbInfluxdbUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
@@ -45,6 +51,9 @@ public final class GetInfluxDbInfluxdbUserConfig {
      */
     public Optional<GetInfluxDbInfluxdbUserConfigInfluxdb> influxdb() {
         return Optional.ofNullable(this.influxdb);
+    }
+    public List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -84,8 +93,10 @@ public final class GetInfluxDbInfluxdbUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
         private @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
+        private @Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetInfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
         private @Nullable GetInfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
@@ -97,8 +108,10 @@ public final class GetInfluxDbInfluxdbUserConfig {
         public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
     	      this.influxdb = defaults.influxdb;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
@@ -110,6 +123,11 @@ public final class GetInfluxDbInfluxdbUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
@@ -118,6 +136,14 @@ public final class GetInfluxDbInfluxdbUserConfig {
         public Builder influxdb(@Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb) {
             this.influxdb = influxdb;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetInfluxDbInfluxdbUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -164,8 +190,10 @@ public final class GetInfluxDbInfluxdbUserConfig {
         }
         public GetInfluxDbInfluxdbUserConfig build() {
             final var o = new GetInfluxDbInfluxdbUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
             o.influxdb = influxdb;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.privateAccess = privateAccess;
             o.privatelinkAccess = privatelinkAccess;

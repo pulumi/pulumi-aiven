@@ -12,129 +12,79 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class RedisRedisUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.RedisRedisUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+        public InputList<Inputs.RedisRedisUserConfigIpFilterObjectArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.RedisRedisUserConfigIpFilterObjectArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Migrate data from existing server
-        /// </summary>
         [Input("migration")]
         public Input<Inputs.RedisRedisUserConfigMigrationArgs>? Migration { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.RedisRedisUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.RedisRedisUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.RedisRedisUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
-        /// <summary>
-        /// Name of the basebackup to restore in forked service
-        /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
-        /// <summary>
-        /// Default ACL for pub/sub channels used when Redis user is created
-        /// </summary>
         [Input("redisAclChannelsDefault")]
         public Input<string>? RedisAclChannelsDefault { get; set; }
 
-        /// <summary>
-        /// Redis IO thread count
-        /// </summary>
         [Input("redisIoThreads")]
         public Input<string>? RedisIoThreads { get; set; }
 
-        /// <summary>
-        /// LFU maxmemory-policy counter decay time in minutes
-        /// </summary>
         [Input("redisLfuDecayTime")]
         public Input<string>? RedisLfuDecayTime { get; set; }
 
-        /// <summary>
-        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-        /// </summary>
         [Input("redisLfuLogFactor")]
         public Input<string>? RedisLfuLogFactor { get; set; }
 
-        /// <summary>
-        /// Redis maxmemory-policy
-        /// </summary>
         [Input("redisMaxmemoryPolicy")]
         public Input<string>? RedisMaxmemoryPolicy { get; set; }
 
-        /// <summary>
-        /// Set notify-keyspace-events option
-        /// </summary>
         [Input("redisNotifyKeyspaceEvents")]
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
-        /// <summary>
-        /// Number of redis databases
-        /// </summary>
         [Input("redisNumberOfDatabases")]
         public Input<string>? RedisNumberOfDatabases { get; set; }
 
-        /// <summary>
-        /// Redis persistence
-        /// </summary>
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
 
-        /// <summary>
-        /// Pub/sub client output buffer hard limit in MB
-        /// </summary>
         [Input("redisPubsubClientOutputBufferLimit")]
         public Input<string>? RedisPubsubClientOutputBufferLimit { get; set; }
 
-        /// <summary>
-        /// Require SSL to access Redis
-        /// </summary>
         [Input("redisSsl")]
         public Input<string>? RedisSsl { get; set; }
 
-        /// <summary>
-        /// Redis idle connection timeout in seconds
-        /// </summary>
         [Input("redisTimeout")]
         public Input<string>? RedisTimeout { get; set; }
 
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

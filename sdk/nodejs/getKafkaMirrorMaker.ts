@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaMirrorMaker(args: GetKafkaMirrorMakerArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaMirrorMakerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -87,7 +85,7 @@ export interface GetKafkaMirrorMakerResult {
      */
     readonly id: string;
     /**
-     * Kafka*mirrormaker user configurable settings
+     * KafkaMirrormaker user configurable settings
      */
     readonly kafkaMirrormakerUserConfigs: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfig[];
     /**
@@ -163,9 +161,23 @@ export interface GetKafkaMirrorMakerResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mm1 = aiven.getKafkaMirrorMaker({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-mm1",
+ * });
+ * ```
+ */
 export function getKafkaMirrorMakerOutput(args: GetKafkaMirrorMakerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaMirrorMakerResult> {
-    return pulumi.output(args).apply(a => getKafkaMirrorMaker(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaMirrorMaker(a, opts))
 }
 
 /**

@@ -15,13 +15,13 @@ namespace Pulumi.Aiven
         /// The Account Team data source provides information about the existing Account Team.
         /// </summary>
         public static Task<GetAccountTeamResult> InvokeAsync(GetAccountTeamArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Account Team data source provides information about the existing Account Team.
         /// </summary>
         public static Output<GetAccountTeamResult> Invoke(GetAccountTeamInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamInvokeArgs(), options.WithDefaults());
     }
 
 

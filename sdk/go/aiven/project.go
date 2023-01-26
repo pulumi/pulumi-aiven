@@ -61,6 +61,10 @@ func NewProject(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+	})
+	opts = append(opts, secrets)
 	var resource Project
 	err := ctx.RegisterResource("aiven:index/project:Project", name, args, &resource, opts...)
 	if err != nil {

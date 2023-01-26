@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupAccount(ctx, &GetAccountArgs{
+//			_, err := aiven.LookupAccount(ctx, &aiven.LookupAccountArgs{
 //				Name: "<ACCOUNT_NAME>",
 //			}, nil)
 //			if err != nil {
@@ -60,6 +60,8 @@ type LookupAccountResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// If true, user is part of the owners team for this account
+	IsAccountOwner bool `pulumi:"isAccountOwner"`
 	// Account name
 	Name string `pulumi:"name"`
 	// Owner team id
@@ -123,6 +125,11 @@ func (o LookupAccountResultOutput) CreateTime() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// If true, user is part of the owners team for this account
+func (o LookupAccountResultOutput) IsAccountOwner() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountResult) bool { return v.IsAccountOwner }).(pulumi.BoolOutput)
 }
 
 // Account name

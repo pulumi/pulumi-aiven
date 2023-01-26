@@ -22,7 +22,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None, signalfx_user_configs=None):
+    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_opensearch_logs_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None, signalfx_user_configs=None):
         if datadog_user_configs and not isinstance(datadog_user_configs, list):
             raise TypeError("Expected argument 'datadog_user_configs' to be a list")
         pulumi.set(__self__, "datadog_user_configs", datadog_user_configs)
@@ -50,6 +50,9 @@ class GetServiceIntegrationEndpointResult:
         if external_kafka_user_configs and not isinstance(external_kafka_user_configs, list):
             raise TypeError("Expected argument 'external_kafka_user_configs' to be a list")
         pulumi.set(__self__, "external_kafka_user_configs", external_kafka_user_configs)
+        if external_opensearch_logs_user_configs and not isinstance(external_opensearch_logs_user_configs, list):
+            raise TypeError("Expected argument 'external_opensearch_logs_user_configs' to be a list")
+        pulumi.set(__self__, "external_opensearch_logs_user_configs", external_opensearch_logs_user_configs)
         if external_schema_registry_user_configs and not isinstance(external_schema_registry_user_configs, list):
             raise TypeError("Expected argument 'external_schema_registry_user_configs' to be a list")
         pulumi.set(__self__, "external_schema_registry_user_configs", external_schema_registry_user_configs)
@@ -76,7 +79,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="datadogUserConfigs")
     def datadog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointDatadogUserConfigResult']:
         """
-        Datadog specific user configurable settings
+        Datadog user configurable settings
         """
         return pulumi.get(self, "datadog_user_configs")
 
@@ -108,7 +111,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfigs")
     def external_aws_cloudwatch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult']:
         """
-        external AWS CloudWatch Logs specific user configurable settings
+        ExternalAwsCloudwatchLogs user configurable settings
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_configs")
 
@@ -116,7 +119,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfigs")
     def external_aws_cloudwatch_metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult']:
         """
-        External AWS cloudwatch mertrics specific user configurable settings
+        ExternalAwsCloudwatchMetrics user configurable settings
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_configs")
 
@@ -124,7 +127,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalElasticsearchLogsUserConfigs")
     def external_elasticsearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult']:
         """
-        external elasticsearch specific user configurable settings
+        ExternalElasticsearchLogs user configurable settings
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_configs")
 
@@ -132,7 +135,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalGoogleCloudLoggingUserConfigs")
     def external_google_cloud_logging_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult']:
         """
-        external Google Cloud Logginig specific user configurable settings
+        ExternalGoogleCloudLogging user configurable settings
         """
         return pulumi.get(self, "external_google_cloud_logging_user_configs")
 
@@ -140,15 +143,23 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalKafkaUserConfigs")
     def external_kafka_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult']:
         """
-        external Kafka specific user configurable settings
+        ExternalKafka user configurable settings
         """
         return pulumi.get(self, "external_kafka_user_configs")
+
+    @property
+    @pulumi.getter(name="externalOpensearchLogsUserConfigs")
+    def external_opensearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult']:
+        """
+        ExternalOpensearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_opensearch_logs_user_configs")
 
     @property
     @pulumi.getter(name="externalSchemaRegistryUserConfigs")
     def external_schema_registry_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult']:
         """
-        External schema registry specific user configurable settings
+        ExternalSchemaRegistry user configurable settings
         """
         return pulumi.get(self, "external_schema_registry_user_configs")
 
@@ -164,7 +175,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="jolokiaUserConfigs")
     def jolokia_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult']:
         """
-        Jolokia specific user configurable settings
+        Jolokia user configurable settings
         """
         return pulumi.get(self, "jolokia_user_configs")
 
@@ -180,7 +191,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="prometheusUserConfigs")
     def prometheus_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult']:
         """
-        Prometheus specific user configurable settings
+        Prometheus user configurable settings
         """
         return pulumi.get(self, "prometheus_user_configs")
 
@@ -188,7 +199,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="rsyslogUserConfigs")
     def rsyslog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult']:
         """
-        rsyslog specific user configurable settings
+        Rsyslog user configurable settings
         """
         return pulumi.get(self, "rsyslog_user_configs")
 
@@ -196,7 +207,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="signalfxUserConfigs")
     def signalfx_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult']:
         """
-        Signalfx specific user configurable settings
+        Signalfx user configurable settings
         """
         return pulumi.get(self, "signalfx_user_configs")
 
@@ -216,6 +227,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             external_elasticsearch_logs_user_configs=self.external_elasticsearch_logs_user_configs,
             external_google_cloud_logging_user_configs=self.external_google_cloud_logging_user_configs,
             external_kafka_user_configs=self.external_kafka_user_configs,
+            external_opensearch_logs_user_configs=self.external_opensearch_logs_user_configs,
             external_schema_registry_user_configs=self.external_schema_registry_user_configs,
             id=self.id,
             jolokia_user_configs=self.jolokia_user_configs,
@@ -261,6 +273,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
         external_elasticsearch_logs_user_configs=__ret__.external_elasticsearch_logs_user_configs,
         external_google_cloud_logging_user_configs=__ret__.external_google_cloud_logging_user_configs,
         external_kafka_user_configs=__ret__.external_kafka_user_configs,
+        external_opensearch_logs_user_configs=__ret__.external_opensearch_logs_user_configs,
         external_schema_registry_user_configs=__ret__.external_schema_registry_user_configs,
         id=__ret__.id,
         jolokia_user_configs=__ret__.jolokia_user_configs,

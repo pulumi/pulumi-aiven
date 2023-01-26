@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClickhouseResult> InvokeAsync(GetClickhouseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Clickhouse data source provides information about the existing Aiven Clickhouse service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClickhouseResult> Invoke(GetClickhouseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseInvokeArgs(), options.WithDefaults());
     }
 
 

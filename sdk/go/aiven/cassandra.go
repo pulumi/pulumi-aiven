@@ -34,9 +34,9 @@ import (
 //				ServiceName:           pulumi.String("test-service-name"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				CassandraUserConfig: &CassandraCassandraUserConfigArgs{
+//				CassandraUserConfig: &aiven.CassandraCassandraUserConfigArgs{
 //					MigrateSstableloader: pulumi.String("true"),
-//					PublicAccess: &CassandraCassandraUserConfigPublicAccessArgs{
+//					PublicAccess: &aiven.CassandraCassandraUserConfigPublicAccessArgs{
 //						Prometheus: pulumi.String("true"),
 //					},
 //				},
@@ -129,6 +129,11 @@ func NewCassandra(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"servicePassword",
+		"serviceUri",
+	})
+	opts = append(opts, secrets)
 	var resource Cassandra
 	err := ctx.RegisterResource("aiven:index/cassandra:Cassandra", name, args, &resource, opts...)
 	if err != nil {

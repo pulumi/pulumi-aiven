@@ -235,6 +235,11 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "servicePassword",
+                    "serviceUri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -494,11 +499,21 @@ namespace Pulumi.Aiven
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("servicePassword")]
+        private Input<string>? _servicePassword;
+
         /// <summary>
         /// Password used for connecting to the service, if applicable
         /// </summary>
-        [Input("servicePassword")]
-        public Input<string>? ServicePassword { get; set; }
+        public Input<string>? ServicePassword
+        {
+            get => _servicePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _servicePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The port of the service
@@ -512,11 +527,21 @@ namespace Pulumi.Aiven
         [Input("serviceType")]
         public Input<string>? ServiceType { get; set; }
 
+        [Input("serviceUri")]
+        private Input<string>? _serviceUri;
+
         /// <summary>
         /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         /// </summary>
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
+        public Input<string>? ServiceUri
+        {
+            get => _serviceUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username used for connecting to the service, if applicable

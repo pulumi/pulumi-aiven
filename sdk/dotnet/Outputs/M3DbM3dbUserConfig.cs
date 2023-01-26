@@ -13,62 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfig
     {
-        /// <summary>
-        /// Custom domain
-        /// </summary>
+        public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
-        /// <summary>
-        /// IP filter
-        /// </summary>
+        public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigIpFilterObject> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// M3 limits
-        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigLimits? Limits;
-        /// <summary>
-        /// M3 major version (deprecated, use m3db_version)
-        /// </summary>
         public readonly string? M3Version;
-        /// <summary>
-        /// Enable Graphite ingestion using Carbon plaintext protocol
-        /// </summary>
         public readonly string? M3coordinatorEnableGraphiteCarbonIngest;
-        /// <summary>
-        /// M3 major version (the minimum compatible version)
-        /// </summary>
         public readonly string? M3dbVersion;
-        /// <summary>
-        /// List of M3 namespaces
-        /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> Namespaces;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// M3 rules
-        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private M3DbM3dbUserConfig(
+            string? additionalBackupRegions,
+
             string? customDomain,
+
+            ImmutableArray<Outputs.M3DbM3dbUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -94,7 +61,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             Limits = limits;
             M3Version = m3Version;

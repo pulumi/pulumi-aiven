@@ -74,6 +74,13 @@ func NewOpensearchUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource OpensearchUser
 	err := ctx.RegisterResource("aiven:index/opensearchUser:OpensearchUser", name, args, &resource, opts...)
 	if err != nil {

@@ -14,14 +14,14 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
     public static final ClickhouseServiceIntegrationArgs Empty = new ClickhouseServiceIntegrationArgs();
 
     /**
-     * Type of the service integration. The only supported value at the moment is `read_replica`
+     * Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
      * 
      */
     public Output<String> integrationType() {
@@ -69,7 +69,7 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
+         * @param integrationType Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
+         * @param integrationType Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
          * 
          * @return builder
          * 

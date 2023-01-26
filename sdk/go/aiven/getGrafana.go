@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupGrafana(ctx, &GetGrafanaArgs{
+//			_, err := aiven.LookupGrafana(ctx, &aiven.LookupGrafanaArgs{
 //				Project:     data.Aiven_project.Ps1.Project,
 //				ServiceName: "my-gr1",
 //			}, nil)

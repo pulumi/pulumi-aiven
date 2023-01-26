@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMysqlUserResult> InvokeAsync(GetMysqlUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The MySQL User data source provides information about the existing Aiven MySQL User.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMysqlUserResult> Invoke(GetMysqlUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserInvokeArgs(), options.WithDefaults());
     }
 
 

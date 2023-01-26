@@ -14,12 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfig
     {
         /// <summary>
-        /// Custom domain
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
         /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// Disable replication factor adjustment
-        /// </summary>
         public readonly string? DisableReplicationFactorAdjustment;
         /// <summary>
         /// Index patterns
@@ -30,16 +31,17 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigIndexTemplate? IndexTemplate;
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Don't reset index.refresh_interval to the default value
+        /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         /// </summary>
         public readonly string? KeepIndexRefreshInterval;
-        /// <summary>
-        /// Maximum index count
-        /// </summary>
         public readonly string? MaxIndexCount;
         /// <summary>
         /// OpenSearch settings
@@ -78,12 +80,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private OpenSearchOpensearchUserConfig(
+            string? additionalBackupRegions,
+
             string? customDomain,
 
             string? disableReplicationFactorAdjustment,
@@ -91,6 +95,8 @@ namespace Pulumi.Aiven.Outputs
             ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> indexPatterns,
 
             Outputs.OpenSearchOpensearchUserConfigIndexTemplate? indexTemplate,
+
+            ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -118,10 +124,12 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             IndexPatterns = indexPatterns;
             IndexTemplate = indexTemplate;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;

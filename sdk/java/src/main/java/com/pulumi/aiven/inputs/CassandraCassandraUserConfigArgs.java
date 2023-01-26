@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.CassandraCassandraUserConfigCassandraArgs;
+import com.pulumi.aiven.inputs.CassandraCassandraUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.CassandraCassandraUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.CassandraCassandraUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CassandraCassandraUserConfigArgs Empty = new CassandraCassandraUserConfigArgs();
+
+    /**
+     * Additional Cloud Regions for Backup Replication
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
 
     /**
      * cassandra configuration values
@@ -50,14 +66,29 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * IP filter
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<CassandraCassandraUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public Optional<Output<List<CassandraCassandraUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<String>>> ipFilters() {
@@ -65,14 +96,14 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Migration mode for the sstableloader utility
+     * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      * 
      */
     @Import(name="migrateSstableloader")
     private @Nullable Output<String> migrateSstableloader;
 
     /**
-     * @return Migration mode for the sstableloader utility
+     * @return Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      * 
      */
     public Optional<Output<String>> migrateSstableloader() {
@@ -140,14 +171,29 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Static IP addresses
+     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * 
+     */
+    @Import(name="serviceToJoinWith")
+    private @Nullable Output<String> serviceToJoinWith;
+
+    /**
+     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * 
+     */
+    public Optional<Output<String>> serviceToJoinWith() {
+        return Optional.ofNullable(this.serviceToJoinWith);
+    }
+
+    /**
+     * Use static public IP addresses
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<Output<String>> staticIps() {
@@ -157,14 +203,17 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
     private CassandraCassandraUserConfigArgs() {}
 
     private CassandraCassandraUserConfigArgs(CassandraCassandraUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.cassandra = $.cassandra;
         this.cassandraVersion = $.cassandraVersion;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.migrateSstableloader = $.migrateSstableloader;
         this.privateAccess = $.privateAccess;
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.serviceToForkFrom = $.serviceToForkFrom;
+        this.serviceToJoinWith = $.serviceToJoinWith;
         this.staticIps = $.staticIps;
     }
 
@@ -184,6 +233,27 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
 
         public Builder(CassandraCassandraUserConfigArgs defaults) {
             $ = new CassandraCassandraUserConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
         /**
@@ -229,7 +299,38 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(@Nullable Output<List<CassandraCassandraUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(List<CassandraCassandraUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(CassandraCassandraUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -240,7 +341,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -250,7 +351,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -260,7 +361,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param migrateSstableloader Migration mode for the sstableloader utility
+         * @param migrateSstableloader Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
          * 
          * @return builder
          * 
@@ -271,7 +372,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param migrateSstableloader Migration mode for the sstableloader utility
+         * @param migrateSstableloader Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
          * 
          * @return builder
          * 
@@ -365,7 +466,28 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param serviceToJoinWith When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceToJoinWith(@Nullable Output<String> serviceToJoinWith) {
+            $.serviceToJoinWith = serviceToJoinWith;
+            return this;
+        }
+
+        /**
+         * @param serviceToJoinWith When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceToJoinWith(String serviceToJoinWith) {
+            return serviceToJoinWith(Output.of(serviceToJoinWith));
+        }
+
+        /**
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 
@@ -376,7 +498,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupM3Aggregator(ctx, &GetM3AggregatorArgs{
+//			_, err := aiven.LookupM3Aggregator(ctx, &aiven.LookupM3AggregatorArgs{
 //				Project:     data.Aiven_project.Foo.Project,
 //				ServiceName: "my-m3a",
 //			}, nil)

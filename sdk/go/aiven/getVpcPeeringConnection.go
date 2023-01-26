@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupVpcPeeringConnection(ctx, &GetVpcPeeringConnectionArgs{
+//			_, err := aiven.LookupVpcPeeringConnection(ctx, &aiven.LookupVpcPeeringConnectionArgs{
 //				VpcId:            aiven_project_vpc.Myvpc.Id,
 //				PeerCloudAccount: "<PEER_ACCOUNT_ID>",
 //				PeerVpc:          "<PEER_VPC_ID/NAME>",

@@ -19,11 +19,44 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * {{tffile &#34;examples/resources/aiven_vpc_peering_connection/resource.tf&#34;}}
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.VpcPeeringConnection;
+ * import com.pulumi.aiven.VpcPeeringConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mypeeringconnection = new VpcPeeringConnection(&#34;mypeeringconnection&#34;, VpcPeeringConnectionArgs.builder()        
+ *             .vpcId(aiven_project_vpc.myvpc().id())
+ *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
+ *             .peerVpc(&#34;&lt;PEER_VPC_ID/NAME&gt;&#34;)
+ *             .peerRegion(&#34;&lt;PEER_REGION&gt;&#34;)
+ *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * {{codefile &#34;shell&#34; &#34;examples/resources/aiven_vpc_peering_connection/import.sh&#34;}}
+ * ```sh
+ *  $ pulumi import aiven:index/vpcPeeringConnection:VpcPeeringConnection mypeeringconnection project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/vpcPeeringConnection:VpcPeeringConnection")

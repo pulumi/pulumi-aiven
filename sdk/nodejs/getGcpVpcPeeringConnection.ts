@@ -21,11 +21,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGcpVpcPeeringConnection(args: GetGcpVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpVpcPeeringConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", {
         "gcpProjectId": args.gcpProjectId,
         "peerVpc": args.peerVpc,
@@ -68,6 +65,10 @@ export interface GetGcpVpcPeeringConnectionResult {
      */
     readonly peerVpc: string;
     /**
+     * Computed GCP network peering link
+     */
+    readonly selfLink: string;
+    /**
      * State of the peering connection
      */
     readonly state: string;
@@ -80,9 +81,24 @@ export interface GetGcpVpcPeeringConnectionResult {
      */
     readonly vpcId: string;
 }
-
+/**
+ * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = aiven.getGcpVpcPeeringConnection({
+ *     vpcId: data.aiven_project_vpc.vpc.id,
+ *     gcpProjectId: "xxxx",
+ *     peerVpc: "xxxx",
+ * });
+ * ```
+ */
 export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpVpcPeeringConnectionResult> {
-    return pulumi.output(args).apply(a => getGcpVpcPeeringConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getGcpVpcPeeringConnection(a, opts))
 }
 
 /**

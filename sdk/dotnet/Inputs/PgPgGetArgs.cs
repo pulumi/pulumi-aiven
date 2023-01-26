@@ -30,11 +30,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("maxConnections")]
         public Input<int>? MaxConnections { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// PostgreSQL admin user password
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// PostgreSQL port
@@ -42,11 +52,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        [Input("replicaUri")]
+        private Input<string>? _replicaUri;
+
         /// <summary>
         /// PostgreSQL replica URI for services with a replica
         /// </summary>
-        [Input("replicaUri")]
-        public Input<string>? ReplicaUri { get; set; }
+        public Input<string>? ReplicaUri
+        {
+            get => _replicaUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _replicaUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// PostgreSQL sslmode setting (currently always "require")
@@ -54,11 +74,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
 
+        [Input("uri")]
+        private Input<string>? _uri;
+
         /// <summary>
         /// PostgreSQL master connection URI
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        public Input<string>? Uri
+        {
+            get => _uri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// PostgreSQL admin user name

@@ -10,6 +10,7 @@ import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigAuthGitlab;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigAuthGoogle;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigDateFormats;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigExternalImageStorage;
+import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigPublicAccess;
@@ -23,425 +24,157 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfig {
-    /**
-     * @return Enable or disable Grafana alerting functionality
-     * 
-     */
+    private @Nullable String additionalBackupRegions;
     private @Nullable String alertingEnabled;
-    /**
-     * @return Default error or timeout setting for new alerting rules
-     * 
-     */
     private @Nullable String alertingErrorOrTimeout;
-    /**
-     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-     * 
-     */
     private @Nullable String alertingMaxAnnotationsToKeep;
-    /**
-     * @return Default value for &#39;no data or null values&#39; for new alerting rules
-     * 
-     */
     private @Nullable String alertingNodataOrNullvalues;
-    /**
-     * @return Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
-     * 
-     */
     private @Nullable String allowEmbedding;
-    /**
-     * @return Azure AD OAuth integration
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigAuthAzuread authAzuread;
-    /**
-     * @return Enable or disable basic authentication form, used by Grafana built-in login
-     * 
-     */
     private @Nullable String authBasicEnabled;
-    /**
-     * @return Generic OAuth integration
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigAuthGenericOauth authGenericOauth;
-    /**
-     * @return Github Auth integration
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigAuthGithub authGithub;
-    /**
-     * @return GitLab Auth integration
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigAuthGitlab authGitlab;
-    /**
-     * @return Google Auth integration
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
-    /**
-     * @return Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
-     * 
-     */
     private @Nullable String cookieSamesite;
-    /**
-     * @return Custom domain
-     * 
-     */
     private @Nullable String customDomain;
-    /**
-     * @return Minimum refresh interval
-     * 
-     */
+    private @Nullable String dashboardPreviewsEnabled;
     private @Nullable String dashboardsMinRefreshInterval;
-    /**
-     * @return Dashboard versions to keep per dashboard
-     * 
-     */
     private @Nullable String dashboardsVersionsToKeep;
-    /**
-     * @return Send &#39;X-Grafana-User&#39; header to data source
-     * 
-     */
     private @Nullable String dataproxySendUserHeader;
-    /**
-     * @return Timeout for data proxy requests in seconds
-     * 
-     */
     private @Nullable String dataproxyTimeout;
-    /**
-     * @return Grafana date format specifications
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigDateFormats dateFormats;
-    /**
-     * @return Set to true to disable gravatar. Defaults to false (gravatar is enabled)
-     * 
-     */
     private @Nullable String disableGravatar;
-    /**
-     * @return Editors can manage folders, teams and dashboards created by them
-     * 
-     */
     private @Nullable String editorsCanAdmin;
-    /**
-     * @return External image store settings
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
-    /**
-     * @return Google Analytics ID
-     * 
-     */
     private @Nullable String googleAnalyticsUaId;
-    /**
-     * @return IP filter
-     * 
-     */
+    private @Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Enable Grafana /metrics endpoint
-     * 
-     */
     private @Nullable String metricsEnabled;
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
-    /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String projectToForkFrom;
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigPublicAccess publicAccess;
-    /**
-     * @return Name of the basebackup to restore in forked service
-     * 
-     */
     private @Nullable String recoveryBasebackupName;
-    /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
-     * 
-     */
     private @Nullable String serviceToForkFrom;
-    /**
-     * @return SMTP server settings
-     * 
-     */
     private @Nullable GrafanaGrafanaUserConfigSmtpServer smtpServer;
-    /**
-     * @return Static IP addresses
-     * 
-     */
     private @Nullable String staticIps;
-    /**
-     * @return Auto-assign new users on signup to main organization. Defaults to false
-     * 
-     */
     private @Nullable String userAutoAssignOrg;
-    /**
-     * @return Set role for new signups. Defaults to Viewer
-     * 
-     */
     private @Nullable String userAutoAssignOrgRole;
-    /**
-     * @return Users with view-only permission can edit but not save dashboards
-     * 
-     */
     private @Nullable String viewersCanEdit;
 
     private GrafanaGrafanaUserConfig() {}
-    /**
-     * @return Enable or disable Grafana alerting functionality
-     * 
-     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> alertingEnabled() {
         return Optional.ofNullable(this.alertingEnabled);
     }
-    /**
-     * @return Default error or timeout setting for new alerting rules
-     * 
-     */
     public Optional<String> alertingErrorOrTimeout() {
         return Optional.ofNullable(this.alertingErrorOrTimeout);
     }
-    /**
-     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-     * 
-     */
     public Optional<String> alertingMaxAnnotationsToKeep() {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
-    /**
-     * @return Default value for &#39;no data or null values&#39; for new alerting rules
-     * 
-     */
     public Optional<String> alertingNodataOrNullvalues() {
         return Optional.ofNullable(this.alertingNodataOrNullvalues);
     }
-    /**
-     * @return Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
-     * 
-     */
     public Optional<String> allowEmbedding() {
         return Optional.ofNullable(this.allowEmbedding);
     }
-    /**
-     * @return Azure AD OAuth integration
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigAuthAzuread> authAzuread() {
         return Optional.ofNullable(this.authAzuread);
     }
-    /**
-     * @return Enable or disable basic authentication form, used by Grafana built-in login
-     * 
-     */
     public Optional<String> authBasicEnabled() {
         return Optional.ofNullable(this.authBasicEnabled);
     }
-    /**
-     * @return Generic OAuth integration
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigAuthGenericOauth> authGenericOauth() {
         return Optional.ofNullable(this.authGenericOauth);
     }
-    /**
-     * @return Github Auth integration
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigAuthGithub> authGithub() {
         return Optional.ofNullable(this.authGithub);
     }
-    /**
-     * @return GitLab Auth integration
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigAuthGitlab> authGitlab() {
         return Optional.ofNullable(this.authGitlab);
     }
-    /**
-     * @return Google Auth integration
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigAuthGoogle> authGoogle() {
         return Optional.ofNullable(this.authGoogle);
     }
-    /**
-     * @return Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
-     * 
-     */
     public Optional<String> cookieSamesite() {
         return Optional.ofNullable(this.cookieSamesite);
     }
-    /**
-     * @return Custom domain
-     * 
-     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
-    /**
-     * @return Minimum refresh interval
-     * 
-     */
+    public Optional<String> dashboardPreviewsEnabled() {
+        return Optional.ofNullable(this.dashboardPreviewsEnabled);
+    }
     public Optional<String> dashboardsMinRefreshInterval() {
         return Optional.ofNullable(this.dashboardsMinRefreshInterval);
     }
-    /**
-     * @return Dashboard versions to keep per dashboard
-     * 
-     */
     public Optional<String> dashboardsVersionsToKeep() {
         return Optional.ofNullable(this.dashboardsVersionsToKeep);
     }
-    /**
-     * @return Send &#39;X-Grafana-User&#39; header to data source
-     * 
-     */
     public Optional<String> dataproxySendUserHeader() {
         return Optional.ofNullable(this.dataproxySendUserHeader);
     }
-    /**
-     * @return Timeout for data proxy requests in seconds
-     * 
-     */
     public Optional<String> dataproxyTimeout() {
         return Optional.ofNullable(this.dataproxyTimeout);
     }
-    /**
-     * @return Grafana date format specifications
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigDateFormats> dateFormats() {
         return Optional.ofNullable(this.dateFormats);
     }
-    /**
-     * @return Set to true to disable gravatar. Defaults to false (gravatar is enabled)
-     * 
-     */
     public Optional<String> disableGravatar() {
         return Optional.ofNullable(this.disableGravatar);
     }
-    /**
-     * @return Editors can manage folders, teams and dashboards created by them
-     * 
-     */
     public Optional<String> editorsCanAdmin() {
         return Optional.ofNullable(this.editorsCanAdmin);
     }
-    /**
-     * @return External image store settings
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigExternalImageStorage> externalImageStorage() {
         return Optional.ofNullable(this.externalImageStorage);
     }
-    /**
-     * @return Google Analytics ID
-     * 
-     */
     public Optional<String> googleAnalyticsUaId() {
         return Optional.ofNullable(this.googleAnalyticsUaId);
     }
-    /**
-     * @return IP filter
-     * 
-     */
+    public List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Enable Grafana /metrics endpoint
-     * 
-     */
     public Optional<String> metricsEnabled() {
         return Optional.ofNullable(this.metricsEnabled);
     }
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
-    /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    /**
-     * @return Name of the basebackup to restore in forked service
-     * 
-     */
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
-    /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
-     * 
-     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    /**
-     * @return SMTP server settings
-     * 
-     */
     public Optional<GrafanaGrafanaUserConfigSmtpServer> smtpServer() {
         return Optional.ofNullable(this.smtpServer);
     }
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
-    /**
-     * @return Auto-assign new users on signup to main organization. Defaults to false
-     * 
-     */
     public Optional<String> userAutoAssignOrg() {
         return Optional.ofNullable(this.userAutoAssignOrg);
     }
-    /**
-     * @return Set role for new signups. Defaults to Viewer
-     * 
-     */
     public Optional<String> userAutoAssignOrgRole() {
         return Optional.ofNullable(this.userAutoAssignOrgRole);
     }
-    /**
-     * @return Users with view-only permission can edit but not save dashboards
-     * 
-     */
     public Optional<String> viewersCanEdit() {
         return Optional.ofNullable(this.viewersCanEdit);
     }
@@ -455,6 +188,7 @@ public final class GrafanaGrafanaUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String alertingEnabled;
         private @Nullable String alertingErrorOrTimeout;
         private @Nullable String alertingMaxAnnotationsToKeep;
@@ -468,6 +202,7 @@ public final class GrafanaGrafanaUserConfig {
         private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
         private @Nullable String cookieSamesite;
         private @Nullable String customDomain;
+        private @Nullable String dashboardPreviewsEnabled;
         private @Nullable String dashboardsMinRefreshInterval;
         private @Nullable String dashboardsVersionsToKeep;
         private @Nullable String dataproxySendUserHeader;
@@ -477,6 +212,7 @@ public final class GrafanaGrafanaUserConfig {
         private @Nullable String editorsCanAdmin;
         private @Nullable GrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
         private @Nullable String googleAnalyticsUaId;
+        private @Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String metricsEnabled;
         private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
@@ -493,6 +229,7 @@ public final class GrafanaGrafanaUserConfig {
         public Builder() {}
         public Builder(GrafanaGrafanaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.alertingEnabled = defaults.alertingEnabled;
     	      this.alertingErrorOrTimeout = defaults.alertingErrorOrTimeout;
     	      this.alertingMaxAnnotationsToKeep = defaults.alertingMaxAnnotationsToKeep;
@@ -506,6 +243,7 @@ public final class GrafanaGrafanaUserConfig {
     	      this.authGoogle = defaults.authGoogle;
     	      this.cookieSamesite = defaults.cookieSamesite;
     	      this.customDomain = defaults.customDomain;
+    	      this.dashboardPreviewsEnabled = defaults.dashboardPreviewsEnabled;
     	      this.dashboardsMinRefreshInterval = defaults.dashboardsMinRefreshInterval;
     	      this.dashboardsVersionsToKeep = defaults.dashboardsVersionsToKeep;
     	      this.dataproxySendUserHeader = defaults.dataproxySendUserHeader;
@@ -515,6 +253,7 @@ public final class GrafanaGrafanaUserConfig {
     	      this.editorsCanAdmin = defaults.editorsCanAdmin;
     	      this.externalImageStorage = defaults.externalImageStorage;
     	      this.googleAnalyticsUaId = defaults.googleAnalyticsUaId;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.metricsEnabled = defaults.metricsEnabled;
     	      this.privateAccess = defaults.privateAccess;
@@ -530,6 +269,11 @@ public final class GrafanaGrafanaUserConfig {
     	      this.viewersCanEdit = defaults.viewersCanEdit;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder alertingEnabled(@Nullable String alertingEnabled) {
             this.alertingEnabled = alertingEnabled;
@@ -596,6 +340,11 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder dashboardPreviewsEnabled(@Nullable String dashboardPreviewsEnabled) {
+            this.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dashboardsMinRefreshInterval(@Nullable String dashboardsMinRefreshInterval) {
             this.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             return this;
@@ -639,6 +388,14 @@ public final class GrafanaGrafanaUserConfig {
         public Builder googleAnalyticsUaId(@Nullable String googleAnalyticsUaId) {
             this.googleAnalyticsUaId = googleAnalyticsUaId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GrafanaGrafanaUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -710,6 +467,7 @@ public final class GrafanaGrafanaUserConfig {
         }
         public GrafanaGrafanaUserConfig build() {
             final var o = new GrafanaGrafanaUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.alertingEnabled = alertingEnabled;
             o.alertingErrorOrTimeout = alertingErrorOrTimeout;
             o.alertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
@@ -723,6 +481,7 @@ public final class GrafanaGrafanaUserConfig {
             o.authGoogle = authGoogle;
             o.cookieSamesite = cookieSamesite;
             o.customDomain = customDomain;
+            o.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
             o.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             o.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             o.dataproxySendUserHeader = dataproxySendUserHeader;
@@ -732,6 +491,7 @@ public final class GrafanaGrafanaUserConfig {
             o.editorsCanAdmin = editorsCanAdmin;
             o.externalImageStorage = externalImageStorage;
             o.googleAnalyticsUaId = googleAnalyticsUaId;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.metricsEnabled = metricsEnabled;
             o.privateAccess = privateAccess;

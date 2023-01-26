@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRedis(args: GetRedisArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getRedis:getRedis", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetRedisResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Redis data source provides information about the existing Aiven Redis service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const redis1 = aiven.getRedis({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-redis1",
+ * });
+ * ```
+ */
 export function getRedisOutput(args: GetRedisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisResult> {
-    return pulumi.output(args).apply(a => getRedis(a, opts))
+    return pulumi.output(args).apply((a: any) => getRedis(a, opts))
 }
 
 /**

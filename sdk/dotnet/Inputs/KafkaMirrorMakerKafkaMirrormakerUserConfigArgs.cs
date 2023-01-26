@@ -12,27 +12,28 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+        public InputList<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Kafka MirrorMaker configuration values
-        /// </summary>
         [Input("kafkaMirrormaker")]
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

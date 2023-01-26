@@ -24,9 +24,9 @@ namespace Pulumi.Aiven
     ///     var f1 = new Aiven.MirrorMakerReplicationFlow("f1", new()
     ///     {
     ///         Project = aiven_project.Kafka_mm_project1.Project,
-    ///         ServiceName = aiven_service.Mm.Service_name,
-    ///         SourceCluster = aiven_service.Source.Service_name,
-    ///         TargetCluster = aiven_service.Target.Service_name,
+    ///         ServiceName = aiven_kafka.Mm.Service_name,
+    ///         SourceCluster = aiven_kafka.Source.Service_name,
+    ///         TargetCluster = aiven_kafka.Target.Service_name,
     ///         Enable = true,
     ///         Topics = new[]
     ///         {
@@ -63,6 +63,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("enable")]
         public Output<bool> Enable { get; private set; } = null!;
+
+        /// <summary>
+        /// Offset syncs topic location.
+        /// </summary>
+        [Output("offsetSyncsTopicLocation")]
+        public Output<string?> OffsetSyncsTopicLocation { get; private set; } = null!;
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -177,6 +183,12 @@ namespace Pulumi.Aiven
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
+        /// Offset syncs topic location.
+        /// </summary>
+        [Input("offsetSyncsTopicLocation")]
+        public Input<string>? OffsetSyncsTopicLocation { get; set; }
+
+        /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
@@ -261,6 +273,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
+
+        /// <summary>
+        /// Offset syncs topic location.
+        /// </summary>
+        [Input("offsetSyncsTopicLocation")]
+        public Input<string>? OffsetSyncsTopicLocation { get; set; }
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

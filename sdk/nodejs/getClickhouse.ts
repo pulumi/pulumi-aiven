@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClickhouse(args: GetClickhouseArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getClickhouse:getClickhouse", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetClickhouseResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const clickhouse = aiven.getClickhouse({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
+ */
 export function getClickhouseOutput(args: GetClickhouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseResult> {
-    return pulumi.output(args).apply(a => getClickhouse(a, opts))
+    return pulumi.output(args).apply((a: any) => getClickhouse(a, opts))
 }
 
 /**

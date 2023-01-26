@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var mydatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_mysql.Mymysql.Service_name,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMysqlDatabaseResult> InvokeAsync(GetMysqlDatabaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The MySQL Database data source provides information about the existing Aiven MySQL Database.
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         ///     var mydatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
         ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         ServiceName = aiven_mysql.Mymysql.Service_name,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMysqlDatabaseResult> Invoke(GetMysqlDatabaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

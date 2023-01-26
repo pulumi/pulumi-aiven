@@ -3,6 +3,9 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationClickhousePostgresqlUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
@@ -16,6 +19,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceIntegrationResult {
+    /**
+     * @return ClickhouseKafka user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs;
+    /**
+     * @return ClickhousePostgresql user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs;
+    /**
+     * @return Datadog user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
     /**
      * @return Destination endpoint for the integration (if any)
      * 
@@ -42,32 +60,32 @@ public final class GetServiceIntegrationResult {
      */
     private String integrationType;
     /**
-     * @return Kafka Connect specific user configurable settings
+     * @return KafkaConnect user configurable settings
      * 
      */
     private List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs;
     /**
-     * @return Kafka Logs specific user configurable settings
+     * @return KafkaLogs user configurable settings
      * 
      */
     private List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs;
     /**
-     * @return Mirrormaker 2 integration specific user configurable settings
+     * @return KafkaMirrormaker user configurable settings
      * 
      */
     private List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
     /**
-     * @return Log integration specific user configurable settings
+     * @return Logs user configurable settings
      * 
      */
     private List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
     /**
-     * @return Metrics specific user configurable settings
+     * @return Metrics user configurable settings
      * 
      */
     private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
     /**
-     * @return Mirrormaker 1 integration specific user configurable settings
+     * @return Mirrormaker user configurable settings
      * 
      */
     private List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs;
@@ -88,6 +106,27 @@ public final class GetServiceIntegrationResult {
     private String sourceServiceName;
 
     private GetServiceIntegrationResult() {}
+    /**
+     * @return ClickhouseKafka user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs() {
+        return this.clickhouseKafkaUserConfigs;
+    }
+    /**
+     * @return ClickhousePostgresql user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs() {
+        return this.clickhousePostgresqlUserConfigs;
+    }
+    /**
+     * @return Datadog user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs() {
+        return this.datadogUserConfigs;
+    }
     /**
      * @return Destination endpoint for the integration (if any)
      * 
@@ -124,42 +163,42 @@ public final class GetServiceIntegrationResult {
         return this.integrationType;
     }
     /**
-     * @return Kafka Connect specific user configurable settings
+     * @return KafkaConnect user configurable settings
      * 
      */
     public List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs() {
         return this.kafkaConnectUserConfigs;
     }
     /**
-     * @return Kafka Logs specific user configurable settings
+     * @return KafkaLogs user configurable settings
      * 
      */
     public List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs() {
         return this.kafkaLogsUserConfigs;
     }
     /**
-     * @return Mirrormaker 2 integration specific user configurable settings
+     * @return KafkaMirrormaker user configurable settings
      * 
      */
     public List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs() {
         return this.kafkaMirrormakerUserConfigs;
     }
     /**
-     * @return Log integration specific user configurable settings
+     * @return Logs user configurable settings
      * 
      */
     public List<GetServiceIntegrationLogsUserConfig> logsUserConfigs() {
         return this.logsUserConfigs;
     }
     /**
-     * @return Metrics specific user configurable settings
+     * @return Metrics user configurable settings
      * 
      */
     public List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs() {
         return this.metricsUserConfigs;
     }
     /**
-     * @return Mirrormaker 1 integration specific user configurable settings
+     * @return Mirrormaker user configurable settings
      * 
      */
     public List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs() {
@@ -196,6 +235,9 @@ public final class GetServiceIntegrationResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs;
+        private List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs;
+        private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
         private String destinationEndpointId;
         private String destinationServiceName;
         private String id;
@@ -213,6 +255,9 @@ public final class GetServiceIntegrationResult {
         public Builder() {}
         public Builder(GetServiceIntegrationResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clickhouseKafkaUserConfigs = defaults.clickhouseKafkaUserConfigs;
+    	      this.clickhousePostgresqlUserConfigs = defaults.clickhousePostgresqlUserConfigs;
+    	      this.datadogUserConfigs = defaults.datadogUserConfigs;
     	      this.destinationEndpointId = defaults.destinationEndpointId;
     	      this.destinationServiceName = defaults.destinationServiceName;
     	      this.id = defaults.id;
@@ -229,6 +274,30 @@ public final class GetServiceIntegrationResult {
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
+        public Builder clickhouseKafkaUserConfigs(List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs) {
+            this.clickhouseKafkaUserConfigs = Objects.requireNonNull(clickhouseKafkaUserConfigs);
+            return this;
+        }
+        public Builder clickhouseKafkaUserConfigs(GetServiceIntegrationClickhouseKafkaUserConfig... clickhouseKafkaUserConfigs) {
+            return clickhouseKafkaUserConfigs(List.of(clickhouseKafkaUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder clickhousePostgresqlUserConfigs(List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs) {
+            this.clickhousePostgresqlUserConfigs = Objects.requireNonNull(clickhousePostgresqlUserConfigs);
+            return this;
+        }
+        public Builder clickhousePostgresqlUserConfigs(GetServiceIntegrationClickhousePostgresqlUserConfig... clickhousePostgresqlUserConfigs) {
+            return clickhousePostgresqlUserConfigs(List.of(clickhousePostgresqlUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder datadogUserConfigs(List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs) {
+            this.datadogUserConfigs = Objects.requireNonNull(datadogUserConfigs);
+            return this;
+        }
+        public Builder datadogUserConfigs(GetServiceIntegrationDatadogUserConfig... datadogUserConfigs) {
+            return datadogUserConfigs(List.of(datadogUserConfigs));
+        }
         @CustomType.Setter
         public Builder destinationEndpointId(String destinationEndpointId) {
             this.destinationEndpointId = Objects.requireNonNull(destinationEndpointId);
@@ -319,6 +388,9 @@ public final class GetServiceIntegrationResult {
         }
         public GetServiceIntegrationResult build() {
             final var o = new GetServiceIntegrationResult();
+            o.clickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
+            o.clickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
+            o.datadogUserConfigs = datadogUserConfigs;
             o.destinationEndpointId = destinationEndpointId;
             o.destinationServiceName = destinationServiceName;
             o.id = id;

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupMySql(ctx, &GetMySqlArgs{
+//			_, err := aiven.LookupMySql(ctx, &aiven.LookupMySqlArgs{
 //				Project:     data.Aiven_project.Foo.Project,
 //				ServiceName: "my-mysql1",
 //			}, nil)

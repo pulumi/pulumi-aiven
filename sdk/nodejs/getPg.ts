@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPg(args: GetPgArgs, opts?: pulumi.InvokeOptions): Promise<GetPgResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getPg:getPg", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetPgResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The PG data source provides information about the existing Aiven PostgreSQL service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const pg = aiven.getPg({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-pg1",
+ * });
+ * ```
+ */
 export function getPgOutput(args: GetPgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgResult> {
-    return pulumi.output(args).apply(a => getPg(a, opts))
+    return pulumi.output(args).apply((a: any) => getPg(a, opts))
 }
 
 /**

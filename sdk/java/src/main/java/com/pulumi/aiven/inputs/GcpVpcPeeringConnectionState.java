@@ -48,6 +48,21 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
+     * Computed GCP network peering link
+     * 
+     */
+    @Import(name="selfLink")
+    private @Nullable Output<String> selfLink;
+
+    /**
+     * @return Computed GCP network peering link
+     * 
+     */
+    public Optional<Output<String>> selfLink() {
+        return Optional.ofNullable(this.selfLink);
+    }
+
+    /**
      * State of the peering connection
      * 
      */
@@ -97,6 +112,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     private GcpVpcPeeringConnectionState(GcpVpcPeeringConnectionState $) {
         this.gcpProjectId = $.gcpProjectId;
         this.peerVpc = $.peerVpc;
+        this.selfLink = $.selfLink;
         this.state = $.state;
         this.stateInfo = $.stateInfo;
         this.vpcId = $.vpcId;
@@ -160,6 +176,27 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
          */
         public Builder peerVpc(String peerVpc) {
             return peerVpc(Output.of(peerVpc));
+        }
+
+        /**
+         * @param selfLink Computed GCP network peering link
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLink(@Nullable Output<String> selfLink) {
+            $.selfLink = selfLink;
+            return this;
+        }
+
+        /**
+         * @param selfLink Computed GCP network peering link
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLink(String selfLink) {
+            return selfLink(Output.of(selfLink));
         }
 
         /**

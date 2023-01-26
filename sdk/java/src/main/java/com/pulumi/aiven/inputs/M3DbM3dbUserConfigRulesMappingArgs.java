@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesMappingTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -52,6 +53,13 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.namespaces);
     }
 
+    @Import(name="namespacesObjects")
+    private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>> namespacesObjects;
+
+    public Optional<Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>>> namespacesObjects() {
+        return Optional.ofNullable(this.namespacesObjects);
+    }
+
     @Import(name="tags")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>> tags;
 
@@ -67,6 +75,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         this.filter = $.filter;
         this.name = $.name;
         this.namespaces = $.namespaces;
+        this.namespacesObjects = $.namespacesObjects;
         this.tags = $.tags;
     }
 
@@ -139,6 +148,19 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
 
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
+        }
+
+        public Builder namespacesObjects(@Nullable Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>> namespacesObjects) {
+            $.namespacesObjects = namespacesObjects;
+            return this;
+        }
+
+        public Builder namespacesObjects(List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs> namespacesObjects) {
+            return namespacesObjects(Output.of(namespacesObjects));
+        }
+
+        public Builder namespacesObjects(M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs... namespacesObjects) {
+            return namespacesObjects(List.of(namespacesObjects));
         }
 
         public Builder tags(@Nullable Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>> tags) {

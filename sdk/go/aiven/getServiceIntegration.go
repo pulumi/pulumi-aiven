@@ -16,7 +16,32 @@ import (
 //
 // ## Example Usage
 //
-// {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
+//				Project:                aiven_project.Myproject.Project,
+//				DestinationServiceName: "<DESTINATION_SERVICE_NAME>",
+//				IntegrationType:        "datadog",
+//				SourceServiceName:      "<SOURCE_SERVICE_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegrationArgs, opts ...pulumi.InvokeOption) (*LookupServiceIntegrationResult, error) {
 	var rv LookupServiceIntegrationResult
 	err := ctx.Invoke("aiven:index/getServiceIntegration:getServiceIntegration", args, &rv, opts...)
@@ -40,6 +65,12 @@ type LookupServiceIntegrationArgs struct {
 
 // A collection of values returned by getServiceIntegration.
 type LookupServiceIntegrationResult struct {
+	// ClickhouseKafka user configurable settings
+	ClickhouseKafkaUserConfigs []GetServiceIntegrationClickhouseKafkaUserConfig `pulumi:"clickhouseKafkaUserConfigs"`
+	// ClickhousePostgresql user configurable settings
+	ClickhousePostgresqlUserConfigs []GetServiceIntegrationClickhousePostgresqlUserConfig `pulumi:"clickhousePostgresqlUserConfigs"`
+	// Datadog user configurable settings
+	DatadogUserConfigs []GetServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfigs"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -50,17 +81,17 @@ type LookupServiceIntegrationResult struct {
 	IntegrationId string `pulumi:"integrationId"`
 	// Type of the service integration
 	IntegrationType string `pulumi:"integrationType"`
-	// Kafka Connect specific user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfigs []GetServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfigs"`
-	// Kafka Logs specific user configurable settings
+	// KafkaLogs user configurable settings
 	KafkaLogsUserConfigs []GetServiceIntegrationKafkaLogsUserConfig `pulumi:"kafkaLogsUserConfigs"`
-	// Mirrormaker 2 integration specific user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfigs []GetServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfigs"`
-	// Log integration specific user configurable settings
+	// Logs user configurable settings
 	LogsUserConfigs []GetServiceIntegrationLogsUserConfig `pulumi:"logsUserConfigs"`
-	// Metrics specific user configurable settings
+	// Metrics user configurable settings
 	MetricsUserConfigs []GetServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfigs"`
-	// Mirrormaker 1 integration specific user configurable settings
+	// Mirrormaker user configurable settings
 	MirrormakerUserConfigs []GetServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfigs"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
@@ -114,6 +145,27 @@ func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOu
 	return o
 }
 
+// ClickhouseKafka user configurable settings
+func (o LookupServiceIntegrationResultOutput) ClickhouseKafkaUserConfigs() GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationClickhouseKafkaUserConfig {
+		return v.ClickhouseKafkaUserConfigs
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput)
+}
+
+// ClickhousePostgresql user configurable settings
+func (o LookupServiceIntegrationResultOutput) ClickhousePostgresqlUserConfigs() GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationClickhousePostgresqlUserConfig {
+		return v.ClickhousePostgresqlUserConfigs
+	}).(GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput)
+}
+
+// Datadog user configurable settings
+func (o LookupServiceIntegrationResultOutput) DatadogUserConfigs() GetServiceIntegrationDatadogUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationDatadogUserConfig {
+		return v.DatadogUserConfigs
+	}).(GetServiceIntegrationDatadogUserConfigArrayOutput)
+}
+
 // Destination endpoint for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) DestinationEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationEndpointId }).(pulumi.StringOutput)
@@ -139,40 +191,40 @@ func (o LookupServiceIntegrationResultOutput) IntegrationType() pulumi.StringOut
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Kafka Connect specific user configurable settings
+// KafkaConnect user configurable settings
 func (o LookupServiceIntegrationResultOutput) KafkaConnectUserConfigs() GetServiceIntegrationKafkaConnectUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationKafkaConnectUserConfig {
 		return v.KafkaConnectUserConfigs
 	}).(GetServiceIntegrationKafkaConnectUserConfigArrayOutput)
 }
 
-// Kafka Logs specific user configurable settings
+// KafkaLogs user configurable settings
 func (o LookupServiceIntegrationResultOutput) KafkaLogsUserConfigs() GetServiceIntegrationKafkaLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationKafkaLogsUserConfig {
 		return v.KafkaLogsUserConfigs
 	}).(GetServiceIntegrationKafkaLogsUserConfigArrayOutput)
 }
 
-// Mirrormaker 2 integration specific user configurable settings
+// KafkaMirrormaker user configurable settings
 func (o LookupServiceIntegrationResultOutput) KafkaMirrormakerUserConfigs() GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationKafkaMirrormakerUserConfig {
 		return v.KafkaMirrormakerUserConfigs
 	}).(GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput)
 }
 
-// Log integration specific user configurable settings
+// Logs user configurable settings
 func (o LookupServiceIntegrationResultOutput) LogsUserConfigs() GetServiceIntegrationLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationLogsUserConfig { return v.LogsUserConfigs }).(GetServiceIntegrationLogsUserConfigArrayOutput)
 }
 
-// Metrics specific user configurable settings
+// Metrics user configurable settings
 func (o LookupServiceIntegrationResultOutput) MetricsUserConfigs() GetServiceIntegrationMetricsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationMetricsUserConfig {
 		return v.MetricsUserConfigs
 	}).(GetServiceIntegrationMetricsUserConfigArrayOutput)
 }
 
-// Mirrormaker 1 integration specific user configurable settings
+// Mirrormaker user configurable settings
 func (o LookupServiceIntegrationResultOutput) MirrormakerUserConfigs() GetServiceIntegrationMirrormakerUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationMirrormakerUserConfig {
 		return v.MirrormakerUserConfigs

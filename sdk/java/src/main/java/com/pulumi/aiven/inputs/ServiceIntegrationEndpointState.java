@@ -9,6 +9,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMe
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs;
@@ -28,14 +29,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     public static final ServiceIntegrationEndpointState Empty = new ServiceIntegrationEndpointState();
 
     /**
-     * Datadog specific user configurable settings
+     * Datadog user configurable settings
      * 
      */
     @Import(name="datadogUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointDatadogUserConfigArgs> datadogUserConfig;
 
     /**
-     * @return Datadog specific user configurable settings
+     * @return Datadog user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointDatadogUserConfigArgs>> datadogUserConfig() {
@@ -88,14 +89,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * external AWS CloudWatch Logs specific user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings
      * 
      */
     @Import(name="externalAwsCloudwatchLogsUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs> externalAwsCloudwatchLogsUserConfig;
 
     /**
-     * @return external AWS CloudWatch Logs specific user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs>> externalAwsCloudwatchLogsUserConfig() {
@@ -103,14 +104,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * External AWS cloudwatch mertrics specific user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
     @Import(name="externalAwsCloudwatchMetricsUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs> externalAwsCloudwatchMetricsUserConfig;
 
     /**
-     * @return External AWS cloudwatch mertrics specific user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs>> externalAwsCloudwatchMetricsUserConfig() {
@@ -118,14 +119,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * external elasticsearch specific user configurable settings
+     * ExternalElasticsearchLogs user configurable settings
      * 
      */
     @Import(name="externalElasticsearchLogsUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs> externalElasticsearchLogsUserConfig;
 
     /**
-     * @return external elasticsearch specific user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs>> externalElasticsearchLogsUserConfig() {
@@ -133,14 +134,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * external Google Cloud Logginig specific user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings
      * 
      */
     @Import(name="externalGoogleCloudLoggingUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs> externalGoogleCloudLoggingUserConfig;
 
     /**
-     * @return external Google Cloud Logginig specific user configurable settings
+     * @return ExternalGoogleCloudLogging user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs>> externalGoogleCloudLoggingUserConfig() {
@@ -148,14 +149,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * external Kafka specific user configurable settings
+     * ExternalKafka user configurable settings
      * 
      */
     @Import(name="externalKafkaUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalKafkaUserConfigArgs> externalKafkaUserConfig;
 
     /**
-     * @return external Kafka specific user configurable settings
+     * @return ExternalKafka user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalKafkaUserConfigArgs>> externalKafkaUserConfig() {
@@ -163,14 +164,29 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * External schema registry specific user configurable settings
+     * ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    @Import(name="externalOpensearchLogsUserConfig")
+    private @Nullable Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs> externalOpensearchLogsUserConfig;
+
+    /**
+     * @return ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>> externalOpensearchLogsUserConfig() {
+        return Optional.ofNullable(this.externalOpensearchLogsUserConfig);
+    }
+
+    /**
+     * ExternalSchemaRegistry user configurable settings
      * 
      */
     @Import(name="externalSchemaRegistryUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs> externalSchemaRegistryUserConfig;
 
     /**
-     * @return External schema registry specific user configurable settings
+     * @return ExternalSchemaRegistry user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs>> externalSchemaRegistryUserConfig() {
@@ -178,14 +194,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * Jolokia specific user configurable settings
+     * Jolokia user configurable settings
      * 
      */
     @Import(name="jolokiaUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointJolokiaUserConfigArgs> jolokiaUserConfig;
 
     /**
-     * @return Jolokia specific user configurable settings
+     * @return Jolokia user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointJolokiaUserConfigArgs>> jolokiaUserConfig() {
@@ -208,14 +224,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * Prometheus specific user configurable settings
+     * Prometheus user configurable settings
      * 
      */
     @Import(name="prometheusUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointPrometheusUserConfigArgs> prometheusUserConfig;
 
     /**
-     * @return Prometheus specific user configurable settings
+     * @return Prometheus user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointPrometheusUserConfigArgs>> prometheusUserConfig() {
@@ -223,14 +239,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * rsyslog specific user configurable settings
+     * Rsyslog user configurable settings
      * 
      */
     @Import(name="rsyslogUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointRsyslogUserConfigArgs> rsyslogUserConfig;
 
     /**
-     * @return rsyslog specific user configurable settings
+     * @return Rsyslog user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointRsyslogUserConfigArgs>> rsyslogUserConfig() {
@@ -238,14 +254,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * Signalfx specific user configurable settings
+     * Signalfx user configurable settings
      * 
      */
     @Import(name="signalfxUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointSignalfxUserConfigArgs> signalfxUserConfig;
 
     /**
-     * @return Signalfx specific user configurable settings
+     * @return Signalfx user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointSignalfxUserConfigArgs>> signalfxUserConfig() {
@@ -264,6 +280,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
         this.externalGoogleCloudLoggingUserConfig = $.externalGoogleCloudLoggingUserConfig;
         this.externalKafkaUserConfig = $.externalKafkaUserConfig;
+        this.externalOpensearchLogsUserConfig = $.externalOpensearchLogsUserConfig;
         this.externalSchemaRegistryUserConfig = $.externalSchemaRegistryUserConfig;
         this.jolokiaUserConfig = $.jolokiaUserConfig;
         this.project = $.project;
@@ -291,7 +308,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param datadogUserConfig Datadog specific user configurable settings
+         * @param datadogUserConfig Datadog user configurable settings
          * 
          * @return builder
          * 
@@ -302,7 +319,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param datadogUserConfig Datadog specific user configurable settings
+         * @param datadogUserConfig Datadog user configurable settings
          * 
          * @return builder
          * 
@@ -375,7 +392,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalAwsCloudwatchLogsUserConfig external AWS CloudWatch Logs specific user configurable settings
+         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings
          * 
          * @return builder
          * 
@@ -386,7 +403,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalAwsCloudwatchLogsUserConfig external AWS CloudWatch Logs specific user configurable settings
+         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings
          * 
          * @return builder
          * 
@@ -396,7 +413,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalAwsCloudwatchMetricsUserConfig External AWS cloudwatch mertrics specific user configurable settings
+         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
          * 
          * @return builder
          * 
@@ -407,7 +424,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalAwsCloudwatchMetricsUserConfig External AWS cloudwatch mertrics specific user configurable settings
+         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
          * 
          * @return builder
          * 
@@ -417,7 +434,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalElasticsearchLogsUserConfig external elasticsearch specific user configurable settings
+         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
          * 
          * @return builder
          * 
@@ -428,7 +445,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalElasticsearchLogsUserConfig external elasticsearch specific user configurable settings
+         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
          * 
          * @return builder
          * 
@@ -438,7 +455,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalGoogleCloudLoggingUserConfig external Google Cloud Logginig specific user configurable settings
+         * @param externalGoogleCloudLoggingUserConfig ExternalGoogleCloudLogging user configurable settings
          * 
          * @return builder
          * 
@@ -449,7 +466,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalGoogleCloudLoggingUserConfig external Google Cloud Logginig specific user configurable settings
+         * @param externalGoogleCloudLoggingUserConfig ExternalGoogleCloudLogging user configurable settings
          * 
          * @return builder
          * 
@@ -459,7 +476,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalKafkaUserConfig external Kafka specific user configurable settings
+         * @param externalKafkaUserConfig ExternalKafka user configurable settings
          * 
          * @return builder
          * 
@@ -470,7 +487,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalKafkaUserConfig external Kafka specific user configurable settings
+         * @param externalKafkaUserConfig ExternalKafka user configurable settings
          * 
          * @return builder
          * 
@@ -480,7 +497,28 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalSchemaRegistryUserConfig External schema registry specific user configurable settings
+         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalOpensearchLogsUserConfig(@Nullable Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs> externalOpensearchLogsUserConfig) {
+            $.externalOpensearchLogsUserConfig = externalOpensearchLogsUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalOpensearchLogsUserConfig(ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs externalOpensearchLogsUserConfig) {
+            return externalOpensearchLogsUserConfig(Output.of(externalOpensearchLogsUserConfig));
+        }
+
+        /**
+         * @param externalSchemaRegistryUserConfig ExternalSchemaRegistry user configurable settings
          * 
          * @return builder
          * 
@@ -491,7 +529,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalSchemaRegistryUserConfig External schema registry specific user configurable settings
+         * @param externalSchemaRegistryUserConfig ExternalSchemaRegistry user configurable settings
          * 
          * @return builder
          * 
@@ -501,7 +539,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param jolokiaUserConfig Jolokia specific user configurable settings
+         * @param jolokiaUserConfig Jolokia user configurable settings
          * 
          * @return builder
          * 
@@ -512,7 +550,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param jolokiaUserConfig Jolokia specific user configurable settings
+         * @param jolokiaUserConfig Jolokia user configurable settings
          * 
          * @return builder
          * 
@@ -543,7 +581,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param prometheusUserConfig Prometheus specific user configurable settings
+         * @param prometheusUserConfig Prometheus user configurable settings
          * 
          * @return builder
          * 
@@ -554,7 +592,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param prometheusUserConfig Prometheus specific user configurable settings
+         * @param prometheusUserConfig Prometheus user configurable settings
          * 
          * @return builder
          * 
@@ -564,7 +602,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param rsyslogUserConfig rsyslog specific user configurable settings
+         * @param rsyslogUserConfig Rsyslog user configurable settings
          * 
          * @return builder
          * 
@@ -575,7 +613,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param rsyslogUserConfig rsyslog specific user configurable settings
+         * @param rsyslogUserConfig Rsyslog user configurable settings
          * 
          * @return builder
          * 
@@ -585,7 +623,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param signalfxUserConfig Signalfx specific user configurable settings
+         * @param signalfxUserConfig Signalfx user configurable settings
          * 
          * @return builder
          * 
@@ -596,7 +634,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param signalfxUserConfig Signalfx specific user configurable settings
+         * @param signalfxUserConfig Signalfx user configurable settings
          * 
          * @return builder
          * 

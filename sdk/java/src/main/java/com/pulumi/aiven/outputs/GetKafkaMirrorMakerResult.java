@@ -63,7 +63,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private String id;
     /**
-     * @return Kafka*mirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings
      * 
      */
     private List<GetKafkaMirrorMakerKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
@@ -223,7 +223,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.id;
     }
     /**
-     * @return Kafka*mirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings
      * 
      */
     public List<GetKafkaMirrorMakerKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs() {

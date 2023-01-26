@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class InfluxDbInfluxdbUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom domain
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -24,11 +30,23 @@ namespace Pulumi.Aiven.Inputs
         [Input("influxdb")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigInfluxdbGetArgs>? Influxdb { get; set; }
 
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.InfluxDbInfluxdbUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.InfluxDbInfluxdbUserConfigIpFilterObjectGetArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.InfluxDbInfluxdbUserConfigIpFilterObjectGetArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -73,7 +91,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }

@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class CassandraCassandraUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        /// <summary>
         /// cassandra configuration values
         /// </summary>
         [Input("cassandra")]
@@ -24,11 +30,23 @@ namespace Pulumi.Aiven.Inputs
         [Input("cassandraVersion")]
         public Input<string>? CassandraVersion { get; set; }
 
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.CassandraCassandraUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.CassandraCassandraUserConfigIpFilterObjectGetArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.CassandraCassandraUserConfigIpFilterObjectGetArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -37,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Migration mode for the sstableloader utility
+        /// Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
         /// </summary>
         [Input("migrateSstableloader")]
         public Input<string>? MigrateSstableloader { get; set; }
@@ -67,7 +85,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Static IP addresses
+        /// When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+        /// </summary>
+        [Input("serviceToJoinWith")]
+        public Input<string>? ServiceToJoinWith { get; set; }
+
+        /// <summary>
+        /// Use static public IP addresses
         /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }

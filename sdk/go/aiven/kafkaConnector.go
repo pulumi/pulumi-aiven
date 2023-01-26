@@ -28,17 +28,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaConnector(ctx, "kafka-os-con1", &aiven.KafkaConnectorArgs{
-//				Project:       pulumi.Any(aiven_project.Kafka - con - project1.Project),
-//				ServiceName:   pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
+//				Project:       pulumi.Any(aiven_project.KafkaConProject1.Project),
+//				ServiceName:   pulumi.Any(aiven_kafka.KafkaService1.Service_name),
 //				ConnectorName: pulumi.String("kafka-os-con1"),
 //				Config: pulumi.StringMap{
-//					"topics":              pulumi.Any(aiven_kafka_topic.Kafka - topic1.Topic_name),
+//					"topics":              pulumi.Any(aiven_kafka_topic.KafkaTopic1.Topic_name),
 //					"connector.class":     pulumi.String("io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
 //					"type.name":           pulumi.String("os-connector"),
 //					"name":                pulumi.String("kafka-os-con1"),
-//					"connection.url":      pulumi.Any(aiven_elasticsearch.Os - service1.Service_uri),
-//					"connection.username": pulumi.Any(aiven_opensearch.Os - service1.Service_username),
-//					"connection.password": pulumi.Any(aiven_opensearch.Os - service1.Service_password),
+//					"connection.url":      pulumi.Any(aiven_elasticsearch.OsService1.Service_uri),
+//					"connection.username": pulumi.Any(aiven_opensearch.OsService1.Service_username),
+//					"connection.password": pulumi.Any(aiven_opensearch.OsService1.Service_password),
 //				},
 //			})
 //			if err != nil {
@@ -103,6 +103,13 @@ func NewKafkaConnector(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Config != nil {
+		args.Config = pulumi.ToSecret(args.Config).(pulumi.StringMapInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"config",
+	})
+	opts = append(opts, secrets)
 	var resource KafkaConnector
 	err := ctx.RegisterResource("aiven:index/kafkaConnector:KafkaConnector", name, args, &resource, opts...)
 	if err != nil {

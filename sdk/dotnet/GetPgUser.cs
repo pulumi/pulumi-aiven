@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPgUserResult> InvokeAsync(GetPgUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The PG User data source provides information about the existing Aiven PG User.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPgUserResult> Invoke(GetPgUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserInvokeArgs(), options.WithDefaults());
     }
 
 

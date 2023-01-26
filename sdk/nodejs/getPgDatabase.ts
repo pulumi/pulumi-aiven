@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  *
  * const mydatabase = aiven.getPgDatabase({
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_pg.mypg.service_name,
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
  */
 export function getPgDatabase(args: GetPgDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPgDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getPgDatabase:getPgDatabase", {
         "databaseName": args.databaseName,
         "project": args.project,
@@ -81,9 +78,24 @@ export interface GetPgDatabaseResult {
     readonly serviceName: string;
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mydatabase = aiven.getPgDatabase({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_pg.mypg.service_name,
+ *     databaseName: "<DATABASE_NAME>",
+ * });
+ * ```
+ */
 export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgDatabaseResult> {
-    return pulumi.output(args).apply(a => getPgDatabase(a, opts))
+    return pulumi.output(args).apply((a: any) => getPgDatabase(a, opts))
 }
 
 /**

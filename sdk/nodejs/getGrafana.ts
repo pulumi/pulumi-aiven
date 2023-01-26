@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): Promise<GetGrafanaResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getGrafana:getGrafana", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetGrafanaResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The Grafana data source provides information about the existing Aiven Grafana service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const gr1 = aiven.getGrafana({
+ *     project: data.aiven_project.ps1.project,
+ *     serviceName: "my-gr1",
+ * });
+ * ```
+ */
 export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrafanaResult> {
-    return pulumi.output(args).apply(a => getGrafana(a, opts))
+    return pulumi.output(args).apply((a: any) => getGrafana(a, opts))
 }
 
 /**

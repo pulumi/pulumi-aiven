@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
  */
 export function getAzureVpcPeeringConnection(args: GetAzureVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVpcPeeringConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", {
         "azureSubscriptionId": args.azureSubscriptionId,
         "peerAzureAppId": args.peerAzureAppId,
@@ -98,9 +95,11 @@ export interface GetAzureVpcPeeringConnectionResult {
      */
     readonly vpcId: string;
 }
-
+/**
+ * The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ */
 export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVpcPeeringConnectionResult> {
-    return pulumi.output(args).apply(a => getAzureVpcPeeringConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getAzureVpcPeeringConnection(a, opts))
 }
 
 /**

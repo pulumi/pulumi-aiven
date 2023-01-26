@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetPgPgUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigMigration;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigPg;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigPgbouncer;
@@ -20,11 +21,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String adminPassword;
     private @Nullable String adminUsername;
     private @Nullable String backupHour;
     private @Nullable String backupMinute;
     private @Nullable String enableIpv6;
+    private @Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable GetPgPgUserConfigMigration migration;
     /**
@@ -32,6 +35,12 @@ public final class GetPgPgUserConfig {
      * 
      */
     private @Nullable GetPgPgUserConfigPg pg;
+    /**
+     * @deprecated
+     * This setting is deprecated. Use read_replica service integration instead.
+     * 
+     */
+    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
     private @Nullable String pgReadReplica;
     private @Nullable String pgServiceToForkFrom;
     private @Nullable String pgStatMonitorEnable;
@@ -56,6 +65,9 @@ public final class GetPgPgUserConfig {
     private @Nullable String workMem;
 
     private GetPgPgUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
@@ -71,6 +83,9 @@ public final class GetPgPgUserConfig {
     public Optional<String> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
+    public List<GetPgPgUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -84,6 +99,12 @@ public final class GetPgPgUserConfig {
     public Optional<GetPgPgUserConfigPg> pg() {
         return Optional.ofNullable(this.pg);
     }
+    /**
+     * @deprecated
+     * This setting is deprecated. Use read_replica service integration instead.
+     * 
+     */
+    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
     public Optional<String> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
@@ -152,11 +173,13 @@ public final class GetPgPgUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
         private @Nullable String backupHour;
         private @Nullable String backupMinute;
         private @Nullable String enableIpv6;
+        private @Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetPgPgUserConfigMigration migration;
         private @Nullable GetPgPgUserConfigPg pg;
@@ -181,11 +204,13 @@ public final class GetPgPgUserConfig {
         public Builder() {}
         public Builder(GetPgPgUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.adminPassword = defaults.adminPassword;
     	      this.adminUsername = defaults.adminUsername;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
     	      this.enableIpv6 = defaults.enableIpv6;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.pg = defaults.pg;
@@ -210,6 +235,11 @@ public final class GetPgPgUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
             this.adminPassword = adminPassword;
             return this;
@@ -233,6 +263,14 @@ public final class GetPgPgUserConfig {
         public Builder enableIpv6(@Nullable String enableIpv6) {
             this.enableIpv6 = enableIpv6;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetPgPgUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -344,11 +382,13 @@ public final class GetPgPgUserConfig {
         }
         public GetPgPgUserConfig build() {
             final var o = new GetPgPgUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.adminPassword = adminPassword;
             o.adminUsername = adminUsername;
             o.backupHour = backupHour;
             o.backupMinute = backupMinute;
             o.enableIpv6 = enableIpv6;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.pg = pg;

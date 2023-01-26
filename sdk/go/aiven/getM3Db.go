@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupM3Db(ctx, &GetM3DbArgs{
+//			_, err := aiven.LookupM3Db(ctx, &aiven.LookupM3DbArgs{
 //				Project:     data.Aiven_project.Foo.Project,
 //				ServiceName: "my-m3db",
 //			}, nil)

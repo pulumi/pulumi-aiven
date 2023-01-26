@@ -21,11 +21,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcPeeringConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", {
         "peerCloudAccount": args.peerCloudAccount,
         "peerVpc": args.peerVpc,
@@ -100,9 +97,24 @@ export interface GetVpcPeeringConnectionResult {
      */
     readonly vpcId: string;
 }
-
+/**
+ * The VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mypeeringconnection = aiven.getVpcPeeringConnection({
+ *     vpcId: aiven_project_vpc.myvpc.id,
+ *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
+ *     peerVpc: "<PEER_VPC_ID/NAME>",
+ * });
+ * ```
+ */
 export function getVpcPeeringConnectionOutput(args: GetVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcPeeringConnectionResult> {
-    return pulumi.output(args).apply(a => getVpcPeeringConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpcPeeringConnection(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -17,11 +18,23 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * {{tffile "examples/resources/aiven_service_integration/resource.tf"}}
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myIntegrationMetrics = new aiven.ServiceIntegration("myIntegrationMetrics", {
+ *     project: aiven_project.myproject.project,
+ *     integrationType: "metrics",
+ *     sourceServiceName: aiven_kafka.kfk1.service_name,
+ *     destinationServiceName: aiven_m3db.m3db.service_name,
+ * });
+ * ```
  *
  * ## Import
  *
- * {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
+ * ```sh
+ *  $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+ * ```
  */
 export class ServiceIntegration extends pulumi.CustomResource {
     /**
@@ -52,6 +65,18 @@ export class ServiceIntegration extends pulumi.CustomResource {
     }
 
     /**
+     * ClickhouseKafka user configurable settings
+     */
+    public readonly clickhouseKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhouseKafkaUserConfig | undefined>;
+    /**
+     * ClickhousePostgresql user configurable settings
+     */
+    public readonly clickhousePostgresqlUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhousePostgresqlUserConfig | undefined>;
+    /**
+     * Datadog user configurable settings
+     */
+    public readonly datadogUserConfig!: pulumi.Output<outputs.ServiceIntegrationDatadogUserConfig | undefined>;
+    /**
      * Destination endpoint for the integration (if any)
      */
     public readonly destinationEndpointId!: pulumi.Output<string | undefined>;
@@ -68,27 +93,27 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly integrationType!: pulumi.Output<string>;
     /**
-     * Kafka Connect specific user configurable settings
+     * KafkaConnect user configurable settings
      */
     public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaConnectUserConfig | undefined>;
     /**
-     * Kafka Logs specific user configurable settings
+     * KafkaLogs user configurable settings
      */
     public readonly kafkaLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaLogsUserConfig | undefined>;
     /**
-     * Mirrormaker 2 integration specific user configurable settings
+     * KafkaMirrormaker user configurable settings
      */
     public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaMirrormakerUserConfig | undefined>;
     /**
-     * Log integration specific user configurable settings
+     * Logs user configurable settings
      */
     public readonly logsUserConfig!: pulumi.Output<outputs.ServiceIntegrationLogsUserConfig | undefined>;
     /**
-     * Metrics specific user configurable settings
+     * Metrics user configurable settings
      */
     public readonly metricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationMetricsUserConfig | undefined>;
     /**
-     * Mirrormaker 1 integration specific user configurable settings
+     * Mirrormaker user configurable settings
      */
     public readonly mirrormakerUserConfig!: pulumi.Output<outputs.ServiceIntegrationMirrormakerUserConfig | undefined>;
     /**
@@ -117,6 +142,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationState | undefined;
+            resourceInputs["clickhouseKafkaUserConfig"] = state ? state.clickhouseKafkaUserConfig : undefined;
+            resourceInputs["clickhousePostgresqlUserConfig"] = state ? state.clickhousePostgresqlUserConfig : undefined;
+            resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
             resourceInputs["integrationId"] = state ? state.integrationId : undefined;
@@ -138,6 +166,9 @@ export class ServiceIntegration extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["clickhouseKafkaUserConfig"] = args ? args.clickhouseKafkaUserConfig : undefined;
+            resourceInputs["clickhousePostgresqlUserConfig"] = args ? args.clickhousePostgresqlUserConfig : undefined;
+            resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
             resourceInputs["integrationType"] = args ? args.integrationType : undefined;
@@ -162,6 +193,18 @@ export class ServiceIntegration extends pulumi.CustomResource {
  */
 export interface ServiceIntegrationState {
     /**
+     * ClickhouseKafka user configurable settings
+     */
+    clickhouseKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfig>;
+    /**
+     * ClickhousePostgresql user configurable settings
+     */
+    clickhousePostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfig>;
+    /**
+     * Datadog user configurable settings
+     */
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
+    /**
      * Destination endpoint for the integration (if any)
      */
     destinationEndpointId?: pulumi.Input<string>;
@@ -178,27 +221,27 @@ export interface ServiceIntegrationState {
      */
     integrationType?: pulumi.Input<string>;
     /**
-     * Kafka Connect specific user configurable settings
+     * KafkaConnect user configurable settings
      */
     kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
     /**
-     * Kafka Logs specific user configurable settings
+     * KafkaLogs user configurable settings
      */
     kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
     /**
-     * Mirrormaker 2 integration specific user configurable settings
+     * KafkaMirrormaker user configurable settings
      */
     kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
     /**
-     * Log integration specific user configurable settings
+     * Logs user configurable settings
      */
     logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
     /**
-     * Metrics specific user configurable settings
+     * Metrics user configurable settings
      */
     metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
     /**
-     * Mirrormaker 1 integration specific user configurable settings
+     * Mirrormaker user configurable settings
      */
     mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**
@@ -220,6 +263,18 @@ export interface ServiceIntegrationState {
  */
 export interface ServiceIntegrationArgs {
     /**
+     * ClickhouseKafka user configurable settings
+     */
+    clickhouseKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfig>;
+    /**
+     * ClickhousePostgresql user configurable settings
+     */
+    clickhousePostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfig>;
+    /**
+     * Datadog user configurable settings
+     */
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
+    /**
      * Destination endpoint for the integration (if any)
      */
     destinationEndpointId?: pulumi.Input<string>;
@@ -232,27 +287,27 @@ export interface ServiceIntegrationArgs {
      */
     integrationType: pulumi.Input<string>;
     /**
-     * Kafka Connect specific user configurable settings
+     * KafkaConnect user configurable settings
      */
     kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
     /**
-     * Kafka Logs specific user configurable settings
+     * KafkaLogs user configurable settings
      */
     kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
     /**
-     * Mirrormaker 2 integration specific user configurable settings
+     * KafkaMirrormaker user configurable settings
      */
     kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
     /**
-     * Log integration specific user configurable settings
+     * Logs user configurable settings
      */
     logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
     /**
-     * Metrics specific user configurable settings
+     * Metrics user configurable settings
      */
     metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
     /**
-     * Mirrormaker 1 integration specific user configurable settings
+     * Mirrormaker user configurable settings
      */
     mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**

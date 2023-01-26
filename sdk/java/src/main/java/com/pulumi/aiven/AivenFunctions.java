@@ -940,6 +940,7 @@ public final class AivenFunctions {
      * The Billing Group data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -977,6 +978,7 @@ public final class AivenFunctions {
      * The Billing Group data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1014,6 +1016,7 @@ public final class AivenFunctions {
      * The Billing Group data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1051,6 +1054,7 @@ public final class AivenFunctions {
      * The Billing Group data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -2051,7 +2055,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2090,7 +2094,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2129,7 +2133,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2168,7 +2172,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2209,7 +2213,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2250,7 +2254,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2291,7 +2295,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2332,7 +2336,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -3319,7 +3323,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.mykafka().service_name())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3360,7 +3364,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.mykafka().service_name())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3401,7 +3405,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.mykafka().service_name())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3442,7 +3446,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.mykafka().service_name())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3635,7 +3639,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -3674,7 +3678,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -3713,7 +3717,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -3752,7 +3756,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -3943,7 +3947,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
      *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .build());
      * 
      *     }
@@ -3981,7 +3985,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
      *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .build());
      * 
      *     }
@@ -4019,7 +4023,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
      *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .build());
      * 
      *     }
@@ -4057,7 +4061,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
      *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_service.kafka-service1().service_name())
+     *             .serviceName(aiven_kafka.kafka-service1().service_name())
      *             .build());
      * 
      *     }
@@ -4279,7 +4283,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.myservice().service_name())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4318,7 +4322,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.myservice().service_name())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4357,7 +4361,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.myservice().service_name())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4396,7 +4400,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_kafka.myservice().service_name())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5051,9 +5055,9 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
      *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_service.mm().service_name())
-     *             .sourceCluster(aiven_service.source().service_name())
-     *             .targetCluster(aiven_service.target().service_name())
+     *             .serviceName(aiven_kafka.mm().service_name())
+     *             .sourceCluster(aiven_kafka.source().service_name())
+     *             .targetCluster(aiven_kafka.target().service_name())
      *             .build());
      * 
      *     }
@@ -5091,9 +5095,9 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
      *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_service.mm().service_name())
-     *             .sourceCluster(aiven_service.source().service_name())
-     *             .targetCluster(aiven_service.target().service_name())
+     *             .serviceName(aiven_kafka.mm().service_name())
+     *             .sourceCluster(aiven_kafka.source().service_name())
+     *             .targetCluster(aiven_kafka.target().service_name())
      *             .build());
      * 
      *     }
@@ -5131,9 +5135,9 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
      *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_service.mm().service_name())
-     *             .sourceCluster(aiven_service.source().service_name())
-     *             .targetCluster(aiven_service.target().service_name())
+     *             .serviceName(aiven_kafka.mm().service_name())
+     *             .sourceCluster(aiven_kafka.source().service_name())
+     *             .targetCluster(aiven_kafka.target().service_name())
      *             .build());
      * 
      *     }
@@ -5171,9 +5175,9 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
      *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_service.mm().service_name())
-     *             .sourceCluster(aiven_service.source().service_name())
-     *             .targetCluster(aiven_service.target().service_name())
+     *             .serviceName(aiven_kafka.mm().service_name())
+     *             .sourceCluster(aiven_kafka.source().service_name())
+     *             .targetCluster(aiven_kafka.target().service_name())
      *             .build());
      * 
      *     }
@@ -5363,7 +5367,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_mysql.mymysql().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5402,7 +5406,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_mysql.mymysql().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5441,7 +5445,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_mysql.mymysql().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5480,7 +5484,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_mysql.mymysql().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5827,7 +5831,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
      *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_service.os().service_name())
+     *             .serviceName(aiven_opensearch.os().service_name())
      *             .build());
      * 
      *     }
@@ -5865,7 +5869,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
      *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_service.os().service_name())
+     *             .serviceName(aiven_opensearch.os().service_name())
      *             .build());
      * 
      *     }
@@ -5903,7 +5907,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
      *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_service.os().service_name())
+     *             .serviceName(aiven_opensearch.os().service_name())
      *             .build());
      * 
      *     }
@@ -5941,7 +5945,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
      *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_service.os().service_name())
+     *             .serviceName(aiven_opensearch.os().service_name())
      *             .build());
      * 
      *     }
@@ -6447,7 +6451,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -6486,7 +6490,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -6525,7 +6529,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -6564,7 +6568,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -7035,12 +7039,166 @@ public final class AivenFunctions {
     /**
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myvpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .build());
+     * 
+     *         final var myvpcId = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .vpcId(aiven_project_vpc.vpc().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetProjectVpcResult> getProjectVpc() {
+        return getProjectVpc(GetProjectVpcArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The Project VPC data source provides information about the existing Aiven Project VPC.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myvpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .build());
+     * 
+     *         final var myvpcId = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .vpcId(aiven_project_vpc.vpc().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain() {
+        return getProjectVpcPlain(GetProjectVpcPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The Project VPC data source provides information about the existing Aiven Project VPC.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myvpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .build());
+     * 
+     *         final var myvpcId = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .vpcId(aiven_project_vpc.vpc().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetProjectVpcResult> getProjectVpc(GetProjectVpcArgs args) {
         return getProjectVpc(args, InvokeOptions.Empty);
     }
     /**
      * The Project VPC data source provides information about the existing Aiven Project VPC.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myvpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .build());
+     * 
+     *         final var myvpcId = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .vpcId(aiven_project_vpc.vpc().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args) {
@@ -7049,12 +7207,82 @@ public final class AivenFunctions {
     /**
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myvpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .build());
+     * 
+     *         final var myvpcId = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .vpcId(aiven_project_vpc.vpc().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetProjectVpcResult> getProjectVpc(GetProjectVpcArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getProjectVpc:getProjectVpc", TypeShape.of(GetProjectVpcResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Project VPC data source provides information about the existing Aiven Project VPC.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myvpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .build());
+     * 
+     *         final var myvpcId = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .vpcId(aiven_project_vpc.vpc().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args, InvokeOptions options) {
@@ -7374,8 +7602,38 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_component/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
+     *             .project(aiven_kafka.project1().project())
+     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .component(&#34;kafka&#34;)
+     *             .route(&#34;dynamic&#34;)
+     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceComponentResult> getServiceComponent(GetServiceComponentArgs args) {
@@ -7387,8 +7645,38 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_component/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
+     *             .project(aiven_kafka.project1().project())
+     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .component(&#34;kafka&#34;)
+     *             .route(&#34;dynamic&#34;)
+     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceComponentResult> getServiceComponentPlain(GetServiceComponentPlainArgs args) {
@@ -7400,8 +7688,38 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_component/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
+     *             .project(aiven_kafka.project1().project())
+     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .component(&#34;kafka&#34;)
+     *             .route(&#34;dynamic&#34;)
+     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceComponentResult> getServiceComponent(GetServiceComponentArgs args, InvokeOptions options) {
@@ -7413,8 +7731,38 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_component/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
+     *             .project(aiven_kafka.project1().project())
+     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .component(&#34;kafka&#34;)
+     *             .route(&#34;dynamic&#34;)
+     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceComponentResult> getServiceComponentPlain(GetServiceComponentPlainArgs args, InvokeOptions options) {
@@ -7426,8 +7774,37 @@ public final class AivenFunctions {
      * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_integration/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
+     *             .integrationType(&#34;datadog&#34;)
+     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceIntegrationResult> getServiceIntegration(GetServiceIntegrationArgs args) {
@@ -7439,8 +7816,37 @@ public final class AivenFunctions {
      * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_integration/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
+     *             .integrationType(&#34;datadog&#34;)
+     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceIntegrationResult> getServiceIntegrationPlain(GetServiceIntegrationPlainArgs args) {
@@ -7452,8 +7858,37 @@ public final class AivenFunctions {
      * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_integration/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
+     *             .integrationType(&#34;datadog&#34;)
+     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceIntegrationResult> getServiceIntegration(GetServiceIntegrationArgs args, InvokeOptions options) {
@@ -7465,8 +7900,37 @@ public final class AivenFunctions {
      * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
      * 
-     * {{tffile &#34;examples/data-sources/aiven_service_integration/data-source.tf&#34;}}
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(aiven_project.myproject().project())
+     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
+     *             .integrationType(&#34;datadog&#34;)
+     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceIntegrationResult> getServiceIntegrationPlain(GetServiceIntegrationPlainArgs args, InvokeOptions options) {
@@ -7651,7 +8115,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myserviceuser = AivenFunctions.getServiceUser(GetServiceUserArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -7690,7 +8154,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myserviceuser = AivenFunctions.getServiceUser(GetServiceUserArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -7729,7 +8193,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myserviceuser = AivenFunctions.getServiceUser(GetServiceUserArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -7768,7 +8232,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myserviceuser = AivenFunctions.getServiceUser(GetServiceUserArgs.builder()
      *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_service.myservice().service_name())
+     *             .serviceName(aiven_pg.mypg().service_name())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 

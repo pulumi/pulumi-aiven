@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMySqlResult> InvokeAsync(GetMySqlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlArgs(), options.WithDefaults());
 
         /// <summary>
         /// The MySQL data source provides information about the existing Aiven MySQL service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMySqlResult> Invoke(GetMySqlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithDefaults());
     }
 
 

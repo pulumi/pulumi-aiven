@@ -5,129 +5,621 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./account";
-export * from "./accountAuthentication";
-export * from "./accountTeam";
-export * from "./accountTeamMember";
-export * from "./accountTeamProject";
-export * from "./awsPrivatelink";
-export * from "./awsVpcPeeringConnection";
-export * from "./azurePrivatelink";
-export * from "./azurePrivatelinkConnectionApproval";
-export * from "./azureVpcPeeringConnection";
-export * from "./billingGroup";
-export * from "./cassandra";
-export * from "./cassandraUser";
-export * from "./clickhouse";
-export * from "./clickhouseDatabase";
-export * from "./clickhouseGrant";
-export * from "./clickhouseRole";
-export * from "./clickhouseUser";
-export * from "./connectionPool";
-export * from "./database";
-export * from "./flink";
-export * from "./flinkJob";
-export * from "./flinkJobTable";
-export * from "./gcpVpcPeeringConnection";
-export * from "./getAccount";
-export * from "./getAccountAuthentication";
-export * from "./getAccountTeam";
-export * from "./getAccountTeamMember";
-export * from "./getAccountTeamProject";
-export * from "./getAwsPrivatelink";
-export * from "./getAwsVpcPeeringConnection";
-export * from "./getAzurePrivatelink";
-export * from "./getAzureVpcPeeringConnection";
-export * from "./getBillingGroup";
-export * from "./getCassanda";
-export * from "./getCassandra";
-export * from "./getCassandraUser";
-export * from "./getClickhouse";
-export * from "./getClickhouseDatabase";
-export * from "./getClickhouseUser";
-export * from "./getConnectionPool";
-export * from "./getDatabase";
-export * from "./getFlink";
-export * from "./getGcpVpcPeeringConnection";
-export * from "./getGrafana";
-export * from "./getInfluxDb";
-export * from "./getInfluxdbDatabase";
-export * from "./getInfluxdbUser";
-export * from "./getKafka";
-export * from "./getKafkaAcl";
-export * from "./getKafkaConnect";
-export * from "./getKafkaConnector";
-export * from "./getKafkaMirrorMaker";
-export * from "./getKafkaSchema";
-export * from "./getKafkaSchemaConfiguration";
-export * from "./getKafkaSchemaRegistryAcl";
-export * from "./getKafkaTopic";
-export * from "./getKafkaUser";
-export * from "./getM3Aggregator";
-export * from "./getM3Db";
-export * from "./getM3dbUser";
-export * from "./getMirrorMakerReplicationFlow";
-export * from "./getMySql";
-export * from "./getMysqlDatabase";
-export * from "./getMysqlUser";
-export * from "./getOpenSearch";
-export * from "./getOpenSearchAclConfig";
-export * from "./getOpenSearchAclRule";
-export * from "./getOpensearchUser";
-export * from "./getPg";
-export * from "./getPgDatabase";
-export * from "./getPgUser";
-export * from "./getProject";
-export * from "./getProjectUser";
-export * from "./getProjectVpc";
-export * from "./getRedis";
-export * from "./getRedisUser";
-export * from "./getServiceComponent";
-export * from "./getServiceIntegration";
-export * from "./getServiceIntegrationEndpoint";
-export * from "./getServiceUser";
-export * from "./getTransitGatewayVpcAttachment";
-export * from "./getVpcPeeringConnection";
-export * from "./grafana";
-export * from "./influxDb";
-export * from "./influxdbDatabase";
-export * from "./influxdbUser";
-export * from "./kafka";
-export * from "./kafkaAcl";
-export * from "./kafkaConnect";
-export * from "./kafkaConnector";
-export * from "./kafkaMirrorMaker";
-export * from "./kafkaSchema";
-export * from "./kafkaSchemaConfiguration";
-export * from "./kafkaSchemaRegistryAcl";
-export * from "./kafkaTopic";
-export * from "./kafkaUser";
-export * from "./m3aggregator";
-export * from "./m3db";
-export * from "./m3dbUser";
-export * from "./mirrorMakerReplicationFlow";
-export * from "./mySql";
-export * from "./mysqlDatabase";
-export * from "./mysqlUser";
-export * from "./openSearch";
-export * from "./openSearchAclConfig";
-export * from "./openSearchAclRule";
-export * from "./opensearchUser";
-export * from "./pg";
-export * from "./pgDatabase";
-export * from "./pgUser";
-export * from "./project";
-export * from "./projectUser";
-export * from "./projectVpc";
-export * from "./provider";
-export * from "./redis";
-export * from "./redisUser";
-export * from "./serviceIntegration";
-export * from "./serviceIntegrationEndpoint";
-export * from "./serviceUser";
-export * from "./staticIp";
-export * from "./transitGatewayVpcAttachment";
-export * from "./vpcPeeringConnection";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
+export { AccountAuthenticationArgs, AccountAuthenticationState } from "./accountAuthentication";
+export type AccountAuthentication = import("./accountAuthentication").AccountAuthentication;
+export const AccountAuthentication: typeof import("./accountAuthentication").AccountAuthentication = null as any;
+utilities.lazyLoad(exports, ["AccountAuthentication"], () => require("./accountAuthentication"));
+
+export { AccountTeamArgs, AccountTeamState } from "./accountTeam";
+export type AccountTeam = import("./accountTeam").AccountTeam;
+export const AccountTeam: typeof import("./accountTeam").AccountTeam = null as any;
+utilities.lazyLoad(exports, ["AccountTeam"], () => require("./accountTeam"));
+
+export { AccountTeamMemberArgs, AccountTeamMemberState } from "./accountTeamMember";
+export type AccountTeamMember = import("./accountTeamMember").AccountTeamMember;
+export const AccountTeamMember: typeof import("./accountTeamMember").AccountTeamMember = null as any;
+utilities.lazyLoad(exports, ["AccountTeamMember"], () => require("./accountTeamMember"));
+
+export { AccountTeamProjectArgs, AccountTeamProjectState } from "./accountTeamProject";
+export type AccountTeamProject = import("./accountTeamProject").AccountTeamProject;
+export const AccountTeamProject: typeof import("./accountTeamProject").AccountTeamProject = null as any;
+utilities.lazyLoad(exports, ["AccountTeamProject"], () => require("./accountTeamProject"));
+
+export { AwsPrivatelinkArgs, AwsPrivatelinkState } from "./awsPrivatelink";
+export type AwsPrivatelink = import("./awsPrivatelink").AwsPrivatelink;
+export const AwsPrivatelink: typeof import("./awsPrivatelink").AwsPrivatelink = null as any;
+utilities.lazyLoad(exports, ["AwsPrivatelink"], () => require("./awsPrivatelink"));
+
+export { AwsVpcPeeringConnectionArgs, AwsVpcPeeringConnectionState } from "./awsVpcPeeringConnection";
+export type AwsVpcPeeringConnection = import("./awsVpcPeeringConnection").AwsVpcPeeringConnection;
+export const AwsVpcPeeringConnection: typeof import("./awsVpcPeeringConnection").AwsVpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["AwsVpcPeeringConnection"], () => require("./awsVpcPeeringConnection"));
+
+export { AzurePrivatelinkArgs, AzurePrivatelinkState } from "./azurePrivatelink";
+export type AzurePrivatelink = import("./azurePrivatelink").AzurePrivatelink;
+export const AzurePrivatelink: typeof import("./azurePrivatelink").AzurePrivatelink = null as any;
+utilities.lazyLoad(exports, ["AzurePrivatelink"], () => require("./azurePrivatelink"));
+
+export { AzurePrivatelinkConnectionApprovalArgs, AzurePrivatelinkConnectionApprovalState } from "./azurePrivatelinkConnectionApproval";
+export type AzurePrivatelinkConnectionApproval = import("./azurePrivatelinkConnectionApproval").AzurePrivatelinkConnectionApproval;
+export const AzurePrivatelinkConnectionApproval: typeof import("./azurePrivatelinkConnectionApproval").AzurePrivatelinkConnectionApproval = null as any;
+utilities.lazyLoad(exports, ["AzurePrivatelinkConnectionApproval"], () => require("./azurePrivatelinkConnectionApproval"));
+
+export { AzureVpcPeeringConnectionArgs, AzureVpcPeeringConnectionState } from "./azureVpcPeeringConnection";
+export type AzureVpcPeeringConnection = import("./azureVpcPeeringConnection").AzureVpcPeeringConnection;
+export const AzureVpcPeeringConnection: typeof import("./azureVpcPeeringConnection").AzureVpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["AzureVpcPeeringConnection"], () => require("./azureVpcPeeringConnection"));
+
+export { BillingGroupArgs, BillingGroupState } from "./billingGroup";
+export type BillingGroup = import("./billingGroup").BillingGroup;
+export const BillingGroup: typeof import("./billingGroup").BillingGroup = null as any;
+utilities.lazyLoad(exports, ["BillingGroup"], () => require("./billingGroup"));
+
+export { CassandraArgs, CassandraState } from "./cassandra";
+export type Cassandra = import("./cassandra").Cassandra;
+export const Cassandra: typeof import("./cassandra").Cassandra = null as any;
+utilities.lazyLoad(exports, ["Cassandra"], () => require("./cassandra"));
+
+export { CassandraUserArgs, CassandraUserState } from "./cassandraUser";
+export type CassandraUser = import("./cassandraUser").CassandraUser;
+export const CassandraUser: typeof import("./cassandraUser").CassandraUser = null as any;
+utilities.lazyLoad(exports, ["CassandraUser"], () => require("./cassandraUser"));
+
+export { ClickhouseArgs, ClickhouseState } from "./clickhouse";
+export type Clickhouse = import("./clickhouse").Clickhouse;
+export const Clickhouse: typeof import("./clickhouse").Clickhouse = null as any;
+utilities.lazyLoad(exports, ["Clickhouse"], () => require("./clickhouse"));
+
+export { ClickhouseDatabaseArgs, ClickhouseDatabaseState } from "./clickhouseDatabase";
+export type ClickhouseDatabase = import("./clickhouseDatabase").ClickhouseDatabase;
+export const ClickhouseDatabase: typeof import("./clickhouseDatabase").ClickhouseDatabase = null as any;
+utilities.lazyLoad(exports, ["ClickhouseDatabase"], () => require("./clickhouseDatabase"));
+
+export { ClickhouseGrantArgs, ClickhouseGrantState } from "./clickhouseGrant";
+export type ClickhouseGrant = import("./clickhouseGrant").ClickhouseGrant;
+export const ClickhouseGrant: typeof import("./clickhouseGrant").ClickhouseGrant = null as any;
+utilities.lazyLoad(exports, ["ClickhouseGrant"], () => require("./clickhouseGrant"));
+
+export { ClickhouseRoleArgs, ClickhouseRoleState } from "./clickhouseRole";
+export type ClickhouseRole = import("./clickhouseRole").ClickhouseRole;
+export const ClickhouseRole: typeof import("./clickhouseRole").ClickhouseRole = null as any;
+utilities.lazyLoad(exports, ["ClickhouseRole"], () => require("./clickhouseRole"));
+
+export { ClickhouseUserArgs, ClickhouseUserState } from "./clickhouseUser";
+export type ClickhouseUser = import("./clickhouseUser").ClickhouseUser;
+export const ClickhouseUser: typeof import("./clickhouseUser").ClickhouseUser = null as any;
+utilities.lazyLoad(exports, ["ClickhouseUser"], () => require("./clickhouseUser"));
+
+export { ConnectionPoolArgs, ConnectionPoolState } from "./connectionPool";
+export type ConnectionPool = import("./connectionPool").ConnectionPool;
+export const ConnectionPool: typeof import("./connectionPool").ConnectionPool = null as any;
+utilities.lazyLoad(exports, ["ConnectionPool"], () => require("./connectionPool"));
+
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
+export { FlinkArgs, FlinkState } from "./flink";
+export type Flink = import("./flink").Flink;
+export const Flink: typeof import("./flink").Flink = null as any;
+utilities.lazyLoad(exports, ["Flink"], () => require("./flink"));
+
+export { FlinkJobArgs, FlinkJobState } from "./flinkJob";
+export type FlinkJob = import("./flinkJob").FlinkJob;
+export const FlinkJob: typeof import("./flinkJob").FlinkJob = null as any;
+utilities.lazyLoad(exports, ["FlinkJob"], () => require("./flinkJob"));
+
+export { FlinkJobTableArgs, FlinkJobTableState } from "./flinkJobTable";
+export type FlinkJobTable = import("./flinkJobTable").FlinkJobTable;
+export const FlinkJobTable: typeof import("./flinkJobTable").FlinkJobTable = null as any;
+utilities.lazyLoad(exports, ["FlinkJobTable"], () => require("./flinkJobTable"));
+
+export { GcpVpcPeeringConnectionArgs, GcpVpcPeeringConnectionState } from "./gcpVpcPeeringConnection";
+export type GcpVpcPeeringConnection = import("./gcpVpcPeeringConnection").GcpVpcPeeringConnection;
+export const GcpVpcPeeringConnection: typeof import("./gcpVpcPeeringConnection").GcpVpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["GcpVpcPeeringConnection"], () => require("./gcpVpcPeeringConnection"));
+
+export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
+export const getAccount: typeof import("./getAccount").getAccount = null as any;
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
+
+export { GetAccountAuthenticationArgs, GetAccountAuthenticationResult, GetAccountAuthenticationOutputArgs } from "./getAccountAuthentication";
+export const getAccountAuthentication: typeof import("./getAccountAuthentication").getAccountAuthentication = null as any;
+export const getAccountAuthenticationOutput: typeof import("./getAccountAuthentication").getAccountAuthenticationOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountAuthentication","getAccountAuthenticationOutput"], () => require("./getAccountAuthentication"));
+
+export { GetAccountTeamArgs, GetAccountTeamResult, GetAccountTeamOutputArgs } from "./getAccountTeam";
+export const getAccountTeam: typeof import("./getAccountTeam").getAccountTeam = null as any;
+export const getAccountTeamOutput: typeof import("./getAccountTeam").getAccountTeamOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountTeam","getAccountTeamOutput"], () => require("./getAccountTeam"));
+
+export { GetAccountTeamMemberArgs, GetAccountTeamMemberResult, GetAccountTeamMemberOutputArgs } from "./getAccountTeamMember";
+export const getAccountTeamMember: typeof import("./getAccountTeamMember").getAccountTeamMember = null as any;
+export const getAccountTeamMemberOutput: typeof import("./getAccountTeamMember").getAccountTeamMemberOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountTeamMember","getAccountTeamMemberOutput"], () => require("./getAccountTeamMember"));
+
+export { GetAccountTeamProjectArgs, GetAccountTeamProjectResult, GetAccountTeamProjectOutputArgs } from "./getAccountTeamProject";
+export const getAccountTeamProject: typeof import("./getAccountTeamProject").getAccountTeamProject = null as any;
+export const getAccountTeamProjectOutput: typeof import("./getAccountTeamProject").getAccountTeamProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountTeamProject","getAccountTeamProjectOutput"], () => require("./getAccountTeamProject"));
+
+export { GetAwsPrivatelinkArgs, GetAwsPrivatelinkResult, GetAwsPrivatelinkOutputArgs } from "./getAwsPrivatelink";
+export const getAwsPrivatelink: typeof import("./getAwsPrivatelink").getAwsPrivatelink = null as any;
+export const getAwsPrivatelinkOutput: typeof import("./getAwsPrivatelink").getAwsPrivatelinkOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsPrivatelink","getAwsPrivatelinkOutput"], () => require("./getAwsPrivatelink"));
+
+export { GetAwsVpcPeeringConnectionArgs, GetAwsVpcPeeringConnectionResult, GetAwsVpcPeeringConnectionOutputArgs } from "./getAwsVpcPeeringConnection";
+export const getAwsVpcPeeringConnection: typeof import("./getAwsVpcPeeringConnection").getAwsVpcPeeringConnection = null as any;
+export const getAwsVpcPeeringConnectionOutput: typeof import("./getAwsVpcPeeringConnection").getAwsVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsVpcPeeringConnection","getAwsVpcPeeringConnectionOutput"], () => require("./getAwsVpcPeeringConnection"));
+
+export { GetAzurePrivatelinkArgs, GetAzurePrivatelinkResult, GetAzurePrivatelinkOutputArgs } from "./getAzurePrivatelink";
+export const getAzurePrivatelink: typeof import("./getAzurePrivatelink").getAzurePrivatelink = null as any;
+export const getAzurePrivatelinkOutput: typeof import("./getAzurePrivatelink").getAzurePrivatelinkOutput = null as any;
+utilities.lazyLoad(exports, ["getAzurePrivatelink","getAzurePrivatelinkOutput"], () => require("./getAzurePrivatelink"));
+
+export { GetAzureVpcPeeringConnectionArgs, GetAzureVpcPeeringConnectionResult, GetAzureVpcPeeringConnectionOutputArgs } from "./getAzureVpcPeeringConnection";
+export const getAzureVpcPeeringConnection: typeof import("./getAzureVpcPeeringConnection").getAzureVpcPeeringConnection = null as any;
+export const getAzureVpcPeeringConnectionOutput: typeof import("./getAzureVpcPeeringConnection").getAzureVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureVpcPeeringConnection","getAzureVpcPeeringConnectionOutput"], () => require("./getAzureVpcPeeringConnection"));
+
+export { GetBillingGroupArgs, GetBillingGroupResult, GetBillingGroupOutputArgs } from "./getBillingGroup";
+export const getBillingGroup: typeof import("./getBillingGroup").getBillingGroup = null as any;
+export const getBillingGroupOutput: typeof import("./getBillingGroup").getBillingGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getBillingGroup","getBillingGroupOutput"], () => require("./getBillingGroup"));
+
+export { GetCassandaArgs, GetCassandaResult, GetCassandaOutputArgs } from "./getCassanda";
+export const getCassanda: typeof import("./getCassanda").getCassanda = null as any;
+export const getCassandaOutput: typeof import("./getCassanda").getCassandaOutput = null as any;
+utilities.lazyLoad(exports, ["getCassanda","getCassandaOutput"], () => require("./getCassanda"));
+
+export { GetCassandraArgs, GetCassandraResult, GetCassandraOutputArgs } from "./getCassandra";
+export const getCassandra: typeof import("./getCassandra").getCassandra = null as any;
+export const getCassandraOutput: typeof import("./getCassandra").getCassandraOutput = null as any;
+utilities.lazyLoad(exports, ["getCassandra","getCassandraOutput"], () => require("./getCassandra"));
+
+export { GetCassandraUserArgs, GetCassandraUserResult, GetCassandraUserOutputArgs } from "./getCassandraUser";
+export const getCassandraUser: typeof import("./getCassandraUser").getCassandraUser = null as any;
+export const getCassandraUserOutput: typeof import("./getCassandraUser").getCassandraUserOutput = null as any;
+utilities.lazyLoad(exports, ["getCassandraUser","getCassandraUserOutput"], () => require("./getCassandraUser"));
+
+export { GetClickhouseArgs, GetClickhouseResult, GetClickhouseOutputArgs } from "./getClickhouse";
+export const getClickhouse: typeof import("./getClickhouse").getClickhouse = null as any;
+export const getClickhouseOutput: typeof import("./getClickhouse").getClickhouseOutput = null as any;
+utilities.lazyLoad(exports, ["getClickhouse","getClickhouseOutput"], () => require("./getClickhouse"));
+
+export { GetClickhouseDatabaseArgs, GetClickhouseDatabaseResult, GetClickhouseDatabaseOutputArgs } from "./getClickhouseDatabase";
+export const getClickhouseDatabase: typeof import("./getClickhouseDatabase").getClickhouseDatabase = null as any;
+export const getClickhouseDatabaseOutput: typeof import("./getClickhouseDatabase").getClickhouseDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getClickhouseDatabase","getClickhouseDatabaseOutput"], () => require("./getClickhouseDatabase"));
+
+export { GetClickhouseUserArgs, GetClickhouseUserResult, GetClickhouseUserOutputArgs } from "./getClickhouseUser";
+export const getClickhouseUser: typeof import("./getClickhouseUser").getClickhouseUser = null as any;
+export const getClickhouseUserOutput: typeof import("./getClickhouseUser").getClickhouseUserOutput = null as any;
+utilities.lazyLoad(exports, ["getClickhouseUser","getClickhouseUserOutput"], () => require("./getClickhouseUser"));
+
+export { GetConnectionPoolArgs, GetConnectionPoolResult, GetConnectionPoolOutputArgs } from "./getConnectionPool";
+export const getConnectionPool: typeof import("./getConnectionPool").getConnectionPool = null as any;
+export const getConnectionPoolOutput: typeof import("./getConnectionPool").getConnectionPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionPool","getConnectionPoolOutput"], () => require("./getConnectionPool"));
+
+export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
+export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
+export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
+
+export { GetFlinkArgs, GetFlinkResult, GetFlinkOutputArgs } from "./getFlink";
+export const getFlink: typeof import("./getFlink").getFlink = null as any;
+export const getFlinkOutput: typeof import("./getFlink").getFlinkOutput = null as any;
+utilities.lazyLoad(exports, ["getFlink","getFlinkOutput"], () => require("./getFlink"));
+
+export { GetGcpVpcPeeringConnectionArgs, GetGcpVpcPeeringConnectionResult, GetGcpVpcPeeringConnectionOutputArgs } from "./getGcpVpcPeeringConnection";
+export const getGcpVpcPeeringConnection: typeof import("./getGcpVpcPeeringConnection").getGcpVpcPeeringConnection = null as any;
+export const getGcpVpcPeeringConnectionOutput: typeof import("./getGcpVpcPeeringConnection").getGcpVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getGcpVpcPeeringConnection","getGcpVpcPeeringConnectionOutput"], () => require("./getGcpVpcPeeringConnection"));
+
+export { GetGrafanaArgs, GetGrafanaResult, GetGrafanaOutputArgs } from "./getGrafana";
+export const getGrafana: typeof import("./getGrafana").getGrafana = null as any;
+export const getGrafanaOutput: typeof import("./getGrafana").getGrafanaOutput = null as any;
+utilities.lazyLoad(exports, ["getGrafana","getGrafanaOutput"], () => require("./getGrafana"));
+
+export { GetInfluxDbArgs, GetInfluxDbResult, GetInfluxDbOutputArgs } from "./getInfluxDb";
+export const getInfluxDb: typeof import("./getInfluxDb").getInfluxDb = null as any;
+export const getInfluxDbOutput: typeof import("./getInfluxDb").getInfluxDbOutput = null as any;
+utilities.lazyLoad(exports, ["getInfluxDb","getInfluxDbOutput"], () => require("./getInfluxDb"));
+
+export { GetInfluxdbDatabaseArgs, GetInfluxdbDatabaseResult, GetInfluxdbDatabaseOutputArgs } from "./getInfluxdbDatabase";
+export const getInfluxdbDatabase: typeof import("./getInfluxdbDatabase").getInfluxdbDatabase = null as any;
+export const getInfluxdbDatabaseOutput: typeof import("./getInfluxdbDatabase").getInfluxdbDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getInfluxdbDatabase","getInfluxdbDatabaseOutput"], () => require("./getInfluxdbDatabase"));
+
+export { GetInfluxdbUserArgs, GetInfluxdbUserResult, GetInfluxdbUserOutputArgs } from "./getInfluxdbUser";
+export const getInfluxdbUser: typeof import("./getInfluxdbUser").getInfluxdbUser = null as any;
+export const getInfluxdbUserOutput: typeof import("./getInfluxdbUser").getInfluxdbUserOutput = null as any;
+utilities.lazyLoad(exports, ["getInfluxdbUser","getInfluxdbUserOutput"], () => require("./getInfluxdbUser"));
+
+export { GetKafkaArgs, GetKafkaResult, GetKafkaOutputArgs } from "./getKafka";
+export const getKafka: typeof import("./getKafka").getKafka = null as any;
+export const getKafkaOutput: typeof import("./getKafka").getKafkaOutput = null as any;
+utilities.lazyLoad(exports, ["getKafka","getKafkaOutput"], () => require("./getKafka"));
+
+export { GetKafkaAclArgs, GetKafkaAclResult, GetKafkaAclOutputArgs } from "./getKafkaAcl";
+export const getKafkaAcl: typeof import("./getKafkaAcl").getKafkaAcl = null as any;
+export const getKafkaAclOutput: typeof import("./getKafkaAcl").getKafkaAclOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaAcl","getKafkaAclOutput"], () => require("./getKafkaAcl"));
+
+export { GetKafkaConnectArgs, GetKafkaConnectResult, GetKafkaConnectOutputArgs } from "./getKafkaConnect";
+export const getKafkaConnect: typeof import("./getKafkaConnect").getKafkaConnect = null as any;
+export const getKafkaConnectOutput: typeof import("./getKafkaConnect").getKafkaConnectOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaConnect","getKafkaConnectOutput"], () => require("./getKafkaConnect"));
+
+export { GetKafkaConnectorArgs, GetKafkaConnectorResult, GetKafkaConnectorOutputArgs } from "./getKafkaConnector";
+export const getKafkaConnector: typeof import("./getKafkaConnector").getKafkaConnector = null as any;
+export const getKafkaConnectorOutput: typeof import("./getKafkaConnector").getKafkaConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaConnector","getKafkaConnectorOutput"], () => require("./getKafkaConnector"));
+
+export { GetKafkaMirrorMakerArgs, GetKafkaMirrorMakerResult, GetKafkaMirrorMakerOutputArgs } from "./getKafkaMirrorMaker";
+export const getKafkaMirrorMaker: typeof import("./getKafkaMirrorMaker").getKafkaMirrorMaker = null as any;
+export const getKafkaMirrorMakerOutput: typeof import("./getKafkaMirrorMaker").getKafkaMirrorMakerOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaMirrorMaker","getKafkaMirrorMakerOutput"], () => require("./getKafkaMirrorMaker"));
+
+export { GetKafkaSchemaArgs, GetKafkaSchemaResult, GetKafkaSchemaOutputArgs } from "./getKafkaSchema";
+export const getKafkaSchema: typeof import("./getKafkaSchema").getKafkaSchema = null as any;
+export const getKafkaSchemaOutput: typeof import("./getKafkaSchema").getKafkaSchemaOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaSchema","getKafkaSchemaOutput"], () => require("./getKafkaSchema"));
+
+export { GetKafkaSchemaConfigurationArgs, GetKafkaSchemaConfigurationResult, GetKafkaSchemaConfigurationOutputArgs } from "./getKafkaSchemaConfiguration";
+export const getKafkaSchemaConfiguration: typeof import("./getKafkaSchemaConfiguration").getKafkaSchemaConfiguration = null as any;
+export const getKafkaSchemaConfigurationOutput: typeof import("./getKafkaSchemaConfiguration").getKafkaSchemaConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaSchemaConfiguration","getKafkaSchemaConfigurationOutput"], () => require("./getKafkaSchemaConfiguration"));
+
+export { GetKafkaSchemaRegistryAclArgs, GetKafkaSchemaRegistryAclResult, GetKafkaSchemaRegistryAclOutputArgs } from "./getKafkaSchemaRegistryAcl";
+export const getKafkaSchemaRegistryAcl: typeof import("./getKafkaSchemaRegistryAcl").getKafkaSchemaRegistryAcl = null as any;
+export const getKafkaSchemaRegistryAclOutput: typeof import("./getKafkaSchemaRegistryAcl").getKafkaSchemaRegistryAclOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaSchemaRegistryAcl","getKafkaSchemaRegistryAclOutput"], () => require("./getKafkaSchemaRegistryAcl"));
+
+export { GetKafkaTopicArgs, GetKafkaTopicResult, GetKafkaTopicOutputArgs } from "./getKafkaTopic";
+export const getKafkaTopic: typeof import("./getKafkaTopic").getKafkaTopic = null as any;
+export const getKafkaTopicOutput: typeof import("./getKafkaTopic").getKafkaTopicOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaTopic","getKafkaTopicOutput"], () => require("./getKafkaTopic"));
+
+export { GetKafkaUserArgs, GetKafkaUserResult, GetKafkaUserOutputArgs } from "./getKafkaUser";
+export const getKafkaUser: typeof import("./getKafkaUser").getKafkaUser = null as any;
+export const getKafkaUserOutput: typeof import("./getKafkaUser").getKafkaUserOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaUser","getKafkaUserOutput"], () => require("./getKafkaUser"));
+
+export { GetM3AggregatorArgs, GetM3AggregatorResult, GetM3AggregatorOutputArgs } from "./getM3Aggregator";
+export const getM3Aggregator: typeof import("./getM3Aggregator").getM3Aggregator = null as any;
+export const getM3AggregatorOutput: typeof import("./getM3Aggregator").getM3AggregatorOutput = null as any;
+utilities.lazyLoad(exports, ["getM3Aggregator","getM3AggregatorOutput"], () => require("./getM3Aggregator"));
+
+export { GetM3DbArgs, GetM3DbResult, GetM3DbOutputArgs } from "./getM3Db";
+export const getM3Db: typeof import("./getM3Db").getM3Db = null as any;
+export const getM3DbOutput: typeof import("./getM3Db").getM3DbOutput = null as any;
+utilities.lazyLoad(exports, ["getM3Db","getM3DbOutput"], () => require("./getM3Db"));
+
+export { GetM3dbUserArgs, GetM3dbUserResult, GetM3dbUserOutputArgs } from "./getM3dbUser";
+export const getM3dbUser: typeof import("./getM3dbUser").getM3dbUser = null as any;
+export const getM3dbUserOutput: typeof import("./getM3dbUser").getM3dbUserOutput = null as any;
+utilities.lazyLoad(exports, ["getM3dbUser","getM3dbUserOutput"], () => require("./getM3dbUser"));
+
+export { GetMirrorMakerReplicationFlowArgs, GetMirrorMakerReplicationFlowResult, GetMirrorMakerReplicationFlowOutputArgs } from "./getMirrorMakerReplicationFlow";
+export const getMirrorMakerReplicationFlow: typeof import("./getMirrorMakerReplicationFlow").getMirrorMakerReplicationFlow = null as any;
+export const getMirrorMakerReplicationFlowOutput: typeof import("./getMirrorMakerReplicationFlow").getMirrorMakerReplicationFlowOutput = null as any;
+utilities.lazyLoad(exports, ["getMirrorMakerReplicationFlow","getMirrorMakerReplicationFlowOutput"], () => require("./getMirrorMakerReplicationFlow"));
+
+export { GetMySqlArgs, GetMySqlResult, GetMySqlOutputArgs } from "./getMySql";
+export const getMySql: typeof import("./getMySql").getMySql = null as any;
+export const getMySqlOutput: typeof import("./getMySql").getMySqlOutput = null as any;
+utilities.lazyLoad(exports, ["getMySql","getMySqlOutput"], () => require("./getMySql"));
+
+export { GetMysqlDatabaseArgs, GetMysqlDatabaseResult, GetMysqlDatabaseOutputArgs } from "./getMysqlDatabase";
+export const getMysqlDatabase: typeof import("./getMysqlDatabase").getMysqlDatabase = null as any;
+export const getMysqlDatabaseOutput: typeof import("./getMysqlDatabase").getMysqlDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getMysqlDatabase","getMysqlDatabaseOutput"], () => require("./getMysqlDatabase"));
+
+export { GetMysqlUserArgs, GetMysqlUserResult, GetMysqlUserOutputArgs } from "./getMysqlUser";
+export const getMysqlUser: typeof import("./getMysqlUser").getMysqlUser = null as any;
+export const getMysqlUserOutput: typeof import("./getMysqlUser").getMysqlUserOutput = null as any;
+utilities.lazyLoad(exports, ["getMysqlUser","getMysqlUserOutput"], () => require("./getMysqlUser"));
+
+export { GetOpenSearchArgs, GetOpenSearchResult, GetOpenSearchOutputArgs } from "./getOpenSearch";
+export const getOpenSearch: typeof import("./getOpenSearch").getOpenSearch = null as any;
+export const getOpenSearchOutput: typeof import("./getOpenSearch").getOpenSearchOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenSearch","getOpenSearchOutput"], () => require("./getOpenSearch"));
+
+export { GetOpenSearchAclConfigArgs, GetOpenSearchAclConfigResult, GetOpenSearchAclConfigOutputArgs } from "./getOpenSearchAclConfig";
+export const getOpenSearchAclConfig: typeof import("./getOpenSearchAclConfig").getOpenSearchAclConfig = null as any;
+export const getOpenSearchAclConfigOutput: typeof import("./getOpenSearchAclConfig").getOpenSearchAclConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenSearchAclConfig","getOpenSearchAclConfigOutput"], () => require("./getOpenSearchAclConfig"));
+
+export { GetOpenSearchAclRuleArgs, GetOpenSearchAclRuleResult, GetOpenSearchAclRuleOutputArgs } from "./getOpenSearchAclRule";
+export const getOpenSearchAclRule: typeof import("./getOpenSearchAclRule").getOpenSearchAclRule = null as any;
+export const getOpenSearchAclRuleOutput: typeof import("./getOpenSearchAclRule").getOpenSearchAclRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenSearchAclRule","getOpenSearchAclRuleOutput"], () => require("./getOpenSearchAclRule"));
+
+export { GetOpensearchUserArgs, GetOpensearchUserResult, GetOpensearchUserOutputArgs } from "./getOpensearchUser";
+export const getOpensearchUser: typeof import("./getOpensearchUser").getOpensearchUser = null as any;
+export const getOpensearchUserOutput: typeof import("./getOpensearchUser").getOpensearchUserOutput = null as any;
+utilities.lazyLoad(exports, ["getOpensearchUser","getOpensearchUserOutput"], () => require("./getOpensearchUser"));
+
+export { GetPgArgs, GetPgResult, GetPgOutputArgs } from "./getPg";
+export const getPg: typeof import("./getPg").getPg = null as any;
+export const getPgOutput: typeof import("./getPg").getPgOutput = null as any;
+utilities.lazyLoad(exports, ["getPg","getPgOutput"], () => require("./getPg"));
+
+export { GetPgDatabaseArgs, GetPgDatabaseResult, GetPgDatabaseOutputArgs } from "./getPgDatabase";
+export const getPgDatabase: typeof import("./getPgDatabase").getPgDatabase = null as any;
+export const getPgDatabaseOutput: typeof import("./getPgDatabase").getPgDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getPgDatabase","getPgDatabaseOutput"], () => require("./getPgDatabase"));
+
+export { GetPgUserArgs, GetPgUserResult, GetPgUserOutputArgs } from "./getPgUser";
+export const getPgUser: typeof import("./getPgUser").getPgUser = null as any;
+export const getPgUserOutput: typeof import("./getPgUser").getPgUserOutput = null as any;
+utilities.lazyLoad(exports, ["getPgUser","getPgUserOutput"], () => require("./getPgUser"));
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+
+export { GetProjectUserArgs, GetProjectUserResult, GetProjectUserOutputArgs } from "./getProjectUser";
+export const getProjectUser: typeof import("./getProjectUser").getProjectUser = null as any;
+export const getProjectUserOutput: typeof import("./getProjectUser").getProjectUserOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectUser","getProjectUserOutput"], () => require("./getProjectUser"));
+
+export { GetProjectVpcArgs, GetProjectVpcResult, GetProjectVpcOutputArgs } from "./getProjectVpc";
+export const getProjectVpc: typeof import("./getProjectVpc").getProjectVpc = null as any;
+export const getProjectVpcOutput: typeof import("./getProjectVpc").getProjectVpcOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectVpc","getProjectVpcOutput"], () => require("./getProjectVpc"));
+
+export { GetRedisArgs, GetRedisResult, GetRedisOutputArgs } from "./getRedis";
+export const getRedis: typeof import("./getRedis").getRedis = null as any;
+export const getRedisOutput: typeof import("./getRedis").getRedisOutput = null as any;
+utilities.lazyLoad(exports, ["getRedis","getRedisOutput"], () => require("./getRedis"));
+
+export { GetRedisUserArgs, GetRedisUserResult, GetRedisUserOutputArgs } from "./getRedisUser";
+export const getRedisUser: typeof import("./getRedisUser").getRedisUser = null as any;
+export const getRedisUserOutput: typeof import("./getRedisUser").getRedisUserOutput = null as any;
+utilities.lazyLoad(exports, ["getRedisUser","getRedisUserOutput"], () => require("./getRedisUser"));
+
+export { GetServiceComponentArgs, GetServiceComponentResult, GetServiceComponentOutputArgs } from "./getServiceComponent";
+export const getServiceComponent: typeof import("./getServiceComponent").getServiceComponent = null as any;
+export const getServiceComponentOutput: typeof import("./getServiceComponent").getServiceComponentOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceComponent","getServiceComponentOutput"], () => require("./getServiceComponent"));
+
+export { GetServiceIntegrationArgs, GetServiceIntegrationResult, GetServiceIntegrationOutputArgs } from "./getServiceIntegration";
+export const getServiceIntegration: typeof import("./getServiceIntegration").getServiceIntegration = null as any;
+export const getServiceIntegrationOutput: typeof import("./getServiceIntegration").getServiceIntegrationOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIntegration","getServiceIntegrationOutput"], () => require("./getServiceIntegration"));
+
+export { GetServiceIntegrationEndpointArgs, GetServiceIntegrationEndpointResult, GetServiceIntegrationEndpointOutputArgs } from "./getServiceIntegrationEndpoint";
+export const getServiceIntegrationEndpoint: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpoint = null as any;
+export const getServiceIntegrationEndpointOutput: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIntegrationEndpoint","getServiceIntegrationEndpointOutput"], () => require("./getServiceIntegrationEndpoint"));
+
+export { GetServiceUserArgs, GetServiceUserResult, GetServiceUserOutputArgs } from "./getServiceUser";
+export const getServiceUser: typeof import("./getServiceUser").getServiceUser = null as any;
+export const getServiceUserOutput: typeof import("./getServiceUser").getServiceUserOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceUser","getServiceUserOutput"], () => require("./getServiceUser"));
+
+export { GetTransitGatewayVpcAttachmentArgs, GetTransitGatewayVpcAttachmentResult, GetTransitGatewayVpcAttachmentOutputArgs } from "./getTransitGatewayVpcAttachment";
+export const getTransitGatewayVpcAttachment: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachment = null as any;
+export const getTransitGatewayVpcAttachmentOutput: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachmentOutput = null as any;
+utilities.lazyLoad(exports, ["getTransitGatewayVpcAttachment","getTransitGatewayVpcAttachmentOutput"], () => require("./getTransitGatewayVpcAttachment"));
+
+export { GetVpcPeeringConnectionArgs, GetVpcPeeringConnectionResult, GetVpcPeeringConnectionOutputArgs } from "./getVpcPeeringConnection";
+export const getVpcPeeringConnection: typeof import("./getVpcPeeringConnection").getVpcPeeringConnection = null as any;
+export const getVpcPeeringConnectionOutput: typeof import("./getVpcPeeringConnection").getVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcPeeringConnection","getVpcPeeringConnectionOutput"], () => require("./getVpcPeeringConnection"));
+
+export { GrafanaArgs, GrafanaState } from "./grafana";
+export type Grafana = import("./grafana").Grafana;
+export const Grafana: typeof import("./grafana").Grafana = null as any;
+utilities.lazyLoad(exports, ["Grafana"], () => require("./grafana"));
+
+export { InfluxDbArgs, InfluxDbState } from "./influxDb";
+export type InfluxDb = import("./influxDb").InfluxDb;
+export const InfluxDb: typeof import("./influxDb").InfluxDb = null as any;
+utilities.lazyLoad(exports, ["InfluxDb"], () => require("./influxDb"));
+
+export { InfluxdbDatabaseArgs, InfluxdbDatabaseState } from "./influxdbDatabase";
+export type InfluxdbDatabase = import("./influxdbDatabase").InfluxdbDatabase;
+export const InfluxdbDatabase: typeof import("./influxdbDatabase").InfluxdbDatabase = null as any;
+utilities.lazyLoad(exports, ["InfluxdbDatabase"], () => require("./influxdbDatabase"));
+
+export { InfluxdbUserArgs, InfluxdbUserState } from "./influxdbUser";
+export type InfluxdbUser = import("./influxdbUser").InfluxdbUser;
+export const InfluxdbUser: typeof import("./influxdbUser").InfluxdbUser = null as any;
+utilities.lazyLoad(exports, ["InfluxdbUser"], () => require("./influxdbUser"));
+
+export { KafkaArgs, KafkaState } from "./kafka";
+export type Kafka = import("./kafka").Kafka;
+export const Kafka: typeof import("./kafka").Kafka = null as any;
+utilities.lazyLoad(exports, ["Kafka"], () => require("./kafka"));
+
+export { KafkaAclArgs, KafkaAclState } from "./kafkaAcl";
+export type KafkaAcl = import("./kafkaAcl").KafkaAcl;
+export const KafkaAcl: typeof import("./kafkaAcl").KafkaAcl = null as any;
+utilities.lazyLoad(exports, ["KafkaAcl"], () => require("./kafkaAcl"));
+
+export { KafkaConnectArgs, KafkaConnectState } from "./kafkaConnect";
+export type KafkaConnect = import("./kafkaConnect").KafkaConnect;
+export const KafkaConnect: typeof import("./kafkaConnect").KafkaConnect = null as any;
+utilities.lazyLoad(exports, ["KafkaConnect"], () => require("./kafkaConnect"));
+
+export { KafkaConnectorArgs, KafkaConnectorState } from "./kafkaConnector";
+export type KafkaConnector = import("./kafkaConnector").KafkaConnector;
+export const KafkaConnector: typeof import("./kafkaConnector").KafkaConnector = null as any;
+utilities.lazyLoad(exports, ["KafkaConnector"], () => require("./kafkaConnector"));
+
+export { KafkaMirrorMakerArgs, KafkaMirrorMakerState } from "./kafkaMirrorMaker";
+export type KafkaMirrorMaker = import("./kafkaMirrorMaker").KafkaMirrorMaker;
+export const KafkaMirrorMaker: typeof import("./kafkaMirrorMaker").KafkaMirrorMaker = null as any;
+utilities.lazyLoad(exports, ["KafkaMirrorMaker"], () => require("./kafkaMirrorMaker"));
+
+export { KafkaSchemaArgs, KafkaSchemaState } from "./kafkaSchema";
+export type KafkaSchema = import("./kafkaSchema").KafkaSchema;
+export const KafkaSchema: typeof import("./kafkaSchema").KafkaSchema = null as any;
+utilities.lazyLoad(exports, ["KafkaSchema"], () => require("./kafkaSchema"));
+
+export { KafkaSchemaConfigurationArgs, KafkaSchemaConfigurationState } from "./kafkaSchemaConfiguration";
+export type KafkaSchemaConfiguration = import("./kafkaSchemaConfiguration").KafkaSchemaConfiguration;
+export const KafkaSchemaConfiguration: typeof import("./kafkaSchemaConfiguration").KafkaSchemaConfiguration = null as any;
+utilities.lazyLoad(exports, ["KafkaSchemaConfiguration"], () => require("./kafkaSchemaConfiguration"));
+
+export { KafkaSchemaRegistryAclArgs, KafkaSchemaRegistryAclState } from "./kafkaSchemaRegistryAcl";
+export type KafkaSchemaRegistryAcl = import("./kafkaSchemaRegistryAcl").KafkaSchemaRegistryAcl;
+export const KafkaSchemaRegistryAcl: typeof import("./kafkaSchemaRegistryAcl").KafkaSchemaRegistryAcl = null as any;
+utilities.lazyLoad(exports, ["KafkaSchemaRegistryAcl"], () => require("./kafkaSchemaRegistryAcl"));
+
+export { KafkaTopicArgs, KafkaTopicState } from "./kafkaTopic";
+export type KafkaTopic = import("./kafkaTopic").KafkaTopic;
+export const KafkaTopic: typeof import("./kafkaTopic").KafkaTopic = null as any;
+utilities.lazyLoad(exports, ["KafkaTopic"], () => require("./kafkaTopic"));
+
+export { KafkaUserArgs, KafkaUserState } from "./kafkaUser";
+export type KafkaUser = import("./kafkaUser").KafkaUser;
+export const KafkaUser: typeof import("./kafkaUser").KafkaUser = null as any;
+utilities.lazyLoad(exports, ["KafkaUser"], () => require("./kafkaUser"));
+
+export { M3AggregatorArgs, M3AggregatorState } from "./m3aggregator";
+export type M3Aggregator = import("./m3aggregator").M3Aggregator;
+export const M3Aggregator: typeof import("./m3aggregator").M3Aggregator = null as any;
+utilities.lazyLoad(exports, ["M3Aggregator"], () => require("./m3aggregator"));
+
+export { M3DbArgs, M3DbState } from "./m3db";
+export type M3Db = import("./m3db").M3Db;
+export const M3Db: typeof import("./m3db").M3Db = null as any;
+utilities.lazyLoad(exports, ["M3Db"], () => require("./m3db"));
+
+export { M3dbUserArgs, M3dbUserState } from "./m3dbUser";
+export type M3dbUser = import("./m3dbUser").M3dbUser;
+export const M3dbUser: typeof import("./m3dbUser").M3dbUser = null as any;
+utilities.lazyLoad(exports, ["M3dbUser"], () => require("./m3dbUser"));
+
+export { MirrorMakerReplicationFlowArgs, MirrorMakerReplicationFlowState } from "./mirrorMakerReplicationFlow";
+export type MirrorMakerReplicationFlow = import("./mirrorMakerReplicationFlow").MirrorMakerReplicationFlow;
+export const MirrorMakerReplicationFlow: typeof import("./mirrorMakerReplicationFlow").MirrorMakerReplicationFlow = null as any;
+utilities.lazyLoad(exports, ["MirrorMakerReplicationFlow"], () => require("./mirrorMakerReplicationFlow"));
+
+export { MySqlArgs, MySqlState } from "./mySql";
+export type MySql = import("./mySql").MySql;
+export const MySql: typeof import("./mySql").MySql = null as any;
+utilities.lazyLoad(exports, ["MySql"], () => require("./mySql"));
+
+export { MysqlDatabaseArgs, MysqlDatabaseState } from "./mysqlDatabase";
+export type MysqlDatabase = import("./mysqlDatabase").MysqlDatabase;
+export const MysqlDatabase: typeof import("./mysqlDatabase").MysqlDatabase = null as any;
+utilities.lazyLoad(exports, ["MysqlDatabase"], () => require("./mysqlDatabase"));
+
+export { MysqlUserArgs, MysqlUserState } from "./mysqlUser";
+export type MysqlUser = import("./mysqlUser").MysqlUser;
+export const MysqlUser: typeof import("./mysqlUser").MysqlUser = null as any;
+utilities.lazyLoad(exports, ["MysqlUser"], () => require("./mysqlUser"));
+
+export { OpenSearchArgs, OpenSearchState } from "./openSearch";
+export type OpenSearch = import("./openSearch").OpenSearch;
+export const OpenSearch: typeof import("./openSearch").OpenSearch = null as any;
+utilities.lazyLoad(exports, ["OpenSearch"], () => require("./openSearch"));
+
+export { OpenSearchAclConfigArgs, OpenSearchAclConfigState } from "./openSearchAclConfig";
+export type OpenSearchAclConfig = import("./openSearchAclConfig").OpenSearchAclConfig;
+export const OpenSearchAclConfig: typeof import("./openSearchAclConfig").OpenSearchAclConfig = null as any;
+utilities.lazyLoad(exports, ["OpenSearchAclConfig"], () => require("./openSearchAclConfig"));
+
+export { OpenSearchAclRuleArgs, OpenSearchAclRuleState } from "./openSearchAclRule";
+export type OpenSearchAclRule = import("./openSearchAclRule").OpenSearchAclRule;
+export const OpenSearchAclRule: typeof import("./openSearchAclRule").OpenSearchAclRule = null as any;
+utilities.lazyLoad(exports, ["OpenSearchAclRule"], () => require("./openSearchAclRule"));
+
+export { OpensearchUserArgs, OpensearchUserState } from "./opensearchUser";
+export type OpensearchUser = import("./opensearchUser").OpensearchUser;
+export const OpensearchUser: typeof import("./opensearchUser").OpensearchUser = null as any;
+utilities.lazyLoad(exports, ["OpensearchUser"], () => require("./opensearchUser"));
+
+export { PgArgs, PgState } from "./pg";
+export type Pg = import("./pg").Pg;
+export const Pg: typeof import("./pg").Pg = null as any;
+utilities.lazyLoad(exports, ["Pg"], () => require("./pg"));
+
+export { PgDatabaseArgs, PgDatabaseState } from "./pgDatabase";
+export type PgDatabase = import("./pgDatabase").PgDatabase;
+export const PgDatabase: typeof import("./pgDatabase").PgDatabase = null as any;
+utilities.lazyLoad(exports, ["PgDatabase"], () => require("./pgDatabase"));
+
+export { PgUserArgs, PgUserState } from "./pgUser";
+export type PgUser = import("./pgUser").PgUser;
+export const PgUser: typeof import("./pgUser").PgUser = null as any;
+utilities.lazyLoad(exports, ["PgUser"], () => require("./pgUser"));
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { ProjectUserArgs, ProjectUserState } from "./projectUser";
+export type ProjectUser = import("./projectUser").ProjectUser;
+export const ProjectUser: typeof import("./projectUser").ProjectUser = null as any;
+utilities.lazyLoad(exports, ["ProjectUser"], () => require("./projectUser"));
+
+export { ProjectVpcArgs, ProjectVpcState } from "./projectVpc";
+export type ProjectVpc = import("./projectVpc").ProjectVpc;
+export const ProjectVpc: typeof import("./projectVpc").ProjectVpc = null as any;
+utilities.lazyLoad(exports, ["ProjectVpc"], () => require("./projectVpc"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RedisArgs, RedisState } from "./redis";
+export type Redis = import("./redis").Redis;
+export const Redis: typeof import("./redis").Redis = null as any;
+utilities.lazyLoad(exports, ["Redis"], () => require("./redis"));
+
+export { RedisUserArgs, RedisUserState } from "./redisUser";
+export type RedisUser = import("./redisUser").RedisUser;
+export const RedisUser: typeof import("./redisUser").RedisUser = null as any;
+utilities.lazyLoad(exports, ["RedisUser"], () => require("./redisUser"));
+
+export { ServiceIntegrationArgs, ServiceIntegrationState } from "./serviceIntegration";
+export type ServiceIntegration = import("./serviceIntegration").ServiceIntegration;
+export const ServiceIntegration: typeof import("./serviceIntegration").ServiceIntegration = null as any;
+utilities.lazyLoad(exports, ["ServiceIntegration"], () => require("./serviceIntegration"));
+
+export { ServiceIntegrationEndpointArgs, ServiceIntegrationEndpointState } from "./serviceIntegrationEndpoint";
+export type ServiceIntegrationEndpoint = import("./serviceIntegrationEndpoint").ServiceIntegrationEndpoint;
+export const ServiceIntegrationEndpoint: typeof import("./serviceIntegrationEndpoint").ServiceIntegrationEndpoint = null as any;
+utilities.lazyLoad(exports, ["ServiceIntegrationEndpoint"], () => require("./serviceIntegrationEndpoint"));
+
+export { ServiceUserArgs, ServiceUserState } from "./serviceUser";
+export type ServiceUser = import("./serviceUser").ServiceUser;
+export const ServiceUser: typeof import("./serviceUser").ServiceUser = null as any;
+utilities.lazyLoad(exports, ["ServiceUser"], () => require("./serviceUser"));
+
+export { StaticIpArgs, StaticIpState } from "./staticIp";
+export type StaticIp = import("./staticIp").StaticIp;
+export const StaticIp: typeof import("./staticIp").StaticIp = null as any;
+utilities.lazyLoad(exports, ["StaticIp"], () => require("./staticIp"));
+
+export { TransitGatewayVpcAttachmentArgs, TransitGatewayVpcAttachmentState } from "./transitGatewayVpcAttachment";
+export type TransitGatewayVpcAttachment = import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment;
+export const TransitGatewayVpcAttachment: typeof import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment = null as any;
+utilities.lazyLoad(exports, ["TransitGatewayVpcAttachment"], () => require("./transitGatewayVpcAttachment"));
+
+export { VpcPeeringConnectionArgs, VpcPeeringConnectionState } from "./vpcPeeringConnection";
+export type VpcPeeringConnection = import("./vpcPeeringConnection").VpcPeeringConnection;
+export const VpcPeeringConnection: typeof import("./vpcPeeringConnection").VpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["VpcPeeringConnection"], () => require("./vpcPeeringConnection"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -137,71 +629,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { Account } from "./account";
-import { AccountAuthentication } from "./accountAuthentication";
-import { AccountTeam } from "./accountTeam";
-import { AccountTeamMember } from "./accountTeamMember";
-import { AccountTeamProject } from "./accountTeamProject";
-import { AwsPrivatelink } from "./awsPrivatelink";
-import { AwsVpcPeeringConnection } from "./awsVpcPeeringConnection";
-import { AzurePrivatelink } from "./azurePrivatelink";
-import { AzurePrivatelinkConnectionApproval } from "./azurePrivatelinkConnectionApproval";
-import { AzureVpcPeeringConnection } from "./azureVpcPeeringConnection";
-import { BillingGroup } from "./billingGroup";
-import { Cassandra } from "./cassandra";
-import { CassandraUser } from "./cassandraUser";
-import { Clickhouse } from "./clickhouse";
-import { ClickhouseDatabase } from "./clickhouseDatabase";
-import { ClickhouseGrant } from "./clickhouseGrant";
-import { ClickhouseRole } from "./clickhouseRole";
-import { ClickhouseUser } from "./clickhouseUser";
-import { ConnectionPool } from "./connectionPool";
-import { Database } from "./database";
-import { Flink } from "./flink";
-import { FlinkJob } from "./flinkJob";
-import { FlinkJobTable } from "./flinkJobTable";
-import { GcpVpcPeeringConnection } from "./gcpVpcPeeringConnection";
-import { Grafana } from "./grafana";
-import { InfluxDb } from "./influxDb";
-import { InfluxdbDatabase } from "./influxdbDatabase";
-import { InfluxdbUser } from "./influxdbUser";
-import { Kafka } from "./kafka";
-import { KafkaAcl } from "./kafkaAcl";
-import { KafkaConnect } from "./kafkaConnect";
-import { KafkaConnector } from "./kafkaConnector";
-import { KafkaMirrorMaker } from "./kafkaMirrorMaker";
-import { KafkaSchema } from "./kafkaSchema";
-import { KafkaSchemaConfiguration } from "./kafkaSchemaConfiguration";
-import { KafkaSchemaRegistryAcl } from "./kafkaSchemaRegistryAcl";
-import { KafkaTopic } from "./kafkaTopic";
-import { KafkaUser } from "./kafkaUser";
-import { M3Aggregator } from "./m3aggregator";
-import { M3Db } from "./m3db";
-import { M3dbUser } from "./m3dbUser";
-import { MirrorMakerReplicationFlow } from "./mirrorMakerReplicationFlow";
-import { MySql } from "./mySql";
-import { MysqlDatabase } from "./mysqlDatabase";
-import { MysqlUser } from "./mysqlUser";
-import { OpenSearch } from "./openSearch";
-import { OpenSearchAclConfig } from "./openSearchAclConfig";
-import { OpenSearchAclRule } from "./openSearchAclRule";
-import { OpensearchUser } from "./opensearchUser";
-import { Pg } from "./pg";
-import { PgDatabase } from "./pgDatabase";
-import { PgUser } from "./pgUser";
-import { Project } from "./project";
-import { ProjectUser } from "./projectUser";
-import { ProjectVpc } from "./projectVpc";
-import { Redis } from "./redis";
-import { RedisUser } from "./redisUser";
-import { ServiceIntegration } from "./serviceIntegration";
-import { ServiceIntegrationEndpoint } from "./serviceIntegrationEndpoint";
-import { ServiceUser } from "./serviceUser";
-import { StaticIp } from "./staticIp";
-import { TransitGatewayVpcAttachment } from "./transitGatewayVpcAttachment";
-import { VpcPeeringConnection } from "./vpcPeeringConnection";
 
 const _module = {
     version: utilities.getVersion(),
@@ -401,9 +828,6 @@ pulumi.runtime.registerResourceModule("aiven", "index/serviceUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/staticIp", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/transitGatewayVpcAttachment", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/vpcPeeringConnection", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("aiven", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

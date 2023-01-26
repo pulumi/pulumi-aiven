@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
@@ -16,77 +17,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfig {
-    /**
-     * @return IP filter
-     * 
-     */
+    private @Nullable String additionalBackupRegions;
+    private @Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Kafka Connect configuration values
-     * 
-     */
     private @Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
-    /**
-     * @return Static IP addresses
-     * 
-     */
     private @Nullable String staticIps;
 
     private KafkaConnectKafkaConnectUserConfig() {}
-    /**
-     * @return IP filter
-     * 
-     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    public List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Kafka Connect configuration values
-     * 
-     */
     public Optional<KafkaConnectKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
-    /**
-     * @return Allow access to selected service ports from private networks
-     * 
-     */
     public Optional<KafkaConnectKafkaConnectUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
-    /**
-     * @return Allow access to selected service components through Privatelink
-     * 
-     */
     public Optional<KafkaConnectKafkaConnectUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
-    /**
-     * @return Allow access to selected service ports from the public Internet
-     * 
-     */
     public Optional<KafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    /**
-     * @return Static IP addresses
-     * 
-     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -100,6 +61,8 @@ public final class KafkaConnectKafkaConnectUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
+        private @Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
@@ -109,6 +72,8 @@ public final class KafkaConnectKafkaConnectUserConfig {
         public Builder() {}
         public Builder(KafkaConnectKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.privateAccess = defaults.privateAccess;
@@ -117,6 +82,19 @@ public final class KafkaConnectKafkaConnectUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(KafkaConnectKafkaConnectUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
@@ -152,6 +130,8 @@ public final class KafkaConnectKafkaConnectUserConfig {
         }
         public KafkaConnectKafkaConnectUserConfig build() {
             final var o = new KafkaConnectKafkaConnectUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.kafkaConnect = kafkaConnect;
             o.privateAccess = privateAccess;

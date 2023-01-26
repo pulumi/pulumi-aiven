@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &GetServiceIntegrationEndpointArgs{
+//			_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
 //				Project:      aiven_project.Myproject.Project,
 //				EndpointName: "<ENDPOINT_NAME>",
 //			}, nil)
@@ -57,7 +57,7 @@ type LookupServiceIntegrationEndpointArgs struct {
 
 // A collection of values returned by getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointResult struct {
-	// Datadog specific user configurable settings
+	// Datadog user configurable settings
 	DatadogUserConfigs []GetServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfigs"`
 	// Integration endpoint specific backend configuration
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
@@ -65,29 +65,31 @@ type LookupServiceIntegrationEndpointResult struct {
 	EndpointName string `pulumi:"endpointName"`
 	// Type of the service integration endpoint
 	EndpointType string `pulumi:"endpointType"`
-	// external AWS CloudWatch Logs specific user configurable settings
+	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
-	// External AWS cloudwatch mertrics specific user configurable settings
+	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfigs"`
-	// external elasticsearch specific user configurable settings
+	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfigs []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfigs"`
-	// external Google Cloud Logginig specific user configurable settings
+	// ExternalGoogleCloudLogging user configurable settings
 	ExternalGoogleCloudLoggingUserConfigs []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfigs"`
-	// external Kafka specific user configurable settings
+	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfigs []GetServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfigs"`
-	// External schema registry specific user configurable settings
+	// ExternalOpensearchLogs user configurable settings
+	ExternalOpensearchLogsUserConfigs []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfigs"`
+	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfigs []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Jolokia specific user configurable settings
+	// Jolokia user configurable settings
 	JolokiaUserConfigs []GetServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfigs"`
 	// Project the service integration endpoint belongs to
 	Project string `pulumi:"project"`
-	// Prometheus specific user configurable settings
+	// Prometheus user configurable settings
 	PrometheusUserConfigs []GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfigs"`
-	// rsyslog specific user configurable settings
+	// Rsyslog user configurable settings
 	RsyslogUserConfigs []GetServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfigs"`
-	// Signalfx specific user configurable settings
+	// Signalfx user configurable settings
 	SignalfxUserConfigs []GetServiceIntegrationEndpointSignalfxUserConfig `pulumi:"signalfxUserConfigs"`
 }
 
@@ -131,7 +133,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) ToLookupServiceIntegration
 	return o
 }
 
-// Datadog specific user configurable settings
+// Datadog user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) DatadogUserConfigs() GetServiceIntegrationEndpointDatadogUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointDatadogUserConfig {
 		return v.DatadogUserConfigs
@@ -153,42 +155,49 @@ func (o LookupServiceIntegrationEndpointResultOutput) EndpointType() pulumi.Stri
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// external AWS CloudWatch Logs specific user configurable settings
+// ExternalAwsCloudwatchLogs user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsCloudwatchLogsUserConfigs() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
 		return v.ExternalAwsCloudwatchLogsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput)
 }
 
-// External AWS cloudwatch mertrics specific user configurable settings
+// ExternalAwsCloudwatchMetrics user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsCloudwatchMetricsUserConfigs() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
 		return v.ExternalAwsCloudwatchMetricsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput)
 }
 
-// external elasticsearch specific user configurable settings
+// ExternalElasticsearchLogs user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalElasticsearchLogsUserConfigs() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
 		return v.ExternalElasticsearchLogsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput)
 }
 
-// external Google Cloud Logginig specific user configurable settings
+// ExternalGoogleCloudLogging user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalGoogleCloudLoggingUserConfigs() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
 		return v.ExternalGoogleCloudLoggingUserConfigs
 	}).(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput)
 }
 
-// external Kafka specific user configurable settings
+// ExternalKafka user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalKafkaUserConfigs() GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalKafkaUserConfig {
 		return v.ExternalKafkaUserConfigs
 	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput)
 }
 
-// External schema registry specific user configurable settings
+// ExternalOpensearchLogs user configurable settings
+func (o LookupServiceIntegrationEndpointResultOutput) ExternalOpensearchLogsUserConfigs() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
+		return v.ExternalOpensearchLogsUserConfigs
+	}).(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput)
+}
+
+// ExternalSchemaRegistry user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalSchemaRegistryUserConfigs() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
 		return v.ExternalSchemaRegistryUserConfigs
@@ -200,7 +209,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Jolokia specific user configurable settings
+// Jolokia user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) JolokiaUserConfigs() GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointJolokiaUserConfig {
 		return v.JolokiaUserConfigs
@@ -212,21 +221,21 @@ func (o LookupServiceIntegrationEndpointResultOutput) Project() pulumi.StringOut
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Prometheus specific user configurable settings
+// Prometheus user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) PrometheusUserConfigs() GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointPrometheusUserConfig {
 		return v.PrometheusUserConfigs
 	}).(GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput)
 }
 
-// rsyslog specific user configurable settings
+// Rsyslog user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) RsyslogUserConfigs() GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointRsyslogUserConfig {
 		return v.RsyslogUserConfigs
 	}).(GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput)
 }
 
-// Signalfx specific user configurable settings
+// Signalfx user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) SignalfxUserConfigs() GetServiceIntegrationEndpointSignalfxUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointSignalfxUserConfig {
 		return v.SignalfxUserConfigs

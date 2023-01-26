@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.FlinkFlinkUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.FlinkFlinkUserConfigPrivatelinkAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -18,14 +19,29 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     public static final FlinkFlinkUserConfigArgs Empty = new FlinkFlinkUserConfigArgs();
 
     /**
-     * Flink execution.checkpointing.interval in milliseconds
+     * Additional Cloud Regions for Backup Replication
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
      * 
      */
     @Import(name="executionCheckpointingIntervalMs")
     private @Nullable Output<String> executionCheckpointingIntervalMs;
 
     /**
-     * @return Flink execution.checkpointing.interval in milliseconds
+     * @return Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
      * 
      */
     public Optional<Output<String>> executionCheckpointingIntervalMs() {
@@ -33,14 +49,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink execution.checkpointing.timeout in milliseconds
+     * The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
      * 
      */
     @Import(name="executionCheckpointingTimeoutMs")
     private @Nullable Output<String> executionCheckpointingTimeoutMs;
 
     /**
-     * @return Flink execution.checkpointing.timeout in milliseconds
+     * @return The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
      * 
      */
     public Optional<Output<String>> executionCheckpointingTimeoutMs() {
@@ -63,14 +79,29 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * IP filter
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<FlinkFlinkUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public Optional<Output<List<FlinkFlinkUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<String>>> ipFilters() {
@@ -78,14 +109,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink taskmanager.numberOfTaskSlots
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value
      * 
      */
     @Import(name="numberOfTaskSlots")
     private @Nullable Output<String> numberOfTaskSlots;
 
     /**
-     * @return Flink taskmanager.numberOfTaskSlots
+     * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value
      * 
      */
     public Optional<Output<String>> numberOfTaskSlots() {
@@ -93,14 +124,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink parallelism.default
+     * How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     @Import(name="parallelismDefault")
     private @Nullable Output<String> parallelismDefault;
 
     /**
-     * @return Flink parallelism.default
+     * @return How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     public Optional<Output<String>> parallelismDefault() {
@@ -123,14 +154,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink restart-strategy
+     * failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
      * 
      */
     @Import(name="restartStrategy")
     private @Nullable Output<String> restartStrategy;
 
     /**
-     * @return Flink restart-strategy
+     * @return failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
      * 
      */
     public Optional<Output<String>> restartStrategy() {
@@ -138,14 +169,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink restart-strategy.failure-rate.delay in seconds
+     * Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
      * 
      */
     @Import(name="restartStrategyDelaySec")
     private @Nullable Output<String> restartStrategyDelaySec;
 
     /**
-     * @return Flink restart-strategy.failure-rate.delay in seconds
+     * @return Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
      * 
      */
     public Optional<Output<String>> restartStrategyDelaySec() {
@@ -153,14 +184,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
      * 
      */
     @Import(name="restartStrategyFailureRateIntervalMin")
     private @Nullable Output<String> restartStrategyFailureRateIntervalMin;
 
     /**
-     * @return Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * @return Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
      * 
      */
     public Optional<Output<String>> restartStrategyFailureRateIntervalMin() {
@@ -168,14 +199,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Flink restart-strategy.failure-rate.max-failures-per-interval
+     * The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
      * 
      */
     @Import(name="restartStrategyMaxFailures")
     private @Nullable Output<String> restartStrategyMaxFailures;
 
     /**
-     * @return Flink restart-strategy.failure-rate.max-failures-per-interval
+     * @return The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
      * 
      */
     public Optional<Output<String>> restartStrategyMaxFailures() {
@@ -185,9 +216,11 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     private FlinkFlinkUserConfigArgs() {}
 
     private FlinkFlinkUserConfigArgs(FlinkFlinkUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.executionCheckpointingIntervalMs = $.executionCheckpointingIntervalMs;
         this.executionCheckpointingTimeoutMs = $.executionCheckpointingTimeoutMs;
         this.flinkVersion = $.flinkVersion;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.numberOfTaskSlots = $.numberOfTaskSlots;
         this.parallelismDefault = $.parallelismDefault;
@@ -217,7 +250,28 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param executionCheckpointingIntervalMs Flink execution.checkpointing.interval in milliseconds
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param executionCheckpointingIntervalMs Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
          * 
          * @return builder
          * 
@@ -228,7 +282,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param executionCheckpointingIntervalMs Flink execution.checkpointing.interval in milliseconds
+         * @param executionCheckpointingIntervalMs Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
          * 
          * @return builder
          * 
@@ -238,7 +292,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param executionCheckpointingTimeoutMs Flink execution.checkpointing.timeout in milliseconds
+         * @param executionCheckpointingTimeoutMs The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
          * 
          * @return builder
          * 
@@ -249,7 +303,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param executionCheckpointingTimeoutMs Flink execution.checkpointing.timeout in milliseconds
+         * @param executionCheckpointingTimeoutMs The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
          * 
          * @return builder
          * 
@@ -280,7 +334,38 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(@Nullable Output<List<FlinkFlinkUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(List<FlinkFlinkUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(FlinkFlinkUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -291,7 +376,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -301,7 +386,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -311,7 +396,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param numberOfTaskSlots Flink taskmanager.numberOfTaskSlots
+         * @param numberOfTaskSlots Task slots per node. For a 3 node plan, total number of task slots is 3x this value
          * 
          * @return builder
          * 
@@ -322,7 +407,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param numberOfTaskSlots Flink taskmanager.numberOfTaskSlots
+         * @param numberOfTaskSlots Task slots per node. For a 3 node plan, total number of task slots is 3x this value
          * 
          * @return builder
          * 
@@ -332,7 +417,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parallelismDefault Flink parallelism.default
+         * @param parallelismDefault How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
          * 
          * @return builder
          * 
@@ -343,7 +428,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parallelismDefault Flink parallelism.default
+         * @param parallelismDefault How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
          * 
          * @return builder
          * 
@@ -374,7 +459,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategy Flink restart-strategy
+         * @param restartStrategy failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
          * 
          * @return builder
          * 
@@ -385,7 +470,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategy Flink restart-strategy
+         * @param restartStrategy failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
          * 
          * @return builder
          * 
@@ -395,7 +480,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategyDelaySec Flink restart-strategy.failure-rate.delay in seconds
+         * @param restartStrategyDelaySec Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
          * 
          * @return builder
          * 
@@ -406,7 +491,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategyDelaySec Flink restart-strategy.failure-rate.delay in seconds
+         * @param restartStrategyDelaySec Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
          * 
          * @return builder
          * 
@@ -416,7 +501,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategyFailureRateIntervalMin Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+         * @param restartStrategyFailureRateIntervalMin Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
          * 
          * @return builder
          * 
@@ -427,7 +512,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategyFailureRateIntervalMin Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+         * @param restartStrategyFailureRateIntervalMin Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
          * 
          * @return builder
          * 
@@ -437,7 +522,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategyMaxFailures Flink restart-strategy.failure-rate.max-failures-per-interval
+         * @param restartStrategyMaxFailures The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
          * 
          * @return builder
          * 
@@ -448,7 +533,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartStrategyMaxFailures Flink restart-strategy.failure-rate.max-failures-per-interval
+         * @param restartStrategyMaxFailures The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
          * 
          * @return builder
          * 

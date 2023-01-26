@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class CassandraCassandraUserConfigCassandra {
     private @Nullable String batchSizeFailThresholdInKb;
     private @Nullable String batchSizeWarnThresholdInKb;
+    private @Nullable String datacenter;
 
     private CassandraCassandraUserConfigCassandra() {}
     public Optional<String> batchSizeFailThresholdInKb() {
@@ -20,6 +21,9 @@ public final class CassandraCassandraUserConfigCassandra {
     }
     public Optional<String> batchSizeWarnThresholdInKb() {
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
+    }
+    public Optional<String> datacenter() {
+        return Optional.ofNullable(this.datacenter);
     }
 
     public static Builder builder() {
@@ -33,11 +37,13 @@ public final class CassandraCassandraUserConfigCassandra {
     public static final class Builder {
         private @Nullable String batchSizeFailThresholdInKb;
         private @Nullable String batchSizeWarnThresholdInKb;
+        private @Nullable String datacenter;
         public Builder() {}
         public Builder(CassandraCassandraUserConfigCassandra defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchSizeFailThresholdInKb = defaults.batchSizeFailThresholdInKb;
     	      this.batchSizeWarnThresholdInKb = defaults.batchSizeWarnThresholdInKb;
+    	      this.datacenter = defaults.datacenter;
         }
 
         @CustomType.Setter
@@ -50,10 +56,16 @@ public final class CassandraCassandraUserConfigCassandra {
             this.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             return this;
         }
+        @CustomType.Setter
+        public Builder datacenter(@Nullable String datacenter) {
+            this.datacenter = datacenter;
+            return this;
+        }
         public CassandraCassandraUserConfigCassandra build() {
             final var o = new CassandraCassandraUserConfigCassandra();
             o.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             o.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
+            o.datacenter = datacenter;
             return o;
         }
     }

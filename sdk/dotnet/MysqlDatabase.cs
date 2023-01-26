@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
     ///     var mydatabase = new Aiven.MysqlDatabase("mydatabase", new()
     ///     {
     ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_service.Myservice.Service_name,
+    ///         ServiceName = aiven_mysql.Mymysql.Service_name,
     ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
     ///     });
     /// 

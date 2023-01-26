@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The Service User resource allows the creation and management of Aiven Service Users.
  *
+ * > **Note:** This resource is deprecated. Please use service-specific resources instead of this one, for example: aiven_kafka_user, aiven.PgUser etc.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const myserviceuser = new aiven.ServiceUser("myserviceuser", {
  *     project: aiven_project.myproject.project,
- *     serviceName: aiven_service.myservice.service_name,
+ *     serviceName: aiven_pg.mypg.service_name,
  *     username: "<USERNAME>",
  * });
  * ```
@@ -145,7 +147,7 @@ export class ServiceUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["authentication"] = args ? args.authentication : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["pgAllowReplication"] = args ? args.pgAllowReplication : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
@@ -159,6 +161,8 @@ export class ServiceUser extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ServiceUser.__pulumiType, name, resourceInputs, opts);
     }
 }

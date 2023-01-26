@@ -13,10 +13,26 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        [Input("adminPassword")]
+        private Input<string>? _adminPassword;
+
+        /// <summary>
         /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
+        public Input<string>? AdminPassword
+        {
+            get => _adminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Custom username for admin user. This must be set only when a new service is being created.
@@ -37,16 +53,28 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? BackupMinute { get; set; }
 
         /// <summary>
-        /// Enable IPv6
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports
         /// </summary>
         [Input("enableIpv6")]
         public Input<string>? EnableIpv6 { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.PgPgUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public InputList<Inputs.PgPgUserConfigIpFilterObjectArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.PgPgUserConfigIpFilterObjectArgs>());
+            set => _ipFilterObjects = value;
+        }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -66,9 +94,6 @@ namespace Pulumi.Aiven.Inputs
         [Input("pg")]
         public Input<Inputs.PgPgUserConfigPgArgs>? Pg { get; set; }
 
-        /// <summary>
-        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        /// </summary>
         [Input("pgReadReplica")]
         public Input<string>? PgReadReplica { get; set; }
 
@@ -79,7 +104,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Enable pg*stat*monitor extension if available for the current cluster
+        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
         /// </summary>
         [Input("pgStatMonitorEnable")]
         public Input<string>? PgStatMonitorEnable { get; set; }
@@ -139,13 +164,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// shared*buffers*percentage
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<string>? SharedBuffersPercentage { get; set; }
 
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
@@ -169,7 +194,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Variant { get; set; }
 
         /// <summary>
-        /// work_mem
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         /// </summary>
         [Input("workMem")]
         public Input<string>? WorkMem { get; set; }

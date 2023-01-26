@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,21 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * If true, user is part of the owners team for this account
+     * 
+     */
+    @Import(name="isAccountOwner")
+    private @Nullable Output<Boolean> isAccountOwner;
+
+    /**
+     * @return If true, user is part of the owners team for this account
+     * 
+     */
+    public Optional<Output<Boolean>> isAccountOwner() {
+        return Optional.ofNullable(this.isAccountOwner);
     }
 
     /**
@@ -125,6 +141,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private AccountState(AccountState $) {
         this.accountId = $.accountId;
         this.createTime = $.createTime;
+        this.isAccountOwner = $.isAccountOwner;
         this.name = $.name;
         this.ownerTeamId = $.ownerTeamId;
         this.primaryBillingGroupId = $.primaryBillingGroupId;
@@ -190,6 +207,27 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param isAccountOwner If true, user is part of the owners team for this account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAccountOwner(@Nullable Output<Boolean> isAccountOwner) {
+            $.isAccountOwner = isAccountOwner;
+            return this;
+        }
+
+        /**
+         * @param isAccountOwner If true, user is part of the owners team for this account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAccountOwner(Boolean isAccountOwner) {
+            return isAccountOwner(Output.of(isAccountOwner));
         }
 
         /**

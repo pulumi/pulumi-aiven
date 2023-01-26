@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObject;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigRulesMappingTag;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -18,6 +19,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     private @Nullable String filter;
     private @Nullable String name;
     private @Nullable List<String> namespaces;
+    private @Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
     private @Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags;
 
     private GetM3DbM3dbUserConfigRulesMapping() {}
@@ -35,6 +37,9 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     }
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
+    }
+    public List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects() {
+        return this.namespacesObjects == null ? List.of() : this.namespacesObjects;
     }
     public List<GetM3DbM3dbUserConfigRulesMappingTag> tags() {
         return this.tags == null ? List.of() : this.tags;
@@ -54,6 +59,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
         private @Nullable String filter;
         private @Nullable String name;
         private @Nullable List<String> namespaces;
+        private @Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
         private @Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags;
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfigRulesMapping defaults) {
@@ -63,6 +69,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     	      this.filter = defaults.filter;
     	      this.name = defaults.name;
     	      this.namespaces = defaults.namespaces;
+    	      this.namespacesObjects = defaults.namespacesObjects;
     	      this.tags = defaults.tags;
         }
 
@@ -98,6 +105,14 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
             return namespaces(List.of(namespaces));
         }
         @CustomType.Setter
+        public Builder namespacesObjects(@Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects) {
+            this.namespacesObjects = namespacesObjects;
+            return this;
+        }
+        public Builder namespacesObjects(GetM3DbM3dbUserConfigRulesMappingNamespacesObject... namespacesObjects) {
+            return namespacesObjects(List.of(namespacesObjects));
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags) {
             this.tags = tags;
             return this;
@@ -112,6 +127,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
             o.filter = filter;
             o.name = name;
             o.namespaces = namespaces;
+            o.namespacesObjects = namespacesObjects;
             o.tags = tags;
             return o;
         }

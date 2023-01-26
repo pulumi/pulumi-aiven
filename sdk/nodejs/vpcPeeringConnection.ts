@@ -5,13 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * {{tffile "examples/resources/aiven_vpc_peering_connection/resource.tf"}}
- *
  * ## Import
  *
- * {{codefile "shell" "examples/resources/aiven_vpc_peering_connection/import.sh"}}
+ * ```sh
+ *  $ pulumi import aiven:index/vpcPeeringConnection:VpcPeeringConnection mypeeringconnection project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+ * ```
  */
 export class VpcPeeringConnection extends pulumi.CustomResource {
     /**

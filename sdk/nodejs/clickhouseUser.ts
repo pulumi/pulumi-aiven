@@ -117,6 +117,8 @@ export class ClickhouseUser extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClickhouseUser.__pulumiType, name, resourceInputs, opts);
     }
 }

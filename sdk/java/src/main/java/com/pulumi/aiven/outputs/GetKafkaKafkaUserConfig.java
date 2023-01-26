@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafka;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
@@ -20,7 +21,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
+    private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     /**
      * @return Kafka server provided values
@@ -45,8 +48,14 @@ public final class GetKafkaKafkaUserConfig {
     private @Nullable String staticIps;
 
     private GetKafkaKafkaUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
+    }
+    public List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -108,7 +117,9 @@ public final class GetKafkaKafkaUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
+        private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaKafkaUserConfigKafka kafka;
         private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
@@ -126,7 +137,9 @@ public final class GetKafkaKafkaUserConfig {
         public Builder() {}
         public Builder(GetKafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafka = defaults.kafka;
     	      this.kafkaAuthenticationMethods = defaults.kafkaAuthenticationMethods;
@@ -144,9 +157,22 @@ public final class GetKafkaKafkaUserConfig {
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetKafkaKafkaUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -223,7 +249,9 @@ public final class GetKafkaKafkaUserConfig {
         }
         public GetKafkaKafkaUserConfig build() {
             final var o = new GetKafkaKafkaUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.kafka = kafka;
             o.kafkaAuthenticationMethods = kafkaAuthenticationMethods;

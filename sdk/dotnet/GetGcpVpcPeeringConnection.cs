@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGcpVpcPeeringConnectionResult> InvokeAsync(GetGcpVpcPeeringConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGcpVpcPeeringConnectionResult> Invoke(GetGcpVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -140,6 +140,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string PeerVpc;
         /// <summary>
+        /// Computed GCP network peering link
+        /// </summary>
+        public readonly string SelfLink;
+        /// <summary>
         /// State of the peering connection
         /// </summary>
         public readonly string State;
@@ -160,6 +164,8 @@ namespace Pulumi.Aiven
 
             string peerVpc,
 
+            string selfLink,
+
             string state,
 
             ImmutableDictionary<string, object> stateInfo,
@@ -169,6 +175,7 @@ namespace Pulumi.Aiven
             GcpProjectId = gcpProjectId;
             Id = id;
             PeerVpc = peerVpc;
+            SelfLink = selfLink;
             State = state;
             StateInfo = stateInfo;
             VpcId = vpcId;

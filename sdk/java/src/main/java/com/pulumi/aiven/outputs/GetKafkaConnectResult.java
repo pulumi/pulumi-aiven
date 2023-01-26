@@ -63,7 +63,7 @@ public final class GetKafkaConnectResult {
      */
     private String id;
     /**
-     * @return Kafka*connect user configurable settings
+     * @return KafkaConnect user configurable settings
      * 
      */
     private List<GetKafkaConnectKafkaConnectUserConfig> kafkaConnectUserConfigs;
@@ -223,7 +223,7 @@ public final class GetKafkaConnectResult {
         return this.id;
     }
     /**
-     * @return Kafka*connect user configurable settings
+     * @return KafkaConnect user configurable settings
      * 
      */
     public List<GetKafkaConnectKafkaConnectUserConfig> kafkaConnectUserConfigs() {

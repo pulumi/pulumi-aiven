@@ -24,11 +24,21 @@ namespace Pulumi.Aiven.Inputs
             set => _enabledMetrics = value;
         }
 
+        [Input("signalfxApiKey")]
+        private Input<string>? _signalfxApiKey;
+
         /// <summary>
         /// SignalFX API key
         /// </summary>
-        [Input("signalfxApiKey")]
-        public Input<string>? SignalfxApiKey { get; set; }
+        public Input<string>? SignalfxApiKey
+        {
+            get => _signalfxApiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signalfxApiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// SignalFX realm

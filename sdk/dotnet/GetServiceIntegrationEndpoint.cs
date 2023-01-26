@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceIntegrationEndpointResult> InvokeAsync(GetServiceIntegrationEndpointArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceIntegrationEndpointResult> Invoke(GetServiceIntegrationEndpointInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -114,7 +114,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationEndpointResult
     {
         /// <summary>
-        /// Datadog specific user configurable settings
+        /// Datadog user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult> DatadogUserConfigs;
         /// <summary>
@@ -130,27 +130,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
-        /// external AWS CloudWatch Logs specific user configurable settings
+        /// ExternalAwsCloudwatchLogs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
         /// <summary>
-        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// ExternalAwsCloudwatchMetrics user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
         /// <summary>
-        /// external elasticsearch specific user configurable settings
+        /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
         /// <summary>
-        /// external Google Cloud Logginig specific user configurable settings
+        /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> ExternalGoogleCloudLoggingUserConfigs;
         /// <summary>
-        /// external Kafka specific user configurable settings
+        /// ExternalKafka user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> ExternalKafkaUserConfigs;
         /// <summary>
-        /// External schema registry specific user configurable settings
+        /// ExternalOpensearchLogs user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> ExternalOpensearchLogsUserConfigs;
+        /// <summary>
+        /// ExternalSchemaRegistry user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> ExternalSchemaRegistryUserConfigs;
         /// <summary>
@@ -158,7 +162,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Jolokia specific user configurable settings
+        /// Jolokia user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> JolokiaUserConfigs;
         /// <summary>
@@ -166,15 +170,15 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Prometheus specific user configurable settings
+        /// Prometheus user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> PrometheusUserConfigs;
         /// <summary>
-        /// rsyslog specific user configurable settings
+        /// Rsyslog user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> RsyslogUserConfigs;
         /// <summary>
-        /// Signalfx specific user configurable settings
+        /// Signalfx user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult> SignalfxUserConfigs;
 
@@ -197,6 +201,8 @@ namespace Pulumi.Aiven
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> externalGoogleCloudLoggingUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> externalKafkaUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> externalOpensearchLogsUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> externalSchemaRegistryUserConfigs,
 
@@ -221,6 +227,7 @@ namespace Pulumi.Aiven
             ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             ExternalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             ExternalKafkaUserConfigs = externalKafkaUserConfigs;
+            ExternalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             ExternalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             Id = id;
             JolokiaUserConfigs = jolokiaUserConfigs;

@@ -13,11 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetInfluxDbInfluxdbUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
         /// <summary>
         /// InfluxDB server provided values
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? Influxdb;
+        public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
@@ -32,9 +34,13 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetInfluxDbInfluxdbUserConfigResult(
+            string? additionalBackupRegions,
+
             string? customDomain,
 
             Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? influxdb,
+
+            ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -52,8 +58,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             Influxdb = influxdb;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;

@@ -15,16 +15,13 @@ import * as utilities from "./utilities";
  *
  * const config = aiven.getKafkaSchemaConfiguration({
  *     project: aiven_project["kafka-schemas-project1"].project,
- *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
  * });
  * ```
  */
 export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaSchema:getKafkaSchema", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -87,9 +84,23 @@ export interface GetKafkaSchemaResult {
      */
     readonly version: number;
 }
-
+/**
+ * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const config = aiven.getKafkaSchemaConfiguration({
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ * });
+ * ```
+ */
 export function getKafkaSchemaOutput(args: GetKafkaSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaResult> {
-    return pulumi.output(args).apply(a => getKafkaSchema(a, opts))
+    return pulumi.output(args).apply((a: any) => getKafkaSchema(a, opts))
 }
 
 /**

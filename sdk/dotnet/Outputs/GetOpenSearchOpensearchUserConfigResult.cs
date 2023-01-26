@@ -13,10 +13,12 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
         public readonly string? DisableReplicationFactorAdjustment;
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult> IndexPatterns;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult? IndexTemplate;
+        public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? KeepIndexRefreshInterval;
         public readonly string? MaxIndexCount;
@@ -39,6 +41,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigResult(
+            string? additionalBackupRegions,
+
             string? customDomain,
 
             string? disableReplicationFactorAdjustment,
@@ -46,6 +50,8 @@ namespace Pulumi.Aiven.Outputs
             ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult> indexPatterns,
 
             Outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult? indexTemplate,
+
+            ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -73,10 +79,12 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             IndexPatterns = indexPatterns;
             IndexTemplate = indexTemplate;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;

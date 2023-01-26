@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("batchSizeWarnThresholdInKb")]
         public Input<string>? BatchSizeWarnThresholdInKb { get; set; }
 
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
         public CassandraCassandraUserConfigCassandraArgs()
         {
         }

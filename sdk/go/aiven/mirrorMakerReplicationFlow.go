@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "f1", &aiven.MirrorMakerReplicationFlowArgs{
-//				Project:       pulumi.Any(aiven_project.Kafka - mm - project1.Project),
-//				ServiceName:   pulumi.Any(aiven_service.Mm.Service_name),
-//				SourceCluster: pulumi.Any(aiven_service.Source.Service_name),
-//				TargetCluster: pulumi.Any(aiven_service.Target.Service_name),
+//				Project:       pulumi.Any(aiven_project.KafkaMmProject1.Project),
+//				ServiceName:   pulumi.Any(aiven_kafka.Mm.Service_name),
+//				SourceCluster: pulumi.Any(aiven_kafka.Source.Service_name),
+//				TargetCluster: pulumi.Any(aiven_kafka.Target.Service_name),
 //				Enable:        pulumi.Bool(true),
 //				Topics: pulumi.StringArray{
 //					pulumi.String(".*"),
@@ -65,6 +65,8 @@ type MirrorMakerReplicationFlow struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
+	// Offset syncs topic location.
+	OffsetSyncsTopicLocation pulumi.StringPtrOutput `pulumi:"offsetSyncsTopicLocation"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -133,6 +135,8 @@ type mirrorMakerReplicationFlowState struct {
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable *bool `pulumi:"enable"`
+	// Offset syncs topic location.
+	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -158,6 +162,8 @@ type MirrorMakerReplicationFlowState struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolPtrInput
+	// Offset syncs topic location.
+	OffsetSyncsTopicLocation pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -187,6 +193,8 @@ type mirrorMakerReplicationFlowArgs struct {
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
+	// Offset syncs topic location.
+	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -213,6 +221,8 @@ type MirrorMakerReplicationFlowArgs struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolInput
+	// Offset syncs topic location.
+	OffsetSyncsTopicLocation pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -328,6 +338,11 @@ func (o MirrorMakerReplicationFlowOutput) EmitHeartbeatsEnabled() pulumi.BoolPtr
 // Enable of disable replication flows for a service.
 func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Offset syncs topic location.
+func (o MirrorMakerReplicationFlowOutput) OffsetSyncsTopicLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringPtrOutput { return v.OffsetSyncsTopicLocation }).(pulumi.StringPtrOutput)
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

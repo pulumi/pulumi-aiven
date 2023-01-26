@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -147,7 +148,7 @@ export class KafkaConnector extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["config"] = args?.config ? pulumi.secret(args.config) : undefined;
             resourceInputs["connectorName"] = args ? args.connectorName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -160,6 +161,8 @@ export class KafkaConnector extends pulumi.CustomResource {
             resourceInputs["tasks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["config"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(KafkaConnector.__pulumiType, name, resourceInputs, opts);
     }
 }

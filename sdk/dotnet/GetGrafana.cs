@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGrafanaResult> InvokeAsync(GetGrafanaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Grafana data source provides information about the existing Aiven Grafana service.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGrafanaResult> Invoke(GetGrafanaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaInvokeArgs(), options.WithDefaults());
     }
 
 

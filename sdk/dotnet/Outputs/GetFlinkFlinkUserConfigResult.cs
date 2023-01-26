@@ -13,9 +13,11 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetFlinkFlinkUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? ExecutionCheckpointingIntervalMs;
         public readonly string? ExecutionCheckpointingTimeoutMs;
         public readonly string? FlinkVersion;
+        public readonly ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? NumberOfTaskSlots;
         public readonly string? ParallelismDefault;
@@ -27,11 +29,15 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetFlinkFlinkUserConfigResult(
+            string? additionalBackupRegions,
+
             string? executionCheckpointingIntervalMs,
 
             string? executionCheckpointingTimeoutMs,
 
             string? flinkVersion,
+
+            ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -49,9 +55,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? restartStrategyMaxFailures)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             ExecutionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
             ExecutionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             FlinkVersion = flinkVersion;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
             ParallelismDefault = parallelismDefault;

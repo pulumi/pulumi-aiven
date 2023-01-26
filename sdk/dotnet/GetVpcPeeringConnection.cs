@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcPeeringConnectionResult> InvokeAsync(GetVpcPeeringConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcPeeringConnectionResult>("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args ?? new GetVpcPeeringConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcPeeringConnectionResult>("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args ?? new GetVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// The VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcPeeringConnectionResult> Invoke(GetVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcPeeringConnectionResult>("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args ?? new GetVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcPeeringConnectionResult>("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", args ?? new GetVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

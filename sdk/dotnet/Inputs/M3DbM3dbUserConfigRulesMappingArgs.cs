@@ -37,6 +37,14 @@ namespace Pulumi.Aiven.Inputs
             set => _namespaces = value;
         }
 
+        [Input("namespacesObjects")]
+        private InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>? _namespacesObjects;
+        public InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs> NamespacesObjects
+        {
+            get => _namespacesObjects ?? (_namespacesObjects = new InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>());
+            set => _namespacesObjects = value;
+        }
+
         [Input("tags")]
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagArgs>? _tags;
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagArgs> Tags

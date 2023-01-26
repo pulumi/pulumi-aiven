@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Google Service Account Credentials
+        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         /// </summary>
         [Input("serviceAccountCredentials")]
         public Input<string>? ServiceAccountCredentials { get; set; }

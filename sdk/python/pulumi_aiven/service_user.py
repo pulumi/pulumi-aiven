@@ -411,6 +411,8 @@ class ServiceUser(pulumi.CustomResource):
         """
         The Service User resource allows the creation and management of Aiven Service Users.
 
+        > **Note:** This resource is deprecated. Please use service-specific resources instead of this one, for example: aiven_kafka_user, PgUser etc.
+
         ## Example Usage
 
         ```python
@@ -419,7 +421,7 @@ class ServiceUser(pulumi.CustomResource):
 
         myserviceuser = aiven.ServiceUser("myserviceuser",
             project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"],
+            service_name=aiven_pg["mypg"]["service_name"],
             username="<USERNAME>")
         ```
 
@@ -451,6 +453,8 @@ class ServiceUser(pulumi.CustomResource):
         """
         The Service User resource allows the creation and management of Aiven Service Users.
 
+        > **Note:** This resource is deprecated. Please use service-specific resources instead of this one, for example: aiven_kafka_user, PgUser etc.
+
         ## Example Usage
 
         ```python
@@ -459,7 +463,7 @@ class ServiceUser(pulumi.CustomResource):
 
         myserviceuser = aiven.ServiceUser("myserviceuser",
             project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"],
+            service_name=aiven_pg["mypg"]["service_name"],
             username="<USERNAME>")
         ```
 
@@ -504,7 +508,7 @@ class ServiceUser(pulumi.CustomResource):
             __props__ = ServiceUserArgs.__new__(ServiceUserArgs)
 
             __props__.__dict__["authentication"] = authentication
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["pg_allow_replication"] = pg_allow_replication
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -522,6 +526,8 @@ class ServiceUser(pulumi.CustomResource):
             __props__.__dict__["access_cert"] = None
             __props__.__dict__["access_key"] = None
             __props__.__dict__["type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServiceUser, __self__).__init__(
             'aiven:index/serviceUser:ServiceUser',
             resource_name,

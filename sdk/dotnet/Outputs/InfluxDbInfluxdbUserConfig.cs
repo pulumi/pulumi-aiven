@@ -14,7 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class InfluxDbInfluxdbUserConfig
     {
         /// <summary>
-        /// Custom domain
+        /// Additional Cloud Regions for Backup Replication
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
@@ -22,7 +26,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigInfluxdb? Influxdb;
         /// <summary>
-        /// IP filter
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InfluxDbInfluxdbUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -50,15 +58,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Static IP addresses
+        /// Use static public IP addresses
         /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]
         private InfluxDbInfluxdbUserConfig(
+            string? additionalBackupRegions,
+
             string? customDomain,
 
             Outputs.InfluxDbInfluxdbUserConfigInfluxdb? influxdb,
+
+            ImmutableArray<Outputs.InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -76,8 +88,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             Influxdb = influxdb;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;

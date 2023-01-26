@@ -13,7 +13,16 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("opensearchDashboardsUri")]
-        public Input<string>? OpensearchDashboardsUri { get; set; }
+        private Input<string>? _opensearchDashboardsUri;
+        public Input<string>? OpensearchDashboardsUri
+        {
+            get => _opensearchDashboardsUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _opensearchDashboardsUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public OpenSearchOpensearchGetArgs()
         {

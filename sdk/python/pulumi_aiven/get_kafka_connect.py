@@ -184,7 +184,7 @@ class GetKafkaConnectResult:
     @pulumi.getter(name="kafkaConnectUserConfigs")
     def kafka_connect_user_configs(self) -> Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigResult']:
         """
-        Kafka*connect user configurable settings
+        KafkaConnect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_configs")
 

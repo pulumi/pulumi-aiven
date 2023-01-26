@@ -15,13 +15,13 @@ namespace Pulumi.Aiven
         /// The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
         /// </summary>
         public static Task<GetInfluxdbDatabaseResult> InvokeAsync(GetInfluxdbDatabaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInfluxdbDatabaseResult>("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args ?? new GetInfluxdbDatabaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfluxdbDatabaseResult>("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args ?? new GetInfluxdbDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
         /// </summary>
         public static Output<GetInfluxdbDatabaseResult> Invoke(GetInfluxdbDatabaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInfluxdbDatabaseResult>("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args ?? new GetInfluxdbDatabaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInfluxdbDatabaseResult>("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args ?? new GetInfluxdbDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

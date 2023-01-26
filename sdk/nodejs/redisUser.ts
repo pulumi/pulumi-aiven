@@ -119,7 +119,7 @@ export class RedisUser extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
             resourceInputs["redisAclChannels"] = args ? args.redisAclChannels : undefined;
@@ -130,6 +130,8 @@ export class RedisUser extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RedisUser.__pulumiType, name, resourceInputs, opts);
     }
 }

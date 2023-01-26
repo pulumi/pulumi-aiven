@@ -13,19 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = pulumi.output(aiven.getPgUser({
+ * const user = aiven.getPgUser({
  *     project: "my-project",
  *     serviceName: "my-service",
  *     username: "user1",
- * }));
+ * });
  * ```
  */
 export function getPgUser(args: GetPgUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPgUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getPgUser:getPgUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -92,9 +89,24 @@ export interface GetPgUserResult {
      */
     readonly username: string;
 }
-
+/**
+ * The PG User data source provides information about the existing Aiven PG User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getPgUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
+ */
 export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgUserResult> {
-    return pulumi.output(args).apply(a => getPgUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getPgUser(a, opts))
 }
 
 /**

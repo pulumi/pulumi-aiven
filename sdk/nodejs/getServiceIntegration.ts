@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,14 +13,21 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myintegration = aiven.getServiceIntegration({
+ *     project: aiven_project.myproject.project,
+ *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
+ *     integrationType: "datadog",
+ *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getServiceIntegration:getServiceIntegration", {
         "destinationServiceName": args.destinationServiceName,
         "integrationType": args.integrationType,
@@ -55,6 +63,18 @@ export interface GetServiceIntegrationArgs {
  */
 export interface GetServiceIntegrationResult {
     /**
+     * ClickhouseKafka user configurable settings
+     */
+    readonly clickhouseKafkaUserConfigs: outputs.GetServiceIntegrationClickhouseKafkaUserConfig[];
+    /**
+     * ClickhousePostgresql user configurable settings
+     */
+    readonly clickhousePostgresqlUserConfigs: outputs.GetServiceIntegrationClickhousePostgresqlUserConfig[];
+    /**
+     * Datadog user configurable settings
+     */
+    readonly datadogUserConfigs: outputs.GetServiceIntegrationDatadogUserConfig[];
+    /**
      * Destination endpoint for the integration (if any)
      */
     readonly destinationEndpointId: string;
@@ -75,27 +95,27 @@ export interface GetServiceIntegrationResult {
      */
     readonly integrationType: string;
     /**
-     * Kafka Connect specific user configurable settings
+     * KafkaConnect user configurable settings
      */
     readonly kafkaConnectUserConfigs: outputs.GetServiceIntegrationKafkaConnectUserConfig[];
     /**
-     * Kafka Logs specific user configurable settings
+     * KafkaLogs user configurable settings
      */
     readonly kafkaLogsUserConfigs: outputs.GetServiceIntegrationKafkaLogsUserConfig[];
     /**
-     * Mirrormaker 2 integration specific user configurable settings
+     * KafkaMirrormaker user configurable settings
      */
     readonly kafkaMirrormakerUserConfigs: outputs.GetServiceIntegrationKafkaMirrormakerUserConfig[];
     /**
-     * Log integration specific user configurable settings
+     * Logs user configurable settings
      */
     readonly logsUserConfigs: outputs.GetServiceIntegrationLogsUserConfig[];
     /**
-     * Metrics specific user configurable settings
+     * Metrics user configurable settings
      */
     readonly metricsUserConfigs: outputs.GetServiceIntegrationMetricsUserConfig[];
     /**
-     * Mirrormaker 1 integration specific user configurable settings
+     * Mirrormaker user configurable settings
      */
     readonly mirrormakerUserConfigs: outputs.GetServiceIntegrationMirrormakerUserConfig[];
     /**
@@ -111,9 +131,27 @@ export interface GetServiceIntegrationResult {
      */
     readonly sourceServiceName: string;
 }
-
+/**
+ * The Service Integration data source provides information about the existing Aiven Service Integration.
+ *
+ * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myintegration = aiven.getServiceIntegration({
+ *     project: aiven_project.myproject.project,
+ *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
+ *     integrationType: "datadog",
+ *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * });
+ * ```
+ */
 export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationResult> {
-    return pulumi.output(args).apply(a => getServiceIntegration(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceIntegration(a, opts))
 }
 
 /**

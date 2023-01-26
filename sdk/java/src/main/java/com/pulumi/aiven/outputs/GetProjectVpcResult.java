@@ -12,45 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectVpcResult {
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
      * 
      */
-    private String cloudName;
+    private @Nullable String cloudName;
     /**
-     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
      * @return Network address range used by the VPC like 192.168.0.0/24
      * 
      */
     private String networkCidr;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to.
      * 
      */
-    private String project;
+    private @Nullable String project;
     /**
      * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
      * 
      */
     private String state;
-
-    private GetProjectVpcResult() {}
-    /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
-    public String cloudName() {
-        return this.cloudName;
-    }
     /**
      * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    private @Nullable String vpcId;
+
+    private GetProjectVpcResult() {}
+    /**
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * 
+     */
+    public Optional<String> cloudName() {
+        return Optional.ofNullable(this.cloudName);
+    }
+    /**
+     * @return The provider-assigned unique ID for this managed resource.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Network address range used by the VPC like 192.168.0.0/24
@@ -60,11 +65,11 @@ public final class GetProjectVpcResult {
         return this.networkCidr;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to.
      * 
      */
-    public String project() {
-        return this.project;
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
     /**
      * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
@@ -72,6 +77,13 @@ public final class GetProjectVpcResult {
      */
     public String state() {
         return this.state;
+    }
+    /**
+     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * 
+     */
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     public static Builder builder() {
@@ -83,11 +95,12 @@ public final class GetProjectVpcResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String cloudName;
-        private @Nullable String id;
+        private @Nullable String cloudName;
+        private String id;
         private String networkCidr;
-        private String project;
+        private @Nullable String project;
         private String state;
+        private @Nullable String vpcId;
         public Builder() {}
         public Builder(GetProjectVpcResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,16 +109,17 @@ public final class GetProjectVpcResult {
     	      this.networkCidr = defaults.networkCidr;
     	      this.project = defaults.project;
     	      this.state = defaults.state;
+    	      this.vpcId = defaults.vpcId;
         }
 
         @CustomType.Setter
-        public Builder cloudName(String cloudName) {
-            this.cloudName = Objects.requireNonNull(cloudName);
+        public Builder cloudName(@Nullable String cloudName) {
+            this.cloudName = cloudName;
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-            this.id = id;
+        public Builder id(String id) {
+            this.id = Objects.requireNonNull(id);
             return this;
         }
         @CustomType.Setter
@@ -114,13 +128,18 @@ public final class GetProjectVpcResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+        public Builder project(@Nullable String project) {
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vpcId(@Nullable String vpcId) {
+            this.vpcId = vpcId;
             return this;
         }
         public GetProjectVpcResult build() {
@@ -130,6 +149,7 @@ public final class GetProjectVpcResult {
             o.networkCidr = networkCidr;
             o.project = project;
             o.state = state;
+            o.vpcId = vpcId;
             return o;
         }
     }

@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAwsPrivatelinkResult> InvokeAsync(GetAwsPrivatelinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAwsPrivatelinkResult> Invoke(GetAwsPrivatelinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkInvokeArgs(), options.WithDefaults());
     }
 
 

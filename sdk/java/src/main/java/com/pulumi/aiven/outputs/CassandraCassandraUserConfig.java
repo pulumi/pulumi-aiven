@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfigCassandra;
+import com.pulumi.aiven.outputs.CassandraCassandraUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
@@ -16,6 +17,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CassandraCassandraUserConfig {
     /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
+    /**
      * @return cassandra configuration values
      * 
      */
@@ -26,12 +32,17 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable String cassandraVersion;
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Migration mode for the sstableloader utility
+     * @return Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      * 
      */
     private @Nullable String migrateSstableloader;
@@ -56,12 +67,24 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Static IP addresses
+     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * 
+     */
+    private @Nullable String serviceToJoinWith;
+    /**
+     * @return Use static public IP addresses
      * 
      */
     private @Nullable String staticIps;
 
     private CassandraCassandraUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     /**
      * @return cassandra configuration values
      * 
@@ -77,14 +100,21 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.cassandraVersion);
     }
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Migration mode for the sstableloader utility
+     * @return Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      * 
      */
     public Optional<String> migrateSstableloader() {
@@ -119,7 +149,14 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Static IP addresses
+     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * 
+     */
+    public Optional<String> serviceToJoinWith() {
+        return Optional.ofNullable(this.serviceToJoinWith);
+    }
+    /**
+     * @return Use static public IP addresses
      * 
      */
     public Optional<String> staticIps() {
@@ -135,29 +172,40 @@ public final class CassandraCassandraUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable CassandraCassandraUserConfigCassandra cassandra;
         private @Nullable String cassandraVersion;
+        private @Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String migrateSstableloader;
         private @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
+        private @Nullable String serviceToJoinWith;
         private @Nullable String staticIps;
         public Builder() {}
         public Builder(CassandraCassandraUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.cassandra = defaults.cassandra;
     	      this.cassandraVersion = defaults.cassandraVersion;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migrateSstableloader = defaults.migrateSstableloader;
     	      this.privateAccess = defaults.privateAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
+    	      this.serviceToJoinWith = defaults.serviceToJoinWith;
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder cassandra(@Nullable CassandraCassandraUserConfigCassandra cassandra) {
             this.cassandra = cassandra;
@@ -167,6 +215,14 @@ public final class CassandraCassandraUserConfig {
         public Builder cassandraVersion(@Nullable String cassandraVersion) {
             this.cassandraVersion = cassandraVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(CassandraCassandraUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -202,20 +258,28 @@ public final class CassandraCassandraUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceToJoinWith(@Nullable String serviceToJoinWith) {
+            this.serviceToJoinWith = serviceToJoinWith;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
         }
         public CassandraCassandraUserConfig build() {
             final var o = new CassandraCassandraUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.cassandra = cassandra;
             o.cassandraVersion = cassandraVersion;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.migrateSstableloader = migrateSstableloader;
             o.privateAccess = privateAccess;
             o.projectToForkFrom = projectToForkFrom;
             o.publicAccess = publicAccess;
             o.serviceToForkFrom = serviceToForkFrom;
+            o.serviceToJoinWith = serviceToJoinWith;
             o.staticIps = staticIps;
             return o;
         }

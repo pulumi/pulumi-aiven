@@ -2,18 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * The Account Authentication data source provides information about the existing Aiven Account Authentication.
  */
 export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAuthenticationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", {
         "accountId": args.accountId,
         "name": args.name,
@@ -115,9 +113,11 @@ export interface GetAccountAuthenticationResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * The Account Authentication data source provides information about the existing Aiven Account Authentication.
+ */
 export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAuthenticationResult> {
-    return pulumi.output(args).apply(a => getAccountAuthentication(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccountAuthentication(a, opts))
 }
 
 /**

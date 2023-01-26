@@ -15,15 +15,19 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? BatchSizeFailThresholdInKb;
         public readonly string? BatchSizeWarnThresholdInKb;
+        public readonly string? Datacenter;
 
         [OutputConstructor]
         private GetCassandaCassandraUserConfigCassandraResult(
             string? batchSizeFailThresholdInKb,
 
-            string? batchSizeWarnThresholdInKb)
+            string? batchSizeWarnThresholdInKb,
+
+            string? datacenter)
         {
             BatchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             BatchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
+            Datacenter = datacenter;
         }
     }
 }

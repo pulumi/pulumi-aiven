@@ -109,7 +109,7 @@ export class InfluxdbUser extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -118,6 +118,8 @@ export class InfluxdbUser extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(InfluxdbUser.__pulumiType, name, resourceInputs, opts);
     }
 }

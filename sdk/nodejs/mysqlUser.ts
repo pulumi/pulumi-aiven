@@ -115,7 +115,7 @@ export class MysqlUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["authentication"] = args ? args.authentication : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -124,6 +124,8 @@ export class MysqlUser extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MysqlUser.__pulumiType, name, resourceInputs, opts);
     }
 }

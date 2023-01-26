@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigIpFilterObject;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -13,7 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseClickhouseUserConfig {
     /**
-     * @return IP filter
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
@@ -30,7 +41,21 @@ public final class ClickhouseClickhouseUserConfig {
 
     private ClickhouseClickhouseUserConfig() {}
     /**
-     * @return IP filter
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
@@ -60,17 +85,34 @@ public final class ClickhouseClickhouseUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
+        private @Nullable List<ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String projectToForkFrom;
         private @Nullable String serviceToForkFrom;
         public Builder() {}
         public Builder(ClickhouseClickhouseUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(ClickhouseClickhouseUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
@@ -91,6 +133,8 @@ public final class ClickhouseClickhouseUserConfig {
         }
         public ClickhouseClickhouseUserConfig build() {
             final var o = new ClickhouseClickhouseUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.projectToForkFrom = projectToForkFrom;
             o.serviceToForkFrom = serviceToForkFrom;

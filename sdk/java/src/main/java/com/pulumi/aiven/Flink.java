@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowDow(&#34;monday&#34;)
  *             .maintenanceWindowTime(&#34;10:00:00&#34;)
  *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
- *                 .flinkVersion(1.13)
+ *                 .flinkVersion(1.15)
  *                 .build())
  *             .build());
  * 
@@ -484,6 +484,10 @@ public class Flink extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "servicePassword",
+                "serviceUri"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -122,6 +122,10 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "caCert",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -249,11 +253,21 @@ namespace Pulumi.Aiven
         [Input("billingGroup")]
         public Input<string>? BillingGroup { get; set; }
 
+        [Input("caCert")]
+        private Input<string>? _caCert;
+
         /// <summary>
         /// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
         /// </summary>
-        [Input("caCert")]
-        public Input<string>? CaCert { get; set; }
+        public Input<string>? CaCert
+        {
+            get => _caCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.

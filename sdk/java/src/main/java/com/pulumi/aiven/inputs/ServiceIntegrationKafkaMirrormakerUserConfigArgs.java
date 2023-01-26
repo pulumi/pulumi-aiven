@@ -17,14 +17,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
     public static final ServiceIntegrationKafkaMirrormakerUserConfigArgs Empty = new ServiceIntegrationKafkaMirrormakerUserConfigArgs();
 
     /**
-     * Kafka cluster alias
+     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
      * 
      */
     @Import(name="clusterAlias")
     private @Nullable Output<String> clusterAlias;
 
     /**
-     * @return Kafka cluster alias
+     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
      * 
      */
     public Optional<Output<String>> clusterAlias() {
@@ -72,7 +72,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
         }
 
         /**
-         * @param clusterAlias Kafka cluster alias
+         * @param clusterAlias The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
         }
 
         /**
-         * @param clusterAlias Kafka cluster alias
+         * @param clusterAlias The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
          * 
          * @return builder
          * 

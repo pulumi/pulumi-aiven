@@ -13,6 +13,8 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
+        public readonly ImmutableArray<Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Kafka MirrorMaker 2 server provided values
@@ -25,12 +27,18 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(
+            string? additionalBackupRegions,
+
+            ImmutableArray<Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult> ipFilterObjects,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? kafkaMirrormaker,
 
             string? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             KafkaMirrormaker = kafkaMirrormaker;
             StaticIps = staticIps;

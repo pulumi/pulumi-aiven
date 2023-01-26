@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMySql(args: GetMySqlArgs, opts?: pulumi.InvokeOptions): Promise<GetMySqlResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMySql:getMySql", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -163,9 +161,23 @@ export interface GetMySqlResult {
      */
     readonly terminationProtection: boolean;
 }
-
+/**
+ * The MySQL data source provides information about the existing Aiven MySQL service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mysql1 = aiven.getMySql({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "my-mysql1",
+ * });
+ * ```
+ */
 export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMySqlResult> {
-    return pulumi.output(args).apply(a => getMySql(a, opts))
+    return pulumi.output(args).apply((a: any) => getMySql(a, opts))
 }
 
 /**

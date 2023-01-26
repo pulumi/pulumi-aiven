@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpensearchUserResult> InvokeAsync(GetOpensearchUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Opensearch User data source provides information about the existing Aiven Cassandra User.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpensearchUserResult> Invoke(GetOpensearchUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserInvokeArgs(), options.WithDefaults());
     }
 
 

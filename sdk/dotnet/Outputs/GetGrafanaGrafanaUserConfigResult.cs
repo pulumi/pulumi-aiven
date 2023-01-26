@@ -13,6 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? AlertingEnabled;
         public readonly string? AlertingErrorOrTimeout;
         public readonly string? AlertingMaxAnnotationsToKeep;
@@ -26,6 +27,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult? AuthGoogle;
         public readonly string? CookieSamesite;
         public readonly string? CustomDomain;
+        public readonly string? DashboardPreviewsEnabled;
         public readonly string? DashboardsMinRefreshInterval;
         public readonly string? DashboardsVersionsToKeep;
         public readonly string? DataproxySendUserHeader;
@@ -35,6 +37,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? EditorsCanAdmin;
         public readonly Outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult? ExternalImageStorage;
         public readonly string? GoogleAnalyticsUaId;
+        public readonly ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? MetricsEnabled;
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? PrivateAccess;
@@ -54,6 +57,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigResult(
+            string? additionalBackupRegions,
+
             string? alertingEnabled,
 
             string? alertingErrorOrTimeout,
@@ -80,6 +85,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
+            string? dashboardPreviewsEnabled,
+
             string? dashboardsMinRefreshInterval,
 
             string? dashboardsVersionsToKeep,
@@ -97,6 +104,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult? externalImageStorage,
 
             string? googleAnalyticsUaId,
+
+            ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
@@ -124,6 +133,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? viewersCanEdit)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             AlertingEnabled = alertingEnabled;
             AlertingErrorOrTimeout = alertingErrorOrTimeout;
             AlertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
@@ -137,6 +147,7 @@ namespace Pulumi.Aiven.Outputs
             AuthGoogle = authGoogle;
             CookieSamesite = cookieSamesite;
             CustomDomain = customDomain;
+            DashboardPreviewsEnabled = dashboardPreviewsEnabled;
             DashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             DashboardsVersionsToKeep = dashboardsVersionsToKeep;
             DataproxySendUserHeader = dataproxySendUserHeader;
@@ -146,6 +157,7 @@ namespace Pulumi.Aiven.Outputs
             EditorsCanAdmin = editorsCanAdmin;
             ExternalImageStorage = externalImageStorage;
             GoogleAnalyticsUaId = googleAnalyticsUaId;
+            IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;

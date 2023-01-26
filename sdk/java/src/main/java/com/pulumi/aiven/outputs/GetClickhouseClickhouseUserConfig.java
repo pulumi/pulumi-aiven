@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigIpFilterObject;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -12,11 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClickhouseClickhouseUserConfig {
+    private @Nullable String additionalBackupRegions;
+    private @Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable String projectToForkFrom;
     private @Nullable String serviceToForkFrom;
 
     private GetClickhouseClickhouseUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    public List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -36,17 +45,34 @@ public final class GetClickhouseClickhouseUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
+        private @Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String projectToForkFrom;
         private @Nullable String serviceToForkFrom;
         public Builder() {}
         public Builder(GetClickhouseClickhouseUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetClickhouseClickhouseUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
@@ -67,6 +93,8 @@ public final class GetClickhouseClickhouseUserConfig {
         }
         public GetClickhouseClickhouseUserConfig build() {
             final var o = new GetClickhouseClickhouseUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.projectToForkFrom = projectToForkFrom;
             o.serviceToForkFrom = serviceToForkFrom;

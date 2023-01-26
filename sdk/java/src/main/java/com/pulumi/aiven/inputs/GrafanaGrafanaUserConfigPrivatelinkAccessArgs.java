@@ -15,17 +15,9 @@ public final class GrafanaGrafanaUserConfigPrivatelinkAccessArgs extends com.pul
 
     public static final GrafanaGrafanaUserConfigPrivatelinkAccessArgs Empty = new GrafanaGrafanaUserConfigPrivatelinkAccessArgs();
 
-    /**
-     * Grafana server provided values
-     * 
-     */
     @Import(name="grafana")
     private @Nullable Output<String> grafana;
 
-    /**
-     * @return Grafana server provided values
-     * 
-     */
     public Optional<Output<String>> grafana() {
         return Optional.ofNullable(this.grafana);
     }
@@ -54,23 +46,11 @@ public final class GrafanaGrafanaUserConfigPrivatelinkAccessArgs extends com.pul
             $ = new GrafanaGrafanaUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param grafana Grafana server provided values
-         * 
-         * @return builder
-         * 
-         */
         public Builder grafana(@Nullable Output<String> grafana) {
             $.grafana = grafana;
             return this;
         }
 
-        /**
-         * @param grafana Grafana server provided values
-         * 
-         * @return builder
-         * 
-         */
         public Builder grafana(String grafana) {
             return grafana(Output.of(grafana));
         }

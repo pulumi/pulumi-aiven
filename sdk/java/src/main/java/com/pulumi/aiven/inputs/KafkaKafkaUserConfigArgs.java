@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs;
@@ -25,14 +26,29 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     public static final KafkaKafkaUserConfigArgs Empty = new KafkaKafkaUserConfigArgs();
 
     /**
-     * Custom domain
+     * Additional Cloud Regions for Backup Replication
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Custom domain
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -40,14 +56,29 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * IP filter
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    @Import(name="ipFilterObjects")
+    private @Nullable Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>> ipFilterObjects;
+
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public Optional<Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
+        return Optional.ofNullable(this.ipFilterObjects);
+    }
+
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<String>>> ipFilters() {
@@ -235,14 +266,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Static IP addresses
+     * Use static public IP addresses
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<Output<String>> staticIps() {
@@ -252,7 +283,9 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     private KafkaKafkaUserConfigArgs() {}
 
     private KafkaKafkaUserConfigArgs(KafkaKafkaUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.customDomain = $.customDomain;
+        this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilters = $.ipFilters;
         this.kafka = $.kafka;
         this.kafkaAuthenticationMethods = $.kafkaAuthenticationMethods;
@@ -288,7 +321,28 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customDomain Custom domain
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
          * 
          * @return builder
          * 
@@ -299,7 +353,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customDomain Custom domain
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
          * 
          * @return builder
          * 
@@ -309,7 +363,38 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(@Nullable Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>> ipFilterObjects) {
+            $.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(List<KafkaKafkaUserConfigIpFilterObjectArgs> ipFilterObjects) {
+            return ipFilterObjects(Output.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilterObjects(KafkaKafkaUserConfigIpFilterObjectArgs... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
+        }
+
+        /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -320,7 +405,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -330,7 +415,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters IP filter
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -592,7 +677,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 
@@ -603,7 +688,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param staticIps Static IP addresses
+         * @param staticIps Use static public IP addresses
          * 
          * @return builder
          * 

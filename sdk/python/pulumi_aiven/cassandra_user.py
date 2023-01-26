@@ -283,7 +283,7 @@ class CassandraUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CassandraUserArgs.__new__(CassandraUserArgs)
 
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -296,6 +296,8 @@ class CassandraUser(pulumi.CustomResource):
             __props__.__dict__["access_cert"] = None
             __props__.__dict__["access_key"] = None
             __props__.__dict__["type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CassandraUser, __self__).__init__(
             'aiven:index/cassandraUser:CassandraUser',
             resource_name,

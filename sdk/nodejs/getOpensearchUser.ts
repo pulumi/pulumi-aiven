@@ -13,19 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = pulumi.output(aiven.getOpensearchUser({
+ * const user = aiven.getOpensearchUser({
  *     project: "my-project",
  *     serviceName: "my-service",
  *     username: "user1",
- * }));
+ * });
  * ```
  */
 export function getOpensearchUser(args: GetOpensearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpensearchUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpensearchUser:getOpensearchUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -80,9 +77,24 @@ export interface GetOpensearchUserResult {
      */
     readonly username: string;
 }
-
+/**
+ * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getOpensearchUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
+ */
 export function getOpensearchUserOutput(args: GetOpensearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchUserResult> {
-    return pulumi.output(args).apply(a => getOpensearchUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getOpensearchUser(a, opts))
 }
 
 /**

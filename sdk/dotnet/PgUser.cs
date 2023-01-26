@@ -31,6 +31,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/pgUser:PgUser user project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/pgUser:PgUser")]
     public partial class PgUser : global::Pulumi.CustomResource
@@ -106,6 +112,12 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accessCert",
+                    "accessKey",
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -129,11 +141,21 @@ namespace Pulumi.Aiven
 
     public sealed class PgUserArgs : global::Pulumi.ResourceArgs
     {
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the PG User ( not applicable for all services ).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
@@ -167,23 +189,53 @@ namespace Pulumi.Aiven
 
     public sealed class PgUserState : global::Pulumi.ResourceArgs
     {
+        [Input("accessCert")]
+        private Input<string>? _accessCert;
+
         /// <summary>
         /// Access certificate for the user
         /// </summary>
-        [Input("accessCert")]
-        public Input<string>? AccessCert { get; set; }
+        public Input<string>? AccessCert
+        {
+            get => _accessCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
 
         /// <summary>
         /// Access certificate key for the user
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("password")]
+        private Input<string>? _password;
 
         /// <summary>
         /// The password of the PG User ( not applicable for all services ).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafkaUser(ctx, &GetKafkaUserArgs{
+//			_, err := aiven.LookupKafkaUser(ctx, &aiven.LookupKafkaUserArgs{
 //				Project:     "my-project",
 //				ServiceName: "my-service",
 //				Username:    "user1",

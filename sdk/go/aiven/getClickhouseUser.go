@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupClickhouseUser(ctx, &GetClickhouseUserArgs{
+//			_, err := aiven.LookupClickhouseUser(ctx, &aiven.LookupClickhouseUserArgs{
 //				Project:     aiven_project.Myproject.Project,
 //				ServiceName: aiven_clickhouse.Myservice.Service_name,
 //				Username:    "<USERNAME>",

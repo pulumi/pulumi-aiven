@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupInfluxdbUser(ctx, &GetInfluxdbUserArgs{
+//			_, err := aiven.LookupInfluxdbUser(ctx, &aiven.LookupInfluxdbUserArgs{
 //				Project:     "my-project",
 //				ServiceName: "my-service",
 //				Username:    "user1",

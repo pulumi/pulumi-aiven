@@ -27,6 +27,11 @@ public final class GetGcpVpcPeeringConnectionResult {
      */
     private String peerVpc;
     /**
+     * @return Computed GCP network peering link
+     * 
+     */
+    private String selfLink;
+    /**
      * @return State of the peering connection
      * 
      */
@@ -65,6 +70,13 @@ public final class GetGcpVpcPeeringConnectionResult {
         return this.peerVpc;
     }
     /**
+     * @return Computed GCP network peering link
+     * 
+     */
+    public String selfLink() {
+        return this.selfLink;
+    }
+    /**
      * @return State of the peering connection
      * 
      */
@@ -98,6 +110,7 @@ public final class GetGcpVpcPeeringConnectionResult {
         private String gcpProjectId;
         private String id;
         private String peerVpc;
+        private String selfLink;
         private String state;
         private Map<String,Object> stateInfo;
         private String vpcId;
@@ -107,6 +120,7 @@ public final class GetGcpVpcPeeringConnectionResult {
     	      this.gcpProjectId = defaults.gcpProjectId;
     	      this.id = defaults.id;
     	      this.peerVpc = defaults.peerVpc;
+    	      this.selfLink = defaults.selfLink;
     	      this.state = defaults.state;
     	      this.stateInfo = defaults.stateInfo;
     	      this.vpcId = defaults.vpcId;
@@ -125,6 +139,11 @@ public final class GetGcpVpcPeeringConnectionResult {
         @CustomType.Setter
         public Builder peerVpc(String peerVpc) {
             this.peerVpc = Objects.requireNonNull(peerVpc);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder selfLink(String selfLink) {
+            this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
         @CustomType.Setter
@@ -147,6 +166,7 @@ public final class GetGcpVpcPeeringConnectionResult {
             o.gcpProjectId = gcpProjectId;
             o.id = id;
             o.peerVpc = peerVpc;
+            o.selfLink = selfLink;
             o.state = state;
             o.stateInfo = stateInfo;
             o.vpcId = vpcId;

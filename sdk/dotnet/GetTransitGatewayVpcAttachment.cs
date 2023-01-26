@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitGatewayVpcAttachmentResult> InvokeAsync(GetTransitGatewayVpcAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitGatewayVpcAttachmentResult> Invoke(GetTransitGatewayVpcAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

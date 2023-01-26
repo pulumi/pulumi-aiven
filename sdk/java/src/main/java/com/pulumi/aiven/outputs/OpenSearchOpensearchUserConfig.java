@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexPattern;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexTemplate;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearch;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivateAccess;
@@ -20,14 +21,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfig {
     /**
-     * @return Custom domain
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     private @Nullable String customDomain;
     /**
-     * @return Disable replication factor adjustment
+     * @deprecated
+     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
      */
+    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
     private @Nullable String disableReplicationFactorAdjustment;
     /**
      * @return Index patterns
@@ -40,19 +48,26 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Don&#39;t reset index.refresh_interval to the default value
+     * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
      */
     private @Nullable String keepIndexRefreshInterval;
     /**
-     * @return Maximum index count
+     * @deprecated
+     * DEPRECATED: use index_patterns instead
      * 
      */
+    @Deprecated /* DEPRECATED: use index_patterns instead */
     private @Nullable String maxIndexCount;
     /**
      * @return OpenSearch settings
@@ -100,23 +115,32 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     private @Nullable String staticIps;
 
     private OpenSearchOpensearchUserConfig() {}
     /**
-     * @return Custom domain
+     * @return Additional Cloud Regions for Backup Replication
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Disable replication factor adjustment
+     * @deprecated
+     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
      */
+    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
     public Optional<String> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
@@ -135,23 +159,32 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.indexTemplate);
     }
     /**
-     * @return IP filter
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * 
+     */
+    public List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Don&#39;t reset index.refresh_interval to the default value
+     * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
      */
     public Optional<String> keepIndexRefreshInterval() {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
     /**
-     * @return Maximum index count
+     * @deprecated
+     * DEPRECATED: use index_patterns instead
      * 
      */
+    @Deprecated /* DEPRECATED: use index_patterns instead */
     public Optional<String> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
@@ -219,7 +252,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Static IP addresses
+     * @return Use static public IP addresses
      * 
      */
     public Optional<String> staticIps() {
@@ -235,10 +268,12 @@ public final class OpenSearchOpensearchUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
         private @Nullable String disableReplicationFactorAdjustment;
         private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
         private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
+        private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String keepIndexRefreshInterval;
         private @Nullable String maxIndexCount;
@@ -255,10 +290,12 @@ public final class OpenSearchOpensearchUserConfig {
         public Builder() {}
         public Builder(OpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
     	      this.disableReplicationFactorAdjustment = defaults.disableReplicationFactorAdjustment;
     	      this.indexPatterns = defaults.indexPatterns;
     	      this.indexTemplate = defaults.indexTemplate;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.keepIndexRefreshInterval = defaults.keepIndexRefreshInterval;
     	      this.maxIndexCount = defaults.maxIndexCount;
@@ -274,6 +311,11 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
@@ -296,6 +338,14 @@ public final class OpenSearchOpensearchUserConfig {
         public Builder indexTemplate(@Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate) {
             this.indexTemplate = indexTemplate;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(OpenSearchOpensearchUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -367,10 +417,12 @@ public final class OpenSearchOpensearchUserConfig {
         }
         public OpenSearchOpensearchUserConfig build() {
             final var o = new OpenSearchOpensearchUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
             o.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             o.indexPatterns = indexPatterns;
             o.indexTemplate = indexTemplate;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.keepIndexRefreshInterval = keepIndexRefreshInterval;
             o.maxIndexCount = maxIndexCount;

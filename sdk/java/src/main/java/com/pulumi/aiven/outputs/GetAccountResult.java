@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -24,6 +25,11 @@ public final class GetAccountResult {
      * 
      */
     private String id;
+    /**
+     * @return If true, user is part of the owners team for this account
+     * 
+     */
+    private Boolean isAccountOwner;
     /**
      * @return Account name
      * 
@@ -73,6 +79,13 @@ public final class GetAccountResult {
         return this.id;
     }
     /**
+     * @return If true, user is part of the owners team for this account
+     * 
+     */
+    public Boolean isAccountOwner() {
+        return this.isAccountOwner;
+    }
+    /**
      * @return Account name
      * 
      */
@@ -120,6 +133,7 @@ public final class GetAccountResult {
         private String accountId;
         private String createTime;
         private String id;
+        private Boolean isAccountOwner;
         private String name;
         private String ownerTeamId;
         private String primaryBillingGroupId;
@@ -131,6 +145,7 @@ public final class GetAccountResult {
     	      this.accountId = defaults.accountId;
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
+    	      this.isAccountOwner = defaults.isAccountOwner;
     	      this.name = defaults.name;
     	      this.ownerTeamId = defaults.ownerTeamId;
     	      this.primaryBillingGroupId = defaults.primaryBillingGroupId;
@@ -151,6 +166,11 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isAccountOwner(Boolean isAccountOwner) {
+            this.isAccountOwner = Objects.requireNonNull(isAccountOwner);
             return this;
         }
         @CustomType.Setter
@@ -183,6 +203,7 @@ public final class GetAccountResult {
             o.accountId = accountId;
             o.createTime = createTime;
             o.id = id;
+            o.isAccountOwner = isAccountOwner;
             o.name = name;
             o.ownerTeamId = ownerTeamId;
             o.primaryBillingGroupId = primaryBillingGroupId;

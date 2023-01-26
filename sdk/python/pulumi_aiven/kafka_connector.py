@@ -378,7 +378,7 @@ class KafkaConnector(pulumi.CustomResource):
 
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
-            __props__.__dict__["config"] = config
+            __props__.__dict__["config"] = None if config is None else pulumi.Output.secret(config)
             if connector_name is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_name'")
             __props__.__dict__["connector_name"] = connector_name
@@ -395,6 +395,8 @@ class KafkaConnector(pulumi.CustomResource):
             __props__.__dict__["plugin_type"] = None
             __props__.__dict__["plugin_version"] = None
             __props__.__dict__["tasks"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["config"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(KafkaConnector, __self__).__init__(
             'aiven:index/kafkaConnector:KafkaConnector',
             resource_name,

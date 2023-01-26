@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaUserResult> InvokeAsync(GetKafkaUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka User data source provides information about the existing Aiven Kafka User.
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaUserResult> Invoke(GetKafkaUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserInvokeArgs(), options.WithDefaults());
     }
 
 

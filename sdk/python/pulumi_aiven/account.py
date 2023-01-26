@@ -56,6 +56,7 @@ class _AccountState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 is_account_owner: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner_team_id: Optional[pulumi.Input[str]] = None,
                  primary_billing_group_id: Optional[pulumi.Input[str]] = None,
@@ -65,6 +66,7 @@ class _AccountState:
         Input properties used for looking up and filtering Account resources.
         :param pulumi.Input[str] account_id: Account id
         :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[bool] is_account_owner: If true, user is part of the owners team for this account
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[str] owner_team_id: Owner team id
         :param pulumi.Input[str] primary_billing_group_id: Billing group id
@@ -75,6 +77,8 @@ class _AccountState:
             pulumi.set(__self__, "account_id", account_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if is_account_owner is not None:
+            pulumi.set(__self__, "is_account_owner", is_account_owner)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner_team_id is not None:
@@ -109,6 +113,18 @@ class _AccountState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="isAccountOwner")
+    def is_account_owner(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, user is part of the owners team for this account
+        """
+        return pulumi.get(self, "is_account_owner")
+
+    @is_account_owner.setter
+    def is_account_owner(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_account_owner", value)
 
     @property
     @pulumi.getter
@@ -256,6 +272,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["primary_billing_group_id"] = primary_billing_group_id
             __props__.__dict__["account_id"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["is_account_owner"] = None
             __props__.__dict__["owner_team_id"] = None
             __props__.__dict__["tenant_id"] = None
             __props__.__dict__["update_time"] = None
@@ -271,6 +288,7 @@ class Account(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            is_account_owner: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner_team_id: Optional[pulumi.Input[str]] = None,
             primary_billing_group_id: Optional[pulumi.Input[str]] = None,
@@ -285,6 +303,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account id
         :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[bool] is_account_owner: If true, user is part of the owners team for this account
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[str] owner_team_id: Owner team id
         :param pulumi.Input[str] primary_billing_group_id: Billing group id
@@ -297,6 +316,7 @@ class Account(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["is_account_owner"] = is_account_owner
         __props__.__dict__["name"] = name
         __props__.__dict__["owner_team_id"] = owner_team_id
         __props__.__dict__["primary_billing_group_id"] = primary_billing_group_id
@@ -319,6 +339,14 @@ class Account(pulumi.CustomResource):
         Time of creation
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="isAccountOwner")
+    def is_account_owner(self) -> pulumi.Output[bool]:
+        """
+        If true, user is part of the owners team for this account
+        """
+        return pulumi.get(self, "is_account_owner")
 
     @property
     @pulumi.getter

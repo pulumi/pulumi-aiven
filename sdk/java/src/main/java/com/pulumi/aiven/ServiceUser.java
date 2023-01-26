@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * The Service User resource allows the creation and management of Aiven Service Users.
  * 
+ * &gt; **Note:** This resource is deprecated. Please use service-specific resources instead of this one, for example: aiven_kafka_user, aiven.PgUser etc.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -43,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myserviceuser = new ServiceUser(&#34;myserviceuser&#34;, ServiceUserArgs.builder()        
  *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_service.myservice().service_name())
+ *             .serviceName(aiven_pg.mypg().service_name())
  *             .username(&#34;&lt;USERNAME&gt;&#34;)
  *             .build());
  * 
@@ -275,6 +277,11 @@ public class ServiceUser extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "accessCert",
+                "accessKey",
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

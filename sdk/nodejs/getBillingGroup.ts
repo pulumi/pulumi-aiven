@@ -6,24 +6,10 @@ import * as utilities from "./utilities";
 
 /**
  * The Billing Group data source provides information about the existing Aiven Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = pulumi.output(aiven.getBillingGroup({
- *     name: "<BILLING_GROUP_NAME>",
- * }));
- * ```
  */
 export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getBillingGroup:getBillingGroup", {
         "billingGroupId": args.billingGroupId,
     }, opts);
@@ -108,9 +94,11 @@ export interface GetBillingGroupResult {
      */
     readonly zipCode: string;
 }
-
+/**
+ * The Billing Group data source provides information about the existing Aiven Account.
+ */
 export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingGroupResult> {
-    return pulumi.output(args).apply(a => getBillingGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getBillingGroup(a, opts))
 }
 
 /**

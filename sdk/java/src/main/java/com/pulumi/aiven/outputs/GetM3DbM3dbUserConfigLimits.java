@@ -11,11 +11,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigLimits {
+    private @Nullable String maxRecentlyQueriedSeriesBlocks;
+    private @Nullable String maxRecentlyQueriedSeriesDiskBytesRead;
+    private @Nullable String maxRecentlyQueriedSeriesLookback;
     private @Nullable String queryDocs;
     private @Nullable String queryRequireExhaustive;
     private @Nullable String querySeries;
 
     private GetM3DbM3dbUserConfigLimits() {}
+    public Optional<String> maxRecentlyQueriedSeriesBlocks() {
+        return Optional.ofNullable(this.maxRecentlyQueriedSeriesBlocks);
+    }
+    public Optional<String> maxRecentlyQueriedSeriesDiskBytesRead() {
+        return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
+    }
+    public Optional<String> maxRecentlyQueriedSeriesLookback() {
+        return Optional.ofNullable(this.maxRecentlyQueriedSeriesLookback);
+    }
     public Optional<String> queryDocs() {
         return Optional.ofNullable(this.queryDocs);
     }
@@ -35,17 +47,38 @@ public final class GetM3DbM3dbUserConfigLimits {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String maxRecentlyQueriedSeriesBlocks;
+        private @Nullable String maxRecentlyQueriedSeriesDiskBytesRead;
+        private @Nullable String maxRecentlyQueriedSeriesLookback;
         private @Nullable String queryDocs;
         private @Nullable String queryRequireExhaustive;
         private @Nullable String querySeries;
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfigLimits defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maxRecentlyQueriedSeriesBlocks = defaults.maxRecentlyQueriedSeriesBlocks;
+    	      this.maxRecentlyQueriedSeriesDiskBytesRead = defaults.maxRecentlyQueriedSeriesDiskBytesRead;
+    	      this.maxRecentlyQueriedSeriesLookback = defaults.maxRecentlyQueriedSeriesLookback;
     	      this.queryDocs = defaults.queryDocs;
     	      this.queryRequireExhaustive = defaults.queryRequireExhaustive;
     	      this.querySeries = defaults.querySeries;
         }
 
+        @CustomType.Setter
+        public Builder maxRecentlyQueriedSeriesBlocks(@Nullable String maxRecentlyQueriedSeriesBlocks) {
+            this.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable String maxRecentlyQueriedSeriesDiskBytesRead) {
+            this.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxRecentlyQueriedSeriesLookback(@Nullable String maxRecentlyQueriedSeriesLookback) {
+            this.maxRecentlyQueriedSeriesLookback = maxRecentlyQueriedSeriesLookback;
+            return this;
+        }
         @CustomType.Setter
         public Builder queryDocs(@Nullable String queryDocs) {
             this.queryDocs = queryDocs;
@@ -63,6 +96,9 @@ public final class GetM3DbM3dbUserConfigLimits {
         }
         public GetM3DbM3dbUserConfigLimits build() {
             final var o = new GetM3DbM3dbUserConfigLimits();
+            o.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
+            o.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
+            o.maxRecentlyQueriedSeriesLookback = maxRecentlyQueriedSeriesLookback;
             o.queryDocs = queryDocs;
             o.queryRequireExhaustive = queryRequireExhaustive;
             o.querySeries = querySeries;

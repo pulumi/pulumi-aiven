@@ -12,45 +12,37 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaConnectKafkaConnectUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        [Input("ipFilterObjects")]
+        private InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+        public InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs> IpFilterObjects
+        {
+            get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs>());
+            set => _ipFilterObjects = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Kafka Connect configuration values
-        /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

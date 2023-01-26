@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupAwsVpcPeeringConnection(ctx, &GetAwsVpcPeeringConnectionArgs{
+//			_, err := aiven.LookupAwsVpcPeeringConnection(ctx, &aiven.LookupAwsVpcPeeringConnectionArgs{
 //				VpcId:        data.Aiven_project_vpc.Vpc.Id,
 //				AwsAccountId: "XXXXX",
 //				AwsVpcId:     "XXXXX",

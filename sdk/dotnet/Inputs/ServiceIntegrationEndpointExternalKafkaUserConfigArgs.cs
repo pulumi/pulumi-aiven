@@ -24,11 +24,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
 
+        [Input("saslPlainPassword")]
+        private Input<string>? _saslPlainPassword;
+
         /// <summary>
         /// Password for SASL PLAIN mechanism in the Kafka server.
         /// </summary>
-        [Input("saslPlainPassword")]
-        public Input<string>? SaslPlainPassword { get; set; }
+        public Input<string>? SaslPlainPassword
+        {
+            get => _saslPlainPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslPlainPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for SASL PLAIN mechanism in the Kafka server.

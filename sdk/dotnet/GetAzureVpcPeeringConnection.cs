@@ -15,13 +15,13 @@ namespace Pulumi.Aiven
         /// The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// </summary>
         public static Task<GetAzureVpcPeeringConnectionResult> InvokeAsync(GetAzureVpcPeeringConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// </summary>
         public static Output<GetAzureVpcPeeringConnectionResult> Invoke(GetAzureVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

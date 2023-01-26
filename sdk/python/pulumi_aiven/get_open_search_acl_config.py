@@ -105,7 +105,7 @@ def get_open_search_acl_config(project: Optional[str] = None,
     import pulumi_aiven as aiven
 
     os_acl_config = aiven.get_open_search_acl_config(project=aiven_project["os-project"]["project"],
-        service_name=aiven_service["os"]["service_name"])
+        service_name=aiven_opensearch["os"]["service_name"])
     ```
 
 
@@ -140,7 +140,7 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[str]] = Non
     import pulumi_aiven as aiven
 
     os_acl_config = aiven.get_open_search_acl_config(project=aiven_project["os-project"]["project"],
-        service_name=aiven_service["os"]["service_name"])
+        service_name=aiven_opensearch["os"]["service_name"])
     ```
 
 

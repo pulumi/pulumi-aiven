@@ -22,14 +22,49 @@ import (
 //
 // ## Example Usage
 //
-// {{tffile "examples/resources/aiven_service_integration/resource.tf"}}
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewServiceIntegration(ctx, "myIntegrationMetrics", &aiven.ServiceIntegrationArgs{
+//				Project:                pulumi.Any(aiven_project.Myproject.Project),
+//				IntegrationType:        pulumi.String("metrics"),
+//				SourceServiceName:      pulumi.Any(aiven_kafka.Kfk1.Service_name),
+//				DestinationServiceName: pulumi.Any(aiven_m3db.M3db.Service_name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
+// ```sh
+//
+//	$ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+//
+// ```
 type ServiceIntegration struct {
 	pulumi.CustomResourceState
 
+	// ClickhouseKafka user configurable settings
+	ClickhouseKafkaUserConfig ServiceIntegrationClickhouseKafkaUserConfigPtrOutput `pulumi:"clickhouseKafkaUserConfig"`
+	// ClickhousePostgresql user configurable settings
+	ClickhousePostgresqlUserConfig ServiceIntegrationClickhousePostgresqlUserConfigPtrOutput `pulumi:"clickhousePostgresqlUserConfig"`
+	// Datadog user configurable settings
+	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrOutput `pulumi:"datadogUserConfig"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -38,17 +73,17 @@ type ServiceIntegration struct {
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
 	// Type of the service integration
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
-	// Kafka Connect specific user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
-	// Kafka Logs specific user configurable settings
+	// KafkaLogs user configurable settings
 	KafkaLogsUserConfig ServiceIntegrationKafkaLogsUserConfigPtrOutput `pulumi:"kafkaLogsUserConfig"`
-	// Mirrormaker 2 integration specific user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
-	// Log integration specific user configurable settings
+	// Logs user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrOutput `pulumi:"logsUserConfig"`
-	// Metrics specific user configurable settings
+	// Metrics user configurable settings
 	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrOutput `pulumi:"metricsUserConfig"`
-	// Mirrormaker 1 integration specific user configurable settings
+	// Mirrormaker user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrOutput `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -93,6 +128,12 @@ func GetServiceIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceIntegration resources.
 type serviceIntegrationState struct {
+	// ClickhouseKafka user configurable settings
+	ClickhouseKafkaUserConfig *ServiceIntegrationClickhouseKafkaUserConfig `pulumi:"clickhouseKafkaUserConfig"`
+	// ClickhousePostgresql user configurable settings
+	ClickhousePostgresqlUserConfig *ServiceIntegrationClickhousePostgresqlUserConfig `pulumi:"clickhousePostgresqlUserConfig"`
+	// Datadog user configurable settings
+	DatadogUserConfig *ServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -101,17 +142,17 @@ type serviceIntegrationState struct {
 	IntegrationId *string `pulumi:"integrationId"`
 	// Type of the service integration
 	IntegrationType *string `pulumi:"integrationType"`
-	// Kafka Connect specific user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	// Kafka Logs specific user configurable settings
+	// KafkaLogs user configurable settings
 	KafkaLogsUserConfig *ServiceIntegrationKafkaLogsUserConfig `pulumi:"kafkaLogsUserConfig"`
-	// Mirrormaker 2 integration specific user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *ServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
-	// Log integration specific user configurable settings
+	// Logs user configurable settings
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
-	// Metrics specific user configurable settings
+	// Metrics user configurable settings
 	MetricsUserConfig *ServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfig"`
-	// Mirrormaker 1 integration specific user configurable settings
+	// Mirrormaker user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project *string `pulumi:"project"`
@@ -122,6 +163,12 @@ type serviceIntegrationState struct {
 }
 
 type ServiceIntegrationState struct {
+	// ClickhouseKafka user configurable settings
+	ClickhouseKafkaUserConfig ServiceIntegrationClickhouseKafkaUserConfigPtrInput
+	// ClickhousePostgresql user configurable settings
+	ClickhousePostgresqlUserConfig ServiceIntegrationClickhousePostgresqlUserConfigPtrInput
+	// Datadog user configurable settings
+	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrInput
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
@@ -130,17 +177,17 @@ type ServiceIntegrationState struct {
 	IntegrationId pulumi.StringPtrInput
 	// Type of the service integration
 	IntegrationType pulumi.StringPtrInput
-	// Kafka Connect specific user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
-	// Kafka Logs specific user configurable settings
+	// KafkaLogs user configurable settings
 	KafkaLogsUserConfig ServiceIntegrationKafkaLogsUserConfigPtrInput
-	// Mirrormaker 2 integration specific user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrInput
-	// Log integration specific user configurable settings
+	// Logs user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
-	// Metrics specific user configurable settings
+	// Metrics user configurable settings
 	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrInput
-	// Mirrormaker 1 integration specific user configurable settings
+	// Mirrormaker user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringPtrInput
@@ -155,23 +202,29 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 }
 
 type serviceIntegrationArgs struct {
+	// ClickhouseKafka user configurable settings
+	ClickhouseKafkaUserConfig *ServiceIntegrationClickhouseKafkaUserConfig `pulumi:"clickhouseKafkaUserConfig"`
+	// ClickhousePostgresql user configurable settings
+	ClickhousePostgresqlUserConfig *ServiceIntegrationClickhousePostgresqlUserConfig `pulumi:"clickhousePostgresqlUserConfig"`
+	// Datadog user configurable settings
+	DatadogUserConfig *ServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
 	// Type of the service integration
 	IntegrationType string `pulumi:"integrationType"`
-	// Kafka Connect specific user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	// Kafka Logs specific user configurable settings
+	// KafkaLogs user configurable settings
 	KafkaLogsUserConfig *ServiceIntegrationKafkaLogsUserConfig `pulumi:"kafkaLogsUserConfig"`
-	// Mirrormaker 2 integration specific user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *ServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
-	// Log integration specific user configurable settings
+	// Logs user configurable settings
 	LogsUserConfig *ServiceIntegrationLogsUserConfig `pulumi:"logsUserConfig"`
-	// Metrics specific user configurable settings
+	// Metrics user configurable settings
 	MetricsUserConfig *ServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfig"`
-	// Mirrormaker 1 integration specific user configurable settings
+	// Mirrormaker user configurable settings
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
@@ -183,23 +236,29 @@ type serviceIntegrationArgs struct {
 
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
+	// ClickhouseKafka user configurable settings
+	ClickhouseKafkaUserConfig ServiceIntegrationClickhouseKafkaUserConfigPtrInput
+	// ClickhousePostgresql user configurable settings
+	ClickhousePostgresqlUserConfig ServiceIntegrationClickhousePostgresqlUserConfigPtrInput
+	// Datadog user configurable settings
+	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrInput
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
 	// Type of the service integration
 	IntegrationType pulumi.StringInput
-	// Kafka Connect specific user configurable settings
+	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
-	// Kafka Logs specific user configurable settings
+	// KafkaLogs user configurable settings
 	KafkaLogsUserConfig ServiceIntegrationKafkaLogsUserConfigPtrInput
-	// Mirrormaker 2 integration specific user configurable settings
+	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig ServiceIntegrationKafkaMirrormakerUserConfigPtrInput
-	// Log integration specific user configurable settings
+	// Logs user configurable settings
 	LogsUserConfig ServiceIntegrationLogsUserConfigPtrInput
-	// Metrics specific user configurable settings
+	// Metrics user configurable settings
 	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrInput
-	// Mirrormaker 1 integration specific user configurable settings
+	// Mirrormaker user configurable settings
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringInput
@@ -296,6 +355,25 @@ func (o ServiceIntegrationOutput) ToServiceIntegrationOutputWithContext(ctx cont
 	return o
 }
 
+// ClickhouseKafka user configurable settings
+func (o ServiceIntegrationOutput) ClickhouseKafkaUserConfig() ServiceIntegrationClickhouseKafkaUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationClickhouseKafkaUserConfigPtrOutput {
+		return v.ClickhouseKafkaUserConfig
+	}).(ServiceIntegrationClickhouseKafkaUserConfigPtrOutput)
+}
+
+// ClickhousePostgresql user configurable settings
+func (o ServiceIntegrationOutput) ClickhousePostgresqlUserConfig() ServiceIntegrationClickhousePostgresqlUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationClickhousePostgresqlUserConfigPtrOutput {
+		return v.ClickhousePostgresqlUserConfig
+	}).(ServiceIntegrationClickhousePostgresqlUserConfigPtrOutput)
+}
+
+// Datadog user configurable settings
+func (o ServiceIntegrationOutput) DatadogUserConfig() ServiceIntegrationDatadogUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationDatadogUserConfigPtrOutput { return v.DatadogUserConfig }).(ServiceIntegrationDatadogUserConfigPtrOutput)
+}
+
 // Destination endpoint for the integration (if any)
 func (o ServiceIntegrationOutput) DestinationEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.DestinationEndpointId }).(pulumi.StringPtrOutput)
@@ -316,38 +394,38 @@ func (o ServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Kafka Connect specific user configurable settings
+// KafkaConnect user configurable settings
 func (o ServiceIntegrationOutput) KafkaConnectUserConfig() ServiceIntegrationKafkaConnectUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationKafkaConnectUserConfigPtrOutput {
 		return v.KafkaConnectUserConfig
 	}).(ServiceIntegrationKafkaConnectUserConfigPtrOutput)
 }
 
-// Kafka Logs specific user configurable settings
+// KafkaLogs user configurable settings
 func (o ServiceIntegrationOutput) KafkaLogsUserConfig() ServiceIntegrationKafkaLogsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationKafkaLogsUserConfigPtrOutput {
 		return v.KafkaLogsUserConfig
 	}).(ServiceIntegrationKafkaLogsUserConfigPtrOutput)
 }
 
-// Mirrormaker 2 integration specific user configurable settings
+// KafkaMirrormaker user configurable settings
 func (o ServiceIntegrationOutput) KafkaMirrormakerUserConfig() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
 		return v.KafkaMirrormakerUserConfig
 	}).(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
 }
 
-// Log integration specific user configurable settings
+// Logs user configurable settings
 func (o ServiceIntegrationOutput) LogsUserConfig() ServiceIntegrationLogsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationLogsUserConfigPtrOutput { return v.LogsUserConfig }).(ServiceIntegrationLogsUserConfigPtrOutput)
 }
 
-// Metrics specific user configurable settings
+// Metrics user configurable settings
 func (o ServiceIntegrationOutput) MetricsUserConfig() ServiceIntegrationMetricsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationMetricsUserConfigPtrOutput { return v.MetricsUserConfig }).(ServiceIntegrationMetricsUserConfigPtrOutput)
 }
 
-// Mirrormaker 1 integration specific user configurable settings
+// Mirrormaker user configurable settings
 func (o ServiceIntegrationOutput) MirrormakerUserConfig() ServiceIntegrationMirrormakerUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationMirrormakerUserConfigPtrOutput {
 		return v.MirrormakerUserConfig

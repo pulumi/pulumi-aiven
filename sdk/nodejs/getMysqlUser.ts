@@ -13,19 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = pulumi.output(aiven.getMysqlUser({
+ * const user = aiven.getMysqlUser({
  *     project: "my-project",
  *     serviceName: "my-service",
  *     username: "user1",
- * }));
+ * });
  * ```
  */
 export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMysqlUser:getMysqlUser", {
         "project": args.project,
         "serviceName": args.serviceName,
@@ -92,9 +89,24 @@ export interface GetMysqlUserResult {
      */
     readonly username: string;
 }
-
+/**
+ * The MySQL User data source provides information about the existing Aiven MySQL User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getMysqlUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
+ */
 export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlUserResult> {
-    return pulumi.output(args).apply(a => getMysqlUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getMysqlUser(a, opts))
 }
 
 /**

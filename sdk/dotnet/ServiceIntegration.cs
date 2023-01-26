@@ -21,15 +21,51 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
-    /// {{tffile "examples/resources/aiven_service_integration/resource.tf"}}
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myIntegrationMetrics = new Aiven.ServiceIntegration("myIntegrationMetrics", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         IntegrationType = "metrics",
+    ///         SourceServiceName = aiven_kafka.Kfk1.Service_name,
+    ///         DestinationServiceName = aiven_m3db.M3db.Service_name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
+    /// ```sh
+    ///  $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegration:ServiceIntegration")]
     public partial class ServiceIntegration : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// ClickhouseKafka user configurable settings
+        /// </summary>
+        [Output("clickhouseKafkaUserConfig")]
+        public Output<Outputs.ServiceIntegrationClickhouseKafkaUserConfig?> ClickhouseKafkaUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ClickhousePostgresql user configurable settings
+        /// </summary>
+        [Output("clickhousePostgresqlUserConfig")]
+        public Output<Outputs.ServiceIntegrationClickhousePostgresqlUserConfig?> ClickhousePostgresqlUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Datadog user configurable settings
+        /// </summary>
+        [Output("datadogUserConfig")]
+        public Output<Outputs.ServiceIntegrationDatadogUserConfig?> DatadogUserConfig { get; private set; } = null!;
+
         /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
@@ -55,37 +91,37 @@ namespace Pulumi.Aiven
         public Output<string> IntegrationType { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// KafkaConnect user configurable settings
         /// </summary>
         [Output("kafkaConnectUserConfig")]
         public Output<Outputs.ServiceIntegrationKafkaConnectUserConfig?> KafkaConnectUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Logs specific user configurable settings
+        /// KafkaLogs user configurable settings
         /// </summary>
         [Output("kafkaLogsUserConfig")]
         public Output<Outputs.ServiceIntegrationKafkaLogsUserConfig?> KafkaLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Mirrormaker 2 integration specific user configurable settings
+        /// KafkaMirrormaker user configurable settings
         /// </summary>
         [Output("kafkaMirrormakerUserConfig")]
         public Output<Outputs.ServiceIntegrationKafkaMirrormakerUserConfig?> KafkaMirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Log integration specific user configurable settings
+        /// Logs user configurable settings
         /// </summary>
         [Output("logsUserConfig")]
         public Output<Outputs.ServiceIntegrationLogsUserConfig?> LogsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Metrics specific user configurable settings
+        /// Metrics user configurable settings
         /// </summary>
         [Output("metricsUserConfig")]
         public Output<Outputs.ServiceIntegrationMetricsUserConfig?> MetricsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Mirrormaker 1 integration specific user configurable settings
+        /// Mirrormaker user configurable settings
         /// </summary>
         [Output("mirrormakerUserConfig")]
         public Output<Outputs.ServiceIntegrationMirrormakerUserConfig?> MirrormakerUserConfig { get; private set; } = null!;
@@ -155,6 +191,24 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ClickhouseKafka user configurable settings
+        /// </summary>
+        [Input("clickhouseKafkaUserConfig")]
+        public Input<Inputs.ServiceIntegrationClickhouseKafkaUserConfigArgs>? ClickhouseKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// ClickhousePostgresql user configurable settings
+        /// </summary>
+        [Input("clickhousePostgresqlUserConfig")]
+        public Input<Inputs.ServiceIntegrationClickhousePostgresqlUserConfigArgs>? ClickhousePostgresqlUserConfig { get; set; }
+
+        /// <summary>
+        /// Datadog user configurable settings
+        /// </summary>
+        [Input("datadogUserConfig")]
+        public Input<Inputs.ServiceIntegrationDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
+
+        /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
         [Input("destinationEndpointId")]
@@ -173,37 +227,37 @@ namespace Pulumi.Aiven
         public Input<string> IntegrationType { get; set; } = null!;
 
         /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// KafkaConnect user configurable settings
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaConnectUserConfigArgs>? KafkaConnectUserConfig { get; set; }
 
         /// <summary>
-        /// Kafka Logs specific user configurable settings
+        /// KafkaLogs user configurable settings
         /// </summary>
         [Input("kafkaLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaLogsUserConfigArgs>? KafkaLogsUserConfig { get; set; }
 
         /// <summary>
-        /// Mirrormaker 2 integration specific user configurable settings
+        /// KafkaMirrormaker user configurable settings
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaMirrormakerUserConfigArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// Log integration specific user configurable settings
+        /// Logs user configurable settings
         /// </summary>
         [Input("logsUserConfig")]
         public Input<Inputs.ServiceIntegrationLogsUserConfigArgs>? LogsUserConfig { get; set; }
 
         /// <summary>
-        /// Metrics specific user configurable settings
+        /// Metrics user configurable settings
         /// </summary>
         [Input("metricsUserConfig")]
         public Input<Inputs.ServiceIntegrationMetricsUserConfigArgs>? MetricsUserConfig { get; set; }
 
         /// <summary>
-        /// Mirrormaker 1 integration specific user configurable settings
+        /// Mirrormaker user configurable settings
         /// </summary>
         [Input("mirrormakerUserConfig")]
         public Input<Inputs.ServiceIntegrationMirrormakerUserConfigArgs>? MirrormakerUserConfig { get; set; }
@@ -235,6 +289,24 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ClickhouseKafka user configurable settings
+        /// </summary>
+        [Input("clickhouseKafkaUserConfig")]
+        public Input<Inputs.ServiceIntegrationClickhouseKafkaUserConfigGetArgs>? ClickhouseKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// ClickhousePostgresql user configurable settings
+        /// </summary>
+        [Input("clickhousePostgresqlUserConfig")]
+        public Input<Inputs.ServiceIntegrationClickhousePostgresqlUserConfigGetArgs>? ClickhousePostgresqlUserConfig { get; set; }
+
+        /// <summary>
+        /// Datadog user configurable settings
+        /// </summary>
+        [Input("datadogUserConfig")]
+        public Input<Inputs.ServiceIntegrationDatadogUserConfigGetArgs>? DatadogUserConfig { get; set; }
+
+        /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
         [Input("destinationEndpointId")]
@@ -259,37 +331,37 @@ namespace Pulumi.Aiven
         public Input<string>? IntegrationType { get; set; }
 
         /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// KafkaConnect user configurable settings
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaConnectUserConfigGetArgs>? KafkaConnectUserConfig { get; set; }
 
         /// <summary>
-        /// Kafka Logs specific user configurable settings
+        /// KafkaLogs user configurable settings
         /// </summary>
         [Input("kafkaLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaLogsUserConfigGetArgs>? KafkaLogsUserConfig { get; set; }
 
         /// <summary>
-        /// Mirrormaker 2 integration specific user configurable settings
+        /// KafkaMirrormaker user configurable settings
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
         public Input<Inputs.ServiceIntegrationKafkaMirrormakerUserConfigGetArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// Log integration specific user configurable settings
+        /// Logs user configurable settings
         /// </summary>
         [Input("logsUserConfig")]
         public Input<Inputs.ServiceIntegrationLogsUserConfigGetArgs>? LogsUserConfig { get; set; }
 
         /// <summary>
-        /// Metrics specific user configurable settings
+        /// Metrics user configurable settings
         /// </summary>
         [Input("metricsUserConfig")]
         public Input<Inputs.ServiceIntegrationMetricsUserConfigGetArgs>? MetricsUserConfig { get; set; }
 
         /// <summary>
-        /// Mirrormaker 1 integration specific user configurable settings
+        /// Mirrormaker user configurable settings
         /// </summary>
         [Input("mirrormakerUserConfig")]
         public Input<Inputs.ServiceIntegrationMirrormakerUserConfigGetArgs>? MirrormakerUserConfig { get; set; }

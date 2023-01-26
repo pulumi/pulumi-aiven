@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -13,9 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlinkFlinkUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String executionCheckpointingIntervalMs;
     private @Nullable String executionCheckpointingTimeoutMs;
     private @Nullable String flinkVersion;
+    private @Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilters;
     private @Nullable String numberOfTaskSlots;
     private @Nullable String parallelismDefault;
@@ -26,6 +29,9 @@ public final class GetFlinkFlinkUserConfig {
     private @Nullable String restartStrategyMaxFailures;
 
     private GetFlinkFlinkUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> executionCheckpointingIntervalMs() {
         return Optional.ofNullable(this.executionCheckpointingIntervalMs);
     }
@@ -34,6 +40,9 @@ public final class GetFlinkFlinkUserConfig {
     }
     public Optional<String> flinkVersion() {
         return Optional.ofNullable(this.flinkVersion);
+    }
+    public List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects() {
+        return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
@@ -69,9 +78,11 @@ public final class GetFlinkFlinkUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String executionCheckpointingIntervalMs;
         private @Nullable String executionCheckpointingTimeoutMs;
         private @Nullable String flinkVersion;
+        private @Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable String numberOfTaskSlots;
         private @Nullable String parallelismDefault;
@@ -83,9 +94,11 @@ public final class GetFlinkFlinkUserConfig {
         public Builder() {}
         public Builder(GetFlinkFlinkUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.executionCheckpointingIntervalMs = defaults.executionCheckpointingIntervalMs;
     	      this.executionCheckpointingTimeoutMs = defaults.executionCheckpointingTimeoutMs;
     	      this.flinkVersion = defaults.flinkVersion;
+    	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
     	      this.parallelismDefault = defaults.parallelismDefault;
@@ -96,6 +109,11 @@ public final class GetFlinkFlinkUserConfig {
     	      this.restartStrategyMaxFailures = defaults.restartStrategyMaxFailures;
         }
 
+        @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
         @CustomType.Setter
         public Builder executionCheckpointingIntervalMs(@Nullable String executionCheckpointingIntervalMs) {
             this.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
@@ -110,6 +128,14 @@ public final class GetFlinkFlinkUserConfig {
         public Builder flinkVersion(@Nullable String flinkVersion) {
             this.flinkVersion = flinkVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilterObjects(@Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects) {
+            this.ipFilterObjects = ipFilterObjects;
+            return this;
+        }
+        public Builder ipFilterObjects(GetFlinkFlinkUserConfigIpFilterObject... ipFilterObjects) {
+            return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -156,9 +182,11 @@ public final class GetFlinkFlinkUserConfig {
         }
         public GetFlinkFlinkUserConfig build() {
             final var o = new GetFlinkFlinkUserConfig();
+            o.additionalBackupRegions = additionalBackupRegions;
             o.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
             o.executionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             o.flinkVersion = flinkVersion;
+            o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.numberOfTaskSlots = numberOfTaskSlots;
             o.parallelismDefault = parallelismDefault;
