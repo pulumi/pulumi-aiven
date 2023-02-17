@@ -1,6 +1,6 @@
 module github.com/aiven/terraform-provider-aiven/shim
 
-go 1.18
+go 1.19
 
 require (
 	github.com/aiven/terraform-provider-aiven v1.3.2-0.20230109110204-a0f42c767e64
