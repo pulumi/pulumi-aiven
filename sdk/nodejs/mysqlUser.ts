@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *     serviceName: aiven_mysql.bar.service_name,
  *     project: "my-project",
  *     username: "user-1",
- *     password: `Test$1234`,
+ *     password: "Test$1234",
  * });
  * ```
  */

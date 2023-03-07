@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,7 +31,7 @@ import (
 //				ServiceName: pulumi.Any(aiven_opensearch.Bar.Service_name),
 //				Project:     pulumi.String("my-project"),
 //				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String(fmt.Sprintf("Test$1234")),
+//				Password:    pulumi.String("Test$1234"),
 //			})
 //			if err != nil {
 //				return err
