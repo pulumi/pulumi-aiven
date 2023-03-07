@@ -1,0 +1,28 @@
+From 65af75bb5d9b4c1fb6f57eb537e7f0ba334fe160 Mon Sep 17 00:00:00 2001
+From: Aaron Friel <mayreply@aaronfriel.com>
+Date: Mon, 6 Mar 2023 19:13:42 -0800
+Subject: [PATCH] Add `shim.NewProvider` to expose `internal/provider.New`
+
+---
+ shim/shim.go | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 shim/shim.go
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 0000000..e3d316a
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,10 @@
++package shim
++
++import (
++	"github.com/aiven/terraform-provider-aiven/internal/provider"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++)
++
++func NewProvider() *schema.Provider {
++	return provider.Provider()
++}
+--
+2.39.1

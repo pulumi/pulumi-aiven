@@ -3,21 +3,19 @@ module github.com/pulumi/pulumi-aiven/provider/v5
 go 1.19
 
 replace (
-	cloud.google.com/go/storage => cloud.google.com/go/storage v1.15.0
-	github.com/aiven/terraform-provider-aiven/shim => ./shim
+	github.com/aiven/terraform-provider-aiven => ../upstream
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20221122203342-430f685de305
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.2
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1 // indirect
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.0
 	github.com/pulumi/pulumi/pkg/v3 v3.56.0 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.56.0
 )
 
-require github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1 // indirect
-
-require github.com/aiven/terraform-provider-aiven/shim v0.0.0-00010101000000-000000000000
+require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
 
 require (
 	cloud.google.com/go v0.110.0 // indirect
@@ -54,7 +52,7 @@ require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/aiven/aiven-go-client v1.7.1-0.20221108145444-aa8b10f12d8f // indirect
-	github.com/aiven/terraform-provider-aiven v1.3.1 // indirect
+	github.com/aiven/aiven-go-client/tools/exp v0.0.0-20221102122203-4f39deb34b6a // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
@@ -84,15 +82,14 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
+	github.com/cloudflare/circl v1.1.0 // indirect
 	github.com/dave/jennifer v1.5.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
-	github.com/docker/docker v23.0.1+incompatible // indirect
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
-	github.com/emicklei/go-restful v2.16.0+incompatible // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
@@ -184,6 +181,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
+	github.com/pjbgf/sha1cd v0.3.0 // indirect
 	github.com/pkg/browser v0.0.0-20210115035449-ce105d075bb4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
@@ -191,7 +189,7 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.8.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.0.4 // indirect
-	github.com/pulumi/schema-tools v0.1.0 // indirect
+	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
@@ -202,6 +200,7 @@ require (
 	github.com/segmentio/asm v1.1.3 // indirect
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
+	github.com/skeema/knownhosts v1.1.0 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect

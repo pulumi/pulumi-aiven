@@ -77,6 +77,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:          "https://pulumi.io",
 		Repository:        "https://github.com/pulumi/pulumi-aiven",
 		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
+		UpstreamRepoPath:  "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_token": {
 				Secret: tfbridge.True(),
