@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -34,22 +32,7 @@ import (
 //				ServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),
 //				SubjectName:        pulumi.String("kafka-schema1"),
 //				CompatibilityLevel: pulumi.String("FORWARD"),
-//				Schema: pulumi.String(fmt.Sprintf(`    {
-//	       "doc": "example",
-//	       "fields": [{
-//	           "default": 5,
-//	           "doc": "my test number",
-//	           "name": "test",
-//	           "namespace": "test",
-//	           "type": "int"
-//	       }],
-//	       "name": "example",
-//	       "namespace": "example",
-//	       "type": "record"
-//	    }
-//
-// `)),
-//
+//				Schema:             pulumi.String("    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n"),
 //			})
 //			if err != nil {
 //				return err

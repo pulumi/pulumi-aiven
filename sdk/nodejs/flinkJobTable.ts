@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  *     integrationId: aiven_service_integration.flink_kafka.service_id,
  *     jdbcTable: "<JDBC_TABLE_NAME>",
  *     kafkaTopic: aiven_kafka_topic.table_topic.topic_name,
- *     schemaSql: `      `+"`cpu`"+` INT,
- *       `+"`node`"+` INT,
- *       `+"`occurred_at`"+` TIMESTAMP(3) METADATA FROM 'timestamp',
- *       WATERMARK FOR `+"`occurred_at`"+` AS `+"`occurred_at`"+` - INTERVAL '5' SECOND
+ *     schemaSql: `      \`+"\`cpu\`"+\` INT,
+ *       \`+"\`node\`"+\` INT,
+ *       \`+"\`occurred_at\`"+\` TIMESTAMP(3) METADATA FROM 'timestamp',
+ *       WATERMARK FOR \`+"\`occurred_at\`"+\` AS \`+"\`occurred_at\`"+\` - INTERVAL '5' SECOND
  * `,
  * });
  * ```
