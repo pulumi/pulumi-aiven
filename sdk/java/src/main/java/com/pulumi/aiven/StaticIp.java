@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The aiven static_ip resource allows the creation and deletion of static ips. Please not that once a static ip is in the &#39;assigned&#39; state it it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
+ * The aiven.StaticIp resource allows the creation and deletion of static ips. Please not that once a static ip is in the &#39;assigned&#39; state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
  * 
  */
 @ResourceType(type="aiven:index/staticIp:StaticIp")

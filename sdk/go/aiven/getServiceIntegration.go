@@ -75,6 +75,8 @@ type LookupServiceIntegrationResult struct {
 	DestinationEndpointId string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName string `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchMetrics user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfigs []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Service Integration Id at aiven
@@ -174,6 +176,13 @@ func (o LookupServiceIntegrationResultOutput) DestinationEndpointId() pulumi.Str
 // Destination service for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) DestinationServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationServiceName }).(pulumi.StringOutput)
+}
+
+// ExternalAwsCloudwatchMetrics user configurable settings
+func (o LookupServiceIntegrationResultOutput) ExternalAwsCloudwatchMetricsUserConfigs() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+		return v.ExternalAwsCloudwatchMetricsUserConfigs
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

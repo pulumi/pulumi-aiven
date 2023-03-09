@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhousePostgresqlUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
@@ -44,6 +45,11 @@ public final class GetServiceIntegrationResult {
      * 
      */
     private String destinationServiceName;
+    /**
+     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -140,6 +146,13 @@ public final class GetServiceIntegrationResult {
      */
     public String destinationServiceName() {
         return this.destinationServiceName;
+    }
+    /**
+     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs() {
+        return this.externalAwsCloudwatchMetricsUserConfigs;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -240,6 +253,7 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
         private String destinationEndpointId;
         private String destinationServiceName;
+        private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
         private String id;
         private String integrationId;
         private String integrationType;
@@ -260,6 +274,7 @@ public final class GetServiceIntegrationResult {
     	      this.datadogUserConfigs = defaults.datadogUserConfigs;
     	      this.destinationEndpointId = defaults.destinationEndpointId;
     	      this.destinationServiceName = defaults.destinationServiceName;
+    	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
     	      this.id = defaults.id;
     	      this.integrationId = defaults.integrationId;
     	      this.integrationType = defaults.integrationType;
@@ -307,6 +322,14 @@ public final class GetServiceIntegrationResult {
         public Builder destinationServiceName(String destinationServiceName) {
             this.destinationServiceName = Objects.requireNonNull(destinationServiceName);
             return this;
+        }
+        @CustomType.Setter
+        public Builder externalAwsCloudwatchMetricsUserConfigs(List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs) {
+            this.externalAwsCloudwatchMetricsUserConfigs = Objects.requireNonNull(externalAwsCloudwatchMetricsUserConfigs);
+            return this;
+        }
+        public Builder externalAwsCloudwatchMetricsUserConfigs(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig... externalAwsCloudwatchMetricsUserConfigs) {
+            return externalAwsCloudwatchMetricsUserConfigs(List.of(externalAwsCloudwatchMetricsUserConfigs));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -393,6 +416,7 @@ public final class GetServiceIntegrationResult {
             o.datadogUserConfigs = datadogUserConfigs;
             o.destinationEndpointId = destinationEndpointId;
             o.destinationServiceName = destinationServiceName;
+            o.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             o.id = id;
             o.integrationId = integrationId;
             o.integrationType = integrationType;

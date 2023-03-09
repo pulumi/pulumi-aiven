@@ -226,6 +226,28 @@ export interface ClickhouseTag {
     value: string;
 }
 
+export interface FlinkApplicationVersionSink {
+    /**
+     * The CREATE TABLE statement
+     */
+    createTable: string;
+    /**
+     * The integration ID
+     */
+    integrationId?: string;
+}
+
+export interface FlinkApplicationVersionSource {
+    /**
+     * The CREATE TABLE statement
+     */
+    createTable: string;
+    /**
+     * The integration ID
+     */
+    integrationId?: string;
+}
+
 export interface FlinkComponent {
     component: string;
     host: string;
@@ -528,6 +550,16 @@ export interface GetClickhouseServiceIntegration {
 export interface GetClickhouseTag {
     key: string;
     value: string;
+}
+
+export interface GetFlinkApplicationVersionSink {
+    createTable: string;
+    integrationId?: string;
+}
+
+export interface GetFlinkApplicationVersionSource {
+    createTable: string;
+    integrationId?: string;
 }
 
 export interface GetFlinkComponent {
@@ -2017,6 +2049,21 @@ export interface GetServiceIntegrationEndpointSignalfxUserConfig {
     enabledMetrics?: string[];
     signalfxApiKey?: string;
     signalfxRealm?: string;
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+    droppedMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
+    extraMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    field?: string;
+    metric?: string;
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+    field?: string;
+    metric?: string;
 }
 
 export interface GetServiceIntegrationKafkaConnectUserConfig {
@@ -4023,6 +4070,27 @@ export interface ServiceIntegrationEndpointSignalfxUserConfig {
      * SignalFX realm
      */
     signalfxRealm?: string;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+    /**
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+     */
+    droppedMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
+    /**
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+     */
+    extraMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    field?: string;
+    metric?: string;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+    field?: string;
+    metric?: string;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {

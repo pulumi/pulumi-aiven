@@ -83,6 +83,10 @@ export interface GetServiceIntegrationResult {
      */
     readonly destinationServiceName: string;
     /**
+     * ExternalAwsCloudwatchMetrics user configurable settings
+     */
+    readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
