@@ -724,6 +724,62 @@
                 "value"
             ]
         },
+        "aiven:index/FlinkApplicationVersionSink:FlinkApplicationVersionSink": {
+            "properties": {
+                "createTable": {
+                    "type": "string",
+                    "description": "The CREATE TABLE statement\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "integrationId": {
+                    "type": "string",
+                    "description": "The integration ID\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "createTable"
+            ]
+        },
+        "aiven:index/FlinkApplicationVersionSource:FlinkApplicationVersionSource": {
+            "properties": {
+                "createTable": {
+                    "type": "string",
+                    "description": "The CREATE TABLE statement\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "integrationId": {
+                    "type": "string",
+                    "description": "The integration ID\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "createTable"
+            ]
+        },
         "aiven:index/FlinkComponent:FlinkComponent": {
             "properties": {
                 "component": {
@@ -9300,6 +9356,77 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
+            "properties": {
+                "droppedMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric"
+                    },
+                    "description": "Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "extraMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric"
+                    },
+                    "description": "Metrics to allow through to AWS CloudWatch (in addition to default metrics)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig": {
             "properties": {
                 "kafkaConnect": {
@@ -10544,6 +10671,64 @@
             "required": [
                 "key",
                 "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getFlinkApplicationVersionSink:getFlinkApplicationVersionSink": {
+            "properties": {
+                "createTable": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "integrationId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "createTable"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getFlinkApplicationVersionSource:getFlinkApplicationVersionSource": {
+            "properties": {
+                "createTable": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "integrationId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "createTable"
             ],
             "language": {
                 "nodejs": {
@@ -19000,6 +19185,75 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
+            "properties": {
+                "droppedMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "extraMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationKafkaConnectUserConfig:getServiceIntegrationKafkaConnectUserConfig": {
             "properties": {
                 "kafkaConnect": {
@@ -22438,6 +22692,280 @@
                 "type": "object"
             }
         },
+        "aiven:index/flinkApplication:FlinkApplication": {
+            "description": "The Flink Application resource allows the creation and management of Aiven Flink Applications.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.FlinkApplication(\"foo\", {\n    project: aiven_project.foo.project,\n    serviceName: \"flink-service-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.FlinkApplication(\"foo\",\n    project=aiven_project[\"foo\"][\"project\"],\n    service_name=\"flink-service-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.FlinkApplication(\"foo\", new()\n    {\n        Project = aiven_project.Foo.Project,\n        ServiceName = \"flink-service-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewFlinkApplication(ctx, \"foo\", \u0026aiven.FlinkApplicationArgs{\n\t\t\tProject:     pulumi.Any(aiven_project.Foo.Project),\n\t\t\tServiceName: pulumi.String(\"flink-service-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.FlinkApplication;\nimport com.pulumi.aiven.FlinkApplicationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new FlinkApplication(\"foo\", FlinkApplicationArgs.builder()        \n            .project(aiven_project.foo().project())\n            .serviceName(\"flink-service-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:FlinkApplication\n    properties:\n      project: ${aiven_project.foo.project}\n      serviceName: flink-service-1\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name\n```\n\n ",
+            "properties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "Application ID\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Application creation time\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Application creator\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Application name\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Application update time\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Application updater\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "createdAt",
+                "createdBy",
+                "name",
+                "project",
+                "serviceName",
+                "updatedAt",
+                "updatedBy"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Application name\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FlinkApplication resources.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "Application ID\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Application creation time\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "Application creator\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Application name\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Application update time\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "Application updater\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": {
+            "description": "The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.\n\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id\n```\n\n ",
+            "properties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "Application ID\n"
+                },
+                "applicationVersionId": {
+                    "type": "string",
+                    "description": "Application version ID\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Application version creation time\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Application version creator\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "sinks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/FlinkApplicationVersionSink:FlinkApplicationVersionSink"
+                    },
+                    "description": "Application sinks\n"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/FlinkApplicationVersionSource:FlinkApplicationVersionSource"
+                    },
+                    "description": "Application sources\n"
+                },
+                "statement": {
+                    "type": "string",
+                    "description": "Job SQL statement\n"
+                },
+                "version": {
+                    "type": "integer",
+                    "description": "Application version number\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "applicationVersionId",
+                "createdAt",
+                "createdBy",
+                "project",
+                "serviceName",
+                "sinks",
+                "sources",
+                "statement",
+                "version"
+            ],
+            "inputProperties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "Application ID\n",
+                    "willReplaceOnChanges": true
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sinks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/FlinkApplicationVersionSink:FlinkApplicationVersionSink"
+                    },
+                    "description": "Application sinks\n",
+                    "willReplaceOnChanges": true
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/FlinkApplicationVersionSource:FlinkApplicationVersionSource"
+                    },
+                    "description": "Application sources\n",
+                    "willReplaceOnChanges": true
+                },
+                "statement": {
+                    "type": "string",
+                    "description": "Job SQL statement\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "applicationId",
+                "project",
+                "serviceName",
+                "sinks",
+                "sources",
+                "statement"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FlinkApplicationVersion resources.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "Application ID\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "applicationVersionId": {
+                        "type": "string",
+                        "description": "Application version ID\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Application version creation time\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "Application version creator\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sinks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/FlinkApplicationVersionSink:FlinkApplicationVersionSink"
+                        },
+                        "description": "Application sinks\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/FlinkApplicationVersionSource:FlinkApplicationVersionSource"
+                        },
+                        "description": "Application sources\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "statement": {
+                        "type": "string",
+                        "description": "Job SQL statement\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "version": {
+                        "type": "integer",
+                        "description": "Application version number\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/flinkJob:FlinkJob": {
             "description": "The Flink Job resource allows the creation and management of Aiven Jobs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst job = new aiven.FlinkJob(\"job\", {\n    project: aiven_flink.flink.project,\n    serviceName: aiven_flink.flink.service_name,\n    jobName: \"\u003cJOB_NAME\u003e\",\n    tableIds: [\n        aiven_flink_table.source.table_id,\n        aiven_flink_table.sink.table_id,\n    ],\n    statement: `        INSERT INTO ${aiven_flink_table.sink.table_name}                                            \n        SELECT * FROM ${aiven_flink_table.source.table_name}                                        \n        WHERE `cpu` \u003e 50                                                                            \n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\njob = aiven.FlinkJob(\"job\",\n    project=aiven_flink[\"flink\"][\"project\"],\n    service_name=aiven_flink[\"flink\"][\"service_name\"],\n    job_name=\"\u003cJOB_NAME\u003e\",\n    table_ids=[\n        aiven_flink_table[\"source\"][\"table_id\"],\n        aiven_flink_table[\"sink\"][\"table_id\"],\n    ],\n    statement=f\"\"\"        INSERT INTO {aiven_flink_table[\"sink\"][\"table_name\"]}                                            \n        SELECT * FROM {aiven_flink_table[\"source\"][\"table_name\"]}                                        \n        WHERE `cpu` \u003e 50                                                                            \n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var job = new Aiven.FlinkJob(\"job\", new()\n    {\n        Project = aiven_flink.Flink.Project,\n        ServiceName = aiven_flink.Flink.Service_name,\n        JobName = \"\u003cJOB_NAME\u003e\",\n        TableIds = new[]\n        {\n            aiven_flink_table.Source.Table_id,\n            aiven_flink_table.Sink.Table_id,\n        },\n        Statement = @$\"        INSERT INTO {aiven_flink_table.Sink.Table_name}                                            \n        SELECT * FROM {aiven_flink_table.Source.Table_name}                                        \n        WHERE `cpu` \u003e 50                                                                            \n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewFlinkJob(ctx, \"job\", \u0026aiven.FlinkJobArgs{\n\t\t\tProject:     pulumi.Any(aiven_flink.Flink.Project),\n\t\t\tServiceName: pulumi.Any(aiven_flink.Flink.Service_name),\n\t\t\tJobName:     pulumi.String(\"\u003cJOB_NAME\u003e\"),\n\t\t\tTableIds: pulumi.StringArray{\n\t\t\t\taiven_flink_table.Source.Table_id,\n\t\t\t\taiven_flink_table.Sink.Table_id,\n\t\t\t},\n\t\t\tStatement: pulumi.String(fmt.Sprintf(\"        INSERT INTO %v                                            \\n        SELECT * FROM %v                                        \\n        WHERE `cpu` \u003e 50                                                                            \\n\", aiven_flink_table.Sink.Table_name, aiven_flink_table.Source.Table_name)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.FlinkJob;\nimport com.pulumi.aiven.FlinkJobArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var job = new FlinkJob(\"job\", FlinkJobArgs.builder()        \n            .project(aiven_flink.flink().project())\n            .serviceName(aiven_flink.flink().service_name())\n            .jobName(\"\u003cJOB_NAME\u003e\")\n            .tableIds(            \n                aiven_flink_table.source().table_id(),\n                aiven_flink_table.sink().table_id())\n            .statement(\"\"\"\n        INSERT INTO %s                                            \n        SELECT * FROM %s                                        \n        WHERE `cpu` \u003e 50                                                                            \n\", aiven_flink_table.sink().table_name(),aiven_flink_table.source().table_name()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  job:\n    type: aiven:FlinkJob\n    properties:\n      project: ${aiven_flink.flink.project}\n      serviceName: ${aiven_flink.flink.service_name}\n      jobName: \u003cJOB_NAME\u003e\n      tableIds:\n        - ${aiven_flink_table.source.table_id}\n        - ${aiven_flink_table.sink.table_id}\n      statement: \"        INSERT INTO ${aiven_flink_table.sink.table_name}                                            \\n        SELECT * FROM ${aiven_flink_table.source.table_name}                                        \\n        WHERE `cpu` \u003e 50                                                                            \\n\"\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -24000,7 +24528,8 @@
                 },
                 "defaultAcl": {
                     "type": "boolean",
-                    "description": "Create default wildcard Kafka ACL\n"
+                    "description": "Create default wildcard Kafka ACL\n",
+                    "willReplaceOnChanges": true
                 },
                 "diskSpace": {
                     "type": "string",
@@ -24099,7 +24628,8 @@
                     },
                     "defaultAcl": {
                         "type": "boolean",
-                        "description": "Create default wildcard Kafka ACL\n"
+                        "description": "Create default wildcard Kafka ACL\n",
+                        "willReplaceOnChanges": true
                     },
                     "diskSpace": {
                         "type": "string",
@@ -29410,6 +29940,10 @@
                     "type": "string",
                     "description": "Destination service for the integration (if any)\n"
                 },
+                "externalAwsCloudwatchMetricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig",
+                    "description": "ExternalAwsCloudwatchMetrics user configurable settings\n"
+                },
                 "integrationId": {
                     "type": "string",
                     "description": "Service Integration Id at aiven\n"
@@ -29482,6 +30016,10 @@
                     "type": "string",
                     "description": "Destination service for the integration (if any)\n",
                     "willReplaceOnChanges": true
+                },
+                "externalAwsCloudwatchMetricsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig",
+                    "description": "ExternalAwsCloudwatchMetrics user configurable settings\n"
                 },
                 "integrationType": {
                     "type": "string",
@@ -29556,6 +30094,10 @@
                         "type": "string",
                         "description": "Destination service for the integration (if any)\n",
                         "willReplaceOnChanges": true
+                    },
+                    "externalAwsCloudwatchMetricsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig",
+                        "description": "ExternalAwsCloudwatchMetrics user configurable settings\n"
                     },
                     "integrationId": {
                         "type": "string",
@@ -30064,7 +30606,7 @@
             }
         },
         "aiven:index/staticIp:StaticIp": {
-            "description": "The aiven static_ip resource allows the creation and deletion of static ips. Please not that once a static ip is in the 'assigned' state it it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.\n",
+            "description": "The aiven.StaticIp resource allows the creation and deletion of static ips. Please not that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.\n",
             "properties": {
                 "cloudName": {
                     "type": "string",
@@ -32356,6 +32898,185 @@
                     "staticIps",
                     "tags",
                     "terminationProtection",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getFlinkApplication:getFlinkApplication": {
+            "description": "The Flink Application data source provides information about the existing Aiven Flink Application.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst app1 = aiven.getFlinkApplication({\n    project: data.aiven_project.pr1.project,\n    serviceName: \"\u003cSERVICE_NAME\u003e\",\n    name: \"\u003cAPPLICATION_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\napp1 = aiven.get_flink_application(project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    service_name=\"\u003cSERVICE_NAME\u003e\",\n    name=\"\u003cAPPLICATION_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var app1 = Aiven.GetFlinkApplication.Invoke(new()\n    {\n        Project = data.Aiven_project.Pr1.Project,\n        ServiceName = \"\u003cSERVICE_NAME\u003e\",\n        Name = \"\u003cAPPLICATION_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupFlinkApplication(ctx, \u0026aiven.LookupFlinkApplicationArgs{\n\t\t\tProject:     data.Aiven_project.Pr1.Project,\n\t\t\tServiceName: \"\u003cSERVICE_NAME\u003e\",\n\t\t\tName:        \"\u003cAPPLICATION_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetFlinkApplicationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()\n            .project(data.aiven_project().pr1().project())\n            .serviceName(\"\u003cSERVICE_NAME\u003e\")\n            .name(\"\u003cAPPLICATION_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  app1:\n    fn::invoke:\n      Function: aiven:getFlinkApplication\n      Arguments:\n        project: ${data.aiven_project.pr1.project}\n        serviceName: \u003cSERVICE_NAME\u003e\n        name: \u003cAPPLICATION_NAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFlinkApplication.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Application name\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFlinkApplication.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "Application ID\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Application creation time\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "Application creator\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Application name\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Application update time\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "Application updater\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "applicationId",
+                    "createdAt",
+                    "createdBy",
+                    "name",
+                    "project",
+                    "serviceName",
+                    "updatedAt",
+                    "updatedBy",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": {
+            "description": "The Flink Application Version data source provides information about the existing Aiven Flink Application Version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst app1 = aiven.getFlinkApplicationVersion({\n    project: data.aiven_project.pr1.project,\n    serviceName: \"\u003cSERVICE_NAME\u003e\",\n    applicationId: \"\u003cAPPLICATION_ID\u003e\",\n    applicationVersionId: \"\u003cAPPLICATION_VERSION_ID\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\napp1 = aiven.get_flink_application_version(project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    service_name=\"\u003cSERVICE_NAME\u003e\",\n    application_id=\"\u003cAPPLICATION_ID\u003e\",\n    application_version_id=\"\u003cAPPLICATION_VERSION_ID\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()\n    {\n        Project = data.Aiven_project.Pr1.Project,\n        ServiceName = \"\u003cSERVICE_NAME\u003e\",\n        ApplicationId = \"\u003cAPPLICATION_ID\u003e\",\n        ApplicationVersionId = \"\u003cAPPLICATION_VERSION_ID\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupFlinkApplicationVersion(ctx, \u0026aiven.LookupFlinkApplicationVersionArgs{\n\t\t\tProject:              data.Aiven_project.Pr1.Project,\n\t\t\tServiceName:          \"\u003cSERVICE_NAME\u003e\",\n\t\t\tApplicationId:        \"\u003cAPPLICATION_ID\u003e\",\n\t\t\tApplicationVersionId: \"\u003cAPPLICATION_VERSION_ID\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()\n            .project(data.aiven_project().pr1().project())\n            .serviceName(\"\u003cSERVICE_NAME\u003e\")\n            .applicationId(\"\u003cAPPLICATION_ID\u003e\")\n            .applicationVersionId(\"\u003cAPPLICATION_VERSION_ID\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  app1:\n    fn::invoke:\n      Function: aiven:getFlinkApplicationVersion\n      Arguments:\n        project: ${data.aiven_project.pr1.project}\n        serviceName: \u003cSERVICE_NAME\u003e\n        applicationId: \u003cAPPLICATION_ID\u003e\n        applicationVersionId: \u003cAPPLICATION_VERSION_ID\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFlinkApplicationVersion.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "Application ID\n"
+                    },
+                    "applicationVersionId": {
+                        "type": "string",
+                        "description": "Application version ID\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "applicationId",
+                    "applicationVersionId",
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFlinkApplicationVersion.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "Application ID\n"
+                    },
+                    "applicationVersionId": {
+                        "type": "string",
+                        "description": "Application version ID\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Application version creation time\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "Application version creator\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "sinks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getFlinkApplicationVersionSink:getFlinkApplicationVersionSink"
+                        },
+                        "description": "Application sinks\n"
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getFlinkApplicationVersionSource:getFlinkApplicationVersionSource"
+                        },
+                        "description": "Application sources\n"
+                    },
+                    "statement": {
+                        "type": "string",
+                        "description": "Job SQL statement\n"
+                    },
+                    "version": {
+                        "type": "integer",
+                        "description": "Application version number\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "applicationId",
+                    "applicationVersionId",
+                    "createdAt",
+                    "createdBy",
+                    "project",
+                    "serviceName",
+                    "sinks",
+                    "sources",
+                    "statement",
+                    "version",
                     "id"
                 ]
             }
@@ -36341,6 +37062,13 @@
                         "type": "string",
                         "description": "Destination service for the integration (if any)\n"
                     },
+                    "externalAwsCloudwatchMetricsUserConfigs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig"
+                        },
+                        "description": "ExternalAwsCloudwatchMetrics user configurable settings\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -36415,6 +37143,7 @@
                     "datadogUserConfigs",
                     "destinationEndpointId",
                     "destinationServiceName",
+                    "externalAwsCloudwatchMetricsUserConfigs",
                     "integrationId",
                     "integrationType",
                     "kafkaConnectUserConfigs",

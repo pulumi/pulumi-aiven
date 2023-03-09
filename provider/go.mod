@@ -9,12 +9,13 @@ replace (
 )
 
 require (
-	github.com/aiven/terraform-provider-aiven v0.0.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.1
 	github.com/pulumi/pulumi/pkg/v3 v3.56.0 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.56.0
 )
+
+require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
 
 require (
 	cloud.google.com/go v0.110.0 // indirect
@@ -50,7 +51,7 @@ require (
 	github.com/acomagu/bufpipe v1.0.3 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
-	github.com/aiven/aiven-go-client v1.7.1-0.20221108145444-aa8b10f12d8f // indirect
+	github.com/aiven/aiven-go-client v1.7.1-0.20230208122034-270adff994ec // indirect
 	github.com/aiven/aiven-go-client/tools/exp v0.0.0-20221102122203-4f39deb34b6a // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
