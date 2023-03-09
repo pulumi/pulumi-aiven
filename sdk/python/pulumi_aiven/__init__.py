@@ -26,6 +26,8 @@ from .clickhouse_user import *
 from .connection_pool import *
 from .database import *
 from .flink import *
+from .flink_application import *
+from .flink_application_version import *
 from .flink_job import *
 from .flink_job_table import *
 from .gcp_vpc_peering_connection import *
@@ -48,6 +50,8 @@ from .get_clickhouse_user import *
 from .get_connection_pool import *
 from .get_database import *
 from .get_flink import *
+from .get_flink_application import *
+from .get_flink_application_version import *
 from .get_gcp_vpc_peering_connection import *
 from .get_grafana import *
 from .get_influx_db import *
@@ -307,6 +311,22 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/flink:Flink": "Flink"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkApplication",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkApplication:FlinkApplication": "FlinkApplication"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkApplicationVersion",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": "FlinkApplicationVersion"
   }
  },
  {

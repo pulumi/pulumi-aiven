@@ -85,6 +85,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly destinationServiceName!: pulumi.Output<string | undefined>;
     /**
+     * ExternalAwsCloudwatchMetrics user configurable settings
+     */
+    public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig | undefined>;
+    /**
      * Service Integration Id at aiven
      */
     public /*out*/ readonly integrationId!: pulumi.Output<string>;
@@ -147,6 +151,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["integrationId"] = state ? state.integrationId : undefined;
             resourceInputs["integrationType"] = state ? state.integrationType : undefined;
             resourceInputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
@@ -171,6 +176,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["integrationType"] = args ? args.integrationType : undefined;
             resourceInputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
             resourceInputs["kafkaLogsUserConfig"] = args ? args.kafkaLogsUserConfig : undefined;
@@ -212,6 +218,10 @@ export interface ServiceIntegrationState {
      * Destination service for the integration (if any)
      */
     destinationServiceName?: pulumi.Input<string>;
+    /**
+     * ExternalAwsCloudwatchMetrics user configurable settings
+     */
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * Service Integration Id at aiven
      */
@@ -282,6 +292,10 @@ export interface ServiceIntegrationArgs {
      * Destination service for the integration (if any)
      */
     destinationServiceName?: pulumi.Input<string>;
+    /**
+     * ExternalAwsCloudwatchMetrics user configurable settings
+     */
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * Type of the service integration
      */

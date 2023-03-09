@@ -2507,6 +2507,218 @@ func (o ClickhouseTagArrayOutput) Index(i pulumi.IntInput) ClickhouseTagOutput {
 	}).(ClickhouseTagOutput)
 }
 
+type FlinkApplicationVersionSink struct {
+	// The CREATE TABLE statement
+	CreateTable string `pulumi:"createTable"`
+	// The integration ID
+	IntegrationId *string `pulumi:"integrationId"`
+}
+
+// FlinkApplicationVersionSinkInput is an input type that accepts FlinkApplicationVersionSinkArgs and FlinkApplicationVersionSinkOutput values.
+// You can construct a concrete instance of `FlinkApplicationVersionSinkInput` via:
+//
+//	FlinkApplicationVersionSinkArgs{...}
+type FlinkApplicationVersionSinkInput interface {
+	pulumi.Input
+
+	ToFlinkApplicationVersionSinkOutput() FlinkApplicationVersionSinkOutput
+	ToFlinkApplicationVersionSinkOutputWithContext(context.Context) FlinkApplicationVersionSinkOutput
+}
+
+type FlinkApplicationVersionSinkArgs struct {
+	// The CREATE TABLE statement
+	CreateTable pulumi.StringInput `pulumi:"createTable"`
+	// The integration ID
+	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+}
+
+func (FlinkApplicationVersionSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (i FlinkApplicationVersionSinkArgs) ToFlinkApplicationVersionSinkOutput() FlinkApplicationVersionSinkOutput {
+	return i.ToFlinkApplicationVersionSinkOutputWithContext(context.Background())
+}
+
+func (i FlinkApplicationVersionSinkArgs) ToFlinkApplicationVersionSinkOutputWithContext(ctx context.Context) FlinkApplicationVersionSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionSinkOutput)
+}
+
+// FlinkApplicationVersionSinkArrayInput is an input type that accepts FlinkApplicationVersionSinkArray and FlinkApplicationVersionSinkArrayOutput values.
+// You can construct a concrete instance of `FlinkApplicationVersionSinkArrayInput` via:
+//
+//	FlinkApplicationVersionSinkArray{ FlinkApplicationVersionSinkArgs{...} }
+type FlinkApplicationVersionSinkArrayInput interface {
+	pulumi.Input
+
+	ToFlinkApplicationVersionSinkArrayOutput() FlinkApplicationVersionSinkArrayOutput
+	ToFlinkApplicationVersionSinkArrayOutputWithContext(context.Context) FlinkApplicationVersionSinkArrayOutput
+}
+
+type FlinkApplicationVersionSinkArray []FlinkApplicationVersionSinkInput
+
+func (FlinkApplicationVersionSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (i FlinkApplicationVersionSinkArray) ToFlinkApplicationVersionSinkArrayOutput() FlinkApplicationVersionSinkArrayOutput {
+	return i.ToFlinkApplicationVersionSinkArrayOutputWithContext(context.Background())
+}
+
+func (i FlinkApplicationVersionSinkArray) ToFlinkApplicationVersionSinkArrayOutputWithContext(ctx context.Context) FlinkApplicationVersionSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionSinkArrayOutput)
+}
+
+type FlinkApplicationVersionSinkOutput struct{ *pulumi.OutputState }
+
+func (FlinkApplicationVersionSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (o FlinkApplicationVersionSinkOutput) ToFlinkApplicationVersionSinkOutput() FlinkApplicationVersionSinkOutput {
+	return o
+}
+
+func (o FlinkApplicationVersionSinkOutput) ToFlinkApplicationVersionSinkOutputWithContext(ctx context.Context) FlinkApplicationVersionSinkOutput {
+	return o
+}
+
+// The CREATE TABLE statement
+func (o FlinkApplicationVersionSinkOutput) CreateTable() pulumi.StringOutput {
+	return o.ApplyT(func(v FlinkApplicationVersionSink) string { return v.CreateTable }).(pulumi.StringOutput)
+}
+
+// The integration ID
+func (o FlinkApplicationVersionSinkOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkApplicationVersionSink) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+}
+
+type FlinkApplicationVersionSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (FlinkApplicationVersionSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (o FlinkApplicationVersionSinkArrayOutput) ToFlinkApplicationVersionSinkArrayOutput() FlinkApplicationVersionSinkArrayOutput {
+	return o
+}
+
+func (o FlinkApplicationVersionSinkArrayOutput) ToFlinkApplicationVersionSinkArrayOutputWithContext(ctx context.Context) FlinkApplicationVersionSinkArrayOutput {
+	return o
+}
+
+func (o FlinkApplicationVersionSinkArrayOutput) Index(i pulumi.IntInput) FlinkApplicationVersionSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlinkApplicationVersionSink {
+		return vs[0].([]FlinkApplicationVersionSink)[vs[1].(int)]
+	}).(FlinkApplicationVersionSinkOutput)
+}
+
+type FlinkApplicationVersionSource struct {
+	// The CREATE TABLE statement
+	CreateTable string `pulumi:"createTable"`
+	// The integration ID
+	IntegrationId *string `pulumi:"integrationId"`
+}
+
+// FlinkApplicationVersionSourceInput is an input type that accepts FlinkApplicationVersionSourceArgs and FlinkApplicationVersionSourceOutput values.
+// You can construct a concrete instance of `FlinkApplicationVersionSourceInput` via:
+//
+//	FlinkApplicationVersionSourceArgs{...}
+type FlinkApplicationVersionSourceInput interface {
+	pulumi.Input
+
+	ToFlinkApplicationVersionSourceOutput() FlinkApplicationVersionSourceOutput
+	ToFlinkApplicationVersionSourceOutputWithContext(context.Context) FlinkApplicationVersionSourceOutput
+}
+
+type FlinkApplicationVersionSourceArgs struct {
+	// The CREATE TABLE statement
+	CreateTable pulumi.StringInput `pulumi:"createTable"`
+	// The integration ID
+	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+}
+
+func (FlinkApplicationVersionSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (i FlinkApplicationVersionSourceArgs) ToFlinkApplicationVersionSourceOutput() FlinkApplicationVersionSourceOutput {
+	return i.ToFlinkApplicationVersionSourceOutputWithContext(context.Background())
+}
+
+func (i FlinkApplicationVersionSourceArgs) ToFlinkApplicationVersionSourceOutputWithContext(ctx context.Context) FlinkApplicationVersionSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionSourceOutput)
+}
+
+// FlinkApplicationVersionSourceArrayInput is an input type that accepts FlinkApplicationVersionSourceArray and FlinkApplicationVersionSourceArrayOutput values.
+// You can construct a concrete instance of `FlinkApplicationVersionSourceArrayInput` via:
+//
+//	FlinkApplicationVersionSourceArray{ FlinkApplicationVersionSourceArgs{...} }
+type FlinkApplicationVersionSourceArrayInput interface {
+	pulumi.Input
+
+	ToFlinkApplicationVersionSourceArrayOutput() FlinkApplicationVersionSourceArrayOutput
+	ToFlinkApplicationVersionSourceArrayOutputWithContext(context.Context) FlinkApplicationVersionSourceArrayOutput
+}
+
+type FlinkApplicationVersionSourceArray []FlinkApplicationVersionSourceInput
+
+func (FlinkApplicationVersionSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (i FlinkApplicationVersionSourceArray) ToFlinkApplicationVersionSourceArrayOutput() FlinkApplicationVersionSourceArrayOutput {
+	return i.ToFlinkApplicationVersionSourceArrayOutputWithContext(context.Background())
+}
+
+func (i FlinkApplicationVersionSourceArray) ToFlinkApplicationVersionSourceArrayOutputWithContext(ctx context.Context) FlinkApplicationVersionSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionSourceArrayOutput)
+}
+
+type FlinkApplicationVersionSourceOutput struct{ *pulumi.OutputState }
+
+func (FlinkApplicationVersionSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (o FlinkApplicationVersionSourceOutput) ToFlinkApplicationVersionSourceOutput() FlinkApplicationVersionSourceOutput {
+	return o
+}
+
+func (o FlinkApplicationVersionSourceOutput) ToFlinkApplicationVersionSourceOutputWithContext(ctx context.Context) FlinkApplicationVersionSourceOutput {
+	return o
+}
+
+// The CREATE TABLE statement
+func (o FlinkApplicationVersionSourceOutput) CreateTable() pulumi.StringOutput {
+	return o.ApplyT(func(v FlinkApplicationVersionSource) string { return v.CreateTable }).(pulumi.StringOutput)
+}
+
+// The integration ID
+func (o FlinkApplicationVersionSourceOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkApplicationVersionSource) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+}
+
+type FlinkApplicationVersionSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (FlinkApplicationVersionSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (o FlinkApplicationVersionSourceArrayOutput) ToFlinkApplicationVersionSourceArrayOutput() FlinkApplicationVersionSourceArrayOutput {
+	return o
+}
+
+func (o FlinkApplicationVersionSourceArrayOutput) ToFlinkApplicationVersionSourceArrayOutputWithContext(ctx context.Context) FlinkApplicationVersionSourceArrayOutput {
+	return o
+}
+
+func (o FlinkApplicationVersionSourceArrayOutput) Index(i pulumi.IntInput) FlinkApplicationVersionSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlinkApplicationVersionSource {
+		return vs[0].([]FlinkApplicationVersionSource)[vs[1].(int)]
+	}).(FlinkApplicationVersionSourceOutput)
+}
+
 type FlinkComponent struct {
 	Component                 *string `pulumi:"component"`
 	Host                      *string `pulumi:"host"`
@@ -31781,6 +31993,366 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig struct {
+	// Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+	DroppedMetrics []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric `pulumi:"droppedMetrics"`
+	// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+	ExtraMetrics []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric `pulumi:"extraMetrics"`
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput` via:
+//
+//	ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{...}
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	// Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+	DroppedMetrics ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput `pulumi:"droppedMetrics"`
+	// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+	ExtraMetrics ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput `pulumi:"extraMetrics"`
+}
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput).ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs, ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtr and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput` via:
+//
+//	        ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput
+}
+
+type serviceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrType ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs
+
+func ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtr(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput {
+	return (*serviceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrType)(v)
+}
+
+func (*serviceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i *serviceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrType) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrType) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+		return &v
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput)
+}
+
+// Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) DroppedMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return v.DroppedMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ExtraMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return v.ExtraMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) Elem() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig
+		return ret
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+// Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) DroppedMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		if v == nil {
+			return nil
+		}
+		return v.DroppedMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) ExtraMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput` via:
+//
+//	ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...}
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput` via:
+//
+//	ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...} }
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return vs[0].([]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)[vs[1].(int)]
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput` via:
+//
+//	ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...}
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput` via:
+//
+//	ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...} }
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return vs[0].([]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)[vs[1].(int)]
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
 type ServiceIntegrationKafkaConnectUserConfig struct {
 	// Kafka Connect service configuration values
 	KafkaConnect *ServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
@@ -36569,6 +37141,206 @@ func (o GetClickhouseTagArrayOutput) Index(i pulumi.IntInput) GetClickhouseTagOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClickhouseTag {
 		return vs[0].([]GetClickhouseTag)[vs[1].(int)]
 	}).(GetClickhouseTagOutput)
+}
+
+type GetFlinkApplicationVersionSink struct {
+	CreateTable   string  `pulumi:"createTable"`
+	IntegrationId *string `pulumi:"integrationId"`
+}
+
+// GetFlinkApplicationVersionSinkInput is an input type that accepts GetFlinkApplicationVersionSinkArgs and GetFlinkApplicationVersionSinkOutput values.
+// You can construct a concrete instance of `GetFlinkApplicationVersionSinkInput` via:
+//
+//	GetFlinkApplicationVersionSinkArgs{...}
+type GetFlinkApplicationVersionSinkInput interface {
+	pulumi.Input
+
+	ToGetFlinkApplicationVersionSinkOutput() GetFlinkApplicationVersionSinkOutput
+	ToGetFlinkApplicationVersionSinkOutputWithContext(context.Context) GetFlinkApplicationVersionSinkOutput
+}
+
+type GetFlinkApplicationVersionSinkArgs struct {
+	CreateTable   pulumi.StringInput    `pulumi:"createTable"`
+	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+}
+
+func (GetFlinkApplicationVersionSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (i GetFlinkApplicationVersionSinkArgs) ToGetFlinkApplicationVersionSinkOutput() GetFlinkApplicationVersionSinkOutput {
+	return i.ToGetFlinkApplicationVersionSinkOutputWithContext(context.Background())
+}
+
+func (i GetFlinkApplicationVersionSinkArgs) ToGetFlinkApplicationVersionSinkOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlinkApplicationVersionSinkOutput)
+}
+
+// GetFlinkApplicationVersionSinkArrayInput is an input type that accepts GetFlinkApplicationVersionSinkArray and GetFlinkApplicationVersionSinkArrayOutput values.
+// You can construct a concrete instance of `GetFlinkApplicationVersionSinkArrayInput` via:
+//
+//	GetFlinkApplicationVersionSinkArray{ GetFlinkApplicationVersionSinkArgs{...} }
+type GetFlinkApplicationVersionSinkArrayInput interface {
+	pulumi.Input
+
+	ToGetFlinkApplicationVersionSinkArrayOutput() GetFlinkApplicationVersionSinkArrayOutput
+	ToGetFlinkApplicationVersionSinkArrayOutputWithContext(context.Context) GetFlinkApplicationVersionSinkArrayOutput
+}
+
+type GetFlinkApplicationVersionSinkArray []GetFlinkApplicationVersionSinkInput
+
+func (GetFlinkApplicationVersionSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (i GetFlinkApplicationVersionSinkArray) ToGetFlinkApplicationVersionSinkArrayOutput() GetFlinkApplicationVersionSinkArrayOutput {
+	return i.ToGetFlinkApplicationVersionSinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlinkApplicationVersionSinkArray) ToGetFlinkApplicationVersionSinkArrayOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlinkApplicationVersionSinkArrayOutput)
+}
+
+type GetFlinkApplicationVersionSinkOutput struct{ *pulumi.OutputState }
+
+func (GetFlinkApplicationVersionSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (o GetFlinkApplicationVersionSinkOutput) ToGetFlinkApplicationVersionSinkOutput() GetFlinkApplicationVersionSinkOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSinkOutput) ToGetFlinkApplicationVersionSinkOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSinkOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSinkOutput) CreateTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlinkApplicationVersionSink) string { return v.CreateTable }).(pulumi.StringOutput)
+}
+
+func (o GetFlinkApplicationVersionSinkOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlinkApplicationVersionSink) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+}
+
+type GetFlinkApplicationVersionSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlinkApplicationVersionSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlinkApplicationVersionSink)(nil)).Elem()
+}
+
+func (o GetFlinkApplicationVersionSinkArrayOutput) ToGetFlinkApplicationVersionSinkArrayOutput() GetFlinkApplicationVersionSinkArrayOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSinkArrayOutput) ToGetFlinkApplicationVersionSinkArrayOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSinkArrayOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSinkArrayOutput) Index(i pulumi.IntInput) GetFlinkApplicationVersionSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlinkApplicationVersionSink {
+		return vs[0].([]GetFlinkApplicationVersionSink)[vs[1].(int)]
+	}).(GetFlinkApplicationVersionSinkOutput)
+}
+
+type GetFlinkApplicationVersionSource struct {
+	CreateTable   string  `pulumi:"createTable"`
+	IntegrationId *string `pulumi:"integrationId"`
+}
+
+// GetFlinkApplicationVersionSourceInput is an input type that accepts GetFlinkApplicationVersionSourceArgs and GetFlinkApplicationVersionSourceOutput values.
+// You can construct a concrete instance of `GetFlinkApplicationVersionSourceInput` via:
+//
+//	GetFlinkApplicationVersionSourceArgs{...}
+type GetFlinkApplicationVersionSourceInput interface {
+	pulumi.Input
+
+	ToGetFlinkApplicationVersionSourceOutput() GetFlinkApplicationVersionSourceOutput
+	ToGetFlinkApplicationVersionSourceOutputWithContext(context.Context) GetFlinkApplicationVersionSourceOutput
+}
+
+type GetFlinkApplicationVersionSourceArgs struct {
+	CreateTable   pulumi.StringInput    `pulumi:"createTable"`
+	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+}
+
+func (GetFlinkApplicationVersionSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (i GetFlinkApplicationVersionSourceArgs) ToGetFlinkApplicationVersionSourceOutput() GetFlinkApplicationVersionSourceOutput {
+	return i.ToGetFlinkApplicationVersionSourceOutputWithContext(context.Background())
+}
+
+func (i GetFlinkApplicationVersionSourceArgs) ToGetFlinkApplicationVersionSourceOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlinkApplicationVersionSourceOutput)
+}
+
+// GetFlinkApplicationVersionSourceArrayInput is an input type that accepts GetFlinkApplicationVersionSourceArray and GetFlinkApplicationVersionSourceArrayOutput values.
+// You can construct a concrete instance of `GetFlinkApplicationVersionSourceArrayInput` via:
+//
+//	GetFlinkApplicationVersionSourceArray{ GetFlinkApplicationVersionSourceArgs{...} }
+type GetFlinkApplicationVersionSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetFlinkApplicationVersionSourceArrayOutput() GetFlinkApplicationVersionSourceArrayOutput
+	ToGetFlinkApplicationVersionSourceArrayOutputWithContext(context.Context) GetFlinkApplicationVersionSourceArrayOutput
+}
+
+type GetFlinkApplicationVersionSourceArray []GetFlinkApplicationVersionSourceInput
+
+func (GetFlinkApplicationVersionSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (i GetFlinkApplicationVersionSourceArray) ToGetFlinkApplicationVersionSourceArrayOutput() GetFlinkApplicationVersionSourceArrayOutput {
+	return i.ToGetFlinkApplicationVersionSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlinkApplicationVersionSourceArray) ToGetFlinkApplicationVersionSourceArrayOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlinkApplicationVersionSourceArrayOutput)
+}
+
+type GetFlinkApplicationVersionSourceOutput struct{ *pulumi.OutputState }
+
+func (GetFlinkApplicationVersionSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (o GetFlinkApplicationVersionSourceOutput) ToGetFlinkApplicationVersionSourceOutput() GetFlinkApplicationVersionSourceOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSourceOutput) ToGetFlinkApplicationVersionSourceOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSourceOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSourceOutput) CreateTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlinkApplicationVersionSource) string { return v.CreateTable }).(pulumi.StringOutput)
+}
+
+func (o GetFlinkApplicationVersionSourceOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlinkApplicationVersionSource) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+}
+
+type GetFlinkApplicationVersionSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlinkApplicationVersionSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlinkApplicationVersionSource)(nil)).Elem()
+}
+
+func (o GetFlinkApplicationVersionSourceArrayOutput) ToGetFlinkApplicationVersionSourceArrayOutput() GetFlinkApplicationVersionSourceArrayOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSourceArrayOutput) ToGetFlinkApplicationVersionSourceArrayOutputWithContext(ctx context.Context) GetFlinkApplicationVersionSourceArrayOutput {
+	return o
+}
+
+func (o GetFlinkApplicationVersionSourceArrayOutput) Index(i pulumi.IntInput) GetFlinkApplicationVersionSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlinkApplicationVersionSource {
+		return vs[0].([]GetFlinkApplicationVersionSource)[vs[1].(int)]
+	}).(GetFlinkApplicationVersionSourceOutput)
 }
 
 type GetFlinkComponent struct {
@@ -61217,6 +61989,316 @@ func (o GetServiceIntegrationEndpointSignalfxUserConfigArrayOutput) Index(i pulu
 	}).(GetServiceIntegrationEndpointSignalfxUserConfigOutput)
 }
 
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig struct {
+	DroppedMetrics []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric `pulumi:"droppedMetrics"`
+	ExtraMetrics   []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric   `pulumi:"extraMetrics"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	DroppedMetrics GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput `pulumi:"droppedMetrics"`
+	ExtraMetrics   GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput   `pulumi:"extraMetrics"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) DroppedMetrics() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return v.DroppedMetrics
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ExtraMetrics() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return v.ExtraMetrics
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string {
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string {
+		return v.Metric
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string {
+		return v.Metric
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
 type GetServiceIntegrationKafkaConnectUserConfig struct {
 	KafkaConnect *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
 }
@@ -62720,6 +63802,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseServiceIntegrationArrayInput)(nil)).Elem(), ClickhouseServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseTagInput)(nil)).Elem(), ClickhouseTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseTagArrayInput)(nil)).Elem(), ClickhouseTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSinkInput)(nil)).Elem(), FlinkApplicationVersionSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSinkArrayInput)(nil)).Elem(), FlinkApplicationVersionSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSourceInput)(nil)).Elem(), FlinkApplicationVersionSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSourceArrayInput)(nil)).Elem(), FlinkApplicationVersionSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkComponentInput)(nil)).Elem(), FlinkComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkComponentArrayInput)(nil)).Elem(), FlinkComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkFlinkInput)(nil)).Elem(), FlinkFlinkArgs{})
@@ -63042,6 +64128,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointRsyslogUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointRsyslogUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointSignalfxUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointSignalfxUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointSignalfxUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointSignalfxUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput)(nil)).Elem(), ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput)(nil)).Elem(), ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput)(nil)).Elem(), ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput)(nil)).Elem(), ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput)(nil)).Elem(), ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfigInput)(nil)).Elem(), ServiceIntegrationKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput)(nil)).Elem(), ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{})
@@ -63112,6 +64204,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseServiceIntegrationArrayInput)(nil)).Elem(), GetClickhouseServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseTagInput)(nil)).Elem(), GetClickhouseTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseTagArrayInput)(nil)).Elem(), GetClickhouseTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSinkInput)(nil)).Elem(), GetFlinkApplicationVersionSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSinkArrayInput)(nil)).Elem(), GetFlinkApplicationVersionSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSourceInput)(nil)).Elem(), GetFlinkApplicationVersionSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSourceArrayInput)(nil)).Elem(), GetFlinkApplicationVersionSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkComponentInput)(nil)).Elem(), GetFlinkComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkComponentArrayInput)(nil)).Elem(), GetFlinkComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkFlinkInput)(nil)).Elem(), GetFlinkFlinkArgs{})
@@ -63432,6 +64528,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointRsyslogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointRsyslogUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointSignalfxUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointSignalfxUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointSignalfxUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointSignalfxUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{})
@@ -63488,6 +64590,10 @@ func init() {
 	pulumi.RegisterOutputType(ClickhouseServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(ClickhouseTagOutput{})
 	pulumi.RegisterOutputType(ClickhouseTagArrayOutput{})
+	pulumi.RegisterOutputType(FlinkApplicationVersionSinkOutput{})
+	pulumi.RegisterOutputType(FlinkApplicationVersionSinkArrayOutput{})
+	pulumi.RegisterOutputType(FlinkApplicationVersionSourceOutput{})
+	pulumi.RegisterOutputType(FlinkApplicationVersionSourceArrayOutput{})
 	pulumi.RegisterOutputType(FlinkComponentOutput{})
 	pulumi.RegisterOutputType(FlinkComponentArrayOutput{})
 	pulumi.RegisterOutputType(FlinkFlinkOutput{})
@@ -63810,6 +64916,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
@@ -63880,6 +64992,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClickhouseServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetClickhouseTagOutput{})
 	pulumi.RegisterOutputType(GetClickhouseTagArrayOutput{})
+	pulumi.RegisterOutputType(GetFlinkApplicationVersionSinkOutput{})
+	pulumi.RegisterOutputType(GetFlinkApplicationVersionSinkArrayOutput{})
+	pulumi.RegisterOutputType(GetFlinkApplicationVersionSourceOutput{})
+	pulumi.RegisterOutputType(GetFlinkApplicationVersionSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetFlinkComponentOutput{})
 	pulumi.RegisterOutputType(GetFlinkComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetFlinkFlinkOutput{})
@@ -64200,6 +65316,12 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointSignalfxUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})

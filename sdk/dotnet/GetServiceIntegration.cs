@@ -166,6 +166,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DestinationServiceName;
         /// <summary>
+        /// ExternalAwsCloudwatchMetrics user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -226,6 +230,8 @@ namespace Pulumi.Aiven
 
             string destinationServiceName,
 
+            ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult> externalAwsCloudwatchMetricsUserConfigs,
+
             string id,
 
             string integrationId,
@@ -255,6 +261,7 @@ namespace Pulumi.Aiven
             DatadogUserConfigs = datadogUserConfigs;
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
+            ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             Id = id;
             IntegrationId = integrationId;
             IntegrationType = integrationType;

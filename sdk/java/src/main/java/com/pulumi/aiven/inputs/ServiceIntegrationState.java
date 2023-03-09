@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhousePostgresqlUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaConnectUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaMirrormakerUserConfigArgs;
@@ -97,6 +98,21 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> destinationServiceName() {
         return Optional.ofNullable(this.destinationServiceName);
+    }
+
+    /**
+     * ExternalAwsCloudwatchMetrics user configurable settings
+     * 
+     */
+    @Import(name="externalAwsCloudwatchMetricsUserConfig")
+    private @Nullable Output<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs> externalAwsCloudwatchMetricsUserConfig;
+
+    /**
+     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>> externalAwsCloudwatchMetricsUserConfig() {
+        return Optional.ofNullable(this.externalAwsCloudwatchMetricsUserConfig);
     }
 
     /**
@@ -272,6 +288,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         this.datadogUserConfig = $.datadogUserConfig;
         this.destinationEndpointId = $.destinationEndpointId;
         this.destinationServiceName = $.destinationServiceName;
+        this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
         this.integrationId = $.integrationId;
         this.integrationType = $.integrationType;
         this.kafkaConnectUserConfig = $.kafkaConnectUserConfig;
@@ -406,6 +423,27 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
          */
         public Builder destinationServiceName(String destinationServiceName) {
             return destinationServiceName(Output.of(destinationServiceName));
+        }
+
+        /**
+         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAwsCloudwatchMetricsUserConfig(@Nullable Output<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs> externalAwsCloudwatchMetricsUserConfig) {
+            $.externalAwsCloudwatchMetricsUserConfig = externalAwsCloudwatchMetricsUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAwsCloudwatchMetricsUserConfig(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs externalAwsCloudwatchMetricsUserConfig) {
+            return externalAwsCloudwatchMetricsUserConfig(Output.of(externalAwsCloudwatchMetricsUserConfig));
         }
 
         /**

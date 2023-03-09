@@ -226,6 +226,28 @@ export interface ClickhouseTag {
     value: pulumi.Input<string>;
 }
 
+export interface FlinkApplicationVersionSink {
+    /**
+     * The CREATE TABLE statement
+     */
+    createTable: pulumi.Input<string>;
+    /**
+     * The integration ID
+     */
+    integrationId?: pulumi.Input<string>;
+}
+
+export interface FlinkApplicationVersionSource {
+    /**
+     * The CREATE TABLE statement
+     */
+    createTable: pulumi.Input<string>;
+    /**
+     * The integration ID
+     */
+    integrationId?: pulumi.Input<string>;
+}
+
 export interface FlinkComponent {
     component?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
@@ -2298,6 +2320,27 @@ export interface ServiceIntegrationEndpointSignalfxUserConfig {
      * SignalFX realm
      */
     signalfxRealm?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+    /**
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+     */
+    droppedMetrics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric>[]>;
+    /**
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+     */
+    extraMetrics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric>[]>;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    field?: pulumi.Input<string>;
+    metric?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+    field?: pulumi.Input<string>;
+    metric?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {

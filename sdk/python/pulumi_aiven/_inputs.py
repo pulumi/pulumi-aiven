@@ -28,6 +28,8 @@ __all__ = [
     'ClickhouseGrantRoleGrantArgs',
     'ClickhouseServiceIntegrationArgs',
     'ClickhouseTagArgs',
+    'FlinkApplicationVersionSinkArgs',
+    'FlinkApplicationVersionSourceArgs',
     'FlinkComponentArgs',
     'FlinkFlinkArgs',
     'FlinkFlinkUserConfigArgs',
@@ -189,6 +191,9 @@ __all__ = [
     'ServiceIntegrationEndpointPrometheusUserConfigArgs',
     'ServiceIntegrationEndpointRsyslogUserConfigArgs',
     'ServiceIntegrationEndpointSignalfxUserConfigArgs',
+    'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs',
+    'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs',
+    'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs',
     'ServiceIntegrationKafkaConnectUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs',
     'ServiceIntegrationKafkaLogsUserConfigArgs',
@@ -1152,6 +1157,82 @@ class ClickhouseTagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class FlinkApplicationVersionSinkArgs:
+    def __init__(__self__, *,
+                 create_table: pulumi.Input[str],
+                 integration_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create_table: The CREATE TABLE statement
+        :param pulumi.Input[str] integration_id: The integration ID
+        """
+        pulumi.set(__self__, "create_table", create_table)
+        if integration_id is not None:
+            pulumi.set(__self__, "integration_id", integration_id)
+
+    @property
+    @pulumi.getter(name="createTable")
+    def create_table(self) -> pulumi.Input[str]:
+        """
+        The CREATE TABLE statement
+        """
+        return pulumi.get(self, "create_table")
+
+    @create_table.setter
+    def create_table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "create_table", value)
+
+    @property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The integration ID
+        """
+        return pulumi.get(self, "integration_id")
+
+    @integration_id.setter
+    def integration_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_id", value)
+
+
+@pulumi.input_type
+class FlinkApplicationVersionSourceArgs:
+    def __init__(__self__, *,
+                 create_table: pulumi.Input[str],
+                 integration_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create_table: The CREATE TABLE statement
+        :param pulumi.Input[str] integration_id: The integration ID
+        """
+        pulumi.set(__self__, "create_table", create_table)
+        if integration_id is not None:
+            pulumi.set(__self__, "integration_id", integration_id)
+
+    @property
+    @pulumi.getter(name="createTable")
+    def create_table(self) -> pulumi.Input[str]:
+        """
+        The CREATE TABLE statement
+        """
+        return pulumi.get(self, "create_table")
+
+    @create_table.setter
+    def create_table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "create_table", value)
+
+    @property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The integration ID
+        """
+        return pulumi.get(self, "integration_id")
+
+    @integration_id.setter
+    def integration_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_id", value)
 
 
 @pulumi.input_type
@@ -13486,6 +13567,103 @@ class ServiceIntegrationEndpointSignalfxUserConfigArgs:
     @signalfx_realm.setter
     def signalfx_realm(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signalfx_realm", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
+    def __init__(__self__, *,
+                 dropped_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]] = None,
+                 extra_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]] dropped_metrics: Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]] extra_metrics: Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+        """
+        if dropped_metrics is not None:
+            pulumi.set(__self__, "dropped_metrics", dropped_metrics)
+        if extra_metrics is not None:
+            pulumi.set(__self__, "extra_metrics", extra_metrics)
+
+    @property
+    @pulumi.getter(name="droppedMetrics")
+    def dropped_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]]:
+        """
+        Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+        """
+        return pulumi.get(self, "dropped_metrics")
+
+    @dropped_metrics.setter
+    def dropped_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]]):
+        pulumi.set(self, "dropped_metrics", value)
+
+    @property
+    @pulumi.getter(name="extraMetrics")
+    def extra_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]]:
+        """
+        Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+        """
+        return pulumi.get(self, "extra_metrics")
+
+    @extra_metrics.setter
+    def extra_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]]):
+        pulumi.set(self, "extra_metrics", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[str]] = None,
+                 metric: Optional[pulumi.Input[str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[str]] = None,
+                 metric: Optional[pulumi.Input[str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric", value)
 
 
 @pulumi.input_type

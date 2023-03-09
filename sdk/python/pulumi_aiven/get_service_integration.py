@@ -22,7 +22,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, mirrormaker_user_configs=None, project=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_metrics_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, mirrormaker_user_configs=None, project=None, source_endpoint_id=None, source_service_name=None):
         if clickhouse_kafka_user_configs and not isinstance(clickhouse_kafka_user_configs, list):
             raise TypeError("Expected argument 'clickhouse_kafka_user_configs' to be a list")
         pulumi.set(__self__, "clickhouse_kafka_user_configs", clickhouse_kafka_user_configs)
@@ -38,6 +38,9 @@ class GetServiceIntegrationResult:
         if destination_service_name and not isinstance(destination_service_name, str):
             raise TypeError("Expected argument 'destination_service_name' to be a str")
         pulumi.set(__self__, "destination_service_name", destination_service_name)
+        if external_aws_cloudwatch_metrics_user_configs and not isinstance(external_aws_cloudwatch_metrics_user_configs, list):
+            raise TypeError("Expected argument 'external_aws_cloudwatch_metrics_user_configs' to be a list")
+        pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_configs", external_aws_cloudwatch_metrics_user_configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -114,6 +117,14 @@ class GetServiceIntegrationResult:
         Destination service for the integration (if any)
         """
         return pulumi.get(self, "destination_service_name")
+
+    @property
+    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfigs")
+    def external_aws_cloudwatch_metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult']:
+        """
+        ExternalAwsCloudwatchMetrics user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_configs")
 
     @property
     @pulumi.getter
@@ -223,6 +234,7 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             datadog_user_configs=self.datadog_user_configs,
             destination_endpoint_id=self.destination_endpoint_id,
             destination_service_name=self.destination_service_name,
+            external_aws_cloudwatch_metrics_user_configs=self.external_aws_cloudwatch_metrics_user_configs,
             id=self.id,
             integration_id=self.integration_id,
             integration_type=self.integration_type,
@@ -279,6 +291,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
         datadog_user_configs=__ret__.datadog_user_configs,
         destination_endpoint_id=__ret__.destination_endpoint_id,
         destination_service_name=__ret__.destination_service_name,
+        external_aws_cloudwatch_metrics_user_configs=__ret__.external_aws_cloudwatch_metrics_user_configs,
         id=__ret__.id,
         integration_id=__ret__.integration_id,
         integration_type=__ret__.integration_type,

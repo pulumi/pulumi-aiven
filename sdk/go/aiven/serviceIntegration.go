@@ -69,6 +69,8 @@ type ServiceIntegration struct {
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchMetrics user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// Service Integration Id at aiven
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
 	// Type of the service integration
@@ -138,6 +140,8 @@ type serviceIntegrationState struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchMetrics user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// Service Integration Id at aiven
 	IntegrationId *string `pulumi:"integrationId"`
 	// Type of the service integration
@@ -173,6 +177,8 @@ type ServiceIntegrationState struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
+	// ExternalAwsCloudwatchMetrics user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// Service Integration Id at aiven
 	IntegrationId pulumi.StringPtrInput
 	// Type of the service integration
@@ -212,6 +218,8 @@ type serviceIntegrationArgs struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchMetrics user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// Type of the service integration
 	IntegrationType string `pulumi:"integrationType"`
 	// KafkaConnect user configurable settings
@@ -246,6 +254,8 @@ type ServiceIntegrationArgs struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
+	// ExternalAwsCloudwatchMetrics user configurable settings
+	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// Type of the service integration
 	IntegrationType pulumi.StringInput
 	// KafkaConnect user configurable settings
@@ -382,6 +392,13 @@ func (o ServiceIntegrationOutput) DestinationEndpointId() pulumi.StringPtrOutput
 // Destination service for the integration (if any)
 func (o ServiceIntegrationOutput) DestinationServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.DestinationServiceName }).(pulumi.StringPtrOutput)
+}
+
+// ExternalAwsCloudwatchMetrics user configurable settings
+func (o ServiceIntegrationOutput) ExternalAwsCloudwatchMetricsUserConfig() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+		return v.ExternalAwsCloudwatchMetricsUserConfig
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput)
 }
 
 // Service Integration Id at aiven

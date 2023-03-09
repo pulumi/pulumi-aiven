@@ -79,6 +79,12 @@ namespace Pulumi.Aiven
         public Output<string?> DestinationServiceName { get; private set; } = null!;
 
         /// <summary>
+        /// ExternalAwsCloudwatchMetrics user configurable settings
+        /// </summary>
+        [Output("externalAwsCloudwatchMetricsUserConfig")]
+        public Output<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig?> ExternalAwsCloudwatchMetricsUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Service Integration Id at aiven
         /// </summary>
         [Output("integrationId")]
@@ -221,6 +227,12 @@ namespace Pulumi.Aiven
         public Input<string>? DestinationServiceName { get; set; }
 
         /// <summary>
+        /// ExternalAwsCloudwatchMetrics user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
+        /// <summary>
         /// Type of the service integration
         /// </summary>
         [Input("integrationType", required: true)]
@@ -317,6 +329,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("destinationServiceName")]
         public Input<string>? DestinationServiceName { get; set; }
+
+        /// <summary>
+        /// ExternalAwsCloudwatchMetrics user configurable settings
+        /// </summary>
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigGetArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
         /// Service Integration Id at aiven

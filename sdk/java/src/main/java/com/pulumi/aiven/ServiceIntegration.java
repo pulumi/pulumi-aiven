@@ -9,6 +9,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationState;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseKafkaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhousePostgresqlUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaMirrormakerUserConfig;
@@ -144,6 +145,20 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> destinationServiceName() {
         return Codegen.optional(this.destinationServiceName);
+    }
+    /**
+     * ExternalAwsCloudwatchMetrics user configurable settings
+     * 
+     */
+    @Export(name="externalAwsCloudwatchMetricsUserConfig", type=ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig.class, parameters={})
+    private Output</* @Nullable */ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfig;
+
+    /**
+     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>> externalAwsCloudwatchMetricsUserConfig() {
+        return Codegen.optional(this.externalAwsCloudwatchMetricsUserConfig);
     }
     /**
      * Service Integration Id at aiven

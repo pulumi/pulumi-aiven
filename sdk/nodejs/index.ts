@@ -110,6 +110,16 @@ export type Flink = import("./flink").Flink;
 export const Flink: typeof import("./flink").Flink = null as any;
 utilities.lazyLoad(exports, ["Flink"], () => require("./flink"));
 
+export { FlinkApplicationArgs, FlinkApplicationState } from "./flinkApplication";
+export type FlinkApplication = import("./flinkApplication").FlinkApplication;
+export const FlinkApplication: typeof import("./flinkApplication").FlinkApplication = null as any;
+utilities.lazyLoad(exports, ["FlinkApplication"], () => require("./flinkApplication"));
+
+export { FlinkApplicationVersionArgs, FlinkApplicationVersionState } from "./flinkApplicationVersion";
+export type FlinkApplicationVersion = import("./flinkApplicationVersion").FlinkApplicationVersion;
+export const FlinkApplicationVersion: typeof import("./flinkApplicationVersion").FlinkApplicationVersion = null as any;
+utilities.lazyLoad(exports, ["FlinkApplicationVersion"], () => require("./flinkApplicationVersion"));
+
 export { FlinkJobArgs, FlinkJobState } from "./flinkJob";
 export type FlinkJob = import("./flinkJob").FlinkJob;
 export const FlinkJob: typeof import("./flinkJob").FlinkJob = null as any;
@@ -219,6 +229,16 @@ export { GetFlinkArgs, GetFlinkResult, GetFlinkOutputArgs } from "./getFlink";
 export const getFlink: typeof import("./getFlink").getFlink = null as any;
 export const getFlinkOutput: typeof import("./getFlink").getFlinkOutput = null as any;
 utilities.lazyLoad(exports, ["getFlink","getFlinkOutput"], () => require("./getFlink"));
+
+export { GetFlinkApplicationArgs, GetFlinkApplicationResult, GetFlinkApplicationOutputArgs } from "./getFlinkApplication";
+export const getFlinkApplication: typeof import("./getFlinkApplication").getFlinkApplication = null as any;
+export const getFlinkApplicationOutput: typeof import("./getFlinkApplication").getFlinkApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getFlinkApplication","getFlinkApplicationOutput"], () => require("./getFlinkApplication"));
+
+export { GetFlinkApplicationVersionArgs, GetFlinkApplicationVersionResult, GetFlinkApplicationVersionOutputArgs } from "./getFlinkApplicationVersion";
+export const getFlinkApplicationVersion: typeof import("./getFlinkApplicationVersion").getFlinkApplicationVersion = null as any;
+export const getFlinkApplicationVersionOutput: typeof import("./getFlinkApplicationVersion").getFlinkApplicationVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getFlinkApplicationVersion","getFlinkApplicationVersionOutput"], () => require("./getFlinkApplicationVersion"));
 
 export { GetGcpVpcPeeringConnectionArgs, GetGcpVpcPeeringConnectionResult, GetGcpVpcPeeringConnectionOutputArgs } from "./getGcpVpcPeeringConnection";
 export const getGcpVpcPeeringConnection: typeof import("./getGcpVpcPeeringConnection").getGcpVpcPeeringConnection = null as any;
@@ -676,6 +696,10 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "aiven:index/flink:Flink":
                 return new Flink(name, <any>undefined, { urn })
+            case "aiven:index/flinkApplication:FlinkApplication":
+                return new FlinkApplication(name, <any>undefined, { urn })
+            case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
+                return new FlinkApplicationVersion(name, <any>undefined, { urn })
             case "aiven:index/flinkJob:FlinkJob":
                 return new FlinkJob(name, <any>undefined, { urn })
             case "aiven:index/flinkJobTable:FlinkJobTable":
@@ -786,6 +810,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/database", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkApplication", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationVersion", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJob", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJobTable", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)

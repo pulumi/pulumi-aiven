@@ -40,6 +40,10 @@ import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
 import com.pulumi.aiven.inputs.GetConnectionPoolPlainArgs;
 import com.pulumi.aiven.inputs.GetDatabaseArgs;
 import com.pulumi.aiven.inputs.GetDatabasePlainArgs;
+import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
+import com.pulumi.aiven.inputs.GetFlinkApplicationPlainArgs;
+import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
+import com.pulumi.aiven.inputs.GetFlinkApplicationVersionPlainArgs;
 import com.pulumi.aiven.inputs.GetFlinkArgs;
 import com.pulumi.aiven.inputs.GetFlinkPlainArgs;
 import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
@@ -140,6 +144,8 @@ import com.pulumi.aiven.outputs.GetClickhouseResult;
 import com.pulumi.aiven.outputs.GetClickhouseUserResult;
 import com.pulumi.aiven.outputs.GetConnectionPoolResult;
 import com.pulumi.aiven.outputs.GetDatabaseResult;
+import com.pulumi.aiven.outputs.GetFlinkApplicationResult;
+import com.pulumi.aiven.outputs.GetFlinkApplicationVersionResult;
 import com.pulumi.aiven.outputs.GetFlinkResult;
 import com.pulumi.aiven.outputs.GetGcpVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetGrafanaResult;
@@ -2499,6 +2505,322 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetFlinkResult> getFlinkPlain(GetFlinkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlink:getFlink", TypeShape.of(GetFlinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlinkApplicationResult> getFlinkApplication(GetFlinkApplicationArgs args) {
+        return getFlinkApplication(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlinkApplicationResult> getFlinkApplicationPlain(GetFlinkApplicationPlainArgs args) {
+        return getFlinkApplicationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlinkApplicationResult> getFlinkApplication(GetFlinkApplicationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getFlinkApplication:getFlinkApplication", TypeShape.of(GetFlinkApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlinkApplicationResult> getFlinkApplicationPlain(GetFlinkApplicationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplication:getFlinkApplication", TypeShape.of(GetFlinkApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
+     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlinkApplicationVersionResult> getFlinkApplicationVersion(GetFlinkApplicationVersionArgs args) {
+        return getFlinkApplicationVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
+     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args) {
+        return getFlinkApplicationVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
+     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlinkApplicationVersionResult> getFlinkApplicationVersion(GetFlinkApplicationVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(data.aiven_project().pr1().project())
+     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
+     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
