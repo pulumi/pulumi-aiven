@@ -16,11 +16,11 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
 
     public static final M3DbM3dbUserConfigNamespaceArgs Empty = new M3DbM3dbUserConfigNamespaceArgs();
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="options")
@@ -37,11 +37,11 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.resolution);
     }
 
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private M3DbM3dbUserConfigNamespaceArgs() {}
@@ -71,7 +71,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
             $ = new M3DbM3dbUserConfigNamespaceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -98,7 +98,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
             return resolution(Output.of(resolution));
         }
 
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -108,6 +108,8 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         public M3DbM3dbUserConfigNamespaceArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

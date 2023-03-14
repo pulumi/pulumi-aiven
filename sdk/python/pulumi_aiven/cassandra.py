@@ -720,9 +720,9 @@ class Cassandra(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             cassandra_user_config=aiven.CassandraCassandraUserConfigArgs(
-                migrate_sstableloader="true",
+                migrate_sstableloader=True,
                 public_access=aiven.CassandraCassandraUserConfigPublicAccessArgs(
-                    prometheus="true",
+                    prometheus=True,
                 ),
             ))
         ```
@@ -773,9 +773,9 @@ class Cassandra(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             cassandra_user_config=aiven.CassandraCassandraUserConfigArgs(
-                migrate_sstableloader="true",
+                migrate_sstableloader=True,
                 public_access=aiven.CassandraCassandraUserConfigPublicAccessArgs(
-                    prometheus="true",
+                    prometheus=True,
                 ),
             ))
         ```

@@ -14,31 +14,31 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointDatadogUserConfig
     {
         /// <summary>
-        /// Datadog API key
+        /// Datadog API key.
         /// </summary>
         public readonly string? DatadogApiKey;
         /// <summary>
-        /// Custom tags provided by user
+        /// Custom tags provided by user.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag> DatadogTags;
         /// <summary>
-        /// Disable consumer group metrics
+        /// Disable consumer group metrics.
         /// </summary>
-        public readonly string? DisableConsumerStats;
+        public readonly bool? DisableConsumerStats;
         /// <summary>
-        /// Number of separate instances to fetch kafka consumer statistics with
+        /// Number of separate instances to fetch kafka consumer statistics with.
         /// </summary>
-        public readonly string? KafkaConsumerCheckInstances;
+        public readonly int? KafkaConsumerCheckInstances;
         /// <summary>
-        /// Number of seconds that datadog will wait to get consumer statistics from brokers
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers.
         /// </summary>
-        public readonly string? KafkaConsumerStatsTimeout;
+        public readonly int? KafkaConsumerStatsTimeout;
         /// <summary>
-        /// Maximum number of partition contexts to send
+        /// Maximum number of partition contexts to send.
         /// </summary>
-        public readonly string? MaxPartitionContexts;
+        public readonly int? MaxPartitionContexts;
         /// <summary>
-        /// Datadog intake site. Defaults to datadoghq.com
+        /// Datadog intake site. Defaults to datadoghq.com.
         /// </summary>
         public readonly string? Site;
 
@@ -48,13 +48,13 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags,
 
-            string? disableConsumerStats,
+            bool? disableConsumerStats,
 
-            string? kafkaConsumerCheckInstances,
+            int? kafkaConsumerCheckInstances,
 
-            string? kafkaConsumerStatsTimeout,
+            int? kafkaConsumerStatsTimeout,
 
-            string? maxPartitionContexts,
+            int? maxPartitionContexts,
 
             string? site)
         {

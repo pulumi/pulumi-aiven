@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Inputs
     public sealed class CassandraCassandraUserConfigCassandraArgs : global::Pulumi.ResourceArgs
     {
         [Input("batchSizeFailThresholdInKb")]
-        public Input<string>? BatchSizeFailThresholdInKb { get; set; }
+        public Input<int>? BatchSizeFailThresholdInKb { get; set; }
 
         [Input("batchSizeWarnThresholdInKb")]
-        public Input<string>? BatchSizeWarnThresholdInKb { get; set; }
+        public Input<int>? BatchSizeWarnThresholdInKb { get; set; }
 
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,9 +31,9 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     @Import(name="consumerFetchMaxBytes")
-    private @Nullable Output<String> consumerFetchMaxBytes;
+    private @Nullable Output<Integer> consumerFetchMaxBytes;
 
-    public Optional<Output<String>> consumerFetchMaxBytes() {
+    public Optional<Output<Integer>> consumerFetchMaxBytes() {
         return Optional.ofNullable(this.consumerFetchMaxBytes);
     }
 
@@ -44,38 +45,52 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     @Import(name="consumerMaxPartitionFetchBytes")
-    private @Nullable Output<String> consumerMaxPartitionFetchBytes;
+    private @Nullable Output<Integer> consumerMaxPartitionFetchBytes;
 
-    public Optional<Output<String>> consumerMaxPartitionFetchBytes() {
+    public Optional<Output<Integer>> consumerMaxPartitionFetchBytes() {
         return Optional.ofNullable(this.consumerMaxPartitionFetchBytes);
     }
 
     @Import(name="consumerMaxPollIntervalMs")
-    private @Nullable Output<String> consumerMaxPollIntervalMs;
+    private @Nullable Output<Integer> consumerMaxPollIntervalMs;
 
-    public Optional<Output<String>> consumerMaxPollIntervalMs() {
+    public Optional<Output<Integer>> consumerMaxPollIntervalMs() {
         return Optional.ofNullable(this.consumerMaxPollIntervalMs);
     }
 
     @Import(name="consumerMaxPollRecords")
-    private @Nullable Output<String> consumerMaxPollRecords;
+    private @Nullable Output<Integer> consumerMaxPollRecords;
 
-    public Optional<Output<String>> consumerMaxPollRecords() {
+    public Optional<Output<Integer>> consumerMaxPollRecords() {
         return Optional.ofNullable(this.consumerMaxPollRecords);
     }
 
     @Import(name="offsetFlushIntervalMs")
-    private @Nullable Output<String> offsetFlushIntervalMs;
+    private @Nullable Output<Integer> offsetFlushIntervalMs;
 
-    public Optional<Output<String>> offsetFlushIntervalMs() {
+    public Optional<Output<Integer>> offsetFlushIntervalMs() {
         return Optional.ofNullable(this.offsetFlushIntervalMs);
     }
 
     @Import(name="offsetFlushTimeoutMs")
-    private @Nullable Output<String> offsetFlushTimeoutMs;
+    private @Nullable Output<Integer> offsetFlushTimeoutMs;
 
-    public Optional<Output<String>> offsetFlushTimeoutMs() {
+    public Optional<Output<Integer>> offsetFlushTimeoutMs() {
         return Optional.ofNullable(this.offsetFlushTimeoutMs);
+    }
+
+    @Import(name="producerBatchSize")
+    private @Nullable Output<Integer> producerBatchSize;
+
+    public Optional<Output<Integer>> producerBatchSize() {
+        return Optional.ofNullable(this.producerBatchSize);
+    }
+
+    @Import(name="producerBufferMemory")
+    private @Nullable Output<Integer> producerBufferMemory;
+
+    public Optional<Output<Integer>> producerBufferMemory() {
+        return Optional.ofNullable(this.producerBufferMemory);
     }
 
     @Import(name="producerCompressionType")
@@ -85,17 +100,24 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         return Optional.ofNullable(this.producerCompressionType);
     }
 
-    @Import(name="producerMaxRequestSize")
-    private @Nullable Output<String> producerMaxRequestSize;
+    @Import(name="producerLingerMs")
+    private @Nullable Output<Integer> producerLingerMs;
 
-    public Optional<Output<String>> producerMaxRequestSize() {
+    public Optional<Output<Integer>> producerLingerMs() {
+        return Optional.ofNullable(this.producerLingerMs);
+    }
+
+    @Import(name="producerMaxRequestSize")
+    private @Nullable Output<Integer> producerMaxRequestSize;
+
+    public Optional<Output<Integer>> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
 
     @Import(name="sessionTimeoutMs")
-    private @Nullable Output<String> sessionTimeoutMs;
+    private @Nullable Output<Integer> sessionTimeoutMs;
 
-    public Optional<Output<String>> sessionTimeoutMs() {
+    public Optional<Output<Integer>> sessionTimeoutMs() {
         return Optional.ofNullable(this.sessionTimeoutMs);
     }
 
@@ -111,7 +133,10 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         this.consumerMaxPollRecords = $.consumerMaxPollRecords;
         this.offsetFlushIntervalMs = $.offsetFlushIntervalMs;
         this.offsetFlushTimeoutMs = $.offsetFlushTimeoutMs;
+        this.producerBatchSize = $.producerBatchSize;
+        this.producerBufferMemory = $.producerBufferMemory;
         this.producerCompressionType = $.producerCompressionType;
+        this.producerLingerMs = $.producerLingerMs;
         this.producerMaxRequestSize = $.producerMaxRequestSize;
         this.sessionTimeoutMs = $.sessionTimeoutMs;
     }
@@ -152,12 +177,12 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
             return consumerAutoOffsetReset(Output.of(consumerAutoOffsetReset));
         }
 
-        public Builder consumerFetchMaxBytes(@Nullable Output<String> consumerFetchMaxBytes) {
+        public Builder consumerFetchMaxBytes(@Nullable Output<Integer> consumerFetchMaxBytes) {
             $.consumerFetchMaxBytes = consumerFetchMaxBytes;
             return this;
         }
 
-        public Builder consumerFetchMaxBytes(String consumerFetchMaxBytes) {
+        public Builder consumerFetchMaxBytes(Integer consumerFetchMaxBytes) {
             return consumerFetchMaxBytes(Output.of(consumerFetchMaxBytes));
         }
 
@@ -170,49 +195,67 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
             return consumerIsolationLevel(Output.of(consumerIsolationLevel));
         }
 
-        public Builder consumerMaxPartitionFetchBytes(@Nullable Output<String> consumerMaxPartitionFetchBytes) {
+        public Builder consumerMaxPartitionFetchBytes(@Nullable Output<Integer> consumerMaxPartitionFetchBytes) {
             $.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             return this;
         }
 
-        public Builder consumerMaxPartitionFetchBytes(String consumerMaxPartitionFetchBytes) {
+        public Builder consumerMaxPartitionFetchBytes(Integer consumerMaxPartitionFetchBytes) {
             return consumerMaxPartitionFetchBytes(Output.of(consumerMaxPartitionFetchBytes));
         }
 
-        public Builder consumerMaxPollIntervalMs(@Nullable Output<String> consumerMaxPollIntervalMs) {
+        public Builder consumerMaxPollIntervalMs(@Nullable Output<Integer> consumerMaxPollIntervalMs) {
             $.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
             return this;
         }
 
-        public Builder consumerMaxPollIntervalMs(String consumerMaxPollIntervalMs) {
+        public Builder consumerMaxPollIntervalMs(Integer consumerMaxPollIntervalMs) {
             return consumerMaxPollIntervalMs(Output.of(consumerMaxPollIntervalMs));
         }
 
-        public Builder consumerMaxPollRecords(@Nullable Output<String> consumerMaxPollRecords) {
+        public Builder consumerMaxPollRecords(@Nullable Output<Integer> consumerMaxPollRecords) {
             $.consumerMaxPollRecords = consumerMaxPollRecords;
             return this;
         }
 
-        public Builder consumerMaxPollRecords(String consumerMaxPollRecords) {
+        public Builder consumerMaxPollRecords(Integer consumerMaxPollRecords) {
             return consumerMaxPollRecords(Output.of(consumerMaxPollRecords));
         }
 
-        public Builder offsetFlushIntervalMs(@Nullable Output<String> offsetFlushIntervalMs) {
+        public Builder offsetFlushIntervalMs(@Nullable Output<Integer> offsetFlushIntervalMs) {
             $.offsetFlushIntervalMs = offsetFlushIntervalMs;
             return this;
         }
 
-        public Builder offsetFlushIntervalMs(String offsetFlushIntervalMs) {
+        public Builder offsetFlushIntervalMs(Integer offsetFlushIntervalMs) {
             return offsetFlushIntervalMs(Output.of(offsetFlushIntervalMs));
         }
 
-        public Builder offsetFlushTimeoutMs(@Nullable Output<String> offsetFlushTimeoutMs) {
+        public Builder offsetFlushTimeoutMs(@Nullable Output<Integer> offsetFlushTimeoutMs) {
             $.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
             return this;
         }
 
-        public Builder offsetFlushTimeoutMs(String offsetFlushTimeoutMs) {
+        public Builder offsetFlushTimeoutMs(Integer offsetFlushTimeoutMs) {
             return offsetFlushTimeoutMs(Output.of(offsetFlushTimeoutMs));
+        }
+
+        public Builder producerBatchSize(@Nullable Output<Integer> producerBatchSize) {
+            $.producerBatchSize = producerBatchSize;
+            return this;
+        }
+
+        public Builder producerBatchSize(Integer producerBatchSize) {
+            return producerBatchSize(Output.of(producerBatchSize));
+        }
+
+        public Builder producerBufferMemory(@Nullable Output<Integer> producerBufferMemory) {
+            $.producerBufferMemory = producerBufferMemory;
+            return this;
+        }
+
+        public Builder producerBufferMemory(Integer producerBufferMemory) {
+            return producerBufferMemory(Output.of(producerBufferMemory));
         }
 
         public Builder producerCompressionType(@Nullable Output<String> producerCompressionType) {
@@ -224,21 +267,30 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
             return producerCompressionType(Output.of(producerCompressionType));
         }
 
-        public Builder producerMaxRequestSize(@Nullable Output<String> producerMaxRequestSize) {
+        public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {
+            $.producerLingerMs = producerLingerMs;
+            return this;
+        }
+
+        public Builder producerLingerMs(Integer producerLingerMs) {
+            return producerLingerMs(Output.of(producerLingerMs));
+        }
+
+        public Builder producerMaxRequestSize(@Nullable Output<Integer> producerMaxRequestSize) {
             $.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
 
-        public Builder producerMaxRequestSize(String producerMaxRequestSize) {
+        public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
             return producerMaxRequestSize(Output.of(producerMaxRequestSize));
         }
 
-        public Builder sessionTimeoutMs(@Nullable Output<String> sessionTimeoutMs) {
+        public Builder sessionTimeoutMs(@Nullable Output<Integer> sessionTimeoutMs) {
             $.sessionTimeoutMs = sessionTimeoutMs;
             return this;
         }
 
-        public Builder sessionTimeoutMs(String sessionTimeoutMs) {
+        public Builder sessionTimeoutMs(Integer sessionTimeoutMs) {
             return sessionTimeoutMs(Output.of(sessionTimeoutMs));
         }
 

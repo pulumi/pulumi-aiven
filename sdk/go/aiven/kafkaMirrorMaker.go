@@ -37,9 +37,9 @@ import (
 //						pulumi.String("0.0.0.0/0"),
 //					},
 //					KafkaMirrormaker: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{
-//						RefreshGroupsIntervalSeconds: pulumi.String("600"),
-//						RefreshTopicsEnabled:         pulumi.String("true"),
-//						RefreshTopicsIntervalSeconds: pulumi.String("600"),
+//						RefreshGroupsIntervalSeconds: pulumi.Int(600),
+//						RefreshTopicsEnabled:         pulumi.Bool(true),
+//						RefreshTopicsIntervalSeconds: pulumi.Int(600),
 //					},
 //				},
 //			})

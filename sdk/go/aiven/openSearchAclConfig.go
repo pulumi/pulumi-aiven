@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewServiceUser(ctx, "fooServiceUser", &aiven.ServiceUserArgs{
+//			_, err = aiven.NewOpensearchUser(ctx, "fooOpensearchUser", &aiven.OpensearchUserArgs{
 //				ServiceName: bar.ServiceName,
 //				Project:     *pulumi.String(fooProject.Project),
 //				Username:    pulumi.String("user-example"),

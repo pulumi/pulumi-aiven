@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +16,16 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
     public static final KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs Empty = new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs();
 
     @Import(name="certificate")
-    private @Nullable Output<String> certificate;
+    private @Nullable Output<Boolean> certificate;
 
-    public Optional<Output<String>> certificate() {
+    public Optional<Output<Boolean>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
     @Import(name="sasl")
-    private @Nullable Output<String> sasl;
+    private @Nullable Output<Boolean> sasl;
 
-    public Optional<Output<String>> sasl() {
+    public Optional<Output<Boolean>> sasl() {
         return Optional.ofNullable(this.sasl);
     }
 
@@ -54,21 +54,21 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
             $ = new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder certificate(@Nullable Output<String> certificate) {
+        public Builder certificate(@Nullable Output<Boolean> certificate) {
             $.certificate = certificate;
             return this;
         }
 
-        public Builder certificate(String certificate) {
+        public Builder certificate(Boolean certificate) {
             return certificate(Output.of(certificate));
         }
 
-        public Builder sasl(@Nullable Output<String> sasl) {
+        public Builder sasl(@Nullable Output<Boolean> sasl) {
             $.sasl = sasl;
             return this;
         }
 
-        public Builder sasl(String sasl) {
+        public Builder sasl(Boolean sasl) {
             return sasl(Output.of(sasl));
         }
 

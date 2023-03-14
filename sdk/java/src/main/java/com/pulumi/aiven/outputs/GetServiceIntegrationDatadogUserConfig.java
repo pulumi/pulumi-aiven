@@ -4,7 +4,10 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfigDatadogTag;
+import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfigOpensearch;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,17 +16,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationDatadogUserConfig {
-    private @Nullable String datadogDbmEnabled;
+    private @Nullable Boolean datadogDbmEnabled;
     private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
     private @Nullable List<String> excludeConsumerGroups;
     private @Nullable List<String> excludeTopics;
     private @Nullable List<String> includeConsumerGroups;
     private @Nullable List<String> includeTopics;
     private @Nullable List<String> kafkaCustomMetrics;
-    private @Nullable String maxJmxMetrics;
+    private @Nullable Integer maxJmxMetrics;
+    private @Nullable GetServiceIntegrationDatadogUserConfigOpensearch opensearch;
 
     private GetServiceIntegrationDatadogUserConfig() {}
-    public Optional<String> datadogDbmEnabled() {
+    public Optional<Boolean> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
     }
     public List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags() {
@@ -44,8 +48,11 @@ public final class GetServiceIntegrationDatadogUserConfig {
     public List<String> kafkaCustomMetrics() {
         return this.kafkaCustomMetrics == null ? List.of() : this.kafkaCustomMetrics;
     }
-    public Optional<String> maxJmxMetrics() {
+    public Optional<Integer> maxJmxMetrics() {
         return Optional.ofNullable(this.maxJmxMetrics);
+    }
+    public Optional<GetServiceIntegrationDatadogUserConfigOpensearch> opensearch() {
+        return Optional.ofNullable(this.opensearch);
     }
 
     public static Builder builder() {
@@ -57,14 +64,15 @@ public final class GetServiceIntegrationDatadogUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String datadogDbmEnabled;
+        private @Nullable Boolean datadogDbmEnabled;
         private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable List<String> excludeConsumerGroups;
         private @Nullable List<String> excludeTopics;
         private @Nullable List<String> includeConsumerGroups;
         private @Nullable List<String> includeTopics;
         private @Nullable List<String> kafkaCustomMetrics;
-        private @Nullable String maxJmxMetrics;
+        private @Nullable Integer maxJmxMetrics;
+        private @Nullable GetServiceIntegrationDatadogUserConfigOpensearch opensearch;
         public Builder() {}
         public Builder(GetServiceIntegrationDatadogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -76,10 +84,11 @@ public final class GetServiceIntegrationDatadogUserConfig {
     	      this.includeTopics = defaults.includeTopics;
     	      this.kafkaCustomMetrics = defaults.kafkaCustomMetrics;
     	      this.maxJmxMetrics = defaults.maxJmxMetrics;
+    	      this.opensearch = defaults.opensearch;
         }
 
         @CustomType.Setter
-        public Builder datadogDbmEnabled(@Nullable String datadogDbmEnabled) {
+        public Builder datadogDbmEnabled(@Nullable Boolean datadogDbmEnabled) {
             this.datadogDbmEnabled = datadogDbmEnabled;
             return this;
         }
@@ -132,8 +141,13 @@ public final class GetServiceIntegrationDatadogUserConfig {
             return kafkaCustomMetrics(List.of(kafkaCustomMetrics));
         }
         @CustomType.Setter
-        public Builder maxJmxMetrics(@Nullable String maxJmxMetrics) {
+        public Builder maxJmxMetrics(@Nullable Integer maxJmxMetrics) {
             this.maxJmxMetrics = maxJmxMetrics;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder opensearch(@Nullable GetServiceIntegrationDatadogUserConfigOpensearch opensearch) {
+            this.opensearch = opensearch;
             return this;
         }
         public GetServiceIntegrationDatadogUserConfig build() {
@@ -146,6 +160,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
             o.includeTopics = includeTopics;
             o.kafkaCustomMetrics = kafkaCustomMetrics;
             o.maxJmxMetrics = maxJmxMetrics;
+            o.opensearch = opensearch;
             return o;
         }
     }

@@ -33,7 +33,7 @@ public final class ClickhouseGrantPrivilegeGrant {
      */
     private @Nullable String table;
     /**
-     * @return If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * @return If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private @Nullable Boolean withGrant;
@@ -68,7 +68,7 @@ public final class ClickhouseGrantPrivilegeGrant {
         return Optional.ofNullable(this.table);
     }
     /**
-     * @return If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * @return If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Boolean> withGrant() {

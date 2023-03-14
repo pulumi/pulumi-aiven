@@ -36,7 +36,7 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///     });
     /// 
-    ///     var fooServiceUser = new Aiven.ServiceUser("fooServiceUser", new()
+    ///     var fooOpensearchUser = new Aiven.OpensearchUser("fooOpensearchUser", new()
     ///     {
     ///         ServiceName = bar.ServiceName,
     ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),

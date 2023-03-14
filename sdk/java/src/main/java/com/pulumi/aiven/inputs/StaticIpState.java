@@ -31,14 +31,14 @@ public final class StaticIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The address of the static ip
+     * The address of the static ip.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The address of the static ip
+     * @return The address of the static ip.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -156,7 +156,7 @@ public final class StaticIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The address of the static ip
+         * @param ipAddress The address of the static ip.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class StaticIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The address of the static ip
+         * @param ipAddress The address of the static ip.
          * 
          * @return builder
          * 

@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,32 +13,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigSmtpServer {
-    private @Nullable String fromAddress;
+    private String fromAddress;
     private @Nullable String fromName;
-    private @Nullable String host;
+    private String host;
     private @Nullable String password;
-    private @Nullable String port;
-    private @Nullable String skipVerify;
+    private Integer port;
+    private @Nullable Boolean skipVerify;
     private @Nullable String starttlsPolicy;
     private @Nullable String username;
 
     private GetGrafanaGrafanaUserConfigSmtpServer() {}
-    public Optional<String> fromAddress() {
-        return Optional.ofNullable(this.fromAddress);
+    public String fromAddress() {
+        return this.fromAddress;
     }
     public Optional<String> fromName() {
         return Optional.ofNullable(this.fromName);
     }
-    public Optional<String> host() {
-        return Optional.ofNullable(this.host);
+    public String host() {
+        return this.host;
     }
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
-    public Optional<String> port() {
-        return Optional.ofNullable(this.port);
+    public Integer port() {
+        return this.port;
     }
-    public Optional<String> skipVerify() {
+    public Optional<Boolean> skipVerify() {
         return Optional.ofNullable(this.skipVerify);
     }
     public Optional<String> starttlsPolicy() {
@@ -55,12 +57,12 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String fromAddress;
+        private String fromAddress;
         private @Nullable String fromName;
-        private @Nullable String host;
+        private String host;
         private @Nullable String password;
-        private @Nullable String port;
-        private @Nullable String skipVerify;
+        private Integer port;
+        private @Nullable Boolean skipVerify;
         private @Nullable String starttlsPolicy;
         private @Nullable String username;
         public Builder() {}
@@ -77,8 +79,8 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
         }
 
         @CustomType.Setter
-        public Builder fromAddress(@Nullable String fromAddress) {
-            this.fromAddress = fromAddress;
+        public Builder fromAddress(String fromAddress) {
+            this.fromAddress = Objects.requireNonNull(fromAddress);
             return this;
         }
         @CustomType.Setter
@@ -87,8 +89,8 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
             return this;
         }
         @CustomType.Setter
-        public Builder host(@Nullable String host) {
-            this.host = host;
+        public Builder host(String host) {
+            this.host = Objects.requireNonNull(host);
             return this;
         }
         @CustomType.Setter
@@ -97,12 +99,12 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable String port) {
-            this.port = port;
+        public Builder port(Integer port) {
+            this.port = Objects.requireNonNull(port);
             return this;
         }
         @CustomType.Setter
-        public Builder skipVerify(@Nullable String skipVerify) {
+        public Builder skipVerify(@Nullable Boolean skipVerify) {
             this.skipVerify = skipVerify;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,16 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigIndexPattern {
-    private @Nullable String maxIndexCount;
-    private @Nullable String pattern;
+    private Integer maxIndexCount;
+    private String pattern;
     private @Nullable String sortingAlgorithm;
 
     private GetOpenSearchOpensearchUserConfigIndexPattern() {}
-    public Optional<String> maxIndexCount() {
-        return Optional.ofNullable(this.maxIndexCount);
+    public Integer maxIndexCount() {
+        return this.maxIndexCount;
     }
-    public Optional<String> pattern() {
-        return Optional.ofNullable(this.pattern);
+    public String pattern() {
+        return this.pattern;
     }
     public Optional<String> sortingAlgorithm() {
         return Optional.ofNullable(this.sortingAlgorithm);
@@ -35,8 +36,8 @@ public final class GetOpenSearchOpensearchUserConfigIndexPattern {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String maxIndexCount;
-        private @Nullable String pattern;
+        private Integer maxIndexCount;
+        private String pattern;
         private @Nullable String sortingAlgorithm;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfigIndexPattern defaults) {
@@ -47,13 +48,13 @@ public final class GetOpenSearchOpensearchUserConfigIndexPattern {
         }
 
         @CustomType.Setter
-        public Builder maxIndexCount(@Nullable String maxIndexCount) {
-            this.maxIndexCount = maxIndexCount;
+        public Builder maxIndexCount(Integer maxIndexCount) {
+            this.maxIndexCount = Objects.requireNonNull(maxIndexCount);
             return this;
         }
         @CustomType.Setter
-        public Builder pattern(@Nullable String pattern) {
-            this.pattern = pattern;
+        public Builder pattern(String pattern) {
+            this.pattern = Objects.requireNonNull(pattern);
             return this;
         }
         @CustomType.Setter

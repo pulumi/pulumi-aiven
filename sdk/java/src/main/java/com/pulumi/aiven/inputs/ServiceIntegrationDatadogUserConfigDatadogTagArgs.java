@@ -22,11 +22,11 @@ public final class ServiceIntegrationDatadogUserConfigDatadogTagArgs extends com
         return Optional.ofNullable(this.comment);
     }
 
-    @Import(name="tag")
-    private @Nullable Output<String> tag;
+    @Import(name="tag", required=true)
+    private Output<String> tag;
 
-    public Optional<Output<String>> tag() {
-        return Optional.ofNullable(this.tag);
+    public Output<String> tag() {
+        return this.tag;
     }
 
     private ServiceIntegrationDatadogUserConfigDatadogTagArgs() {}
@@ -63,7 +63,7 @@ public final class ServiceIntegrationDatadogUserConfigDatadogTagArgs extends com
             return comment(Output.of(comment));
         }
 
-        public Builder tag(@Nullable Output<String> tag) {
+        public Builder tag(Output<String> tag) {
             $.tag = tag;
             return this;
         }
@@ -73,6 +73,7 @@ public final class ServiceIntegrationDatadogUserConfigDatadogTagArgs extends com
         }
 
         public ServiceIntegrationDatadogUserConfigDatadogTagArgs build() {
+            $.tag = Objects.requireNonNull($.tag, "expected parameter 'tag' to be non-null");
             return $;
         }
     }

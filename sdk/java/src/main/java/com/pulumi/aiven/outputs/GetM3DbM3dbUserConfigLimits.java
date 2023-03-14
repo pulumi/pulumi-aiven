@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,30 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigLimits {
-    private @Nullable String maxRecentlyQueriedSeriesBlocks;
-    private @Nullable String maxRecentlyQueriedSeriesDiskBytesRead;
+    private @Nullable Integer maxRecentlyQueriedSeriesBlocks;
+    private @Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead;
     private @Nullable String maxRecentlyQueriedSeriesLookback;
-    private @Nullable String queryDocs;
-    private @Nullable String queryRequireExhaustive;
-    private @Nullable String querySeries;
+    private @Nullable Integer queryDocs;
+    private @Nullable Boolean queryRequireExhaustive;
+    private @Nullable Integer querySeries;
 
     private GetM3DbM3dbUserConfigLimits() {}
-    public Optional<String> maxRecentlyQueriedSeriesBlocks() {
+    public Optional<Integer> maxRecentlyQueriedSeriesBlocks() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesBlocks);
     }
-    public Optional<String> maxRecentlyQueriedSeriesDiskBytesRead() {
+    public Optional<Integer> maxRecentlyQueriedSeriesDiskBytesRead() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
     }
     public Optional<String> maxRecentlyQueriedSeriesLookback() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesLookback);
     }
-    public Optional<String> queryDocs() {
+    public Optional<Integer> queryDocs() {
         return Optional.ofNullable(this.queryDocs);
     }
-    public Optional<String> queryRequireExhaustive() {
+    public Optional<Boolean> queryRequireExhaustive() {
         return Optional.ofNullable(this.queryRequireExhaustive);
     }
-    public Optional<String> querySeries() {
+    public Optional<Integer> querySeries() {
         return Optional.ofNullable(this.querySeries);
     }
 
@@ -47,12 +49,12 @@ public final class GetM3DbM3dbUserConfigLimits {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String maxRecentlyQueriedSeriesBlocks;
-        private @Nullable String maxRecentlyQueriedSeriesDiskBytesRead;
+        private @Nullable Integer maxRecentlyQueriedSeriesBlocks;
+        private @Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead;
         private @Nullable String maxRecentlyQueriedSeriesLookback;
-        private @Nullable String queryDocs;
-        private @Nullable String queryRequireExhaustive;
-        private @Nullable String querySeries;
+        private @Nullable Integer queryDocs;
+        private @Nullable Boolean queryRequireExhaustive;
+        private @Nullable Integer querySeries;
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfigLimits defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,12 +67,12 @@ public final class GetM3DbM3dbUserConfigLimits {
         }
 
         @CustomType.Setter
-        public Builder maxRecentlyQueriedSeriesBlocks(@Nullable String maxRecentlyQueriedSeriesBlocks) {
+        public Builder maxRecentlyQueriedSeriesBlocks(@Nullable Integer maxRecentlyQueriedSeriesBlocks) {
             this.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
             return this;
         }
         @CustomType.Setter
-        public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable String maxRecentlyQueriedSeriesDiskBytesRead) {
+        public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead) {
             this.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
             return this;
         }
@@ -80,17 +82,17 @@ public final class GetM3DbM3dbUserConfigLimits {
             return this;
         }
         @CustomType.Setter
-        public Builder queryDocs(@Nullable String queryDocs) {
+        public Builder queryDocs(@Nullable Integer queryDocs) {
             this.queryDocs = queryDocs;
             return this;
         }
         @CustomType.Setter
-        public Builder queryRequireExhaustive(@Nullable String queryRequireExhaustive) {
+        public Builder queryRequireExhaustive(@Nullable Boolean queryRequireExhaustive) {
             this.queryRequireExhaustive = queryRequireExhaustive;
             return this;
         }
         @CustomType.Setter
-        public Builder querySeries(@Nullable String querySeries) {
+        public Builder querySeries(@Nullable Integer querySeries) {
             this.querySeries = querySeries;
             return this;
         }

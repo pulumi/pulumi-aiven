@@ -13,23 +13,23 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthGithubResult
     {
-        public readonly string? AllowSignUp;
+        public readonly bool? AllowSignUp;
         public readonly ImmutableArray<string> AllowedOrganizations;
-        public readonly string? ClientId;
-        public readonly string? ClientSecret;
-        public readonly ImmutableArray<string> TeamIds;
+        public readonly string ClientId;
+        public readonly string ClientSecret;
+        public readonly ImmutableArray<int> TeamIds;
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigAuthGithubResult(
-            string? allowSignUp,
+            bool? allowSignUp,
 
             ImmutableArray<string> allowedOrganizations,
 
-            string? clientId,
+            string clientId,
 
-            string? clientSecret,
+            string clientSecret,
 
-            ImmutableArray<string> teamIds)
+            ImmutableArray<int> teamIds)
         {
             AllowSignUp = allowSignUp;
             AllowedOrganizations = allowedOrganizations;

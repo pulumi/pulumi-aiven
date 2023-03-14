@@ -14,41 +14,41 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointRsyslogUserConfig
     {
         /// <summary>
-        /// PEM encoded CA certificate
+        /// PEM encoded CA certificate.
         /// </summary>
         public readonly string? Ca;
         /// <summary>
-        /// PEM encoded client certificate
+        /// PEM encoded client certificate.
         /// </summary>
         public readonly string? Cert;
         /// <summary>
-        /// message format
+        /// message format. The default value is `rfc5424`.
         /// </summary>
         public readonly string? Format;
         /// <summary>
-        /// PEM encoded client key
+        /// PEM encoded client key.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// custom syslog message format
+        /// custom syslog message format.
         /// </summary>
         public readonly string? Logline;
         /// <summary>
-        /// rsyslog server port
+        /// rsyslog server port. The default value is `514`.
         /// </summary>
-        public readonly string? Port;
+        public readonly int? Port;
         /// <summary>
-        /// Structured data block for log message
+        /// Structured data block for log message.
         /// </summary>
         public readonly string? Sd;
         /// <summary>
-        /// rsyslog server IP address or hostname
+        /// rsyslog server IP address or hostname.
         /// </summary>
         public readonly string? Server;
         /// <summary>
-        /// Require TLS
+        /// Require TLS. The default value is `true`.
         /// </summary>
-        public readonly string? Tls;
+        public readonly bool? Tls;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointRsyslogUserConfig(
@@ -62,13 +62,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? logline,
 
-            string? port,
+            int? port,
 
             string? sd,
 
             string? server,
 
-            string? tls)
+            bool? tls)
         {
             Ca = ca;
             Cert = cert;

@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,42 +14,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPgbouncer {
-    private @Nullable String autodbIdleTimeout;
-    private @Nullable String autodbMaxDbConnections;
+    private @Nullable Integer autodbIdleTimeout;
+    private @Nullable Integer autodbMaxDbConnections;
     private @Nullable String autodbPoolMode;
-    private @Nullable String autodbPoolSize;
+    private @Nullable Integer autodbPoolSize;
     private @Nullable List<String> ignoreStartupParameters;
-    private @Nullable String minPoolSize;
-    private @Nullable String serverIdleTimeout;
-    private @Nullable String serverLifetime;
-    private @Nullable String serverResetQueryAlways;
+    private @Nullable Integer minPoolSize;
+    private @Nullable Integer serverIdleTimeout;
+    private @Nullable Integer serverLifetime;
+    private @Nullable Boolean serverResetQueryAlways;
 
     private GetPgPgUserConfigPgbouncer() {}
-    public Optional<String> autodbIdleTimeout() {
+    public Optional<Integer> autodbIdleTimeout() {
         return Optional.ofNullable(this.autodbIdleTimeout);
     }
-    public Optional<String> autodbMaxDbConnections() {
+    public Optional<Integer> autodbMaxDbConnections() {
         return Optional.ofNullable(this.autodbMaxDbConnections);
     }
     public Optional<String> autodbPoolMode() {
         return Optional.ofNullable(this.autodbPoolMode);
     }
-    public Optional<String> autodbPoolSize() {
+    public Optional<Integer> autodbPoolSize() {
         return Optional.ofNullable(this.autodbPoolSize);
     }
     public List<String> ignoreStartupParameters() {
         return this.ignoreStartupParameters == null ? List.of() : this.ignoreStartupParameters;
     }
-    public Optional<String> minPoolSize() {
+    public Optional<Integer> minPoolSize() {
         return Optional.ofNullable(this.minPoolSize);
     }
-    public Optional<String> serverIdleTimeout() {
+    public Optional<Integer> serverIdleTimeout() {
         return Optional.ofNullable(this.serverIdleTimeout);
     }
-    public Optional<String> serverLifetime() {
+    public Optional<Integer> serverLifetime() {
         return Optional.ofNullable(this.serverLifetime);
     }
-    public Optional<String> serverResetQueryAlways() {
+    public Optional<Boolean> serverResetQueryAlways() {
         return Optional.ofNullable(this.serverResetQueryAlways);
     }
 
@@ -60,15 +62,15 @@ public final class GetPgPgUserConfigPgbouncer {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String autodbIdleTimeout;
-        private @Nullable String autodbMaxDbConnections;
+        private @Nullable Integer autodbIdleTimeout;
+        private @Nullable Integer autodbMaxDbConnections;
         private @Nullable String autodbPoolMode;
-        private @Nullable String autodbPoolSize;
+        private @Nullable Integer autodbPoolSize;
         private @Nullable List<String> ignoreStartupParameters;
-        private @Nullable String minPoolSize;
-        private @Nullable String serverIdleTimeout;
-        private @Nullable String serverLifetime;
-        private @Nullable String serverResetQueryAlways;
+        private @Nullable Integer minPoolSize;
+        private @Nullable Integer serverIdleTimeout;
+        private @Nullable Integer serverLifetime;
+        private @Nullable Boolean serverResetQueryAlways;
         public Builder() {}
         public Builder(GetPgPgUserConfigPgbouncer defaults) {
     	      Objects.requireNonNull(defaults);
@@ -84,12 +86,12 @@ public final class GetPgPgUserConfigPgbouncer {
         }
 
         @CustomType.Setter
-        public Builder autodbIdleTimeout(@Nullable String autodbIdleTimeout) {
+        public Builder autodbIdleTimeout(@Nullable Integer autodbIdleTimeout) {
             this.autodbIdleTimeout = autodbIdleTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder autodbMaxDbConnections(@Nullable String autodbMaxDbConnections) {
+        public Builder autodbMaxDbConnections(@Nullable Integer autodbMaxDbConnections) {
             this.autodbMaxDbConnections = autodbMaxDbConnections;
             return this;
         }
@@ -99,7 +101,7 @@ public final class GetPgPgUserConfigPgbouncer {
             return this;
         }
         @CustomType.Setter
-        public Builder autodbPoolSize(@Nullable String autodbPoolSize) {
+        public Builder autodbPoolSize(@Nullable Integer autodbPoolSize) {
             this.autodbPoolSize = autodbPoolSize;
             return this;
         }
@@ -112,22 +114,22 @@ public final class GetPgPgUserConfigPgbouncer {
             return ignoreStartupParameters(List.of(ignoreStartupParameters));
         }
         @CustomType.Setter
-        public Builder minPoolSize(@Nullable String minPoolSize) {
+        public Builder minPoolSize(@Nullable Integer minPoolSize) {
             this.minPoolSize = minPoolSize;
             return this;
         }
         @CustomType.Setter
-        public Builder serverIdleTimeout(@Nullable String serverIdleTimeout) {
+        public Builder serverIdleTimeout(@Nullable Integer serverIdleTimeout) {
             this.serverIdleTimeout = serverIdleTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder serverLifetime(@Nullable String serverLifetime) {
+        public Builder serverLifetime(@Nullable Integer serverLifetime) {
             this.serverLifetime = serverLifetime;
             return this;
         }
         @CustomType.Setter
-        public Builder serverResetQueryAlways(@Nullable String serverResetQueryAlways) {
+        public Builder serverResetQueryAlways(@Nullable Boolean serverResetQueryAlways) {
             this.serverResetQueryAlways = serverResetQueryAlways;
             return this;
         }

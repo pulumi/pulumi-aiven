@@ -4,33 +4,33 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
-    private @Nullable String consumerFetchMinBytes;
-    private @Nullable String producerBatchSize;
-    private @Nullable String producerBufferMemory;
-    private @Nullable String producerLingerMs;
-    private @Nullable String producerMaxRequestSize;
+    private @Nullable Integer consumerFetchMinBytes;
+    private @Nullable Integer producerBatchSize;
+    private @Nullable Integer producerBufferMemory;
+    private @Nullable Integer producerLingerMs;
+    private @Nullable Integer producerMaxRequestSize;
 
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker() {}
-    public Optional<String> consumerFetchMinBytes() {
+    public Optional<Integer> consumerFetchMinBytes() {
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
-    public Optional<String> producerBatchSize() {
+    public Optional<Integer> producerBatchSize() {
         return Optional.ofNullable(this.producerBatchSize);
     }
-    public Optional<String> producerBufferMemory() {
+    public Optional<Integer> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
     }
-    public Optional<String> producerLingerMs() {
+    public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
-    public Optional<String> producerMaxRequestSize() {
+    public Optional<Integer> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
 
@@ -43,11 +43,11 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String consumerFetchMinBytes;
-        private @Nullable String producerBatchSize;
-        private @Nullable String producerBufferMemory;
-        private @Nullable String producerLingerMs;
-        private @Nullable String producerMaxRequestSize;
+        private @Nullable Integer consumerFetchMinBytes;
+        private @Nullable Integer producerBatchSize;
+        private @Nullable Integer producerBufferMemory;
+        private @Nullable Integer producerLingerMs;
+        private @Nullable Integer producerMaxRequestSize;
         public Builder() {}
         public Builder(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
@@ -59,27 +59,27 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         }
 
         @CustomType.Setter
-        public Builder consumerFetchMinBytes(@Nullable String consumerFetchMinBytes) {
+        public Builder consumerFetchMinBytes(@Nullable Integer consumerFetchMinBytes) {
             this.consumerFetchMinBytes = consumerFetchMinBytes;
             return this;
         }
         @CustomType.Setter
-        public Builder producerBatchSize(@Nullable String producerBatchSize) {
+        public Builder producerBatchSize(@Nullable Integer producerBatchSize) {
             this.producerBatchSize = producerBatchSize;
             return this;
         }
         @CustomType.Setter
-        public Builder producerBufferMemory(@Nullable String producerBufferMemory) {
+        public Builder producerBufferMemory(@Nullable Integer producerBufferMemory) {
             this.producerBufferMemory = producerBufferMemory;
             return this;
         }
         @CustomType.Setter
-        public Builder producerLingerMs(@Nullable String producerLingerMs) {
+        public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
             this.producerLingerMs = producerLingerMs;
             return this;
         }
         @CustomType.Setter
-        public Builder producerMaxRequestSize(@Nullable String producerMaxRequestSize) {
+        public Builder producerMaxRequestSize(@Nullable Integer producerMaxRequestSize) {
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }

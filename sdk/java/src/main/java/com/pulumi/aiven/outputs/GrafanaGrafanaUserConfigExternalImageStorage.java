@@ -6,28 +6,26 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigExternalImageStorage {
-    private @Nullable String accessKey;
-    private @Nullable String bucketUrl;
-    private @Nullable String provider;
-    private @Nullable String secretKey;
+    private String accessKey;
+    private String bucketUrl;
+    private String provider;
+    private String secretKey;
 
     private GrafanaGrafanaUserConfigExternalImageStorage() {}
-    public Optional<String> accessKey() {
-        return Optional.ofNullable(this.accessKey);
+    public String accessKey() {
+        return this.accessKey;
     }
-    public Optional<String> bucketUrl() {
-        return Optional.ofNullable(this.bucketUrl);
+    public String bucketUrl() {
+        return this.bucketUrl;
     }
-    public Optional<String> provider() {
-        return Optional.ofNullable(this.provider);
+    public String provider() {
+        return this.provider;
     }
-    public Optional<String> secretKey() {
-        return Optional.ofNullable(this.secretKey);
+    public String secretKey() {
+        return this.secretKey;
     }
 
     public static Builder builder() {
@@ -39,10 +37,10 @@ public final class GrafanaGrafanaUserConfigExternalImageStorage {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accessKey;
-        private @Nullable String bucketUrl;
-        private @Nullable String provider;
-        private @Nullable String secretKey;
+        private String accessKey;
+        private String bucketUrl;
+        private String provider;
+        private String secretKey;
         public Builder() {}
         public Builder(GrafanaGrafanaUserConfigExternalImageStorage defaults) {
     	      Objects.requireNonNull(defaults);
@@ -53,23 +51,23 @@ public final class GrafanaGrafanaUserConfigExternalImageStorage {
         }
 
         @CustomType.Setter
-        public Builder accessKey(@Nullable String accessKey) {
-            this.accessKey = accessKey;
+        public Builder accessKey(String accessKey) {
+            this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
         @CustomType.Setter
-        public Builder bucketUrl(@Nullable String bucketUrl) {
-            this.bucketUrl = bucketUrl;
+        public Builder bucketUrl(String bucketUrl) {
+            this.bucketUrl = Objects.requireNonNull(bucketUrl);
             return this;
         }
         @CustomType.Setter
-        public Builder provider(@Nullable String provider) {
-            this.provider = provider;
+        public Builder provider(String provider) {
+            this.provider = Objects.requireNonNull(provider);
             return this;
         }
         @CustomType.Setter
-        public Builder secretKey(@Nullable String secretKey) {
-            this.secretKey = secretKey;
+        public Builder secretKey(String secretKey) {
+            this.secretKey = Objects.requireNonNull(secretKey);
             return this;
         }
         public GrafanaGrafanaUserConfigExternalImageStorage build() {

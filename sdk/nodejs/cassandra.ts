@@ -23,9 +23,9 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     cassandraUserConfig: {
- *         migrateSstableloader: "true",
+ *         migrateSstableloader: true,
  *         publicAccess: {
- *             prometheus: "true",
+ *             prometheus: true,
  *         },
  *     },
  * });

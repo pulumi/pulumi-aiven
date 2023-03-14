@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,9 +18,9 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
     public static final GrafanaGrafanaUserConfigAuthAzureadArgs Empty = new GrafanaGrafanaUserConfigAuthAzureadArgs();
 
     @Import(name="allowSignUp")
-    private @Nullable Output<String> allowSignUp;
+    private @Nullable Output<Boolean> allowSignUp;
 
-    public Optional<Output<String>> allowSignUp() {
+    public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
@@ -37,32 +38,32 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         return Optional.ofNullable(this.allowedGroups);
     }
 
-    @Import(name="authUrl")
-    private @Nullable Output<String> authUrl;
+    @Import(name="authUrl", required=true)
+    private Output<String> authUrl;
 
-    public Optional<Output<String>> authUrl() {
-        return Optional.ofNullable(this.authUrl);
+    public Output<String> authUrl() {
+        return this.authUrl;
     }
 
-    @Import(name="clientId")
-    private @Nullable Output<String> clientId;
+    @Import(name="clientId", required=true)
+    private Output<String> clientId;
 
-    public Optional<Output<String>> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public Output<String> clientId() {
+        return this.clientId;
     }
 
-    @Import(name="clientSecret")
-    private @Nullable Output<String> clientSecret;
+    @Import(name="clientSecret", required=true)
+    private Output<String> clientSecret;
 
-    public Optional<Output<String>> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public Output<String> clientSecret() {
+        return this.clientSecret;
     }
 
-    @Import(name="tokenUrl")
-    private @Nullable Output<String> tokenUrl;
+    @Import(name="tokenUrl", required=true)
+    private Output<String> tokenUrl;
 
-    public Optional<Output<String>> tokenUrl() {
-        return Optional.ofNullable(this.tokenUrl);
+    public Output<String> tokenUrl() {
+        return this.tokenUrl;
     }
 
     private GrafanaGrafanaUserConfigAuthAzureadArgs() {}
@@ -95,12 +96,12 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
             $ = new GrafanaGrafanaUserConfigAuthAzureadArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder allowSignUp(@Nullable Output<String> allowSignUp) {
+        public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
-        public Builder allowSignUp(String allowSignUp) {
+        public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
@@ -130,7 +131,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
             return allowedGroups(List.of(allowedGroups));
         }
 
-        public Builder authUrl(@Nullable Output<String> authUrl) {
+        public Builder authUrl(Output<String> authUrl) {
             $.authUrl = authUrl;
             return this;
         }
@@ -139,7 +140,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
             return authUrl(Output.of(authUrl));
         }
 
-        public Builder clientId(@Nullable Output<String> clientId) {
+        public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
@@ -148,7 +149,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
             return clientId(Output.of(clientId));
         }
 
-        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+        public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
@@ -157,7 +158,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
             return clientSecret(Output.of(clientSecret));
         }
 
-        public Builder tokenUrl(@Nullable Output<String> tokenUrl) {
+        public Builder tokenUrl(Output<String> tokenUrl) {
             $.tokenUrl = tokenUrl;
             return this;
         }
@@ -167,6 +168,10 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         public GrafanaGrafanaUserConfigAuthAzureadArgs build() {
+            $.authUrl = Objects.requireNonNull($.authUrl, "expected parameter 'authUrl' to be non-null");
+            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
+            $.tokenUrl = Objects.requireNonNull($.tokenUrl, "expected parameter 'tokenUrl' to be non-null");
             return $;
         }
     }

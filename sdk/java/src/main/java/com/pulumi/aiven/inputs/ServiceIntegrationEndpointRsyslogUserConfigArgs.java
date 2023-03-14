@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +18,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     public static final ServiceIntegrationEndpointRsyslogUserConfigArgs Empty = new ServiceIntegrationEndpointRsyslogUserConfigArgs();
 
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      * 
      */
     @Import(name="ca")
     private @Nullable Output<String> ca;
 
     /**
-     * @return PEM encoded CA certificate
+     * @return PEM encoded CA certificate.
      * 
      */
     public Optional<Output<String>> ca() {
@@ -31,14 +33,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * PEM encoded client certificate
+     * PEM encoded client certificate.
      * 
      */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
     /**
-     * @return PEM encoded client certificate
+     * @return PEM encoded client certificate.
      * 
      */
     public Optional<Output<String>> cert() {
@@ -46,14 +48,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * message format
+     * message format. The default value is `rfc5424`.
      * 
      */
     @Import(name="format")
     private @Nullable Output<String> format;
 
     /**
-     * @return message format
+     * @return message format. The default value is `rfc5424`.
      * 
      */
     public Optional<Output<String>> format() {
@@ -61,14 +63,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * PEM encoded client key
+     * PEM encoded client key.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return PEM encoded client key
+     * @return PEM encoded client key.
      * 
      */
     public Optional<Output<String>> key() {
@@ -76,14 +78,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * custom syslog message format
+     * custom syslog message format.
      * 
      */
     @Import(name="logline")
     private @Nullable Output<String> logline;
 
     /**
-     * @return custom syslog message format
+     * @return custom syslog message format.
      * 
      */
     public Optional<Output<String>> logline() {
@@ -91,29 +93,29 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * rsyslog server port
+     * rsyslog server port. The default value is `514`.
      * 
      */
     @Import(name="port")
-    private @Nullable Output<String> port;
+    private @Nullable Output<Integer> port;
 
     /**
-     * @return rsyslog server port
+     * @return rsyslog server port. The default value is `514`.
      * 
      */
-    public Optional<Output<String>> port() {
+    public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
     /**
-     * Structured data block for log message
+     * Structured data block for log message.
      * 
      */
     @Import(name="sd")
     private @Nullable Output<String> sd;
 
     /**
-     * @return Structured data block for log message
+     * @return Structured data block for log message.
      * 
      */
     public Optional<Output<String>> sd() {
@@ -121,14 +123,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * rsyslog server IP address or hostname
+     * rsyslog server IP address or hostname.
      * 
      */
     @Import(name="server")
     private @Nullable Output<String> server;
 
     /**
-     * @return rsyslog server IP address or hostname
+     * @return rsyslog server IP address or hostname.
      * 
      */
     public Optional<Output<String>> server() {
@@ -136,17 +138,17 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Require TLS
+     * Require TLS. The default value is `true`.
      * 
      */
     @Import(name="tls")
-    private @Nullable Output<String> tls;
+    private @Nullable Output<Boolean> tls;
 
     /**
-     * @return Require TLS
+     * @return Require TLS. The default value is `true`.
      * 
      */
-    public Optional<Output<String>> tls() {
+    public Optional<Output<Boolean>> tls() {
         return Optional.ofNullable(this.tls);
     }
 
@@ -183,7 +185,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param ca PEM encoded CA certificate
+         * @param ca PEM encoded CA certificate.
          * 
          * @return builder
          * 
@@ -194,7 +196,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param ca PEM encoded CA certificate
+         * @param ca PEM encoded CA certificate.
          * 
          * @return builder
          * 
@@ -204,7 +206,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param cert PEM encoded client certificate
+         * @param cert PEM encoded client certificate.
          * 
          * @return builder
          * 
@@ -215,7 +217,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param cert PEM encoded client certificate
+         * @param cert PEM encoded client certificate.
          * 
          * @return builder
          * 
@@ -225,7 +227,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format message format
+         * @param format message format. The default value is `rfc5424`.
          * 
          * @return builder
          * 
@@ -236,7 +238,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format message format
+         * @param format message format. The default value is `rfc5424`.
          * 
          * @return builder
          * 
@@ -246,7 +248,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param key PEM encoded client key
+         * @param key PEM encoded client key.
          * 
          * @return builder
          * 
@@ -257,7 +259,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param key PEM encoded client key
+         * @param key PEM encoded client key.
          * 
          * @return builder
          * 
@@ -267,7 +269,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param logline custom syslog message format
+         * @param logline custom syslog message format.
          * 
          * @return builder
          * 
@@ -278,7 +280,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param logline custom syslog message format
+         * @param logline custom syslog message format.
          * 
          * @return builder
          * 
@@ -288,28 +290,28 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param port rsyslog server port
+         * @param port rsyslog server port. The default value is `514`.
          * 
          * @return builder
          * 
          */
-        public Builder port(@Nullable Output<String> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
         /**
-         * @param port rsyslog server port
+         * @param port rsyslog server port. The default value is `514`.
          * 
          * @return builder
          * 
          */
-        public Builder port(String port) {
+        public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
         /**
-         * @param sd Structured data block for log message
+         * @param sd Structured data block for log message.
          * 
          * @return builder
          * 
@@ -320,7 +322,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param sd Structured data block for log message
+         * @param sd Structured data block for log message.
          * 
          * @return builder
          * 
@@ -330,7 +332,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param server rsyslog server IP address or hostname
+         * @param server rsyslog server IP address or hostname.
          * 
          * @return builder
          * 
@@ -341,7 +343,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param server rsyslog server IP address or hostname
+         * @param server rsyslog server IP address or hostname.
          * 
          * @return builder
          * 
@@ -351,23 +353,23 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param tls Require TLS
+         * @param tls Require TLS. The default value is `true`.
          * 
          * @return builder
          * 
          */
-        public Builder tls(@Nullable Output<String> tls) {
+        public Builder tls(@Nullable Output<Boolean> tls) {
             $.tls = tls;
             return this;
         }
 
         /**
-         * @param tls Require TLS
+         * @param tls Require TLS. The default value is `true`.
          * 
          * @return builder
          * 
          */
-        public Builder tls(String tls) {
+        public Builder tls(Boolean tls) {
             return tls(Output.of(tls));
         }
 

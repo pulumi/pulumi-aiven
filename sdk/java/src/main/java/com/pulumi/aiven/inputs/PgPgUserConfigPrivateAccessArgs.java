@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,27 +20,27 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="pg")
-    private @Nullable Output<String> pg;
+    private @Nullable Output<Boolean> pg;
 
     /**
      * @return PostgreSQL specific server provided values
      * 
      */
-    public Optional<Output<String>> pg() {
+    public Optional<Output<Boolean>> pg() {
         return Optional.ofNullable(this.pg);
     }
 
     @Import(name="pgbouncer")
-    private @Nullable Output<String> pgbouncer;
+    private @Nullable Output<Boolean> pgbouncer;
 
-    public Optional<Output<String>> pgbouncer() {
+    public Optional<Output<Boolean>> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -76,7 +76,7 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder pg(@Nullable Output<String> pg) {
+        public Builder pg(@Nullable Output<Boolean> pg) {
             $.pg = pg;
             return this;
         }
@@ -87,25 +87,25 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder pg(String pg) {
+        public Builder pg(Boolean pg) {
             return pg(Output.of(pg));
         }
 
-        public Builder pgbouncer(@Nullable Output<String> pgbouncer) {
+        public Builder pgbouncer(@Nullable Output<Boolean> pgbouncer) {
             $.pgbouncer = pgbouncer;
             return this;
         }
 
-        public Builder pgbouncer(String pgbouncer) {
+        public Builder pgbouncer(Boolean pgbouncer) {
             return pgbouncer(Output.of(pgbouncer));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 

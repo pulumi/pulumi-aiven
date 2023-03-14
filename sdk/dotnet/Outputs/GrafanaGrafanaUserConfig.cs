@@ -14,32 +14,32 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GrafanaGrafanaUserConfig
     {
         public readonly string? AdditionalBackupRegions;
-        public readonly string? AlertingEnabled;
+        public readonly bool? AlertingEnabled;
         public readonly string? AlertingErrorOrTimeout;
-        public readonly string? AlertingMaxAnnotationsToKeep;
+        public readonly int? AlertingMaxAnnotationsToKeep;
         public readonly string? AlertingNodataOrNullvalues;
-        public readonly string? AllowEmbedding;
+        public readonly bool? AllowEmbedding;
         public readonly Outputs.GrafanaGrafanaUserConfigAuthAzuread? AuthAzuread;
-        public readonly string? AuthBasicEnabled;
+        public readonly bool? AuthBasicEnabled;
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGenericOauth? AuthGenericOauth;
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGithub? AuthGithub;
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGitlab? AuthGitlab;
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGoogle? AuthGoogle;
         public readonly string? CookieSamesite;
         public readonly string? CustomDomain;
-        public readonly string? DashboardPreviewsEnabled;
+        public readonly bool? DashboardPreviewsEnabled;
         public readonly string? DashboardsMinRefreshInterval;
-        public readonly string? DashboardsVersionsToKeep;
-        public readonly string? DataproxySendUserHeader;
-        public readonly string? DataproxyTimeout;
+        public readonly int? DashboardsVersionsToKeep;
+        public readonly bool? DataproxySendUserHeader;
+        public readonly int? DataproxyTimeout;
         public readonly Outputs.GrafanaGrafanaUserConfigDateFormats? DateFormats;
-        public readonly string? DisableGravatar;
-        public readonly string? EditorsCanAdmin;
+        public readonly bool? DisableGravatar;
+        public readonly bool? EditorsCanAdmin;
         public readonly Outputs.GrafanaGrafanaUserConfigExternalImageStorage? ExternalImageStorage;
         public readonly string? GoogleAnalyticsUaId;
         public readonly ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        public readonly string? MetricsEnabled;
+        public readonly bool? MetricsEnabled;
         public readonly Outputs.GrafanaGrafanaUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.GrafanaGrafanaUserConfigPrivatelinkAccess? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
@@ -47,28 +47,28 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
         public readonly Outputs.GrafanaGrafanaUserConfigSmtpServer? SmtpServer;
-        public readonly string? StaticIps;
-        public readonly string? UserAutoAssignOrg;
+        public readonly bool? StaticIps;
+        public readonly bool? UserAutoAssignOrg;
         public readonly string? UserAutoAssignOrgRole;
-        public readonly string? ViewersCanEdit;
+        public readonly bool? ViewersCanEdit;
 
         [OutputConstructor]
         private GrafanaGrafanaUserConfig(
             string? additionalBackupRegions,
 
-            string? alertingEnabled,
+            bool? alertingEnabled,
 
             string? alertingErrorOrTimeout,
 
-            string? alertingMaxAnnotationsToKeep,
+            int? alertingMaxAnnotationsToKeep,
 
             string? alertingNodataOrNullvalues,
 
-            string? allowEmbedding,
+            bool? allowEmbedding,
 
             Outputs.GrafanaGrafanaUserConfigAuthAzuread? authAzuread,
 
-            string? authBasicEnabled,
+            bool? authBasicEnabled,
 
             Outputs.GrafanaGrafanaUserConfigAuthGenericOauth? authGenericOauth,
 
@@ -82,21 +82,21 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
-            string? dashboardPreviewsEnabled,
+            bool? dashboardPreviewsEnabled,
 
             string? dashboardsMinRefreshInterval,
 
-            string? dashboardsVersionsToKeep,
+            int? dashboardsVersionsToKeep,
 
-            string? dataproxySendUserHeader,
+            bool? dataproxySendUserHeader,
 
-            string? dataproxyTimeout,
+            int? dataproxyTimeout,
 
             Outputs.GrafanaGrafanaUserConfigDateFormats? dateFormats,
 
-            string? disableGravatar,
+            bool? disableGravatar,
 
-            string? editorsCanAdmin,
+            bool? editorsCanAdmin,
 
             Outputs.GrafanaGrafanaUserConfigExternalImageStorage? externalImageStorage,
 
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
-            string? metricsEnabled,
+            bool? metricsEnabled,
 
             Outputs.GrafanaGrafanaUserConfigPrivateAccess? privateAccess,
 
@@ -122,13 +122,13 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GrafanaGrafanaUserConfigSmtpServer? smtpServer,
 
-            string? staticIps,
+            bool? staticIps,
 
-            string? userAutoAssignOrg,
+            bool? userAutoAssignOrg,
 
             string? userAutoAssignOrgRole,
 
-            string? viewersCanEdit)
+            bool? viewersCanEdit)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             AlertingEnabled = alertingEnabled;

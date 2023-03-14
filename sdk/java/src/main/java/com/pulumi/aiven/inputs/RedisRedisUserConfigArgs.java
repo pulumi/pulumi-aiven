@@ -10,6 +10,8 @@ import com.pulumi.aiven.inputs.RedisRedisUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.RedisRedisUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,9 +37,21 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -92,23 +106,23 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="redisIoThreads")
-    private @Nullable Output<String> redisIoThreads;
+    private @Nullable Output<Integer> redisIoThreads;
 
-    public Optional<Output<String>> redisIoThreads() {
+    public Optional<Output<Integer>> redisIoThreads() {
         return Optional.ofNullable(this.redisIoThreads);
     }
 
     @Import(name="redisLfuDecayTime")
-    private @Nullable Output<String> redisLfuDecayTime;
+    private @Nullable Output<Integer> redisLfuDecayTime;
 
-    public Optional<Output<String>> redisLfuDecayTime() {
+    public Optional<Output<Integer>> redisLfuDecayTime() {
         return Optional.ofNullable(this.redisLfuDecayTime);
     }
 
     @Import(name="redisLfuLogFactor")
-    private @Nullable Output<String> redisLfuLogFactor;
+    private @Nullable Output<Integer> redisLfuLogFactor;
 
-    public Optional<Output<String>> redisLfuLogFactor() {
+    public Optional<Output<Integer>> redisLfuLogFactor() {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
 
@@ -127,9 +141,9 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="redisNumberOfDatabases")
-    private @Nullable Output<String> redisNumberOfDatabases;
+    private @Nullable Output<Integer> redisNumberOfDatabases;
 
-    public Optional<Output<String>> redisNumberOfDatabases() {
+    public Optional<Output<Integer>> redisNumberOfDatabases() {
         return Optional.ofNullable(this.redisNumberOfDatabases);
     }
 
@@ -141,23 +155,23 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="redisPubsubClientOutputBufferLimit")
-    private @Nullable Output<String> redisPubsubClientOutputBufferLimit;
+    private @Nullable Output<Integer> redisPubsubClientOutputBufferLimit;
 
-    public Optional<Output<String>> redisPubsubClientOutputBufferLimit() {
+    public Optional<Output<Integer>> redisPubsubClientOutputBufferLimit() {
         return Optional.ofNullable(this.redisPubsubClientOutputBufferLimit);
     }
 
     @Import(name="redisSsl")
-    private @Nullable Output<String> redisSsl;
+    private @Nullable Output<Boolean> redisSsl;
 
-    public Optional<Output<String>> redisSsl() {
+    public Optional<Output<Boolean>> redisSsl() {
         return Optional.ofNullable(this.redisSsl);
     }
 
     @Import(name="redisTimeout")
-    private @Nullable Output<String> redisTimeout;
+    private @Nullable Output<Integer> redisTimeout;
 
-    public Optional<Output<String>> redisTimeout() {
+    public Optional<Output<Integer>> redisTimeout() {
         return Optional.ofNullable(this.redisTimeout);
     }
 
@@ -169,9 +183,9 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -242,15 +256,39 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -318,30 +356,30 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
             return redisAclChannelsDefault(Output.of(redisAclChannelsDefault));
         }
 
-        public Builder redisIoThreads(@Nullable Output<String> redisIoThreads) {
+        public Builder redisIoThreads(@Nullable Output<Integer> redisIoThreads) {
             $.redisIoThreads = redisIoThreads;
             return this;
         }
 
-        public Builder redisIoThreads(String redisIoThreads) {
+        public Builder redisIoThreads(Integer redisIoThreads) {
             return redisIoThreads(Output.of(redisIoThreads));
         }
 
-        public Builder redisLfuDecayTime(@Nullable Output<String> redisLfuDecayTime) {
+        public Builder redisLfuDecayTime(@Nullable Output<Integer> redisLfuDecayTime) {
             $.redisLfuDecayTime = redisLfuDecayTime;
             return this;
         }
 
-        public Builder redisLfuDecayTime(String redisLfuDecayTime) {
+        public Builder redisLfuDecayTime(Integer redisLfuDecayTime) {
             return redisLfuDecayTime(Output.of(redisLfuDecayTime));
         }
 
-        public Builder redisLfuLogFactor(@Nullable Output<String> redisLfuLogFactor) {
+        public Builder redisLfuLogFactor(@Nullable Output<Integer> redisLfuLogFactor) {
             $.redisLfuLogFactor = redisLfuLogFactor;
             return this;
         }
 
-        public Builder redisLfuLogFactor(String redisLfuLogFactor) {
+        public Builder redisLfuLogFactor(Integer redisLfuLogFactor) {
             return redisLfuLogFactor(Output.of(redisLfuLogFactor));
         }
 
@@ -363,12 +401,12 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
             return redisNotifyKeyspaceEvents(Output.of(redisNotifyKeyspaceEvents));
         }
 
-        public Builder redisNumberOfDatabases(@Nullable Output<String> redisNumberOfDatabases) {
+        public Builder redisNumberOfDatabases(@Nullable Output<Integer> redisNumberOfDatabases) {
             $.redisNumberOfDatabases = redisNumberOfDatabases;
             return this;
         }
 
-        public Builder redisNumberOfDatabases(String redisNumberOfDatabases) {
+        public Builder redisNumberOfDatabases(Integer redisNumberOfDatabases) {
             return redisNumberOfDatabases(Output.of(redisNumberOfDatabases));
         }
 
@@ -381,30 +419,30 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
             return redisPersistence(Output.of(redisPersistence));
         }
 
-        public Builder redisPubsubClientOutputBufferLimit(@Nullable Output<String> redisPubsubClientOutputBufferLimit) {
+        public Builder redisPubsubClientOutputBufferLimit(@Nullable Output<Integer> redisPubsubClientOutputBufferLimit) {
             $.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             return this;
         }
 
-        public Builder redisPubsubClientOutputBufferLimit(String redisPubsubClientOutputBufferLimit) {
+        public Builder redisPubsubClientOutputBufferLimit(Integer redisPubsubClientOutputBufferLimit) {
             return redisPubsubClientOutputBufferLimit(Output.of(redisPubsubClientOutputBufferLimit));
         }
 
-        public Builder redisSsl(@Nullable Output<String> redisSsl) {
+        public Builder redisSsl(@Nullable Output<Boolean> redisSsl) {
             $.redisSsl = redisSsl;
             return this;
         }
 
-        public Builder redisSsl(String redisSsl) {
+        public Builder redisSsl(Boolean redisSsl) {
             return redisSsl(Output.of(redisSsl));
         }
 
-        public Builder redisTimeout(@Nullable Output<String> redisTimeout) {
+        public Builder redisTimeout(@Nullable Output<Integer> redisTimeout) {
             $.redisTimeout = redisTimeout;
             return this;
         }
 
-        public Builder redisTimeout(String redisTimeout) {
+        public Builder redisTimeout(Integer redisTimeout) {
             return redisTimeout(Output.of(redisTimeout));
         }
 
@@ -417,12 +455,12 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 

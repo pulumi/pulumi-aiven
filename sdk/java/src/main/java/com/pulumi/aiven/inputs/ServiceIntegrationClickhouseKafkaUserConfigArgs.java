@@ -17,14 +17,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
     public static final ServiceIntegrationClickhouseKafkaUserConfigArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigArgs();
 
     /**
-     * Tables to create
+     * Tables to create.
      * 
      */
     @Import(name="tables")
     private @Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableArgs>> tables;
 
     /**
-     * @return Tables to create
+     * @return Tables to create.
      * 
      */
     public Optional<Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableArgs>>> tables() {
@@ -56,7 +56,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
         }
 
         /**
-         * @param tables Tables to create
+         * @param tables Tables to create.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
         }
 
         /**
-         * @param tables Tables to create
+         * @param tables Tables to create.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
         }
 
         /**
-         * @param tables Tables to create
+         * @param tables Tables to create.
          * 
          * @return builder
          * 

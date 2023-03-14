@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
-     * @return PEM encoded CA certificate
+     * @return PEM encoded CA certificate.
      * 
      */
     private @Nullable String ca;
     /**
-     * @return Maximum number of days of logs to keep
+     * @return Maximum number of days of logs to keep. The default value is `3`.
      * 
      */
-    private @Nullable String indexDaysMax;
+    private @Nullable Integer indexDaysMax;
     /**
-     * @return Elasticsearch index prefix
+     * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
     private @Nullable String indexPrefix;
     /**
-     * @return Elasticsearch request timeout limit
+     * @return Elasticsearch request timeout limit. The default value is `10.0`.
      * 
      */
-    private @Nullable String timeout;
+    private @Nullable Double timeout;
     /**
-     * @return Elasticsearch connection URL
+     * @return Elasticsearch connection URL.
      * 
      */
     private @Nullable String url;
 
     private ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig() {}
     /**
-     * @return PEM encoded CA certificate
+     * @return PEM encoded CA certificate.
      * 
      */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
     /**
-     * @return Maximum number of days of logs to keep
+     * @return Maximum number of days of logs to keep. The default value is `3`.
      * 
      */
-    public Optional<String> indexDaysMax() {
+    public Optional<Integer> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
     /**
-     * @return Elasticsearch index prefix
+     * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
     public Optional<String> indexPrefix() {
         return Optional.ofNullable(this.indexPrefix);
     }
     /**
-     * @return Elasticsearch request timeout limit
+     * @return Elasticsearch request timeout limit. The default value is `10.0`.
      * 
      */
-    public Optional<String> timeout() {
+    public Optional<Double> timeout() {
         return Optional.ofNullable(this.timeout);
     }
     /**
-     * @return Elasticsearch connection URL
+     * @return Elasticsearch connection URL.
      * 
      */
     public Optional<String> url() {
@@ -84,9 +86,9 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ca;
-        private @Nullable String indexDaysMax;
+        private @Nullable Integer indexDaysMax;
         private @Nullable String indexPrefix;
-        private @Nullable String timeout;
+        private @Nullable Double timeout;
         private @Nullable String url;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
@@ -104,7 +106,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder indexDaysMax(@Nullable String indexDaysMax) {
+        public Builder indexDaysMax(@Nullable Integer indexDaysMax) {
             this.indexDaysMax = indexDaysMax;
             return this;
         }
@@ -114,7 +116,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder timeout(@Nullable String timeout) {
+        public Builder timeout(@Nullable Double timeout) {
             this.timeout = timeout;
             return this;
         }

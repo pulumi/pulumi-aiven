@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigIpFilterObjectResult
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigIpFilterObjectResult(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

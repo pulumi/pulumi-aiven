@@ -13,12 +13,12 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigSchemaRegistryConfig
     {
-        public readonly string? LeaderEligibility;
+        public readonly bool? LeaderEligibility;
         public readonly string? TopicName;
 
         [OutputConstructor]
         private KafkaKafkaUserConfigSchemaRegistryConfig(
-            string? leaderEligibility,
+            bool? leaderEligibility,
 
             string? topicName)
         {

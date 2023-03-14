@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,22 +15,22 @@ public final class GetPgPgUserConfigPrivatelinkAccess {
      * @return PostgreSQL specific server provided values
      * 
      */
-    private @Nullable String pg;
-    private @Nullable String pgbouncer;
-    private @Nullable String prometheus;
+    private @Nullable Boolean pg;
+    private @Nullable Boolean pgbouncer;
+    private @Nullable Boolean prometheus;
 
     private GetPgPgUserConfigPrivatelinkAccess() {}
     /**
      * @return PostgreSQL specific server provided values
      * 
      */
-    public Optional<String> pg() {
+    public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }
-    public Optional<String> pgbouncer() {
+    public Optional<Boolean> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -43,9 +43,9 @@ public final class GetPgPgUserConfigPrivatelinkAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String pg;
-        private @Nullable String pgbouncer;
-        private @Nullable String prometheus;
+        private @Nullable Boolean pg;
+        private @Nullable Boolean pgbouncer;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(GetPgPgUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,17 +55,17 @@ public final class GetPgPgUserConfigPrivatelinkAccess {
         }
 
         @CustomType.Setter
-        public Builder pg(@Nullable String pg) {
+        public Builder pg(@Nullable Boolean pg) {
             this.pg = pg;
             return this;
         }
         @CustomType.Setter
-        public Builder pgbouncer(@Nullable String pgbouncer) {
+        public Builder pgbouncer(@Nullable Boolean pgbouncer) {
             this.pgbouncer = pgbouncer;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

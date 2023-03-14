@@ -803,17 +803,17 @@ class Kafka(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             kafka_user_config=aiven.KafkaKafkaUserConfigArgs(
-                kafka_rest="true",
-                kafka_connect="true",
-                schema_registry="true",
+                kafka_rest=True,
+                kafka_connect=True,
+                schema_registry=True,
                 kafka_version="3.1",
                 kafka=aiven.KafkaKafkaUserConfigKafkaArgs(
-                    group_max_session_timeout_ms="70000",
-                    log_retention_bytes="1000000000",
+                    group_max_session_timeout_ms=70000,
+                    log_retention_bytes=1000000000,
                 ),
                 public_access=aiven.KafkaKafkaUserConfigPublicAccessArgs(
-                    kafka_rest="true",
-                    kafka_connect="true",
+                    kafka_rest=True,
+                    kafka_connect=True,
                 ),
             ))
         ```
@@ -867,17 +867,17 @@ class Kafka(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             kafka_user_config=aiven.KafkaKafkaUserConfigArgs(
-                kafka_rest="true",
-                kafka_connect="true",
-                schema_registry="true",
+                kafka_rest=True,
+                kafka_connect=True,
+                schema_registry=True,
                 kafka_version="3.1",
                 kafka=aiven.KafkaKafkaUserConfigKafkaArgs(
-                    group_max_session_timeout_ms="70000",
-                    log_retention_bytes="1000000000",
+                    group_max_session_timeout_ms=70000,
+                    log_retention_bytes=1000000000,
                 ),
                 public_access=aiven.KafkaKafkaUserConfigPublicAccessArgs(
-                    kafka_rest="true",
-                    kafka_connect="true",
+                    kafka_rest=True,
+                    kafka_connect=True,
                 ),
             ))
         ```

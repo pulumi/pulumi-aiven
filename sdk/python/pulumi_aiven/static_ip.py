@@ -61,7 +61,7 @@ class _StaticIpState:
         """
         Input properties used for looking up and filtering StaticIp resources.
         :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] ip_address: The address of the static ip
+        :param pulumi.Input[str] ip_address: The address of the static ip.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: The service name the static ip is associated with.
         :param pulumi.Input[str] state: The state the static ip is in.
@@ -96,7 +96,7 @@ class _StaticIpState:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the static ip
+        The address of the static ip.
         """
         return pulumi.get(self, "ip_address")
 
@@ -238,7 +238,7 @@ class StaticIp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] ip_address: The address of the static ip
+        :param pulumi.Input[str] ip_address: The address of the static ip.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: The service name the static ip is associated with.
         :param pulumi.Input[str] state: The state the static ip is in.
@@ -268,7 +268,7 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
         """
-        The address of the static ip
+        The address of the static ip.
         """
         return pulumi.get(self, "ip_address")
 

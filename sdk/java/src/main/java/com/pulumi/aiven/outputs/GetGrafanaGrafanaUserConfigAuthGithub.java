@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,26 +14,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGithub {
-    private @Nullable String allowSignUp;
+    private @Nullable Boolean allowSignUp;
     private @Nullable List<String> allowedOrganizations;
-    private @Nullable String clientId;
-    private @Nullable String clientSecret;
-    private @Nullable List<String> teamIds;
+    private String clientId;
+    private String clientSecret;
+    private @Nullable List<Integer> teamIds;
 
     private GetGrafanaGrafanaUserConfigAuthGithub() {}
-    public Optional<String> allowSignUp() {
+    public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
     public List<String> allowedOrganizations() {
         return this.allowedOrganizations == null ? List.of() : this.allowedOrganizations;
     }
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public String clientId() {
+        return this.clientId;
     }
-    public Optional<String> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public String clientSecret() {
+        return this.clientSecret;
     }
-    public List<String> teamIds() {
+    public List<Integer> teamIds() {
         return this.teamIds == null ? List.of() : this.teamIds;
     }
 
@@ -44,11 +46,11 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String allowSignUp;
+        private @Nullable Boolean allowSignUp;
         private @Nullable List<String> allowedOrganizations;
-        private @Nullable String clientId;
-        private @Nullable String clientSecret;
-        private @Nullable List<String> teamIds;
+        private String clientId;
+        private String clientSecret;
+        private @Nullable List<Integer> teamIds;
         public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGithub defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,7 +62,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
         }
 
         @CustomType.Setter
-        public Builder allowSignUp(@Nullable String allowSignUp) {
+        public Builder allowSignUp(@Nullable Boolean allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
@@ -73,21 +75,21 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
             return allowedOrganizations(List.of(allowedOrganizations));
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
-            this.clientId = clientId;
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
-        public Builder clientSecret(@Nullable String clientSecret) {
-            this.clientSecret = clientSecret;
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
         @CustomType.Setter
-        public Builder teamIds(@Nullable List<String> teamIds) {
+        public Builder teamIds(@Nullable List<Integer> teamIds) {
             this.teamIds = teamIds;
             return this;
         }
-        public Builder teamIds(String... teamIds) {
+        public Builder teamIds(Integer... teamIds) {
             return teamIds(List.of(teamIds));
         }
         public GetGrafanaGrafanaUserConfigAuthGithub build() {

@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,16 +18,16 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     public static final M3DbM3dbUserConfigLimitsArgs Empty = new M3DbM3dbUserConfigLimitsArgs();
 
     @Import(name="maxRecentlyQueriedSeriesBlocks")
-    private @Nullable Output<String> maxRecentlyQueriedSeriesBlocks;
+    private @Nullable Output<Integer> maxRecentlyQueriedSeriesBlocks;
 
-    public Optional<Output<String>> maxRecentlyQueriedSeriesBlocks() {
+    public Optional<Output<Integer>> maxRecentlyQueriedSeriesBlocks() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesBlocks);
     }
 
     @Import(name="maxRecentlyQueriedSeriesDiskBytesRead")
-    private @Nullable Output<String> maxRecentlyQueriedSeriesDiskBytesRead;
+    private @Nullable Output<Integer> maxRecentlyQueriedSeriesDiskBytesRead;
 
-    public Optional<Output<String>> maxRecentlyQueriedSeriesDiskBytesRead() {
+    public Optional<Output<Integer>> maxRecentlyQueriedSeriesDiskBytesRead() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
     }
 
@@ -37,23 +39,23 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="queryDocs")
-    private @Nullable Output<String> queryDocs;
+    private @Nullable Output<Integer> queryDocs;
 
-    public Optional<Output<String>> queryDocs() {
+    public Optional<Output<Integer>> queryDocs() {
         return Optional.ofNullable(this.queryDocs);
     }
 
     @Import(name="queryRequireExhaustive")
-    private @Nullable Output<String> queryRequireExhaustive;
+    private @Nullable Output<Boolean> queryRequireExhaustive;
 
-    public Optional<Output<String>> queryRequireExhaustive() {
+    public Optional<Output<Boolean>> queryRequireExhaustive() {
         return Optional.ofNullable(this.queryRequireExhaustive);
     }
 
     @Import(name="querySeries")
-    private @Nullable Output<String> querySeries;
+    private @Nullable Output<Integer> querySeries;
 
-    public Optional<Output<String>> querySeries() {
+    public Optional<Output<Integer>> querySeries() {
         return Optional.ofNullable(this.querySeries);
     }
 
@@ -86,21 +88,21 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
             $ = new M3DbM3dbUserConfigLimitsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder maxRecentlyQueriedSeriesBlocks(@Nullable Output<String> maxRecentlyQueriedSeriesBlocks) {
+        public Builder maxRecentlyQueriedSeriesBlocks(@Nullable Output<Integer> maxRecentlyQueriedSeriesBlocks) {
             $.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
             return this;
         }
 
-        public Builder maxRecentlyQueriedSeriesBlocks(String maxRecentlyQueriedSeriesBlocks) {
+        public Builder maxRecentlyQueriedSeriesBlocks(Integer maxRecentlyQueriedSeriesBlocks) {
             return maxRecentlyQueriedSeriesBlocks(Output.of(maxRecentlyQueriedSeriesBlocks));
         }
 
-        public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable Output<String> maxRecentlyQueriedSeriesDiskBytesRead) {
+        public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable Output<Integer> maxRecentlyQueriedSeriesDiskBytesRead) {
             $.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
             return this;
         }
 
-        public Builder maxRecentlyQueriedSeriesDiskBytesRead(String maxRecentlyQueriedSeriesDiskBytesRead) {
+        public Builder maxRecentlyQueriedSeriesDiskBytesRead(Integer maxRecentlyQueriedSeriesDiskBytesRead) {
             return maxRecentlyQueriedSeriesDiskBytesRead(Output.of(maxRecentlyQueriedSeriesDiskBytesRead));
         }
 
@@ -113,30 +115,30 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
             return maxRecentlyQueriedSeriesLookback(Output.of(maxRecentlyQueriedSeriesLookback));
         }
 
-        public Builder queryDocs(@Nullable Output<String> queryDocs) {
+        public Builder queryDocs(@Nullable Output<Integer> queryDocs) {
             $.queryDocs = queryDocs;
             return this;
         }
 
-        public Builder queryDocs(String queryDocs) {
+        public Builder queryDocs(Integer queryDocs) {
             return queryDocs(Output.of(queryDocs));
         }
 
-        public Builder queryRequireExhaustive(@Nullable Output<String> queryRequireExhaustive) {
+        public Builder queryRequireExhaustive(@Nullable Output<Boolean> queryRequireExhaustive) {
             $.queryRequireExhaustive = queryRequireExhaustive;
             return this;
         }
 
-        public Builder queryRequireExhaustive(String queryRequireExhaustive) {
+        public Builder queryRequireExhaustive(Boolean queryRequireExhaustive) {
             return queryRequireExhaustive(Output.of(queryRequireExhaustive));
         }
 
-        public Builder querySeries(@Nullable Output<String> querySeries) {
+        public Builder querySeries(@Nullable Output<Integer> querySeries) {
             $.querySeries = querySeries;
             return this;
         }
 
-        public Builder querySeries(String querySeries) {
+        public Builder querySeries(Integer querySeries) {
             return querySeries(Output.of(querySeries));
         }
 

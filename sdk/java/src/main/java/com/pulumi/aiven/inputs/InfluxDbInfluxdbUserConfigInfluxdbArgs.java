@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,44 +16,44 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
     public static final InfluxDbInfluxdbUserConfigInfluxdbArgs Empty = new InfluxDbInfluxdbUserConfigInfluxdbArgs();
 
     @Import(name="logQueriesAfter")
-    private @Nullable Output<String> logQueriesAfter;
+    private @Nullable Output<Integer> logQueriesAfter;
 
-    public Optional<Output<String>> logQueriesAfter() {
+    public Optional<Output<Integer>> logQueriesAfter() {
         return Optional.ofNullable(this.logQueriesAfter);
     }
 
     @Import(name="maxConnectionLimit")
-    private @Nullable Output<String> maxConnectionLimit;
+    private @Nullable Output<Integer> maxConnectionLimit;
 
-    public Optional<Output<String>> maxConnectionLimit() {
+    public Optional<Output<Integer>> maxConnectionLimit() {
         return Optional.ofNullable(this.maxConnectionLimit);
     }
 
     @Import(name="maxRowLimit")
-    private @Nullable Output<String> maxRowLimit;
+    private @Nullable Output<Integer> maxRowLimit;
 
-    public Optional<Output<String>> maxRowLimit() {
+    public Optional<Output<Integer>> maxRowLimit() {
         return Optional.ofNullable(this.maxRowLimit);
     }
 
     @Import(name="maxSelectBuckets")
-    private @Nullable Output<String> maxSelectBuckets;
+    private @Nullable Output<Integer> maxSelectBuckets;
 
-    public Optional<Output<String>> maxSelectBuckets() {
+    public Optional<Output<Integer>> maxSelectBuckets() {
         return Optional.ofNullable(this.maxSelectBuckets);
     }
 
     @Import(name="maxSelectPoint")
-    private @Nullable Output<String> maxSelectPoint;
+    private @Nullable Output<Integer> maxSelectPoint;
 
-    public Optional<Output<String>> maxSelectPoint() {
+    public Optional<Output<Integer>> maxSelectPoint() {
         return Optional.ofNullable(this.maxSelectPoint);
     }
 
     @Import(name="queryTimeout")
-    private @Nullable Output<String> queryTimeout;
+    private @Nullable Output<Integer> queryTimeout;
 
-    public Optional<Output<String>> queryTimeout() {
+    public Optional<Output<Integer>> queryTimeout() {
         return Optional.ofNullable(this.queryTimeout);
     }
 
@@ -86,57 +86,57 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
             $ = new InfluxDbInfluxdbUserConfigInfluxdbArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder logQueriesAfter(@Nullable Output<String> logQueriesAfter) {
+        public Builder logQueriesAfter(@Nullable Output<Integer> logQueriesAfter) {
             $.logQueriesAfter = logQueriesAfter;
             return this;
         }
 
-        public Builder logQueriesAfter(String logQueriesAfter) {
+        public Builder logQueriesAfter(Integer logQueriesAfter) {
             return logQueriesAfter(Output.of(logQueriesAfter));
         }
 
-        public Builder maxConnectionLimit(@Nullable Output<String> maxConnectionLimit) {
+        public Builder maxConnectionLimit(@Nullable Output<Integer> maxConnectionLimit) {
             $.maxConnectionLimit = maxConnectionLimit;
             return this;
         }
 
-        public Builder maxConnectionLimit(String maxConnectionLimit) {
+        public Builder maxConnectionLimit(Integer maxConnectionLimit) {
             return maxConnectionLimit(Output.of(maxConnectionLimit));
         }
 
-        public Builder maxRowLimit(@Nullable Output<String> maxRowLimit) {
+        public Builder maxRowLimit(@Nullable Output<Integer> maxRowLimit) {
             $.maxRowLimit = maxRowLimit;
             return this;
         }
 
-        public Builder maxRowLimit(String maxRowLimit) {
+        public Builder maxRowLimit(Integer maxRowLimit) {
             return maxRowLimit(Output.of(maxRowLimit));
         }
 
-        public Builder maxSelectBuckets(@Nullable Output<String> maxSelectBuckets) {
+        public Builder maxSelectBuckets(@Nullable Output<Integer> maxSelectBuckets) {
             $.maxSelectBuckets = maxSelectBuckets;
             return this;
         }
 
-        public Builder maxSelectBuckets(String maxSelectBuckets) {
+        public Builder maxSelectBuckets(Integer maxSelectBuckets) {
             return maxSelectBuckets(Output.of(maxSelectBuckets));
         }
 
-        public Builder maxSelectPoint(@Nullable Output<String> maxSelectPoint) {
+        public Builder maxSelectPoint(@Nullable Output<Integer> maxSelectPoint) {
             $.maxSelectPoint = maxSelectPoint;
             return this;
         }
 
-        public Builder maxSelectPoint(String maxSelectPoint) {
+        public Builder maxSelectPoint(Integer maxSelectPoint) {
             return maxSelectPoint(Output.of(maxSelectPoint));
         }
 
-        public Builder queryTimeout(@Nullable Output<String> queryTimeout) {
+        public Builder queryTimeout(@Nullable Output<Integer> queryTimeout) {
             $.queryTimeout = queryTimeout;
             return this;
         }
 
-        public Builder queryTimeout(String queryTimeout) {
+        public Builder queryTimeout(Integer queryTimeout) {
             return queryTimeout(Output.of(queryTimeout));
         }
 

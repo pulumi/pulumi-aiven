@@ -45,11 +45,11 @@ export interface GetMirrorMakerReplicationFlowArgs {
      */
     serviceName: string;
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      */
     sourceCluster: string;
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      */
     targetCluster: string;
 }
@@ -87,7 +87,7 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly serviceName: string;
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      */
     readonly sourceCluster: string;
     /**
@@ -99,7 +99,7 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly syncGroupOffsetsIntervalSeconds: number;
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      */
     readonly targetCluster: string;
     /**
@@ -145,11 +145,11 @@ export interface GetMirrorMakerReplicationFlowOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      */
     sourceCluster: pulumi.Input<string>;
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      */
     targetCluster: pulumi.Input<string>;
 }

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * @return Bootstrap servers
+     * @return Bootstrap servers.
      * 
      */
     private @Nullable String bootstrapServers;
@@ -32,22 +32,22 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private @Nullable String saslPlainUsername;
     /**
-     * @return Security protocol
+     * @return Security protocol.
      * 
      */
     private @Nullable String securityProtocol;
     /**
-     * @return PEM-encoded CA certificate
+     * @return PEM-encoded CA certificate.
      * 
      */
     private @Nullable String sslCaCert;
     /**
-     * @return PEM-encoded client certificate
+     * @return PEM-encoded client certificate.
      * 
      */
     private @Nullable String sslClientCert;
     /**
-     * @return PEM-encoded client key
+     * @return PEM-encoded client key.
      * 
      */
     private @Nullable String sslClientKey;
@@ -59,7 +59,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
 
     private ServiceIntegrationEndpointExternalKafkaUserConfig() {}
     /**
-     * @return Bootstrap servers
+     * @return Bootstrap servers.
      * 
      */
     public Optional<String> bootstrapServers() {
@@ -87,28 +87,28 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         return Optional.ofNullable(this.saslPlainUsername);
     }
     /**
-     * @return Security protocol
+     * @return Security protocol.
      * 
      */
     public Optional<String> securityProtocol() {
         return Optional.ofNullable(this.securityProtocol);
     }
     /**
-     * @return PEM-encoded CA certificate
+     * @return PEM-encoded CA certificate.
      * 
      */
     public Optional<String> sslCaCert() {
         return Optional.ofNullable(this.sslCaCert);
     }
     /**
-     * @return PEM-encoded client certificate
+     * @return PEM-encoded client certificate.
      * 
      */
     public Optional<String> sslClientCert() {
         return Optional.ofNullable(this.sslClientCert);
     }
     /**
-     * @return PEM-encoded client key
+     * @return PEM-encoded client key.
      * 
      */
     public Optional<String> sslClientKey() {

@@ -35,17 +35,17 @@ import (
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				KafkaUserConfig: &aiven.KafkaKafkaUserConfigArgs{
-//					KafkaRest:      pulumi.String("true"),
-//					KafkaConnect:   pulumi.String("true"),
-//					SchemaRegistry: pulumi.String("true"),
+//					KafkaRest:      pulumi.Bool(true),
+//					KafkaConnect:   pulumi.Bool(true),
+//					SchemaRegistry: pulumi.Bool(true),
 //					KafkaVersion:   pulumi.String("3.1"),
 //					Kafka: &aiven.KafkaKafkaUserConfigKafkaArgs{
-//						GroupMaxSessionTimeoutMs: pulumi.String("70000"),
-//						LogRetentionBytes:        pulumi.String("1000000000"),
+//						GroupMaxSessionTimeoutMs: pulumi.Int(70000),
+//						LogRetentionBytes:        pulumi.Int(1000000000),
 //					},
 //					PublicAccess: &aiven.KafkaKafkaUserConfigPublicAccessArgs{
-//						KafkaRest:    pulumi.String("true"),
-//						KafkaConnect: pulumi.String("true"),
+//						KafkaRest:    pulumi.Bool(true),
+//						KafkaConnect: pulumi.Bool(true),
 //					},
 //				},
 //			})

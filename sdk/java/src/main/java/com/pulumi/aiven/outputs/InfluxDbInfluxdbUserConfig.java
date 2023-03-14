@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,37 +19,41 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InfluxDbInfluxdbUserConfig {
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     private @Nullable String customDomain;
     /**
-     * @return influxdb.conf configuration values
+     * @return influxdb.conf configuration values.
      * 
      */
     private @Nullable InfluxDbInfluxdbUserConfigInfluxdb influxdb;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     private @Nullable List<InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     private @Nullable InfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     private @Nullable InfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
@@ -58,12 +63,12 @@ public final class InfluxDbInfluxdbUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     private @Nullable InfluxDbInfluxdbUserConfigPublicAccess publicAccess;
     /**
-     * @return Name of the basebackup to restore in forked service
+     * @return Name of the basebackup to restore in forked service.
      * 
      */
     private @Nullable String recoveryBasebackupName;
@@ -73,56 +78,60 @@ public final class InfluxDbInfluxdbUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private InfluxDbInfluxdbUserConfig() {}
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return influxdb.conf configuration values
+     * @return influxdb.conf configuration values.
      * 
      */
     public Optional<InfluxDbInfluxdbUserConfigInfluxdb> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public List<InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<InfluxDbInfluxdbUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     public Optional<InfluxDbInfluxdbUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -136,14 +145,14 @@ public final class InfluxDbInfluxdbUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<InfluxDbInfluxdbUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Name of the basebackup to restore in forked service
+     * @return Name of the basebackup to restore in forked service.
      * 
      */
     public Optional<String> recoveryBasebackupName() {
@@ -157,10 +166,10 @@ public final class InfluxDbInfluxdbUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -184,7 +193,7 @@ public final class InfluxDbInfluxdbUserConfig {
         private @Nullable InfluxDbInfluxdbUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(InfluxDbInfluxdbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -264,7 +273,7 @@ public final class InfluxDbInfluxdbUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

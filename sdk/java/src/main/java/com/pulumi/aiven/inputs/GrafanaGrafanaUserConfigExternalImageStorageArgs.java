@@ -7,40 +7,38 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GrafanaGrafanaUserConfigExternalImageStorageArgs Empty = new GrafanaGrafanaUserConfigExternalImageStorageArgs();
 
-    @Import(name="accessKey")
-    private @Nullable Output<String> accessKey;
+    @Import(name="accessKey", required=true)
+    private Output<String> accessKey;
 
-    public Optional<Output<String>> accessKey() {
-        return Optional.ofNullable(this.accessKey);
+    public Output<String> accessKey() {
+        return this.accessKey;
     }
 
-    @Import(name="bucketUrl")
-    private @Nullable Output<String> bucketUrl;
+    @Import(name="bucketUrl", required=true)
+    private Output<String> bucketUrl;
 
-    public Optional<Output<String>> bucketUrl() {
-        return Optional.ofNullable(this.bucketUrl);
+    public Output<String> bucketUrl() {
+        return this.bucketUrl;
     }
 
-    @Import(name="provider")
-    private @Nullable Output<String> provider;
+    @Import(name="provider", required=true)
+    private Output<String> provider;
 
-    public Optional<Output<String>> provider() {
-        return Optional.ofNullable(this.provider);
+    public Output<String> provider() {
+        return this.provider;
     }
 
-    @Import(name="secretKey")
-    private @Nullable Output<String> secretKey;
+    @Import(name="secretKey", required=true)
+    private Output<String> secretKey;
 
-    public Optional<Output<String>> secretKey() {
-        return Optional.ofNullable(this.secretKey);
+    public Output<String> secretKey() {
+        return this.secretKey;
     }
 
     private GrafanaGrafanaUserConfigExternalImageStorageArgs() {}
@@ -70,7 +68,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
             $ = new GrafanaGrafanaUserConfigExternalImageStorageArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accessKey(@Nullable Output<String> accessKey) {
+        public Builder accessKey(Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
@@ -79,7 +77,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
             return accessKey(Output.of(accessKey));
         }
 
-        public Builder bucketUrl(@Nullable Output<String> bucketUrl) {
+        public Builder bucketUrl(Output<String> bucketUrl) {
             $.bucketUrl = bucketUrl;
             return this;
         }
@@ -88,7 +86,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
             return bucketUrl(Output.of(bucketUrl));
         }
 
-        public Builder provider(@Nullable Output<String> provider) {
+        public Builder provider(Output<String> provider) {
             $.provider = provider;
             return this;
         }
@@ -97,7 +95,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
             return provider(Output.of(provider));
         }
 
-        public Builder secretKey(@Nullable Output<String> secretKey) {
+        public Builder secretKey(Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
@@ -107,6 +105,10 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         public GrafanaGrafanaUserConfigExternalImageStorageArgs build() {
+            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
+            $.bucketUrl = Objects.requireNonNull($.bucketUrl, "expected parameter 'bucketUrl' to be non-null");
+            $.provider = Objects.requireNonNull($.provider, "expected parameter 'provider' to be non-null");
+            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
             return $;
         }
     }

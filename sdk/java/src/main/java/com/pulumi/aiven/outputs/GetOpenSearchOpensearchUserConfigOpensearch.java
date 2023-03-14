@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,49 +14,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearch {
-    private @Nullable String actionAutoCreateIndexEnabled;
-    private @Nullable String actionDestructiveRequiresName;
-    private @Nullable String clusterMaxShardsPerNode;
-    private @Nullable String clusterRoutingAllocationNodeConcurrentRecoveries;
+    private @Nullable Boolean actionAutoCreateIndexEnabled;
+    private @Nullable Boolean actionDestructiveRequiresName;
+    private @Nullable Integer clusterMaxShardsPerNode;
+    private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
     private @Nullable String emailSenderName;
     private @Nullable String emailSenderPassword;
     private @Nullable String emailSenderUsername;
-    private @Nullable String httpMaxContentLength;
-    private @Nullable String httpMaxHeaderSize;
-    private @Nullable String httpMaxInitialLineLength;
-    private @Nullable String indicesFielddataCacheSize;
-    private @Nullable String indicesMemoryIndexBufferSize;
-    private @Nullable String indicesQueriesCacheSize;
-    private @Nullable String indicesQueryBoolMaxClauseCount;
-    private @Nullable String indicesRecoveryMaxBytesPerSec;
-    private @Nullable String indicesRecoveryMaxConcurrentFileChunks;
-    private @Nullable String overrideMainResponseVersion;
+    private @Nullable Integer httpMaxContentLength;
+    private @Nullable Integer httpMaxHeaderSize;
+    private @Nullable Integer httpMaxInitialLineLength;
+    private @Nullable Integer indicesFielddataCacheSize;
+    private @Nullable Integer indicesMemoryIndexBufferSize;
+    private @Nullable Integer indicesQueriesCacheSize;
+    private @Nullable Integer indicesQueryBoolMaxClauseCount;
+    private @Nullable Integer indicesRecoveryMaxBytesPerSec;
+    private @Nullable Integer indicesRecoveryMaxConcurrentFileChunks;
+    private @Nullable Boolean overrideMainResponseVersion;
     private @Nullable List<String> reindexRemoteWhitelists;
     private @Nullable String scriptMaxCompilationsRate;
-    private @Nullable String searchMaxBuckets;
-    private @Nullable String threadPoolAnalyzeQueueSize;
-    private @Nullable String threadPoolAnalyzeSize;
-    private @Nullable String threadPoolForceMergeSize;
-    private @Nullable String threadPoolGetQueueSize;
-    private @Nullable String threadPoolGetSize;
-    private @Nullable String threadPoolSearchQueueSize;
-    private @Nullable String threadPoolSearchSize;
-    private @Nullable String threadPoolSearchThrottledQueueSize;
-    private @Nullable String threadPoolSearchThrottledSize;
-    private @Nullable String threadPoolWriteQueueSize;
-    private @Nullable String threadPoolWriteSize;
+    private @Nullable Integer searchMaxBuckets;
+    private @Nullable Integer threadPoolAnalyzeQueueSize;
+    private @Nullable Integer threadPoolAnalyzeSize;
+    private @Nullable Integer threadPoolForceMergeSize;
+    private @Nullable Integer threadPoolGetQueueSize;
+    private @Nullable Integer threadPoolGetSize;
+    private @Nullable Integer threadPoolSearchQueueSize;
+    private @Nullable Integer threadPoolSearchSize;
+    private @Nullable Integer threadPoolSearchThrottledQueueSize;
+    private @Nullable Integer threadPoolSearchThrottledSize;
+    private @Nullable Integer threadPoolWriteQueueSize;
+    private @Nullable Integer threadPoolWriteSize;
 
     private GetOpenSearchOpensearchUserConfigOpensearch() {}
-    public Optional<String> actionAutoCreateIndexEnabled() {
+    public Optional<Boolean> actionAutoCreateIndexEnabled() {
         return Optional.ofNullable(this.actionAutoCreateIndexEnabled);
     }
-    public Optional<String> actionDestructiveRequiresName() {
+    public Optional<Boolean> actionDestructiveRequiresName() {
         return Optional.ofNullable(this.actionDestructiveRequiresName);
     }
-    public Optional<String> clusterMaxShardsPerNode() {
+    public Optional<Integer> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
-    public Optional<String> clusterRoutingAllocationNodeConcurrentRecoveries() {
+    public Optional<Integer> clusterRoutingAllocationNodeConcurrentRecoveries() {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
     public Optional<String> emailSenderName() {
@@ -66,34 +68,34 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     public Optional<String> emailSenderUsername() {
         return Optional.ofNullable(this.emailSenderUsername);
     }
-    public Optional<String> httpMaxContentLength() {
+    public Optional<Integer> httpMaxContentLength() {
         return Optional.ofNullable(this.httpMaxContentLength);
     }
-    public Optional<String> httpMaxHeaderSize() {
+    public Optional<Integer> httpMaxHeaderSize() {
         return Optional.ofNullable(this.httpMaxHeaderSize);
     }
-    public Optional<String> httpMaxInitialLineLength() {
+    public Optional<Integer> httpMaxInitialLineLength() {
         return Optional.ofNullable(this.httpMaxInitialLineLength);
     }
-    public Optional<String> indicesFielddataCacheSize() {
+    public Optional<Integer> indicesFielddataCacheSize() {
         return Optional.ofNullable(this.indicesFielddataCacheSize);
     }
-    public Optional<String> indicesMemoryIndexBufferSize() {
+    public Optional<Integer> indicesMemoryIndexBufferSize() {
         return Optional.ofNullable(this.indicesMemoryIndexBufferSize);
     }
-    public Optional<String> indicesQueriesCacheSize() {
+    public Optional<Integer> indicesQueriesCacheSize() {
         return Optional.ofNullable(this.indicesQueriesCacheSize);
     }
-    public Optional<String> indicesQueryBoolMaxClauseCount() {
+    public Optional<Integer> indicesQueryBoolMaxClauseCount() {
         return Optional.ofNullable(this.indicesQueryBoolMaxClauseCount);
     }
-    public Optional<String> indicesRecoveryMaxBytesPerSec() {
+    public Optional<Integer> indicesRecoveryMaxBytesPerSec() {
         return Optional.ofNullable(this.indicesRecoveryMaxBytesPerSec);
     }
-    public Optional<String> indicesRecoveryMaxConcurrentFileChunks() {
+    public Optional<Integer> indicesRecoveryMaxConcurrentFileChunks() {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
     }
-    public Optional<String> overrideMainResponseVersion() {
+    public Optional<Boolean> overrideMainResponseVersion() {
         return Optional.ofNullable(this.overrideMainResponseVersion);
     }
     public List<String> reindexRemoteWhitelists() {
@@ -102,40 +104,40 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     public Optional<String> scriptMaxCompilationsRate() {
         return Optional.ofNullable(this.scriptMaxCompilationsRate);
     }
-    public Optional<String> searchMaxBuckets() {
+    public Optional<Integer> searchMaxBuckets() {
         return Optional.ofNullable(this.searchMaxBuckets);
     }
-    public Optional<String> threadPoolAnalyzeQueueSize() {
+    public Optional<Integer> threadPoolAnalyzeQueueSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeQueueSize);
     }
-    public Optional<String> threadPoolAnalyzeSize() {
+    public Optional<Integer> threadPoolAnalyzeSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeSize);
     }
-    public Optional<String> threadPoolForceMergeSize() {
+    public Optional<Integer> threadPoolForceMergeSize() {
         return Optional.ofNullable(this.threadPoolForceMergeSize);
     }
-    public Optional<String> threadPoolGetQueueSize() {
+    public Optional<Integer> threadPoolGetQueueSize() {
         return Optional.ofNullable(this.threadPoolGetQueueSize);
     }
-    public Optional<String> threadPoolGetSize() {
+    public Optional<Integer> threadPoolGetSize() {
         return Optional.ofNullable(this.threadPoolGetSize);
     }
-    public Optional<String> threadPoolSearchQueueSize() {
+    public Optional<Integer> threadPoolSearchQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchQueueSize);
     }
-    public Optional<String> threadPoolSearchSize() {
+    public Optional<Integer> threadPoolSearchSize() {
         return Optional.ofNullable(this.threadPoolSearchSize);
     }
-    public Optional<String> threadPoolSearchThrottledQueueSize() {
+    public Optional<Integer> threadPoolSearchThrottledQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledQueueSize);
     }
-    public Optional<String> threadPoolSearchThrottledSize() {
+    public Optional<Integer> threadPoolSearchThrottledSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledSize);
     }
-    public Optional<String> threadPoolWriteQueueSize() {
+    public Optional<Integer> threadPoolWriteQueueSize() {
         return Optional.ofNullable(this.threadPoolWriteQueueSize);
     }
-    public Optional<String> threadPoolWriteSize() {
+    public Optional<Integer> threadPoolWriteSize() {
         return Optional.ofNullable(this.threadPoolWriteSize);
     }
 
@@ -148,37 +150,37 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String actionAutoCreateIndexEnabled;
-        private @Nullable String actionDestructiveRequiresName;
-        private @Nullable String clusterMaxShardsPerNode;
-        private @Nullable String clusterRoutingAllocationNodeConcurrentRecoveries;
+        private @Nullable Boolean actionAutoCreateIndexEnabled;
+        private @Nullable Boolean actionDestructiveRequiresName;
+        private @Nullable Integer clusterMaxShardsPerNode;
+        private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
         private @Nullable String emailSenderName;
         private @Nullable String emailSenderPassword;
         private @Nullable String emailSenderUsername;
-        private @Nullable String httpMaxContentLength;
-        private @Nullable String httpMaxHeaderSize;
-        private @Nullable String httpMaxInitialLineLength;
-        private @Nullable String indicesFielddataCacheSize;
-        private @Nullable String indicesMemoryIndexBufferSize;
-        private @Nullable String indicesQueriesCacheSize;
-        private @Nullable String indicesQueryBoolMaxClauseCount;
-        private @Nullable String indicesRecoveryMaxBytesPerSec;
-        private @Nullable String indicesRecoveryMaxConcurrentFileChunks;
-        private @Nullable String overrideMainResponseVersion;
+        private @Nullable Integer httpMaxContentLength;
+        private @Nullable Integer httpMaxHeaderSize;
+        private @Nullable Integer httpMaxInitialLineLength;
+        private @Nullable Integer indicesFielddataCacheSize;
+        private @Nullable Integer indicesMemoryIndexBufferSize;
+        private @Nullable Integer indicesQueriesCacheSize;
+        private @Nullable Integer indicesQueryBoolMaxClauseCount;
+        private @Nullable Integer indicesRecoveryMaxBytesPerSec;
+        private @Nullable Integer indicesRecoveryMaxConcurrentFileChunks;
+        private @Nullable Boolean overrideMainResponseVersion;
         private @Nullable List<String> reindexRemoteWhitelists;
         private @Nullable String scriptMaxCompilationsRate;
-        private @Nullable String searchMaxBuckets;
-        private @Nullable String threadPoolAnalyzeQueueSize;
-        private @Nullable String threadPoolAnalyzeSize;
-        private @Nullable String threadPoolForceMergeSize;
-        private @Nullable String threadPoolGetQueueSize;
-        private @Nullable String threadPoolGetSize;
-        private @Nullable String threadPoolSearchQueueSize;
-        private @Nullable String threadPoolSearchSize;
-        private @Nullable String threadPoolSearchThrottledQueueSize;
-        private @Nullable String threadPoolSearchThrottledSize;
-        private @Nullable String threadPoolWriteQueueSize;
-        private @Nullable String threadPoolWriteSize;
+        private @Nullable Integer searchMaxBuckets;
+        private @Nullable Integer threadPoolAnalyzeQueueSize;
+        private @Nullable Integer threadPoolAnalyzeSize;
+        private @Nullable Integer threadPoolForceMergeSize;
+        private @Nullable Integer threadPoolGetQueueSize;
+        private @Nullable Integer threadPoolGetSize;
+        private @Nullable Integer threadPoolSearchQueueSize;
+        private @Nullable Integer threadPoolSearchSize;
+        private @Nullable Integer threadPoolSearchThrottledQueueSize;
+        private @Nullable Integer threadPoolSearchThrottledSize;
+        private @Nullable Integer threadPoolWriteQueueSize;
+        private @Nullable Integer threadPoolWriteSize;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfigOpensearch defaults) {
     	      Objects.requireNonNull(defaults);
@@ -216,22 +218,22 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         }
 
         @CustomType.Setter
-        public Builder actionAutoCreateIndexEnabled(@Nullable String actionAutoCreateIndexEnabled) {
+        public Builder actionAutoCreateIndexEnabled(@Nullable Boolean actionAutoCreateIndexEnabled) {
             this.actionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder actionDestructiveRequiresName(@Nullable String actionDestructiveRequiresName) {
+        public Builder actionDestructiveRequiresName(@Nullable Boolean actionDestructiveRequiresName) {
             this.actionDestructiveRequiresName = actionDestructiveRequiresName;
             return this;
         }
         @CustomType.Setter
-        public Builder clusterMaxShardsPerNode(@Nullable String clusterMaxShardsPerNode) {
+        public Builder clusterMaxShardsPerNode(@Nullable Integer clusterMaxShardsPerNode) {
             this.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
             return this;
         }
         @CustomType.Setter
-        public Builder clusterRoutingAllocationNodeConcurrentRecoveries(@Nullable String clusterRoutingAllocationNodeConcurrentRecoveries) {
+        public Builder clusterRoutingAllocationNodeConcurrentRecoveries(@Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries) {
             this.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             return this;
         }
@@ -251,52 +253,52 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
-        public Builder httpMaxContentLength(@Nullable String httpMaxContentLength) {
+        public Builder httpMaxContentLength(@Nullable Integer httpMaxContentLength) {
             this.httpMaxContentLength = httpMaxContentLength;
             return this;
         }
         @CustomType.Setter
-        public Builder httpMaxHeaderSize(@Nullable String httpMaxHeaderSize) {
+        public Builder httpMaxHeaderSize(@Nullable Integer httpMaxHeaderSize) {
             this.httpMaxHeaderSize = httpMaxHeaderSize;
             return this;
         }
         @CustomType.Setter
-        public Builder httpMaxInitialLineLength(@Nullable String httpMaxInitialLineLength) {
+        public Builder httpMaxInitialLineLength(@Nullable Integer httpMaxInitialLineLength) {
             this.httpMaxInitialLineLength = httpMaxInitialLineLength;
             return this;
         }
         @CustomType.Setter
-        public Builder indicesFielddataCacheSize(@Nullable String indicesFielddataCacheSize) {
+        public Builder indicesFielddataCacheSize(@Nullable Integer indicesFielddataCacheSize) {
             this.indicesFielddataCacheSize = indicesFielddataCacheSize;
             return this;
         }
         @CustomType.Setter
-        public Builder indicesMemoryIndexBufferSize(@Nullable String indicesMemoryIndexBufferSize) {
+        public Builder indicesMemoryIndexBufferSize(@Nullable Integer indicesMemoryIndexBufferSize) {
             this.indicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
             return this;
         }
         @CustomType.Setter
-        public Builder indicesQueriesCacheSize(@Nullable String indicesQueriesCacheSize) {
+        public Builder indicesQueriesCacheSize(@Nullable Integer indicesQueriesCacheSize) {
             this.indicesQueriesCacheSize = indicesQueriesCacheSize;
             return this;
         }
         @CustomType.Setter
-        public Builder indicesQueryBoolMaxClauseCount(@Nullable String indicesQueryBoolMaxClauseCount) {
+        public Builder indicesQueryBoolMaxClauseCount(@Nullable Integer indicesQueryBoolMaxClauseCount) {
             this.indicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             return this;
         }
         @CustomType.Setter
-        public Builder indicesRecoveryMaxBytesPerSec(@Nullable String indicesRecoveryMaxBytesPerSec) {
+        public Builder indicesRecoveryMaxBytesPerSec(@Nullable Integer indicesRecoveryMaxBytesPerSec) {
             this.indicesRecoveryMaxBytesPerSec = indicesRecoveryMaxBytesPerSec;
             return this;
         }
         @CustomType.Setter
-        public Builder indicesRecoveryMaxConcurrentFileChunks(@Nullable String indicesRecoveryMaxConcurrentFileChunks) {
+        public Builder indicesRecoveryMaxConcurrentFileChunks(@Nullable Integer indicesRecoveryMaxConcurrentFileChunks) {
             this.indicesRecoveryMaxConcurrentFileChunks = indicesRecoveryMaxConcurrentFileChunks;
             return this;
         }
         @CustomType.Setter
-        public Builder overrideMainResponseVersion(@Nullable String overrideMainResponseVersion) {
+        public Builder overrideMainResponseVersion(@Nullable Boolean overrideMainResponseVersion) {
             this.overrideMainResponseVersion = overrideMainResponseVersion;
             return this;
         }
@@ -314,62 +316,62 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
-        public Builder searchMaxBuckets(@Nullable String searchMaxBuckets) {
+        public Builder searchMaxBuckets(@Nullable Integer searchMaxBuckets) {
             this.searchMaxBuckets = searchMaxBuckets;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolAnalyzeQueueSize(@Nullable String threadPoolAnalyzeQueueSize) {
+        public Builder threadPoolAnalyzeQueueSize(@Nullable Integer threadPoolAnalyzeQueueSize) {
             this.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolAnalyzeSize(@Nullable String threadPoolAnalyzeSize) {
+        public Builder threadPoolAnalyzeSize(@Nullable Integer threadPoolAnalyzeSize) {
             this.threadPoolAnalyzeSize = threadPoolAnalyzeSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolForceMergeSize(@Nullable String threadPoolForceMergeSize) {
+        public Builder threadPoolForceMergeSize(@Nullable Integer threadPoolForceMergeSize) {
             this.threadPoolForceMergeSize = threadPoolForceMergeSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolGetQueueSize(@Nullable String threadPoolGetQueueSize) {
+        public Builder threadPoolGetQueueSize(@Nullable Integer threadPoolGetQueueSize) {
             this.threadPoolGetQueueSize = threadPoolGetQueueSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolGetSize(@Nullable String threadPoolGetSize) {
+        public Builder threadPoolGetSize(@Nullable Integer threadPoolGetSize) {
             this.threadPoolGetSize = threadPoolGetSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolSearchQueueSize(@Nullable String threadPoolSearchQueueSize) {
+        public Builder threadPoolSearchQueueSize(@Nullable Integer threadPoolSearchQueueSize) {
             this.threadPoolSearchQueueSize = threadPoolSearchQueueSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolSearchSize(@Nullable String threadPoolSearchSize) {
+        public Builder threadPoolSearchSize(@Nullable Integer threadPoolSearchSize) {
             this.threadPoolSearchSize = threadPoolSearchSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolSearchThrottledQueueSize(@Nullable String threadPoolSearchThrottledQueueSize) {
+        public Builder threadPoolSearchThrottledQueueSize(@Nullable Integer threadPoolSearchThrottledQueueSize) {
             this.threadPoolSearchThrottledQueueSize = threadPoolSearchThrottledQueueSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolSearchThrottledSize(@Nullable String threadPoolSearchThrottledSize) {
+        public Builder threadPoolSearchThrottledSize(@Nullable Integer threadPoolSearchThrottledSize) {
             this.threadPoolSearchThrottledSize = threadPoolSearchThrottledSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolWriteQueueSize(@Nullable String threadPoolWriteQueueSize) {
+        public Builder threadPoolWriteQueueSize(@Nullable Integer threadPoolWriteQueueSize) {
             this.threadPoolWriteQueueSize = threadPoolWriteQueueSize;
             return this;
         }
         @CustomType.Setter
-        public Builder threadPoolWriteSize(@Nullable String threadPoolWriteSize) {
+        public Builder threadPoolWriteSize(@Nullable Integer threadPoolWriteSize) {
             this.threadPoolWriteSize = threadPoolWriteSize;
             return this;
         }

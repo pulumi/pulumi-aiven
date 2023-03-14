@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional Cloud Regions for Backup Replication
+        /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
@@ -44,25 +44,25 @@ namespace Pulumi.Aiven.Inputs
         /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         [Input("backupHour")]
-        public Input<string>? BackupHour { get; set; }
+        public Input<int>? BackupHour { get; set; }
 
         /// <summary>
         /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         [Input("backupMinute")]
-        public Input<string>? BackupMinute { get; set; }
+        public Input<int>? BackupMinute { get; set; }
 
         /// <summary>
-        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         /// </summary>
         [Input("enableIpv6")]
-        public Input<string>? EnableIpv6 { get; set; }
+        public Input<bool>? EnableIpv6 { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.PgPgUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public InputList<Inputs.PgPgUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -74,8 +74,9 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -83,19 +84,22 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Migrate data from existing server
+        /// Migrate data from existing server.
         /// </summary>
         [Input("migration")]
         public Input<Inputs.PgPgUserConfigMigrationArgs>? Migration { get; set; }
 
         /// <summary>
-        /// postgresql.conf configuration values
+        /// postgresql.conf configuration values.
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgUserConfigPgArgs>? Pg { get; set; }
 
+        /// <summary>
+        /// Use read_replica service integration instead.
+        /// </summary>
         [Input("pgReadReplica")]
-        public Input<string>? PgReadReplica { get; set; }
+        public Input<bool>? PgReadReplica { get; set; }
 
         /// <summary>
         /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
@@ -104,37 +108,37 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
         /// </summary>
         [Input("pgStatMonitorEnable")]
-        public Input<string>? PgStatMonitorEnable { get; set; }
+        public Input<bool>? PgStatMonitorEnable { get; set; }
 
         /// <summary>
-        /// PostgreSQL major version
+        /// PostgreSQL major version.
         /// </summary>
         [Input("pgVersion")]
         public Input<string>? PgVersion { get; set; }
 
         /// <summary>
-        /// PGBouncer connection pooling settings
+        /// PGBouncer connection pooling settings.
         /// </summary>
         [Input("pgbouncer")]
         public Input<Inputs.PgPgUserConfigPgbouncerArgs>? Pgbouncer { get; set; }
 
         /// <summary>
-        /// PGLookout settings
+        /// PGLookout settings.
         /// </summary>
         [Input("pglookout")]
         public Input<Inputs.PgPgUserConfigPglookoutArgs>? Pglookout { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks
+        /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.PgPgUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink
+        /// Allow access to selected service components through Privatelink.
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.PgPgUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
@@ -146,7 +150,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet
+        /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.PgPgUserConfigPublicAccessArgs>? PublicAccess { get; set; }
@@ -167,13 +171,13 @@ namespace Pulumi.Aiven.Inputs
         /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         /// </summary>
         [Input("sharedBuffersPercentage")]
-        public Input<string>? SharedBuffersPercentage { get; set; }
+        public Input<double>? SharedBuffersPercentage { get; set; }
 
         /// <summary>
-        /// Use static public IP addresses
+        /// Use static public IP addresses.
         /// </summary>
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
         /// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
@@ -182,13 +186,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SynchronousReplication { get; set; }
 
         /// <summary>
-        /// TimescaleDB extension configuration values
+        /// TimescaleDB extension configuration values.
         /// </summary>
         [Input("timescaledb")]
         public Input<Inputs.PgPgUserConfigTimescaledbArgs>? Timescaledb { get; set; }
 
         /// <summary>
-        /// Variant of the PostgreSQL service, may affect the features that are exposed by default
+        /// Variant of the PostgreSQL service, may affect the features that are exposed by default.
         /// </summary>
         [Input("variant")]
         public Input<string>? Variant { get; set; }
@@ -197,7 +201,7 @@ namespace Pulumi.Aiven.Inputs
         /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         /// </summary>
         [Input("workMem")]
-        public Input<string>? WorkMem { get; set; }
+        public Input<int>? WorkMem { get; set; }
 
         public PgPgUserConfigArgs()
         {

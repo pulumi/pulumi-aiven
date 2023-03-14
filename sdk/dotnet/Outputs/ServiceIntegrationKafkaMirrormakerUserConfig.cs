@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ClusterAlias;
         /// <summary>
-        /// Kafka MirrorMaker configuration values
+        /// Kafka MirrorMaker configuration values.
         /// </summary>
         public readonly Outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
 

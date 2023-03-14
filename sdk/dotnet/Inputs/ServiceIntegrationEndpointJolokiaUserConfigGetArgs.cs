@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _basicAuthPassword;
 
         /// <summary>
-        /// Jolokia basic authentication password
+        /// Jolokia basic authentication password.
         /// </summary>
         public Input<string>? BasicAuthPassword
         {
@@ -29,7 +29,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Jolokia basic authentication username
+        /// Jolokia basic authentication username.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }

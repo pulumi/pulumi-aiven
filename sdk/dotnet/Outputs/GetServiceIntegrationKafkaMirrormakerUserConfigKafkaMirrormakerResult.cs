@@ -13,23 +13,23 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult
     {
-        public readonly string? ConsumerFetchMinBytes;
-        public readonly string? ProducerBatchSize;
-        public readonly string? ProducerBufferMemory;
-        public readonly string? ProducerLingerMs;
-        public readonly string? ProducerMaxRequestSize;
+        public readonly int? ConsumerFetchMinBytes;
+        public readonly int? ProducerBatchSize;
+        public readonly int? ProducerBufferMemory;
+        public readonly int? ProducerLingerMs;
+        public readonly int? ProducerMaxRequestSize;
 
         [OutputConstructor]
         private GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(
-            string? consumerFetchMinBytes,
+            int? consumerFetchMinBytes,
 
-            string? producerBatchSize,
+            int? producerBatchSize,
 
-            string? producerBufferMemory,
+            int? producerBufferMemory,
 
-            string? producerLingerMs,
+            int? producerLingerMs,
 
-            string? producerMaxRequestSize)
+            int? producerMaxRequestSize)
         {
             ConsumerFetchMinBytes = consumerFetchMinBytes;
             ProducerBatchSize = producerBatchSize;

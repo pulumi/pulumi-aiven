@@ -110,31 +110,77 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
     }
 
     /**
-     * Application sinks
+     * Application sink
      * 
      */
+    @Import(name="sink")
+    private @Nullable Output<List<FlinkApplicationVersionSinkArgs>> sink;
+
+    /**
+     * @return Application sink
+     * 
+     */
+    public Optional<Output<List<FlinkApplicationVersionSinkArgs>>> sink() {
+        return Optional.ofNullable(this.sink);
+    }
+
+    /**
+     * Application sinks
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
     @Import(name="sinks")
     private @Nullable Output<List<FlinkApplicationVersionSinkArgs>> sinks;
 
     /**
      * @return Application sinks
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
     public Optional<Output<List<FlinkApplicationVersionSinkArgs>>> sinks() {
         return Optional.ofNullable(this.sinks);
     }
 
     /**
-     * Application sources
+     * Application source
      * 
      */
+    @Import(name="source")
+    private @Nullable Output<List<FlinkApplicationVersionSourceArgs>> source;
+
+    /**
+     * @return Application source
+     * 
+     */
+    public Optional<Output<List<FlinkApplicationVersionSourceArgs>>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
+    /**
+     * Application sources
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Use `source` instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
     @Import(name="sources")
     private @Nullable Output<List<FlinkApplicationVersionSourceArgs>> sources;
 
     /**
      * @return Application sources
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Use `source` instead.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
     public Optional<Output<List<FlinkApplicationVersionSourceArgs>>> sources() {
         return Optional.ofNullable(this.sources);
     }
@@ -178,7 +224,9 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
         this.createdBy = $.createdBy;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.sink = $.sink;
         this.sinks = $.sinks;
+        this.source = $.source;
         this.sources = $.sources;
         this.statement = $.statement;
         this.version = $.version;
@@ -329,11 +377,46 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sinks Application sinks
+         * @param sink Application sink
          * 
          * @return builder
          * 
          */
+        public Builder sink(@Nullable Output<List<FlinkApplicationVersionSinkArgs>> sink) {
+            $.sink = sink;
+            return this;
+        }
+
+        /**
+         * @param sink Application sink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sink(List<FlinkApplicationVersionSinkArgs> sink) {
+            return sink(Output.of(sink));
+        }
+
+        /**
+         * @param sink Application sink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sink(FlinkApplicationVersionSinkArgs... sink) {
+            return sink(List.of(sink));
+        }
+
+        /**
+         * @param sinks Application sinks
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+         * 
+         */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
         public Builder sinks(@Nullable Output<List<FlinkApplicationVersionSinkArgs>> sinks) {
             $.sinks = sinks;
             return this;
@@ -344,7 +427,11 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
         public Builder sinks(List<FlinkApplicationVersionSinkArgs> sinks) {
             return sinks(Output.of(sinks));
         }
@@ -354,9 +441,44 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
         public Builder sinks(FlinkApplicationVersionSinkArgs... sinks) {
             return sinks(List.of(sinks));
+        }
+
+        /**
+         * @param source Application source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<List<FlinkApplicationVersionSourceArgs>> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source Application source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(List<FlinkApplicationVersionSourceArgs> source) {
+            return source(Output.of(source));
+        }
+
+        /**
+         * @param source Application source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(FlinkApplicationVersionSourceArgs... source) {
+            return source(List.of(source));
         }
 
         /**
@@ -364,7 +486,11 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Use `source` instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
         public Builder sources(@Nullable Output<List<FlinkApplicationVersionSourceArgs>> sources) {
             $.sources = sources;
             return this;
@@ -375,7 +501,11 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Use `source` instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
         public Builder sources(List<FlinkApplicationVersionSourceArgs> sources) {
             return sources(Output.of(sources));
         }
@@ -385,7 +515,11 @@ public final class FlinkApplicationVersionState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Use `source` instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
         public Builder sources(FlinkApplicationVersionSourceArgs... sources) {
             return sources(List.of(sources));
         }

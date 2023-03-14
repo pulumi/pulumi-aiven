@@ -807,10 +807,10 @@ class MySql(pulumi.CustomResource):
                 mysql_version="8",
                 mysql=aiven.MySqlMysqlUserConfigMysqlArgs(
                     sql_mode="ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
-                    sql_require_primary_key="true",
+                    sql_require_primary_key=True,
                 ),
                 public_access=aiven.MySqlMysqlUserConfigPublicAccessArgs(
-                    mysql="true",
+                    mysql=True,
                 ),
             ))
         ```
@@ -884,10 +884,10 @@ class MySql(pulumi.CustomResource):
                 mysql_version="8",
                 mysql=aiven.MySqlMysqlUserConfigMysqlArgs(
                     sql_mode="ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
-                    sql_require_primary_key="true",
+                    sql_require_primary_key=True,
                 ),
                 public_access=aiven.MySqlMysqlUserConfigPublicAccessArgs(
-                    mysql="true",
+                    mysql=True,
                 ),
             ))
         ```

@@ -68,13 +68,25 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Application sinks
+     * Application sink
      */
-    public readonly sinks!: pulumi.Output<outputs.FlinkApplicationVersionSink[]>;
+    public readonly sink!: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
+    /**
+     * Application sinks
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
+     */
+    public readonly sinks!: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
+    /**
+     * Application source
+     */
+    public readonly source!: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
     /**
      * Application sources
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      */
-    public readonly sources!: pulumi.Output<outputs.FlinkApplicationVersionSource[]>;
+    public readonly sources!: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
     /**
      * Job SQL statement
      */
@@ -103,7 +115,9 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["sink"] = state ? state.sink : undefined;
             resourceInputs["sinks"] = state ? state.sinks : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
             resourceInputs["sources"] = state ? state.sources : undefined;
             resourceInputs["statement"] = state ? state.statement : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -118,19 +132,15 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.sinks === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sinks'");
-            }
-            if ((!args || args.sources === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sources'");
-            }
             if ((!args || args.statement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'statement'");
             }
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["sink"] = args ? args.sink : undefined;
             resourceInputs["sinks"] = args ? args.sinks : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["sources"] = args ? args.sources : undefined;
             resourceInputs["statement"] = args ? args.statement : undefined;
             resourceInputs["applicationVersionId"] = undefined /*out*/;
@@ -172,11 +182,23 @@ export interface FlinkApplicationVersionState {
      */
     serviceName?: pulumi.Input<string>;
     /**
+     * Application sink
+     */
+    sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    /**
      * Application sinks
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
      */
     sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
     /**
+     * Application source
+     */
+    source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
+    /**
      * Application sources
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
@@ -206,13 +228,25 @@ export interface FlinkApplicationVersionArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Application sinks
+     * Application sink
      */
-    sinks: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    /**
+     * Application sinks
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
+     */
+    sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    /**
+     * Application source
+     */
+    source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
      * Application sources
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      */
-    sources: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
      * Job SQL statement
      */

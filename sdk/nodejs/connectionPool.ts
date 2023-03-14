@@ -67,7 +67,7 @@ export class ConnectionPool extends pulumi.CustomResource {
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      */
     public readonly poolMode!: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +155,7 @@ export interface ConnectionPoolState {
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      */
     poolMode?: pulumi.Input<string>;
     /**
@@ -189,7 +189,7 @@ export interface ConnectionPoolArgs {
      */
     databaseName: pulumi.Input<string>;
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      */
     poolMode?: pulumi.Input<string>;
     /**

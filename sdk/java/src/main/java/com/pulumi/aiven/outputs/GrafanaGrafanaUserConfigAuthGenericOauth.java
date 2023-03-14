@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,19 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthGenericOauth {
-    private @Nullable String allowSignUp;
+    private @Nullable Boolean allowSignUp;
     private @Nullable List<String> allowedDomains;
     private @Nullable List<String> allowedOrganizations;
-    private @Nullable String apiUrl;
-    private @Nullable String authUrl;
-    private @Nullable String clientId;
-    private @Nullable String clientSecret;
+    private String apiUrl;
+    private String authUrl;
+    private String clientId;
+    private String clientSecret;
     private @Nullable String name;
     private @Nullable List<String> scopes;
-    private @Nullable String tokenUrl;
+    private String tokenUrl;
 
     private GrafanaGrafanaUserConfigAuthGenericOauth() {}
-    public Optional<String> allowSignUp() {
+    public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
     public List<String> allowedDomains() {
@@ -33,17 +34,17 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
     public List<String> allowedOrganizations() {
         return this.allowedOrganizations == null ? List.of() : this.allowedOrganizations;
     }
-    public Optional<String> apiUrl() {
-        return Optional.ofNullable(this.apiUrl);
+    public String apiUrl() {
+        return this.apiUrl;
     }
-    public Optional<String> authUrl() {
-        return Optional.ofNullable(this.authUrl);
+    public String authUrl() {
+        return this.authUrl;
     }
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public String clientId() {
+        return this.clientId;
     }
-    public Optional<String> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public String clientSecret() {
+        return this.clientSecret;
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
@@ -51,8 +52,8 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
     public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
-    public Optional<String> tokenUrl() {
-        return Optional.ofNullable(this.tokenUrl);
+    public String tokenUrl() {
+        return this.tokenUrl;
     }
 
     public static Builder builder() {
@@ -64,16 +65,16 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String allowSignUp;
+        private @Nullable Boolean allowSignUp;
         private @Nullable List<String> allowedDomains;
         private @Nullable List<String> allowedOrganizations;
-        private @Nullable String apiUrl;
-        private @Nullable String authUrl;
-        private @Nullable String clientId;
-        private @Nullable String clientSecret;
+        private String apiUrl;
+        private String authUrl;
+        private String clientId;
+        private String clientSecret;
         private @Nullable String name;
         private @Nullable List<String> scopes;
-        private @Nullable String tokenUrl;
+        private String tokenUrl;
         public Builder() {}
         public Builder(GrafanaGrafanaUserConfigAuthGenericOauth defaults) {
     	      Objects.requireNonNull(defaults);
@@ -90,7 +91,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
         }
 
         @CustomType.Setter
-        public Builder allowSignUp(@Nullable String allowSignUp) {
+        public Builder allowSignUp(@Nullable Boolean allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
@@ -111,23 +112,23 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
             return allowedOrganizations(List.of(allowedOrganizations));
         }
         @CustomType.Setter
-        public Builder apiUrl(@Nullable String apiUrl) {
-            this.apiUrl = apiUrl;
+        public Builder apiUrl(String apiUrl) {
+            this.apiUrl = Objects.requireNonNull(apiUrl);
             return this;
         }
         @CustomType.Setter
-        public Builder authUrl(@Nullable String authUrl) {
-            this.authUrl = authUrl;
+        public Builder authUrl(String authUrl) {
+            this.authUrl = Objects.requireNonNull(authUrl);
             return this;
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
-            this.clientId = clientId;
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
-        public Builder clientSecret(@Nullable String clientSecret) {
-            this.clientSecret = clientSecret;
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
         @CustomType.Setter
@@ -144,8 +145,8 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
             return scopes(List.of(scopes));
         }
         @CustomType.Setter
-        public Builder tokenUrl(@Nullable String tokenUrl) {
-            this.tokenUrl = tokenUrl;
+        public Builder tokenUrl(String tokenUrl) {
+            this.tokenUrl = Objects.requireNonNull(tokenUrl);
             return this;
         }
         public GrafanaGrafanaUserConfigAuthGenericOauth build() {

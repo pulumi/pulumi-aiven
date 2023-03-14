@@ -28,28 +28,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/openSearchAclRule:OpenSearchAclRule")
 public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
     /**
-     * The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="index", type=String.class, parameters={})
     private Output<String> index;
 
     /**
-     * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> index() {
         return this.index;
     }
     /**
-     * The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      * 
      */
     @Export(name="permission", type=String.class, parameters={})
     private Output<String> permission;
 
     /**
-     * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      * 
      */
     public Output<String> permission() {
@@ -84,14 +84,14 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="username", type=String.class, parameters={})
     private Output<String> username;
 
     /**
-     * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> username() {

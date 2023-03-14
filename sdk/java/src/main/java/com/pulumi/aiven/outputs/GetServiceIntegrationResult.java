@@ -12,7 +12,6 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationMetricsUserConfig;
-import com.pulumi.aiven.outputs.GetServiceIntegrationMirrormakerUserConfig;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -61,7 +60,7 @@ public final class GetServiceIntegrationResult {
      */
     private String integrationId;
     /**
-     * @return Type of the service integration
+     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
     private String integrationType;
@@ -90,11 +89,6 @@ public final class GetServiceIntegrationResult {
      * 
      */
     private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
-    /**
-     * @return Mirrormaker user configurable settings
-     * 
-     */
-    private List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs;
     /**
      * @return Project the integration belongs to
      * 
@@ -169,7 +163,7 @@ public final class GetServiceIntegrationResult {
         return this.integrationId;
     }
     /**
-     * @return Type of the service integration
+     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
     public String integrationType() {
@@ -209,13 +203,6 @@ public final class GetServiceIntegrationResult {
      */
     public List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs() {
         return this.metricsUserConfigs;
-    }
-    /**
-     * @return Mirrormaker user configurable settings
-     * 
-     */
-    public List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs() {
-        return this.mirrormakerUserConfigs;
     }
     /**
      * @return Project the integration belongs to
@@ -262,7 +249,6 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
         private List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
         private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
-        private List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs;
         private String project;
         private String sourceEndpointId;
         private String sourceServiceName;
@@ -283,7 +269,6 @@ public final class GetServiceIntegrationResult {
     	      this.kafkaMirrormakerUserConfigs = defaults.kafkaMirrormakerUserConfigs;
     	      this.logsUserConfigs = defaults.logsUserConfigs;
     	      this.metricsUserConfigs = defaults.metricsUserConfigs;
-    	      this.mirrormakerUserConfigs = defaults.mirrormakerUserConfigs;
     	      this.project = defaults.project;
     	      this.sourceEndpointId = defaults.sourceEndpointId;
     	      this.sourceServiceName = defaults.sourceServiceName;
@@ -387,14 +372,6 @@ public final class GetServiceIntegrationResult {
             return metricsUserConfigs(List.of(metricsUserConfigs));
         }
         @CustomType.Setter
-        public Builder mirrormakerUserConfigs(List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs) {
-            this.mirrormakerUserConfigs = Objects.requireNonNull(mirrormakerUserConfigs);
-            return this;
-        }
-        public Builder mirrormakerUserConfigs(GetServiceIntegrationMirrormakerUserConfig... mirrormakerUserConfigs) {
-            return mirrormakerUserConfigs(List.of(mirrormakerUserConfigs));
-        }
-        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
@@ -425,7 +402,6 @@ public final class GetServiceIntegrationResult {
             o.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
             o.logsUserConfigs = logsUserConfigs;
             o.metricsUserConfigs = metricsUserConfigs;
-            o.mirrormakerUserConfigs = mirrormakerUserConfigs;
             o.project = project;
             o.sourceEndpointId = sourceEndpointId;
             o.sourceServiceName = sourceServiceName;

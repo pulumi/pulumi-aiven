@@ -66,7 +66,7 @@ type LookupConnectionPoolResult struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode string `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
@@ -137,7 +137,7 @@ func (o LookupConnectionPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 func (o LookupConnectionPoolResultOutput) PoolMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolMode }).(pulumi.StringOutput)
 }

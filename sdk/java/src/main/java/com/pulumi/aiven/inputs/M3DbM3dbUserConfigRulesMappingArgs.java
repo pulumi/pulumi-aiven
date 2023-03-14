@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArg
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesMappingTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -26,17 +27,17 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
     }
 
     @Import(name="drop")
-    private @Nullable Output<String> drop;
+    private @Nullable Output<Boolean> drop;
 
-    public Optional<Output<String>> drop() {
+    public Optional<Output<Boolean>> drop() {
         return Optional.ofNullable(this.drop);
     }
 
-    @Import(name="filter")
-    private @Nullable Output<String> filter;
+    @Import(name="filter", required=true)
+    private Output<String> filter;
 
-    public Optional<Output<String>> filter() {
-        return Optional.ofNullable(this.filter);
+    public Output<String> filter() {
+        return this.filter;
     }
 
     @Import(name="name")
@@ -46,9 +47,21 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     @Import(name="namespaces")
     private @Nullable Output<List<String>> namespaces;
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public Optional<Output<List<String>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -110,16 +123,16 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
             return aggregations(List.of(aggregations));
         }
 
-        public Builder drop(@Nullable Output<String> drop) {
+        public Builder drop(@Nullable Output<Boolean> drop) {
             $.drop = drop;
             return this;
         }
 
-        public Builder drop(String drop) {
+        public Builder drop(Boolean drop) {
             return drop(Output.of(drop));
         }
 
-        public Builder filter(@Nullable Output<String> filter) {
+        public Builder filter(Output<String> filter) {
             $.filter = filter;
             return this;
         }
@@ -137,15 +150,39 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
             return name(Output.of(name));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(@Nullable Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }
@@ -177,6 +214,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         public M3DbM3dbUserConfigRulesMappingArgs build() {
+            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
             return $;
         }
     }

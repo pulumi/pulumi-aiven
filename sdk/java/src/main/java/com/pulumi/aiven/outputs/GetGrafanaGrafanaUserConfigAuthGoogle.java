@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,23 +13,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGoogle {
-    private @Nullable String allowSignUp;
+    private @Nullable Boolean allowSignUp;
     private @Nullable List<String> allowedDomains;
-    private @Nullable String clientId;
-    private @Nullable String clientSecret;
+    private String clientId;
+    private String clientSecret;
 
     private GetGrafanaGrafanaUserConfigAuthGoogle() {}
-    public Optional<String> allowSignUp() {
+    public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
     public List<String> allowedDomains() {
         return this.allowedDomains == null ? List.of() : this.allowedDomains;
     }
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public String clientId() {
+        return this.clientId;
     }
-    public Optional<String> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public String clientSecret() {
+        return this.clientSecret;
     }
 
     public static Builder builder() {
@@ -40,10 +41,10 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String allowSignUp;
+        private @Nullable Boolean allowSignUp;
         private @Nullable List<String> allowedDomains;
-        private @Nullable String clientId;
-        private @Nullable String clientSecret;
+        private String clientId;
+        private String clientSecret;
         public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGoogle defaults) {
     	      Objects.requireNonNull(defaults);
@@ -54,7 +55,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
         }
 
         @CustomType.Setter
-        public Builder allowSignUp(@Nullable String allowSignUp) {
+        public Builder allowSignUp(@Nullable Boolean allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
@@ -67,13 +68,13 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
             return allowedDomains(List.of(allowedDomains));
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
-            this.clientId = clientId;
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
-        public Builder clientSecret(@Nullable String clientSecret) {
-            this.clientSecret = clientSecret;
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
         public GetGrafanaGrafanaUserConfigAuthGoogle build() {

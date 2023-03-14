@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalKafkaUserConfig
     {
         /// <summary>
-        /// Bootstrap servers
+        /// Bootstrap servers.
         /// </summary>
         public readonly string? BootstrapServers;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SaslPlainUsername;
         /// <summary>
-        /// Security protocol
+        /// Security protocol.
         /// </summary>
         public readonly string? SecurityProtocol;
         /// <summary>
-        /// PEM-encoded CA certificate
+        /// PEM-encoded CA certificate.
         /// </summary>
         public readonly string? SslCaCert;
         /// <summary>
-        /// PEM-encoded client certificate
+        /// PEM-encoded client certificate.
         /// </summary>
         public readonly string? SslClientCert;
         /// <summary>
-        /// PEM-encoded client key
+        /// PEM-encoded client key.
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>

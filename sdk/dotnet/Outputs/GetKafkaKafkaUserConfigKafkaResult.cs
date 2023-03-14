@@ -13,125 +13,125 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigKafkaResult
     {
-        public readonly string? AutoCreateTopicsEnable;
+        public readonly bool? AutoCreateTopicsEnable;
         public readonly string? CompressionType;
-        public readonly string? ConnectionsMaxIdleMs;
-        public readonly string? DefaultReplicationFactor;
-        public readonly string? GroupInitialRebalanceDelayMs;
-        public readonly string? GroupMaxSessionTimeoutMs;
-        public readonly string? GroupMinSessionTimeoutMs;
-        public readonly string? LogCleanerDeleteRetentionMs;
-        public readonly string? LogCleanerMaxCompactionLagMs;
-        public readonly string? LogCleanerMinCleanableRatio;
-        public readonly string? LogCleanerMinCompactionLagMs;
+        public readonly int? ConnectionsMaxIdleMs;
+        public readonly int? DefaultReplicationFactor;
+        public readonly int? GroupInitialRebalanceDelayMs;
+        public readonly int? GroupMaxSessionTimeoutMs;
+        public readonly int? GroupMinSessionTimeoutMs;
+        public readonly int? LogCleanerDeleteRetentionMs;
+        public readonly int? LogCleanerMaxCompactionLagMs;
+        public readonly double? LogCleanerMinCleanableRatio;
+        public readonly int? LogCleanerMinCompactionLagMs;
         public readonly string? LogCleanupPolicy;
-        public readonly string? LogFlushIntervalMessages;
-        public readonly string? LogFlushIntervalMs;
-        public readonly string? LogIndexIntervalBytes;
-        public readonly string? LogIndexSizeMaxBytes;
-        public readonly string? LogMessageDownconversionEnable;
-        public readonly string? LogMessageTimestampDifferenceMaxMs;
+        public readonly int? LogFlushIntervalMessages;
+        public readonly int? LogFlushIntervalMs;
+        public readonly int? LogIndexIntervalBytes;
+        public readonly int? LogIndexSizeMaxBytes;
+        public readonly bool? LogMessageDownconversionEnable;
+        public readonly int? LogMessageTimestampDifferenceMaxMs;
         public readonly string? LogMessageTimestampType;
-        public readonly string? LogPreallocate;
-        public readonly string? LogRetentionBytes;
-        public readonly string? LogRetentionHours;
-        public readonly string? LogRetentionMs;
-        public readonly string? LogRollJitterMs;
-        public readonly string? LogRollMs;
-        public readonly string? LogSegmentBytes;
-        public readonly string? LogSegmentDeleteDelayMs;
-        public readonly string? MaxConnectionsPerIp;
-        public readonly string? MaxIncrementalFetchSessionCacheSlots;
-        public readonly string? MessageMaxBytes;
-        public readonly string? MinInsyncReplicas;
-        public readonly string? NumPartitions;
-        public readonly string? OffsetsRetentionMinutes;
-        public readonly string? ProducerPurgatoryPurgeIntervalRequests;
-        public readonly string? ReplicaFetchMaxBytes;
-        public readonly string? ReplicaFetchResponseMaxBytes;
-        public readonly string? SocketRequestMaxBytes;
-        public readonly string? TransactionRemoveExpiredTransactionCleanupIntervalMs;
-        public readonly string? TransactionStateLogSegmentBytes;
+        public readonly bool? LogPreallocate;
+        public readonly int? LogRetentionBytes;
+        public readonly int? LogRetentionHours;
+        public readonly int? LogRetentionMs;
+        public readonly int? LogRollJitterMs;
+        public readonly int? LogRollMs;
+        public readonly int? LogSegmentBytes;
+        public readonly int? LogSegmentDeleteDelayMs;
+        public readonly int? MaxConnectionsPerIp;
+        public readonly int? MaxIncrementalFetchSessionCacheSlots;
+        public readonly int? MessageMaxBytes;
+        public readonly int? MinInsyncReplicas;
+        public readonly int? NumPartitions;
+        public readonly int? OffsetsRetentionMinutes;
+        public readonly int? ProducerPurgatoryPurgeIntervalRequests;
+        public readonly int? ReplicaFetchMaxBytes;
+        public readonly int? ReplicaFetchResponseMaxBytes;
+        public readonly int? SocketRequestMaxBytes;
+        public readonly int? TransactionRemoveExpiredTransactionCleanupIntervalMs;
+        public readonly int? TransactionStateLogSegmentBytes;
 
         [OutputConstructor]
         private GetKafkaKafkaUserConfigKafkaResult(
-            string? autoCreateTopicsEnable,
+            bool? autoCreateTopicsEnable,
 
             string? compressionType,
 
-            string? connectionsMaxIdleMs,
+            int? connectionsMaxIdleMs,
 
-            string? defaultReplicationFactor,
+            int? defaultReplicationFactor,
 
-            string? groupInitialRebalanceDelayMs,
+            int? groupInitialRebalanceDelayMs,
 
-            string? groupMaxSessionTimeoutMs,
+            int? groupMaxSessionTimeoutMs,
 
-            string? groupMinSessionTimeoutMs,
+            int? groupMinSessionTimeoutMs,
 
-            string? logCleanerDeleteRetentionMs,
+            int? logCleanerDeleteRetentionMs,
 
-            string? logCleanerMaxCompactionLagMs,
+            int? logCleanerMaxCompactionLagMs,
 
-            string? logCleanerMinCleanableRatio,
+            double? logCleanerMinCleanableRatio,
 
-            string? logCleanerMinCompactionLagMs,
+            int? logCleanerMinCompactionLagMs,
 
             string? logCleanupPolicy,
 
-            string? logFlushIntervalMessages,
+            int? logFlushIntervalMessages,
 
-            string? logFlushIntervalMs,
+            int? logFlushIntervalMs,
 
-            string? logIndexIntervalBytes,
+            int? logIndexIntervalBytes,
 
-            string? logIndexSizeMaxBytes,
+            int? logIndexSizeMaxBytes,
 
-            string? logMessageDownconversionEnable,
+            bool? logMessageDownconversionEnable,
 
-            string? logMessageTimestampDifferenceMaxMs,
+            int? logMessageTimestampDifferenceMaxMs,
 
             string? logMessageTimestampType,
 
-            string? logPreallocate,
+            bool? logPreallocate,
 
-            string? logRetentionBytes,
+            int? logRetentionBytes,
 
-            string? logRetentionHours,
+            int? logRetentionHours,
 
-            string? logRetentionMs,
+            int? logRetentionMs,
 
-            string? logRollJitterMs,
+            int? logRollJitterMs,
 
-            string? logRollMs,
+            int? logRollMs,
 
-            string? logSegmentBytes,
+            int? logSegmentBytes,
 
-            string? logSegmentDeleteDelayMs,
+            int? logSegmentDeleteDelayMs,
 
-            string? maxConnectionsPerIp,
+            int? maxConnectionsPerIp,
 
-            string? maxIncrementalFetchSessionCacheSlots,
+            int? maxIncrementalFetchSessionCacheSlots,
 
-            string? messageMaxBytes,
+            int? messageMaxBytes,
 
-            string? minInsyncReplicas,
+            int? minInsyncReplicas,
 
-            string? numPartitions,
+            int? numPartitions,
 
-            string? offsetsRetentionMinutes,
+            int? offsetsRetentionMinutes,
 
-            string? producerPurgatoryPurgeIntervalRequests,
+            int? producerPurgatoryPurgeIntervalRequests,
 
-            string? replicaFetchMaxBytes,
+            int? replicaFetchMaxBytes,
 
-            string? replicaFetchResponseMaxBytes,
+            int? replicaFetchResponseMaxBytes,
 
-            string? socketRequestMaxBytes,
+            int? socketRequestMaxBytes,
 
-            string? transactionRemoveExpiredTransactionCleanupIntervalMs,
+            int? transactionRemoveExpiredTransactionCleanupIntervalMs,
 
-            string? transactionStateLogSegmentBytes)
+            int? transactionStateLogSegmentBytes)
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;

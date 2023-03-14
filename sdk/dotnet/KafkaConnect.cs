@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
     ///             },
     ///             PublicAccess = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs
     ///             {
-    ///                 KafkaConnect = "true",
+    ///                 KafkaConnect = true,
     ///             },
     ///         },
     ///     });

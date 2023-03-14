@@ -40,7 +40,7 @@ export class StaticIp extends pulumi.CustomResource {
      */
     public readonly cloudName!: pulumi.Output<string>;
     /**
-     * The address of the static ip
+     * The address of the static ip.
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
@@ -108,7 +108,7 @@ export interface StaticIpState {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * The address of the static ip
+     * The address of the static ip.
      */
     ipAddress?: pulumi.Input<string>;
     /**

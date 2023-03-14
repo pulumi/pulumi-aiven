@@ -19,34 +19,43 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         [Input("consumerFetchMaxBytes")]
-        public Input<string>? ConsumerFetchMaxBytes { get; set; }
+        public Input<int>? ConsumerFetchMaxBytes { get; set; }
 
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
 
         [Input("consumerMaxPartitionFetchBytes")]
-        public Input<string>? ConsumerMaxPartitionFetchBytes { get; set; }
+        public Input<int>? ConsumerMaxPartitionFetchBytes { get; set; }
 
         [Input("consumerMaxPollIntervalMs")]
-        public Input<string>? ConsumerMaxPollIntervalMs { get; set; }
+        public Input<int>? ConsumerMaxPollIntervalMs { get; set; }
 
         [Input("consumerMaxPollRecords")]
-        public Input<string>? ConsumerMaxPollRecords { get; set; }
+        public Input<int>? ConsumerMaxPollRecords { get; set; }
 
         [Input("offsetFlushIntervalMs")]
-        public Input<string>? OffsetFlushIntervalMs { get; set; }
+        public Input<int>? OffsetFlushIntervalMs { get; set; }
 
         [Input("offsetFlushTimeoutMs")]
-        public Input<string>? OffsetFlushTimeoutMs { get; set; }
+        public Input<int>? OffsetFlushTimeoutMs { get; set; }
+
+        [Input("producerBatchSize")]
+        public Input<int>? ProducerBatchSize { get; set; }
+
+        [Input("producerBufferMemory")]
+        public Input<int>? ProducerBufferMemory { get; set; }
 
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }
 
+        [Input("producerLingerMs")]
+        public Input<int>? ProducerLingerMs { get; set; }
+
         [Input("producerMaxRequestSize")]
-        public Input<string>? ProducerMaxRequestSize { get; set; }
+        public Input<int>? ProducerMaxRequestSize { get; set; }
 
         [Input("sessionTimeoutMs")]
-        public Input<string>? SessionTimeoutMs { get; set; }
+        public Input<int>? SessionTimeoutMs { get; set; }
 
         public KafkaConnectKafkaConnectUserConfigKafkaConnectArgs()
         {

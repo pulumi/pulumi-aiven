@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,9 +16,9 @@ public final class GrafanaGrafanaUserConfigPrivateAccessArgs extends com.pulumi.
     public static final GrafanaGrafanaUserConfigPrivateAccessArgs Empty = new GrafanaGrafanaUserConfigPrivateAccessArgs();
 
     @Import(name="grafana")
-    private @Nullable Output<String> grafana;
+    private @Nullable Output<Boolean> grafana;
 
-    public Optional<Output<String>> grafana() {
+    public Optional<Output<Boolean>> grafana() {
         return Optional.ofNullable(this.grafana);
     }
 
@@ -46,12 +46,12 @@ public final class GrafanaGrafanaUserConfigPrivateAccessArgs extends com.pulumi.
             $ = new GrafanaGrafanaUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder grafana(@Nullable Output<String> grafana) {
+        public Builder grafana(@Nullable Output<Boolean> grafana) {
             $.grafana = grafana;
             return this;
         }
 
-        public Builder grafana(String grafana) {
+        public Builder grafana(Boolean grafana) {
             return grafana(Output.of(grafana));
         }
 

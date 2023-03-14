@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,9 +16,9 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
     public static final PgPgUserConfigTimescaledbArgs Empty = new PgPgUserConfigTimescaledbArgs();
 
     @Import(name="maxBackgroundWorkers")
-    private @Nullable Output<String> maxBackgroundWorkers;
+    private @Nullable Output<Integer> maxBackgroundWorkers;
 
-    public Optional<Output<String>> maxBackgroundWorkers() {
+    public Optional<Output<Integer>> maxBackgroundWorkers() {
         return Optional.ofNullable(this.maxBackgroundWorkers);
     }
 
@@ -46,12 +46,12 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
             $ = new PgPgUserConfigTimescaledbArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder maxBackgroundWorkers(@Nullable Output<String> maxBackgroundWorkers) {
+        public Builder maxBackgroundWorkers(@Nullable Output<Integer> maxBackgroundWorkers) {
             $.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
         }
 
-        public Builder maxBackgroundWorkers(String maxBackgroundWorkers) {
+        public Builder maxBackgroundWorkers(Integer maxBackgroundWorkers) {
             return maxBackgroundWorkers(Output.of(maxBackgroundWorkers));
         }
 

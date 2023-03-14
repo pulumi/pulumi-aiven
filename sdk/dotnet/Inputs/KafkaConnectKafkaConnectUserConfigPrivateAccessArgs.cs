@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("kafkaConnect")]
-        public Input<string>? KafkaConnect { get; set; }
+        public Input<bool>? KafkaConnect { get; set; }
 
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         public KafkaConnectKafkaConnectUserConfigPrivateAccessArgs()
         {

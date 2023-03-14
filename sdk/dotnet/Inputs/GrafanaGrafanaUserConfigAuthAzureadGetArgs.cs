@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigAuthAzureadGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public Input<string>? AllowSignUp { get; set; }
+        public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private InputList<string>? _allowedDomains;
@@ -31,17 +31,17 @@ namespace Pulumi.Aiven.Inputs
             set => _allowedGroups = value;
         }
 
-        [Input("authUrl")]
-        public Input<string>? AuthUrl { get; set; }
+        [Input("authUrl", required: true)]
+        public Input<string> AuthUrl { get; set; } = null!;
 
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
 
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        [Input("clientSecret", required: true)]
+        public Input<string> ClientSecret { get; set; } = null!;
 
-        [Input("tokenUrl")]
-        public Input<string>? TokenUrl { get; set; }
+        [Input("tokenUrl", required: true)]
+        public Input<string> TokenUrl { get; set; } = null!;
 
         public GrafanaGrafanaUserConfigAuthAzureadGetArgs()
         {

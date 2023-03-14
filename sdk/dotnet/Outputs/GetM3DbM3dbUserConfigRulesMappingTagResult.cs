@@ -13,14 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigRulesMappingTagResult
     {
-        public readonly string? Name;
-        public readonly string? Value;
+        public readonly string Name;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigRulesMappingTagResult(
-            string? name,
+            string name,
 
-            string? value)
+            string value)
         {
             Name = name;
             Value = value;

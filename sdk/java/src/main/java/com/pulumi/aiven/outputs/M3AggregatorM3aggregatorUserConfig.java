@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,10 +16,22 @@ import javax.annotation.Nullable;
 public final class M3AggregatorM3aggregatorUserConfig {
     private @Nullable String customDomain;
     private @Nullable List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
     private @Nullable String m3aggregatorVersion;
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private M3AggregatorM3aggregatorUserConfig() {}
     public Optional<String> customDomain() {
@@ -27,16 +40,28 @@ public final class M3AggregatorM3aggregatorUserConfig {
     public List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
     public Optional<String> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -54,7 +79,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable String m3Version;
         private @Nullable String m3aggregatorVersion;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(M3AggregatorM3aggregatorUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,7 +123,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

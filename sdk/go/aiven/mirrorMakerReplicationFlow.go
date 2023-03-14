@@ -73,13 +73,13 @@ type MirrorMakerReplicationFlow struct {
 	ReplicationPolicyClass pulumi.StringPtrOutput `pulumi:"replicationPolicyClass"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringOutput `pulumi:"sourceCluster"`
 	// Sync consumer group offsets. The default value is `false`.
 	SyncGroupOffsetsEnabled pulumi.BoolPtrOutput `pulumi:"syncGroupOffsetsEnabled"`
 	// Frequency of consumer group offset sync. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrOutput `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster pulumi.StringOutput `pulumi:"targetCluster"`
 	// List of topics and/or regular expressions to replicate
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
@@ -143,13 +143,13 @@ type mirrorMakerReplicationFlowState struct {
 	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster *string `pulumi:"sourceCluster"`
 	// Sync consumer group offsets. The default value is `false`.
 	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
 	// Frequency of consumer group offset sync. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster *string `pulumi:"targetCluster"`
 	// List of topics and/or regular expressions to replicate
 	Topics []string `pulumi:"topics"`
@@ -170,13 +170,13 @@ type MirrorMakerReplicationFlowState struct {
 	ReplicationPolicyClass pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringPtrInput
 	// Sync consumer group offsets. The default value is `false`.
 	SyncGroupOffsetsEnabled pulumi.BoolPtrInput
 	// Frequency of consumer group offset sync. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster pulumi.StringPtrInput
 	// List of topics and/or regular expressions to replicate
 	Topics pulumi.StringArrayInput
@@ -201,13 +201,13 @@ type mirrorMakerReplicationFlowArgs struct {
 	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster string `pulumi:"sourceCluster"`
 	// Sync consumer group offsets. The default value is `false`.
 	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
 	// Frequency of consumer group offset sync. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster string `pulumi:"targetCluster"`
 	// List of topics and/or regular expressions to replicate
 	Topics []string `pulumi:"topics"`
@@ -229,13 +229,13 @@ type MirrorMakerReplicationFlowArgs struct {
 	ReplicationPolicyClass pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringInput
 	// Sync consumer group offsets. The default value is `false`.
 	SyncGroupOffsetsEnabled pulumi.BoolPtrInput
 	// Frequency of consumer group offset sync. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster pulumi.StringInput
 	// List of topics and/or regular expressions to replicate
 	Topics pulumi.StringArrayInput
@@ -360,7 +360,7 @@ func (o MirrorMakerReplicationFlowOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Source cluster alias. Maximum Length: `128`.
+// Source cluster alias. Maximum length: `128`.
 func (o MirrorMakerReplicationFlowOutput) SourceCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.SourceCluster }).(pulumi.StringOutput)
 }
@@ -375,7 +375,7 @@ func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsIntervalSeconds() pulu
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntPtrOutput { return v.SyncGroupOffsetsIntervalSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Target cluster alias. Maximum Length: `128`.
+// Target cluster alias. Maximum length: `128`.
 func (o MirrorMakerReplicationFlowOutput) TargetCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.TargetCluster }).(pulumi.StringOutput)
 }

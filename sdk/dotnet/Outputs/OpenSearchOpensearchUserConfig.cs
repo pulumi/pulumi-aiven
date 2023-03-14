@@ -14,53 +14,59 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfig
     {
         /// <summary>
-        /// Additional Cloud Regions for Backup Replication
+        /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         public readonly string? CustomDomain;
-        public readonly string? DisableReplicationFactorAdjustment;
         /// <summary>
-        /// Index patterns
+        /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        /// </summary>
+        public readonly bool? DisableReplicationFactorAdjustment;
+        /// <summary>
+        /// Index patterns.
         /// </summary>
         public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> IndexPatterns;
         /// <summary>
-        /// Template settings for all new indexes
+        /// Template settings for all new indexes.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigIndexTemplate? IndexTemplate;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         /// </summary>
-        public readonly string? KeepIndexRefreshInterval;
-        public readonly string? MaxIndexCount;
+        public readonly bool? KeepIndexRefreshInterval;
         /// <summary>
-        /// OpenSearch settings
+        /// Use index_patterns instead. The default value is `0`.
+        /// </summary>
+        public readonly int? MaxIndexCount;
+        /// <summary>
+        /// OpenSearch settings.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearch? Opensearch;
         /// <summary>
-        /// OpenSearch Dashboards settings
+        /// OpenSearch Dashboards settings.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchDashboards? OpensearchDashboards;
         /// <summary>
-        /// OpenSearch major version
+        /// OpenSearch major version.
         /// </summary>
         public readonly string? OpensearchVersion;
         /// <summary>
-        /// Allow access to selected service ports from private networks
+        /// Allow access to selected service ports from private networks.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink
+        /// Allow access to selected service components through Privatelink.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
@@ -68,11 +74,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet
+        /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Name of the basebackup to restore in forked service
+        /// Name of the basebackup to restore in forked service.
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
@@ -80,9 +86,9 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Use static public IP addresses
+        /// Use static public IP addresses.
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private OpenSearchOpensearchUserConfig(
@@ -90,7 +96,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
-            string? disableReplicationFactorAdjustment,
+            bool? disableReplicationFactorAdjustment,
 
             ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> indexPatterns,
 
@@ -100,9 +106,9 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
-            string? keepIndexRefreshInterval,
+            bool? keepIndexRefreshInterval,
 
-            string? maxIndexCount,
+            int? maxIndexCount,
 
             Outputs.OpenSearchOpensearchUserConfigOpensearch? opensearch,
 
@@ -122,7 +128,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;

@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,113 +14,113 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * @return PEM encoded CA certificate
+     * @return PEM encoded CA certificate.
      * 
      */
     private @Nullable String ca;
     /**
-     * @return PEM encoded client certificate
+     * @return PEM encoded client certificate.
      * 
      */
     private @Nullable String cert;
     /**
-     * @return message format
+     * @return message format. The default value is `rfc5424`.
      * 
      */
     private @Nullable String format;
     /**
-     * @return PEM encoded client key
+     * @return PEM encoded client key.
      * 
      */
     private @Nullable String key;
     /**
-     * @return custom syslog message format
+     * @return custom syslog message format.
      * 
      */
     private @Nullable String logline;
     /**
-     * @return rsyslog server port
+     * @return rsyslog server port. The default value is `514`.
      * 
      */
-    private @Nullable String port;
+    private @Nullable Integer port;
     /**
-     * @return Structured data block for log message
+     * @return Structured data block for log message.
      * 
      */
     private @Nullable String sd;
     /**
-     * @return rsyslog server IP address or hostname
+     * @return rsyslog server IP address or hostname.
      * 
      */
     private @Nullable String server;
     /**
-     * @return Require TLS
+     * @return Require TLS. The default value is `true`.
      * 
      */
-    private @Nullable String tls;
+    private @Nullable Boolean tls;
 
     private ServiceIntegrationEndpointRsyslogUserConfig() {}
     /**
-     * @return PEM encoded CA certificate
+     * @return PEM encoded CA certificate.
      * 
      */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
     /**
-     * @return PEM encoded client certificate
+     * @return PEM encoded client certificate.
      * 
      */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
     /**
-     * @return message format
+     * @return message format. The default value is `rfc5424`.
      * 
      */
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
     /**
-     * @return PEM encoded client key
+     * @return PEM encoded client key.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return custom syslog message format
+     * @return custom syslog message format.
      * 
      */
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
     /**
-     * @return rsyslog server port
+     * @return rsyslog server port. The default value is `514`.
      * 
      */
-    public Optional<String> port() {
+    public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Structured data block for log message
+     * @return Structured data block for log message.
      * 
      */
     public Optional<String> sd() {
         return Optional.ofNullable(this.sd);
     }
     /**
-     * @return rsyslog server IP address or hostname
+     * @return rsyslog server IP address or hostname.
      * 
      */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }
     /**
-     * @return Require TLS
+     * @return Require TLS. The default value is `true`.
      * 
      */
-    public Optional<String> tls() {
+    public Optional<Boolean> tls() {
         return Optional.ofNullable(this.tls);
     }
 
@@ -136,10 +138,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         private @Nullable String format;
         private @Nullable String key;
         private @Nullable String logline;
-        private @Nullable String port;
+        private @Nullable Integer port;
         private @Nullable String sd;
         private @Nullable String server;
-        private @Nullable String tls;
+        private @Nullable Boolean tls;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointRsyslogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -180,7 +182,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable String port) {
+        public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
@@ -195,7 +197,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder tls(@Nullable String tls) {
+        public Builder tls(@Nullable Boolean tls) {
             this.tls = tls;
             return this;
         }

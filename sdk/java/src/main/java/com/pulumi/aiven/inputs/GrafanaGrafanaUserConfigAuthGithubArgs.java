@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,9 +19,9 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
     public static final GrafanaGrafanaUserConfigAuthGithubArgs Empty = new GrafanaGrafanaUserConfigAuthGithubArgs();
 
     @Import(name="allowSignUp")
-    private @Nullable Output<String> allowSignUp;
+    private @Nullable Output<Boolean> allowSignUp;
 
-    public Optional<Output<String>> allowSignUp() {
+    public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
@@ -30,24 +32,24 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
         return Optional.ofNullable(this.allowedOrganizations);
     }
 
-    @Import(name="clientId")
-    private @Nullable Output<String> clientId;
+    @Import(name="clientId", required=true)
+    private Output<String> clientId;
 
-    public Optional<Output<String>> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public Output<String> clientId() {
+        return this.clientId;
     }
 
-    @Import(name="clientSecret")
-    private @Nullable Output<String> clientSecret;
+    @Import(name="clientSecret", required=true)
+    private Output<String> clientSecret;
 
-    public Optional<Output<String>> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public Output<String> clientSecret() {
+        return this.clientSecret;
     }
 
     @Import(name="teamIds")
-    private @Nullable Output<List<String>> teamIds;
+    private @Nullable Output<List<Integer>> teamIds;
 
-    public Optional<Output<List<String>>> teamIds() {
+    public Optional<Output<List<Integer>>> teamIds() {
         return Optional.ofNullable(this.teamIds);
     }
 
@@ -79,12 +81,12 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
             $ = new GrafanaGrafanaUserConfigAuthGithubArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder allowSignUp(@Nullable Output<String> allowSignUp) {
+        public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
-        public Builder allowSignUp(String allowSignUp) {
+        public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
@@ -101,7 +103,7 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
             return allowedOrganizations(List.of(allowedOrganizations));
         }
 
-        public Builder clientId(@Nullable Output<String> clientId) {
+        public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
@@ -110,7 +112,7 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
             return clientId(Output.of(clientId));
         }
 
-        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+        public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
@@ -119,20 +121,22 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
             return clientSecret(Output.of(clientSecret));
         }
 
-        public Builder teamIds(@Nullable Output<List<String>> teamIds) {
+        public Builder teamIds(@Nullable Output<List<Integer>> teamIds) {
             $.teamIds = teamIds;
             return this;
         }
 
-        public Builder teamIds(List<String> teamIds) {
+        public Builder teamIds(List<Integer> teamIds) {
             return teamIds(Output.of(teamIds));
         }
 
-        public Builder teamIds(String... teamIds) {
+        public Builder teamIds(Integer... teamIds) {
             return teamIds(List.of(teamIds));
         }
 
         public GrafanaGrafanaUserConfigAuthGithubArgs build() {
+            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
             return $;
         }
     }

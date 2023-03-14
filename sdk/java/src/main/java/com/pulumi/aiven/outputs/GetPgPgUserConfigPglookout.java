@@ -4,17 +4,17 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPglookout {
-    private @Nullable String maxFailoverReplicationTimeLag;
+    private @Nullable Integer maxFailoverReplicationTimeLag;
 
     private GetPgPgUserConfigPglookout() {}
-    public Optional<String> maxFailoverReplicationTimeLag() {
+    public Optional<Integer> maxFailoverReplicationTimeLag() {
         return Optional.ofNullable(this.maxFailoverReplicationTimeLag);
     }
 
@@ -27,7 +27,7 @@ public final class GetPgPgUserConfigPglookout {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String maxFailoverReplicationTimeLag;
+        private @Nullable Integer maxFailoverReplicationTimeLag;
         public Builder() {}
         public Builder(GetPgPgUserConfigPglookout defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,7 +35,7 @@ public final class GetPgPgUserConfigPglookout {
         }
 
         @CustomType.Setter
-        public Builder maxFailoverReplicationTimeLag(@Nullable String maxFailoverReplicationTimeLag) {
+        public Builder maxFailoverReplicationTimeLag(@Nullable Integer maxFailoverReplicationTimeLag) {
             this.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
             return this;
         }

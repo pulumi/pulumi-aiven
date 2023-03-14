@@ -13,98 +13,98 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetMySqlMysqlUserConfigMysqlResult
     {
-        public readonly string? ConnectTimeout;
+        public readonly int? ConnectTimeout;
         public readonly string? DefaultTimeZone;
-        public readonly string? GroupConcatMaxLen;
-        public readonly string? InformationSchemaStatsExpiry;
-        public readonly string? InnodbChangeBufferMaxSize;
-        public readonly string? InnodbFlushNeighbors;
-        public readonly string? InnodbFtMinTokenSize;
+        public readonly int? GroupConcatMaxLen;
+        public readonly int? InformationSchemaStatsExpiry;
+        public readonly int? InnodbChangeBufferMaxSize;
+        public readonly int? InnodbFlushNeighbors;
+        public readonly int? InnodbFtMinTokenSize;
         public readonly string? InnodbFtServerStopwordTable;
-        public readonly string? InnodbLockWaitTimeout;
-        public readonly string? InnodbLogBufferSize;
-        public readonly string? InnodbOnlineAlterLogMaxSize;
-        public readonly string? InnodbPrintAllDeadlocks;
-        public readonly string? InnodbReadIoThreads;
-        public readonly string? InnodbRollbackOnTimeout;
-        public readonly string? InnodbThreadConcurrency;
-        public readonly string? InnodbWriteIoThreads;
-        public readonly string? InteractiveTimeout;
+        public readonly int? InnodbLockWaitTimeout;
+        public readonly int? InnodbLogBufferSize;
+        public readonly int? InnodbOnlineAlterLogMaxSize;
+        public readonly bool? InnodbPrintAllDeadlocks;
+        public readonly int? InnodbReadIoThreads;
+        public readonly bool? InnodbRollbackOnTimeout;
+        public readonly int? InnodbThreadConcurrency;
+        public readonly int? InnodbWriteIoThreads;
+        public readonly int? InteractiveTimeout;
         public readonly string? InternalTmpMemStorageEngine;
-        public readonly string? LongQueryTime;
-        public readonly string? MaxAllowedPacket;
-        public readonly string? MaxHeapTableSize;
-        public readonly string? NetBufferLength;
-        public readonly string? NetReadTimeout;
-        public readonly string? NetWriteTimeout;
-        public readonly string? SlowQueryLog;
-        public readonly string? SortBufferSize;
+        public readonly double? LongQueryTime;
+        public readonly int? MaxAllowedPacket;
+        public readonly int? MaxHeapTableSize;
+        public readonly int? NetBufferLength;
+        public readonly int? NetReadTimeout;
+        public readonly int? NetWriteTimeout;
+        public readonly bool? SlowQueryLog;
+        public readonly int? SortBufferSize;
         public readonly string? SqlMode;
-        public readonly string? SqlRequirePrimaryKey;
-        public readonly string? TmpTableSize;
-        public readonly string? WaitTimeout;
+        public readonly bool? SqlRequirePrimaryKey;
+        public readonly int? TmpTableSize;
+        public readonly int? WaitTimeout;
 
         [OutputConstructor]
         private GetMySqlMysqlUserConfigMysqlResult(
-            string? connectTimeout,
+            int? connectTimeout,
 
             string? defaultTimeZone,
 
-            string? groupConcatMaxLen,
+            int? groupConcatMaxLen,
 
-            string? informationSchemaStatsExpiry,
+            int? informationSchemaStatsExpiry,
 
-            string? innodbChangeBufferMaxSize,
+            int? innodbChangeBufferMaxSize,
 
-            string? innodbFlushNeighbors,
+            int? innodbFlushNeighbors,
 
-            string? innodbFtMinTokenSize,
+            int? innodbFtMinTokenSize,
 
             string? innodbFtServerStopwordTable,
 
-            string? innodbLockWaitTimeout,
+            int? innodbLockWaitTimeout,
 
-            string? innodbLogBufferSize,
+            int? innodbLogBufferSize,
 
-            string? innodbOnlineAlterLogMaxSize,
+            int? innodbOnlineAlterLogMaxSize,
 
-            string? innodbPrintAllDeadlocks,
+            bool? innodbPrintAllDeadlocks,
 
-            string? innodbReadIoThreads,
+            int? innodbReadIoThreads,
 
-            string? innodbRollbackOnTimeout,
+            bool? innodbRollbackOnTimeout,
 
-            string? innodbThreadConcurrency,
+            int? innodbThreadConcurrency,
 
-            string? innodbWriteIoThreads,
+            int? innodbWriteIoThreads,
 
-            string? interactiveTimeout,
+            int? interactiveTimeout,
 
             string? internalTmpMemStorageEngine,
 
-            string? longQueryTime,
+            double? longQueryTime,
 
-            string? maxAllowedPacket,
+            int? maxAllowedPacket,
 
-            string? maxHeapTableSize,
+            int? maxHeapTableSize,
 
-            string? netBufferLength,
+            int? netBufferLength,
 
-            string? netReadTimeout,
+            int? netReadTimeout,
 
-            string? netWriteTimeout,
+            int? netWriteTimeout,
 
-            string? slowQueryLog,
+            bool? slowQueryLog,
 
-            string? sortBufferSize,
+            int? sortBufferSize,
 
             string? sqlMode,
 
-            string? sqlRequirePrimaryKey,
+            bool? sqlRequirePrimaryKey,
 
-            string? tmpTableSize,
+            int? tmpTableSize,
 
-            string? waitTimeout)
+            int? waitTimeout)
         {
             ConnectTimeout = connectTimeout;
             DefaultTimeZone = defaultTimeZone;

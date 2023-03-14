@@ -4,17 +4,17 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigTimescaledb {
-    private @Nullable String maxBackgroundWorkers;
+    private @Nullable Integer maxBackgroundWorkers;
 
     private GetPgPgUserConfigTimescaledb() {}
-    public Optional<String> maxBackgroundWorkers() {
+    public Optional<Integer> maxBackgroundWorkers() {
         return Optional.ofNullable(this.maxBackgroundWorkers);
     }
 
@@ -27,7 +27,7 @@ public final class GetPgPgUserConfigTimescaledb {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String maxBackgroundWorkers;
+        private @Nullable Integer maxBackgroundWorkers;
         public Builder() {}
         public Builder(GetPgPgUserConfigTimescaledb defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,7 +35,7 @@ public final class GetPgPgUserConfigTimescaledb {
         }
 
         @CustomType.Setter
-        public Builder maxBackgroundWorkers(@Nullable String maxBackgroundWorkers) {
+        public Builder maxBackgroundWorkers(@Nullable Integer maxBackgroundWorkers) {
             this.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
         }

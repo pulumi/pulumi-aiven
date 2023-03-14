@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,22 +15,22 @@ public final class GetMySqlMysqlUserConfigPublicAccess {
      * @return MySQL specific server provided values
      * 
      */
-    private @Nullable String mysql;
-    private @Nullable String mysqlx;
-    private @Nullable String prometheus;
+    private @Nullable Boolean mysql;
+    private @Nullable Boolean mysqlx;
+    private @Nullable Boolean prometheus;
 
     private GetMySqlMysqlUserConfigPublicAccess() {}
     /**
      * @return MySQL specific server provided values
      * 
      */
-    public Optional<String> mysql() {
+    public Optional<Boolean> mysql() {
         return Optional.ofNullable(this.mysql);
     }
-    public Optional<String> mysqlx() {
+    public Optional<Boolean> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -43,9 +43,9 @@ public final class GetMySqlMysqlUserConfigPublicAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String mysql;
-        private @Nullable String mysqlx;
-        private @Nullable String prometheus;
+        private @Nullable Boolean mysql;
+        private @Nullable Boolean mysqlx;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(GetMySqlMysqlUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,17 +55,17 @@ public final class GetMySqlMysqlUserConfigPublicAccess {
         }
 
         @CustomType.Setter
-        public Builder mysql(@Nullable String mysql) {
+        public Builder mysql(@Nullable Boolean mysql) {
             this.mysql = mysql;
             return this;
         }
         @CustomType.Setter
-        public Builder mysqlx(@Nullable String mysqlx) {
+        public Builder mysqlx(@Nullable Boolean mysqlx) {
             this.mysqlx = mysqlx;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

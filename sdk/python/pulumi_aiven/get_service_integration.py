@@ -22,7 +22,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_metrics_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, mirrormaker_user_configs=None, project=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_metrics_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, source_endpoint_id=None, source_service_name=None):
         if clickhouse_kafka_user_configs and not isinstance(clickhouse_kafka_user_configs, list):
             raise TypeError("Expected argument 'clickhouse_kafka_user_configs' to be a list")
         pulumi.set(__self__, "clickhouse_kafka_user_configs", clickhouse_kafka_user_configs)
@@ -65,9 +65,6 @@ class GetServiceIntegrationResult:
         if metrics_user_configs and not isinstance(metrics_user_configs, list):
             raise TypeError("Expected argument 'metrics_user_configs' to be a list")
         pulumi.set(__self__, "metrics_user_configs", metrics_user_configs)
-        if mirrormaker_user_configs and not isinstance(mirrormaker_user_configs, list):
-            raise TypeError("Expected argument 'mirrormaker_user_configs' to be a list")
-        pulumi.set(__self__, "mirrormaker_user_configs", mirrormaker_user_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -146,7 +143,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration
+        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         """
         return pulumi.get(self, "integration_type")
 
@@ -189,14 +186,6 @@ class GetServiceIntegrationResult:
         Metrics user configurable settings
         """
         return pulumi.get(self, "metrics_user_configs")
-
-    @property
-    @pulumi.getter(name="mirrormakerUserConfigs")
-    def mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMirrormakerUserConfigResult']:
-        """
-        Mirrormaker user configurable settings
-        """
-        return pulumi.get(self, "mirrormaker_user_configs")
 
     @property
     @pulumi.getter
@@ -243,7 +232,6 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             kafka_mirrormaker_user_configs=self.kafka_mirrormaker_user_configs,
             logs_user_configs=self.logs_user_configs,
             metrics_user_configs=self.metrics_user_configs,
-            mirrormaker_user_configs=self.mirrormaker_user_configs,
             project=self.project,
             source_endpoint_id=self.source_endpoint_id,
             source_service_name=self.source_service_name)
@@ -273,7 +261,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
 
 
     :param str destination_service_name: Destination service for the integration (if any)
-    :param str integration_type: Type of the service integration
+    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
     :param str project: Project the integration belongs to
     :param str source_service_name: Source service for the integration (if any)
     """
@@ -300,7 +288,6 @@ def get_service_integration(destination_service_name: Optional[str] = None,
         kafka_mirrormaker_user_configs=__ret__.kafka_mirrormaker_user_configs,
         logs_user_configs=__ret__.logs_user_configs,
         metrics_user_configs=__ret__.metrics_user_configs,
-        mirrormaker_user_configs=__ret__.mirrormaker_user_configs,
         project=__ret__.project,
         source_endpoint_id=__ret__.source_endpoint_id,
         source_service_name=__ret__.source_service_name)
@@ -331,7 +318,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
 
 
     :param str destination_service_name: Destination service for the integration (if any)
-    :param str integration_type: Type of the service integration
+    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
     :param str project: Project the integration belongs to
     :param str source_service_name: Source service for the integration (if any)
     """

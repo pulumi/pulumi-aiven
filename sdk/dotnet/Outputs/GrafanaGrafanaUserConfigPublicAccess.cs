@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigPublicAccess
     {
-        public readonly string? Grafana;
+        public readonly bool? Grafana;
 
         [OutputConstructor]
-        private GrafanaGrafanaUserConfigPublicAccess(string? grafana)
+        private GrafanaGrafanaUserConfigPublicAccess(bool? grafana)
         {
             Grafana = grafana;
         }

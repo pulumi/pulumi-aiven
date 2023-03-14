@@ -12,8 +12,8 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigNamespaceArgs : global::Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("options")]
         public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsArgs>? Options { get; set; }
@@ -21,8 +21,8 @@ namespace Pulumi.Aiven.Inputs
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
 
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public M3DbM3dbUserConfigNamespaceArgs()
         {

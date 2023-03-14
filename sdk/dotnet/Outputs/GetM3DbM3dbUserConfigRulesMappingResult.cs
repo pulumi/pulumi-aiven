@@ -14,8 +14,8 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetM3DbM3dbUserConfigRulesMappingResult
     {
         public readonly ImmutableArray<string> Aggregations;
-        public readonly string? Drop;
-        public readonly string? Filter;
+        public readonly bool? Drop;
+        public readonly string Filter;
         public readonly string? Name;
         public readonly ImmutableArray<string> Namespaces;
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult> NamespacesObjects;
@@ -25,9 +25,9 @@ namespace Pulumi.Aiven.Outputs
         private GetM3DbM3dbUserConfigRulesMappingResult(
             ImmutableArray<string> aggregations,
 
-            string? drop,
+            bool? drop,
 
-            string? filter,
+            string filter,
 
             string? name,
 

@@ -87,7 +87,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      */
     public readonly sourceCluster!: pulumi.Output<string>;
     /**
@@ -99,7 +99,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly syncGroupOffsetsIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      */
     public readonly targetCluster!: pulumi.Output<string>;
     /**
@@ -200,7 +200,7 @@ export interface MirrorMakerReplicationFlowState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      */
     sourceCluster?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface MirrorMakerReplicationFlowState {
      */
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      */
     targetCluster?: pulumi.Input<string>;
     /**
@@ -254,7 +254,7 @@ export interface MirrorMakerReplicationFlowArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      */
     sourceCluster: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface MirrorMakerReplicationFlowArgs {
      */
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      */
     targetCluster: pulumi.Input<string>;
     /**

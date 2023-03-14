@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationMetricsUserConfigResult
     {
         public readonly string? Database;
-        public readonly string? RetentionDays;
+        public readonly int? RetentionDays;
         public readonly string? RoUsername;
         public readonly Outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlResult? SourceMysql;
         public readonly string? Username;
@@ -23,7 +23,7 @@ namespace Pulumi.Aiven.Outputs
         private GetServiceIntegrationMetricsUserConfigResult(
             string? database,
 
-            string? retentionDays,
+            int? retentionDays,
 
             string? roUsername,
 

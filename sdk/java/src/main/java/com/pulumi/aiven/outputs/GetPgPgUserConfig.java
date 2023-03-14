@@ -13,6 +13,9 @@ import com.pulumi.aiven.outputs.GetPgPgUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigTimescaledb;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,10 +27,16 @@ public final class GetPgPgUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable String adminPassword;
     private @Nullable String adminUsername;
-    private @Nullable String backupHour;
-    private @Nullable String backupMinute;
-    private @Nullable String enableIpv6;
+    private @Nullable Integer backupHour;
+    private @Nullable Integer backupMinute;
+    private @Nullable Boolean enableIpv6;
     private @Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable GetPgPgUserConfigMigration migration;
     /**
@@ -37,13 +46,19 @@ public final class GetPgPgUserConfig {
     private @Nullable GetPgPgUserConfigPg pg;
     /**
      * @deprecated
-     * This setting is deprecated. Use read_replica service integration instead.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
-    private @Nullable String pgReadReplica;
+    @Deprecated /* Usage of this field is discouraged. */
+    private @Nullable Boolean pgReadReplica;
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String pgServiceToForkFrom;
-    private @Nullable String pgStatMonitorEnable;
+    private @Nullable Boolean pgStatMonitorEnable;
     private @Nullable String pgVersion;
     private @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
     private @Nullable GetPgPgUserConfigPglookout pglookout;
@@ -53,16 +68,16 @@ public final class GetPgPgUserConfig {
     private @Nullable GetPgPgUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryTargetTime;
     private @Nullable String serviceToForkFrom;
-    private @Nullable String sharedBuffersPercentage;
+    private @Nullable Double sharedBuffersPercentage;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
     private @Nullable String synchronousReplication;
     private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
     private @Nullable String variant;
-    private @Nullable String workMem;
+    private @Nullable Integer workMem;
 
     private GetPgPgUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -74,18 +89,24 @@ public final class GetPgPgUserConfig {
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
-    public Optional<String> backupHour() {
+    public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
-    public Optional<String> backupMinute() {
+    public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
-    public Optional<String> enableIpv6() {
+    public Optional<Boolean> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
     public List<GetPgPgUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -101,17 +122,23 @@ public final class GetPgPgUserConfig {
     }
     /**
      * @deprecated
-     * This setting is deprecated. Use read_replica service integration instead.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
-    public Optional<String> pgReadReplica() {
+    @Deprecated /* Usage of this field is discouraged. */
+    public Optional<Boolean> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     public Optional<String> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
-    public Optional<String> pgStatMonitorEnable() {
+    public Optional<Boolean> pgStatMonitorEnable() {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
     public Optional<String> pgVersion() {
@@ -141,14 +168,14 @@ public final class GetPgPgUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    public Optional<String> sharedBuffersPercentage() {
+    public Optional<Double> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
     public Optional<String> synchronousReplication() {
@@ -160,7 +187,7 @@ public final class GetPgPgUserConfig {
     public Optional<String> variant() {
         return Optional.ofNullable(this.variant);
     }
-    public Optional<String> workMem() {
+    public Optional<Integer> workMem() {
         return Optional.ofNullable(this.workMem);
     }
 
@@ -176,16 +203,16 @@ public final class GetPgPgUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
-        private @Nullable String backupHour;
-        private @Nullable String backupMinute;
-        private @Nullable String enableIpv6;
+        private @Nullable Integer backupHour;
+        private @Nullable Integer backupMinute;
+        private @Nullable Boolean enableIpv6;
         private @Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetPgPgUserConfigMigration migration;
         private @Nullable GetPgPgUserConfigPg pg;
-        private @Nullable String pgReadReplica;
+        private @Nullable Boolean pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
-        private @Nullable String pgStatMonitorEnable;
+        private @Nullable Boolean pgStatMonitorEnable;
         private @Nullable String pgVersion;
         private @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
         private @Nullable GetPgPgUserConfigPglookout pglookout;
@@ -195,12 +222,12 @@ public final class GetPgPgUserConfig {
         private @Nullable GetPgPgUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryTargetTime;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String sharedBuffersPercentage;
-        private @Nullable String staticIps;
+        private @Nullable Double sharedBuffersPercentage;
+        private @Nullable Boolean staticIps;
         private @Nullable String synchronousReplication;
         private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
         private @Nullable String variant;
-        private @Nullable String workMem;
+        private @Nullable Integer workMem;
         public Builder() {}
         public Builder(GetPgPgUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -250,17 +277,17 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder backupHour(@Nullable String backupHour) {
+        public Builder backupHour(@Nullable Integer backupHour) {
             this.backupHour = backupHour;
             return this;
         }
         @CustomType.Setter
-        public Builder backupMinute(@Nullable String backupMinute) {
+        public Builder backupMinute(@Nullable Integer backupMinute) {
             this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
-        public Builder enableIpv6(@Nullable String enableIpv6) {
+        public Builder enableIpv6(@Nullable Boolean enableIpv6) {
             this.enableIpv6 = enableIpv6;
             return this;
         }
@@ -291,7 +318,7 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder pgReadReplica(@Nullable String pgReadReplica) {
+        public Builder pgReadReplica(@Nullable Boolean pgReadReplica) {
             this.pgReadReplica = pgReadReplica;
             return this;
         }
@@ -301,7 +328,7 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder pgStatMonitorEnable(@Nullable String pgStatMonitorEnable) {
+        public Builder pgStatMonitorEnable(@Nullable Boolean pgStatMonitorEnable) {
             this.pgStatMonitorEnable = pgStatMonitorEnable;
             return this;
         }
@@ -351,12 +378,12 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder sharedBuffersPercentage(@Nullable String sharedBuffersPercentage) {
+        public Builder sharedBuffersPercentage(@Nullable Double sharedBuffersPercentage) {
             this.sharedBuffersPercentage = sharedBuffersPercentage;
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }
@@ -376,7 +403,7 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder workMem(@Nullable String workMem) {
+        public Builder workMem(@Nullable Integer workMem) {
             this.workMem = workMem;
             return this;
         }

@@ -722,12 +722,12 @@ class OpenSearch(pulumi.CustomResource):
             opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(
                 opensearch_version="1",
                 opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(
-                    enabled="true",
-                    opensearch_request_timeout="30000",
+                    enabled=True,
+                    opensearch_request_timeout=30000,
                 ),
                 public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(
-                    opensearch="true",
-                    opensearch_dashboards="true",
+                    opensearch=True,
+                    opensearch_dashboards=True,
                 ),
             ))
         ```
@@ -780,12 +780,12 @@ class OpenSearch(pulumi.CustomResource):
             opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(
                 opensearch_version="1",
                 opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(
-                    enabled="true",
-                    opensearch_request_timeout="30000",
+                    enabled=True,
+                    opensearch_request_timeout=30000,
                 ),
                 public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(
-                    opensearch="true",
-                    opensearch_dashboards="true",
+                    opensearch=True,
+                    opensearch_dashboards=True,
                 ),
             ))
         ```

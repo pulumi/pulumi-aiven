@@ -12,17 +12,17 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigExternalImageStorageGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        [Input("accessKey", required: true)]
+        public Input<string> AccessKey { get; set; } = null!;
 
-        [Input("bucketUrl")]
-        public Input<string>? BucketUrl { get; set; }
+        [Input("bucketUrl", required: true)]
+        public Input<string> BucketUrl { get; set; } = null!;
 
-        [Input("provider")]
-        public Input<string>? Provider { get; set; }
+        [Input("provider", required: true)]
+        public Input<string> Provider { get; set; } = null!;
 
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        [Input("secretKey", required: true)]
+        public Input<string> SecretKey { get; set; } = null!;
 
         public GrafanaGrafanaUserConfigExternalImageStorageGetArgs()
         {

@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,22 +15,22 @@ public final class OpenSearchOpensearchUserConfigPublicAccess {
      * @return Opensearch server provided values
      * 
      */
-    private @Nullable String opensearch;
-    private @Nullable String opensearchDashboards;
-    private @Nullable String prometheus;
+    private @Nullable Boolean opensearch;
+    private @Nullable Boolean opensearchDashboards;
+    private @Nullable Boolean prometheus;
 
     private OpenSearchOpensearchUserConfigPublicAccess() {}
     /**
      * @return Opensearch server provided values
      * 
      */
-    public Optional<String> opensearch() {
+    public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
-    public Optional<String> opensearchDashboards() {
+    public Optional<Boolean> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -43,9 +43,9 @@ public final class OpenSearchOpensearchUserConfigPublicAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String opensearch;
-        private @Nullable String opensearchDashboards;
-        private @Nullable String prometheus;
+        private @Nullable Boolean opensearch;
+        private @Nullable Boolean opensearchDashboards;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,17 +55,17 @@ public final class OpenSearchOpensearchUserConfigPublicAccess {
         }
 
         @CustomType.Setter
-        public Builder opensearch(@Nullable String opensearch) {
+        public Builder opensearch(@Nullable Boolean opensearch) {
             this.opensearch = opensearch;
             return this;
         }
         @CustomType.Setter
-        public Builder opensearchDashboards(@Nullable String opensearchDashboards) {
+        public Builder opensearchDashboards(@Nullable Boolean opensearchDashboards) {
             this.opensearchDashboards = opensearchDashboards;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

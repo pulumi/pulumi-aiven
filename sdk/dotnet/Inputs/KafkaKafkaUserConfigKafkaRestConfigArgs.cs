@@ -13,22 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaRestConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumerEnableAutoCommit")]
-        public Input<string>? ConsumerEnableAutoCommit { get; set; }
+        public Input<bool>? ConsumerEnableAutoCommit { get; set; }
 
         [Input("consumerRequestMaxBytes")]
-        public Input<string>? ConsumerRequestMaxBytes { get; set; }
+        public Input<int>? ConsumerRequestMaxBytes { get; set; }
 
         [Input("consumerRequestTimeoutMs")]
-        public Input<string>? ConsumerRequestTimeoutMs { get; set; }
+        public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         [Input("producerAcks")]
         public Input<string>? ProducerAcks { get; set; }
 
+        [Input("producerCompressionType")]
+        public Input<string>? ProducerCompressionType { get; set; }
+
         [Input("producerLingerMs")]
-        public Input<string>? ProducerLingerMs { get; set; }
+        public Input<int>? ProducerLingerMs { get; set; }
 
         [Input("simpleconsumerPoolSizeMax")]
-        public Input<string>? SimpleconsumerPoolSizeMax { get; set; }
+        public Input<int>? SimpleconsumerPoolSizeMax { get; set; }
 
         public KafkaKafkaUserConfigKafkaRestConfigArgs()
         {

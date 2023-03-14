@@ -13,15 +13,15 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigIndexPatternResult
     {
-        public readonly string? MaxIndexCount;
-        public readonly string? Pattern;
+        public readonly int MaxIndexCount;
+        public readonly string Pattern;
         public readonly string? SortingAlgorithm;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigIndexPatternResult(
-            string? maxIndexCount,
+            int maxIndexCount,
 
-            string? pattern,
+            string pattern,
 
             string? sortingAlgorithm)
         {

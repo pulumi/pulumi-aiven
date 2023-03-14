@@ -39,7 +39,7 @@ import (
 //						ConsumerIsolationLevel: pulumi.String("read_committed"),
 //					},
 //					PublicAccess: &aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs{
-//						KafkaConnect: pulumi.String("true"),
+//						KafkaConnect: pulumi.Bool(true),
 //					},
 //				},
 //			})

@@ -13,61 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetFlinkFlinkUserConfigResult
     {
-        public readonly string? AdditionalBackupRegions;
-        public readonly string? ExecutionCheckpointingIntervalMs;
-        public readonly string? ExecutionCheckpointingTimeoutMs;
         public readonly string? FlinkVersion;
         public readonly ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        public readonly string? NumberOfTaskSlots;
-        public readonly string? ParallelismDefault;
+        public readonly int? NumberOfTaskSlots;
         public readonly Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
-        public readonly string? RestartStrategy;
-        public readonly string? RestartStrategyDelaySec;
-        public readonly string? RestartStrategyFailureRateIntervalMin;
-        public readonly string? RestartStrategyMaxFailures;
 
         [OutputConstructor]
         private GetFlinkFlinkUserConfigResult(
-            string? additionalBackupRegions,
-
-            string? executionCheckpointingIntervalMs,
-
-            string? executionCheckpointingTimeoutMs,
-
             string? flinkVersion,
 
             ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilters,
 
-            string? numberOfTaskSlots,
+            int? numberOfTaskSlots,
 
-            string? parallelismDefault,
-
-            Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? privatelinkAccess,
-
-            string? restartStrategy,
-
-            string? restartStrategyDelaySec,
-
-            string? restartStrategyFailureRateIntervalMin,
-
-            string? restartStrategyMaxFailures)
+            Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? privatelinkAccess)
         {
-            AdditionalBackupRegions = additionalBackupRegions;
-            ExecutionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
-            ExecutionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             FlinkVersion = flinkVersion;
             IpFilterObjects = ipFilterObjects;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
-            ParallelismDefault = parallelismDefault;
             PrivatelinkAccess = privatelinkAccess;
-            RestartStrategy = restartStrategy;
-            RestartStrategyDelaySec = restartStrategyDelaySec;
-            RestartStrategyFailureRateIntervalMin = restartStrategyFailureRateIntervalMin;
-            RestartStrategyMaxFailures = restartStrategyMaxFailures;
         }
     }
 }

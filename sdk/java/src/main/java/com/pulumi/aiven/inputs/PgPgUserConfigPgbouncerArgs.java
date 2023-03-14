@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,16 +19,16 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     public static final PgPgUserConfigPgbouncerArgs Empty = new PgPgUserConfigPgbouncerArgs();
 
     @Import(name="autodbIdleTimeout")
-    private @Nullable Output<String> autodbIdleTimeout;
+    private @Nullable Output<Integer> autodbIdleTimeout;
 
-    public Optional<Output<String>> autodbIdleTimeout() {
+    public Optional<Output<Integer>> autodbIdleTimeout() {
         return Optional.ofNullable(this.autodbIdleTimeout);
     }
 
     @Import(name="autodbMaxDbConnections")
-    private @Nullable Output<String> autodbMaxDbConnections;
+    private @Nullable Output<Integer> autodbMaxDbConnections;
 
-    public Optional<Output<String>> autodbMaxDbConnections() {
+    public Optional<Output<Integer>> autodbMaxDbConnections() {
         return Optional.ofNullable(this.autodbMaxDbConnections);
     }
 
@@ -38,9 +40,9 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     @Import(name="autodbPoolSize")
-    private @Nullable Output<String> autodbPoolSize;
+    private @Nullable Output<Integer> autodbPoolSize;
 
-    public Optional<Output<String>> autodbPoolSize() {
+    public Optional<Output<Integer>> autodbPoolSize() {
         return Optional.ofNullable(this.autodbPoolSize);
     }
 
@@ -52,30 +54,30 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     @Import(name="minPoolSize")
-    private @Nullable Output<String> minPoolSize;
+    private @Nullable Output<Integer> minPoolSize;
 
-    public Optional<Output<String>> minPoolSize() {
+    public Optional<Output<Integer>> minPoolSize() {
         return Optional.ofNullable(this.minPoolSize);
     }
 
     @Import(name="serverIdleTimeout")
-    private @Nullable Output<String> serverIdleTimeout;
+    private @Nullable Output<Integer> serverIdleTimeout;
 
-    public Optional<Output<String>> serverIdleTimeout() {
+    public Optional<Output<Integer>> serverIdleTimeout() {
         return Optional.ofNullable(this.serverIdleTimeout);
     }
 
     @Import(name="serverLifetime")
-    private @Nullable Output<String> serverLifetime;
+    private @Nullable Output<Integer> serverLifetime;
 
-    public Optional<Output<String>> serverLifetime() {
+    public Optional<Output<Integer>> serverLifetime() {
         return Optional.ofNullable(this.serverLifetime);
     }
 
     @Import(name="serverResetQueryAlways")
-    private @Nullable Output<String> serverResetQueryAlways;
+    private @Nullable Output<Boolean> serverResetQueryAlways;
 
-    public Optional<Output<String>> serverResetQueryAlways() {
+    public Optional<Output<Boolean>> serverResetQueryAlways() {
         return Optional.ofNullable(this.serverResetQueryAlways);
     }
 
@@ -111,21 +113,21 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
             $ = new PgPgUserConfigPgbouncerArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder autodbIdleTimeout(@Nullable Output<String> autodbIdleTimeout) {
+        public Builder autodbIdleTimeout(@Nullable Output<Integer> autodbIdleTimeout) {
             $.autodbIdleTimeout = autodbIdleTimeout;
             return this;
         }
 
-        public Builder autodbIdleTimeout(String autodbIdleTimeout) {
+        public Builder autodbIdleTimeout(Integer autodbIdleTimeout) {
             return autodbIdleTimeout(Output.of(autodbIdleTimeout));
         }
 
-        public Builder autodbMaxDbConnections(@Nullable Output<String> autodbMaxDbConnections) {
+        public Builder autodbMaxDbConnections(@Nullable Output<Integer> autodbMaxDbConnections) {
             $.autodbMaxDbConnections = autodbMaxDbConnections;
             return this;
         }
 
-        public Builder autodbMaxDbConnections(String autodbMaxDbConnections) {
+        public Builder autodbMaxDbConnections(Integer autodbMaxDbConnections) {
             return autodbMaxDbConnections(Output.of(autodbMaxDbConnections));
         }
 
@@ -138,12 +140,12 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
             return autodbPoolMode(Output.of(autodbPoolMode));
         }
 
-        public Builder autodbPoolSize(@Nullable Output<String> autodbPoolSize) {
+        public Builder autodbPoolSize(@Nullable Output<Integer> autodbPoolSize) {
             $.autodbPoolSize = autodbPoolSize;
             return this;
         }
 
-        public Builder autodbPoolSize(String autodbPoolSize) {
+        public Builder autodbPoolSize(Integer autodbPoolSize) {
             return autodbPoolSize(Output.of(autodbPoolSize));
         }
 
@@ -160,39 +162,39 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
             return ignoreStartupParameters(List.of(ignoreStartupParameters));
         }
 
-        public Builder minPoolSize(@Nullable Output<String> minPoolSize) {
+        public Builder minPoolSize(@Nullable Output<Integer> minPoolSize) {
             $.minPoolSize = minPoolSize;
             return this;
         }
 
-        public Builder minPoolSize(String minPoolSize) {
+        public Builder minPoolSize(Integer minPoolSize) {
             return minPoolSize(Output.of(minPoolSize));
         }
 
-        public Builder serverIdleTimeout(@Nullable Output<String> serverIdleTimeout) {
+        public Builder serverIdleTimeout(@Nullable Output<Integer> serverIdleTimeout) {
             $.serverIdleTimeout = serverIdleTimeout;
             return this;
         }
 
-        public Builder serverIdleTimeout(String serverIdleTimeout) {
+        public Builder serverIdleTimeout(Integer serverIdleTimeout) {
             return serverIdleTimeout(Output.of(serverIdleTimeout));
         }
 
-        public Builder serverLifetime(@Nullable Output<String> serverLifetime) {
+        public Builder serverLifetime(@Nullable Output<Integer> serverLifetime) {
             $.serverLifetime = serverLifetime;
             return this;
         }
 
-        public Builder serverLifetime(String serverLifetime) {
+        public Builder serverLifetime(Integer serverLifetime) {
             return serverLifetime(Output.of(serverLifetime));
         }
 
-        public Builder serverResetQueryAlways(@Nullable Output<String> serverResetQueryAlways) {
+        public Builder serverResetQueryAlways(@Nullable Output<Boolean> serverResetQueryAlways) {
             $.serverResetQueryAlways = serverResetQueryAlways;
             return this;
         }
 
-        public Builder serverResetQueryAlways(String serverResetQueryAlways) {
+        public Builder serverResetQueryAlways(Boolean serverResetQueryAlways) {
             return serverResetQueryAlways(Output.of(serverResetQueryAlways));
         }
 

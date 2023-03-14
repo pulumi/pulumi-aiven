@@ -57,7 +57,7 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly peerCloudAccount!: pulumi.Output<string>;
     /**
@@ -65,7 +65,7 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
      */
     public readonly peerRegion!: pulumi.Output<string>;
     /**
-     * Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly peerVpc!: pulumi.Output<string>;
     /**
@@ -146,7 +146,7 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
  */
 export interface TransitGatewayVpcAttachmentState {
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      */
     peerCloudAccount?: pulumi.Input<string>;
     /**
@@ -154,7 +154,7 @@ export interface TransitGatewayVpcAttachmentState {
      */
     peerRegion?: pulumi.Input<string>;
     /**
-     * Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      */
     peerVpc?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface TransitGatewayVpcAttachmentState {
  */
 export interface TransitGatewayVpcAttachmentArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      */
     peerCloudAccount: pulumi.Input<string>;
     /**
@@ -192,7 +192,7 @@ export interface TransitGatewayVpcAttachmentArgs {
      */
     peerRegion: pulumi.Input<string>;
     /**
-     * Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      */
     peerVpc: pulumi.Input<string>;
     /**

@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class RedisRedisUserConfigIpFilterObject
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private RedisRedisUserConfigIpFilterObject(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

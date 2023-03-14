@@ -16,23 +16,23 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Kafka server provided values
         /// </summary>
-        public readonly string? Kafka;
-        public readonly string? KafkaConnect;
-        public readonly string? KafkaRest;
-        public readonly string? Prometheus;
-        public readonly string? SchemaRegistry;
+        public readonly bool? Kafka;
+        public readonly bool? KafkaConnect;
+        public readonly bool? KafkaRest;
+        public readonly bool? Prometheus;
+        public readonly bool? SchemaRegistry;
 
         [OutputConstructor]
         private GetKafkaKafkaUserConfigPublicAccessResult(
-            string? kafka,
+            bool? kafka,
 
-            string? kafkaConnect,
+            bool? kafkaConnect,
 
-            string? kafkaRest,
+            bool? kafkaRest,
 
-            string? prometheus,
+            bool? prometheus,
 
-            string? schemaRegistry)
+            bool? schemaRegistry)
         {
             Kafka = kafka;
             KafkaConnect = kafkaConnect;

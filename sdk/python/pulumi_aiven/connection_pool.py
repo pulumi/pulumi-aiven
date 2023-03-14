@@ -27,7 +27,7 @@ class ConnectionPoolArgs:
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         """
@@ -94,7 +94,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -142,7 +142,7 @@ class _ConnectionPoolState:
         Input properties used for looking up and filtering ConnectionPool resources.
         :param pulumi.Input[str] connection_uri: The URI for connecting to the pool
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -194,7 +194,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -304,7 +304,7 @@ class ConnectionPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -418,7 +418,7 @@ class ConnectionPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_uri: The URI for connecting to the pool
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -459,7 +459,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 

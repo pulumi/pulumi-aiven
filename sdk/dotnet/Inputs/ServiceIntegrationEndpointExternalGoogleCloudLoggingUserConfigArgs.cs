@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Google Cloud Logging log id
+        /// Google Cloud Logging log id.
         /// </summary>
         [Input("logId")]
         public Input<string>? LogId { get; set; }

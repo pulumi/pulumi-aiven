@@ -13,34 +13,34 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs : global::Pulumi.ResourceArgs
     {
         [Input("emitCheckpointsEnabled")]
-        public Input<string>? EmitCheckpointsEnabled { get; set; }
+        public Input<bool>? EmitCheckpointsEnabled { get; set; }
 
         [Input("emitCheckpointsIntervalSeconds")]
-        public Input<string>? EmitCheckpointsIntervalSeconds { get; set; }
+        public Input<int>? EmitCheckpointsIntervalSeconds { get; set; }
 
         [Input("refreshGroupsEnabled")]
-        public Input<string>? RefreshGroupsEnabled { get; set; }
+        public Input<bool>? RefreshGroupsEnabled { get; set; }
 
         [Input("refreshGroupsIntervalSeconds")]
-        public Input<string>? RefreshGroupsIntervalSeconds { get; set; }
+        public Input<int>? RefreshGroupsIntervalSeconds { get; set; }
 
         [Input("refreshTopicsEnabled")]
-        public Input<string>? RefreshTopicsEnabled { get; set; }
+        public Input<bool>? RefreshTopicsEnabled { get; set; }
 
         [Input("refreshTopicsIntervalSeconds")]
-        public Input<string>? RefreshTopicsIntervalSeconds { get; set; }
+        public Input<int>? RefreshTopicsIntervalSeconds { get; set; }
 
         [Input("syncGroupOffsetsEnabled")]
-        public Input<string>? SyncGroupOffsetsEnabled { get; set; }
+        public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
 
         [Input("syncGroupOffsetsIntervalSeconds")]
-        public Input<string>? SyncGroupOffsetsIntervalSeconds { get; set; }
+        public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         [Input("syncTopicConfigsEnabled")]
-        public Input<string>? SyncTopicConfigsEnabled { get; set; }
+        public Input<bool>? SyncTopicConfigsEnabled { get; set; }
 
         [Input("tasksMaxPerCpu")]
-        public Input<string>? TasksMaxPerCpu { get; set; }
+        public Input<int>? TasksMaxPerCpu { get; set; }
 
         public KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs()
         {

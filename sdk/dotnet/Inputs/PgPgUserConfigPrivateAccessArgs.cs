@@ -16,13 +16,13 @@ namespace Pulumi.Aiven.Inputs
         /// PostgreSQL specific server provided values
         /// </summary>
         [Input("pg")]
-        public Input<string>? Pg { get; set; }
+        public Input<bool>? Pg { get; set; }
 
         [Input("pgbouncer")]
-        public Input<string>? Pgbouncer { get; set; }
+        public Input<bool>? Pgbouncer { get; set; }
 
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         public PgPgUserConfigPrivateAccessArgs()
         {

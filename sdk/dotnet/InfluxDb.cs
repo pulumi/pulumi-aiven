@@ -33,7 +33,7 @@ namespace Pulumi.Aiven
     ///         {
     ///             PublicAccess = new Aiven.Inputs.InfluxDbInfluxdbUserConfigPublicAccessArgs
     ///             {
-    ///                 Influxdb = "true",
+    ///                 Influxdb = true,
     ///             },
     ///         },
     ///     });

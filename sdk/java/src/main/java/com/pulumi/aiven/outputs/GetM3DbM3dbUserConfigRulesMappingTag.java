@@ -6,20 +6,18 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigRulesMappingTag {
-    private @Nullable String name;
-    private @Nullable String value;
+    private String name;
+    private String value;
 
     private GetM3DbM3dbUserConfigRulesMappingTag() {}
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -31,8 +29,8 @@ public final class GetM3DbM3dbUserConfigRulesMappingTag {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String value;
+        private String name;
+        private String value;
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfigRulesMappingTag defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,13 +39,13 @@ public final class GetM3DbM3dbUserConfigRulesMappingTag {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-            this.value = value;
+        public Builder value(String value) {
+            this.value = Objects.requireNonNull(value);
             return this;
         }
         public GetM3DbM3dbUserConfigRulesMappingTag build() {

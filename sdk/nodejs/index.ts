@@ -100,11 +100,6 @@ export type ConnectionPool = import("./connectionPool").ConnectionPool;
 export const ConnectionPool: typeof import("./connectionPool").ConnectionPool = null as any;
 utilities.lazyLoad(exports, ["ConnectionPool"], () => require("./connectionPool"));
 
-export { DatabaseArgs, DatabaseState } from "./database";
-export type Database = import("./database").Database;
-export const Database: typeof import("./database").Database = null as any;
-utilities.lazyLoad(exports, ["Database"], () => require("./database"));
-
 export { FlinkArgs, FlinkState } from "./flink";
 export type Flink = import("./flink").Flink;
 export const Flink: typeof import("./flink").Flink = null as any;
@@ -119,16 +114,6 @@ export { FlinkApplicationVersionArgs, FlinkApplicationVersionState } from "./fli
 export type FlinkApplicationVersion = import("./flinkApplicationVersion").FlinkApplicationVersion;
 export const FlinkApplicationVersion: typeof import("./flinkApplicationVersion").FlinkApplicationVersion = null as any;
 utilities.lazyLoad(exports, ["FlinkApplicationVersion"], () => require("./flinkApplicationVersion"));
-
-export { FlinkJobArgs, FlinkJobState } from "./flinkJob";
-export type FlinkJob = import("./flinkJob").FlinkJob;
-export const FlinkJob: typeof import("./flinkJob").FlinkJob = null as any;
-utilities.lazyLoad(exports, ["FlinkJob"], () => require("./flinkJob"));
-
-export { FlinkJobTableArgs, FlinkJobTableState } from "./flinkJobTable";
-export type FlinkJobTable = import("./flinkJobTable").FlinkJobTable;
-export const FlinkJobTable: typeof import("./flinkJobTable").FlinkJobTable = null as any;
-utilities.lazyLoad(exports, ["FlinkJobTable"], () => require("./flinkJobTable"));
 
 export { GcpVpcPeeringConnectionArgs, GcpVpcPeeringConnectionState } from "./gcpVpcPeeringConnection";
 export type GcpVpcPeeringConnection = import("./gcpVpcPeeringConnection").GcpVpcPeeringConnection;
@@ -219,11 +204,6 @@ export { GetConnectionPoolArgs, GetConnectionPoolResult, GetConnectionPoolOutput
 export const getConnectionPool: typeof import("./getConnectionPool").getConnectionPool = null as any;
 export const getConnectionPoolOutput: typeof import("./getConnectionPool").getConnectionPoolOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionPool","getConnectionPoolOutput"], () => require("./getConnectionPool"));
-
-export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
-export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
-export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
 
 export { GetFlinkArgs, GetFlinkResult, GetFlinkOutputArgs } from "./getFlink";
 export const getFlink: typeof import("./getFlink").getFlink = null as any;
@@ -425,20 +405,10 @@ export const getServiceIntegrationEndpoint: typeof import("./getServiceIntegrati
 export const getServiceIntegrationEndpointOutput: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceIntegrationEndpoint","getServiceIntegrationEndpointOutput"], () => require("./getServiceIntegrationEndpoint"));
 
-export { GetServiceUserArgs, GetServiceUserResult, GetServiceUserOutputArgs } from "./getServiceUser";
-export const getServiceUser: typeof import("./getServiceUser").getServiceUser = null as any;
-export const getServiceUserOutput: typeof import("./getServiceUser").getServiceUserOutput = null as any;
-utilities.lazyLoad(exports, ["getServiceUser","getServiceUserOutput"], () => require("./getServiceUser"));
-
 export { GetTransitGatewayVpcAttachmentArgs, GetTransitGatewayVpcAttachmentResult, GetTransitGatewayVpcAttachmentOutputArgs } from "./getTransitGatewayVpcAttachment";
 export const getTransitGatewayVpcAttachment: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachment = null as any;
 export const getTransitGatewayVpcAttachmentOutput: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getTransitGatewayVpcAttachment","getTransitGatewayVpcAttachmentOutput"], () => require("./getTransitGatewayVpcAttachment"));
-
-export { GetVpcPeeringConnectionArgs, GetVpcPeeringConnectionResult, GetVpcPeeringConnectionOutputArgs } from "./getVpcPeeringConnection";
-export const getVpcPeeringConnection: typeof import("./getVpcPeeringConnection").getVpcPeeringConnection = null as any;
-export const getVpcPeeringConnectionOutput: typeof import("./getVpcPeeringConnection").getVpcPeeringConnectionOutput = null as any;
-utilities.lazyLoad(exports, ["getVpcPeeringConnection","getVpcPeeringConnectionOutput"], () => require("./getVpcPeeringConnection"));
 
 export { GrafanaArgs, GrafanaState } from "./grafana";
 export type Grafana = import("./grafana").Grafana;
@@ -620,11 +590,6 @@ export type ServiceIntegrationEndpoint = import("./serviceIntegrationEndpoint").
 export const ServiceIntegrationEndpoint: typeof import("./serviceIntegrationEndpoint").ServiceIntegrationEndpoint = null as any;
 utilities.lazyLoad(exports, ["ServiceIntegrationEndpoint"], () => require("./serviceIntegrationEndpoint"));
 
-export { ServiceUserArgs, ServiceUserState } from "./serviceUser";
-export type ServiceUser = import("./serviceUser").ServiceUser;
-export const ServiceUser: typeof import("./serviceUser").ServiceUser = null as any;
-utilities.lazyLoad(exports, ["ServiceUser"], () => require("./serviceUser"));
-
 export { StaticIpArgs, StaticIpState } from "./staticIp";
 export type StaticIp = import("./staticIp").StaticIp;
 export const StaticIp: typeof import("./staticIp").StaticIp = null as any;
@@ -634,11 +599,6 @@ export { TransitGatewayVpcAttachmentArgs, TransitGatewayVpcAttachmentState } fro
 export type TransitGatewayVpcAttachment = import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment;
 export const TransitGatewayVpcAttachment: typeof import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment = null as any;
 utilities.lazyLoad(exports, ["TransitGatewayVpcAttachment"], () => require("./transitGatewayVpcAttachment"));
-
-export { VpcPeeringConnectionArgs, VpcPeeringConnectionState } from "./vpcPeeringConnection";
-export type VpcPeeringConnection = import("./vpcPeeringConnection").VpcPeeringConnection;
-export const VpcPeeringConnection: typeof import("./vpcPeeringConnection").VpcPeeringConnection = null as any;
-utilities.lazyLoad(exports, ["VpcPeeringConnection"], () => require("./vpcPeeringConnection"));
 
 
 // Export sub-modules:
@@ -692,18 +652,12 @@ const _module = {
                 return new ClickhouseUser(name, <any>undefined, { urn })
             case "aiven:index/connectionPool:ConnectionPool":
                 return new ConnectionPool(name, <any>undefined, { urn })
-            case "aiven:index/database:Database":
-                return new Database(name, <any>undefined, { urn })
             case "aiven:index/flink:Flink":
                 return new Flink(name, <any>undefined, { urn })
             case "aiven:index/flinkApplication:FlinkApplication":
                 return new FlinkApplication(name, <any>undefined, { urn })
             case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
                 return new FlinkApplicationVersion(name, <any>undefined, { urn })
-            case "aiven:index/flinkJob:FlinkJob":
-                return new FlinkJob(name, <any>undefined, { urn })
-            case "aiven:index/flinkJobTable:FlinkJobTable":
-                return new FlinkJobTable(name, <any>undefined, { urn })
             case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
                 return new GcpVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
@@ -776,14 +730,10 @@ const _module = {
                 return new ServiceIntegration(name, <any>undefined, { urn })
             case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
                 return new ServiceIntegrationEndpoint(name, <any>undefined, { urn })
-            case "aiven:index/serviceUser:ServiceUser":
-                return new ServiceUser(name, <any>undefined, { urn })
             case "aiven:index/staticIp:StaticIp":
                 return new StaticIp(name, <any>undefined, { urn })
             case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
                 return new TransitGatewayVpcAttachment(name, <any>undefined, { urn })
-            case "aiven:index/vpcPeeringConnection:VpcPeeringConnection":
-                return new VpcPeeringConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -808,12 +758,9 @@ pulumi.runtime.registerResourceModule("aiven", "index/clickhouseGrant", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseRole", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/database", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplication", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationVersion", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/flinkJob", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/flinkJobTable", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)
@@ -850,10 +797,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/redis", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/redisUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegrationEndpoint", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/serviceUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/staticIp", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/transitGatewayVpcAttachment", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/vpcPeeringConnection", _module)
 pulumi.runtime.registerResourcePackage("aiven", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

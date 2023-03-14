@@ -35,9 +35,9 @@ import (
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				CassandraUserConfig: &aiven.CassandraCassandraUserConfigArgs{
-//					MigrateSstableloader: pulumi.String("true"),
+//					MigrateSstableloader: pulumi.Bool(true),
 //					PublicAccess: &aiven.CassandraCassandraUserConfigPublicAccessArgs{
-//						Prometheus: pulumi.String("true"),
+//						Prometheus: pulumi.Bool(true),
 //					},
 //				},
 //			})

@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,30 +19,30 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     public static final OpenSearchOpensearchUserConfigOpensearchArgs Empty = new OpenSearchOpensearchUserConfigOpensearchArgs();
 
     @Import(name="actionAutoCreateIndexEnabled")
-    private @Nullable Output<String> actionAutoCreateIndexEnabled;
+    private @Nullable Output<Boolean> actionAutoCreateIndexEnabled;
 
-    public Optional<Output<String>> actionAutoCreateIndexEnabled() {
+    public Optional<Output<Boolean>> actionAutoCreateIndexEnabled() {
         return Optional.ofNullable(this.actionAutoCreateIndexEnabled);
     }
 
     @Import(name="actionDestructiveRequiresName")
-    private @Nullable Output<String> actionDestructiveRequiresName;
+    private @Nullable Output<Boolean> actionDestructiveRequiresName;
 
-    public Optional<Output<String>> actionDestructiveRequiresName() {
+    public Optional<Output<Boolean>> actionDestructiveRequiresName() {
         return Optional.ofNullable(this.actionDestructiveRequiresName);
     }
 
     @Import(name="clusterMaxShardsPerNode")
-    private @Nullable Output<String> clusterMaxShardsPerNode;
+    private @Nullable Output<Integer> clusterMaxShardsPerNode;
 
-    public Optional<Output<String>> clusterMaxShardsPerNode() {
+    public Optional<Output<Integer>> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
 
     @Import(name="clusterRoutingAllocationNodeConcurrentRecoveries")
-    private @Nullable Output<String> clusterRoutingAllocationNodeConcurrentRecoveries;
+    private @Nullable Output<Integer> clusterRoutingAllocationNodeConcurrentRecoveries;
 
-    public Optional<Output<String>> clusterRoutingAllocationNodeConcurrentRecoveries() {
+    public Optional<Output<Integer>> clusterRoutingAllocationNodeConcurrentRecoveries() {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
 
@@ -66,72 +68,72 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     @Import(name="httpMaxContentLength")
-    private @Nullable Output<String> httpMaxContentLength;
+    private @Nullable Output<Integer> httpMaxContentLength;
 
-    public Optional<Output<String>> httpMaxContentLength() {
+    public Optional<Output<Integer>> httpMaxContentLength() {
         return Optional.ofNullable(this.httpMaxContentLength);
     }
 
     @Import(name="httpMaxHeaderSize")
-    private @Nullable Output<String> httpMaxHeaderSize;
+    private @Nullable Output<Integer> httpMaxHeaderSize;
 
-    public Optional<Output<String>> httpMaxHeaderSize() {
+    public Optional<Output<Integer>> httpMaxHeaderSize() {
         return Optional.ofNullable(this.httpMaxHeaderSize);
     }
 
     @Import(name="httpMaxInitialLineLength")
-    private @Nullable Output<String> httpMaxInitialLineLength;
+    private @Nullable Output<Integer> httpMaxInitialLineLength;
 
-    public Optional<Output<String>> httpMaxInitialLineLength() {
+    public Optional<Output<Integer>> httpMaxInitialLineLength() {
         return Optional.ofNullable(this.httpMaxInitialLineLength);
     }
 
     @Import(name="indicesFielddataCacheSize")
-    private @Nullable Output<String> indicesFielddataCacheSize;
+    private @Nullable Output<Integer> indicesFielddataCacheSize;
 
-    public Optional<Output<String>> indicesFielddataCacheSize() {
+    public Optional<Output<Integer>> indicesFielddataCacheSize() {
         return Optional.ofNullable(this.indicesFielddataCacheSize);
     }
 
     @Import(name="indicesMemoryIndexBufferSize")
-    private @Nullable Output<String> indicesMemoryIndexBufferSize;
+    private @Nullable Output<Integer> indicesMemoryIndexBufferSize;
 
-    public Optional<Output<String>> indicesMemoryIndexBufferSize() {
+    public Optional<Output<Integer>> indicesMemoryIndexBufferSize() {
         return Optional.ofNullable(this.indicesMemoryIndexBufferSize);
     }
 
     @Import(name="indicesQueriesCacheSize")
-    private @Nullable Output<String> indicesQueriesCacheSize;
+    private @Nullable Output<Integer> indicesQueriesCacheSize;
 
-    public Optional<Output<String>> indicesQueriesCacheSize() {
+    public Optional<Output<Integer>> indicesQueriesCacheSize() {
         return Optional.ofNullable(this.indicesQueriesCacheSize);
     }
 
     @Import(name="indicesQueryBoolMaxClauseCount")
-    private @Nullable Output<String> indicesQueryBoolMaxClauseCount;
+    private @Nullable Output<Integer> indicesQueryBoolMaxClauseCount;
 
-    public Optional<Output<String>> indicesQueryBoolMaxClauseCount() {
+    public Optional<Output<Integer>> indicesQueryBoolMaxClauseCount() {
         return Optional.ofNullable(this.indicesQueryBoolMaxClauseCount);
     }
 
     @Import(name="indicesRecoveryMaxBytesPerSec")
-    private @Nullable Output<String> indicesRecoveryMaxBytesPerSec;
+    private @Nullable Output<Integer> indicesRecoveryMaxBytesPerSec;
 
-    public Optional<Output<String>> indicesRecoveryMaxBytesPerSec() {
+    public Optional<Output<Integer>> indicesRecoveryMaxBytesPerSec() {
         return Optional.ofNullable(this.indicesRecoveryMaxBytesPerSec);
     }
 
     @Import(name="indicesRecoveryMaxConcurrentFileChunks")
-    private @Nullable Output<String> indicesRecoveryMaxConcurrentFileChunks;
+    private @Nullable Output<Integer> indicesRecoveryMaxConcurrentFileChunks;
 
-    public Optional<Output<String>> indicesRecoveryMaxConcurrentFileChunks() {
+    public Optional<Output<Integer>> indicesRecoveryMaxConcurrentFileChunks() {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
     }
 
     @Import(name="overrideMainResponseVersion")
-    private @Nullable Output<String> overrideMainResponseVersion;
+    private @Nullable Output<Boolean> overrideMainResponseVersion;
 
-    public Optional<Output<String>> overrideMainResponseVersion() {
+    public Optional<Output<Boolean>> overrideMainResponseVersion() {
         return Optional.ofNullable(this.overrideMainResponseVersion);
     }
 
@@ -150,86 +152,86 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     @Import(name="searchMaxBuckets")
-    private @Nullable Output<String> searchMaxBuckets;
+    private @Nullable Output<Integer> searchMaxBuckets;
 
-    public Optional<Output<String>> searchMaxBuckets() {
+    public Optional<Output<Integer>> searchMaxBuckets() {
         return Optional.ofNullable(this.searchMaxBuckets);
     }
 
     @Import(name="threadPoolAnalyzeQueueSize")
-    private @Nullable Output<String> threadPoolAnalyzeQueueSize;
+    private @Nullable Output<Integer> threadPoolAnalyzeQueueSize;
 
-    public Optional<Output<String>> threadPoolAnalyzeQueueSize() {
+    public Optional<Output<Integer>> threadPoolAnalyzeQueueSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeQueueSize);
     }
 
     @Import(name="threadPoolAnalyzeSize")
-    private @Nullable Output<String> threadPoolAnalyzeSize;
+    private @Nullable Output<Integer> threadPoolAnalyzeSize;
 
-    public Optional<Output<String>> threadPoolAnalyzeSize() {
+    public Optional<Output<Integer>> threadPoolAnalyzeSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeSize);
     }
 
     @Import(name="threadPoolForceMergeSize")
-    private @Nullable Output<String> threadPoolForceMergeSize;
+    private @Nullable Output<Integer> threadPoolForceMergeSize;
 
-    public Optional<Output<String>> threadPoolForceMergeSize() {
+    public Optional<Output<Integer>> threadPoolForceMergeSize() {
         return Optional.ofNullable(this.threadPoolForceMergeSize);
     }
 
     @Import(name="threadPoolGetQueueSize")
-    private @Nullable Output<String> threadPoolGetQueueSize;
+    private @Nullable Output<Integer> threadPoolGetQueueSize;
 
-    public Optional<Output<String>> threadPoolGetQueueSize() {
+    public Optional<Output<Integer>> threadPoolGetQueueSize() {
         return Optional.ofNullable(this.threadPoolGetQueueSize);
     }
 
     @Import(name="threadPoolGetSize")
-    private @Nullable Output<String> threadPoolGetSize;
+    private @Nullable Output<Integer> threadPoolGetSize;
 
-    public Optional<Output<String>> threadPoolGetSize() {
+    public Optional<Output<Integer>> threadPoolGetSize() {
         return Optional.ofNullable(this.threadPoolGetSize);
     }
 
     @Import(name="threadPoolSearchQueueSize")
-    private @Nullable Output<String> threadPoolSearchQueueSize;
+    private @Nullable Output<Integer> threadPoolSearchQueueSize;
 
-    public Optional<Output<String>> threadPoolSearchQueueSize() {
+    public Optional<Output<Integer>> threadPoolSearchQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchQueueSize);
     }
 
     @Import(name="threadPoolSearchSize")
-    private @Nullable Output<String> threadPoolSearchSize;
+    private @Nullable Output<Integer> threadPoolSearchSize;
 
-    public Optional<Output<String>> threadPoolSearchSize() {
+    public Optional<Output<Integer>> threadPoolSearchSize() {
         return Optional.ofNullable(this.threadPoolSearchSize);
     }
 
     @Import(name="threadPoolSearchThrottledQueueSize")
-    private @Nullable Output<String> threadPoolSearchThrottledQueueSize;
+    private @Nullable Output<Integer> threadPoolSearchThrottledQueueSize;
 
-    public Optional<Output<String>> threadPoolSearchThrottledQueueSize() {
+    public Optional<Output<Integer>> threadPoolSearchThrottledQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledQueueSize);
     }
 
     @Import(name="threadPoolSearchThrottledSize")
-    private @Nullable Output<String> threadPoolSearchThrottledSize;
+    private @Nullable Output<Integer> threadPoolSearchThrottledSize;
 
-    public Optional<Output<String>> threadPoolSearchThrottledSize() {
+    public Optional<Output<Integer>> threadPoolSearchThrottledSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledSize);
     }
 
     @Import(name="threadPoolWriteQueueSize")
-    private @Nullable Output<String> threadPoolWriteQueueSize;
+    private @Nullable Output<Integer> threadPoolWriteQueueSize;
 
-    public Optional<Output<String>> threadPoolWriteQueueSize() {
+    public Optional<Output<Integer>> threadPoolWriteQueueSize() {
         return Optional.ofNullable(this.threadPoolWriteQueueSize);
     }
 
     @Import(name="threadPoolWriteSize")
-    private @Nullable Output<String> threadPoolWriteSize;
+    private @Nullable Output<Integer> threadPoolWriteSize;
 
-    public Optional<Output<String>> threadPoolWriteSize() {
+    public Optional<Output<Integer>> threadPoolWriteSize() {
         return Optional.ofNullable(this.threadPoolWriteSize);
     }
 
@@ -287,39 +289,39 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
             $ = new OpenSearchOpensearchUserConfigOpensearchArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder actionAutoCreateIndexEnabled(@Nullable Output<String> actionAutoCreateIndexEnabled) {
+        public Builder actionAutoCreateIndexEnabled(@Nullable Output<Boolean> actionAutoCreateIndexEnabled) {
             $.actionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             return this;
         }
 
-        public Builder actionAutoCreateIndexEnabled(String actionAutoCreateIndexEnabled) {
+        public Builder actionAutoCreateIndexEnabled(Boolean actionAutoCreateIndexEnabled) {
             return actionAutoCreateIndexEnabled(Output.of(actionAutoCreateIndexEnabled));
         }
 
-        public Builder actionDestructiveRequiresName(@Nullable Output<String> actionDestructiveRequiresName) {
+        public Builder actionDestructiveRequiresName(@Nullable Output<Boolean> actionDestructiveRequiresName) {
             $.actionDestructiveRequiresName = actionDestructiveRequiresName;
             return this;
         }
 
-        public Builder actionDestructiveRequiresName(String actionDestructiveRequiresName) {
+        public Builder actionDestructiveRequiresName(Boolean actionDestructiveRequiresName) {
             return actionDestructiveRequiresName(Output.of(actionDestructiveRequiresName));
         }
 
-        public Builder clusterMaxShardsPerNode(@Nullable Output<String> clusterMaxShardsPerNode) {
+        public Builder clusterMaxShardsPerNode(@Nullable Output<Integer> clusterMaxShardsPerNode) {
             $.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
             return this;
         }
 
-        public Builder clusterMaxShardsPerNode(String clusterMaxShardsPerNode) {
+        public Builder clusterMaxShardsPerNode(Integer clusterMaxShardsPerNode) {
             return clusterMaxShardsPerNode(Output.of(clusterMaxShardsPerNode));
         }
 
-        public Builder clusterRoutingAllocationNodeConcurrentRecoveries(@Nullable Output<String> clusterRoutingAllocationNodeConcurrentRecoveries) {
+        public Builder clusterRoutingAllocationNodeConcurrentRecoveries(@Nullable Output<Integer> clusterRoutingAllocationNodeConcurrentRecoveries) {
             $.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             return this;
         }
 
-        public Builder clusterRoutingAllocationNodeConcurrentRecoveries(String clusterRoutingAllocationNodeConcurrentRecoveries) {
+        public Builder clusterRoutingAllocationNodeConcurrentRecoveries(Integer clusterRoutingAllocationNodeConcurrentRecoveries) {
             return clusterRoutingAllocationNodeConcurrentRecoveries(Output.of(clusterRoutingAllocationNodeConcurrentRecoveries));
         }
 
@@ -350,93 +352,93 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
             return emailSenderUsername(Output.of(emailSenderUsername));
         }
 
-        public Builder httpMaxContentLength(@Nullable Output<String> httpMaxContentLength) {
+        public Builder httpMaxContentLength(@Nullable Output<Integer> httpMaxContentLength) {
             $.httpMaxContentLength = httpMaxContentLength;
             return this;
         }
 
-        public Builder httpMaxContentLength(String httpMaxContentLength) {
+        public Builder httpMaxContentLength(Integer httpMaxContentLength) {
             return httpMaxContentLength(Output.of(httpMaxContentLength));
         }
 
-        public Builder httpMaxHeaderSize(@Nullable Output<String> httpMaxHeaderSize) {
+        public Builder httpMaxHeaderSize(@Nullable Output<Integer> httpMaxHeaderSize) {
             $.httpMaxHeaderSize = httpMaxHeaderSize;
             return this;
         }
 
-        public Builder httpMaxHeaderSize(String httpMaxHeaderSize) {
+        public Builder httpMaxHeaderSize(Integer httpMaxHeaderSize) {
             return httpMaxHeaderSize(Output.of(httpMaxHeaderSize));
         }
 
-        public Builder httpMaxInitialLineLength(@Nullable Output<String> httpMaxInitialLineLength) {
+        public Builder httpMaxInitialLineLength(@Nullable Output<Integer> httpMaxInitialLineLength) {
             $.httpMaxInitialLineLength = httpMaxInitialLineLength;
             return this;
         }
 
-        public Builder httpMaxInitialLineLength(String httpMaxInitialLineLength) {
+        public Builder httpMaxInitialLineLength(Integer httpMaxInitialLineLength) {
             return httpMaxInitialLineLength(Output.of(httpMaxInitialLineLength));
         }
 
-        public Builder indicesFielddataCacheSize(@Nullable Output<String> indicesFielddataCacheSize) {
+        public Builder indicesFielddataCacheSize(@Nullable Output<Integer> indicesFielddataCacheSize) {
             $.indicesFielddataCacheSize = indicesFielddataCacheSize;
             return this;
         }
 
-        public Builder indicesFielddataCacheSize(String indicesFielddataCacheSize) {
+        public Builder indicesFielddataCacheSize(Integer indicesFielddataCacheSize) {
             return indicesFielddataCacheSize(Output.of(indicesFielddataCacheSize));
         }
 
-        public Builder indicesMemoryIndexBufferSize(@Nullable Output<String> indicesMemoryIndexBufferSize) {
+        public Builder indicesMemoryIndexBufferSize(@Nullable Output<Integer> indicesMemoryIndexBufferSize) {
             $.indicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
             return this;
         }
 
-        public Builder indicesMemoryIndexBufferSize(String indicesMemoryIndexBufferSize) {
+        public Builder indicesMemoryIndexBufferSize(Integer indicesMemoryIndexBufferSize) {
             return indicesMemoryIndexBufferSize(Output.of(indicesMemoryIndexBufferSize));
         }
 
-        public Builder indicesQueriesCacheSize(@Nullable Output<String> indicesQueriesCacheSize) {
+        public Builder indicesQueriesCacheSize(@Nullable Output<Integer> indicesQueriesCacheSize) {
             $.indicesQueriesCacheSize = indicesQueriesCacheSize;
             return this;
         }
 
-        public Builder indicesQueriesCacheSize(String indicesQueriesCacheSize) {
+        public Builder indicesQueriesCacheSize(Integer indicesQueriesCacheSize) {
             return indicesQueriesCacheSize(Output.of(indicesQueriesCacheSize));
         }
 
-        public Builder indicesQueryBoolMaxClauseCount(@Nullable Output<String> indicesQueryBoolMaxClauseCount) {
+        public Builder indicesQueryBoolMaxClauseCount(@Nullable Output<Integer> indicesQueryBoolMaxClauseCount) {
             $.indicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             return this;
         }
 
-        public Builder indicesQueryBoolMaxClauseCount(String indicesQueryBoolMaxClauseCount) {
+        public Builder indicesQueryBoolMaxClauseCount(Integer indicesQueryBoolMaxClauseCount) {
             return indicesQueryBoolMaxClauseCount(Output.of(indicesQueryBoolMaxClauseCount));
         }
 
-        public Builder indicesRecoveryMaxBytesPerSec(@Nullable Output<String> indicesRecoveryMaxBytesPerSec) {
+        public Builder indicesRecoveryMaxBytesPerSec(@Nullable Output<Integer> indicesRecoveryMaxBytesPerSec) {
             $.indicesRecoveryMaxBytesPerSec = indicesRecoveryMaxBytesPerSec;
             return this;
         }
 
-        public Builder indicesRecoveryMaxBytesPerSec(String indicesRecoveryMaxBytesPerSec) {
+        public Builder indicesRecoveryMaxBytesPerSec(Integer indicesRecoveryMaxBytesPerSec) {
             return indicesRecoveryMaxBytesPerSec(Output.of(indicesRecoveryMaxBytesPerSec));
         }
 
-        public Builder indicesRecoveryMaxConcurrentFileChunks(@Nullable Output<String> indicesRecoveryMaxConcurrentFileChunks) {
+        public Builder indicesRecoveryMaxConcurrentFileChunks(@Nullable Output<Integer> indicesRecoveryMaxConcurrentFileChunks) {
             $.indicesRecoveryMaxConcurrentFileChunks = indicesRecoveryMaxConcurrentFileChunks;
             return this;
         }
 
-        public Builder indicesRecoveryMaxConcurrentFileChunks(String indicesRecoveryMaxConcurrentFileChunks) {
+        public Builder indicesRecoveryMaxConcurrentFileChunks(Integer indicesRecoveryMaxConcurrentFileChunks) {
             return indicesRecoveryMaxConcurrentFileChunks(Output.of(indicesRecoveryMaxConcurrentFileChunks));
         }
 
-        public Builder overrideMainResponseVersion(@Nullable Output<String> overrideMainResponseVersion) {
+        public Builder overrideMainResponseVersion(@Nullable Output<Boolean> overrideMainResponseVersion) {
             $.overrideMainResponseVersion = overrideMainResponseVersion;
             return this;
         }
 
-        public Builder overrideMainResponseVersion(String overrideMainResponseVersion) {
+        public Builder overrideMainResponseVersion(Boolean overrideMainResponseVersion) {
             return overrideMainResponseVersion(Output.of(overrideMainResponseVersion));
         }
 
@@ -462,111 +464,111 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
             return scriptMaxCompilationsRate(Output.of(scriptMaxCompilationsRate));
         }
 
-        public Builder searchMaxBuckets(@Nullable Output<String> searchMaxBuckets) {
+        public Builder searchMaxBuckets(@Nullable Output<Integer> searchMaxBuckets) {
             $.searchMaxBuckets = searchMaxBuckets;
             return this;
         }
 
-        public Builder searchMaxBuckets(String searchMaxBuckets) {
+        public Builder searchMaxBuckets(Integer searchMaxBuckets) {
             return searchMaxBuckets(Output.of(searchMaxBuckets));
         }
 
-        public Builder threadPoolAnalyzeQueueSize(@Nullable Output<String> threadPoolAnalyzeQueueSize) {
+        public Builder threadPoolAnalyzeQueueSize(@Nullable Output<Integer> threadPoolAnalyzeQueueSize) {
             $.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             return this;
         }
 
-        public Builder threadPoolAnalyzeQueueSize(String threadPoolAnalyzeQueueSize) {
+        public Builder threadPoolAnalyzeQueueSize(Integer threadPoolAnalyzeQueueSize) {
             return threadPoolAnalyzeQueueSize(Output.of(threadPoolAnalyzeQueueSize));
         }
 
-        public Builder threadPoolAnalyzeSize(@Nullable Output<String> threadPoolAnalyzeSize) {
+        public Builder threadPoolAnalyzeSize(@Nullable Output<Integer> threadPoolAnalyzeSize) {
             $.threadPoolAnalyzeSize = threadPoolAnalyzeSize;
             return this;
         }
 
-        public Builder threadPoolAnalyzeSize(String threadPoolAnalyzeSize) {
+        public Builder threadPoolAnalyzeSize(Integer threadPoolAnalyzeSize) {
             return threadPoolAnalyzeSize(Output.of(threadPoolAnalyzeSize));
         }
 
-        public Builder threadPoolForceMergeSize(@Nullable Output<String> threadPoolForceMergeSize) {
+        public Builder threadPoolForceMergeSize(@Nullable Output<Integer> threadPoolForceMergeSize) {
             $.threadPoolForceMergeSize = threadPoolForceMergeSize;
             return this;
         }
 
-        public Builder threadPoolForceMergeSize(String threadPoolForceMergeSize) {
+        public Builder threadPoolForceMergeSize(Integer threadPoolForceMergeSize) {
             return threadPoolForceMergeSize(Output.of(threadPoolForceMergeSize));
         }
 
-        public Builder threadPoolGetQueueSize(@Nullable Output<String> threadPoolGetQueueSize) {
+        public Builder threadPoolGetQueueSize(@Nullable Output<Integer> threadPoolGetQueueSize) {
             $.threadPoolGetQueueSize = threadPoolGetQueueSize;
             return this;
         }
 
-        public Builder threadPoolGetQueueSize(String threadPoolGetQueueSize) {
+        public Builder threadPoolGetQueueSize(Integer threadPoolGetQueueSize) {
             return threadPoolGetQueueSize(Output.of(threadPoolGetQueueSize));
         }
 
-        public Builder threadPoolGetSize(@Nullable Output<String> threadPoolGetSize) {
+        public Builder threadPoolGetSize(@Nullable Output<Integer> threadPoolGetSize) {
             $.threadPoolGetSize = threadPoolGetSize;
             return this;
         }
 
-        public Builder threadPoolGetSize(String threadPoolGetSize) {
+        public Builder threadPoolGetSize(Integer threadPoolGetSize) {
             return threadPoolGetSize(Output.of(threadPoolGetSize));
         }
 
-        public Builder threadPoolSearchQueueSize(@Nullable Output<String> threadPoolSearchQueueSize) {
+        public Builder threadPoolSearchQueueSize(@Nullable Output<Integer> threadPoolSearchQueueSize) {
             $.threadPoolSearchQueueSize = threadPoolSearchQueueSize;
             return this;
         }
 
-        public Builder threadPoolSearchQueueSize(String threadPoolSearchQueueSize) {
+        public Builder threadPoolSearchQueueSize(Integer threadPoolSearchQueueSize) {
             return threadPoolSearchQueueSize(Output.of(threadPoolSearchQueueSize));
         }
 
-        public Builder threadPoolSearchSize(@Nullable Output<String> threadPoolSearchSize) {
+        public Builder threadPoolSearchSize(@Nullable Output<Integer> threadPoolSearchSize) {
             $.threadPoolSearchSize = threadPoolSearchSize;
             return this;
         }
 
-        public Builder threadPoolSearchSize(String threadPoolSearchSize) {
+        public Builder threadPoolSearchSize(Integer threadPoolSearchSize) {
             return threadPoolSearchSize(Output.of(threadPoolSearchSize));
         }
 
-        public Builder threadPoolSearchThrottledQueueSize(@Nullable Output<String> threadPoolSearchThrottledQueueSize) {
+        public Builder threadPoolSearchThrottledQueueSize(@Nullable Output<Integer> threadPoolSearchThrottledQueueSize) {
             $.threadPoolSearchThrottledQueueSize = threadPoolSearchThrottledQueueSize;
             return this;
         }
 
-        public Builder threadPoolSearchThrottledQueueSize(String threadPoolSearchThrottledQueueSize) {
+        public Builder threadPoolSearchThrottledQueueSize(Integer threadPoolSearchThrottledQueueSize) {
             return threadPoolSearchThrottledQueueSize(Output.of(threadPoolSearchThrottledQueueSize));
         }
 
-        public Builder threadPoolSearchThrottledSize(@Nullable Output<String> threadPoolSearchThrottledSize) {
+        public Builder threadPoolSearchThrottledSize(@Nullable Output<Integer> threadPoolSearchThrottledSize) {
             $.threadPoolSearchThrottledSize = threadPoolSearchThrottledSize;
             return this;
         }
 
-        public Builder threadPoolSearchThrottledSize(String threadPoolSearchThrottledSize) {
+        public Builder threadPoolSearchThrottledSize(Integer threadPoolSearchThrottledSize) {
             return threadPoolSearchThrottledSize(Output.of(threadPoolSearchThrottledSize));
         }
 
-        public Builder threadPoolWriteQueueSize(@Nullable Output<String> threadPoolWriteQueueSize) {
+        public Builder threadPoolWriteQueueSize(@Nullable Output<Integer> threadPoolWriteQueueSize) {
             $.threadPoolWriteQueueSize = threadPoolWriteQueueSize;
             return this;
         }
 
-        public Builder threadPoolWriteQueueSize(String threadPoolWriteQueueSize) {
+        public Builder threadPoolWriteQueueSize(Integer threadPoolWriteQueueSize) {
             return threadPoolWriteQueueSize(Output.of(threadPoolWriteQueueSize));
         }
 
-        public Builder threadPoolWriteSize(@Nullable Output<String> threadPoolWriteSize) {
+        public Builder threadPoolWriteSize(@Nullable Output<Integer> threadPoolWriteSize) {
             $.threadPoolWriteSize = threadPoolWriteSize;
             return this;
         }
 
-        public Builder threadPoolWriteSize(String threadPoolWriteSize) {
+        public Builder threadPoolWriteSize(Integer threadPoolWriteSize) {
             return threadPoolWriteSize(Output.of(threadPoolWriteSize));
         }
 

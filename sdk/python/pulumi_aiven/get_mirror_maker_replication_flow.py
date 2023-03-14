@@ -122,7 +122,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> str:
         """
-        Source cluster alias. Maximum Length: `128`.
+        Source cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -146,7 +146,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> str:
         """
-        Target cluster alias. Maximum Length: `128`.
+        Target cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -211,8 +211,8 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str source_cluster: Source cluster alias. Maximum Length: `128`.
-    :param str target_cluster: Target cluster alias. Maximum Length: `128`.
+    :param str source_cluster: Source cluster alias. Maximum length: `128`.
+    :param str target_cluster: Target cluster alias. Maximum length: `128`.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -262,7 +262,7 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str source_cluster: Source cluster alias. Maximum Length: `128`.
-    :param str target_cluster: Target cluster alias. Maximum Length: `128`.
+    :param str source_cluster: Source cluster alias. Maximum length: `128`.
+    :param str target_cluster: Target cluster alias. Maximum length: `128`.
     """
     ...

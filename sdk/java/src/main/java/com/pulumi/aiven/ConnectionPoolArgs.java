@@ -32,14 +32,14 @@ public final class ConnectionPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     @Import(name="poolMode")
     private @Nullable Output<String> poolMode;
 
     /**
-     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public Optional<Output<String>> poolMode() {
@@ -173,7 +173,7 @@ public final class ConnectionPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param poolMode The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+         * @param poolMode The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ConnectionPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param poolMode The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+         * @param poolMode The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
          * 
          * @return builder
          * 

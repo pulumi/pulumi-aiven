@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authentication method
+        /// Authentication method.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _basicAuthPassword;
 
         /// <summary>
-        /// Basic authentication password
+        /// Basic authentication password.
         /// </summary>
         public Input<string>? BasicAuthPassword
         {
@@ -35,13 +35,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Basic authentication user name
+        /// Basic authentication user name.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
         /// <summary>
-        /// Schema Registry URL
+        /// Schema Registry URL.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

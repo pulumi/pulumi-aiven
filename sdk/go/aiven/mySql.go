@@ -38,10 +38,10 @@ import (
 //					MysqlVersion: pulumi.String("8"),
 //					Mysql: &aiven.MySqlMysqlUserConfigMysqlArgs{
 //						SqlMode:              pulumi.String("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"),
-//						SqlRequirePrimaryKey: pulumi.String("true"),
+//						SqlRequirePrimaryKey: pulumi.Bool(true),
 //					},
 //					PublicAccess: &aiven.MySqlMysqlUserConfigPublicAccessArgs{
-//						Mysql: pulumi.String("true"),
+//						Mysql: pulumi.Bool(true),
 //					},
 //				},
 //			})

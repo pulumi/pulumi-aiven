@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,9 +16,9 @@ public final class M3DbM3dbUserConfigPublicAccessArgs extends com.pulumi.resourc
     public static final M3DbM3dbUserConfigPublicAccessArgs Empty = new M3DbM3dbUserConfigPublicAccessArgs();
 
     @Import(name="m3coordinator")
-    private @Nullable Output<String> m3coordinator;
+    private @Nullable Output<Boolean> m3coordinator;
 
-    public Optional<Output<String>> m3coordinator() {
+    public Optional<Output<Boolean>> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }
 
@@ -46,12 +46,12 @@ public final class M3DbM3dbUserConfigPublicAccessArgs extends com.pulumi.resourc
             $ = new M3DbM3dbUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder m3coordinator(@Nullable Output<String> m3coordinator) {
+        public Builder m3coordinator(@Nullable Output<Boolean> m3coordinator) {
             $.m3coordinator = m3coordinator;
             return this;
         }
 
-        public Builder m3coordinator(String m3coordinator) {
+        public Builder m3coordinator(Boolean m3coordinator) {
             return m3coordinator(Output.of(m3coordinator));
         }
 

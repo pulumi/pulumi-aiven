@@ -13,16 +13,16 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationDatadogUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Datadog Database Monitoring
+        /// Enable Datadog Database Monitoring.
         /// </summary>
         [Input("datadogDbmEnabled")]
-        public Input<string>? DatadogDbmEnabled { get; set; }
+        public Input<bool>? DatadogDbmEnabled { get; set; }
 
         [Input("datadogTags")]
         private InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagGetArgs>? _datadogTags;
 
         /// <summary>
-        /// Custom tags provided by user
+        /// Custom tags provided by user.
         /// </summary>
         public InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagGetArgs> DatadogTags
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _excludeConsumerGroups;
 
         /// <summary>
-        /// List of custom metrics
+        /// List of custom metrics.
         /// </summary>
         public InputList<string> ExcludeConsumerGroups
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _excludeTopics;
 
         /// <summary>
-        /// List of topics to exclude
+        /// List of topics to exclude.
         /// </summary>
         public InputList<string> ExcludeTopics
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _includeConsumerGroups;
 
         /// <summary>
-        /// List of custom metrics
+        /// List of custom metrics.
         /// </summary>
         public InputList<string> IncludeConsumerGroups
         {
@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _includeTopics;
 
         /// <summary>
-        /// List of topics to include
+        /// List of topics to include.
         /// </summary>
         public InputList<string> IncludeTopics
         {
@@ -82,7 +82,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _kafkaCustomMetrics;
 
         /// <summary>
-        /// List of custom metrics
+        /// List of custom metrics.
         /// </summary>
         public InputList<string> KafkaCustomMetrics
         {
@@ -91,10 +91,16 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Maximum number of JMX metrics to send
+        /// Maximum number of JMX metrics to send.
         /// </summary>
         [Input("maxJmxMetrics")]
-        public Input<string>? MaxJmxMetrics { get; set; }
+        public Input<int>? MaxJmxMetrics { get; set; }
+
+        /// <summary>
+        /// Datadog Opensearch Options.
+        /// </summary>
+        [Input("opensearch")]
+        public Input<Inputs.ServiceIntegrationDatadogUserConfigOpensearchGetArgs>? Opensearch { get; set; }
 
         public ServiceIntegrationDatadogUserConfigGetArgs()
         {

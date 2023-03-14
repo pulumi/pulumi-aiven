@@ -22,13 +22,13 @@ namespace Pulumi.Aiven
     public partial class OpenSearchAclRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("index")]
         public Output<string> Index { get; private set; } = null!;
 
         /// <summary>
-        /// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -98,13 +98,13 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("index", required: true)]
         public Input<string> Index { get; set; } = null!;
 
         /// <summary>
-        /// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -136,13 +136,13 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("index")]
         public Input<string>? Index { get; set; }
 
         /// <summary>
-        /// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

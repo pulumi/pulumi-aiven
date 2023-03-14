@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationLogsUserConfig {
     /**
-     * @return Elasticsearch index retention limit
+     * @return Elasticsearch index retention limit. The default value is `3`.
      * 
      */
-    private @Nullable String elasticsearchIndexDaysMax;
+    private @Nullable Integer elasticsearchIndexDaysMax;
     /**
-     * @return Elasticsearch index prefix
+     * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
     private @Nullable String elasticsearchIndexPrefix;
 
     private ServiceIntegrationLogsUserConfig() {}
     /**
-     * @return Elasticsearch index retention limit
+     * @return Elasticsearch index retention limit. The default value is `3`.
      * 
      */
-    public Optional<String> elasticsearchIndexDaysMax() {
+    public Optional<Integer> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
     /**
-     * @return Elasticsearch index prefix
+     * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
     public Optional<String> elasticsearchIndexPrefix() {
@@ -47,7 +48,7 @@ public final class ServiceIntegrationLogsUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String elasticsearchIndexDaysMax;
+        private @Nullable Integer elasticsearchIndexDaysMax;
         private @Nullable String elasticsearchIndexPrefix;
         public Builder() {}
         public Builder(ServiceIntegrationLogsUserConfig defaults) {
@@ -57,7 +58,7 @@ public final class ServiceIntegrationLogsUserConfig {
         }
 
         @CustomType.Setter
-        public Builder elasticsearchIndexDaysMax(@Nullable String elasticsearchIndexDaysMax) {
+        public Builder elasticsearchIndexDaysMax(@Nullable Integer elasticsearchIndexDaysMax) {
             this.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             return this;
         }

@@ -36,7 +36,7 @@ import (
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				InfluxdbUserConfig: &aiven.InfluxDbInfluxdbUserConfigArgs{
 //					PublicAccess: &aiven.InfluxDbInfluxdbUserConfigPublicAccessArgs{
-//						Influxdb: pulumi.String("true"),
+//						Influxdb: pulumi.Bool(true),
 //					},
 //				},
 //			})

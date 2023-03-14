@@ -16,25 +16,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         [Input("alertingEnabled")]
-        public Input<string>? AlertingEnabled { get; set; }
+        public Input<bool>? AlertingEnabled { get; set; }
 
         [Input("alertingErrorOrTimeout")]
         public Input<string>? AlertingErrorOrTimeout { get; set; }
 
         [Input("alertingMaxAnnotationsToKeep")]
-        public Input<string>? AlertingMaxAnnotationsToKeep { get; set; }
+        public Input<int>? AlertingMaxAnnotationsToKeep { get; set; }
 
         [Input("alertingNodataOrNullvalues")]
         public Input<string>? AlertingNodataOrNullvalues { get; set; }
 
         [Input("allowEmbedding")]
-        public Input<string>? AllowEmbedding { get; set; }
+        public Input<bool>? AllowEmbedding { get; set; }
 
         [Input("authAzuread")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthAzureadArgs>? AuthAzuread { get; set; }
 
         [Input("authBasicEnabled")]
-        public Input<string>? AuthBasicEnabled { get; set; }
+        public Input<bool>? AuthBasicEnabled { get; set; }
 
         [Input("authGenericOauth")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGenericOauthArgs>? AuthGenericOauth { get; set; }
@@ -55,28 +55,28 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? CustomDomain { get; set; }
 
         [Input("dashboardPreviewsEnabled")]
-        public Input<string>? DashboardPreviewsEnabled { get; set; }
+        public Input<bool>? DashboardPreviewsEnabled { get; set; }
 
         [Input("dashboardsMinRefreshInterval")]
         public Input<string>? DashboardsMinRefreshInterval { get; set; }
 
         [Input("dashboardsVersionsToKeep")]
-        public Input<string>? DashboardsVersionsToKeep { get; set; }
+        public Input<int>? DashboardsVersionsToKeep { get; set; }
 
         [Input("dataproxySendUserHeader")]
-        public Input<string>? DataproxySendUserHeader { get; set; }
+        public Input<bool>? DataproxySendUserHeader { get; set; }
 
         [Input("dataproxyTimeout")]
-        public Input<string>? DataproxyTimeout { get; set; }
+        public Input<int>? DataproxyTimeout { get; set; }
 
         [Input("dateFormats")]
         public Input<Inputs.GrafanaGrafanaUserConfigDateFormatsArgs>? DateFormats { get; set; }
 
         [Input("disableGravatar")]
-        public Input<string>? DisableGravatar { get; set; }
+        public Input<bool>? DisableGravatar { get; set; }
 
         [Input("editorsCanAdmin")]
-        public Input<string>? EditorsCanAdmin { get; set; }
+        public Input<bool>? EditorsCanAdmin { get; set; }
 
         [Input("externalImageStorage")]
         public Input<Inputs.GrafanaGrafanaUserConfigExternalImageStorageArgs>? ExternalImageStorage { get; set; }
@@ -94,6 +94,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -101,7 +102,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         [Input("metricsEnabled")]
-        public Input<string>? MetricsEnabled { get; set; }
+        public Input<bool>? MetricsEnabled { get; set; }
 
         [Input("privateAccess")]
         public Input<Inputs.GrafanaGrafanaUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
@@ -125,16 +126,16 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigSmtpServerArgs>? SmtpServer { get; set; }
 
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         [Input("userAutoAssignOrg")]
-        public Input<string>? UserAutoAssignOrg { get; set; }
+        public Input<bool>? UserAutoAssignOrg { get; set; }
 
         [Input("userAutoAssignOrgRole")]
         public Input<string>? UserAutoAssignOrgRole { get; set; }
 
         [Input("viewersCanEdit")]
-        public Input<string>? ViewersCanEdit { get; set; }
+        public Input<bool>? ViewersCanEdit { get; set; }
 
         public GrafanaGrafanaUserConfigArgs()
         {

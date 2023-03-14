@@ -13,20 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigNamespace
     {
-        public readonly string? Name;
+        public readonly string Name;
         public readonly Outputs.M3DbM3dbUserConfigNamespaceOptions? Options;
         public readonly string? Resolution;
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private M3DbM3dbUserConfigNamespace(
-            string? name,
+            string name,
 
             Outputs.M3DbM3dbUserConfigNamespaceOptions? options,
 
             string? resolution,
 
-            string? type)
+            string type)
         {
             Name = name;
             Options = options;

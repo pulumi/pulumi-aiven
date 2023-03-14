@@ -16,14 +16,14 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Flink server provided values
         /// </summary>
-        public readonly string? Flink;
-        public readonly string? Prometheus;
+        public readonly bool? Flink;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
         private FlinkFlinkUserConfigPrivatelinkAccess(
-            string? flink,
+            bool? flink,
 
-            string? prometheus)
+            bool? prometheus)
         {
             Flink = flink;
             Prometheus = prometheus;

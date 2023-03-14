@@ -16,14 +16,14 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
     public static final ServiceIntegrationEndpointJolokiaUserConfigArgs Empty = new ServiceIntegrationEndpointJolokiaUserConfigArgs();
 
     /**
-     * Jolokia basic authentication password
+     * Jolokia basic authentication password.
      * 
      */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
     /**
-     * @return Jolokia basic authentication password
+     * @return Jolokia basic authentication password.
      * 
      */
     public Optional<Output<String>> basicAuthPassword() {
@@ -31,14 +31,14 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
     }
 
     /**
-     * Jolokia basic authentication username
+     * Jolokia basic authentication username.
      * 
      */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
     /**
-     * @return Jolokia basic authentication username
+     * @return Jolokia basic authentication username.
      * 
      */
     public Optional<Output<String>> basicAuthUsername() {
@@ -71,7 +71,7 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
         }
 
         /**
-         * @param basicAuthPassword Jolokia basic authentication password
+         * @param basicAuthPassword Jolokia basic authentication password.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
         }
 
         /**
-         * @param basicAuthPassword Jolokia basic authentication password
+         * @param basicAuthPassword Jolokia basic authentication password.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
         }
 
         /**
-         * @param basicAuthUsername Jolokia basic authentication username
+         * @param basicAuthUsername Jolokia basic authentication username.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
         }
 
         /**
-         * @param basicAuthUsername Jolokia basic authentication username
+         * @param basicAuthUsername Jolokia basic authentication username.
          * 
          * @return builder
          * 

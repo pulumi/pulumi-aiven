@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
-     * @return Google Cloud Logging log id
+     * @return Google Cloud Logging log id.
      * 
      */
     private @Nullable String logId;
@@ -29,7 +29,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
 
     private ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig() {}
     /**
-     * @return Google Cloud Logging log id
+     * @return Google Cloud Logging log id.
      * 
      */
     public Optional<String> logId() {

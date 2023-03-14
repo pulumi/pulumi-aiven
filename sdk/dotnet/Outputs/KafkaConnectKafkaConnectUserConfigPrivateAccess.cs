@@ -13,14 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaConnectKafkaConnectUserConfigPrivateAccess
     {
-        public readonly string? KafkaConnect;
-        public readonly string? Prometheus;
+        public readonly bool? KafkaConnect;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
         private KafkaConnectKafkaConnectUserConfigPrivateAccess(
-            string? kafkaConnect,
+            bool? kafkaConnect,
 
-            string? prometheus)
+            bool? prometheus)
         {
             KafkaConnect = kafkaConnect;
             Prometheus = prometheus;

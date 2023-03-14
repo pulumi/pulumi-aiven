@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPglookout
     {
-        public readonly string? MaxFailoverReplicationTimeLag;
+        public readonly int? MaxFailoverReplicationTimeLag;
 
         [OutputConstructor]
-        private PgPgUserConfigPglookout(string? maxFailoverReplicationTimeLag)
+        private PgPgUserConfigPglookout(int? maxFailoverReplicationTimeLag)
         {
             MaxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
         }

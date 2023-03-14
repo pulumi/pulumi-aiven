@@ -16,17 +16,17 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// PostgreSQL specific server provided values
         /// </summary>
-        public readonly string? Pg;
-        public readonly string? Pgbouncer;
-        public readonly string? Prometheus;
+        public readonly bool? Pg;
+        public readonly bool? Pgbouncer;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
         private PgPgUserConfigPublicAccess(
-            string? pg,
+            bool? pg,
 
-            string? pgbouncer,
+            bool? pgbouncer,
 
-            string? prometheus)
+            bool? prometheus)
         {
             Pg = pg;
             Pgbouncer = pgbouncer;

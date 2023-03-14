@@ -4,25 +4,25 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigIndexTemplate {
-    private @Nullable String mappingNestedObjectsLimit;
-    private @Nullable String numberOfReplicas;
-    private @Nullable String numberOfShards;
+    private @Nullable Integer mappingNestedObjectsLimit;
+    private @Nullable Integer numberOfReplicas;
+    private @Nullable Integer numberOfShards;
 
     private GetOpenSearchOpensearchUserConfigIndexTemplate() {}
-    public Optional<String> mappingNestedObjectsLimit() {
+    public Optional<Integer> mappingNestedObjectsLimit() {
         return Optional.ofNullable(this.mappingNestedObjectsLimit);
     }
-    public Optional<String> numberOfReplicas() {
+    public Optional<Integer> numberOfReplicas() {
         return Optional.ofNullable(this.numberOfReplicas);
     }
-    public Optional<String> numberOfShards() {
+    public Optional<Integer> numberOfShards() {
         return Optional.ofNullable(this.numberOfShards);
     }
 
@@ -35,9 +35,9 @@ public final class GetOpenSearchOpensearchUserConfigIndexTemplate {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String mappingNestedObjectsLimit;
-        private @Nullable String numberOfReplicas;
-        private @Nullable String numberOfShards;
+        private @Nullable Integer mappingNestedObjectsLimit;
+        private @Nullable Integer numberOfReplicas;
+        private @Nullable Integer numberOfShards;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfigIndexTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,17 +47,17 @@ public final class GetOpenSearchOpensearchUserConfigIndexTemplate {
         }
 
         @CustomType.Setter
-        public Builder mappingNestedObjectsLimit(@Nullable String mappingNestedObjectsLimit) {
+        public Builder mappingNestedObjectsLimit(@Nullable Integer mappingNestedObjectsLimit) {
             this.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
             return this;
         }
         @CustomType.Setter
-        public Builder numberOfReplicas(@Nullable String numberOfReplicas) {
+        public Builder numberOfReplicas(@Nullable Integer numberOfReplicas) {
             this.numberOfReplicas = numberOfReplicas;
             return this;
         }
         @CustomType.Setter
-        public Builder numberOfShards(@Nullable String numberOfShards) {
+        public Builder numberOfShards(@Nullable Integer numberOfShards) {
             this.numberOfShards = numberOfShards;
             return this;
         }

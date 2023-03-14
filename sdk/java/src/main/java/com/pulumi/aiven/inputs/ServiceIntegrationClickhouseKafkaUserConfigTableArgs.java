@@ -25,25 +25,25 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         return Optional.ofNullable(this.columns);
     }
 
-    @Import(name="dataFormat")
-    private @Nullable Output<String> dataFormat;
+    @Import(name="dataFormat", required=true)
+    private Output<String> dataFormat;
 
-    public Optional<Output<String>> dataFormat() {
-        return Optional.ofNullable(this.dataFormat);
+    public Output<String> dataFormat() {
+        return this.dataFormat;
     }
 
-    @Import(name="groupName")
-    private @Nullable Output<String> groupName;
+    @Import(name="groupName", required=true)
+    private Output<String> groupName;
 
-    public Optional<Output<String>> groupName() {
-        return Optional.ofNullable(this.groupName);
+    public Output<String> groupName() {
+        return this.groupName;
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="topics")
@@ -94,7 +94,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
             return columns(List.of(columns));
         }
 
-        public Builder dataFormat(@Nullable Output<String> dataFormat) {
+        public Builder dataFormat(Output<String> dataFormat) {
             $.dataFormat = dataFormat;
             return this;
         }
@@ -103,7 +103,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
             return dataFormat(Output.of(dataFormat));
         }
 
-        public Builder groupName(@Nullable Output<String> groupName) {
+        public Builder groupName(Output<String> groupName) {
             $.groupName = groupName;
             return this;
         }
@@ -112,7 +112,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
             return groupName(Output.of(groupName));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -135,6 +135,9 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         public ServiceIntegrationClickhouseKafkaUserConfigTableArgs build() {
+            $.dataFormat = Objects.requireNonNull($.dataFormat, "expected parameter 'dataFormat' to be non-null");
+            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

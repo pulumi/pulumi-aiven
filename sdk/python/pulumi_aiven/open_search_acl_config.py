@@ -180,7 +180,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
             service_name="example_service_name",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
-        foo_service_user = aiven.ServiceUser("fooServiceUser",
+        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
             service_name=bar.service_name,
             project=foo_project.project,
             username="user-example")
@@ -227,7 +227,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
             service_name="example_service_name",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
-        foo_service_user = aiven.ServiceUser("fooServiceUser",
+        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
             service_name=bar.service_name,
             project=foo_project.project,
             username="user-example")

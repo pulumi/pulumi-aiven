@@ -16,14 +16,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     public static final ServiceIntegrationEndpointExternalKafkaUserConfigArgs Empty = new ServiceIntegrationEndpointExternalKafkaUserConfigArgs();
 
     /**
-     * Bootstrap servers
+     * Bootstrap servers.
      * 
      */
     @Import(name="bootstrapServers")
     private @Nullable Output<String> bootstrapServers;
 
     /**
-     * @return Bootstrap servers
+     * @return Bootstrap servers.
      * 
      */
     public Optional<Output<String>> bootstrapServers() {
@@ -76,14 +76,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * Security protocol
+     * Security protocol.
      * 
      */
     @Import(name="securityProtocol")
     private @Nullable Output<String> securityProtocol;
 
     /**
-     * @return Security protocol
+     * @return Security protocol.
      * 
      */
     public Optional<Output<String>> securityProtocol() {
@@ -91,14 +91,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * PEM-encoded CA certificate
+     * PEM-encoded CA certificate.
      * 
      */
     @Import(name="sslCaCert")
     private @Nullable Output<String> sslCaCert;
 
     /**
-     * @return PEM-encoded CA certificate
+     * @return PEM-encoded CA certificate.
      * 
      */
     public Optional<Output<String>> sslCaCert() {
@@ -106,14 +106,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * PEM-encoded client certificate
+     * PEM-encoded client certificate.
      * 
      */
     @Import(name="sslClientCert")
     private @Nullable Output<String> sslClientCert;
 
     /**
-     * @return PEM-encoded client certificate
+     * @return PEM-encoded client certificate.
      * 
      */
     public Optional<Output<String>> sslClientCert() {
@@ -121,14 +121,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * PEM-encoded client key
+     * PEM-encoded client key.
      * 
      */
     @Import(name="sslClientKey")
     private @Nullable Output<String> sslClientKey;
 
     /**
-     * @return PEM-encoded client key
+     * @return PEM-encoded client key.
      * 
      */
     public Optional<Output<String>> sslClientKey() {
@@ -183,7 +183,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param bootstrapServers Bootstrap servers
+         * @param bootstrapServers Bootstrap servers.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param bootstrapServers Bootstrap servers
+         * @param bootstrapServers Bootstrap servers.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param securityProtocol Security protocol
+         * @param securityProtocol Security protocol.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param securityProtocol Security protocol
+         * @param securityProtocol Security protocol.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslCaCert PEM-encoded CA certificate
+         * @param sslCaCert PEM-encoded CA certificate.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslCaCert PEM-encoded CA certificate
+         * @param sslCaCert PEM-encoded CA certificate.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientCert PEM-encoded client certificate
+         * @param sslClientCert PEM-encoded client certificate.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientCert PEM-encoded client certificate
+         * @param sslClientCert PEM-encoded client certificate.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientKey PEM-encoded client key
+         * @param sslClientKey PEM-encoded client key.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientKey PEM-encoded client key
+         * @param sslClientKey PEM-encoded client key.
          * 
          * @return builder
          * 

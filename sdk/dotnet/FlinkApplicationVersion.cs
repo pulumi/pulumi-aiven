@@ -58,10 +58,22 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
+        /// Application sink
+        /// </summary>
+        [Output("sink")]
+        public Output<ImmutableArray<Outputs.FlinkApplicationVersionSink>> Sink { get; private set; } = null!;
+
+        /// <summary>
         /// Application sinks
         /// </summary>
         [Output("sinks")]
         public Output<ImmutableArray<Outputs.FlinkApplicationVersionSink>> Sinks { get; private set; } = null!;
+
+        /// <summary>
+        /// Application source
+        /// </summary>
+        [Output("source")]
+        public Output<ImmutableArray<Outputs.FlinkApplicationVersionSource>> Source { get; private set; } = null!;
 
         /// <summary>
         /// Application sources
@@ -145,24 +157,50 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        [Input("sinks", required: true)]
+        [Input("sink")]
+        private InputList<Inputs.FlinkApplicationVersionSinkArgs>? _sink;
+
+        /// <summary>
+        /// Application sink
+        /// </summary>
+        public InputList<Inputs.FlinkApplicationVersionSinkArgs> Sink
+        {
+            get => _sink ?? (_sink = new InputList<Inputs.FlinkApplicationVersionSinkArgs>());
+            set => _sink = value;
+        }
+
+        [Input("sinks")]
         private InputList<Inputs.FlinkApplicationVersionSinkArgs>? _sinks;
 
         /// <summary>
         /// Application sinks
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `sink` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSinkArgs> Sinks
         {
             get => _sinks ?? (_sinks = new InputList<Inputs.FlinkApplicationVersionSinkArgs>());
             set => _sinks = value;
         }
 
-        [Input("sources", required: true)]
+        [Input("source")]
+        private InputList<Inputs.FlinkApplicationVersionSourceArgs>? _source;
+
+        /// <summary>
+        /// Application source
+        /// </summary>
+        public InputList<Inputs.FlinkApplicationVersionSourceArgs> Source
+        {
+            get => _source ?? (_source = new InputList<Inputs.FlinkApplicationVersionSourceArgs>());
+            set => _source = value;
+        }
+
+        [Input("sources")]
         private InputList<Inputs.FlinkApplicationVersionSourceArgs>? _sources;
 
         /// <summary>
         /// Application sources
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `source` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSourceArgs> Sources
         {
             get => _sources ?? (_sources = new InputList<Inputs.FlinkApplicationVersionSourceArgs>());
@@ -219,16 +257,41 @@ namespace Pulumi.Aiven
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("sink")]
+        private InputList<Inputs.FlinkApplicationVersionSinkGetArgs>? _sink;
+
+        /// <summary>
+        /// Application sink
+        /// </summary>
+        public InputList<Inputs.FlinkApplicationVersionSinkGetArgs> Sink
+        {
+            get => _sink ?? (_sink = new InputList<Inputs.FlinkApplicationVersionSinkGetArgs>());
+            set => _sink = value;
+        }
+
         [Input("sinks")]
         private InputList<Inputs.FlinkApplicationVersionSinkGetArgs>? _sinks;
 
         /// <summary>
         /// Application sinks
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `sink` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSinkGetArgs> Sinks
         {
             get => _sinks ?? (_sinks = new InputList<Inputs.FlinkApplicationVersionSinkGetArgs>());
             set => _sinks = value;
+        }
+
+        [Input("source")]
+        private InputList<Inputs.FlinkApplicationVersionSourceGetArgs>? _source;
+
+        /// <summary>
+        /// Application source
+        /// </summary>
+        public InputList<Inputs.FlinkApplicationVersionSourceGetArgs> Source
+        {
+            get => _source ?? (_source = new InputList<Inputs.FlinkApplicationVersionSourceGetArgs>());
+            set => _source = value;
         }
 
         [Input("sources")]
@@ -237,6 +300,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Application sources
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `source` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSourceGetArgs> Sources
         {
             get => _sources ?? (_sources = new InputList<Inputs.FlinkApplicationVersionSourceGetArgs>());

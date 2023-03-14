@@ -16,14 +16,14 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Kafka Connect server provided values
         /// </summary>
-        public readonly string? KafkaConnect;
-        public readonly string? Prometheus;
+        public readonly bool? KafkaConnect;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
         private GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult(
-            string? kafkaConnect,
+            bool? kafkaConnect,
 
-            string? prometheus)
+            bool? prometheus)
         {
             KafkaConnect = kafkaConnect;
             Prometheus = prometheus;

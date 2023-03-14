@@ -5,7 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,100 +17,100 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs ex
     public static final ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs Empty = new ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs();
 
     @Import(name="gatherEventWaits")
-    private @Nullable Output<String> gatherEventWaits;
+    private @Nullable Output<Boolean> gatherEventWaits;
 
-    public Optional<Output<String>> gatherEventWaits() {
+    public Optional<Output<Boolean>> gatherEventWaits() {
         return Optional.ofNullable(this.gatherEventWaits);
     }
 
     @Import(name="gatherFileEventsStats")
-    private @Nullable Output<String> gatherFileEventsStats;
+    private @Nullable Output<Boolean> gatherFileEventsStats;
 
-    public Optional<Output<String>> gatherFileEventsStats() {
+    public Optional<Output<Boolean>> gatherFileEventsStats() {
         return Optional.ofNullable(this.gatherFileEventsStats);
     }
 
     @Import(name="gatherIndexIoWaits")
-    private @Nullable Output<String> gatherIndexIoWaits;
+    private @Nullable Output<Boolean> gatherIndexIoWaits;
 
-    public Optional<Output<String>> gatherIndexIoWaits() {
+    public Optional<Output<Boolean>> gatherIndexIoWaits() {
         return Optional.ofNullable(this.gatherIndexIoWaits);
     }
 
     @Import(name="gatherInfoSchemaAutoInc")
-    private @Nullable Output<String> gatherInfoSchemaAutoInc;
+    private @Nullable Output<Boolean> gatherInfoSchemaAutoInc;
 
-    public Optional<Output<String>> gatherInfoSchemaAutoInc() {
+    public Optional<Output<Boolean>> gatherInfoSchemaAutoInc() {
         return Optional.ofNullable(this.gatherInfoSchemaAutoInc);
     }
 
     @Import(name="gatherInnodbMetrics")
-    private @Nullable Output<String> gatherInnodbMetrics;
+    private @Nullable Output<Boolean> gatherInnodbMetrics;
 
-    public Optional<Output<String>> gatherInnodbMetrics() {
+    public Optional<Output<Boolean>> gatherInnodbMetrics() {
         return Optional.ofNullable(this.gatherInnodbMetrics);
     }
 
     @Import(name="gatherPerfEventsStatements")
-    private @Nullable Output<String> gatherPerfEventsStatements;
+    private @Nullable Output<Boolean> gatherPerfEventsStatements;
 
-    public Optional<Output<String>> gatherPerfEventsStatements() {
+    public Optional<Output<Boolean>> gatherPerfEventsStatements() {
         return Optional.ofNullable(this.gatherPerfEventsStatements);
     }
 
     @Import(name="gatherProcessList")
-    private @Nullable Output<String> gatherProcessList;
+    private @Nullable Output<Boolean> gatherProcessList;
 
-    public Optional<Output<String>> gatherProcessList() {
+    public Optional<Output<Boolean>> gatherProcessList() {
         return Optional.ofNullable(this.gatherProcessList);
     }
 
     @Import(name="gatherSlaveStatus")
-    private @Nullable Output<String> gatherSlaveStatus;
+    private @Nullable Output<Boolean> gatherSlaveStatus;
 
-    public Optional<Output<String>> gatherSlaveStatus() {
+    public Optional<Output<Boolean>> gatherSlaveStatus() {
         return Optional.ofNullable(this.gatherSlaveStatus);
     }
 
     @Import(name="gatherTableIoWaits")
-    private @Nullable Output<String> gatherTableIoWaits;
+    private @Nullable Output<Boolean> gatherTableIoWaits;
 
-    public Optional<Output<String>> gatherTableIoWaits() {
+    public Optional<Output<Boolean>> gatherTableIoWaits() {
         return Optional.ofNullable(this.gatherTableIoWaits);
     }
 
     @Import(name="gatherTableLockWaits")
-    private @Nullable Output<String> gatherTableLockWaits;
+    private @Nullable Output<Boolean> gatherTableLockWaits;
 
-    public Optional<Output<String>> gatherTableLockWaits() {
+    public Optional<Output<Boolean>> gatherTableLockWaits() {
         return Optional.ofNullable(this.gatherTableLockWaits);
     }
 
     @Import(name="gatherTableSchema")
-    private @Nullable Output<String> gatherTableSchema;
+    private @Nullable Output<Boolean> gatherTableSchema;
 
-    public Optional<Output<String>> gatherTableSchema() {
+    public Optional<Output<Boolean>> gatherTableSchema() {
         return Optional.ofNullable(this.gatherTableSchema);
     }
 
     @Import(name="perfEventsStatementsDigestTextLimit")
-    private @Nullable Output<String> perfEventsStatementsDigestTextLimit;
+    private @Nullable Output<Integer> perfEventsStatementsDigestTextLimit;
 
-    public Optional<Output<String>> perfEventsStatementsDigestTextLimit() {
+    public Optional<Output<Integer>> perfEventsStatementsDigestTextLimit() {
         return Optional.ofNullable(this.perfEventsStatementsDigestTextLimit);
     }
 
     @Import(name="perfEventsStatementsLimit")
-    private @Nullable Output<String> perfEventsStatementsLimit;
+    private @Nullable Output<Integer> perfEventsStatementsLimit;
 
-    public Optional<Output<String>> perfEventsStatementsLimit() {
+    public Optional<Output<Integer>> perfEventsStatementsLimit() {
         return Optional.ofNullable(this.perfEventsStatementsLimit);
     }
 
     @Import(name="perfEventsStatementsTimeLimit")
-    private @Nullable Output<String> perfEventsStatementsTimeLimit;
+    private @Nullable Output<Integer> perfEventsStatementsTimeLimit;
 
-    public Optional<Output<String>> perfEventsStatementsTimeLimit() {
+    public Optional<Output<Integer>> perfEventsStatementsTimeLimit() {
         return Optional.ofNullable(this.perfEventsStatementsTimeLimit);
     }
 
@@ -150,129 +151,129 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs ex
             $ = new ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder gatherEventWaits(@Nullable Output<String> gatherEventWaits) {
+        public Builder gatherEventWaits(@Nullable Output<Boolean> gatherEventWaits) {
             $.gatherEventWaits = gatherEventWaits;
             return this;
         }
 
-        public Builder gatherEventWaits(String gatherEventWaits) {
+        public Builder gatherEventWaits(Boolean gatherEventWaits) {
             return gatherEventWaits(Output.of(gatherEventWaits));
         }
 
-        public Builder gatherFileEventsStats(@Nullable Output<String> gatherFileEventsStats) {
+        public Builder gatherFileEventsStats(@Nullable Output<Boolean> gatherFileEventsStats) {
             $.gatherFileEventsStats = gatherFileEventsStats;
             return this;
         }
 
-        public Builder gatherFileEventsStats(String gatherFileEventsStats) {
+        public Builder gatherFileEventsStats(Boolean gatherFileEventsStats) {
             return gatherFileEventsStats(Output.of(gatherFileEventsStats));
         }
 
-        public Builder gatherIndexIoWaits(@Nullable Output<String> gatherIndexIoWaits) {
+        public Builder gatherIndexIoWaits(@Nullable Output<Boolean> gatherIndexIoWaits) {
             $.gatherIndexIoWaits = gatherIndexIoWaits;
             return this;
         }
 
-        public Builder gatherIndexIoWaits(String gatherIndexIoWaits) {
+        public Builder gatherIndexIoWaits(Boolean gatherIndexIoWaits) {
             return gatherIndexIoWaits(Output.of(gatherIndexIoWaits));
         }
 
-        public Builder gatherInfoSchemaAutoInc(@Nullable Output<String> gatherInfoSchemaAutoInc) {
+        public Builder gatherInfoSchemaAutoInc(@Nullable Output<Boolean> gatherInfoSchemaAutoInc) {
             $.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
             return this;
         }
 
-        public Builder gatherInfoSchemaAutoInc(String gatherInfoSchemaAutoInc) {
+        public Builder gatherInfoSchemaAutoInc(Boolean gatherInfoSchemaAutoInc) {
             return gatherInfoSchemaAutoInc(Output.of(gatherInfoSchemaAutoInc));
         }
 
-        public Builder gatherInnodbMetrics(@Nullable Output<String> gatherInnodbMetrics) {
+        public Builder gatherInnodbMetrics(@Nullable Output<Boolean> gatherInnodbMetrics) {
             $.gatherInnodbMetrics = gatherInnodbMetrics;
             return this;
         }
 
-        public Builder gatherInnodbMetrics(String gatherInnodbMetrics) {
+        public Builder gatherInnodbMetrics(Boolean gatherInnodbMetrics) {
             return gatherInnodbMetrics(Output.of(gatherInnodbMetrics));
         }
 
-        public Builder gatherPerfEventsStatements(@Nullable Output<String> gatherPerfEventsStatements) {
+        public Builder gatherPerfEventsStatements(@Nullable Output<Boolean> gatherPerfEventsStatements) {
             $.gatherPerfEventsStatements = gatherPerfEventsStatements;
             return this;
         }
 
-        public Builder gatherPerfEventsStatements(String gatherPerfEventsStatements) {
+        public Builder gatherPerfEventsStatements(Boolean gatherPerfEventsStatements) {
             return gatherPerfEventsStatements(Output.of(gatherPerfEventsStatements));
         }
 
-        public Builder gatherProcessList(@Nullable Output<String> gatherProcessList) {
+        public Builder gatherProcessList(@Nullable Output<Boolean> gatherProcessList) {
             $.gatherProcessList = gatherProcessList;
             return this;
         }
 
-        public Builder gatherProcessList(String gatherProcessList) {
+        public Builder gatherProcessList(Boolean gatherProcessList) {
             return gatherProcessList(Output.of(gatherProcessList));
         }
 
-        public Builder gatherSlaveStatus(@Nullable Output<String> gatherSlaveStatus) {
+        public Builder gatherSlaveStatus(@Nullable Output<Boolean> gatherSlaveStatus) {
             $.gatherSlaveStatus = gatherSlaveStatus;
             return this;
         }
 
-        public Builder gatherSlaveStatus(String gatherSlaveStatus) {
+        public Builder gatherSlaveStatus(Boolean gatherSlaveStatus) {
             return gatherSlaveStatus(Output.of(gatherSlaveStatus));
         }
 
-        public Builder gatherTableIoWaits(@Nullable Output<String> gatherTableIoWaits) {
+        public Builder gatherTableIoWaits(@Nullable Output<Boolean> gatherTableIoWaits) {
             $.gatherTableIoWaits = gatherTableIoWaits;
             return this;
         }
 
-        public Builder gatherTableIoWaits(String gatherTableIoWaits) {
+        public Builder gatherTableIoWaits(Boolean gatherTableIoWaits) {
             return gatherTableIoWaits(Output.of(gatherTableIoWaits));
         }
 
-        public Builder gatherTableLockWaits(@Nullable Output<String> gatherTableLockWaits) {
+        public Builder gatherTableLockWaits(@Nullable Output<Boolean> gatherTableLockWaits) {
             $.gatherTableLockWaits = gatherTableLockWaits;
             return this;
         }
 
-        public Builder gatherTableLockWaits(String gatherTableLockWaits) {
+        public Builder gatherTableLockWaits(Boolean gatherTableLockWaits) {
             return gatherTableLockWaits(Output.of(gatherTableLockWaits));
         }
 
-        public Builder gatherTableSchema(@Nullable Output<String> gatherTableSchema) {
+        public Builder gatherTableSchema(@Nullable Output<Boolean> gatherTableSchema) {
             $.gatherTableSchema = gatherTableSchema;
             return this;
         }
 
-        public Builder gatherTableSchema(String gatherTableSchema) {
+        public Builder gatherTableSchema(Boolean gatherTableSchema) {
             return gatherTableSchema(Output.of(gatherTableSchema));
         }
 
-        public Builder perfEventsStatementsDigestTextLimit(@Nullable Output<String> perfEventsStatementsDigestTextLimit) {
+        public Builder perfEventsStatementsDigestTextLimit(@Nullable Output<Integer> perfEventsStatementsDigestTextLimit) {
             $.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
             return this;
         }
 
-        public Builder perfEventsStatementsDigestTextLimit(String perfEventsStatementsDigestTextLimit) {
+        public Builder perfEventsStatementsDigestTextLimit(Integer perfEventsStatementsDigestTextLimit) {
             return perfEventsStatementsDigestTextLimit(Output.of(perfEventsStatementsDigestTextLimit));
         }
 
-        public Builder perfEventsStatementsLimit(@Nullable Output<String> perfEventsStatementsLimit) {
+        public Builder perfEventsStatementsLimit(@Nullable Output<Integer> perfEventsStatementsLimit) {
             $.perfEventsStatementsLimit = perfEventsStatementsLimit;
             return this;
         }
 
-        public Builder perfEventsStatementsLimit(String perfEventsStatementsLimit) {
+        public Builder perfEventsStatementsLimit(Integer perfEventsStatementsLimit) {
             return perfEventsStatementsLimit(Output.of(perfEventsStatementsLimit));
         }
 
-        public Builder perfEventsStatementsTimeLimit(@Nullable Output<String> perfEventsStatementsTimeLimit) {
+        public Builder perfEventsStatementsTimeLimit(@Nullable Output<Integer> perfEventsStatementsTimeLimit) {
             $.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
             return this;
         }
 
-        public Builder perfEventsStatementsTimeLimit(String perfEventsStatementsTimeLimit) {
+        public Builder perfEventsStatementsTimeLimit(Integer perfEventsStatementsTimeLimit) {
             return perfEventsStatementsTimeLimit(Output.of(perfEventsStatementsTimeLimit));
         }
 

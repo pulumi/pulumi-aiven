@@ -16,14 +16,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     public static final ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs Empty = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs();
 
     /**
-     * Authentication method
+     * Authentication method.
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<String> authentication;
 
     /**
-     * @return Authentication method
+     * @return Authentication method.
      * 
      */
     public Optional<Output<String>> authentication() {
@@ -31,14 +31,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     }
 
     /**
-     * Basic authentication password
+     * Basic authentication password.
      * 
      */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
     /**
-     * @return Basic authentication password
+     * @return Basic authentication password.
      * 
      */
     public Optional<Output<String>> basicAuthPassword() {
@@ -46,14 +46,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     }
 
     /**
-     * Basic authentication user name
+     * Basic authentication user name.
      * 
      */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
     /**
-     * @return Basic authentication user name
+     * @return Basic authentication user name.
      * 
      */
     public Optional<Output<String>> basicAuthUsername() {
@@ -61,14 +61,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     }
 
     /**
-     * Schema Registry URL
+     * Schema Registry URL.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Schema Registry URL
+     * @return Schema Registry URL.
      * 
      */
     public Optional<Output<String>> url() {
@@ -103,7 +103,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param authentication Authentication method
+         * @param authentication Authentication method.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param authentication Authentication method
+         * @param authentication Authentication method.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthPassword Basic authentication password
+         * @param basicAuthPassword Basic authentication password.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthPassword Basic authentication password
+         * @param basicAuthPassword Basic authentication password.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthUsername Basic authentication user name
+         * @param basicAuthUsername Basic authentication user name.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthUsername Basic authentication user name
+         * @param basicAuthUsername Basic authentication user name.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param url Schema Registry URL
+         * @param url Schema Registry URL.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param url Schema Registry URL
+         * @param url Schema Registry URL.
          * 
          * @return builder
          * 

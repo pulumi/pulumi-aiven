@@ -34,13 +34,13 @@ namespace Pulumi.Aiven
     ///             OpensearchVersion = "1",
     ///             OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
     ///             {
-    ///                 Enabled = "true",
-    ///                 OpensearchRequestTimeout = "30000",
+    ///                 Enabled = true,
+    ///                 OpensearchRequestTimeout = 30000,
     ///             },
     ///             PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs
     ///             {
-    ///                 Opensearch = "true",
-    ///                 OpensearchDashboards = "true",
+    ///                 Opensearch = true,
+    ///                 OpensearchDashboards = true,
     ///             },
     ///         },
     ///     });

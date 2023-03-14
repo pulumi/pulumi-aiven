@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumerFetchMinBytes")]
-        public Input<string>? ConsumerFetchMinBytes { get; set; }
+        public Input<int>? ConsumerFetchMinBytes { get; set; }
 
         [Input("producerBatchSize")]
-        public Input<string>? ProducerBatchSize { get; set; }
+        public Input<int>? ProducerBatchSize { get; set; }
 
         [Input("producerBufferMemory")]
-        public Input<string>? ProducerBufferMemory { get; set; }
+        public Input<int>? ProducerBufferMemory { get; set; }
 
         [Input("producerLingerMs")]
-        public Input<string>? ProducerLingerMs { get; set; }
+        public Input<int>? ProducerLingerMs { get; set; }
 
         [Input("producerMaxRequestSize")]
-        public Input<string>? ProducerMaxRequestSize { get; set; }
+        public Input<int>? ProducerMaxRequestSize { get; set; }
 
         public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs()
         {

@@ -4,18 +4,42 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigPrivateAccess {
-    private @Nullable String prometheus;
+    /**
+     * @return Kafka server provided values
+     * 
+     */
+    private @Nullable Boolean kafka;
+    private @Nullable Boolean kafkaConnect;
+    private @Nullable Boolean kafkaRest;
+    private @Nullable Boolean prometheus;
+    private @Nullable Boolean schemaRegistry;
 
     private KafkaKafkaUserConfigPrivateAccess() {}
-    public Optional<String> prometheus() {
+    /**
+     * @return Kafka server provided values
+     * 
+     */
+    public Optional<Boolean> kafka() {
+        return Optional.ofNullable(this.kafka);
+    }
+    public Optional<Boolean> kafkaConnect() {
+        return Optional.ofNullable(this.kafkaConnect);
+    }
+    public Optional<Boolean> kafkaRest() {
+        return Optional.ofNullable(this.kafkaRest);
+    }
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
+    }
+    public Optional<Boolean> schemaRegistry() {
+        return Optional.ofNullable(this.schemaRegistry);
     }
 
     public static Builder builder() {
@@ -27,21 +51,53 @@ public final class KafkaKafkaUserConfigPrivateAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String prometheus;
+        private @Nullable Boolean kafka;
+        private @Nullable Boolean kafkaConnect;
+        private @Nullable Boolean kafkaRest;
+        private @Nullable Boolean prometheus;
+        private @Nullable Boolean schemaRegistry;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.kafka = defaults.kafka;
+    	      this.kafkaConnect = defaults.kafkaConnect;
+    	      this.kafkaRest = defaults.kafkaRest;
     	      this.prometheus = defaults.prometheus;
+    	      this.schemaRegistry = defaults.schemaRegistry;
         }
 
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder kafka(@Nullable Boolean kafka) {
+            this.kafka = kafka;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
+            this.kafkaConnect = kafkaConnect;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaRest(@Nullable Boolean kafkaRest) {
+            this.kafkaRest = kafkaRest;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
+            this.schemaRegistry = schemaRegistry;
             return this;
         }
         public KafkaKafkaUserConfigPrivateAccess build() {
             final var o = new KafkaKafkaUserConfigPrivateAccess();
+            o.kafka = kafka;
+            o.kafkaConnect = kafkaConnect;
+            o.kafkaRest = kafkaRest;
             o.prometheus = prometheus;
+            o.schemaRegistry = schemaRegistry;
             return o;
         }
     }

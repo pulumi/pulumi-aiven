@@ -13,17 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthGitlabResult
     {
-        public readonly string? AllowSignUp;
+        public readonly bool? AllowSignUp;
         public readonly ImmutableArray<string> AllowedGroups;
         public readonly string? ApiUrl;
         public readonly string? AuthUrl;
-        public readonly string? ClientId;
-        public readonly string? ClientSecret;
+        public readonly string ClientId;
+        public readonly string ClientSecret;
         public readonly string? TokenUrl;
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigAuthGitlabResult(
-            string? allowSignUp,
+            bool? allowSignUp,
 
             ImmutableArray<string> allowedGroups,
 
@@ -31,9 +31,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? authUrl,
 
-            string? clientId,
+            string clientId,
 
-            string? clientSecret,
+            string clientSecret,
 
             string? tokenUrl)
         {

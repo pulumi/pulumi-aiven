@@ -8,6 +8,7 @@ import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,8 +25,14 @@ public final class GetCassandraCassandraUserConfig {
     private @Nullable GetCassandraCassandraUserConfigCassandra cassandra;
     private @Nullable String cassandraVersion;
     private @Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
-    private @Nullable String migrateSstableloader;
+    private @Nullable Boolean migrateSstableloader;
     private @Nullable GetCassandraCassandraUserConfigPrivateAccess privateAccess;
     private @Nullable String projectToForkFrom;
     private @Nullable GetCassandraCassandraUserConfigPublicAccess publicAccess;
@@ -35,7 +42,7 @@ public final class GetCassandraCassandraUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private GetCassandraCassandraUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -54,10 +61,16 @@ public final class GetCassandraCassandraUserConfig {
     public List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    public Optional<String> migrateSstableloader() {
+    public Optional<Boolean> migrateSstableloader() {
         return Optional.ofNullable(this.migrateSstableloader);
     }
     public Optional<GetCassandraCassandraUserConfigPrivateAccess> privateAccess() {
@@ -79,7 +92,7 @@ public final class GetCassandraCassandraUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -97,13 +110,13 @@ public final class GetCassandraCassandraUserConfig {
         private @Nullable String cassandraVersion;
         private @Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
-        private @Nullable String migrateSstableloader;
+        private @Nullable Boolean migrateSstableloader;
         private @Nullable GetCassandraCassandraUserConfigPrivateAccess privateAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable GetCassandraCassandraUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
         private @Nullable String serviceToJoinWith;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetCassandraCassandraUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -153,7 +166,7 @@ public final class GetCassandraCassandraUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
-        public Builder migrateSstableloader(@Nullable String migrateSstableloader) {
+        public Builder migrateSstableloader(@Nullable Boolean migrateSstableloader) {
             this.migrateSstableloader = migrateSstableloader;
             return this;
         }
@@ -183,7 +196,7 @@ public final class GetCassandraCassandraUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

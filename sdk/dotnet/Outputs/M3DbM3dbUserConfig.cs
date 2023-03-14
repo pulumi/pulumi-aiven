@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.M3DbM3dbUserConfigLimits? Limits;
         public readonly string? M3Version;
-        public readonly string? M3coordinatorEnableGraphiteCarbonIngest;
+        public readonly bool? M3coordinatorEnableGraphiteCarbonIngest;
         public readonly string? M3dbVersion;
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> Namespaces;
         public readonly Outputs.M3DbM3dbUserConfigPrivateAccess? PrivateAccess;
@@ -27,7 +27,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
         public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
         public readonly string? ServiceToForkFrom;
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private M3DbM3dbUserConfig(
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3Version,
 
-            string? m3coordinatorEnableGraphiteCarbonIngest,
+            bool? m3coordinatorEnableGraphiteCarbonIngest,
 
             string? m3dbVersion,
 
@@ -59,7 +59,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;

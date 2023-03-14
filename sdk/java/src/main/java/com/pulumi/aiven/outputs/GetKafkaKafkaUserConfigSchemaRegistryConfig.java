@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,11 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
-    private @Nullable String leaderEligibility;
+    private @Nullable Boolean leaderEligibility;
     private @Nullable String topicName;
 
     private GetKafkaKafkaUserConfigSchemaRegistryConfig() {}
-    public Optional<String> leaderEligibility() {
+    public Optional<Boolean> leaderEligibility() {
         return Optional.ofNullable(this.leaderEligibility);
     }
     public Optional<String> topicName() {
@@ -31,7 +32,7 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String leaderEligibility;
+        private @Nullable Boolean leaderEligibility;
         private @Nullable String topicName;
         public Builder() {}
         public Builder(GetKafkaKafkaUserConfigSchemaRegistryConfig defaults) {
@@ -41,7 +42,7 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
         }
 
         @CustomType.Setter
-        public Builder leaderEligibility(@Nullable String leaderEligibility) {
+        public Builder leaderEligibility(@Nullable Boolean leaderEligibility) {
             this.leaderEligibility = leaderEligibility;
             return this;
         }

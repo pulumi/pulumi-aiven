@@ -7,26 +7,24 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final M3DbM3dbUserConfigRulesMappingTagArgs Empty = new M3DbM3dbUserConfigRulesMappingTagArgs();
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
-    @Import(name="value")
-    private @Nullable Output<String> value;
+    @Import(name="value", required=true)
+    private Output<String> value;
 
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<String> value() {
+        return this.value;
     }
 
     private M3DbM3dbUserConfigRulesMappingTagArgs() {}
@@ -54,7 +52,7 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
             $ = new M3DbM3dbUserConfigRulesMappingTagArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -63,7 +61,7 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
             return name(Output.of(name));
         }
 
-        public Builder value(@Nullable Output<String> value) {
+        public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
@@ -73,6 +71,8 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
         }
 
         public M3DbM3dbUserConfigRulesMappingTagArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

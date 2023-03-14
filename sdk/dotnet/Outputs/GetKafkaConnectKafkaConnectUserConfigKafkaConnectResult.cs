@@ -15,16 +15,19 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? ConnectorClientConfigOverridePolicy;
         public readonly string? ConsumerAutoOffsetReset;
-        public readonly string? ConsumerFetchMaxBytes;
+        public readonly int? ConsumerFetchMaxBytes;
         public readonly string? ConsumerIsolationLevel;
-        public readonly string? ConsumerMaxPartitionFetchBytes;
-        public readonly string? ConsumerMaxPollIntervalMs;
-        public readonly string? ConsumerMaxPollRecords;
-        public readonly string? OffsetFlushIntervalMs;
-        public readonly string? OffsetFlushTimeoutMs;
+        public readonly int? ConsumerMaxPartitionFetchBytes;
+        public readonly int? ConsumerMaxPollIntervalMs;
+        public readonly int? ConsumerMaxPollRecords;
+        public readonly int? OffsetFlushIntervalMs;
+        public readonly int? OffsetFlushTimeoutMs;
+        public readonly int? ProducerBatchSize;
+        public readonly int? ProducerBufferMemory;
         public readonly string? ProducerCompressionType;
-        public readonly string? ProducerMaxRequestSize;
-        public readonly string? SessionTimeoutMs;
+        public readonly int? ProducerLingerMs;
+        public readonly int? ProducerMaxRequestSize;
+        public readonly int? SessionTimeoutMs;
 
         [OutputConstructor]
         private GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(
@@ -32,25 +35,31 @@ namespace Pulumi.Aiven.Outputs
 
             string? consumerAutoOffsetReset,
 
-            string? consumerFetchMaxBytes,
+            int? consumerFetchMaxBytes,
 
             string? consumerIsolationLevel,
 
-            string? consumerMaxPartitionFetchBytes,
+            int? consumerMaxPartitionFetchBytes,
 
-            string? consumerMaxPollIntervalMs,
+            int? consumerMaxPollIntervalMs,
 
-            string? consumerMaxPollRecords,
+            int? consumerMaxPollRecords,
 
-            string? offsetFlushIntervalMs,
+            int? offsetFlushIntervalMs,
 
-            string? offsetFlushTimeoutMs,
+            int? offsetFlushTimeoutMs,
+
+            int? producerBatchSize,
+
+            int? producerBufferMemory,
 
             string? producerCompressionType,
 
-            string? producerMaxRequestSize,
+            int? producerLingerMs,
 
-            string? sessionTimeoutMs)
+            int? producerMaxRequestSize,
+
+            int? sessionTimeoutMs)
         {
             ConnectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
             ConsumerAutoOffsetReset = consumerAutoOffsetReset;
@@ -61,7 +70,10 @@ namespace Pulumi.Aiven.Outputs
             ConsumerMaxPollRecords = consumerMaxPollRecords;
             OffsetFlushIntervalMs = offsetFlushIntervalMs;
             OffsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            ProducerBatchSize = producerBatchSize;
+            ProducerBufferMemory = producerBufferMemory;
             ProducerCompressionType = producerCompressionType;
+            ProducerLingerMs = producerLingerMs;
             ProducerMaxRequestSize = producerMaxRequestSize;
             SessionTimeoutMs = sessionTimeoutMs;
         }

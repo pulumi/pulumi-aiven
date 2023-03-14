@@ -13,17 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigIndexTemplateResult
     {
-        public readonly string? MappingNestedObjectsLimit;
-        public readonly string? NumberOfReplicas;
-        public readonly string? NumberOfShards;
+        public readonly int? MappingNestedObjectsLimit;
+        public readonly int? NumberOfReplicas;
+        public readonly int? NumberOfShards;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigIndexTemplateResult(
-            string? mappingNestedObjectsLimit,
+            int? mappingNestedObjectsLimit,
 
-            string? numberOfReplicas,
+            int? numberOfReplicas,
 
-            string? numberOfShards)
+            int? numberOfShards)
         {
             MappingNestedObjectsLimit = mappingNestedObjectsLimit;
             NumberOfReplicas = numberOfReplicas;

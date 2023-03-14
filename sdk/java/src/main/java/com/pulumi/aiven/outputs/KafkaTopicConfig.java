@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,7 +62,7 @@ public final class KafkaTopicConfig {
      * @return message.downconversion.enable value
      * 
      */
-    private @Nullable String messageDownconversionEnable;
+    private @Nullable Boolean messageDownconversionEnable;
     /**
      * @return message.format.version value
      * 
@@ -80,7 +82,7 @@ public final class KafkaTopicConfig {
      * @return min.cleanable.dirty.ratio value
      * 
      */
-    private @Nullable String minCleanableDirtyRatio;
+    private @Nullable Double minCleanableDirtyRatio;
     /**
      * @return min.compaction.lag.ms value
      * 
@@ -95,7 +97,7 @@ public final class KafkaTopicConfig {
      * @return preallocate value
      * 
      */
-    private @Nullable String preallocate;
+    private @Nullable Boolean preallocate;
     /**
      * @return retention.bytes value
      * 
@@ -130,7 +132,7 @@ public final class KafkaTopicConfig {
      * @return unclean.leader.election.enable value
      * 
      */
-    private @Nullable String uncleanLeaderElectionEnable;
+    private @Nullable Boolean uncleanLeaderElectionEnable;
 
     private KafkaTopicConfig() {}
     /**
@@ -200,7 +202,7 @@ public final class KafkaTopicConfig {
      * @return message.downconversion.enable value
      * 
      */
-    public Optional<String> messageDownconversionEnable() {
+    public Optional<Boolean> messageDownconversionEnable() {
         return Optional.ofNullable(this.messageDownconversionEnable);
     }
     /**
@@ -228,7 +230,7 @@ public final class KafkaTopicConfig {
      * @return min.cleanable.dirty.ratio value
      * 
      */
-    public Optional<String> minCleanableDirtyRatio() {
+    public Optional<Double> minCleanableDirtyRatio() {
         return Optional.ofNullable(this.minCleanableDirtyRatio);
     }
     /**
@@ -249,7 +251,7 @@ public final class KafkaTopicConfig {
      * @return preallocate value
      * 
      */
-    public Optional<String> preallocate() {
+    public Optional<Boolean> preallocate() {
         return Optional.ofNullable(this.preallocate);
     }
     /**
@@ -298,7 +300,7 @@ public final class KafkaTopicConfig {
      * @return unclean.leader.election.enable value
      * 
      */
-    public Optional<String> uncleanLeaderElectionEnable() {
+    public Optional<Boolean> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }
 
@@ -320,21 +322,21 @@ public final class KafkaTopicConfig {
         private @Nullable String indexIntervalBytes;
         private @Nullable String maxCompactionLagMs;
         private @Nullable String maxMessageBytes;
-        private @Nullable String messageDownconversionEnable;
+        private @Nullable Boolean messageDownconversionEnable;
         private @Nullable String messageFormatVersion;
         private @Nullable String messageTimestampDifferenceMaxMs;
         private @Nullable String messageTimestampType;
-        private @Nullable String minCleanableDirtyRatio;
+        private @Nullable Double minCleanableDirtyRatio;
         private @Nullable String minCompactionLagMs;
         private @Nullable String minInsyncReplicas;
-        private @Nullable String preallocate;
+        private @Nullable Boolean preallocate;
         private @Nullable String retentionBytes;
         private @Nullable String retentionMs;
         private @Nullable String segmentBytes;
         private @Nullable String segmentIndexBytes;
         private @Nullable String segmentJitterMs;
         private @Nullable String segmentMs;
-        private @Nullable String uncleanLeaderElectionEnable;
+        private @Nullable Boolean uncleanLeaderElectionEnable;
         public Builder() {}
         public Builder(KafkaTopicConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -410,7 +412,7 @@ public final class KafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder messageDownconversionEnable(@Nullable String messageDownconversionEnable) {
+        public Builder messageDownconversionEnable(@Nullable Boolean messageDownconversionEnable) {
             this.messageDownconversionEnable = messageDownconversionEnable;
             return this;
         }
@@ -430,7 +432,7 @@ public final class KafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder minCleanableDirtyRatio(@Nullable String minCleanableDirtyRatio) {
+        public Builder minCleanableDirtyRatio(@Nullable Double minCleanableDirtyRatio) {
             this.minCleanableDirtyRatio = minCleanableDirtyRatio;
             return this;
         }
@@ -445,7 +447,7 @@ public final class KafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder preallocate(@Nullable String preallocate) {
+        public Builder preallocate(@Nullable Boolean preallocate) {
             this.preallocate = preallocate;
             return this;
         }
@@ -480,7 +482,7 @@ public final class KafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder uncleanLeaderElectionEnable(@Nullable String uncleanLeaderElectionEnable) {
+        public Builder uncleanLeaderElectionEnable(@Nullable Boolean uncleanLeaderElectionEnable) {
             this.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
         }

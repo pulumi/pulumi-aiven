@@ -9,29 +9,28 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
-    private @Nullable String dataFormat;
-    private @Nullable String groupName;
-    private @Nullable String name;
+    private String dataFormat;
+    private String groupName;
+    private String name;
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTable() {}
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns() {
         return this.columns == null ? List.of() : this.columns;
     }
-    public Optional<String> dataFormat() {
-        return Optional.ofNullable(this.dataFormat);
+    public String dataFormat() {
+        return this.dataFormat;
     }
-    public Optional<String> groupName() {
-        return Optional.ofNullable(this.groupName);
+    public String groupName() {
+        return this.groupName;
     }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics() {
         return this.topics == null ? List.of() : this.topics;
@@ -47,9 +46,9 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
-        private @Nullable String dataFormat;
-        private @Nullable String groupName;
-        private @Nullable String name;
+        private String dataFormat;
+        private String groupName;
+        private String name;
         private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
         public Builder() {}
         public Builder(ServiceIntegrationClickhouseKafkaUserConfigTable defaults) {
@@ -70,18 +69,18 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
             return columns(List.of(columns));
         }
         @CustomType.Setter
-        public Builder dataFormat(@Nullable String dataFormat) {
-            this.dataFormat = dataFormat;
+        public Builder dataFormat(String dataFormat) {
+            this.dataFormat = Objects.requireNonNull(dataFormat);
             return this;
         }
         @CustomType.Setter
-        public Builder groupName(@Nullable String groupName) {
-            this.groupName = groupName;
+        public Builder groupName(String groupName) {
+            this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter

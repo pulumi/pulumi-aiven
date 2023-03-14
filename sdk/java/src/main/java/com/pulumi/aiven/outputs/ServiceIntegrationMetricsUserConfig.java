@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,14 +22,14 @@ public final class ServiceIntegrationMetricsUserConfig {
      * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
      * 
      */
-    private @Nullable String retentionDays;
+    private @Nullable Integer retentionDays;
     /**
      * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     private @Nullable String roUsername;
     /**
-     * @return Configuration options for metrics where source service is MySQL
+     * @return Configuration options for metrics where source service is MySQL.
      * 
      */
     private @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
@@ -50,7 +51,7 @@ public final class ServiceIntegrationMetricsUserConfig {
      * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
      * 
      */
-    public Optional<String> retentionDays() {
+    public Optional<Integer> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
     /**
@@ -61,7 +62,7 @@ public final class ServiceIntegrationMetricsUserConfig {
         return Optional.ofNullable(this.roUsername);
     }
     /**
-     * @return Configuration options for metrics where source service is MySQL
+     * @return Configuration options for metrics where source service is MySQL.
      * 
      */
     public Optional<ServiceIntegrationMetricsUserConfigSourceMysql> sourceMysql() {
@@ -85,7 +86,7 @@ public final class ServiceIntegrationMetricsUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String database;
-        private @Nullable String retentionDays;
+        private @Nullable Integer retentionDays;
         private @Nullable String roUsername;
         private @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
         private @Nullable String username;
@@ -105,7 +106,7 @@ public final class ServiceIntegrationMetricsUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder retentionDays(@Nullable String retentionDays) {
+        public Builder retentionDays(@Nullable Integer retentionDays) {
             this.retentionDays = retentionDays;
             return this;
         }

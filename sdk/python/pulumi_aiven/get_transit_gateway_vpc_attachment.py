@@ -62,7 +62,7 @@ class GetTransitGatewayVpcAttachmentResult:
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> str:
         """
-        AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_cloud_account")
 
@@ -78,7 +78,7 @@ class GetTransitGatewayVpcAttachmentResult:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> str:
         """
-        Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+        Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -159,8 +159,8 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
     ```
 
 
-    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
-    :param str peer_vpc: Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_vpc: Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
     :param str vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
@@ -202,8 +202,8 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
     ```
 
 
-    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
-    :param str peer_vpc: Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_vpc: Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
     :param str vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

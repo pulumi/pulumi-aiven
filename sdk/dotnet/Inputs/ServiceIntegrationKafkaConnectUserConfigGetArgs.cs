@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationKafkaConnectUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka Connect service configuration values
+        /// Kafka Connect service configuration values.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }

@@ -16,14 +16,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     public static final ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs();
 
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData
+     * AWS access key. Required permissions are cloudwatch:PutMetricData.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return AWS access key. Required permissions are cloudwatch:PutMetricData
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -31,14 +31,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     }
 
     /**
-     * AWS CloudWatch Metrics Namespace
+     * AWS CloudWatch Metrics Namespace.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return AWS CloudWatch Metrics Namespace
+     * @return AWS CloudWatch Metrics Namespace.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -46,14 +46,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     }
 
     /**
-     * AWS region
+     * AWS region.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region
+     * @return AWS region.
      * 
      */
     public Optional<Output<String>> region() {
@@ -61,14 +61,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     }
 
     /**
-     * AWS secret key
+     * AWS secret key.
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return AWS secret key
+     * @return AWS secret key.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -103,7 +103,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData
+         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData
+         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param namespace AWS CloudWatch Metrics Namespace
+         * @param namespace AWS CloudWatch Metrics Namespace.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param namespace AWS CloudWatch Metrics Namespace
+         * @param namespace AWS CloudWatch Metrics Namespace.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param region AWS region
+         * @param region AWS region.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param region AWS region
+         * @param region AWS region.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param secretKey AWS secret key
+         * @param secretKey AWS secret key.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param secretKey AWS secret key
+         * @param secretKey AWS secret key.
          * 
          * @return builder
          * 

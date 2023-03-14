@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// The address of the static ip
+        /// The address of the static ip.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// The address of the static ip
+        /// The address of the static ip.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }

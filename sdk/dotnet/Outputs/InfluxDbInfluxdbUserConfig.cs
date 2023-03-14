@@ -14,31 +14,31 @@ namespace Pulumi.Aiven.Outputs
     public sealed class InfluxDbInfluxdbUserConfig
     {
         /// <summary>
-        /// Additional Cloud Regions for Backup Replication
+        /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// influxdb.conf configuration values
+        /// influxdb.conf configuration values.
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigInfluxdb? Influxdb;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public readonly ImmutableArray<Outputs.InfluxDbInfluxdbUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Allow access to selected service ports from private networks
+        /// Allow access to selected service ports from private networks.
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink
+        /// Allow access to selected service components through Privatelink.
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet
+        /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Name of the basebackup to restore in forked service
+        /// Name of the basebackup to restore in forked service.
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
@@ -58,9 +58,9 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Use static public IP addresses
+        /// Use static public IP addresses.
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private InfluxDbInfluxdbUserConfig(
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;

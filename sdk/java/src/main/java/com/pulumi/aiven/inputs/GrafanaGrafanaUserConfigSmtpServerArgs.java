@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,11 +17,11 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
 
     public static final GrafanaGrafanaUserConfigSmtpServerArgs Empty = new GrafanaGrafanaUserConfigSmtpServerArgs();
 
-    @Import(name="fromAddress")
-    private @Nullable Output<String> fromAddress;
+    @Import(name="fromAddress", required=true)
+    private Output<String> fromAddress;
 
-    public Optional<Output<String>> fromAddress() {
-        return Optional.ofNullable(this.fromAddress);
+    public Output<String> fromAddress() {
+        return this.fromAddress;
     }
 
     @Import(name="fromName")
@@ -29,11 +31,11 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         return Optional.ofNullable(this.fromName);
     }
 
-    @Import(name="host")
-    private @Nullable Output<String> host;
+    @Import(name="host", required=true)
+    private Output<String> host;
 
-    public Optional<Output<String>> host() {
-        return Optional.ofNullable(this.host);
+    public Output<String> host() {
+        return this.host;
     }
 
     @Import(name="password")
@@ -43,17 +45,17 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         return Optional.ofNullable(this.password);
     }
 
-    @Import(name="port")
-    private @Nullable Output<String> port;
+    @Import(name="port", required=true)
+    private Output<Integer> port;
 
-    public Optional<Output<String>> port() {
-        return Optional.ofNullable(this.port);
+    public Output<Integer> port() {
+        return this.port;
     }
 
     @Import(name="skipVerify")
-    private @Nullable Output<String> skipVerify;
+    private @Nullable Output<Boolean> skipVerify;
 
-    public Optional<Output<String>> skipVerify() {
+    public Optional<Output<Boolean>> skipVerify() {
         return Optional.ofNullable(this.skipVerify);
     }
 
@@ -102,7 +104,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
             $ = new GrafanaGrafanaUserConfigSmtpServerArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder fromAddress(@Nullable Output<String> fromAddress) {
+        public Builder fromAddress(Output<String> fromAddress) {
             $.fromAddress = fromAddress;
             return this;
         }
@@ -120,7 +122,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
             return fromName(Output.of(fromName));
         }
 
-        public Builder host(@Nullable Output<String> host) {
+        public Builder host(Output<String> host) {
             $.host = host;
             return this;
         }
@@ -138,21 +140,21 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
             return password(Output.of(password));
         }
 
-        public Builder port(@Nullable Output<String> port) {
+        public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        public Builder port(String port) {
+        public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        public Builder skipVerify(@Nullable Output<String> skipVerify) {
+        public Builder skipVerify(@Nullable Output<Boolean> skipVerify) {
             $.skipVerify = skipVerify;
             return this;
         }
 
-        public Builder skipVerify(String skipVerify) {
+        public Builder skipVerify(Boolean skipVerify) {
             return skipVerify(Output.of(skipVerify));
         }
 
@@ -175,6 +177,9 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         public GrafanaGrafanaUserConfigSmtpServerArgs build() {
+            $.fromAddress = Objects.requireNonNull($.fromAddress, "expected parameter 'fromAddress' to be non-null");
+            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
             return $;
         }
     }

@@ -4,29 +4,29 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRedisRedisUserConfigPrivateAccess {
-    private @Nullable String prometheus;
+    private @Nullable Boolean prometheus;
     /**
      * @return Redis server provided values
      * 
      */
-    private @Nullable String redis;
+    private @Nullable Boolean redis;
 
     private GetRedisRedisUserConfigPrivateAccess() {}
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
     /**
      * @return Redis server provided values
      * 
      */
-    public Optional<String> redis() {
+    public Optional<Boolean> redis() {
         return Optional.ofNullable(this.redis);
     }
 
@@ -39,8 +39,8 @@ public final class GetRedisRedisUserConfigPrivateAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String prometheus;
-        private @Nullable String redis;
+        private @Nullable Boolean prometheus;
+        private @Nullable Boolean redis;
         public Builder() {}
         public Builder(GetRedisRedisUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -49,12 +49,12 @@ public final class GetRedisRedisUserConfigPrivateAccess {
         }
 
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }
         @CustomType.Setter
-        public Builder redis(@Nullable String redis) {
+        public Builder redis(@Nullable Boolean redis) {
             this.redis = redis;
             return this;
         }

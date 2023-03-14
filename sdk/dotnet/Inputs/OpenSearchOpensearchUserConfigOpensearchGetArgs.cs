@@ -13,16 +13,16 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("actionAutoCreateIndexEnabled")]
-        public Input<string>? ActionAutoCreateIndexEnabled { get; set; }
+        public Input<bool>? ActionAutoCreateIndexEnabled { get; set; }
 
         [Input("actionDestructiveRequiresName")]
-        public Input<string>? ActionDestructiveRequiresName { get; set; }
+        public Input<bool>? ActionDestructiveRequiresName { get; set; }
 
         [Input("clusterMaxShardsPerNode")]
-        public Input<string>? ClusterMaxShardsPerNode { get; set; }
+        public Input<int>? ClusterMaxShardsPerNode { get; set; }
 
         [Input("clusterRoutingAllocationNodeConcurrentRecoveries")]
-        public Input<string>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
+        public Input<int>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
 
         [Input("emailSenderName")]
         public Input<string>? EmailSenderName { get; set; }
@@ -43,34 +43,34 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? EmailSenderUsername { get; set; }
 
         [Input("httpMaxContentLength")]
-        public Input<string>? HttpMaxContentLength { get; set; }
+        public Input<int>? HttpMaxContentLength { get; set; }
 
         [Input("httpMaxHeaderSize")]
-        public Input<string>? HttpMaxHeaderSize { get; set; }
+        public Input<int>? HttpMaxHeaderSize { get; set; }
 
         [Input("httpMaxInitialLineLength")]
-        public Input<string>? HttpMaxInitialLineLength { get; set; }
+        public Input<int>? HttpMaxInitialLineLength { get; set; }
 
         [Input("indicesFielddataCacheSize")]
-        public Input<string>? IndicesFielddataCacheSize { get; set; }
+        public Input<int>? IndicesFielddataCacheSize { get; set; }
 
         [Input("indicesMemoryIndexBufferSize")]
-        public Input<string>? IndicesMemoryIndexBufferSize { get; set; }
+        public Input<int>? IndicesMemoryIndexBufferSize { get; set; }
 
         [Input("indicesQueriesCacheSize")]
-        public Input<string>? IndicesQueriesCacheSize { get; set; }
+        public Input<int>? IndicesQueriesCacheSize { get; set; }
 
         [Input("indicesQueryBoolMaxClauseCount")]
-        public Input<string>? IndicesQueryBoolMaxClauseCount { get; set; }
+        public Input<int>? IndicesQueryBoolMaxClauseCount { get; set; }
 
         [Input("indicesRecoveryMaxBytesPerSec")]
-        public Input<string>? IndicesRecoveryMaxBytesPerSec { get; set; }
+        public Input<int>? IndicesRecoveryMaxBytesPerSec { get; set; }
 
         [Input("indicesRecoveryMaxConcurrentFileChunks")]
-        public Input<string>? IndicesRecoveryMaxConcurrentFileChunks { get; set; }
+        public Input<int>? IndicesRecoveryMaxConcurrentFileChunks { get; set; }
 
         [Input("overrideMainResponseVersion")]
-        public Input<string>? OverrideMainResponseVersion { get; set; }
+        public Input<bool>? OverrideMainResponseVersion { get; set; }
 
         [Input("reindexRemoteWhitelists")]
         private InputList<string>? _reindexRemoteWhitelists;
@@ -84,40 +84,40 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ScriptMaxCompilationsRate { get; set; }
 
         [Input("searchMaxBuckets")]
-        public Input<string>? SearchMaxBuckets { get; set; }
+        public Input<int>? SearchMaxBuckets { get; set; }
 
         [Input("threadPoolAnalyzeQueueSize")]
-        public Input<string>? ThreadPoolAnalyzeQueueSize { get; set; }
+        public Input<int>? ThreadPoolAnalyzeQueueSize { get; set; }
 
         [Input("threadPoolAnalyzeSize")]
-        public Input<string>? ThreadPoolAnalyzeSize { get; set; }
+        public Input<int>? ThreadPoolAnalyzeSize { get; set; }
 
         [Input("threadPoolForceMergeSize")]
-        public Input<string>? ThreadPoolForceMergeSize { get; set; }
+        public Input<int>? ThreadPoolForceMergeSize { get; set; }
 
         [Input("threadPoolGetQueueSize")]
-        public Input<string>? ThreadPoolGetQueueSize { get; set; }
+        public Input<int>? ThreadPoolGetQueueSize { get; set; }
 
         [Input("threadPoolGetSize")]
-        public Input<string>? ThreadPoolGetSize { get; set; }
+        public Input<int>? ThreadPoolGetSize { get; set; }
 
         [Input("threadPoolSearchQueueSize")]
-        public Input<string>? ThreadPoolSearchQueueSize { get; set; }
+        public Input<int>? ThreadPoolSearchQueueSize { get; set; }
 
         [Input("threadPoolSearchSize")]
-        public Input<string>? ThreadPoolSearchSize { get; set; }
+        public Input<int>? ThreadPoolSearchSize { get; set; }
 
         [Input("threadPoolSearchThrottledQueueSize")]
-        public Input<string>? ThreadPoolSearchThrottledQueueSize { get; set; }
+        public Input<int>? ThreadPoolSearchThrottledQueueSize { get; set; }
 
         [Input("threadPoolSearchThrottledSize")]
-        public Input<string>? ThreadPoolSearchThrottledSize { get; set; }
+        public Input<int>? ThreadPoolSearchThrottledSize { get; set; }
 
         [Input("threadPoolWriteQueueSize")]
-        public Input<string>? ThreadPoolWriteQueueSize { get; set; }
+        public Input<int>? ThreadPoolWriteQueueSize { get; set; }
 
         [Input("threadPoolWriteSize")]
-        public Input<string>? ThreadPoolWriteSize { get; set; }
+        public Input<int>? ThreadPoolWriteSize { get; set; }
 
         public OpenSearchOpensearchUserConfigOpensearchGetArgs()
         {

@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +16,16 @@ public final class KafkaConnectKafkaConnectUserConfigPublicAccessArgs extends co
     public static final KafkaConnectKafkaConnectUserConfigPublicAccessArgs Empty = new KafkaConnectKafkaConnectUserConfigPublicAccessArgs();
 
     @Import(name="kafkaConnect")
-    private @Nullable Output<String> kafkaConnect;
+    private @Nullable Output<Boolean> kafkaConnect;
 
-    public Optional<Output<String>> kafkaConnect() {
+    public Optional<Output<Boolean>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -54,21 +54,21 @@ public final class KafkaConnectKafkaConnectUserConfigPublicAccessArgs extends co
             $ = new KafkaConnectKafkaConnectUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder kafkaConnect(@Nullable Output<String> kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
-        public Builder kafkaConnect(String kafkaConnect) {
+        public Builder kafkaConnect(Boolean kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 

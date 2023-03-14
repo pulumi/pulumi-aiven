@@ -91,7 +91,7 @@ namespace Pulumi.Aiven
         public Output<string> IntegrationId { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the service integration
+        /// Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
@@ -125,12 +125,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("metricsUserConfig")]
         public Output<Outputs.ServiceIntegrationMetricsUserConfig?> MetricsUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Mirrormaker user configurable settings
-        /// </summary>
-        [Output("mirrormakerUserConfig")]
-        public Output<Outputs.ServiceIntegrationMirrormakerUserConfig?> MirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// Project the integration belongs to
@@ -233,7 +227,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
-        /// Type of the service integration
+        /// Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -267,12 +261,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("metricsUserConfig")]
         public Input<Inputs.ServiceIntegrationMetricsUserConfigArgs>? MetricsUserConfig { get; set; }
-
-        /// <summary>
-        /// Mirrormaker user configurable settings
-        /// </summary>
-        [Input("mirrormakerUserConfig")]
-        public Input<Inputs.ServiceIntegrationMirrormakerUserConfigArgs>? MirrormakerUserConfig { get; set; }
 
         /// <summary>
         /// Project the integration belongs to
@@ -343,7 +331,7 @@ namespace Pulumi.Aiven
         public Input<string>? IntegrationId { get; set; }
 
         /// <summary>
-        /// Type of the service integration
+        /// Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
@@ -377,12 +365,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("metricsUserConfig")]
         public Input<Inputs.ServiceIntegrationMetricsUserConfigGetArgs>? MetricsUserConfig { get; set; }
-
-        /// <summary>
-        /// Mirrormaker user configurable settings
-        /// </summary>
-        [Input("mirrormakerUserConfig")]
-        public Input<Inputs.ServiceIntegrationMirrormakerUserConfigGetArgs>? MirrormakerUserConfig { get; set; }
 
         /// <summary>
         /// Project the integration belongs to

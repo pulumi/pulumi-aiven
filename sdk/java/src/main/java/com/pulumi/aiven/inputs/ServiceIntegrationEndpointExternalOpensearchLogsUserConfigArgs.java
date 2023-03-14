@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +18,14 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
     public static final ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs();
 
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      * 
      */
     @Import(name="ca")
     private @Nullable Output<String> ca;
 
     /**
-     * @return PEM encoded CA certificate
+     * @return PEM encoded CA certificate.
      * 
      */
     public Optional<Output<String>> ca() {
@@ -31,29 +33,29 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
     }
 
     /**
-     * Maximum number of days of logs to keep
+     * Maximum number of days of logs to keep. The default value is `3`.
      * 
      */
     @Import(name="indexDaysMax")
-    private @Nullable Output<String> indexDaysMax;
+    private @Nullable Output<Integer> indexDaysMax;
 
     /**
-     * @return Maximum number of days of logs to keep
+     * @return Maximum number of days of logs to keep. The default value is `3`.
      * 
      */
-    public Optional<Output<String>> indexDaysMax() {
+    public Optional<Output<Integer>> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
 
     /**
-     * OpenSearch index prefix
+     * OpenSearch index prefix. The default value is `logs`.
      * 
      */
     @Import(name="indexPrefix")
     private @Nullable Output<String> indexPrefix;
 
     /**
-     * @return OpenSearch index prefix
+     * @return OpenSearch index prefix. The default value is `logs`.
      * 
      */
     public Optional<Output<String>> indexPrefix() {
@@ -61,29 +63,29 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
     }
 
     /**
-     * OpenSearch request timeout limit
+     * OpenSearch request timeout limit. The default value is `10.0`.
      * 
      */
     @Import(name="timeout")
-    private @Nullable Output<String> timeout;
+    private @Nullable Output<Double> timeout;
 
     /**
-     * @return OpenSearch request timeout limit
+     * @return OpenSearch request timeout limit. The default value is `10.0`.
      * 
      */
-    public Optional<Output<String>> timeout() {
+    public Optional<Output<Double>> timeout() {
         return Optional.ofNullable(this.timeout);
     }
 
     /**
-     * OpenSearch connection URL
+     * OpenSearch connection URL.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return OpenSearch connection URL
+     * @return OpenSearch connection URL.
      * 
      */
     public Optional<Output<String>> url() {
@@ -119,7 +121,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param ca PEM encoded CA certificate
+         * @param ca PEM encoded CA certificate.
          * 
          * @return builder
          * 
@@ -130,7 +132,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param ca PEM encoded CA certificate
+         * @param ca PEM encoded CA certificate.
          * 
          * @return builder
          * 
@@ -140,28 +142,28 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param indexDaysMax Maximum number of days of logs to keep
+         * @param indexDaysMax Maximum number of days of logs to keep. The default value is `3`.
          * 
          * @return builder
          * 
          */
-        public Builder indexDaysMax(@Nullable Output<String> indexDaysMax) {
+        public Builder indexDaysMax(@Nullable Output<Integer> indexDaysMax) {
             $.indexDaysMax = indexDaysMax;
             return this;
         }
 
         /**
-         * @param indexDaysMax Maximum number of days of logs to keep
+         * @param indexDaysMax Maximum number of days of logs to keep. The default value is `3`.
          * 
          * @return builder
          * 
          */
-        public Builder indexDaysMax(String indexDaysMax) {
+        public Builder indexDaysMax(Integer indexDaysMax) {
             return indexDaysMax(Output.of(indexDaysMax));
         }
 
         /**
-         * @param indexPrefix OpenSearch index prefix
+         * @param indexPrefix OpenSearch index prefix. The default value is `logs`.
          * 
          * @return builder
          * 
@@ -172,7 +174,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param indexPrefix OpenSearch index prefix
+         * @param indexPrefix OpenSearch index prefix. The default value is `logs`.
          * 
          * @return builder
          * 
@@ -182,28 +184,28 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param timeout OpenSearch request timeout limit
+         * @param timeout OpenSearch request timeout limit. The default value is `10.0`.
          * 
          * @return builder
          * 
          */
-        public Builder timeout(@Nullable Output<String> timeout) {
+        public Builder timeout(@Nullable Output<Double> timeout) {
             $.timeout = timeout;
             return this;
         }
 
         /**
-         * @param timeout OpenSearch request timeout limit
+         * @param timeout OpenSearch request timeout limit. The default value is `10.0`.
          * 
          * @return builder
          * 
          */
-        public Builder timeout(String timeout) {
+        public Builder timeout(Double timeout) {
             return timeout(Output.of(timeout));
         }
 
         /**
-         * @param url OpenSearch connection URL
+         * @param url OpenSearch connection URL.
          * 
          * @return builder
          * 
@@ -214,7 +216,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param url OpenSearch connection URL
+         * @param url OpenSearch connection URL.
          * 
          * @return builder
          * 

@@ -12,6 +12,8 @@ import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,76 +23,84 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfig {
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     private @Nullable String customDomain;
     /**
+     * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * 
      * @deprecated
-     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
-    private @Nullable String disableReplicationFactorAdjustment;
+    @Deprecated /* Usage of this field is discouraged. */
+    private @Nullable Boolean disableReplicationFactorAdjustment;
     /**
-     * @return Index patterns
+     * @return Index patterns.
      * 
      */
     private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
     /**
-     * @return Template settings for all new indexes
+     * @return Template settings for all new indexes.
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
      */
-    private @Nullable String keepIndexRefreshInterval;
+    private @Nullable Boolean keepIndexRefreshInterval;
     /**
+     * @return Use index_patterns instead. The default value is `0`.
+     * 
      * @deprecated
-     * DEPRECATED: use index_patterns instead
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: use index_patterns instead */
-    private @Nullable String maxIndexCount;
+    @Deprecated /* Usage of this field is discouraged. */
+    private @Nullable Integer maxIndexCount;
     /**
-     * @return OpenSearch settings
+     * @return OpenSearch settings.
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch;
     /**
-     * @return OpenSearch Dashboards settings
+     * @return OpenSearch Dashboards settings.
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
     /**
-     * @return OpenSearch major version
+     * @return OpenSearch major version.
      * 
      */
     private @Nullable String opensearchVersion;
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
@@ -100,12 +110,12 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
     /**
-     * @return Name of the basebackup to restore in forked service
+     * @return Name of the basebackup to restore in forked service.
      * 
      */
     private @Nullable String recoveryBasebackupName;
@@ -115,60 +125,66 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private OpenSearchOpensearchUserConfig() {}
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
+     * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * 
      * @deprecated
-     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
-    public Optional<String> disableReplicationFactorAdjustment() {
+    @Deprecated /* Usage of this field is discouraged. */
+    public Optional<Boolean> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
     /**
-     * @return Index patterns
+     * @return Index patterns.
      * 
      */
     public List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns() {
         return this.indexPatterns == null ? List.of() : this.indexPatterns;
     }
     /**
-     * @return Template settings for all new indexes
+     * @return Template settings for all new indexes.
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigIndexTemplate> indexTemplate() {
         return Optional.ofNullable(this.indexTemplate);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -176,48 +192,50 @@ public final class OpenSearchOpensearchUserConfig {
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
      */
-    public Optional<String> keepIndexRefreshInterval() {
+    public Optional<Boolean> keepIndexRefreshInterval() {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
     /**
+     * @return Use index_patterns instead. The default value is `0`.
+     * 
      * @deprecated
-     * DEPRECATED: use index_patterns instead
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: use index_patterns instead */
-    public Optional<String> maxIndexCount() {
+    @Deprecated /* Usage of this field is discouraged. */
+    public Optional<Integer> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
     /**
-     * @return OpenSearch settings
+     * @return OpenSearch settings.
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return OpenSearch Dashboards settings
+     * @return OpenSearch Dashboards settings.
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigOpensearchDashboards> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
     /**
-     * @return OpenSearch major version
+     * @return OpenSearch major version.
      * 
      */
     public Optional<String> opensearchVersion() {
         return Optional.ofNullable(this.opensearchVersion);
     }
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -231,14 +249,14 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Name of the basebackup to restore in forked service
+     * @return Name of the basebackup to restore in forked service.
      * 
      */
     public Optional<String> recoveryBasebackupName() {
@@ -252,10 +270,10 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -270,13 +288,13 @@ public final class OpenSearchOpensearchUserConfig {
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
-        private @Nullable String disableReplicationFactorAdjustment;
+        private @Nullable Boolean disableReplicationFactorAdjustment;
         private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
         private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
         private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
-        private @Nullable String keepIndexRefreshInterval;
-        private @Nullable String maxIndexCount;
+        private @Nullable Boolean keepIndexRefreshInterval;
+        private @Nullable Integer maxIndexCount;
         private @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
         private @Nullable String opensearchVersion;
@@ -286,7 +304,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(OpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -322,7 +340,7 @@ public final class OpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder disableReplicationFactorAdjustment(@Nullable String disableReplicationFactorAdjustment) {
+        public Builder disableReplicationFactorAdjustment(@Nullable Boolean disableReplicationFactorAdjustment) {
             this.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             return this;
         }
@@ -356,12 +374,12 @@ public final class OpenSearchOpensearchUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
-        public Builder keepIndexRefreshInterval(@Nullable String keepIndexRefreshInterval) {
+        public Builder keepIndexRefreshInterval(@Nullable Boolean keepIndexRefreshInterval) {
             this.keepIndexRefreshInterval = keepIndexRefreshInterval;
             return this;
         }
         @CustomType.Setter
-        public Builder maxIndexCount(@Nullable String maxIndexCount) {
+        public Builder maxIndexCount(@Nullable Integer maxIndexCount) {
             this.maxIndexCount = maxIndexCount;
             return this;
         }
@@ -411,7 +429,7 @@ public final class OpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

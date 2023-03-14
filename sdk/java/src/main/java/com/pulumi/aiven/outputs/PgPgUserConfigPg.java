@@ -4,6 +4,9 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,107 +14,109 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigPg {
-    private @Nullable String autovacuumAnalyzeScaleFactor;
-    private @Nullable String autovacuumAnalyzeThreshold;
-    private @Nullable String autovacuumFreezeMaxAge;
-    private @Nullable String autovacuumMaxWorkers;
-    private @Nullable String autovacuumNaptime;
-    private @Nullable String autovacuumVacuumCostDelay;
-    private @Nullable String autovacuumVacuumCostLimit;
-    private @Nullable String autovacuumVacuumScaleFactor;
-    private @Nullable String autovacuumVacuumThreshold;
-    private @Nullable String bgwriterDelay;
-    private @Nullable String bgwriterFlushAfter;
-    private @Nullable String bgwriterLruMaxpages;
-    private @Nullable String bgwriterLruMultiplier;
-    private @Nullable String deadlockTimeout;
+    private @Nullable Double autovacuumAnalyzeScaleFactor;
+    private @Nullable Integer autovacuumAnalyzeThreshold;
+    private @Nullable Integer autovacuumFreezeMaxAge;
+    private @Nullable Integer autovacuumMaxWorkers;
+    private @Nullable Integer autovacuumNaptime;
+    private @Nullable Integer autovacuumVacuumCostDelay;
+    private @Nullable Integer autovacuumVacuumCostLimit;
+    private @Nullable Double autovacuumVacuumScaleFactor;
+    private @Nullable Integer autovacuumVacuumThreshold;
+    private @Nullable Integer bgwriterDelay;
+    private @Nullable Integer bgwriterFlushAfter;
+    private @Nullable Integer bgwriterLruMaxpages;
+    private @Nullable Double bgwriterLruMultiplier;
+    private @Nullable Integer deadlockTimeout;
     private @Nullable String defaultToastCompression;
-    private @Nullable String idleInTransactionSessionTimeout;
-    private @Nullable String jit;
-    private @Nullable String logAutovacuumMinDuration;
+    private @Nullable Integer idleInTransactionSessionTimeout;
+    private @Nullable Boolean jit;
+    private @Nullable Integer logAutovacuumMinDuration;
     private @Nullable String logErrorVerbosity;
     private @Nullable String logLinePrefix;
-    private @Nullable String logMinDurationStatement;
-    private @Nullable String logTempFiles;
-    private @Nullable String maxFilesPerProcess;
-    private @Nullable String maxLocksPerTransaction;
-    private @Nullable String maxLogicalReplicationWorkers;
-    private @Nullable String maxParallelWorkers;
-    private @Nullable String maxParallelWorkersPerGather;
-    private @Nullable String maxPredLocksPerTransaction;
-    private @Nullable String maxPreparedTransactions;
-    private @Nullable String maxReplicationSlots;
-    private @Nullable String maxSlotWalKeepSize;
-    private @Nullable String maxStackDepth;
-    private @Nullable String maxStandbyArchiveDelay;
-    private @Nullable String maxStandbyStreamingDelay;
-    private @Nullable String maxWalSenders;
-    private @Nullable String maxWorkerProcesses;
-    private @Nullable String pgPartmanBgwDotInterval;
+    private @Nullable Integer logMinDurationStatement;
+    private @Nullable Integer logTempFiles;
+    private @Nullable Integer maxFilesPerProcess;
+    private @Nullable Integer maxLocksPerTransaction;
+    private @Nullable Integer maxLogicalReplicationWorkers;
+    private @Nullable Integer maxParallelWorkers;
+    private @Nullable Integer maxParallelWorkersPerGather;
+    private @Nullable Integer maxPredLocksPerTransaction;
+    private @Nullable Integer maxPreparedTransactions;
+    private @Nullable Integer maxReplicationSlots;
+    private @Nullable Integer maxSlotWalKeepSize;
+    private @Nullable Integer maxStackDepth;
+    private @Nullable Integer maxStandbyArchiveDelay;
+    private @Nullable Integer maxStandbyStreamingDelay;
+    private @Nullable Integer maxWalSenders;
+    private @Nullable Integer maxWorkerProcesses;
+    private @Nullable Integer pgPartmanBgwDotInterval;
     private @Nullable String pgPartmanBgwDotRole;
+    private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
+    private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
     private @Nullable String pgStatStatementsDotTrack;
-    private @Nullable String tempFileLimit;
+    private @Nullable Integer tempFileLimit;
     private @Nullable String timezone;
-    private @Nullable String trackActivityQuerySize;
+    private @Nullable Integer trackActivityQuerySize;
     private @Nullable String trackCommitTimestamp;
     private @Nullable String trackFunctions;
     private @Nullable String trackIoTiming;
-    private @Nullable String walSenderTimeout;
-    private @Nullable String walWriterDelay;
+    private @Nullable Integer walSenderTimeout;
+    private @Nullable Integer walWriterDelay;
 
     private PgPgUserConfigPg() {}
-    public Optional<String> autovacuumAnalyzeScaleFactor() {
+    public Optional<Double> autovacuumAnalyzeScaleFactor() {
         return Optional.ofNullable(this.autovacuumAnalyzeScaleFactor);
     }
-    public Optional<String> autovacuumAnalyzeThreshold() {
+    public Optional<Integer> autovacuumAnalyzeThreshold() {
         return Optional.ofNullable(this.autovacuumAnalyzeThreshold);
     }
-    public Optional<String> autovacuumFreezeMaxAge() {
+    public Optional<Integer> autovacuumFreezeMaxAge() {
         return Optional.ofNullable(this.autovacuumFreezeMaxAge);
     }
-    public Optional<String> autovacuumMaxWorkers() {
+    public Optional<Integer> autovacuumMaxWorkers() {
         return Optional.ofNullable(this.autovacuumMaxWorkers);
     }
-    public Optional<String> autovacuumNaptime() {
+    public Optional<Integer> autovacuumNaptime() {
         return Optional.ofNullable(this.autovacuumNaptime);
     }
-    public Optional<String> autovacuumVacuumCostDelay() {
+    public Optional<Integer> autovacuumVacuumCostDelay() {
         return Optional.ofNullable(this.autovacuumVacuumCostDelay);
     }
-    public Optional<String> autovacuumVacuumCostLimit() {
+    public Optional<Integer> autovacuumVacuumCostLimit() {
         return Optional.ofNullable(this.autovacuumVacuumCostLimit);
     }
-    public Optional<String> autovacuumVacuumScaleFactor() {
+    public Optional<Double> autovacuumVacuumScaleFactor() {
         return Optional.ofNullable(this.autovacuumVacuumScaleFactor);
     }
-    public Optional<String> autovacuumVacuumThreshold() {
+    public Optional<Integer> autovacuumVacuumThreshold() {
         return Optional.ofNullable(this.autovacuumVacuumThreshold);
     }
-    public Optional<String> bgwriterDelay() {
+    public Optional<Integer> bgwriterDelay() {
         return Optional.ofNullable(this.bgwriterDelay);
     }
-    public Optional<String> bgwriterFlushAfter() {
+    public Optional<Integer> bgwriterFlushAfter() {
         return Optional.ofNullable(this.bgwriterFlushAfter);
     }
-    public Optional<String> bgwriterLruMaxpages() {
+    public Optional<Integer> bgwriterLruMaxpages() {
         return Optional.ofNullable(this.bgwriterLruMaxpages);
     }
-    public Optional<String> bgwriterLruMultiplier() {
+    public Optional<Double> bgwriterLruMultiplier() {
         return Optional.ofNullable(this.bgwriterLruMultiplier);
     }
-    public Optional<String> deadlockTimeout() {
+    public Optional<Integer> deadlockTimeout() {
         return Optional.ofNullable(this.deadlockTimeout);
     }
     public Optional<String> defaultToastCompression() {
         return Optional.ofNullable(this.defaultToastCompression);
     }
-    public Optional<String> idleInTransactionSessionTimeout() {
+    public Optional<Integer> idleInTransactionSessionTimeout() {
         return Optional.ofNullable(this.idleInTransactionSessionTimeout);
     }
-    public Optional<String> jit() {
+    public Optional<Boolean> jit() {
         return Optional.ofNullable(this.jit);
     }
-    public Optional<String> logAutovacuumMinDuration() {
+    public Optional<Integer> logAutovacuumMinDuration() {
         return Optional.ofNullable(this.logAutovacuumMinDuration);
     }
     public Optional<String> logErrorVerbosity() {
@@ -120,70 +125,76 @@ public final class PgPgUserConfigPg {
     public Optional<String> logLinePrefix() {
         return Optional.ofNullable(this.logLinePrefix);
     }
-    public Optional<String> logMinDurationStatement() {
+    public Optional<Integer> logMinDurationStatement() {
         return Optional.ofNullable(this.logMinDurationStatement);
     }
-    public Optional<String> logTempFiles() {
+    public Optional<Integer> logTempFiles() {
         return Optional.ofNullable(this.logTempFiles);
     }
-    public Optional<String> maxFilesPerProcess() {
+    public Optional<Integer> maxFilesPerProcess() {
         return Optional.ofNullable(this.maxFilesPerProcess);
     }
-    public Optional<String> maxLocksPerTransaction() {
+    public Optional<Integer> maxLocksPerTransaction() {
         return Optional.ofNullable(this.maxLocksPerTransaction);
     }
-    public Optional<String> maxLogicalReplicationWorkers() {
+    public Optional<Integer> maxLogicalReplicationWorkers() {
         return Optional.ofNullable(this.maxLogicalReplicationWorkers);
     }
-    public Optional<String> maxParallelWorkers() {
+    public Optional<Integer> maxParallelWorkers() {
         return Optional.ofNullable(this.maxParallelWorkers);
     }
-    public Optional<String> maxParallelWorkersPerGather() {
+    public Optional<Integer> maxParallelWorkersPerGather() {
         return Optional.ofNullable(this.maxParallelWorkersPerGather);
     }
-    public Optional<String> maxPredLocksPerTransaction() {
+    public Optional<Integer> maxPredLocksPerTransaction() {
         return Optional.ofNullable(this.maxPredLocksPerTransaction);
     }
-    public Optional<String> maxPreparedTransactions() {
+    public Optional<Integer> maxPreparedTransactions() {
         return Optional.ofNullable(this.maxPreparedTransactions);
     }
-    public Optional<String> maxReplicationSlots() {
+    public Optional<Integer> maxReplicationSlots() {
         return Optional.ofNullable(this.maxReplicationSlots);
     }
-    public Optional<String> maxSlotWalKeepSize() {
+    public Optional<Integer> maxSlotWalKeepSize() {
         return Optional.ofNullable(this.maxSlotWalKeepSize);
     }
-    public Optional<String> maxStackDepth() {
+    public Optional<Integer> maxStackDepth() {
         return Optional.ofNullable(this.maxStackDepth);
     }
-    public Optional<String> maxStandbyArchiveDelay() {
+    public Optional<Integer> maxStandbyArchiveDelay() {
         return Optional.ofNullable(this.maxStandbyArchiveDelay);
     }
-    public Optional<String> maxStandbyStreamingDelay() {
+    public Optional<Integer> maxStandbyStreamingDelay() {
         return Optional.ofNullable(this.maxStandbyStreamingDelay);
     }
-    public Optional<String> maxWalSenders() {
+    public Optional<Integer> maxWalSenders() {
         return Optional.ofNullable(this.maxWalSenders);
     }
-    public Optional<String> maxWorkerProcesses() {
+    public Optional<Integer> maxWorkerProcesses() {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
-    public Optional<String> pgPartmanBgwDotInterval() {
+    public Optional<Integer> pgPartmanBgwDotInterval() {
         return Optional.ofNullable(this.pgPartmanBgwDotInterval);
     }
     public Optional<String> pgPartmanBgwDotRole() {
         return Optional.ofNullable(this.pgPartmanBgwDotRole);
     }
+    public Optional<Boolean> pgStatMonitorDotPgsmEnableQueryPlan() {
+        return Optional.ofNullable(this.pgStatMonitorDotPgsmEnableQueryPlan);
+    }
+    public Optional<Integer> pgStatMonitorDotPgsmMaxBuckets() {
+        return Optional.ofNullable(this.pgStatMonitorDotPgsmMaxBuckets);
+    }
     public Optional<String> pgStatStatementsDotTrack() {
         return Optional.ofNullable(this.pgStatStatementsDotTrack);
     }
-    public Optional<String> tempFileLimit() {
+    public Optional<Integer> tempFileLimit() {
         return Optional.ofNullable(this.tempFileLimit);
     }
     public Optional<String> timezone() {
         return Optional.ofNullable(this.timezone);
     }
-    public Optional<String> trackActivityQuerySize() {
+    public Optional<Integer> trackActivityQuerySize() {
         return Optional.ofNullable(this.trackActivityQuerySize);
     }
     public Optional<String> trackCommitTimestamp() {
@@ -195,10 +206,10 @@ public final class PgPgUserConfigPg {
     public Optional<String> trackIoTiming() {
         return Optional.ofNullable(this.trackIoTiming);
     }
-    public Optional<String> walSenderTimeout() {
+    public Optional<Integer> walSenderTimeout() {
         return Optional.ofNullable(this.walSenderTimeout);
     }
-    public Optional<String> walWriterDelay() {
+    public Optional<Integer> walWriterDelay() {
         return Optional.ofNullable(this.walWriterDelay);
     }
 
@@ -211,53 +222,55 @@ public final class PgPgUserConfigPg {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String autovacuumAnalyzeScaleFactor;
-        private @Nullable String autovacuumAnalyzeThreshold;
-        private @Nullable String autovacuumFreezeMaxAge;
-        private @Nullable String autovacuumMaxWorkers;
-        private @Nullable String autovacuumNaptime;
-        private @Nullable String autovacuumVacuumCostDelay;
-        private @Nullable String autovacuumVacuumCostLimit;
-        private @Nullable String autovacuumVacuumScaleFactor;
-        private @Nullable String autovacuumVacuumThreshold;
-        private @Nullable String bgwriterDelay;
-        private @Nullable String bgwriterFlushAfter;
-        private @Nullable String bgwriterLruMaxpages;
-        private @Nullable String bgwriterLruMultiplier;
-        private @Nullable String deadlockTimeout;
+        private @Nullable Double autovacuumAnalyzeScaleFactor;
+        private @Nullable Integer autovacuumAnalyzeThreshold;
+        private @Nullable Integer autovacuumFreezeMaxAge;
+        private @Nullable Integer autovacuumMaxWorkers;
+        private @Nullable Integer autovacuumNaptime;
+        private @Nullable Integer autovacuumVacuumCostDelay;
+        private @Nullable Integer autovacuumVacuumCostLimit;
+        private @Nullable Double autovacuumVacuumScaleFactor;
+        private @Nullable Integer autovacuumVacuumThreshold;
+        private @Nullable Integer bgwriterDelay;
+        private @Nullable Integer bgwriterFlushAfter;
+        private @Nullable Integer bgwriterLruMaxpages;
+        private @Nullable Double bgwriterLruMultiplier;
+        private @Nullable Integer deadlockTimeout;
         private @Nullable String defaultToastCompression;
-        private @Nullable String idleInTransactionSessionTimeout;
-        private @Nullable String jit;
-        private @Nullable String logAutovacuumMinDuration;
+        private @Nullable Integer idleInTransactionSessionTimeout;
+        private @Nullable Boolean jit;
+        private @Nullable Integer logAutovacuumMinDuration;
         private @Nullable String logErrorVerbosity;
         private @Nullable String logLinePrefix;
-        private @Nullable String logMinDurationStatement;
-        private @Nullable String logTempFiles;
-        private @Nullable String maxFilesPerProcess;
-        private @Nullable String maxLocksPerTransaction;
-        private @Nullable String maxLogicalReplicationWorkers;
-        private @Nullable String maxParallelWorkers;
-        private @Nullable String maxParallelWorkersPerGather;
-        private @Nullable String maxPredLocksPerTransaction;
-        private @Nullable String maxPreparedTransactions;
-        private @Nullable String maxReplicationSlots;
-        private @Nullable String maxSlotWalKeepSize;
-        private @Nullable String maxStackDepth;
-        private @Nullable String maxStandbyArchiveDelay;
-        private @Nullable String maxStandbyStreamingDelay;
-        private @Nullable String maxWalSenders;
-        private @Nullable String maxWorkerProcesses;
-        private @Nullable String pgPartmanBgwDotInterval;
+        private @Nullable Integer logMinDurationStatement;
+        private @Nullable Integer logTempFiles;
+        private @Nullable Integer maxFilesPerProcess;
+        private @Nullable Integer maxLocksPerTransaction;
+        private @Nullable Integer maxLogicalReplicationWorkers;
+        private @Nullable Integer maxParallelWorkers;
+        private @Nullable Integer maxParallelWorkersPerGather;
+        private @Nullable Integer maxPredLocksPerTransaction;
+        private @Nullable Integer maxPreparedTransactions;
+        private @Nullable Integer maxReplicationSlots;
+        private @Nullable Integer maxSlotWalKeepSize;
+        private @Nullable Integer maxStackDepth;
+        private @Nullable Integer maxStandbyArchiveDelay;
+        private @Nullable Integer maxStandbyStreamingDelay;
+        private @Nullable Integer maxWalSenders;
+        private @Nullable Integer maxWorkerProcesses;
+        private @Nullable Integer pgPartmanBgwDotInterval;
         private @Nullable String pgPartmanBgwDotRole;
+        private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
+        private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
         private @Nullable String pgStatStatementsDotTrack;
-        private @Nullable String tempFileLimit;
+        private @Nullable Integer tempFileLimit;
         private @Nullable String timezone;
-        private @Nullable String trackActivityQuerySize;
+        private @Nullable Integer trackActivityQuerySize;
         private @Nullable String trackCommitTimestamp;
         private @Nullable String trackFunctions;
         private @Nullable String trackIoTiming;
-        private @Nullable String walSenderTimeout;
-        private @Nullable String walWriterDelay;
+        private @Nullable Integer walSenderTimeout;
+        private @Nullable Integer walWriterDelay;
         public Builder() {}
         public Builder(PgPgUserConfigPg defaults) {
     	      Objects.requireNonNull(defaults);
@@ -299,6 +312,8 @@ public final class PgPgUserConfigPg {
     	      this.maxWorkerProcesses = defaults.maxWorkerProcesses;
     	      this.pgPartmanBgwDotInterval = defaults.pgPartmanBgwDotInterval;
     	      this.pgPartmanBgwDotRole = defaults.pgPartmanBgwDotRole;
+    	      this.pgStatMonitorDotPgsmEnableQueryPlan = defaults.pgStatMonitorDotPgsmEnableQueryPlan;
+    	      this.pgStatMonitorDotPgsmMaxBuckets = defaults.pgStatMonitorDotPgsmMaxBuckets;
     	      this.pgStatStatementsDotTrack = defaults.pgStatStatementsDotTrack;
     	      this.tempFileLimit = defaults.tempFileLimit;
     	      this.timezone = defaults.timezone;
@@ -311,72 +326,72 @@ public final class PgPgUserConfigPg {
         }
 
         @CustomType.Setter
-        public Builder autovacuumAnalyzeScaleFactor(@Nullable String autovacuumAnalyzeScaleFactor) {
+        public Builder autovacuumAnalyzeScaleFactor(@Nullable Double autovacuumAnalyzeScaleFactor) {
             this.autovacuumAnalyzeScaleFactor = autovacuumAnalyzeScaleFactor;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumAnalyzeThreshold(@Nullable String autovacuumAnalyzeThreshold) {
+        public Builder autovacuumAnalyzeThreshold(@Nullable Integer autovacuumAnalyzeThreshold) {
             this.autovacuumAnalyzeThreshold = autovacuumAnalyzeThreshold;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumFreezeMaxAge(@Nullable String autovacuumFreezeMaxAge) {
+        public Builder autovacuumFreezeMaxAge(@Nullable Integer autovacuumFreezeMaxAge) {
             this.autovacuumFreezeMaxAge = autovacuumFreezeMaxAge;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumMaxWorkers(@Nullable String autovacuumMaxWorkers) {
+        public Builder autovacuumMaxWorkers(@Nullable Integer autovacuumMaxWorkers) {
             this.autovacuumMaxWorkers = autovacuumMaxWorkers;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumNaptime(@Nullable String autovacuumNaptime) {
+        public Builder autovacuumNaptime(@Nullable Integer autovacuumNaptime) {
             this.autovacuumNaptime = autovacuumNaptime;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumVacuumCostDelay(@Nullable String autovacuumVacuumCostDelay) {
+        public Builder autovacuumVacuumCostDelay(@Nullable Integer autovacuumVacuumCostDelay) {
             this.autovacuumVacuumCostDelay = autovacuumVacuumCostDelay;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumVacuumCostLimit(@Nullable String autovacuumVacuumCostLimit) {
+        public Builder autovacuumVacuumCostLimit(@Nullable Integer autovacuumVacuumCostLimit) {
             this.autovacuumVacuumCostLimit = autovacuumVacuumCostLimit;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumVacuumScaleFactor(@Nullable String autovacuumVacuumScaleFactor) {
+        public Builder autovacuumVacuumScaleFactor(@Nullable Double autovacuumVacuumScaleFactor) {
             this.autovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             return this;
         }
         @CustomType.Setter
-        public Builder autovacuumVacuumThreshold(@Nullable String autovacuumVacuumThreshold) {
+        public Builder autovacuumVacuumThreshold(@Nullable Integer autovacuumVacuumThreshold) {
             this.autovacuumVacuumThreshold = autovacuumVacuumThreshold;
             return this;
         }
         @CustomType.Setter
-        public Builder bgwriterDelay(@Nullable String bgwriterDelay) {
+        public Builder bgwriterDelay(@Nullable Integer bgwriterDelay) {
             this.bgwriterDelay = bgwriterDelay;
             return this;
         }
         @CustomType.Setter
-        public Builder bgwriterFlushAfter(@Nullable String bgwriterFlushAfter) {
+        public Builder bgwriterFlushAfter(@Nullable Integer bgwriterFlushAfter) {
             this.bgwriterFlushAfter = bgwriterFlushAfter;
             return this;
         }
         @CustomType.Setter
-        public Builder bgwriterLruMaxpages(@Nullable String bgwriterLruMaxpages) {
+        public Builder bgwriterLruMaxpages(@Nullable Integer bgwriterLruMaxpages) {
             this.bgwriterLruMaxpages = bgwriterLruMaxpages;
             return this;
         }
         @CustomType.Setter
-        public Builder bgwriterLruMultiplier(@Nullable String bgwriterLruMultiplier) {
+        public Builder bgwriterLruMultiplier(@Nullable Double bgwriterLruMultiplier) {
             this.bgwriterLruMultiplier = bgwriterLruMultiplier;
             return this;
         }
         @CustomType.Setter
-        public Builder deadlockTimeout(@Nullable String deadlockTimeout) {
+        public Builder deadlockTimeout(@Nullable Integer deadlockTimeout) {
             this.deadlockTimeout = deadlockTimeout;
             return this;
         }
@@ -386,17 +401,17 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
-        public Builder idleInTransactionSessionTimeout(@Nullable String idleInTransactionSessionTimeout) {
+        public Builder idleInTransactionSessionTimeout(@Nullable Integer idleInTransactionSessionTimeout) {
             this.idleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder jit(@Nullable String jit) {
+        public Builder jit(@Nullable Boolean jit) {
             this.jit = jit;
             return this;
         }
         @CustomType.Setter
-        public Builder logAutovacuumMinDuration(@Nullable String logAutovacuumMinDuration) {
+        public Builder logAutovacuumMinDuration(@Nullable Integer logAutovacuumMinDuration) {
             this.logAutovacuumMinDuration = logAutovacuumMinDuration;
             return this;
         }
@@ -411,87 +426,87 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
-        public Builder logMinDurationStatement(@Nullable String logMinDurationStatement) {
+        public Builder logMinDurationStatement(@Nullable Integer logMinDurationStatement) {
             this.logMinDurationStatement = logMinDurationStatement;
             return this;
         }
         @CustomType.Setter
-        public Builder logTempFiles(@Nullable String logTempFiles) {
+        public Builder logTempFiles(@Nullable Integer logTempFiles) {
             this.logTempFiles = logTempFiles;
             return this;
         }
         @CustomType.Setter
-        public Builder maxFilesPerProcess(@Nullable String maxFilesPerProcess) {
+        public Builder maxFilesPerProcess(@Nullable Integer maxFilesPerProcess) {
             this.maxFilesPerProcess = maxFilesPerProcess;
             return this;
         }
         @CustomType.Setter
-        public Builder maxLocksPerTransaction(@Nullable String maxLocksPerTransaction) {
+        public Builder maxLocksPerTransaction(@Nullable Integer maxLocksPerTransaction) {
             this.maxLocksPerTransaction = maxLocksPerTransaction;
             return this;
         }
         @CustomType.Setter
-        public Builder maxLogicalReplicationWorkers(@Nullable String maxLogicalReplicationWorkers) {
+        public Builder maxLogicalReplicationWorkers(@Nullable Integer maxLogicalReplicationWorkers) {
             this.maxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
             return this;
         }
         @CustomType.Setter
-        public Builder maxParallelWorkers(@Nullable String maxParallelWorkers) {
+        public Builder maxParallelWorkers(@Nullable Integer maxParallelWorkers) {
             this.maxParallelWorkers = maxParallelWorkers;
             return this;
         }
         @CustomType.Setter
-        public Builder maxParallelWorkersPerGather(@Nullable String maxParallelWorkersPerGather) {
+        public Builder maxParallelWorkersPerGather(@Nullable Integer maxParallelWorkersPerGather) {
             this.maxParallelWorkersPerGather = maxParallelWorkersPerGather;
             return this;
         }
         @CustomType.Setter
-        public Builder maxPredLocksPerTransaction(@Nullable String maxPredLocksPerTransaction) {
+        public Builder maxPredLocksPerTransaction(@Nullable Integer maxPredLocksPerTransaction) {
             this.maxPredLocksPerTransaction = maxPredLocksPerTransaction;
             return this;
         }
         @CustomType.Setter
-        public Builder maxPreparedTransactions(@Nullable String maxPreparedTransactions) {
+        public Builder maxPreparedTransactions(@Nullable Integer maxPreparedTransactions) {
             this.maxPreparedTransactions = maxPreparedTransactions;
             return this;
         }
         @CustomType.Setter
-        public Builder maxReplicationSlots(@Nullable String maxReplicationSlots) {
+        public Builder maxReplicationSlots(@Nullable Integer maxReplicationSlots) {
             this.maxReplicationSlots = maxReplicationSlots;
             return this;
         }
         @CustomType.Setter
-        public Builder maxSlotWalKeepSize(@Nullable String maxSlotWalKeepSize) {
+        public Builder maxSlotWalKeepSize(@Nullable Integer maxSlotWalKeepSize) {
             this.maxSlotWalKeepSize = maxSlotWalKeepSize;
             return this;
         }
         @CustomType.Setter
-        public Builder maxStackDepth(@Nullable String maxStackDepth) {
+        public Builder maxStackDepth(@Nullable Integer maxStackDepth) {
             this.maxStackDepth = maxStackDepth;
             return this;
         }
         @CustomType.Setter
-        public Builder maxStandbyArchiveDelay(@Nullable String maxStandbyArchiveDelay) {
+        public Builder maxStandbyArchiveDelay(@Nullable Integer maxStandbyArchiveDelay) {
             this.maxStandbyArchiveDelay = maxStandbyArchiveDelay;
             return this;
         }
         @CustomType.Setter
-        public Builder maxStandbyStreamingDelay(@Nullable String maxStandbyStreamingDelay) {
+        public Builder maxStandbyStreamingDelay(@Nullable Integer maxStandbyStreamingDelay) {
             this.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
             return this;
         }
         @CustomType.Setter
-        public Builder maxWalSenders(@Nullable String maxWalSenders) {
+        public Builder maxWalSenders(@Nullable Integer maxWalSenders) {
             this.maxWalSenders = maxWalSenders;
             return this;
         }
         @CustomType.Setter
-        public Builder maxWorkerProcesses(@Nullable String maxWorkerProcesses) {
+        public Builder maxWorkerProcesses(@Nullable Integer maxWorkerProcesses) {
             this.maxWorkerProcesses = maxWorkerProcesses;
             return this;
         }
         @CustomType.Setter
-        public Builder pgPartmanBgwDotInterval(@Nullable String pgPartmanBgwDotInterval) {
+        public Builder pgPartmanBgwDotInterval(@Nullable Integer pgPartmanBgwDotInterval) {
             this.pgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             return this;
         }
@@ -501,12 +516,22 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
+        public Builder pgStatMonitorDotPgsmEnableQueryPlan(@Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan) {
+            this.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pgStatMonitorDotPgsmMaxBuckets(@Nullable Integer pgStatMonitorDotPgsmMaxBuckets) {
+            this.pgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgStatStatementsDotTrack(@Nullable String pgStatStatementsDotTrack) {
             this.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
             return this;
         }
         @CustomType.Setter
-        public Builder tempFileLimit(@Nullable String tempFileLimit) {
+        public Builder tempFileLimit(@Nullable Integer tempFileLimit) {
             this.tempFileLimit = tempFileLimit;
             return this;
         }
@@ -516,7 +541,7 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
-        public Builder trackActivityQuerySize(@Nullable String trackActivityQuerySize) {
+        public Builder trackActivityQuerySize(@Nullable Integer trackActivityQuerySize) {
             this.trackActivityQuerySize = trackActivityQuerySize;
             return this;
         }
@@ -536,12 +561,12 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
-        public Builder walSenderTimeout(@Nullable String walSenderTimeout) {
+        public Builder walSenderTimeout(@Nullable Integer walSenderTimeout) {
             this.walSenderTimeout = walSenderTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder walWriterDelay(@Nullable String walWriterDelay) {
+        public Builder walWriterDelay(@Nullable Integer walWriterDelay) {
             this.walWriterDelay = walWriterDelay;
             return this;
         }
@@ -585,6 +610,8 @@ public final class PgPgUserConfigPg {
             o.maxWorkerProcesses = maxWorkerProcesses;
             o.pgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             o.pgPartmanBgwDotRole = pgPartmanBgwDotRole;
+            o.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
+            o.pgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
             o.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
             o.tempFileLimit = tempFileLimit;
             o.timezone = timezone;

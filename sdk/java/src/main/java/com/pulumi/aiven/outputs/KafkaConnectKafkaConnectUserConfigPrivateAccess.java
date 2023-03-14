@@ -4,21 +4,21 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfigPrivateAccess {
-    private @Nullable String kafkaConnect;
-    private @Nullable String prometheus;
+    private @Nullable Boolean kafkaConnect;
+    private @Nullable Boolean prometheus;
 
     private KafkaConnectKafkaConnectUserConfigPrivateAccess() {}
-    public Optional<String> kafkaConnect() {
+    public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -31,8 +31,8 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String kafkaConnect;
-        private @Nullable String prometheus;
+        private @Nullable Boolean kafkaConnect;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(KafkaConnectKafkaConnectUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,12 +41,12 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccess {
         }
 
         @CustomType.Setter
-        public Builder kafkaConnect(@Nullable String kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

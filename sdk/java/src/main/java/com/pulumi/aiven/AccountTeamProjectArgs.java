@@ -61,14 +61,14 @@ public final class AccountTeamProjectArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
     @Import(name="teamType")
     private @Nullable Output<String> teamType;
 
     /**
-     * @return The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * @return The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
     public Optional<Output<String>> teamType() {
@@ -166,7 +166,7 @@ public final class AccountTeamProjectArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamType The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param teamType The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class AccountTeamProjectArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamType The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param teamType The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
          * 
          * @return builder
          * 

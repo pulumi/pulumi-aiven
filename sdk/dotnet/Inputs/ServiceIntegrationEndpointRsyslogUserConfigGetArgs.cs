@@ -13,58 +13,58 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointRsyslogUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PEM encoded CA certificate
+        /// PEM encoded CA certificate.
         /// </summary>
         [Input("ca")]
         public Input<string>? Ca { get; set; }
 
         /// <summary>
-        /// PEM encoded client certificate
+        /// PEM encoded client certificate.
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// message format
+        /// message format. The default value is `rfc5424`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// PEM encoded client key
+        /// PEM encoded client key.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// custom syslog message format
+        /// custom syslog message format.
         /// </summary>
         [Input("logline")]
         public Input<string>? Logline { get; set; }
 
         /// <summary>
-        /// rsyslog server port
+        /// rsyslog server port. The default value is `514`.
         /// </summary>
         [Input("port")]
-        public Input<string>? Port { get; set; }
+        public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Structured data block for log message
+        /// Structured data block for log message.
         /// </summary>
         [Input("sd")]
         public Input<string>? Sd { get; set; }
 
         /// <summary>
-        /// rsyslog server IP address or hostname
+        /// rsyslog server IP address or hostname.
         /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }
 
         /// <summary>
-        /// Require TLS
+        /// Require TLS. The default value is `true`.
         /// </summary>
         [Input("tls")]
-        public Input<string>? Tls { get; set; }
+        public Input<bool>? Tls { get; set; }
 
         public ServiceIntegrationEndpointRsyslogUserConfigGetArgs()
         {

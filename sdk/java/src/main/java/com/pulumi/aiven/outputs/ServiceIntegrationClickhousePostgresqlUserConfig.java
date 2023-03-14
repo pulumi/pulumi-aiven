@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationClickhousePostgresqlUserConfig {
     /**
-     * @return Databases to expose
+     * @return Databases to expose.
      * 
      */
     private @Nullable List<ServiceIntegrationClickhousePostgresqlUserConfigDatabase> databases;
 
     private ServiceIntegrationClickhousePostgresqlUserConfig() {}
     /**
-     * @return Databases to expose
+     * @return Databases to expose.
      * 
      */
     public List<ServiceIntegrationClickhousePostgresqlUserConfigDatabase> databases() {

@@ -142,7 +142,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// A List of allowed Subscription IDs Maximum Length: `16`.
+        /// A List of allowed Subscription IDs. Maximum length: `16`.
         /// </summary>
         public readonly ImmutableArray<string> UserSubscriptionIds;
 

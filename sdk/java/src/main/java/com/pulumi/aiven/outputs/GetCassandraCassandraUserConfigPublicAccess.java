@@ -4,17 +4,17 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCassandraCassandraUserConfigPublicAccess {
-    private @Nullable String prometheus;
+    private @Nullable Boolean prometheus;
 
     private GetCassandraCassandraUserConfigPublicAccess() {}
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -27,7 +27,7 @@ public final class GetCassandraCassandraUserConfigPublicAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String prometheus;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(GetCassandraCassandraUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,7 +35,7 @@ public final class GetCassandraCassandraUserConfigPublicAccess {
         }
 
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

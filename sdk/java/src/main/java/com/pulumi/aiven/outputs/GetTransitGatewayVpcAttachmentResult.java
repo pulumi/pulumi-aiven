@@ -18,7 +18,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
      */
     private String id;
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String peerCloudAccount;
@@ -28,7 +28,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
      */
     private String peerRegion;
     /**
-     * @return Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * @return Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String peerVpc;
@@ -67,7 +67,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
         return this.id;
     }
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String peerCloudAccount() {
@@ -81,7 +81,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
         return this.peerRegion;
     }
     /**
-     * @return Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * @return Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String peerVpc() {

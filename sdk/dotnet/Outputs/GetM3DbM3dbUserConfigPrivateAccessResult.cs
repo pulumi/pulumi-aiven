@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigPrivateAccessResult
     {
-        public readonly string? M3coordinator;
+        public readonly bool? M3coordinator;
 
         [OutputConstructor]
-        private GetM3DbM3dbUserConfigPrivateAccessResult(string? m3coordinator)
+        private GetM3DbM3dbUserConfigPrivateAccessResult(bool? m3coordinator)
         {
             M3coordinator = m3coordinator;
         }

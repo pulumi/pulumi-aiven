@@ -170,9 +170,17 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
+        /// Application sink
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSinkResult> Sink;
+        /// <summary>
         /// Application sinks
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSinkResult> Sinks;
+        /// <summary>
+        /// Application source
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSourceResult> Source;
         /// <summary>
         /// Application sources
         /// </summary>
@@ -202,7 +210,11 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            ImmutableArray<Outputs.GetFlinkApplicationVersionSinkResult> sink,
+
             ImmutableArray<Outputs.GetFlinkApplicationVersionSinkResult> sinks,
+
+            ImmutableArray<Outputs.GetFlinkApplicationVersionSourceResult> source,
 
             ImmutableArray<Outputs.GetFlinkApplicationVersionSourceResult> sources,
 
@@ -217,7 +229,9 @@ namespace Pulumi.Aiven
             Id = id;
             Project = project;
             ServiceName = serviceName;
+            Sink = sink;
             Sinks = sinks;
+            Source = source;
             Sources = sources;
             Statement = statement;
             Version = version;

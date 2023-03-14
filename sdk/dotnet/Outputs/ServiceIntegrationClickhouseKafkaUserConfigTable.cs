@@ -14,20 +14,20 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTable
     {
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> Columns;
-        public readonly string? DataFormat;
-        public readonly string? GroupName;
-        public readonly string? Name;
+        public readonly string DataFormat;
+        public readonly string GroupName;
+        public readonly string Name;
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> Topics;
 
         [OutputConstructor]
         private ServiceIntegrationClickhouseKafkaUserConfigTable(
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns,
 
-            string? dataFormat,
+            string dataFormat,
 
-            string? groupName,
+            string groupName,
 
-            string? name,
+            string name,
 
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics)
         {

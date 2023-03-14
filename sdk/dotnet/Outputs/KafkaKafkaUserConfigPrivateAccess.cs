@@ -13,12 +13,32 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigPrivateAccess
     {
-        public readonly string? Prometheus;
+        /// <summary>
+        /// Kafka server provided values
+        /// </summary>
+        public readonly bool? Kafka;
+        public readonly bool? KafkaConnect;
+        public readonly bool? KafkaRest;
+        public readonly bool? Prometheus;
+        public readonly bool? SchemaRegistry;
 
         [OutputConstructor]
-        private KafkaKafkaUserConfigPrivateAccess(string? prometheus)
+        private KafkaKafkaUserConfigPrivateAccess(
+            bool? kafka,
+
+            bool? kafkaConnect,
+
+            bool? kafkaRest,
+
+            bool? prometheus,
+
+            bool? schemaRegistry)
         {
+            Kafka = kafka;
+            KafkaConnect = kafkaConnect;
+            KafkaRest = kafkaRest;
             Prometheus = prometheus;
+            SchemaRegistry = schemaRegistry;
         }
     }
 }

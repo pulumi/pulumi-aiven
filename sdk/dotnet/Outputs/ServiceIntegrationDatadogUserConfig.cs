@@ -14,41 +14,45 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationDatadogUserConfig
     {
         /// <summary>
-        /// Enable Datadog Database Monitoring
+        /// Enable Datadog Database Monitoring.
         /// </summary>
-        public readonly string? DatadogDbmEnabled;
+        public readonly bool? DatadogDbmEnabled;
         /// <summary>
-        /// Custom tags provided by user
+        /// Custom tags provided by user.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationDatadogUserConfigDatadogTag> DatadogTags;
         /// <summary>
-        /// List of custom metrics
+        /// List of custom metrics.
         /// </summary>
         public readonly ImmutableArray<string> ExcludeConsumerGroups;
         /// <summary>
-        /// List of topics to exclude
+        /// List of topics to exclude.
         /// </summary>
         public readonly ImmutableArray<string> ExcludeTopics;
         /// <summary>
-        /// List of custom metrics
+        /// List of custom metrics.
         /// </summary>
         public readonly ImmutableArray<string> IncludeConsumerGroups;
         /// <summary>
-        /// List of topics to include
+        /// List of topics to include.
         /// </summary>
         public readonly ImmutableArray<string> IncludeTopics;
         /// <summary>
-        /// List of custom metrics
+        /// List of custom metrics.
         /// </summary>
         public readonly ImmutableArray<string> KafkaCustomMetrics;
         /// <summary>
-        /// Maximum number of JMX metrics to send
+        /// Maximum number of JMX metrics to send.
         /// </summary>
-        public readonly string? MaxJmxMetrics;
+        public readonly int? MaxJmxMetrics;
+        /// <summary>
+        /// Datadog Opensearch Options.
+        /// </summary>
+        public readonly Outputs.ServiceIntegrationDatadogUserConfigOpensearch? Opensearch;
 
         [OutputConstructor]
         private ServiceIntegrationDatadogUserConfig(
-            string? datadogDbmEnabled,
+            bool? datadogDbmEnabled,
 
             ImmutableArray<Outputs.ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags,
 
@@ -62,7 +66,9 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> kafkaCustomMetrics,
 
-            string? maxJmxMetrics)
+            int? maxJmxMetrics,
+
+            Outputs.ServiceIntegrationDatadogUserConfigOpensearch? opensearch)
         {
             DatadogDbmEnabled = datadogDbmEnabled;
             DatadogTags = datadogTags;
@@ -72,6 +78,7 @@ namespace Pulumi.Aiven.Outputs
             IncludeTopics = includeTopics;
             KafkaCustomMetrics = kafkaCustomMetrics;
             MaxJmxMetrics = maxJmxMetrics;
+            Opensearch = opensearch;
         }
     }
 }

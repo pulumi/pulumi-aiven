@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
     ///             RedisMaxmemoryPolicy = "allkeys-random",
     ///             PublicAccess = new Aiven.Inputs.RedisRedisUserConfigPublicAccessArgs
     ///             {
-    ///                 Redis = "true",
+    ///                 Redis = true,
     ///             },
     ///         },
     ///     });

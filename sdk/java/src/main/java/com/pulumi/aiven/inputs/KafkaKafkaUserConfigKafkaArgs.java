@@ -5,6 +5,9 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,9 +19,9 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     public static final KafkaKafkaUserConfigKafkaArgs Empty = new KafkaKafkaUserConfigKafkaArgs();
 
     @Import(name="autoCreateTopicsEnable")
-    private @Nullable Output<String> autoCreateTopicsEnable;
+    private @Nullable Output<Boolean> autoCreateTopicsEnable;
 
-    public Optional<Output<String>> autoCreateTopicsEnable() {
+    public Optional<Output<Boolean>> autoCreateTopicsEnable() {
         return Optional.ofNullable(this.autoCreateTopicsEnable);
     }
 
@@ -30,65 +33,65 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="connectionsMaxIdleMs")
-    private @Nullable Output<String> connectionsMaxIdleMs;
+    private @Nullable Output<Integer> connectionsMaxIdleMs;
 
-    public Optional<Output<String>> connectionsMaxIdleMs() {
+    public Optional<Output<Integer>> connectionsMaxIdleMs() {
         return Optional.ofNullable(this.connectionsMaxIdleMs);
     }
 
     @Import(name="defaultReplicationFactor")
-    private @Nullable Output<String> defaultReplicationFactor;
+    private @Nullable Output<Integer> defaultReplicationFactor;
 
-    public Optional<Output<String>> defaultReplicationFactor() {
+    public Optional<Output<Integer>> defaultReplicationFactor() {
         return Optional.ofNullable(this.defaultReplicationFactor);
     }
 
     @Import(name="groupInitialRebalanceDelayMs")
-    private @Nullable Output<String> groupInitialRebalanceDelayMs;
+    private @Nullable Output<Integer> groupInitialRebalanceDelayMs;
 
-    public Optional<Output<String>> groupInitialRebalanceDelayMs() {
+    public Optional<Output<Integer>> groupInitialRebalanceDelayMs() {
         return Optional.ofNullable(this.groupInitialRebalanceDelayMs);
     }
 
     @Import(name="groupMaxSessionTimeoutMs")
-    private @Nullable Output<String> groupMaxSessionTimeoutMs;
+    private @Nullable Output<Integer> groupMaxSessionTimeoutMs;
 
-    public Optional<Output<String>> groupMaxSessionTimeoutMs() {
+    public Optional<Output<Integer>> groupMaxSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMaxSessionTimeoutMs);
     }
 
     @Import(name="groupMinSessionTimeoutMs")
-    private @Nullable Output<String> groupMinSessionTimeoutMs;
+    private @Nullable Output<Integer> groupMinSessionTimeoutMs;
 
-    public Optional<Output<String>> groupMinSessionTimeoutMs() {
+    public Optional<Output<Integer>> groupMinSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
     }
 
     @Import(name="logCleanerDeleteRetentionMs")
-    private @Nullable Output<String> logCleanerDeleteRetentionMs;
+    private @Nullable Output<Integer> logCleanerDeleteRetentionMs;
 
-    public Optional<Output<String>> logCleanerDeleteRetentionMs() {
+    public Optional<Output<Integer>> logCleanerDeleteRetentionMs() {
         return Optional.ofNullable(this.logCleanerDeleteRetentionMs);
     }
 
     @Import(name="logCleanerMaxCompactionLagMs")
-    private @Nullable Output<String> logCleanerMaxCompactionLagMs;
+    private @Nullable Output<Integer> logCleanerMaxCompactionLagMs;
 
-    public Optional<Output<String>> logCleanerMaxCompactionLagMs() {
+    public Optional<Output<Integer>> logCleanerMaxCompactionLagMs() {
         return Optional.ofNullable(this.logCleanerMaxCompactionLagMs);
     }
 
     @Import(name="logCleanerMinCleanableRatio")
-    private @Nullable Output<String> logCleanerMinCleanableRatio;
+    private @Nullable Output<Double> logCleanerMinCleanableRatio;
 
-    public Optional<Output<String>> logCleanerMinCleanableRatio() {
+    public Optional<Output<Double>> logCleanerMinCleanableRatio() {
         return Optional.ofNullable(this.logCleanerMinCleanableRatio);
     }
 
     @Import(name="logCleanerMinCompactionLagMs")
-    private @Nullable Output<String> logCleanerMinCompactionLagMs;
+    private @Nullable Output<Integer> logCleanerMinCompactionLagMs;
 
-    public Optional<Output<String>> logCleanerMinCompactionLagMs() {
+    public Optional<Output<Integer>> logCleanerMinCompactionLagMs() {
         return Optional.ofNullable(this.logCleanerMinCompactionLagMs);
     }
 
@@ -100,44 +103,44 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="logFlushIntervalMessages")
-    private @Nullable Output<String> logFlushIntervalMessages;
+    private @Nullable Output<Integer> logFlushIntervalMessages;
 
-    public Optional<Output<String>> logFlushIntervalMessages() {
+    public Optional<Output<Integer>> logFlushIntervalMessages() {
         return Optional.ofNullable(this.logFlushIntervalMessages);
     }
 
     @Import(name="logFlushIntervalMs")
-    private @Nullable Output<String> logFlushIntervalMs;
+    private @Nullable Output<Integer> logFlushIntervalMs;
 
-    public Optional<Output<String>> logFlushIntervalMs() {
+    public Optional<Output<Integer>> logFlushIntervalMs() {
         return Optional.ofNullable(this.logFlushIntervalMs);
     }
 
     @Import(name="logIndexIntervalBytes")
-    private @Nullable Output<String> logIndexIntervalBytes;
+    private @Nullable Output<Integer> logIndexIntervalBytes;
 
-    public Optional<Output<String>> logIndexIntervalBytes() {
+    public Optional<Output<Integer>> logIndexIntervalBytes() {
         return Optional.ofNullable(this.logIndexIntervalBytes);
     }
 
     @Import(name="logIndexSizeMaxBytes")
-    private @Nullable Output<String> logIndexSizeMaxBytes;
+    private @Nullable Output<Integer> logIndexSizeMaxBytes;
 
-    public Optional<Output<String>> logIndexSizeMaxBytes() {
+    public Optional<Output<Integer>> logIndexSizeMaxBytes() {
         return Optional.ofNullable(this.logIndexSizeMaxBytes);
     }
 
     @Import(name="logMessageDownconversionEnable")
-    private @Nullable Output<String> logMessageDownconversionEnable;
+    private @Nullable Output<Boolean> logMessageDownconversionEnable;
 
-    public Optional<Output<String>> logMessageDownconversionEnable() {
+    public Optional<Output<Boolean>> logMessageDownconversionEnable() {
         return Optional.ofNullable(this.logMessageDownconversionEnable);
     }
 
     @Import(name="logMessageTimestampDifferenceMaxMs")
-    private @Nullable Output<String> logMessageTimestampDifferenceMaxMs;
+    private @Nullable Output<Integer> logMessageTimestampDifferenceMaxMs;
 
-    public Optional<Output<String>> logMessageTimestampDifferenceMaxMs() {
+    public Optional<Output<Integer>> logMessageTimestampDifferenceMaxMs() {
         return Optional.ofNullable(this.logMessageTimestampDifferenceMaxMs);
     }
 
@@ -149,142 +152,142 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="logPreallocate")
-    private @Nullable Output<String> logPreallocate;
+    private @Nullable Output<Boolean> logPreallocate;
 
-    public Optional<Output<String>> logPreallocate() {
+    public Optional<Output<Boolean>> logPreallocate() {
         return Optional.ofNullable(this.logPreallocate);
     }
 
     @Import(name="logRetentionBytes")
-    private @Nullable Output<String> logRetentionBytes;
+    private @Nullable Output<Integer> logRetentionBytes;
 
-    public Optional<Output<String>> logRetentionBytes() {
+    public Optional<Output<Integer>> logRetentionBytes() {
         return Optional.ofNullable(this.logRetentionBytes);
     }
 
     @Import(name="logRetentionHours")
-    private @Nullable Output<String> logRetentionHours;
+    private @Nullable Output<Integer> logRetentionHours;
 
-    public Optional<Output<String>> logRetentionHours() {
+    public Optional<Output<Integer>> logRetentionHours() {
         return Optional.ofNullable(this.logRetentionHours);
     }
 
     @Import(name="logRetentionMs")
-    private @Nullable Output<String> logRetentionMs;
+    private @Nullable Output<Integer> logRetentionMs;
 
-    public Optional<Output<String>> logRetentionMs() {
+    public Optional<Output<Integer>> logRetentionMs() {
         return Optional.ofNullable(this.logRetentionMs);
     }
 
     @Import(name="logRollJitterMs")
-    private @Nullable Output<String> logRollJitterMs;
+    private @Nullable Output<Integer> logRollJitterMs;
 
-    public Optional<Output<String>> logRollJitterMs() {
+    public Optional<Output<Integer>> logRollJitterMs() {
         return Optional.ofNullable(this.logRollJitterMs);
     }
 
     @Import(name="logRollMs")
-    private @Nullable Output<String> logRollMs;
+    private @Nullable Output<Integer> logRollMs;
 
-    public Optional<Output<String>> logRollMs() {
+    public Optional<Output<Integer>> logRollMs() {
         return Optional.ofNullable(this.logRollMs);
     }
 
     @Import(name="logSegmentBytes")
-    private @Nullable Output<String> logSegmentBytes;
+    private @Nullable Output<Integer> logSegmentBytes;
 
-    public Optional<Output<String>> logSegmentBytes() {
+    public Optional<Output<Integer>> logSegmentBytes() {
         return Optional.ofNullable(this.logSegmentBytes);
     }
 
     @Import(name="logSegmentDeleteDelayMs")
-    private @Nullable Output<String> logSegmentDeleteDelayMs;
+    private @Nullable Output<Integer> logSegmentDeleteDelayMs;
 
-    public Optional<Output<String>> logSegmentDeleteDelayMs() {
+    public Optional<Output<Integer>> logSegmentDeleteDelayMs() {
         return Optional.ofNullable(this.logSegmentDeleteDelayMs);
     }
 
     @Import(name="maxConnectionsPerIp")
-    private @Nullable Output<String> maxConnectionsPerIp;
+    private @Nullable Output<Integer> maxConnectionsPerIp;
 
-    public Optional<Output<String>> maxConnectionsPerIp() {
+    public Optional<Output<Integer>> maxConnectionsPerIp() {
         return Optional.ofNullable(this.maxConnectionsPerIp);
     }
 
     @Import(name="maxIncrementalFetchSessionCacheSlots")
-    private @Nullable Output<String> maxIncrementalFetchSessionCacheSlots;
+    private @Nullable Output<Integer> maxIncrementalFetchSessionCacheSlots;
 
-    public Optional<Output<String>> maxIncrementalFetchSessionCacheSlots() {
+    public Optional<Output<Integer>> maxIncrementalFetchSessionCacheSlots() {
         return Optional.ofNullable(this.maxIncrementalFetchSessionCacheSlots);
     }
 
     @Import(name="messageMaxBytes")
-    private @Nullable Output<String> messageMaxBytes;
+    private @Nullable Output<Integer> messageMaxBytes;
 
-    public Optional<Output<String>> messageMaxBytes() {
+    public Optional<Output<Integer>> messageMaxBytes() {
         return Optional.ofNullable(this.messageMaxBytes);
     }
 
     @Import(name="minInsyncReplicas")
-    private @Nullable Output<String> minInsyncReplicas;
+    private @Nullable Output<Integer> minInsyncReplicas;
 
-    public Optional<Output<String>> minInsyncReplicas() {
+    public Optional<Output<Integer>> minInsyncReplicas() {
         return Optional.ofNullable(this.minInsyncReplicas);
     }
 
     @Import(name="numPartitions")
-    private @Nullable Output<String> numPartitions;
+    private @Nullable Output<Integer> numPartitions;
 
-    public Optional<Output<String>> numPartitions() {
+    public Optional<Output<Integer>> numPartitions() {
         return Optional.ofNullable(this.numPartitions);
     }
 
     @Import(name="offsetsRetentionMinutes")
-    private @Nullable Output<String> offsetsRetentionMinutes;
+    private @Nullable Output<Integer> offsetsRetentionMinutes;
 
-    public Optional<Output<String>> offsetsRetentionMinutes() {
+    public Optional<Output<Integer>> offsetsRetentionMinutes() {
         return Optional.ofNullable(this.offsetsRetentionMinutes);
     }
 
     @Import(name="producerPurgatoryPurgeIntervalRequests")
-    private @Nullable Output<String> producerPurgatoryPurgeIntervalRequests;
+    private @Nullable Output<Integer> producerPurgatoryPurgeIntervalRequests;
 
-    public Optional<Output<String>> producerPurgatoryPurgeIntervalRequests() {
+    public Optional<Output<Integer>> producerPurgatoryPurgeIntervalRequests() {
         return Optional.ofNullable(this.producerPurgatoryPurgeIntervalRequests);
     }
 
     @Import(name="replicaFetchMaxBytes")
-    private @Nullable Output<String> replicaFetchMaxBytes;
+    private @Nullable Output<Integer> replicaFetchMaxBytes;
 
-    public Optional<Output<String>> replicaFetchMaxBytes() {
+    public Optional<Output<Integer>> replicaFetchMaxBytes() {
         return Optional.ofNullable(this.replicaFetchMaxBytes);
     }
 
     @Import(name="replicaFetchResponseMaxBytes")
-    private @Nullable Output<String> replicaFetchResponseMaxBytes;
+    private @Nullable Output<Integer> replicaFetchResponseMaxBytes;
 
-    public Optional<Output<String>> replicaFetchResponseMaxBytes() {
+    public Optional<Output<Integer>> replicaFetchResponseMaxBytes() {
         return Optional.ofNullable(this.replicaFetchResponseMaxBytes);
     }
 
     @Import(name="socketRequestMaxBytes")
-    private @Nullable Output<String> socketRequestMaxBytes;
+    private @Nullable Output<Integer> socketRequestMaxBytes;
 
-    public Optional<Output<String>> socketRequestMaxBytes() {
+    public Optional<Output<Integer>> socketRequestMaxBytes() {
         return Optional.ofNullable(this.socketRequestMaxBytes);
     }
 
     @Import(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
-    private @Nullable Output<String> transactionRemoveExpiredTransactionCleanupIntervalMs;
+    private @Nullable Output<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs;
 
-    public Optional<Output<String>> transactionRemoveExpiredTransactionCleanupIntervalMs() {
+    public Optional<Output<Integer>> transactionRemoveExpiredTransactionCleanupIntervalMs() {
         return Optional.ofNullable(this.transactionRemoveExpiredTransactionCleanupIntervalMs);
     }
 
     @Import(name="transactionStateLogSegmentBytes")
-    private @Nullable Output<String> transactionStateLogSegmentBytes;
+    private @Nullable Output<Integer> transactionStateLogSegmentBytes;
 
-    public Optional<Output<String>> transactionStateLogSegmentBytes() {
+    public Optional<Output<Integer>> transactionStateLogSegmentBytes() {
         return Optional.ofNullable(this.transactionStateLogSegmentBytes);
     }
 
@@ -350,12 +353,12 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
             $ = new KafkaKafkaUserConfigKafkaArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder autoCreateTopicsEnable(@Nullable Output<String> autoCreateTopicsEnable) {
+        public Builder autoCreateTopicsEnable(@Nullable Output<Boolean> autoCreateTopicsEnable) {
             $.autoCreateTopicsEnable = autoCreateTopicsEnable;
             return this;
         }
 
-        public Builder autoCreateTopicsEnable(String autoCreateTopicsEnable) {
+        public Builder autoCreateTopicsEnable(Boolean autoCreateTopicsEnable) {
             return autoCreateTopicsEnable(Output.of(autoCreateTopicsEnable));
         }
 
@@ -368,84 +371,84 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
             return compressionType(Output.of(compressionType));
         }
 
-        public Builder connectionsMaxIdleMs(@Nullable Output<String> connectionsMaxIdleMs) {
+        public Builder connectionsMaxIdleMs(@Nullable Output<Integer> connectionsMaxIdleMs) {
             $.connectionsMaxIdleMs = connectionsMaxIdleMs;
             return this;
         }
 
-        public Builder connectionsMaxIdleMs(String connectionsMaxIdleMs) {
+        public Builder connectionsMaxIdleMs(Integer connectionsMaxIdleMs) {
             return connectionsMaxIdleMs(Output.of(connectionsMaxIdleMs));
         }
 
-        public Builder defaultReplicationFactor(@Nullable Output<String> defaultReplicationFactor) {
+        public Builder defaultReplicationFactor(@Nullable Output<Integer> defaultReplicationFactor) {
             $.defaultReplicationFactor = defaultReplicationFactor;
             return this;
         }
 
-        public Builder defaultReplicationFactor(String defaultReplicationFactor) {
+        public Builder defaultReplicationFactor(Integer defaultReplicationFactor) {
             return defaultReplicationFactor(Output.of(defaultReplicationFactor));
         }
 
-        public Builder groupInitialRebalanceDelayMs(@Nullable Output<String> groupInitialRebalanceDelayMs) {
+        public Builder groupInitialRebalanceDelayMs(@Nullable Output<Integer> groupInitialRebalanceDelayMs) {
             $.groupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             return this;
         }
 
-        public Builder groupInitialRebalanceDelayMs(String groupInitialRebalanceDelayMs) {
+        public Builder groupInitialRebalanceDelayMs(Integer groupInitialRebalanceDelayMs) {
             return groupInitialRebalanceDelayMs(Output.of(groupInitialRebalanceDelayMs));
         }
 
-        public Builder groupMaxSessionTimeoutMs(@Nullable Output<String> groupMaxSessionTimeoutMs) {
+        public Builder groupMaxSessionTimeoutMs(@Nullable Output<Integer> groupMaxSessionTimeoutMs) {
             $.groupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             return this;
         }
 
-        public Builder groupMaxSessionTimeoutMs(String groupMaxSessionTimeoutMs) {
+        public Builder groupMaxSessionTimeoutMs(Integer groupMaxSessionTimeoutMs) {
             return groupMaxSessionTimeoutMs(Output.of(groupMaxSessionTimeoutMs));
         }
 
-        public Builder groupMinSessionTimeoutMs(@Nullable Output<String> groupMinSessionTimeoutMs) {
+        public Builder groupMinSessionTimeoutMs(@Nullable Output<Integer> groupMinSessionTimeoutMs) {
             $.groupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
             return this;
         }
 
-        public Builder groupMinSessionTimeoutMs(String groupMinSessionTimeoutMs) {
+        public Builder groupMinSessionTimeoutMs(Integer groupMinSessionTimeoutMs) {
             return groupMinSessionTimeoutMs(Output.of(groupMinSessionTimeoutMs));
         }
 
-        public Builder logCleanerDeleteRetentionMs(@Nullable Output<String> logCleanerDeleteRetentionMs) {
+        public Builder logCleanerDeleteRetentionMs(@Nullable Output<Integer> logCleanerDeleteRetentionMs) {
             $.logCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             return this;
         }
 
-        public Builder logCleanerDeleteRetentionMs(String logCleanerDeleteRetentionMs) {
+        public Builder logCleanerDeleteRetentionMs(Integer logCleanerDeleteRetentionMs) {
             return logCleanerDeleteRetentionMs(Output.of(logCleanerDeleteRetentionMs));
         }
 
-        public Builder logCleanerMaxCompactionLagMs(@Nullable Output<String> logCleanerMaxCompactionLagMs) {
+        public Builder logCleanerMaxCompactionLagMs(@Nullable Output<Integer> logCleanerMaxCompactionLagMs) {
             $.logCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             return this;
         }
 
-        public Builder logCleanerMaxCompactionLagMs(String logCleanerMaxCompactionLagMs) {
+        public Builder logCleanerMaxCompactionLagMs(Integer logCleanerMaxCompactionLagMs) {
             return logCleanerMaxCompactionLagMs(Output.of(logCleanerMaxCompactionLagMs));
         }
 
-        public Builder logCleanerMinCleanableRatio(@Nullable Output<String> logCleanerMinCleanableRatio) {
+        public Builder logCleanerMinCleanableRatio(@Nullable Output<Double> logCleanerMinCleanableRatio) {
             $.logCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
             return this;
         }
 
-        public Builder logCleanerMinCleanableRatio(String logCleanerMinCleanableRatio) {
+        public Builder logCleanerMinCleanableRatio(Double logCleanerMinCleanableRatio) {
             return logCleanerMinCleanableRatio(Output.of(logCleanerMinCleanableRatio));
         }
 
-        public Builder logCleanerMinCompactionLagMs(@Nullable Output<String> logCleanerMinCompactionLagMs) {
+        public Builder logCleanerMinCompactionLagMs(@Nullable Output<Integer> logCleanerMinCompactionLagMs) {
             $.logCleanerMinCompactionLagMs = logCleanerMinCompactionLagMs;
             return this;
         }
 
-        public Builder logCleanerMinCompactionLagMs(String logCleanerMinCompactionLagMs) {
+        public Builder logCleanerMinCompactionLagMs(Integer logCleanerMinCompactionLagMs) {
             return logCleanerMinCompactionLagMs(Output.of(logCleanerMinCompactionLagMs));
         }
 
@@ -458,57 +461,57 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
             return logCleanupPolicy(Output.of(logCleanupPolicy));
         }
 
-        public Builder logFlushIntervalMessages(@Nullable Output<String> logFlushIntervalMessages) {
+        public Builder logFlushIntervalMessages(@Nullable Output<Integer> logFlushIntervalMessages) {
             $.logFlushIntervalMessages = logFlushIntervalMessages;
             return this;
         }
 
-        public Builder logFlushIntervalMessages(String logFlushIntervalMessages) {
+        public Builder logFlushIntervalMessages(Integer logFlushIntervalMessages) {
             return logFlushIntervalMessages(Output.of(logFlushIntervalMessages));
         }
 
-        public Builder logFlushIntervalMs(@Nullable Output<String> logFlushIntervalMs) {
+        public Builder logFlushIntervalMs(@Nullable Output<Integer> logFlushIntervalMs) {
             $.logFlushIntervalMs = logFlushIntervalMs;
             return this;
         }
 
-        public Builder logFlushIntervalMs(String logFlushIntervalMs) {
+        public Builder logFlushIntervalMs(Integer logFlushIntervalMs) {
             return logFlushIntervalMs(Output.of(logFlushIntervalMs));
         }
 
-        public Builder logIndexIntervalBytes(@Nullable Output<String> logIndexIntervalBytes) {
+        public Builder logIndexIntervalBytes(@Nullable Output<Integer> logIndexIntervalBytes) {
             $.logIndexIntervalBytes = logIndexIntervalBytes;
             return this;
         }
 
-        public Builder logIndexIntervalBytes(String logIndexIntervalBytes) {
+        public Builder logIndexIntervalBytes(Integer logIndexIntervalBytes) {
             return logIndexIntervalBytes(Output.of(logIndexIntervalBytes));
         }
 
-        public Builder logIndexSizeMaxBytes(@Nullable Output<String> logIndexSizeMaxBytes) {
+        public Builder logIndexSizeMaxBytes(@Nullable Output<Integer> logIndexSizeMaxBytes) {
             $.logIndexSizeMaxBytes = logIndexSizeMaxBytes;
             return this;
         }
 
-        public Builder logIndexSizeMaxBytes(String logIndexSizeMaxBytes) {
+        public Builder logIndexSizeMaxBytes(Integer logIndexSizeMaxBytes) {
             return logIndexSizeMaxBytes(Output.of(logIndexSizeMaxBytes));
         }
 
-        public Builder logMessageDownconversionEnable(@Nullable Output<String> logMessageDownconversionEnable) {
+        public Builder logMessageDownconversionEnable(@Nullable Output<Boolean> logMessageDownconversionEnable) {
             $.logMessageDownconversionEnable = logMessageDownconversionEnable;
             return this;
         }
 
-        public Builder logMessageDownconversionEnable(String logMessageDownconversionEnable) {
+        public Builder logMessageDownconversionEnable(Boolean logMessageDownconversionEnable) {
             return logMessageDownconversionEnable(Output.of(logMessageDownconversionEnable));
         }
 
-        public Builder logMessageTimestampDifferenceMaxMs(@Nullable Output<String> logMessageTimestampDifferenceMaxMs) {
+        public Builder logMessageTimestampDifferenceMaxMs(@Nullable Output<Integer> logMessageTimestampDifferenceMaxMs) {
             $.logMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             return this;
         }
 
-        public Builder logMessageTimestampDifferenceMaxMs(String logMessageTimestampDifferenceMaxMs) {
+        public Builder logMessageTimestampDifferenceMaxMs(Integer logMessageTimestampDifferenceMaxMs) {
             return logMessageTimestampDifferenceMaxMs(Output.of(logMessageTimestampDifferenceMaxMs));
         }
 
@@ -521,183 +524,183 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
             return logMessageTimestampType(Output.of(logMessageTimestampType));
         }
 
-        public Builder logPreallocate(@Nullable Output<String> logPreallocate) {
+        public Builder logPreallocate(@Nullable Output<Boolean> logPreallocate) {
             $.logPreallocate = logPreallocate;
             return this;
         }
 
-        public Builder logPreallocate(String logPreallocate) {
+        public Builder logPreallocate(Boolean logPreallocate) {
             return logPreallocate(Output.of(logPreallocate));
         }
 
-        public Builder logRetentionBytes(@Nullable Output<String> logRetentionBytes) {
+        public Builder logRetentionBytes(@Nullable Output<Integer> logRetentionBytes) {
             $.logRetentionBytes = logRetentionBytes;
             return this;
         }
 
-        public Builder logRetentionBytes(String logRetentionBytes) {
+        public Builder logRetentionBytes(Integer logRetentionBytes) {
             return logRetentionBytes(Output.of(logRetentionBytes));
         }
 
-        public Builder logRetentionHours(@Nullable Output<String> logRetentionHours) {
+        public Builder logRetentionHours(@Nullable Output<Integer> logRetentionHours) {
             $.logRetentionHours = logRetentionHours;
             return this;
         }
 
-        public Builder logRetentionHours(String logRetentionHours) {
+        public Builder logRetentionHours(Integer logRetentionHours) {
             return logRetentionHours(Output.of(logRetentionHours));
         }
 
-        public Builder logRetentionMs(@Nullable Output<String> logRetentionMs) {
+        public Builder logRetentionMs(@Nullable Output<Integer> logRetentionMs) {
             $.logRetentionMs = logRetentionMs;
             return this;
         }
 
-        public Builder logRetentionMs(String logRetentionMs) {
+        public Builder logRetentionMs(Integer logRetentionMs) {
             return logRetentionMs(Output.of(logRetentionMs));
         }
 
-        public Builder logRollJitterMs(@Nullable Output<String> logRollJitterMs) {
+        public Builder logRollJitterMs(@Nullable Output<Integer> logRollJitterMs) {
             $.logRollJitterMs = logRollJitterMs;
             return this;
         }
 
-        public Builder logRollJitterMs(String logRollJitterMs) {
+        public Builder logRollJitterMs(Integer logRollJitterMs) {
             return logRollJitterMs(Output.of(logRollJitterMs));
         }
 
-        public Builder logRollMs(@Nullable Output<String> logRollMs) {
+        public Builder logRollMs(@Nullable Output<Integer> logRollMs) {
             $.logRollMs = logRollMs;
             return this;
         }
 
-        public Builder logRollMs(String logRollMs) {
+        public Builder logRollMs(Integer logRollMs) {
             return logRollMs(Output.of(logRollMs));
         }
 
-        public Builder logSegmentBytes(@Nullable Output<String> logSegmentBytes) {
+        public Builder logSegmentBytes(@Nullable Output<Integer> logSegmentBytes) {
             $.logSegmentBytes = logSegmentBytes;
             return this;
         }
 
-        public Builder logSegmentBytes(String logSegmentBytes) {
+        public Builder logSegmentBytes(Integer logSegmentBytes) {
             return logSegmentBytes(Output.of(logSegmentBytes));
         }
 
-        public Builder logSegmentDeleteDelayMs(@Nullable Output<String> logSegmentDeleteDelayMs) {
+        public Builder logSegmentDeleteDelayMs(@Nullable Output<Integer> logSegmentDeleteDelayMs) {
             $.logSegmentDeleteDelayMs = logSegmentDeleteDelayMs;
             return this;
         }
 
-        public Builder logSegmentDeleteDelayMs(String logSegmentDeleteDelayMs) {
+        public Builder logSegmentDeleteDelayMs(Integer logSegmentDeleteDelayMs) {
             return logSegmentDeleteDelayMs(Output.of(logSegmentDeleteDelayMs));
         }
 
-        public Builder maxConnectionsPerIp(@Nullable Output<String> maxConnectionsPerIp) {
+        public Builder maxConnectionsPerIp(@Nullable Output<Integer> maxConnectionsPerIp) {
             $.maxConnectionsPerIp = maxConnectionsPerIp;
             return this;
         }
 
-        public Builder maxConnectionsPerIp(String maxConnectionsPerIp) {
+        public Builder maxConnectionsPerIp(Integer maxConnectionsPerIp) {
             return maxConnectionsPerIp(Output.of(maxConnectionsPerIp));
         }
 
-        public Builder maxIncrementalFetchSessionCacheSlots(@Nullable Output<String> maxIncrementalFetchSessionCacheSlots) {
+        public Builder maxIncrementalFetchSessionCacheSlots(@Nullable Output<Integer> maxIncrementalFetchSessionCacheSlots) {
             $.maxIncrementalFetchSessionCacheSlots = maxIncrementalFetchSessionCacheSlots;
             return this;
         }
 
-        public Builder maxIncrementalFetchSessionCacheSlots(String maxIncrementalFetchSessionCacheSlots) {
+        public Builder maxIncrementalFetchSessionCacheSlots(Integer maxIncrementalFetchSessionCacheSlots) {
             return maxIncrementalFetchSessionCacheSlots(Output.of(maxIncrementalFetchSessionCacheSlots));
         }
 
-        public Builder messageMaxBytes(@Nullable Output<String> messageMaxBytes) {
+        public Builder messageMaxBytes(@Nullable Output<Integer> messageMaxBytes) {
             $.messageMaxBytes = messageMaxBytes;
             return this;
         }
 
-        public Builder messageMaxBytes(String messageMaxBytes) {
+        public Builder messageMaxBytes(Integer messageMaxBytes) {
             return messageMaxBytes(Output.of(messageMaxBytes));
         }
 
-        public Builder minInsyncReplicas(@Nullable Output<String> minInsyncReplicas) {
+        public Builder minInsyncReplicas(@Nullable Output<Integer> minInsyncReplicas) {
             $.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
 
-        public Builder minInsyncReplicas(String minInsyncReplicas) {
+        public Builder minInsyncReplicas(Integer minInsyncReplicas) {
             return minInsyncReplicas(Output.of(minInsyncReplicas));
         }
 
-        public Builder numPartitions(@Nullable Output<String> numPartitions) {
+        public Builder numPartitions(@Nullable Output<Integer> numPartitions) {
             $.numPartitions = numPartitions;
             return this;
         }
 
-        public Builder numPartitions(String numPartitions) {
+        public Builder numPartitions(Integer numPartitions) {
             return numPartitions(Output.of(numPartitions));
         }
 
-        public Builder offsetsRetentionMinutes(@Nullable Output<String> offsetsRetentionMinutes) {
+        public Builder offsetsRetentionMinutes(@Nullable Output<Integer> offsetsRetentionMinutes) {
             $.offsetsRetentionMinutes = offsetsRetentionMinutes;
             return this;
         }
 
-        public Builder offsetsRetentionMinutes(String offsetsRetentionMinutes) {
+        public Builder offsetsRetentionMinutes(Integer offsetsRetentionMinutes) {
             return offsetsRetentionMinutes(Output.of(offsetsRetentionMinutes));
         }
 
-        public Builder producerPurgatoryPurgeIntervalRequests(@Nullable Output<String> producerPurgatoryPurgeIntervalRequests) {
+        public Builder producerPurgatoryPurgeIntervalRequests(@Nullable Output<Integer> producerPurgatoryPurgeIntervalRequests) {
             $.producerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;
             return this;
         }
 
-        public Builder producerPurgatoryPurgeIntervalRequests(String producerPurgatoryPurgeIntervalRequests) {
+        public Builder producerPurgatoryPurgeIntervalRequests(Integer producerPurgatoryPurgeIntervalRequests) {
             return producerPurgatoryPurgeIntervalRequests(Output.of(producerPurgatoryPurgeIntervalRequests));
         }
 
-        public Builder replicaFetchMaxBytes(@Nullable Output<String> replicaFetchMaxBytes) {
+        public Builder replicaFetchMaxBytes(@Nullable Output<Integer> replicaFetchMaxBytes) {
             $.replicaFetchMaxBytes = replicaFetchMaxBytes;
             return this;
         }
 
-        public Builder replicaFetchMaxBytes(String replicaFetchMaxBytes) {
+        public Builder replicaFetchMaxBytes(Integer replicaFetchMaxBytes) {
             return replicaFetchMaxBytes(Output.of(replicaFetchMaxBytes));
         }
 
-        public Builder replicaFetchResponseMaxBytes(@Nullable Output<String> replicaFetchResponseMaxBytes) {
+        public Builder replicaFetchResponseMaxBytes(@Nullable Output<Integer> replicaFetchResponseMaxBytes) {
             $.replicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
             return this;
         }
 
-        public Builder replicaFetchResponseMaxBytes(String replicaFetchResponseMaxBytes) {
+        public Builder replicaFetchResponseMaxBytes(Integer replicaFetchResponseMaxBytes) {
             return replicaFetchResponseMaxBytes(Output.of(replicaFetchResponseMaxBytes));
         }
 
-        public Builder socketRequestMaxBytes(@Nullable Output<String> socketRequestMaxBytes) {
+        public Builder socketRequestMaxBytes(@Nullable Output<Integer> socketRequestMaxBytes) {
             $.socketRequestMaxBytes = socketRequestMaxBytes;
             return this;
         }
 
-        public Builder socketRequestMaxBytes(String socketRequestMaxBytes) {
+        public Builder socketRequestMaxBytes(Integer socketRequestMaxBytes) {
             return socketRequestMaxBytes(Output.of(socketRequestMaxBytes));
         }
 
-        public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(@Nullable Output<String> transactionRemoveExpiredTransactionCleanupIntervalMs) {
+        public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(@Nullable Output<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs) {
             $.transactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
             return this;
         }
 
-        public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(String transactionRemoveExpiredTransactionCleanupIntervalMs) {
+        public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(Integer transactionRemoveExpiredTransactionCleanupIntervalMs) {
             return transactionRemoveExpiredTransactionCleanupIntervalMs(Output.of(transactionRemoveExpiredTransactionCleanupIntervalMs));
         }
 
-        public Builder transactionStateLogSegmentBytes(@Nullable Output<String> transactionStateLogSegmentBytes) {
+        public Builder transactionStateLogSegmentBytes(@Nullable Output<Integer> transactionStateLogSegmentBytes) {
             $.transactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
             return this;
         }
 
-        public Builder transactionStateLogSegmentBytes(String transactionStateLogSegmentBytes) {
+        public Builder transactionStateLogSegmentBytes(Integer transactionStateLogSegmentBytes) {
             return transactionStateLogSegmentBytes(Output.of(transactionStateLogSegmentBytes));
         }
 

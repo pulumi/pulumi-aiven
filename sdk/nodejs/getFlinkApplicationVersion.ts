@@ -89,9 +89,17 @@ export interface GetFlinkApplicationVersionResult {
      */
     readonly serviceName: string;
     /**
+     * Application sink
+     */
+    readonly sink: outputs.GetFlinkApplicationVersionSink[];
+    /**
      * Application sinks
      */
     readonly sinks: outputs.GetFlinkApplicationVersionSink[];
+    /**
+     * Application source
+     */
+    readonly source: outputs.GetFlinkApplicationVersionSource[];
     /**
      * Application sources
      */

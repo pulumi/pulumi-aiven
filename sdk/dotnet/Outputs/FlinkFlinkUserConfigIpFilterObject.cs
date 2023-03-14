@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class FlinkFlinkUserConfigIpFilterObject
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private FlinkFlinkUserConfigIpFilterObject(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

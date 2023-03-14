@@ -79,7 +79,7 @@ export class AzurePrivatelink extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
+     * A List of allowed Subscription IDs. Maximum length: `16`.
      */
     public readonly userSubscriptionIds!: pulumi.Output<string[]>;
 
@@ -156,7 +156,7 @@ export interface AzurePrivatelinkState {
      */
     state?: pulumi.Input<string>;
     /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
+     * A List of allowed Subscription IDs. Maximum length: `16`.
      */
     userSubscriptionIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -174,7 +174,7 @@ export interface AzurePrivatelinkArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
+     * A List of allowed Subscription IDs. Maximum length: `16`.
      */
     userSubscriptionIds: pulumi.Input<pulumi.Input<string>[]>;
 }

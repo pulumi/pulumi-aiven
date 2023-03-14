@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,30 +13,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigKafkaRestConfig {
-    private @Nullable String consumerEnableAutoCommit;
-    private @Nullable String consumerRequestMaxBytes;
-    private @Nullable String consumerRequestTimeoutMs;
+    private @Nullable Boolean consumerEnableAutoCommit;
+    private @Nullable Integer consumerRequestMaxBytes;
+    private @Nullable Integer consumerRequestTimeoutMs;
     private @Nullable String producerAcks;
-    private @Nullable String producerLingerMs;
-    private @Nullable String simpleconsumerPoolSizeMax;
+    private @Nullable String producerCompressionType;
+    private @Nullable Integer producerLingerMs;
+    private @Nullable Integer simpleconsumerPoolSizeMax;
 
     private GetKafkaKafkaUserConfigKafkaRestConfig() {}
-    public Optional<String> consumerEnableAutoCommit() {
+    public Optional<Boolean> consumerEnableAutoCommit() {
         return Optional.ofNullable(this.consumerEnableAutoCommit);
     }
-    public Optional<String> consumerRequestMaxBytes() {
+    public Optional<Integer> consumerRequestMaxBytes() {
         return Optional.ofNullable(this.consumerRequestMaxBytes);
     }
-    public Optional<String> consumerRequestTimeoutMs() {
+    public Optional<Integer> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
     public Optional<String> producerAcks() {
         return Optional.ofNullable(this.producerAcks);
     }
-    public Optional<String> producerLingerMs() {
+    public Optional<String> producerCompressionType() {
+        return Optional.ofNullable(this.producerCompressionType);
+    }
+    public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
-    public Optional<String> simpleconsumerPoolSizeMax() {
+    public Optional<Integer> simpleconsumerPoolSizeMax() {
         return Optional.ofNullable(this.simpleconsumerPoolSizeMax);
     }
 
@@ -47,12 +53,13 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String consumerEnableAutoCommit;
-        private @Nullable String consumerRequestMaxBytes;
-        private @Nullable String consumerRequestTimeoutMs;
+        private @Nullable Boolean consumerEnableAutoCommit;
+        private @Nullable Integer consumerRequestMaxBytes;
+        private @Nullable Integer consumerRequestTimeoutMs;
         private @Nullable String producerAcks;
-        private @Nullable String producerLingerMs;
-        private @Nullable String simpleconsumerPoolSizeMax;
+        private @Nullable String producerCompressionType;
+        private @Nullable Integer producerLingerMs;
+        private @Nullable Integer simpleconsumerPoolSizeMax;
         public Builder() {}
         public Builder(GetKafkaKafkaUserConfigKafkaRestConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,22 +67,23 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
     	      this.consumerRequestMaxBytes = defaults.consumerRequestMaxBytes;
     	      this.consumerRequestTimeoutMs = defaults.consumerRequestTimeoutMs;
     	      this.producerAcks = defaults.producerAcks;
+    	      this.producerCompressionType = defaults.producerCompressionType;
     	      this.producerLingerMs = defaults.producerLingerMs;
     	      this.simpleconsumerPoolSizeMax = defaults.simpleconsumerPoolSizeMax;
         }
 
         @CustomType.Setter
-        public Builder consumerEnableAutoCommit(@Nullable String consumerEnableAutoCommit) {
+        public Builder consumerEnableAutoCommit(@Nullable Boolean consumerEnableAutoCommit) {
             this.consumerEnableAutoCommit = consumerEnableAutoCommit;
             return this;
         }
         @CustomType.Setter
-        public Builder consumerRequestMaxBytes(@Nullable String consumerRequestMaxBytes) {
+        public Builder consumerRequestMaxBytes(@Nullable Integer consumerRequestMaxBytes) {
             this.consumerRequestMaxBytes = consumerRequestMaxBytes;
             return this;
         }
         @CustomType.Setter
-        public Builder consumerRequestTimeoutMs(@Nullable String consumerRequestTimeoutMs) {
+        public Builder consumerRequestTimeoutMs(@Nullable Integer consumerRequestTimeoutMs) {
             this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             return this;
         }
@@ -85,12 +93,17 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder producerLingerMs(@Nullable String producerLingerMs) {
+        public Builder producerCompressionType(@Nullable String producerCompressionType) {
+            this.producerCompressionType = producerCompressionType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
             this.producerLingerMs = producerLingerMs;
             return this;
         }
         @CustomType.Setter
-        public Builder simpleconsumerPoolSizeMax(@Nullable String simpleconsumerPoolSizeMax) {
+        public Builder simpleconsumerPoolSizeMax(@Nullable Integer simpleconsumerPoolSizeMax) {
             this.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return this;
         }
@@ -100,6 +113,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
             o.consumerRequestMaxBytes = consumerRequestMaxBytes;
             o.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             o.producerAcks = producerAcks;
+            o.producerCompressionType = producerCompressionType;
             o.producerLingerMs = producerLingerMs;
             o.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return o;

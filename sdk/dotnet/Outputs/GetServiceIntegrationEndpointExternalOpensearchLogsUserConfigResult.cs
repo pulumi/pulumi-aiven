@@ -14,20 +14,20 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult
     {
         public readonly string? Ca;
-        public readonly string? IndexDaysMax;
+        public readonly int? IndexDaysMax;
         public readonly string? IndexPrefix;
-        public readonly string? Timeout;
+        public readonly double? Timeout;
         public readonly string? Url;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult(
             string? ca,
 
-            string? indexDaysMax,
+            int? indexDaysMax,
 
             string? indexPrefix,
 
-            string? timeout,
+            double? timeout,
 
             string? url)
         {

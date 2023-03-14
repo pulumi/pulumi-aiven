@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _basicAuthPassword;
 
         /// <summary>
-        /// Prometheus basic authentication password
+        /// Prometheus basic authentication password.
         /// </summary>
         public Input<string>? BasicAuthPassword
         {
@@ -29,7 +29,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Prometheus basic authentication username
+        /// Prometheus basic authentication username.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }

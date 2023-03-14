@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("grafana")]
-        public Input<string>? Grafana { get; set; }
+        public Input<bool>? Grafana { get; set; }
 
         public GrafanaGrafanaUserConfigPublicAccessArgs()
         {

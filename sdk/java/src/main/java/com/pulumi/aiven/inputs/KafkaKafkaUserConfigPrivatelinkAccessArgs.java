@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,9 +16,9 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     public static final KafkaKafkaUserConfigPrivatelinkAccessArgs Empty = new KafkaKafkaUserConfigPrivatelinkAccessArgs();
 
     @Import(name="jolokia")
-    private @Nullable Output<String> jolokia;
+    private @Nullable Output<Boolean> jolokia;
 
-    public Optional<Output<String>> jolokia() {
+    public Optional<Output<Boolean>> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
 
@@ -27,41 +27,41 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
      * 
      */
     @Import(name="kafka")
-    private @Nullable Output<String> kafka;
+    private @Nullable Output<Boolean> kafka;
 
     /**
      * @return Kafka server provided values
      * 
      */
-    public Optional<Output<String>> kafka() {
+    public Optional<Output<Boolean>> kafka() {
         return Optional.ofNullable(this.kafka);
     }
 
     @Import(name="kafkaConnect")
-    private @Nullable Output<String> kafkaConnect;
+    private @Nullable Output<Boolean> kafkaConnect;
 
-    public Optional<Output<String>> kafkaConnect() {
+    public Optional<Output<Boolean>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
     @Import(name="kafkaRest")
-    private @Nullable Output<String> kafkaRest;
+    private @Nullable Output<Boolean> kafkaRest;
 
-    public Optional<Output<String>> kafkaRest() {
+    public Optional<Output<Boolean>> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
     @Import(name="schemaRegistry")
-    private @Nullable Output<String> schemaRegistry;
+    private @Nullable Output<Boolean> schemaRegistry;
 
-    public Optional<Output<String>> schemaRegistry() {
+    public Optional<Output<Boolean>> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
 
@@ -94,12 +94,12 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
             $ = new KafkaKafkaUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder jolokia(@Nullable Output<String> jolokia) {
+        public Builder jolokia(@Nullable Output<Boolean> jolokia) {
             $.jolokia = jolokia;
             return this;
         }
 
-        public Builder jolokia(String jolokia) {
+        public Builder jolokia(Boolean jolokia) {
             return jolokia(Output.of(jolokia));
         }
 
@@ -109,7 +109,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder kafka(@Nullable Output<String> kafka) {
+        public Builder kafka(@Nullable Output<Boolean> kafka) {
             $.kafka = kafka;
             return this;
         }
@@ -120,43 +120,43 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder kafka(String kafka) {
+        public Builder kafka(Boolean kafka) {
             return kafka(Output.of(kafka));
         }
 
-        public Builder kafkaConnect(@Nullable Output<String> kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
-        public Builder kafkaConnect(String kafkaConnect) {
+        public Builder kafkaConnect(Boolean kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
-        public Builder kafkaRest(@Nullable Output<String> kafkaRest) {
+        public Builder kafkaRest(@Nullable Output<Boolean> kafkaRest) {
             $.kafkaRest = kafkaRest;
             return this;
         }
 
-        public Builder kafkaRest(String kafkaRest) {
+        public Builder kafkaRest(Boolean kafkaRest) {
             return kafkaRest(Output.of(kafkaRest));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 
-        public Builder schemaRegistry(@Nullable Output<String> schemaRegistry) {
+        public Builder schemaRegistry(@Nullable Output<Boolean> schemaRegistry) {
             $.schemaRegistry = schemaRegistry;
             return this;
         }
 
-        public Builder schemaRegistry(String schemaRegistry) {
+        public Builder schemaRegistry(Boolean schemaRegistry) {
             return schemaRegistry(Output.of(schemaRegistry));
         }
 

@@ -23,9 +23,9 @@ import * as utilities from "./utilities";
  *     kafkaMirrormakerUserConfig: {
  *         ipFilters: ["0.0.0.0/0"],
  *         kafkaMirrormaker: {
- *             refreshGroupsIntervalSeconds: "600",
- *             refreshTopicsEnabled: "true",
- *             refreshTopicsIntervalSeconds: "600",
+ *             refreshGroupsIntervalSeconds: 600,
+ *             refreshTopicsEnabled: true,
+ *             refreshTopicsIntervalSeconds: 600,
  *         },
  *     },
  * });

@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,20 +20,20 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
      * 
      */
     @Import(name="flink")
-    private @Nullable Output<String> flink;
+    private @Nullable Output<Boolean> flink;
 
     /**
      * @return Flink server provided values
      * 
      */
-    public Optional<Output<String>> flink() {
+    public Optional<Output<Boolean>> flink() {
         return Optional.ofNullable(this.flink);
     }
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -68,7 +68,7 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder flink(@Nullable Output<String> flink) {
+        public Builder flink(@Nullable Output<Boolean> flink) {
             $.flink = flink;
             return this;
         }
@@ -79,16 +79,16 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder flink(String flink) {
+        public Builder flink(Boolean flink) {
             return flink(Output.of(flink));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 

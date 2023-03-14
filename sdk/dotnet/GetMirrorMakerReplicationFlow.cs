@@ -88,13 +88,13 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Source cluster alias. Maximum Length: `128`.
+        /// Source cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public string SourceCluster { get; set; } = null!;
 
         /// <summary>
-        /// Target cluster alias. Maximum Length: `128`.
+        /// Target cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("targetCluster", required: true)]
         public string TargetCluster { get; set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Source cluster alias. Maximum Length: `128`.
+        /// Source cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
 
         /// <summary>
-        /// Target cluster alias. Maximum Length: `128`.
+        /// Target cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("targetCluster", required: true)]
         public Input<string> TargetCluster { get; set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Source cluster alias. Maximum Length: `128`.
+        /// Source cluster alias. Maximum length: `128`.
         /// </summary>
         public readonly string SourceCluster;
         /// <summary>
@@ -182,7 +182,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int SyncGroupOffsetsIntervalSeconds;
         /// <summary>
-        /// Target cluster alias. Maximum Length: `128`.
+        /// Target cluster alias. Maximum length: `128`.
         /// </summary>
         public readonly string TargetCluster;
         /// <summary>

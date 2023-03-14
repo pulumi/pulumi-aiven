@@ -25,12 +25,12 @@ import * as utilities from "./utilities";
  *     opensearchUserConfig: {
  *         opensearchVersion: "1",
  *         opensearchDashboards: {
- *             enabled: "true",
- *             opensearchRequestTimeout: "30000",
+ *             enabled: true,
+ *             opensearchRequestTimeout: 30000,
  *         },
  *         publicAccess: {
- *             opensearch: "true",
- *             opensearchDashboards: "true",
+ *             opensearch: true,
+ *             opensearchDashboards: true,
  *         },
  *     },
  * });

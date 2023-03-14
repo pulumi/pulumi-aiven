@@ -21,16 +21,17 @@ namespace Pulumi.Aiven.Inputs
         }
 
         [Input("drop")]
-        public Input<string>? Drop { get; set; }
+        public Input<bool>? Drop { get; set; }
 
-        [Input("filter")]
-        public Input<string>? Filter { get; set; }
+        [Input("filter", required: true)]
+        public Input<string> Filter { get; set; } = null!;
 
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());

@@ -16,14 +16,14 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
     public static final ServiceIntegrationEndpointPrometheusUserConfigArgs Empty = new ServiceIntegrationEndpointPrometheusUserConfigArgs();
 
     /**
-     * Prometheus basic authentication password
+     * Prometheus basic authentication password.
      * 
      */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
     /**
-     * @return Prometheus basic authentication password
+     * @return Prometheus basic authentication password.
      * 
      */
     public Optional<Output<String>> basicAuthPassword() {
@@ -31,14 +31,14 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
     }
 
     /**
-     * Prometheus basic authentication username
+     * Prometheus basic authentication username.
      * 
      */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
     /**
-     * @return Prometheus basic authentication username
+     * @return Prometheus basic authentication username.
      * 
      */
     public Optional<Output<String>> basicAuthUsername() {
@@ -71,7 +71,7 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
         }
 
         /**
-         * @param basicAuthPassword Prometheus basic authentication password
+         * @param basicAuthPassword Prometheus basic authentication password.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
         }
 
         /**
-         * @param basicAuthPassword Prometheus basic authentication password
+         * @param basicAuthPassword Prometheus basic authentication password.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
         }
 
         /**
-         * @param basicAuthUsername Prometheus basic authentication username
+         * @param basicAuthUsername Prometheus basic authentication username.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
         }
 
         /**
-         * @param basicAuthUsername Prometheus basic authentication username
+         * @param basicAuthUsername Prometheus basic authentication username.
          * 
          * @return builder
          * 

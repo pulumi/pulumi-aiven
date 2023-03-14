@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      * 
      */
     private @Nullable String accessKey;
     /**
-     * @return AWS CloudWatch log group name
+     * @return AWS CloudWatch log group name.
      * 
      */
     private @Nullable String logGroupName;
     /**
-     * @return AWS region
+     * @return AWS region.
      * 
      */
     private @Nullable String region;
     /**
-     * @return AWS secret key
+     * @return AWS secret key.
      * 
      */
     private @Nullable String secretKey;
 
     private ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig() {}
     /**
-     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      * 
      */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
     /**
-     * @return AWS CloudWatch log group name
+     * @return AWS CloudWatch log group name.
      * 
      */
     public Optional<String> logGroupName() {
         return Optional.ofNullable(this.logGroupName);
     }
     /**
-     * @return AWS region
+     * @return AWS region.
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return AWS secret key
+     * @return AWS secret key.
      * 
      */
     public Optional<String> secretKey() {

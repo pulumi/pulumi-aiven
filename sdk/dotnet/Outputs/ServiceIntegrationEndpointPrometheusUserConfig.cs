@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointPrometheusUserConfig
     {
         /// <summary>
-        /// Prometheus basic authentication password
+        /// Prometheus basic authentication password.
         /// </summary>
         public readonly string? BasicAuthPassword;
         /// <summary>
-        /// Prometheus basic authentication username
+        /// Prometheus basic authentication username.
         /// </summary>
         public readonly string? BasicAuthUsername;
 

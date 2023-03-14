@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,13 +20,13 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
      * 
      */
     @Import(name="influxdb")
-    private @Nullable Output<String> influxdb;
+    private @Nullable Output<Boolean> influxdb;
 
     /**
      * @return InfluxDB server provided values
      * 
      */
-    public Optional<Output<String>> influxdb() {
+    public Optional<Output<Boolean>> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
 
@@ -60,7 +60,7 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder influxdb(@Nullable Output<String> influxdb) {
+        public Builder influxdb(@Nullable Output<Boolean> influxdb) {
             $.influxdb = influxdb;
             return this;
         }
@@ -71,7 +71,7 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder influxdb(String influxdb) {
+        public Builder influxdb(Boolean influxdb) {
             return influxdb(Output.of(influxdb));
         }
 

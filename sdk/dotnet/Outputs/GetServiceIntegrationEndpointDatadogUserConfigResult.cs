@@ -15,10 +15,10 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? DatadogApiKey;
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> DatadogTags;
-        public readonly string? DisableConsumerStats;
-        public readonly string? KafkaConsumerCheckInstances;
-        public readonly string? KafkaConsumerStatsTimeout;
-        public readonly string? MaxPartitionContexts;
+        public readonly bool? DisableConsumerStats;
+        public readonly int? KafkaConsumerCheckInstances;
+        public readonly int? KafkaConsumerStatsTimeout;
+        public readonly int? MaxPartitionContexts;
         public readonly string? Site;
 
         [OutputConstructor]
@@ -27,13 +27,13 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> datadogTags,
 
-            string? disableConsumerStats,
+            bool? disableConsumerStats,
 
-            string? kafkaConsumerCheckInstances,
+            int? kafkaConsumerCheckInstances,
 
-            string? kafkaConsumerStatsTimeout,
+            int? kafkaConsumerStatsTimeout,
 
-            string? maxPartitionContexts,
+            int? maxPartitionContexts,
 
             string? site)
         {

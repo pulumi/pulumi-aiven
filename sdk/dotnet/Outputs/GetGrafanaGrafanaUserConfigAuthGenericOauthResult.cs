@@ -13,38 +13,38 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthGenericOauthResult
     {
-        public readonly string? AllowSignUp;
+        public readonly bool? AllowSignUp;
         public readonly ImmutableArray<string> AllowedDomains;
         public readonly ImmutableArray<string> AllowedOrganizations;
-        public readonly string? ApiUrl;
-        public readonly string? AuthUrl;
-        public readonly string? ClientId;
-        public readonly string? ClientSecret;
+        public readonly string ApiUrl;
+        public readonly string AuthUrl;
+        public readonly string ClientId;
+        public readonly string ClientSecret;
         public readonly string? Name;
         public readonly ImmutableArray<string> Scopes;
-        public readonly string? TokenUrl;
+        public readonly string TokenUrl;
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigAuthGenericOauthResult(
-            string? allowSignUp,
+            bool? allowSignUp,
 
             ImmutableArray<string> allowedDomains,
 
             ImmutableArray<string> allowedOrganizations,
 
-            string? apiUrl,
+            string apiUrl,
 
-            string? authUrl,
+            string authUrl,
 
-            string? clientId,
+            string clientId,
 
-            string? clientSecret,
+            string clientSecret,
 
             string? name,
 
             ImmutableArray<string> scopes,
 
-            string? tokenUrl)
+            string tokenUrl)
         {
             AllowSignUp = allowSignUp;
             AllowedDomains = allowedDomains;

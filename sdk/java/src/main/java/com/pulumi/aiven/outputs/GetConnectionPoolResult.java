@@ -26,7 +26,7 @@ public final class GetConnectionPoolResult {
      */
     private String id;
     /**
-     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     private String poolMode;
@@ -79,7 +79,7 @@ public final class GetConnectionPoolResult {
         return this.id;
     }
     /**
-     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public String poolMode() {

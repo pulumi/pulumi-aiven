@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigSchemaRegistryConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("leaderEligibility")]
-        public Input<string>? LeaderEligibility { get; set; }
+        public Input<bool>? LeaderEligibility { get; set; }
 
         [Input("topicName")]
         public Input<string>? TopicName { get; set; }

@@ -5,6 +5,8 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTag;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,10 +17,10 @@ import javax.annotation.Nullable;
 public final class GetServiceIntegrationEndpointDatadogUserConfig {
     private @Nullable String datadogApiKey;
     private @Nullable List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
-    private @Nullable String disableConsumerStats;
-    private @Nullable String kafkaConsumerCheckInstances;
-    private @Nullable String kafkaConsumerStatsTimeout;
-    private @Nullable String maxPartitionContexts;
+    private @Nullable Boolean disableConsumerStats;
+    private @Nullable Integer kafkaConsumerCheckInstances;
+    private @Nullable Integer kafkaConsumerStatsTimeout;
+    private @Nullable Integer maxPartitionContexts;
     private @Nullable String site;
 
     private GetServiceIntegrationEndpointDatadogUserConfig() {}
@@ -28,16 +30,16 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
     public List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags() {
         return this.datadogTags == null ? List.of() : this.datadogTags;
     }
-    public Optional<String> disableConsumerStats() {
+    public Optional<Boolean> disableConsumerStats() {
         return Optional.ofNullable(this.disableConsumerStats);
     }
-    public Optional<String> kafkaConsumerCheckInstances() {
+    public Optional<Integer> kafkaConsumerCheckInstances() {
         return Optional.ofNullable(this.kafkaConsumerCheckInstances);
     }
-    public Optional<String> kafkaConsumerStatsTimeout() {
+    public Optional<Integer> kafkaConsumerStatsTimeout() {
         return Optional.ofNullable(this.kafkaConsumerStatsTimeout);
     }
-    public Optional<String> maxPartitionContexts() {
+    public Optional<Integer> maxPartitionContexts() {
         return Optional.ofNullable(this.maxPartitionContexts);
     }
     public Optional<String> site() {
@@ -55,10 +57,10 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
     public static final class Builder {
         private @Nullable String datadogApiKey;
         private @Nullable List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
-        private @Nullable String disableConsumerStats;
-        private @Nullable String kafkaConsumerCheckInstances;
-        private @Nullable String kafkaConsumerStatsTimeout;
-        private @Nullable String maxPartitionContexts;
+        private @Nullable Boolean disableConsumerStats;
+        private @Nullable Integer kafkaConsumerCheckInstances;
+        private @Nullable Integer kafkaConsumerStatsTimeout;
+        private @Nullable Integer maxPartitionContexts;
         private @Nullable String site;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointDatadogUserConfig defaults) {
@@ -86,22 +88,22 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
             return datadogTags(List.of(datadogTags));
         }
         @CustomType.Setter
-        public Builder disableConsumerStats(@Nullable String disableConsumerStats) {
+        public Builder disableConsumerStats(@Nullable Boolean disableConsumerStats) {
             this.disableConsumerStats = disableConsumerStats;
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaConsumerCheckInstances(@Nullable String kafkaConsumerCheckInstances) {
+        public Builder kafkaConsumerCheckInstances(@Nullable Integer kafkaConsumerCheckInstances) {
             this.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaConsumerStatsTimeout(@Nullable String kafkaConsumerStatsTimeout) {
+        public Builder kafkaConsumerStatsTimeout(@Nullable Integer kafkaConsumerStatsTimeout) {
             this.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder maxPartitionContexts(@Nullable String maxPartitionContexts) {
+        public Builder maxPartitionContexts(@Nullable Integer maxPartitionContexts) {
             this.maxPartitionContexts = maxPartitionContexts;
             return this;
         }

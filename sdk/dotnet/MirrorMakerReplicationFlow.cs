@@ -89,7 +89,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Source cluster alias. Maximum Length: `128`.
+        /// Source cluster alias. Maximum length: `128`.
         /// </summary>
         [Output("sourceCluster")]
         public Output<string> SourceCluster { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.Aiven
         public Output<int?> SyncGroupOffsetsIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Target cluster alias. Maximum Length: `128`.
+        /// Target cluster alias. Maximum length: `128`.
         /// </summary>
         [Output("targetCluster")]
         public Output<string> TargetCluster { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Source cluster alias. Maximum Length: `128`.
+        /// Source cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.Aiven
         public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Target cluster alias. Maximum Length: `128`.
+        /// Target cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("targetCluster", required: true)]
         public Input<string> TargetCluster { get; set; } = null!;
@@ -299,7 +299,7 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Source cluster alias. Maximum Length: `128`.
+        /// Source cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("sourceCluster")]
         public Input<string>? SourceCluster { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.Aiven
         public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Target cluster alias. Maximum Length: `128`.
+        /// Target cluster alias. Maximum length: `128`.
         /// </summary>
         [Input("targetCluster")]
         public Input<string>? TargetCluster { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         /// InfluxDB server provided values
         /// </summary>
         [Input("influxdb")]
-        public Input<string>? Influxdb { get; set; }
+        public Input<bool>? Influxdb { get; set; }
 
         public InfluxDbInfluxdbUserConfigPublicAccessArgs()
         {

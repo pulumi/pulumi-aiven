@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigAuthGithubGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public Input<string>? AllowSignUp { get; set; }
+        public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedOrganizations")]
         private InputList<string>? _allowedOrganizations;
@@ -23,17 +23,17 @@ namespace Pulumi.Aiven.Inputs
             set => _allowedOrganizations = value;
         }
 
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
 
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        [Input("clientSecret", required: true)]
+        public Input<string> ClientSecret { get; set; } = null!;
 
         [Input("teamIds")]
-        private InputList<string>? _teamIds;
-        public InputList<string> TeamIds
+        private InputList<int>? _teamIds;
+        public InputList<int> TeamIds
         {
-            get => _teamIds ?? (_teamIds = new InputList<string>());
+            get => _teamIds ?? (_teamIds = new InputList<int>());
             set => _teamIds = value;
         }
 

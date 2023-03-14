@@ -13,38 +13,38 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult
     {
-        public readonly string? EmitCheckpointsEnabled;
-        public readonly string? EmitCheckpointsIntervalSeconds;
-        public readonly string? RefreshGroupsEnabled;
-        public readonly string? RefreshGroupsIntervalSeconds;
-        public readonly string? RefreshTopicsEnabled;
-        public readonly string? RefreshTopicsIntervalSeconds;
-        public readonly string? SyncGroupOffsetsEnabled;
-        public readonly string? SyncGroupOffsetsIntervalSeconds;
-        public readonly string? SyncTopicConfigsEnabled;
-        public readonly string? TasksMaxPerCpu;
+        public readonly bool? EmitCheckpointsEnabled;
+        public readonly int? EmitCheckpointsIntervalSeconds;
+        public readonly bool? RefreshGroupsEnabled;
+        public readonly int? RefreshGroupsIntervalSeconds;
+        public readonly bool? RefreshTopicsEnabled;
+        public readonly int? RefreshTopicsIntervalSeconds;
+        public readonly bool? SyncGroupOffsetsEnabled;
+        public readonly int? SyncGroupOffsetsIntervalSeconds;
+        public readonly bool? SyncTopicConfigsEnabled;
+        public readonly int? TasksMaxPerCpu;
 
         [OutputConstructor]
         private GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(
-            string? emitCheckpointsEnabled,
+            bool? emitCheckpointsEnabled,
 
-            string? emitCheckpointsIntervalSeconds,
+            int? emitCheckpointsIntervalSeconds,
 
-            string? refreshGroupsEnabled,
+            bool? refreshGroupsEnabled,
 
-            string? refreshGroupsIntervalSeconds,
+            int? refreshGroupsIntervalSeconds,
 
-            string? refreshTopicsEnabled,
+            bool? refreshTopicsEnabled,
 
-            string? refreshTopicsIntervalSeconds,
+            int? refreshTopicsIntervalSeconds,
 
-            string? syncGroupOffsetsEnabled,
+            bool? syncGroupOffsetsEnabled,
 
-            string? syncGroupOffsetsIntervalSeconds,
+            int? syncGroupOffsetsIntervalSeconds,
 
-            string? syncTopicConfigsEnabled,
+            bool? syncTopicConfigsEnabled,
 
-            string? tasksMaxPerCpu)
+            int? tasksMaxPerCpu)
         {
             EmitCheckpointsEnabled = emitCheckpointsEnabled;
             EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;

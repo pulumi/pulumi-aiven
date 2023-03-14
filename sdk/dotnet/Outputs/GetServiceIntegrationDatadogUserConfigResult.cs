@@ -13,18 +13,19 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationDatadogUserConfigResult
     {
-        public readonly string? DatadogDbmEnabled;
+        public readonly bool? DatadogDbmEnabled;
         public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> DatadogTags;
         public readonly ImmutableArray<string> ExcludeConsumerGroups;
         public readonly ImmutableArray<string> ExcludeTopics;
         public readonly ImmutableArray<string> IncludeConsumerGroups;
         public readonly ImmutableArray<string> IncludeTopics;
         public readonly ImmutableArray<string> KafkaCustomMetrics;
-        public readonly string? MaxJmxMetrics;
+        public readonly int? MaxJmxMetrics;
+        public readonly Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? Opensearch;
 
         [OutputConstructor]
         private GetServiceIntegrationDatadogUserConfigResult(
-            string? datadogDbmEnabled,
+            bool? datadogDbmEnabled,
 
             ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> datadogTags,
 
@@ -38,7 +39,9 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> kafkaCustomMetrics,
 
-            string? maxJmxMetrics)
+            int? maxJmxMetrics,
+
+            Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? opensearch)
         {
             DatadogDbmEnabled = datadogDbmEnabled;
             DatadogTags = datadogTags;
@@ -48,6 +51,7 @@ namespace Pulumi.Aiven.Outputs
             IncludeTopics = includeTopics;
             KafkaCustomMetrics = kafkaCustomMetrics;
             MaxJmxMetrics = maxJmxMetrics;
+            Opensearch = opensearch;
         }
     }
 }

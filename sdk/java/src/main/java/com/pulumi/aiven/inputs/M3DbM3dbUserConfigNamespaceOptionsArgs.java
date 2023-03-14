@@ -6,7 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,16 +24,16 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
     }
 
     @Import(name="snapshotEnabled")
-    private @Nullable Output<String> snapshotEnabled;
+    private @Nullable Output<Boolean> snapshotEnabled;
 
-    public Optional<Output<String>> snapshotEnabled() {
+    public Optional<Output<Boolean>> snapshotEnabled() {
         return Optional.ofNullable(this.snapshotEnabled);
     }
 
     @Import(name="writesToCommitlog")
-    private @Nullable Output<String> writesToCommitlog;
+    private @Nullable Output<Boolean> writesToCommitlog;
 
-    public Optional<Output<String>> writesToCommitlog() {
+    public Optional<Output<Boolean>> writesToCommitlog() {
         return Optional.ofNullable(this.writesToCommitlog);
     }
 
@@ -72,21 +72,21 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
             return retentionOptions(Output.of(retentionOptions));
         }
 
-        public Builder snapshotEnabled(@Nullable Output<String> snapshotEnabled) {
+        public Builder snapshotEnabled(@Nullable Output<Boolean> snapshotEnabled) {
             $.snapshotEnabled = snapshotEnabled;
             return this;
         }
 
-        public Builder snapshotEnabled(String snapshotEnabled) {
+        public Builder snapshotEnabled(Boolean snapshotEnabled) {
             return snapshotEnabled(Output.of(snapshotEnabled));
         }
 
-        public Builder writesToCommitlog(@Nullable Output<String> writesToCommitlog) {
+        public Builder writesToCommitlog(@Nullable Output<Boolean> writesToCommitlog) {
             $.writesToCommitlog = writesToCommitlog;
             return this;
         }
 
-        public Builder writesToCommitlog(String writesToCommitlog) {
+        public Builder writesToCommitlog(Boolean writesToCommitlog) {
             return writesToCommitlog(Output.of(writesToCommitlog));
         }
 

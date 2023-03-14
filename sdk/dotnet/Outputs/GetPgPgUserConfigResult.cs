@@ -16,9 +16,9 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? AdditionalBackupRegions;
         public readonly string? AdminPassword;
         public readonly string? AdminUsername;
-        public readonly string? BackupHour;
-        public readonly string? BackupMinute;
-        public readonly string? EnableIpv6;
+        public readonly int? BackupHour;
+        public readonly int? BackupMinute;
+        public readonly bool? EnableIpv6;
         public readonly ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
@@ -26,9 +26,9 @@ namespace Pulumi.Aiven.Outputs
         /// PostgreSQL specific server provided values
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgResult? Pg;
-        public readonly string? PgReadReplica;
+        public readonly bool? PgReadReplica;
         public readonly string? PgServiceToForkFrom;
-        public readonly string? PgStatMonitorEnable;
+        public readonly bool? PgStatMonitorEnable;
         public readonly string? PgVersion;
         public readonly Outputs.GetPgPgUserConfigPgbouncerResult? Pgbouncer;
         public readonly Outputs.GetPgPgUserConfigPglookoutResult? Pglookout;
@@ -38,15 +38,15 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetPgPgUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
-        public readonly string? SharedBuffersPercentage;
+        public readonly double? SharedBuffersPercentage;
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
         public readonly string? SynchronousReplication;
         public readonly Outputs.GetPgPgUserConfigTimescaledbResult? Timescaledb;
         public readonly string? Variant;
-        public readonly string? WorkMem;
+        public readonly int? WorkMem;
 
         [OutputConstructor]
         private GetPgPgUserConfigResult(
@@ -56,11 +56,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? adminUsername,
 
-            string? backupHour,
+            int? backupHour,
 
-            string? backupMinute,
+            int? backupMinute,
 
-            string? enableIpv6,
+            bool? enableIpv6,
 
             ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> ipFilterObjects,
 
@@ -70,11 +70,11 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetPgPgUserConfigPgResult? pg,
 
-            string? pgReadReplica,
+            bool? pgReadReplica,
 
             string? pgServiceToForkFrom,
 
-            string? pgStatMonitorEnable,
+            bool? pgStatMonitorEnable,
 
             string? pgVersion,
 
@@ -94,9 +94,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? sharedBuffersPercentage,
+            double? sharedBuffersPercentage,
 
-            string? staticIps,
+            bool? staticIps,
 
             string? synchronousReplication,
 
@@ -104,7 +104,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? variant,
 
-            string? workMem)
+            int? workMem)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             AdminPassword = adminPassword;

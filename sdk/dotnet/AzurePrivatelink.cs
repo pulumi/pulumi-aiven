@@ -80,7 +80,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A List of allowed Subscription IDs Maximum Length: `16`.
+        /// A List of allowed Subscription IDs. Maximum length: `16`.
         /// </summary>
         [Output("userSubscriptionIds")]
         public Output<ImmutableArray<string>> UserSubscriptionIds { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _userSubscriptionIds;
 
         /// <summary>
-        /// A List of allowed Subscription IDs Maximum Length: `16`.
+        /// A List of allowed Subscription IDs. Maximum length: `16`.
         /// </summary>
         public InputList<string> UserSubscriptionIds
         {
@@ -203,7 +203,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _userSubscriptionIds;
 
         /// <summary>
-        /// A List of allowed Subscription IDs Maximum Length: `16`.
+        /// A List of allowed Subscription IDs. Maximum length: `16`.
         /// </summary>
         public InputList<string> UserSubscriptionIds
         {

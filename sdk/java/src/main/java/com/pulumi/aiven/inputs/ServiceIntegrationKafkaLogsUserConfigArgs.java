@@ -16,14 +16,14 @@ public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.
     public static final ServiceIntegrationKafkaLogsUserConfigArgs Empty = new ServiceIntegrationKafkaLogsUserConfigArgs();
 
     /**
-     * Topic name
+     * Topic name.
      * 
      */
     @Import(name="kafkaTopic")
     private @Nullable Output<String> kafkaTopic;
 
     /**
-     * @return Topic name
+     * @return Topic name.
      * 
      */
     public Optional<Output<String>> kafkaTopic() {
@@ -55,7 +55,7 @@ public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param kafkaTopic Topic name
+         * @param kafkaTopic Topic name.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param kafkaTopic Topic name
+         * @param kafkaTopic Topic name.
          * 
          * @return builder
          * 

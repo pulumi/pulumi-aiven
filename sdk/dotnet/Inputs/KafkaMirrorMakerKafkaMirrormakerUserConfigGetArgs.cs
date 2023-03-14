@@ -25,6 +25,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -35,7 +36,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }
 
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         public KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs()
         {

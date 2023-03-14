@@ -4,8 +4,11 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigDatadogTagArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigOpensearchArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,29 +21,29 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     public static final ServiceIntegrationDatadogUserConfigArgs Empty = new ServiceIntegrationDatadogUserConfigArgs();
 
     /**
-     * Enable Datadog Database Monitoring
+     * Enable Datadog Database Monitoring.
      * 
      */
     @Import(name="datadogDbmEnabled")
-    private @Nullable Output<String> datadogDbmEnabled;
+    private @Nullable Output<Boolean> datadogDbmEnabled;
 
     /**
-     * @return Enable Datadog Database Monitoring
+     * @return Enable Datadog Database Monitoring.
      * 
      */
-    public Optional<Output<String>> datadogDbmEnabled() {
+    public Optional<Output<Boolean>> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
     }
 
     /**
-     * Custom tags provided by user
+     * Custom tags provided by user.
      * 
      */
     @Import(name="datadogTags")
     private @Nullable Output<List<ServiceIntegrationDatadogUserConfigDatadogTagArgs>> datadogTags;
 
     /**
-     * @return Custom tags provided by user
+     * @return Custom tags provided by user.
      * 
      */
     public Optional<Output<List<ServiceIntegrationDatadogUserConfigDatadogTagArgs>>> datadogTags() {
@@ -48,14 +51,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of custom metrics
+     * List of custom metrics.
      * 
      */
     @Import(name="excludeConsumerGroups")
     private @Nullable Output<List<String>> excludeConsumerGroups;
 
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     public Optional<Output<List<String>>> excludeConsumerGroups() {
@@ -63,14 +66,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of topics to exclude
+     * List of topics to exclude.
      * 
      */
     @Import(name="excludeTopics")
     private @Nullable Output<List<String>> excludeTopics;
 
     /**
-     * @return List of topics to exclude
+     * @return List of topics to exclude.
      * 
      */
     public Optional<Output<List<String>>> excludeTopics() {
@@ -78,14 +81,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of custom metrics
+     * List of custom metrics.
      * 
      */
     @Import(name="includeConsumerGroups")
     private @Nullable Output<List<String>> includeConsumerGroups;
 
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     public Optional<Output<List<String>>> includeConsumerGroups() {
@@ -93,14 +96,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of topics to include
+     * List of topics to include.
      * 
      */
     @Import(name="includeTopics")
     private @Nullable Output<List<String>> includeTopics;
 
     /**
-     * @return List of topics to include
+     * @return List of topics to include.
      * 
      */
     public Optional<Output<List<String>>> includeTopics() {
@@ -108,14 +111,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of custom metrics
+     * List of custom metrics.
      * 
      */
     @Import(name="kafkaCustomMetrics")
     private @Nullable Output<List<String>> kafkaCustomMetrics;
 
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     public Optional<Output<List<String>>> kafkaCustomMetrics() {
@@ -123,18 +126,33 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Maximum number of JMX metrics to send
+     * Maximum number of JMX metrics to send.
      * 
      */
     @Import(name="maxJmxMetrics")
-    private @Nullable Output<String> maxJmxMetrics;
+    private @Nullable Output<Integer> maxJmxMetrics;
 
     /**
-     * @return Maximum number of JMX metrics to send
+     * @return Maximum number of JMX metrics to send.
      * 
      */
-    public Optional<Output<String>> maxJmxMetrics() {
+    public Optional<Output<Integer>> maxJmxMetrics() {
         return Optional.ofNullable(this.maxJmxMetrics);
+    }
+
+    /**
+     * Datadog Opensearch Options.
+     * 
+     */
+    @Import(name="opensearch")
+    private @Nullable Output<ServiceIntegrationDatadogUserConfigOpensearchArgs> opensearch;
+
+    /**
+     * @return Datadog Opensearch Options.
+     * 
+     */
+    public Optional<Output<ServiceIntegrationDatadogUserConfigOpensearchArgs>> opensearch() {
+        return Optional.ofNullable(this.opensearch);
     }
 
     private ServiceIntegrationDatadogUserConfigArgs() {}
@@ -148,6 +166,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         this.includeTopics = $.includeTopics;
         this.kafkaCustomMetrics = $.kafkaCustomMetrics;
         this.maxJmxMetrics = $.maxJmxMetrics;
+        this.opensearch = $.opensearch;
     }
 
     public static Builder builder() {
@@ -169,28 +188,28 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param datadogDbmEnabled Enable Datadog Database Monitoring
+         * @param datadogDbmEnabled Enable Datadog Database Monitoring.
          * 
          * @return builder
          * 
          */
-        public Builder datadogDbmEnabled(@Nullable Output<String> datadogDbmEnabled) {
+        public Builder datadogDbmEnabled(@Nullable Output<Boolean> datadogDbmEnabled) {
             $.datadogDbmEnabled = datadogDbmEnabled;
             return this;
         }
 
         /**
-         * @param datadogDbmEnabled Enable Datadog Database Monitoring
+         * @param datadogDbmEnabled Enable Datadog Database Monitoring.
          * 
          * @return builder
          * 
          */
-        public Builder datadogDbmEnabled(String datadogDbmEnabled) {
+        public Builder datadogDbmEnabled(Boolean datadogDbmEnabled) {
             return datadogDbmEnabled(Output.of(datadogDbmEnabled));
         }
 
         /**
-         * @param datadogTags Custom tags provided by user
+         * @param datadogTags Custom tags provided by user.
          * 
          * @return builder
          * 
@@ -201,7 +220,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param datadogTags Custom tags provided by user
+         * @param datadogTags Custom tags provided by user.
          * 
          * @return builder
          * 
@@ -211,7 +230,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param datadogTags Custom tags provided by user
+         * @param datadogTags Custom tags provided by user.
          * 
          * @return builder
          * 
@@ -221,7 +240,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludeConsumerGroups List of custom metrics
+         * @param excludeConsumerGroups List of custom metrics.
          * 
          * @return builder
          * 
@@ -232,7 +251,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludeConsumerGroups List of custom metrics
+         * @param excludeConsumerGroups List of custom metrics.
          * 
          * @return builder
          * 
@@ -242,7 +261,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludeConsumerGroups List of custom metrics
+         * @param excludeConsumerGroups List of custom metrics.
          * 
          * @return builder
          * 
@@ -252,7 +271,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludeTopics List of topics to exclude
+         * @param excludeTopics List of topics to exclude.
          * 
          * @return builder
          * 
@@ -263,7 +282,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludeTopics List of topics to exclude
+         * @param excludeTopics List of topics to exclude.
          * 
          * @return builder
          * 
@@ -273,7 +292,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludeTopics List of topics to exclude
+         * @param excludeTopics List of topics to exclude.
          * 
          * @return builder
          * 
@@ -283,7 +302,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeConsumerGroups List of custom metrics
+         * @param includeConsumerGroups List of custom metrics.
          * 
          * @return builder
          * 
@@ -294,7 +313,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeConsumerGroups List of custom metrics
+         * @param includeConsumerGroups List of custom metrics.
          * 
          * @return builder
          * 
@@ -304,7 +323,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeConsumerGroups List of custom metrics
+         * @param includeConsumerGroups List of custom metrics.
          * 
          * @return builder
          * 
@@ -314,7 +333,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeTopics List of topics to include
+         * @param includeTopics List of topics to include.
          * 
          * @return builder
          * 
@@ -325,7 +344,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeTopics List of topics to include
+         * @param includeTopics List of topics to include.
          * 
          * @return builder
          * 
@@ -335,7 +354,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeTopics List of topics to include
+         * @param includeTopics List of topics to include.
          * 
          * @return builder
          * 
@@ -345,7 +364,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param kafkaCustomMetrics List of custom metrics
+         * @param kafkaCustomMetrics List of custom metrics.
          * 
          * @return builder
          * 
@@ -356,7 +375,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param kafkaCustomMetrics List of custom metrics
+         * @param kafkaCustomMetrics List of custom metrics.
          * 
          * @return builder
          * 
@@ -366,7 +385,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param kafkaCustomMetrics List of custom metrics
+         * @param kafkaCustomMetrics List of custom metrics.
          * 
          * @return builder
          * 
@@ -376,24 +395,45 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param maxJmxMetrics Maximum number of JMX metrics to send
+         * @param maxJmxMetrics Maximum number of JMX metrics to send.
          * 
          * @return builder
          * 
          */
-        public Builder maxJmxMetrics(@Nullable Output<String> maxJmxMetrics) {
+        public Builder maxJmxMetrics(@Nullable Output<Integer> maxJmxMetrics) {
             $.maxJmxMetrics = maxJmxMetrics;
             return this;
         }
 
         /**
-         * @param maxJmxMetrics Maximum number of JMX metrics to send
+         * @param maxJmxMetrics Maximum number of JMX metrics to send.
          * 
          * @return builder
          * 
          */
-        public Builder maxJmxMetrics(String maxJmxMetrics) {
+        public Builder maxJmxMetrics(Integer maxJmxMetrics) {
             return maxJmxMetrics(Output.of(maxJmxMetrics));
+        }
+
+        /**
+         * @param opensearch Datadog Opensearch Options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearch(@Nullable Output<ServiceIntegrationDatadogUserConfigOpensearchArgs> opensearch) {
+            $.opensearch = opensearch;
+            return this;
+        }
+
+        /**
+         * @param opensearch Datadog Opensearch Options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearch(ServiceIntegrationDatadogUserConfigOpensearchArgs opensearch) {
+            return opensearch(Output.of(opensearch));
         }
 
         public ServiceIntegrationDatadogUserConfigArgs build() {

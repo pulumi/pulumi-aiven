@@ -13,26 +13,26 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigLimitsResult
     {
-        public readonly string? MaxRecentlyQueriedSeriesBlocks;
-        public readonly string? MaxRecentlyQueriedSeriesDiskBytesRead;
+        public readonly int? MaxRecentlyQueriedSeriesBlocks;
+        public readonly int? MaxRecentlyQueriedSeriesDiskBytesRead;
         public readonly string? MaxRecentlyQueriedSeriesLookback;
-        public readonly string? QueryDocs;
-        public readonly string? QueryRequireExhaustive;
-        public readonly string? QuerySeries;
+        public readonly int? QueryDocs;
+        public readonly bool? QueryRequireExhaustive;
+        public readonly int? QuerySeries;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigLimitsResult(
-            string? maxRecentlyQueriedSeriesBlocks,
+            int? maxRecentlyQueriedSeriesBlocks,
 
-            string? maxRecentlyQueriedSeriesDiskBytesRead,
+            int? maxRecentlyQueriedSeriesDiskBytesRead,
 
             string? maxRecentlyQueriedSeriesLookback,
 
-            string? queryDocs,
+            int? queryDocs,
 
-            string? queryRequireExhaustive,
+            bool? queryRequireExhaustive,
 
-            string? querySeries)
+            int? querySeries)
         {
             MaxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
             MaxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;

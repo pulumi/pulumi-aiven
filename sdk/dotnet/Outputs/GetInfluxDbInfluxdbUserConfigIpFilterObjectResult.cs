@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetInfluxDbInfluxdbUserConfigIpFilterObjectResult
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private GetInfluxDbInfluxdbUserConfigIpFilterObjectResult(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

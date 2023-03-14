@@ -140,7 +140,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         public readonly string PoolMode;
         /// <summary>

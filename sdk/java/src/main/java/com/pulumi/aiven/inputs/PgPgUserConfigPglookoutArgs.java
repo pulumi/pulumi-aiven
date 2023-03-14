@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,9 +16,9 @@ public final class PgPgUserConfigPglookoutArgs extends com.pulumi.resources.Reso
     public static final PgPgUserConfigPglookoutArgs Empty = new PgPgUserConfigPglookoutArgs();
 
     @Import(name="maxFailoverReplicationTimeLag")
-    private @Nullable Output<String> maxFailoverReplicationTimeLag;
+    private @Nullable Output<Integer> maxFailoverReplicationTimeLag;
 
-    public Optional<Output<String>> maxFailoverReplicationTimeLag() {
+    public Optional<Output<Integer>> maxFailoverReplicationTimeLag() {
         return Optional.ofNullable(this.maxFailoverReplicationTimeLag);
     }
 
@@ -46,12 +46,12 @@ public final class PgPgUserConfigPglookoutArgs extends com.pulumi.resources.Reso
             $ = new PgPgUserConfigPglookoutArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder maxFailoverReplicationTimeLag(@Nullable Output<String> maxFailoverReplicationTimeLag) {
+        public Builder maxFailoverReplicationTimeLag(@Nullable Output<Integer> maxFailoverReplicationTimeLag) {
             $.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
             return this;
         }
 
-        public Builder maxFailoverReplicationTimeLag(String maxFailoverReplicationTimeLag) {
+        public Builder maxFailoverReplicationTimeLag(Integer maxFailoverReplicationTimeLag) {
             return maxFailoverReplicationTimeLag(Output.of(maxFailoverReplicationTimeLag));
         }
 

@@ -37,7 +37,7 @@ import (
 //				RedisUserConfig: &aiven.RedisRedisUserConfigArgs{
 //					RedisMaxmemoryPolicy: pulumi.String("allkeys-random"),
 //					PublicAccess: &aiven.RedisRedisUserConfigPublicAccessArgs{
-//						Redis: pulumi.String("true"),
+//						Redis: pulumi.Bool(true),
 //					},
 //				},
 //			})

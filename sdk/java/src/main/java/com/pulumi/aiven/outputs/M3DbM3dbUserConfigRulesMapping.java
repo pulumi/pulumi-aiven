@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigRulesMappingTag;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,9 +16,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class M3DbM3dbUserConfigRulesMapping {
     private @Nullable List<String> aggregations;
-    private @Nullable String drop;
-    private @Nullable String filter;
+    private @Nullable Boolean drop;
+    private String filter;
     private @Nullable String name;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     private @Nullable List<String> namespaces;
     private @Nullable List<M3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
     private @Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags;
@@ -26,15 +33,21 @@ public final class M3DbM3dbUserConfigRulesMapping {
     public List<String> aggregations() {
         return this.aggregations == null ? List.of() : this.aggregations;
     }
-    public Optional<String> drop() {
+    public Optional<Boolean> drop() {
         return Optional.ofNullable(this.drop);
     }
-    public Optional<String> filter() {
-        return Optional.ofNullable(this.filter);
+    public String filter() {
+        return this.filter;
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
@@ -55,8 +68,8 @@ public final class M3DbM3dbUserConfigRulesMapping {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> aggregations;
-        private @Nullable String drop;
-        private @Nullable String filter;
+        private @Nullable Boolean drop;
+        private String filter;
         private @Nullable String name;
         private @Nullable List<String> namespaces;
         private @Nullable List<M3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
@@ -82,13 +95,13 @@ public final class M3DbM3dbUserConfigRulesMapping {
             return aggregations(List.of(aggregations));
         }
         @CustomType.Setter
-        public Builder drop(@Nullable String drop) {
+        public Builder drop(@Nullable Boolean drop) {
             this.drop = drop;
             return this;
         }
         @CustomType.Setter
-        public Builder filter(@Nullable String filter) {
-            this.filter = filter;
+        public Builder filter(String filter) {
+            this.filter = Objects.requireNonNull(filter);
             return this;
         }
         @CustomType.Setter

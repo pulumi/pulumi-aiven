@@ -143,14 +143,14 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
+     * A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
     @Export(name="userSubscriptionIds", type=List.class, parameters={String.class})
     private Output<List<String>> userSubscriptionIds;
 
     /**
-     * @return A List of allowed Subscription IDs Maximum Length: `16`.
+     * @return A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
     public Output<List<String>> userSubscriptionIds() {

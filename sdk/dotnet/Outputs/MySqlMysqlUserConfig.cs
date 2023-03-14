@@ -16,9 +16,9 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? AdditionalBackupRegions;
         public readonly string? AdminPassword;
         public readonly string? AdminUsername;
-        public readonly string? BackupHour;
-        public readonly string? BackupMinute;
-        public readonly string? BinlogRetentionPeriod;
+        public readonly int? BackupHour;
+        public readonly int? BackupMinute;
+        public readonly int? BinlogRetentionPeriod;
         public readonly ImmutableArray<Outputs.MySqlMysqlUserConfigIpFilterObject> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.MySqlMysqlUserConfigMigration? Migration;
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.MySqlMysqlUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private MySqlMysqlUserConfig(
@@ -40,11 +40,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? adminUsername,
 
-            string? backupHour,
+            int? backupHour,
 
-            string? backupMinute,
+            int? backupMinute,
 
-            string? binlogRetentionPeriod,
+            int? binlogRetentionPeriod,
 
             ImmutableArray<Outputs.MySqlMysqlUserConfigIpFilterObject> ipFilterObjects,
 
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             AdminPassword = adminPassword;

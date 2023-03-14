@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,18 +15,18 @@ public final class FlinkFlinkUserConfigPrivatelinkAccess {
      * @return Flink server provided values
      * 
      */
-    private @Nullable String flink;
-    private @Nullable String prometheus;
+    private @Nullable Boolean flink;
+    private @Nullable Boolean prometheus;
 
     private FlinkFlinkUserConfigPrivatelinkAccess() {}
     /**
      * @return Flink server provided values
      * 
      */
-    public Optional<String> flink() {
+    public Optional<Boolean> flink() {
         return Optional.ofNullable(this.flink);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -39,8 +39,8 @@ public final class FlinkFlinkUserConfigPrivatelinkAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String flink;
-        private @Nullable String prometheus;
+        private @Nullable Boolean flink;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(FlinkFlinkUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -49,12 +49,12 @@ public final class FlinkFlinkUserConfigPrivatelinkAccess {
         }
 
         @CustomType.Setter
-        public Builder flink(@Nullable String flink) {
+        public Builder flink(@Nullable Boolean flink) {
             this.flink = flink;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

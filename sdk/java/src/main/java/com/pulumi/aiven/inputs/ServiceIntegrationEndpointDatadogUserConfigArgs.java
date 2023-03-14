@@ -6,6 +6,8 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,14 +20,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     public static final ServiceIntegrationEndpointDatadogUserConfigArgs Empty = new ServiceIntegrationEndpointDatadogUserConfigArgs();
 
     /**
-     * Datadog API key
+     * Datadog API key.
      * 
      */
     @Import(name="datadogApiKey")
     private @Nullable Output<String> datadogApiKey;
 
     /**
-     * @return Datadog API key
+     * @return Datadog API key.
      * 
      */
     public Optional<Output<String>> datadogApiKey() {
@@ -33,14 +35,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
-     * Custom tags provided by user
+     * Custom tags provided by user.
      * 
      */
     @Import(name="datadogTags")
     private @Nullable Output<List<ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>> datadogTags;
 
     /**
-     * @return Custom tags provided by user
+     * @return Custom tags provided by user.
      * 
      */
     public Optional<Output<List<ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>>> datadogTags() {
@@ -48,74 +50,74 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
-     * Disable consumer group metrics
+     * Disable consumer group metrics.
      * 
      */
     @Import(name="disableConsumerStats")
-    private @Nullable Output<String> disableConsumerStats;
+    private @Nullable Output<Boolean> disableConsumerStats;
 
     /**
-     * @return Disable consumer group metrics
+     * @return Disable consumer group metrics.
      * 
      */
-    public Optional<Output<String>> disableConsumerStats() {
+    public Optional<Output<Boolean>> disableConsumerStats() {
         return Optional.ofNullable(this.disableConsumerStats);
     }
 
     /**
-     * Number of separate instances to fetch kafka consumer statistics with
+     * Number of separate instances to fetch kafka consumer statistics with.
      * 
      */
     @Import(name="kafkaConsumerCheckInstances")
-    private @Nullable Output<String> kafkaConsumerCheckInstances;
+    private @Nullable Output<Integer> kafkaConsumerCheckInstances;
 
     /**
-     * @return Number of separate instances to fetch kafka consumer statistics with
+     * @return Number of separate instances to fetch kafka consumer statistics with.
      * 
      */
-    public Optional<Output<String>> kafkaConsumerCheckInstances() {
+    public Optional<Output<Integer>> kafkaConsumerCheckInstances() {
         return Optional.ofNullable(this.kafkaConsumerCheckInstances);
     }
 
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers
+     * Number of seconds that datadog will wait to get consumer statistics from brokers.
      * 
      */
     @Import(name="kafkaConsumerStatsTimeout")
-    private @Nullable Output<String> kafkaConsumerStatsTimeout;
+    private @Nullable Output<Integer> kafkaConsumerStatsTimeout;
 
     /**
-     * @return Number of seconds that datadog will wait to get consumer statistics from brokers
+     * @return Number of seconds that datadog will wait to get consumer statistics from brokers.
      * 
      */
-    public Optional<Output<String>> kafkaConsumerStatsTimeout() {
+    public Optional<Output<Integer>> kafkaConsumerStatsTimeout() {
         return Optional.ofNullable(this.kafkaConsumerStatsTimeout);
     }
 
     /**
-     * Maximum number of partition contexts to send
+     * Maximum number of partition contexts to send.
      * 
      */
     @Import(name="maxPartitionContexts")
-    private @Nullable Output<String> maxPartitionContexts;
+    private @Nullable Output<Integer> maxPartitionContexts;
 
     /**
-     * @return Maximum number of partition contexts to send
+     * @return Maximum number of partition contexts to send.
      * 
      */
-    public Optional<Output<String>> maxPartitionContexts() {
+    public Optional<Output<Integer>> maxPartitionContexts() {
         return Optional.ofNullable(this.maxPartitionContexts);
     }
 
     /**
-     * Datadog intake site. Defaults to datadoghq.com
+     * Datadog intake site. Defaults to datadoghq.com.
      * 
      */
     @Import(name="site")
     private @Nullable Output<String> site;
 
     /**
-     * @return Datadog intake site. Defaults to datadoghq.com
+     * @return Datadog intake site. Defaults to datadoghq.com.
      * 
      */
     public Optional<Output<String>> site() {
@@ -153,7 +155,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogApiKey Datadog API key
+         * @param datadogApiKey Datadog API key.
          * 
          * @return builder
          * 
@@ -164,7 +166,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogApiKey Datadog API key
+         * @param datadogApiKey Datadog API key.
          * 
          * @return builder
          * 
@@ -174,7 +176,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogTags Custom tags provided by user
+         * @param datadogTags Custom tags provided by user.
          * 
          * @return builder
          * 
@@ -185,7 +187,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogTags Custom tags provided by user
+         * @param datadogTags Custom tags provided by user.
          * 
          * @return builder
          * 
@@ -195,7 +197,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogTags Custom tags provided by user
+         * @param datadogTags Custom tags provided by user.
          * 
          * @return builder
          * 
@@ -205,91 +207,91 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param disableConsumerStats Disable consumer group metrics
+         * @param disableConsumerStats Disable consumer group metrics.
          * 
          * @return builder
          * 
          */
-        public Builder disableConsumerStats(@Nullable Output<String> disableConsumerStats) {
+        public Builder disableConsumerStats(@Nullable Output<Boolean> disableConsumerStats) {
             $.disableConsumerStats = disableConsumerStats;
             return this;
         }
 
         /**
-         * @param disableConsumerStats Disable consumer group metrics
+         * @param disableConsumerStats Disable consumer group metrics.
          * 
          * @return builder
          * 
          */
-        public Builder disableConsumerStats(String disableConsumerStats) {
+        public Builder disableConsumerStats(Boolean disableConsumerStats) {
             return disableConsumerStats(Output.of(disableConsumerStats));
         }
 
         /**
-         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with
+         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaConsumerCheckInstances(@Nullable Output<String> kafkaConsumerCheckInstances) {
+        public Builder kafkaConsumerCheckInstances(@Nullable Output<Integer> kafkaConsumerCheckInstances) {
             $.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
             return this;
         }
 
         /**
-         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with
+         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaConsumerCheckInstances(String kafkaConsumerCheckInstances) {
+        public Builder kafkaConsumerCheckInstances(Integer kafkaConsumerCheckInstances) {
             return kafkaConsumerCheckInstances(Output.of(kafkaConsumerCheckInstances));
         }
 
         /**
-         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers
+         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaConsumerStatsTimeout(@Nullable Output<String> kafkaConsumerStatsTimeout) {
+        public Builder kafkaConsumerStatsTimeout(@Nullable Output<Integer> kafkaConsumerStatsTimeout) {
             $.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             return this;
         }
 
         /**
-         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers
+         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaConsumerStatsTimeout(String kafkaConsumerStatsTimeout) {
+        public Builder kafkaConsumerStatsTimeout(Integer kafkaConsumerStatsTimeout) {
             return kafkaConsumerStatsTimeout(Output.of(kafkaConsumerStatsTimeout));
         }
 
         /**
-         * @param maxPartitionContexts Maximum number of partition contexts to send
+         * @param maxPartitionContexts Maximum number of partition contexts to send.
          * 
          * @return builder
          * 
          */
-        public Builder maxPartitionContexts(@Nullable Output<String> maxPartitionContexts) {
+        public Builder maxPartitionContexts(@Nullable Output<Integer> maxPartitionContexts) {
             $.maxPartitionContexts = maxPartitionContexts;
             return this;
         }
 
         /**
-         * @param maxPartitionContexts Maximum number of partition contexts to send
+         * @param maxPartitionContexts Maximum number of partition contexts to send.
          * 
          * @return builder
          * 
          */
-        public Builder maxPartitionContexts(String maxPartitionContexts) {
+        public Builder maxPartitionContexts(Integer maxPartitionContexts) {
             return maxPartitionContexts(Output.of(maxPartitionContexts));
         }
 
         /**
-         * @param site Datadog intake site. Defaults to datadoghq.com
+         * @param site Datadog intake site. Defaults to datadoghq.com.
          * 
          * @return builder
          * 
@@ -300,7 +302,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param site Datadog intake site. Defaults to datadoghq.com
+         * @param site Datadog intake site. Defaults to datadoghq.com.
          * 
          * @return builder
          * 

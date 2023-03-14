@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,18 +16,18 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
 
     public static final OpenSearchOpensearchUserConfigIndexPatternArgs Empty = new OpenSearchOpensearchUserConfigIndexPatternArgs();
 
-    @Import(name="maxIndexCount")
-    private @Nullable Output<String> maxIndexCount;
+    @Import(name="maxIndexCount", required=true)
+    private Output<Integer> maxIndexCount;
 
-    public Optional<Output<String>> maxIndexCount() {
-        return Optional.ofNullable(this.maxIndexCount);
+    public Output<Integer> maxIndexCount() {
+        return this.maxIndexCount;
     }
 
-    @Import(name="pattern")
-    private @Nullable Output<String> pattern;
+    @Import(name="pattern", required=true)
+    private Output<String> pattern;
 
-    public Optional<Output<String>> pattern() {
-        return Optional.ofNullable(this.pattern);
+    public Output<String> pattern() {
+        return this.pattern;
     }
 
     @Import(name="sortingAlgorithm")
@@ -62,16 +63,16 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
             $ = new OpenSearchOpensearchUserConfigIndexPatternArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder maxIndexCount(@Nullable Output<String> maxIndexCount) {
+        public Builder maxIndexCount(Output<Integer> maxIndexCount) {
             $.maxIndexCount = maxIndexCount;
             return this;
         }
 
-        public Builder maxIndexCount(String maxIndexCount) {
+        public Builder maxIndexCount(Integer maxIndexCount) {
             return maxIndexCount(Output.of(maxIndexCount));
         }
 
-        public Builder pattern(@Nullable Output<String> pattern) {
+        public Builder pattern(Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
@@ -90,6 +91,8 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         public OpenSearchOpensearchUserConfigIndexPatternArgs build() {
+            $.maxIndexCount = Objects.requireNonNull($.maxIndexCount, "expected parameter 'maxIndexCount' to be non-null");
+            $.pattern = Objects.requireNonNull($.pattern, "expected parameter 'pattern' to be non-null");
             return $;
         }
     }

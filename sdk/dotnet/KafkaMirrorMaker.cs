@@ -35,9 +35,9 @@ namespace Pulumi.Aiven
     ///             },
     ///             KafkaMirrormaker = new Aiven.Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs
     ///             {
-    ///                 RefreshGroupsIntervalSeconds = "600",
-    ///                 RefreshTopicsEnabled = "true",
-    ///                 RefreshTopicsIntervalSeconds = "600",
+    ///                 RefreshGroupsIntervalSeconds = 600,
+    ///                 RefreshTopicsEnabled = true,
+    ///                 RefreshTopicsIntervalSeconds = 600,
     ///             },
     ///         },
     ///     });
