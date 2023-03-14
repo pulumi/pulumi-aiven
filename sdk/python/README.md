@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Faiven.svg)](https://www.npmjs.com/package/@pulumi/aiven)
 [![Python version](https://badge.fury.io/py/pulumi-aiven.svg)](https://pypi.org/project/pulumi-aiven)
 [![NuGet version](https://badge.fury.io/nu/pulumi.aiven.svg)](https://badge.fury.io/nu/pulumi.aiven)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-aiven/sdk/v4/go)](https://pkg.go.dev/github.com/pulumi/pulumi-aiven/sdk/v4/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-aiven/sdk/v5/go)](https://pkg.go.dev/github.com/pulumi/pulumi-aiven/sdk/v5/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-aiven/blob/master/LICENSE)
 
 # Aiven Resource Provider
@@ -35,7 +35,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-aiven/sdk/v4
+    $ go get github.com/pulumi/pulumi-aiven/sdk/v5
 
 ### .NET
 

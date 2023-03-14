@@ -20,7 +20,7 @@ import (
 	"unicode"
 
 	providerShim "github.com/aiven/terraform-provider-aiven/shim"
-	"github.com/pulumi/pulumi-aiven/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-aiven/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
