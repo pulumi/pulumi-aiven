@@ -4,45 +4,45 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigPrivatelinkAccess {
-    private @Nullable String jolokia;
+    private @Nullable Boolean jolokia;
     /**
      * @return Kafka server provided values
      * 
      */
-    private @Nullable String kafka;
-    private @Nullable String kafkaConnect;
-    private @Nullable String kafkaRest;
-    private @Nullable String prometheus;
-    private @Nullable String schemaRegistry;
+    private @Nullable Boolean kafka;
+    private @Nullable Boolean kafkaConnect;
+    private @Nullable Boolean kafkaRest;
+    private @Nullable Boolean prometheus;
+    private @Nullable Boolean schemaRegistry;
 
     private KafkaKafkaUserConfigPrivatelinkAccess() {}
-    public Optional<String> jolokia() {
+    public Optional<Boolean> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
     /**
      * @return Kafka server provided values
      * 
      */
-    public Optional<String> kafka() {
+    public Optional<Boolean> kafka() {
         return Optional.ofNullable(this.kafka);
     }
-    public Optional<String> kafkaConnect() {
+    public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
-    public Optional<String> kafkaRest() {
+    public Optional<Boolean> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
-    public Optional<String> schemaRegistry() {
+    public Optional<Boolean> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
 
@@ -55,12 +55,12 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String jolokia;
-        private @Nullable String kafka;
-        private @Nullable String kafkaConnect;
-        private @Nullable String kafkaRest;
-        private @Nullable String prometheus;
-        private @Nullable String schemaRegistry;
+        private @Nullable Boolean jolokia;
+        private @Nullable Boolean kafka;
+        private @Nullable Boolean kafkaConnect;
+        private @Nullable Boolean kafkaRest;
+        private @Nullable Boolean prometheus;
+        private @Nullable Boolean schemaRegistry;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -73,32 +73,32 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
         }
 
         @CustomType.Setter
-        public Builder jolokia(@Nullable String jolokia) {
+        public Builder jolokia(@Nullable Boolean jolokia) {
             this.jolokia = jolokia;
             return this;
         }
         @CustomType.Setter
-        public Builder kafka(@Nullable String kafka) {
+        public Builder kafka(@Nullable Boolean kafka) {
             this.kafka = kafka;
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaConnect(@Nullable String kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaRest(@Nullable String kafkaRest) {
+        public Builder kafkaRest(@Nullable Boolean kafkaRest) {
             this.kafkaRest = kafkaRest;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }
         @CustomType.Setter
-        public Builder schemaRegistry(@Nullable String schemaRegistry) {
+        public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
             this.schemaRegistry = schemaRegistry;
             return this;
         }

@@ -17,7 +17,7 @@ type StaticIp struct {
 
 	// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
-	// The address of the static ip
+	// The address of the static ip.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -66,7 +66,7 @@ func GetStaticIp(ctx *pulumi.Context,
 type staticIpState struct {
 	// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName *string `pulumi:"cloudName"`
-	// The address of the static ip
+	// The address of the static ip.
 	IpAddress *string `pulumi:"ipAddress"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -81,7 +81,7 @@ type staticIpState struct {
 type StaticIpState struct {
 	// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName pulumi.StringPtrInput
-	// The address of the static ip
+	// The address of the static ip.
 	IpAddress pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -204,7 +204,7 @@ func (o StaticIpOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// The address of the static ip
+// The address of the static ip.
 func (o StaticIpOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }

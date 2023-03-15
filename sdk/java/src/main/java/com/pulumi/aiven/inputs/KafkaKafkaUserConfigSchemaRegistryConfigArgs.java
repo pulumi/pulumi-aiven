@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,9 +17,9 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
     public static final KafkaKafkaUserConfigSchemaRegistryConfigArgs Empty = new KafkaKafkaUserConfigSchemaRegistryConfigArgs();
 
     @Import(name="leaderEligibility")
-    private @Nullable Output<String> leaderEligibility;
+    private @Nullable Output<Boolean> leaderEligibility;
 
-    public Optional<Output<String>> leaderEligibility() {
+    public Optional<Output<Boolean>> leaderEligibility() {
         return Optional.ofNullable(this.leaderEligibility);
     }
 
@@ -54,12 +55,12 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
             $ = new KafkaKafkaUserConfigSchemaRegistryConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder leaderEligibility(@Nullable Output<String> leaderEligibility) {
+        public Builder leaderEligibility(@Nullable Output<Boolean> leaderEligibility) {
             $.leaderEligibility = leaderEligibility;
             return this;
         }
 
-        public Builder leaderEligibility(String leaderEligibility) {
+        public Builder leaderEligibility(Boolean leaderEligibility) {
             return leaderEligibility(Output.of(leaderEligibility));
         }
 

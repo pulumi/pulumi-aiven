@@ -13,15 +13,15 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetCassandraCassandraUserConfigCassandraResult
     {
-        public readonly string? BatchSizeFailThresholdInKb;
-        public readonly string? BatchSizeWarnThresholdInKb;
+        public readonly int? BatchSizeFailThresholdInKb;
+        public readonly int? BatchSizeWarnThresholdInKb;
         public readonly string? Datacenter;
 
         [OutputConstructor]
         private GetCassandraCassandraUserConfigCassandraResult(
-            string? batchSizeFailThresholdInKb,
+            int? batchSizeFailThresholdInKb,
 
-            string? batchSizeWarnThresholdInKb,
+            int? batchSizeWarnThresholdInKb,
 
             string? datacenter)
         {

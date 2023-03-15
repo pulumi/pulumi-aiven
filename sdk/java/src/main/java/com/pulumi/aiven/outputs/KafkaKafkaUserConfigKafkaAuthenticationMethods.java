@@ -4,21 +4,21 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
-    private @Nullable String certificate;
-    private @Nullable String sasl;
+    private @Nullable Boolean certificate;
+    private @Nullable Boolean sasl;
 
     private KafkaKafkaUserConfigKafkaAuthenticationMethods() {}
-    public Optional<String> certificate() {
+    public Optional<Boolean> certificate() {
         return Optional.ofNullable(this.certificate);
     }
-    public Optional<String> sasl() {
+    public Optional<Boolean> sasl() {
         return Optional.ofNullable(this.sasl);
     }
 
@@ -31,8 +31,8 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String certificate;
-        private @Nullable String sasl;
+        private @Nullable Boolean certificate;
+        private @Nullable Boolean sasl;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigKafkaAuthenticationMethods defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,12 +41,12 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
         }
 
         @CustomType.Setter
-        public Builder certificate(@Nullable String certificate) {
+        public Builder certificate(@Nullable Boolean certificate) {
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
-        public Builder sasl(@Nullable String sasl) {
+        public Builder sasl(@Nullable Boolean sasl) {
             this.sasl = sasl;
             return this;
         }

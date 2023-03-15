@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationKafkaLogsUserConfig
     {
         /// <summary>
-        /// Topic name
+        /// Topic name.
         /// </summary>
         public readonly string? KafkaTopic;
 

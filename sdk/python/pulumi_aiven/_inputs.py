@@ -35,7 +35,6 @@ __all__ = [
     'FlinkFlinkUserConfigArgs',
     'FlinkFlinkUserConfigIpFilterObjectArgs',
     'FlinkFlinkUserConfigPrivatelinkAccessArgs',
-    'FlinkJobTableUpsertKafkaArgs',
     'FlinkServiceIntegrationArgs',
     'FlinkTagArgs',
     'GrafanaComponentArgs',
@@ -178,6 +177,7 @@ __all__ = [
     'ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs',
     'ServiceIntegrationDatadogUserConfigArgs',
     'ServiceIntegrationDatadogUserConfigDatadogTagArgs',
+    'ServiceIntegrationDatadogUserConfigOpensearchArgs',
     'ServiceIntegrationEndpointDatadogUserConfigArgs',
     'ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs',
     'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs',
@@ -203,7 +203,6 @@ __all__ = [
     'ServiceIntegrationMetricsUserConfigArgs',
     'ServiceIntegrationMetricsUserConfigSourceMysqlArgs',
     'ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs',
-    'ServiceIntegrationMirrormakerUserConfigArgs',
 ]
 
 @pulumi.input_type
@@ -307,26 +306,26 @@ class CassandraCassandraUserConfigArgs:
                  cassandra_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 migrate_sstableloader: Optional[pulumi.Input[str]] = None,
+                 migrate_sstableloader: Optional[pulumi.Input[bool]] = None,
                  private_access: Optional[pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgs']] = None,
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
                  public_access: Optional[pulumi.Input['CassandraCassandraUserConfigPublicAccessArgs']] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  service_to_join_with: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
-        :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: cassandra configuration values
-        :param pulumi.Input[str] cassandra_version: Cassandra major version
-        :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[str] migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-        :param pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: cassandra configuration values.
+        :param pulumi.Input[str] cassandra_version: Cassandra major version.
+        :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[bool] migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
+        :param pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param pulumi.Input['CassandraCassandraUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input['CassandraCassandraUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input[str] service_to_join_with: When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
-        :param pulumi.Input[str] static_ips: Use static public IP addresses
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -336,6 +335,9 @@ class CassandraCassandraUserConfigArgs:
             pulumi.set(__self__, "cassandra_version", cassandra_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -357,7 +359,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter(name="additionalBackupRegions")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional Cloud Regions for Backup Replication
+        Additional Cloud Regions for Backup Replication.
         """
         return pulumi.get(self, "additional_backup_regions")
 
@@ -369,7 +371,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter
     def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigCassandraArgs']]:
         """
-        cassandra configuration values
+        cassandra configuration values.
         """
         return pulumi.get(self, "cassandra")
 
@@ -381,7 +383,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter(name="cassandraVersion")
     def cassandra_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Cassandra major version
+        Cassandra major version.
         """
         return pulumi.get(self, "cassandra_version")
 
@@ -393,7 +395,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -405,7 +407,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -415,21 +417,21 @@ class CassandraCassandraUserConfigArgs:
 
     @property
     @pulumi.getter(name="migrateSstableloader")
-    def migrate_sstableloader(self) -> Optional[pulumi.Input[str]]:
+    def migrate_sstableloader(self) -> Optional[pulumi.Input[bool]]:
         """
         Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
         """
         return pulumi.get(self, "migrate_sstableloader")
 
     @migrate_sstableloader.setter
-    def migrate_sstableloader(self, value: Optional[pulumi.Input[str]]):
+    def migrate_sstableloader(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "migrate_sstableloader", value)
 
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgs']]:
         """
-        Allow access to selected service ports from private networks
+        Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
 
@@ -453,7 +455,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigPublicAccessArgs']]:
         """
-        Allow access to selected service ports from the public Internet
+        Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
 
@@ -487,22 +489,22 @@ class CassandraCassandraUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use static public IP addresses
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class CassandraCassandraUserConfigCassandraArgs:
     def __init__(__self__, *,
-                 batch_size_fail_threshold_in_kb: Optional[pulumi.Input[str]] = None,
-                 batch_size_warn_threshold_in_kb: Optional[pulumi.Input[str]] = None,
+                 batch_size_fail_threshold_in_kb: Optional[pulumi.Input[int]] = None,
+                 batch_size_warn_threshold_in_kb: Optional[pulumi.Input[int]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None):
         if batch_size_fail_threshold_in_kb is not None:
             pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
@@ -513,20 +515,20 @@ class CassandraCassandraUserConfigCassandraArgs:
 
     @property
     @pulumi.getter(name="batchSizeFailThresholdInKb")
-    def batch_size_fail_threshold_in_kb(self) -> Optional[pulumi.Input[str]]:
+    def batch_size_fail_threshold_in_kb(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "batch_size_fail_threshold_in_kb")
 
     @batch_size_fail_threshold_in_kb.setter
-    def batch_size_fail_threshold_in_kb(self, value: Optional[pulumi.Input[str]]):
+    def batch_size_fail_threshold_in_kb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_fail_threshold_in_kb", value)
 
     @property
     @pulumi.getter(name="batchSizeWarnThresholdInKb")
-    def batch_size_warn_threshold_in_kb(self) -> Optional[pulumi.Input[str]]:
+    def batch_size_warn_threshold_in_kb(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "batch_size_warn_threshold_in_kb")
 
     @batch_size_warn_threshold_in_kb.setter
-    def batch_size_warn_threshold_in_kb(self, value: Optional[pulumi.Input[str]]):
+    def batch_size_warn_threshold_in_kb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_warn_threshold_in_kb", value)
 
     @property
@@ -542,12 +544,20 @@ class CassandraCassandraUserConfigCassandraArgs:
 @pulumi.input_type
 class CassandraCassandraUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -558,47 +568,38 @@ class CassandraCassandraUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class CassandraCassandraUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class CassandraCassandraUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
@@ -780,9 +781,9 @@ class ClickhouseClickhouseUserConfigArgs:
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         """
@@ -790,6 +791,9 @@ class ClickhouseClickhouseUserConfigArgs:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if project_to_fork_from is not None:
@@ -801,7 +805,7 @@ class ClickhouseClickhouseUserConfigArgs:
     @pulumi.getter(name="additionalBackupRegions")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional Cloud Regions for Backup Replication
+        Additional Cloud Regions for Backup Replication.
         """
         return pulumi.get(self, "additional_backup_regions")
 
@@ -813,7 +817,7 @@ class ClickhouseClickhouseUserConfigArgs:
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -825,7 +829,7 @@ class ClickhouseClickhouseUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -861,12 +865,20 @@ class ClickhouseClickhouseUserConfigArgs:
 @pulumi.input_type
 class ClickhouseClickhouseUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -876,15 +888,6 @@ class ClickhouseClickhouseUserConfigIpFilterObjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
 
 
 @pulumi.input_type
@@ -989,7 +992,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
         :param pulumi.Input[str] column: The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] privilege: The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] table: The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[bool] with_grant: If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[bool] with_grant: If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "database", database)
         if column is not None:
@@ -1053,7 +1056,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @pulumi.getter(name="withGrant")
     def with_grant(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+        If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "with_grant")
 
@@ -1350,102 +1353,37 @@ class FlinkFlinkArgs:
 @pulumi.input_type
 class FlinkFlinkUserConfigArgs:
     def __init__(__self__, *,
-                 additional_backup_regions: Optional[pulumi.Input[str]] = None,
-                 execution_checkpointing_interval_ms: Optional[pulumi.Input[str]] = None,
-                 execution_checkpointing_timeout_ms: Optional[pulumi.Input[str]] = None,
                  flink_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 number_of_task_slots: Optional[pulumi.Input[str]] = None,
-                 parallelism_default: Optional[pulumi.Input[str]] = None,
-                 privatelink_access: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']] = None,
-                 restart_strategy: Optional[pulumi.Input[str]] = None,
-                 restart_strategy_delay_sec: Optional[pulumi.Input[str]] = None,
-                 restart_strategy_failure_rate_interval_min: Optional[pulumi.Input[str]] = None,
-                 restart_strategy_max_failures: Optional[pulumi.Input[str]] = None):
+                 number_of_task_slots: Optional[pulumi.Input[int]] = None,
+                 privatelink_access: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
-        :param pulumi.Input[str] execution_checkpointing_interval_ms: Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
-        :param pulumi.Input[str] execution_checkpointing_timeout_ms: The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
-        :param pulumi.Input[str] flink_version: Flink major version
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[str] number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value
-        :param pulumi.Input[str] parallelism_default: How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
-        :param pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
-        :param pulumi.Input[str] restart_strategy: failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
-        :param pulumi.Input[str] restart_strategy_delay_sec: Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
-        :param pulumi.Input[str] restart_strategy_failure_rate_interval_min: Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
-        :param pulumi.Input[str] restart_strategy_max_failures: The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
+        :param pulumi.Input[str] flink_version: Flink major version.
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[int] number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+        :param pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
         """
-        if additional_backup_regions is not None:
-            pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
-        if execution_checkpointing_interval_ms is not None:
-            pulumi.set(__self__, "execution_checkpointing_interval_ms", execution_checkpointing_interval_ms)
-        if execution_checkpointing_timeout_ms is not None:
-            pulumi.set(__self__, "execution_checkpointing_timeout_ms", execution_checkpointing_timeout_ms)
         if flink_version is not None:
             pulumi.set(__self__, "flink_version", flink_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if number_of_task_slots is not None:
             pulumi.set(__self__, "number_of_task_slots", number_of_task_slots)
-        if parallelism_default is not None:
-            pulumi.set(__self__, "parallelism_default", parallelism_default)
         if privatelink_access is not None:
             pulumi.set(__self__, "privatelink_access", privatelink_access)
-        if restart_strategy is not None:
-            pulumi.set(__self__, "restart_strategy", restart_strategy)
-        if restart_strategy_delay_sec is not None:
-            pulumi.set(__self__, "restart_strategy_delay_sec", restart_strategy_delay_sec)
-        if restart_strategy_failure_rate_interval_min is not None:
-            pulumi.set(__self__, "restart_strategy_failure_rate_interval_min", restart_strategy_failure_rate_interval_min)
-        if restart_strategy_max_failures is not None:
-            pulumi.set(__self__, "restart_strategy_max_failures", restart_strategy_max_failures)
-
-    @property
-    @pulumi.getter(name="additionalBackupRegions")
-    def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
-        """
-        Additional Cloud Regions for Backup Replication
-        """
-        return pulumi.get(self, "additional_backup_regions")
-
-    @additional_backup_regions.setter
-    def additional_backup_regions(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "additional_backup_regions", value)
-
-    @property
-    @pulumi.getter(name="executionCheckpointingIntervalMs")
-    def execution_checkpointing_interval_ms(self) -> Optional[pulumi.Input[str]]:
-        """
-        Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
-        """
-        return pulumi.get(self, "execution_checkpointing_interval_ms")
-
-    @execution_checkpointing_interval_ms.setter
-    def execution_checkpointing_interval_ms(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "execution_checkpointing_interval_ms", value)
-
-    @property
-    @pulumi.getter(name="executionCheckpointingTimeoutMs")
-    def execution_checkpointing_timeout_ms(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
-        """
-        return pulumi.get(self, "execution_checkpointing_timeout_ms")
-
-    @execution_checkpointing_timeout_ms.setter
-    def execution_checkpointing_timeout_ms(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "execution_checkpointing_timeout_ms", value)
 
     @property
     @pulumi.getter(name="flinkVersion")
     def flink_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Flink major version
+        Flink major version.
         """
         return pulumi.get(self, "flink_version")
 
@@ -1457,7 +1395,7 @@ class FlinkFlinkUserConfigArgs:
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -1469,7 +1407,7 @@ class FlinkFlinkUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -1479,33 +1417,21 @@ class FlinkFlinkUserConfigArgs:
 
     @property
     @pulumi.getter(name="numberOfTaskSlots")
-    def number_of_task_slots(self) -> Optional[pulumi.Input[str]]:
+    def number_of_task_slots(self) -> Optional[pulumi.Input[int]]:
         """
-        Task slots per node. For a 3 node plan, total number of task slots is 3x this value
+        Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
         """
         return pulumi.get(self, "number_of_task_slots")
 
     @number_of_task_slots.setter
-    def number_of_task_slots(self, value: Optional[pulumi.Input[str]]):
+    def number_of_task_slots(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "number_of_task_slots", value)
-
-    @property
-    @pulumi.getter(name="parallelismDefault")
-    def parallelism_default(self) -> Optional[pulumi.Input[str]]:
-        """
-        How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
-        """
-        return pulumi.get(self, "parallelism_default")
-
-    @parallelism_default.setter
-    def parallelism_default(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parallelism_default", value)
 
     @property
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']]:
         """
-        Allow access to selected service components through Privatelink
+        Allow access to selected service components through Privatelink.
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -1513,64 +1439,24 @@ class FlinkFlinkUserConfigArgs:
     def privatelink_access(self, value: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']]):
         pulumi.set(self, "privatelink_access", value)
 
-    @property
-    @pulumi.getter(name="restartStrategy")
-    def restart_strategy(self) -> Optional[pulumi.Input[str]]:
-        """
-        failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
-        """
-        return pulumi.get(self, "restart_strategy")
-
-    @restart_strategy.setter
-    def restart_strategy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "restart_strategy", value)
-
-    @property
-    @pulumi.getter(name="restartStrategyDelaySec")
-    def restart_strategy_delay_sec(self) -> Optional[pulumi.Input[str]]:
-        """
-        Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
-        """
-        return pulumi.get(self, "restart_strategy_delay_sec")
-
-    @restart_strategy_delay_sec.setter
-    def restart_strategy_delay_sec(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "restart_strategy_delay_sec", value)
-
-    @property
-    @pulumi.getter(name="restartStrategyFailureRateIntervalMin")
-    def restart_strategy_failure_rate_interval_min(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
-        """
-        return pulumi.get(self, "restart_strategy_failure_rate_interval_min")
-
-    @restart_strategy_failure_rate_interval_min.setter
-    def restart_strategy_failure_rate_interval_min(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "restart_strategy_failure_rate_interval_min", value)
-
-    @property
-    @pulumi.getter(name="restartStrategyMaxFailures")
-    def restart_strategy_max_failures(self) -> Optional[pulumi.Input[str]]:
-        """
-        The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
-        """
-        return pulumi.get(self, "restart_strategy_max_failures")
-
-    @restart_strategy_max_failures.setter
-    def restart_strategy_max_failures(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "restart_strategy_max_failures", value)
-
 
 @pulumi.input_type
 class FlinkFlinkUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -1581,23 +1467,14 @@ class FlinkFlinkUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class FlinkFlinkUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 flink: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 flink: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] flink: Flink server provided values
+        :param pulumi.Input[bool] flink: Flink server provided values
         """
         if flink is not None:
             pulumi.set(__self__, "flink", flink)
@@ -1606,127 +1483,24 @@ class FlinkFlinkUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def flink(self) -> Optional[pulumi.Input[str]]:
+    def flink(self) -> Optional[pulumi.Input[bool]]:
         """
         Flink server provided values
         """
         return pulumi.get(self, "flink")
 
     @flink.setter
-    def flink(self, value: Optional[pulumi.Input[str]]):
+    def flink(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "flink", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
-
-
-@pulumi.input_type
-class FlinkJobTableUpsertKafkaArgs:
-    def __init__(__self__, *,
-                 key_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 key_format: Optional[pulumi.Input[str]] = None,
-                 scan_startup_mode: Optional[pulumi.Input[str]] = None,
-                 topic: Optional[pulumi.Input[str]] = None,
-                 value_fields_include: Optional[pulumi.Input[str]] = None,
-                 value_format: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] key_fields: Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] key_format: Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] scan_startup_mode: Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] topic: Topic name This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] value_fields_include: Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] value_format: Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        if key_fields is not None:
-            pulumi.set(__self__, "key_fields", key_fields)
-        if key_format is not None:
-            pulumi.set(__self__, "key_format", key_format)
-        if scan_startup_mode is not None:
-            pulumi.set(__self__, "scan_startup_mode", scan_startup_mode)
-        if topic is not None:
-            pulumi.set(__self__, "topic", topic)
-        if value_fields_include is not None:
-            pulumi.set(__self__, "value_fields_include", value_fields_include)
-        if value_format is not None:
-            pulumi.set(__self__, "value_format", value_format)
-
-    @property
-    @pulumi.getter(name="keyFields")
-    def key_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "key_fields")
-
-    @key_fields.setter
-    def key_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "key_fields", value)
-
-    @property
-    @pulumi.getter(name="keyFormat")
-    def key_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "key_format")
-
-    @key_format.setter
-    def key_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key_format", value)
-
-    @property
-    @pulumi.getter(name="scanStartupMode")
-    def scan_startup_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "scan_startup_mode")
-
-    @scan_startup_mode.setter
-    def scan_startup_mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "scan_startup_mode", value)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[str]]:
-        """
-        Topic name This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "topic")
-
-    @topic.setter
-    def topic(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "topic", value)
-
-    @property
-    @pulumi.getter(name="valueFieldsInclude")
-    def value_fields_include(self) -> Optional[pulumi.Input[str]]:
-        """
-        Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "value_fields_include")
-
-    @value_fields_include.setter
-    def value_fields_include(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value_fields_include", value)
-
-    @property
-    @pulumi.getter(name="valueFormat")
-    def value_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "value_format")
-
-    @value_format.setter
-    def value_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value_format", value)
 
 
 @pulumi.input_type
@@ -1902,32 +1676,32 @@ class GrafanaGrafanaArgs:
 class GrafanaGrafanaUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
-                 alerting_enabled: Optional[pulumi.Input[str]] = None,
+                 alerting_enabled: Optional[pulumi.Input[bool]] = None,
                  alerting_error_or_timeout: Optional[pulumi.Input[str]] = None,
-                 alerting_max_annotations_to_keep: Optional[pulumi.Input[str]] = None,
+                 alerting_max_annotations_to_keep: Optional[pulumi.Input[int]] = None,
                  alerting_nodata_or_nullvalues: Optional[pulumi.Input[str]] = None,
-                 allow_embedding: Optional[pulumi.Input[str]] = None,
+                 allow_embedding: Optional[pulumi.Input[bool]] = None,
                  auth_azuread: Optional[pulumi.Input['GrafanaGrafanaUserConfigAuthAzureadArgs']] = None,
-                 auth_basic_enabled: Optional[pulumi.Input[str]] = None,
+                 auth_basic_enabled: Optional[pulumi.Input[bool]] = None,
                  auth_generic_oauth: Optional[pulumi.Input['GrafanaGrafanaUserConfigAuthGenericOauthArgs']] = None,
                  auth_github: Optional[pulumi.Input['GrafanaGrafanaUserConfigAuthGithubArgs']] = None,
                  auth_gitlab: Optional[pulumi.Input['GrafanaGrafanaUserConfigAuthGitlabArgs']] = None,
                  auth_google: Optional[pulumi.Input['GrafanaGrafanaUserConfigAuthGoogleArgs']] = None,
                  cookie_samesite: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
-                 dashboard_previews_enabled: Optional[pulumi.Input[str]] = None,
+                 dashboard_previews_enabled: Optional[pulumi.Input[bool]] = None,
                  dashboards_min_refresh_interval: Optional[pulumi.Input[str]] = None,
-                 dashboards_versions_to_keep: Optional[pulumi.Input[str]] = None,
-                 dataproxy_send_user_header: Optional[pulumi.Input[str]] = None,
-                 dataproxy_timeout: Optional[pulumi.Input[str]] = None,
+                 dashboards_versions_to_keep: Optional[pulumi.Input[int]] = None,
+                 dataproxy_send_user_header: Optional[pulumi.Input[bool]] = None,
+                 dataproxy_timeout: Optional[pulumi.Input[int]] = None,
                  date_formats: Optional[pulumi.Input['GrafanaGrafanaUserConfigDateFormatsArgs']] = None,
-                 disable_gravatar: Optional[pulumi.Input[str]] = None,
-                 editors_can_admin: Optional[pulumi.Input[str]] = None,
+                 disable_gravatar: Optional[pulumi.Input[bool]] = None,
+                 editors_can_admin: Optional[pulumi.Input[bool]] = None,
                  external_image_storage: Optional[pulumi.Input['GrafanaGrafanaUserConfigExternalImageStorageArgs']] = None,
                  google_analytics_ua_id: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 metrics_enabled: Optional[pulumi.Input[str]] = None,
+                 metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  private_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivatelinkAccessArgs']] = None,
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
@@ -1935,10 +1709,10 @@ class GrafanaGrafanaUserConfigArgs:
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  smtp_server: Optional[pulumi.Input['GrafanaGrafanaUserConfigSmtpServerArgs']] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None,
-                 user_auto_assign_org: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[bool]] = None,
+                 user_auto_assign_org: Optional[pulumi.Input[bool]] = None,
                  user_auto_assign_org_role: Optional[pulumi.Input[str]] = None,
-                 viewers_can_edit: Optional[pulumi.Input[str]] = None):
+                 viewers_can_edit: Optional[pulumi.Input[bool]] = None):
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if alerting_enabled is not None:
@@ -1990,6 +1764,9 @@ class GrafanaGrafanaUserConfigArgs:
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
@@ -2027,11 +1804,11 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="alertingEnabled")
-    def alerting_enabled(self) -> Optional[pulumi.Input[str]]:
+    def alerting_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "alerting_enabled")
 
     @alerting_enabled.setter
-    def alerting_enabled(self, value: Optional[pulumi.Input[str]]):
+    def alerting_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "alerting_enabled", value)
 
     @property
@@ -2045,11 +1822,11 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="alertingMaxAnnotationsToKeep")
-    def alerting_max_annotations_to_keep(self) -> Optional[pulumi.Input[str]]:
+    def alerting_max_annotations_to_keep(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "alerting_max_annotations_to_keep")
 
     @alerting_max_annotations_to_keep.setter
-    def alerting_max_annotations_to_keep(self, value: Optional[pulumi.Input[str]]):
+    def alerting_max_annotations_to_keep(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "alerting_max_annotations_to_keep", value)
 
     @property
@@ -2063,11 +1840,11 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="allowEmbedding")
-    def allow_embedding(self) -> Optional[pulumi.Input[str]]:
+    def allow_embedding(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "allow_embedding")
 
     @allow_embedding.setter
-    def allow_embedding(self, value: Optional[pulumi.Input[str]]):
+    def allow_embedding(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_embedding", value)
 
     @property
@@ -2081,11 +1858,11 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="authBasicEnabled")
-    def auth_basic_enabled(self) -> Optional[pulumi.Input[str]]:
+    def auth_basic_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "auth_basic_enabled")
 
     @auth_basic_enabled.setter
-    def auth_basic_enabled(self, value: Optional[pulumi.Input[str]]):
+    def auth_basic_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auth_basic_enabled", value)
 
     @property
@@ -2144,11 +1921,11 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="dashboardPreviewsEnabled")
-    def dashboard_previews_enabled(self) -> Optional[pulumi.Input[str]]:
+    def dashboard_previews_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "dashboard_previews_enabled")
 
     @dashboard_previews_enabled.setter
-    def dashboard_previews_enabled(self, value: Optional[pulumi.Input[str]]):
+    def dashboard_previews_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dashboard_previews_enabled", value)
 
     @property
@@ -2162,29 +1939,29 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="dashboardsVersionsToKeep")
-    def dashboards_versions_to_keep(self) -> Optional[pulumi.Input[str]]:
+    def dashboards_versions_to_keep(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "dashboards_versions_to_keep")
 
     @dashboards_versions_to_keep.setter
-    def dashboards_versions_to_keep(self, value: Optional[pulumi.Input[str]]):
+    def dashboards_versions_to_keep(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "dashboards_versions_to_keep", value)
 
     @property
     @pulumi.getter(name="dataproxySendUserHeader")
-    def dataproxy_send_user_header(self) -> Optional[pulumi.Input[str]]:
+    def dataproxy_send_user_header(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "dataproxy_send_user_header")
 
     @dataproxy_send_user_header.setter
-    def dataproxy_send_user_header(self, value: Optional[pulumi.Input[str]]):
+    def dataproxy_send_user_header(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dataproxy_send_user_header", value)
 
     @property
     @pulumi.getter(name="dataproxyTimeout")
-    def dataproxy_timeout(self) -> Optional[pulumi.Input[str]]:
+    def dataproxy_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "dataproxy_timeout")
 
     @dataproxy_timeout.setter
-    def dataproxy_timeout(self, value: Optional[pulumi.Input[str]]):
+    def dataproxy_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "dataproxy_timeout", value)
 
     @property
@@ -2198,20 +1975,20 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="disableGravatar")
-    def disable_gravatar(self) -> Optional[pulumi.Input[str]]:
+    def disable_gravatar(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "disable_gravatar")
 
     @disable_gravatar.setter
-    def disable_gravatar(self, value: Optional[pulumi.Input[str]]):
+    def disable_gravatar(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_gravatar", value)
 
     @property
     @pulumi.getter(name="editorsCanAdmin")
-    def editors_can_admin(self) -> Optional[pulumi.Input[str]]:
+    def editors_can_admin(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "editors_can_admin")
 
     @editors_can_admin.setter
-    def editors_can_admin(self, value: Optional[pulumi.Input[str]]):
+    def editors_can_admin(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "editors_can_admin", value)
 
     @property
@@ -2252,11 +2029,11 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="metricsEnabled")
-    def metrics_enabled(self) -> Optional[pulumi.Input[str]]:
+    def metrics_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "metrics_enabled")
 
     @metrics_enabled.setter
-    def metrics_enabled(self, value: Optional[pulumi.Input[str]]):
+    def metrics_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "metrics_enabled", value)
 
     @property
@@ -2324,20 +2101,20 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
     @property
     @pulumi.getter(name="userAutoAssignOrg")
-    def user_auto_assign_org(self) -> Optional[pulumi.Input[str]]:
+    def user_auto_assign_org(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "user_auto_assign_org")
 
     @user_auto_assign_org.setter
-    def user_auto_assign_org(self, value: Optional[pulumi.Input[str]]):
+    def user_auto_assign_org(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "user_auto_assign_org", value)
 
     @property
@@ -2351,46 +2128,78 @@ class GrafanaGrafanaUserConfigArgs:
 
     @property
     @pulumi.getter(name="viewersCanEdit")
-    def viewers_can_edit(self) -> Optional[pulumi.Input[str]]:
+    def viewers_can_edit(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "viewers_can_edit")
 
     @viewers_can_edit.setter
-    def viewers_can_edit(self, value: Optional[pulumi.Input[str]]):
+    def viewers_can_edit(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "viewers_can_edit", value)
 
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthAzureadArgs:
     def __init__(__self__, *,
-                 allow_sign_up: Optional[pulumi.Input[str]] = None,
+                 auth_url: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 token_url: pulumi.Input[str],
+                 allow_sign_up: Optional[pulumi.Input[bool]] = None,
                  allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 allowed_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 auth_url: Optional[pulumi.Input[str]] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 client_secret: Optional[pulumi.Input[str]] = None,
-                 token_url: Optional[pulumi.Input[str]] = None):
+                 allowed_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "auth_url", auth_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "token_url", token_url)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if allowed_groups is not None:
             pulumi.set(__self__, "allowed_groups", allowed_groups)
-        if auth_url is not None:
-            pulumi.set(__self__, "auth_url", auth_url)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
-        if token_url is not None:
-            pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "auth_url")
+
+    @auth_url.setter
+    def auth_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_url", value)
 
     @property
     @pulumi.getter(name="allowSignUp")
-    def allow_sign_up(self) -> Optional[pulumi.Input[str]]:
+    def allow_sign_up(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "allow_sign_up")
 
     @allow_sign_up.setter
-    def allow_sign_up(self, value: Optional[pulumi.Input[str]]):
+    def allow_sign_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_sign_up", value)
 
     @property
@@ -2411,84 +2220,88 @@ class GrafanaGrafanaUserConfigAuthAzureadArgs:
     def allowed_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_groups", value)
 
-    @property
-    @pulumi.getter(name="authUrl")
-    def auth_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "auth_url")
-
-    @auth_url.setter
-    def auth_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_url", value)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_secret", value)
-
-    @property
-    @pulumi.getter(name="tokenUrl")
-    def token_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "token_url")
-
-    @token_url.setter
-    def token_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token_url", value)
-
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
     def __init__(__self__, *,
-                 allow_sign_up: Optional[pulumi.Input[str]] = None,
+                 api_url: pulumi.Input[str],
+                 auth_url: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 token_url: pulumi.Input[str],
+                 allow_sign_up: Optional[pulumi.Input[bool]] = None,
                  allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_organizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 api_url: Optional[pulumi.Input[str]] = None,
-                 auth_url: Optional[pulumi.Input[str]] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 client_secret: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 token_url: Optional[pulumi.Input[str]] = None):
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "api_url", api_url)
+        pulumi.set(__self__, "auth_url", auth_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "token_url", token_url)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
-        if api_url is not None:
-            pulumi.set(__self__, "api_url", api_url)
-        if auth_url is not None:
-            pulumi.set(__self__, "auth_url", auth_url)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
-        if token_url is not None:
-            pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_url", value)
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "auth_url")
+
+    @auth_url.setter
+    def auth_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_url", value)
 
     @property
     @pulumi.getter(name="allowSignUp")
-    def allow_sign_up(self) -> Optional[pulumi.Input[str]]:
+    def allow_sign_up(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "allow_sign_up")
 
     @allow_sign_up.setter
-    def allow_sign_up(self, value: Optional[pulumi.Input[str]]):
+    def allow_sign_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_sign_up", value)
 
     @property
@@ -2508,42 +2321,6 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
     @allowed_organizations.setter
     def allowed_organizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_organizations", value)
-
-    @property
-    @pulumi.getter(name="apiUrl")
-    def api_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "api_url")
-
-    @api_url.setter
-    def api_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "api_url", value)
-
-    @property
-    @pulumi.getter(name="authUrl")
-    def auth_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "auth_url")
-
-    @auth_url.setter
-    def auth_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_url", value)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter
@@ -2563,42 +2340,49 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
     def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
 
-    @property
-    @pulumi.getter(name="tokenUrl")
-    def token_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "token_url")
-
-    @token_url.setter
-    def token_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token_url", value)
-
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGithubArgs:
     def __init__(__self__, *,
-                 allow_sign_up: Optional[pulumi.Input[str]] = None,
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 allow_sign_up: Optional[pulumi.Input[bool]] = None,
                  allowed_organizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 client_secret: Optional[pulumi.Input[str]] = None,
-                 team_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 team_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
         if team_ids is not None:
             pulumi.set(__self__, "team_ids", team_ids)
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
     @pulumi.getter(name="allowSignUp")
-    def allow_sign_up(self) -> Optional[pulumi.Input[str]]:
+    def allow_sign_up(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "allow_sign_up")
 
     @allow_sign_up.setter
-    def allow_sign_up(self, value: Optional[pulumi.Input[str]]):
+    def allow_sign_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_sign_up", value)
 
     @property
@@ -2611,43 +2395,27 @@ class GrafanaGrafanaUserConfigAuthGithubArgs:
         pulumi.set(self, "allowed_organizations", value)
 
     @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_secret", value)
-
-    @property
     @pulumi.getter(name="teamIds")
-    def team_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def team_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         return pulumi.get(self, "team_ids")
 
     @team_ids.setter
-    def team_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def team_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "team_ids", value)
 
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGitlabArgs:
     def __init__(__self__, *,
-                 allow_sign_up: Optional[pulumi.Input[str]] = None,
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 allow_sign_up: Optional[pulumi.Input[bool]] = None,
                  allowed_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  api_url: Optional[pulumi.Input[str]] = None,
                  auth_url: Optional[pulumi.Input[str]] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 client_secret: Optional[pulumi.Input[str]] = None,
                  token_url: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_groups is not None:
@@ -2656,20 +2424,34 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
             pulumi.set(__self__, "api_url", api_url)
         if auth_url is not None:
             pulumi.set(__self__, "auth_url", auth_url)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
         if token_url is not None:
             pulumi.set(__self__, "token_url", token_url)
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
     @pulumi.getter(name="allowSignUp")
-    def allow_sign_up(self) -> Optional[pulumi.Input[str]]:
+    def allow_sign_up(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "allow_sign_up")
 
     @allow_sign_up.setter
-    def allow_sign_up(self, value: Optional[pulumi.Input[str]]):
+    def allow_sign_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_sign_up", value)
 
     @property
@@ -2700,24 +2482,6 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
         pulumi.set(self, "auth_url", value)
 
     @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_secret", value)
-
-    @property
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_url")
@@ -2730,26 +2494,42 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGoogleArgs:
     def __init__(__self__, *,
-                 allow_sign_up: Optional[pulumi.Input[str]] = None,
-                 allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 client_secret: Optional[pulumi.Input[str]] = None):
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 allow_sign_up: Optional[pulumi.Input[bool]] = None,
+                 allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_domains is not None:
             pulumi.set(__self__, "allowed_domains", allowed_domains)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="allowSignUp")
-    def allow_sign_up(self) -> Optional[pulumi.Input[str]]:
+    def allow_sign_up(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "allow_sign_up")
 
     @allow_sign_up.setter
-    def allow_sign_up(self, value: Optional[pulumi.Input[str]]):
+    def allow_sign_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_sign_up", value)
 
     @property
@@ -2760,24 +2540,6 @@ class GrafanaGrafanaUserConfigAuthGoogleArgs:
     @allowed_domains.setter
     def allowed_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_domains", value)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_secret", value)
 
 
 @pulumi.input_type
@@ -2884,65 +2646,69 @@ class GrafanaGrafanaUserConfigDateFormatsArgs:
 @pulumi.input_type
 class GrafanaGrafanaUserConfigExternalImageStorageArgs:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[str]] = None,
-                 bucket_url: Optional[pulumi.Input[str]] = None,
-                 provider: Optional[pulumi.Input[str]] = None,
-                 secret_key: Optional[pulumi.Input[str]] = None):
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
-        if bucket_url is not None:
-            pulumi.set(__self__, "bucket_url", bucket_url)
-        if provider is not None:
-            pulumi.set(__self__, "provider", provider)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+                 access_key: pulumi.Input[str],
+                 bucket_url: pulumi.Input[str],
+                 provider: pulumi.Input[str],
+                 secret_key: pulumi.Input[str]):
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "bucket_url", bucket_url)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[str]]:
+    def access_key(self) -> pulumi.Input[str]:
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[str]]):
+    def access_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_key", value)
 
     @property
     @pulumi.getter(name="bucketUrl")
-    def bucket_url(self) -> Optional[pulumi.Input[str]]:
+    def bucket_url(self) -> pulumi.Input[str]:
         return pulumi.get(self, "bucket_url")
 
     @bucket_url.setter
-    def bucket_url(self, value: Optional[pulumi.Input[str]]):
+    def bucket_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket_url", value)
 
     @property
     @pulumi.getter
-    def provider(self) -> Optional[pulumi.Input[str]]:
+    def provider(self) -> pulumi.Input[str]:
         return pulumi.get(self, "provider")
 
     @provider.setter
-    def provider(self, value: Optional[pulumi.Input[str]]):
+    def provider(self, value: pulumi.Input[str]):
         pulumi.set(self, "provider", value)
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[str]]:
+    def secret_key(self) -> pulumi.Input[str]:
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[str]]):
+    def secret_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_key", value)
 
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -2953,88 +2719,76 @@ class GrafanaGrafanaUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 grafana: Optional[pulumi.Input[str]] = None):
+                 grafana: Optional[pulumi.Input[bool]] = None):
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
-    def grafana(self) -> Optional[pulumi.Input[str]]:
+    def grafana(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "grafana")
 
     @grafana.setter
-    def grafana(self, value: Optional[pulumi.Input[str]]):
+    def grafana(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "grafana", value)
 
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 grafana: Optional[pulumi.Input[str]] = None):
+                 grafana: Optional[pulumi.Input[bool]] = None):
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
-    def grafana(self) -> Optional[pulumi.Input[str]]:
+    def grafana(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "grafana")
 
     @grafana.setter
-    def grafana(self, value: Optional[pulumi.Input[str]]):
+    def grafana(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "grafana", value)
 
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 grafana: Optional[pulumi.Input[str]] = None):
+                 grafana: Optional[pulumi.Input[bool]] = None):
         if grafana is not None:
             pulumi.set(__self__, "grafana", grafana)
 
     @property
     @pulumi.getter
-    def grafana(self) -> Optional[pulumi.Input[str]]:
+    def grafana(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "grafana")
 
     @grafana.setter
-    def grafana(self, value: Optional[pulumi.Input[str]]):
+    def grafana(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "grafana", value)
 
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigSmtpServerArgs:
     def __init__(__self__, *,
-                 from_address: Optional[pulumi.Input[str]] = None,
+                 from_address: pulumi.Input[str],
+                 host: pulumi.Input[str],
+                 port: pulumi.Input[int],
                  from_name: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[str]] = None,
-                 skip_verify: Optional[pulumi.Input[str]] = None,
+                 skip_verify: Optional[pulumi.Input[bool]] = None,
                  starttls_policy: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
-        if from_address is not None:
-            pulumi.set(__self__, "from_address", from_address)
+        pulumi.set(__self__, "from_address", from_address)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
         if from_name is not None:
             pulumi.set(__self__, "from_name", from_name)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
         if starttls_policy is not None:
@@ -3044,12 +2798,30 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
 
     @property
     @pulumi.getter(name="fromAddress")
-    def from_address(self) -> Optional[pulumi.Input[str]]:
+    def from_address(self) -> pulumi.Input[str]:
         return pulumi.get(self, "from_address")
 
     @from_address.setter
-    def from_address(self, value: Optional[pulumi.Input[str]]):
+    def from_address(self, value: pulumi.Input[str]):
         pulumi.set(self, "from_address", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="fromName")
@@ -3062,15 +2834,6 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
-
-    @property
-    @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "password")
 
@@ -3079,21 +2842,12 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
         pulumi.set(self, "password", value)
 
     @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "port", value)
-
-    @property
     @pulumi.getter(name="skipVerify")
-    def skip_verify(self) -> Optional[pulumi.Input[str]]:
+    def skip_verify(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "skip_verify")
 
     @skip_verify.setter
-    def skip_verify(self, value: Optional[pulumi.Input[str]]):
+    def skip_verify(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_verify", value)
 
     @property
@@ -3289,20 +3043,20 @@ class InfluxDbInfluxdbUserConfigArgs:
                  public_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
-        :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values
-        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values.
+        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
+        :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
-        :param pulumi.Input[str] static_ips: Use static public IP addresses
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -3312,6 +3066,9 @@ class InfluxDbInfluxdbUserConfigArgs:
             pulumi.set(__self__, "influxdb", influxdb)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -3333,7 +3090,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="additionalBackupRegions")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional Cloud Regions for Backup Replication
+        Additional Cloud Regions for Backup Replication.
         """
         return pulumi.get(self, "additional_backup_regions")
 
@@ -3345,7 +3102,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -3357,7 +3114,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter
     def influxdb(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']]:
         """
-        influxdb.conf configuration values
+        influxdb.conf configuration values.
         """
         return pulumi.get(self, "influxdb")
 
@@ -3369,7 +3126,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -3381,7 +3138,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -3393,7 +3150,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']]:
         """
-        Allow access to selected service ports from private networks
+        Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
 
@@ -3405,7 +3162,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs']]:
         """
-        Allow access to selected service components through Privatelink
+        Allow access to selected service components through Privatelink.
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -3429,7 +3186,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']]:
         """
-        Allow access to selected service ports from the public Internet
+        Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
 
@@ -3441,7 +3198,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the basebackup to restore in forked service
+        Name of the basebackup to restore in forked service.
         """
         return pulumi.get(self, "recovery_basebackup_name")
 
@@ -3463,26 +3220,26 @@ class InfluxDbInfluxdbUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use static public IP addresses
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigInfluxdbArgs:
     def __init__(__self__, *,
-                 log_queries_after: Optional[pulumi.Input[str]] = None,
-                 max_connection_limit: Optional[pulumi.Input[str]] = None,
-                 max_row_limit: Optional[pulumi.Input[str]] = None,
-                 max_select_buckets: Optional[pulumi.Input[str]] = None,
-                 max_select_point: Optional[pulumi.Input[str]] = None,
-                 query_timeout: Optional[pulumi.Input[str]] = None):
+                 log_queries_after: Optional[pulumi.Input[int]] = None,
+                 max_connection_limit: Optional[pulumi.Input[int]] = None,
+                 max_row_limit: Optional[pulumi.Input[int]] = None,
+                 max_select_buckets: Optional[pulumi.Input[int]] = None,
+                 max_select_point: Optional[pulumi.Input[int]] = None,
+                 query_timeout: Optional[pulumi.Input[int]] = None):
         if log_queries_after is not None:
             pulumi.set(__self__, "log_queries_after", log_queries_after)
         if max_connection_limit is not None:
@@ -3498,68 +3255,76 @@ class InfluxDbInfluxdbUserConfigInfluxdbArgs:
 
     @property
     @pulumi.getter(name="logQueriesAfter")
-    def log_queries_after(self) -> Optional[pulumi.Input[str]]:
+    def log_queries_after(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_queries_after")
 
     @log_queries_after.setter
-    def log_queries_after(self, value: Optional[pulumi.Input[str]]):
+    def log_queries_after(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_queries_after", value)
 
     @property
     @pulumi.getter(name="maxConnectionLimit")
-    def max_connection_limit(self) -> Optional[pulumi.Input[str]]:
+    def max_connection_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_connection_limit")
 
     @max_connection_limit.setter
-    def max_connection_limit(self, value: Optional[pulumi.Input[str]]):
+    def max_connection_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_connection_limit", value)
 
     @property
     @pulumi.getter(name="maxRowLimit")
-    def max_row_limit(self) -> Optional[pulumi.Input[str]]:
+    def max_row_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_row_limit")
 
     @max_row_limit.setter
-    def max_row_limit(self, value: Optional[pulumi.Input[str]]):
+    def max_row_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_row_limit", value)
 
     @property
     @pulumi.getter(name="maxSelectBuckets")
-    def max_select_buckets(self) -> Optional[pulumi.Input[str]]:
+    def max_select_buckets(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_select_buckets")
 
     @max_select_buckets.setter
-    def max_select_buckets(self, value: Optional[pulumi.Input[str]]):
+    def max_select_buckets(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_select_buckets", value)
 
     @property
     @pulumi.getter(name="maxSelectPoint")
-    def max_select_point(self) -> Optional[pulumi.Input[str]]:
+    def max_select_point(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_select_point")
 
     @max_select_point.setter
-    def max_select_point(self, value: Optional[pulumi.Input[str]]):
+    def max_select_point(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_select_point", value)
 
     @property
     @pulumi.getter(name="queryTimeout")
-    def query_timeout(self) -> Optional[pulumi.Input[str]]:
+    def query_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "query_timeout")
 
     @query_timeout.setter
-    def query_timeout(self, value: Optional[pulumi.Input[str]]):
+    def query_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "query_timeout", value)
 
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -3570,82 +3335,73 @@ class InfluxDbInfluxdbUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[str]] = None):
+                 influxdb: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] influxdb: InfluxDB server provided values
+        :param pulumi.Input[bool] influxdb: InfluxDB server provided values
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input[str]]:
+    def influxdb(self) -> Optional[pulumi.Input[bool]]:
         """
         InfluxDB server provided values
         """
         return pulumi.get(self, "influxdb")
 
     @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input[str]]):
+    def influxdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "influxdb", value)
 
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[str]] = None):
+                 influxdb: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] influxdb: InfluxDB server provided values
+        :param pulumi.Input[bool] influxdb: InfluxDB server provided values
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input[str]]:
+    def influxdb(self) -> Optional[pulumi.Input[bool]]:
         """
         InfluxDB server provided values
         """
         return pulumi.get(self, "influxdb")
 
     @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input[str]]):
+    def influxdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "influxdb", value)
 
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[str]] = None):
+                 influxdb: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] influxdb: InfluxDB server provided values
+        :param pulumi.Input[bool] influxdb: InfluxDB server provided values
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
 
     @property
     @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input[str]]:
+    def influxdb(self) -> Optional[pulumi.Input[bool]]:
         """
         InfluxDB server provided values
         """
         return pulumi.get(self, "influxdb")
 
     @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input[str]]):
+    def influxdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "influxdb", value)
 
 
@@ -3917,11 +3673,14 @@ class KafkaConnectKafkaConnectUserConfigArgs:
                  private_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs']] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
@@ -4000,23 +3759,31 @@ class KafkaConnectKafkaConnectUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -4027,31 +3794,25 @@ class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[pulumi.Input[str]] = None,
                  consumer_auto_offset_reset: Optional[pulumi.Input[str]] = None,
-                 consumer_fetch_max_bytes: Optional[pulumi.Input[str]] = None,
+                 consumer_fetch_max_bytes: Optional[pulumi.Input[int]] = None,
                  consumer_isolation_level: Optional[pulumi.Input[str]] = None,
-                 consumer_max_partition_fetch_bytes: Optional[pulumi.Input[str]] = None,
-                 consumer_max_poll_interval_ms: Optional[pulumi.Input[str]] = None,
-                 consumer_max_poll_records: Optional[pulumi.Input[str]] = None,
-                 offset_flush_interval_ms: Optional[pulumi.Input[str]] = None,
-                 offset_flush_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 consumer_max_partition_fetch_bytes: Optional[pulumi.Input[int]] = None,
+                 consumer_max_poll_interval_ms: Optional[pulumi.Input[int]] = None,
+                 consumer_max_poll_records: Optional[pulumi.Input[int]] = None,
+                 offset_flush_interval_ms: Optional[pulumi.Input[int]] = None,
+                 offset_flush_timeout_ms: Optional[pulumi.Input[int]] = None,
+                 producer_batch_size: Optional[pulumi.Input[int]] = None,
+                 producer_buffer_memory: Optional[pulumi.Input[int]] = None,
                  producer_compression_type: Optional[pulumi.Input[str]] = None,
-                 producer_max_request_size: Optional[pulumi.Input[str]] = None,
-                 session_timeout_ms: Optional[pulumi.Input[str]] = None):
+                 producer_linger_ms: Optional[pulumi.Input[int]] = None,
+                 producer_max_request_size: Optional[pulumi.Input[int]] = None,
+                 session_timeout_ms: Optional[pulumi.Input[int]] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -4070,8 +3831,14 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_batch_size is not None:
+            pulumi.set(__self__, "producer_batch_size", producer_batch_size)
+        if producer_buffer_memory is not None:
+            pulumi.set(__self__, "producer_buffer_memory", producer_buffer_memory)
         if producer_compression_type is not None:
             pulumi.set(__self__, "producer_compression_type", producer_compression_type)
+        if producer_linger_ms is not None:
+            pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
@@ -4097,11 +3864,11 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
 
     @property
     @pulumi.getter(name="consumerFetchMaxBytes")
-    def consumer_fetch_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def consumer_fetch_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_fetch_max_bytes")
 
     @consumer_fetch_max_bytes.setter
-    def consumer_fetch_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def consumer_fetch_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_fetch_max_bytes", value)
 
     @property
@@ -4115,48 +3882,66 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
 
     @property
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
-    def consumer_max_partition_fetch_bytes(self) -> Optional[pulumi.Input[str]]:
+    def consumer_max_partition_fetch_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @consumer_max_partition_fetch_bytes.setter
-    def consumer_max_partition_fetch_bytes(self, value: Optional[pulumi.Input[str]]):
+    def consumer_max_partition_fetch_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_max_partition_fetch_bytes", value)
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
-    def consumer_max_poll_interval_ms(self) -> Optional[pulumi.Input[str]]:
+    def consumer_max_poll_interval_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_max_poll_interval_ms")
 
     @consumer_max_poll_interval_ms.setter
-    def consumer_max_poll_interval_ms(self, value: Optional[pulumi.Input[str]]):
+    def consumer_max_poll_interval_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_max_poll_interval_ms", value)
 
     @property
     @pulumi.getter(name="consumerMaxPollRecords")
-    def consumer_max_poll_records(self) -> Optional[pulumi.Input[str]]:
+    def consumer_max_poll_records(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_max_poll_records")
 
     @consumer_max_poll_records.setter
-    def consumer_max_poll_records(self, value: Optional[pulumi.Input[str]]):
+    def consumer_max_poll_records(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_max_poll_records", value)
 
     @property
     @pulumi.getter(name="offsetFlushIntervalMs")
-    def offset_flush_interval_ms(self) -> Optional[pulumi.Input[str]]:
+    def offset_flush_interval_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "offset_flush_interval_ms")
 
     @offset_flush_interval_ms.setter
-    def offset_flush_interval_ms(self, value: Optional[pulumi.Input[str]]):
+    def offset_flush_interval_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "offset_flush_interval_ms", value)
 
     @property
     @pulumi.getter(name="offsetFlushTimeoutMs")
-    def offset_flush_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def offset_flush_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "offset_flush_timeout_ms")
 
     @offset_flush_timeout_ms.setter
-    def offset_flush_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def offset_flush_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "offset_flush_timeout_ms", value)
+
+    @property
+    @pulumi.getter(name="producerBatchSize")
+    def producer_batch_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "producer_batch_size")
+
+    @producer_batch_size.setter
+    def producer_batch_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_batch_size", value)
+
+    @property
+    @pulumi.getter(name="producerBufferMemory")
+    def producer_buffer_memory(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "producer_buffer_memory")
+
+    @producer_buffer_memory.setter
+    def producer_buffer_memory(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_buffer_memory", value)
 
     @property
     @pulumi.getter(name="producerCompressionType")
@@ -4168,29 +3953,38 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
         pulumi.set(self, "producer_compression_type", value)
 
     @property
+    @pulumi.getter(name="producerLingerMs")
+    def producer_linger_ms(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "producer_linger_ms")
+
+    @producer_linger_ms.setter
+    def producer_linger_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_linger_ms", value)
+
+    @property
     @pulumi.getter(name="producerMaxRequestSize")
-    def producer_max_request_size(self) -> Optional[pulumi.Input[str]]:
+    def producer_max_request_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_max_request_size")
 
     @producer_max_request_size.setter
-    def producer_max_request_size(self, value: Optional[pulumi.Input[str]]):
+    def producer_max_request_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_max_request_size", value)
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
-    def session_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def session_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "session_timeout_ms")
 
     @session_timeout_ms.setter
-    def session_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def session_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "session_timeout_ms", value)
 
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 kafka_connect: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -4198,29 +3992,29 @@ class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs:
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input[str]]:
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_connect")
 
     @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input[str]]):
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_connect", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 jolokia: Optional[pulumi.Input[str]] = None,
-                 kafka_connect: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 jolokia: Optional[pulumi.Input[bool]] = None,
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if jolokia is not None:
             pulumi.set(__self__, "jolokia", jolokia)
         if kafka_connect is not None:
@@ -4230,37 +4024,37 @@ class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def jolokia(self) -> Optional[pulumi.Input[str]]:
+    def jolokia(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "jolokia")
 
     @jolokia.setter
-    def jolokia(self, value: Optional[pulumi.Input[str]]):
+    def jolokia(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "jolokia", value)
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input[str]]:
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_connect")
 
     @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input[str]]):
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_connect", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 kafka_connect: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -4268,20 +4062,20 @@ class KafkaConnectKafkaConnectUserConfigPublicAccessArgs:
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input[str]]:
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_connect")
 
     @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input[str]]):
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_connect", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
@@ -4470,35 +4264,37 @@ class KafkaKafkaUserConfigArgs:
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaArgs']] = None,
                  kafka_authentication_methods: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs']] = None,
-                 kafka_connect: Optional[pulumi.Input[str]] = None,
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
                  kafka_connect_config: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs']] = None,
-                 kafka_rest: Optional[pulumi.Input[str]] = None,
+                 kafka_rest: Optional[pulumi.Input[bool]] = None,
+                 kafka_rest_authorization: Optional[pulumi.Input[bool]] = None,
                  kafka_rest_config: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs']] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  private_access: Optional[pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs']] = None,
-                 schema_registry: Optional[pulumi.Input[str]] = None,
+                 schema_registry: Optional[pulumi.Input[bool]] = None,
                  schema_registry_config: Optional[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs']] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
-        :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input['KafkaKafkaUserConfigKafkaArgs'] kafka: Kafka broker configuration values
-        :param pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs'] kafka_authentication_methods: Kafka authentication methods
-        :param pulumi.Input[str] kafka_connect: Enable Kafka Connect service
-        :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs'] kafka_connect_config: Kafka Connect configuration values
-        :param pulumi.Input[str] kafka_rest: Enable Kafka-REST service
-        :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
-        :param pulumi.Input[str] kafka_version: Kafka major version
-        :param pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
-        :param pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input[str] schema_registry: Enable Schema-Registry service
-        :param pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs'] schema_registry_config: Schema Registry configuration
-        :param pulumi.Input[str] static_ips: Use static public IP addresses
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input['KafkaKafkaUserConfigKafkaArgs'] kafka: Kafka broker configuration values.
+        :param pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs'] kafka_authentication_methods: Kafka authentication methods.
+        :param pulumi.Input[bool] kafka_connect: Enable Kafka Connect service. The default value is `false`.
+        :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs'] kafka_connect_config: Kafka Connect configuration values.
+        :param pulumi.Input[bool] kafka_rest: Enable Kafka-REST service. The default value is `false`.
+        :param pulumi.Input[bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
+        :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration.
+        :param pulumi.Input[str] kafka_version: Kafka major version.
+        :param pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
+        :param pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
+        :param pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
+        :param pulumi.Input[bool] schema_registry: Enable Schema-Registry service. The default value is `false`.
+        :param pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs'] schema_registry_config: Schema Registry configuration.
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -4506,6 +4302,9 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka is not None:
@@ -4518,6 +4317,8 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "kafka_connect_config", kafka_connect_config)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if kafka_rest_authorization is not None:
+            pulumi.set(__self__, "kafka_rest_authorization", kafka_rest_authorization)
         if kafka_rest_config is not None:
             pulumi.set(__self__, "kafka_rest_config", kafka_rest_config)
         if kafka_version is not None:
@@ -4539,7 +4340,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="additionalBackupRegions")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional Cloud Regions for Backup Replication
+        Additional Cloud Regions for Backup Replication.
         """
         return pulumi.get(self, "additional_backup_regions")
 
@@ -4551,7 +4352,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -4563,7 +4364,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -4575,7 +4376,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -4587,7 +4388,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter
     def kafka(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigKafkaArgs']]:
         """
-        Kafka broker configuration values
+        Kafka broker configuration values.
         """
         return pulumi.get(self, "kafka")
 
@@ -4599,7 +4400,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="kafkaAuthenticationMethods")
     def kafka_authentication_methods(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs']]:
         """
-        Kafka authentication methods
+        Kafka authentication methods.
         """
         return pulumi.get(self, "kafka_authentication_methods")
 
@@ -4609,21 +4410,21 @@ class KafkaKafkaUserConfigArgs:
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input[str]]:
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Kafka Connect service
+        Enable Kafka Connect service. The default value is `false`.
         """
         return pulumi.get(self, "kafka_connect")
 
     @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input[str]]):
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_connect", value)
 
     @property
     @pulumi.getter(name="kafkaConnectConfig")
     def kafka_connect_config(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs']]:
         """
-        Kafka Connect configuration values
+        Kafka Connect configuration values.
         """
         return pulumi.get(self, "kafka_connect_config")
 
@@ -4633,21 +4434,33 @@ class KafkaKafkaUserConfigArgs:
 
     @property
     @pulumi.getter(name="kafkaRest")
-    def kafka_rest(self) -> Optional[pulumi.Input[str]]:
+    def kafka_rest(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Kafka-REST service
+        Enable Kafka-REST service. The default value is `false`.
         """
         return pulumi.get(self, "kafka_rest")
 
     @kafka_rest.setter
-    def kafka_rest(self, value: Optional[pulumi.Input[str]]):
+    def kafka_rest(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_rest", value)
+
+    @property
+    @pulumi.getter(name="kafkaRestAuthorization")
+    def kafka_rest_authorization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable authorization in Kafka-REST service.
+        """
+        return pulumi.get(self, "kafka_rest_authorization")
+
+    @kafka_rest_authorization.setter
+    def kafka_rest_authorization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "kafka_rest_authorization", value)
 
     @property
     @pulumi.getter(name="kafkaRestConfig")
     def kafka_rest_config(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs']]:
         """
-        Kafka REST configuration
+        Kafka REST configuration.
         """
         return pulumi.get(self, "kafka_rest_config")
 
@@ -4659,7 +4472,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka major version
+        Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -4671,7 +4484,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs']]:
         """
-        Allow access to selected service ports from private networks
+        Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
 
@@ -4683,7 +4496,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs']]:
         """
-        Allow access to selected service components through Privatelink
+        Allow access to selected service components through Privatelink.
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -4695,7 +4508,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs']]:
         """
-        Allow access to selected service ports from the public Internet
+        Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
 
@@ -4705,21 +4518,21 @@ class KafkaKafkaUserConfigArgs:
 
     @property
     @pulumi.getter(name="schemaRegistry")
-    def schema_registry(self) -> Optional[pulumi.Input[str]]:
+    def schema_registry(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Schema-Registry service
+        Enable Schema-Registry service. The default value is `false`.
         """
         return pulumi.get(self, "schema_registry")
 
     @schema_registry.setter
-    def schema_registry(self, value: Optional[pulumi.Input[str]]):
+    def schema_registry(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "schema_registry", value)
 
     @property
     @pulumi.getter(name="schemaRegistryConfig")
     def schema_registry_config(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs']]:
         """
-        Schema Registry configuration
+        Schema Registry configuration.
         """
         return pulumi.get(self, "schema_registry_config")
 
@@ -4729,26 +4542,34 @@ class KafkaKafkaUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use static public IP addresses
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -4759,58 +4580,49 @@ class KafkaKafkaUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaArgs:
     def __init__(__self__, *,
-                 auto_create_topics_enable: Optional[pulumi.Input[str]] = None,
+                 auto_create_topics_enable: Optional[pulumi.Input[bool]] = None,
                  compression_type: Optional[pulumi.Input[str]] = None,
-                 connections_max_idle_ms: Optional[pulumi.Input[str]] = None,
-                 default_replication_factor: Optional[pulumi.Input[str]] = None,
-                 group_initial_rebalance_delay_ms: Optional[pulumi.Input[str]] = None,
-                 group_max_session_timeout_ms: Optional[pulumi.Input[str]] = None,
-                 group_min_session_timeout_ms: Optional[pulumi.Input[str]] = None,
-                 log_cleaner_delete_retention_ms: Optional[pulumi.Input[str]] = None,
-                 log_cleaner_max_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
-                 log_cleaner_min_cleanable_ratio: Optional[pulumi.Input[str]] = None,
-                 log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
+                 connections_max_idle_ms: Optional[pulumi.Input[int]] = None,
+                 default_replication_factor: Optional[pulumi.Input[int]] = None,
+                 group_initial_rebalance_delay_ms: Optional[pulumi.Input[int]] = None,
+                 group_max_session_timeout_ms: Optional[pulumi.Input[int]] = None,
+                 group_min_session_timeout_ms: Optional[pulumi.Input[int]] = None,
+                 log_cleaner_delete_retention_ms: Optional[pulumi.Input[int]] = None,
+                 log_cleaner_max_compaction_lag_ms: Optional[pulumi.Input[int]] = None,
+                 log_cleaner_min_cleanable_ratio: Optional[pulumi.Input[float]] = None,
+                 log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[int]] = None,
                  log_cleanup_policy: Optional[pulumi.Input[str]] = None,
-                 log_flush_interval_messages: Optional[pulumi.Input[str]] = None,
-                 log_flush_interval_ms: Optional[pulumi.Input[str]] = None,
-                 log_index_interval_bytes: Optional[pulumi.Input[str]] = None,
-                 log_index_size_max_bytes: Optional[pulumi.Input[str]] = None,
-                 log_message_downconversion_enable: Optional[pulumi.Input[str]] = None,
-                 log_message_timestamp_difference_max_ms: Optional[pulumi.Input[str]] = None,
+                 log_flush_interval_messages: Optional[pulumi.Input[int]] = None,
+                 log_flush_interval_ms: Optional[pulumi.Input[int]] = None,
+                 log_index_interval_bytes: Optional[pulumi.Input[int]] = None,
+                 log_index_size_max_bytes: Optional[pulumi.Input[int]] = None,
+                 log_message_downconversion_enable: Optional[pulumi.Input[bool]] = None,
+                 log_message_timestamp_difference_max_ms: Optional[pulumi.Input[int]] = None,
                  log_message_timestamp_type: Optional[pulumi.Input[str]] = None,
-                 log_preallocate: Optional[pulumi.Input[str]] = None,
-                 log_retention_bytes: Optional[pulumi.Input[str]] = None,
-                 log_retention_hours: Optional[pulumi.Input[str]] = None,
-                 log_retention_ms: Optional[pulumi.Input[str]] = None,
-                 log_roll_jitter_ms: Optional[pulumi.Input[str]] = None,
-                 log_roll_ms: Optional[pulumi.Input[str]] = None,
-                 log_segment_bytes: Optional[pulumi.Input[str]] = None,
-                 log_segment_delete_delay_ms: Optional[pulumi.Input[str]] = None,
-                 max_connections_per_ip: Optional[pulumi.Input[str]] = None,
-                 max_incremental_fetch_session_cache_slots: Optional[pulumi.Input[str]] = None,
-                 message_max_bytes: Optional[pulumi.Input[str]] = None,
-                 min_insync_replicas: Optional[pulumi.Input[str]] = None,
-                 num_partitions: Optional[pulumi.Input[str]] = None,
-                 offsets_retention_minutes: Optional[pulumi.Input[str]] = None,
-                 producer_purgatory_purge_interval_requests: Optional[pulumi.Input[str]] = None,
-                 replica_fetch_max_bytes: Optional[pulumi.Input[str]] = None,
-                 replica_fetch_response_max_bytes: Optional[pulumi.Input[str]] = None,
-                 socket_request_max_bytes: Optional[pulumi.Input[str]] = None,
-                 transaction_remove_expired_transaction_cleanup_interval_ms: Optional[pulumi.Input[str]] = None,
-                 transaction_state_log_segment_bytes: Optional[pulumi.Input[str]] = None):
+                 log_preallocate: Optional[pulumi.Input[bool]] = None,
+                 log_retention_bytes: Optional[pulumi.Input[int]] = None,
+                 log_retention_hours: Optional[pulumi.Input[int]] = None,
+                 log_retention_ms: Optional[pulumi.Input[int]] = None,
+                 log_roll_jitter_ms: Optional[pulumi.Input[int]] = None,
+                 log_roll_ms: Optional[pulumi.Input[int]] = None,
+                 log_segment_bytes: Optional[pulumi.Input[int]] = None,
+                 log_segment_delete_delay_ms: Optional[pulumi.Input[int]] = None,
+                 max_connections_per_ip: Optional[pulumi.Input[int]] = None,
+                 max_incremental_fetch_session_cache_slots: Optional[pulumi.Input[int]] = None,
+                 message_max_bytes: Optional[pulumi.Input[int]] = None,
+                 min_insync_replicas: Optional[pulumi.Input[int]] = None,
+                 num_partitions: Optional[pulumi.Input[int]] = None,
+                 offsets_retention_minutes: Optional[pulumi.Input[int]] = None,
+                 producer_purgatory_purge_interval_requests: Optional[pulumi.Input[int]] = None,
+                 replica_fetch_max_bytes: Optional[pulumi.Input[int]] = None,
+                 replica_fetch_response_max_bytes: Optional[pulumi.Input[int]] = None,
+                 socket_request_max_bytes: Optional[pulumi.Input[int]] = None,
+                 transaction_remove_expired_transaction_cleanup_interval_ms: Optional[pulumi.Input[int]] = None,
+                 transaction_state_log_segment_bytes: Optional[pulumi.Input[int]] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -4892,11 +4704,11 @@ class KafkaKafkaUserConfigKafkaArgs:
 
     @property
     @pulumi.getter(name="autoCreateTopicsEnable")
-    def auto_create_topics_enable(self) -> Optional[pulumi.Input[str]]:
+    def auto_create_topics_enable(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "auto_create_topics_enable")
 
     @auto_create_topics_enable.setter
-    def auto_create_topics_enable(self, value: Optional[pulumi.Input[str]]):
+    def auto_create_topics_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_create_topics_enable", value)
 
     @property
@@ -4910,83 +4722,83 @@ class KafkaKafkaUserConfigKafkaArgs:
 
     @property
     @pulumi.getter(name="connectionsMaxIdleMs")
-    def connections_max_idle_ms(self) -> Optional[pulumi.Input[str]]:
+    def connections_max_idle_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "connections_max_idle_ms")
 
     @connections_max_idle_ms.setter
-    def connections_max_idle_ms(self, value: Optional[pulumi.Input[str]]):
+    def connections_max_idle_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connections_max_idle_ms", value)
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
-    def default_replication_factor(self) -> Optional[pulumi.Input[str]]:
+    def default_replication_factor(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "default_replication_factor")
 
     @default_replication_factor.setter
-    def default_replication_factor(self, value: Optional[pulumi.Input[str]]):
+    def default_replication_factor(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default_replication_factor", value)
 
     @property
     @pulumi.getter(name="groupInitialRebalanceDelayMs")
-    def group_initial_rebalance_delay_ms(self) -> Optional[pulumi.Input[str]]:
+    def group_initial_rebalance_delay_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "group_initial_rebalance_delay_ms")
 
     @group_initial_rebalance_delay_ms.setter
-    def group_initial_rebalance_delay_ms(self, value: Optional[pulumi.Input[str]]):
+    def group_initial_rebalance_delay_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_initial_rebalance_delay_ms", value)
 
     @property
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
-    def group_max_session_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def group_max_session_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "group_max_session_timeout_ms")
 
     @group_max_session_timeout_ms.setter
-    def group_max_session_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def group_max_session_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_max_session_timeout_ms", value)
 
     @property
     @pulumi.getter(name="groupMinSessionTimeoutMs")
-    def group_min_session_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def group_min_session_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "group_min_session_timeout_ms")
 
     @group_min_session_timeout_ms.setter
-    def group_min_session_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def group_min_session_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_min_session_timeout_ms", value)
 
     @property
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
-    def log_cleaner_delete_retention_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_cleaner_delete_retention_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
     @log_cleaner_delete_retention_ms.setter
-    def log_cleaner_delete_retention_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_cleaner_delete_retention_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_cleaner_delete_retention_ms", value)
 
     @property
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
-    def log_cleaner_max_compaction_lag_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_cleaner_max_compaction_lag_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
 
     @log_cleaner_max_compaction_lag_ms.setter
-    def log_cleaner_max_compaction_lag_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_cleaner_max_compaction_lag_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_cleaner_max_compaction_lag_ms", value)
 
     @property
     @pulumi.getter(name="logCleanerMinCleanableRatio")
-    def log_cleaner_min_cleanable_ratio(self) -> Optional[pulumi.Input[str]]:
+    def log_cleaner_min_cleanable_ratio(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "log_cleaner_min_cleanable_ratio")
 
     @log_cleaner_min_cleanable_ratio.setter
-    def log_cleaner_min_cleanable_ratio(self, value: Optional[pulumi.Input[str]]):
+    def log_cleaner_min_cleanable_ratio(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "log_cleaner_min_cleanable_ratio", value)
 
     @property
     @pulumi.getter(name="logCleanerMinCompactionLagMs")
-    def log_cleaner_min_compaction_lag_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_cleaner_min_compaction_lag_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @log_cleaner_min_compaction_lag_ms.setter
-    def log_cleaner_min_compaction_lag_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_cleaner_min_compaction_lag_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_cleaner_min_compaction_lag_ms", value)
 
     @property
@@ -5000,56 +4812,56 @@ class KafkaKafkaUserConfigKafkaArgs:
 
     @property
     @pulumi.getter(name="logFlushIntervalMessages")
-    def log_flush_interval_messages(self) -> Optional[pulumi.Input[str]]:
+    def log_flush_interval_messages(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_flush_interval_messages")
 
     @log_flush_interval_messages.setter
-    def log_flush_interval_messages(self, value: Optional[pulumi.Input[str]]):
+    def log_flush_interval_messages(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_flush_interval_messages", value)
 
     @property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_flush_interval_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_flush_interval_ms")
 
     @log_flush_interval_ms.setter
-    def log_flush_interval_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_flush_interval_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_flush_interval_ms", value)
 
     @property
     @pulumi.getter(name="logIndexIntervalBytes")
-    def log_index_interval_bytes(self) -> Optional[pulumi.Input[str]]:
+    def log_index_interval_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_index_interval_bytes")
 
     @log_index_interval_bytes.setter
-    def log_index_interval_bytes(self, value: Optional[pulumi.Input[str]]):
+    def log_index_interval_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_index_interval_bytes", value)
 
     @property
     @pulumi.getter(name="logIndexSizeMaxBytes")
-    def log_index_size_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def log_index_size_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_index_size_max_bytes")
 
     @log_index_size_max_bytes.setter
-    def log_index_size_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def log_index_size_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_index_size_max_bytes", value)
 
     @property
     @pulumi.getter(name="logMessageDownconversionEnable")
-    def log_message_downconversion_enable(self) -> Optional[pulumi.Input[str]]:
+    def log_message_downconversion_enable(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "log_message_downconversion_enable")
 
     @log_message_downconversion_enable.setter
-    def log_message_downconversion_enable(self, value: Optional[pulumi.Input[str]]):
+    def log_message_downconversion_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "log_message_downconversion_enable", value)
 
     @property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
-    def log_message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
 
     @log_message_timestamp_difference_max_ms.setter
-    def log_message_timestamp_difference_max_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_message_timestamp_difference_max_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_message_timestamp_difference_max_ms", value)
 
     @property
@@ -5063,190 +4875,190 @@ class KafkaKafkaUserConfigKafkaArgs:
 
     @property
     @pulumi.getter(name="logPreallocate")
-    def log_preallocate(self) -> Optional[pulumi.Input[str]]:
+    def log_preallocate(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "log_preallocate")
 
     @log_preallocate.setter
-    def log_preallocate(self, value: Optional[pulumi.Input[str]]):
+    def log_preallocate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "log_preallocate", value)
 
     @property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[pulumi.Input[str]]:
+    def log_retention_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_retention_bytes")
 
     @log_retention_bytes.setter
-    def log_retention_bytes(self, value: Optional[pulumi.Input[str]]):
+    def log_retention_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_retention_bytes", value)
 
     @property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[pulumi.Input[str]]:
+    def log_retention_hours(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_retention_hours")
 
     @log_retention_hours.setter
-    def log_retention_hours(self, value: Optional[pulumi.Input[str]]):
+    def log_retention_hours(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_retention_hours", value)
 
     @property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_retention_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_retention_ms")
 
     @log_retention_ms.setter
-    def log_retention_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_retention_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_retention_ms", value)
 
     @property
     @pulumi.getter(name="logRollJitterMs")
-    def log_roll_jitter_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_roll_jitter_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_roll_jitter_ms")
 
     @log_roll_jitter_ms.setter
-    def log_roll_jitter_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_roll_jitter_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_roll_jitter_ms", value)
 
     @property
     @pulumi.getter(name="logRollMs")
-    def log_roll_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_roll_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_roll_ms")
 
     @log_roll_ms.setter
-    def log_roll_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_roll_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_roll_ms", value)
 
     @property
     @pulumi.getter(name="logSegmentBytes")
-    def log_segment_bytes(self) -> Optional[pulumi.Input[str]]:
+    def log_segment_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_segment_bytes")
 
     @log_segment_bytes.setter
-    def log_segment_bytes(self, value: Optional[pulumi.Input[str]]):
+    def log_segment_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_segment_bytes", value)
 
     @property
     @pulumi.getter(name="logSegmentDeleteDelayMs")
-    def log_segment_delete_delay_ms(self) -> Optional[pulumi.Input[str]]:
+    def log_segment_delete_delay_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_segment_delete_delay_ms")
 
     @log_segment_delete_delay_ms.setter
-    def log_segment_delete_delay_ms(self, value: Optional[pulumi.Input[str]]):
+    def log_segment_delete_delay_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_segment_delete_delay_ms", value)
 
     @property
     @pulumi.getter(name="maxConnectionsPerIp")
-    def max_connections_per_ip(self) -> Optional[pulumi.Input[str]]:
+    def max_connections_per_ip(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_connections_per_ip")
 
     @max_connections_per_ip.setter
-    def max_connections_per_ip(self, value: Optional[pulumi.Input[str]]):
+    def max_connections_per_ip(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_connections_per_ip", value)
 
     @property
     @pulumi.getter(name="maxIncrementalFetchSessionCacheSlots")
-    def max_incremental_fetch_session_cache_slots(self) -> Optional[pulumi.Input[str]]:
+    def max_incremental_fetch_session_cache_slots(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_incremental_fetch_session_cache_slots")
 
     @max_incremental_fetch_session_cache_slots.setter
-    def max_incremental_fetch_session_cache_slots(self, value: Optional[pulumi.Input[str]]):
+    def max_incremental_fetch_session_cache_slots(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_incremental_fetch_session_cache_slots", value)
 
     @property
     @pulumi.getter(name="messageMaxBytes")
-    def message_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def message_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "message_max_bytes")
 
     @message_max_bytes.setter
-    def message_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def message_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "message_max_bytes", value)
 
     @property
     @pulumi.getter(name="minInsyncReplicas")
-    def min_insync_replicas(self) -> Optional[pulumi.Input[str]]:
+    def min_insync_replicas(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "min_insync_replicas")
 
     @min_insync_replicas.setter
-    def min_insync_replicas(self, value: Optional[pulumi.Input[str]]):
+    def min_insync_replicas(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_insync_replicas", value)
 
     @property
     @pulumi.getter(name="numPartitions")
-    def num_partitions(self) -> Optional[pulumi.Input[str]]:
+    def num_partitions(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_partitions")
 
     @num_partitions.setter
-    def num_partitions(self, value: Optional[pulumi.Input[str]]):
+    def num_partitions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_partitions", value)
 
     @property
     @pulumi.getter(name="offsetsRetentionMinutes")
-    def offsets_retention_minutes(self) -> Optional[pulumi.Input[str]]:
+    def offsets_retention_minutes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "offsets_retention_minutes")
 
     @offsets_retention_minutes.setter
-    def offsets_retention_minutes(self, value: Optional[pulumi.Input[str]]):
+    def offsets_retention_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "offsets_retention_minutes", value)
 
     @property
     @pulumi.getter(name="producerPurgatoryPurgeIntervalRequests")
-    def producer_purgatory_purge_interval_requests(self) -> Optional[pulumi.Input[str]]:
+    def producer_purgatory_purge_interval_requests(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_purgatory_purge_interval_requests")
 
     @producer_purgatory_purge_interval_requests.setter
-    def producer_purgatory_purge_interval_requests(self, value: Optional[pulumi.Input[str]]):
+    def producer_purgatory_purge_interval_requests(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_purgatory_purge_interval_requests", value)
 
     @property
     @pulumi.getter(name="replicaFetchMaxBytes")
-    def replica_fetch_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def replica_fetch_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "replica_fetch_max_bytes")
 
     @replica_fetch_max_bytes.setter
-    def replica_fetch_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def replica_fetch_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "replica_fetch_max_bytes", value)
 
     @property
     @pulumi.getter(name="replicaFetchResponseMaxBytes")
-    def replica_fetch_response_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def replica_fetch_response_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "replica_fetch_response_max_bytes")
 
     @replica_fetch_response_max_bytes.setter
-    def replica_fetch_response_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def replica_fetch_response_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "replica_fetch_response_max_bytes", value)
 
     @property
     @pulumi.getter(name="socketRequestMaxBytes")
-    def socket_request_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def socket_request_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "socket_request_max_bytes")
 
     @socket_request_max_bytes.setter
-    def socket_request_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def socket_request_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "socket_request_max_bytes", value)
 
     @property
     @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
-    def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[pulumi.Input[str]]:
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
 
     @transaction_remove_expired_transaction_cleanup_interval_ms.setter
-    def transaction_remove_expired_transaction_cleanup_interval_ms(self, value: Optional[pulumi.Input[str]]):
+    def transaction_remove_expired_transaction_cleanup_interval_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "transaction_remove_expired_transaction_cleanup_interval_ms", value)
 
     @property
     @pulumi.getter(name="transactionStateLogSegmentBytes")
-    def transaction_state_log_segment_bytes(self) -> Optional[pulumi.Input[str]]:
+    def transaction_state_log_segment_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "transaction_state_log_segment_bytes")
 
     @transaction_state_log_segment_bytes.setter
-    def transaction_state_log_segment_bytes(self, value: Optional[pulumi.Input[str]]):
+    def transaction_state_log_segment_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "transaction_state_log_segment_bytes", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs:
     def __init__(__self__, *,
-                 certificate: Optional[pulumi.Input[str]] = None,
-                 sasl: Optional[pulumi.Input[str]] = None):
+                 certificate: Optional[pulumi.Input[bool]] = None,
+                 sasl: Optional[pulumi.Input[bool]] = None):
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if sasl is not None:
@@ -5254,20 +5066,20 @@ class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs:
 
     @property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[str]]:
+    def certificate(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[str]]):
+    def certificate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "certificate", value)
 
     @property
     @pulumi.getter
-    def sasl(self) -> Optional[pulumi.Input[str]]:
+    def sasl(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "sasl")
 
     @sasl.setter
-    def sasl(self, value: Optional[pulumi.Input[str]]):
+    def sasl(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sasl", value)
 
 
@@ -5276,16 +5088,19 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[pulumi.Input[str]] = None,
                  consumer_auto_offset_reset: Optional[pulumi.Input[str]] = None,
-                 consumer_fetch_max_bytes: Optional[pulumi.Input[str]] = None,
+                 consumer_fetch_max_bytes: Optional[pulumi.Input[int]] = None,
                  consumer_isolation_level: Optional[pulumi.Input[str]] = None,
-                 consumer_max_partition_fetch_bytes: Optional[pulumi.Input[str]] = None,
-                 consumer_max_poll_interval_ms: Optional[pulumi.Input[str]] = None,
-                 consumer_max_poll_records: Optional[pulumi.Input[str]] = None,
-                 offset_flush_interval_ms: Optional[pulumi.Input[str]] = None,
-                 offset_flush_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 consumer_max_partition_fetch_bytes: Optional[pulumi.Input[int]] = None,
+                 consumer_max_poll_interval_ms: Optional[pulumi.Input[int]] = None,
+                 consumer_max_poll_records: Optional[pulumi.Input[int]] = None,
+                 offset_flush_interval_ms: Optional[pulumi.Input[int]] = None,
+                 offset_flush_timeout_ms: Optional[pulumi.Input[int]] = None,
+                 producer_batch_size: Optional[pulumi.Input[int]] = None,
+                 producer_buffer_memory: Optional[pulumi.Input[int]] = None,
                  producer_compression_type: Optional[pulumi.Input[str]] = None,
-                 producer_max_request_size: Optional[pulumi.Input[str]] = None,
-                 session_timeout_ms: Optional[pulumi.Input[str]] = None):
+                 producer_linger_ms: Optional[pulumi.Input[int]] = None,
+                 producer_max_request_size: Optional[pulumi.Input[int]] = None,
+                 session_timeout_ms: Optional[pulumi.Input[int]] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -5304,8 +5119,14 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
             pulumi.set(__self__, "offset_flush_interval_ms", offset_flush_interval_ms)
         if offset_flush_timeout_ms is not None:
             pulumi.set(__self__, "offset_flush_timeout_ms", offset_flush_timeout_ms)
+        if producer_batch_size is not None:
+            pulumi.set(__self__, "producer_batch_size", producer_batch_size)
+        if producer_buffer_memory is not None:
+            pulumi.set(__self__, "producer_buffer_memory", producer_buffer_memory)
         if producer_compression_type is not None:
             pulumi.set(__self__, "producer_compression_type", producer_compression_type)
+        if producer_linger_ms is not None:
+            pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if session_timeout_ms is not None:
@@ -5331,11 +5152,11 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
 
     @property
     @pulumi.getter(name="consumerFetchMaxBytes")
-    def consumer_fetch_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def consumer_fetch_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_fetch_max_bytes")
 
     @consumer_fetch_max_bytes.setter
-    def consumer_fetch_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def consumer_fetch_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_fetch_max_bytes", value)
 
     @property
@@ -5349,48 +5170,66 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
 
     @property
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
-    def consumer_max_partition_fetch_bytes(self) -> Optional[pulumi.Input[str]]:
+    def consumer_max_partition_fetch_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
     @consumer_max_partition_fetch_bytes.setter
-    def consumer_max_partition_fetch_bytes(self, value: Optional[pulumi.Input[str]]):
+    def consumer_max_partition_fetch_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_max_partition_fetch_bytes", value)
 
     @property
     @pulumi.getter(name="consumerMaxPollIntervalMs")
-    def consumer_max_poll_interval_ms(self) -> Optional[pulumi.Input[str]]:
+    def consumer_max_poll_interval_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_max_poll_interval_ms")
 
     @consumer_max_poll_interval_ms.setter
-    def consumer_max_poll_interval_ms(self, value: Optional[pulumi.Input[str]]):
+    def consumer_max_poll_interval_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_max_poll_interval_ms", value)
 
     @property
     @pulumi.getter(name="consumerMaxPollRecords")
-    def consumer_max_poll_records(self) -> Optional[pulumi.Input[str]]:
+    def consumer_max_poll_records(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_max_poll_records")
 
     @consumer_max_poll_records.setter
-    def consumer_max_poll_records(self, value: Optional[pulumi.Input[str]]):
+    def consumer_max_poll_records(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_max_poll_records", value)
 
     @property
     @pulumi.getter(name="offsetFlushIntervalMs")
-    def offset_flush_interval_ms(self) -> Optional[pulumi.Input[str]]:
+    def offset_flush_interval_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "offset_flush_interval_ms")
 
     @offset_flush_interval_ms.setter
-    def offset_flush_interval_ms(self, value: Optional[pulumi.Input[str]]):
+    def offset_flush_interval_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "offset_flush_interval_ms", value)
 
     @property
     @pulumi.getter(name="offsetFlushTimeoutMs")
-    def offset_flush_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def offset_flush_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "offset_flush_timeout_ms")
 
     @offset_flush_timeout_ms.setter
-    def offset_flush_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def offset_flush_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "offset_flush_timeout_ms", value)
+
+    @property
+    @pulumi.getter(name="producerBatchSize")
+    def producer_batch_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "producer_batch_size")
+
+    @producer_batch_size.setter
+    def producer_batch_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_batch_size", value)
+
+    @property
+    @pulumi.getter(name="producerBufferMemory")
+    def producer_buffer_memory(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "producer_buffer_memory")
+
+    @producer_buffer_memory.setter
+    def producer_buffer_memory(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_buffer_memory", value)
 
     @property
     @pulumi.getter(name="producerCompressionType")
@@ -5402,33 +5241,43 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
         pulumi.set(self, "producer_compression_type", value)
 
     @property
+    @pulumi.getter(name="producerLingerMs")
+    def producer_linger_ms(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "producer_linger_ms")
+
+    @producer_linger_ms.setter
+    def producer_linger_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_linger_ms", value)
+
+    @property
     @pulumi.getter(name="producerMaxRequestSize")
-    def producer_max_request_size(self) -> Optional[pulumi.Input[str]]:
+    def producer_max_request_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_max_request_size")
 
     @producer_max_request_size.setter
-    def producer_max_request_size(self, value: Optional[pulumi.Input[str]]):
+    def producer_max_request_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_max_request_size", value)
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
-    def session_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def session_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "session_timeout_ms")
 
     @session_timeout_ms.setter
-    def session_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def session_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "session_timeout_ms", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaRestConfigArgs:
     def __init__(__self__, *,
-                 consumer_enable_auto_commit: Optional[pulumi.Input[str]] = None,
-                 consumer_request_max_bytes: Optional[pulumi.Input[str]] = None,
-                 consumer_request_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 consumer_enable_auto_commit: Optional[pulumi.Input[bool]] = None,
+                 consumer_request_max_bytes: Optional[pulumi.Input[int]] = None,
+                 consumer_request_timeout_ms: Optional[pulumi.Input[int]] = None,
                  producer_acks: Optional[pulumi.Input[str]] = None,
-                 producer_linger_ms: Optional[pulumi.Input[str]] = None,
-                 simpleconsumer_pool_size_max: Optional[pulumi.Input[str]] = None):
+                 producer_compression_type: Optional[pulumi.Input[str]] = None,
+                 producer_linger_ms: Optional[pulumi.Input[int]] = None,
+                 simpleconsumer_pool_size_max: Optional[pulumi.Input[int]] = None):
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
         if consumer_request_max_bytes is not None:
@@ -5437,6 +5286,8 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
             pulumi.set(__self__, "consumer_request_timeout_ms", consumer_request_timeout_ms)
         if producer_acks is not None:
             pulumi.set(__self__, "producer_acks", producer_acks)
+        if producer_compression_type is not None:
+            pulumi.set(__self__, "producer_compression_type", producer_compression_type)
         if producer_linger_ms is not None:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if simpleconsumer_pool_size_max is not None:
@@ -5444,29 +5295,29 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
 
     @property
     @pulumi.getter(name="consumerEnableAutoCommit")
-    def consumer_enable_auto_commit(self) -> Optional[pulumi.Input[str]]:
+    def consumer_enable_auto_commit(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "consumer_enable_auto_commit")
 
     @consumer_enable_auto_commit.setter
-    def consumer_enable_auto_commit(self, value: Optional[pulumi.Input[str]]):
+    def consumer_enable_auto_commit(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "consumer_enable_auto_commit", value)
 
     @property
     @pulumi.getter(name="consumerRequestMaxBytes")
-    def consumer_request_max_bytes(self) -> Optional[pulumi.Input[str]]:
+    def consumer_request_max_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_request_max_bytes")
 
     @consumer_request_max_bytes.setter
-    def consumer_request_max_bytes(self, value: Optional[pulumi.Input[str]]):
+    def consumer_request_max_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_request_max_bytes", value)
 
     @property
     @pulumi.getter(name="consumerRequestTimeoutMs")
-    def consumer_request_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+    def consumer_request_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_request_timeout_ms")
 
     @consumer_request_timeout_ms.setter
-    def consumer_request_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+    def consumer_request_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_request_timeout_ms", value)
 
     @property
@@ -5479,52 +5330,115 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
         pulumi.set(self, "producer_acks", value)
 
     @property
+    @pulumi.getter(name="producerCompressionType")
+    def producer_compression_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "producer_compression_type")
+
+    @producer_compression_type.setter
+    def producer_compression_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "producer_compression_type", value)
+
+    @property
     @pulumi.getter(name="producerLingerMs")
-    def producer_linger_ms(self) -> Optional[pulumi.Input[str]]:
+    def producer_linger_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_linger_ms")
 
     @producer_linger_ms.setter
-    def producer_linger_ms(self, value: Optional[pulumi.Input[str]]):
+    def producer_linger_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_linger_ms", value)
 
     @property
     @pulumi.getter(name="simpleconsumerPoolSizeMax")
-    def simpleconsumer_pool_size_max(self) -> Optional[pulumi.Input[str]]:
+    def simpleconsumer_pool_size_max(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "simpleconsumer_pool_size_max")
 
     @simpleconsumer_pool_size_max.setter
-    def simpleconsumer_pool_size_max(self, value: Optional[pulumi.Input[str]]):
+    def simpleconsumer_pool_size_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "simpleconsumer_pool_size_max", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 kafka: Optional[pulumi.Input[bool]] = None,
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
+                 kafka_rest: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 schema_registry: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] kafka: Kafka server provided values
+        """
+        if kafka is not None:
+            pulumi.set(__self__, "kafka", kafka)
+        if kafka_connect is not None:
+            pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if kafka_rest is not None:
+            pulumi.set(__self__, "kafka_rest", kafka_rest)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def kafka(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Kafka server provided values
+        """
+        return pulumi.get(self, "kafka")
+
+    @kafka.setter
+    def kafka(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "kafka", value)
+
+    @property
+    @pulumi.getter(name="kafkaConnect")
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "kafka_connect")
+
+    @kafka_connect.setter
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "kafka_connect", value)
+
+    @property
+    @pulumi.getter(name="kafkaRest")
+    def kafka_rest(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "kafka_rest")
+
+    @kafka_rest.setter
+    def kafka_rest(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "kafka_rest", value)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
+
+    @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "schema_registry", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 jolokia: Optional[pulumi.Input[str]] = None,
-                 kafka: Optional[pulumi.Input[str]] = None,
-                 kafka_connect: Optional[pulumi.Input[str]] = None,
-                 kafka_rest: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None,
-                 schema_registry: Optional[pulumi.Input[str]] = None):
+                 jolokia: Optional[pulumi.Input[bool]] = None,
+                 kafka: Optional[pulumi.Input[bool]] = None,
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
+                 kafka_rest: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 schema_registry: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] kafka: Kafka server provided values
+        :param pulumi.Input[bool] kafka: Kafka server provided values
         """
         if jolokia is not None:
             pulumi.set(__self__, "jolokia", jolokia)
@@ -5541,72 +5455,72 @@ class KafkaKafkaUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def jolokia(self) -> Optional[pulumi.Input[str]]:
+    def jolokia(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "jolokia")
 
     @jolokia.setter
-    def jolokia(self, value: Optional[pulumi.Input[str]]):
+    def jolokia(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "jolokia", value)
 
     @property
     @pulumi.getter
-    def kafka(self) -> Optional[pulumi.Input[str]]:
+    def kafka(self) -> Optional[pulumi.Input[bool]]:
         """
         Kafka server provided values
         """
         return pulumi.get(self, "kafka")
 
     @kafka.setter
-    def kafka(self, value: Optional[pulumi.Input[str]]):
+    def kafka(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka", value)
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input[str]]:
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_connect")
 
     @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input[str]]):
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_connect", value)
 
     @property
     @pulumi.getter(name="kafkaRest")
-    def kafka_rest(self) -> Optional[pulumi.Input[str]]:
+    def kafka_rest(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_rest")
 
     @kafka_rest.setter
-    def kafka_rest(self, value: Optional[pulumi.Input[str]]):
+    def kafka_rest(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_rest", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
     @property
     @pulumi.getter(name="schemaRegistry")
-    def schema_registry(self) -> Optional[pulumi.Input[str]]:
+    def schema_registry(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "schema_registry")
 
     @schema_registry.setter
-    def schema_registry(self, value: Optional[pulumi.Input[str]]):
+    def schema_registry(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "schema_registry", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 kafka: Optional[pulumi.Input[str]] = None,
-                 kafka_connect: Optional[pulumi.Input[str]] = None,
-                 kafka_rest: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None,
-                 schema_registry: Optional[pulumi.Input[str]] = None):
+                 kafka: Optional[pulumi.Input[bool]] = None,
+                 kafka_connect: Optional[pulumi.Input[bool]] = None,
+                 kafka_rest: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 schema_registry: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] kafka: Kafka server provided values
+        :param pulumi.Input[bool] kafka: Kafka server provided values
         """
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
@@ -5621,57 +5535,57 @@ class KafkaKafkaUserConfigPublicAccessArgs:
 
     @property
     @pulumi.getter
-    def kafka(self) -> Optional[pulumi.Input[str]]:
+    def kafka(self) -> Optional[pulumi.Input[bool]]:
         """
         Kafka server provided values
         """
         return pulumi.get(self, "kafka")
 
     @kafka.setter
-    def kafka(self, value: Optional[pulumi.Input[str]]):
+    def kafka(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka", value)
 
     @property
     @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input[str]]:
+    def kafka_connect(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_connect")
 
     @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input[str]]):
+    def kafka_connect(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_connect", value)
 
     @property
     @pulumi.getter(name="kafkaRest")
-    def kafka_rest(self) -> Optional[pulumi.Input[str]]:
+    def kafka_rest(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "kafka_rest")
 
     @kafka_rest.setter
-    def kafka_rest(self, value: Optional[pulumi.Input[str]]):
+    def kafka_rest(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "kafka_rest", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
     @property
     @pulumi.getter(name="schemaRegistry")
-    def schema_registry(self) -> Optional[pulumi.Input[str]]:
+    def schema_registry(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "schema_registry")
 
     @schema_registry.setter
-    def schema_registry(self, value: Optional[pulumi.Input[str]]):
+    def schema_registry(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "schema_registry", value)
 
 
 @pulumi.input_type
 class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
     def __init__(__self__, *,
-                 leader_eligibility: Optional[pulumi.Input[str]] = None,
+                 leader_eligibility: Optional[pulumi.Input[bool]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None):
         if leader_eligibility is not None:
             pulumi.set(__self__, "leader_eligibility", leader_eligibility)
@@ -5680,11 +5594,11 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
 
     @property
     @pulumi.getter(name="leaderEligibility")
-    def leader_eligibility(self) -> Optional[pulumi.Input[str]]:
+    def leader_eligibility(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "leader_eligibility")
 
     @leader_eligibility.setter
-    def leader_eligibility(self, value: Optional[pulumi.Input[str]]):
+    def leader_eligibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "leader_eligibility", value)
 
     @property
@@ -5799,11 +5713,14 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_mirrormaker: Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
@@ -5849,23 +5766,31 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -5876,29 +5801,20 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     def __init__(__self__, *,
-                 emit_checkpoints_enabled: Optional[pulumi.Input[str]] = None,
-                 emit_checkpoints_interval_seconds: Optional[pulumi.Input[str]] = None,
-                 refresh_groups_enabled: Optional[pulumi.Input[str]] = None,
-                 refresh_groups_interval_seconds: Optional[pulumi.Input[str]] = None,
-                 refresh_topics_enabled: Optional[pulumi.Input[str]] = None,
-                 refresh_topics_interval_seconds: Optional[pulumi.Input[str]] = None,
-                 sync_group_offsets_enabled: Optional[pulumi.Input[str]] = None,
-                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[str]] = None,
-                 sync_topic_configs_enabled: Optional[pulumi.Input[str]] = None,
-                 tasks_max_per_cpu: Optional[pulumi.Input[str]] = None):
+                 emit_checkpoints_enabled: Optional[pulumi.Input[bool]] = None,
+                 emit_checkpoints_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 refresh_groups_enabled: Optional[pulumi.Input[bool]] = None,
+                 refresh_groups_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 refresh_topics_enabled: Optional[pulumi.Input[bool]] = None,
+                 refresh_topics_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 sync_topic_configs_enabled: Optional[pulumi.Input[bool]] = None,
+                 tasks_max_per_cpu: Optional[pulumi.Input[int]] = None):
         if emit_checkpoints_enabled is not None:
             pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
         if emit_checkpoints_interval_seconds is not None:
@@ -5922,92 +5838,92 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
 
     @property
     @pulumi.getter(name="emitCheckpointsEnabled")
-    def emit_checkpoints_enabled(self) -> Optional[pulumi.Input[str]]:
+    def emit_checkpoints_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "emit_checkpoints_enabled")
 
     @emit_checkpoints_enabled.setter
-    def emit_checkpoints_enabled(self, value: Optional[pulumi.Input[str]]):
+    def emit_checkpoints_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "emit_checkpoints_enabled", value)
 
     @property
     @pulumi.getter(name="emitCheckpointsIntervalSeconds")
-    def emit_checkpoints_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+    def emit_checkpoints_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "emit_checkpoints_interval_seconds")
 
     @emit_checkpoints_interval_seconds.setter
-    def emit_checkpoints_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+    def emit_checkpoints_interval_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "emit_checkpoints_interval_seconds", value)
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
-    def refresh_groups_enabled(self) -> Optional[pulumi.Input[str]]:
+    def refresh_groups_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "refresh_groups_enabled")
 
     @refresh_groups_enabled.setter
-    def refresh_groups_enabled(self, value: Optional[pulumi.Input[str]]):
+    def refresh_groups_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "refresh_groups_enabled", value)
 
     @property
     @pulumi.getter(name="refreshGroupsIntervalSeconds")
-    def refresh_groups_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+    def refresh_groups_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "refresh_groups_interval_seconds")
 
     @refresh_groups_interval_seconds.setter
-    def refresh_groups_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+    def refresh_groups_interval_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "refresh_groups_interval_seconds", value)
 
     @property
     @pulumi.getter(name="refreshTopicsEnabled")
-    def refresh_topics_enabled(self) -> Optional[pulumi.Input[str]]:
+    def refresh_topics_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "refresh_topics_enabled")
 
     @refresh_topics_enabled.setter
-    def refresh_topics_enabled(self, value: Optional[pulumi.Input[str]]):
+    def refresh_topics_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "refresh_topics_enabled", value)
 
     @property
     @pulumi.getter(name="refreshTopicsIntervalSeconds")
-    def refresh_topics_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+    def refresh_topics_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "refresh_topics_interval_seconds")
 
     @refresh_topics_interval_seconds.setter
-    def refresh_topics_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+    def refresh_topics_interval_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "refresh_topics_interval_seconds", value)
 
     @property
     @pulumi.getter(name="syncGroupOffsetsEnabled")
-    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[str]]:
+    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "sync_group_offsets_enabled")
 
     @sync_group_offsets_enabled.setter
-    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[str]]):
+    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sync_group_offsets_enabled", value)
 
     @property
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
-    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
     @sync_group_offsets_interval_seconds.setter
-    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
     @property
     @pulumi.getter(name="syncTopicConfigsEnabled")
-    def sync_topic_configs_enabled(self) -> Optional[pulumi.Input[str]]:
+    def sync_topic_configs_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "sync_topic_configs_enabled")
 
     @sync_topic_configs_enabled.setter
-    def sync_topic_configs_enabled(self, value: Optional[pulumi.Input[str]]):
+    def sync_topic_configs_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sync_topic_configs_enabled", value)
 
     @property
     @pulumi.getter(name="tasksMaxPerCpu")
-    def tasks_max_per_cpu(self) -> Optional[pulumi.Input[str]]:
+    def tasks_max_per_cpu(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "tasks_max_per_cpu")
 
     @tasks_max_per_cpu.setter
-    def tasks_max_per_cpu(self, value: Optional[pulumi.Input[str]]):
+    def tasks_max_per_cpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "tasks_max_per_cpu", value)
 
 
@@ -6151,21 +6067,21 @@ class KafkaTopicConfigArgs:
                  index_interval_bytes: Optional[pulumi.Input[str]] = None,
                  max_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
                  max_message_bytes: Optional[pulumi.Input[str]] = None,
-                 message_downconversion_enable: Optional[pulumi.Input[str]] = None,
+                 message_downconversion_enable: Optional[pulumi.Input[bool]] = None,
                  message_format_version: Optional[pulumi.Input[str]] = None,
                  message_timestamp_difference_max_ms: Optional[pulumi.Input[str]] = None,
                  message_timestamp_type: Optional[pulumi.Input[str]] = None,
-                 min_cleanable_dirty_ratio: Optional[pulumi.Input[str]] = None,
+                 min_cleanable_dirty_ratio: Optional[pulumi.Input[float]] = None,
                  min_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
                  min_insync_replicas: Optional[pulumi.Input[str]] = None,
-                 preallocate: Optional[pulumi.Input[str]] = None,
+                 preallocate: Optional[pulumi.Input[bool]] = None,
                  retention_bytes: Optional[pulumi.Input[str]] = None,
                  retention_ms: Optional[pulumi.Input[str]] = None,
                  segment_bytes: Optional[pulumi.Input[str]] = None,
                  segment_index_bytes: Optional[pulumi.Input[str]] = None,
                  segment_jitter_ms: Optional[pulumi.Input[str]] = None,
                  segment_ms: Optional[pulumi.Input[str]] = None,
-                 unclean_leader_election_enable: Optional[pulumi.Input[str]] = None):
+                 unclean_leader_election_enable: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] cleanup_policy: cleanup.policy value
         :param pulumi.Input[str] compression_type: compression.type value
@@ -6176,21 +6092,21 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[str] index_interval_bytes: index.interval.bytes value
         :param pulumi.Input[str] max_compaction_lag_ms: max.compaction.lag.ms value
         :param pulumi.Input[str] max_message_bytes: max.message.bytes value
-        :param pulumi.Input[str] message_downconversion_enable: message.downconversion.enable value
+        :param pulumi.Input[bool] message_downconversion_enable: message.downconversion.enable value
         :param pulumi.Input[str] message_format_version: message.format.version value
         :param pulumi.Input[str] message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
         :param pulumi.Input[str] message_timestamp_type: message.timestamp.type value
-        :param pulumi.Input[str] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
+        :param pulumi.Input[float] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
         :param pulumi.Input[str] min_compaction_lag_ms: min.compaction.lag.ms value
         :param pulumi.Input[str] min_insync_replicas: min.insync.replicas value
-        :param pulumi.Input[str] preallocate: preallocate value
+        :param pulumi.Input[bool] preallocate: preallocate value
         :param pulumi.Input[str] retention_bytes: retention.bytes value
         :param pulumi.Input[str] retention_ms: retention.ms value
         :param pulumi.Input[str] segment_bytes: segment.bytes value
         :param pulumi.Input[str] segment_index_bytes: segment.index.bytes value
         :param pulumi.Input[str] segment_jitter_ms: segment.jitter.ms value
         :param pulumi.Input[str] segment_ms: segment.ms value
-        :param pulumi.Input[str] unclean_leader_election_enable: unclean.leader.election.enable value
+        :param pulumi.Input[bool] unclean_leader_election_enable: unclean.leader.election.enable value
         """
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -6351,14 +6267,14 @@ class KafkaTopicConfigArgs:
 
     @property
     @pulumi.getter(name="messageDownconversionEnable")
-    def message_downconversion_enable(self) -> Optional[pulumi.Input[str]]:
+    def message_downconversion_enable(self) -> Optional[pulumi.Input[bool]]:
         """
         message.downconversion.enable value
         """
         return pulumi.get(self, "message_downconversion_enable")
 
     @message_downconversion_enable.setter
-    def message_downconversion_enable(self, value: Optional[pulumi.Input[str]]):
+    def message_downconversion_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "message_downconversion_enable", value)
 
     @property
@@ -6399,14 +6315,14 @@ class KafkaTopicConfigArgs:
 
     @property
     @pulumi.getter(name="minCleanableDirtyRatio")
-    def min_cleanable_dirty_ratio(self) -> Optional[pulumi.Input[str]]:
+    def min_cleanable_dirty_ratio(self) -> Optional[pulumi.Input[float]]:
         """
         min.cleanable.dirty.ratio value
         """
         return pulumi.get(self, "min_cleanable_dirty_ratio")
 
     @min_cleanable_dirty_ratio.setter
-    def min_cleanable_dirty_ratio(self, value: Optional[pulumi.Input[str]]):
+    def min_cleanable_dirty_ratio(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min_cleanable_dirty_ratio", value)
 
     @property
@@ -6435,14 +6351,14 @@ class KafkaTopicConfigArgs:
 
     @property
     @pulumi.getter
-    def preallocate(self) -> Optional[pulumi.Input[str]]:
+    def preallocate(self) -> Optional[pulumi.Input[bool]]:
         """
         preallocate value
         """
         return pulumi.get(self, "preallocate")
 
     @preallocate.setter
-    def preallocate(self, value: Optional[pulumi.Input[str]]):
+    def preallocate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preallocate", value)
 
     @property
@@ -6519,14 +6435,14 @@ class KafkaTopicConfigArgs:
 
     @property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
-    def unclean_leader_election_enable(self) -> Optional[pulumi.Input[str]]:
+    def unclean_leader_election_enable(self) -> Optional[pulumi.Input[bool]]:
         """
         unclean.leader.election.enable value
         """
         return pulumi.get(self, "unclean_leader_election_enable")
 
     @unclean_leader_election_enable.setter
-    def unclean_leader_election_enable(self, value: Optional[pulumi.Input[str]]):
+    def unclean_leader_election_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "unclean_leader_election_enable", value)
 
 
@@ -6536,8 +6452,8 @@ class KafkaTopicTagArgs:
                  key: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: Topic tag key. Maximum Length: `64`.
-        :param pulumi.Input[str] value: Topic tag value. Maximum Length: `256`.
+        :param pulumi.Input[str] key: Topic tag key. Maximum length: `64`.
+        :param pulumi.Input[str] value: Topic tag value. Maximum length: `256`.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -6547,7 +6463,7 @@ class KafkaTopicTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Topic tag key. Maximum Length: `64`.
+        Topic tag key. Maximum length: `64`.
         """
         return pulumi.get(self, "key")
 
@@ -6559,7 +6475,7 @@ class KafkaTopicTagArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Topic tag value. Maximum Length: `256`.
+        Topic tag value. Maximum length: `256`.
         """
         return pulumi.get(self, "value")
 
@@ -6671,13 +6587,19 @@ class M3AggregatorM3aggregatorUserConfigArgs:
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  m3_version: Optional[pulumi.Input[str]] = None,
                  m3aggregator_version: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if m3_version is not None:
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
         if m3aggregator_version is not None:
@@ -6732,23 +6654,31 @@ class M3AggregatorM3aggregatorUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -6758,15 +6688,6 @@ class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
 
 
 @pulumi.input_type
@@ -6927,7 +6848,7 @@ class M3DbM3dbUserConfigArgs:
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limits: Optional[pulumi.Input['M3DbM3dbUserConfigLimitsArgs']] = None,
                  m3_version: Optional[pulumi.Input[str]] = None,
-                 m3coordinator_enable_graphite_carbon_ingest: Optional[pulumi.Input[str]] = None,
+                 m3coordinator_enable_graphite_carbon_ingest: Optional[pulumi.Input[bool]] = None,
                  m3db_version: Optional[pulumi.Input[str]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgs']]]] = None,
                  private_access: Optional[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs']] = None,
@@ -6935,7 +6856,7 @@ class M3DbM3dbUserConfigArgs:
                  public_access: Optional[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs']] = None,
                  rules: Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -6943,15 +6864,24 @@ class M3DbM3dbUserConfigArgs:
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if m3_version is not None:
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
         if m3coordinator_enable_graphite_carbon_ingest is not None:
             pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
         if m3db_version is not None:
             pulumi.set(__self__, "m3db_version", m3db_version)
+        if namespaces is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if private_access is not None:
@@ -7023,11 +6953,11 @@ class M3DbM3dbUserConfigArgs:
 
     @property
     @pulumi.getter(name="m3coordinatorEnableGraphiteCarbonIngest")
-    def m3coordinator_enable_graphite_carbon_ingest(self) -> Optional[pulumi.Input[str]]:
+    def m3coordinator_enable_graphite_carbon_ingest(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "m3coordinator_enable_graphite_carbon_ingest")
 
     @m3coordinator_enable_graphite_carbon_ingest.setter
-    def m3coordinator_enable_graphite_carbon_ingest(self, value: Optional[pulumi.Input[str]]):
+    def m3coordinator_enable_graphite_carbon_ingest(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "m3coordinator_enable_graphite_carbon_ingest", value)
 
     @property
@@ -7095,23 +7025,31 @@ class M3DbM3dbUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class M3DbM3dbUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -7122,25 +7060,16 @@ class M3DbM3dbUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class M3DbM3dbUserConfigLimitsArgs:
     def __init__(__self__, *,
-                 max_recently_queried_series_blocks: Optional[pulumi.Input[str]] = None,
-                 max_recently_queried_series_disk_bytes_read: Optional[pulumi.Input[str]] = None,
+                 max_recently_queried_series_blocks: Optional[pulumi.Input[int]] = None,
+                 max_recently_queried_series_disk_bytes_read: Optional[pulumi.Input[int]] = None,
                  max_recently_queried_series_lookback: Optional[pulumi.Input[str]] = None,
-                 query_docs: Optional[pulumi.Input[str]] = None,
-                 query_require_exhaustive: Optional[pulumi.Input[str]] = None,
-                 query_series: Optional[pulumi.Input[str]] = None):
+                 query_docs: Optional[pulumi.Input[int]] = None,
+                 query_require_exhaustive: Optional[pulumi.Input[bool]] = None,
+                 query_series: Optional[pulumi.Input[int]] = None):
         if max_recently_queried_series_blocks is not None:
             pulumi.set(__self__, "max_recently_queried_series_blocks", max_recently_queried_series_blocks)
         if max_recently_queried_series_disk_bytes_read is not None:
@@ -7156,20 +7085,20 @@ class M3DbM3dbUserConfigLimitsArgs:
 
     @property
     @pulumi.getter(name="maxRecentlyQueriedSeriesBlocks")
-    def max_recently_queried_series_blocks(self) -> Optional[pulumi.Input[str]]:
+    def max_recently_queried_series_blocks(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_recently_queried_series_blocks")
 
     @max_recently_queried_series_blocks.setter
-    def max_recently_queried_series_blocks(self, value: Optional[pulumi.Input[str]]):
+    def max_recently_queried_series_blocks(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_recently_queried_series_blocks", value)
 
     @property
     @pulumi.getter(name="maxRecentlyQueriedSeriesDiskBytesRead")
-    def max_recently_queried_series_disk_bytes_read(self) -> Optional[pulumi.Input[str]]:
+    def max_recently_queried_series_disk_bytes_read(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_recently_queried_series_disk_bytes_read")
 
     @max_recently_queried_series_disk_bytes_read.setter
-    def max_recently_queried_series_disk_bytes_read(self, value: Optional[pulumi.Input[str]]):
+    def max_recently_queried_series_disk_bytes_read(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_recently_queried_series_disk_bytes_read", value)
 
     @property
@@ -7183,56 +7112,63 @@ class M3DbM3dbUserConfigLimitsArgs:
 
     @property
     @pulumi.getter(name="queryDocs")
-    def query_docs(self) -> Optional[pulumi.Input[str]]:
+    def query_docs(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "query_docs")
 
     @query_docs.setter
-    def query_docs(self, value: Optional[pulumi.Input[str]]):
+    def query_docs(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "query_docs", value)
 
     @property
     @pulumi.getter(name="queryRequireExhaustive")
-    def query_require_exhaustive(self) -> Optional[pulumi.Input[str]]:
+    def query_require_exhaustive(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "query_require_exhaustive")
 
     @query_require_exhaustive.setter
-    def query_require_exhaustive(self, value: Optional[pulumi.Input[str]]):
+    def query_require_exhaustive(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "query_require_exhaustive", value)
 
     @property
     @pulumi.getter(name="querySeries")
-    def query_series(self) -> Optional[pulumi.Input[str]]:
+    def query_series(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "query_series")
 
     @query_series.setter
-    def query_series(self, value: Optional[pulumi.Input[str]]):
+    def query_series(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "query_series", value)
 
 
 @pulumi.input_type
 class M3DbM3dbUserConfigNamespaceArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
                  options: Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgs']] = None,
-                 resolution: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+                 resolution: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if resolution is not None:
             pulumi.set(__self__, "resolution", resolution)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -7252,22 +7188,13 @@ class M3DbM3dbUserConfigNamespaceArgs:
     def resolution(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resolution", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class M3DbM3dbUserConfigNamespaceOptionsArgs:
     def __init__(__self__, *,
                  retention_options: Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs']] = None,
-                 snapshot_enabled: Optional[pulumi.Input[str]] = None,
-                 writes_to_commitlog: Optional[pulumi.Input[str]] = None):
+                 snapshot_enabled: Optional[pulumi.Input[bool]] = None,
+                 writes_to_commitlog: Optional[pulumi.Input[bool]] = None):
         if retention_options is not None:
             pulumi.set(__self__, "retention_options", retention_options)
         if snapshot_enabled is not None:
@@ -7286,20 +7213,20 @@ class M3DbM3dbUserConfigNamespaceOptionsArgs:
 
     @property
     @pulumi.getter(name="snapshotEnabled")
-    def snapshot_enabled(self) -> Optional[pulumi.Input[str]]:
+    def snapshot_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "snapshot_enabled")
 
     @snapshot_enabled.setter
-    def snapshot_enabled(self, value: Optional[pulumi.Input[str]]):
+    def snapshot_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "snapshot_enabled", value)
 
     @property
     @pulumi.getter(name="writesToCommitlog")
-    def writes_to_commitlog(self) -> Optional[pulumi.Input[str]]:
+    def writes_to_commitlog(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "writes_to_commitlog")
 
     @writes_to_commitlog.setter
-    def writes_to_commitlog(self, value: Optional[pulumi.Input[str]]):
+    def writes_to_commitlog(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "writes_to_commitlog", value)
 
 
@@ -7371,34 +7298,34 @@ class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs:
 @pulumi.input_type
 class M3DbM3dbUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 m3coordinator: Optional[pulumi.Input[str]] = None):
+                 m3coordinator: Optional[pulumi.Input[bool]] = None):
         if m3coordinator is not None:
             pulumi.set(__self__, "m3coordinator", m3coordinator)
 
     @property
     @pulumi.getter
-    def m3coordinator(self) -> Optional[pulumi.Input[str]]:
+    def m3coordinator(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "m3coordinator")
 
     @m3coordinator.setter
-    def m3coordinator(self, value: Optional[pulumi.Input[str]]):
+    def m3coordinator(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "m3coordinator", value)
 
 
 @pulumi.input_type
 class M3DbM3dbUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 m3coordinator: Optional[pulumi.Input[str]] = None):
+                 m3coordinator: Optional[pulumi.Input[bool]] = None):
         if m3coordinator is not None:
             pulumi.set(__self__, "m3coordinator", m3coordinator)
 
     @property
     @pulumi.getter
-    def m3coordinator(self) -> Optional[pulumi.Input[str]]:
+    def m3coordinator(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "m3coordinator")
 
     @m3coordinator.setter
-    def m3coordinator(self, value: Optional[pulumi.Input[str]]):
+    def m3coordinator(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "m3coordinator", value)
 
 
@@ -7422,27 +7349,38 @@ class M3DbM3dbUserConfigRulesArgs:
 @pulumi.input_type
 class M3DbM3dbUserConfigRulesMappingArgs:
     def __init__(__self__, *,
+                 filter: pulumi.Input[str],
                  aggregations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 drop: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[str]] = None,
+                 drop: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  namespaces_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]] = None):
+        pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
             pulumi.set(__self__, "aggregations", aggregations)
         if drop is not None:
             pulumi.set(__self__, "drop", drop)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespaces is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if namespaces_objects is not None:
             pulumi.set(__self__, "namespaces_objects", namespaces_objects)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -7455,21 +7393,12 @@ class M3DbM3dbUserConfigRulesMappingArgs:
 
     @property
     @pulumi.getter
-    def drop(self) -> Optional[pulumi.Input[str]]:
+    def drop(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "drop")
 
     @drop.setter
-    def drop(self, value: Optional[pulumi.Input[str]]):
+    def drop(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "drop", value)
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -7540,29 +7469,27 @@ class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs:
 @pulumi.input_type
 class M3DbM3dbUserConfigRulesMappingTagArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
+    def value(self) -> pulumi.Input[str]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
 
@@ -7721,9 +7648,9 @@ class MySqlMysqlUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  admin_password: Optional[pulumi.Input[str]] = None,
                  admin_username: Optional[pulumi.Input[str]] = None,
-                 backup_hour: Optional[pulumi.Input[str]] = None,
-                 backup_minute: Optional[pulumi.Input[str]] = None,
-                 binlog_retention_period: Optional[pulumi.Input[str]] = None,
+                 backup_hour: Optional[pulumi.Input[int]] = None,
+                 backup_minute: Optional[pulumi.Input[int]] = None,
+                 binlog_retention_period: Optional[pulumi.Input[int]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['MySqlMysqlUserConfigMigrationArgs']] = None,
@@ -7735,7 +7662,7 @@ class MySqlMysqlUserConfigArgs:
                  public_access: Optional[pulumi.Input['MySqlMysqlUserConfigPublicAccessArgs']] = None,
                  recovery_target_time: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if admin_password is not None:
@@ -7750,6 +7677,9 @@ class MySqlMysqlUserConfigArgs:
             pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -7802,29 +7732,29 @@ class MySqlMysqlUserConfigArgs:
 
     @property
     @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[str]]:
+    def backup_hour(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "backup_hour")
 
     @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[str]]):
+    def backup_hour(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_hour", value)
 
     @property
     @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[str]]:
+    def backup_minute(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "backup_minute")
 
     @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[str]]):
+    def backup_minute(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_minute", value)
 
     @property
     @pulumi.getter(name="binlogRetentionPeriod")
-    def binlog_retention_period(self) -> Optional[pulumi.Input[str]]:
+    def binlog_retention_period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "binlog_retention_period")
 
     @binlog_retention_period.setter
-    def binlog_retention_period(self, value: Optional[pulumi.Input[str]]):
+    def binlog_retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "binlog_retention_period", value)
 
     @property
@@ -7928,23 +7858,31 @@ class MySqlMysqlUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class MySqlMysqlUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -7955,43 +7893,50 @@ class MySqlMysqlUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class MySqlMysqlUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[str]] = None,
-                 ssl: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -8001,15 +7946,6 @@ class MySqlMysqlUserConfigMigrationArgs:
     @dbname.setter
     def dbname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dbname", value)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter(name="ignoreDbs")
@@ -8040,20 +7976,11 @@ class MySqlMysqlUserConfigMigrationArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[str]]:
+    def ssl(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[str]]):
+    def ssl(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ssl", value)
 
     @property
@@ -8069,36 +7996,36 @@ class MySqlMysqlUserConfigMigrationArgs:
 @pulumi.input_type
 class MySqlMysqlUserConfigMysqlArgs:
     def __init__(__self__, *,
-                 connect_timeout: Optional[pulumi.Input[str]] = None,
+                 connect_timeout: Optional[pulumi.Input[int]] = None,
                  default_time_zone: Optional[pulumi.Input[str]] = None,
-                 group_concat_max_len: Optional[pulumi.Input[str]] = None,
-                 information_schema_stats_expiry: Optional[pulumi.Input[str]] = None,
-                 innodb_change_buffer_max_size: Optional[pulumi.Input[str]] = None,
-                 innodb_flush_neighbors: Optional[pulumi.Input[str]] = None,
-                 innodb_ft_min_token_size: Optional[pulumi.Input[str]] = None,
+                 group_concat_max_len: Optional[pulumi.Input[int]] = None,
+                 information_schema_stats_expiry: Optional[pulumi.Input[int]] = None,
+                 innodb_change_buffer_max_size: Optional[pulumi.Input[int]] = None,
+                 innodb_flush_neighbors: Optional[pulumi.Input[int]] = None,
+                 innodb_ft_min_token_size: Optional[pulumi.Input[int]] = None,
                  innodb_ft_server_stopword_table: Optional[pulumi.Input[str]] = None,
-                 innodb_lock_wait_timeout: Optional[pulumi.Input[str]] = None,
-                 innodb_log_buffer_size: Optional[pulumi.Input[str]] = None,
-                 innodb_online_alter_log_max_size: Optional[pulumi.Input[str]] = None,
-                 innodb_print_all_deadlocks: Optional[pulumi.Input[str]] = None,
-                 innodb_read_io_threads: Optional[pulumi.Input[str]] = None,
-                 innodb_rollback_on_timeout: Optional[pulumi.Input[str]] = None,
-                 innodb_thread_concurrency: Optional[pulumi.Input[str]] = None,
-                 innodb_write_io_threads: Optional[pulumi.Input[str]] = None,
-                 interactive_timeout: Optional[pulumi.Input[str]] = None,
+                 innodb_lock_wait_timeout: Optional[pulumi.Input[int]] = None,
+                 innodb_log_buffer_size: Optional[pulumi.Input[int]] = None,
+                 innodb_online_alter_log_max_size: Optional[pulumi.Input[int]] = None,
+                 innodb_print_all_deadlocks: Optional[pulumi.Input[bool]] = None,
+                 innodb_read_io_threads: Optional[pulumi.Input[int]] = None,
+                 innodb_rollback_on_timeout: Optional[pulumi.Input[bool]] = None,
+                 innodb_thread_concurrency: Optional[pulumi.Input[int]] = None,
+                 innodb_write_io_threads: Optional[pulumi.Input[int]] = None,
+                 interactive_timeout: Optional[pulumi.Input[int]] = None,
                  internal_tmp_mem_storage_engine: Optional[pulumi.Input[str]] = None,
-                 long_query_time: Optional[pulumi.Input[str]] = None,
-                 max_allowed_packet: Optional[pulumi.Input[str]] = None,
-                 max_heap_table_size: Optional[pulumi.Input[str]] = None,
-                 net_buffer_length: Optional[pulumi.Input[str]] = None,
-                 net_read_timeout: Optional[pulumi.Input[str]] = None,
-                 net_write_timeout: Optional[pulumi.Input[str]] = None,
-                 slow_query_log: Optional[pulumi.Input[str]] = None,
-                 sort_buffer_size: Optional[pulumi.Input[str]] = None,
+                 long_query_time: Optional[pulumi.Input[float]] = None,
+                 max_allowed_packet: Optional[pulumi.Input[int]] = None,
+                 max_heap_table_size: Optional[pulumi.Input[int]] = None,
+                 net_buffer_length: Optional[pulumi.Input[int]] = None,
+                 net_read_timeout: Optional[pulumi.Input[int]] = None,
+                 net_write_timeout: Optional[pulumi.Input[int]] = None,
+                 slow_query_log: Optional[pulumi.Input[bool]] = None,
+                 sort_buffer_size: Optional[pulumi.Input[int]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
-                 sql_require_primary_key: Optional[pulumi.Input[str]] = None,
-                 tmp_table_size: Optional[pulumi.Input[str]] = None,
-                 wait_timeout: Optional[pulumi.Input[str]] = None):
+                 sql_require_primary_key: Optional[pulumi.Input[bool]] = None,
+                 tmp_table_size: Optional[pulumi.Input[int]] = None,
+                 wait_timeout: Optional[pulumi.Input[int]] = None):
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if default_time_zone is not None:
@@ -8162,11 +8089,11 @@ class MySqlMysqlUserConfigMysqlArgs:
 
     @property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input[str]]:
+    def connect_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input[str]]):
+    def connect_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connect_timeout", value)
 
     @property
@@ -8180,47 +8107,47 @@ class MySqlMysqlUserConfigMysqlArgs:
 
     @property
     @pulumi.getter(name="groupConcatMaxLen")
-    def group_concat_max_len(self) -> Optional[pulumi.Input[str]]:
+    def group_concat_max_len(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "group_concat_max_len")
 
     @group_concat_max_len.setter
-    def group_concat_max_len(self, value: Optional[pulumi.Input[str]]):
+    def group_concat_max_len(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_concat_max_len", value)
 
     @property
     @pulumi.getter(name="informationSchemaStatsExpiry")
-    def information_schema_stats_expiry(self) -> Optional[pulumi.Input[str]]:
+    def information_schema_stats_expiry(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @information_schema_stats_expiry.setter
-    def information_schema_stats_expiry(self, value: Optional[pulumi.Input[str]]):
+    def information_schema_stats_expiry(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "information_schema_stats_expiry", value)
 
     @property
     @pulumi.getter(name="innodbChangeBufferMaxSize")
-    def innodb_change_buffer_max_size(self) -> Optional[pulumi.Input[str]]:
+    def innodb_change_buffer_max_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_change_buffer_max_size")
 
     @innodb_change_buffer_max_size.setter
-    def innodb_change_buffer_max_size(self, value: Optional[pulumi.Input[str]]):
+    def innodb_change_buffer_max_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_change_buffer_max_size", value)
 
     @property
     @pulumi.getter(name="innodbFlushNeighbors")
-    def innodb_flush_neighbors(self) -> Optional[pulumi.Input[str]]:
+    def innodb_flush_neighbors(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_flush_neighbors")
 
     @innodb_flush_neighbors.setter
-    def innodb_flush_neighbors(self, value: Optional[pulumi.Input[str]]):
+    def innodb_flush_neighbors(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_flush_neighbors", value)
 
     @property
     @pulumi.getter(name="innodbFtMinTokenSize")
-    def innodb_ft_min_token_size(self) -> Optional[pulumi.Input[str]]:
+    def innodb_ft_min_token_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @innodb_ft_min_token_size.setter
-    def innodb_ft_min_token_size(self, value: Optional[pulumi.Input[str]]):
+    def innodb_ft_min_token_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_ft_min_token_size", value)
 
     @property
@@ -8234,83 +8161,83 @@ class MySqlMysqlUserConfigMysqlArgs:
 
     @property
     @pulumi.getter(name="innodbLockWaitTimeout")
-    def innodb_lock_wait_timeout(self) -> Optional[pulumi.Input[str]]:
+    def innodb_lock_wait_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_lock_wait_timeout")
 
     @innodb_lock_wait_timeout.setter
-    def innodb_lock_wait_timeout(self, value: Optional[pulumi.Input[str]]):
+    def innodb_lock_wait_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_lock_wait_timeout", value)
 
     @property
     @pulumi.getter(name="innodbLogBufferSize")
-    def innodb_log_buffer_size(self) -> Optional[pulumi.Input[str]]:
+    def innodb_log_buffer_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_log_buffer_size")
 
     @innodb_log_buffer_size.setter
-    def innodb_log_buffer_size(self, value: Optional[pulumi.Input[str]]):
+    def innodb_log_buffer_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_log_buffer_size", value)
 
     @property
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
-    def innodb_online_alter_log_max_size(self) -> Optional[pulumi.Input[str]]:
+    def innodb_online_alter_log_max_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
     @innodb_online_alter_log_max_size.setter
-    def innodb_online_alter_log_max_size(self, value: Optional[pulumi.Input[str]]):
+    def innodb_online_alter_log_max_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_online_alter_log_max_size", value)
 
     @property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
-    def innodb_print_all_deadlocks(self) -> Optional[pulumi.Input[str]]:
+    def innodb_print_all_deadlocks(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "innodb_print_all_deadlocks")
 
     @innodb_print_all_deadlocks.setter
-    def innodb_print_all_deadlocks(self, value: Optional[pulumi.Input[str]]):
+    def innodb_print_all_deadlocks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "innodb_print_all_deadlocks", value)
 
     @property
     @pulumi.getter(name="innodbReadIoThreads")
-    def innodb_read_io_threads(self) -> Optional[pulumi.Input[str]]:
+    def innodb_read_io_threads(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_read_io_threads")
 
     @innodb_read_io_threads.setter
-    def innodb_read_io_threads(self, value: Optional[pulumi.Input[str]]):
+    def innodb_read_io_threads(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_read_io_threads", value)
 
     @property
     @pulumi.getter(name="innodbRollbackOnTimeout")
-    def innodb_rollback_on_timeout(self) -> Optional[pulumi.Input[str]]:
+    def innodb_rollback_on_timeout(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "innodb_rollback_on_timeout")
 
     @innodb_rollback_on_timeout.setter
-    def innodb_rollback_on_timeout(self, value: Optional[pulumi.Input[str]]):
+    def innodb_rollback_on_timeout(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "innodb_rollback_on_timeout", value)
 
     @property
     @pulumi.getter(name="innodbThreadConcurrency")
-    def innodb_thread_concurrency(self) -> Optional[pulumi.Input[str]]:
+    def innodb_thread_concurrency(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_thread_concurrency")
 
     @innodb_thread_concurrency.setter
-    def innodb_thread_concurrency(self, value: Optional[pulumi.Input[str]]):
+    def innodb_thread_concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_thread_concurrency", value)
 
     @property
     @pulumi.getter(name="innodbWriteIoThreads")
-    def innodb_write_io_threads(self) -> Optional[pulumi.Input[str]]:
+    def innodb_write_io_threads(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "innodb_write_io_threads")
 
     @innodb_write_io_threads.setter
-    def innodb_write_io_threads(self, value: Optional[pulumi.Input[str]]):
+    def innodb_write_io_threads(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "innodb_write_io_threads", value)
 
     @property
     @pulumi.getter(name="interactiveTimeout")
-    def interactive_timeout(self) -> Optional[pulumi.Input[str]]:
+    def interactive_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "interactive_timeout")
 
     @interactive_timeout.setter
-    def interactive_timeout(self, value: Optional[pulumi.Input[str]]):
+    def interactive_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interactive_timeout", value)
 
     @property
@@ -8324,74 +8251,74 @@ class MySqlMysqlUserConfigMysqlArgs:
 
     @property
     @pulumi.getter(name="longQueryTime")
-    def long_query_time(self) -> Optional[pulumi.Input[str]]:
+    def long_query_time(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "long_query_time")
 
     @long_query_time.setter
-    def long_query_time(self, value: Optional[pulumi.Input[str]]):
+    def long_query_time(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "long_query_time", value)
 
     @property
     @pulumi.getter(name="maxAllowedPacket")
-    def max_allowed_packet(self) -> Optional[pulumi.Input[str]]:
+    def max_allowed_packet(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_allowed_packet")
 
     @max_allowed_packet.setter
-    def max_allowed_packet(self, value: Optional[pulumi.Input[str]]):
+    def max_allowed_packet(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_allowed_packet", value)
 
     @property
     @pulumi.getter(name="maxHeapTableSize")
-    def max_heap_table_size(self) -> Optional[pulumi.Input[str]]:
+    def max_heap_table_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_heap_table_size")
 
     @max_heap_table_size.setter
-    def max_heap_table_size(self, value: Optional[pulumi.Input[str]]):
+    def max_heap_table_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_heap_table_size", value)
 
     @property
     @pulumi.getter(name="netBufferLength")
-    def net_buffer_length(self) -> Optional[pulumi.Input[str]]:
+    def net_buffer_length(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "net_buffer_length")
 
     @net_buffer_length.setter
-    def net_buffer_length(self, value: Optional[pulumi.Input[str]]):
+    def net_buffer_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "net_buffer_length", value)
 
     @property
     @pulumi.getter(name="netReadTimeout")
-    def net_read_timeout(self) -> Optional[pulumi.Input[str]]:
+    def net_read_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "net_read_timeout")
 
     @net_read_timeout.setter
-    def net_read_timeout(self, value: Optional[pulumi.Input[str]]):
+    def net_read_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "net_read_timeout", value)
 
     @property
     @pulumi.getter(name="netWriteTimeout")
-    def net_write_timeout(self) -> Optional[pulumi.Input[str]]:
+    def net_write_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "net_write_timeout")
 
     @net_write_timeout.setter
-    def net_write_timeout(self, value: Optional[pulumi.Input[str]]):
+    def net_write_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "net_write_timeout", value)
 
     @property
     @pulumi.getter(name="slowQueryLog")
-    def slow_query_log(self) -> Optional[pulumi.Input[str]]:
+    def slow_query_log(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "slow_query_log")
 
     @slow_query_log.setter
-    def slow_query_log(self, value: Optional[pulumi.Input[str]]):
+    def slow_query_log(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "slow_query_log", value)
 
     @property
     @pulumi.getter(name="sortBufferSize")
-    def sort_buffer_size(self) -> Optional[pulumi.Input[str]]:
+    def sort_buffer_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "sort_buffer_size")
 
     @sort_buffer_size.setter
-    def sort_buffer_size(self, value: Optional[pulumi.Input[str]]):
+    def sort_buffer_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "sort_buffer_size", value)
 
     @property
@@ -8405,38 +8332,38 @@ class MySqlMysqlUserConfigMysqlArgs:
 
     @property
     @pulumi.getter(name="sqlRequirePrimaryKey")
-    def sql_require_primary_key(self) -> Optional[pulumi.Input[str]]:
+    def sql_require_primary_key(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "sql_require_primary_key")
 
     @sql_require_primary_key.setter
-    def sql_require_primary_key(self, value: Optional[pulumi.Input[str]]):
+    def sql_require_primary_key(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sql_require_primary_key", value)
 
     @property
     @pulumi.getter(name="tmpTableSize")
-    def tmp_table_size(self) -> Optional[pulumi.Input[str]]:
+    def tmp_table_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "tmp_table_size")
 
     @tmp_table_size.setter
-    def tmp_table_size(self, value: Optional[pulumi.Input[str]]):
+    def tmp_table_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "tmp_table_size", value)
 
     @property
     @pulumi.getter(name="waitTimeout")
-    def wait_timeout(self) -> Optional[pulumi.Input[str]]:
+    def wait_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "wait_timeout")
 
     @wait_timeout.setter
-    def wait_timeout(self, value: Optional[pulumi.Input[str]]):
+    def wait_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wait_timeout", value)
 
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[pulumi.Input[str]] = None,
-                 mysqlx: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 mysql: Optional[pulumi.Input[bool]] = None,
+                 mysqlx: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
@@ -8446,38 +8373,38 @@ class MySqlMysqlUserConfigPrivateAccessArgs:
 
     @property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input[str]]:
+    def mysql(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input[str]]):
+    def mysql(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mysql", value)
 
     @property
     @pulumi.getter
-    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+    def mysqlx(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "mysqlx")
 
     @mysqlx.setter
-    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+    def mysqlx(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[pulumi.Input[str]] = None,
-                 mysqlx: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 mysql: Optional[pulumi.Input[bool]] = None,
+                 mysqlx: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
@@ -8487,38 +8414,38 @@ class MySqlMysqlUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input[str]]:
+    def mysql(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input[str]]):
+    def mysql(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mysql", value)
 
     @property
     @pulumi.getter
-    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+    def mysqlx(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "mysqlx")
 
     @mysqlx.setter
-    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+    def mysqlx(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[pulumi.Input[str]] = None,
-                 mysqlx: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 mysql: Optional[pulumi.Input[bool]] = None,
+                 mysqlx: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
@@ -8528,29 +8455,29 @@ class MySqlMysqlUserConfigPublicAccessArgs:
 
     @property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input[str]]:
+    def mysql(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input[str]]):
+    def mysql(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mysql", value)
 
     @property
     @pulumi.getter
-    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+    def mysqlx(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "mysqlx")
 
     @mysqlx.setter
-    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+    def mysqlx(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
@@ -8719,13 +8646,13 @@ class OpenSearchOpensearchUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
-                 disable_replication_factor_adjustment: Optional[pulumi.Input[str]] = None,
+                 disable_replication_factor_adjustment: Optional[pulumi.Input[bool]] = None,
                  index_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]]] = None,
                  index_template: Optional[pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs']] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 keep_index_refresh_interval: Optional[pulumi.Input[str]] = None,
-                 max_index_count: Optional[pulumi.Input[str]] = None,
+                 keep_index_refresh_interval: Optional[pulumi.Input[bool]] = None,
+                 max_index_count: Optional[pulumi.Input[int]] = None,
                  opensearch: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs']] = None,
                  opensearch_dashboards: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs']] = None,
                  opensearch_version: Optional[pulumi.Input[str]] = None,
@@ -8735,33 +8662,35 @@ class OpenSearchOpensearchUserConfigArgs:
                  public_access: Optional[pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
-        :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
-        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]] index_patterns: Index patterns
-        :param pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs'] index_template: Template settings for all new indexes
-        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[str] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
-        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings
-        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings
-        :param pulumi.Input[str] opensearch_version: OpenSearch major version
-        :param pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        :param pulumi.Input[bool] disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]] index_patterns: Index patterns.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs'] index_template: Template settings for all new indexes.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+        :param pulumi.Input[int] max_index_count: Use index_patterns instead. The default value is `0`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings.
+        :param pulumi.Input[str] opensearch_version: OpenSearch major version.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service
+        :param pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
+        :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
-        :param pulumi.Input[str] static_ips: Use static public IP addresses
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if disable_replication_factor_adjustment is not None:
-            warnings.warn("""DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.""", DeprecationWarning)
-            pulumi.log.warn("""disable_replication_factor_adjustment is deprecated: DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.""")
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""disable_replication_factor_adjustment is deprecated: Usage of this field is discouraged.""")
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
         if index_patterns is not None:
@@ -8771,12 +8700,15 @@ class OpenSearchOpensearchUserConfigArgs:
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if keep_index_refresh_interval is not None:
             pulumi.set(__self__, "keep_index_refresh_interval", keep_index_refresh_interval)
         if max_index_count is not None:
-            warnings.warn("""DEPRECATED: use index_patterns instead""", DeprecationWarning)
-            pulumi.log.warn("""max_index_count is deprecated: DEPRECATED: use index_patterns instead""")
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
         if max_index_count is not None:
             pulumi.set(__self__, "max_index_count", max_index_count)
         if opensearch is not None:
@@ -8804,7 +8736,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="additionalBackupRegions")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional Cloud Regions for Backup Replication
+        Additional Cloud Regions for Backup Replication.
         """
         return pulumi.get(self, "additional_backup_regions")
 
@@ -8816,7 +8748,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -8826,18 +8758,21 @@ class OpenSearchOpensearchUserConfigArgs:
 
     @property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
-    def disable_replication_factor_adjustment(self) -> Optional[pulumi.Input[str]]:
+    def disable_replication_factor_adjustment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        """
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @disable_replication_factor_adjustment.setter
-    def disable_replication_factor_adjustment(self, value: Optional[pulumi.Input[str]]):
+    def disable_replication_factor_adjustment(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_replication_factor_adjustment", value)
 
     @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]]]:
         """
-        Index patterns
+        Index patterns.
         """
         return pulumi.get(self, "index_patterns")
 
@@ -8849,7 +8784,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="indexTemplate")
     def index_template(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs']]:
         """
-        Template settings for all new indexes
+        Template settings for all new indexes.
         """
         return pulumi.get(self, "index_template")
 
@@ -8861,7 +8796,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -8873,7 +8808,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -8883,30 +8818,33 @@ class OpenSearchOpensearchUserConfigArgs:
 
     @property
     @pulumi.getter(name="keepIndexRefreshInterval")
-    def keep_index_refresh_interval(self) -> Optional[pulumi.Input[str]]:
+    def keep_index_refresh_interval(self) -> Optional[pulumi.Input[bool]]:
         """
         Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         """
         return pulumi.get(self, "keep_index_refresh_interval")
 
     @keep_index_refresh_interval.setter
-    def keep_index_refresh_interval(self, value: Optional[pulumi.Input[str]]):
+    def keep_index_refresh_interval(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "keep_index_refresh_interval", value)
 
     @property
     @pulumi.getter(name="maxIndexCount")
-    def max_index_count(self) -> Optional[pulumi.Input[str]]:
+    def max_index_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Use index_patterns instead. The default value is `0`.
+        """
         return pulumi.get(self, "max_index_count")
 
     @max_index_count.setter
-    def max_index_count(self, value: Optional[pulumi.Input[str]]):
+    def max_index_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_index_count", value)
 
     @property
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs']]:
         """
-        OpenSearch settings
+        OpenSearch settings.
         """
         return pulumi.get(self, "opensearch")
 
@@ -8918,7 +8856,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs']]:
         """
-        OpenSearch Dashboards settings
+        OpenSearch Dashboards settings.
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -8930,7 +8868,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[pulumi.Input[str]]:
         """
-        OpenSearch major version
+        OpenSearch major version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -8942,7 +8880,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgs']]:
         """
-        Allow access to selected service ports from private networks
+        Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
 
@@ -8954,7 +8892,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs']]:
         """
-        Allow access to selected service components through Privatelink
+        Allow access to selected service components through Privatelink.
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -8978,7 +8916,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs']]:
         """
-        Allow access to selected service ports from the public Internet
+        Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
 
@@ -8990,7 +8928,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the basebackup to restore in forked service
+        Name of the basebackup to restore in forked service.
         """
         return pulumi.get(self, "recovery_basebackup_name")
 
@@ -9012,46 +8950,44 @@ class OpenSearchOpensearchUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use static public IP addresses
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIndexPatternArgs:
     def __init__(__self__, *,
-                 max_index_count: Optional[pulumi.Input[str]] = None,
-                 pattern: Optional[pulumi.Input[str]] = None,
+                 max_index_count: pulumi.Input[int],
+                 pattern: pulumi.Input[str],
                  sorting_algorithm: Optional[pulumi.Input[str]] = None):
-        if max_index_count is not None:
-            pulumi.set(__self__, "max_index_count", max_index_count)
-        if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "max_index_count", max_index_count)
+        pulumi.set(__self__, "pattern", pattern)
         if sorting_algorithm is not None:
             pulumi.set(__self__, "sorting_algorithm", sorting_algorithm)
 
     @property
     @pulumi.getter(name="maxIndexCount")
-    def max_index_count(self) -> Optional[pulumi.Input[str]]:
+    def max_index_count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "max_index_count")
 
     @max_index_count.setter
-    def max_index_count(self, value: Optional[pulumi.Input[str]]):
+    def max_index_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_index_count", value)
 
     @property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input[str]]:
+    def pattern(self) -> pulumi.Input[str]:
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input[str]]):
+    def pattern(self, value: pulumi.Input[str]):
         pulumi.set(self, "pattern", value)
 
     @property
@@ -9067,9 +9003,9 @@ class OpenSearchOpensearchUserConfigIndexPatternArgs:
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIndexTemplateArgs:
     def __init__(__self__, *,
-                 mapping_nested_objects_limit: Optional[pulumi.Input[str]] = None,
-                 number_of_replicas: Optional[pulumi.Input[str]] = None,
-                 number_of_shards: Optional[pulumi.Input[str]] = None):
+                 mapping_nested_objects_limit: Optional[pulumi.Input[int]] = None,
+                 number_of_replicas: Optional[pulumi.Input[int]] = None,
+                 number_of_shards: Optional[pulumi.Input[int]] = None):
         if mapping_nested_objects_limit is not None:
             pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
         if number_of_replicas is not None:
@@ -9079,41 +9015,49 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
 
     @property
     @pulumi.getter(name="mappingNestedObjectsLimit")
-    def mapping_nested_objects_limit(self) -> Optional[pulumi.Input[str]]:
+    def mapping_nested_objects_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "mapping_nested_objects_limit")
 
     @mapping_nested_objects_limit.setter
-    def mapping_nested_objects_limit(self, value: Optional[pulumi.Input[str]]):
+    def mapping_nested_objects_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "mapping_nested_objects_limit", value)
 
     @property
     @pulumi.getter(name="numberOfReplicas")
-    def number_of_replicas(self) -> Optional[pulumi.Input[str]]:
+    def number_of_replicas(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "number_of_replicas")
 
     @number_of_replicas.setter
-    def number_of_replicas(self, value: Optional[pulumi.Input[str]]):
+    def number_of_replicas(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "number_of_replicas", value)
 
     @property
     @pulumi.getter(name="numberOfShards")
-    def number_of_shards(self) -> Optional[pulumi.Input[str]]:
+    def number_of_shards(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "number_of_shards")
 
     @number_of_shards.setter
-    def number_of_shards(self, value: Optional[pulumi.Input[str]]):
+    def number_of_shards(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "number_of_shards", value)
 
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -9124,50 +9068,41 @@ class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchArgs:
     def __init__(__self__, *,
-                 action_auto_create_index_enabled: Optional[pulumi.Input[str]] = None,
-                 action_destructive_requires_name: Optional[pulumi.Input[str]] = None,
-                 cluster_max_shards_per_node: Optional[pulumi.Input[str]] = None,
-                 cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[str]] = None,
+                 action_auto_create_index_enabled: Optional[pulumi.Input[bool]] = None,
+                 action_destructive_requires_name: Optional[pulumi.Input[bool]] = None,
+                 cluster_max_shards_per_node: Optional[pulumi.Input[int]] = None,
+                 cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[int]] = None,
                  email_sender_name: Optional[pulumi.Input[str]] = None,
                  email_sender_password: Optional[pulumi.Input[str]] = None,
                  email_sender_username: Optional[pulumi.Input[str]] = None,
-                 http_max_content_length: Optional[pulumi.Input[str]] = None,
-                 http_max_header_size: Optional[pulumi.Input[str]] = None,
-                 http_max_initial_line_length: Optional[pulumi.Input[str]] = None,
-                 indices_fielddata_cache_size: Optional[pulumi.Input[str]] = None,
-                 indices_memory_index_buffer_size: Optional[pulumi.Input[str]] = None,
-                 indices_queries_cache_size: Optional[pulumi.Input[str]] = None,
-                 indices_query_bool_max_clause_count: Optional[pulumi.Input[str]] = None,
-                 indices_recovery_max_bytes_per_sec: Optional[pulumi.Input[str]] = None,
-                 indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[str]] = None,
-                 override_main_response_version: Optional[pulumi.Input[str]] = None,
+                 http_max_content_length: Optional[pulumi.Input[int]] = None,
+                 http_max_header_size: Optional[pulumi.Input[int]] = None,
+                 http_max_initial_line_length: Optional[pulumi.Input[int]] = None,
+                 indices_fielddata_cache_size: Optional[pulumi.Input[int]] = None,
+                 indices_memory_index_buffer_size: Optional[pulumi.Input[int]] = None,
+                 indices_queries_cache_size: Optional[pulumi.Input[int]] = None,
+                 indices_query_bool_max_clause_count: Optional[pulumi.Input[int]] = None,
+                 indices_recovery_max_bytes_per_sec: Optional[pulumi.Input[int]] = None,
+                 indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[int]] = None,
+                 override_main_response_version: Optional[pulumi.Input[bool]] = None,
                  reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  script_max_compilations_rate: Optional[pulumi.Input[str]] = None,
-                 search_max_buckets: Optional[pulumi.Input[str]] = None,
-                 thread_pool_analyze_queue_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_analyze_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_force_merge_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_get_queue_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_get_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_search_queue_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_search_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_search_throttled_queue_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_search_throttled_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_write_queue_size: Optional[pulumi.Input[str]] = None,
-                 thread_pool_write_size: Optional[pulumi.Input[str]] = None):
+                 search_max_buckets: Optional[pulumi.Input[int]] = None,
+                 thread_pool_analyze_queue_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_analyze_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_force_merge_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_get_queue_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_get_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_search_queue_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_search_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_search_throttled_queue_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_search_throttled_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_write_queue_size: Optional[pulumi.Input[int]] = None,
+                 thread_pool_write_size: Optional[pulumi.Input[int]] = None):
         if action_auto_create_index_enabled is not None:
             pulumi.set(__self__, "action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
@@ -9233,38 +9168,38 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
 
     @property
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
-    def action_auto_create_index_enabled(self) -> Optional[pulumi.Input[str]]:
+    def action_auto_create_index_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "action_auto_create_index_enabled")
 
     @action_auto_create_index_enabled.setter
-    def action_auto_create_index_enabled(self, value: Optional[pulumi.Input[str]]):
+    def action_auto_create_index_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "action_auto_create_index_enabled", value)
 
     @property
     @pulumi.getter(name="actionDestructiveRequiresName")
-    def action_destructive_requires_name(self) -> Optional[pulumi.Input[str]]:
+    def action_destructive_requires_name(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "action_destructive_requires_name")
 
     @action_destructive_requires_name.setter
-    def action_destructive_requires_name(self, value: Optional[pulumi.Input[str]]):
+    def action_destructive_requires_name(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "action_destructive_requires_name", value)
 
     @property
     @pulumi.getter(name="clusterMaxShardsPerNode")
-    def cluster_max_shards_per_node(self) -> Optional[pulumi.Input[str]]:
+    def cluster_max_shards_per_node(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cluster_max_shards_per_node")
 
     @cluster_max_shards_per_node.setter
-    def cluster_max_shards_per_node(self, value: Optional[pulumi.Input[str]]):
+    def cluster_max_shards_per_node(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cluster_max_shards_per_node", value)
 
     @property
     @pulumi.getter(name="clusterRoutingAllocationNodeConcurrentRecoveries")
-    def cluster_routing_allocation_node_concurrent_recoveries(self) -> Optional[pulumi.Input[str]]:
+    def cluster_routing_allocation_node_concurrent_recoveries(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cluster_routing_allocation_node_concurrent_recoveries")
 
     @cluster_routing_allocation_node_concurrent_recoveries.setter
-    def cluster_routing_allocation_node_concurrent_recoveries(self, value: Optional[pulumi.Input[str]]):
+    def cluster_routing_allocation_node_concurrent_recoveries(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cluster_routing_allocation_node_concurrent_recoveries", value)
 
     @property
@@ -9296,92 +9231,92 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
 
     @property
     @pulumi.getter(name="httpMaxContentLength")
-    def http_max_content_length(self) -> Optional[pulumi.Input[str]]:
+    def http_max_content_length(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "http_max_content_length")
 
     @http_max_content_length.setter
-    def http_max_content_length(self, value: Optional[pulumi.Input[str]]):
+    def http_max_content_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_max_content_length", value)
 
     @property
     @pulumi.getter(name="httpMaxHeaderSize")
-    def http_max_header_size(self) -> Optional[pulumi.Input[str]]:
+    def http_max_header_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "http_max_header_size")
 
     @http_max_header_size.setter
-    def http_max_header_size(self, value: Optional[pulumi.Input[str]]):
+    def http_max_header_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_max_header_size", value)
 
     @property
     @pulumi.getter(name="httpMaxInitialLineLength")
-    def http_max_initial_line_length(self) -> Optional[pulumi.Input[str]]:
+    def http_max_initial_line_length(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "http_max_initial_line_length")
 
     @http_max_initial_line_length.setter
-    def http_max_initial_line_length(self, value: Optional[pulumi.Input[str]]):
+    def http_max_initial_line_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_max_initial_line_length", value)
 
     @property
     @pulumi.getter(name="indicesFielddataCacheSize")
-    def indices_fielddata_cache_size(self) -> Optional[pulumi.Input[str]]:
+    def indices_fielddata_cache_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "indices_fielddata_cache_size")
 
     @indices_fielddata_cache_size.setter
-    def indices_fielddata_cache_size(self, value: Optional[pulumi.Input[str]]):
+    def indices_fielddata_cache_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "indices_fielddata_cache_size", value)
 
     @property
     @pulumi.getter(name="indicesMemoryIndexBufferSize")
-    def indices_memory_index_buffer_size(self) -> Optional[pulumi.Input[str]]:
+    def indices_memory_index_buffer_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "indices_memory_index_buffer_size")
 
     @indices_memory_index_buffer_size.setter
-    def indices_memory_index_buffer_size(self, value: Optional[pulumi.Input[str]]):
+    def indices_memory_index_buffer_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "indices_memory_index_buffer_size", value)
 
     @property
     @pulumi.getter(name="indicesQueriesCacheSize")
-    def indices_queries_cache_size(self) -> Optional[pulumi.Input[str]]:
+    def indices_queries_cache_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "indices_queries_cache_size")
 
     @indices_queries_cache_size.setter
-    def indices_queries_cache_size(self, value: Optional[pulumi.Input[str]]):
+    def indices_queries_cache_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "indices_queries_cache_size", value)
 
     @property
     @pulumi.getter(name="indicesQueryBoolMaxClauseCount")
-    def indices_query_bool_max_clause_count(self) -> Optional[pulumi.Input[str]]:
+    def indices_query_bool_max_clause_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "indices_query_bool_max_clause_count")
 
     @indices_query_bool_max_clause_count.setter
-    def indices_query_bool_max_clause_count(self, value: Optional[pulumi.Input[str]]):
+    def indices_query_bool_max_clause_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "indices_query_bool_max_clause_count", value)
 
     @property
     @pulumi.getter(name="indicesRecoveryMaxBytesPerSec")
-    def indices_recovery_max_bytes_per_sec(self) -> Optional[pulumi.Input[str]]:
+    def indices_recovery_max_bytes_per_sec(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "indices_recovery_max_bytes_per_sec")
 
     @indices_recovery_max_bytes_per_sec.setter
-    def indices_recovery_max_bytes_per_sec(self, value: Optional[pulumi.Input[str]]):
+    def indices_recovery_max_bytes_per_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "indices_recovery_max_bytes_per_sec", value)
 
     @property
     @pulumi.getter(name="indicesRecoveryMaxConcurrentFileChunks")
-    def indices_recovery_max_concurrent_file_chunks(self) -> Optional[pulumi.Input[str]]:
+    def indices_recovery_max_concurrent_file_chunks(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "indices_recovery_max_concurrent_file_chunks")
 
     @indices_recovery_max_concurrent_file_chunks.setter
-    def indices_recovery_max_concurrent_file_chunks(self, value: Optional[pulumi.Input[str]]):
+    def indices_recovery_max_concurrent_file_chunks(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "indices_recovery_max_concurrent_file_chunks", value)
 
     @property
     @pulumi.getter(name="overrideMainResponseVersion")
-    def override_main_response_version(self) -> Optional[pulumi.Input[str]]:
+    def override_main_response_version(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "override_main_response_version")
 
     @override_main_response_version.setter
-    def override_main_response_version(self, value: Optional[pulumi.Input[str]]):
+    def override_main_response_version(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "override_main_response_version", value)
 
     @property
@@ -9404,119 +9339,119 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
-    def search_max_buckets(self) -> Optional[pulumi.Input[str]]:
+    def search_max_buckets(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "search_max_buckets")
 
     @search_max_buckets.setter
-    def search_max_buckets(self, value: Optional[pulumi.Input[str]]):
+    def search_max_buckets(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "search_max_buckets", value)
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeQueueSize")
-    def thread_pool_analyze_queue_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_analyze_queue_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_analyze_queue_size")
 
     @thread_pool_analyze_queue_size.setter
-    def thread_pool_analyze_queue_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_analyze_queue_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_analyze_queue_size", value)
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeSize")
-    def thread_pool_analyze_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_analyze_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_analyze_size")
 
     @thread_pool_analyze_size.setter
-    def thread_pool_analyze_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_analyze_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_analyze_size", value)
 
     @property
     @pulumi.getter(name="threadPoolForceMergeSize")
-    def thread_pool_force_merge_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_force_merge_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_force_merge_size")
 
     @thread_pool_force_merge_size.setter
-    def thread_pool_force_merge_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_force_merge_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_force_merge_size", value)
 
     @property
     @pulumi.getter(name="threadPoolGetQueueSize")
-    def thread_pool_get_queue_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_get_queue_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_get_queue_size")
 
     @thread_pool_get_queue_size.setter
-    def thread_pool_get_queue_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_get_queue_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_get_queue_size", value)
 
     @property
     @pulumi.getter(name="threadPoolGetSize")
-    def thread_pool_get_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_get_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_get_size")
 
     @thread_pool_get_size.setter
-    def thread_pool_get_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_get_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_get_size", value)
 
     @property
     @pulumi.getter(name="threadPoolSearchQueueSize")
-    def thread_pool_search_queue_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_search_queue_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_search_queue_size")
 
     @thread_pool_search_queue_size.setter
-    def thread_pool_search_queue_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_search_queue_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_search_queue_size", value)
 
     @property
     @pulumi.getter(name="threadPoolSearchSize")
-    def thread_pool_search_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_search_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_search_size")
 
     @thread_pool_search_size.setter
-    def thread_pool_search_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_search_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_search_size", value)
 
     @property
     @pulumi.getter(name="threadPoolSearchThrottledQueueSize")
-    def thread_pool_search_throttled_queue_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_search_throttled_queue_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_search_throttled_queue_size")
 
     @thread_pool_search_throttled_queue_size.setter
-    def thread_pool_search_throttled_queue_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_search_throttled_queue_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_search_throttled_queue_size", value)
 
     @property
     @pulumi.getter(name="threadPoolSearchThrottledSize")
-    def thread_pool_search_throttled_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_search_throttled_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_search_throttled_size")
 
     @thread_pool_search_throttled_size.setter
-    def thread_pool_search_throttled_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_search_throttled_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_search_throttled_size", value)
 
     @property
     @pulumi.getter(name="threadPoolWriteQueueSize")
-    def thread_pool_write_queue_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_write_queue_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_write_queue_size")
 
     @thread_pool_write_queue_size.setter
-    def thread_pool_write_queue_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_write_queue_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_write_queue_size", value)
 
     @property
     @pulumi.getter(name="threadPoolWriteSize")
-    def thread_pool_write_size(self) -> Optional[pulumi.Input[str]]:
+    def thread_pool_write_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "thread_pool_write_size")
 
     @thread_pool_write_size.setter
-    def thread_pool_write_size(self, value: Optional[pulumi.Input[str]]):
+    def thread_pool_write_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "thread_pool_write_size", value)
 
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[str]] = None,
-                 max_old_space_size: Optional[pulumi.Input[str]] = None,
-                 opensearch_request_timeout: Optional[pulumi.Input[str]] = None):
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 max_old_space_size: Optional[pulumi.Input[int]] = None,
+                 opensearch_request_timeout: Optional[pulumi.Input[int]] = None):
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if max_old_space_size is not None:
@@ -9526,40 +9461,40 @@ class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[str]]:
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[str]]):
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="maxOldSpaceSize")
-    def max_old_space_size(self) -> Optional[pulumi.Input[str]]:
+    def max_old_space_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_old_space_size")
 
     @max_old_space_size.setter
-    def max_old_space_size(self, value: Optional[pulumi.Input[str]]):
+    def max_old_space_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_old_space_size", value)
 
     @property
     @pulumi.getter(name="opensearchRequestTimeout")
-    def opensearch_request_timeout(self) -> Optional[pulumi.Input[str]]:
+    def opensearch_request_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "opensearch_request_timeout")
 
     @opensearch_request_timeout.setter
-    def opensearch_request_timeout(self, value: Optional[pulumi.Input[str]]):
+    def opensearch_request_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "opensearch_request_timeout", value)
 
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 opensearch: Optional[pulumi.Input[str]] = None,
-                 opensearch_dashboards: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 opensearch: Optional[pulumi.Input[bool]] = None,
+                 opensearch_dashboards: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] opensearch: Opensearch server provided values
+        :param pulumi.Input[bool] opensearch: Opensearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -9570,43 +9505,43 @@ class OpenSearchOpensearchUserConfigPrivateAccessArgs:
 
     @property
     @pulumi.getter
-    def opensearch(self) -> Optional[pulumi.Input[str]]:
+    def opensearch(self) -> Optional[pulumi.Input[bool]]:
         """
         Opensearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
     @opensearch.setter
-    def opensearch(self, value: Optional[pulumi.Input[str]]):
+    def opensearch(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "opensearch", value)
 
     @property
     @pulumi.getter(name="opensearchDashboards")
-    def opensearch_dashboards(self) -> Optional[pulumi.Input[str]]:
+    def opensearch_dashboards(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "opensearch_dashboards")
 
     @opensearch_dashboards.setter
-    def opensearch_dashboards(self, value: Optional[pulumi.Input[str]]):
+    def opensearch_dashboards(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "opensearch_dashboards", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 opensearch: Optional[pulumi.Input[str]] = None,
-                 opensearch_dashboards: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 opensearch: Optional[pulumi.Input[bool]] = None,
+                 opensearch_dashboards: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] opensearch: Opensearch server provided values
+        :param pulumi.Input[bool] opensearch: Opensearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -9617,43 +9552,43 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def opensearch(self) -> Optional[pulumi.Input[str]]:
+    def opensearch(self) -> Optional[pulumi.Input[bool]]:
         """
         Opensearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
     @opensearch.setter
-    def opensearch(self, value: Optional[pulumi.Input[str]]):
+    def opensearch(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "opensearch", value)
 
     @property
     @pulumi.getter(name="opensearchDashboards")
-    def opensearch_dashboards(self) -> Optional[pulumi.Input[str]]:
+    def opensearch_dashboards(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "opensearch_dashboards")
 
     @opensearch_dashboards.setter
-    def opensearch_dashboards(self, value: Optional[pulumi.Input[str]]):
+    def opensearch_dashboards(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "opensearch_dashboards", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 opensearch: Optional[pulumi.Input[str]] = None,
-                 opensearch_dashboards: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 opensearch: Optional[pulumi.Input[bool]] = None,
+                 opensearch_dashboards: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] opensearch: Opensearch server provided values
+        :param pulumi.Input[bool] opensearch: Opensearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -9664,32 +9599,32 @@ class OpenSearchOpensearchUserConfigPublicAccessArgs:
 
     @property
     @pulumi.getter
-    def opensearch(self) -> Optional[pulumi.Input[str]]:
+    def opensearch(self) -> Optional[pulumi.Input[bool]]:
         """
         Opensearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
     @opensearch.setter
-    def opensearch(self, value: Optional[pulumi.Input[str]]):
+    def opensearch(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "opensearch", value)
 
     @property
     @pulumi.getter(name="opensearchDashboards")
-    def opensearch_dashboards(self) -> Optional[pulumi.Input[str]]:
+    def opensearch_dashboards(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "opensearch_dashboards")
 
     @opensearch_dashboards.setter
-    def opensearch_dashboards(self, value: Optional[pulumi.Input[str]]):
+    def opensearch_dashboards(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "opensearch_dashboards", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
@@ -10013,16 +9948,16 @@ class PgPgUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  admin_password: Optional[pulumi.Input[str]] = None,
                  admin_username: Optional[pulumi.Input[str]] = None,
-                 backup_hour: Optional[pulumi.Input[str]] = None,
-                 backup_minute: Optional[pulumi.Input[str]] = None,
-                 enable_ipv6: Optional[pulumi.Input[str]] = None,
+                 backup_hour: Optional[pulumi.Input[int]] = None,
+                 backup_minute: Optional[pulumi.Input[int]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['PgPgUserConfigMigrationArgs']] = None,
                  pg: Optional[pulumi.Input['PgPgUserConfigPgArgs']] = None,
-                 pg_read_replica: Optional[pulumi.Input[str]] = None,
+                 pg_read_replica: Optional[pulumi.Input[bool]] = None,
                  pg_service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 pg_stat_monitor_enable: Optional[pulumi.Input[str]] = None,
+                 pg_stat_monitor_enable: Optional[pulumi.Input[bool]] = None,
                  pg_version: Optional[pulumi.Input[str]] = None,
                  pgbouncer: Optional[pulumi.Input['PgPgUserConfigPgbouncerArgs']] = None,
                  pglookout: Optional[pulumi.Input['PgPgUserConfigPglookoutArgs']] = None,
@@ -10032,40 +9967,41 @@ class PgPgUserConfigArgs:
                  public_access: Optional[pulumi.Input['PgPgUserConfigPublicAccessArgs']] = None,
                  recovery_target_time: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 shared_buffers_percentage: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None,
+                 shared_buffers_percentage: Optional[pulumi.Input[float]] = None,
+                 static_ips: Optional[pulumi.Input[bool]] = None,
                  synchronous_replication: Optional[pulumi.Input[str]] = None,
                  timescaledb: Optional[pulumi.Input['PgPgUserConfigTimescaledbArgs']] = None,
                  variant: Optional[pulumi.Input[str]] = None,
-                 work_mem: Optional[pulumi.Input[str]] = None):
+                 work_mem: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[str] admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param pulumi.Input[str] admin_username: Custom username for admin user. This must be set only when a new service is being created.
-        :param pulumi.Input[str] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-        :param pulumi.Input[str] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        :param pulumi.Input[str] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports
-        :param pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        :param pulumi.Input['PgPgUserConfigMigrationArgs'] migration: Migrate data from existing server
-        :param pulumi.Input['PgPgUserConfigPgArgs'] pg: postgresql.conf configuration values
+        :param pulumi.Input[int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        :param pulumi.Input[bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        :param pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input['PgPgUserConfigMigrationArgs'] migration: Migrate data from existing server.
+        :param pulumi.Input['PgPgUserConfigPgArgs'] pg: postgresql.conf configuration values.
+        :param pulumi.Input[bool] pg_read_replica: Use read_replica service integration instead.
         :param pulumi.Input[str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-        :param pulumi.Input[str] pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
-        :param pulumi.Input[str] pg_version: PostgreSQL major version
-        :param pulumi.Input['PgPgUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings
-        :param pulumi.Input['PgPgUserConfigPglookoutArgs'] pglookout: PGLookout settings
-        :param pulumi.Input['PgPgUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input['PgPgUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
+        :param pulumi.Input[bool] pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+        :param pulumi.Input[str] pg_version: PostgreSQL major version.
+        :param pulumi.Input['PgPgUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings.
+        :param pulumi.Input['PgPgUserConfigPglookoutArgs'] pglookout: PGLookout settings.
+        :param pulumi.Input['PgPgUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
+        :param pulumi.Input['PgPgUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param pulumi.Input['PgPgUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input['PgPgUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
         :param pulumi.Input[str] recovery_target_time: Recovery target time when forking a service. This has effect only when a new service is being created.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
-        :param pulumi.Input[str] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
-        :param pulumi.Input[str] static_ips: Use static public IP addresses
+        :param pulumi.Input[float] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         :param pulumi.Input[str] synchronous_replication: Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        :param pulumi.Input['PgPgUserConfigTimescaledbArgs'] timescaledb: TimescaleDB extension configuration values
-        :param pulumi.Input[str] variant: Variant of the PostgreSQL service, may affect the features that are exposed by default
-        :param pulumi.Input[str] work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        :param pulumi.Input['PgPgUserConfigTimescaledbArgs'] timescaledb: TimescaleDB extension configuration values.
+        :param pulumi.Input[str] variant: Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        :param pulumi.Input[int] work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -10082,16 +10018,22 @@ class PgPgUserConfigArgs:
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
             pulumi.set(__self__, "migration", migration)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
-            warnings.warn("""This setting is deprecated. Use read_replica service integration instead.""", DeprecationWarning)
-            pulumi.log.warn("""pg_read_replica is deprecated: This setting is deprecated. Use read_replica service integration instead.""")
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""pg_read_replica is deprecated: Usage of this field is discouraged.""")
         if pg_read_replica is not None:
             pulumi.set(__self__, "pg_read_replica", pg_read_replica)
+        if pg_service_to_fork_from is not None:
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""pg_service_to_fork_from is deprecated: Usage of this field is discouraged.""")
         if pg_service_to_fork_from is not None:
             pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
         if pg_stat_monitor_enable is not None:
@@ -10131,7 +10073,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="additionalBackupRegions")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional Cloud Regions for Backup Replication
+        Additional Cloud Regions for Backup Replication.
         """
         return pulumi.get(self, "additional_backup_regions")
 
@@ -10165,45 +10107,45 @@ class PgPgUserConfigArgs:
 
     @property
     @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[str]]:
+    def backup_hour(self) -> Optional[pulumi.Input[int]]:
         """
         The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         """
         return pulumi.get(self, "backup_hour")
 
     @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[str]]):
+    def backup_hour(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_hour", value)
 
     @property
     @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[str]]:
+    def backup_minute(self) -> Optional[pulumi.Input[int]]:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
 
     @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[str]]):
+    def backup_minute(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_minute", value)
 
     @property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[str]]:
+    def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
-        Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[str]]):
+    def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -10215,7 +10157,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filters")
 
@@ -10227,7 +10169,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def migration(self) -> Optional[pulumi.Input['PgPgUserConfigMigrationArgs']]:
         """
-        Migrate data from existing server
+        Migrate data from existing server.
         """
         return pulumi.get(self, "migration")
 
@@ -10239,7 +10181,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['PgPgUserConfigPgArgs']]:
         """
-        postgresql.conf configuration values
+        postgresql.conf configuration values.
         """
         return pulumi.get(self, "pg")
 
@@ -10249,11 +10191,14 @@ class PgPgUserConfigArgs:
 
     @property
     @pulumi.getter(name="pgReadReplica")
-    def pg_read_replica(self) -> Optional[pulumi.Input[str]]:
+    def pg_read_replica(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use read_replica service integration instead.
+        """
         return pulumi.get(self, "pg_read_replica")
 
     @pg_read_replica.setter
-    def pg_read_replica(self, value: Optional[pulumi.Input[str]]):
+    def pg_read_replica(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pg_read_replica", value)
 
     @property
@@ -10270,21 +10215,21 @@ class PgPgUserConfigArgs:
 
     @property
     @pulumi.getter(name="pgStatMonitorEnable")
-    def pg_stat_monitor_enable(self) -> Optional[pulumi.Input[str]]:
+    def pg_stat_monitor_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+        Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
         """
         return pulumi.get(self, "pg_stat_monitor_enable")
 
     @pg_stat_monitor_enable.setter
-    def pg_stat_monitor_enable(self, value: Optional[pulumi.Input[str]]):
+    def pg_stat_monitor_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pg_stat_monitor_enable", value)
 
     @property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[pulumi.Input[str]]:
         """
-        PostgreSQL major version
+        PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 
@@ -10296,7 +10241,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def pgbouncer(self) -> Optional[pulumi.Input['PgPgUserConfigPgbouncerArgs']]:
         """
-        PGBouncer connection pooling settings
+        PGBouncer connection pooling settings.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -10308,7 +10253,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def pglookout(self) -> Optional[pulumi.Input['PgPgUserConfigPglookoutArgs']]:
         """
-        PGLookout settings
+        PGLookout settings.
         """
         return pulumi.get(self, "pglookout")
 
@@ -10320,7 +10265,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[pulumi.Input['PgPgUserConfigPrivateAccessArgs']]:
         """
-        Allow access to selected service ports from private networks
+        Allow access to selected service ports from private networks.
         """
         return pulumi.get(self, "private_access")
 
@@ -10332,7 +10277,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional[pulumi.Input['PgPgUserConfigPrivatelinkAccessArgs']]:
         """
-        Allow access to selected service components through Privatelink
+        Allow access to selected service components through Privatelink.
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -10356,7 +10301,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['PgPgUserConfigPublicAccessArgs']]:
         """
-        Allow access to selected service ports from the public Internet
+        Allow access to selected service ports from the public Internet.
         """
         return pulumi.get(self, "public_access")
 
@@ -10390,26 +10335,26 @@ class PgPgUserConfigArgs:
 
     @property
     @pulumi.getter(name="sharedBuffersPercentage")
-    def shared_buffers_percentage(self) -> Optional[pulumi.Input[str]]:
+    def shared_buffers_percentage(self) -> Optional[pulumi.Input[float]]:
         """
         Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         """
         return pulumi.get(self, "shared_buffers_percentage")
 
     @shared_buffers_percentage.setter
-    def shared_buffers_percentage(self, value: Optional[pulumi.Input[str]]):
+    def shared_buffers_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "shared_buffers_percentage", value)
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use static public IP addresses
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
     @property
@@ -10428,7 +10373,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def timescaledb(self) -> Optional[pulumi.Input['PgPgUserConfigTimescaledbArgs']]:
         """
-        TimescaleDB extension configuration values
+        TimescaleDB extension configuration values.
         """
         return pulumi.get(self, "timescaledb")
 
@@ -10440,7 +10385,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def variant(self) -> Optional[pulumi.Input[str]]:
         """
-        Variant of the PostgreSQL service, may affect the features that are exposed by default
+        Variant of the PostgreSQL service, may affect the features that are exposed by default.
         """
         return pulumi.get(self, "variant")
 
@@ -10450,26 +10395,34 @@ class PgPgUserConfigArgs:
 
     @property
     @pulumi.getter(name="workMem")
-    def work_mem(self) -> Optional[pulumi.Input[str]]:
+    def work_mem(self) -> Optional[pulumi.Input[int]]:
         """
         Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
         return pulumi.get(self, "work_mem")
 
     @work_mem.setter
-    def work_mem(self, value: Optional[pulumi.Input[str]]):
+    def work_mem(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "work_mem", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -10480,43 +10433,50 @@ class PgPgUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class PgPgUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[str]] = None,
-                 ssl: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -10526,15 +10486,6 @@ class PgPgUserConfigMigrationArgs:
     @dbname.setter
     def dbname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dbname", value)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter(name="ignoreDbs")
@@ -10565,20 +10516,11 @@ class PgPgUserConfigMigrationArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[str]]:
+    def ssl(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[str]]):
+    def ssl(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ssl", value)
 
     @property
@@ -10594,53 +10536,55 @@ class PgPgUserConfigMigrationArgs:
 @pulumi.input_type
 class PgPgUserConfigPgArgs:
     def __init__(__self__, *,
-                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[str]] = None,
-                 autovacuum_analyze_threshold: Optional[pulumi.Input[str]] = None,
-                 autovacuum_freeze_max_age: Optional[pulumi.Input[str]] = None,
-                 autovacuum_max_workers: Optional[pulumi.Input[str]] = None,
-                 autovacuum_naptime: Optional[pulumi.Input[str]] = None,
-                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[str]] = None,
-                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[str]] = None,
-                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[str]] = None,
-                 autovacuum_vacuum_threshold: Optional[pulumi.Input[str]] = None,
-                 bgwriter_delay: Optional[pulumi.Input[str]] = None,
-                 bgwriter_flush_after: Optional[pulumi.Input[str]] = None,
-                 bgwriter_lru_maxpages: Optional[pulumi.Input[str]] = None,
-                 bgwriter_lru_multiplier: Optional[pulumi.Input[str]] = None,
-                 deadlock_timeout: Optional[pulumi.Input[str]] = None,
+                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[float]] = None,
+                 autovacuum_analyze_threshold: Optional[pulumi.Input[int]] = None,
+                 autovacuum_freeze_max_age: Optional[pulumi.Input[int]] = None,
+                 autovacuum_max_workers: Optional[pulumi.Input[int]] = None,
+                 autovacuum_naptime: Optional[pulumi.Input[int]] = None,
+                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[int]] = None,
+                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[int]] = None,
+                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[float]] = None,
+                 autovacuum_vacuum_threshold: Optional[pulumi.Input[int]] = None,
+                 bgwriter_delay: Optional[pulumi.Input[int]] = None,
+                 bgwriter_flush_after: Optional[pulumi.Input[int]] = None,
+                 bgwriter_lru_maxpages: Optional[pulumi.Input[int]] = None,
+                 bgwriter_lru_multiplier: Optional[pulumi.Input[float]] = None,
+                 deadlock_timeout: Optional[pulumi.Input[int]] = None,
                  default_toast_compression: Optional[pulumi.Input[str]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[str]] = None,
-                 jit: Optional[pulumi.Input[str]] = None,
-                 log_autovacuum_min_duration: Optional[pulumi.Input[str]] = None,
+                 idle_in_transaction_session_timeout: Optional[pulumi.Input[int]] = None,
+                 jit: Optional[pulumi.Input[bool]] = None,
+                 log_autovacuum_min_duration: Optional[pulumi.Input[int]] = None,
                  log_error_verbosity: Optional[pulumi.Input[str]] = None,
                  log_line_prefix: Optional[pulumi.Input[str]] = None,
-                 log_min_duration_statement: Optional[pulumi.Input[str]] = None,
-                 log_temp_files: Optional[pulumi.Input[str]] = None,
-                 max_files_per_process: Optional[pulumi.Input[str]] = None,
-                 max_locks_per_transaction: Optional[pulumi.Input[str]] = None,
-                 max_logical_replication_workers: Optional[pulumi.Input[str]] = None,
-                 max_parallel_workers: Optional[pulumi.Input[str]] = None,
-                 max_parallel_workers_per_gather: Optional[pulumi.Input[str]] = None,
-                 max_pred_locks_per_transaction: Optional[pulumi.Input[str]] = None,
-                 max_prepared_transactions: Optional[pulumi.Input[str]] = None,
-                 max_replication_slots: Optional[pulumi.Input[str]] = None,
-                 max_slot_wal_keep_size: Optional[pulumi.Input[str]] = None,
-                 max_stack_depth: Optional[pulumi.Input[str]] = None,
-                 max_standby_archive_delay: Optional[pulumi.Input[str]] = None,
-                 max_standby_streaming_delay: Optional[pulumi.Input[str]] = None,
-                 max_wal_senders: Optional[pulumi.Input[str]] = None,
-                 max_worker_processes: Optional[pulumi.Input[str]] = None,
-                 pg_partman_bgw_dot_interval: Optional[pulumi.Input[str]] = None,
+                 log_min_duration_statement: Optional[pulumi.Input[int]] = None,
+                 log_temp_files: Optional[pulumi.Input[int]] = None,
+                 max_files_per_process: Optional[pulumi.Input[int]] = None,
+                 max_locks_per_transaction: Optional[pulumi.Input[int]] = None,
+                 max_logical_replication_workers: Optional[pulumi.Input[int]] = None,
+                 max_parallel_workers: Optional[pulumi.Input[int]] = None,
+                 max_parallel_workers_per_gather: Optional[pulumi.Input[int]] = None,
+                 max_pred_locks_per_transaction: Optional[pulumi.Input[int]] = None,
+                 max_prepared_transactions: Optional[pulumi.Input[int]] = None,
+                 max_replication_slots: Optional[pulumi.Input[int]] = None,
+                 max_slot_wal_keep_size: Optional[pulumi.Input[int]] = None,
+                 max_stack_depth: Optional[pulumi.Input[int]] = None,
+                 max_standby_archive_delay: Optional[pulumi.Input[int]] = None,
+                 max_standby_streaming_delay: Optional[pulumi.Input[int]] = None,
+                 max_wal_senders: Optional[pulumi.Input[int]] = None,
+                 max_worker_processes: Optional[pulumi.Input[int]] = None,
+                 pg_partman_bgw_dot_interval: Optional[pulumi.Input[int]] = None,
                  pg_partman_bgw_dot_role: Optional[pulumi.Input[str]] = None,
+                 pg_stat_monitor_dot_pgsm_enable_query_plan: Optional[pulumi.Input[bool]] = None,
+                 pg_stat_monitor_dot_pgsm_max_buckets: Optional[pulumi.Input[int]] = None,
                  pg_stat_statements_dot_track: Optional[pulumi.Input[str]] = None,
-                 temp_file_limit: Optional[pulumi.Input[str]] = None,
+                 temp_file_limit: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 track_activity_query_size: Optional[pulumi.Input[str]] = None,
+                 track_activity_query_size: Optional[pulumi.Input[int]] = None,
                  track_commit_timestamp: Optional[pulumi.Input[str]] = None,
                  track_functions: Optional[pulumi.Input[str]] = None,
                  track_io_timing: Optional[pulumi.Input[str]] = None,
-                 wal_sender_timeout: Optional[pulumi.Input[str]] = None,
-                 wal_writer_delay: Optional[pulumi.Input[str]] = None):
+                 wal_sender_timeout: Optional[pulumi.Input[int]] = None,
+                 wal_writer_delay: Optional[pulumi.Input[int]] = None):
         if autovacuum_analyze_scale_factor is not None:
             pulumi.set(__self__, "autovacuum_analyze_scale_factor", autovacuum_analyze_scale_factor)
         if autovacuum_analyze_threshold is not None:
@@ -10717,6 +10661,10 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
         if pg_partman_bgw_dot_role is not None:
             pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
+        if pg_stat_monitor_dot_pgsm_enable_query_plan is not None:
+            pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_enable_query_plan", pg_stat_monitor_dot_pgsm_enable_query_plan)
+        if pg_stat_monitor_dot_pgsm_max_buckets is not None:
+            pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_max_buckets", pg_stat_monitor_dot_pgsm_max_buckets)
         if pg_stat_statements_dot_track is not None:
             pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
         if temp_file_limit is not None:
@@ -10738,128 +10686,128 @@ class PgPgUserConfigPgArgs:
 
     @property
     @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
-    def autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "autovacuum_analyze_scale_factor")
 
     @autovacuum_analyze_scale_factor.setter
-    def autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "autovacuum_analyze_scale_factor", value)
 
     @property
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
-    def autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
     @autovacuum_analyze_threshold.setter
-    def autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_analyze_threshold", value)
 
     @property
     @pulumi.getter(name="autovacuumFreezeMaxAge")
-    def autovacuum_freeze_max_age(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_freeze_max_age(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
     @autovacuum_freeze_max_age.setter
-    def autovacuum_freeze_max_age(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_freeze_max_age(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_freeze_max_age", value)
 
     @property
     @pulumi.getter(name="autovacuumMaxWorkers")
-    def autovacuum_max_workers(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_max_workers(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_max_workers")
 
     @autovacuum_max_workers.setter
-    def autovacuum_max_workers(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_max_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_max_workers", value)
 
     @property
     @pulumi.getter(name="autovacuumNaptime")
-    def autovacuum_naptime(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_naptime(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_naptime")
 
     @autovacuum_naptime.setter
-    def autovacuum_naptime(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_naptime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_naptime", value)
 
     @property
     @pulumi.getter(name="autovacuumVacuumCostDelay")
-    def autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_vacuum_cost_delay")
 
     @autovacuum_vacuum_cost_delay.setter
-    def autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_vacuum_cost_delay", value)
 
     @property
     @pulumi.getter(name="autovacuumVacuumCostLimit")
-    def autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_vacuum_cost_limit")
 
     @autovacuum_vacuum_cost_limit.setter
-    def autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_vacuum_cost_limit", value)
 
     @property
     @pulumi.getter(name="autovacuumVacuumScaleFactor")
-    def autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "autovacuum_vacuum_scale_factor")
 
     @autovacuum_vacuum_scale_factor.setter
-    def autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "autovacuum_vacuum_scale_factor", value)
 
     @property
     @pulumi.getter(name="autovacuumVacuumThreshold")
-    def autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[str]]:
+    def autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autovacuum_vacuum_threshold")
 
     @autovacuum_vacuum_threshold.setter
-    def autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[str]]):
+    def autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autovacuum_vacuum_threshold", value)
 
     @property
     @pulumi.getter(name="bgwriterDelay")
-    def bgwriter_delay(self) -> Optional[pulumi.Input[str]]:
+    def bgwriter_delay(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "bgwriter_delay")
 
     @bgwriter_delay.setter
-    def bgwriter_delay(self, value: Optional[pulumi.Input[str]]):
+    def bgwriter_delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bgwriter_delay", value)
 
     @property
     @pulumi.getter(name="bgwriterFlushAfter")
-    def bgwriter_flush_after(self) -> Optional[pulumi.Input[str]]:
+    def bgwriter_flush_after(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "bgwriter_flush_after")
 
     @bgwriter_flush_after.setter
-    def bgwriter_flush_after(self, value: Optional[pulumi.Input[str]]):
+    def bgwriter_flush_after(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bgwriter_flush_after", value)
 
     @property
     @pulumi.getter(name="bgwriterLruMaxpages")
-    def bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[str]]:
+    def bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "bgwriter_lru_maxpages")
 
     @bgwriter_lru_maxpages.setter
-    def bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[str]]):
+    def bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bgwriter_lru_maxpages", value)
 
     @property
     @pulumi.getter(name="bgwriterLruMultiplier")
-    def bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[str]]:
+    def bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
     @bgwriter_lru_multiplier.setter
-    def bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[str]]):
+    def bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "bgwriter_lru_multiplier", value)
 
     @property
     @pulumi.getter(name="deadlockTimeout")
-    def deadlock_timeout(self) -> Optional[pulumi.Input[str]]:
+    def deadlock_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "deadlock_timeout")
 
     @deadlock_timeout.setter
-    def deadlock_timeout(self, value: Optional[pulumi.Input[str]]):
+    def deadlock_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "deadlock_timeout", value)
 
     @property
@@ -10873,29 +10821,29 @@ class PgPgUserConfigPgArgs:
 
     @property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
-    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[str]]:
+    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @idle_in_transaction_session_timeout.setter
-    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[str]]):
+    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "idle_in_transaction_session_timeout", value)
 
     @property
     @pulumi.getter
-    def jit(self) -> Optional[pulumi.Input[str]]:
+    def jit(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "jit")
 
     @jit.setter
-    def jit(self, value: Optional[pulumi.Input[str]]):
+    def jit(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "jit", value)
 
     @property
     @pulumi.getter(name="logAutovacuumMinDuration")
-    def log_autovacuum_min_duration(self) -> Optional[pulumi.Input[str]]:
+    def log_autovacuum_min_duration(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_autovacuum_min_duration")
 
     @log_autovacuum_min_duration.setter
-    def log_autovacuum_min_duration(self, value: Optional[pulumi.Input[str]]):
+    def log_autovacuum_min_duration(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_autovacuum_min_duration", value)
 
     @property
@@ -10918,155 +10866,155 @@ class PgPgUserConfigPgArgs:
 
     @property
     @pulumi.getter(name="logMinDurationStatement")
-    def log_min_duration_statement(self) -> Optional[pulumi.Input[str]]:
+    def log_min_duration_statement(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_min_duration_statement")
 
     @log_min_duration_statement.setter
-    def log_min_duration_statement(self, value: Optional[pulumi.Input[str]]):
+    def log_min_duration_statement(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_min_duration_statement", value)
 
     @property
     @pulumi.getter(name="logTempFiles")
-    def log_temp_files(self) -> Optional[pulumi.Input[str]]:
+    def log_temp_files(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "log_temp_files")
 
     @log_temp_files.setter
-    def log_temp_files(self, value: Optional[pulumi.Input[str]]):
+    def log_temp_files(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "log_temp_files", value)
 
     @property
     @pulumi.getter(name="maxFilesPerProcess")
-    def max_files_per_process(self) -> Optional[pulumi.Input[str]]:
+    def max_files_per_process(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_files_per_process")
 
     @max_files_per_process.setter
-    def max_files_per_process(self, value: Optional[pulumi.Input[str]]):
+    def max_files_per_process(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_files_per_process", value)
 
     @property
     @pulumi.getter(name="maxLocksPerTransaction")
-    def max_locks_per_transaction(self) -> Optional[pulumi.Input[str]]:
+    def max_locks_per_transaction(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_locks_per_transaction")
 
     @max_locks_per_transaction.setter
-    def max_locks_per_transaction(self, value: Optional[pulumi.Input[str]]):
+    def max_locks_per_transaction(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_locks_per_transaction", value)
 
     @property
     @pulumi.getter(name="maxLogicalReplicationWorkers")
-    def max_logical_replication_workers(self) -> Optional[pulumi.Input[str]]:
+    def max_logical_replication_workers(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_logical_replication_workers")
 
     @max_logical_replication_workers.setter
-    def max_logical_replication_workers(self, value: Optional[pulumi.Input[str]]):
+    def max_logical_replication_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_logical_replication_workers", value)
 
     @property
     @pulumi.getter(name="maxParallelWorkers")
-    def max_parallel_workers(self) -> Optional[pulumi.Input[str]]:
+    def max_parallel_workers(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_parallel_workers")
 
     @max_parallel_workers.setter
-    def max_parallel_workers(self, value: Optional[pulumi.Input[str]]):
+    def max_parallel_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_parallel_workers", value)
 
     @property
     @pulumi.getter(name="maxParallelWorkersPerGather")
-    def max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[str]]:
+    def max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_parallel_workers_per_gather")
 
     @max_parallel_workers_per_gather.setter
-    def max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[str]]):
+    def max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_parallel_workers_per_gather", value)
 
     @property
     @pulumi.getter(name="maxPredLocksPerTransaction")
-    def max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[str]]:
+    def max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_pred_locks_per_transaction")
 
     @max_pred_locks_per_transaction.setter
-    def max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[str]]):
+    def max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_pred_locks_per_transaction", value)
 
     @property
     @pulumi.getter(name="maxPreparedTransactions")
-    def max_prepared_transactions(self) -> Optional[pulumi.Input[str]]:
+    def max_prepared_transactions(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_prepared_transactions")
 
     @max_prepared_transactions.setter
-    def max_prepared_transactions(self, value: Optional[pulumi.Input[str]]):
+    def max_prepared_transactions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_prepared_transactions", value)
 
     @property
     @pulumi.getter(name="maxReplicationSlots")
-    def max_replication_slots(self) -> Optional[pulumi.Input[str]]:
+    def max_replication_slots(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_replication_slots")
 
     @max_replication_slots.setter
-    def max_replication_slots(self, value: Optional[pulumi.Input[str]]):
+    def max_replication_slots(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_replication_slots", value)
 
     @property
     @pulumi.getter(name="maxSlotWalKeepSize")
-    def max_slot_wal_keep_size(self) -> Optional[pulumi.Input[str]]:
+    def max_slot_wal_keep_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_slot_wal_keep_size")
 
     @max_slot_wal_keep_size.setter
-    def max_slot_wal_keep_size(self, value: Optional[pulumi.Input[str]]):
+    def max_slot_wal_keep_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_slot_wal_keep_size", value)
 
     @property
     @pulumi.getter(name="maxStackDepth")
-    def max_stack_depth(self) -> Optional[pulumi.Input[str]]:
+    def max_stack_depth(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_stack_depth")
 
     @max_stack_depth.setter
-    def max_stack_depth(self, value: Optional[pulumi.Input[str]]):
+    def max_stack_depth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_stack_depth", value)
 
     @property
     @pulumi.getter(name="maxStandbyArchiveDelay")
-    def max_standby_archive_delay(self) -> Optional[pulumi.Input[str]]:
+    def max_standby_archive_delay(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_standby_archive_delay")
 
     @max_standby_archive_delay.setter
-    def max_standby_archive_delay(self, value: Optional[pulumi.Input[str]]):
+    def max_standby_archive_delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_standby_archive_delay", value)
 
     @property
     @pulumi.getter(name="maxStandbyStreamingDelay")
-    def max_standby_streaming_delay(self) -> Optional[pulumi.Input[str]]:
+    def max_standby_streaming_delay(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @max_standby_streaming_delay.setter
-    def max_standby_streaming_delay(self, value: Optional[pulumi.Input[str]]):
+    def max_standby_streaming_delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_standby_streaming_delay", value)
 
     @property
     @pulumi.getter(name="maxWalSenders")
-    def max_wal_senders(self) -> Optional[pulumi.Input[str]]:
+    def max_wal_senders(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_wal_senders")
 
     @max_wal_senders.setter
-    def max_wal_senders(self, value: Optional[pulumi.Input[str]]):
+    def max_wal_senders(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_wal_senders", value)
 
     @property
     @pulumi.getter(name="maxWorkerProcesses")
-    def max_worker_processes(self) -> Optional[pulumi.Input[str]]:
+    def max_worker_processes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_worker_processes")
 
     @max_worker_processes.setter
-    def max_worker_processes(self, value: Optional[pulumi.Input[str]]):
+    def max_worker_processes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_worker_processes", value)
 
     @property
     @pulumi.getter(name="pgPartmanBgwDotInterval")
-    def pg_partman_bgw_dot_interval(self) -> Optional[pulumi.Input[str]]:
+    def pg_partman_bgw_dot_interval(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "pg_partman_bgw_dot_interval")
 
     @pg_partman_bgw_dot_interval.setter
-    def pg_partman_bgw_dot_interval(self, value: Optional[pulumi.Input[str]]):
+    def pg_partman_bgw_dot_interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "pg_partman_bgw_dot_interval", value)
 
     @property
@@ -11079,6 +11027,24 @@ class PgPgUserConfigPgArgs:
         pulumi.set(self, "pg_partman_bgw_dot_role", value)
 
     @property
+    @pulumi.getter(name="pgStatMonitorDotPgsmEnableQueryPlan")
+    def pg_stat_monitor_dot_pgsm_enable_query_plan(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pg_stat_monitor_dot_pgsm_enable_query_plan")
+
+    @pg_stat_monitor_dot_pgsm_enable_query_plan.setter
+    def pg_stat_monitor_dot_pgsm_enable_query_plan(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pg_stat_monitor_dot_pgsm_enable_query_plan", value)
+
+    @property
+    @pulumi.getter(name="pgStatMonitorDotPgsmMaxBuckets")
+    def pg_stat_monitor_dot_pgsm_max_buckets(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "pg_stat_monitor_dot_pgsm_max_buckets")
+
+    @pg_stat_monitor_dot_pgsm_max_buckets.setter
+    def pg_stat_monitor_dot_pgsm_max_buckets(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pg_stat_monitor_dot_pgsm_max_buckets", value)
+
+    @property
     @pulumi.getter(name="pgStatStatementsDotTrack")
     def pg_stat_statements_dot_track(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "pg_stat_statements_dot_track")
@@ -11089,11 +11055,11 @@ class PgPgUserConfigPgArgs:
 
     @property
     @pulumi.getter(name="tempFileLimit")
-    def temp_file_limit(self) -> Optional[pulumi.Input[str]]:
+    def temp_file_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "temp_file_limit")
 
     @temp_file_limit.setter
-    def temp_file_limit(self, value: Optional[pulumi.Input[str]]):
+    def temp_file_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "temp_file_limit", value)
 
     @property
@@ -11107,11 +11073,11 @@ class PgPgUserConfigPgArgs:
 
     @property
     @pulumi.getter(name="trackActivityQuerySize")
-    def track_activity_query_size(self) -> Optional[pulumi.Input[str]]:
+    def track_activity_query_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "track_activity_query_size")
 
     @track_activity_query_size.setter
-    def track_activity_query_size(self, value: Optional[pulumi.Input[str]]):
+    def track_activity_query_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "track_activity_query_size", value)
 
     @property
@@ -11143,35 +11109,35 @@ class PgPgUserConfigPgArgs:
 
     @property
     @pulumi.getter(name="walSenderTimeout")
-    def wal_sender_timeout(self) -> Optional[pulumi.Input[str]]:
+    def wal_sender_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "wal_sender_timeout")
 
     @wal_sender_timeout.setter
-    def wal_sender_timeout(self, value: Optional[pulumi.Input[str]]):
+    def wal_sender_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wal_sender_timeout", value)
 
     @property
     @pulumi.getter(name="walWriterDelay")
-    def wal_writer_delay(self) -> Optional[pulumi.Input[str]]:
+    def wal_writer_delay(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "wal_writer_delay")
 
     @wal_writer_delay.setter
-    def wal_writer_delay(self, value: Optional[pulumi.Input[str]]):
+    def wal_writer_delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wal_writer_delay", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigPgbouncerArgs:
     def __init__(__self__, *,
-                 autodb_idle_timeout: Optional[pulumi.Input[str]] = None,
-                 autodb_max_db_connections: Optional[pulumi.Input[str]] = None,
+                 autodb_idle_timeout: Optional[pulumi.Input[int]] = None,
+                 autodb_max_db_connections: Optional[pulumi.Input[int]] = None,
                  autodb_pool_mode: Optional[pulumi.Input[str]] = None,
-                 autodb_pool_size: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_size: Optional[pulumi.Input[int]] = None,
                  ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 min_pool_size: Optional[pulumi.Input[str]] = None,
-                 server_idle_timeout: Optional[pulumi.Input[str]] = None,
-                 server_lifetime: Optional[pulumi.Input[str]] = None,
-                 server_reset_query_always: Optional[pulumi.Input[str]] = None):
+                 min_pool_size: Optional[pulumi.Input[int]] = None,
+                 server_idle_timeout: Optional[pulumi.Input[int]] = None,
+                 server_lifetime: Optional[pulumi.Input[int]] = None,
+                 server_reset_query_always: Optional[pulumi.Input[bool]] = None):
         if autodb_idle_timeout is not None:
             pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
         if autodb_max_db_connections is not None:
@@ -11193,20 +11159,20 @@ class PgPgUserConfigPgbouncerArgs:
 
     @property
     @pulumi.getter(name="autodbIdleTimeout")
-    def autodb_idle_timeout(self) -> Optional[pulumi.Input[str]]:
+    def autodb_idle_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autodb_idle_timeout")
 
     @autodb_idle_timeout.setter
-    def autodb_idle_timeout(self, value: Optional[pulumi.Input[str]]):
+    def autodb_idle_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autodb_idle_timeout", value)
 
     @property
     @pulumi.getter(name="autodbMaxDbConnections")
-    def autodb_max_db_connections(self) -> Optional[pulumi.Input[str]]:
+    def autodb_max_db_connections(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autodb_max_db_connections")
 
     @autodb_max_db_connections.setter
-    def autodb_max_db_connections(self, value: Optional[pulumi.Input[str]]):
+    def autodb_max_db_connections(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autodb_max_db_connections", value)
 
     @property
@@ -11220,11 +11186,11 @@ class PgPgUserConfigPgbouncerArgs:
 
     @property
     @pulumi.getter(name="autodbPoolSize")
-    def autodb_pool_size(self) -> Optional[pulumi.Input[str]]:
+    def autodb_pool_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autodb_pool_size")
 
     @autodb_pool_size.setter
-    def autodb_pool_size(self, value: Optional[pulumi.Input[str]]):
+    def autodb_pool_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autodb_pool_size", value)
 
     @property
@@ -11238,66 +11204,66 @@ class PgPgUserConfigPgbouncerArgs:
 
     @property
     @pulumi.getter(name="minPoolSize")
-    def min_pool_size(self) -> Optional[pulumi.Input[str]]:
+    def min_pool_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "min_pool_size")
 
     @min_pool_size.setter
-    def min_pool_size(self, value: Optional[pulumi.Input[str]]):
+    def min_pool_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_pool_size", value)
 
     @property
     @pulumi.getter(name="serverIdleTimeout")
-    def server_idle_timeout(self) -> Optional[pulumi.Input[str]]:
+    def server_idle_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "server_idle_timeout")
 
     @server_idle_timeout.setter
-    def server_idle_timeout(self, value: Optional[pulumi.Input[str]]):
+    def server_idle_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "server_idle_timeout", value)
 
     @property
     @pulumi.getter(name="serverLifetime")
-    def server_lifetime(self) -> Optional[pulumi.Input[str]]:
+    def server_lifetime(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "server_lifetime")
 
     @server_lifetime.setter
-    def server_lifetime(self, value: Optional[pulumi.Input[str]]):
+    def server_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "server_lifetime", value)
 
     @property
     @pulumi.getter(name="serverResetQueryAlways")
-    def server_reset_query_always(self) -> Optional[pulumi.Input[str]]:
+    def server_reset_query_always(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "server_reset_query_always")
 
     @server_reset_query_always.setter
-    def server_reset_query_always(self, value: Optional[pulumi.Input[str]]):
+    def server_reset_query_always(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "server_reset_query_always", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigPglookoutArgs:
     def __init__(__self__, *,
-                 max_failover_replication_time_lag: Optional[pulumi.Input[str]] = None):
+                 max_failover_replication_time_lag: Optional[pulumi.Input[int]] = None):
         if max_failover_replication_time_lag is not None:
             pulumi.set(__self__, "max_failover_replication_time_lag", max_failover_replication_time_lag)
 
     @property
     @pulumi.getter(name="maxFailoverReplicationTimeLag")
-    def max_failover_replication_time_lag(self) -> Optional[pulumi.Input[str]]:
+    def max_failover_replication_time_lag(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_failover_replication_time_lag")
 
     @max_failover_replication_time_lag.setter
-    def max_failover_replication_time_lag(self, value: Optional[pulumi.Input[str]]):
+    def max_failover_replication_time_lag(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_failover_replication_time_lag", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 pg: Optional[pulumi.Input[str]] = None,
-                 pgbouncer: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 pg: Optional[pulumi.Input[bool]] = None,
+                 pgbouncer: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[bool] pg: PostgreSQL specific server provided values
         """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
@@ -11308,43 +11274,43 @@ class PgPgUserConfigPrivateAccessArgs:
 
     @property
     @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input[str]]:
+    def pg(self) -> Optional[pulumi.Input[bool]]:
         """
         PostgreSQL specific server provided values
         """
         return pulumi.get(self, "pg")
 
     @pg.setter
-    def pg(self, value: Optional[pulumi.Input[str]]):
+    def pg(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pg", value)
 
     @property
     @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input[str]]:
+    def pgbouncer(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "pgbouncer")
 
     @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input[str]]):
+    def pgbouncer(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pgbouncer", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 pg: Optional[pulumi.Input[str]] = None,
-                 pgbouncer: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 pg: Optional[pulumi.Input[bool]] = None,
+                 pgbouncer: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[bool] pg: PostgreSQL specific server provided values
         """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
@@ -11355,43 +11321,43 @@ class PgPgUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input[str]]:
+    def pg(self) -> Optional[pulumi.Input[bool]]:
         """
         PostgreSQL specific server provided values
         """
         return pulumi.get(self, "pg")
 
     @pg.setter
-    def pg(self, value: Optional[pulumi.Input[str]]):
+    def pg(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pg", value)
 
     @property
     @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input[str]]:
+    def pgbouncer(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "pgbouncer")
 
     @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input[str]]):
+    def pgbouncer(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pgbouncer", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 pg: Optional[pulumi.Input[str]] = None,
-                 pgbouncer: Optional[pulumi.Input[str]] = None,
-                 prometheus: Optional[pulumi.Input[str]] = None):
+                 pg: Optional[pulumi.Input[bool]] = None,
+                 pgbouncer: Optional[pulumi.Input[bool]] = None,
+                 prometheus: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[bool] pg: PostgreSQL specific server provided values
         """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
@@ -11402,49 +11368,49 @@ class PgPgUserConfigPublicAccessArgs:
 
     @property
     @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input[str]]:
+    def pg(self) -> Optional[pulumi.Input[bool]]:
         """
         PostgreSQL specific server provided values
         """
         return pulumi.get(self, "pg")
 
     @pg.setter
-    def pg(self, value: Optional[pulumi.Input[str]]):
+    def pg(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pg", value)
 
     @property
     @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input[str]]:
+    def pgbouncer(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "pgbouncer")
 
     @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input[str]]):
+    def pgbouncer(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pgbouncer", value)
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
 
 @pulumi.input_type
 class PgPgUserConfigTimescaledbArgs:
     def __init__(__self__, *,
-                 max_background_workers: Optional[pulumi.Input[str]] = None):
+                 max_background_workers: Optional[pulumi.Input[int]] = None):
         if max_background_workers is not None:
             pulumi.set(__self__, "max_background_workers", max_background_workers)
 
     @property
     @pulumi.getter(name="maxBackgroundWorkers")
-    def max_background_workers(self) -> Optional[pulumi.Input[str]]:
+    def max_background_workers(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_background_workers")
 
     @max_background_workers.setter
-    def max_background_workers(self, value: Optional[pulumi.Input[str]]):
+    def max_background_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_background_workers", value)
 
 
@@ -11667,22 +11633,25 @@ class RedisRedisUserConfigArgs:
                  public_access: Optional[pulumi.Input['RedisRedisUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  redis_acl_channels_default: Optional[pulumi.Input[str]] = None,
-                 redis_io_threads: Optional[pulumi.Input[str]] = None,
-                 redis_lfu_decay_time: Optional[pulumi.Input[str]] = None,
-                 redis_lfu_log_factor: Optional[pulumi.Input[str]] = None,
+                 redis_io_threads: Optional[pulumi.Input[int]] = None,
+                 redis_lfu_decay_time: Optional[pulumi.Input[int]] = None,
+                 redis_lfu_log_factor: Optional[pulumi.Input[int]] = None,
                  redis_maxmemory_policy: Optional[pulumi.Input[str]] = None,
                  redis_notify_keyspace_events: Optional[pulumi.Input[str]] = None,
-                 redis_number_of_databases: Optional[pulumi.Input[str]] = None,
+                 redis_number_of_databases: Optional[pulumi.Input[int]] = None,
                  redis_persistence: Optional[pulumi.Input[str]] = None,
-                 redis_pubsub_client_output_buffer_limit: Optional[pulumi.Input[str]] = None,
-                 redis_ssl: Optional[pulumi.Input[str]] = None,
-                 redis_timeout: Optional[pulumi.Input[str]] = None,
+                 redis_pubsub_client_output_buffer_limit: Optional[pulumi.Input[int]] = None,
+                 redis_ssl: Optional[pulumi.Input[bool]] = None,
+                 redis_timeout: Optional[pulumi.Input[int]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
-                 static_ips: Optional[pulumi.Input[str]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None):
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filters is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -11816,29 +11785,29 @@ class RedisRedisUserConfigArgs:
 
     @property
     @pulumi.getter(name="redisIoThreads")
-    def redis_io_threads(self) -> Optional[pulumi.Input[str]]:
+    def redis_io_threads(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "redis_io_threads")
 
     @redis_io_threads.setter
-    def redis_io_threads(self, value: Optional[pulumi.Input[str]]):
+    def redis_io_threads(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "redis_io_threads", value)
 
     @property
     @pulumi.getter(name="redisLfuDecayTime")
-    def redis_lfu_decay_time(self) -> Optional[pulumi.Input[str]]:
+    def redis_lfu_decay_time(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "redis_lfu_decay_time")
 
     @redis_lfu_decay_time.setter
-    def redis_lfu_decay_time(self, value: Optional[pulumi.Input[str]]):
+    def redis_lfu_decay_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "redis_lfu_decay_time", value)
 
     @property
     @pulumi.getter(name="redisLfuLogFactor")
-    def redis_lfu_log_factor(self) -> Optional[pulumi.Input[str]]:
+    def redis_lfu_log_factor(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "redis_lfu_log_factor")
 
     @redis_lfu_log_factor.setter
-    def redis_lfu_log_factor(self, value: Optional[pulumi.Input[str]]):
+    def redis_lfu_log_factor(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "redis_lfu_log_factor", value)
 
     @property
@@ -11861,11 +11830,11 @@ class RedisRedisUserConfigArgs:
 
     @property
     @pulumi.getter(name="redisNumberOfDatabases")
-    def redis_number_of_databases(self) -> Optional[pulumi.Input[str]]:
+    def redis_number_of_databases(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "redis_number_of_databases")
 
     @redis_number_of_databases.setter
-    def redis_number_of_databases(self, value: Optional[pulumi.Input[str]]):
+    def redis_number_of_databases(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "redis_number_of_databases", value)
 
     @property
@@ -11879,29 +11848,29 @@ class RedisRedisUserConfigArgs:
 
     @property
     @pulumi.getter(name="redisPubsubClientOutputBufferLimit")
-    def redis_pubsub_client_output_buffer_limit(self) -> Optional[pulumi.Input[str]]:
+    def redis_pubsub_client_output_buffer_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "redis_pubsub_client_output_buffer_limit")
 
     @redis_pubsub_client_output_buffer_limit.setter
-    def redis_pubsub_client_output_buffer_limit(self, value: Optional[pulumi.Input[str]]):
+    def redis_pubsub_client_output_buffer_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "redis_pubsub_client_output_buffer_limit", value)
 
     @property
     @pulumi.getter(name="redisSsl")
-    def redis_ssl(self) -> Optional[pulumi.Input[str]]:
+    def redis_ssl(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "redis_ssl")
 
     @redis_ssl.setter
-    def redis_ssl(self, value: Optional[pulumi.Input[str]]):
+    def redis_ssl(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "redis_ssl", value)
 
     @property
     @pulumi.getter(name="redisTimeout")
-    def redis_timeout(self) -> Optional[pulumi.Input[str]]:
+    def redis_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "redis_timeout")
 
     @redis_timeout.setter
-    def redis_timeout(self, value: Optional[pulumi.Input[str]]):
+    def redis_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "redis_timeout", value)
 
     @property
@@ -11915,23 +11884,31 @@ class RedisRedisUserConfigArgs:
 
     @property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[str]]:
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[str]]):
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
 
 
 @pulumi.input_type
 class RedisRedisUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None):
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -11942,43 +11919,50 @@ class RedisRedisUserConfigIpFilterObjectArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
 
 @pulumi.input_type
 class RedisRedisUserConfigMigrationArgs:
     def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[str]] = None,
-                 ssl: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -11988,15 +11972,6 @@ class RedisRedisUserConfigMigrationArgs:
     @dbname.setter
     def dbname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dbname", value)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter(name="ignoreDbs")
@@ -12027,20 +12002,11 @@ class RedisRedisUserConfigMigrationArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[str]]:
+    def ssl(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[str]]):
+    def ssl(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ssl", value)
 
     @property
@@ -12056,8 +12022,8 @@ class RedisRedisUserConfigMigrationArgs:
 @pulumi.input_type
 class RedisRedisUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 prometheus: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input[str]] = None):
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 redis: Optional[pulumi.Input[bool]] = None):
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -12065,28 +12031,28 @@ class RedisRedisUserConfigPrivateAccessArgs:
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
     @property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input[str]]:
+    def redis(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input[str]]):
+    def redis(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "redis", value)
 
 
 @pulumi.input_type
 class RedisRedisUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 prometheus: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input[str]] = None):
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 redis: Optional[pulumi.Input[bool]] = None):
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -12094,28 +12060,28 @@ class RedisRedisUserConfigPrivatelinkAccessArgs:
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
     @property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input[str]]:
+    def redis(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input[str]]):
+    def redis(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "redis", value)
 
 
 @pulumi.input_type
 class RedisRedisUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 prometheus: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input[str]] = None):
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 redis: Optional[pulumi.Input[bool]] = None):
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
@@ -12123,20 +12089,20 @@ class RedisRedisUserConfigPublicAccessArgs:
 
     @property
     @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[str]]:
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[str]]):
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
 
     @property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input[str]]:
+    def redis(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input[str]]):
+    def redis(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "redis", value)
 
 
@@ -12199,7 +12165,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigArgs:
     def __init__(__self__, *,
                  tables: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgs']]] tables: Tables to create
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgs']]] tables: Tables to create.
         """
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
@@ -12208,7 +12174,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigArgs:
     @pulumi.getter
     def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgs']]]]:
         """
-        Tables to create
+        Tables to create.
         """
         return pulumi.get(self, "tables")
 
@@ -12220,21 +12186,45 @@ class ServiceIntegrationClickhouseKafkaUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     def __init__(__self__, *,
+                 data_format: pulumi.Input[str],
+                 group_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs']]]] = None,
-                 data_format: Optional[pulumi.Input[str]] = None,
-                 group_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs']]]] = None):
+        pulumi.set(__self__, "data_format", data_format)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "name", name)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
-        if data_format is not None:
-            pulumi.set(__self__, "data_format", data_format)
-        if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
+
+    @property
+    @pulumi.getter(name="dataFormat")
+    def data_format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "data_format")
+
+    @data_format.setter
+    def data_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_format", value)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -12244,33 +12234,6 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @columns.setter
     def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
-
-    @property
-    @pulumi.getter(name="dataFormat")
-    def data_format(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "data_format")
-
-    @data_format.setter
-    def data_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "data_format", value)
-
-    @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "group_name")
-
-    @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "group_name", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -12285,46 +12248,43 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> pulumi.Input[str]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+                 name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
@@ -12333,7 +12293,7 @@ class ServiceIntegrationClickhousePostgresqlUserConfigArgs:
     def __init__(__self__, *,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs']]] databases: Databases to expose
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs']]] databases: Databases to expose.
         """
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
@@ -12342,7 +12302,7 @@ class ServiceIntegrationClickhousePostgresqlUserConfigArgs:
     @pulumi.getter
     def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs']]]]:
         """
-        Databases to expose
+        Databases to expose.
         """
         return pulumi.get(self, "databases")
 
@@ -12383,23 +12343,25 @@ class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs:
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigArgs:
     def __init__(__self__, *,
-                 datadog_dbm_enabled: Optional[pulumi.Input[str]] = None,
+                 datadog_dbm_enabled: Optional[pulumi.Input[bool]] = None,
                  datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]] = None,
                  exclude_consumer_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exclude_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_consumer_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 max_jmx_metrics: Optional[pulumi.Input[str]] = None):
+                 max_jmx_metrics: Optional[pulumi.Input[int]] = None,
+                 opensearch: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']] = None):
         """
-        :param pulumi.Input[str] datadog_dbm_enabled: Enable Datadog Database Monitoring
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_consumer_groups: List of custom metrics
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_topics: List of topics to exclude
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_consumer_groups: List of custom metrics
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_topics: List of topics to include
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] kafka_custom_metrics: List of custom metrics
-        :param pulumi.Input[str] max_jmx_metrics: Maximum number of JMX metrics to send
+        :param pulumi.Input[bool] datadog_dbm_enabled: Enable Datadog Database Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_consumer_groups: List of custom metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_topics: List of topics to exclude.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_consumer_groups: List of custom metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_topics: List of topics to include.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kafka_custom_metrics: List of custom metrics.
+        :param pulumi.Input[int] max_jmx_metrics: Maximum number of JMX metrics to send.
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs'] opensearch: Datadog Opensearch Options.
         """
         if datadog_dbm_enabled is not None:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
@@ -12417,24 +12379,26 @@ class ServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
         if max_jmx_metrics is not None:
             pulumi.set(__self__, "max_jmx_metrics", max_jmx_metrics)
+        if opensearch is not None:
+            pulumi.set(__self__, "opensearch", opensearch)
 
     @property
     @pulumi.getter(name="datadogDbmEnabled")
-    def datadog_dbm_enabled(self) -> Optional[pulumi.Input[str]]:
+    def datadog_dbm_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Datadog Database Monitoring
+        Enable Datadog Database Monitoring.
         """
         return pulumi.get(self, "datadog_dbm_enabled")
 
     @datadog_dbm_enabled.setter
-    def datadog_dbm_enabled(self, value: Optional[pulumi.Input[str]]):
+    def datadog_dbm_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "datadog_dbm_enabled", value)
 
     @property
     @pulumi.getter(name="datadogTags")
     def datadog_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]]:
         """
-        Custom tags provided by user
+        Custom tags provided by user.
         """
         return pulumi.get(self, "datadog_tags")
 
@@ -12446,7 +12410,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @pulumi.getter(name="excludeConsumerGroups")
     def exclude_consumer_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of custom metrics
+        List of custom metrics.
         """
         return pulumi.get(self, "exclude_consumer_groups")
 
@@ -12458,7 +12422,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @pulumi.getter(name="excludeTopics")
     def exclude_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of topics to exclude
+        List of topics to exclude.
         """
         return pulumi.get(self, "exclude_topics")
 
@@ -12470,7 +12434,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @pulumi.getter(name="includeConsumerGroups")
     def include_consumer_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of custom metrics
+        List of custom metrics.
         """
         return pulumi.get(self, "include_consumer_groups")
 
@@ -12482,7 +12446,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @pulumi.getter(name="includeTopics")
     def include_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of topics to include
+        List of topics to include.
         """
         return pulumi.get(self, "include_topics")
 
@@ -12494,7 +12458,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @pulumi.getter(name="kafkaCustomMetrics")
     def kafka_custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of custom metrics
+        List of custom metrics.
         """
         return pulumi.get(self, "kafka_custom_metrics")
 
@@ -12504,26 +12468,46 @@ class ServiceIntegrationDatadogUserConfigArgs:
 
     @property
     @pulumi.getter(name="maxJmxMetrics")
-    def max_jmx_metrics(self) -> Optional[pulumi.Input[str]]:
+    def max_jmx_metrics(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of JMX metrics to send
+        Maximum number of JMX metrics to send.
         """
         return pulumi.get(self, "max_jmx_metrics")
 
     @max_jmx_metrics.setter
-    def max_jmx_metrics(self, value: Optional[pulumi.Input[str]]):
+    def max_jmx_metrics(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_jmx_metrics", value)
+
+    @property
+    @pulumi.getter
+    def opensearch(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']]:
+        """
+        Datadog Opensearch Options.
+        """
+        return pulumi.get(self, "opensearch")
+
+    @opensearch.setter
+    def opensearch(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']]):
+        pulumi.set(self, "opensearch", value)
 
 
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None):
+                 tag: pulumi.Input[str],
+                 comment: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "tag", tag)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag", value)
 
     @property
     @pulumi.getter
@@ -12534,14 +12518,46 @@ class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
 
-    @property
-    @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "tag")
 
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag", value)
+@pulumi.input_type
+class ServiceIntegrationDatadogUserConfigOpensearchArgs:
+    def __init__(__self__, *,
+                 index_stats_enabled: Optional[pulumi.Input[bool]] = None,
+                 pending_task_stats_enabled: Optional[pulumi.Input[bool]] = None,
+                 pshard_stats_enabled: Optional[pulumi.Input[bool]] = None):
+        if index_stats_enabled is not None:
+            pulumi.set(__self__, "index_stats_enabled", index_stats_enabled)
+        if pending_task_stats_enabled is not None:
+            pulumi.set(__self__, "pending_task_stats_enabled", pending_task_stats_enabled)
+        if pshard_stats_enabled is not None:
+            pulumi.set(__self__, "pshard_stats_enabled", pshard_stats_enabled)
+
+    @property
+    @pulumi.getter(name="indexStatsEnabled")
+    def index_stats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "index_stats_enabled")
+
+    @index_stats_enabled.setter
+    def index_stats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "index_stats_enabled", value)
+
+    @property
+    @pulumi.getter(name="pendingTaskStatsEnabled")
+    def pending_task_stats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pending_task_stats_enabled")
+
+    @pending_task_stats_enabled.setter
+    def pending_task_stats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pending_task_stats_enabled", value)
+
+    @property
+    @pulumi.getter(name="pshardStatsEnabled")
+    def pshard_stats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pshard_stats_enabled")
+
+    @pshard_stats_enabled.setter
+    def pshard_stats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pshard_stats_enabled", value)
 
 
 @pulumi.input_type
@@ -12549,19 +12565,19 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     def __init__(__self__, *,
                  datadog_api_key: Optional[pulumi.Input[str]] = None,
                  datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]] = None,
-                 disable_consumer_stats: Optional[pulumi.Input[str]] = None,
-                 kafka_consumer_check_instances: Optional[pulumi.Input[str]] = None,
-                 kafka_consumer_stats_timeout: Optional[pulumi.Input[str]] = None,
-                 max_partition_contexts: Optional[pulumi.Input[str]] = None,
+                 disable_consumer_stats: Optional[pulumi.Input[bool]] = None,
+                 kafka_consumer_check_instances: Optional[pulumi.Input[int]] = None,
+                 kafka_consumer_stats_timeout: Optional[pulumi.Input[int]] = None,
+                 max_partition_contexts: Optional[pulumi.Input[int]] = None,
                  site: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] datadog_api_key: Datadog API key
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user
-        :param pulumi.Input[str] disable_consumer_stats: Disable consumer group metrics
-        :param pulumi.Input[str] kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with
-        :param pulumi.Input[str] kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers
-        :param pulumi.Input[str] max_partition_contexts: Maximum number of partition contexts to send
-        :param pulumi.Input[str] site: Datadog intake site. Defaults to datadoghq.com
+        :param pulumi.Input[str] datadog_api_key: Datadog API key.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user.
+        :param pulumi.Input[bool] disable_consumer_stats: Disable consumer group metrics.
+        :param pulumi.Input[int] kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with.
+        :param pulumi.Input[int] kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers.
+        :param pulumi.Input[int] max_partition_contexts: Maximum number of partition contexts to send.
+        :param pulumi.Input[str] site: Datadog intake site. Defaults to datadoghq.com.
         """
         if datadog_api_key is not None:
             pulumi.set(__self__, "datadog_api_key", datadog_api_key)
@@ -12582,7 +12598,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @pulumi.getter(name="datadogApiKey")
     def datadog_api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Datadog API key
+        Datadog API key.
         """
         return pulumi.get(self, "datadog_api_key")
 
@@ -12594,7 +12610,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @pulumi.getter(name="datadogTags")
     def datadog_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]]:
         """
-        Custom tags provided by user
+        Custom tags provided by user.
         """
         return pulumi.get(self, "datadog_tags")
 
@@ -12604,57 +12620,57 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
 
     @property
     @pulumi.getter(name="disableConsumerStats")
-    def disable_consumer_stats(self) -> Optional[pulumi.Input[str]]:
+    def disable_consumer_stats(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable consumer group metrics
+        Disable consumer group metrics.
         """
         return pulumi.get(self, "disable_consumer_stats")
 
     @disable_consumer_stats.setter
-    def disable_consumer_stats(self, value: Optional[pulumi.Input[str]]):
+    def disable_consumer_stats(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_consumer_stats", value)
 
     @property
     @pulumi.getter(name="kafkaConsumerCheckInstances")
-    def kafka_consumer_check_instances(self) -> Optional[pulumi.Input[str]]:
+    def kafka_consumer_check_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of separate instances to fetch kafka consumer statistics with
+        Number of separate instances to fetch kafka consumer statistics with.
         """
         return pulumi.get(self, "kafka_consumer_check_instances")
 
     @kafka_consumer_check_instances.setter
-    def kafka_consumer_check_instances(self, value: Optional[pulumi.Input[str]]):
+    def kafka_consumer_check_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "kafka_consumer_check_instances", value)
 
     @property
     @pulumi.getter(name="kafkaConsumerStatsTimeout")
-    def kafka_consumer_stats_timeout(self) -> Optional[pulumi.Input[str]]:
+    def kafka_consumer_stats_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds that datadog will wait to get consumer statistics from brokers
+        Number of seconds that datadog will wait to get consumer statistics from brokers.
         """
         return pulumi.get(self, "kafka_consumer_stats_timeout")
 
     @kafka_consumer_stats_timeout.setter
-    def kafka_consumer_stats_timeout(self, value: Optional[pulumi.Input[str]]):
+    def kafka_consumer_stats_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "kafka_consumer_stats_timeout", value)
 
     @property
     @pulumi.getter(name="maxPartitionContexts")
-    def max_partition_contexts(self) -> Optional[pulumi.Input[str]]:
+    def max_partition_contexts(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of partition contexts to send
+        Maximum number of partition contexts to send.
         """
         return pulumi.get(self, "max_partition_contexts")
 
     @max_partition_contexts.setter
-    def max_partition_contexts(self, value: Optional[pulumi.Input[str]]):
+    def max_partition_contexts(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_partition_contexts", value)
 
     @property
     @pulumi.getter
     def site(self) -> Optional[pulumi.Input[str]]:
         """
-        Datadog intake site. Defaults to datadoghq.com
+        Datadog intake site. Defaults to datadoghq.com.
         """
         return pulumi.get(self, "site")
 
@@ -12666,12 +12682,20 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None):
+                 tag: pulumi.Input[str],
+                 comment: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "tag", tag)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag", value)
 
     @property
     @pulumi.getter
@@ -12682,15 +12706,6 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
 
-    @property
-    @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag", value)
-
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
@@ -12700,10 +12715,10 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] access_key: AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
-        :param pulumi.Input[str] log_group_name: AWS CloudWatch log group name
-        :param pulumi.Input[str] region: AWS region
-        :param pulumi.Input[str] secret_key: AWS secret key
+        :param pulumi.Input[str] access_key: AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+        :param pulumi.Input[str] log_group_name: AWS CloudWatch log group name.
+        :param pulumi.Input[str] region: AWS region.
+        :param pulumi.Input[str] secret_key: AWS secret key.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -12718,7 +12733,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+        AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
         """
         return pulumi.get(self, "access_key")
 
@@ -12730,7 +12745,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     @pulumi.getter(name="logGroupName")
     def log_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS CloudWatch log group name
+        AWS CloudWatch log group name.
         """
         return pulumi.get(self, "log_group_name")
 
@@ -12742,7 +12757,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region
+        AWS region.
         """
         return pulumi.get(self, "region")
 
@@ -12754,7 +12769,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS secret key
+        AWS secret key.
         """
         return pulumi.get(self, "secret_key")
 
@@ -12771,10 +12786,10 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] access_key: AWS access key. Required permissions are cloudwatch:PutMetricData
-        :param pulumi.Input[str] namespace: AWS CloudWatch Metrics Namespace
-        :param pulumi.Input[str] region: AWS region
-        :param pulumi.Input[str] secret_key: AWS secret key
+        :param pulumi.Input[str] access_key: AWS access key. Required permissions are cloudwatch:PutMetricData.
+        :param pulumi.Input[str] namespace: AWS CloudWatch Metrics Namespace.
+        :param pulumi.Input[str] region: AWS region.
+        :param pulumi.Input[str] secret_key: AWS secret key.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -12789,7 +12804,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS access key. Required permissions are cloudwatch:PutMetricData
+        AWS access key. Required permissions are cloudwatch:PutMetricData.
         """
         return pulumi.get(self, "access_key")
 
@@ -12801,7 +12816,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS CloudWatch Metrics Namespace
+        AWS CloudWatch Metrics Namespace.
         """
         return pulumi.get(self, "namespace")
 
@@ -12813,7 +12828,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region
+        AWS region.
         """
         return pulumi.get(self, "region")
 
@@ -12825,7 +12840,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS secret key
+        AWS secret key.
         """
         return pulumi.get(self, "secret_key")
 
@@ -12838,16 +12853,16 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
 class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     def __init__(__self__, *,
                  ca: Optional[pulumi.Input[str]] = None,
-                 index_days_max: Optional[pulumi.Input[str]] = None,
+                 index_days_max: Optional[pulumi.Input[int]] = None,
                  index_prefix: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[float]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ca: PEM encoded CA certificate
-        :param pulumi.Input[str] index_days_max: Maximum number of days of logs to keep
-        :param pulumi.Input[str] index_prefix: Elasticsearch index prefix
-        :param pulumi.Input[str] timeout: Elasticsearch request timeout limit
-        :param pulumi.Input[str] url: Elasticsearch connection URL
+        :param pulumi.Input[str] ca: PEM encoded CA certificate.
+        :param pulumi.Input[int] index_days_max: Maximum number of days of logs to keep. The default value is `3`.
+        :param pulumi.Input[str] index_prefix: Elasticsearch index prefix. The default value is `logs`.
+        :param pulumi.Input[float] timeout: Elasticsearch request timeout limit. The default value is `10.0`.
+        :param pulumi.Input[str] url: Elasticsearch connection URL.
         """
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
@@ -12864,7 +12879,7 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     @pulumi.getter
     def ca(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded CA certificate
+        PEM encoded CA certificate.
         """
         return pulumi.get(self, "ca")
 
@@ -12874,21 +12889,21 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
 
     @property
     @pulumi.getter(name="indexDaysMax")
-    def index_days_max(self) -> Optional[pulumi.Input[str]]:
+    def index_days_max(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of days of logs to keep
+        Maximum number of days of logs to keep. The default value is `3`.
         """
         return pulumi.get(self, "index_days_max")
 
     @index_days_max.setter
-    def index_days_max(self, value: Optional[pulumi.Input[str]]):
+    def index_days_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "index_days_max", value)
 
     @property
     @pulumi.getter(name="indexPrefix")
     def index_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch index prefix
+        Elasticsearch index prefix. The default value is `logs`.
         """
         return pulumi.get(self, "index_prefix")
 
@@ -12898,21 +12913,21 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[str]]:
+    def timeout(self) -> Optional[pulumi.Input[float]]:
         """
-        Elasticsearch request timeout limit
+        Elasticsearch request timeout limit. The default value is `10.0`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[str]]):
+    def timeout(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch connection URL
+        Elasticsearch connection URL.
         """
         return pulumi.get(self, "url")
 
@@ -12928,7 +12943,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_account_credentials: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] log_id: Google Cloud Logging log id
+        :param pulumi.Input[str] log_id: Google Cloud Logging log id.
         :param pulumi.Input[str] project_id: GCP project id.
         :param pulumi.Input[str] service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         """
@@ -12943,7 +12958,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
     @pulumi.getter(name="logId")
     def log_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Logging log id
+        Google Cloud Logging log id.
         """
         return pulumi.get(self, "log_id")
 
@@ -12989,14 +13004,14 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
                  ssl_client_key: Optional[pulumi.Input[str]] = None,
                  ssl_endpoint_identification_algorithm: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] bootstrap_servers: Bootstrap servers
+        :param pulumi.Input[str] bootstrap_servers: Bootstrap servers.
         :param pulumi.Input[str] sasl_mechanism: The list of SASL mechanisms enabled in the Kafka server.
         :param pulumi.Input[str] sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server.
         :param pulumi.Input[str] sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server.
-        :param pulumi.Input[str] security_protocol: Security protocol
-        :param pulumi.Input[str] ssl_ca_cert: PEM-encoded CA certificate
-        :param pulumi.Input[str] ssl_client_cert: PEM-encoded client certificate
-        :param pulumi.Input[str] ssl_client_key: PEM-encoded client key
+        :param pulumi.Input[str] security_protocol: Security protocol.
+        :param pulumi.Input[str] ssl_ca_cert: PEM-encoded CA certificate.
+        :param pulumi.Input[str] ssl_client_cert: PEM-encoded client certificate.
+        :param pulumi.Input[str] ssl_client_key: PEM-encoded client key.
         :param pulumi.Input[str] ssl_endpoint_identification_algorithm: The endpoint identification algorithm to validate server hostname using server certificate.
         """
         if bootstrap_servers is not None:
@@ -13022,7 +13037,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="bootstrapServers")
     def bootstrap_servers(self) -> Optional[pulumi.Input[str]]:
         """
-        Bootstrap servers
+        Bootstrap servers.
         """
         return pulumi.get(self, "bootstrap_servers")
 
@@ -13070,7 +13085,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="securityProtocol")
     def security_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Security protocol
+        Security protocol.
         """
         return pulumi.get(self, "security_protocol")
 
@@ -13082,7 +13097,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="sslCaCert")
     def ssl_ca_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM-encoded CA certificate
+        PEM-encoded CA certificate.
         """
         return pulumi.get(self, "ssl_ca_cert")
 
@@ -13094,7 +13109,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="sslClientCert")
     def ssl_client_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM-encoded client certificate
+        PEM-encoded client certificate.
         """
         return pulumi.get(self, "ssl_client_cert")
 
@@ -13106,7 +13121,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="sslClientKey")
     def ssl_client_key(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM-encoded client key
+        PEM-encoded client key.
         """
         return pulumi.get(self, "ssl_client_key")
 
@@ -13131,16 +13146,16 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
 class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
     def __init__(__self__, *,
                  ca: Optional[pulumi.Input[str]] = None,
-                 index_days_max: Optional[pulumi.Input[str]] = None,
+                 index_days_max: Optional[pulumi.Input[int]] = None,
                  index_prefix: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[float]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ca: PEM encoded CA certificate
-        :param pulumi.Input[str] index_days_max: Maximum number of days of logs to keep
-        :param pulumi.Input[str] index_prefix: OpenSearch index prefix
-        :param pulumi.Input[str] timeout: OpenSearch request timeout limit
-        :param pulumi.Input[str] url: OpenSearch connection URL
+        :param pulumi.Input[str] ca: PEM encoded CA certificate.
+        :param pulumi.Input[int] index_days_max: Maximum number of days of logs to keep. The default value is `3`.
+        :param pulumi.Input[str] index_prefix: OpenSearch index prefix. The default value is `logs`.
+        :param pulumi.Input[float] timeout: OpenSearch request timeout limit. The default value is `10.0`.
+        :param pulumi.Input[str] url: OpenSearch connection URL.
         """
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
@@ -13157,7 +13172,7 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
     @pulumi.getter
     def ca(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded CA certificate
+        PEM encoded CA certificate.
         """
         return pulumi.get(self, "ca")
 
@@ -13167,21 +13182,21 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
 
     @property
     @pulumi.getter(name="indexDaysMax")
-    def index_days_max(self) -> Optional[pulumi.Input[str]]:
+    def index_days_max(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of days of logs to keep
+        Maximum number of days of logs to keep. The default value is `3`.
         """
         return pulumi.get(self, "index_days_max")
 
     @index_days_max.setter
-    def index_days_max(self, value: Optional[pulumi.Input[str]]):
+    def index_days_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "index_days_max", value)
 
     @property
     @pulumi.getter(name="indexPrefix")
     def index_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        OpenSearch index prefix
+        OpenSearch index prefix. The default value is `logs`.
         """
         return pulumi.get(self, "index_prefix")
 
@@ -13191,21 +13206,21 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[str]]:
+    def timeout(self) -> Optional[pulumi.Input[float]]:
         """
-        OpenSearch request timeout limit
+        OpenSearch request timeout limit. The default value is `10.0`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[str]]):
+    def timeout(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        OpenSearch connection URL
+        OpenSearch connection URL.
         """
         return pulumi.get(self, "url")
 
@@ -13222,10 +13237,10 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
                  basic_auth_username: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] authentication: Authentication method
-        :param pulumi.Input[str] basic_auth_password: Basic authentication password
-        :param pulumi.Input[str] basic_auth_username: Basic authentication user name
-        :param pulumi.Input[str] url: Schema Registry URL
+        :param pulumi.Input[str] authentication: Authentication method.
+        :param pulumi.Input[str] basic_auth_password: Basic authentication password.
+        :param pulumi.Input[str] basic_auth_username: Basic authentication user name.
+        :param pulumi.Input[str] url: Schema Registry URL.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -13240,7 +13255,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication method
+        Authentication method.
         """
         return pulumi.get(self, "authentication")
 
@@ -13252,7 +13267,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @pulumi.getter(name="basicAuthPassword")
     def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Basic authentication password
+        Basic authentication password.
         """
         return pulumi.get(self, "basic_auth_password")
 
@@ -13264,7 +13279,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Basic authentication user name
+        Basic authentication user name.
         """
         return pulumi.get(self, "basic_auth_username")
 
@@ -13276,7 +13291,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Schema Registry URL
+        Schema Registry URL.
         """
         return pulumi.get(self, "url")
 
@@ -13291,8 +13306,8 @@ class ServiceIntegrationEndpointJolokiaUserConfigArgs:
                  basic_auth_password: Optional[pulumi.Input[str]] = None,
                  basic_auth_username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] basic_auth_password: Jolokia basic authentication password
-        :param pulumi.Input[str] basic_auth_username: Jolokia basic authentication username
+        :param pulumi.Input[str] basic_auth_password: Jolokia basic authentication password.
+        :param pulumi.Input[str] basic_auth_username: Jolokia basic authentication username.
         """
         if basic_auth_password is not None:
             pulumi.set(__self__, "basic_auth_password", basic_auth_password)
@@ -13303,7 +13318,7 @@ class ServiceIntegrationEndpointJolokiaUserConfigArgs:
     @pulumi.getter(name="basicAuthPassword")
     def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Jolokia basic authentication password
+        Jolokia basic authentication password.
         """
         return pulumi.get(self, "basic_auth_password")
 
@@ -13315,7 +13330,7 @@ class ServiceIntegrationEndpointJolokiaUserConfigArgs:
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Jolokia basic authentication username
+        Jolokia basic authentication username.
         """
         return pulumi.get(self, "basic_auth_username")
 
@@ -13330,8 +13345,8 @@ class ServiceIntegrationEndpointPrometheusUserConfigArgs:
                  basic_auth_password: Optional[pulumi.Input[str]] = None,
                  basic_auth_username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] basic_auth_password: Prometheus basic authentication password
-        :param pulumi.Input[str] basic_auth_username: Prometheus basic authentication username
+        :param pulumi.Input[str] basic_auth_password: Prometheus basic authentication password.
+        :param pulumi.Input[str] basic_auth_username: Prometheus basic authentication username.
         """
         if basic_auth_password is not None:
             pulumi.set(__self__, "basic_auth_password", basic_auth_password)
@@ -13342,7 +13357,7 @@ class ServiceIntegrationEndpointPrometheusUserConfigArgs:
     @pulumi.getter(name="basicAuthPassword")
     def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Prometheus basic authentication password
+        Prometheus basic authentication password.
         """
         return pulumi.get(self, "basic_auth_password")
 
@@ -13354,7 +13369,7 @@ class ServiceIntegrationEndpointPrometheusUserConfigArgs:
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Prometheus basic authentication username
+        Prometheus basic authentication username.
         """
         return pulumi.get(self, "basic_auth_username")
 
@@ -13371,20 +13386,20 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
                  format: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  logline: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  sd: Optional[pulumi.Input[str]] = None,
                  server: Optional[pulumi.Input[str]] = None,
-                 tls: Optional[pulumi.Input[str]] = None):
+                 tls: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] ca: PEM encoded CA certificate
-        :param pulumi.Input[str] cert: PEM encoded client certificate
-        :param pulumi.Input[str] format: message format
-        :param pulumi.Input[str] key: PEM encoded client key
-        :param pulumi.Input[str] logline: custom syslog message format
-        :param pulumi.Input[str] port: rsyslog server port
-        :param pulumi.Input[str] sd: Structured data block for log message
-        :param pulumi.Input[str] server: rsyslog server IP address or hostname
-        :param pulumi.Input[str] tls: Require TLS
+        :param pulumi.Input[str] ca: PEM encoded CA certificate.
+        :param pulumi.Input[str] cert: PEM encoded client certificate.
+        :param pulumi.Input[str] format: message format. The default value is `rfc5424`.
+        :param pulumi.Input[str] key: PEM encoded client key.
+        :param pulumi.Input[str] logline: custom syslog message format.
+        :param pulumi.Input[int] port: rsyslog server port. The default value is `514`.
+        :param pulumi.Input[str] sd: Structured data block for log message.
+        :param pulumi.Input[str] server: rsyslog server IP address or hostname.
+        :param pulumi.Input[bool] tls: Require TLS. The default value is `true`.
         """
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
@@ -13409,7 +13424,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def ca(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded CA certificate
+        PEM encoded CA certificate.
         """
         return pulumi.get(self, "ca")
 
@@ -13421,7 +13436,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded client certificate
+        PEM encoded client certificate.
         """
         return pulumi.get(self, "cert")
 
@@ -13433,7 +13448,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
         """
-        message format
+        message format. The default value is `rfc5424`.
         """
         return pulumi.get(self, "format")
 
@@ -13445,7 +13460,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded client key
+        PEM encoded client key.
         """
         return pulumi.get(self, "key")
 
@@ -13457,7 +13472,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def logline(self) -> Optional[pulumi.Input[str]]:
         """
-        custom syslog message format
+        custom syslog message format.
         """
         return pulumi.get(self, "logline")
 
@@ -13467,21 +13482,21 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[str]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
-        rsyslog server port
+        rsyslog server port. The default value is `514`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[str]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
     def sd(self) -> Optional[pulumi.Input[str]]:
         """
-        Structured data block for log message
+        Structured data block for log message.
         """
         return pulumi.get(self, "sd")
 
@@ -13493,7 +13508,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        rsyslog server IP address or hostname
+        rsyslog server IP address or hostname.
         """
         return pulumi.get(self, "server")
 
@@ -13503,14 +13518,14 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
 
     @property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[str]]:
+    def tls(self) -> Optional[pulumi.Input[bool]]:
         """
-        Require TLS
+        Require TLS. The default value is `true`.
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[str]]):
+    def tls(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls", value)
 
 
@@ -13521,9 +13536,9 @@ class ServiceIntegrationEndpointSignalfxUserConfigArgs:
                  signalfx_api_key: Optional[pulumi.Input[str]] = None,
                  signalfx_realm: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: list of metrics to send
-        :param pulumi.Input[str] signalfx_api_key: SignalFX API key
-        :param pulumi.Input[str] signalfx_realm: SignalFX realm
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: list of metrics to send.
+        :param pulumi.Input[str] signalfx_api_key: SignalFX API key.
+        :param pulumi.Input[str] signalfx_realm: SignalFX realm. The default value is `us0`.
         """
         if enabled_metrics is not None:
             pulumi.set(__self__, "enabled_metrics", enabled_metrics)
@@ -13536,7 +13551,7 @@ class ServiceIntegrationEndpointSignalfxUserConfigArgs:
     @pulumi.getter(name="enabledMetrics")
     def enabled_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of metrics to send
+        list of metrics to send.
         """
         return pulumi.get(self, "enabled_metrics")
 
@@ -13548,7 +13563,7 @@ class ServiceIntegrationEndpointSignalfxUserConfigArgs:
     @pulumi.getter(name="signalfxApiKey")
     def signalfx_api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        SignalFX API key
+        SignalFX API key.
         """
         return pulumi.get(self, "signalfx_api_key")
 
@@ -13560,7 +13575,7 @@ class ServiceIntegrationEndpointSignalfxUserConfigArgs:
     @pulumi.getter(name="signalfxRealm")
     def signalfx_realm(self) -> Optional[pulumi.Input[str]]:
         """
-        SignalFX realm
+        SignalFX realm. The default value is `us0`.
         """
         return pulumi.get(self, "signalfx_realm")
 
@@ -13575,8 +13590,8 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
                  dropped_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]] = None,
                  extra_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]] dropped_metrics: Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]] extra_metrics: Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]] dropped_metrics: Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]] extra_metrics: Metrics to allow through to AWS CloudWatch (in addition to default metrics).
         """
         if dropped_metrics is not None:
             pulumi.set(__self__, "dropped_metrics", dropped_metrics)
@@ -13587,7 +13602,7 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
     @pulumi.getter(name="droppedMetrics")
     def dropped_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]]:
         """
-        Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+        Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
         """
         return pulumi.get(self, "dropped_metrics")
 
@@ -13599,7 +13614,7 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
     @pulumi.getter(name="extraMetrics")
     def extra_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]]:
         """
-        Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+        Metrics to allow through to AWS CloudWatch (in addition to default metrics).
         """
         return pulumi.get(self, "extra_metrics")
 
@@ -13611,58 +13626,54 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[str]] = None,
-                 metric: Optional[pulumi.Input[str]] = None):
-        if field is not None:
-            pulumi.set(__self__, "field", field)
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
+                 field: pulumi.Input[str],
+                 metric: pulumi.Input[str]):
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "metric", metric)
 
     @property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[str]]:
+    def field(self) -> pulumi.Input[str]:
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[str]]):
+    def field(self, value: pulumi.Input[str]):
         pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[str]]:
+    def metric(self) -> pulumi.Input[str]:
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[str]]):
+    def metric(self, value: pulumi.Input[str]):
         pulumi.set(self, "metric", value)
 
 
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[str]] = None,
-                 metric: Optional[pulumi.Input[str]] = None):
-        if field is not None:
-            pulumi.set(__self__, "field", field)
-        if metric is not None:
-            pulumi.set(__self__, "metric", metric)
+                 field: pulumi.Input[str],
+                 metric: pulumi.Input[str]):
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "metric", metric)
 
     @property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[str]]:
+    def field(self) -> pulumi.Input[str]:
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[str]]):
+    def field(self, value: pulumi.Input[str]):
         pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[str]]:
+    def metric(self) -> pulumi.Input[str]:
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[str]]):
+    def metric(self, value: pulumi.Input[str]):
         pulumi.set(self, "metric", value)
 
 
@@ -13671,7 +13682,7 @@ class ServiceIntegrationKafkaConnectUserConfigArgs:
     def __init__(__self__, *,
                  kafka_connect: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs']] = None):
         """
-        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs'] kafka_connect: Kafka Connect service configuration values
+        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs'] kafka_connect: Kafka Connect service configuration values.
         """
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
@@ -13680,7 +13691,7 @@ class ServiceIntegrationKafkaConnectUserConfigArgs:
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs']]:
         """
-        Kafka Connect service configuration values
+        Kafka Connect service configuration values.
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -13747,7 +13758,7 @@ class ServiceIntegrationKafkaLogsUserConfigArgs:
     def __init__(__self__, *,
                  kafka_topic: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] kafka_topic: Topic name
+        :param pulumi.Input[str] kafka_topic: Topic name.
         """
         if kafka_topic is not None:
             pulumi.set(__self__, "kafka_topic", kafka_topic)
@@ -13756,7 +13767,7 @@ class ServiceIntegrationKafkaLogsUserConfigArgs:
     @pulumi.getter(name="kafkaTopic")
     def kafka_topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Topic name
+        Topic name.
         """
         return pulumi.get(self, "kafka_topic")
 
@@ -13772,7 +13783,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigArgs:
                  kafka_mirrormaker: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs']] = None):
         """
         :param pulumi.Input[str] cluster_alias: The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
-        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker configuration values
+        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker configuration values.
         """
         if cluster_alias is not None:
             pulumi.set(__self__, "cluster_alias", cluster_alias)
@@ -13795,7 +13806,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigArgs:
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs']]:
         """
-        Kafka MirrorMaker configuration values
+        Kafka MirrorMaker configuration values.
         """
         return pulumi.get(self, "kafka_mirrormaker")
 
@@ -13807,11 +13818,11 @@ class ServiceIntegrationKafkaMirrormakerUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     def __init__(__self__, *,
-                 consumer_fetch_min_bytes: Optional[pulumi.Input[str]] = None,
-                 producer_batch_size: Optional[pulumi.Input[str]] = None,
-                 producer_buffer_memory: Optional[pulumi.Input[str]] = None,
-                 producer_linger_ms: Optional[pulumi.Input[str]] = None,
-                 producer_max_request_size: Optional[pulumi.Input[str]] = None):
+                 consumer_fetch_min_bytes: Optional[pulumi.Input[int]] = None,
+                 producer_batch_size: Optional[pulumi.Input[int]] = None,
+                 producer_buffer_memory: Optional[pulumi.Input[int]] = None,
+                 producer_linger_ms: Optional[pulumi.Input[int]] = None,
+                 producer_max_request_size: Optional[pulumi.Input[int]] = None):
         if consumer_fetch_min_bytes is not None:
             pulumi.set(__self__, "consumer_fetch_min_bytes", consumer_fetch_min_bytes)
         if producer_batch_size is not None:
@@ -13825,58 +13836,58 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
 
     @property
     @pulumi.getter(name="consumerFetchMinBytes")
-    def consumer_fetch_min_bytes(self) -> Optional[pulumi.Input[str]]:
+    def consumer_fetch_min_bytes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "consumer_fetch_min_bytes")
 
     @consumer_fetch_min_bytes.setter
-    def consumer_fetch_min_bytes(self, value: Optional[pulumi.Input[str]]):
+    def consumer_fetch_min_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "consumer_fetch_min_bytes", value)
 
     @property
     @pulumi.getter(name="producerBatchSize")
-    def producer_batch_size(self) -> Optional[pulumi.Input[str]]:
+    def producer_batch_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_batch_size")
 
     @producer_batch_size.setter
-    def producer_batch_size(self, value: Optional[pulumi.Input[str]]):
+    def producer_batch_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_batch_size", value)
 
     @property
     @pulumi.getter(name="producerBufferMemory")
-    def producer_buffer_memory(self) -> Optional[pulumi.Input[str]]:
+    def producer_buffer_memory(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_buffer_memory")
 
     @producer_buffer_memory.setter
-    def producer_buffer_memory(self, value: Optional[pulumi.Input[str]]):
+    def producer_buffer_memory(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_buffer_memory", value)
 
     @property
     @pulumi.getter(name="producerLingerMs")
-    def producer_linger_ms(self) -> Optional[pulumi.Input[str]]:
+    def producer_linger_ms(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_linger_ms")
 
     @producer_linger_ms.setter
-    def producer_linger_ms(self, value: Optional[pulumi.Input[str]]):
+    def producer_linger_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_linger_ms", value)
 
     @property
     @pulumi.getter(name="producerMaxRequestSize")
-    def producer_max_request_size(self) -> Optional[pulumi.Input[str]]:
+    def producer_max_request_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "producer_max_request_size")
 
     @producer_max_request_size.setter
-    def producer_max_request_size(self, value: Optional[pulumi.Input[str]]):
+    def producer_max_request_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_max_request_size", value)
 
 
 @pulumi.input_type
 class ServiceIntegrationLogsUserConfigArgs:
     def __init__(__self__, *,
-                 elasticsearch_index_days_max: Optional[pulumi.Input[str]] = None,
+                 elasticsearch_index_days_max: Optional[pulumi.Input[int]] = None,
                  elasticsearch_index_prefix: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] elasticsearch_index_days_max: Elasticsearch index retention limit
-        :param pulumi.Input[str] elasticsearch_index_prefix: Elasticsearch index prefix
+        :param pulumi.Input[int] elasticsearch_index_days_max: Elasticsearch index retention limit. The default value is `3`.
+        :param pulumi.Input[str] elasticsearch_index_prefix: Elasticsearch index prefix. The default value is `logs`.
         """
         if elasticsearch_index_days_max is not None:
             pulumi.set(__self__, "elasticsearch_index_days_max", elasticsearch_index_days_max)
@@ -13885,21 +13896,21 @@ class ServiceIntegrationLogsUserConfigArgs:
 
     @property
     @pulumi.getter(name="elasticsearchIndexDaysMax")
-    def elasticsearch_index_days_max(self) -> Optional[pulumi.Input[str]]:
+    def elasticsearch_index_days_max(self) -> Optional[pulumi.Input[int]]:
         """
-        Elasticsearch index retention limit
+        Elasticsearch index retention limit. The default value is `3`.
         """
         return pulumi.get(self, "elasticsearch_index_days_max")
 
     @elasticsearch_index_days_max.setter
-    def elasticsearch_index_days_max(self, value: Optional[pulumi.Input[str]]):
+    def elasticsearch_index_days_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "elasticsearch_index_days_max", value)
 
     @property
     @pulumi.getter(name="elasticsearchIndexPrefix")
     def elasticsearch_index_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch index prefix
+        Elasticsearch index prefix. The default value is `logs`.
         """
         return pulumi.get(self, "elasticsearch_index_prefix")
 
@@ -13912,15 +13923,15 @@ class ServiceIntegrationLogsUserConfigArgs:
 class ServiceIntegrationMetricsUserConfigArgs:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
-                 retention_days: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
                  ro_username: Optional[pulumi.Input[str]] = None,
                  source_mysql: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] database: Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-        :param pulumi.Input[str] retention_days: Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+        :param pulumi.Input[int] retention_days: Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
         :param pulumi.Input[str] ro_username: Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-        :param pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgs'] source_mysql: Configuration options for metrics where source service is MySQL
+        :param pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgs'] source_mysql: Configuration options for metrics where source service is MySQL.
         :param pulumi.Input[str] username: Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
         """
         if database is not None:
@@ -13948,14 +13959,14 @@ class ServiceIntegrationMetricsUserConfigArgs:
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[str]]:
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[str]]):
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_days", value)
 
     @property
@@ -13974,7 +13985,7 @@ class ServiceIntegrationMetricsUserConfigArgs:
     @pulumi.getter(name="sourceMysql")
     def source_mysql(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgs']]:
         """
-        Configuration options for metrics where source service is MySQL
+        Configuration options for metrics where source service is MySQL.
         """
         return pulumi.get(self, "source_mysql")
 
@@ -14015,20 +14026,20 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlArgs:
 @pulumi.input_type
 class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
     def __init__(__self__, *,
-                 gather_event_waits: Optional[pulumi.Input[str]] = None,
-                 gather_file_events_stats: Optional[pulumi.Input[str]] = None,
-                 gather_index_io_waits: Optional[pulumi.Input[str]] = None,
-                 gather_info_schema_auto_inc: Optional[pulumi.Input[str]] = None,
-                 gather_innodb_metrics: Optional[pulumi.Input[str]] = None,
-                 gather_perf_events_statements: Optional[pulumi.Input[str]] = None,
-                 gather_process_list: Optional[pulumi.Input[str]] = None,
-                 gather_slave_status: Optional[pulumi.Input[str]] = None,
-                 gather_table_io_waits: Optional[pulumi.Input[str]] = None,
-                 gather_table_lock_waits: Optional[pulumi.Input[str]] = None,
-                 gather_table_schema: Optional[pulumi.Input[str]] = None,
-                 perf_events_statements_digest_text_limit: Optional[pulumi.Input[str]] = None,
-                 perf_events_statements_limit: Optional[pulumi.Input[str]] = None,
-                 perf_events_statements_time_limit: Optional[pulumi.Input[str]] = None):
+                 gather_event_waits: Optional[pulumi.Input[bool]] = None,
+                 gather_file_events_stats: Optional[pulumi.Input[bool]] = None,
+                 gather_index_io_waits: Optional[pulumi.Input[bool]] = None,
+                 gather_info_schema_auto_inc: Optional[pulumi.Input[bool]] = None,
+                 gather_innodb_metrics: Optional[pulumi.Input[bool]] = None,
+                 gather_perf_events_statements: Optional[pulumi.Input[bool]] = None,
+                 gather_process_list: Optional[pulumi.Input[bool]] = None,
+                 gather_slave_status: Optional[pulumi.Input[bool]] = None,
+                 gather_table_io_waits: Optional[pulumi.Input[bool]] = None,
+                 gather_table_lock_waits: Optional[pulumi.Input[bool]] = None,
+                 gather_table_schema: Optional[pulumi.Input[bool]] = None,
+                 perf_events_statements_digest_text_limit: Optional[pulumi.Input[int]] = None,
+                 perf_events_statements_limit: Optional[pulumi.Input[int]] = None,
+                 perf_events_statements_time_limit: Optional[pulumi.Input[int]] = None):
         if gather_event_waits is not None:
             pulumi.set(__self__, "gather_event_waits", gather_event_waits)
         if gather_file_events_stats is not None:
@@ -14060,151 +14071,128 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
 
     @property
     @pulumi.getter(name="gatherEventWaits")
-    def gather_event_waits(self) -> Optional[pulumi.Input[str]]:
+    def gather_event_waits(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_event_waits")
 
     @gather_event_waits.setter
-    def gather_event_waits(self, value: Optional[pulumi.Input[str]]):
+    def gather_event_waits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_event_waits", value)
 
     @property
     @pulumi.getter(name="gatherFileEventsStats")
-    def gather_file_events_stats(self) -> Optional[pulumi.Input[str]]:
+    def gather_file_events_stats(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_file_events_stats")
 
     @gather_file_events_stats.setter
-    def gather_file_events_stats(self, value: Optional[pulumi.Input[str]]):
+    def gather_file_events_stats(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_file_events_stats", value)
 
     @property
     @pulumi.getter(name="gatherIndexIoWaits")
-    def gather_index_io_waits(self) -> Optional[pulumi.Input[str]]:
+    def gather_index_io_waits(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_index_io_waits")
 
     @gather_index_io_waits.setter
-    def gather_index_io_waits(self, value: Optional[pulumi.Input[str]]):
+    def gather_index_io_waits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_index_io_waits", value)
 
     @property
     @pulumi.getter(name="gatherInfoSchemaAutoInc")
-    def gather_info_schema_auto_inc(self) -> Optional[pulumi.Input[str]]:
+    def gather_info_schema_auto_inc(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_info_schema_auto_inc")
 
     @gather_info_schema_auto_inc.setter
-    def gather_info_schema_auto_inc(self, value: Optional[pulumi.Input[str]]):
+    def gather_info_schema_auto_inc(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_info_schema_auto_inc", value)
 
     @property
     @pulumi.getter(name="gatherInnodbMetrics")
-    def gather_innodb_metrics(self) -> Optional[pulumi.Input[str]]:
+    def gather_innodb_metrics(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_innodb_metrics")
 
     @gather_innodb_metrics.setter
-    def gather_innodb_metrics(self, value: Optional[pulumi.Input[str]]):
+    def gather_innodb_metrics(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_innodb_metrics", value)
 
     @property
     @pulumi.getter(name="gatherPerfEventsStatements")
-    def gather_perf_events_statements(self) -> Optional[pulumi.Input[str]]:
+    def gather_perf_events_statements(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_perf_events_statements")
 
     @gather_perf_events_statements.setter
-    def gather_perf_events_statements(self, value: Optional[pulumi.Input[str]]):
+    def gather_perf_events_statements(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_perf_events_statements", value)
 
     @property
     @pulumi.getter(name="gatherProcessList")
-    def gather_process_list(self) -> Optional[pulumi.Input[str]]:
+    def gather_process_list(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_process_list")
 
     @gather_process_list.setter
-    def gather_process_list(self, value: Optional[pulumi.Input[str]]):
+    def gather_process_list(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_process_list", value)
 
     @property
     @pulumi.getter(name="gatherSlaveStatus")
-    def gather_slave_status(self) -> Optional[pulumi.Input[str]]:
+    def gather_slave_status(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_slave_status")
 
     @gather_slave_status.setter
-    def gather_slave_status(self, value: Optional[pulumi.Input[str]]):
+    def gather_slave_status(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_slave_status", value)
 
     @property
     @pulumi.getter(name="gatherTableIoWaits")
-    def gather_table_io_waits(self) -> Optional[pulumi.Input[str]]:
+    def gather_table_io_waits(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_table_io_waits")
 
     @gather_table_io_waits.setter
-    def gather_table_io_waits(self, value: Optional[pulumi.Input[str]]):
+    def gather_table_io_waits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_table_io_waits", value)
 
     @property
     @pulumi.getter(name="gatherTableLockWaits")
-    def gather_table_lock_waits(self) -> Optional[pulumi.Input[str]]:
+    def gather_table_lock_waits(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_table_lock_waits")
 
     @gather_table_lock_waits.setter
-    def gather_table_lock_waits(self, value: Optional[pulumi.Input[str]]):
+    def gather_table_lock_waits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_table_lock_waits", value)
 
     @property
     @pulumi.getter(name="gatherTableSchema")
-    def gather_table_schema(self) -> Optional[pulumi.Input[str]]:
+    def gather_table_schema(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "gather_table_schema")
 
     @gather_table_schema.setter
-    def gather_table_schema(self, value: Optional[pulumi.Input[str]]):
+    def gather_table_schema(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gather_table_schema", value)
 
     @property
     @pulumi.getter(name="perfEventsStatementsDigestTextLimit")
-    def perf_events_statements_digest_text_limit(self) -> Optional[pulumi.Input[str]]:
+    def perf_events_statements_digest_text_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "perf_events_statements_digest_text_limit")
 
     @perf_events_statements_digest_text_limit.setter
-    def perf_events_statements_digest_text_limit(self, value: Optional[pulumi.Input[str]]):
+    def perf_events_statements_digest_text_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "perf_events_statements_digest_text_limit", value)
 
     @property
     @pulumi.getter(name="perfEventsStatementsLimit")
-    def perf_events_statements_limit(self) -> Optional[pulumi.Input[str]]:
+    def perf_events_statements_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "perf_events_statements_limit")
 
     @perf_events_statements_limit.setter
-    def perf_events_statements_limit(self, value: Optional[pulumi.Input[str]]):
+    def perf_events_statements_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "perf_events_statements_limit", value)
 
     @property
     @pulumi.getter(name="perfEventsStatementsTimeLimit")
-    def perf_events_statements_time_limit(self) -> Optional[pulumi.Input[str]]:
+    def perf_events_statements_time_limit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "perf_events_statements_time_limit")
 
     @perf_events_statements_time_limit.setter
-    def perf_events_statements_time_limit(self, value: Optional[pulumi.Input[str]]):
+    def perf_events_statements_time_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "perf_events_statements_time_limit", value)
-
-
-@pulumi.input_type
-class ServiceIntegrationMirrormakerUserConfigArgs:
-    def __init__(__self__, *,
-                 mirrormaker_whitelist: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] mirrormaker_whitelist: Mirrormaker topic whitelist
-        """
-        if mirrormaker_whitelist is not None:
-            pulumi.set(__self__, "mirrormaker_whitelist", mirrormaker_whitelist)
-
-    @property
-    @pulumi.getter(name="mirrormakerWhitelist")
-    def mirrormaker_whitelist(self) -> Optional[pulumi.Input[str]]:
-        """
-        Mirrormaker topic whitelist
-        """
-        return pulumi.get(self, "mirrormaker_whitelist")
-
-    @mirrormaker_whitelist.setter
-    def mirrormaker_whitelist(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mirrormaker_whitelist", value)
 
 

@@ -31,19 +31,19 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///         KafkaUserConfig = new Aiven.Inputs.KafkaKafkaUserConfigArgs
     ///         {
-    ///             KafkaRest = "true",
-    ///             KafkaConnect = "true",
-    ///             SchemaRegistry = "true",
+    ///             KafkaRest = true,
+    ///             KafkaConnect = true,
+    ///             SchemaRegistry = true,
     ///             KafkaVersion = "3.1",
     ///             Kafka = new Aiven.Inputs.KafkaKafkaUserConfigKafkaArgs
     ///             {
-    ///                 GroupMaxSessionTimeoutMs = "70000",
-    ///                 LogRetentionBytes = "1000000000",
+    ///                 GroupMaxSessionTimeoutMs = 70000,
+    ///                 LogRetentionBytes = 1000000000,
     ///             },
     ///             PublicAccess = new Aiven.Inputs.KafkaKafkaUserConfigPublicAccessArgs
     ///             {
-    ///                 KafkaRest = "true",
-    ///                 KafkaConnect = "true",
+    ///                 KafkaRest = true,
+    ///                 KafkaConnect = true,
     ///             },
     ///         },
     ///     });

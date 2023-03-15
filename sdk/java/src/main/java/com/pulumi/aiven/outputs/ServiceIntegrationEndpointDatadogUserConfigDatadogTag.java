@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     private @Nullable String comment;
-    private @Nullable String tag;
+    private String tag;
 
     private ServiceIntegrationEndpointDatadogUserConfigDatadogTag() {}
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    public Optional<String> tag() {
-        return Optional.ofNullable(this.tag);
+    public String tag() {
+        return this.tag;
     }
 
     public static Builder builder() {
@@ -32,7 +32,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
-        private @Nullable String tag;
+        private String tag;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointDatadogUserConfigDatadogTag defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,8 +46,8 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
             return this;
         }
         @CustomType.Setter
-        public Builder tag(@Nullable String tag) {
-            this.tag = tag;
+        public Builder tag(String tag) {
+            this.tag = Objects.requireNonNull(tag);
             return this;
         }
         public ServiceIntegrationEndpointDatadogUserConfigDatadogTag build() {

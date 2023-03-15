@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class MySqlMysqlUserConfigMigration
     {
         public readonly string? Dbname;
-        public readonly string? Host;
+        public readonly string Host;
         public readonly string? IgnoreDbs;
         public readonly string? Method;
         public readonly string? Password;
-        public readonly string? Port;
-        public readonly string? Ssl;
+        public readonly int Port;
+        public readonly bool? Ssl;
         public readonly string? Username;
 
         [OutputConstructor]
         private MySqlMysqlUserConfigMigration(
             string? dbname,
 
-            string? host,
+            string host,
 
             string? ignoreDbs,
 
@@ -34,9 +34,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? password,
 
-            string? port,
+            int port,
 
-            string? ssl,
+            bool? ssl,
 
             string? username)
         {

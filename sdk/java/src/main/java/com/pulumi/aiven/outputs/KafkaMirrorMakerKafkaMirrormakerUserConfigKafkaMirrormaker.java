@@ -4,53 +4,54 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    private @Nullable String emitCheckpointsEnabled;
-    private @Nullable String emitCheckpointsIntervalSeconds;
-    private @Nullable String refreshGroupsEnabled;
-    private @Nullable String refreshGroupsIntervalSeconds;
-    private @Nullable String refreshTopicsEnabled;
-    private @Nullable String refreshTopicsIntervalSeconds;
-    private @Nullable String syncGroupOffsetsEnabled;
-    private @Nullable String syncGroupOffsetsIntervalSeconds;
-    private @Nullable String syncTopicConfigsEnabled;
-    private @Nullable String tasksMaxPerCpu;
+    private @Nullable Boolean emitCheckpointsEnabled;
+    private @Nullable Integer emitCheckpointsIntervalSeconds;
+    private @Nullable Boolean refreshGroupsEnabled;
+    private @Nullable Integer refreshGroupsIntervalSeconds;
+    private @Nullable Boolean refreshTopicsEnabled;
+    private @Nullable Integer refreshTopicsIntervalSeconds;
+    private @Nullable Boolean syncGroupOffsetsEnabled;
+    private @Nullable Integer syncGroupOffsetsIntervalSeconds;
+    private @Nullable Boolean syncTopicConfigsEnabled;
+    private @Nullable Integer tasksMaxPerCpu;
 
     private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker() {}
-    public Optional<String> emitCheckpointsEnabled() {
+    public Optional<Boolean> emitCheckpointsEnabled() {
         return Optional.ofNullable(this.emitCheckpointsEnabled);
     }
-    public Optional<String> emitCheckpointsIntervalSeconds() {
+    public Optional<Integer> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
     }
-    public Optional<String> refreshGroupsEnabled() {
+    public Optional<Boolean> refreshGroupsEnabled() {
         return Optional.ofNullable(this.refreshGroupsEnabled);
     }
-    public Optional<String> refreshGroupsIntervalSeconds() {
+    public Optional<Integer> refreshGroupsIntervalSeconds() {
         return Optional.ofNullable(this.refreshGroupsIntervalSeconds);
     }
-    public Optional<String> refreshTopicsEnabled() {
+    public Optional<Boolean> refreshTopicsEnabled() {
         return Optional.ofNullable(this.refreshTopicsEnabled);
     }
-    public Optional<String> refreshTopicsIntervalSeconds() {
+    public Optional<Integer> refreshTopicsIntervalSeconds() {
         return Optional.ofNullable(this.refreshTopicsIntervalSeconds);
     }
-    public Optional<String> syncGroupOffsetsEnabled() {
+    public Optional<Boolean> syncGroupOffsetsEnabled() {
         return Optional.ofNullable(this.syncGroupOffsetsEnabled);
     }
-    public Optional<String> syncGroupOffsetsIntervalSeconds() {
+    public Optional<Integer> syncGroupOffsetsIntervalSeconds() {
         return Optional.ofNullable(this.syncGroupOffsetsIntervalSeconds);
     }
-    public Optional<String> syncTopicConfigsEnabled() {
+    public Optional<Boolean> syncTopicConfigsEnabled() {
         return Optional.ofNullable(this.syncTopicConfigsEnabled);
     }
-    public Optional<String> tasksMaxPerCpu() {
+    public Optional<Integer> tasksMaxPerCpu() {
         return Optional.ofNullable(this.tasksMaxPerCpu);
     }
 
@@ -63,16 +64,16 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String emitCheckpointsEnabled;
-        private @Nullable String emitCheckpointsIntervalSeconds;
-        private @Nullable String refreshGroupsEnabled;
-        private @Nullable String refreshGroupsIntervalSeconds;
-        private @Nullable String refreshTopicsEnabled;
-        private @Nullable String refreshTopicsIntervalSeconds;
-        private @Nullable String syncGroupOffsetsEnabled;
-        private @Nullable String syncGroupOffsetsIntervalSeconds;
-        private @Nullable String syncTopicConfigsEnabled;
-        private @Nullable String tasksMaxPerCpu;
+        private @Nullable Boolean emitCheckpointsEnabled;
+        private @Nullable Integer emitCheckpointsIntervalSeconds;
+        private @Nullable Boolean refreshGroupsEnabled;
+        private @Nullable Integer refreshGroupsIntervalSeconds;
+        private @Nullable Boolean refreshTopicsEnabled;
+        private @Nullable Integer refreshTopicsIntervalSeconds;
+        private @Nullable Boolean syncGroupOffsetsEnabled;
+        private @Nullable Integer syncGroupOffsetsIntervalSeconds;
+        private @Nullable Boolean syncTopicConfigsEnabled;
+        private @Nullable Integer tasksMaxPerCpu;
         public Builder() {}
         public Builder(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,52 +90,52 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
         }
 
         @CustomType.Setter
-        public Builder emitCheckpointsEnabled(@Nullable String emitCheckpointsEnabled) {
+        public Builder emitCheckpointsEnabled(@Nullable Boolean emitCheckpointsEnabled) {
             this.emitCheckpointsEnabled = emitCheckpointsEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder emitCheckpointsIntervalSeconds(@Nullable String emitCheckpointsIntervalSeconds) {
+        public Builder emitCheckpointsIntervalSeconds(@Nullable Integer emitCheckpointsIntervalSeconds) {
             this.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
-        public Builder refreshGroupsEnabled(@Nullable String refreshGroupsEnabled) {
+        public Builder refreshGroupsEnabled(@Nullable Boolean refreshGroupsEnabled) {
             this.refreshGroupsEnabled = refreshGroupsEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder refreshGroupsIntervalSeconds(@Nullable String refreshGroupsIntervalSeconds) {
+        public Builder refreshGroupsIntervalSeconds(@Nullable Integer refreshGroupsIntervalSeconds) {
             this.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
-        public Builder refreshTopicsEnabled(@Nullable String refreshTopicsEnabled) {
+        public Builder refreshTopicsEnabled(@Nullable Boolean refreshTopicsEnabled) {
             this.refreshTopicsEnabled = refreshTopicsEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder refreshTopicsIntervalSeconds(@Nullable String refreshTopicsIntervalSeconds) {
+        public Builder refreshTopicsIntervalSeconds(@Nullable Integer refreshTopicsIntervalSeconds) {
             this.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
-        public Builder syncGroupOffsetsEnabled(@Nullable String syncGroupOffsetsEnabled) {
+        public Builder syncGroupOffsetsEnabled(@Nullable Boolean syncGroupOffsetsEnabled) {
             this.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder syncGroupOffsetsIntervalSeconds(@Nullable String syncGroupOffsetsIntervalSeconds) {
+        public Builder syncGroupOffsetsIntervalSeconds(@Nullable Integer syncGroupOffsetsIntervalSeconds) {
             this.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
-        public Builder syncTopicConfigsEnabled(@Nullable String syncTopicConfigsEnabled) {
+        public Builder syncTopicConfigsEnabled(@Nullable Boolean syncTopicConfigsEnabled) {
             this.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder tasksMaxPerCpu(@Nullable String tasksMaxPerCpu) {
+        public Builder tasksMaxPerCpu(@Nullable Integer tasksMaxPerCpu) {
             this.tasksMaxPerCpu = tasksMaxPerCpu;
             return this;
         }

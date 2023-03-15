@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,15 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCassandraCassandraUserConfigCassandra {
-    private @Nullable String batchSizeFailThresholdInKb;
-    private @Nullable String batchSizeWarnThresholdInKb;
+    private @Nullable Integer batchSizeFailThresholdInKb;
+    private @Nullable Integer batchSizeWarnThresholdInKb;
     private @Nullable String datacenter;
 
     private GetCassandraCassandraUserConfigCassandra() {}
-    public Optional<String> batchSizeFailThresholdInKb() {
+    public Optional<Integer> batchSizeFailThresholdInKb() {
         return Optional.ofNullable(this.batchSizeFailThresholdInKb);
     }
-    public Optional<String> batchSizeWarnThresholdInKb() {
+    public Optional<Integer> batchSizeWarnThresholdInKb() {
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
     }
     public Optional<String> datacenter() {
@@ -35,8 +36,8 @@ public final class GetCassandraCassandraUserConfigCassandra {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String batchSizeFailThresholdInKb;
-        private @Nullable String batchSizeWarnThresholdInKb;
+        private @Nullable Integer batchSizeFailThresholdInKb;
+        private @Nullable Integer batchSizeWarnThresholdInKb;
         private @Nullable String datacenter;
         public Builder() {}
         public Builder(GetCassandraCassandraUserConfigCassandra defaults) {
@@ -47,12 +48,12 @@ public final class GetCassandraCassandraUserConfigCassandra {
         }
 
         @CustomType.Setter
-        public Builder batchSizeFailThresholdInKb(@Nullable String batchSizeFailThresholdInKb) {
+        public Builder batchSizeFailThresholdInKb(@Nullable Integer batchSizeFailThresholdInKb) {
             this.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             return this;
         }
         @CustomType.Setter
-        public Builder batchSizeWarnThresholdInKb(@Nullable String batchSizeWarnThresholdInKb) {
+        public Builder batchSizeWarnThresholdInKb(@Nullable Integer batchSizeWarnThresholdInKb) {
             this.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             return this;
         }

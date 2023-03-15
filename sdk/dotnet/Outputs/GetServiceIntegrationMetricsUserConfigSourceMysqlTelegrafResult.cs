@@ -13,50 +13,50 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult
     {
-        public readonly string? GatherEventWaits;
-        public readonly string? GatherFileEventsStats;
-        public readonly string? GatherIndexIoWaits;
-        public readonly string? GatherInfoSchemaAutoInc;
-        public readonly string? GatherInnodbMetrics;
-        public readonly string? GatherPerfEventsStatements;
-        public readonly string? GatherProcessList;
-        public readonly string? GatherSlaveStatus;
-        public readonly string? GatherTableIoWaits;
-        public readonly string? GatherTableLockWaits;
-        public readonly string? GatherTableSchema;
-        public readonly string? PerfEventsStatementsDigestTextLimit;
-        public readonly string? PerfEventsStatementsLimit;
-        public readonly string? PerfEventsStatementsTimeLimit;
+        public readonly bool? GatherEventWaits;
+        public readonly bool? GatherFileEventsStats;
+        public readonly bool? GatherIndexIoWaits;
+        public readonly bool? GatherInfoSchemaAutoInc;
+        public readonly bool? GatherInnodbMetrics;
+        public readonly bool? GatherPerfEventsStatements;
+        public readonly bool? GatherProcessList;
+        public readonly bool? GatherSlaveStatus;
+        public readonly bool? GatherTableIoWaits;
+        public readonly bool? GatherTableLockWaits;
+        public readonly bool? GatherTableSchema;
+        public readonly int? PerfEventsStatementsDigestTextLimit;
+        public readonly int? PerfEventsStatementsLimit;
+        public readonly int? PerfEventsStatementsTimeLimit;
 
         [OutputConstructor]
         private GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult(
-            string? gatherEventWaits,
+            bool? gatherEventWaits,
 
-            string? gatherFileEventsStats,
+            bool? gatherFileEventsStats,
 
-            string? gatherIndexIoWaits,
+            bool? gatherIndexIoWaits,
 
-            string? gatherInfoSchemaAutoInc,
+            bool? gatherInfoSchemaAutoInc,
 
-            string? gatherInnodbMetrics,
+            bool? gatherInnodbMetrics,
 
-            string? gatherPerfEventsStatements,
+            bool? gatherPerfEventsStatements,
 
-            string? gatherProcessList,
+            bool? gatherProcessList,
 
-            string? gatherSlaveStatus,
+            bool? gatherSlaveStatus,
 
-            string? gatherTableIoWaits,
+            bool? gatherTableIoWaits,
 
-            string? gatherTableLockWaits,
+            bool? gatherTableLockWaits,
 
-            string? gatherTableSchema,
+            bool? gatherTableSchema,
 
-            string? perfEventsStatementsDigestTextLimit,
+            int? perfEventsStatementsDigestTextLimit,
 
-            string? perfEventsStatementsLimit,
+            int? perfEventsStatementsLimit,
 
-            string? perfEventsStatementsTimeLimit)
+            int? perfEventsStatementsTimeLimit)
         {
             GatherEventWaits = gatherEventWaits;
             GatherFileEventsStats = gatherFileEventsStats;

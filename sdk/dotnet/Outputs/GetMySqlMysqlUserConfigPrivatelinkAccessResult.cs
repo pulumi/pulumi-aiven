@@ -16,17 +16,17 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// MySQL specific server provided values
         /// </summary>
-        public readonly string? Mysql;
-        public readonly string? Mysqlx;
-        public readonly string? Prometheus;
+        public readonly bool? Mysql;
+        public readonly bool? Mysqlx;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
         private GetMySqlMysqlUserConfigPrivatelinkAccessResult(
-            string? mysql,
+            bool? mysql,
 
-            string? mysqlx,
+            bool? mysqlx,
 
-            string? prometheus)
+            bool? prometheus)
         {
             Mysql = mysql;
             Mysqlx = mysqlx;

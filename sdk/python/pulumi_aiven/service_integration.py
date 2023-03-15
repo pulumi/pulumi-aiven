@@ -29,12 +29,11 @@ class ServiceIntegrationArgs:
                  kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
                  logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
-                 mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceIntegration resource.
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
         :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
@@ -47,7 +46,6 @@ class ServiceIntegrationArgs:
         :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -75,8 +73,6 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "logs_user_config", logs_user_config)
         if metrics_user_config is not None:
             pulumi.set(__self__, "metrics_user_config", metrics_user_config)
-        if mirrormaker_user_config is not None:
-            pulumi.set(__self__, "mirrormaker_user_config", mirrormaker_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
@@ -86,7 +82,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration
+        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         """
         return pulumi.get(self, "integration_type")
 
@@ -239,18 +235,6 @@ class ServiceIntegrationArgs:
         pulumi.set(self, "metrics_user_config", value)
 
     @property
-    @pulumi.getter(name="mirrormakerUserConfig")
-    def mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']]:
-        """
-        Mirrormaker user configurable settings
-        """
-        return pulumi.get(self, "mirrormaker_user_config")
-
-    @mirrormaker_user_config.setter
-    def mirrormaker_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']]):
-        pulumi.set(self, "mirrormaker_user_config", value)
-
-    @property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -291,7 +275,6 @@ class _ServiceIntegrationState:
                  kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
                  logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
-                 mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None):
@@ -304,13 +287,12 @@ class _ServiceIntegrationState:
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
@@ -341,8 +323,6 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "logs_user_config", logs_user_config)
         if metrics_user_config is not None:
             pulumi.set(__self__, "metrics_user_config", metrics_user_config)
-        if mirrormaker_user_config is not None:
-            pulumi.set(__self__, "mirrormaker_user_config", mirrormaker_user_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if source_endpoint_id is not None:
@@ -438,7 +418,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the service integration
+        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         """
         return pulumi.get(self, "integration_type")
 
@@ -507,18 +487,6 @@ class _ServiceIntegrationState:
         pulumi.set(self, "metrics_user_config", value)
 
     @property
-    @pulumi.getter(name="mirrormakerUserConfig")
-    def mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']]:
-        """
-        Mirrormaker user configurable settings
-        """
-        return pulumi.get(self, "mirrormaker_user_config")
-
-    @mirrormaker_user_config.setter
-    def mirrormaker_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']]):
-        pulumi.set(self, "mirrormaker_user_config", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -572,7 +540,6 @@ class ServiceIntegration(pulumi.CustomResource):
                  kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
                  logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
                  metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
-                 mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
@@ -614,13 +581,12 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
@@ -687,7 +653,6 @@ class ServiceIntegration(pulumi.CustomResource):
                  kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
                  logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
                  metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
-                 mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
@@ -714,7 +679,6 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__.__dict__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
             __props__.__dict__["logs_user_config"] = logs_user_config
             __props__.__dict__["metrics_user_config"] = metrics_user_config
-            __props__.__dict__["mirrormaker_user_config"] = mirrormaker_user_config
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -744,7 +708,6 @@ class ServiceIntegration(pulumi.CustomResource):
             kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]] = None,
             logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
             metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
-            mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             source_endpoint_id: Optional[pulumi.Input[str]] = None,
             source_service_name: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
@@ -762,13 +725,12 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
@@ -790,7 +752,6 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
         __props__.__dict__["logs_user_config"] = logs_user_config
         __props__.__dict__["metrics_user_config"] = metrics_user_config
-        __props__.__dict__["mirrormaker_user_config"] = mirrormaker_user_config
         __props__.__dict__["project"] = project
         __props__.__dict__["source_endpoint_id"] = source_endpoint_id
         __props__.__dict__["source_service_name"] = source_service_name
@@ -856,7 +817,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Output[str]:
         """
-        Type of the service integration
+        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
         """
         return pulumi.get(self, "integration_type")
 
@@ -899,14 +860,6 @@ class ServiceIntegration(pulumi.CustomResource):
         Metrics user configurable settings
         """
         return pulumi.get(self, "metrics_user_config")
-
-    @property
-    @pulumi.getter(name="mirrormakerUserConfig")
-    def mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationMirrormakerUserConfig']]:
-        """
-        Mirrormaker user configurable settings
-        """
-        return pulumi.get(self, "mirrormaker_user_config")
 
     @property
     @pulumi.getter

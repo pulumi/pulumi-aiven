@@ -13,17 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult
     {
-        public readonly string? Enabled;
-        public readonly string? MaxOldSpaceSize;
-        public readonly string? OpensearchRequestTimeout;
+        public readonly bool? Enabled;
+        public readonly int? MaxOldSpaceSize;
+        public readonly int? OpensearchRequestTimeout;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult(
-            string? enabled,
+            bool? enabled,
 
-            string? maxOldSpaceSize,
+            int? maxOldSpaceSize,
 
-            string? opensearchRequestTimeout)
+            int? opensearchRequestTimeout)
         {
             Enabled = enabled;
             MaxOldSpaceSize = maxOldSpaceSize;

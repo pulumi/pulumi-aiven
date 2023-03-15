@@ -16,17 +16,17 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Opensearch server provided values
         /// </summary>
-        public readonly string? Opensearch;
-        public readonly string? OpensearchDashboards;
-        public readonly string? Prometheus;
+        public readonly bool? Opensearch;
+        public readonly bool? OpensearchDashboards;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult(
-            string? opensearch,
+            bool? opensearch,
 
-            string? opensearchDashboards,
+            bool? opensearchDashboards,
 
-            string? prometheus)
+            bool? prometheus)
         {
             Opensearch = opensearch;
             OpensearchDashboards = opensearchDashboards;

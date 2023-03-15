@@ -4,7 +4,10 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfigDatadogTag;
+import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfigOpensearch;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,102 +17,114 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationDatadogUserConfig {
     /**
-     * @return Enable Datadog Database Monitoring
+     * @return Enable Datadog Database Monitoring.
      * 
      */
-    private @Nullable String datadogDbmEnabled;
+    private @Nullable Boolean datadogDbmEnabled;
     /**
-     * @return Custom tags provided by user
+     * @return Custom tags provided by user.
      * 
      */
     private @Nullable List<ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     private @Nullable List<String> excludeConsumerGroups;
     /**
-     * @return List of topics to exclude
+     * @return List of topics to exclude.
      * 
      */
     private @Nullable List<String> excludeTopics;
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     private @Nullable List<String> includeConsumerGroups;
     /**
-     * @return List of topics to include
+     * @return List of topics to include.
      * 
      */
     private @Nullable List<String> includeTopics;
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     private @Nullable List<String> kafkaCustomMetrics;
     /**
-     * @return Maximum number of JMX metrics to send
+     * @return Maximum number of JMX metrics to send.
      * 
      */
-    private @Nullable String maxJmxMetrics;
+    private @Nullable Integer maxJmxMetrics;
+    /**
+     * @return Datadog Opensearch Options.
+     * 
+     */
+    private @Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch;
 
     private ServiceIntegrationDatadogUserConfig() {}
     /**
-     * @return Enable Datadog Database Monitoring
+     * @return Enable Datadog Database Monitoring.
      * 
      */
-    public Optional<String> datadogDbmEnabled() {
+    public Optional<Boolean> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
     }
     /**
-     * @return Custom tags provided by user
+     * @return Custom tags provided by user.
      * 
      */
     public List<ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags() {
         return this.datadogTags == null ? List.of() : this.datadogTags;
     }
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     public List<String> excludeConsumerGroups() {
         return this.excludeConsumerGroups == null ? List.of() : this.excludeConsumerGroups;
     }
     /**
-     * @return List of topics to exclude
+     * @return List of topics to exclude.
      * 
      */
     public List<String> excludeTopics() {
         return this.excludeTopics == null ? List.of() : this.excludeTopics;
     }
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     public List<String> includeConsumerGroups() {
         return this.includeConsumerGroups == null ? List.of() : this.includeConsumerGroups;
     }
     /**
-     * @return List of topics to include
+     * @return List of topics to include.
      * 
      */
     public List<String> includeTopics() {
         return this.includeTopics == null ? List.of() : this.includeTopics;
     }
     /**
-     * @return List of custom metrics
+     * @return List of custom metrics.
      * 
      */
     public List<String> kafkaCustomMetrics() {
         return this.kafkaCustomMetrics == null ? List.of() : this.kafkaCustomMetrics;
     }
     /**
-     * @return Maximum number of JMX metrics to send
+     * @return Maximum number of JMX metrics to send.
      * 
      */
-    public Optional<String> maxJmxMetrics() {
+    public Optional<Integer> maxJmxMetrics() {
         return Optional.ofNullable(this.maxJmxMetrics);
+    }
+    /**
+     * @return Datadog Opensearch Options.
+     * 
+     */
+    public Optional<ServiceIntegrationDatadogUserConfigOpensearch> opensearch() {
+        return Optional.ofNullable(this.opensearch);
     }
 
     public static Builder builder() {
@@ -121,14 +136,15 @@ public final class ServiceIntegrationDatadogUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String datadogDbmEnabled;
+        private @Nullable Boolean datadogDbmEnabled;
         private @Nullable List<ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable List<String> excludeConsumerGroups;
         private @Nullable List<String> excludeTopics;
         private @Nullable List<String> includeConsumerGroups;
         private @Nullable List<String> includeTopics;
         private @Nullable List<String> kafkaCustomMetrics;
-        private @Nullable String maxJmxMetrics;
+        private @Nullable Integer maxJmxMetrics;
+        private @Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch;
         public Builder() {}
         public Builder(ServiceIntegrationDatadogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -140,10 +156,11 @@ public final class ServiceIntegrationDatadogUserConfig {
     	      this.includeTopics = defaults.includeTopics;
     	      this.kafkaCustomMetrics = defaults.kafkaCustomMetrics;
     	      this.maxJmxMetrics = defaults.maxJmxMetrics;
+    	      this.opensearch = defaults.opensearch;
         }
 
         @CustomType.Setter
-        public Builder datadogDbmEnabled(@Nullable String datadogDbmEnabled) {
+        public Builder datadogDbmEnabled(@Nullable Boolean datadogDbmEnabled) {
             this.datadogDbmEnabled = datadogDbmEnabled;
             return this;
         }
@@ -196,8 +213,13 @@ public final class ServiceIntegrationDatadogUserConfig {
             return kafkaCustomMetrics(List.of(kafkaCustomMetrics));
         }
         @CustomType.Setter
-        public Builder maxJmxMetrics(@Nullable String maxJmxMetrics) {
+        public Builder maxJmxMetrics(@Nullable Integer maxJmxMetrics) {
             this.maxJmxMetrics = maxJmxMetrics;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder opensearch(@Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch) {
+            this.opensearch = opensearch;
             return this;
         }
         public ServiceIntegrationDatadogUserConfig build() {
@@ -210,6 +232,7 @@ public final class ServiceIntegrationDatadogUserConfig {
             o.includeTopics = includeTopics;
             o.kafkaCustomMetrics = kafkaCustomMetrics;
             o.maxJmxMetrics = maxJmxMetrics;
+            o.opensearch = opensearch;
             return o;
         }
     }

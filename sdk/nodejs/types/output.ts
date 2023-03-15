@@ -33,31 +33,33 @@ export interface CassandraCassandra {
 
 export interface CassandraCassandraUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
     /**
-     * cassandra configuration values
+     * cassandra configuration values.
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
     /**
-     * Cassandra major version
+     * Cassandra major version.
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.CassandraCassandraUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
      * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      */
-    migrateSstableloader?: string;
+    migrateSstableloader?: boolean;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
     /**
@@ -65,7 +67,7 @@ export interface CassandraCassandraUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
     /**
@@ -77,28 +79,28 @@ export interface CassandraCassandraUserConfig {
      */
     serviceToJoinWith?: string;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface CassandraCassandraUserConfigCassandra {
-    batchSizeFailThresholdInKb?: string;
-    batchSizeWarnThresholdInKb?: string;
+    batchSizeFailThresholdInKb?: number;
+    batchSizeWarnThresholdInKb?: number;
     datacenter?: string;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
-    prometheus?: string;
+    prometheus?: boolean;
 }
 
 export interface CassandraCassandraUserConfigPublicAccess {
-    prometheus?: string;
+    prometheus?: boolean;
 }
 
 export interface CassandraComponent {
@@ -138,15 +140,17 @@ export interface ClickhouseClickhouse {
 
 export interface ClickhouseClickhouseUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.ClickhouseClickhouseUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
@@ -161,7 +165,7 @@ export interface ClickhouseClickhouseUserConfig {
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface ClickhouseComponent {
@@ -192,7 +196,7 @@ export interface ClickhouseGrantPrivilegeGrant {
      */
     table?: string;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
      */
     withGrant?: boolean;
 }
@@ -267,97 +271,40 @@ export interface FlinkFlink {
 
 export interface FlinkFlinkUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
-     */
-    executionCheckpointingIntervalMs?: string;
-    /**
-     * The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
-     */
-    executionCheckpointingTimeoutMs?: string;
-    /**
-     * Flink major version
+     * Flink major version.
      */
     flinkVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.FlinkFlinkUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
-     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
      */
-    numberOfTaskSlots?: string;
+    numberOfTaskSlots?: number;
     /**
-     * How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
-     */
-    parallelismDefault?: string;
-    /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: outputs.FlinkFlinkUserConfigPrivatelinkAccess;
-    /**
-     * failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
-     */
-    restartStrategy?: string;
-    /**
-     * Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
-     */
-    restartStrategyDelaySec?: string;
-    /**
-     * Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
-     */
-    restartStrategyFailureRateIntervalMin?: string;
-    /**
-     * The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
-     */
-    restartStrategyMaxFailures?: string;
 }
 
 export interface FlinkFlinkUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface FlinkFlinkUserConfigPrivatelinkAccess {
     /**
      * Flink server provided values
      */
-    flink?: string;
-    prometheus?: string;
-}
-
-export interface FlinkJobTableUpsertKafka {
-    /**
-     * Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    keyFields?: string[];
-    /**
-     * Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    keyFormat?: string;
-    /**
-     * Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    scanStartupMode?: string;
-    /**
-     * Topic name This property cannot be changed, doing so forces recreation of the resource.
-     */
-    topic?: string;
-    /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    valueFieldsInclude?: string;
-    /**
-     * Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    valueFormat?: string;
+    flink?: boolean;
+    prometheus?: boolean;
 }
 
 export interface FlinkServiceIntegration {
@@ -401,8 +348,11 @@ export interface GetCassandaCassandraUserConfig {
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilterObjects?: outputs.GetCassandaCassandraUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
-    migrateSstableloader?: string;
+    migrateSstableloader?: boolean;
     privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
@@ -411,26 +361,26 @@ export interface GetCassandaCassandraUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetCassandaCassandraUserConfigCassandra {
-    batchSizeFailThresholdInKb?: string;
-    batchSizeWarnThresholdInKb?: string;
+    batchSizeFailThresholdInKb?: number;
+    batchSizeWarnThresholdInKb?: number;
     datacenter?: string;
 }
 
 export interface GetCassandaCassandraUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetCassandaCassandraUserConfigPrivateAccess {
-    prometheus?: string;
+    prometheus?: boolean;
 }
 
 export interface GetCassandaCassandraUserConfigPublicAccess {
-    prometheus?: string;
+    prometheus?: boolean;
 }
 
 export interface GetCassandaComponent {
@@ -464,8 +414,11 @@ export interface GetCassandraCassandraUserConfig {
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilterObjects?: outputs.GetCassandraCassandraUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
-    migrateSstableloader?: string;
+    migrateSstableloader?: boolean;
     privateAccess?: outputs.GetCassandraCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
@@ -474,26 +427,26 @@ export interface GetCassandraCassandraUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetCassandraCassandraUserConfigCassandra {
-    batchSizeFailThresholdInKb?: string;
-    batchSizeWarnThresholdInKb?: string;
+    batchSizeFailThresholdInKb?: number;
+    batchSizeWarnThresholdInKb?: number;
     datacenter?: string;
 }
 
 export interface GetCassandraCassandraUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetCassandraCassandraUserConfigPrivateAccess {
-    prometheus?: string;
+    prometheus?: boolean;
 }
 
 export interface GetCassandraCassandraUserConfigPublicAccess {
-    prometheus?: string;
+    prometheus?: boolean;
 }
 
 export interface GetCassandraComponent {
@@ -522,6 +475,9 @@ export interface GetClickhouseClickhouse {
 export interface GetClickhouseClickhouseUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetClickhouseClickhouseUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     projectToForkFrom?: string;
     serviceToForkFrom?: string;
@@ -529,7 +485,7 @@ export interface GetClickhouseClickhouseUserConfig {
 
 export interface GetClickhouseClickhouseUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetClickhouseComponent {
@@ -577,32 +533,27 @@ export interface GetFlinkFlink {
 }
 
 export interface GetFlinkFlinkUserConfig {
-    additionalBackupRegions?: string;
-    executionCheckpointingIntervalMs?: string;
-    executionCheckpointingTimeoutMs?: string;
     flinkVersion?: string;
     ipFilterObjects?: outputs.GetFlinkFlinkUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
-    numberOfTaskSlots?: string;
-    parallelismDefault?: string;
+    numberOfTaskSlots?: number;
     privatelinkAccess?: outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
-    restartStrategy?: string;
-    restartStrategyDelaySec?: string;
-    restartStrategyFailureRateIntervalMin?: string;
-    restartStrategyMaxFailures?: string;
 }
 
 export interface GetFlinkFlinkUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
     /**
      * Flink server provided values
      */
-    flink?: string;
-    prometheus?: string;
+    flink?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetFlinkServiceIntegration {
@@ -630,32 +581,35 @@ export interface GetGrafanaGrafana {
 
 export interface GetGrafanaGrafanaUserConfig {
     additionalBackupRegions?: string;
-    alertingEnabled?: string;
+    alertingEnabled?: boolean;
     alertingErrorOrTimeout?: string;
-    alertingMaxAnnotationsToKeep?: string;
+    alertingMaxAnnotationsToKeep?: number;
     alertingNodataOrNullvalues?: string;
-    allowEmbedding?: string;
+    allowEmbedding?: boolean;
     authAzuread?: outputs.GetGrafanaGrafanaUserConfigAuthAzuread;
-    authBasicEnabled?: string;
+    authBasicEnabled?: boolean;
     authGenericOauth?: outputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
     authGithub?: outputs.GetGrafanaGrafanaUserConfigAuthGithub;
     authGitlab?: outputs.GetGrafanaGrafanaUserConfigAuthGitlab;
     authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
     cookieSamesite?: string;
     customDomain?: string;
-    dashboardPreviewsEnabled?: string;
+    dashboardPreviewsEnabled?: boolean;
     dashboardsMinRefreshInterval?: string;
-    dashboardsVersionsToKeep?: string;
-    dataproxySendUserHeader?: string;
-    dataproxyTimeout?: string;
+    dashboardsVersionsToKeep?: number;
+    dataproxySendUserHeader?: boolean;
+    dataproxyTimeout?: number;
     dateFormats?: outputs.GetGrafanaGrafanaUserConfigDateFormats;
-    disableGravatar?: string;
-    editorsCanAdmin?: string;
+    disableGravatar?: boolean;
+    editorsCanAdmin?: boolean;
     externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
     googleAnalyticsUaId?: string;
     ipFilterObjects?: outputs.GetGrafanaGrafanaUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
-    metricsEnabled?: string;
+    metricsEnabled?: boolean;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
@@ -666,58 +620,58 @@ export interface GetGrafanaGrafanaUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
-    userAutoAssignOrg?: string;
+    staticIps?: boolean;
+    userAutoAssignOrg?: boolean;
     userAutoAssignOrgRole?: string;
-    viewersCanEdit?: string;
+    viewersCanEdit?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthAzuread {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedDomains?: string[];
     allowedGroups?: string[];
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    tokenUrl?: string;
+    authUrl: string;
+    clientId: string;
+    clientSecret: string;
+    tokenUrl: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedDomains?: string[];
     allowedOrganizations?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
+    apiUrl: string;
+    authUrl: string;
+    clientId: string;
+    clientSecret: string;
     name?: string;
     scopes?: string[];
-    tokenUrl?: string;
+    tokenUrl: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedOrganizations?: string[];
-    clientId?: string;
-    clientSecret?: string;
-    teamIds?: string[];
+    clientId: string;
+    clientSecret: string;
+    teamIds?: number[];
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGitlab {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedGroups?: string[];
     apiUrl?: string;
     authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
+    clientId: string;
+    clientSecret: string;
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGoogle {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedDomains?: string[];
-    clientId?: string;
-    clientSecret?: string;
+    clientId: string;
+    clientSecret: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigDateFormats {
@@ -732,45 +686,45 @@ export interface GetGrafanaGrafanaUserConfigDateFormats {
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
-    accessKey?: string;
-    bucketUrl?: string;
-    provider?: string;
-    secretKey?: string;
+    accessKey: string;
+    bucketUrl: string;
+    provider: string;
+    secretKey: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
     /**
      * Grafana server provided values
      */
-    grafana?: string;
+    grafana?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivatelinkAccess {
     /**
      * Grafana server provided values
      */
-    grafana?: string;
+    grafana?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
     /**
      * Grafana server provided values
      */
-    grafana?: string;
+    grafana?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigSmtpServer {
-    fromAddress?: string;
+    fromAddress: string;
     fromName?: string;
-    host?: string;
+    host: string;
     password?: string;
-    port?: string;
-    skipVerify?: string;
+    port: number;
+    skipVerify?: boolean;
     starttlsPolicy?: string;
     username?: string;
 }
@@ -807,6 +761,9 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
     ipFilterObjects?: outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
@@ -817,42 +774,42 @@ export interface GetInfluxDbInfluxdbUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
-    logQueriesAfter?: string;
-    maxConnectionLimit?: string;
-    maxRowLimit?: string;
-    maxSelectBuckets?: string;
-    maxSelectPoint?: string;
-    queryTimeout?: string;
+    logQueriesAfter?: number;
+    maxConnectionLimit?: number;
+    maxRowLimit?: number;
+    maxSelectBuckets?: number;
+    maxSelectPoint?: number;
+    queryTimeout?: number;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: string;
+    influxdb?: boolean;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: string;
+    influxdb?: boolean;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: string;
+    influxdb?: boolean;
 }
 
 export interface GetInfluxDbServiceIntegration {
@@ -891,6 +848,9 @@ export interface GetKafkaConnectKafkaConnect {
 export interface GetKafkaConnectKafkaConnectUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     /**
      * Kafka Connect server provided values
@@ -902,52 +862,55 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
+    consumerFetchMaxBytes?: number;
     consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
+    consumerMaxPartitionFetchBytes?: number;
+    consumerMaxPollIntervalMs?: number;
+    consumerMaxPollRecords?: number;
+    offsetFlushIntervalMs?: number;
+    offsetFlushTimeoutMs?: number;
+    producerBatchSize?: number;
+    producerBufferMemory?: number;
     producerCompressionType?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
+    producerLingerMs?: number;
+    producerMaxRequestSize?: number;
+    sessionTimeoutMs?: number;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
     /**
      * Kafka Connect server provided values
      */
-    kafkaConnect?: string;
-    prometheus?: string;
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
-    jolokia?: string;
+    jolokia?: boolean;
     /**
      * Kafka Connect server provided values
      */
-    kafkaConnect?: string;
-    prometheus?: string;
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
     /**
      * Kafka Connect server provided values
      */
-    kafkaConnect?: string;
-    prometheus?: string;
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetKafkaConnectServiceIntegration {
@@ -980,133 +943,148 @@ export interface GetKafkaKafkaUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     ipFilterObjects?: outputs.GetKafkaKafkaUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     /**
      * Kafka server provided values
      */
     kafka?: outputs.GetKafkaKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
-    kafkaConnect?: string;
+    kafkaConnect?: boolean;
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
-    kafkaRest?: string;
+    kafkaRest?: boolean;
+    kafkaRestAuthorization?: boolean;
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
     kafkaVersion?: string;
     privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
-    schemaRegistry?: string;
+    schemaRegistry?: boolean;
     schemaRegistryConfig?: outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetKafkaKafkaUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: string;
+    autoCreateTopicsEnable?: boolean;
     compressionType?: string;
-    connectionsMaxIdleMs?: string;
-    defaultReplicationFactor?: string;
-    groupInitialRebalanceDelayMs?: string;
-    groupMaxSessionTimeoutMs?: string;
-    groupMinSessionTimeoutMs?: string;
-    logCleanerDeleteRetentionMs?: string;
-    logCleanerMaxCompactionLagMs?: string;
-    logCleanerMinCleanableRatio?: string;
-    logCleanerMinCompactionLagMs?: string;
+    connectionsMaxIdleMs?: number;
+    defaultReplicationFactor?: number;
+    groupInitialRebalanceDelayMs?: number;
+    groupMaxSessionTimeoutMs?: number;
+    groupMinSessionTimeoutMs?: number;
+    logCleanerDeleteRetentionMs?: number;
+    logCleanerMaxCompactionLagMs?: number;
+    logCleanerMinCleanableRatio?: number;
+    logCleanerMinCompactionLagMs?: number;
     logCleanupPolicy?: string;
-    logFlushIntervalMessages?: string;
-    logFlushIntervalMs?: string;
-    logIndexIntervalBytes?: string;
-    logIndexSizeMaxBytes?: string;
-    logMessageDownconversionEnable?: string;
-    logMessageTimestampDifferenceMaxMs?: string;
+    logFlushIntervalMessages?: number;
+    logFlushIntervalMs?: number;
+    logIndexIntervalBytes?: number;
+    logIndexSizeMaxBytes?: number;
+    logMessageDownconversionEnable?: boolean;
+    logMessageTimestampDifferenceMaxMs?: number;
     logMessageTimestampType?: string;
-    logPreallocate?: string;
-    logRetentionBytes?: string;
-    logRetentionHours?: string;
-    logRetentionMs?: string;
-    logRollJitterMs?: string;
-    logRollMs?: string;
-    logSegmentBytes?: string;
-    logSegmentDeleteDelayMs?: string;
-    maxConnectionsPerIp?: string;
-    maxIncrementalFetchSessionCacheSlots?: string;
-    messageMaxBytes?: string;
-    minInsyncReplicas?: string;
-    numPartitions?: string;
-    offsetsRetentionMinutes?: string;
-    producerPurgatoryPurgeIntervalRequests?: string;
-    replicaFetchMaxBytes?: string;
-    replicaFetchResponseMaxBytes?: string;
-    socketRequestMaxBytes?: string;
-    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    transactionStateLogSegmentBytes?: string;
+    logPreallocate?: boolean;
+    logRetentionBytes?: number;
+    logRetentionHours?: number;
+    logRetentionMs?: number;
+    logRollJitterMs?: number;
+    logRollMs?: number;
+    logSegmentBytes?: number;
+    logSegmentDeleteDelayMs?: number;
+    maxConnectionsPerIp?: number;
+    maxIncrementalFetchSessionCacheSlots?: number;
+    messageMaxBytes?: number;
+    minInsyncReplicas?: number;
+    numPartitions?: number;
+    offsetsRetentionMinutes?: number;
+    producerPurgatoryPurgeIntervalRequests?: number;
+    replicaFetchMaxBytes?: number;
+    replicaFetchResponseMaxBytes?: number;
+    socketRequestMaxBytes?: number;
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: number;
+    transactionStateLogSegmentBytes?: number;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: string;
-    sasl?: string;
+    certificate?: boolean;
+    sasl?: boolean;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
+    consumerFetchMaxBytes?: number;
     consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
+    consumerMaxPartitionFetchBytes?: number;
+    consumerMaxPollIntervalMs?: number;
+    consumerMaxPollRecords?: number;
+    offsetFlushIntervalMs?: number;
+    offsetFlushTimeoutMs?: number;
+    producerBatchSize?: number;
+    producerBufferMemory?: number;
     producerCompressionType?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
+    producerLingerMs?: number;
+    producerMaxRequestSize?: number;
+    sessionTimeoutMs?: number;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: string;
-    consumerRequestMaxBytes?: string;
-    consumerRequestTimeoutMs?: string;
+    consumerEnableAutoCommit?: boolean;
+    consumerRequestMaxBytes?: number;
+    consumerRequestTimeoutMs?: number;
     producerAcks?: string;
-    producerLingerMs?: string;
-    simpleconsumerPoolSizeMax?: string;
+    producerCompressionType?: string;
+    producerLingerMs?: number;
+    simpleconsumerPoolSizeMax?: number;
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
-    prometheus?: string;
-}
-
-export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
-    jolokia?: string;
     /**
      * Kafka server provided values
      */
-    kafka?: string;
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
+    kafka?: boolean;
+    kafkaConnect?: boolean;
+    kafkaRest?: boolean;
+    prometheus?: boolean;
+    schemaRegistry?: boolean;
+}
+
+export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
+    jolokia?: boolean;
+    /**
+     * Kafka server provided values
+     */
+    kafka?: boolean;
+    kafkaConnect?: boolean;
+    kafkaRest?: boolean;
+    prometheus?: boolean;
+    schemaRegistry?: boolean;
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccess {
     /**
      * Kafka server provided values
      */
-    kafka?: string;
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
+    kafka?: boolean;
+    kafkaConnect?: boolean;
+    kafkaRest?: boolean;
+    prometheus?: boolean;
+    schemaRegistry?: boolean;
 }
 
 export interface GetKafkaKafkaUserConfigSchemaRegistryConfig {
-    leaderEligibility?: string;
+    leaderEligibility?: boolean;
     topicName?: string;
 }
 
@@ -1126,6 +1104,9 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     /**
      * Kafka MirrorMaker 2 server provided values
@@ -1134,25 +1115,25 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    emitCheckpointsEnabled?: string;
-    emitCheckpointsIntervalSeconds?: string;
-    refreshGroupsEnabled?: string;
-    refreshGroupsIntervalSeconds?: string;
-    refreshTopicsEnabled?: string;
-    refreshTopicsIntervalSeconds?: string;
-    syncGroupOffsetsEnabled?: string;
-    syncGroupOffsetsIntervalSeconds?: string;
-    syncTopicConfigsEnabled?: string;
-    tasksMaxPerCpu?: string;
+    emitCheckpointsEnabled?: boolean;
+    emitCheckpointsIntervalSeconds?: number;
+    refreshGroupsEnabled?: boolean;
+    refreshGroupsIntervalSeconds?: number;
+    refreshTopicsEnabled?: boolean;
+    refreshTopicsIntervalSeconds?: number;
+    syncGroupOffsetsEnabled?: boolean;
+    syncGroupOffsetsIntervalSeconds?: number;
+    syncTopicConfigsEnabled?: boolean;
+    tasksMaxPerCpu?: number;
 }
 
 export interface GetKafkaMirrorMakerServiceIntegration {
@@ -1185,21 +1166,21 @@ export interface GetKafkaTopicConfig {
     indexIntervalBytes?: string;
     maxCompactionLagMs?: string;
     maxMessageBytes?: string;
-    messageDownconversionEnable?: string;
+    messageDownconversionEnable?: boolean;
     messageFormatVersion?: string;
     messageTimestampDifferenceMaxMs?: string;
     messageTimestampType?: string;
-    minCleanableDirtyRatio?: string;
+    minCleanableDirtyRatio?: number;
     minCompactionLagMs?: string;
     minInsyncReplicas?: string;
-    preallocate?: string;
+    preallocate?: boolean;
     retentionBytes?: string;
     retentionMs?: string;
     segmentBytes?: string;
     segmentIndexBytes?: string;
     segmentJitterMs?: string;
     segmentMs?: string;
-    uncleanLeaderElectionEnable?: string;
+    uncleanLeaderElectionEnable?: boolean;
 }
 
 export interface GetKafkaTopicTag {
@@ -1223,18 +1204,24 @@ export interface GetM3AggregatorM3aggregator {
 export interface GetM3AggregatorM3aggregatorUserConfig {
     customDomain?: string;
     ipFilterObjects?: outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     m3Version?: string;
     m3aggregatorVersion?: string;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetM3AggregatorM3aggregatorUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetM3AggregatorServiceIntegration {
@@ -1264,11 +1251,20 @@ export interface GetM3DbM3dbUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     ipFilterObjects?: outputs.GetM3DbM3dbUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     limits?: outputs.GetM3DbM3dbUserConfigLimits;
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     m3Version?: string;
-    m3coordinatorEnableGraphiteCarbonIngest?: string;
+    m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     m3dbVersion?: string;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     */
     namespaces?: outputs.GetM3DbM3dbUserConfigNamespace[];
     privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
     projectToForkFrom?: string;
@@ -1278,34 +1274,34 @@ export interface GetM3DbM3dbUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetM3DbM3dbUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetM3DbM3dbUserConfigLimits {
-    maxRecentlyQueriedSeriesBlocks?: string;
-    maxRecentlyQueriedSeriesDiskBytesRead?: string;
+    maxRecentlyQueriedSeriesBlocks?: number;
+    maxRecentlyQueriedSeriesDiskBytesRead?: number;
     maxRecentlyQueriedSeriesLookback?: string;
-    queryDocs?: string;
-    queryRequireExhaustive?: string;
-    querySeries?: string;
+    queryDocs?: number;
+    queryRequireExhaustive?: boolean;
+    querySeries?: number;
 }
 
 export interface GetM3DbM3dbUserConfigNamespace {
-    name?: string;
+    name: string;
     options?: outputs.GetM3DbM3dbUserConfigNamespaceOptions;
     resolution?: string;
-    type?: string;
+    type: string;
 }
 
 export interface GetM3DbM3dbUserConfigNamespaceOptions {
     retentionOptions?: outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
-    snapshotEnabled?: string;
-    writesToCommitlog?: string;
+    snapshotEnabled?: boolean;
+    writesToCommitlog?: boolean;
 }
 
 export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
@@ -1317,11 +1313,11 @@ export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
 }
 
 export interface GetM3DbM3dbUserConfigPrivateAccess {
-    m3coordinator?: string;
+    m3coordinator?: boolean;
 }
 
 export interface GetM3DbM3dbUserConfigPublicAccess {
-    m3coordinator?: string;
+    m3coordinator?: boolean;
 }
 
 export interface GetM3DbM3dbUserConfigRules {
@@ -1330,9 +1326,12 @@ export interface GetM3DbM3dbUserConfigRules {
 
 export interface GetM3DbM3dbUserConfigRulesMapping {
     aggregations?: string[];
-    drop?: string;
-    filter?: string;
+    drop?: boolean;
+    filter: string;
     name?: string;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     */
     namespaces?: string[];
     namespacesObjects?: outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObject[];
     tags?: outputs.GetM3DbM3dbUserConfigRulesMappingTag[];
@@ -1344,8 +1343,8 @@ export interface GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
 }
 
 export interface GetM3DbM3dbUserConfigRulesMappingTag {
-    name?: string;
-    value?: string;
+    name: string;
+    value: string;
 }
 
 export interface GetM3DbServiceIntegration {
@@ -1375,10 +1374,13 @@ export interface GetMySqlMysqlUserConfig {
     additionalBackupRegions?: string;
     adminPassword?: string;
     adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    binlogRetentionPeriod?: string;
+    backupHour?: number;
+    backupMinute?: number;
+    binlogRetentionPeriod?: number;
     ipFilterObjects?: outputs.GetMySqlMysqlUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     migration?: outputs.GetMySqlMysqlUserConfigMigration;
     /**
@@ -1395,83 +1397,83 @@ export interface GetMySqlMysqlUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetMySqlMysqlUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetMySqlMysqlUserConfigMigration {
     dbname?: string;
-    host?: string;
+    host: string;
     ignoreDbs?: string;
     method?: string;
     password?: string;
-    port?: string;
-    ssl?: string;
+    port: number;
+    ssl?: boolean;
     username?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMysql {
-    connectTimeout?: string;
+    connectTimeout?: number;
     defaultTimeZone?: string;
-    groupConcatMaxLen?: string;
-    informationSchemaStatsExpiry?: string;
-    innodbChangeBufferMaxSize?: string;
-    innodbFlushNeighbors?: string;
-    innodbFtMinTokenSize?: string;
+    groupConcatMaxLen?: number;
+    informationSchemaStatsExpiry?: number;
+    innodbChangeBufferMaxSize?: number;
+    innodbFlushNeighbors?: number;
+    innodbFtMinTokenSize?: number;
     innodbFtServerStopwordTable?: string;
-    innodbLockWaitTimeout?: string;
-    innodbLogBufferSize?: string;
-    innodbOnlineAlterLogMaxSize?: string;
-    innodbPrintAllDeadlocks?: string;
-    innodbReadIoThreads?: string;
-    innodbRollbackOnTimeout?: string;
-    innodbThreadConcurrency?: string;
-    innodbWriteIoThreads?: string;
-    interactiveTimeout?: string;
+    innodbLockWaitTimeout?: number;
+    innodbLogBufferSize?: number;
+    innodbOnlineAlterLogMaxSize?: number;
+    innodbPrintAllDeadlocks?: boolean;
+    innodbReadIoThreads?: number;
+    innodbRollbackOnTimeout?: boolean;
+    innodbThreadConcurrency?: number;
+    innodbWriteIoThreads?: number;
+    interactiveTimeout?: number;
     internalTmpMemStorageEngine?: string;
-    longQueryTime?: string;
-    maxAllowedPacket?: string;
-    maxHeapTableSize?: string;
-    netBufferLength?: string;
-    netReadTimeout?: string;
-    netWriteTimeout?: string;
-    slowQueryLog?: string;
-    sortBufferSize?: string;
+    longQueryTime?: number;
+    maxAllowedPacket?: number;
+    maxHeapTableSize?: number;
+    netBufferLength?: number;
+    netReadTimeout?: number;
+    netWriteTimeout?: number;
+    slowQueryLog?: boolean;
+    sortBufferSize?: number;
     sqlMode?: string;
-    sqlRequirePrimaryKey?: string;
-    tmpTableSize?: string;
-    waitTimeout?: string;
+    sqlRequirePrimaryKey?: boolean;
+    tmpTableSize?: number;
+    waitTimeout?: number;
 }
 
 export interface GetMySqlMysqlUserConfigPrivateAccess {
     /**
      * MySQL specific server provided values
      */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
+    mysql?: boolean;
+    mysqlx?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
     /**
      * MySQL specific server provided values
      */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
+    mysql?: boolean;
+    mysqlx?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
     /**
      * MySQL specific server provided values
      */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
+    mysql?: boolean;
+    mysqlx?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetMySqlServiceIntegration {
@@ -1502,18 +1504,21 @@ export interface GetOpenSearchOpensearchUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     /**
-     * @deprecated DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * @deprecated Usage of this field is discouraged.
      */
-    disableReplicationFactorAdjustment?: string;
+    disableReplicationFactorAdjustment?: boolean;
     indexPatterns?: outputs.GetOpenSearchOpensearchUserConfigIndexPattern[];
     indexTemplate?: outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
     ipFilterObjects?: outputs.GetOpenSearchOpensearchUserConfigIpFilterObject[];
-    ipFilters?: string[];
-    keepIndexRefreshInterval?: string;
     /**
-     * @deprecated DEPRECATED: use index_patterns instead
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
-    maxIndexCount?: string;
+    ipFilters?: string[];
+    keepIndexRefreshInterval?: boolean;
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
+    maxIndexCount?: number;
     /**
      * Opensearch server provided values
      */
@@ -1529,91 +1534,91 @@ export interface GetOpenSearchOpensearchUserConfig {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
+    maxIndexCount: number;
+    pattern: string;
     sortingAlgorithm?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
+    mappingNestedObjectsLimit?: number;
+    numberOfReplicas?: number;
+    numberOfShards?: number;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    clusterRoutingAllocationNodeConcurrentRecoveries?: string;
+    actionAutoCreateIndexEnabled?: boolean;
+    actionDestructiveRequiresName?: boolean;
+    clusterMaxShardsPerNode?: number;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: number;
     emailSenderName?: string;
     emailSenderPassword?: string;
     emailSenderUsername?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    indicesRecoveryMaxBytesPerSec?: string;
-    indicesRecoveryMaxConcurrentFileChunks?: string;
-    overrideMainResponseVersion?: string;
+    httpMaxContentLength?: number;
+    httpMaxHeaderSize?: number;
+    httpMaxInitialLineLength?: number;
+    indicesFielddataCacheSize?: number;
+    indicesMemoryIndexBufferSize?: number;
+    indicesQueriesCacheSize?: number;
+    indicesQueryBoolMaxClauseCount?: number;
+    indicesRecoveryMaxBytesPerSec?: number;
+    indicesRecoveryMaxConcurrentFileChunks?: number;
+    overrideMainResponseVersion?: boolean;
     reindexRemoteWhitelists?: string[];
     scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
+    searchMaxBuckets?: number;
+    threadPoolAnalyzeQueueSize?: number;
+    threadPoolAnalyzeSize?: number;
+    threadPoolForceMergeSize?: number;
+    threadPoolGetQueueSize?: number;
+    threadPoolGetSize?: number;
+    threadPoolSearchQueueSize?: number;
+    threadPoolSearchSize?: number;
+    threadPoolSearchThrottledQueueSize?: number;
+    threadPoolSearchThrottledSize?: number;
+    threadPoolWriteQueueSize?: number;
+    threadPoolWriteSize?: number;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
-    enabled?: string;
-    maxOldSpaceSize?: string;
-    opensearchRequestTimeout?: string;
+    enabled?: boolean;
+    maxOldSpaceSize?: number;
+    opensearchRequestTimeout?: number;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
+    opensearch?: boolean;
+    opensearchDashboards?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
+    opensearch?: boolean;
+    opensearchDashboards?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
+    opensearch?: boolean;
+    opensearchDashboards?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetOpenSearchServiceIntegration {
@@ -1652,10 +1657,13 @@ export interface GetPgPgUserConfig {
     additionalBackupRegions?: string;
     adminPassword?: string;
     adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    enableIpv6?: string;
+    backupHour?: number;
+    backupMinute?: number;
+    enableIpv6?: boolean;
     ipFilterObjects?: outputs.GetPgPgUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     migration?: outputs.GetPgPgUserConfigMigration;
     /**
@@ -1663,11 +1671,14 @@ export interface GetPgPgUserConfig {
      */
     pg?: outputs.GetPgPgUserConfigPg;
     /**
-     * @deprecated This setting is deprecated. Use read_replica service integration instead.
+     * @deprecated Usage of this field is discouraged.
      */
-    pgReadReplica?: string;
+    pgReadReplica?: boolean;
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     pgServiceToForkFrom?: string;
-    pgStatMonitorEnable?: string;
+    pgStatMonitorEnable?: boolean;
     pgVersion?: string;
     pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
     pglookout?: outputs.GetPgPgUserConfigPglookout;
@@ -1677,128 +1688,130 @@ export interface GetPgPgUserConfig {
     publicAccess?: outputs.GetPgPgUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
-    sharedBuffersPercentage?: string;
+    sharedBuffersPercentage?: number;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
     synchronousReplication?: string;
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
     variant?: string;
-    workMem?: string;
+    workMem?: number;
 }
 
 export interface GetPgPgUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetPgPgUserConfigMigration {
     dbname?: string;
-    host?: string;
+    host: string;
     ignoreDbs?: string;
     method?: string;
     password?: string;
-    port?: string;
-    ssl?: string;
+    port: number;
+    ssl?: boolean;
     username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: string;
-    autovacuumAnalyzeThreshold?: string;
-    autovacuumFreezeMaxAge?: string;
-    autovacuumMaxWorkers?: string;
-    autovacuumNaptime?: string;
-    autovacuumVacuumCostDelay?: string;
-    autovacuumVacuumCostLimit?: string;
-    autovacuumVacuumScaleFactor?: string;
-    autovacuumVacuumThreshold?: string;
-    bgwriterDelay?: string;
-    bgwriterFlushAfter?: string;
-    bgwriterLruMaxpages?: string;
-    bgwriterLruMultiplier?: string;
-    deadlockTimeout?: string;
+    autovacuumAnalyzeScaleFactor?: number;
+    autovacuumAnalyzeThreshold?: number;
+    autovacuumFreezeMaxAge?: number;
+    autovacuumMaxWorkers?: number;
+    autovacuumNaptime?: number;
+    autovacuumVacuumCostDelay?: number;
+    autovacuumVacuumCostLimit?: number;
+    autovacuumVacuumScaleFactor?: number;
+    autovacuumVacuumThreshold?: number;
+    bgwriterDelay?: number;
+    bgwriterFlushAfter?: number;
+    bgwriterLruMaxpages?: number;
+    bgwriterLruMultiplier?: number;
+    deadlockTimeout?: number;
     defaultToastCompression?: string;
-    idleInTransactionSessionTimeout?: string;
-    jit?: string;
-    logAutovacuumMinDuration?: string;
+    idleInTransactionSessionTimeout?: number;
+    jit?: boolean;
+    logAutovacuumMinDuration?: number;
     logErrorVerbosity?: string;
     logLinePrefix?: string;
-    logMinDurationStatement?: string;
-    logTempFiles?: string;
-    maxFilesPerProcess?: string;
-    maxLocksPerTransaction?: string;
-    maxLogicalReplicationWorkers?: string;
-    maxParallelWorkers?: string;
-    maxParallelWorkersPerGather?: string;
-    maxPredLocksPerTransaction?: string;
-    maxPreparedTransactions?: string;
-    maxReplicationSlots?: string;
-    maxSlotWalKeepSize?: string;
-    maxStackDepth?: string;
-    maxStandbyArchiveDelay?: string;
-    maxStandbyStreamingDelay?: string;
-    maxWalSenders?: string;
-    maxWorkerProcesses?: string;
-    pgPartmanBgwDotInterval?: string;
+    logMinDurationStatement?: number;
+    logTempFiles?: number;
+    maxFilesPerProcess?: number;
+    maxLocksPerTransaction?: number;
+    maxLogicalReplicationWorkers?: number;
+    maxParallelWorkers?: number;
+    maxParallelWorkersPerGather?: number;
+    maxPredLocksPerTransaction?: number;
+    maxPreparedTransactions?: number;
+    maxReplicationSlots?: number;
+    maxSlotWalKeepSize?: number;
+    maxStackDepth?: number;
+    maxStandbyArchiveDelay?: number;
+    maxStandbyStreamingDelay?: number;
+    maxWalSenders?: number;
+    maxWorkerProcesses?: number;
+    pgPartmanBgwDotInterval?: number;
     pgPartmanBgwDotRole?: string;
+    pgStatMonitorDotPgsmEnableQueryPlan?: boolean;
+    pgStatMonitorDotPgsmMaxBuckets?: number;
     pgStatStatementsDotTrack?: string;
-    tempFileLimit?: string;
+    tempFileLimit?: number;
     timezone?: string;
-    trackActivityQuerySize?: string;
+    trackActivityQuerySize?: number;
     trackCommitTimestamp?: string;
     trackFunctions?: string;
     trackIoTiming?: string;
-    walSenderTimeout?: string;
-    walWriterDelay?: string;
+    walSenderTimeout?: number;
+    walWriterDelay?: number;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
-    autodbIdleTimeout?: string;
-    autodbMaxDbConnections?: string;
+    autodbIdleTimeout?: number;
+    autodbMaxDbConnections?: number;
     autodbPoolMode?: string;
-    autodbPoolSize?: string;
+    autodbPoolSize?: number;
     ignoreStartupParameters?: string[];
-    minPoolSize?: string;
-    serverIdleTimeout?: string;
-    serverLifetime?: string;
-    serverResetQueryAlways?: string;
+    minPoolSize?: number;
+    serverIdleTimeout?: number;
+    serverLifetime?: number;
+    serverResetQueryAlways?: boolean;
 }
 
 export interface GetPgPgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: string;
+    maxFailoverReplicationTimeLag?: number;
 }
 
 export interface GetPgPgUserConfigPrivateAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
+    pg?: boolean;
+    pgbouncer?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetPgPgUserConfigPrivatelinkAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
+    pg?: boolean;
+    pgbouncer?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
+    pg?: boolean;
+    pgbouncer?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetPgPgUserConfigTimescaledb {
-    maxBackgroundWorkers?: string;
+    maxBackgroundWorkers?: number;
 }
 
 export interface GetPgServiceIntegration {
@@ -1832,6 +1845,9 @@ export interface GetRedisRedi {
 export interface GetRedisRedisUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetRedisRedisUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     migration?: outputs.GetRedisRedisUserConfigMigration;
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
@@ -1840,61 +1856,61 @@ export interface GetRedisRedisUserConfig {
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     redisAclChannelsDefault?: string;
-    redisIoThreads?: string;
-    redisLfuDecayTime?: string;
-    redisLfuLogFactor?: string;
+    redisIoThreads?: number;
+    redisLfuDecayTime?: number;
+    redisLfuLogFactor?: number;
     redisMaxmemoryPolicy?: string;
     redisNotifyKeyspaceEvents?: string;
-    redisNumberOfDatabases?: string;
+    redisNumberOfDatabases?: number;
     redisPersistence?: string;
-    redisPubsubClientOutputBufferLimit?: string;
-    redisSsl?: string;
-    redisTimeout?: string;
+    redisPubsubClientOutputBufferLimit?: number;
+    redisSsl?: boolean;
+    redisTimeout?: number;
     serviceToForkFrom?: string;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface GetRedisRedisUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
     dbname?: string;
-    host?: string;
+    host: string;
     ignoreDbs?: string;
     method?: string;
     password?: string;
-    port?: string;
-    ssl?: string;
+    port: number;
+    ssl?: boolean;
     username?: string;
 }
 
 export interface GetRedisRedisUserConfigPrivateAccess {
-    prometheus?: string;
+    prometheus?: boolean;
     /**
      * Redis server provided values
      */
-    redis?: string;
+    redis?: boolean;
 }
 
 export interface GetRedisRedisUserConfigPrivatelinkAccess {
-    prometheus?: string;
+    prometheus?: boolean;
     /**
      * Redis server provided values
      */
-    redis?: string;
+    redis?: boolean;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
-    prometheus?: string;
+    prometheus?: boolean;
     /**
      * Redis server provided values
      */
-    redis?: string;
+    redis?: boolean;
 }
 
 export interface GetRedisServiceIntegration {
@@ -1913,19 +1929,19 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
     columns?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
-    dataFormat?: string;
-    groupName?: string;
-    name?: string;
+    dataFormat: string;
+    groupName: string;
+    name: string;
     topics?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
-    name?: string;
-    type?: string;
+    name: string;
+    type: string;
 }
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
-    name?: string;
+    name: string;
 }
 
 export interface GetServiceIntegrationClickhousePostgresqlUserConfig {
@@ -1938,34 +1954,41 @@ export interface GetServiceIntegrationClickhousePostgresqlUserConfigDatabase {
 }
 
 export interface GetServiceIntegrationDatadogUserConfig {
-    datadogDbmEnabled?: string;
+    datadogDbmEnabled?: boolean;
     datadogTags?: outputs.GetServiceIntegrationDatadogUserConfigDatadogTag[];
     excludeConsumerGroups?: string[];
     excludeTopics?: string[];
     includeConsumerGroups?: string[];
     includeTopics?: string[];
     kafkaCustomMetrics?: string[];
-    maxJmxMetrics?: string;
+    maxJmxMetrics?: number;
+    opensearch?: outputs.GetServiceIntegrationDatadogUserConfigOpensearch;
 }
 
 export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
     comment?: string;
-    tag?: string;
+    tag: string;
+}
+
+export interface GetServiceIntegrationDatadogUserConfigOpensearch {
+    indexStatsEnabled?: boolean;
+    pendingTaskStatsEnabled?: boolean;
+    pshardStatsEnabled?: boolean;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: string;
     datadogTags?: outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
-    disableConsumerStats?: string;
-    kafkaConsumerCheckInstances?: string;
-    kafkaConsumerStatsTimeout?: string;
-    maxPartitionContexts?: string;
+    disableConsumerStats?: boolean;
+    kafkaConsumerCheckInstances?: number;
+    kafkaConsumerStatsTimeout?: number;
+    maxPartitionContexts?: number;
     site?: string;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     comment?: string;
-    tag?: string;
+    tag: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
@@ -1984,9 +2007,9 @@ export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCo
 
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: string;
-    indexDaysMax?: string;
+    indexDaysMax?: number;
     indexPrefix?: string;
-    timeout?: string;
+    timeout?: number;
     url?: string;
 }
 
@@ -2010,9 +2033,9 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
 
 export interface GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     ca?: string;
-    indexDaysMax?: string;
+    indexDaysMax?: number;
     indexPrefix?: string;
-    timeout?: string;
+    timeout?: number;
     url?: string;
 }
 
@@ -2039,10 +2062,10 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     format?: string;
     key?: string;
     logline?: string;
-    port?: string;
+    port?: number;
     sd?: string;
     server?: string;
-    tls?: string;
+    tls?: boolean;
 }
 
 export interface GetServiceIntegrationEndpointSignalfxUserConfig {
@@ -2057,13 +2080,13 @@ export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
-    field?: string;
-    metric?: string;
+    field: string;
+    metric: string;
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
-    field?: string;
-    metric?: string;
+    field: string;
+    metric: string;
 }
 
 export interface GetServiceIntegrationKafkaConnectUserConfig {
@@ -2087,21 +2110,21 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
 }
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
-    consumerFetchMinBytes?: string;
-    producerBatchSize?: string;
-    producerBufferMemory?: string;
-    producerLingerMs?: string;
-    producerMaxRequestSize?: string;
+    consumerFetchMinBytes?: number;
+    producerBatchSize?: number;
+    producerBufferMemory?: number;
+    producerLingerMs?: number;
+    producerMaxRequestSize?: number;
 }
 
 export interface GetServiceIntegrationLogsUserConfig {
-    elasticsearchIndexDaysMax?: string;
+    elasticsearchIndexDaysMax?: number;
     elasticsearchIndexPrefix?: string;
 }
 
 export interface GetServiceIntegrationMetricsUserConfig {
     database?: string;
-    retentionDays?: string;
+    retentionDays?: number;
     roUsername?: string;
     sourceMysql?: outputs.GetServiceIntegrationMetricsUserConfigSourceMysql;
     username?: string;
@@ -2112,24 +2135,20 @@ export interface GetServiceIntegrationMetricsUserConfigSourceMysql {
 }
 
 export interface GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
-    gatherEventWaits?: string;
-    gatherFileEventsStats?: string;
-    gatherIndexIoWaits?: string;
-    gatherInfoSchemaAutoInc?: string;
-    gatherInnodbMetrics?: string;
-    gatherPerfEventsStatements?: string;
-    gatherProcessList?: string;
-    gatherSlaveStatus?: string;
-    gatherTableIoWaits?: string;
-    gatherTableLockWaits?: string;
-    gatherTableSchema?: string;
-    perfEventsStatementsDigestTextLimit?: string;
-    perfEventsStatementsLimit?: string;
-    perfEventsStatementsTimeLimit?: string;
-}
-
-export interface GetServiceIntegrationMirrormakerUserConfig {
-    mirrormakerWhitelist?: string;
+    gatherEventWaits?: boolean;
+    gatherFileEventsStats?: boolean;
+    gatherIndexIoWaits?: boolean;
+    gatherInfoSchemaAutoInc?: boolean;
+    gatherInnodbMetrics?: boolean;
+    gatherPerfEventsStatements?: boolean;
+    gatherProcessList?: boolean;
+    gatherSlaveStatus?: boolean;
+    gatherTableIoWaits?: boolean;
+    gatherTableLockWaits?: boolean;
+    gatherTableSchema?: boolean;
+    perfEventsStatementsDigestTextLimit?: number;
+    perfEventsStatementsLimit?: number;
+    perfEventsStatementsTimeLimit?: number;
 }
 
 export interface GrafanaComponent {
@@ -2147,32 +2166,35 @@ export interface GrafanaGrafana {
 
 export interface GrafanaGrafanaUserConfig {
     additionalBackupRegions?: string;
-    alertingEnabled?: string;
+    alertingEnabled?: boolean;
     alertingErrorOrTimeout?: string;
-    alertingMaxAnnotationsToKeep?: string;
+    alertingMaxAnnotationsToKeep?: number;
     alertingNodataOrNullvalues?: string;
-    allowEmbedding?: string;
+    allowEmbedding?: boolean;
     authAzuread?: outputs.GrafanaGrafanaUserConfigAuthAzuread;
-    authBasicEnabled?: string;
+    authBasicEnabled?: boolean;
     authGenericOauth?: outputs.GrafanaGrafanaUserConfigAuthGenericOauth;
     authGithub?: outputs.GrafanaGrafanaUserConfigAuthGithub;
     authGitlab?: outputs.GrafanaGrafanaUserConfigAuthGitlab;
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
     cookieSamesite?: string;
     customDomain?: string;
-    dashboardPreviewsEnabled?: string;
+    dashboardPreviewsEnabled?: boolean;
     dashboardsMinRefreshInterval?: string;
-    dashboardsVersionsToKeep?: string;
-    dataproxySendUserHeader?: string;
-    dataproxyTimeout?: string;
+    dashboardsVersionsToKeep?: number;
+    dataproxySendUserHeader?: boolean;
+    dataproxyTimeout?: number;
     dateFormats?: outputs.GrafanaGrafanaUserConfigDateFormats;
-    disableGravatar?: string;
-    editorsCanAdmin?: string;
+    disableGravatar?: boolean;
+    editorsCanAdmin?: boolean;
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
     googleAnalyticsUaId?: string;
     ipFilterObjects?: outputs.GrafanaGrafanaUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
-    metricsEnabled?: string;
+    metricsEnabled?: boolean;
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
@@ -2180,58 +2202,58 @@ export interface GrafanaGrafanaUserConfig {
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
     smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
-    staticIps?: string;
-    userAutoAssignOrg?: string;
+    staticIps?: boolean;
+    userAutoAssignOrg?: boolean;
     userAutoAssignOrgRole?: string;
-    viewersCanEdit?: string;
+    viewersCanEdit?: boolean;
 }
 
 export interface GrafanaGrafanaUserConfigAuthAzuread {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedDomains?: string[];
     allowedGroups?: string[];
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    tokenUrl?: string;
+    authUrl: string;
+    clientId: string;
+    clientSecret: string;
+    tokenUrl: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGenericOauth {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedDomains?: string[];
     allowedOrganizations?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
+    apiUrl: string;
+    authUrl: string;
+    clientId: string;
+    clientSecret: string;
     name?: string;
     scopes?: string[];
-    tokenUrl?: string;
+    tokenUrl: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedOrganizations?: string[];
-    clientId?: string;
-    clientSecret?: string;
-    teamIds?: string[];
+    clientId: string;
+    clientSecret: string;
+    teamIds?: number[];
 }
 
 export interface GrafanaGrafanaUserConfigAuthGitlab {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedGroups?: string[];
     apiUrl?: string;
     authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
+    clientId: string;
+    clientSecret: string;
     tokenUrl?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGoogle {
-    allowSignUp?: string;
+    allowSignUp?: boolean;
     allowedDomains?: string[];
-    clientId?: string;
-    clientSecret?: string;
+    clientId: string;
+    clientSecret: string;
 }
 
 export interface GrafanaGrafanaUserConfigDateFormats {
@@ -2246,36 +2268,36 @@ export interface GrafanaGrafanaUserConfigDateFormats {
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
-    accessKey?: string;
-    bucketUrl?: string;
-    provider?: string;
-    secretKey?: string;
+    accessKey: string;
+    bucketUrl: string;
+    provider: string;
+    secretKey: string;
 }
 
 export interface GrafanaGrafanaUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface GrafanaGrafanaUserConfigPrivateAccess {
-    grafana?: string;
+    grafana?: boolean;
 }
 
 export interface GrafanaGrafanaUserConfigPrivatelinkAccess {
-    grafana?: string;
+    grafana?: boolean;
 }
 
 export interface GrafanaGrafanaUserConfigPublicAccess {
-    grafana?: string;
+    grafana?: boolean;
 }
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
-    fromAddress?: string;
+    fromAddress: string;
     fromName?: string;
-    host?: string;
+    host: string;
     password?: string;
-    port?: string;
-    skipVerify?: string;
+    port: number;
+    skipVerify?: boolean;
     starttlsPolicy?: string;
     username?: string;
 }
@@ -2306,31 +2328,33 @@ export interface InfluxDbInfluxdb {
 
 export interface InfluxDbInfluxdbUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
     customDomain?: string;
     /**
-     * influxdb.conf configuration values
+     * influxdb.conf configuration values.
      */
     influxdb?: outputs.InfluxDbInfluxdbUserConfigInfluxdb;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.InfluxDbInfluxdbUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
     /**
@@ -2338,11 +2362,11 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service
+     * Name of the basebackup to restore in forked service.
      */
     recoveryBasebackupName?: string;
     /**
@@ -2350,44 +2374,44 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     serviceToForkFrom?: string;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigInfluxdb {
-    logQueriesAfter?: string;
-    maxConnectionLimit?: string;
-    maxRowLimit?: string;
-    maxSelectBuckets?: string;
-    maxSelectPoint?: string;
-    queryTimeout?: string;
+    logQueriesAfter?: number;
+    maxConnectionLimit?: number;
+    maxRowLimit?: number;
+    maxSelectBuckets?: number;
+    maxSelectPoint?: number;
+    queryTimeout?: number;
 }
 
 export interface InfluxDbInfluxdbUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: string;
+    influxdb?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: string;
+    influxdb?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: string;
+    influxdb?: boolean;
 }
 
 export interface InfluxDbServiceIntegration {
@@ -2438,48 +2462,54 @@ export interface KafkaConnectKafkaConnect {
 export interface KafkaConnectKafkaConnectUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
     privatelinkAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
+    consumerFetchMaxBytes?: number;
     consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
+    consumerMaxPartitionFetchBytes?: number;
+    consumerMaxPollIntervalMs?: number;
+    consumerMaxPollRecords?: number;
+    offsetFlushIntervalMs?: number;
+    offsetFlushTimeoutMs?: number;
+    producerBatchSize?: number;
+    producerBufferMemory?: number;
     producerCompressionType?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
+    producerLingerMs?: number;
+    producerMaxRequestSize?: number;
+    sessionTimeoutMs?: number;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
-    kafkaConnect?: string;
-    prometheus?: string;
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
-    jolokia?: string;
-    kafkaConnect?: string;
-    prometheus?: string;
+    jolokia?: boolean;
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
-    kafkaConnect?: string;
-    prometheus?: string;
+    kafkaConnect?: boolean;
+    prometheus?: boolean;
 }
 
 export interface KafkaConnectServiceIntegration {
@@ -2525,180 +2555,197 @@ export interface KafkaKafka {
 
 export interface KafkaKafkaUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.KafkaKafkaUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka broker configuration values
+     * Kafka broker configuration values.
      */
     kafka?: outputs.KafkaKafkaUserConfigKafka;
     /**
-     * Kafka authentication methods
+     * Kafka authentication methods.
      */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
-     * Enable Kafka Connect service
+     * Enable Kafka Connect service. The default value is `false`.
      */
-    kafkaConnect?: string;
+    kafkaConnect?: boolean;
     /**
-     * Kafka Connect configuration values
+     * Kafka Connect configuration values.
      */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
     /**
-     * Enable Kafka-REST service
+     * Enable Kafka-REST service. The default value is `false`.
      */
-    kafkaRest?: string;
+    kafkaRest?: boolean;
     /**
-     * Kafka REST configuration
+     * Enable authorization in Kafka-REST service.
+     */
+    kafkaRestAuthorization?: boolean;
+    /**
+     * Kafka REST configuration.
      */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
     /**
-     * Kafka major version
+     * Kafka major version.
      */
     kafkaVersion?: string;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: outputs.KafkaKafkaUserConfigPrivatelinkAccess;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
     /**
-     * Enable Schema-Registry service
+     * Enable Schema-Registry service. The default value is `false`.
      */
-    schemaRegistry?: string;
+    schemaRegistry?: boolean;
     /**
-     * Schema Registry configuration
+     * Schema Registry configuration.
      */
     schemaRegistryConfig?: outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface KafkaKafkaUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface KafkaKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: string;
+    autoCreateTopicsEnable?: boolean;
     compressionType?: string;
-    connectionsMaxIdleMs?: string;
-    defaultReplicationFactor?: string;
-    groupInitialRebalanceDelayMs?: string;
-    groupMaxSessionTimeoutMs?: string;
-    groupMinSessionTimeoutMs?: string;
-    logCleanerDeleteRetentionMs?: string;
-    logCleanerMaxCompactionLagMs?: string;
-    logCleanerMinCleanableRatio?: string;
-    logCleanerMinCompactionLagMs?: string;
+    connectionsMaxIdleMs?: number;
+    defaultReplicationFactor?: number;
+    groupInitialRebalanceDelayMs?: number;
+    groupMaxSessionTimeoutMs?: number;
+    groupMinSessionTimeoutMs?: number;
+    logCleanerDeleteRetentionMs?: number;
+    logCleanerMaxCompactionLagMs?: number;
+    logCleanerMinCleanableRatio?: number;
+    logCleanerMinCompactionLagMs?: number;
     logCleanupPolicy?: string;
-    logFlushIntervalMessages?: string;
-    logFlushIntervalMs?: string;
-    logIndexIntervalBytes?: string;
-    logIndexSizeMaxBytes?: string;
-    logMessageDownconversionEnable?: string;
-    logMessageTimestampDifferenceMaxMs?: string;
+    logFlushIntervalMessages?: number;
+    logFlushIntervalMs?: number;
+    logIndexIntervalBytes?: number;
+    logIndexSizeMaxBytes?: number;
+    logMessageDownconversionEnable?: boolean;
+    logMessageTimestampDifferenceMaxMs?: number;
     logMessageTimestampType?: string;
-    logPreallocate?: string;
-    logRetentionBytes?: string;
-    logRetentionHours?: string;
-    logRetentionMs?: string;
-    logRollJitterMs?: string;
-    logRollMs?: string;
-    logSegmentBytes?: string;
-    logSegmentDeleteDelayMs?: string;
-    maxConnectionsPerIp?: string;
-    maxIncrementalFetchSessionCacheSlots?: string;
-    messageMaxBytes?: string;
-    minInsyncReplicas?: string;
-    numPartitions?: string;
-    offsetsRetentionMinutes?: string;
-    producerPurgatoryPurgeIntervalRequests?: string;
-    replicaFetchMaxBytes?: string;
-    replicaFetchResponseMaxBytes?: string;
-    socketRequestMaxBytes?: string;
-    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    transactionStateLogSegmentBytes?: string;
+    logPreallocate?: boolean;
+    logRetentionBytes?: number;
+    logRetentionHours?: number;
+    logRetentionMs?: number;
+    logRollJitterMs?: number;
+    logRollMs?: number;
+    logSegmentBytes?: number;
+    logSegmentDeleteDelayMs?: number;
+    maxConnectionsPerIp?: number;
+    maxIncrementalFetchSessionCacheSlots?: number;
+    messageMaxBytes?: number;
+    minInsyncReplicas?: number;
+    numPartitions?: number;
+    offsetsRetentionMinutes?: number;
+    producerPurgatoryPurgeIntervalRequests?: number;
+    replicaFetchMaxBytes?: number;
+    replicaFetchResponseMaxBytes?: number;
+    socketRequestMaxBytes?: number;
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: number;
+    transactionStateLogSegmentBytes?: number;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: string;
-    sasl?: string;
+    certificate?: boolean;
+    sasl?: boolean;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
+    consumerFetchMaxBytes?: number;
     consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
+    consumerMaxPartitionFetchBytes?: number;
+    consumerMaxPollIntervalMs?: number;
+    consumerMaxPollRecords?: number;
+    offsetFlushIntervalMs?: number;
+    offsetFlushTimeoutMs?: number;
+    producerBatchSize?: number;
+    producerBufferMemory?: number;
     producerCompressionType?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
+    producerLingerMs?: number;
+    producerMaxRequestSize?: number;
+    sessionTimeoutMs?: number;
 }
 
 export interface KafkaKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: string;
-    consumerRequestMaxBytes?: string;
-    consumerRequestTimeoutMs?: string;
+    consumerEnableAutoCommit?: boolean;
+    consumerRequestMaxBytes?: number;
+    consumerRequestTimeoutMs?: number;
     producerAcks?: string;
-    producerLingerMs?: string;
-    simpleconsumerPoolSizeMax?: string;
+    producerCompressionType?: string;
+    producerLingerMs?: number;
+    simpleconsumerPoolSizeMax?: number;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
-    prometheus?: string;
-}
-
-export interface KafkaKafkaUserConfigPrivatelinkAccess {
-    jolokia?: string;
     /**
      * Kafka server provided values
      */
-    kafka?: string;
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
+    kafka?: boolean;
+    kafkaConnect?: boolean;
+    kafkaRest?: boolean;
+    prometheus?: boolean;
+    schemaRegistry?: boolean;
+}
+
+export interface KafkaKafkaUserConfigPrivatelinkAccess {
+    jolokia?: boolean;
+    /**
+     * Kafka server provided values
+     */
+    kafka?: boolean;
+    kafkaConnect?: boolean;
+    kafkaRest?: boolean;
+    prometheus?: boolean;
+    schemaRegistry?: boolean;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
      * Kafka server provided values
      */
-    kafka?: string;
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
+    kafka?: boolean;
+    kafkaConnect?: boolean;
+    kafkaRest?: boolean;
+    prometheus?: boolean;
+    schemaRegistry?: boolean;
 }
 
 export interface KafkaKafkaUserConfigSchemaRegistryConfig {
-    leaderEligibility?: string;
+    leaderEligibility?: boolean;
     topicName?: string;
 }
 
@@ -2718,27 +2765,30 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    emitCheckpointsEnabled?: string;
-    emitCheckpointsIntervalSeconds?: string;
-    refreshGroupsEnabled?: string;
-    refreshGroupsIntervalSeconds?: string;
-    refreshTopicsEnabled?: string;
-    refreshTopicsIntervalSeconds?: string;
-    syncGroupOffsetsEnabled?: string;
-    syncGroupOffsetsIntervalSeconds?: string;
-    syncTopicConfigsEnabled?: string;
-    tasksMaxPerCpu?: string;
+    emitCheckpointsEnabled?: boolean;
+    emitCheckpointsIntervalSeconds?: number;
+    refreshGroupsEnabled?: boolean;
+    refreshGroupsIntervalSeconds?: number;
+    refreshTopicsEnabled?: boolean;
+    refreshTopicsIntervalSeconds?: number;
+    syncGroupOffsetsEnabled?: boolean;
+    syncGroupOffsetsIntervalSeconds?: number;
+    syncTopicConfigsEnabled?: boolean;
+    tasksMaxPerCpu?: number;
 }
 
 export interface KafkaMirrorMakerServiceIntegration {
@@ -2813,7 +2863,7 @@ export interface KafkaTopicConfig {
     /**
      * message.downconversion.enable value
      */
-    messageDownconversionEnable?: string;
+    messageDownconversionEnable?: boolean;
     /**
      * message.format.version value
      */
@@ -2829,7 +2879,7 @@ export interface KafkaTopicConfig {
     /**
      * min.cleanable.dirty.ratio value
      */
-    minCleanableDirtyRatio?: string;
+    minCleanableDirtyRatio?: number;
     /**
      * min.compaction.lag.ms value
      */
@@ -2841,7 +2891,7 @@ export interface KafkaTopicConfig {
     /**
      * preallocate value
      */
-    preallocate?: string;
+    preallocate?: boolean;
     /**
      * retention.bytes value
      */
@@ -2869,16 +2919,16 @@ export interface KafkaTopicConfig {
     /**
      * unclean.leader.election.enable value
      */
-    uncleanLeaderElectionEnable?: string;
+    uncleanLeaderElectionEnable?: boolean;
 }
 
 export interface KafkaTopicTag {
     /**
-     * Topic tag key. Maximum Length: `64`.
+     * Topic tag key. Maximum length: `64`.
      */
     key: string;
     /**
-     * Topic tag value. Maximum Length: `256`.
+     * Topic tag value. Maximum length: `256`.
      */
     value?: string;
 }
@@ -2899,15 +2949,21 @@ export interface M3AggregatorM3aggregator {
 export interface M3AggregatorM3aggregatorUserConfig {
     customDomain?: string;
     ipFilterObjects?: outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     m3Version?: string;
     m3aggregatorVersion?: string;
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface M3AggregatorServiceIntegration {
@@ -2937,45 +2993,54 @@ export interface M3DbM3dbUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     ipFilterObjects?: outputs.M3DbM3dbUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     limits?: outputs.M3DbM3dbUserConfigLimits;
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     m3Version?: string;
-    m3coordinatorEnableGraphiteCarbonIngest?: string;
+    m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     m3dbVersion?: string;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     */
     namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
     projectToForkFrom?: string;
     publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
     rules?: outputs.M3DbM3dbUserConfigRules;
     serviceToForkFrom?: string;
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface M3DbM3dbUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface M3DbM3dbUserConfigLimits {
-    maxRecentlyQueriedSeriesBlocks?: string;
-    maxRecentlyQueriedSeriesDiskBytesRead?: string;
+    maxRecentlyQueriedSeriesBlocks?: number;
+    maxRecentlyQueriedSeriesDiskBytesRead?: number;
     maxRecentlyQueriedSeriesLookback?: string;
-    queryDocs?: string;
-    queryRequireExhaustive?: string;
-    querySeries?: string;
+    queryDocs?: number;
+    queryRequireExhaustive?: boolean;
+    querySeries?: number;
 }
 
 export interface M3DbM3dbUserConfigNamespace {
-    name?: string;
+    name: string;
     options?: outputs.M3DbM3dbUserConfigNamespaceOptions;
     resolution?: string;
-    type?: string;
+    type: string;
 }
 
 export interface M3DbM3dbUserConfigNamespaceOptions {
     retentionOptions?: outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
-    snapshotEnabled?: string;
-    writesToCommitlog?: string;
+    snapshotEnabled?: boolean;
+    writesToCommitlog?: boolean;
 }
 
 export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
@@ -2987,11 +3052,11 @@ export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
 }
 
 export interface M3DbM3dbUserConfigPrivateAccess {
-    m3coordinator?: string;
+    m3coordinator?: boolean;
 }
 
 export interface M3DbM3dbUserConfigPublicAccess {
-    m3coordinator?: string;
+    m3coordinator?: boolean;
 }
 
 export interface M3DbM3dbUserConfigRules {
@@ -3000,9 +3065,12 @@ export interface M3DbM3dbUserConfigRules {
 
 export interface M3DbM3dbUserConfigRulesMapping {
     aggregations?: string[];
-    drop?: string;
-    filter?: string;
+    drop?: boolean;
+    filter: string;
     name?: string;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     */
     namespaces?: string[];
     namespacesObjects?: outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject[];
     tags?: outputs.M3DbM3dbUserConfigRulesMappingTag[];
@@ -3014,8 +3082,8 @@ export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
 }
 
 export interface M3DbM3dbUserConfigRulesMappingTag {
-    name?: string;
-    value?: string;
+    name: string;
+    value: string;
 }
 
 export interface M3DbServiceIntegration {
@@ -3045,10 +3113,13 @@ export interface MySqlMysqlUserConfig {
     additionalBackupRegions?: string;
     adminPassword?: string;
     adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    binlogRetentionPeriod?: string;
+    backupHour?: number;
+    backupMinute?: number;
+    binlogRetentionPeriod?: number;
     ipFilterObjects?: outputs.MySqlMysqlUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     migration?: outputs.MySqlMysqlUserConfigMigration;
     mysql?: outputs.MySqlMysqlUserConfigMysql;
@@ -3059,74 +3130,74 @@ export interface MySqlMysqlUserConfig {
     publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface MySqlMysqlUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface MySqlMysqlUserConfigMigration {
     dbname?: string;
-    host?: string;
+    host: string;
     ignoreDbs?: string;
     method?: string;
     password?: string;
-    port?: string;
-    ssl?: string;
+    port: number;
+    ssl?: boolean;
     username?: string;
 }
 
 export interface MySqlMysqlUserConfigMysql {
-    connectTimeout?: string;
+    connectTimeout?: number;
     defaultTimeZone?: string;
-    groupConcatMaxLen?: string;
-    informationSchemaStatsExpiry?: string;
-    innodbChangeBufferMaxSize?: string;
-    innodbFlushNeighbors?: string;
-    innodbFtMinTokenSize?: string;
+    groupConcatMaxLen?: number;
+    informationSchemaStatsExpiry?: number;
+    innodbChangeBufferMaxSize?: number;
+    innodbFlushNeighbors?: number;
+    innodbFtMinTokenSize?: number;
     innodbFtServerStopwordTable?: string;
-    innodbLockWaitTimeout?: string;
-    innodbLogBufferSize?: string;
-    innodbOnlineAlterLogMaxSize?: string;
-    innodbPrintAllDeadlocks?: string;
-    innodbReadIoThreads?: string;
-    innodbRollbackOnTimeout?: string;
-    innodbThreadConcurrency?: string;
-    innodbWriteIoThreads?: string;
-    interactiveTimeout?: string;
+    innodbLockWaitTimeout?: number;
+    innodbLogBufferSize?: number;
+    innodbOnlineAlterLogMaxSize?: number;
+    innodbPrintAllDeadlocks?: boolean;
+    innodbReadIoThreads?: number;
+    innodbRollbackOnTimeout?: boolean;
+    innodbThreadConcurrency?: number;
+    innodbWriteIoThreads?: number;
+    interactiveTimeout?: number;
     internalTmpMemStorageEngine?: string;
-    longQueryTime?: string;
-    maxAllowedPacket?: string;
-    maxHeapTableSize?: string;
-    netBufferLength?: string;
-    netReadTimeout?: string;
-    netWriteTimeout?: string;
-    slowQueryLog?: string;
-    sortBufferSize?: string;
+    longQueryTime?: number;
+    maxAllowedPacket?: number;
+    maxHeapTableSize?: number;
+    netBufferLength?: number;
+    netReadTimeout?: number;
+    netWriteTimeout?: number;
+    slowQueryLog?: boolean;
+    sortBufferSize?: number;
     sqlMode?: string;
-    sqlRequirePrimaryKey?: string;
-    tmpTableSize?: string;
-    waitTimeout?: string;
+    sqlRequirePrimaryKey?: boolean;
+    tmpTableSize?: number;
+    waitTimeout?: number;
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
+    mysql?: boolean;
+    mysqlx?: boolean;
+    prometheus?: boolean;
 }
 
 export interface MySqlMysqlUserConfigPrivatelinkAccess {
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
+    mysql?: boolean;
+    mysqlx?: boolean;
+    prometheus?: boolean;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
+    mysql?: boolean;
+    mysqlx?: boolean;
+    prometheus?: boolean;
 }
 
 export interface MySqlServiceIntegration {
@@ -3155,59 +3226,65 @@ export interface OpenSearchOpensearch {
 
 export interface OpenSearchOpensearchUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
     customDomain?: string;
     /**
-     * @deprecated DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
-    disableReplicationFactorAdjustment?: string;
+    disableReplicationFactorAdjustment?: boolean;
     /**
-     * Index patterns
+     * Index patterns.
      */
     indexPatterns?: outputs.OpenSearchOpensearchUserConfigIndexPattern[];
     /**
-     * Template settings for all new indexes
+     * Template settings for all new indexes.
      */
     indexTemplate?: outputs.OpenSearchOpensearchUserConfigIndexTemplate;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.OpenSearchOpensearchUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
      * Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
      */
-    keepIndexRefreshInterval?: string;
+    keepIndexRefreshInterval?: boolean;
     /**
-     * @deprecated DEPRECATED: use index_patterns instead
+     * Use indexPatterns instead. The default value is `0`.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
-    maxIndexCount?: string;
+    maxIndexCount?: number;
     /**
-     * OpenSearch settings
+     * OpenSearch settings.
      */
     opensearch?: outputs.OpenSearchOpensearchUserConfigOpensearch;
     /**
-     * OpenSearch Dashboards settings
+     * OpenSearch Dashboards settings.
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * OpenSearch major version
+     * OpenSearch major version.
      */
     opensearchVersion?: string;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.OpenSearchOpensearchUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
     /**
@@ -3215,11 +3292,11 @@ export interface OpenSearchOpensearchUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.OpenSearchOpensearchUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service
+     * Name of the basebackup to restore in forked service.
      */
     recoveryBasebackupName?: string;
     /**
@@ -3227,93 +3304,93 @@ export interface OpenSearchOpensearchUserConfig {
      */
     serviceToForkFrom?: string;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
+    maxIndexCount: number;
+    pattern: string;
     sortingAlgorithm?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
+    mappingNestedObjectsLimit?: number;
+    numberOfReplicas?: number;
+    numberOfShards?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    clusterRoutingAllocationNodeConcurrentRecoveries?: string;
+    actionAutoCreateIndexEnabled?: boolean;
+    actionDestructiveRequiresName?: boolean;
+    clusterMaxShardsPerNode?: number;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: number;
     emailSenderName?: string;
     emailSenderPassword?: string;
     emailSenderUsername?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    indicesRecoveryMaxBytesPerSec?: string;
-    indicesRecoveryMaxConcurrentFileChunks?: string;
-    overrideMainResponseVersion?: string;
+    httpMaxContentLength?: number;
+    httpMaxHeaderSize?: number;
+    httpMaxInitialLineLength?: number;
+    indicesFielddataCacheSize?: number;
+    indicesMemoryIndexBufferSize?: number;
+    indicesQueriesCacheSize?: number;
+    indicesQueryBoolMaxClauseCount?: number;
+    indicesRecoveryMaxBytesPerSec?: number;
+    indicesRecoveryMaxConcurrentFileChunks?: number;
+    overrideMainResponseVersion?: boolean;
     reindexRemoteWhitelists?: string[];
     scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
+    searchMaxBuckets?: number;
+    threadPoolAnalyzeQueueSize?: number;
+    threadPoolAnalyzeSize?: number;
+    threadPoolForceMergeSize?: number;
+    threadPoolGetQueueSize?: number;
+    threadPoolGetSize?: number;
+    threadPoolSearchQueueSize?: number;
+    threadPoolSearchSize?: number;
+    threadPoolSearchThrottledQueueSize?: number;
+    threadPoolSearchThrottledSize?: number;
+    threadPoolWriteQueueSize?: number;
+    threadPoolWriteSize?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
-    enabled?: string;
-    maxOldSpaceSize?: string;
-    opensearchRequestTimeout?: string;
+    enabled?: boolean;
+    maxOldSpaceSize?: number;
+    opensearchRequestTimeout?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
+    opensearch?: boolean;
+    opensearchDashboards?: boolean;
+    prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
+    opensearch?: boolean;
+    opensearchDashboards?: boolean;
+    prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
+    opensearch?: boolean;
+    opensearchDashboards?: boolean;
+    prometheus?: boolean;
 }
 
 export interface OpenSearchServiceIntegration {
@@ -3389,7 +3466,7 @@ export interface PgPg {
 
 export interface PgPgUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
     /**
@@ -3403,61 +3480,67 @@ export interface PgPgUserConfig {
     /**
      * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
      */
-    backupHour?: string;
+    backupHour?: number;
     /**
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
-    backupMinute?: string;
+    backupMinute?: number;
     /**
-     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      */
-    enableIpv6?: string;
+    enableIpv6?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: outputs.PgPgUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server
+     * Migrate data from existing server.
      */
     migration?: outputs.PgPgUserConfigMigration;
     /**
-     * postgresql.conf configuration values
+     * postgresql.conf configuration values.
      */
     pg?: outputs.PgPgUserConfigPg;
     /**
-     * @deprecated This setting is deprecated. Use read_replica service integration instead.
+     * Use readReplica service integration instead.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
-    pgReadReplica?: string;
+    pgReadReplica?: boolean;
     /**
      * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
     pgServiceToForkFrom?: string;
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
      */
-    pgStatMonitorEnable?: string;
+    pgStatMonitorEnable?: boolean;
     /**
-     * PostgreSQL major version
+     * PostgreSQL major version.
      */
     pgVersion?: string;
     /**
-     * PGBouncer connection pooling settings
+     * PGBouncer connection pooling settings.
      */
     pgbouncer?: outputs.PgPgUserConfigPgbouncer;
     /**
-     * PGLookout settings
+     * PGLookout settings.
      */
     pglookout?: outputs.PgPgUserConfigPglookout;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: outputs.PgPgUserConfigPrivatelinkAccess;
     /**
@@ -3465,7 +3548,7 @@ export interface PgPgUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: outputs.PgPgUserConfigPublicAccess;
     /**
@@ -3479,140 +3562,142 @@ export interface PgPgUserConfig {
     /**
      * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      */
-    sharedBuffersPercentage?: string;
+    sharedBuffersPercentage?: number;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: string;
+    staticIps?: boolean;
     /**
      * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: string;
     /**
-     * TimescaleDB extension configuration values
+     * TimescaleDB extension configuration values.
      */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default
+     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: string;
     /**
      * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      */
-    workMem?: string;
+    workMem?: number;
 }
 
 export interface PgPgUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface PgPgUserConfigMigration {
     dbname?: string;
-    host?: string;
+    host: string;
     ignoreDbs?: string;
     method?: string;
     password?: string;
-    port?: string;
-    ssl?: string;
+    port: number;
+    ssl?: boolean;
     username?: string;
 }
 
 export interface PgPgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: string;
-    autovacuumAnalyzeThreshold?: string;
-    autovacuumFreezeMaxAge?: string;
-    autovacuumMaxWorkers?: string;
-    autovacuumNaptime?: string;
-    autovacuumVacuumCostDelay?: string;
-    autovacuumVacuumCostLimit?: string;
-    autovacuumVacuumScaleFactor?: string;
-    autovacuumVacuumThreshold?: string;
-    bgwriterDelay?: string;
-    bgwriterFlushAfter?: string;
-    bgwriterLruMaxpages?: string;
-    bgwriterLruMultiplier?: string;
-    deadlockTimeout?: string;
+    autovacuumAnalyzeScaleFactor?: number;
+    autovacuumAnalyzeThreshold?: number;
+    autovacuumFreezeMaxAge?: number;
+    autovacuumMaxWorkers?: number;
+    autovacuumNaptime?: number;
+    autovacuumVacuumCostDelay?: number;
+    autovacuumVacuumCostLimit?: number;
+    autovacuumVacuumScaleFactor?: number;
+    autovacuumVacuumThreshold?: number;
+    bgwriterDelay?: number;
+    bgwriterFlushAfter?: number;
+    bgwriterLruMaxpages?: number;
+    bgwriterLruMultiplier?: number;
+    deadlockTimeout?: number;
     defaultToastCompression?: string;
-    idleInTransactionSessionTimeout?: string;
-    jit?: string;
-    logAutovacuumMinDuration?: string;
+    idleInTransactionSessionTimeout?: number;
+    jit?: boolean;
+    logAutovacuumMinDuration?: number;
     logErrorVerbosity?: string;
     logLinePrefix?: string;
-    logMinDurationStatement?: string;
-    logTempFiles?: string;
-    maxFilesPerProcess?: string;
-    maxLocksPerTransaction?: string;
-    maxLogicalReplicationWorkers?: string;
-    maxParallelWorkers?: string;
-    maxParallelWorkersPerGather?: string;
-    maxPredLocksPerTransaction?: string;
-    maxPreparedTransactions?: string;
-    maxReplicationSlots?: string;
-    maxSlotWalKeepSize?: string;
-    maxStackDepth?: string;
-    maxStandbyArchiveDelay?: string;
-    maxStandbyStreamingDelay?: string;
-    maxWalSenders?: string;
-    maxWorkerProcesses?: string;
-    pgPartmanBgwDotInterval?: string;
+    logMinDurationStatement?: number;
+    logTempFiles?: number;
+    maxFilesPerProcess?: number;
+    maxLocksPerTransaction?: number;
+    maxLogicalReplicationWorkers?: number;
+    maxParallelWorkers?: number;
+    maxParallelWorkersPerGather?: number;
+    maxPredLocksPerTransaction?: number;
+    maxPreparedTransactions?: number;
+    maxReplicationSlots?: number;
+    maxSlotWalKeepSize?: number;
+    maxStackDepth?: number;
+    maxStandbyArchiveDelay?: number;
+    maxStandbyStreamingDelay?: number;
+    maxWalSenders?: number;
+    maxWorkerProcesses?: number;
+    pgPartmanBgwDotInterval?: number;
     pgPartmanBgwDotRole?: string;
+    pgStatMonitorDotPgsmEnableQueryPlan?: boolean;
+    pgStatMonitorDotPgsmMaxBuckets?: number;
     pgStatStatementsDotTrack?: string;
-    tempFileLimit?: string;
+    tempFileLimit?: number;
     timezone?: string;
-    trackActivityQuerySize?: string;
+    trackActivityQuerySize?: number;
     trackCommitTimestamp?: string;
     trackFunctions?: string;
     trackIoTiming?: string;
-    walSenderTimeout?: string;
-    walWriterDelay?: string;
+    walSenderTimeout?: number;
+    walWriterDelay?: number;
 }
 
 export interface PgPgUserConfigPgbouncer {
-    autodbIdleTimeout?: string;
-    autodbMaxDbConnections?: string;
+    autodbIdleTimeout?: number;
+    autodbMaxDbConnections?: number;
     autodbPoolMode?: string;
-    autodbPoolSize?: string;
+    autodbPoolSize?: number;
     ignoreStartupParameters?: string[];
-    minPoolSize?: string;
-    serverIdleTimeout?: string;
-    serverLifetime?: string;
-    serverResetQueryAlways?: string;
+    minPoolSize?: number;
+    serverIdleTimeout?: number;
+    serverLifetime?: number;
+    serverResetQueryAlways?: boolean;
 }
 
 export interface PgPgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: string;
+    maxFailoverReplicationTimeLag?: number;
 }
 
 export interface PgPgUserConfigPrivateAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
+    pg?: boolean;
+    pgbouncer?: boolean;
+    prometheus?: boolean;
 }
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
+    pg?: boolean;
+    pgbouncer?: boolean;
+    prometheus?: boolean;
 }
 
 export interface PgPgUserConfigPublicAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
+    pg?: boolean;
+    pgbouncer?: boolean;
+    prometheus?: boolean;
 }
 
 export interface PgPgUserConfigTimescaledb {
-    maxBackgroundWorkers?: string;
+    maxBackgroundWorkers?: number;
 }
 
 export interface PgServiceIntegration {
@@ -3664,6 +3749,9 @@ export interface RedisRedi {
 export interface RedisRedisUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.RedisRedisUserConfigIpFilterObject[];
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: string[];
     migration?: outputs.RedisRedisUserConfigMigration;
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
@@ -3672,49 +3760,49 @@ export interface RedisRedisUserConfig {
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     redisAclChannelsDefault?: string;
-    redisIoThreads?: string;
-    redisLfuDecayTime?: string;
-    redisLfuLogFactor?: string;
+    redisIoThreads?: number;
+    redisLfuDecayTime?: number;
+    redisLfuLogFactor?: number;
     redisMaxmemoryPolicy?: string;
     redisNotifyKeyspaceEvents?: string;
-    redisNumberOfDatabases?: string;
+    redisNumberOfDatabases?: number;
     redisPersistence?: string;
-    redisPubsubClientOutputBufferLimit?: string;
-    redisSsl?: string;
-    redisTimeout?: string;
+    redisPubsubClientOutputBufferLimit?: number;
+    redisSsl?: boolean;
+    redisTimeout?: number;
     serviceToForkFrom?: string;
-    staticIps?: string;
+    staticIps?: boolean;
 }
 
 export interface RedisRedisUserConfigIpFilterObject {
     description?: string;
-    network?: string;
+    network: string;
 }
 
 export interface RedisRedisUserConfigMigration {
     dbname?: string;
-    host?: string;
+    host: string;
     ignoreDbs?: string;
     method?: string;
     password?: string;
-    port?: string;
-    ssl?: string;
+    port: number;
+    ssl?: boolean;
     username?: string;
 }
 
 export interface RedisRedisUserConfigPrivateAccess {
-    prometheus?: string;
-    redis?: string;
+    prometheus?: boolean;
+    redis?: boolean;
 }
 
 export interface RedisRedisUserConfigPrivatelinkAccess {
-    prometheus?: string;
-    redis?: string;
+    prometheus?: boolean;
+    redis?: boolean;
 }
 
 export interface RedisRedisUserConfigPublicAccess {
-    prometheus?: string;
-    redis?: string;
+    prometheus?: boolean;
+    redis?: boolean;
 }
 
 export interface RedisServiceIntegration {
@@ -3729,31 +3817,31 @@ export interface RedisTag {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * Tables to create
+     * Tables to create.
      */
     tables?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTable[];
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     columns?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
-    dataFormat?: string;
-    groupName?: string;
-    name?: string;
+    dataFormat: string;
+    groupName: string;
+    name: string;
     topics?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
-    name?: string;
-    type?: string;
+    name: string;
+    type: string;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
-    name?: string;
+    name: string;
 }
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfig {
     /**
-     * Databases to expose
+     * Databases to expose.
      */
     databases?: outputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabase[];
 }
@@ -3765,144 +3853,154 @@ export interface ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
 
 export interface ServiceIntegrationDatadogUserConfig {
     /**
-     * Enable Datadog Database Monitoring
+     * Enable Datadog Database Monitoring.
      */
-    datadogDbmEnabled?: string;
+    datadogDbmEnabled?: boolean;
     /**
-     * Custom tags provided by user
+     * Custom tags provided by user.
      */
     datadogTags?: outputs.ServiceIntegrationDatadogUserConfigDatadogTag[];
     /**
-     * List of custom metrics
+     * List of custom metrics.
      */
     excludeConsumerGroups?: string[];
     /**
-     * List of topics to exclude
+     * List of topics to exclude.
      */
     excludeTopics?: string[];
     /**
-     * List of custom metrics
+     * List of custom metrics.
      */
     includeConsumerGroups?: string[];
     /**
-     * List of topics to include
+     * List of topics to include.
      */
     includeTopics?: string[];
     /**
-     * List of custom metrics
+     * List of custom metrics.
      */
     kafkaCustomMetrics?: string[];
     /**
-     * Maximum number of JMX metrics to send
+     * Maximum number of JMX metrics to send.
      */
-    maxJmxMetrics?: string;
+    maxJmxMetrics?: number;
+    /**
+     * Datadog Opensearch Options.
+     */
+    opensearch?: outputs.ServiceIntegrationDatadogUserConfigOpensearch;
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
     comment?: string;
-    tag?: string;
+    tag: string;
+}
+
+export interface ServiceIntegrationDatadogUserConfigOpensearch {
+    indexStatsEnabled?: boolean;
+    pendingTaskStatsEnabled?: boolean;
+    pshardStatsEnabled?: boolean;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
-     * Datadog API key
+     * Datadog API key.
      */
     datadogApiKey?: string;
     /**
-     * Custom tags provided by user
+     * Custom tags provided by user.
      */
     datadogTags?: outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     /**
-     * Disable consumer group metrics
+     * Disable consumer group metrics.
      */
-    disableConsumerStats?: string;
+    disableConsumerStats?: boolean;
     /**
-     * Number of separate instances to fetch kafka consumer statistics with
+     * Number of separate instances to fetch kafka consumer statistics with.
      */
-    kafkaConsumerCheckInstances?: string;
+    kafkaConsumerCheckInstances?: number;
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers
+     * Number of seconds that datadog will wait to get consumer statistics from brokers.
      */
-    kafkaConsumerStatsTimeout?: string;
+    kafkaConsumerStatsTimeout?: number;
     /**
-     * Maximum number of partition contexts to send
+     * Maximum number of partition contexts to send.
      */
-    maxPartitionContexts?: string;
+    maxPartitionContexts?: number;
     /**
-     * Datadog intake site. Defaults to datadoghq.com
+     * Datadog intake site. Defaults to datadoghq.com.
      */
     site?: string;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     comment?: string;
-    tag?: string;
+    tag: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      */
     accessKey?: string;
     /**
-     * AWS CloudWatch log group name
+     * AWS CloudWatch log group name.
      */
     logGroupName?: string;
     /**
-     * AWS region
+     * AWS region.
      */
     region?: string;
     /**
-     * AWS secret key
+     * AWS secret key.
      */
     secretKey?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData
+     * AWS access key. Required permissions are cloudwatch:PutMetricData.
      */
     accessKey?: string;
     /**
-     * AWS CloudWatch Metrics Namespace
+     * AWS CloudWatch Metrics Namespace.
      */
     namespace?: string;
     /**
-     * AWS region
+     * AWS region.
      */
     region?: string;
     /**
-     * AWS secret key
+     * AWS secret key.
      */
     secretKey?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      */
     ca?: string;
     /**
-     * Maximum number of days of logs to keep
+     * Maximum number of days of logs to keep. The default value is `3`.
      */
-    indexDaysMax?: string;
+    indexDaysMax?: number;
     /**
-     * Elasticsearch index prefix
+     * Elasticsearch index prefix. The default value is `logs`.
      */
     indexPrefix?: string;
     /**
-     * Elasticsearch request timeout limit
+     * Elasticsearch request timeout limit. The default value is `10.0`.
      */
-    timeout?: string;
+    timeout?: number;
     /**
-     * Elasticsearch connection URL
+     * Elasticsearch connection URL.
      */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
-     * Google Cloud Logging log id
+     * Google Cloud Logging log id.
      */
     logId?: string;
     /**
@@ -3917,7 +4015,7 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig 
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * Bootstrap servers
+     * Bootstrap servers.
      */
     bootstrapServers?: string;
     /**
@@ -3933,19 +4031,19 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslPlainUsername?: string;
     /**
-     * Security protocol
+     * Security protocol.
      */
     securityProtocol?: string;
     /**
-     * PEM-encoded CA certificate
+     * PEM-encoded CA certificate.
      */
     sslCaCert?: string;
     /**
-     * PEM-encoded client certificate
+     * PEM-encoded client certificate.
      */
     sslClientCert?: string;
     /**
-     * PEM-encoded client key
+     * PEM-encoded client key.
      */
     sslClientKey?: string;
     /**
@@ -3956,146 +4054,146 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      */
     ca?: string;
     /**
-     * Maximum number of days of logs to keep
+     * Maximum number of days of logs to keep. The default value is `3`.
      */
-    indexDaysMax?: string;
+    indexDaysMax?: number;
     /**
-     * OpenSearch index prefix
+     * OpenSearch index prefix. The default value is `logs`.
      */
     indexPrefix?: string;
     /**
-     * OpenSearch request timeout limit
+     * OpenSearch request timeout limit. The default value is `10.0`.
      */
-    timeout?: string;
+    timeout?: number;
     /**
-     * OpenSearch connection URL
+     * OpenSearch connection URL.
      */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * Authentication method
+     * Authentication method.
      */
     authentication?: string;
     /**
-     * Basic authentication password
+     * Basic authentication password.
      */
     basicAuthPassword?: string;
     /**
-     * Basic authentication user name
+     * Basic authentication user name.
      */
     basicAuthUsername?: string;
     /**
-     * Schema Registry URL
+     * Schema Registry URL.
      */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
     /**
-     * Jolokia basic authentication password
+     * Jolokia basic authentication password.
      */
     basicAuthPassword?: string;
     /**
-     * Jolokia basic authentication username
+     * Jolokia basic authentication username.
      */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
     /**
-     * Prometheus basic authentication password
+     * Prometheus basic authentication password.
      */
     basicAuthPassword?: string;
     /**
-     * Prometheus basic authentication username
+     * Prometheus basic authentication username.
      */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      */
     ca?: string;
     /**
-     * PEM encoded client certificate
+     * PEM encoded client certificate.
      */
     cert?: string;
     /**
-     * message format
+     * message format. The default value is `rfc5424`.
      */
     format?: string;
     /**
-     * PEM encoded client key
+     * PEM encoded client key.
      */
     key?: string;
     /**
-     * custom syslog message format
+     * custom syslog message format.
      */
     logline?: string;
     /**
-     * rsyslog server port
+     * rsyslog server port. The default value is `514`.
      */
-    port?: string;
+    port?: number;
     /**
-     * Structured data block for log message
+     * Structured data block for log message.
      */
     sd?: string;
     /**
-     * rsyslog server IP address or hostname
+     * rsyslog server IP address or hostname.
      */
     server?: string;
     /**
-     * Require TLS
+     * Require TLS. The default value is `true`.
      */
-    tls?: string;
+    tls?: boolean;
 }
 
 export interface ServiceIntegrationEndpointSignalfxUserConfig {
     /**
-     * list of metrics to send
+     * list of metrics to send.
      */
     enabledMetrics?: string[];
     /**
-     * SignalFX API key
+     * SignalFX API key.
      */
     signalfxApiKey?: string;
     /**
-     * SignalFX realm
+     * SignalFX realm. The default value is `us0`.
      */
     signalfxRealm?: string;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
      */
     droppedMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
     /**
-     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics).
      */
     extraMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
-    field?: string;
-    metric?: string;
+    field: string;
+    metric: string;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
-    field?: string;
-    metric?: string;
+    field: string;
+    metric: string;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {
     /**
-     * Kafka Connect service configuration values
+     * Kafka Connect service configuration values.
      */
     kafkaConnect?: outputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
@@ -4109,7 +4207,7 @@ export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 
 export interface ServiceIntegrationKafkaLogsUserConfig {
     /**
-     * Topic name
+     * Topic name.
      */
     kafkaTopic?: string;
 }
@@ -4120,26 +4218,26 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
      */
     clusterAlias?: string;
     /**
-     * Kafka MirrorMaker configuration values
+     * Kafka MirrorMaker configuration values.
      */
     kafkaMirrormaker?: outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
-    consumerFetchMinBytes?: string;
-    producerBatchSize?: string;
-    producerBufferMemory?: string;
-    producerLingerMs?: string;
-    producerMaxRequestSize?: string;
+    consumerFetchMinBytes?: number;
+    producerBatchSize?: number;
+    producerBufferMemory?: number;
+    producerLingerMs?: number;
+    producerMaxRequestSize?: number;
 }
 
 export interface ServiceIntegrationLogsUserConfig {
     /**
-     * Elasticsearch index retention limit
+     * Elasticsearch index retention limit. The default value is `3`.
      */
-    elasticsearchIndexDaysMax?: string;
+    elasticsearchIndexDaysMax?: number;
     /**
-     * Elasticsearch index prefix
+     * Elasticsearch index prefix. The default value is `logs`.
      */
     elasticsearchIndexPrefix?: string;
 }
@@ -4152,13 +4250,13 @@ export interface ServiceIntegrationMetricsUserConfig {
     /**
      * Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
      */
-    retentionDays?: string;
+    retentionDays?: number;
     /**
      * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     roUsername?: string;
     /**
-     * Configuration options for metrics where source service is MySQL
+     * Configuration options for metrics where source service is MySQL.
      */
     sourceMysql?: outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
     /**
@@ -4172,26 +4270,19 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysql {
 }
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
-    gatherEventWaits?: string;
-    gatherFileEventsStats?: string;
-    gatherIndexIoWaits?: string;
-    gatherInfoSchemaAutoInc?: string;
-    gatherInnodbMetrics?: string;
-    gatherPerfEventsStatements?: string;
-    gatherProcessList?: string;
-    gatherSlaveStatus?: string;
-    gatherTableIoWaits?: string;
-    gatherTableLockWaits?: string;
-    gatherTableSchema?: string;
-    perfEventsStatementsDigestTextLimit?: string;
-    perfEventsStatementsLimit?: string;
-    perfEventsStatementsTimeLimit?: string;
-}
-
-export interface ServiceIntegrationMirrormakerUserConfig {
-    /**
-     * Mirrormaker topic whitelist
-     */
-    mirrormakerWhitelist?: string;
+    gatherEventWaits?: boolean;
+    gatherFileEventsStats?: boolean;
+    gatherIndexIoWaits?: boolean;
+    gatherInfoSchemaAutoInc?: boolean;
+    gatherInnodbMetrics?: boolean;
+    gatherPerfEventsStatements?: boolean;
+    gatherProcessList?: boolean;
+    gatherSlaveStatus?: boolean;
+    gatherTableIoWaits?: boolean;
+    gatherTableLockWaits?: boolean;
+    gatherTableSchema?: boolean;
+    perfEventsStatementsDigestTextLimit?: number;
+    perfEventsStatementsLimit?: number;
+    perfEventsStatementsTimeLimit?: number;
 }
 

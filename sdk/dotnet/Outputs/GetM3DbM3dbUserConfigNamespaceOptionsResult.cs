@@ -14,16 +14,16 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetM3DbM3dbUserConfigNamespaceOptionsResult
     {
         public readonly Outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult? RetentionOptions;
-        public readonly string? SnapshotEnabled;
-        public readonly string? WritesToCommitlog;
+        public readonly bool? SnapshotEnabled;
+        public readonly bool? WritesToCommitlog;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigNamespaceOptionsResult(
             Outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult? retentionOptions,
 
-            string? snapshotEnabled,
+            bool? snapshotEnabled,
 
-            string? writesToCommitlog)
+            bool? writesToCommitlog)
         {
             RetentionOptions = retentionOptions;
             SnapshotEnabled = snapshotEnabled;

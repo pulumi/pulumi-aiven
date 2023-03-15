@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,12 +20,18 @@ import javax.annotation.Nullable;
 public final class KafkaConnectKafkaConnectUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private KafkaConnectKafkaConnectUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -33,6 +40,12 @@ public final class KafkaConnectKafkaConnectUserConfig {
     public List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -48,7 +61,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
     public Optional<KafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -68,7 +81,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(KafkaConnectKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,7 +137,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

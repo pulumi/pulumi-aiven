@@ -15,12 +15,12 @@ public final class GetOpenSearchAclRuleResult {
      */
     private String id;
     /**
-     * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String index;
     /**
-     * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      * 
      */
     private String permission;
@@ -35,7 +35,7 @@ public final class GetOpenSearchAclRuleResult {
      */
     private String serviceName;
     /**
-     * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String username;
@@ -49,14 +49,14 @@ public final class GetOpenSearchAclRuleResult {
         return this.id;
     }
     /**
-     * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String index() {
         return this.index;
     }
     /**
-     * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      * 
      */
     public String permission() {
@@ -77,7 +77,7 @@ public final class GetOpenSearchAclRuleResult {
         return this.serviceName;
     }
     /**
-     * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String username() {

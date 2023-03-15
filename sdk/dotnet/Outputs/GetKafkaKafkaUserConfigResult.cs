@@ -22,20 +22,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaResult? Kafka;
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult? KafkaAuthenticationMethods;
-        public readonly string? KafkaConnect;
+        public readonly bool? KafkaConnect;
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult? KafkaConnectConfig;
-        public readonly string? KafkaRest;
+        public readonly bool? KafkaRest;
+        public readonly bool? KafkaRestAuthorization;
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult? KafkaRestConfig;
         public readonly string? KafkaVersion;
         public readonly Outputs.GetKafkaKafkaUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly Outputs.GetKafkaKafkaUserConfigPublicAccessResult? PublicAccess;
-        public readonly string? SchemaRegistry;
+        public readonly bool? SchemaRegistry;
         public readonly Outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult? SchemaRegistryConfig;
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetKafkaKafkaUserConfigResult(
@@ -51,11 +52,13 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult? kafkaAuthenticationMethods,
 
-            string? kafkaConnect,
+            bool? kafkaConnect,
 
             Outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult? kafkaConnectConfig,
 
-            string? kafkaRest,
+            bool? kafkaRest,
+
+            bool? kafkaRestAuthorization,
 
             Outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult? kafkaRestConfig,
 
@@ -67,11 +70,11 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaKafkaUserConfigPublicAccessResult? publicAccess,
 
-            string? schemaRegistry,
+            bool? schemaRegistry,
 
             Outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult? schemaRegistryConfig,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
@@ -82,6 +85,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaConnect = kafkaConnect;
             KafkaConnectConfig = kafkaConnectConfig;
             KafkaRest = kafkaRest;
+            KafkaRestAuthorization = kafkaRestAuthorization;
             KafkaRestConfig = kafkaRestConfig;
             KafkaVersion = kafkaVersion;
             PrivateAccess = privateAccess;

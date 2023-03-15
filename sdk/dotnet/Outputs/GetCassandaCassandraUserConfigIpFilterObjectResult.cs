@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetCassandaCassandraUserConfigIpFilterObjectResult
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private GetCassandaCassandraUserConfigIpFilterObjectResult(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

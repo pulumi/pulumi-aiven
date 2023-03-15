@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,7 +65,7 @@ type AzurePrivatelink struct {
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Privatelink resource state
 	State pulumi.StringOutput `pulumi:"state"`
-	// A List of allowed Subscription IDs Maximum Length: `16`.
+	// A List of allowed Subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds pulumi.StringArrayOutput `pulumi:"userSubscriptionIds"`
 }
 
@@ -119,7 +119,7 @@ type azurePrivatelinkState struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// Privatelink resource state
 	State *string `pulumi:"state"`
-	// A List of allowed Subscription IDs Maximum Length: `16`.
+	// A List of allowed Subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds []string `pulumi:"userSubscriptionIds"`
 }
 
@@ -136,7 +136,7 @@ type AzurePrivatelinkState struct {
 	ServiceName pulumi.StringPtrInput
 	// Privatelink resource state
 	State pulumi.StringPtrInput
-	// A List of allowed Subscription IDs Maximum Length: `16`.
+	// A List of allowed Subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds pulumi.StringArrayInput
 }
 
@@ -149,7 +149,7 @@ type azurePrivatelinkArgs struct {
 	Project string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// A List of allowed Subscription IDs Maximum Length: `16`.
+	// A List of allowed Subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds []string `pulumi:"userSubscriptionIds"`
 }
 
@@ -159,7 +159,7 @@ type AzurePrivatelinkArgs struct {
 	Project pulumi.StringInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// A List of allowed Subscription IDs Maximum Length: `16`.
+	// A List of allowed Subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds pulumi.StringArrayInput
 }
 
@@ -280,7 +280,7 @@ func (o AzurePrivatelinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A List of allowed Subscription IDs Maximum Length: `16`.
+// A List of allowed Subscription IDs. Maximum length: `16`.
 func (o AzurePrivatelinkOutput) UserSubscriptionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringArrayOutput { return v.UserSubscriptionIds }).(pulumi.StringArrayOutput)
 }

@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,17 +15,57 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
 
     public static final KafkaKafkaUserConfigPrivateAccessArgs Empty = new KafkaKafkaUserConfigPrivateAccessArgs();
 
-    @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    /**
+     * Kafka server provided values
+     * 
+     */
+    @Import(name="kafka")
+    private @Nullable Output<Boolean> kafka;
 
-    public Optional<Output<String>> prometheus() {
+    /**
+     * @return Kafka server provided values
+     * 
+     */
+    public Optional<Output<Boolean>> kafka() {
+        return Optional.ofNullable(this.kafka);
+    }
+
+    @Import(name="kafkaConnect")
+    private @Nullable Output<Boolean> kafkaConnect;
+
+    public Optional<Output<Boolean>> kafkaConnect() {
+        return Optional.ofNullable(this.kafkaConnect);
+    }
+
+    @Import(name="kafkaRest")
+    private @Nullable Output<Boolean> kafkaRest;
+
+    public Optional<Output<Boolean>> kafkaRest() {
+        return Optional.ofNullable(this.kafkaRest);
+    }
+
+    @Import(name="prometheus")
+    private @Nullable Output<Boolean> prometheus;
+
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
+    }
+
+    @Import(name="schemaRegistry")
+    private @Nullable Output<Boolean> schemaRegistry;
+
+    public Optional<Output<Boolean>> schemaRegistry() {
+        return Optional.ofNullable(this.schemaRegistry);
     }
 
     private KafkaKafkaUserConfigPrivateAccessArgs() {}
 
     private KafkaKafkaUserConfigPrivateAccessArgs(KafkaKafkaUserConfigPrivateAccessArgs $) {
+        this.kafka = $.kafka;
+        this.kafkaConnect = $.kafkaConnect;
+        this.kafkaRest = $.kafkaRest;
         this.prometheus = $.prometheus;
+        this.schemaRegistry = $.schemaRegistry;
     }
 
     public static Builder builder() {
@@ -46,13 +86,61 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
             $ = new KafkaKafkaUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        /**
+         * @param kafka Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafka(@Nullable Output<Boolean> kafka) {
+            $.kafka = kafka;
+            return this;
+        }
+
+        /**
+         * @param kafka Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafka(Boolean kafka) {
+            return kafka(Output.of(kafka));
+        }
+
+        public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
+            $.kafkaConnect = kafkaConnect;
+            return this;
+        }
+
+        public Builder kafkaConnect(Boolean kafkaConnect) {
+            return kafkaConnect(Output.of(kafkaConnect));
+        }
+
+        public Builder kafkaRest(@Nullable Output<Boolean> kafkaRest) {
+            $.kafkaRest = kafkaRest;
+            return this;
+        }
+
+        public Builder kafkaRest(Boolean kafkaRest) {
+            return kafkaRest(Output.of(kafkaRest));
+        }
+
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
+        }
+
+        public Builder schemaRegistry(@Nullable Output<Boolean> schemaRegistry) {
+            $.schemaRegistry = schemaRegistry;
+            return this;
+        }
+
+        public Builder schemaRegistry(Boolean schemaRegistry) {
+            return schemaRegistry(Output.of(schemaRegistry));
         }
 
         public KafkaKafkaUserConfigPrivateAccessArgs build() {

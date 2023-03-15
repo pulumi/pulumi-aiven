@@ -17,14 +17,14 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
     public static final ServiceIntegrationEndpointSignalfxUserConfigArgs Empty = new ServiceIntegrationEndpointSignalfxUserConfigArgs();
 
     /**
-     * list of metrics to send
+     * list of metrics to send.
      * 
      */
     @Import(name="enabledMetrics")
     private @Nullable Output<List<String>> enabledMetrics;
 
     /**
-     * @return list of metrics to send
+     * @return list of metrics to send.
      * 
      */
     public Optional<Output<List<String>>> enabledMetrics() {
@@ -32,14 +32,14 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
     }
 
     /**
-     * SignalFX API key
+     * SignalFX API key.
      * 
      */
     @Import(name="signalfxApiKey")
     private @Nullable Output<String> signalfxApiKey;
 
     /**
-     * @return SignalFX API key
+     * @return SignalFX API key.
      * 
      */
     public Optional<Output<String>> signalfxApiKey() {
@@ -47,14 +47,14 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
     }
 
     /**
-     * SignalFX realm
+     * SignalFX realm. The default value is `us0`.
      * 
      */
     @Import(name="signalfxRealm")
     private @Nullable Output<String> signalfxRealm;
 
     /**
-     * @return SignalFX realm
+     * @return SignalFX realm. The default value is `us0`.
      * 
      */
     public Optional<Output<String>> signalfxRealm() {
@@ -88,7 +88,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param enabledMetrics list of metrics to send
+         * @param enabledMetrics list of metrics to send.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param enabledMetrics list of metrics to send
+         * @param enabledMetrics list of metrics to send.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param enabledMetrics list of metrics to send
+         * @param enabledMetrics list of metrics to send.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param signalfxApiKey SignalFX API key
+         * @param signalfxApiKey SignalFX API key.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param signalfxApiKey SignalFX API key
+         * @param signalfxApiKey SignalFX API key.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param signalfxRealm SignalFX realm
+         * @param signalfxRealm SignalFX realm. The default value is `us0`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
         }
 
         /**
-         * @param signalfxRealm SignalFX realm
+         * @param signalfxRealm SignalFX realm. The default value is `us0`.
          * 
          * @return builder
          * 

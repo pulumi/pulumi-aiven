@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bootstrap servers
+        /// Bootstrap servers.
         /// </summary>
         [Input("bootstrapServers")]
         public Input<string>? BootstrapServers { get; set; }
@@ -47,25 +47,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SaslPlainUsername { get; set; }
 
         /// <summary>
-        /// Security protocol
+        /// Security protocol.
         /// </summary>
         [Input("securityProtocol")]
         public Input<string>? SecurityProtocol { get; set; }
 
         /// <summary>
-        /// PEM-encoded CA certificate
+        /// PEM-encoded CA certificate.
         /// </summary>
         [Input("sslCaCert")]
         public Input<string>? SslCaCert { get; set; }
 
         /// <summary>
-        /// PEM-encoded client certificate
+        /// PEM-encoded client certificate.
         /// </summary>
         [Input("sslClientCert")]
         public Input<string>? SslClientCert { get; set; }
 
         /// <summary>
-        /// PEM-encoded client key
+        /// PEM-encoded client key.
         /// </summary>
         [Input("sslClientKey")]
         public Input<string>? SslClientKey { get; set; }

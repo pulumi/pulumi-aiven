@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -155,13 +157,13 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="messageDownconversionEnable")
-    private @Nullable Output<String> messageDownconversionEnable;
+    private @Nullable Output<Boolean> messageDownconversionEnable;
 
     /**
      * @return message.downconversion.enable value
      * 
      */
-    public Optional<Output<String>> messageDownconversionEnable() {
+    public Optional<Output<Boolean>> messageDownconversionEnable() {
         return Optional.ofNullable(this.messageDownconversionEnable);
     }
 
@@ -215,13 +217,13 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="minCleanableDirtyRatio")
-    private @Nullable Output<String> minCleanableDirtyRatio;
+    private @Nullable Output<Double> minCleanableDirtyRatio;
 
     /**
      * @return min.cleanable.dirty.ratio value
      * 
      */
-    public Optional<Output<String>> minCleanableDirtyRatio() {
+    public Optional<Output<Double>> minCleanableDirtyRatio() {
         return Optional.ofNullable(this.minCleanableDirtyRatio);
     }
 
@@ -260,13 +262,13 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="preallocate")
-    private @Nullable Output<String> preallocate;
+    private @Nullable Output<Boolean> preallocate;
 
     /**
      * @return preallocate value
      * 
      */
-    public Optional<Output<String>> preallocate() {
+    public Optional<Output<Boolean>> preallocate() {
         return Optional.ofNullable(this.preallocate);
     }
 
@@ -365,13 +367,13 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="uncleanLeaderElectionEnable")
-    private @Nullable Output<String> uncleanLeaderElectionEnable;
+    private @Nullable Output<Boolean> uncleanLeaderElectionEnable;
 
     /**
      * @return unclean.leader.election.enable value
      * 
      */
-    public Optional<Output<String>> uncleanLeaderElectionEnable() {
+    public Optional<Output<Boolean>> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }
 
@@ -617,7 +619,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder messageDownconversionEnable(@Nullable Output<String> messageDownconversionEnable) {
+        public Builder messageDownconversionEnable(@Nullable Output<Boolean> messageDownconversionEnable) {
             $.messageDownconversionEnable = messageDownconversionEnable;
             return this;
         }
@@ -628,7 +630,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder messageDownconversionEnable(String messageDownconversionEnable) {
+        public Builder messageDownconversionEnable(Boolean messageDownconversionEnable) {
             return messageDownconversionEnable(Output.of(messageDownconversionEnable));
         }
 
@@ -701,7 +703,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder minCleanableDirtyRatio(@Nullable Output<String> minCleanableDirtyRatio) {
+        public Builder minCleanableDirtyRatio(@Nullable Output<Double> minCleanableDirtyRatio) {
             $.minCleanableDirtyRatio = minCleanableDirtyRatio;
             return this;
         }
@@ -712,7 +714,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder minCleanableDirtyRatio(String minCleanableDirtyRatio) {
+        public Builder minCleanableDirtyRatio(Double minCleanableDirtyRatio) {
             return minCleanableDirtyRatio(Output.of(minCleanableDirtyRatio));
         }
 
@@ -764,7 +766,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder preallocate(@Nullable Output<String> preallocate) {
+        public Builder preallocate(@Nullable Output<Boolean> preallocate) {
             $.preallocate = preallocate;
             return this;
         }
@@ -775,7 +777,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder preallocate(String preallocate) {
+        public Builder preallocate(Boolean preallocate) {
             return preallocate(Output.of(preallocate));
         }
 
@@ -911,7 +913,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder uncleanLeaderElectionEnable(@Nullable Output<String> uncleanLeaderElectionEnable) {
+        public Builder uncleanLeaderElectionEnable(@Nullable Output<Boolean> uncleanLeaderElectionEnable) {
             $.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
         }
@@ -922,7 +924,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder uncleanLeaderElectionEnable(String uncleanLeaderElectionEnable) {
+        public Builder uncleanLeaderElectionEnable(Boolean uncleanLeaderElectionEnable) {
             return uncleanLeaderElectionEnable(Output.of(uncleanLeaderElectionEnable));
         }
 

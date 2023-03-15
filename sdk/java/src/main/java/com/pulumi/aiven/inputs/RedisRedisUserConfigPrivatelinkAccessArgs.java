@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +16,16 @@ public final class RedisRedisUserConfigPrivatelinkAccessArgs extends com.pulumi.
     public static final RedisRedisUserConfigPrivatelinkAccessArgs Empty = new RedisRedisUserConfigPrivatelinkAccessArgs();
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
     @Import(name="redis")
-    private @Nullable Output<String> redis;
+    private @Nullable Output<Boolean> redis;
 
-    public Optional<Output<String>> redis() {
+    public Optional<Output<Boolean>> redis() {
         return Optional.ofNullable(this.redis);
     }
 
@@ -54,21 +54,21 @@ public final class RedisRedisUserConfigPrivatelinkAccessArgs extends com.pulumi.
             $ = new RedisRedisUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 
-        public Builder redis(@Nullable Output<String> redis) {
+        public Builder redis(@Nullable Output<Boolean> redis) {
             $.redis = redis;
             return this;
         }
 
-        public Builder redis(String redis) {
+        public Builder redis(Boolean redis) {
             return redis(Output.of(redis));
         }
 

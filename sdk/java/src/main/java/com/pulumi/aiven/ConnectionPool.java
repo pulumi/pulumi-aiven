@@ -93,14 +93,14 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return this.databaseName;
     }
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     @Export(name="poolMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> poolMode;
 
     /**
-     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public Output<Optional<String>> poolMode() {

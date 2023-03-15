@@ -17,6 +17,8 @@ import com.pulumi.aiven.inputs.GrafanaGrafanaUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.GrafanaGrafanaUserConfigSmtpServerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -36,9 +38,9 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="alertingEnabled")
-    private @Nullable Output<String> alertingEnabled;
+    private @Nullable Output<Boolean> alertingEnabled;
 
-    public Optional<Output<String>> alertingEnabled() {
+    public Optional<Output<Boolean>> alertingEnabled() {
         return Optional.ofNullable(this.alertingEnabled);
     }
 
@@ -50,9 +52,9 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="alertingMaxAnnotationsToKeep")
-    private @Nullable Output<String> alertingMaxAnnotationsToKeep;
+    private @Nullable Output<Integer> alertingMaxAnnotationsToKeep;
 
-    public Optional<Output<String>> alertingMaxAnnotationsToKeep() {
+    public Optional<Output<Integer>> alertingMaxAnnotationsToKeep() {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
 
@@ -64,9 +66,9 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="allowEmbedding")
-    private @Nullable Output<String> allowEmbedding;
+    private @Nullable Output<Boolean> allowEmbedding;
 
-    public Optional<Output<String>> allowEmbedding() {
+    public Optional<Output<Boolean>> allowEmbedding() {
         return Optional.ofNullable(this.allowEmbedding);
     }
 
@@ -78,9 +80,9 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="authBasicEnabled")
-    private @Nullable Output<String> authBasicEnabled;
+    private @Nullable Output<Boolean> authBasicEnabled;
 
-    public Optional<Output<String>> authBasicEnabled() {
+    public Optional<Output<Boolean>> authBasicEnabled() {
         return Optional.ofNullable(this.authBasicEnabled);
     }
 
@@ -127,9 +129,9 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="dashboardPreviewsEnabled")
-    private @Nullable Output<String> dashboardPreviewsEnabled;
+    private @Nullable Output<Boolean> dashboardPreviewsEnabled;
 
-    public Optional<Output<String>> dashboardPreviewsEnabled() {
+    public Optional<Output<Boolean>> dashboardPreviewsEnabled() {
         return Optional.ofNullable(this.dashboardPreviewsEnabled);
     }
 
@@ -141,23 +143,23 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="dashboardsVersionsToKeep")
-    private @Nullable Output<String> dashboardsVersionsToKeep;
+    private @Nullable Output<Integer> dashboardsVersionsToKeep;
 
-    public Optional<Output<String>> dashboardsVersionsToKeep() {
+    public Optional<Output<Integer>> dashboardsVersionsToKeep() {
         return Optional.ofNullable(this.dashboardsVersionsToKeep);
     }
 
     @Import(name="dataproxySendUserHeader")
-    private @Nullable Output<String> dataproxySendUserHeader;
+    private @Nullable Output<Boolean> dataproxySendUserHeader;
 
-    public Optional<Output<String>> dataproxySendUserHeader() {
+    public Optional<Output<Boolean>> dataproxySendUserHeader() {
         return Optional.ofNullable(this.dataproxySendUserHeader);
     }
 
     @Import(name="dataproxyTimeout")
-    private @Nullable Output<String> dataproxyTimeout;
+    private @Nullable Output<Integer> dataproxyTimeout;
 
-    public Optional<Output<String>> dataproxyTimeout() {
+    public Optional<Output<Integer>> dataproxyTimeout() {
         return Optional.ofNullable(this.dataproxyTimeout);
     }
 
@@ -169,16 +171,16 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="disableGravatar")
-    private @Nullable Output<String> disableGravatar;
+    private @Nullable Output<Boolean> disableGravatar;
 
-    public Optional<Output<String>> disableGravatar() {
+    public Optional<Output<Boolean>> disableGravatar() {
         return Optional.ofNullable(this.disableGravatar);
     }
 
     @Import(name="editorsCanAdmin")
-    private @Nullable Output<String> editorsCanAdmin;
+    private @Nullable Output<Boolean> editorsCanAdmin;
 
-    public Optional<Output<String>> editorsCanAdmin() {
+    public Optional<Output<Boolean>> editorsCanAdmin() {
         return Optional.ofNullable(this.editorsCanAdmin);
     }
 
@@ -203,17 +205,29 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     @Import(name="metricsEnabled")
-    private @Nullable Output<String> metricsEnabled;
+    private @Nullable Output<Boolean> metricsEnabled;
 
-    public Optional<Output<String>> metricsEnabled() {
+    public Optional<Output<Boolean>> metricsEnabled() {
         return Optional.ofNullable(this.metricsEnabled);
     }
 
@@ -267,16 +281,16 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
     @Import(name="userAutoAssignOrg")
-    private @Nullable Output<String> userAutoAssignOrg;
+    private @Nullable Output<Boolean> userAutoAssignOrg;
 
-    public Optional<Output<String>> userAutoAssignOrg() {
+    public Optional<Output<Boolean>> userAutoAssignOrg() {
         return Optional.ofNullable(this.userAutoAssignOrg);
     }
 
@@ -288,9 +302,9 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     @Import(name="viewersCanEdit")
-    private @Nullable Output<String> viewersCanEdit;
+    private @Nullable Output<Boolean> viewersCanEdit;
 
-    public Optional<Output<String>> viewersCanEdit() {
+    public Optional<Output<Boolean>> viewersCanEdit() {
         return Optional.ofNullable(this.viewersCanEdit);
     }
 
@@ -364,12 +378,12 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
-        public Builder alertingEnabled(@Nullable Output<String> alertingEnabled) {
+        public Builder alertingEnabled(@Nullable Output<Boolean> alertingEnabled) {
             $.alertingEnabled = alertingEnabled;
             return this;
         }
 
-        public Builder alertingEnabled(String alertingEnabled) {
+        public Builder alertingEnabled(Boolean alertingEnabled) {
             return alertingEnabled(Output.of(alertingEnabled));
         }
 
@@ -382,12 +396,12 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return alertingErrorOrTimeout(Output.of(alertingErrorOrTimeout));
         }
 
-        public Builder alertingMaxAnnotationsToKeep(@Nullable Output<String> alertingMaxAnnotationsToKeep) {
+        public Builder alertingMaxAnnotationsToKeep(@Nullable Output<Integer> alertingMaxAnnotationsToKeep) {
             $.alertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
             return this;
         }
 
-        public Builder alertingMaxAnnotationsToKeep(String alertingMaxAnnotationsToKeep) {
+        public Builder alertingMaxAnnotationsToKeep(Integer alertingMaxAnnotationsToKeep) {
             return alertingMaxAnnotationsToKeep(Output.of(alertingMaxAnnotationsToKeep));
         }
 
@@ -400,12 +414,12 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return alertingNodataOrNullvalues(Output.of(alertingNodataOrNullvalues));
         }
 
-        public Builder allowEmbedding(@Nullable Output<String> allowEmbedding) {
+        public Builder allowEmbedding(@Nullable Output<Boolean> allowEmbedding) {
             $.allowEmbedding = allowEmbedding;
             return this;
         }
 
-        public Builder allowEmbedding(String allowEmbedding) {
+        public Builder allowEmbedding(Boolean allowEmbedding) {
             return allowEmbedding(Output.of(allowEmbedding));
         }
 
@@ -418,12 +432,12 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return authAzuread(Output.of(authAzuread));
         }
 
-        public Builder authBasicEnabled(@Nullable Output<String> authBasicEnabled) {
+        public Builder authBasicEnabled(@Nullable Output<Boolean> authBasicEnabled) {
             $.authBasicEnabled = authBasicEnabled;
             return this;
         }
 
-        public Builder authBasicEnabled(String authBasicEnabled) {
+        public Builder authBasicEnabled(Boolean authBasicEnabled) {
             return authBasicEnabled(Output.of(authBasicEnabled));
         }
 
@@ -481,12 +495,12 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return customDomain(Output.of(customDomain));
         }
 
-        public Builder dashboardPreviewsEnabled(@Nullable Output<String> dashboardPreviewsEnabled) {
+        public Builder dashboardPreviewsEnabled(@Nullable Output<Boolean> dashboardPreviewsEnabled) {
             $.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
             return this;
         }
 
-        public Builder dashboardPreviewsEnabled(String dashboardPreviewsEnabled) {
+        public Builder dashboardPreviewsEnabled(Boolean dashboardPreviewsEnabled) {
             return dashboardPreviewsEnabled(Output.of(dashboardPreviewsEnabled));
         }
 
@@ -499,30 +513,30 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return dashboardsMinRefreshInterval(Output.of(dashboardsMinRefreshInterval));
         }
 
-        public Builder dashboardsVersionsToKeep(@Nullable Output<String> dashboardsVersionsToKeep) {
+        public Builder dashboardsVersionsToKeep(@Nullable Output<Integer> dashboardsVersionsToKeep) {
             $.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             return this;
         }
 
-        public Builder dashboardsVersionsToKeep(String dashboardsVersionsToKeep) {
+        public Builder dashboardsVersionsToKeep(Integer dashboardsVersionsToKeep) {
             return dashboardsVersionsToKeep(Output.of(dashboardsVersionsToKeep));
         }
 
-        public Builder dataproxySendUserHeader(@Nullable Output<String> dataproxySendUserHeader) {
+        public Builder dataproxySendUserHeader(@Nullable Output<Boolean> dataproxySendUserHeader) {
             $.dataproxySendUserHeader = dataproxySendUserHeader;
             return this;
         }
 
-        public Builder dataproxySendUserHeader(String dataproxySendUserHeader) {
+        public Builder dataproxySendUserHeader(Boolean dataproxySendUserHeader) {
             return dataproxySendUserHeader(Output.of(dataproxySendUserHeader));
         }
 
-        public Builder dataproxyTimeout(@Nullable Output<String> dataproxyTimeout) {
+        public Builder dataproxyTimeout(@Nullable Output<Integer> dataproxyTimeout) {
             $.dataproxyTimeout = dataproxyTimeout;
             return this;
         }
 
-        public Builder dataproxyTimeout(String dataproxyTimeout) {
+        public Builder dataproxyTimeout(Integer dataproxyTimeout) {
             return dataproxyTimeout(Output.of(dataproxyTimeout));
         }
 
@@ -535,21 +549,21 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return dateFormats(Output.of(dateFormats));
         }
 
-        public Builder disableGravatar(@Nullable Output<String> disableGravatar) {
+        public Builder disableGravatar(@Nullable Output<Boolean> disableGravatar) {
             $.disableGravatar = disableGravatar;
             return this;
         }
 
-        public Builder disableGravatar(String disableGravatar) {
+        public Builder disableGravatar(Boolean disableGravatar) {
             return disableGravatar(Output.of(disableGravatar));
         }
 
-        public Builder editorsCanAdmin(@Nullable Output<String> editorsCanAdmin) {
+        public Builder editorsCanAdmin(@Nullable Output<Boolean> editorsCanAdmin) {
             $.editorsCanAdmin = editorsCanAdmin;
             return this;
         }
 
-        public Builder editorsCanAdmin(String editorsCanAdmin) {
+        public Builder editorsCanAdmin(Boolean editorsCanAdmin) {
             return editorsCanAdmin(Output.of(editorsCanAdmin));
         }
 
@@ -584,25 +598,49 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
-        public Builder metricsEnabled(@Nullable Output<String> metricsEnabled) {
+        public Builder metricsEnabled(@Nullable Output<Boolean> metricsEnabled) {
             $.metricsEnabled = metricsEnabled;
             return this;
         }
 
-        public Builder metricsEnabled(String metricsEnabled) {
+        public Builder metricsEnabled(Boolean metricsEnabled) {
             return metricsEnabled(Output.of(metricsEnabled));
         }
 
@@ -669,21 +707,21 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return smtpServer(Output.of(smtpServer));
         }
 
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 
-        public Builder userAutoAssignOrg(@Nullable Output<String> userAutoAssignOrg) {
+        public Builder userAutoAssignOrg(@Nullable Output<Boolean> userAutoAssignOrg) {
             $.userAutoAssignOrg = userAutoAssignOrg;
             return this;
         }
 
-        public Builder userAutoAssignOrg(String userAutoAssignOrg) {
+        public Builder userAutoAssignOrg(Boolean userAutoAssignOrg) {
             return userAutoAssignOrg(Output.of(userAutoAssignOrg));
         }
 
@@ -696,12 +734,12 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return userAutoAssignOrgRole(Output.of(userAutoAssignOrgRole));
         }
 
-        public Builder viewersCanEdit(@Nullable Output<String> viewersCanEdit) {
+        public Builder viewersCanEdit(@Nullable Output<Boolean> viewersCanEdit) {
             $.viewersCanEdit = viewersCanEdit;
             return this;
         }
 
-        public Builder viewersCanEdit(String viewersCanEdit) {
+        public Builder viewersCanEdit(Boolean viewersCanEdit) {
             return viewersCanEdit(Output.of(viewersCanEdit));
         }
 

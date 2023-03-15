@@ -16,7 +16,7 @@ public final class GetAccountTeamMemberResult {
      */
     private Boolean accepted;
     /**
-     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String accountId;
@@ -36,7 +36,7 @@ public final class GetAccountTeamMemberResult {
      */
     private String invitedByUserEmail;
     /**
-     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * @return An account team id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String teamId;
@@ -55,7 +55,7 @@ public final class GetAccountTeamMemberResult {
         return this.accepted;
     }
     /**
-     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String accountId() {
@@ -83,7 +83,7 @@ public final class GetAccountTeamMemberResult {
         return this.invitedByUserEmail;
     }
     /**
-     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * @return An account team id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String teamId() {

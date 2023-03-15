@@ -12,7 +12,6 @@ import com.pulumi.aiven.inputs.ServiceIntegrationKafkaLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaMirrormakerUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationMetricsUserConfigArgs;
-import com.pulumi.aiven.inputs.ServiceIntegrationMirrormakerUserConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -131,14 +130,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Type of the service integration
+     * Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
     @Import(name="integrationType")
     private @Nullable Output<String> integrationType;
 
     /**
-     * @return Type of the service integration
+     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
     public Optional<Output<String>> integrationType() {
@@ -221,21 +220,6 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Mirrormaker user configurable settings
-     * 
-     */
-    @Import(name="mirrormakerUserConfig")
-    private @Nullable Output<ServiceIntegrationMirrormakerUserConfigArgs> mirrormakerUserConfig;
-
-    /**
-     * @return Mirrormaker user configurable settings
-     * 
-     */
-    public Optional<Output<ServiceIntegrationMirrormakerUserConfigArgs>> mirrormakerUserConfig() {
-        return Optional.ofNullable(this.mirrormakerUserConfig);
-    }
-
-    /**
      * Project the integration belongs to
      * 
      */
@@ -296,7 +280,6 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         this.kafkaMirrormakerUserConfig = $.kafkaMirrormakerUserConfig;
         this.logsUserConfig = $.logsUserConfig;
         this.metricsUserConfig = $.metricsUserConfig;
-        this.mirrormakerUserConfig = $.mirrormakerUserConfig;
         this.project = $.project;
         this.sourceEndpointId = $.sourceEndpointId;
         this.sourceServiceName = $.sourceServiceName;
@@ -468,7 +451,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param integrationType Type of the service integration
+         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
          * 
          * @return builder
          * 
@@ -479,7 +462,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param integrationType Type of the service integration
+         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
          * 
          * @return builder
          * 
@@ -591,27 +574,6 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
          */
         public Builder metricsUserConfig(ServiceIntegrationMetricsUserConfigArgs metricsUserConfig) {
             return metricsUserConfig(Output.of(metricsUserConfig));
-        }
-
-        /**
-         * @param mirrormakerUserConfig Mirrormaker user configurable settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mirrormakerUserConfig(@Nullable Output<ServiceIntegrationMirrormakerUserConfigArgs> mirrormakerUserConfig) {
-            $.mirrormakerUserConfig = mirrormakerUserConfig;
-            return this;
-        }
-
-        /**
-         * @param mirrormakerUserConfig Mirrormaker user configurable settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mirrormakerUserConfig(ServiceIntegrationMirrormakerUserConfigArgs mirrormakerUserConfig) {
-            return mirrormakerUserConfig(Output.of(mirrormakerUserConfig));
         }
 
         /**

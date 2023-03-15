@@ -21,7 +21,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? CassandraVersion;
         public readonly ImmutableArray<Outputs.GetCassandaCassandraUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        public readonly string? MigrateSstableloader;
+        public readonly bool? MigrateSstableloader;
         public readonly Outputs.GetCassandaCassandraUserConfigPrivateAccessResult? PrivateAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetCassandaCassandraUserConfigPublicAccessResult? PublicAccess;
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetCassandaCassandraUserConfigResult(
@@ -44,7 +44,7 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
-            string? migrateSstableloader,
+            bool? migrateSstableloader,
 
             Outputs.GetCassandaCassandraUserConfigPrivateAccessResult? privateAccess,
 
@@ -56,7 +56,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToJoinWith,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             Cassandra = cassandra;

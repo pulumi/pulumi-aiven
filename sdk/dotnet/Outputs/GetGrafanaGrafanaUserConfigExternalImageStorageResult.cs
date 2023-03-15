@@ -13,20 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigExternalImageStorageResult
     {
-        public readonly string? AccessKey;
-        public readonly string? BucketUrl;
-        public readonly string? Provider;
-        public readonly string? SecretKey;
+        public readonly string AccessKey;
+        public readonly string BucketUrl;
+        public readonly string Provider;
+        public readonly string SecretKey;
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigExternalImageStorageResult(
-            string? accessKey,
+            string accessKey,
 
-            string? bucketUrl,
+            string bucketUrl,
 
-            string? provider,
+            string provider,
 
-            string? secretKey)
+            string secretKey)
         {
             AccessKey = accessKey;
             BucketUrl = bucketUrl;

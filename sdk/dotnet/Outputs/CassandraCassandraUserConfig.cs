@@ -14,31 +14,31 @@ namespace Pulumi.Aiven.Outputs
     public sealed class CassandraCassandraUserConfig
     {
         /// <summary>
-        /// Additional Cloud Regions for Backup Replication
+        /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// cassandra configuration values
+        /// cassandra configuration values.
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigCassandra? Cassandra;
         /// <summary>
-        /// Cassandra major version
+        /// Cassandra major version.
         /// </summary>
         public readonly string? CassandraVersion;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public readonly ImmutableArray<Outputs.CassandraCassandraUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
         /// </summary>
-        public readonly string? MigrateSstableloader;
+        public readonly bool? MigrateSstableloader;
         /// <summary>
-        /// Allow access to selected service ports from private networks
+        /// Allow access to selected service ports from private networks.
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet
+        /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigPublicAccess? PublicAccess;
         /// <summary>
@@ -58,9 +58,9 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToJoinWith;
         /// <summary>
-        /// Use static public IP addresses
+        /// Use static public IP addresses.
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private CassandraCassandraUserConfig(
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
-            string? migrateSstableloader,
+            bool? migrateSstableloader,
 
             Outputs.CassandraCassandraUserConfigPrivateAccess? privateAccess,
 
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToJoinWith,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             Cassandra = cassandra;

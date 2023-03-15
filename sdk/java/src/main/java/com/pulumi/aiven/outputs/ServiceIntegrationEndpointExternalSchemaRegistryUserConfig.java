@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * @return Authentication method
+     * @return Authentication method.
      * 
      */
     private @Nullable String authentication;
     /**
-     * @return Basic authentication password
+     * @return Basic authentication password.
      * 
      */
     private @Nullable String basicAuthPassword;
     /**
-     * @return Basic authentication user name
+     * @return Basic authentication user name.
      * 
      */
     private @Nullable String basicAuthUsername;
     /**
-     * @return Schema Registry URL
+     * @return Schema Registry URL.
      * 
      */
     private @Nullable String url;
 
     private ServiceIntegrationEndpointExternalSchemaRegistryUserConfig() {}
     /**
-     * @return Authentication method
+     * @return Authentication method.
      * 
      */
     public Optional<String> authentication() {
         return Optional.ofNullable(this.authentication);
     }
     /**
-     * @return Basic authentication password
+     * @return Basic authentication password.
      * 
      */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
     /**
-     * @return Basic authentication user name
+     * @return Basic authentication user name.
      * 
      */
     public Optional<String> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
     /**
-     * @return Schema Registry URL
+     * @return Schema Registry URL.
      * 
      */
     public Optional<String> url() {

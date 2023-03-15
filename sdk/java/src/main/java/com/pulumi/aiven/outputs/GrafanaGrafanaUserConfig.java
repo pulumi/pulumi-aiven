@@ -16,6 +16,8 @@ import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfigSmtpServer;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,32 +27,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GrafanaGrafanaUserConfig {
     private @Nullable String additionalBackupRegions;
-    private @Nullable String alertingEnabled;
+    private @Nullable Boolean alertingEnabled;
     private @Nullable String alertingErrorOrTimeout;
-    private @Nullable String alertingMaxAnnotationsToKeep;
+    private @Nullable Integer alertingMaxAnnotationsToKeep;
     private @Nullable String alertingNodataOrNullvalues;
-    private @Nullable String allowEmbedding;
+    private @Nullable Boolean allowEmbedding;
     private @Nullable GrafanaGrafanaUserConfigAuthAzuread authAzuread;
-    private @Nullable String authBasicEnabled;
+    private @Nullable Boolean authBasicEnabled;
     private @Nullable GrafanaGrafanaUserConfigAuthGenericOauth authGenericOauth;
     private @Nullable GrafanaGrafanaUserConfigAuthGithub authGithub;
     private @Nullable GrafanaGrafanaUserConfigAuthGitlab authGitlab;
     private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
     private @Nullable String cookieSamesite;
     private @Nullable String customDomain;
-    private @Nullable String dashboardPreviewsEnabled;
+    private @Nullable Boolean dashboardPreviewsEnabled;
     private @Nullable String dashboardsMinRefreshInterval;
-    private @Nullable String dashboardsVersionsToKeep;
-    private @Nullable String dataproxySendUserHeader;
-    private @Nullable String dataproxyTimeout;
+    private @Nullable Integer dashboardsVersionsToKeep;
+    private @Nullable Boolean dataproxySendUserHeader;
+    private @Nullable Integer dataproxyTimeout;
     private @Nullable GrafanaGrafanaUserConfigDateFormats dateFormats;
-    private @Nullable String disableGravatar;
-    private @Nullable String editorsCanAdmin;
+    private @Nullable Boolean disableGravatar;
+    private @Nullable Boolean editorsCanAdmin;
     private @Nullable GrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
     private @Nullable String googleAnalyticsUaId;
     private @Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
-    private @Nullable String metricsEnabled;
+    private @Nullable Boolean metricsEnabled;
     private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
     private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable String projectToForkFrom;
@@ -58,34 +66,34 @@ public final class GrafanaGrafanaUserConfig {
     private @Nullable String recoveryBasebackupName;
     private @Nullable String serviceToForkFrom;
     private @Nullable GrafanaGrafanaUserConfigSmtpServer smtpServer;
-    private @Nullable String staticIps;
-    private @Nullable String userAutoAssignOrg;
+    private @Nullable Boolean staticIps;
+    private @Nullable Boolean userAutoAssignOrg;
     private @Nullable String userAutoAssignOrgRole;
-    private @Nullable String viewersCanEdit;
+    private @Nullable Boolean viewersCanEdit;
 
     private GrafanaGrafanaUserConfig() {}
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
-    public Optional<String> alertingEnabled() {
+    public Optional<Boolean> alertingEnabled() {
         return Optional.ofNullable(this.alertingEnabled);
     }
     public Optional<String> alertingErrorOrTimeout() {
         return Optional.ofNullable(this.alertingErrorOrTimeout);
     }
-    public Optional<String> alertingMaxAnnotationsToKeep() {
+    public Optional<Integer> alertingMaxAnnotationsToKeep() {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
     public Optional<String> alertingNodataOrNullvalues() {
         return Optional.ofNullable(this.alertingNodataOrNullvalues);
     }
-    public Optional<String> allowEmbedding() {
+    public Optional<Boolean> allowEmbedding() {
         return Optional.ofNullable(this.allowEmbedding);
     }
     public Optional<GrafanaGrafanaUserConfigAuthAzuread> authAzuread() {
         return Optional.ofNullable(this.authAzuread);
     }
-    public Optional<String> authBasicEnabled() {
+    public Optional<Boolean> authBasicEnabled() {
         return Optional.ofNullable(this.authBasicEnabled);
     }
     public Optional<GrafanaGrafanaUserConfigAuthGenericOauth> authGenericOauth() {
@@ -106,28 +114,28 @@ public final class GrafanaGrafanaUserConfig {
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
-    public Optional<String> dashboardPreviewsEnabled() {
+    public Optional<Boolean> dashboardPreviewsEnabled() {
         return Optional.ofNullable(this.dashboardPreviewsEnabled);
     }
     public Optional<String> dashboardsMinRefreshInterval() {
         return Optional.ofNullable(this.dashboardsMinRefreshInterval);
     }
-    public Optional<String> dashboardsVersionsToKeep() {
+    public Optional<Integer> dashboardsVersionsToKeep() {
         return Optional.ofNullable(this.dashboardsVersionsToKeep);
     }
-    public Optional<String> dataproxySendUserHeader() {
+    public Optional<Boolean> dataproxySendUserHeader() {
         return Optional.ofNullable(this.dataproxySendUserHeader);
     }
-    public Optional<String> dataproxyTimeout() {
+    public Optional<Integer> dataproxyTimeout() {
         return Optional.ofNullable(this.dataproxyTimeout);
     }
     public Optional<GrafanaGrafanaUserConfigDateFormats> dateFormats() {
         return Optional.ofNullable(this.dateFormats);
     }
-    public Optional<String> disableGravatar() {
+    public Optional<Boolean> disableGravatar() {
         return Optional.ofNullable(this.disableGravatar);
     }
-    public Optional<String> editorsCanAdmin() {
+    public Optional<Boolean> editorsCanAdmin() {
         return Optional.ofNullable(this.editorsCanAdmin);
     }
     public Optional<GrafanaGrafanaUserConfigExternalImageStorage> externalImageStorage() {
@@ -139,10 +147,16 @@ public final class GrafanaGrafanaUserConfig {
     public List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    public Optional<String> metricsEnabled() {
+    public Optional<Boolean> metricsEnabled() {
         return Optional.ofNullable(this.metricsEnabled);
     }
     public Optional<GrafanaGrafanaUserConfigPrivateAccess> privateAccess() {
@@ -166,16 +180,16 @@ public final class GrafanaGrafanaUserConfig {
     public Optional<GrafanaGrafanaUserConfigSmtpServer> smtpServer() {
         return Optional.ofNullable(this.smtpServer);
     }
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
-    public Optional<String> userAutoAssignOrg() {
+    public Optional<Boolean> userAutoAssignOrg() {
         return Optional.ofNullable(this.userAutoAssignOrg);
     }
     public Optional<String> userAutoAssignOrgRole() {
         return Optional.ofNullable(this.userAutoAssignOrgRole);
     }
-    public Optional<String> viewersCanEdit() {
+    public Optional<Boolean> viewersCanEdit() {
         return Optional.ofNullable(this.viewersCanEdit);
     }
 
@@ -189,32 +203,32 @@ public final class GrafanaGrafanaUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
-        private @Nullable String alertingEnabled;
+        private @Nullable Boolean alertingEnabled;
         private @Nullable String alertingErrorOrTimeout;
-        private @Nullable String alertingMaxAnnotationsToKeep;
+        private @Nullable Integer alertingMaxAnnotationsToKeep;
         private @Nullable String alertingNodataOrNullvalues;
-        private @Nullable String allowEmbedding;
+        private @Nullable Boolean allowEmbedding;
         private @Nullable GrafanaGrafanaUserConfigAuthAzuread authAzuread;
-        private @Nullable String authBasicEnabled;
+        private @Nullable Boolean authBasicEnabled;
         private @Nullable GrafanaGrafanaUserConfigAuthGenericOauth authGenericOauth;
         private @Nullable GrafanaGrafanaUserConfigAuthGithub authGithub;
         private @Nullable GrafanaGrafanaUserConfigAuthGitlab authGitlab;
         private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
         private @Nullable String cookieSamesite;
         private @Nullable String customDomain;
-        private @Nullable String dashboardPreviewsEnabled;
+        private @Nullable Boolean dashboardPreviewsEnabled;
         private @Nullable String dashboardsMinRefreshInterval;
-        private @Nullable String dashboardsVersionsToKeep;
-        private @Nullable String dataproxySendUserHeader;
-        private @Nullable String dataproxyTimeout;
+        private @Nullable Integer dashboardsVersionsToKeep;
+        private @Nullable Boolean dataproxySendUserHeader;
+        private @Nullable Integer dataproxyTimeout;
         private @Nullable GrafanaGrafanaUserConfigDateFormats dateFormats;
-        private @Nullable String disableGravatar;
-        private @Nullable String editorsCanAdmin;
+        private @Nullable Boolean disableGravatar;
+        private @Nullable Boolean editorsCanAdmin;
         private @Nullable GrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
         private @Nullable String googleAnalyticsUaId;
         private @Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
-        private @Nullable String metricsEnabled;
+        private @Nullable Boolean metricsEnabled;
         private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
         private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable String projectToForkFrom;
@@ -222,10 +236,10 @@ public final class GrafanaGrafanaUserConfig {
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
         private @Nullable GrafanaGrafanaUserConfigSmtpServer smtpServer;
-        private @Nullable String staticIps;
-        private @Nullable String userAutoAssignOrg;
+        private @Nullable Boolean staticIps;
+        private @Nullable Boolean userAutoAssignOrg;
         private @Nullable String userAutoAssignOrgRole;
-        private @Nullable String viewersCanEdit;
+        private @Nullable Boolean viewersCanEdit;
         public Builder() {}
         public Builder(GrafanaGrafanaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -275,7 +289,7 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder alertingEnabled(@Nullable String alertingEnabled) {
+        public Builder alertingEnabled(@Nullable Boolean alertingEnabled) {
             this.alertingEnabled = alertingEnabled;
             return this;
         }
@@ -285,7 +299,7 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder alertingMaxAnnotationsToKeep(@Nullable String alertingMaxAnnotationsToKeep) {
+        public Builder alertingMaxAnnotationsToKeep(@Nullable Integer alertingMaxAnnotationsToKeep) {
             this.alertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
             return this;
         }
@@ -295,7 +309,7 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder allowEmbedding(@Nullable String allowEmbedding) {
+        public Builder allowEmbedding(@Nullable Boolean allowEmbedding) {
             this.allowEmbedding = allowEmbedding;
             return this;
         }
@@ -305,7 +319,7 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder authBasicEnabled(@Nullable String authBasicEnabled) {
+        public Builder authBasicEnabled(@Nullable Boolean authBasicEnabled) {
             this.authBasicEnabled = authBasicEnabled;
             return this;
         }
@@ -340,7 +354,7 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder dashboardPreviewsEnabled(@Nullable String dashboardPreviewsEnabled) {
+        public Builder dashboardPreviewsEnabled(@Nullable Boolean dashboardPreviewsEnabled) {
             this.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
             return this;
         }
@@ -350,17 +364,17 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder dashboardsVersionsToKeep(@Nullable String dashboardsVersionsToKeep) {
+        public Builder dashboardsVersionsToKeep(@Nullable Integer dashboardsVersionsToKeep) {
             this.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             return this;
         }
         @CustomType.Setter
-        public Builder dataproxySendUserHeader(@Nullable String dataproxySendUserHeader) {
+        public Builder dataproxySendUserHeader(@Nullable Boolean dataproxySendUserHeader) {
             this.dataproxySendUserHeader = dataproxySendUserHeader;
             return this;
         }
         @CustomType.Setter
-        public Builder dataproxyTimeout(@Nullable String dataproxyTimeout) {
+        public Builder dataproxyTimeout(@Nullable Integer dataproxyTimeout) {
             this.dataproxyTimeout = dataproxyTimeout;
             return this;
         }
@@ -370,12 +384,12 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder disableGravatar(@Nullable String disableGravatar) {
+        public Builder disableGravatar(@Nullable Boolean disableGravatar) {
             this.disableGravatar = disableGravatar;
             return this;
         }
         @CustomType.Setter
-        public Builder editorsCanAdmin(@Nullable String editorsCanAdmin) {
+        public Builder editorsCanAdmin(@Nullable Boolean editorsCanAdmin) {
             this.editorsCanAdmin = editorsCanAdmin;
             return this;
         }
@@ -406,7 +420,7 @@ public final class GrafanaGrafanaUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
-        public Builder metricsEnabled(@Nullable String metricsEnabled) {
+        public Builder metricsEnabled(@Nullable Boolean metricsEnabled) {
             this.metricsEnabled = metricsEnabled;
             return this;
         }
@@ -446,12 +460,12 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }
         @CustomType.Setter
-        public Builder userAutoAssignOrg(@Nullable String userAutoAssignOrg) {
+        public Builder userAutoAssignOrg(@Nullable Boolean userAutoAssignOrg) {
             this.userAutoAssignOrg = userAutoAssignOrg;
             return this;
         }
@@ -461,7 +475,7 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder viewersCanEdit(@Nullable String viewersCanEdit) {
+        public Builder viewersCanEdit(@Nullable Boolean viewersCanEdit) {
             this.viewersCanEdit = viewersCanEdit;
             return this;
         }

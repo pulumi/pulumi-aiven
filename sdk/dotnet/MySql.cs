@@ -35,11 +35,11 @@ namespace Pulumi.Aiven
     ///             Mysql = new Aiven.Inputs.MySqlMysqlUserConfigMysqlArgs
     ///             {
     ///                 SqlMode = "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
-    ///                 SqlRequirePrimaryKey = "true",
+    ///                 SqlRequirePrimaryKey = true,
     ///             },
     ///             PublicAccess = new Aiven.Inputs.MySqlMysqlUserConfigPublicAccessArgs
     ///             {
-    ///                 Mysql = "true",
+    ///                 Mysql = true,
     ///             },
     ///         },
     ///     });

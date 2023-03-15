@@ -75,7 +75,7 @@ export interface GetAzurePrivatelinkResult {
      */
     readonly state: string;
     /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
+     * A List of allowed Subscription IDs. Maximum length: `16`.
      */
     readonly userSubscriptionIds: string[];
 }

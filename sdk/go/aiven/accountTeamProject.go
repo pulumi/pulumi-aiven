@@ -33,7 +33,7 @@ type AccountTeamProject struct {
 	ProjectName pulumi.StringPtrOutput `pulumi:"projectName"`
 	// An account team id
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrOutput `pulumi:"teamType"`
 }
 
@@ -78,7 +78,7 @@ type accountTeamProjectState struct {
 	ProjectName *string `pulumi:"projectName"`
 	// An account team id
 	TeamId *string `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
 }
 
@@ -89,7 +89,7 @@ type AccountTeamProjectState struct {
 	ProjectName pulumi.StringPtrInput
 	// An account team id
 	TeamId pulumi.StringPtrInput
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrInput
 }
 
@@ -104,7 +104,7 @@ type accountTeamProjectArgs struct {
 	ProjectName *string `pulumi:"projectName"`
 	// An account team id
 	TeamId string `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
 }
 
@@ -116,7 +116,7 @@ type AccountTeamProjectArgs struct {
 	ProjectName pulumi.StringPtrInput
 	// An account team id
 	TeamId pulumi.StringInput
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrInput
 }
 
@@ -222,7 +222,7 @@ func (o AccountTeamProjectOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 func (o AccountTeamProjectOutput) TeamType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringPtrOutput { return v.TeamType }).(pulumi.StringPtrOutput)
 }

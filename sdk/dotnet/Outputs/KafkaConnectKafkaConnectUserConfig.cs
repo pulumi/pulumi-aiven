@@ -20,7 +20,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private KafkaConnectKafkaConnectUserConfig(
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? publicAccess,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointJolokiaUserConfig {
     /**
-     * @return Jolokia basic authentication password
+     * @return Jolokia basic authentication password.
      * 
      */
     private @Nullable String basicAuthPassword;
     /**
-     * @return Jolokia basic authentication username
+     * @return Jolokia basic authentication username.
      * 
      */
     private @Nullable String basicAuthUsername;
 
     private ServiceIntegrationEndpointJolokiaUserConfig() {}
     /**
-     * @return Jolokia basic authentication password
+     * @return Jolokia basic authentication password.
      * 
      */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
     /**
-     * @return Jolokia basic authentication username
+     * @return Jolokia basic authentication username.
      * 
      */
     public Optional<String> basicAuthUsername() {

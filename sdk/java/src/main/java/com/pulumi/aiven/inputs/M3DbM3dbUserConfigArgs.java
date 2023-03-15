@@ -11,6 +11,7 @@ import com.pulumi.aiven.inputs.M3DbM3dbUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,9 +44,21 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -57,17 +70,29 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.limits);
     }
 
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<String>> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
 
     @Import(name="m3coordinatorEnableGraphiteCarbonIngest")
-    private @Nullable Output<String> m3coordinatorEnableGraphiteCarbonIngest;
+    private @Nullable Output<Boolean> m3coordinatorEnableGraphiteCarbonIngest;
 
-    public Optional<Output<String>> m3coordinatorEnableGraphiteCarbonIngest() {
+    public Optional<Output<Boolean>> m3coordinatorEnableGraphiteCarbonIngest() {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
 
@@ -78,9 +103,21 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.m3dbVersion);
     }
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     @Import(name="namespaces")
     private @Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces;
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public Optional<Output<List<M3DbM3dbUserConfigNamespaceArgs>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -121,9 +158,9 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -196,15 +233,39 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -218,21 +279,37 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return limits(Output.of(limits));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Usage of this field is discouraged.
+         * 
+         */
+        @Deprecated /* Usage of this field is discouraged. */
         public Builder m3Version(@Nullable Output<String> m3Version) {
             $.m3Version = m3Version;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Usage of this field is discouraged.
+         * 
+         */
+        @Deprecated /* Usage of this field is discouraged. */
         public Builder m3Version(String m3Version) {
             return m3Version(Output.of(m3Version));
         }
 
-        public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable Output<String> m3coordinatorEnableGraphiteCarbonIngest) {
+        public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable Output<Boolean> m3coordinatorEnableGraphiteCarbonIngest) {
             $.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             return this;
         }
 
-        public Builder m3coordinatorEnableGraphiteCarbonIngest(String m3coordinatorEnableGraphiteCarbonIngest) {
+        public Builder m3coordinatorEnableGraphiteCarbonIngest(Boolean m3coordinatorEnableGraphiteCarbonIngest) {
             return m3coordinatorEnableGraphiteCarbonIngest(Output.of(m3coordinatorEnableGraphiteCarbonIngest));
         }
 
@@ -245,15 +322,39 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return m3dbVersion(Output.of(m3dbVersion));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(@Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(List<M3DbM3dbUserConfigNamespaceArgs> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(M3DbM3dbUserConfigNamespaceArgs... namespaces) {
             return namespaces(List.of(namespaces));
         }
@@ -303,12 +404,12 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 

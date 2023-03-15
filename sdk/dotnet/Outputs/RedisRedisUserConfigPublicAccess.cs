@@ -13,14 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class RedisRedisUserConfigPublicAccess
     {
-        public readonly string? Prometheus;
-        public readonly string? Redis;
+        public readonly bool? Prometheus;
+        public readonly bool? Redis;
 
         [OutputConstructor]
         private RedisRedisUserConfigPublicAccess(
-            string? prometheus,
+            bool? prometheus,
 
-            string? redis)
+            bool? redis)
         {
             Prometheus = prometheus;
             Redis = redis;

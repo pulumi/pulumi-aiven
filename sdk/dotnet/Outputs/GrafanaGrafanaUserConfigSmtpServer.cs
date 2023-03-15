@@ -13,28 +13,28 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigSmtpServer
     {
-        public readonly string? FromAddress;
+        public readonly string FromAddress;
         public readonly string? FromName;
-        public readonly string? Host;
+        public readonly string Host;
         public readonly string? Password;
-        public readonly string? Port;
-        public readonly string? SkipVerify;
+        public readonly int Port;
+        public readonly bool? SkipVerify;
         public readonly string? StarttlsPolicy;
         public readonly string? Username;
 
         [OutputConstructor]
         private GrafanaGrafanaUserConfigSmtpServer(
-            string? fromAddress,
+            string fromAddress,
 
             string? fromName,
 
-            string? host,
+            string host,
 
             string? password,
 
-            string? port,
+            int port,
 
-            string? skipVerify,
+            bool? skipVerify,
 
             string? starttlsPolicy,
 

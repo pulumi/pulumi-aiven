@@ -7,26 +7,24 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs Empty = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs();
 
-    @Import(name="field")
-    private @Nullable Output<String> field;
+    @Import(name="field", required=true)
+    private Output<String> field;
 
-    public Optional<Output<String>> field() {
-        return Optional.ofNullable(this.field);
+    public Output<String> field() {
+        return this.field;
     }
 
-    @Import(name="metric")
-    private @Nullable Output<String> metric;
+    @Import(name="metric", required=true)
+    private Output<String> metric;
 
-    public Optional<Output<String>> metric() {
-        return Optional.ofNullable(this.metric);
+    public Output<String> metric() {
+        return this.metric;
     }
 
     private ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs() {}
@@ -54,7 +52,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDropp
             $ = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder field(@Nullable Output<String> field) {
+        public Builder field(Output<String> field) {
             $.field = field;
             return this;
         }
@@ -63,7 +61,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDropp
             return field(Output.of(field));
         }
 
-        public Builder metric(@Nullable Output<String> metric) {
+        public Builder metric(Output<String> metric) {
             $.metric = metric;
             return this;
         }
@@ -73,6 +71,8 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDropp
         }
 
         public ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs build() {
+            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
+            $.metric = Objects.requireNonNull($.metric, "expected parameter 'metric' to be non-null");
             return $;
         }
     }

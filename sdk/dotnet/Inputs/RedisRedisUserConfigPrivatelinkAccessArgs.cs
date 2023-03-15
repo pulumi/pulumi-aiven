@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Inputs
     public sealed class RedisRedisUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         [Input("redis")]
-        public Input<string>? Redis { get; set; }
+        public Input<bool>? Redis { get; set; }
 
         public RedisRedisUserConfigPrivatelinkAccessArgs()
         {

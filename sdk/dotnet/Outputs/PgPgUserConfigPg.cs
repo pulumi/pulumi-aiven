@@ -13,139 +13,145 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPg
     {
-        public readonly string? AutovacuumAnalyzeScaleFactor;
-        public readonly string? AutovacuumAnalyzeThreshold;
-        public readonly string? AutovacuumFreezeMaxAge;
-        public readonly string? AutovacuumMaxWorkers;
-        public readonly string? AutovacuumNaptime;
-        public readonly string? AutovacuumVacuumCostDelay;
-        public readonly string? AutovacuumVacuumCostLimit;
-        public readonly string? AutovacuumVacuumScaleFactor;
-        public readonly string? AutovacuumVacuumThreshold;
-        public readonly string? BgwriterDelay;
-        public readonly string? BgwriterFlushAfter;
-        public readonly string? BgwriterLruMaxpages;
-        public readonly string? BgwriterLruMultiplier;
-        public readonly string? DeadlockTimeout;
+        public readonly double? AutovacuumAnalyzeScaleFactor;
+        public readonly int? AutovacuumAnalyzeThreshold;
+        public readonly int? AutovacuumFreezeMaxAge;
+        public readonly int? AutovacuumMaxWorkers;
+        public readonly int? AutovacuumNaptime;
+        public readonly int? AutovacuumVacuumCostDelay;
+        public readonly int? AutovacuumVacuumCostLimit;
+        public readonly double? AutovacuumVacuumScaleFactor;
+        public readonly int? AutovacuumVacuumThreshold;
+        public readonly int? BgwriterDelay;
+        public readonly int? BgwriterFlushAfter;
+        public readonly int? BgwriterLruMaxpages;
+        public readonly double? BgwriterLruMultiplier;
+        public readonly int? DeadlockTimeout;
         public readonly string? DefaultToastCompression;
-        public readonly string? IdleInTransactionSessionTimeout;
-        public readonly string? Jit;
-        public readonly string? LogAutovacuumMinDuration;
+        public readonly int? IdleInTransactionSessionTimeout;
+        public readonly bool? Jit;
+        public readonly int? LogAutovacuumMinDuration;
         public readonly string? LogErrorVerbosity;
         public readonly string? LogLinePrefix;
-        public readonly string? LogMinDurationStatement;
-        public readonly string? LogTempFiles;
-        public readonly string? MaxFilesPerProcess;
-        public readonly string? MaxLocksPerTransaction;
-        public readonly string? MaxLogicalReplicationWorkers;
-        public readonly string? MaxParallelWorkers;
-        public readonly string? MaxParallelWorkersPerGather;
-        public readonly string? MaxPredLocksPerTransaction;
-        public readonly string? MaxPreparedTransactions;
-        public readonly string? MaxReplicationSlots;
-        public readonly string? MaxSlotWalKeepSize;
-        public readonly string? MaxStackDepth;
-        public readonly string? MaxStandbyArchiveDelay;
-        public readonly string? MaxStandbyStreamingDelay;
-        public readonly string? MaxWalSenders;
-        public readonly string? MaxWorkerProcesses;
-        public readonly string? PgPartmanBgwDotInterval;
+        public readonly int? LogMinDurationStatement;
+        public readonly int? LogTempFiles;
+        public readonly int? MaxFilesPerProcess;
+        public readonly int? MaxLocksPerTransaction;
+        public readonly int? MaxLogicalReplicationWorkers;
+        public readonly int? MaxParallelWorkers;
+        public readonly int? MaxParallelWorkersPerGather;
+        public readonly int? MaxPredLocksPerTransaction;
+        public readonly int? MaxPreparedTransactions;
+        public readonly int? MaxReplicationSlots;
+        public readonly int? MaxSlotWalKeepSize;
+        public readonly int? MaxStackDepth;
+        public readonly int? MaxStandbyArchiveDelay;
+        public readonly int? MaxStandbyStreamingDelay;
+        public readonly int? MaxWalSenders;
+        public readonly int? MaxWorkerProcesses;
+        public readonly int? PgPartmanBgwDotInterval;
         public readonly string? PgPartmanBgwDotRole;
+        public readonly bool? PgStatMonitorDotPgsmEnableQueryPlan;
+        public readonly int? PgStatMonitorDotPgsmMaxBuckets;
         public readonly string? PgStatStatementsDotTrack;
-        public readonly string? TempFileLimit;
+        public readonly int? TempFileLimit;
         public readonly string? Timezone;
-        public readonly string? TrackActivityQuerySize;
+        public readonly int? TrackActivityQuerySize;
         public readonly string? TrackCommitTimestamp;
         public readonly string? TrackFunctions;
         public readonly string? TrackIoTiming;
-        public readonly string? WalSenderTimeout;
-        public readonly string? WalWriterDelay;
+        public readonly int? WalSenderTimeout;
+        public readonly int? WalWriterDelay;
 
         [OutputConstructor]
         private PgPgUserConfigPg(
-            string? autovacuumAnalyzeScaleFactor,
+            double? autovacuumAnalyzeScaleFactor,
 
-            string? autovacuumAnalyzeThreshold,
+            int? autovacuumAnalyzeThreshold,
 
-            string? autovacuumFreezeMaxAge,
+            int? autovacuumFreezeMaxAge,
 
-            string? autovacuumMaxWorkers,
+            int? autovacuumMaxWorkers,
 
-            string? autovacuumNaptime,
+            int? autovacuumNaptime,
 
-            string? autovacuumVacuumCostDelay,
+            int? autovacuumVacuumCostDelay,
 
-            string? autovacuumVacuumCostLimit,
+            int? autovacuumVacuumCostLimit,
 
-            string? autovacuumVacuumScaleFactor,
+            double? autovacuumVacuumScaleFactor,
 
-            string? autovacuumVacuumThreshold,
+            int? autovacuumVacuumThreshold,
 
-            string? bgwriterDelay,
+            int? bgwriterDelay,
 
-            string? bgwriterFlushAfter,
+            int? bgwriterFlushAfter,
 
-            string? bgwriterLruMaxpages,
+            int? bgwriterLruMaxpages,
 
-            string? bgwriterLruMultiplier,
+            double? bgwriterLruMultiplier,
 
-            string? deadlockTimeout,
+            int? deadlockTimeout,
 
             string? defaultToastCompression,
 
-            string? idleInTransactionSessionTimeout,
+            int? idleInTransactionSessionTimeout,
 
-            string? jit,
+            bool? jit,
 
-            string? logAutovacuumMinDuration,
+            int? logAutovacuumMinDuration,
 
             string? logErrorVerbosity,
 
             string? logLinePrefix,
 
-            string? logMinDurationStatement,
+            int? logMinDurationStatement,
 
-            string? logTempFiles,
+            int? logTempFiles,
 
-            string? maxFilesPerProcess,
+            int? maxFilesPerProcess,
 
-            string? maxLocksPerTransaction,
+            int? maxLocksPerTransaction,
 
-            string? maxLogicalReplicationWorkers,
+            int? maxLogicalReplicationWorkers,
 
-            string? maxParallelWorkers,
+            int? maxParallelWorkers,
 
-            string? maxParallelWorkersPerGather,
+            int? maxParallelWorkersPerGather,
 
-            string? maxPredLocksPerTransaction,
+            int? maxPredLocksPerTransaction,
 
-            string? maxPreparedTransactions,
+            int? maxPreparedTransactions,
 
-            string? maxReplicationSlots,
+            int? maxReplicationSlots,
 
-            string? maxSlotWalKeepSize,
+            int? maxSlotWalKeepSize,
 
-            string? maxStackDepth,
+            int? maxStackDepth,
 
-            string? maxStandbyArchiveDelay,
+            int? maxStandbyArchiveDelay,
 
-            string? maxStandbyStreamingDelay,
+            int? maxStandbyStreamingDelay,
 
-            string? maxWalSenders,
+            int? maxWalSenders,
 
-            string? maxWorkerProcesses,
+            int? maxWorkerProcesses,
 
-            string? pgPartmanBgwDotInterval,
+            int? pgPartmanBgwDotInterval,
 
             string? pgPartmanBgwDotRole,
 
+            bool? pgStatMonitorDotPgsmEnableQueryPlan,
+
+            int? pgStatMonitorDotPgsmMaxBuckets,
+
             string? pgStatStatementsDotTrack,
 
-            string? tempFileLimit,
+            int? tempFileLimit,
 
             string? timezone,
 
-            string? trackActivityQuerySize,
+            int? trackActivityQuerySize,
 
             string? trackCommitTimestamp,
 
@@ -153,9 +159,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? trackIoTiming,
 
-            string? walSenderTimeout,
+            int? walSenderTimeout,
 
-            string? walWriterDelay)
+            int? walWriterDelay)
         {
             AutovacuumAnalyzeScaleFactor = autovacuumAnalyzeScaleFactor;
             AutovacuumAnalyzeThreshold = autovacuumAnalyzeThreshold;
@@ -195,6 +201,8 @@ namespace Pulumi.Aiven.Outputs
             MaxWorkerProcesses = maxWorkerProcesses;
             PgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             PgPartmanBgwDotRole = pgPartmanBgwDotRole;
+            PgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
+            PgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
             PgStatStatementsDotTrack = pgStatStatementsDotTrack;
             TempFileLimit = tempFileLimit;
             Timezone = timezone;

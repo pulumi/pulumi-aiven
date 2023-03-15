@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,27 +20,27 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
      * 
      */
     @Import(name="opensearch")
-    private @Nullable Output<String> opensearch;
+    private @Nullable Output<Boolean> opensearch;
 
     /**
      * @return Opensearch server provided values
      * 
      */
-    public Optional<Output<String>> opensearch() {
+    public Optional<Output<Boolean>> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
 
     @Import(name="opensearchDashboards")
-    private @Nullable Output<String> opensearchDashboards;
+    private @Nullable Output<Boolean> opensearchDashboards;
 
-    public Optional<Output<String>> opensearchDashboards() {
+    public Optional<Output<Boolean>> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -76,7 +76,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder opensearch(@Nullable Output<String> opensearch) {
+        public Builder opensearch(@Nullable Output<Boolean> opensearch) {
             $.opensearch = opensearch;
             return this;
         }
@@ -87,25 +87,25 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder opensearch(String opensearch) {
+        public Builder opensearch(Boolean opensearch) {
             return opensearch(Output.of(opensearch));
         }
 
-        public Builder opensearchDashboards(@Nullable Output<String> opensearchDashboards) {
+        public Builder opensearchDashboards(@Nullable Output<Boolean> opensearchDashboards) {
             $.opensearchDashboards = opensearchDashboards;
             return this;
         }
 
-        public Builder opensearchDashboards(String opensearchDashboards) {
+        public Builder opensearchDashboards(Boolean opensearchDashboards) {
             return opensearchDashboards(Output.of(opensearchDashboards));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 

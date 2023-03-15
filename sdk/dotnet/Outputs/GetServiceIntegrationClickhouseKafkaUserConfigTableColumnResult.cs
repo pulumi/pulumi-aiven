@@ -13,14 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult
     {
-        public readonly string? Name;
-        public readonly string? Type;
+        public readonly string Name;
+        public readonly string Type;
 
         [OutputConstructor]
         private GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult(
-            string? name,
+            string name,
 
-            string? type)
+            string type)
         {
             Name = name;
             Type = type;

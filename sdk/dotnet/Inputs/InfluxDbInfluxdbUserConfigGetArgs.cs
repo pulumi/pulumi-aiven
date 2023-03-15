@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class InfluxDbInfluxdbUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional Cloud Regions for Backup Replication
+        /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
-        /// influxdb.conf configuration values
+        /// influxdb.conf configuration values.
         /// </summary>
         [Input("influxdb")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigInfluxdbGetArgs>? Influxdb { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.InfluxDbInfluxdbUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public InputList<Inputs.InfluxDbInfluxdbUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -46,8 +46,9 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -55,13 +56,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks
+        /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink
+        /// Allow access to selected service components through Privatelink.
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
@@ -73,13 +74,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet
+        /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Name of the basebackup to restore in forked service
+        /// Name of the basebackup to restore in forked service.
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
@@ -91,10 +92,10 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Use static public IP addresses
+        /// Use static public IP addresses.
         /// </summary>
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         public InfluxDbInfluxdbUserConfigGetArgs()
         {

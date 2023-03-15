@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetM3DbM3dbUserConfigIpFilterObjectResult
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigIpFilterObjectResult(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,14 +15,14 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccess {
      * @return InfluxDB server provided values
      * 
      */
-    private @Nullable String influxdb;
+    private @Nullable Boolean influxdb;
 
     private InfluxDbInfluxdbUserConfigPrivatelinkAccess() {}
     /**
      * @return InfluxDB server provided values
      * 
      */
-    public Optional<String> influxdb() {
+    public Optional<Boolean> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
 
@@ -35,7 +35,7 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String influxdb;
+        private @Nullable Boolean influxdb;
         public Builder() {}
         public Builder(InfluxDbInfluxdbUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,7 +43,7 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccess {
         }
 
         @CustomType.Setter
-        public Builder influxdb(@Nullable String influxdb) {
+        public Builder influxdb(@Nullable Boolean influxdb) {
             this.influxdb = influxdb;
             return this;
         }

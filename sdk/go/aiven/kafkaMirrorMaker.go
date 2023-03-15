@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,9 +37,9 @@ import (
 //						pulumi.String("0.0.0.0/0"),
 //					},
 //					KafkaMirrormaker: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{
-//						RefreshGroupsIntervalSeconds: pulumi.String("600"),
-//						RefreshTopicsEnabled:         pulumi.String("true"),
-//						RefreshTopicsIntervalSeconds: pulumi.String("600"),
+//						RefreshGroupsIntervalSeconds: pulumi.Int(600),
+//						RefreshTopicsEnabled:         pulumi.Bool(true),
+//						RefreshTopicsIntervalSeconds: pulumi.Int(600),
 //					},
 //				},
 //			})

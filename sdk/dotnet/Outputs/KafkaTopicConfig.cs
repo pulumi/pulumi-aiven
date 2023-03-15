@@ -52,7 +52,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// message.downconversion.enable value
         /// </summary>
-        public readonly string? MessageDownconversionEnable;
+        public readonly bool? MessageDownconversionEnable;
         /// <summary>
         /// message.format.version value
         /// </summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// min.cleanable.dirty.ratio value
         /// </summary>
-        public readonly string? MinCleanableDirtyRatio;
+        public readonly double? MinCleanableDirtyRatio;
         /// <summary>
         /// min.compaction.lag.ms value
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// preallocate value
         /// </summary>
-        public readonly string? Preallocate;
+        public readonly bool? Preallocate;
         /// <summary>
         /// retention.bytes value
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// unclean.leader.election.enable value
         /// </summary>
-        public readonly string? UncleanLeaderElectionEnable;
+        public readonly bool? UncleanLeaderElectionEnable;
 
         [OutputConstructor]
         private KafkaTopicConfig(
@@ -130,7 +130,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? maxMessageBytes,
 
-            string? messageDownconversionEnable,
+            bool? messageDownconversionEnable,
 
             string? messageFormatVersion,
 
@@ -138,13 +138,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? messageTimestampType,
 
-            string? minCleanableDirtyRatio,
+            double? minCleanableDirtyRatio,
 
             string? minCompactionLagMs,
 
             string? minInsyncReplicas,
 
-            string? preallocate,
+            bool? preallocate,
 
             string? retentionBytes,
 
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? segmentMs,
 
-            string? uncleanLeaderElectionEnable)
+            bool? uncleanLeaderElectionEnable)
         {
             CleanupPolicy = cleanupPolicy;
             CompressionType = compressionType;

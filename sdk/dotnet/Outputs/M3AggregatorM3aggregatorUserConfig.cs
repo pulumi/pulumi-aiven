@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? M3Version;
         public readonly string? M3aggregatorVersion;
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private M3AggregatorM3aggregatorUserConfig(
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3aggregatorVersion,
 
-            string? staticIps)
+            bool? staticIps)
         {
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;

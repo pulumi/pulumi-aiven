@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _enabledMetrics;
 
         /// <summary>
-        /// list of metrics to send
+        /// list of metrics to send.
         /// </summary>
         public InputList<string> EnabledMetrics
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _signalfxApiKey;
 
         /// <summary>
-        /// SignalFX API key
+        /// SignalFX API key.
         /// </summary>
         public Input<string>? SignalfxApiKey
         {
@@ -41,7 +41,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// SignalFX realm
+        /// SignalFX realm. The default value is `us0`.
         /// </summary>
         [Input("signalfxRealm")]
         public Input<string>? SignalfxRealm { get; set; }

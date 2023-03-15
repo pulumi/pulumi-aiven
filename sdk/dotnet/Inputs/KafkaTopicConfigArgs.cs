@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Inputs
         /// message.downconversion.enable value
         /// </summary>
         [Input("messageDownconversionEnable")]
-        public Input<string>? MessageDownconversionEnable { get; set; }
+        public Input<bool>? MessageDownconversionEnable { get; set; }
 
         /// <summary>
         /// message.format.version value
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven.Inputs
         /// min.cleanable.dirty.ratio value
         /// </summary>
         [Input("minCleanableDirtyRatio")]
-        public Input<string>? MinCleanableDirtyRatio { get; set; }
+        public Input<double>? MinCleanableDirtyRatio { get; set; }
 
         /// <summary>
         /// min.compaction.lag.ms value
@@ -112,7 +112,7 @@ namespace Pulumi.Aiven.Inputs
         /// preallocate value
         /// </summary>
         [Input("preallocate")]
-        public Input<string>? Preallocate { get; set; }
+        public Input<bool>? Preallocate { get; set; }
 
         /// <summary>
         /// retention.bytes value
@@ -154,7 +154,7 @@ namespace Pulumi.Aiven.Inputs
         /// unclean.leader.election.enable value
         /// </summary>
         [Input("uncleanLeaderElectionEnable")]
-        public Input<string>? UncleanLeaderElectionEnable { get; set; }
+        public Input<bool>? UncleanLeaderElectionEnable { get; set; }
 
         public KafkaTopicConfigArgs()
         {

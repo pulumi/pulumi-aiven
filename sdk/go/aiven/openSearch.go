@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,12 +37,12 @@ import (
 //				OpensearchUserConfig: &aiven.OpenSearchOpensearchUserConfigArgs{
 //					OpensearchVersion: pulumi.String("1"),
 //					OpensearchDashboards: &aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
-//						Enabled:                  pulumi.String("true"),
-//						OpensearchRequestTimeout: pulumi.String("30000"),
+//						Enabled:                  pulumi.Bool(true),
+//						OpensearchRequestTimeout: pulumi.Int(30000),
 //					},
 //					PublicAccess: &aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{
-//						Opensearch:           pulumi.String("true"),
-//						OpensearchDashboards: pulumi.String("true"),
+//						Opensearch:           pulumi.Bool(true),
+//						OpensearchDashboards: pulumi.Bool(true),
 //					},
 //				},
 //			})

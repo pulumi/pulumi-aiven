@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("network")]
-        public Input<string>? Network { get; set; }
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
 
         public InfluxDbInfluxdbUserConfigIpFilterObjectArgs()
         {

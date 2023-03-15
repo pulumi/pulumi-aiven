@@ -16,14 +16,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     public static final ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs Empty = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs();
 
     /**
-     * Google Cloud Logging log id
+     * Google Cloud Logging log id.
      * 
      */
     @Import(name="logId")
     private @Nullable Output<String> logId;
 
     /**
-     * @return Google Cloud Logging log id
+     * @return Google Cloud Logging log id.
      * 
      */
     public Optional<Output<String>> logId() {
@@ -87,7 +87,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param logId Google Cloud Logging log id
+         * @param logId Google Cloud Logging log id.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param logId Google Cloud Logging log id
+         * @param logId Google Cloud Logging log id.
          * 
          * @return builder
          * 

@@ -13,14 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric
     {
-        public readonly string? Field;
-        public readonly string? Metric;
+        public readonly string Field;
+        public readonly string Metric;
 
         [OutputConstructor]
         private ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric(
-            string? field,
+            string field,
 
-            string? metric)
+            string metric)
         {
             Field = field;
             Metric = metric;

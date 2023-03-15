@@ -35,9 +35,17 @@ type FlinkApplicationVersion struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Application sink
+	Sink FlinkApplicationVersionSinkArrayOutput `pulumi:"sink"`
 	// Application sinks
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.
 	Sinks FlinkApplicationVersionSinkArrayOutput `pulumi:"sinks"`
+	// Application source
+	Source FlinkApplicationVersionSourceArrayOutput `pulumi:"source"`
 	// Application sources
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.
 	Sources FlinkApplicationVersionSourceArrayOutput `pulumi:"sources"`
 	// Job SQL statement
 	Statement pulumi.StringOutput `pulumi:"statement"`
@@ -60,12 +68,6 @@ func NewFlinkApplicationVersion(ctx *pulumi.Context,
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
-	if args.Sinks == nil {
-		return nil, errors.New("invalid value for required argument 'Sinks'")
-	}
-	if args.Sources == nil {
-		return nil, errors.New("invalid value for required argument 'Sources'")
 	}
 	if args.Statement == nil {
 		return nil, errors.New("invalid value for required argument 'Statement'")
@@ -104,9 +106,17 @@ type flinkApplicationVersionState struct {
 	Project *string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
+	// Application sink
+	Sink []FlinkApplicationVersionSink `pulumi:"sink"`
 	// Application sinks
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.
 	Sinks []FlinkApplicationVersionSink `pulumi:"sinks"`
+	// Application source
+	Source []FlinkApplicationVersionSource `pulumi:"source"`
 	// Application sources
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.
 	Sources []FlinkApplicationVersionSource `pulumi:"sources"`
 	// Job SQL statement
 	Statement *string `pulumi:"statement"`
@@ -127,9 +137,17 @@ type FlinkApplicationVersionState struct {
 	Project pulumi.StringPtrInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
+	// Application sink
+	Sink FlinkApplicationVersionSinkArrayInput
 	// Application sinks
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.
 	Sinks FlinkApplicationVersionSinkArrayInput
+	// Application source
+	Source FlinkApplicationVersionSourceArrayInput
 	// Application sources
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.
 	Sources FlinkApplicationVersionSourceArrayInput
 	// Job SQL statement
 	Statement pulumi.StringPtrInput
@@ -148,9 +166,17 @@ type flinkApplicationVersionArgs struct {
 	Project string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
+	// Application sink
+	Sink []FlinkApplicationVersionSink `pulumi:"sink"`
 	// Application sinks
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.
 	Sinks []FlinkApplicationVersionSink `pulumi:"sinks"`
+	// Application source
+	Source []FlinkApplicationVersionSource `pulumi:"source"`
 	// Application sources
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.
 	Sources []FlinkApplicationVersionSource `pulumi:"sources"`
 	// Job SQL statement
 	Statement string `pulumi:"statement"`
@@ -164,9 +190,17 @@ type FlinkApplicationVersionArgs struct {
 	Project pulumi.StringInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	// Application sink
+	Sink FlinkApplicationVersionSinkArrayInput
 	// Application sinks
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.
 	Sinks FlinkApplicationVersionSinkArrayInput
+	// Application source
+	Source FlinkApplicationVersionSourceArrayInput
 	// Application sources
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.
 	Sources FlinkApplicationVersionSourceArrayInput
 	// Job SQL statement
 	Statement pulumi.StringInput
@@ -289,12 +323,26 @@ func (o FlinkApplicationVersionOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationVersion) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Application sink
+func (o FlinkApplicationVersionOutput) Sink() FlinkApplicationVersionSinkArrayOutput {
+	return o.ApplyT(func(v *FlinkApplicationVersion) FlinkApplicationVersionSinkArrayOutput { return v.Sink }).(FlinkApplicationVersionSinkArrayOutput)
+}
+
 // Application sinks
+//
+// Deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.
 func (o FlinkApplicationVersionOutput) Sinks() FlinkApplicationVersionSinkArrayOutput {
 	return o.ApplyT(func(v *FlinkApplicationVersion) FlinkApplicationVersionSinkArrayOutput { return v.Sinks }).(FlinkApplicationVersionSinkArrayOutput)
 }
 
+// Application source
+func (o FlinkApplicationVersionOutput) Source() FlinkApplicationVersionSourceArrayOutput {
+	return o.ApplyT(func(v *FlinkApplicationVersion) FlinkApplicationVersionSourceArrayOutput { return v.Source }).(FlinkApplicationVersionSourceArrayOutput)
+}
+
 // Application sources
+//
+// Deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.
 func (o FlinkApplicationVersionOutput) Sources() FlinkApplicationVersionSourceArrayOutput {
 	return o.ApplyT(func(v *FlinkApplicationVersion) FlinkApplicationVersionSourceArrayOutput { return v.Sources }).(FlinkApplicationVersionSourceArrayOutput)
 }

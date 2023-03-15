@@ -20,7 +20,7 @@ import (
 	"unicode"
 
 	providerShim "github.com/aiven/terraform-provider-aiven/shim"
-	"github.com/pulumi/pulumi-aiven/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-aiven/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -108,7 +108,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_clickhouse_grant":    {Tok: makeResource(mainMod, "ClickhouseGrant")},
 			"aiven_clickhouse_role":     {Tok: makeResource(mainMod, "ClickhouseRole")},
 			"aiven_clickhouse_user":     {Tok: makeResource(mainMod, "ClickhouseUser")},
-			"aiven_database":            {Tok: makeResource(mainMod, "Database")},
 			"aiven_grafana": {
 				Tok: makeResource(mainMod, "Grafana"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -172,9 +171,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"aiven_service_integration":            {Tok: makeResource(mainMod, "ServiceIntegration")},
 			"aiven_service_integration_endpoint":   {Tok: makeResource(mainMod, "ServiceIntegrationEndpoint")},
-			"aiven_service_user":                   {Tok: makeResource(mainMod, "ServiceUser")},
 			"aiven_transit_gateway_vpc_attachment": {Tok: makeResource(mainMod, "TransitGatewayVpcAttachment")},
-			"aiven_vpc_peering_connection":         {Tok: makeResource(mainMod, "VpcPeeringConnection")},
 			"aiven_m3aggregator":                   {Tok: makeResource(mainMod, "M3Aggregator")},
 			"aiven_m3db":                           {Tok: makeResource(mainMod, "M3Db")},
 			"aiven_aws_privatelink":                {Tok: makeResource(mainMod, "AwsPrivatelink")},
@@ -189,8 +186,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"aiven_flink_job":                    {Tok: makeResource(mainMod, "FlinkJob")},
-			"aiven_flink_table":                  {Tok: makeResource(mainMod, "FlinkJobTable")},
 			"aiven_static_ip":                    {Tok: makeResource(mainMod, "StaticIp")},
 			"aiven_aws_vpc_peering_connection":   {Tok: makeResource(mainMod, "AwsVpcPeeringConnection")},
 			"aiven_azure_vpc_peering_connection": {Tok: makeResource(mainMod, "AzureVpcPeeringConnection")},
@@ -215,7 +210,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_account_team_project":           {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
 			"aiven_account_authentication":         {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
 			"aiven_connection_pool":                {Tok: makeDataSource(mainMod, "getConnectionPool")},
-			"aiven_database":                       {Tok: makeDataSource(mainMod, "getDatabase")},
 			"aiven_grafana":                        {Tok: makeDataSource(mainMod, "getGrafana")},
 			"aiven_influxdb":                       {Tok: makeDataSource(mainMod, "getInfluxDb")},
 			"aiven_kafka":                          {Tok: makeDataSource(mainMod, "getKafka")},
@@ -236,9 +230,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_service_component":              {Tok: makeDataSource(mainMod, "getServiceComponent")},
 			"aiven_service_integration":            {Tok: makeDataSource(mainMod, "getServiceIntegration")},
 			"aiven_service_integration_endpoint":   {Tok: makeDataSource(mainMod, "getServiceIntegrationEndpoint")},
-			"aiven_service_user":                   {Tok: makeDataSource(mainMod, "getServiceUser")},
 			"aiven_transit_gateway_vpc_attachment": {Tok: makeDataSource(mainMod, "getTransitGatewayVpcAttachment")},
-			"aiven_vpc_peering_connection":         {Tok: makeDataSource(mainMod, "getVpcPeeringConnection")},
 			"aiven_m3aggregator":                   {Tok: makeDataSource(mainMod, "getM3Aggregator")},
 			"aiven_m3db":                           {Tok: makeDataSource(mainMod, "getM3Db")},
 			"aiven_aws_privatelink":                {Tok: makeDataSource(mainMod, "getAwsPrivatelink")},

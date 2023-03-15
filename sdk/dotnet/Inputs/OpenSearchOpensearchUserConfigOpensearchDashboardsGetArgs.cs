@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
-        public Input<string>? Enabled { get; set; }
+        public Input<bool>? Enabled { get; set; }
 
         [Input("maxOldSpaceSize")]
-        public Input<string>? MaxOldSpaceSize { get; set; }
+        public Input<int>? MaxOldSpaceSize { get; set; }
 
         [Input("opensearchRequestTimeout")]
-        public Input<string>? OpensearchRequestTimeout { get; set; }
+        public Input<int>? OpensearchRequestTimeout { get; set; }
 
         public OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs()
         {

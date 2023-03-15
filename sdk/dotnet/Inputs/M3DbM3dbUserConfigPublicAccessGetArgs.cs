@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("m3coordinator")]
-        public Input<string>? M3coordinator { get; set; }
+        public Input<bool>? M3coordinator { get; set; }
 
         public M3DbM3dbUserConfigPublicAccessGetArgs()
         {

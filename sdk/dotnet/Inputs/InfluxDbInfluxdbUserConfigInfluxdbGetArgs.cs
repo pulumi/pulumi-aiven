@@ -13,22 +13,22 @@ namespace Pulumi.Aiven.Inputs
     public sealed class InfluxDbInfluxdbUserConfigInfluxdbGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("logQueriesAfter")]
-        public Input<string>? LogQueriesAfter { get; set; }
+        public Input<int>? LogQueriesAfter { get; set; }
 
         [Input("maxConnectionLimit")]
-        public Input<string>? MaxConnectionLimit { get; set; }
+        public Input<int>? MaxConnectionLimit { get; set; }
 
         [Input("maxRowLimit")]
-        public Input<string>? MaxRowLimit { get; set; }
+        public Input<int>? MaxRowLimit { get; set; }
 
         [Input("maxSelectBuckets")]
-        public Input<string>? MaxSelectBuckets { get; set; }
+        public Input<int>? MaxSelectBuckets { get; set; }
 
         [Input("maxSelectPoint")]
-        public Input<string>? MaxSelectPoint { get; set; }
+        public Input<int>? MaxSelectPoint { get; set; }
 
         [Input("queryTimeout")]
-        public Input<string>? QueryTimeout { get; set; }
+        public Input<int>? QueryTimeout { get; set; }
 
         public InfluxDbInfluxdbUserConfigInfluxdbGetArgs()
         {

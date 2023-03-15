@@ -10,6 +10,7 @@ import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,14 +23,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     public static final InfluxDbInfluxdbUserConfigArgs Empty = new InfluxDbInfluxdbUserConfigArgs();
 
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      * 
      */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<Output<String>> additionalBackupRegions() {
@@ -37,14 +38,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -52,14 +53,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * influxdb.conf configuration values
+     * influxdb.conf configuration values.
      * 
      */
     @Import(name="influxdb")
     private @Nullable Output<InfluxDbInfluxdbUserConfigInfluxdbArgs> influxdb;
 
     /**
-     * @return influxdb.conf configuration values
+     * @return influxdb.conf configuration values.
      * 
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigInfluxdbArgs>> influxdb() {
@@ -67,14 +68,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<InfluxDbInfluxdbUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public Optional<Output<List<InfluxDbInfluxdbUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -82,29 +83,37 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<InfluxDbInfluxdbUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigPrivateAccessArgs>> privateAccess() {
@@ -112,14 +121,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      * 
      */
     @Import(name="privatelinkAccess")
     private @Nullable Output<InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
@@ -142,14 +151,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<InfluxDbInfluxdbUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigPublicAccessArgs>> publicAccess() {
@@ -157,14 +166,14 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of the basebackup to restore in forked service
+     * Name of the basebackup to restore in forked service.
      * 
      */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
     /**
-     * @return Name of the basebackup to restore in forked service
+     * @return Name of the basebackup to restore in forked service.
      * 
      */
     public Optional<Output<String>> recoveryBasebackupName() {
@@ -187,17 +196,17 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      * 
      */
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -237,7 +246,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
          * 
          * @return builder
          * 
@@ -248,7 +257,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
          * 
          * @return builder
          * 
@@ -258,7 +267,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
          * 
          * @return builder
          * 
@@ -269,7 +278,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
          * 
          * @return builder
          * 
@@ -279,7 +288,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param influxdb influxdb.conf configuration values
+         * @param influxdb influxdb.conf configuration values.
          * 
          * @return builder
          * 
@@ -290,7 +299,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param influxdb influxdb.conf configuration values
+         * @param influxdb influxdb.conf configuration values.
          * 
          * @return builder
          * 
@@ -300,7 +309,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -311,7 +320,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -321,7 +330,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -331,38 +340,50 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks
+         * @param privateAccess Allow access to selected service ports from private networks.
          * 
          * @return builder
          * 
@@ -373,7 +394,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks
+         * @param privateAccess Allow access to selected service ports from private networks.
          * 
          * @return builder
          * 
@@ -383,7 +404,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
          * 
          * @return builder
          * 
@@ -394,7 +415,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
          * 
          * @return builder
          * 
@@ -425,7 +446,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
+         * @param publicAccess Allow access to selected service ports from the public Internet.
          * 
          * @return builder
          * 
@@ -436,7 +457,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
+         * @param publicAccess Allow access to selected service ports from the public Internet.
          * 
          * @return builder
          * 
@@ -446,7 +467,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
          * 
          * @return builder
          * 
@@ -457,7 +478,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
          * 
          * @return builder
          * 
@@ -488,23 +509,23 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param staticIps Use static public IP addresses
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
          */
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
         /**
-         * @param staticIps Use static public IP addresses
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
          */
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 

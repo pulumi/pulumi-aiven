@@ -30,10 +30,10 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///         GrafanaUserConfig = new Aiven.Inputs.GrafanaGrafanaUserConfigArgs
     ///         {
-    ///             AlertingEnabled = "true",
+    ///             AlertingEnabled = true,
     ///             PublicAccess = new Aiven.Inputs.GrafanaGrafanaUserConfigPublicAccessArgs
     ///             {
-    ///                 Grafana = "true",
+    ///                 Grafana = true,
     ///             },
     ///         },
     ///     });

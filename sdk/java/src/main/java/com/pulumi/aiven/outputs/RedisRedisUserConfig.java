@@ -9,6 +9,8 @@ import com.pulumi.aiven.outputs.RedisRedisUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.RedisRedisUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.RedisRedisUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +21,12 @@ import javax.annotation.Nullable;
 public final class RedisRedisUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable RedisRedisUserConfigMigration migration;
     private @Nullable RedisRedisUserConfigPrivateAccess privateAccess;
@@ -27,18 +35,18 @@ public final class RedisRedisUserConfig {
     private @Nullable RedisRedisUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryBasebackupName;
     private @Nullable String redisAclChannelsDefault;
-    private @Nullable String redisIoThreads;
-    private @Nullable String redisLfuDecayTime;
-    private @Nullable String redisLfuLogFactor;
+    private @Nullable Integer redisIoThreads;
+    private @Nullable Integer redisLfuDecayTime;
+    private @Nullable Integer redisLfuLogFactor;
     private @Nullable String redisMaxmemoryPolicy;
     private @Nullable String redisNotifyKeyspaceEvents;
-    private @Nullable String redisNumberOfDatabases;
+    private @Nullable Integer redisNumberOfDatabases;
     private @Nullable String redisPersistence;
-    private @Nullable String redisPubsubClientOutputBufferLimit;
-    private @Nullable String redisSsl;
-    private @Nullable String redisTimeout;
+    private @Nullable Integer redisPubsubClientOutputBufferLimit;
+    private @Nullable Boolean redisSsl;
+    private @Nullable Integer redisTimeout;
     private @Nullable String serviceToForkFrom;
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private RedisRedisUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -47,6 +55,12 @@ public final class RedisRedisUserConfig {
     public List<RedisRedisUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -71,13 +85,13 @@ public final class RedisRedisUserConfig {
     public Optional<String> redisAclChannelsDefault() {
         return Optional.ofNullable(this.redisAclChannelsDefault);
     }
-    public Optional<String> redisIoThreads() {
+    public Optional<Integer> redisIoThreads() {
         return Optional.ofNullable(this.redisIoThreads);
     }
-    public Optional<String> redisLfuDecayTime() {
+    public Optional<Integer> redisLfuDecayTime() {
         return Optional.ofNullable(this.redisLfuDecayTime);
     }
-    public Optional<String> redisLfuLogFactor() {
+    public Optional<Integer> redisLfuLogFactor() {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
     public Optional<String> redisMaxmemoryPolicy() {
@@ -86,25 +100,25 @@ public final class RedisRedisUserConfig {
     public Optional<String> redisNotifyKeyspaceEvents() {
         return Optional.ofNullable(this.redisNotifyKeyspaceEvents);
     }
-    public Optional<String> redisNumberOfDatabases() {
+    public Optional<Integer> redisNumberOfDatabases() {
         return Optional.ofNullable(this.redisNumberOfDatabases);
     }
     public Optional<String> redisPersistence() {
         return Optional.ofNullable(this.redisPersistence);
     }
-    public Optional<String> redisPubsubClientOutputBufferLimit() {
+    public Optional<Integer> redisPubsubClientOutputBufferLimit() {
         return Optional.ofNullable(this.redisPubsubClientOutputBufferLimit);
     }
-    public Optional<String> redisSsl() {
+    public Optional<Boolean> redisSsl() {
         return Optional.ofNullable(this.redisSsl);
     }
-    public Optional<String> redisTimeout() {
+    public Optional<Integer> redisTimeout() {
         return Optional.ofNullable(this.redisTimeout);
     }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -127,18 +141,18 @@ public final class RedisRedisUserConfig {
         private @Nullable RedisRedisUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
         private @Nullable String redisAclChannelsDefault;
-        private @Nullable String redisIoThreads;
-        private @Nullable String redisLfuDecayTime;
-        private @Nullable String redisLfuLogFactor;
+        private @Nullable Integer redisIoThreads;
+        private @Nullable Integer redisLfuDecayTime;
+        private @Nullable Integer redisLfuLogFactor;
         private @Nullable String redisMaxmemoryPolicy;
         private @Nullable String redisNotifyKeyspaceEvents;
-        private @Nullable String redisNumberOfDatabases;
+        private @Nullable Integer redisNumberOfDatabases;
         private @Nullable String redisPersistence;
-        private @Nullable String redisPubsubClientOutputBufferLimit;
-        private @Nullable String redisSsl;
-        private @Nullable String redisTimeout;
+        private @Nullable Integer redisPubsubClientOutputBufferLimit;
+        private @Nullable Boolean redisSsl;
+        private @Nullable Integer redisTimeout;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(RedisRedisUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -223,17 +237,17 @@ public final class RedisRedisUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder redisIoThreads(@Nullable String redisIoThreads) {
+        public Builder redisIoThreads(@Nullable Integer redisIoThreads) {
             this.redisIoThreads = redisIoThreads;
             return this;
         }
         @CustomType.Setter
-        public Builder redisLfuDecayTime(@Nullable String redisLfuDecayTime) {
+        public Builder redisLfuDecayTime(@Nullable Integer redisLfuDecayTime) {
             this.redisLfuDecayTime = redisLfuDecayTime;
             return this;
         }
         @CustomType.Setter
-        public Builder redisLfuLogFactor(@Nullable String redisLfuLogFactor) {
+        public Builder redisLfuLogFactor(@Nullable Integer redisLfuLogFactor) {
             this.redisLfuLogFactor = redisLfuLogFactor;
             return this;
         }
@@ -248,7 +262,7 @@ public final class RedisRedisUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder redisNumberOfDatabases(@Nullable String redisNumberOfDatabases) {
+        public Builder redisNumberOfDatabases(@Nullable Integer redisNumberOfDatabases) {
             this.redisNumberOfDatabases = redisNumberOfDatabases;
             return this;
         }
@@ -258,17 +272,17 @@ public final class RedisRedisUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder redisPubsubClientOutputBufferLimit(@Nullable String redisPubsubClientOutputBufferLimit) {
+        public Builder redisPubsubClientOutputBufferLimit(@Nullable Integer redisPubsubClientOutputBufferLimit) {
             this.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             return this;
         }
         @CustomType.Setter
-        public Builder redisSsl(@Nullable String redisSsl) {
+        public Builder redisSsl(@Nullable Boolean redisSsl) {
             this.redisSsl = redisSsl;
             return this;
         }
         @CustomType.Setter
-        public Builder redisTimeout(@Nullable String redisTimeout) {
+        public Builder redisTimeout(@Nullable Integer redisTimeout) {
             this.redisTimeout = redisTimeout;
             return this;
         }
@@ -278,7 +292,7 @@ public final class RedisRedisUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

@@ -19,24 +19,40 @@ class FlinkApplicationVersionArgs:
                  application_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 sinks: pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]],
-                 sources: pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]],
-                 statement: pulumi.Input[str]):
+                 statement: pulumi.Input[str],
+                 sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None):
         """
         The set of arguments for constructing a FlinkApplicationVersion resource.
         :param pulumi.Input[str] application_id: Application ID
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] sources: Application sources
         :param pulumi.Input[str] statement: Job SQL statement
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sink: Application sink
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: Application source
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] sources: Application sources
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "sinks", sinks)
-        pulumi.set(__self__, "sources", sources)
         pulumi.set(__self__, "statement", statement)
+        if sink is not None:
+            pulumi.set(__self__, "sink", sink)
+        if sinks is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
+        if sinks is not None:
+            pulumi.set(__self__, "sinks", sinks)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if sources is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -76,30 +92,6 @@ class FlinkApplicationVersionArgs:
 
     @property
     @pulumi.getter
-    def sinks(self) -> pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]:
-        """
-        Application sinks
-        """
-        return pulumi.get(self, "sinks")
-
-    @sinks.setter
-    def sinks(self, value: pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]):
-        pulumi.set(self, "sinks", value)
-
-    @property
-    @pulumi.getter
-    def sources(self) -> pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]:
-        """
-        Application sources
-        """
-        return pulumi.get(self, "sources")
-
-    @sources.setter
-    def sources(self, value: pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]):
-        pulumi.set(self, "sources", value)
-
-    @property
-    @pulumi.getter
     def statement(self) -> pulumi.Input[str]:
         """
         Job SQL statement
@@ -109,6 +101,54 @@ class FlinkApplicationVersionArgs:
     @statement.setter
     def statement(self, value: pulumi.Input[str]):
         pulumi.set(self, "statement", value)
+
+    @property
+    @pulumi.getter
+    def sink(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+        """
+        Application sink
+        """
+        return pulumi.get(self, "sink")
+
+    @sink.setter
+    def sink(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+        pulumi.set(self, "sink", value)
+
+    @property
+    @pulumi.getter
+    def sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+        """
+        Application sinks
+        """
+        return pulumi.get(self, "sinks")
+
+    @sinks.setter
+    def sinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+        pulumi.set(self, "sinks", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+        """
+        Application source
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+        """
+        Application sources
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
@@ -120,7 +160,9 @@ class _FlinkApplicationVersionState:
                  created_by: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
                  sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
                  statement: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -132,7 +174,9 @@ class _FlinkApplicationVersionState:
         :param pulumi.Input[str] created_by: Application version creator
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sink: Application sink
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: Application source
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] sources: Application sources
         :param pulumi.Input[str] statement: Job SQL statement
         :param pulumi.Input[int] version: Application version number
@@ -149,8 +193,18 @@ class _FlinkApplicationVersionState:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if sink is not None:
+            pulumi.set(__self__, "sink", sink)
+        if sinks is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
         if sinks is not None:
             pulumi.set(__self__, "sinks", sinks)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if sources is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
+            pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
         if statement is not None:
@@ -232,6 +286,18 @@ class _FlinkApplicationVersionState:
 
     @property
     @pulumi.getter
+    def sink(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+        """
+        Application sink
+        """
+        return pulumi.get(self, "sink")
+
+    @sink.setter
+    def sink(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+        pulumi.set(self, "sink", value)
+
+    @property
+    @pulumi.getter
     def sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         Application sinks
@@ -241,6 +307,18 @@ class _FlinkApplicationVersionState:
     @sinks.setter
     def sinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
         pulumi.set(self, "sinks", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+        """
+        Application source
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+        pulumi.set(self, "source", value)
 
     @property
     @pulumi.getter
@@ -287,7 +365,9 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
                  sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
                  statement: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -305,7 +385,9 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: Application ID
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: Application sink
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: Application source
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] sources: Application sources
         :param pulumi.Input[str] statement: Job SQL statement
         """
@@ -342,7 +424,9 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
                  sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
                  statement: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -363,11 +447,15 @@ class FlinkApplicationVersion(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
-            if sinks is None and not opts.urn:
-                raise TypeError("Missing required property 'sinks'")
+            __props__.__dict__["sink"] = sink
+            if sinks is not None and not opts.urn:
+                warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
+                pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
             __props__.__dict__["sinks"] = sinks
-            if sources is None and not opts.urn:
-                raise TypeError("Missing required property 'sources'")
+            __props__.__dict__["source"] = source
+            if sources is not None and not opts.urn:
+                warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
+                pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
             __props__.__dict__["sources"] = sources
             if statement is None and not opts.urn:
                 raise TypeError("Missing required property 'statement'")
@@ -392,7 +480,9 @@ class FlinkApplicationVersion(pulumi.CustomResource):
             created_by: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
+            sink: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
             sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
+            source: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
             sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
             statement: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'FlinkApplicationVersion':
@@ -409,7 +499,9 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[str] created_by: Application version creator
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: Application sink
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: Application source
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] sources: Application sources
         :param pulumi.Input[str] statement: Job SQL statement
         :param pulumi.Input[int] version: Application version number
@@ -424,7 +516,9 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["sink"] = sink
         __props__.__dict__["sinks"] = sinks
+        __props__.__dict__["source"] = source
         __props__.__dict__["sources"] = sources
         __props__.__dict__["statement"] = statement
         __props__.__dict__["version"] = version
@@ -480,7 +574,15 @@ class FlinkApplicationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sinks(self) -> pulumi.Output[Sequence['outputs.FlinkApplicationVersionSink']]:
+    def sink(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSink']]]:
+        """
+        Application sink
+        """
+        return pulumi.get(self, "sink")
+
+    @property
+    @pulumi.getter
+    def sinks(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSink']]]:
         """
         Application sinks
         """
@@ -488,7 +590,15 @@ class FlinkApplicationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sources(self) -> pulumi.Output[Sequence['outputs.FlinkApplicationVersionSource']]:
+    def source(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSource']]]:
+        """
+        Application source
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSource']]]:
         """
         Application sources
         """

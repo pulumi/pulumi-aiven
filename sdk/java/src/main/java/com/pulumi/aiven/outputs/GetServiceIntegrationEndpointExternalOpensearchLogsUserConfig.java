@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,22 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     private @Nullable String ca;
-    private @Nullable String indexDaysMax;
+    private @Nullable Integer indexDaysMax;
     private @Nullable String indexPrefix;
-    private @Nullable String timeout;
+    private @Nullable Double timeout;
     private @Nullable String url;
 
     private GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig() {}
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
-    public Optional<String> indexDaysMax() {
+    public Optional<Integer> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
     public Optional<String> indexPrefix() {
         return Optional.ofNullable(this.indexPrefix);
     }
-    public Optional<String> timeout() {
+    public Optional<Double> timeout() {
         return Optional.ofNullable(this.timeout);
     }
     public Optional<String> url() {
@@ -44,9 +46,9 @@ public final class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ca;
-        private @Nullable String indexDaysMax;
+        private @Nullable Integer indexDaysMax;
         private @Nullable String indexPrefix;
-        private @Nullable String timeout;
+        private @Nullable Double timeout;
         private @Nullable String url;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig defaults) {
@@ -64,7 +66,7 @@ public final class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder indexDaysMax(@Nullable String indexDaysMax) {
+        public Builder indexDaysMax(@Nullable Integer indexDaysMax) {
             this.indexDaysMax = indexDaysMax;
             return this;
         }
@@ -74,7 +76,7 @@ public final class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder timeout(@Nullable String timeout) {
+        public Builder timeout(@Nullable Double timeout) {
             this.timeout = timeout;
             return this;
         }

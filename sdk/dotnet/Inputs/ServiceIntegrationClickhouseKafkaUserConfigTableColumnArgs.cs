@@ -12,11 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs : global::Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs()
         {

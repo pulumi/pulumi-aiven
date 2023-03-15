@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetCassandaCassandraUserConfigPublicAccessResult
     {
-        public readonly string? Prometheus;
+        public readonly bool? Prometheus;
 
         [OutputConstructor]
-        private GetCassandaCassandraUserConfigPublicAccessResult(string? prometheus)
+        private GetCassandaCassandraUserConfigPublicAccessResult(bool? prometheus)
         {
             Prometheus = prometheus;
         }

@@ -13,6 +13,7 @@ import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,209 +23,229 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafkaUserConfig {
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     private @Nullable String customDomain;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     private @Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Kafka broker configuration values
+     * @return Kafka broker configuration values.
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafka kafka;
     /**
-     * @return Kafka authentication methods
+     * @return Kafka authentication methods.
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
     /**
-     * @return Enable Kafka Connect service
+     * @return Enable Kafka Connect service. The default value is `false`.
      * 
      */
-    private @Nullable String kafkaConnect;
+    private @Nullable Boolean kafkaConnect;
     /**
-     * @return Kafka Connect configuration values
+     * @return Kafka Connect configuration values.
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
     /**
-     * @return Enable Kafka-REST service
+     * @return Enable Kafka-REST service. The default value is `false`.
      * 
      */
-    private @Nullable String kafkaRest;
+    private @Nullable Boolean kafkaRest;
     /**
-     * @return Kafka REST configuration
+     * @return Enable authorization in Kafka-REST service.
+     * 
+     */
+    private @Nullable Boolean kafkaRestAuthorization;
+    /**
+     * @return Kafka REST configuration.
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
     /**
-     * @return Kafka major version
+     * @return Kafka major version.
      * 
      */
     private @Nullable String kafkaVersion;
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     private @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     private @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     private @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
     /**
-     * @return Enable Schema-Registry service
+     * @return Enable Schema-Registry service. The default value is `false`.
      * 
      */
-    private @Nullable String schemaRegistry;
+    private @Nullable Boolean schemaRegistry;
     /**
-     * @return Schema Registry configuration
+     * @return Schema Registry configuration.
      * 
      */
     private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private KafkaKafkaUserConfig() {}
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Kafka broker configuration values
+     * @return Kafka broker configuration values.
      * 
      */
     public Optional<KafkaKafkaUserConfigKafka> kafka() {
         return Optional.ofNullable(this.kafka);
     }
     /**
-     * @return Kafka authentication methods
+     * @return Kafka authentication methods.
      * 
      */
     public Optional<KafkaKafkaUserConfigKafkaAuthenticationMethods> kafkaAuthenticationMethods() {
         return Optional.ofNullable(this.kafkaAuthenticationMethods);
     }
     /**
-     * @return Enable Kafka Connect service
+     * @return Enable Kafka Connect service. The default value is `false`.
      * 
      */
-    public Optional<String> kafkaConnect() {
+    public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
-     * @return Kafka Connect configuration values
+     * @return Kafka Connect configuration values.
      * 
      */
     public Optional<KafkaKafkaUserConfigKafkaConnectConfig> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
     /**
-     * @return Enable Kafka-REST service
+     * @return Enable Kafka-REST service. The default value is `false`.
      * 
      */
-    public Optional<String> kafkaRest() {
+    public Optional<Boolean> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
     /**
-     * @return Kafka REST configuration
+     * @return Enable authorization in Kafka-REST service.
+     * 
+     */
+    public Optional<Boolean> kafkaRestAuthorization() {
+        return Optional.ofNullable(this.kafkaRestAuthorization);
+    }
+    /**
+     * @return Kafka REST configuration.
      * 
      */
     public Optional<KafkaKafkaUserConfigKafkaRestConfig> kafkaRestConfig() {
         return Optional.ofNullable(this.kafkaRestConfig);
     }
     /**
-     * @return Kafka major version
+     * @return Kafka major version.
      * 
      */
     public Optional<String> kafkaVersion() {
         return Optional.ofNullable(this.kafkaVersion);
     }
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<KafkaKafkaUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     public Optional<KafkaKafkaUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<KafkaKafkaUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Enable Schema-Registry service
+     * @return Enable Schema-Registry service. The default value is `false`.
      * 
      */
-    public Optional<String> schemaRegistry() {
+    public Optional<Boolean> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
     /**
-     * @return Schema Registry configuration
+     * @return Schema Registry configuration.
      * 
      */
     public Optional<KafkaKafkaUserConfigSchemaRegistryConfig> schemaRegistryConfig() {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -243,17 +264,18 @@ public final class KafkaKafkaUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable KafkaKafkaUserConfigKafka kafka;
         private @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
-        private @Nullable String kafkaConnect;
+        private @Nullable Boolean kafkaConnect;
         private @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
-        private @Nullable String kafkaRest;
+        private @Nullable Boolean kafkaRest;
+        private @Nullable Boolean kafkaRestAuthorization;
         private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
         private @Nullable String kafkaVersion;
         private @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
         private @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
-        private @Nullable String schemaRegistry;
+        private @Nullable Boolean schemaRegistry;
         private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(KafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -266,6 +288,7 @@ public final class KafkaKafkaUserConfig {
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.kafkaConnectConfig = defaults.kafkaConnectConfig;
     	      this.kafkaRest = defaults.kafkaRest;
+    	      this.kafkaRestAuthorization = defaults.kafkaRestAuthorization;
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
     	      this.kafkaVersion = defaults.kafkaVersion;
     	      this.privateAccess = defaults.privateAccess;
@@ -313,7 +336,7 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaConnect(@Nullable String kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
@@ -323,8 +346,13 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaRest(@Nullable String kafkaRest) {
+        public Builder kafkaRest(@Nullable Boolean kafkaRest) {
             this.kafkaRest = kafkaRest;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaRestAuthorization(@Nullable Boolean kafkaRestAuthorization) {
+            this.kafkaRestAuthorization = kafkaRestAuthorization;
             return this;
         }
         @CustomType.Setter
@@ -353,7 +381,7 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder schemaRegistry(@Nullable String schemaRegistry) {
+        public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
             this.schemaRegistry = schemaRegistry;
             return this;
         }
@@ -363,7 +391,7 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }
@@ -378,6 +406,7 @@ public final class KafkaKafkaUserConfig {
             o.kafkaConnect = kafkaConnect;
             o.kafkaConnectConfig = kafkaConnectConfig;
             o.kafkaRest = kafkaRest;
+            o.kafkaRestAuthorization = kafkaRestAuthorization;
             o.kafkaRestConfig = kafkaRestConfig;
             o.kafkaVersion = kafkaVersion;
             o.privateAccess = privateAccess;

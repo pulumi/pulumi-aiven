@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,59 +15,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlinkFlinkUserConfig {
-    private @Nullable String additionalBackupRegions;
-    private @Nullable String executionCheckpointingIntervalMs;
-    private @Nullable String executionCheckpointingTimeoutMs;
     private @Nullable String flinkVersion;
     private @Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
-    private @Nullable String numberOfTaskSlots;
-    private @Nullable String parallelismDefault;
+    private @Nullable Integer numberOfTaskSlots;
     private @Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
-    private @Nullable String restartStrategy;
-    private @Nullable String restartStrategyDelaySec;
-    private @Nullable String restartStrategyFailureRateIntervalMin;
-    private @Nullable String restartStrategyMaxFailures;
 
     private GetFlinkFlinkUserConfig() {}
-    public Optional<String> additionalBackupRegions() {
-        return Optional.ofNullable(this.additionalBackupRegions);
-    }
-    public Optional<String> executionCheckpointingIntervalMs() {
-        return Optional.ofNullable(this.executionCheckpointingIntervalMs);
-    }
-    public Optional<String> executionCheckpointingTimeoutMs() {
-        return Optional.ofNullable(this.executionCheckpointingTimeoutMs);
-    }
     public Optional<String> flinkVersion() {
         return Optional.ofNullable(this.flinkVersion);
     }
     public List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    public Optional<String> numberOfTaskSlots() {
+    public Optional<Integer> numberOfTaskSlots() {
         return Optional.ofNullable(this.numberOfTaskSlots);
-    }
-    public Optional<String> parallelismDefault() {
-        return Optional.ofNullable(this.parallelismDefault);
     }
     public Optional<GetFlinkFlinkUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
-    }
-    public Optional<String> restartStrategy() {
-        return Optional.ofNullable(this.restartStrategy);
-    }
-    public Optional<String> restartStrategyDelaySec() {
-        return Optional.ofNullable(this.restartStrategyDelaySec);
-    }
-    public Optional<String> restartStrategyFailureRateIntervalMin() {
-        return Optional.ofNullable(this.restartStrategyFailureRateIntervalMin);
-    }
-    public Optional<String> restartStrategyMaxFailures() {
-        return Optional.ofNullable(this.restartStrategyMaxFailures);
     }
 
     public static Builder builder() {
@@ -78,52 +59,21 @@ public final class GetFlinkFlinkUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String additionalBackupRegions;
-        private @Nullable String executionCheckpointingIntervalMs;
-        private @Nullable String executionCheckpointingTimeoutMs;
         private @Nullable String flinkVersion;
         private @Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
-        private @Nullable String numberOfTaskSlots;
-        private @Nullable String parallelismDefault;
+        private @Nullable Integer numberOfTaskSlots;
         private @Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
-        private @Nullable String restartStrategy;
-        private @Nullable String restartStrategyDelaySec;
-        private @Nullable String restartStrategyFailureRateIntervalMin;
-        private @Nullable String restartStrategyMaxFailures;
         public Builder() {}
         public Builder(GetFlinkFlinkUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
-    	      this.executionCheckpointingIntervalMs = defaults.executionCheckpointingIntervalMs;
-    	      this.executionCheckpointingTimeoutMs = defaults.executionCheckpointingTimeoutMs;
     	      this.flinkVersion = defaults.flinkVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
-    	      this.parallelismDefault = defaults.parallelismDefault;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
-    	      this.restartStrategy = defaults.restartStrategy;
-    	      this.restartStrategyDelaySec = defaults.restartStrategyDelaySec;
-    	      this.restartStrategyFailureRateIntervalMin = defaults.restartStrategyFailureRateIntervalMin;
-    	      this.restartStrategyMaxFailures = defaults.restartStrategyMaxFailures;
         }
 
-        @CustomType.Setter
-        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
-            this.additionalBackupRegions = additionalBackupRegions;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder executionCheckpointingIntervalMs(@Nullable String executionCheckpointingIntervalMs) {
-            this.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder executionCheckpointingTimeoutMs(@Nullable String executionCheckpointingTimeoutMs) {
-            this.executionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
-            return this;
-        }
         @CustomType.Setter
         public Builder flinkVersion(@Nullable String flinkVersion) {
             this.flinkVersion = flinkVersion;
@@ -146,13 +96,8 @@ public final class GetFlinkFlinkUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
-        public Builder numberOfTaskSlots(@Nullable String numberOfTaskSlots) {
+        public Builder numberOfTaskSlots(@Nullable Integer numberOfTaskSlots) {
             this.numberOfTaskSlots = numberOfTaskSlots;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder parallelismDefault(@Nullable String parallelismDefault) {
-            this.parallelismDefault = parallelismDefault;
             return this;
         }
         @CustomType.Setter
@@ -160,41 +105,13 @@ public final class GetFlinkFlinkUserConfig {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
-        @CustomType.Setter
-        public Builder restartStrategy(@Nullable String restartStrategy) {
-            this.restartStrategy = restartStrategy;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder restartStrategyDelaySec(@Nullable String restartStrategyDelaySec) {
-            this.restartStrategyDelaySec = restartStrategyDelaySec;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder restartStrategyFailureRateIntervalMin(@Nullable String restartStrategyFailureRateIntervalMin) {
-            this.restartStrategyFailureRateIntervalMin = restartStrategyFailureRateIntervalMin;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder restartStrategyMaxFailures(@Nullable String restartStrategyMaxFailures) {
-            this.restartStrategyMaxFailures = restartStrategyMaxFailures;
-            return this;
-        }
         public GetFlinkFlinkUserConfig build() {
             final var o = new GetFlinkFlinkUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
-            o.executionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             o.flinkVersion = flinkVersion;
             o.ipFilterObjects = ipFilterObjects;
             o.ipFilters = ipFilters;
             o.numberOfTaskSlots = numberOfTaskSlots;
-            o.parallelismDefault = parallelismDefault;
             o.privatelinkAccess = privatelinkAccess;
-            o.restartStrategy = restartStrategy;
-            o.restartStrategyDelaySec = restartStrategyDelaySec;
-            o.restartStrategyFailureRateIntervalMin = restartStrategyFailureRateIntervalMin;
-            o.restartStrategyMaxFailures = restartStrategyMaxFailures;
             return o;
         }
     }

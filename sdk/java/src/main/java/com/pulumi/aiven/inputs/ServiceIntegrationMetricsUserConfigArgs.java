@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.ServiceIntegrationMetricsUserConfigSourceMysqlArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,13 +37,13 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
      * 
      */
     @Import(name="retentionDays")
-    private @Nullable Output<String> retentionDays;
+    private @Nullable Output<Integer> retentionDays;
 
     /**
      * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
      * 
      */
-    public Optional<Output<String>> retentionDays() {
+    public Optional<Output<Integer>> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
 
@@ -62,14 +63,14 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Configuration options for metrics where source service is MySQL
+     * Configuration options for metrics where source service is MySQL.
      * 
      */
     @Import(name="sourceMysql")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs> sourceMysql;
 
     /**
-     * @return Configuration options for metrics where source service is MySQL
+     * @return Configuration options for metrics where source service is MySQL.
      * 
      */
     public Optional<Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs>> sourceMysql() {
@@ -146,7 +147,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder retentionDays(@Nullable Output<String> retentionDays) {
+        public Builder retentionDays(@Nullable Output<Integer> retentionDays) {
             $.retentionDays = retentionDays;
             return this;
         }
@@ -157,7 +158,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder retentionDays(String retentionDays) {
+        public Builder retentionDays(Integer retentionDays) {
             return retentionDays(Output.of(retentionDays));
         }
 
@@ -183,7 +184,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param sourceMysql Configuration options for metrics where source service is MySQL
+         * @param sourceMysql Configuration options for metrics where source service is MySQL.
          * 
          * @return builder
          * 
@@ -194,7 +195,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param sourceMysql Configuration options for metrics where source service is MySQL
+         * @param sourceMysql Configuration options for metrics where source service is MySQL.
          * 
          * @return builder
          * 

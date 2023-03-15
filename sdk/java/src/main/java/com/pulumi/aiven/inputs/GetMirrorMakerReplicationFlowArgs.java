@@ -44,14 +44,14 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
     }
 
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      * 
      */
     @Import(name="sourceCluster", required=true)
     private Output<String> sourceCluster;
 
     /**
-     * @return Source cluster alias. Maximum Length: `128`.
+     * @return Source cluster alias. Maximum length: `128`.
      * 
      */
     public Output<String> sourceCluster() {
@@ -59,14 +59,14 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
     }
 
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      * 
      */
     @Import(name="targetCluster", required=true)
     private Output<String> targetCluster;
 
     /**
-     * @return Target cluster alias. Maximum Length: `128`.
+     * @return Target cluster alias. Maximum length: `128`.
      * 
      */
     public Output<String> targetCluster() {
@@ -143,7 +143,7 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
         }
 
         /**
-         * @param sourceCluster Source cluster alias. Maximum Length: `128`.
+         * @param sourceCluster Source cluster alias. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
         }
 
         /**
-         * @param sourceCluster Source cluster alias. Maximum Length: `128`.
+         * @param sourceCluster Source cluster alias. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
         }
 
         /**
-         * @param targetCluster Target cluster alias. Maximum Length: `128`.
+         * @param targetCluster Target cluster alias. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
         }
 
         /**
-         * @param targetCluster Target cluster alias. Maximum Length: `128`.
+         * @param targetCluster Target cluster alias. Maximum length: `128`.
          * 
          * @return builder
          * 

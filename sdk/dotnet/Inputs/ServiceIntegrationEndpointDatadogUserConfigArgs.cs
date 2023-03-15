@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _datadogApiKey;
 
         /// <summary>
-        /// Datadog API key
+        /// Datadog API key.
         /// </summary>
         public Input<string>? DatadogApiKey
         {
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>? _datadogTags;
 
         /// <summary>
-        /// Custom tags provided by user
+        /// Custom tags provided by user.
         /// </summary>
         public InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs> DatadogTags
         {
@@ -41,31 +41,31 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Disable consumer group metrics
+        /// Disable consumer group metrics.
         /// </summary>
         [Input("disableConsumerStats")]
-        public Input<string>? DisableConsumerStats { get; set; }
+        public Input<bool>? DisableConsumerStats { get; set; }
 
         /// <summary>
-        /// Number of separate instances to fetch kafka consumer statistics with
+        /// Number of separate instances to fetch kafka consumer statistics with.
         /// </summary>
         [Input("kafkaConsumerCheckInstances")]
-        public Input<string>? KafkaConsumerCheckInstances { get; set; }
+        public Input<int>? KafkaConsumerCheckInstances { get; set; }
 
         /// <summary>
-        /// Number of seconds that datadog will wait to get consumer statistics from brokers
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers.
         /// </summary>
         [Input("kafkaConsumerStatsTimeout")]
-        public Input<string>? KafkaConsumerStatsTimeout { get; set; }
+        public Input<int>? KafkaConsumerStatsTimeout { get; set; }
 
         /// <summary>
-        /// Maximum number of partition contexts to send
+        /// Maximum number of partition contexts to send.
         /// </summary>
         [Input("maxPartitionContexts")]
-        public Input<string>? MaxPartitionContexts { get; set; }
+        public Input<int>? MaxPartitionContexts { get; set; }
 
         /// <summary>
-        /// Datadog intake site. Defaults to datadoghq.com
+        /// Datadog intake site. Defaults to datadoghq.com.
         /// </summary>
         [Input("site")]
         public Input<string>? Site { get; set; }

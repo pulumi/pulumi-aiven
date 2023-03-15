@@ -16,10 +16,10 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs>? RetentionOptions { get; set; }
 
         [Input("snapshotEnabled")]
-        public Input<string>? SnapshotEnabled { get; set; }
+        public Input<bool>? SnapshotEnabled { get; set; }
 
         [Input("writesToCommitlog")]
-        public Input<string>? WritesToCommitlog { get; set; }
+        public Input<bool>? WritesToCommitlog { get; set; }
 
         public M3DbM3dbUserConfigNamespaceOptionsArgs()
         {

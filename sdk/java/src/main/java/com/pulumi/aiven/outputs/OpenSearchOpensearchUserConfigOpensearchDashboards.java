@@ -4,25 +4,26 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
-    private @Nullable String enabled;
-    private @Nullable String maxOldSpaceSize;
-    private @Nullable String opensearchRequestTimeout;
+    private @Nullable Boolean enabled;
+    private @Nullable Integer maxOldSpaceSize;
+    private @Nullable Integer opensearchRequestTimeout;
 
     private OpenSearchOpensearchUserConfigOpensearchDashboards() {}
-    public Optional<String> enabled() {
+    public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    public Optional<String> maxOldSpaceSize() {
+    public Optional<Integer> maxOldSpaceSize() {
         return Optional.ofNullable(this.maxOldSpaceSize);
     }
-    public Optional<String> opensearchRequestTimeout() {
+    public Optional<Integer> opensearchRequestTimeout() {
         return Optional.ofNullable(this.opensearchRequestTimeout);
     }
 
@@ -35,9 +36,9 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String enabled;
-        private @Nullable String maxOldSpaceSize;
-        private @Nullable String opensearchRequestTimeout;
+        private @Nullable Boolean enabled;
+        private @Nullable Integer maxOldSpaceSize;
+        private @Nullable Integer opensearchRequestTimeout;
         public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigOpensearchDashboards defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,17 +48,17 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
         }
 
         @CustomType.Setter
-        public Builder enabled(@Nullable String enabled) {
+        public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
-        public Builder maxOldSpaceSize(@Nullable String maxOldSpaceSize) {
+        public Builder maxOldSpaceSize(@Nullable Integer maxOldSpaceSize) {
             this.maxOldSpaceSize = maxOldSpaceSize;
             return this;
         }
         @CustomType.Setter
-        public Builder opensearchRequestTimeout(@Nullable String opensearchRequestTimeout) {
+        public Builder opensearchRequestTimeout(@Nullable Integer opensearchRequestTimeout) {
             this.opensearchRequestTimeout = opensearchRequestTimeout;
             return this;
         }

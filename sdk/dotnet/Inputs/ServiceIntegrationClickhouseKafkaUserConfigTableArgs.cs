@@ -20,14 +20,14 @@ namespace Pulumi.Aiven.Inputs
             set => _columns = value;
         }
 
-        [Input("dataFormat")]
-        public Input<string>? DataFormat { get; set; }
+        [Input("dataFormat", required: true)]
+        public Input<string> DataFormat { get; set; } = null!;
 
-        [Input("groupName")]
-        public Input<string>? GroupName { get; set; }
+        [Input("groupName", required: true)]
+        public Input<string> GroupName { get; set; } = null!;
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("topics")]
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>? _topics;

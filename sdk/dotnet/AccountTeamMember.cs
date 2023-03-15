@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
         public Output<bool> Accepted { get; private set; } = null!;
 
         /// <summary>
-        /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.Aiven
         public Output<string> InvitedByUserEmail { get; private set; } = null!;
 
         /// <summary>
-        /// An account team id This property cannot be changed, doing so forces recreation of the resource.
+        /// An account team id. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("teamId")]
         public Output<string> TeamId { get; private set; } = null!;
@@ -110,13 +110,13 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// An account team id This property cannot be changed, doing so forces recreation of the resource.
+        /// An account team id. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Aiven
         public Input<string>? InvitedByUserEmail { get; set; }
 
         /// <summary>
-        /// An account team id This property cannot be changed, doing so forces recreation of the resource.
+        /// An account team id. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }

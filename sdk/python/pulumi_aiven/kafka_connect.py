@@ -808,7 +808,7 @@ class KafkaConnect(pulumi.CustomResource):
                     consumer_isolation_level="read_committed",
                 ),
                 public_access=aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs(
-                    kafka_connect="true",
+                    kafka_connect=True,
                 ),
             ))
         ```
@@ -883,7 +883,7 @@ class KafkaConnect(pulumi.CustomResource):
                     consumer_isolation_level="read_committed",
                 ),
                 public_access=aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs(
-                    kafka_connect="true",
+                    kafka_connect=True,
                 ),
             ))
         ```

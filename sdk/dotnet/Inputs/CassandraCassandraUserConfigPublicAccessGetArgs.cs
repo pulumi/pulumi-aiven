@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class CassandraCassandraUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         public CassandraCassandraUserConfigPublicAccessGetArgs()
         {

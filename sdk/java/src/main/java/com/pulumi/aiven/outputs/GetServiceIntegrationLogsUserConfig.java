@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,11 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationLogsUserConfig {
-    private @Nullable String elasticsearchIndexDaysMax;
+    private @Nullable Integer elasticsearchIndexDaysMax;
     private @Nullable String elasticsearchIndexPrefix;
 
     private GetServiceIntegrationLogsUserConfig() {}
-    public Optional<String> elasticsearchIndexDaysMax() {
+    public Optional<Integer> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
     public Optional<String> elasticsearchIndexPrefix() {
@@ -31,7 +32,7 @@ public final class GetServiceIntegrationLogsUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String elasticsearchIndexDaysMax;
+        private @Nullable Integer elasticsearchIndexDaysMax;
         private @Nullable String elasticsearchIndexPrefix;
         public Builder() {}
         public Builder(GetServiceIntegrationLogsUserConfig defaults) {
@@ -41,7 +42,7 @@ public final class GetServiceIntegrationLogsUserConfig {
         }
 
         @CustomType.Setter
-        public Builder elasticsearchIndexDaysMax(@Nullable String elasticsearchIndexDaysMax) {
+        public Builder elasticsearchIndexDaysMax(@Nullable Integer elasticsearchIndexDaysMax) {
             this.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             return this;
         }

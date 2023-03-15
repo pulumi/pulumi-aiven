@@ -13,29 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthAzureadResult
     {
-        public readonly string? AllowSignUp;
+        public readonly bool? AllowSignUp;
         public readonly ImmutableArray<string> AllowedDomains;
         public readonly ImmutableArray<string> AllowedGroups;
-        public readonly string? AuthUrl;
-        public readonly string? ClientId;
-        public readonly string? ClientSecret;
-        public readonly string? TokenUrl;
+        public readonly string AuthUrl;
+        public readonly string ClientId;
+        public readonly string ClientSecret;
+        public readonly string TokenUrl;
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigAuthAzureadResult(
-            string? allowSignUp,
+            bool? allowSignUp,
 
             ImmutableArray<string> allowedDomains,
 
             ImmutableArray<string> allowedGroups,
 
-            string? authUrl,
+            string authUrl,
 
-            string? clientId,
+            string clientId,
 
-            string? clientSecret,
+            string clientSecret,
 
-            string? tokenUrl)
+            string tokenUrl)
         {
             AllowSignUp = allowSignUp;
             AllowedDomains = allowedDomains;

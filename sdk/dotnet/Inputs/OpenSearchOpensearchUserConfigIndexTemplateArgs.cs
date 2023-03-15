@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigIndexTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("mappingNestedObjectsLimit")]
-        public Input<string>? MappingNestedObjectsLimit { get; set; }
+        public Input<int>? MappingNestedObjectsLimit { get; set; }
 
         [Input("numberOfReplicas")]
-        public Input<string>? NumberOfReplicas { get; set; }
+        public Input<int>? NumberOfReplicas { get; set; }
 
         [Input("numberOfShards")]
-        public Input<string>? NumberOfShards { get; set; }
+        public Input<int>? NumberOfShards { get; set; }
 
         public OpenSearchOpensearchUserConfigIndexTemplateArgs()
         {

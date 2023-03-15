@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,10 +18,10 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     private @Nullable String format;
     private @Nullable String key;
     private @Nullable String logline;
-    private @Nullable String port;
+    private @Nullable Integer port;
     private @Nullable String sd;
     private @Nullable String server;
-    private @Nullable String tls;
+    private @Nullable Boolean tls;
 
     private GetServiceIntegrationEndpointRsyslogUserConfig() {}
     public Optional<String> ca() {
@@ -37,7 +39,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
-    public Optional<String> port() {
+    public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     public Optional<String> sd() {
@@ -46,7 +48,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }
-    public Optional<String> tls() {
+    public Optional<Boolean> tls() {
         return Optional.ofNullable(this.tls);
     }
 
@@ -64,10 +66,10 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
         private @Nullable String format;
         private @Nullable String key;
         private @Nullable String logline;
-        private @Nullable String port;
+        private @Nullable Integer port;
         private @Nullable String sd;
         private @Nullable String server;
-        private @Nullable String tls;
+        private @Nullable Boolean tls;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointRsyslogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -108,7 +110,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable String port) {
+        public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
@@ -123,7 +125,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder tls(@Nullable String tls) {
+        public Builder tls(@Nullable Boolean tls) {
             this.tls = tls;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,16 +17,16 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
     public static final CassandraCassandraUserConfigCassandraArgs Empty = new CassandraCassandraUserConfigCassandraArgs();
 
     @Import(name="batchSizeFailThresholdInKb")
-    private @Nullable Output<String> batchSizeFailThresholdInKb;
+    private @Nullable Output<Integer> batchSizeFailThresholdInKb;
 
-    public Optional<Output<String>> batchSizeFailThresholdInKb() {
+    public Optional<Output<Integer>> batchSizeFailThresholdInKb() {
         return Optional.ofNullable(this.batchSizeFailThresholdInKb);
     }
 
     @Import(name="batchSizeWarnThresholdInKb")
-    private @Nullable Output<String> batchSizeWarnThresholdInKb;
+    private @Nullable Output<Integer> batchSizeWarnThresholdInKb;
 
-    public Optional<Output<String>> batchSizeWarnThresholdInKb() {
+    public Optional<Output<Integer>> batchSizeWarnThresholdInKb() {
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
     }
 
@@ -62,21 +63,21 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
             $ = new CassandraCassandraUserConfigCassandraArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder batchSizeFailThresholdInKb(@Nullable Output<String> batchSizeFailThresholdInKb) {
+        public Builder batchSizeFailThresholdInKb(@Nullable Output<Integer> batchSizeFailThresholdInKb) {
             $.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             return this;
         }
 
-        public Builder batchSizeFailThresholdInKb(String batchSizeFailThresholdInKb) {
+        public Builder batchSizeFailThresholdInKb(Integer batchSizeFailThresholdInKb) {
             return batchSizeFailThresholdInKb(Output.of(batchSizeFailThresholdInKb));
         }
 
-        public Builder batchSizeWarnThresholdInKb(@Nullable Output<String> batchSizeWarnThresholdInKb) {
+        public Builder batchSizeWarnThresholdInKb(@Nullable Output<Integer> batchSizeWarnThresholdInKb) {
             $.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             return this;
         }
 
-        public Builder batchSizeWarnThresholdInKb(String batchSizeWarnThresholdInKb) {
+        public Builder batchSizeWarnThresholdInKb(Integer batchSizeWarnThresholdInKb) {
             return batchSizeWarnThresholdInKb(Output.of(batchSizeWarnThresholdInKb));
         }
 

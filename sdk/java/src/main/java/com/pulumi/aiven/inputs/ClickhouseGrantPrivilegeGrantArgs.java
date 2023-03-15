@@ -77,14 +77,14 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
     }
 
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="withGrant")
     private @Nullable Output<Boolean> withGrant;
 
     /**
-     * @return If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * @return If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<Boolean>> withGrant() {
@@ -204,7 +204,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

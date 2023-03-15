@@ -12,8 +12,8 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs : global::Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs()
         {

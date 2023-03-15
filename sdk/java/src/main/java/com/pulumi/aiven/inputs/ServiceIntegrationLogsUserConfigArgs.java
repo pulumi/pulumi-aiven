@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,29 +17,29 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
     public static final ServiceIntegrationLogsUserConfigArgs Empty = new ServiceIntegrationLogsUserConfigArgs();
 
     /**
-     * Elasticsearch index retention limit
+     * Elasticsearch index retention limit. The default value is `3`.
      * 
      */
     @Import(name="elasticsearchIndexDaysMax")
-    private @Nullable Output<String> elasticsearchIndexDaysMax;
+    private @Nullable Output<Integer> elasticsearchIndexDaysMax;
 
     /**
-     * @return Elasticsearch index retention limit
+     * @return Elasticsearch index retention limit. The default value is `3`.
      * 
      */
-    public Optional<Output<String>> elasticsearchIndexDaysMax() {
+    public Optional<Output<Integer>> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
 
     /**
-     * Elasticsearch index prefix
+     * Elasticsearch index prefix. The default value is `logs`.
      * 
      */
     @Import(name="elasticsearchIndexPrefix")
     private @Nullable Output<String> elasticsearchIndexPrefix;
 
     /**
-     * @return Elasticsearch index prefix
+     * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
     public Optional<Output<String>> elasticsearchIndexPrefix() {
@@ -71,28 +72,28 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit
+         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit. The default value is `3`.
          * 
          * @return builder
          * 
          */
-        public Builder elasticsearchIndexDaysMax(@Nullable Output<String> elasticsearchIndexDaysMax) {
+        public Builder elasticsearchIndexDaysMax(@Nullable Output<Integer> elasticsearchIndexDaysMax) {
             $.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             return this;
         }
 
         /**
-         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit
+         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit. The default value is `3`.
          * 
          * @return builder
          * 
          */
-        public Builder elasticsearchIndexDaysMax(String elasticsearchIndexDaysMax) {
+        public Builder elasticsearchIndexDaysMax(Integer elasticsearchIndexDaysMax) {
             return elasticsearchIndexDaysMax(Output.of(elasticsearchIndexDaysMax));
         }
 
         /**
-         * @param elasticsearchIndexPrefix Elasticsearch index prefix
+         * @param elasticsearchIndexPrefix Elasticsearch index prefix. The default value is `logs`.
          * 
          * @return builder
          * 
@@ -103,7 +104,7 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param elasticsearchIndexPrefix Elasticsearch index prefix
+         * @param elasticsearchIndexPrefix Elasticsearch index prefix. The default value is `logs`.
          * 
          * @return builder
          * 

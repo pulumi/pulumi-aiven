@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +17,15 @@ import javax.annotation.Nullable;
 public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private KafkaMirrorMakerKafkaMirrormakerUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -27,13 +34,19 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
     public List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     public Optional<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -50,7 +63,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
         private @Nullable List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(KafkaMirrorMakerKafkaMirrormakerUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -88,7 +101,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

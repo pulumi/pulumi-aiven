@@ -12,11 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs : global::Pulumi.ResourceArgs
     {
-        [Input("field")]
-        public Input<string>? Field { get; set; }
+        [Input("field", required: true)]
+        public Input<string> Field { get; set; } = null!;
 
-        [Input("metric")]
-        public Input<string>? Metric { get; set; }
+        [Input("metric", required: true)]
+        public Input<string> Metric { get; set; } = null!;
 
         public ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs()
         {

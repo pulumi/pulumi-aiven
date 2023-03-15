@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointSignalfxUserConfig {
     /**
-     * @return list of metrics to send
+     * @return list of metrics to send.
      * 
      */
     private @Nullable List<String> enabledMetrics;
     /**
-     * @return SignalFX API key
+     * @return SignalFX API key.
      * 
      */
     private @Nullable String signalfxApiKey;
     /**
-     * @return SignalFX realm
+     * @return SignalFX realm. The default value is `us0`.
      * 
      */
     private @Nullable String signalfxRealm;
 
     private ServiceIntegrationEndpointSignalfxUserConfig() {}
     /**
-     * @return list of metrics to send
+     * @return list of metrics to send.
      * 
      */
     public List<String> enabledMetrics() {
         return this.enabledMetrics == null ? List.of() : this.enabledMetrics;
     }
     /**
-     * @return SignalFX API key
+     * @return SignalFX API key.
      * 
      */
     public Optional<String> signalfxApiKey() {
         return Optional.ofNullable(this.signalfxApiKey);
     }
     /**
-     * @return SignalFX realm
+     * @return SignalFX realm. The default value is `us0`.
      * 
      */
     public Optional<String> signalfxRealm() {

@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,14 +15,14 @@ public final class GetGrafanaGrafanaUserConfigPrivatelinkAccess {
      * @return Grafana server provided values
      * 
      */
-    private @Nullable String grafana;
+    private @Nullable Boolean grafana;
 
     private GetGrafanaGrafanaUserConfigPrivatelinkAccess() {}
     /**
      * @return Grafana server provided values
      * 
      */
-    public Optional<String> grafana() {
+    public Optional<Boolean> grafana() {
         return Optional.ofNullable(this.grafana);
     }
 
@@ -35,7 +35,7 @@ public final class GetGrafanaGrafanaUserConfigPrivatelinkAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String grafana;
+        private @Nullable Boolean grafana;
         public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,7 +43,7 @@ public final class GetGrafanaGrafanaUserConfigPrivatelinkAccess {
         }
 
         @CustomType.Setter
-        public Builder grafana(@Nullable String grafana) {
+        public Builder grafana(@Nullable Boolean grafana) {
             this.grafana = grafana;
             return this;
         }

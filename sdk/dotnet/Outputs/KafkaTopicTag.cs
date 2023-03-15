@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaTopicTag
     {
         /// <summary>
-        /// Topic tag key. Maximum Length: `64`.
+        /// Topic tag key. Maximum length: `64`.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Topic tag value. Maximum Length: `256`.
+        /// Topic tag value. Maximum length: `256`.
         /// </summary>
         public readonly string? Value;
 

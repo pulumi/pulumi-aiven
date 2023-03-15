@@ -13,16 +13,16 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgbouncerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autodbIdleTimeout")]
-        public Input<string>? AutodbIdleTimeout { get; set; }
+        public Input<int>? AutodbIdleTimeout { get; set; }
 
         [Input("autodbMaxDbConnections")]
-        public Input<string>? AutodbMaxDbConnections { get; set; }
+        public Input<int>? AutodbMaxDbConnections { get; set; }
 
         [Input("autodbPoolMode")]
         public Input<string>? AutodbPoolMode { get; set; }
 
         [Input("autodbPoolSize")]
-        public Input<string>? AutodbPoolSize { get; set; }
+        public Input<int>? AutodbPoolSize { get; set; }
 
         [Input("ignoreStartupParameters")]
         private InputList<string>? _ignoreStartupParameters;
@@ -33,16 +33,16 @@ namespace Pulumi.Aiven.Inputs
         }
 
         [Input("minPoolSize")]
-        public Input<string>? MinPoolSize { get; set; }
+        public Input<int>? MinPoolSize { get; set; }
 
         [Input("serverIdleTimeout")]
-        public Input<string>? ServerIdleTimeout { get; set; }
+        public Input<int>? ServerIdleTimeout { get; set; }
 
         [Input("serverLifetime")]
-        public Input<string>? ServerLifetime { get; set; }
+        public Input<int>? ServerLifetime { get; set; }
 
         [Input("serverResetQueryAlways")]
-        public Input<string>? ServerResetQueryAlways { get; set; }
+        public Input<bool>? ServerResetQueryAlways { get; set; }
 
         public PgPgUserConfigPgbouncerGetArgs()
         {

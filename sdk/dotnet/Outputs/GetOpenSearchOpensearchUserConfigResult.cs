@@ -15,13 +15,13 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
-        public readonly string? DisableReplicationFactorAdjustment;
+        public readonly bool? DisableReplicationFactorAdjustment;
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult> IndexPatterns;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult? IndexTemplate;
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilters;
-        public readonly string? KeepIndexRefreshInterval;
-        public readonly string? MaxIndexCount;
+        public readonly bool? KeepIndexRefreshInterval;
+        public readonly int? MaxIndexCount;
         /// <summary>
         /// Opensearch server provided values
         /// </summary>
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigResult(
@@ -45,7 +45,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
-            string? disableReplicationFactorAdjustment,
+            bool? disableReplicationFactorAdjustment,
 
             ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult> indexPatterns,
 
@@ -55,9 +55,9 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
-            string? keepIndexRefreshInterval,
+            bool? keepIndexRefreshInterval,
 
-            string? maxIndexCount,
+            int? maxIndexCount,
 
             Outputs.GetOpenSearchOpensearchUserConfigOpensearchResult? opensearch,
 
@@ -77,7 +77,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;

@@ -5,6 +5,9 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,9 +19,9 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     public static final MySqlMysqlUserConfigMysqlArgs Empty = new MySqlMysqlUserConfigMysqlArgs();
 
     @Import(name="connectTimeout")
-    private @Nullable Output<String> connectTimeout;
+    private @Nullable Output<Integer> connectTimeout;
 
-    public Optional<Output<String>> connectTimeout() {
+    public Optional<Output<Integer>> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
 
@@ -30,37 +33,37 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="groupConcatMaxLen")
-    private @Nullable Output<String> groupConcatMaxLen;
+    private @Nullable Output<Integer> groupConcatMaxLen;
 
-    public Optional<Output<String>> groupConcatMaxLen() {
+    public Optional<Output<Integer>> groupConcatMaxLen() {
         return Optional.ofNullable(this.groupConcatMaxLen);
     }
 
     @Import(name="informationSchemaStatsExpiry")
-    private @Nullable Output<String> informationSchemaStatsExpiry;
+    private @Nullable Output<Integer> informationSchemaStatsExpiry;
 
-    public Optional<Output<String>> informationSchemaStatsExpiry() {
+    public Optional<Output<Integer>> informationSchemaStatsExpiry() {
         return Optional.ofNullable(this.informationSchemaStatsExpiry);
     }
 
     @Import(name="innodbChangeBufferMaxSize")
-    private @Nullable Output<String> innodbChangeBufferMaxSize;
+    private @Nullable Output<Integer> innodbChangeBufferMaxSize;
 
-    public Optional<Output<String>> innodbChangeBufferMaxSize() {
+    public Optional<Output<Integer>> innodbChangeBufferMaxSize() {
         return Optional.ofNullable(this.innodbChangeBufferMaxSize);
     }
 
     @Import(name="innodbFlushNeighbors")
-    private @Nullable Output<String> innodbFlushNeighbors;
+    private @Nullable Output<Integer> innodbFlushNeighbors;
 
-    public Optional<Output<String>> innodbFlushNeighbors() {
+    public Optional<Output<Integer>> innodbFlushNeighbors() {
         return Optional.ofNullable(this.innodbFlushNeighbors);
     }
 
     @Import(name="innodbFtMinTokenSize")
-    private @Nullable Output<String> innodbFtMinTokenSize;
+    private @Nullable Output<Integer> innodbFtMinTokenSize;
 
-    public Optional<Output<String>> innodbFtMinTokenSize() {
+    public Optional<Output<Integer>> innodbFtMinTokenSize() {
         return Optional.ofNullable(this.innodbFtMinTokenSize);
     }
 
@@ -72,65 +75,65 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="innodbLockWaitTimeout")
-    private @Nullable Output<String> innodbLockWaitTimeout;
+    private @Nullable Output<Integer> innodbLockWaitTimeout;
 
-    public Optional<Output<String>> innodbLockWaitTimeout() {
+    public Optional<Output<Integer>> innodbLockWaitTimeout() {
         return Optional.ofNullable(this.innodbLockWaitTimeout);
     }
 
     @Import(name="innodbLogBufferSize")
-    private @Nullable Output<String> innodbLogBufferSize;
+    private @Nullable Output<Integer> innodbLogBufferSize;
 
-    public Optional<Output<String>> innodbLogBufferSize() {
+    public Optional<Output<Integer>> innodbLogBufferSize() {
         return Optional.ofNullable(this.innodbLogBufferSize);
     }
 
     @Import(name="innodbOnlineAlterLogMaxSize")
-    private @Nullable Output<String> innodbOnlineAlterLogMaxSize;
+    private @Nullable Output<Integer> innodbOnlineAlterLogMaxSize;
 
-    public Optional<Output<String>> innodbOnlineAlterLogMaxSize() {
+    public Optional<Output<Integer>> innodbOnlineAlterLogMaxSize() {
         return Optional.ofNullable(this.innodbOnlineAlterLogMaxSize);
     }
 
     @Import(name="innodbPrintAllDeadlocks")
-    private @Nullable Output<String> innodbPrintAllDeadlocks;
+    private @Nullable Output<Boolean> innodbPrintAllDeadlocks;
 
-    public Optional<Output<String>> innodbPrintAllDeadlocks() {
+    public Optional<Output<Boolean>> innodbPrintAllDeadlocks() {
         return Optional.ofNullable(this.innodbPrintAllDeadlocks);
     }
 
     @Import(name="innodbReadIoThreads")
-    private @Nullable Output<String> innodbReadIoThreads;
+    private @Nullable Output<Integer> innodbReadIoThreads;
 
-    public Optional<Output<String>> innodbReadIoThreads() {
+    public Optional<Output<Integer>> innodbReadIoThreads() {
         return Optional.ofNullable(this.innodbReadIoThreads);
     }
 
     @Import(name="innodbRollbackOnTimeout")
-    private @Nullable Output<String> innodbRollbackOnTimeout;
+    private @Nullable Output<Boolean> innodbRollbackOnTimeout;
 
-    public Optional<Output<String>> innodbRollbackOnTimeout() {
+    public Optional<Output<Boolean>> innodbRollbackOnTimeout() {
         return Optional.ofNullable(this.innodbRollbackOnTimeout);
     }
 
     @Import(name="innodbThreadConcurrency")
-    private @Nullable Output<String> innodbThreadConcurrency;
+    private @Nullable Output<Integer> innodbThreadConcurrency;
 
-    public Optional<Output<String>> innodbThreadConcurrency() {
+    public Optional<Output<Integer>> innodbThreadConcurrency() {
         return Optional.ofNullable(this.innodbThreadConcurrency);
     }
 
     @Import(name="innodbWriteIoThreads")
-    private @Nullable Output<String> innodbWriteIoThreads;
+    private @Nullable Output<Integer> innodbWriteIoThreads;
 
-    public Optional<Output<String>> innodbWriteIoThreads() {
+    public Optional<Output<Integer>> innodbWriteIoThreads() {
         return Optional.ofNullable(this.innodbWriteIoThreads);
     }
 
     @Import(name="interactiveTimeout")
-    private @Nullable Output<String> interactiveTimeout;
+    private @Nullable Output<Integer> interactiveTimeout;
 
-    public Optional<Output<String>> interactiveTimeout() {
+    public Optional<Output<Integer>> interactiveTimeout() {
         return Optional.ofNullable(this.interactiveTimeout);
     }
 
@@ -142,58 +145,58 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="longQueryTime")
-    private @Nullable Output<String> longQueryTime;
+    private @Nullable Output<Double> longQueryTime;
 
-    public Optional<Output<String>> longQueryTime() {
+    public Optional<Output<Double>> longQueryTime() {
         return Optional.ofNullable(this.longQueryTime);
     }
 
     @Import(name="maxAllowedPacket")
-    private @Nullable Output<String> maxAllowedPacket;
+    private @Nullable Output<Integer> maxAllowedPacket;
 
-    public Optional<Output<String>> maxAllowedPacket() {
+    public Optional<Output<Integer>> maxAllowedPacket() {
         return Optional.ofNullable(this.maxAllowedPacket);
     }
 
     @Import(name="maxHeapTableSize")
-    private @Nullable Output<String> maxHeapTableSize;
+    private @Nullable Output<Integer> maxHeapTableSize;
 
-    public Optional<Output<String>> maxHeapTableSize() {
+    public Optional<Output<Integer>> maxHeapTableSize() {
         return Optional.ofNullable(this.maxHeapTableSize);
     }
 
     @Import(name="netBufferLength")
-    private @Nullable Output<String> netBufferLength;
+    private @Nullable Output<Integer> netBufferLength;
 
-    public Optional<Output<String>> netBufferLength() {
+    public Optional<Output<Integer>> netBufferLength() {
         return Optional.ofNullable(this.netBufferLength);
     }
 
     @Import(name="netReadTimeout")
-    private @Nullable Output<String> netReadTimeout;
+    private @Nullable Output<Integer> netReadTimeout;
 
-    public Optional<Output<String>> netReadTimeout() {
+    public Optional<Output<Integer>> netReadTimeout() {
         return Optional.ofNullable(this.netReadTimeout);
     }
 
     @Import(name="netWriteTimeout")
-    private @Nullable Output<String> netWriteTimeout;
+    private @Nullable Output<Integer> netWriteTimeout;
 
-    public Optional<Output<String>> netWriteTimeout() {
+    public Optional<Output<Integer>> netWriteTimeout() {
         return Optional.ofNullable(this.netWriteTimeout);
     }
 
     @Import(name="slowQueryLog")
-    private @Nullable Output<String> slowQueryLog;
+    private @Nullable Output<Boolean> slowQueryLog;
 
-    public Optional<Output<String>> slowQueryLog() {
+    public Optional<Output<Boolean>> slowQueryLog() {
         return Optional.ofNullable(this.slowQueryLog);
     }
 
     @Import(name="sortBufferSize")
-    private @Nullable Output<String> sortBufferSize;
+    private @Nullable Output<Integer> sortBufferSize;
 
-    public Optional<Output<String>> sortBufferSize() {
+    public Optional<Output<Integer>> sortBufferSize() {
         return Optional.ofNullable(this.sortBufferSize);
     }
 
@@ -205,23 +208,23 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     @Import(name="sqlRequirePrimaryKey")
-    private @Nullable Output<String> sqlRequirePrimaryKey;
+    private @Nullable Output<Boolean> sqlRequirePrimaryKey;
 
-    public Optional<Output<String>> sqlRequirePrimaryKey() {
+    public Optional<Output<Boolean>> sqlRequirePrimaryKey() {
         return Optional.ofNullable(this.sqlRequirePrimaryKey);
     }
 
     @Import(name="tmpTableSize")
-    private @Nullable Output<String> tmpTableSize;
+    private @Nullable Output<Integer> tmpTableSize;
 
-    public Optional<Output<String>> tmpTableSize() {
+    public Optional<Output<Integer>> tmpTableSize() {
         return Optional.ofNullable(this.tmpTableSize);
     }
 
     @Import(name="waitTimeout")
-    private @Nullable Output<String> waitTimeout;
+    private @Nullable Output<Integer> waitTimeout;
 
-    public Optional<Output<String>> waitTimeout() {
+    public Optional<Output<Integer>> waitTimeout() {
         return Optional.ofNullable(this.waitTimeout);
     }
 
@@ -278,12 +281,12 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             $ = new MySqlMysqlUserConfigMysqlArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder connectTimeout(@Nullable Output<String> connectTimeout) {
+        public Builder connectTimeout(@Nullable Output<Integer> connectTimeout) {
             $.connectTimeout = connectTimeout;
             return this;
         }
 
-        public Builder connectTimeout(String connectTimeout) {
+        public Builder connectTimeout(Integer connectTimeout) {
             return connectTimeout(Output.of(connectTimeout));
         }
 
@@ -296,48 +299,48 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             return defaultTimeZone(Output.of(defaultTimeZone));
         }
 
-        public Builder groupConcatMaxLen(@Nullable Output<String> groupConcatMaxLen) {
+        public Builder groupConcatMaxLen(@Nullable Output<Integer> groupConcatMaxLen) {
             $.groupConcatMaxLen = groupConcatMaxLen;
             return this;
         }
 
-        public Builder groupConcatMaxLen(String groupConcatMaxLen) {
+        public Builder groupConcatMaxLen(Integer groupConcatMaxLen) {
             return groupConcatMaxLen(Output.of(groupConcatMaxLen));
         }
 
-        public Builder informationSchemaStatsExpiry(@Nullable Output<String> informationSchemaStatsExpiry) {
+        public Builder informationSchemaStatsExpiry(@Nullable Output<Integer> informationSchemaStatsExpiry) {
             $.informationSchemaStatsExpiry = informationSchemaStatsExpiry;
             return this;
         }
 
-        public Builder informationSchemaStatsExpiry(String informationSchemaStatsExpiry) {
+        public Builder informationSchemaStatsExpiry(Integer informationSchemaStatsExpiry) {
             return informationSchemaStatsExpiry(Output.of(informationSchemaStatsExpiry));
         }
 
-        public Builder innodbChangeBufferMaxSize(@Nullable Output<String> innodbChangeBufferMaxSize) {
+        public Builder innodbChangeBufferMaxSize(@Nullable Output<Integer> innodbChangeBufferMaxSize) {
             $.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
             return this;
         }
 
-        public Builder innodbChangeBufferMaxSize(String innodbChangeBufferMaxSize) {
+        public Builder innodbChangeBufferMaxSize(Integer innodbChangeBufferMaxSize) {
             return innodbChangeBufferMaxSize(Output.of(innodbChangeBufferMaxSize));
         }
 
-        public Builder innodbFlushNeighbors(@Nullable Output<String> innodbFlushNeighbors) {
+        public Builder innodbFlushNeighbors(@Nullable Output<Integer> innodbFlushNeighbors) {
             $.innodbFlushNeighbors = innodbFlushNeighbors;
             return this;
         }
 
-        public Builder innodbFlushNeighbors(String innodbFlushNeighbors) {
+        public Builder innodbFlushNeighbors(Integer innodbFlushNeighbors) {
             return innodbFlushNeighbors(Output.of(innodbFlushNeighbors));
         }
 
-        public Builder innodbFtMinTokenSize(@Nullable Output<String> innodbFtMinTokenSize) {
+        public Builder innodbFtMinTokenSize(@Nullable Output<Integer> innodbFtMinTokenSize) {
             $.innodbFtMinTokenSize = innodbFtMinTokenSize;
             return this;
         }
 
-        public Builder innodbFtMinTokenSize(String innodbFtMinTokenSize) {
+        public Builder innodbFtMinTokenSize(Integer innodbFtMinTokenSize) {
             return innodbFtMinTokenSize(Output.of(innodbFtMinTokenSize));
         }
 
@@ -350,84 +353,84 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             return innodbFtServerStopwordTable(Output.of(innodbFtServerStopwordTable));
         }
 
-        public Builder innodbLockWaitTimeout(@Nullable Output<String> innodbLockWaitTimeout) {
+        public Builder innodbLockWaitTimeout(@Nullable Output<Integer> innodbLockWaitTimeout) {
             $.innodbLockWaitTimeout = innodbLockWaitTimeout;
             return this;
         }
 
-        public Builder innodbLockWaitTimeout(String innodbLockWaitTimeout) {
+        public Builder innodbLockWaitTimeout(Integer innodbLockWaitTimeout) {
             return innodbLockWaitTimeout(Output.of(innodbLockWaitTimeout));
         }
 
-        public Builder innodbLogBufferSize(@Nullable Output<String> innodbLogBufferSize) {
+        public Builder innodbLogBufferSize(@Nullable Output<Integer> innodbLogBufferSize) {
             $.innodbLogBufferSize = innodbLogBufferSize;
             return this;
         }
 
-        public Builder innodbLogBufferSize(String innodbLogBufferSize) {
+        public Builder innodbLogBufferSize(Integer innodbLogBufferSize) {
             return innodbLogBufferSize(Output.of(innodbLogBufferSize));
         }
 
-        public Builder innodbOnlineAlterLogMaxSize(@Nullable Output<String> innodbOnlineAlterLogMaxSize) {
+        public Builder innodbOnlineAlterLogMaxSize(@Nullable Output<Integer> innodbOnlineAlterLogMaxSize) {
             $.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
             return this;
         }
 
-        public Builder innodbOnlineAlterLogMaxSize(String innodbOnlineAlterLogMaxSize) {
+        public Builder innodbOnlineAlterLogMaxSize(Integer innodbOnlineAlterLogMaxSize) {
             return innodbOnlineAlterLogMaxSize(Output.of(innodbOnlineAlterLogMaxSize));
         }
 
-        public Builder innodbPrintAllDeadlocks(@Nullable Output<String> innodbPrintAllDeadlocks) {
+        public Builder innodbPrintAllDeadlocks(@Nullable Output<Boolean> innodbPrintAllDeadlocks) {
             $.innodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             return this;
         }
 
-        public Builder innodbPrintAllDeadlocks(String innodbPrintAllDeadlocks) {
+        public Builder innodbPrintAllDeadlocks(Boolean innodbPrintAllDeadlocks) {
             return innodbPrintAllDeadlocks(Output.of(innodbPrintAllDeadlocks));
         }
 
-        public Builder innodbReadIoThreads(@Nullable Output<String> innodbReadIoThreads) {
+        public Builder innodbReadIoThreads(@Nullable Output<Integer> innodbReadIoThreads) {
             $.innodbReadIoThreads = innodbReadIoThreads;
             return this;
         }
 
-        public Builder innodbReadIoThreads(String innodbReadIoThreads) {
+        public Builder innodbReadIoThreads(Integer innodbReadIoThreads) {
             return innodbReadIoThreads(Output.of(innodbReadIoThreads));
         }
 
-        public Builder innodbRollbackOnTimeout(@Nullable Output<String> innodbRollbackOnTimeout) {
+        public Builder innodbRollbackOnTimeout(@Nullable Output<Boolean> innodbRollbackOnTimeout) {
             $.innodbRollbackOnTimeout = innodbRollbackOnTimeout;
             return this;
         }
 
-        public Builder innodbRollbackOnTimeout(String innodbRollbackOnTimeout) {
+        public Builder innodbRollbackOnTimeout(Boolean innodbRollbackOnTimeout) {
             return innodbRollbackOnTimeout(Output.of(innodbRollbackOnTimeout));
         }
 
-        public Builder innodbThreadConcurrency(@Nullable Output<String> innodbThreadConcurrency) {
+        public Builder innodbThreadConcurrency(@Nullable Output<Integer> innodbThreadConcurrency) {
             $.innodbThreadConcurrency = innodbThreadConcurrency;
             return this;
         }
 
-        public Builder innodbThreadConcurrency(String innodbThreadConcurrency) {
+        public Builder innodbThreadConcurrency(Integer innodbThreadConcurrency) {
             return innodbThreadConcurrency(Output.of(innodbThreadConcurrency));
         }
 
-        public Builder innodbWriteIoThreads(@Nullable Output<String> innodbWriteIoThreads) {
+        public Builder innodbWriteIoThreads(@Nullable Output<Integer> innodbWriteIoThreads) {
             $.innodbWriteIoThreads = innodbWriteIoThreads;
             return this;
         }
 
-        public Builder innodbWriteIoThreads(String innodbWriteIoThreads) {
+        public Builder innodbWriteIoThreads(Integer innodbWriteIoThreads) {
             return innodbWriteIoThreads(Output.of(innodbWriteIoThreads));
         }
 
-        public Builder interactiveTimeout(@Nullable Output<String> interactiveTimeout) {
+        public Builder interactiveTimeout(@Nullable Output<Integer> interactiveTimeout) {
             $.interactiveTimeout = interactiveTimeout;
             return this;
         }
 
-        public Builder interactiveTimeout(String interactiveTimeout) {
+        public Builder interactiveTimeout(Integer interactiveTimeout) {
             return interactiveTimeout(Output.of(interactiveTimeout));
         }
 
@@ -440,75 +443,75 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             return internalTmpMemStorageEngine(Output.of(internalTmpMemStorageEngine));
         }
 
-        public Builder longQueryTime(@Nullable Output<String> longQueryTime) {
+        public Builder longQueryTime(@Nullable Output<Double> longQueryTime) {
             $.longQueryTime = longQueryTime;
             return this;
         }
 
-        public Builder longQueryTime(String longQueryTime) {
+        public Builder longQueryTime(Double longQueryTime) {
             return longQueryTime(Output.of(longQueryTime));
         }
 
-        public Builder maxAllowedPacket(@Nullable Output<String> maxAllowedPacket) {
+        public Builder maxAllowedPacket(@Nullable Output<Integer> maxAllowedPacket) {
             $.maxAllowedPacket = maxAllowedPacket;
             return this;
         }
 
-        public Builder maxAllowedPacket(String maxAllowedPacket) {
+        public Builder maxAllowedPacket(Integer maxAllowedPacket) {
             return maxAllowedPacket(Output.of(maxAllowedPacket));
         }
 
-        public Builder maxHeapTableSize(@Nullable Output<String> maxHeapTableSize) {
+        public Builder maxHeapTableSize(@Nullable Output<Integer> maxHeapTableSize) {
             $.maxHeapTableSize = maxHeapTableSize;
             return this;
         }
 
-        public Builder maxHeapTableSize(String maxHeapTableSize) {
+        public Builder maxHeapTableSize(Integer maxHeapTableSize) {
             return maxHeapTableSize(Output.of(maxHeapTableSize));
         }
 
-        public Builder netBufferLength(@Nullable Output<String> netBufferLength) {
+        public Builder netBufferLength(@Nullable Output<Integer> netBufferLength) {
             $.netBufferLength = netBufferLength;
             return this;
         }
 
-        public Builder netBufferLength(String netBufferLength) {
+        public Builder netBufferLength(Integer netBufferLength) {
             return netBufferLength(Output.of(netBufferLength));
         }
 
-        public Builder netReadTimeout(@Nullable Output<String> netReadTimeout) {
+        public Builder netReadTimeout(@Nullable Output<Integer> netReadTimeout) {
             $.netReadTimeout = netReadTimeout;
             return this;
         }
 
-        public Builder netReadTimeout(String netReadTimeout) {
+        public Builder netReadTimeout(Integer netReadTimeout) {
             return netReadTimeout(Output.of(netReadTimeout));
         }
 
-        public Builder netWriteTimeout(@Nullable Output<String> netWriteTimeout) {
+        public Builder netWriteTimeout(@Nullable Output<Integer> netWriteTimeout) {
             $.netWriteTimeout = netWriteTimeout;
             return this;
         }
 
-        public Builder netWriteTimeout(String netWriteTimeout) {
+        public Builder netWriteTimeout(Integer netWriteTimeout) {
             return netWriteTimeout(Output.of(netWriteTimeout));
         }
 
-        public Builder slowQueryLog(@Nullable Output<String> slowQueryLog) {
+        public Builder slowQueryLog(@Nullable Output<Boolean> slowQueryLog) {
             $.slowQueryLog = slowQueryLog;
             return this;
         }
 
-        public Builder slowQueryLog(String slowQueryLog) {
+        public Builder slowQueryLog(Boolean slowQueryLog) {
             return slowQueryLog(Output.of(slowQueryLog));
         }
 
-        public Builder sortBufferSize(@Nullable Output<String> sortBufferSize) {
+        public Builder sortBufferSize(@Nullable Output<Integer> sortBufferSize) {
             $.sortBufferSize = sortBufferSize;
             return this;
         }
 
-        public Builder sortBufferSize(String sortBufferSize) {
+        public Builder sortBufferSize(Integer sortBufferSize) {
             return sortBufferSize(Output.of(sortBufferSize));
         }
 
@@ -521,30 +524,30 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             return sqlMode(Output.of(sqlMode));
         }
 
-        public Builder sqlRequirePrimaryKey(@Nullable Output<String> sqlRequirePrimaryKey) {
+        public Builder sqlRequirePrimaryKey(@Nullable Output<Boolean> sqlRequirePrimaryKey) {
             $.sqlRequirePrimaryKey = sqlRequirePrimaryKey;
             return this;
         }
 
-        public Builder sqlRequirePrimaryKey(String sqlRequirePrimaryKey) {
+        public Builder sqlRequirePrimaryKey(Boolean sqlRequirePrimaryKey) {
             return sqlRequirePrimaryKey(Output.of(sqlRequirePrimaryKey));
         }
 
-        public Builder tmpTableSize(@Nullable Output<String> tmpTableSize) {
+        public Builder tmpTableSize(@Nullable Output<Integer> tmpTableSize) {
             $.tmpTableSize = tmpTableSize;
             return this;
         }
 
-        public Builder tmpTableSize(String tmpTableSize) {
+        public Builder tmpTableSize(Integer tmpTableSize) {
             return tmpTableSize(Output.of(tmpTableSize));
         }
 
-        public Builder waitTimeout(@Nullable Output<String> waitTimeout) {
+        public Builder waitTimeout(@Nullable Output<Integer> waitTimeout) {
             $.waitTimeout = waitTimeout;
             return this;
         }
 
-        public Builder waitTimeout(String waitTimeout) {
+        public Builder waitTimeout(Integer waitTimeout) {
             return waitTimeout(Output.of(waitTimeout));
         }
 

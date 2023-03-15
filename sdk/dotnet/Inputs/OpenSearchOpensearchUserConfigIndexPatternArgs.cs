@@ -12,11 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchUserConfigIndexPatternArgs : global::Pulumi.ResourceArgs
     {
-        [Input("maxIndexCount")]
-        public Input<string>? MaxIndexCount { get; set; }
+        [Input("maxIndexCount", required: true)]
+        public Input<int> MaxIndexCount { get; set; } = null!;
 
-        [Input("pattern")]
-        public Input<string>? Pattern { get; set; }
+        [Input("pattern", required: true)]
+        public Input<string> Pattern { get; set; } = null!;
 
         [Input("sortingAlgorithm")]
         public Input<string>? SortingAlgorithm { get; set; }

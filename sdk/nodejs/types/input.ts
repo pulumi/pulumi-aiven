@@ -33,31 +33,33 @@ export interface CassandraCassandra {
 
 export interface CassandraCassandraUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * cassandra configuration values
+     * cassandra configuration values.
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
     /**
-     * Cassandra major version
+     * Cassandra major version.
      */
     cassandraVersion?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.CassandraCassandraUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      */
-    migrateSstableloader?: pulumi.Input<string>;
+    migrateSstableloader?: pulumi.Input<boolean>;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPrivateAccess>;
     /**
@@ -65,7 +67,7 @@ export interface CassandraCassandraUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPublicAccess>;
     /**
@@ -77,28 +79,28 @@ export interface CassandraCassandraUserConfig {
      */
     serviceToJoinWith?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface CassandraCassandraUserConfigCassandra {
-    batchSizeFailThresholdInKb?: pulumi.Input<string>;
-    batchSizeWarnThresholdInKb?: pulumi.Input<string>;
+    batchSizeFailThresholdInKb?: pulumi.Input<number>;
+    batchSizeWarnThresholdInKb?: pulumi.Input<number>;
     datacenter?: pulumi.Input<string>;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
-    prometheus?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface CassandraCassandraUserConfigPublicAccess {
-    prometheus?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface CassandraComponent {
@@ -138,15 +140,17 @@ export interface ClickhouseClickhouse {
 
 export interface ClickhouseClickhouseUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.ClickhouseClickhouseUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -161,7 +165,7 @@ export interface ClickhouseClickhouseUserConfig {
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface ClickhouseComponent {
@@ -192,7 +196,7 @@ export interface ClickhouseGrantPrivilegeGrant {
      */
     table?: pulumi.Input<string>;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
      */
     withGrant?: pulumi.Input<boolean>;
 }
@@ -267,97 +271,40 @@ export interface FlinkFlink {
 
 export interface FlinkFlinkUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
-     */
-    additionalBackupRegions?: pulumi.Input<string>;
-    /**
-     * Checkpointing is Flink’s primary fault-tolerance mechanism, wherein a snapshot of your job’s state persisted periodically to some durable location. In the case of failure, Flink will restart from the most recent checkpoint and resume processing. A jobs checkpoint interval configures how often Flink will take these snapshots.
-     */
-    executionCheckpointingIntervalMs?: pulumi.Input<string>;
-    /**
-     * The time after which a checkpoint-in-progress is aborted, if it did not complete by then.
-     */
-    executionCheckpointingTimeoutMs?: pulumi.Input<string>;
-    /**
-     * Flink major version
+     * Flink major version.
      */
     flinkVersion?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.FlinkFlinkUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
      */
-    numberOfTaskSlots?: pulumi.Input<string>;
+    numberOfTaskSlots?: pulumi.Input<number>;
     /**
-     * How many parallel task slots each new job is assigned. Unless you understand how Flink parallel dataflows work, please leave this at 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
-     */
-    parallelismDefault?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: pulumi.Input<inputs.FlinkFlinkUserConfigPrivatelinkAccess>;
-    /**
-     * failure-rate (default): Restarts the job after failure, but when failure rate (failures per time interval) is exceeded, the job eventually fails. Restart strategy waits a fixed amount of time between attempts.fixed-delay: Attempts to restart the job a given number of times before it fails. Restart strategy waits a fixed amount of time between attempts. exponential-delay: Attempts to restart the job infinitely, with increasing delay up to the maximum delay. The job never fails. none: The job fails directly and no restart is attempted.
-     */
-    restartStrategy?: pulumi.Input<string>;
-    /**
-     * Delay between two consecutive restart attempts if restart-strategy has been set to fixed-delay or failure-rate. Delaying the retries can be helpful when the program interacts with external systems where for example connections or pending transactions should reach a timeout before re-execution is attempted.
-     */
-    restartStrategyDelaySec?: pulumi.Input<string>;
-    /**
-     * Time interval for measuring failure rate if restart-strategy has been set to failure-rate. Specified in minutes.
-     */
-    restartStrategyFailureRateIntervalMin?: pulumi.Input<string>;
-    /**
-     * The number of times that Flink retries the execution before the job is declared as failed if restart-strategy has been set to fixed-delay or failure-rate.
-     */
-    restartStrategyMaxFailures?: pulumi.Input<string>;
 }
 
 export interface FlinkFlinkUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface FlinkFlinkUserConfigPrivatelinkAccess {
     /**
      * Flink server provided values
      */
-    flink?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
-}
-
-export interface FlinkJobTableUpsertKafka {
-    /**
-     * Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    keyFields?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    keyFormat?: pulumi.Input<string>;
-    /**
-     * Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    scanStartupMode?: pulumi.Input<string>;
-    /**
-     * Topic name This property cannot be changed, doing so forces recreation of the resource.
-     */
-    topic?: pulumi.Input<string>;
-    /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    valueFieldsInclude?: pulumi.Input<string>;
-    /**
-     * Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-     */
-    valueFormat?: pulumi.Input<string>;
+    flink?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface FlinkServiceIntegration {
@@ -397,32 +344,35 @@ export interface GrafanaGrafana {
 
 export interface GrafanaGrafanaUserConfig {
     additionalBackupRegions?: pulumi.Input<string>;
-    alertingEnabled?: pulumi.Input<string>;
+    alertingEnabled?: pulumi.Input<boolean>;
     alertingErrorOrTimeout?: pulumi.Input<string>;
-    alertingMaxAnnotationsToKeep?: pulumi.Input<string>;
+    alertingMaxAnnotationsToKeep?: pulumi.Input<number>;
     alertingNodataOrNullvalues?: pulumi.Input<string>;
-    allowEmbedding?: pulumi.Input<string>;
+    allowEmbedding?: pulumi.Input<boolean>;
     authAzuread?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthAzuread>;
-    authBasicEnabled?: pulumi.Input<string>;
+    authBasicEnabled?: pulumi.Input<boolean>;
     authGenericOauth?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGenericOauth>;
     authGithub?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGithub>;
     authGitlab?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGitlab>;
     authGoogle?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGoogle>;
     cookieSamesite?: pulumi.Input<string>;
     customDomain?: pulumi.Input<string>;
-    dashboardPreviewsEnabled?: pulumi.Input<string>;
+    dashboardPreviewsEnabled?: pulumi.Input<boolean>;
     dashboardsMinRefreshInterval?: pulumi.Input<string>;
-    dashboardsVersionsToKeep?: pulumi.Input<string>;
-    dataproxySendUserHeader?: pulumi.Input<string>;
-    dataproxyTimeout?: pulumi.Input<string>;
+    dashboardsVersionsToKeep?: pulumi.Input<number>;
+    dataproxySendUserHeader?: pulumi.Input<boolean>;
+    dataproxyTimeout?: pulumi.Input<number>;
     dateFormats?: pulumi.Input<inputs.GrafanaGrafanaUserConfigDateFormats>;
-    disableGravatar?: pulumi.Input<string>;
-    editorsCanAdmin?: pulumi.Input<string>;
+    disableGravatar?: pulumi.Input<boolean>;
+    editorsCanAdmin?: pulumi.Input<boolean>;
     externalImageStorage?: pulumi.Input<inputs.GrafanaGrafanaUserConfigExternalImageStorage>;
     googleAnalyticsUaId?: pulumi.Input<string>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.GrafanaGrafanaUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    metricsEnabled?: pulumi.Input<string>;
+    metricsEnabled?: pulumi.Input<boolean>;
     privateAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivateAccess>;
     privatelinkAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivatelinkAccess>;
     projectToForkFrom?: pulumi.Input<string>;
@@ -430,58 +380,58 @@ export interface GrafanaGrafanaUserConfig {
     recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
     smtpServer?: pulumi.Input<inputs.GrafanaGrafanaUserConfigSmtpServer>;
-    staticIps?: pulumi.Input<string>;
-    userAutoAssignOrg?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
+    userAutoAssignOrg?: pulumi.Input<boolean>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
-    viewersCanEdit?: pulumi.Input<string>;
+    viewersCanEdit?: pulumi.Input<boolean>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthAzuread {
-    allowSignUp?: pulumi.Input<string>;
+    allowSignUp?: pulumi.Input<boolean>;
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    authUrl?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
-    tokenUrl?: pulumi.Input<string>;
+    authUrl: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
+    tokenUrl: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGenericOauth {
-    allowSignUp?: pulumi.Input<string>;
+    allowSignUp?: pulumi.Input<boolean>;
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
-    apiUrl?: pulumi.Input<string>;
-    authUrl?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
+    apiUrl: pulumi.Input<string>;
+    authUrl: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
-    tokenUrl?: pulumi.Input<string>;
+    tokenUrl: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
-    allowSignUp?: pulumi.Input<string>;
+    allowSignUp?: pulumi.Input<boolean>;
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
-    teamIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
+    teamIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGitlab {
-    allowSignUp?: pulumi.Input<string>;
+    allowSignUp?: pulumi.Input<boolean>;
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     apiUrl?: pulumi.Input<string>;
     authUrl?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
     tokenUrl?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGoogle {
-    allowSignUp?: pulumi.Input<string>;
+    allowSignUp?: pulumi.Input<boolean>;
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigDateFormats {
@@ -496,36 +446,36 @@ export interface GrafanaGrafanaUserConfigDateFormats {
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
-    accessKey?: pulumi.Input<string>;
-    bucketUrl?: pulumi.Input<string>;
-    provider?: pulumi.Input<string>;
-    secretKey?: pulumi.Input<string>;
+    accessKey: pulumi.Input<string>;
+    bucketUrl: pulumi.Input<string>;
+    provider: pulumi.Input<string>;
+    secretKey: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigPrivateAccess {
-    grafana?: pulumi.Input<string>;
+    grafana?: pulumi.Input<boolean>;
 }
 
 export interface GrafanaGrafanaUserConfigPrivatelinkAccess {
-    grafana?: pulumi.Input<string>;
+    grafana?: pulumi.Input<boolean>;
 }
 
 export interface GrafanaGrafanaUserConfigPublicAccess {
-    grafana?: pulumi.Input<string>;
+    grafana?: pulumi.Input<boolean>;
 }
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
-    fromAddress?: pulumi.Input<string>;
+    fromAddress: pulumi.Input<string>;
     fromName?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<string>;
-    skipVerify?: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    skipVerify?: pulumi.Input<boolean>;
     starttlsPolicy?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
@@ -556,31 +506,33 @@ export interface InfluxDbInfluxdb {
 
 export interface InfluxDbInfluxdbUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * influxdb.conf configuration values
+     * influxdb.conf configuration values.
      */
     influxdb?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigInfluxdb>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdbUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess>;
     /**
@@ -588,11 +540,11 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service
+     * Name of the basebackup to restore in forked service.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -600,44 +552,44 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigInfluxdb {
-    logQueriesAfter?: pulumi.Input<string>;
-    maxConnectionLimit?: pulumi.Input<string>;
-    maxRowLimit?: pulumi.Input<string>;
-    maxSelectBuckets?: pulumi.Input<string>;
-    maxSelectPoint?: pulumi.Input<string>;
-    queryTimeout?: pulumi.Input<string>;
+    logQueriesAfter?: pulumi.Input<number>;
+    maxConnectionLimit?: pulumi.Input<number>;
+    maxRowLimit?: pulumi.Input<number>;
+    maxSelectBuckets?: pulumi.Input<number>;
+    maxSelectPoint?: pulumi.Input<number>;
+    queryTimeout?: pulumi.Input<number>;
 }
 
 export interface InfluxDbInfluxdbUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: pulumi.Input<string>;
+    influxdb?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: pulumi.Input<string>;
+    influxdb?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
      * InfluxDB server provided values
      */
-    influxdb?: pulumi.Input<string>;
+    influxdb?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbServiceIntegration {
@@ -688,48 +640,54 @@ export interface KafkaConnectKafkaConnect {
 export interface KafkaConnectKafkaConnectUserConfig {
     additionalBackupRegions?: pulumi.Input<string>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigKafkaConnect>;
     privateAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivateAccess>;
     privatelinkAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess>;
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     consumerAutoOffsetReset?: pulumi.Input<string>;
-    consumerFetchMaxBytes?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<number>;
     consumerIsolationLevel?: pulumi.Input<string>;
-    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
-    consumerMaxPollIntervalMs?: pulumi.Input<string>;
-    consumerMaxPollRecords?: pulumi.Input<string>;
-    offsetFlushIntervalMs?: pulumi.Input<string>;
-    offsetFlushTimeoutMs?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
+    consumerMaxPollIntervalMs?: pulumi.Input<number>;
+    consumerMaxPollRecords?: pulumi.Input<number>;
+    offsetFlushIntervalMs?: pulumi.Input<number>;
+    offsetFlushTimeoutMs?: pulumi.Input<number>;
+    producerBatchSize?: pulumi.Input<number>;
+    producerBufferMemory?: pulumi.Input<number>;
     producerCompressionType?: pulumi.Input<string>;
-    producerMaxRequestSize?: pulumi.Input<string>;
-    sessionTimeoutMs?: pulumi.Input<string>;
+    producerLingerMs?: pulumi.Input<number>;
+    producerMaxRequestSize?: pulumi.Input<number>;
+    sessionTimeoutMs?: pulumi.Input<number>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
-    kafkaConnect?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    kafkaConnect?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
-    jolokia?: pulumi.Input<string>;
-    kafkaConnect?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    jolokia?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
-    kafkaConnect?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    kafkaConnect?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface KafkaConnectServiceIntegration {
@@ -775,180 +733,197 @@ export interface KafkaKafka {
 
 export interface KafkaKafkaUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kafka broker configuration values
+     * Kafka broker configuration values.
      */
     kafka?: pulumi.Input<inputs.KafkaKafkaUserConfigKafka>;
     /**
-     * Kafka authentication methods
+     * Kafka authentication methods.
      */
     kafkaAuthenticationMethods?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaAuthenticationMethods>;
     /**
-     * Enable Kafka Connect service
+     * Enable Kafka Connect service. The default value is `false`.
      */
-    kafkaConnect?: pulumi.Input<string>;
+    kafkaConnect?: pulumi.Input<boolean>;
     /**
-     * Kafka Connect configuration values
+     * Kafka Connect configuration values.
      */
     kafkaConnectConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectConfig>;
     /**
-     * Enable Kafka-REST service
+     * Enable Kafka-REST service. The default value is `false`.
      */
-    kafkaRest?: pulumi.Input<string>;
+    kafkaRest?: pulumi.Input<boolean>;
     /**
-     * Kafka REST configuration
+     * Enable authorization in Kafka-REST service.
+     */
+    kafkaRestAuthorization?: pulumi.Input<boolean>;
+    /**
+     * Kafka REST configuration.
      */
     kafkaRestConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaRestConfig>;
     /**
-     * Kafka major version
+     * Kafka major version.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPrivatelinkAccess>;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPublicAccess>;
     /**
-     * Enable Schema-Registry service
+     * Enable Schema-Registry service. The default value is `false`.
      */
-    schemaRegistry?: pulumi.Input<string>;
+    schemaRegistry?: pulumi.Input<boolean>;
     /**
-     * Schema Registry configuration
+     * Schema Registry configuration.
      */
     schemaRegistryConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigSchemaRegistryConfig>;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface KafkaKafkaUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: pulumi.Input<string>;
+    autoCreateTopicsEnable?: pulumi.Input<boolean>;
     compressionType?: pulumi.Input<string>;
-    connectionsMaxIdleMs?: pulumi.Input<string>;
-    defaultReplicationFactor?: pulumi.Input<string>;
-    groupInitialRebalanceDelayMs?: pulumi.Input<string>;
-    groupMaxSessionTimeoutMs?: pulumi.Input<string>;
-    groupMinSessionTimeoutMs?: pulumi.Input<string>;
-    logCleanerDeleteRetentionMs?: pulumi.Input<string>;
-    logCleanerMaxCompactionLagMs?: pulumi.Input<string>;
-    logCleanerMinCleanableRatio?: pulumi.Input<string>;
-    logCleanerMinCompactionLagMs?: pulumi.Input<string>;
+    connectionsMaxIdleMs?: pulumi.Input<number>;
+    defaultReplicationFactor?: pulumi.Input<number>;
+    groupInitialRebalanceDelayMs?: pulumi.Input<number>;
+    groupMaxSessionTimeoutMs?: pulumi.Input<number>;
+    groupMinSessionTimeoutMs?: pulumi.Input<number>;
+    logCleanerDeleteRetentionMs?: pulumi.Input<number>;
+    logCleanerMaxCompactionLagMs?: pulumi.Input<number>;
+    logCleanerMinCleanableRatio?: pulumi.Input<number>;
+    logCleanerMinCompactionLagMs?: pulumi.Input<number>;
     logCleanupPolicy?: pulumi.Input<string>;
-    logFlushIntervalMessages?: pulumi.Input<string>;
-    logFlushIntervalMs?: pulumi.Input<string>;
-    logIndexIntervalBytes?: pulumi.Input<string>;
-    logIndexSizeMaxBytes?: pulumi.Input<string>;
-    logMessageDownconversionEnable?: pulumi.Input<string>;
-    logMessageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    logFlushIntervalMessages?: pulumi.Input<number>;
+    logFlushIntervalMs?: pulumi.Input<number>;
+    logIndexIntervalBytes?: pulumi.Input<number>;
+    logIndexSizeMaxBytes?: pulumi.Input<number>;
+    logMessageDownconversionEnable?: pulumi.Input<boolean>;
+    logMessageTimestampDifferenceMaxMs?: pulumi.Input<number>;
     logMessageTimestampType?: pulumi.Input<string>;
-    logPreallocate?: pulumi.Input<string>;
-    logRetentionBytes?: pulumi.Input<string>;
-    logRetentionHours?: pulumi.Input<string>;
-    logRetentionMs?: pulumi.Input<string>;
-    logRollJitterMs?: pulumi.Input<string>;
-    logRollMs?: pulumi.Input<string>;
-    logSegmentBytes?: pulumi.Input<string>;
-    logSegmentDeleteDelayMs?: pulumi.Input<string>;
-    maxConnectionsPerIp?: pulumi.Input<string>;
-    maxIncrementalFetchSessionCacheSlots?: pulumi.Input<string>;
-    messageMaxBytes?: pulumi.Input<string>;
-    minInsyncReplicas?: pulumi.Input<string>;
-    numPartitions?: pulumi.Input<string>;
-    offsetsRetentionMinutes?: pulumi.Input<string>;
-    producerPurgatoryPurgeIntervalRequests?: pulumi.Input<string>;
-    replicaFetchMaxBytes?: pulumi.Input<string>;
-    replicaFetchResponseMaxBytes?: pulumi.Input<string>;
-    socketRequestMaxBytes?: pulumi.Input<string>;
-    transactionRemoveExpiredTransactionCleanupIntervalMs?: pulumi.Input<string>;
-    transactionStateLogSegmentBytes?: pulumi.Input<string>;
+    logPreallocate?: pulumi.Input<boolean>;
+    logRetentionBytes?: pulumi.Input<number>;
+    logRetentionHours?: pulumi.Input<number>;
+    logRetentionMs?: pulumi.Input<number>;
+    logRollJitterMs?: pulumi.Input<number>;
+    logRollMs?: pulumi.Input<number>;
+    logSegmentBytes?: pulumi.Input<number>;
+    logSegmentDeleteDelayMs?: pulumi.Input<number>;
+    maxConnectionsPerIp?: pulumi.Input<number>;
+    maxIncrementalFetchSessionCacheSlots?: pulumi.Input<number>;
+    messageMaxBytes?: pulumi.Input<number>;
+    minInsyncReplicas?: pulumi.Input<number>;
+    numPartitions?: pulumi.Input<number>;
+    offsetsRetentionMinutes?: pulumi.Input<number>;
+    producerPurgatoryPurgeIntervalRequests?: pulumi.Input<number>;
+    replicaFetchMaxBytes?: pulumi.Input<number>;
+    replicaFetchResponseMaxBytes?: pulumi.Input<number>;
+    socketRequestMaxBytes?: pulumi.Input<number>;
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: pulumi.Input<number>;
+    transactionStateLogSegmentBytes?: pulumi.Input<number>;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: pulumi.Input<string>;
-    sasl?: pulumi.Input<string>;
+    certificate?: pulumi.Input<boolean>;
+    sasl?: pulumi.Input<boolean>;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     consumerAutoOffsetReset?: pulumi.Input<string>;
-    consumerFetchMaxBytes?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<number>;
     consumerIsolationLevel?: pulumi.Input<string>;
-    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
-    consumerMaxPollIntervalMs?: pulumi.Input<string>;
-    consumerMaxPollRecords?: pulumi.Input<string>;
-    offsetFlushIntervalMs?: pulumi.Input<string>;
-    offsetFlushTimeoutMs?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
+    consumerMaxPollIntervalMs?: pulumi.Input<number>;
+    consumerMaxPollRecords?: pulumi.Input<number>;
+    offsetFlushIntervalMs?: pulumi.Input<number>;
+    offsetFlushTimeoutMs?: pulumi.Input<number>;
+    producerBatchSize?: pulumi.Input<number>;
+    producerBufferMemory?: pulumi.Input<number>;
     producerCompressionType?: pulumi.Input<string>;
-    producerMaxRequestSize?: pulumi.Input<string>;
-    sessionTimeoutMs?: pulumi.Input<string>;
+    producerLingerMs?: pulumi.Input<number>;
+    producerMaxRequestSize?: pulumi.Input<number>;
+    sessionTimeoutMs?: pulumi.Input<number>;
 }
 
 export interface KafkaKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: pulumi.Input<string>;
-    consumerRequestMaxBytes?: pulumi.Input<string>;
-    consumerRequestTimeoutMs?: pulumi.Input<string>;
+    consumerEnableAutoCommit?: pulumi.Input<boolean>;
+    consumerRequestMaxBytes?: pulumi.Input<number>;
+    consumerRequestTimeoutMs?: pulumi.Input<number>;
     producerAcks?: pulumi.Input<string>;
-    producerLingerMs?: pulumi.Input<string>;
-    simpleconsumerPoolSizeMax?: pulumi.Input<string>;
+    producerCompressionType?: pulumi.Input<string>;
+    producerLingerMs?: pulumi.Input<number>;
+    simpleconsumerPoolSizeMax?: pulumi.Input<number>;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
-    prometheus?: pulumi.Input<string>;
-}
-
-export interface KafkaKafkaUserConfigPrivatelinkAccess {
-    jolokia?: pulumi.Input<string>;
     /**
      * Kafka server provided values
      */
-    kafka?: pulumi.Input<string>;
-    kafkaConnect?: pulumi.Input<string>;
-    kafkaRest?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
-    schemaRegistry?: pulumi.Input<string>;
+    kafka?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<boolean>;
+    kafkaRest?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
+    schemaRegistry?: pulumi.Input<boolean>;
+}
+
+export interface KafkaKafkaUserConfigPrivatelinkAccess {
+    jolokia?: pulumi.Input<boolean>;
+    /**
+     * Kafka server provided values
+     */
+    kafka?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<boolean>;
+    kafkaRest?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
+    schemaRegistry?: pulumi.Input<boolean>;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
      * Kafka server provided values
      */
-    kafka?: pulumi.Input<string>;
-    kafkaConnect?: pulumi.Input<string>;
-    kafkaRest?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
-    schemaRegistry?: pulumi.Input<string>;
+    kafka?: pulumi.Input<boolean>;
+    kafkaConnect?: pulumi.Input<boolean>;
+    kafkaRest?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
+    schemaRegistry?: pulumi.Input<boolean>;
 }
 
 export interface KafkaKafkaUserConfigSchemaRegistryConfig {
-    leaderEligibility?: pulumi.Input<string>;
+    leaderEligibility?: pulumi.Input<boolean>;
     topicName?: pulumi.Input<string>;
 }
 
@@ -968,27 +943,30 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     additionalBackupRegions?: pulumi.Input<string>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    emitCheckpointsEnabled?: pulumi.Input<string>;
-    emitCheckpointsIntervalSeconds?: pulumi.Input<string>;
-    refreshGroupsEnabled?: pulumi.Input<string>;
-    refreshGroupsIntervalSeconds?: pulumi.Input<string>;
-    refreshTopicsEnabled?: pulumi.Input<string>;
-    refreshTopicsIntervalSeconds?: pulumi.Input<string>;
-    syncGroupOffsetsEnabled?: pulumi.Input<string>;
-    syncGroupOffsetsIntervalSeconds?: pulumi.Input<string>;
-    syncTopicConfigsEnabled?: pulumi.Input<string>;
-    tasksMaxPerCpu?: pulumi.Input<string>;
+    emitCheckpointsEnabled?: pulumi.Input<boolean>;
+    emitCheckpointsIntervalSeconds?: pulumi.Input<number>;
+    refreshGroupsEnabled?: pulumi.Input<boolean>;
+    refreshGroupsIntervalSeconds?: pulumi.Input<number>;
+    refreshTopicsEnabled?: pulumi.Input<boolean>;
+    refreshTopicsIntervalSeconds?: pulumi.Input<number>;
+    syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
+    syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
+    syncTopicConfigsEnabled?: pulumi.Input<boolean>;
+    tasksMaxPerCpu?: pulumi.Input<number>;
 }
 
 export interface KafkaMirrorMakerServiceIntegration {
@@ -1063,7 +1041,7 @@ export interface KafkaTopicConfig {
     /**
      * message.downconversion.enable value
      */
-    messageDownconversionEnable?: pulumi.Input<string>;
+    messageDownconversionEnable?: pulumi.Input<boolean>;
     /**
      * message.format.version value
      */
@@ -1079,7 +1057,7 @@ export interface KafkaTopicConfig {
     /**
      * min.cleanable.dirty.ratio value
      */
-    minCleanableDirtyRatio?: pulumi.Input<string>;
+    minCleanableDirtyRatio?: pulumi.Input<number>;
     /**
      * min.compaction.lag.ms value
      */
@@ -1091,7 +1069,7 @@ export interface KafkaTopicConfig {
     /**
      * preallocate value
      */
-    preallocate?: pulumi.Input<string>;
+    preallocate?: pulumi.Input<boolean>;
     /**
      * retention.bytes value
      */
@@ -1119,16 +1097,16 @@ export interface KafkaTopicConfig {
     /**
      * unclean.leader.election.enable value
      */
-    uncleanLeaderElectionEnable?: pulumi.Input<string>;
+    uncleanLeaderElectionEnable?: pulumi.Input<boolean>;
 }
 
 export interface KafkaTopicTag {
     /**
-     * Topic tag key. Maximum Length: `64`.
+     * Topic tag key. Maximum length: `64`.
      */
     key: pulumi.Input<string>;
     /**
-     * Topic tag value. Maximum Length: `256`.
+     * Topic tag value. Maximum length: `256`.
      */
     value?: pulumi.Input<string>;
 }
@@ -1149,15 +1127,21 @@ export interface M3AggregatorM3aggregator {
 export interface M3AggregatorM3aggregatorUserConfig {
     customDomain?: pulumi.Input<string>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     m3Version?: pulumi.Input<string>;
     m3aggregatorVersion?: pulumi.Input<string>;
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface M3AggregatorServiceIntegration {
@@ -1187,45 +1171,54 @@ export interface M3DbM3dbUserConfig {
     additionalBackupRegions?: pulumi.Input<string>;
     customDomain?: pulumi.Input<string>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     limits?: pulumi.Input<inputs.M3DbM3dbUserConfigLimits>;
+    /**
+     * @deprecated Usage of this field is discouraged.
+     */
     m3Version?: pulumi.Input<string>;
-    m3coordinatorEnableGraphiteCarbonIngest?: pulumi.Input<string>;
+    m3coordinatorEnableGraphiteCarbonIngest?: pulumi.Input<boolean>;
     m3dbVersion?: pulumi.Input<string>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     */
     namespaces?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigNamespace>[]>;
     privateAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPrivateAccess>;
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPublicAccess>;
     rules?: pulumi.Input<inputs.M3DbM3dbUserConfigRules>;
     serviceToForkFrom?: pulumi.Input<string>;
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface M3DbM3dbUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface M3DbM3dbUserConfigLimits {
-    maxRecentlyQueriedSeriesBlocks?: pulumi.Input<string>;
-    maxRecentlyQueriedSeriesDiskBytesRead?: pulumi.Input<string>;
+    maxRecentlyQueriedSeriesBlocks?: pulumi.Input<number>;
+    maxRecentlyQueriedSeriesDiskBytesRead?: pulumi.Input<number>;
     maxRecentlyQueriedSeriesLookback?: pulumi.Input<string>;
-    queryDocs?: pulumi.Input<string>;
-    queryRequireExhaustive?: pulumi.Input<string>;
-    querySeries?: pulumi.Input<string>;
+    queryDocs?: pulumi.Input<number>;
+    queryRequireExhaustive?: pulumi.Input<boolean>;
+    querySeries?: pulumi.Input<number>;
 }
 
 export interface M3DbM3dbUserConfigNamespace {
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     options?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptions>;
     resolution?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }
 
 export interface M3DbM3dbUserConfigNamespaceOptions {
     retentionOptions?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions>;
-    snapshotEnabled?: pulumi.Input<string>;
-    writesToCommitlog?: pulumi.Input<string>;
+    snapshotEnabled?: pulumi.Input<boolean>;
+    writesToCommitlog?: pulumi.Input<boolean>;
 }
 
 export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
@@ -1237,11 +1230,11 @@ export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
 }
 
 export interface M3DbM3dbUserConfigPrivateAccess {
-    m3coordinator?: pulumi.Input<string>;
+    m3coordinator?: pulumi.Input<boolean>;
 }
 
 export interface M3DbM3dbUserConfigPublicAccess {
-    m3coordinator?: pulumi.Input<string>;
+    m3coordinator?: pulumi.Input<boolean>;
 }
 
 export interface M3DbM3dbUserConfigRules {
@@ -1250,9 +1243,12 @@ export interface M3DbM3dbUserConfigRules {
 
 export interface M3DbM3dbUserConfigRulesMapping {
     aggregations?: pulumi.Input<pulumi.Input<string>[]>;
-    drop?: pulumi.Input<string>;
-    filter?: pulumi.Input<string>;
+    drop?: pulumi.Input<boolean>;
+    filter: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     */
     namespaces?: pulumi.Input<pulumi.Input<string>[]>;
     namespacesObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingNamespacesObject>[]>;
     tags?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingTag>[]>;
@@ -1264,8 +1260,8 @@ export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
 }
 
 export interface M3DbM3dbUserConfigRulesMappingTag {
-    name?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface M3DbServiceIntegration {
@@ -1295,10 +1291,13 @@ export interface MySqlMysqlUserConfig {
     additionalBackupRegions?: pulumi.Input<string>;
     adminPassword?: pulumi.Input<string>;
     adminUsername?: pulumi.Input<string>;
-    backupHour?: pulumi.Input<string>;
-    backupMinute?: pulumi.Input<string>;
-    binlogRetentionPeriod?: pulumi.Input<string>;
+    backupHour?: pulumi.Input<number>;
+    backupMinute?: pulumi.Input<number>;
+    binlogRetentionPeriod?: pulumi.Input<number>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.MySqlMysqlUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     migration?: pulumi.Input<inputs.MySqlMysqlUserConfigMigration>;
     mysql?: pulumi.Input<inputs.MySqlMysqlUserConfigMysql>;
@@ -1309,74 +1308,74 @@ export interface MySqlMysqlUserConfig {
     publicAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPublicAccess>;
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface MySqlMysqlUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigMigration {
     dbname?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     ignoreDbs?: pulumi.Input<string>;
     method?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<string>;
-    ssl?: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    ssl?: pulumi.Input<boolean>;
     username?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigMysql {
-    connectTimeout?: pulumi.Input<string>;
+    connectTimeout?: pulumi.Input<number>;
     defaultTimeZone?: pulumi.Input<string>;
-    groupConcatMaxLen?: pulumi.Input<string>;
-    informationSchemaStatsExpiry?: pulumi.Input<string>;
-    innodbChangeBufferMaxSize?: pulumi.Input<string>;
-    innodbFlushNeighbors?: pulumi.Input<string>;
-    innodbFtMinTokenSize?: pulumi.Input<string>;
+    groupConcatMaxLen?: pulumi.Input<number>;
+    informationSchemaStatsExpiry?: pulumi.Input<number>;
+    innodbChangeBufferMaxSize?: pulumi.Input<number>;
+    innodbFlushNeighbors?: pulumi.Input<number>;
+    innodbFtMinTokenSize?: pulumi.Input<number>;
     innodbFtServerStopwordTable?: pulumi.Input<string>;
-    innodbLockWaitTimeout?: pulumi.Input<string>;
-    innodbLogBufferSize?: pulumi.Input<string>;
-    innodbOnlineAlterLogMaxSize?: pulumi.Input<string>;
-    innodbPrintAllDeadlocks?: pulumi.Input<string>;
-    innodbReadIoThreads?: pulumi.Input<string>;
-    innodbRollbackOnTimeout?: pulumi.Input<string>;
-    innodbThreadConcurrency?: pulumi.Input<string>;
-    innodbWriteIoThreads?: pulumi.Input<string>;
-    interactiveTimeout?: pulumi.Input<string>;
+    innodbLockWaitTimeout?: pulumi.Input<number>;
+    innodbLogBufferSize?: pulumi.Input<number>;
+    innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    innodbPrintAllDeadlocks?: pulumi.Input<boolean>;
+    innodbReadIoThreads?: pulumi.Input<number>;
+    innodbRollbackOnTimeout?: pulumi.Input<boolean>;
+    innodbThreadConcurrency?: pulumi.Input<number>;
+    innodbWriteIoThreads?: pulumi.Input<number>;
+    interactiveTimeout?: pulumi.Input<number>;
     internalTmpMemStorageEngine?: pulumi.Input<string>;
-    longQueryTime?: pulumi.Input<string>;
-    maxAllowedPacket?: pulumi.Input<string>;
-    maxHeapTableSize?: pulumi.Input<string>;
-    netBufferLength?: pulumi.Input<string>;
-    netReadTimeout?: pulumi.Input<string>;
-    netWriteTimeout?: pulumi.Input<string>;
-    slowQueryLog?: pulumi.Input<string>;
-    sortBufferSize?: pulumi.Input<string>;
+    longQueryTime?: pulumi.Input<number>;
+    maxAllowedPacket?: pulumi.Input<number>;
+    maxHeapTableSize?: pulumi.Input<number>;
+    netBufferLength?: pulumi.Input<number>;
+    netReadTimeout?: pulumi.Input<number>;
+    netWriteTimeout?: pulumi.Input<number>;
+    slowQueryLog?: pulumi.Input<boolean>;
+    sortBufferSize?: pulumi.Input<number>;
     sqlMode?: pulumi.Input<string>;
-    sqlRequirePrimaryKey?: pulumi.Input<string>;
-    tmpTableSize?: pulumi.Input<string>;
-    waitTimeout?: pulumi.Input<string>;
+    sqlRequirePrimaryKey?: pulumi.Input<boolean>;
+    tmpTableSize?: pulumi.Input<number>;
+    waitTimeout?: pulumi.Input<number>;
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
-    mysql?: pulumi.Input<string>;
-    mysqlx?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    mysql?: pulumi.Input<boolean>;
+    mysqlx?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface MySqlMysqlUserConfigPrivatelinkAccess {
-    mysql?: pulumi.Input<string>;
-    mysqlx?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    mysql?: pulumi.Input<boolean>;
+    mysqlx?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
-    mysql?: pulumi.Input<string>;
-    mysqlx?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    mysql?: pulumi.Input<boolean>;
+    mysqlx?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface MySqlServiceIntegration {
@@ -1405,59 +1404,65 @@ export interface OpenSearchOpensearch {
 
 export interface OpenSearchOpensearchUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * @deprecated DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
-    disableReplicationFactorAdjustment?: pulumi.Input<string>;
+    disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
     /**
-     * Index patterns
+     * Index patterns.
      */
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexPattern>[]>;
     /**
-     * Template settings for all new indexes
+     * Template settings for all new indexes.
      */
     indexTemplate?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexTemplate>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
      */
-    keepIndexRefreshInterval?: pulumi.Input<string>;
+    keepIndexRefreshInterval?: pulumi.Input<boolean>;
     /**
-     * @deprecated DEPRECATED: use index_patterns instead
+     * Use indexPatterns instead. The default value is `0`.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
-    maxIndexCount?: pulumi.Input<string>;
+    maxIndexCount?: pulumi.Input<number>;
     /**
-     * OpenSearch settings
+     * OpenSearch settings.
      */
     opensearch?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearch>;
     /**
-     * OpenSearch Dashboards settings
+     * OpenSearch Dashboards settings.
      */
     opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards>;
     /**
-     * OpenSearch major version
+     * OpenSearch major version.
      */
     opensearchVersion?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivatelinkAccess>;
     /**
@@ -1465,11 +1470,11 @@ export interface OpenSearchOpensearchUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service
+     * Name of the basebackup to restore in forked service.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -1477,93 +1482,93 @@ export interface OpenSearchOpensearchUserConfig {
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexPattern {
-    maxIndexCount?: pulumi.Input<string>;
-    pattern?: pulumi.Input<string>;
+    maxIndexCount: pulumi.Input<number>;
+    pattern: pulumi.Input<string>;
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: pulumi.Input<string>;
-    numberOfReplicas?: pulumi.Input<string>;
-    numberOfShards?: pulumi.Input<string>;
+    mappingNestedObjectsLimit?: pulumi.Input<number>;
+    numberOfReplicas?: pulumi.Input<number>;
+    numberOfShards?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearch {
-    actionAutoCreateIndexEnabled?: pulumi.Input<string>;
-    actionDestructiveRequiresName?: pulumi.Input<string>;
-    clusterMaxShardsPerNode?: pulumi.Input<string>;
-    clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<string>;
+    actionAutoCreateIndexEnabled?: pulumi.Input<boolean>;
+    actionDestructiveRequiresName?: pulumi.Input<boolean>;
+    clusterMaxShardsPerNode?: pulumi.Input<number>;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
     emailSenderName?: pulumi.Input<string>;
     emailSenderPassword?: pulumi.Input<string>;
     emailSenderUsername?: pulumi.Input<string>;
-    httpMaxContentLength?: pulumi.Input<string>;
-    httpMaxHeaderSize?: pulumi.Input<string>;
-    httpMaxInitialLineLength?: pulumi.Input<string>;
-    indicesFielddataCacheSize?: pulumi.Input<string>;
-    indicesMemoryIndexBufferSize?: pulumi.Input<string>;
-    indicesQueriesCacheSize?: pulumi.Input<string>;
-    indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
-    indicesRecoveryMaxBytesPerSec?: pulumi.Input<string>;
-    indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<string>;
-    overrideMainResponseVersion?: pulumi.Input<string>;
+    httpMaxContentLength?: pulumi.Input<number>;
+    httpMaxHeaderSize?: pulumi.Input<number>;
+    httpMaxInitialLineLength?: pulumi.Input<number>;
+    indicesFielddataCacheSize?: pulumi.Input<number>;
+    indicesMemoryIndexBufferSize?: pulumi.Input<number>;
+    indicesQueriesCacheSize?: pulumi.Input<number>;
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<number>;
+    indicesRecoveryMaxBytesPerSec?: pulumi.Input<number>;
+    indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number>;
+    overrideMainResponseVersion?: pulumi.Input<boolean>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     scriptMaxCompilationsRate?: pulumi.Input<string>;
-    searchMaxBuckets?: pulumi.Input<string>;
-    threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
-    threadPoolAnalyzeSize?: pulumi.Input<string>;
-    threadPoolForceMergeSize?: pulumi.Input<string>;
-    threadPoolGetQueueSize?: pulumi.Input<string>;
-    threadPoolGetSize?: pulumi.Input<string>;
-    threadPoolSearchQueueSize?: pulumi.Input<string>;
-    threadPoolSearchSize?: pulumi.Input<string>;
-    threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
-    threadPoolSearchThrottledSize?: pulumi.Input<string>;
-    threadPoolWriteQueueSize?: pulumi.Input<string>;
-    threadPoolWriteSize?: pulumi.Input<string>;
+    searchMaxBuckets?: pulumi.Input<number>;
+    threadPoolAnalyzeQueueSize?: pulumi.Input<number>;
+    threadPoolAnalyzeSize?: pulumi.Input<number>;
+    threadPoolForceMergeSize?: pulumi.Input<number>;
+    threadPoolGetQueueSize?: pulumi.Input<number>;
+    threadPoolGetSize?: pulumi.Input<number>;
+    threadPoolSearchQueueSize?: pulumi.Input<number>;
+    threadPoolSearchSize?: pulumi.Input<number>;
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<number>;
+    threadPoolSearchThrottledSize?: pulumi.Input<number>;
+    threadPoolWriteQueueSize?: pulumi.Input<number>;
+    threadPoolWriteSize?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
-    enabled?: pulumi.Input<string>;
-    maxOldSpaceSize?: pulumi.Input<string>;
-    opensearchRequestTimeout?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    maxOldSpaceSize?: pulumi.Input<number>;
+    opensearchRequestTimeout?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: pulumi.Input<string>;
-    opensearchDashboards?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    opensearch?: pulumi.Input<boolean>;
+    opensearchDashboards?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: pulumi.Input<string>;
-    opensearchDashboards?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    opensearch?: pulumi.Input<boolean>;
+    opensearchDashboards?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
      * Opensearch server provided values
      */
-    opensearch?: pulumi.Input<string>;
-    opensearchDashboards?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    opensearch?: pulumi.Input<boolean>;
+    opensearchDashboards?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface OpenSearchServiceIntegration {
@@ -1639,7 +1644,7 @@ export interface PgPg {
 
 export interface PgPgUserConfig {
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -1653,61 +1658,67 @@ export interface PgPgUserConfig {
     /**
      * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
      */
-    backupHour?: pulumi.Input<string>;
+    backupHour?: pulumi.Input<number>;
     /**
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
-    backupMinute?: pulumi.Input<string>;
+    backupMinute?: pulumi.Input<number>;
     /**
-     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      */
-    enableIpv6?: pulumi.Input<string>;
+    enableIpv6?: pulumi.Input<boolean>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.PgPgUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Migrate data from existing server
+     * Migrate data from existing server.
      */
     migration?: pulumi.Input<inputs.PgPgUserConfigMigration>;
     /**
-     * postgresql.conf configuration values
+     * postgresql.conf configuration values.
      */
     pg?: pulumi.Input<inputs.PgPgUserConfigPg>;
     /**
-     * @deprecated This setting is deprecated. Use read_replica service integration instead.
+     * Use readReplica service integration instead.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
-    pgReadReplica?: pulumi.Input<string>;
+    pgReadReplica?: pulumi.Input<boolean>;
     /**
      * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     *
+     * @deprecated Usage of this field is discouraged.
      */
     pgServiceToForkFrom?: pulumi.Input<string>;
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
      */
-    pgStatMonitorEnable?: pulumi.Input<string>;
+    pgStatMonitorEnable?: pulumi.Input<boolean>;
     /**
-     * PostgreSQL major version
+     * PostgreSQL major version.
      */
     pgVersion?: pulumi.Input<string>;
     /**
-     * PGBouncer connection pooling settings
+     * PGBouncer connection pooling settings.
      */
     pgbouncer?: pulumi.Input<inputs.PgPgUserConfigPgbouncer>;
     /**
-     * PGLookout settings
+     * PGLookout settings.
      */
     pglookout?: pulumi.Input<inputs.PgPgUserConfigPglookout>;
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      */
     privateAccess?: pulumi.Input<inputs.PgPgUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: pulumi.Input<inputs.PgPgUserConfigPrivatelinkAccess>;
     /**
@@ -1715,7 +1726,7 @@ export interface PgPgUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: pulumi.Input<inputs.PgPgUserConfigPublicAccess>;
     /**
@@ -1729,140 +1740,142 @@ export interface PgPgUserConfig {
     /**
      * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      */
-    sharedBuffersPercentage?: pulumi.Input<string>;
+    sharedBuffersPercentage?: pulumi.Input<number>;
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      */
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
     /**
      * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: pulumi.Input<string>;
     /**
-     * TimescaleDB extension configuration values
+     * TimescaleDB extension configuration values.
      */
     timescaledb?: pulumi.Input<inputs.PgPgUserConfigTimescaledb>;
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default
+     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: pulumi.Input<string>;
     /**
      * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      */
-    workMem?: pulumi.Input<string>;
+    workMem?: pulumi.Input<number>;
 }
 
 export interface PgPgUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigMigration {
     dbname?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     ignoreDbs?: pulumi.Input<string>;
     method?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<string>;
-    ssl?: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    ssl?: pulumi.Input<boolean>;
     username?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: pulumi.Input<string>;
-    autovacuumAnalyzeThreshold?: pulumi.Input<string>;
-    autovacuumFreezeMaxAge?: pulumi.Input<string>;
-    autovacuumMaxWorkers?: pulumi.Input<string>;
-    autovacuumNaptime?: pulumi.Input<string>;
-    autovacuumVacuumCostDelay?: pulumi.Input<string>;
-    autovacuumVacuumCostLimit?: pulumi.Input<string>;
-    autovacuumVacuumScaleFactor?: pulumi.Input<string>;
-    autovacuumVacuumThreshold?: pulumi.Input<string>;
-    bgwriterDelay?: pulumi.Input<string>;
-    bgwriterFlushAfter?: pulumi.Input<string>;
-    bgwriterLruMaxpages?: pulumi.Input<string>;
-    bgwriterLruMultiplier?: pulumi.Input<string>;
-    deadlockTimeout?: pulumi.Input<string>;
+    autovacuumAnalyzeScaleFactor?: pulumi.Input<number>;
+    autovacuumAnalyzeThreshold?: pulumi.Input<number>;
+    autovacuumFreezeMaxAge?: pulumi.Input<number>;
+    autovacuumMaxWorkers?: pulumi.Input<number>;
+    autovacuumNaptime?: pulumi.Input<number>;
+    autovacuumVacuumCostDelay?: pulumi.Input<number>;
+    autovacuumVacuumCostLimit?: pulumi.Input<number>;
+    autovacuumVacuumScaleFactor?: pulumi.Input<number>;
+    autovacuumVacuumThreshold?: pulumi.Input<number>;
+    bgwriterDelay?: pulumi.Input<number>;
+    bgwriterFlushAfter?: pulumi.Input<number>;
+    bgwriterLruMaxpages?: pulumi.Input<number>;
+    bgwriterLruMultiplier?: pulumi.Input<number>;
+    deadlockTimeout?: pulumi.Input<number>;
     defaultToastCompression?: pulumi.Input<string>;
-    idleInTransactionSessionTimeout?: pulumi.Input<string>;
-    jit?: pulumi.Input<string>;
-    logAutovacuumMinDuration?: pulumi.Input<string>;
+    idleInTransactionSessionTimeout?: pulumi.Input<number>;
+    jit?: pulumi.Input<boolean>;
+    logAutovacuumMinDuration?: pulumi.Input<number>;
     logErrorVerbosity?: pulumi.Input<string>;
     logLinePrefix?: pulumi.Input<string>;
-    logMinDurationStatement?: pulumi.Input<string>;
-    logTempFiles?: pulumi.Input<string>;
-    maxFilesPerProcess?: pulumi.Input<string>;
-    maxLocksPerTransaction?: pulumi.Input<string>;
-    maxLogicalReplicationWorkers?: pulumi.Input<string>;
-    maxParallelWorkers?: pulumi.Input<string>;
-    maxParallelWorkersPerGather?: pulumi.Input<string>;
-    maxPredLocksPerTransaction?: pulumi.Input<string>;
-    maxPreparedTransactions?: pulumi.Input<string>;
-    maxReplicationSlots?: pulumi.Input<string>;
-    maxSlotWalKeepSize?: pulumi.Input<string>;
-    maxStackDepth?: pulumi.Input<string>;
-    maxStandbyArchiveDelay?: pulumi.Input<string>;
-    maxStandbyStreamingDelay?: pulumi.Input<string>;
-    maxWalSenders?: pulumi.Input<string>;
-    maxWorkerProcesses?: pulumi.Input<string>;
-    pgPartmanBgwDotInterval?: pulumi.Input<string>;
+    logMinDurationStatement?: pulumi.Input<number>;
+    logTempFiles?: pulumi.Input<number>;
+    maxFilesPerProcess?: pulumi.Input<number>;
+    maxLocksPerTransaction?: pulumi.Input<number>;
+    maxLogicalReplicationWorkers?: pulumi.Input<number>;
+    maxParallelWorkers?: pulumi.Input<number>;
+    maxParallelWorkersPerGather?: pulumi.Input<number>;
+    maxPredLocksPerTransaction?: pulumi.Input<number>;
+    maxPreparedTransactions?: pulumi.Input<number>;
+    maxReplicationSlots?: pulumi.Input<number>;
+    maxSlotWalKeepSize?: pulumi.Input<number>;
+    maxStackDepth?: pulumi.Input<number>;
+    maxStandbyArchiveDelay?: pulumi.Input<number>;
+    maxStandbyStreamingDelay?: pulumi.Input<number>;
+    maxWalSenders?: pulumi.Input<number>;
+    maxWorkerProcesses?: pulumi.Input<number>;
+    pgPartmanBgwDotInterval?: pulumi.Input<number>;
     pgPartmanBgwDotRole?: pulumi.Input<string>;
+    pgStatMonitorDotPgsmEnableQueryPlan?: pulumi.Input<boolean>;
+    pgStatMonitorDotPgsmMaxBuckets?: pulumi.Input<number>;
     pgStatStatementsDotTrack?: pulumi.Input<string>;
-    tempFileLimit?: pulumi.Input<string>;
+    tempFileLimit?: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
-    trackActivityQuerySize?: pulumi.Input<string>;
+    trackActivityQuerySize?: pulumi.Input<number>;
     trackCommitTimestamp?: pulumi.Input<string>;
     trackFunctions?: pulumi.Input<string>;
     trackIoTiming?: pulumi.Input<string>;
-    walSenderTimeout?: pulumi.Input<string>;
-    walWriterDelay?: pulumi.Input<string>;
+    walSenderTimeout?: pulumi.Input<number>;
+    walWriterDelay?: pulumi.Input<number>;
 }
 
 export interface PgPgUserConfigPgbouncer {
-    autodbIdleTimeout?: pulumi.Input<string>;
-    autodbMaxDbConnections?: pulumi.Input<string>;
+    autodbIdleTimeout?: pulumi.Input<number>;
+    autodbMaxDbConnections?: pulumi.Input<number>;
     autodbPoolMode?: pulumi.Input<string>;
-    autodbPoolSize?: pulumi.Input<string>;
+    autodbPoolSize?: pulumi.Input<number>;
     ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
-    minPoolSize?: pulumi.Input<string>;
-    serverIdleTimeout?: pulumi.Input<string>;
-    serverLifetime?: pulumi.Input<string>;
-    serverResetQueryAlways?: pulumi.Input<string>;
+    minPoolSize?: pulumi.Input<number>;
+    serverIdleTimeout?: pulumi.Input<number>;
+    serverLifetime?: pulumi.Input<number>;
+    serverResetQueryAlways?: pulumi.Input<boolean>;
 }
 
 export interface PgPgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: pulumi.Input<string>;
+    maxFailoverReplicationTimeLag?: pulumi.Input<number>;
 }
 
 export interface PgPgUserConfigPrivateAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: pulumi.Input<string>;
-    pgbouncer?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    pg?: pulumi.Input<boolean>;
+    pgbouncer?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: pulumi.Input<string>;
-    pgbouncer?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    pg?: pulumi.Input<boolean>;
+    pgbouncer?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface PgPgUserConfigPublicAccess {
     /**
      * PostgreSQL specific server provided values
      */
-    pg?: pulumi.Input<string>;
-    pgbouncer?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
+    pg?: pulumi.Input<boolean>;
+    pgbouncer?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface PgPgUserConfigTimescaledb {
-    maxBackgroundWorkers?: pulumi.Input<string>;
+    maxBackgroundWorkers?: pulumi.Input<number>;
 }
 
 export interface PgServiceIntegration {
@@ -1914,6 +1927,9 @@ export interface RedisRedi {
 export interface RedisRedisUserConfig {
     additionalBackupRegions?: pulumi.Input<string>;
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.RedisRedisUserConfigIpFilterObject>[]>;
+    /**
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     migration?: pulumi.Input<inputs.RedisRedisUserConfigMigration>;
     privateAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivateAccess>;
@@ -1922,49 +1938,49 @@ export interface RedisRedisUserConfig {
     publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
     redisAclChannelsDefault?: pulumi.Input<string>;
-    redisIoThreads?: pulumi.Input<string>;
-    redisLfuDecayTime?: pulumi.Input<string>;
-    redisLfuLogFactor?: pulumi.Input<string>;
+    redisIoThreads?: pulumi.Input<number>;
+    redisLfuDecayTime?: pulumi.Input<number>;
+    redisLfuLogFactor?: pulumi.Input<number>;
     redisMaxmemoryPolicy?: pulumi.Input<string>;
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
-    redisNumberOfDatabases?: pulumi.Input<string>;
+    redisNumberOfDatabases?: pulumi.Input<number>;
     redisPersistence?: pulumi.Input<string>;
-    redisPubsubClientOutputBufferLimit?: pulumi.Input<string>;
-    redisSsl?: pulumi.Input<string>;
-    redisTimeout?: pulumi.Input<string>;
+    redisPubsubClientOutputBufferLimit?: pulumi.Input<number>;
+    redisSsl?: pulumi.Input<boolean>;
+    redisTimeout?: pulumi.Input<number>;
     serviceToForkFrom?: pulumi.Input<string>;
-    staticIps?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface RedisRedisUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
-    network?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigMigration {
     dbname?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     ignoreDbs?: pulumi.Input<string>;
     method?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<string>;
-    ssl?: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    ssl?: pulumi.Input<boolean>;
     username?: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigPrivateAccess {
-    prometheus?: pulumi.Input<string>;
-    redis?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<boolean>;
+    redis?: pulumi.Input<boolean>;
 }
 
 export interface RedisRedisUserConfigPrivatelinkAccess {
-    prometheus?: pulumi.Input<string>;
-    redis?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<boolean>;
+    redis?: pulumi.Input<boolean>;
 }
 
 export interface RedisRedisUserConfigPublicAccess {
-    prometheus?: pulumi.Input<string>;
-    redis?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<boolean>;
+    redis?: pulumi.Input<boolean>;
 }
 
 export interface RedisServiceIntegration {
@@ -1979,31 +1995,31 @@ export interface RedisTag {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * Tables to create
+     * Tables to create.
      */
     tables?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTable>[]>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     columns?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
-    dataFormat?: pulumi.Input<string>;
-    groupName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    dataFormat: pulumi.Input<string>;
+    groupName: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     topics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic>[]>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
-    name?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfig {
     /**
-     * Databases to expose
+     * Databases to expose.
      */
     databases?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabase>[]>;
 }
@@ -2015,144 +2031,154 @@ export interface ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
 
 export interface ServiceIntegrationDatadogUserConfig {
     /**
-     * Enable Datadog Database Monitoring
+     * Enable Datadog Database Monitoring.
      */
-    datadogDbmEnabled?: pulumi.Input<string>;
+    datadogDbmEnabled?: pulumi.Input<boolean>;
     /**
-     * Custom tags provided by user
+     * Custom tags provided by user.
      */
     datadogTags?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigDatadogTag>[]>;
     /**
-     * List of custom metrics
+     * List of custom metrics.
      */
     excludeConsumerGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of topics to exclude
+     * List of topics to exclude.
      */
     excludeTopics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of custom metrics
+     * List of custom metrics.
      */
     includeConsumerGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of topics to include
+     * List of topics to include.
      */
     includeTopics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of custom metrics
+     * List of custom metrics.
      */
     kafkaCustomMetrics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Maximum number of JMX metrics to send
+     * Maximum number of JMX metrics to send.
      */
-    maxJmxMetrics?: pulumi.Input<string>;
+    maxJmxMetrics?: pulumi.Input<number>;
+    /**
+     * Datadog Opensearch Options.
+     */
+    opensearch?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigOpensearch>;
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
     comment?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
+    tag: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationDatadogUserConfigOpensearch {
+    indexStatsEnabled?: pulumi.Input<boolean>;
+    pendingTaskStatsEnabled?: pulumi.Input<boolean>;
+    pshardStatsEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
-     * Datadog API key
+     * Datadog API key.
      */
     datadogApiKey?: pulumi.Input<string>;
     /**
-     * Custom tags provided by user
+     * Custom tags provided by user.
      */
     datadogTags?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag>[]>;
     /**
-     * Disable consumer group metrics
+     * Disable consumer group metrics.
      */
-    disableConsumerStats?: pulumi.Input<string>;
+    disableConsumerStats?: pulumi.Input<boolean>;
     /**
-     * Number of separate instances to fetch kafka consumer statistics with
+     * Number of separate instances to fetch kafka consumer statistics with.
      */
-    kafkaConsumerCheckInstances?: pulumi.Input<string>;
+    kafkaConsumerCheckInstances?: pulumi.Input<number>;
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers
+     * Number of seconds that datadog will wait to get consumer statistics from brokers.
      */
-    kafkaConsumerStatsTimeout?: pulumi.Input<string>;
+    kafkaConsumerStatsTimeout?: pulumi.Input<number>;
     /**
-     * Maximum number of partition contexts to send
+     * Maximum number of partition contexts to send.
      */
-    maxPartitionContexts?: pulumi.Input<string>;
+    maxPartitionContexts?: pulumi.Input<number>;
     /**
-     * Datadog intake site. Defaults to datadoghq.com
+     * Datadog intake site. Defaults to datadoghq.com.
      */
     site?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     comment?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
+    tag: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * AWS CloudWatch log group name
+     * AWS CloudWatch log group name.
      */
     logGroupName?: pulumi.Input<string>;
     /**
-     * AWS region
+     * AWS region.
      */
     region?: pulumi.Input<string>;
     /**
-     * AWS secret key
+     * AWS secret key.
      */
     secretKey?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData
+     * AWS access key. Required permissions are cloudwatch:PutMetricData.
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * AWS CloudWatch Metrics Namespace
+     * AWS CloudWatch Metrics Namespace.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * AWS region
+     * AWS region.
      */
     region?: pulumi.Input<string>;
     /**
-     * AWS secret key
+     * AWS secret key.
      */
     secretKey?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      */
     ca?: pulumi.Input<string>;
     /**
-     * Maximum number of days of logs to keep
+     * Maximum number of days of logs to keep. The default value is `3`.
      */
-    indexDaysMax?: pulumi.Input<string>;
+    indexDaysMax?: pulumi.Input<number>;
     /**
-     * Elasticsearch index prefix
+     * Elasticsearch index prefix. The default value is `logs`.
      */
     indexPrefix?: pulumi.Input<string>;
     /**
-     * Elasticsearch request timeout limit
+     * Elasticsearch request timeout limit. The default value is `10.0`.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<number>;
     /**
-     * Elasticsearch connection URL
+     * Elasticsearch connection URL.
      */
     url?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
-     * Google Cloud Logging log id
+     * Google Cloud Logging log id.
      */
     logId?: pulumi.Input<string>;
     /**
@@ -2167,7 +2193,7 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig 
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * Bootstrap servers
+     * Bootstrap servers.
      */
     bootstrapServers?: pulumi.Input<string>;
     /**
@@ -2183,19 +2209,19 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslPlainUsername?: pulumi.Input<string>;
     /**
-     * Security protocol
+     * Security protocol.
      */
     securityProtocol?: pulumi.Input<string>;
     /**
-     * PEM-encoded CA certificate
+     * PEM-encoded CA certificate.
      */
     sslCaCert?: pulumi.Input<string>;
     /**
-     * PEM-encoded client certificate
+     * PEM-encoded client certificate.
      */
     sslClientCert?: pulumi.Input<string>;
     /**
-     * PEM-encoded client key
+     * PEM-encoded client key.
      */
     sslClientKey?: pulumi.Input<string>;
     /**
@@ -2206,146 +2232,146 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      */
     ca?: pulumi.Input<string>;
     /**
-     * Maximum number of days of logs to keep
+     * Maximum number of days of logs to keep. The default value is `3`.
      */
-    indexDaysMax?: pulumi.Input<string>;
+    indexDaysMax?: pulumi.Input<number>;
     /**
-     * OpenSearch index prefix
+     * OpenSearch index prefix. The default value is `logs`.
      */
     indexPrefix?: pulumi.Input<string>;
     /**
-     * OpenSearch request timeout limit
+     * OpenSearch request timeout limit. The default value is `10.0`.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<number>;
     /**
-     * OpenSearch connection URL
+     * OpenSearch connection URL.
      */
     url?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * Authentication method
+     * Authentication method.
      */
     authentication?: pulumi.Input<string>;
     /**
-     * Basic authentication password
+     * Basic authentication password.
      */
     basicAuthPassword?: pulumi.Input<string>;
     /**
-     * Basic authentication user name
+     * Basic authentication user name.
      */
     basicAuthUsername?: pulumi.Input<string>;
     /**
-     * Schema Registry URL
+     * Schema Registry URL.
      */
     url?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
     /**
-     * Jolokia basic authentication password
+     * Jolokia basic authentication password.
      */
     basicAuthPassword?: pulumi.Input<string>;
     /**
-     * Jolokia basic authentication username
+     * Jolokia basic authentication username.
      */
     basicAuthUsername?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
     /**
-     * Prometheus basic authentication password
+     * Prometheus basic authentication password.
      */
     basicAuthPassword?: pulumi.Input<string>;
     /**
-     * Prometheus basic authentication username
+     * Prometheus basic authentication username.
      */
     basicAuthUsername?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * PEM encoded CA certificate
+     * PEM encoded CA certificate.
      */
     ca?: pulumi.Input<string>;
     /**
-     * PEM encoded client certificate
+     * PEM encoded client certificate.
      */
     cert?: pulumi.Input<string>;
     /**
-     * message format
+     * message format. The default value is `rfc5424`.
      */
     format?: pulumi.Input<string>;
     /**
-     * PEM encoded client key
+     * PEM encoded client key.
      */
     key?: pulumi.Input<string>;
     /**
-     * custom syslog message format
+     * custom syslog message format.
      */
     logline?: pulumi.Input<string>;
     /**
-     * rsyslog server port
+     * rsyslog server port. The default value is `514`.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
     /**
-     * Structured data block for log message
+     * Structured data block for log message.
      */
     sd?: pulumi.Input<string>;
     /**
-     * rsyslog server IP address or hostname
+     * rsyslog server IP address or hostname.
      */
     server?: pulumi.Input<string>;
     /**
-     * Require TLS
+     * Require TLS. The default value is `true`.
      */
-    tls?: pulumi.Input<string>;
+    tls?: pulumi.Input<boolean>;
 }
 
 export interface ServiceIntegrationEndpointSignalfxUserConfig {
     /**
-     * list of metrics to send
+     * list of metrics to send.
      */
     enabledMetrics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * SignalFX API key
+     * SignalFX API key.
      */
     signalfxApiKey?: pulumi.Input<string>;
     /**
-     * SignalFX realm
+     * SignalFX realm. The default value is `us0`.
      */
     signalfxRealm?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
      */
     droppedMetrics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric>[]>;
     /**
-     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics).
      */
     extraMetrics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric>[]>;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
-    field?: pulumi.Input<string>;
-    metric?: pulumi.Input<string>;
+    field: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
-    field?: pulumi.Input<string>;
-    metric?: pulumi.Input<string>;
+    field: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {
     /**
-     * Kafka Connect service configuration values
+     * Kafka Connect service configuration values.
      */
     kafkaConnect?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect>;
 }
@@ -2359,7 +2385,7 @@ export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 
 export interface ServiceIntegrationKafkaLogsUserConfig {
     /**
-     * Topic name
+     * Topic name.
      */
     kafkaTopic?: pulumi.Input<string>;
 }
@@ -2370,26 +2396,26 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
      */
     clusterAlias?: pulumi.Input<string>;
     /**
-     * Kafka MirrorMaker configuration values
+     * Kafka MirrorMaker configuration values.
      */
     kafkaMirrormaker?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker>;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
-    consumerFetchMinBytes?: pulumi.Input<string>;
-    producerBatchSize?: pulumi.Input<string>;
-    producerBufferMemory?: pulumi.Input<string>;
-    producerLingerMs?: pulumi.Input<string>;
-    producerMaxRequestSize?: pulumi.Input<string>;
+    consumerFetchMinBytes?: pulumi.Input<number>;
+    producerBatchSize?: pulumi.Input<number>;
+    producerBufferMemory?: pulumi.Input<number>;
+    producerLingerMs?: pulumi.Input<number>;
+    producerMaxRequestSize?: pulumi.Input<number>;
 }
 
 export interface ServiceIntegrationLogsUserConfig {
     /**
-     * Elasticsearch index retention limit
+     * Elasticsearch index retention limit. The default value is `3`.
      */
-    elasticsearchIndexDaysMax?: pulumi.Input<string>;
+    elasticsearchIndexDaysMax?: pulumi.Input<number>;
     /**
-     * Elasticsearch index prefix
+     * Elasticsearch index prefix. The default value is `logs`.
      */
     elasticsearchIndexPrefix?: pulumi.Input<string>;
 }
@@ -2402,13 +2428,13 @@ export interface ServiceIntegrationMetricsUserConfig {
     /**
      * Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
      */
-    retentionDays?: pulumi.Input<string>;
+    retentionDays?: pulumi.Input<number>;
     /**
      * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     roUsername?: pulumi.Input<string>;
     /**
-     * Configuration options for metrics where source service is MySQL
+     * Configuration options for metrics where source service is MySQL.
      */
     sourceMysql?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfigSourceMysql>;
     /**
@@ -2422,25 +2448,18 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysql {
 }
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
-    gatherEventWaits?: pulumi.Input<string>;
-    gatherFileEventsStats?: pulumi.Input<string>;
-    gatherIndexIoWaits?: pulumi.Input<string>;
-    gatherInfoSchemaAutoInc?: pulumi.Input<string>;
-    gatherInnodbMetrics?: pulumi.Input<string>;
-    gatherPerfEventsStatements?: pulumi.Input<string>;
-    gatherProcessList?: pulumi.Input<string>;
-    gatherSlaveStatus?: pulumi.Input<string>;
-    gatherTableIoWaits?: pulumi.Input<string>;
-    gatherTableLockWaits?: pulumi.Input<string>;
-    gatherTableSchema?: pulumi.Input<string>;
-    perfEventsStatementsDigestTextLimit?: pulumi.Input<string>;
-    perfEventsStatementsLimit?: pulumi.Input<string>;
-    perfEventsStatementsTimeLimit?: pulumi.Input<string>;
-}
-
-export interface ServiceIntegrationMirrormakerUserConfig {
-    /**
-     * Mirrormaker topic whitelist
-     */
-    mirrormakerWhitelist?: pulumi.Input<string>;
+    gatherEventWaits?: pulumi.Input<boolean>;
+    gatherFileEventsStats?: pulumi.Input<boolean>;
+    gatherIndexIoWaits?: pulumi.Input<boolean>;
+    gatherInfoSchemaAutoInc?: pulumi.Input<boolean>;
+    gatherInnodbMetrics?: pulumi.Input<boolean>;
+    gatherPerfEventsStatements?: pulumi.Input<boolean>;
+    gatherProcessList?: pulumi.Input<boolean>;
+    gatherSlaveStatus?: pulumi.Input<boolean>;
+    gatherTableIoWaits?: pulumi.Input<boolean>;
+    gatherTableLockWaits?: pulumi.Input<boolean>;
+    gatherTableSchema?: pulumi.Input<boolean>;
+    perfEventsStatementsDigestTextLimit?: pulumi.Input<number>;
+    perfEventsStatementsLimit?: pulumi.Input<number>;
+    perfEventsStatementsTimeLimit?: pulumi.Input<number>;
 }

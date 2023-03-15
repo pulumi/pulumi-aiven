@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,9 +18,9 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
     public static final GrafanaGrafanaUserConfigAuthGoogleArgs Empty = new GrafanaGrafanaUserConfigAuthGoogleArgs();
 
     @Import(name="allowSignUp")
-    private @Nullable Output<String> allowSignUp;
+    private @Nullable Output<Boolean> allowSignUp;
 
-    public Optional<Output<String>> allowSignUp() {
+    public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
@@ -30,18 +31,18 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         return Optional.ofNullable(this.allowedDomains);
     }
 
-    @Import(name="clientId")
-    private @Nullable Output<String> clientId;
+    @Import(name="clientId", required=true)
+    private Output<String> clientId;
 
-    public Optional<Output<String>> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public Output<String> clientId() {
+        return this.clientId;
     }
 
-    @Import(name="clientSecret")
-    private @Nullable Output<String> clientSecret;
+    @Import(name="clientSecret", required=true)
+    private Output<String> clientSecret;
 
-    public Optional<Output<String>> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public Output<String> clientSecret() {
+        return this.clientSecret;
     }
 
     private GrafanaGrafanaUserConfigAuthGoogleArgs() {}
@@ -71,12 +72,12 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
             $ = new GrafanaGrafanaUserConfigAuthGoogleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder allowSignUp(@Nullable Output<String> allowSignUp) {
+        public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
-        public Builder allowSignUp(String allowSignUp) {
+        public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
@@ -93,7 +94,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
             return allowedDomains(List.of(allowedDomains));
         }
 
-        public Builder clientId(@Nullable Output<String> clientId) {
+        public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
@@ -102,7 +103,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
             return clientId(Output.of(clientId));
         }
 
-        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+        public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
@@ -112,6 +113,8 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         public GrafanaGrafanaUserConfigAuthGoogleArgs build() {
+            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
             return $;
         }
     }

@@ -13,46 +13,46 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("gatherEventWaits")]
-        public Input<string>? GatherEventWaits { get; set; }
+        public Input<bool>? GatherEventWaits { get; set; }
 
         [Input("gatherFileEventsStats")]
-        public Input<string>? GatherFileEventsStats { get; set; }
+        public Input<bool>? GatherFileEventsStats { get; set; }
 
         [Input("gatherIndexIoWaits")]
-        public Input<string>? GatherIndexIoWaits { get; set; }
+        public Input<bool>? GatherIndexIoWaits { get; set; }
 
         [Input("gatherInfoSchemaAutoInc")]
-        public Input<string>? GatherInfoSchemaAutoInc { get; set; }
+        public Input<bool>? GatherInfoSchemaAutoInc { get; set; }
 
         [Input("gatherInnodbMetrics")]
-        public Input<string>? GatherInnodbMetrics { get; set; }
+        public Input<bool>? GatherInnodbMetrics { get; set; }
 
         [Input("gatherPerfEventsStatements")]
-        public Input<string>? GatherPerfEventsStatements { get; set; }
+        public Input<bool>? GatherPerfEventsStatements { get; set; }
 
         [Input("gatherProcessList")]
-        public Input<string>? GatherProcessList { get; set; }
+        public Input<bool>? GatherProcessList { get; set; }
 
         [Input("gatherSlaveStatus")]
-        public Input<string>? GatherSlaveStatus { get; set; }
+        public Input<bool>? GatherSlaveStatus { get; set; }
 
         [Input("gatherTableIoWaits")]
-        public Input<string>? GatherTableIoWaits { get; set; }
+        public Input<bool>? GatherTableIoWaits { get; set; }
 
         [Input("gatherTableLockWaits")]
-        public Input<string>? GatherTableLockWaits { get; set; }
+        public Input<bool>? GatherTableLockWaits { get; set; }
 
         [Input("gatherTableSchema")]
-        public Input<string>? GatherTableSchema { get; set; }
+        public Input<bool>? GatherTableSchema { get; set; }
 
         [Input("perfEventsStatementsDigestTextLimit")]
-        public Input<string>? PerfEventsStatementsDigestTextLimit { get; set; }
+        public Input<int>? PerfEventsStatementsDigestTextLimit { get; set; }
 
         [Input("perfEventsStatementsLimit")]
-        public Input<string>? PerfEventsStatementsLimit { get; set; }
+        public Input<int>? PerfEventsStatementsLimit { get; set; }
 
         [Input("perfEventsStatementsTimeLimit")]
-        public Input<string>? PerfEventsStatementsTimeLimit { get; set; }
+        public Input<int>? PerfEventsStatementsTimeLimit { get; set; }
 
         public ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs()
         {

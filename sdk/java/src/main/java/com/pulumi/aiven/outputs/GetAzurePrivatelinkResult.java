@@ -46,7 +46,7 @@ public final class GetAzurePrivatelinkResult {
      */
     private String state;
     /**
-     * @return A List of allowed Subscription IDs Maximum Length: `16`.
+     * @return A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
     private List<String> userSubscriptionIds;
@@ -102,7 +102,7 @@ public final class GetAzurePrivatelinkResult {
         return this.state;
     }
     /**
-     * @return A List of allowed Subscription IDs Maximum Length: `16`.
+     * @return A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
     public List<String> userSubscriptionIds() {

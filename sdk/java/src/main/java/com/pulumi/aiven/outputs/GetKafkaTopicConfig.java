@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,21 +22,21 @@ public final class GetKafkaTopicConfig {
     private @Nullable String indexIntervalBytes;
     private @Nullable String maxCompactionLagMs;
     private @Nullable String maxMessageBytes;
-    private @Nullable String messageDownconversionEnable;
+    private @Nullable Boolean messageDownconversionEnable;
     private @Nullable String messageFormatVersion;
     private @Nullable String messageTimestampDifferenceMaxMs;
     private @Nullable String messageTimestampType;
-    private @Nullable String minCleanableDirtyRatio;
+    private @Nullable Double minCleanableDirtyRatio;
     private @Nullable String minCompactionLagMs;
     private @Nullable String minInsyncReplicas;
-    private @Nullable String preallocate;
+    private @Nullable Boolean preallocate;
     private @Nullable String retentionBytes;
     private @Nullable String retentionMs;
     private @Nullable String segmentBytes;
     private @Nullable String segmentIndexBytes;
     private @Nullable String segmentJitterMs;
     private @Nullable String segmentMs;
-    private @Nullable String uncleanLeaderElectionEnable;
+    private @Nullable Boolean uncleanLeaderElectionEnable;
 
     private GetKafkaTopicConfig() {}
     public Optional<String> cleanupPolicy() {
@@ -64,7 +66,7 @@ public final class GetKafkaTopicConfig {
     public Optional<String> maxMessageBytes() {
         return Optional.ofNullable(this.maxMessageBytes);
     }
-    public Optional<String> messageDownconversionEnable() {
+    public Optional<Boolean> messageDownconversionEnable() {
         return Optional.ofNullable(this.messageDownconversionEnable);
     }
     public Optional<String> messageFormatVersion() {
@@ -76,7 +78,7 @@ public final class GetKafkaTopicConfig {
     public Optional<String> messageTimestampType() {
         return Optional.ofNullable(this.messageTimestampType);
     }
-    public Optional<String> minCleanableDirtyRatio() {
+    public Optional<Double> minCleanableDirtyRatio() {
         return Optional.ofNullable(this.minCleanableDirtyRatio);
     }
     public Optional<String> minCompactionLagMs() {
@@ -85,7 +87,7 @@ public final class GetKafkaTopicConfig {
     public Optional<String> minInsyncReplicas() {
         return Optional.ofNullable(this.minInsyncReplicas);
     }
-    public Optional<String> preallocate() {
+    public Optional<Boolean> preallocate() {
         return Optional.ofNullable(this.preallocate);
     }
     public Optional<String> retentionBytes() {
@@ -106,7 +108,7 @@ public final class GetKafkaTopicConfig {
     public Optional<String> segmentMs() {
         return Optional.ofNullable(this.segmentMs);
     }
-    public Optional<String> uncleanLeaderElectionEnable() {
+    public Optional<Boolean> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }
 
@@ -128,21 +130,21 @@ public final class GetKafkaTopicConfig {
         private @Nullable String indexIntervalBytes;
         private @Nullable String maxCompactionLagMs;
         private @Nullable String maxMessageBytes;
-        private @Nullable String messageDownconversionEnable;
+        private @Nullable Boolean messageDownconversionEnable;
         private @Nullable String messageFormatVersion;
         private @Nullable String messageTimestampDifferenceMaxMs;
         private @Nullable String messageTimestampType;
-        private @Nullable String minCleanableDirtyRatio;
+        private @Nullable Double minCleanableDirtyRatio;
         private @Nullable String minCompactionLagMs;
         private @Nullable String minInsyncReplicas;
-        private @Nullable String preallocate;
+        private @Nullable Boolean preallocate;
         private @Nullable String retentionBytes;
         private @Nullable String retentionMs;
         private @Nullable String segmentBytes;
         private @Nullable String segmentIndexBytes;
         private @Nullable String segmentJitterMs;
         private @Nullable String segmentMs;
-        private @Nullable String uncleanLeaderElectionEnable;
+        private @Nullable Boolean uncleanLeaderElectionEnable;
         public Builder() {}
         public Builder(GetKafkaTopicConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -218,7 +220,7 @@ public final class GetKafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder messageDownconversionEnable(@Nullable String messageDownconversionEnable) {
+        public Builder messageDownconversionEnable(@Nullable Boolean messageDownconversionEnable) {
             this.messageDownconversionEnable = messageDownconversionEnable;
             return this;
         }
@@ -238,7 +240,7 @@ public final class GetKafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder minCleanableDirtyRatio(@Nullable String minCleanableDirtyRatio) {
+        public Builder minCleanableDirtyRatio(@Nullable Double minCleanableDirtyRatio) {
             this.minCleanableDirtyRatio = minCleanableDirtyRatio;
             return this;
         }
@@ -253,7 +255,7 @@ public final class GetKafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder preallocate(@Nullable String preallocate) {
+        public Builder preallocate(@Nullable Boolean preallocate) {
             this.preallocate = preallocate;
             return this;
         }
@@ -288,7 +290,7 @@ public final class GetKafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder uncleanLeaderElectionEnable(@Nullable String uncleanLeaderElectionEnable) {
+        public Builder uncleanLeaderElectionEnable(@Nullable Boolean uncleanLeaderElectionEnable) {
             this.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
         }

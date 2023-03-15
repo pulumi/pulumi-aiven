@@ -31,13 +31,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdminUsername { get; set; }
 
         [Input("backupHour")]
-        public Input<string>? BackupHour { get; set; }
+        public Input<int>? BackupHour { get; set; }
 
         [Input("backupMinute")]
-        public Input<string>? BackupMinute { get; set; }
+        public Input<int>? BackupMinute { get; set; }
 
         [Input("binlogRetentionPeriod")]
-        public Input<string>? BinlogRetentionPeriod { get; set; }
+        public Input<int>? BinlogRetentionPeriod { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.MySqlMysqlUserConfigIpFilterObjectArgs>? _ipFilterObjects;
@@ -49,6 +49,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -83,7 +84,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         public MySqlMysqlUserConfigArgs()
         {

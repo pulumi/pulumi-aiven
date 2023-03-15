@@ -12,14 +12,14 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigSmtpServerGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("fromAddress")]
-        public Input<string>? FromAddress { get; set; }
+        [Input("fromAddress", required: true)]
+        public Input<string> FromAddress { get; set; } = null!;
 
         [Input("fromName")]
         public Input<string>? FromName { get; set; }
 
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
 
         [Input("password")]
         private Input<string>? _password;
@@ -33,11 +33,11 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
-        [Input("port")]
-        public Input<string>? Port { get; set; }
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
 
         [Input("skipVerify")]
-        public Input<string>? SkipVerify { get; set; }
+        public Input<bool>? SkipVerify { get; set; }
 
         [Input("starttlsPolicy")]
         public Input<string>? StarttlsPolicy { get; set; }

@@ -74,13 +74,13 @@ namespace Pulumi.Aiven
     public sealed class GetTransitGatewayVpcAttachmentArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+        /// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount", required: true)]
         public string PeerCloudAccount { get; set; } = null!;
 
         /// <summary>
-        /// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+        /// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerVpc", required: true)]
         public string PeerVpc { get; set; } = null!;
@@ -100,13 +100,13 @@ namespace Pulumi.Aiven
     public sealed class GetTransitGatewayVpcAttachmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+        /// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount", required: true)]
         public Input<string> PeerCloudAccount { get; set; } = null!;
 
         /// <summary>
-        /// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+        /// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+        /// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly string PeerCloudAccount;
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string PeerRegion;
         /// <summary>
-        /// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+        /// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly string PeerVpc;
         /// <summary>

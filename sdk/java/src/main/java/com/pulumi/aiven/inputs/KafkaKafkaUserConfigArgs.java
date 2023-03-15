@@ -14,6 +14,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -26,14 +27,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     public static final KafkaKafkaUserConfigArgs Empty = new KafkaKafkaUserConfigArgs();
 
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      * 
      */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<Output<String>> additionalBackupRegions() {
@@ -41,14 +42,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -56,14 +57,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public Optional<Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -71,29 +72,37 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     /**
-     * Kafka broker configuration values
+     * Kafka broker configuration values.
      * 
      */
     @Import(name="kafka")
     private @Nullable Output<KafkaKafkaUserConfigKafkaArgs> kafka;
 
     /**
-     * @return Kafka broker configuration values
+     * @return Kafka broker configuration values.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigKafkaArgs>> kafka() {
@@ -101,14 +110,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Kafka authentication methods
+     * Kafka authentication methods.
      * 
      */
     @Import(name="kafkaAuthenticationMethods")
     private @Nullable Output<KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs> kafkaAuthenticationMethods;
 
     /**
-     * @return Kafka authentication methods
+     * @return Kafka authentication methods.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs>> kafkaAuthenticationMethods() {
@@ -116,29 +125,29 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable Kafka Connect service
+     * Enable Kafka Connect service. The default value is `false`.
      * 
      */
     @Import(name="kafkaConnect")
-    private @Nullable Output<String> kafkaConnect;
+    private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Enable Kafka Connect service
+     * @return Enable Kafka Connect service. The default value is `false`.
      * 
      */
-    public Optional<Output<String>> kafkaConnect() {
+    public Optional<Output<Boolean>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
     /**
-     * Kafka Connect configuration values
+     * Kafka Connect configuration values.
      * 
      */
     @Import(name="kafkaConnectConfig")
     private @Nullable Output<KafkaKafkaUserConfigKafkaConnectConfigArgs> kafkaConnectConfig;
 
     /**
-     * @return Kafka Connect configuration values
+     * @return Kafka Connect configuration values.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigKafkaConnectConfigArgs>> kafkaConnectConfig() {
@@ -146,29 +155,44 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable Kafka-REST service
+     * Enable Kafka-REST service. The default value is `false`.
      * 
      */
     @Import(name="kafkaRest")
-    private @Nullable Output<String> kafkaRest;
+    private @Nullable Output<Boolean> kafkaRest;
 
     /**
-     * @return Enable Kafka-REST service
+     * @return Enable Kafka-REST service. The default value is `false`.
      * 
      */
-    public Optional<Output<String>> kafkaRest() {
+    public Optional<Output<Boolean>> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
 
     /**
-     * Kafka REST configuration
+     * Enable authorization in Kafka-REST service.
+     * 
+     */
+    @Import(name="kafkaRestAuthorization")
+    private @Nullable Output<Boolean> kafkaRestAuthorization;
+
+    /**
+     * @return Enable authorization in Kafka-REST service.
+     * 
+     */
+    public Optional<Output<Boolean>> kafkaRestAuthorization() {
+        return Optional.ofNullable(this.kafkaRestAuthorization);
+    }
+
+    /**
+     * Kafka REST configuration.
      * 
      */
     @Import(name="kafkaRestConfig")
     private @Nullable Output<KafkaKafkaUserConfigKafkaRestConfigArgs> kafkaRestConfig;
 
     /**
-     * @return Kafka REST configuration
+     * @return Kafka REST configuration.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigKafkaRestConfigArgs>> kafkaRestConfig() {
@@ -176,14 +200,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Kafka major version
+     * Kafka major version.
      * 
      */
     @Import(name="kafkaVersion")
     private @Nullable Output<String> kafkaVersion;
 
     /**
-     * @return Kafka major version
+     * @return Kafka major version.
      * 
      */
     public Optional<Output<String>> kafkaVersion() {
@@ -191,14 +215,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<KafkaKafkaUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigPrivateAccessArgs>> privateAccess() {
@@ -206,14 +230,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      * 
      */
     @Import(name="privatelinkAccess")
     private @Nullable Output<KafkaKafkaUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
@@ -221,14 +245,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<KafkaKafkaUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigPublicAccessArgs>> publicAccess() {
@@ -236,29 +260,29 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable Schema-Registry service
+     * Enable Schema-Registry service. The default value is `false`.
      * 
      */
     @Import(name="schemaRegistry")
-    private @Nullable Output<String> schemaRegistry;
+    private @Nullable Output<Boolean> schemaRegistry;
 
     /**
-     * @return Enable Schema-Registry service
+     * @return Enable Schema-Registry service. The default value is `false`.
      * 
      */
-    public Optional<Output<String>> schemaRegistry() {
+    public Optional<Output<Boolean>> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
 
     /**
-     * Schema Registry configuration
+     * Schema Registry configuration.
      * 
      */
     @Import(name="schemaRegistryConfig")
     private @Nullable Output<KafkaKafkaUserConfigSchemaRegistryConfigArgs> schemaRegistryConfig;
 
     /**
-     * @return Schema Registry configuration
+     * @return Schema Registry configuration.
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigSchemaRegistryConfigArgs>> schemaRegistryConfig() {
@@ -266,17 +290,17 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      * 
      */
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -292,6 +316,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.kafkaConnect = $.kafkaConnect;
         this.kafkaConnectConfig = $.kafkaConnectConfig;
         this.kafkaRest = $.kafkaRest;
+        this.kafkaRestAuthorization = $.kafkaRestAuthorization;
         this.kafkaRestConfig = $.kafkaRestConfig;
         this.kafkaVersion = $.kafkaVersion;
         this.privateAccess = $.privateAccess;
@@ -321,7 +346,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
          * 
          * @return builder
          * 
@@ -332,7 +357,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
          * 
          * @return builder
          * 
@@ -342,7 +367,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
          * 
          * @return builder
          * 
@@ -353,7 +378,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
          * 
          * @return builder
          * 
@@ -363,7 +388,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -374,7 +399,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -384,7 +409,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -394,38 +419,50 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
         /**
-         * @param kafka Kafka broker configuration values
+         * @param kafka Kafka broker configuration values.
          * 
          * @return builder
          * 
@@ -436,7 +473,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafka Kafka broker configuration values
+         * @param kafka Kafka broker configuration values.
          * 
          * @return builder
          * 
@@ -446,7 +483,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaAuthenticationMethods Kafka authentication methods
+         * @param kafkaAuthenticationMethods Kafka authentication methods.
          * 
          * @return builder
          * 
@@ -457,7 +494,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaAuthenticationMethods Kafka authentication methods
+         * @param kafkaAuthenticationMethods Kafka authentication methods.
          * 
          * @return builder
          * 
@@ -467,28 +504,28 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service
+         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaConnect(@Nullable Output<String> kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service
+         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaConnect(String kafkaConnect) {
+        public Builder kafkaConnect(Boolean kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
         /**
-         * @param kafkaConnectConfig Kafka Connect configuration values
+         * @param kafkaConnectConfig Kafka Connect configuration values.
          * 
          * @return builder
          * 
@@ -499,7 +536,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaConnectConfig Kafka Connect configuration values
+         * @param kafkaConnectConfig Kafka Connect configuration values.
          * 
          * @return builder
          * 
@@ -509,28 +546,49 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service
+         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaRest(@Nullable Output<String> kafkaRest) {
+        public Builder kafkaRest(@Nullable Output<Boolean> kafkaRest) {
             $.kafkaRest = kafkaRest;
             return this;
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service
+         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder kafkaRest(String kafkaRest) {
+        public Builder kafkaRest(Boolean kafkaRest) {
             return kafkaRest(Output.of(kafkaRest));
         }
 
         /**
-         * @param kafkaRestConfig Kafka REST configuration
+         * @param kafkaRestAuthorization Enable authorization in Kafka-REST service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaRestAuthorization(@Nullable Output<Boolean> kafkaRestAuthorization) {
+            $.kafkaRestAuthorization = kafkaRestAuthorization;
+            return this;
+        }
+
+        /**
+         * @param kafkaRestAuthorization Enable authorization in Kafka-REST service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaRestAuthorization(Boolean kafkaRestAuthorization) {
+            return kafkaRestAuthorization(Output.of(kafkaRestAuthorization));
+        }
+
+        /**
+         * @param kafkaRestConfig Kafka REST configuration.
          * 
          * @return builder
          * 
@@ -541,7 +599,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaRestConfig Kafka REST configuration
+         * @param kafkaRestConfig Kafka REST configuration.
          * 
          * @return builder
          * 
@@ -551,7 +609,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaVersion Kafka major version
+         * @param kafkaVersion Kafka major version.
          * 
          * @return builder
          * 
@@ -562,7 +620,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaVersion Kafka major version
+         * @param kafkaVersion Kafka major version.
          * 
          * @return builder
          * 
@@ -572,7 +630,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks
+         * @param privateAccess Allow access to selected service ports from private networks.
          * 
          * @return builder
          * 
@@ -583,7 +641,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks
+         * @param privateAccess Allow access to selected service ports from private networks.
          * 
          * @return builder
          * 
@@ -593,7 +651,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
          * 
          * @return builder
          * 
@@ -604,7 +662,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
          * 
          * @return builder
          * 
@@ -614,7 +672,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
+         * @param publicAccess Allow access to selected service ports from the public Internet.
          * 
          * @return builder
          * 
@@ -625,7 +683,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
+         * @param publicAccess Allow access to selected service ports from the public Internet.
          * 
          * @return builder
          * 
@@ -635,28 +693,28 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param schemaRegistry Enable Schema-Registry service
+         * @param schemaRegistry Enable Schema-Registry service. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder schemaRegistry(@Nullable Output<String> schemaRegistry) {
+        public Builder schemaRegistry(@Nullable Output<Boolean> schemaRegistry) {
             $.schemaRegistry = schemaRegistry;
             return this;
         }
 
         /**
-         * @param schemaRegistry Enable Schema-Registry service
+         * @param schemaRegistry Enable Schema-Registry service. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder schemaRegistry(String schemaRegistry) {
+        public Builder schemaRegistry(Boolean schemaRegistry) {
             return schemaRegistry(Output.of(schemaRegistry));
         }
 
         /**
-         * @param schemaRegistryConfig Schema Registry configuration
+         * @param schemaRegistryConfig Schema Registry configuration.
          * 
          * @return builder
          * 
@@ -667,7 +725,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param schemaRegistryConfig Schema Registry configuration
+         * @param schemaRegistryConfig Schema Registry configuration.
          * 
          * @return builder
          * 
@@ -677,23 +735,23 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param staticIps Use static public IP addresses
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
          */
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
         /**
-         * @param staticIps Use static public IP addresses
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
          */
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 

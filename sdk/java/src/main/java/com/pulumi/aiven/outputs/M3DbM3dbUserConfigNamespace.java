@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigNamespace {
-    private @Nullable String name;
+    private String name;
     private @Nullable M3DbM3dbUserConfigNamespaceOptions options;
     private @Nullable String resolution;
-    private @Nullable String type;
+    private String type;
 
     private M3DbM3dbUserConfigNamespace() {}
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     public Optional<M3DbM3dbUserConfigNamespaceOptions> options() {
         return Optional.ofNullable(this.options);
@@ -27,8 +27,8 @@ public final class M3DbM3dbUserConfigNamespace {
     public Optional<String> resolution() {
         return Optional.ofNullable(this.resolution);
     }
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -40,10 +40,10 @@ public final class M3DbM3dbUserConfigNamespace {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
+        private String name;
         private @Nullable M3DbM3dbUserConfigNamespaceOptions options;
         private @Nullable String resolution;
-        private @Nullable String type;
+        private String type;
         public Builder() {}
         public Builder(M3DbM3dbUserConfigNamespace defaults) {
     	      Objects.requireNonNull(defaults);
@@ -54,8 +54,8 @@ public final class M3DbM3dbUserConfigNamespace {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
@@ -69,8 +69,8 @@ public final class M3DbM3dbUserConfigNamespace {
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-            this.type = type;
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
             return this;
         }
         public M3DbM3dbUserConfigNamespace build() {

@@ -31,10 +31,10 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///         CassandraUserConfig = new Aiven.Inputs.CassandraCassandraUserConfigArgs
     ///         {
-    ///             MigrateSstableloader = "true",
+    ///             MigrateSstableloader = true,
     ///             PublicAccess = new Aiven.Inputs.CassandraCassandraUserConfigPublicAccessArgs
     ///             {
-    ///                 Prometheus = "true",
+    ///                 Prometheus = true,
     ///             },
     ///         },
     ///     });

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig
     {
         /// <summary>
-        /// Google Cloud Logging log id
+        /// Google Cloud Logging log id.
         /// </summary>
         public readonly string? LogId;
         /// <summary>

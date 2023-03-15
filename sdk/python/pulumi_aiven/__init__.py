@@ -24,12 +24,9 @@ from .clickhouse_grant import *
 from .clickhouse_role import *
 from .clickhouse_user import *
 from .connection_pool import *
-from .database import *
 from .flink import *
 from .flink_application import *
 from .flink_application_version import *
-from .flink_job import *
-from .flink_job_table import *
 from .gcp_vpc_peering_connection import *
 from .get_account import *
 from .get_account_authentication import *
@@ -48,7 +45,6 @@ from .get_clickhouse import *
 from .get_clickhouse_database import *
 from .get_clickhouse_user import *
 from .get_connection_pool import *
-from .get_database import *
 from .get_flink import *
 from .get_flink_application import *
 from .get_flink_application_version import *
@@ -89,9 +85,7 @@ from .get_redis_user import *
 from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
-from .get_service_user import *
 from .get_transit_gateway_vpc_attachment import *
-from .get_vpc_peering_connection import *
 from .grafana import *
 from .influx_db import *
 from .influxdb_database import *
@@ -128,10 +122,8 @@ from .redis import *
 from .redis_user import *
 from .service_integration import *
 from .service_integration_endpoint import *
-from .service_user import *
 from .static_ip import *
 from .transit_gateway_vpc_attachment import *
-from .vpc_peering_connection import *
 from ._inputs import *
 from . import outputs
 
@@ -299,14 +291,6 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/database",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/database:Database": "Database"
-  }
- },
- {
-  "pkg": "aiven",
   "mod": "index/flink",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -327,22 +311,6 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": "FlinkApplicationVersion"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/flinkJob",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/flinkJob:FlinkJob": "FlinkJob"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/flinkJobTable",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/flinkJobTable:FlinkJobTable": "FlinkJobTable"
   }
  },
  {
@@ -635,14 +603,6 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/serviceUser",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/serviceUser:ServiceUser": "ServiceUser"
-  }
- },
- {
-  "pkg": "aiven",
   "mod": "index/staticIp",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -655,14 +615,6 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": "TransitGatewayVpcAttachment"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/vpcPeeringConnection",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/vpcPeeringConnection:VpcPeeringConnection": "VpcPeeringConnection"
   }
  }
 ]

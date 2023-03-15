@@ -107,7 +107,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> Sequence[str]:
         """
-        A List of allowed Subscription IDs Maximum Length: `16`.
+        A List of allowed Subscription IDs. Maximum length: `16`.
         """
         return pulumi.get(self, "user_subscription_ids")
 

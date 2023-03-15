@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetServiceIntegrationMetricsUserConfigSourceMysql;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationMetricsUserConfig {
     private @Nullable String database;
-    private @Nullable String retentionDays;
+    private @Nullable Integer retentionDays;
     private @Nullable String roUsername;
     private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
     private @Nullable String username;
@@ -22,7 +23,7 @@ public final class GetServiceIntegrationMetricsUserConfig {
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
-    public Optional<String> retentionDays() {
+    public Optional<Integer> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
     public Optional<String> roUsername() {
@@ -45,7 +46,7 @@ public final class GetServiceIntegrationMetricsUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String database;
-        private @Nullable String retentionDays;
+        private @Nullable Integer retentionDays;
         private @Nullable String roUsername;
         private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
         private @Nullable String username;
@@ -65,7 +66,7 @@ public final class GetServiceIntegrationMetricsUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder retentionDays(@Nullable String retentionDays) {
+        public Builder retentionDays(@Nullable Integer retentionDays) {
             this.retentionDays = retentionDays;
             return this;
         }

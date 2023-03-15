@@ -23,21 +23,21 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetRedisRedisUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly string? RedisAclChannelsDefault;
-        public readonly string? RedisIoThreads;
-        public readonly string? RedisLfuDecayTime;
-        public readonly string? RedisLfuLogFactor;
+        public readonly int? RedisIoThreads;
+        public readonly int? RedisLfuDecayTime;
+        public readonly int? RedisLfuLogFactor;
         public readonly string? RedisMaxmemoryPolicy;
         public readonly string? RedisNotifyKeyspaceEvents;
-        public readonly string? RedisNumberOfDatabases;
+        public readonly int? RedisNumberOfDatabases;
         public readonly string? RedisPersistence;
-        public readonly string? RedisPubsubClientOutputBufferLimit;
-        public readonly string? RedisSsl;
-        public readonly string? RedisTimeout;
+        public readonly int? RedisPubsubClientOutputBufferLimit;
+        public readonly bool? RedisSsl;
+        public readonly int? RedisTimeout;
         public readonly string? ServiceToForkFrom;
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetRedisRedisUserConfigResult(
@@ -61,29 +61,29 @@ namespace Pulumi.Aiven.Outputs
 
             string? redisAclChannelsDefault,
 
-            string? redisIoThreads,
+            int? redisIoThreads,
 
-            string? redisLfuDecayTime,
+            int? redisLfuDecayTime,
 
-            string? redisLfuLogFactor,
+            int? redisLfuLogFactor,
 
             string? redisMaxmemoryPolicy,
 
             string? redisNotifyKeyspaceEvents,
 
-            string? redisNumberOfDatabases,
+            int? redisNumberOfDatabases,
 
             string? redisPersistence,
 
-            string? redisPubsubClientOutputBufferLimit,
+            int? redisPubsubClientOutputBufferLimit,
 
-            string? redisSsl,
+            bool? redisSsl,
 
-            string? redisTimeout,
+            int? redisTimeout,
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;

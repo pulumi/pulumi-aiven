@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,23 +16,23 @@ public final class MySqlMysqlUserConfigPrivatelinkAccessArgs extends com.pulumi.
     public static final MySqlMysqlUserConfigPrivatelinkAccessArgs Empty = new MySqlMysqlUserConfigPrivatelinkAccessArgs();
 
     @Import(name="mysql")
-    private @Nullable Output<String> mysql;
+    private @Nullable Output<Boolean> mysql;
 
-    public Optional<Output<String>> mysql() {
+    public Optional<Output<Boolean>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
 
     @Import(name="mysqlx")
-    private @Nullable Output<String> mysqlx;
+    private @Nullable Output<Boolean> mysqlx;
 
-    public Optional<Output<String>> mysqlx() {
+    public Optional<Output<Boolean>> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
 
     @Import(name="prometheus")
-    private @Nullable Output<String> prometheus;
+    private @Nullable Output<Boolean> prometheus;
 
-    public Optional<Output<String>> prometheus() {
+    public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -62,30 +62,30 @@ public final class MySqlMysqlUserConfigPrivatelinkAccessArgs extends com.pulumi.
             $ = new MySqlMysqlUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder mysql(@Nullable Output<String> mysql) {
+        public Builder mysql(@Nullable Output<Boolean> mysql) {
             $.mysql = mysql;
             return this;
         }
 
-        public Builder mysql(String mysql) {
+        public Builder mysql(Boolean mysql) {
             return mysql(Output.of(mysql));
         }
 
-        public Builder mysqlx(@Nullable Output<String> mysqlx) {
+        public Builder mysqlx(@Nullable Output<Boolean> mysqlx) {
             $.mysqlx = mysqlx;
             return this;
         }
 
-        public Builder mysqlx(String mysqlx) {
+        public Builder mysqlx(Boolean mysqlx) {
             return mysqlx(Output.of(mysqlx));
         }
 
-        public Builder prometheus(@Nullable Output<String> prometheus) {
+        public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
-        public Builder prometheus(String prometheus) {
+        public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 

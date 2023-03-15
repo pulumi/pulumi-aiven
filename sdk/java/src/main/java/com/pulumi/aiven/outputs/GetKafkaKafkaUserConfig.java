@@ -13,6 +13,7 @@ import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,12 @@ public final class GetKafkaKafkaUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
     private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Kafka server provided values
@@ -31,21 +38,22 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable GetKafkaKafkaUserConfigKafka kafka;
     private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
-    private @Nullable String kafkaConnect;
+    private @Nullable Boolean kafkaConnect;
     private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
-    private @Nullable String kafkaRest;
+    private @Nullable Boolean kafkaRest;
+    private @Nullable Boolean kafkaRestAuthorization;
     private @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
     private @Nullable String kafkaVersion;
     private @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess;
     private @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
-    private @Nullable String schemaRegistry;
+    private @Nullable Boolean schemaRegistry;
     private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private GetKafkaKafkaUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -57,6 +65,12 @@ public final class GetKafkaKafkaUserConfig {
     public List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -70,14 +84,17 @@ public final class GetKafkaKafkaUserConfig {
     public Optional<GetKafkaKafkaUserConfigKafkaAuthenticationMethods> kafkaAuthenticationMethods() {
         return Optional.ofNullable(this.kafkaAuthenticationMethods);
     }
-    public Optional<String> kafkaConnect() {
+    public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
     public Optional<GetKafkaKafkaUserConfigKafkaConnectConfig> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
-    public Optional<String> kafkaRest() {
+    public Optional<Boolean> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
+    }
+    public Optional<Boolean> kafkaRestAuthorization() {
+        return Optional.ofNullable(this.kafkaRestAuthorization);
     }
     public Optional<GetKafkaKafkaUserConfigKafkaRestConfig> kafkaRestConfig() {
         return Optional.ofNullable(this.kafkaRestConfig);
@@ -94,7 +111,7 @@ public final class GetKafkaKafkaUserConfig {
     public Optional<GetKafkaKafkaUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    public Optional<String> schemaRegistry() {
+    public Optional<Boolean> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
     public Optional<GetKafkaKafkaUserConfigSchemaRegistryConfig> schemaRegistryConfig() {
@@ -104,7 +121,7 @@ public final class GetKafkaKafkaUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -123,17 +140,18 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaKafkaUserConfigKafka kafka;
         private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
-        private @Nullable String kafkaConnect;
+        private @Nullable Boolean kafkaConnect;
         private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
-        private @Nullable String kafkaRest;
+        private @Nullable Boolean kafkaRest;
+        private @Nullable Boolean kafkaRestAuthorization;
         private @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
         private @Nullable String kafkaVersion;
         private @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
-        private @Nullable String schemaRegistry;
+        private @Nullable Boolean schemaRegistry;
         private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetKafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -146,6 +164,7 @@ public final class GetKafkaKafkaUserConfig {
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.kafkaConnectConfig = defaults.kafkaConnectConfig;
     	      this.kafkaRest = defaults.kafkaRest;
+    	      this.kafkaRestAuthorization = defaults.kafkaRestAuthorization;
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
     	      this.kafkaVersion = defaults.kafkaVersion;
     	      this.privateAccess = defaults.privateAccess;
@@ -193,7 +212,7 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaConnect(@Nullable String kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
@@ -203,8 +222,13 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder kafkaRest(@Nullable String kafkaRest) {
+        public Builder kafkaRest(@Nullable Boolean kafkaRest) {
             this.kafkaRest = kafkaRest;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaRestAuthorization(@Nullable Boolean kafkaRestAuthorization) {
+            this.kafkaRestAuthorization = kafkaRestAuthorization;
             return this;
         }
         @CustomType.Setter
@@ -233,7 +257,7 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder schemaRegistry(@Nullable String schemaRegistry) {
+        public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
             this.schemaRegistry = schemaRegistry;
             return this;
         }
@@ -243,7 +267,7 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }
@@ -258,6 +282,7 @@ public final class GetKafkaKafkaUserConfig {
             o.kafkaConnect = kafkaConnect;
             o.kafkaConnectConfig = kafkaConnectConfig;
             o.kafkaRest = kafkaRest;
+            o.kafkaRestAuthorization = kafkaRestAuthorization;
             o.kafkaRestConfig = kafkaRestConfig;
             o.kafkaVersion = kafkaVersion;
             o.privateAccess = privateAccess;

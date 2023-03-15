@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetM3DbM3dbUserConfigLimitsResult? Limits;
         public readonly string? M3Version;
-        public readonly string? M3coordinatorEnableGraphiteCarbonIngest;
+        public readonly bool? M3coordinatorEnableGraphiteCarbonIngest;
         public readonly string? M3dbVersion;
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigNamespaceResult> Namespaces;
         public readonly Outputs.GetM3DbM3dbUserConfigPrivateAccessResult? PrivateAccess;
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly string? StaticIps;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigResult(
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3Version,
 
-            string? m3coordinatorEnableGraphiteCarbonIngest,
+            bool? m3coordinatorEnableGraphiteCarbonIngest,
 
             string? m3dbVersion,
 
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            string? staticIps)
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;

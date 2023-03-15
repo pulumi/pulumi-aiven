@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhousePostgresqlUserConfig
     {
         /// <summary>
-        /// Databases to expose
+        /// Databases to expose.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabase> Databases;
 

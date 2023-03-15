@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableTopic
     {
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
-        private ServiceIntegrationClickhouseKafkaUserConfigTableTopic(string? name)
+        private ServiceIntegrationClickhouseKafkaUserConfigTableTopic(string name)
         {
             Name = name;
         }

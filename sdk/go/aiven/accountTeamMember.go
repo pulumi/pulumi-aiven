@@ -31,13 +31,13 @@ type AccountTeamMember struct {
 
 	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
-	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+	// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The email address that invited this user.
 	InvitedByUserEmail pulumi.StringOutput `pulumi:"invitedByUserEmail"`
-	// An account team id This property cannot be changed, doing so forces recreation of the resource.
+	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
 	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
@@ -83,13 +83,13 @@ func GetAccountTeamMember(ctx *pulumi.Context,
 type accountTeamMemberState struct {
 	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted *bool `pulumi:"accepted"`
-	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+	// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
 	AccountId *string `pulumi:"accountId"`
 	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
 	// The email address that invited this user.
 	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
-	// An account team id This property cannot be changed, doing so forces recreation of the resource.
+	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId *string `pulumi:"teamId"`
 	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail *string `pulumi:"userEmail"`
@@ -98,13 +98,13 @@ type accountTeamMemberState struct {
 type AccountTeamMemberState struct {
 	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
 	Accepted pulumi.BoolPtrInput
-	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+	// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
 	AccountId pulumi.StringPtrInput
 	// Time of creation
 	CreateTime pulumi.StringPtrInput
 	// The email address that invited this user.
 	InvitedByUserEmail pulumi.StringPtrInput
-	// An account team id This property cannot be changed, doing so forces recreation of the resource.
+	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringPtrInput
 	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringPtrInput
@@ -115,9 +115,9 @@ func (AccountTeamMemberState) ElementType() reflect.Type {
 }
 
 type accountTeamMemberArgs struct {
-	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+	// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
 	AccountId string `pulumi:"accountId"`
-	// An account team id This property cannot be changed, doing so forces recreation of the resource.
+	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId string `pulumi:"teamId"`
 	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail string `pulumi:"userEmail"`
@@ -125,9 +125,9 @@ type accountTeamMemberArgs struct {
 
 // The set of arguments for constructing a AccountTeamMember resource.
 type AccountTeamMemberArgs struct {
-	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+	// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
 	AccountId pulumi.StringInput
-	// An account team id This property cannot be changed, doing so forces recreation of the resource.
+	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringInput
 	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringInput
@@ -225,7 +225,7 @@ func (o AccountTeamMemberOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
 }
 
-// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
 func (o AccountTeamMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -240,7 +240,7 @@ func (o AccountTeamMemberOutput) InvitedByUserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.InvitedByUserEmail }).(pulumi.StringOutput)
 }
 
-// An account team id This property cannot be changed, doing so forces recreation of the resource.
+// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 func (o AccountTeamMemberOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
 }

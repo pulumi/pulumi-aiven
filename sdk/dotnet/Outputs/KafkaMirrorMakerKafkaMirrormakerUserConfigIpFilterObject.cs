@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

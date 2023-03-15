@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,9 +34,9 @@ import (
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				GrafanaUserConfig: &aiven.GrafanaGrafanaUserConfigArgs{
-//					AlertingEnabled: pulumi.String("true"),
+//					AlertingEnabled: pulumi.Bool(true),
 //					PublicAccess: &aiven.GrafanaGrafanaUserConfigPublicAccessArgs{
-//						Grafana: pulumi.String("true"),
+//						Grafana: pulumi.Bool(true),
 //					},
 //				},
 //			})

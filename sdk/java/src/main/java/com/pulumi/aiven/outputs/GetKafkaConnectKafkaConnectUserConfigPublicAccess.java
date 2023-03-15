@@ -4,7 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,18 +15,18 @@ public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
      * @return Kafka Connect server provided values
      * 
      */
-    private @Nullable String kafkaConnect;
-    private @Nullable String prometheus;
+    private @Nullable Boolean kafkaConnect;
+    private @Nullable Boolean prometheus;
 
     private GetKafkaConnectKafkaConnectUserConfigPublicAccess() {}
     /**
      * @return Kafka Connect server provided values
      * 
      */
-    public Optional<String> kafkaConnect() {
+    public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
-    public Optional<String> prometheus() {
+    public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
@@ -39,8 +39,8 @@ public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String kafkaConnect;
-        private @Nullable String prometheus;
+        private @Nullable Boolean kafkaConnect;
+        private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -49,12 +49,12 @@ public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
         }
 
         @CustomType.Setter
-        public Builder kafkaConnect(@Nullable String kafkaConnect) {
+        public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
-        public Builder prometheus(@Nullable String prometheus) {
+        public Builder prometheus(@Nullable Boolean prometheus) {
             this.prometheus = prometheus;
             return this;
         }

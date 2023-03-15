@@ -12,8 +12,23 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka server provided values
+        /// </summary>
+        [Input("kafka")]
+        public Input<bool>? Kafka { get; set; }
+
+        [Input("kafkaConnect")]
+        public Input<bool>? KafkaConnect { get; set; }
+
+        [Input("kafkaRest")]
+        public Input<bool>? KafkaRest { get; set; }
+
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
+
+        [Input("schemaRegistry")]
+        public Input<bool>? SchemaRegistry { get; set; }
 
         public KafkaKafkaUserConfigPrivateAccessGetArgs()
         {

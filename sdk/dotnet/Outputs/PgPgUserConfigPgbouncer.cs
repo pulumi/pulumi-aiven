@@ -13,35 +13,35 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPgbouncer
     {
-        public readonly string? AutodbIdleTimeout;
-        public readonly string? AutodbMaxDbConnections;
+        public readonly int? AutodbIdleTimeout;
+        public readonly int? AutodbMaxDbConnections;
         public readonly string? AutodbPoolMode;
-        public readonly string? AutodbPoolSize;
+        public readonly int? AutodbPoolSize;
         public readonly ImmutableArray<string> IgnoreStartupParameters;
-        public readonly string? MinPoolSize;
-        public readonly string? ServerIdleTimeout;
-        public readonly string? ServerLifetime;
-        public readonly string? ServerResetQueryAlways;
+        public readonly int? MinPoolSize;
+        public readonly int? ServerIdleTimeout;
+        public readonly int? ServerLifetime;
+        public readonly bool? ServerResetQueryAlways;
 
         [OutputConstructor]
         private PgPgUserConfigPgbouncer(
-            string? autodbIdleTimeout,
+            int? autodbIdleTimeout,
 
-            string? autodbMaxDbConnections,
+            int? autodbMaxDbConnections,
 
             string? autodbPoolMode,
 
-            string? autodbPoolSize,
+            int? autodbPoolSize,
 
             ImmutableArray<string> ignoreStartupParameters,
 
-            string? minPoolSize,
+            int? minPoolSize,
 
-            string? serverIdleTimeout,
+            int? serverIdleTimeout,
 
-            string? serverLifetime,
+            int? serverLifetime,
 
-            string? serverResetQueryAlways)
+            bool? serverResetQueryAlways)
         {
             AutodbIdleTimeout = autodbIdleTimeout;
             AutodbMaxDbConnections = autodbMaxDbConnections;

@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class MySqlMysqlUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("mysql")]
-        public Input<string>? Mysql { get; set; }
+        public Input<bool>? Mysql { get; set; }
 
         [Input("mysqlx")]
-        public Input<string>? Mysqlx { get; set; }
+        public Input<bool>? Mysqlx { get; set; }
 
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         public MySqlMysqlUserConfigPrivateAccessGetArgs()
         {

@@ -13,25 +13,28 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional Cloud Regions for Backup Replication
+        /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
+        /// <summary>
+        /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        /// </summary>
         [Input("disableReplicationFactorAdjustment")]
-        public Input<string>? DisableReplicationFactorAdjustment { get; set; }
+        public Input<bool>? DisableReplicationFactorAdjustment { get; set; }
 
         [Input("indexPatterns")]
         private InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternArgs>? _indexPatterns;
 
         /// <summary>
-        /// Index patterns
+        /// Index patterns.
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternArgs> IndexPatterns
         {
@@ -40,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Template settings for all new indexes
+        /// Template settings for all new indexes.
         /// </summary>
         [Input("indexTemplate")]
         public Input<Inputs.OpenSearchOpensearchUserConfigIndexTemplateArgs>? IndexTemplate { get; set; }
@@ -49,7 +52,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -61,8 +64,9 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -73,37 +77,40 @@ namespace Pulumi.Aiven.Inputs
         /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         /// </summary>
         [Input("keepIndexRefreshInterval")]
-        public Input<string>? KeepIndexRefreshInterval { get; set; }
-
-        [Input("maxIndexCount")]
-        public Input<string>? MaxIndexCount { get; set; }
+        public Input<bool>? KeepIndexRefreshInterval { get; set; }
 
         /// <summary>
-        /// OpenSearch settings
+        /// Use index_patterns instead. The default value is `0`.
+        /// </summary>
+        [Input("maxIndexCount")]
+        public Input<int>? MaxIndexCount { get; set; }
+
+        /// <summary>
+        /// OpenSearch settings.
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchArgs>? Opensearch { get; set; }
 
         /// <summary>
-        /// OpenSearch Dashboards settings
+        /// OpenSearch Dashboards settings.
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs>? OpensearchDashboards { get; set; }
 
         /// <summary>
-        /// OpenSearch major version
+        /// OpenSearch major version.
         /// </summary>
         [Input("opensearchVersion")]
         public Input<string>? OpensearchVersion { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks
+        /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink
+        /// Allow access to selected service components through Privatelink.
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
@@ -115,13 +122,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet
+        /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Name of the basebackup to restore in forked service
+        /// Name of the basebackup to restore in forked service.
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
@@ -133,10 +140,10 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Use static public IP addresses
+        /// Use static public IP addresses.
         /// </summary>
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         public OpenSearchOpensearchUserConfigArgs()
         {

@@ -34,14 +34,14 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
         return this.cloudName;
     }
     /**
-     * The address of the static ip
+     * The address of the static ip.
      * 
      */
     @Export(name="ipAddress", type=String.class, parameters={})
     private Output<String> ipAddress;
 
     /**
-     * @return The address of the static ip
+     * @return The address of the static ip.
      * 
      */
     public Output<String> ipAddress() {

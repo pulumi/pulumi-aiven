@@ -23,7 +23,7 @@ class AccountTeamProjectArgs:
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] team_id: An account team id
         :param pulumi.Input[str] project_name: The name of an already existing project
-        :param pulumi.Input[str] team_type: The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "team_id", team_id)
@@ -72,7 +72,7 @@ class AccountTeamProjectArgs:
     @pulumi.getter(name="teamType")
     def team_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         return pulumi.get(self, "team_type")
 
@@ -93,7 +93,7 @@ class _AccountTeamProjectState:
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_id: An account team id
-        :param pulumi.Input[str] team_type: The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -144,7 +144,7 @@ class _AccountTeamProjectState:
     @pulumi.getter(name="teamType")
     def team_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         return pulumi.get(self, "team_type")
 
@@ -181,7 +181,7 @@ class AccountTeamProject(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_id: An account team id
-        :param pulumi.Input[str] team_type: The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         ...
     @overload
@@ -262,7 +262,7 @@ class AccountTeamProject(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_id: An account team id
-        :param pulumi.Input[str] team_type: The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +302,7 @@ class AccountTeamProject(pulumi.CustomResource):
     @pulumi.getter(name="teamType")
     def team_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         return pulumi.get(self, "team_type")
 

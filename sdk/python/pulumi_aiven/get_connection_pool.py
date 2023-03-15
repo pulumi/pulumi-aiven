@@ -78,7 +78,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> str:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 

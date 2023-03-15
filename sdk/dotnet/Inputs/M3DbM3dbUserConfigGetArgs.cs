@@ -28,6 +28,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -41,13 +42,14 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? M3Version { get; set; }
 
         [Input("m3coordinatorEnableGraphiteCarbonIngest")]
-        public Input<string>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
+        public Input<bool>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
 
         [Input("m3dbVersion")]
         public Input<string>? M3dbVersion { get; set; }
 
         [Input("namespaces")]
         private InputList<Inputs.M3DbM3dbUserConfigNamespaceGetArgs>? _namespaces;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
         public InputList<Inputs.M3DbM3dbUserConfigNamespaceGetArgs> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<Inputs.M3DbM3dbUserConfigNamespaceGetArgs>());
@@ -70,7 +72,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         public M3DbM3dbUserConfigGetArgs()
         {

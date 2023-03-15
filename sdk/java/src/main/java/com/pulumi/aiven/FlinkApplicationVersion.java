@@ -15,6 +15,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -114,32 +115,68 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
         return this.serviceName;
     }
     /**
-     * Application sinks
+     * Application sink
      * 
      */
+    @Export(name="sink", type=List.class, parameters={FlinkApplicationVersionSink.class})
+    private Output</* @Nullable */ List<FlinkApplicationVersionSink>> sink;
+
+    /**
+     * @return Application sink
+     * 
+     */
+    public Output<Optional<List<FlinkApplicationVersionSink>>> sink() {
+        return Codegen.optional(this.sink);
+    }
+    /**
+     * Application sinks
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+     * 
+     */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
     @Export(name="sinks", type=List.class, parameters={FlinkApplicationVersionSink.class})
-    private Output<List<FlinkApplicationVersionSink>> sinks;
+    private Output</* @Nullable */ List<FlinkApplicationVersionSink>> sinks;
 
     /**
      * @return Application sinks
      * 
      */
-    public Output<List<FlinkApplicationVersionSink>> sinks() {
-        return this.sinks;
+    public Output<Optional<List<FlinkApplicationVersionSink>>> sinks() {
+        return Codegen.optional(this.sinks);
+    }
+    /**
+     * Application source
+     * 
+     */
+    @Export(name="source", type=List.class, parameters={FlinkApplicationVersionSource.class})
+    private Output</* @Nullable */ List<FlinkApplicationVersionSource>> source;
+
+    /**
+     * @return Application source
+     * 
+     */
+    public Output<Optional<List<FlinkApplicationVersionSource>>> source() {
+        return Codegen.optional(this.source);
     }
     /**
      * Application sources
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Use `source` instead.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
     @Export(name="sources", type=List.class, parameters={FlinkApplicationVersionSource.class})
-    private Output<List<FlinkApplicationVersionSource>> sources;
+    private Output</* @Nullable */ List<FlinkApplicationVersionSource>> sources;
 
     /**
      * @return Application sources
      * 
      */
-    public Output<List<FlinkApplicationVersionSource>> sources() {
-        return this.sources;
+    public Output<Optional<List<FlinkApplicationVersionSource>>> sources() {
+        return Codegen.optional(this.sources);
     }
     /**
      * Job SQL statement

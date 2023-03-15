@@ -58,18 +58,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClickhouseUser{}
 	case "aiven:index/connectionPool:ConnectionPool":
 		r = &ConnectionPool{}
-	case "aiven:index/database:Database":
-		r = &Database{}
 	case "aiven:index/flink:Flink":
 		r = &Flink{}
 	case "aiven:index/flinkApplication:FlinkApplication":
 		r = &FlinkApplication{}
 	case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
 		r = &FlinkApplicationVersion{}
-	case "aiven:index/flinkJob:FlinkJob":
-		r = &FlinkJob{}
-	case "aiven:index/flinkJobTable:FlinkJobTable":
-		r = &FlinkJobTable{}
 	case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
 		r = &GcpVpcPeeringConnection{}
 	case "aiven:index/grafana:Grafana":
@@ -142,14 +136,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceIntegration{}
 	case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
 		r = &ServiceIntegrationEndpoint{}
-	case "aiven:index/serviceUser:ServiceUser":
-		r = &ServiceUser{}
 	case "aiven:index/staticIp:StaticIp":
 		r = &StaticIp{}
 	case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
 		r = &TransitGatewayVpcAttachment{}
-	case "aiven:index/vpcPeeringConnection:VpcPeeringConnection":
-		r = &VpcPeeringConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -275,11 +265,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/database",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
 		"index/flink",
 		&module{version},
 	)
@@ -291,16 +276,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/flinkApplicationVersion",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/flinkJob",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/flinkJobTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -485,22 +460,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/serviceUser",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
 		"index/staticIp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/transitGatewayVpcAttachment",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/vpcPeeringConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  * });
- * const fooServiceUser = new aiven.ServiceUser("fooServiceUser", {
+ * const fooOpensearchUser = new aiven.OpensearchUser("fooOpensearchUser", {
  *     serviceName: bar.serviceName,
  *     project: fooProject.then(fooProject => fooProject.project),
  *     username: "user-example",

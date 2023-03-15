@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +18,23 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     public static final KafkaKafkaUserConfigKafkaRestConfigArgs Empty = new KafkaKafkaUserConfigKafkaRestConfigArgs();
 
     @Import(name="consumerEnableAutoCommit")
-    private @Nullable Output<String> consumerEnableAutoCommit;
+    private @Nullable Output<Boolean> consumerEnableAutoCommit;
 
-    public Optional<Output<String>> consumerEnableAutoCommit() {
+    public Optional<Output<Boolean>> consumerEnableAutoCommit() {
         return Optional.ofNullable(this.consumerEnableAutoCommit);
     }
 
     @Import(name="consumerRequestMaxBytes")
-    private @Nullable Output<String> consumerRequestMaxBytes;
+    private @Nullable Output<Integer> consumerRequestMaxBytes;
 
-    public Optional<Output<String>> consumerRequestMaxBytes() {
+    public Optional<Output<Integer>> consumerRequestMaxBytes() {
         return Optional.ofNullable(this.consumerRequestMaxBytes);
     }
 
     @Import(name="consumerRequestTimeoutMs")
-    private @Nullable Output<String> consumerRequestTimeoutMs;
+    private @Nullable Output<Integer> consumerRequestTimeoutMs;
 
-    public Optional<Output<String>> consumerRequestTimeoutMs() {
+    public Optional<Output<Integer>> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
 
@@ -43,17 +45,24 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.producerAcks);
     }
 
-    @Import(name="producerLingerMs")
-    private @Nullable Output<String> producerLingerMs;
+    @Import(name="producerCompressionType")
+    private @Nullable Output<String> producerCompressionType;
 
-    public Optional<Output<String>> producerLingerMs() {
+    public Optional<Output<String>> producerCompressionType() {
+        return Optional.ofNullable(this.producerCompressionType);
+    }
+
+    @Import(name="producerLingerMs")
+    private @Nullable Output<Integer> producerLingerMs;
+
+    public Optional<Output<Integer>> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
 
     @Import(name="simpleconsumerPoolSizeMax")
-    private @Nullable Output<String> simpleconsumerPoolSizeMax;
+    private @Nullable Output<Integer> simpleconsumerPoolSizeMax;
 
-    public Optional<Output<String>> simpleconsumerPoolSizeMax() {
+    public Optional<Output<Integer>> simpleconsumerPoolSizeMax() {
         return Optional.ofNullable(this.simpleconsumerPoolSizeMax);
     }
 
@@ -64,6 +73,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         this.consumerRequestMaxBytes = $.consumerRequestMaxBytes;
         this.consumerRequestTimeoutMs = $.consumerRequestTimeoutMs;
         this.producerAcks = $.producerAcks;
+        this.producerCompressionType = $.producerCompressionType;
         this.producerLingerMs = $.producerLingerMs;
         this.simpleconsumerPoolSizeMax = $.simpleconsumerPoolSizeMax;
     }
@@ -86,30 +96,30 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
             $ = new KafkaKafkaUserConfigKafkaRestConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder consumerEnableAutoCommit(@Nullable Output<String> consumerEnableAutoCommit) {
+        public Builder consumerEnableAutoCommit(@Nullable Output<Boolean> consumerEnableAutoCommit) {
             $.consumerEnableAutoCommit = consumerEnableAutoCommit;
             return this;
         }
 
-        public Builder consumerEnableAutoCommit(String consumerEnableAutoCommit) {
+        public Builder consumerEnableAutoCommit(Boolean consumerEnableAutoCommit) {
             return consumerEnableAutoCommit(Output.of(consumerEnableAutoCommit));
         }
 
-        public Builder consumerRequestMaxBytes(@Nullable Output<String> consumerRequestMaxBytes) {
+        public Builder consumerRequestMaxBytes(@Nullable Output<Integer> consumerRequestMaxBytes) {
             $.consumerRequestMaxBytes = consumerRequestMaxBytes;
             return this;
         }
 
-        public Builder consumerRequestMaxBytes(String consumerRequestMaxBytes) {
+        public Builder consumerRequestMaxBytes(Integer consumerRequestMaxBytes) {
             return consumerRequestMaxBytes(Output.of(consumerRequestMaxBytes));
         }
 
-        public Builder consumerRequestTimeoutMs(@Nullable Output<String> consumerRequestTimeoutMs) {
+        public Builder consumerRequestTimeoutMs(@Nullable Output<Integer> consumerRequestTimeoutMs) {
             $.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             return this;
         }
 
-        public Builder consumerRequestTimeoutMs(String consumerRequestTimeoutMs) {
+        public Builder consumerRequestTimeoutMs(Integer consumerRequestTimeoutMs) {
             return consumerRequestTimeoutMs(Output.of(consumerRequestTimeoutMs));
         }
 
@@ -122,21 +132,30 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
             return producerAcks(Output.of(producerAcks));
         }
 
-        public Builder producerLingerMs(@Nullable Output<String> producerLingerMs) {
+        public Builder producerCompressionType(@Nullable Output<String> producerCompressionType) {
+            $.producerCompressionType = producerCompressionType;
+            return this;
+        }
+
+        public Builder producerCompressionType(String producerCompressionType) {
+            return producerCompressionType(Output.of(producerCompressionType));
+        }
+
+        public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {
             $.producerLingerMs = producerLingerMs;
             return this;
         }
 
-        public Builder producerLingerMs(String producerLingerMs) {
+        public Builder producerLingerMs(Integer producerLingerMs) {
             return producerLingerMs(Output.of(producerLingerMs));
         }
 
-        public Builder simpleconsumerPoolSizeMax(@Nullable Output<String> simpleconsumerPoolSizeMax) {
+        public Builder simpleconsumerPoolSizeMax(@Nullable Output<Integer> simpleconsumerPoolSizeMax) {
             $.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return this;
         }
 
-        public Builder simpleconsumerPoolSizeMax(String simpleconsumerPoolSizeMax) {
+        public Builder simpleconsumerPoolSizeMax(Integer simpleconsumerPoolSizeMax) {
             return simpleconsumerPoolSizeMax(Output.of(simpleconsumerPoolSizeMax));
         }
 

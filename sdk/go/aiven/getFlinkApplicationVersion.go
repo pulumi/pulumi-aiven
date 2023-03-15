@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,8 +77,12 @@ type LookupFlinkApplicationVersionResult struct {
 	Project string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
+	// Application sink
+	Sink []GetFlinkApplicationVersionSink `pulumi:"sink"`
 	// Application sinks
 	Sinks []GetFlinkApplicationVersionSink `pulumi:"sinks"`
+	// Application source
+	Source []GetFlinkApplicationVersionSource `pulumi:"source"`
 	// Application sources
 	Sources []GetFlinkApplicationVersionSource `pulumi:"sources"`
 	// Job SQL statement
@@ -166,9 +170,19 @@ func (o LookupFlinkApplicationVersionResultOutput) ServiceName() pulumi.StringOu
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Application sink
+func (o LookupFlinkApplicationVersionResultOutput) Sink() GetFlinkApplicationVersionSinkArrayOutput {
+	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSink { return v.Sink }).(GetFlinkApplicationVersionSinkArrayOutput)
+}
+
 // Application sinks
 func (o LookupFlinkApplicationVersionResultOutput) Sinks() GetFlinkApplicationVersionSinkArrayOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSink { return v.Sinks }).(GetFlinkApplicationVersionSinkArrayOutput)
+}
+
+// Application source
+func (o LookupFlinkApplicationVersionResultOutput) Source() GetFlinkApplicationVersionSourceArrayOutput {
+	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSource { return v.Source }).(GetFlinkApplicationVersionSourceArrayOutput)
 }
 
 // Application sources

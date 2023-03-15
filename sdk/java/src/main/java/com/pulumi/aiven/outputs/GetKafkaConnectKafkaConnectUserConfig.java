@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAcce
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,12 @@ import javax.annotation.Nullable;
 public final class GetKafkaConnectKafkaConnectUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable List<GetKafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Kafka Connect server provided values
@@ -32,7 +39,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private GetKafkaConnectKafkaConnectUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -41,6 +48,12 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public List<GetKafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -64,7 +77,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -84,7 +97,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -140,7 +153,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

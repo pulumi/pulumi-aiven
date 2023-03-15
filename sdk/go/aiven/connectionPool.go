@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,7 @@ type ConnectionPool struct {
 	ConnectionUri pulumi.StringOutput `pulumi:"connectionUri"`
 	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrOutput `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName pulumi.StringOutput `pulumi:"poolName"`
@@ -122,7 +122,7 @@ type connectionPoolState struct {
 	ConnectionUri *string `pulumi:"connectionUri"`
 	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode *string `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName *string `pulumi:"poolName"`
@@ -141,7 +141,7 @@ type ConnectionPoolState struct {
 	ConnectionUri pulumi.StringPtrInput
 	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrInput
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName pulumi.StringPtrInput
@@ -162,7 +162,7 @@ func (ConnectionPoolState) ElementType() reflect.Type {
 type connectionPoolArgs struct {
 	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode *string `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
@@ -180,7 +180,7 @@ type connectionPoolArgs struct {
 type ConnectionPoolArgs struct {
 	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrInput
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName pulumi.StringInput
@@ -291,7 +291,7 @@ func (o ConnectionPoolOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 func (o ConnectionPoolOutput) PoolMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.PoolMode }).(pulumi.StringPtrOutput)
 }

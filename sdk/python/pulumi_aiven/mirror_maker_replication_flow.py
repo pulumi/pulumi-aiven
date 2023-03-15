@@ -31,8 +31,8 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
-        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum length: `128`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum length: `128`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -101,7 +101,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> pulumi.Input[str]:
         """
-        Source cluster alias. Maximum Length: `128`.
+        Source cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -113,7 +113,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> pulumi.Input[str]:
         """
-        Target cluster alias. Maximum Length: `128`.
+        Target cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -229,10 +229,10 @@ class _MirrorMakerReplicationFlowState:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum length: `128`.
         :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
         :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
-        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum length: `128`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
@@ -337,7 +337,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Source cluster alias. Maximum Length: `128`.
+        Source cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -373,7 +373,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Target cluster alias. Maximum Length: `128`.
+        Target cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -461,10 +461,10 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum length: `128`.
         :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
         :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
-        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum length: `128`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
@@ -596,10 +596,10 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum length: `128`.
         :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
         :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
-        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum length: `128`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
@@ -673,7 +673,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> pulumi.Output[str]:
         """
-        Source cluster alias. Maximum Length: `128`.
+        Source cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -697,7 +697,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> pulumi.Output[str]:
         """
-        Target cluster alias. Maximum Length: `128`.
+        Target cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 

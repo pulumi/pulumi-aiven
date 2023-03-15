@@ -804,9 +804,9 @@ class Grafana(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             grafana_user_config=aiven.GrafanaGrafanaUserConfigArgs(
-                alerting_enabled="true",
+                alerting_enabled=True,
                 public_access=aiven.GrafanaGrafanaUserConfigPublicAccessArgs(
-                    grafana="true",
+                    grafana=True,
                 ),
             ))
         ```
@@ -876,9 +876,9 @@ class Grafana(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             grafana_user_config=aiven.GrafanaGrafanaUserConfigArgs(
-                alerting_enabled="true",
+                alerting_enabled=True,
                 public_access=aiven.GrafanaGrafanaUserConfigPublicAccessArgs(
-                    grafana="true",
+                    grafana=True,
                 ),
             ))
         ```

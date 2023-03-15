@@ -11,6 +11,26 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Kafka User resource allows the creation and management of Aiven Kafka Users.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.KafkaUser("foo", new()
+    ///     {
+    ///         ServiceName = aiven_kafka.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaUser:KafkaUser")]
     public partial class KafkaUser : global::Pulumi.CustomResource

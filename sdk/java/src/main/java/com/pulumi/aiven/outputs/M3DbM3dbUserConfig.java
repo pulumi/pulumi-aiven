@@ -10,6 +10,7 @@ import com.pulumi.aiven.outputs.M3DbM3dbUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigRules;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,18 +22,36 @@ public final class M3DbM3dbUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
     private @Nullable List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable M3DbM3dbUserConfigLimits limits;
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
-    private @Nullable String m3coordinatorEnableGraphiteCarbonIngest;
+    private @Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest;
     private @Nullable String m3dbVersion;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     private @Nullable List<M3DbM3dbUserConfigNamespace> namespaces;
     private @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
     private @Nullable String projectToForkFrom;
     private @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
     private @Nullable M3DbM3dbUserConfigRules rules;
     private @Nullable String serviceToForkFrom;
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private M3DbM3dbUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -44,21 +63,39 @@ public final class M3DbM3dbUserConfig {
     public List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     public Optional<M3DbM3dbUserConfigLimits> limits() {
         return Optional.ofNullable(this.limits);
     }
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
-    public Optional<String> m3coordinatorEnableGraphiteCarbonIngest() {
+    public Optional<Boolean> m3coordinatorEnableGraphiteCarbonIngest() {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
     public Optional<String> m3dbVersion() {
         return Optional.ofNullable(this.m3dbVersion);
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public List<M3DbM3dbUserConfigNamespace> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
@@ -77,7 +114,7 @@ public final class M3DbM3dbUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -96,7 +133,7 @@ public final class M3DbM3dbUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable M3DbM3dbUserConfigLimits limits;
         private @Nullable String m3Version;
-        private @Nullable String m3coordinatorEnableGraphiteCarbonIngest;
+        private @Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest;
         private @Nullable String m3dbVersion;
         private @Nullable List<M3DbM3dbUserConfigNamespace> namespaces;
         private @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
@@ -104,7 +141,7 @@ public final class M3DbM3dbUserConfig {
         private @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
         private @Nullable M3DbM3dbUserConfigRules rules;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(M3DbM3dbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -162,7 +199,7 @@ public final class M3DbM3dbUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable String m3coordinatorEnableGraphiteCarbonIngest) {
+        public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest) {
             this.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             return this;
         }
@@ -205,7 +242,7 @@ public final class M3DbM3dbUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

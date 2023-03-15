@@ -13,94 +13,94 @@ namespace Pulumi.Aiven.Inputs
     public sealed class MySqlMysqlUserConfigMysqlArgs : global::Pulumi.ResourceArgs
     {
         [Input("connectTimeout")]
-        public Input<string>? ConnectTimeout { get; set; }
+        public Input<int>? ConnectTimeout { get; set; }
 
         [Input("defaultTimeZone")]
         public Input<string>? DefaultTimeZone { get; set; }
 
         [Input("groupConcatMaxLen")]
-        public Input<string>? GroupConcatMaxLen { get; set; }
+        public Input<int>? GroupConcatMaxLen { get; set; }
 
         [Input("informationSchemaStatsExpiry")]
-        public Input<string>? InformationSchemaStatsExpiry { get; set; }
+        public Input<int>? InformationSchemaStatsExpiry { get; set; }
 
         [Input("innodbChangeBufferMaxSize")]
-        public Input<string>? InnodbChangeBufferMaxSize { get; set; }
+        public Input<int>? InnodbChangeBufferMaxSize { get; set; }
 
         [Input("innodbFlushNeighbors")]
-        public Input<string>? InnodbFlushNeighbors { get; set; }
+        public Input<int>? InnodbFlushNeighbors { get; set; }
 
         [Input("innodbFtMinTokenSize")]
-        public Input<string>? InnodbFtMinTokenSize { get; set; }
+        public Input<int>? InnodbFtMinTokenSize { get; set; }
 
         [Input("innodbFtServerStopwordTable")]
         public Input<string>? InnodbFtServerStopwordTable { get; set; }
 
         [Input("innodbLockWaitTimeout")]
-        public Input<string>? InnodbLockWaitTimeout { get; set; }
+        public Input<int>? InnodbLockWaitTimeout { get; set; }
 
         [Input("innodbLogBufferSize")]
-        public Input<string>? InnodbLogBufferSize { get; set; }
+        public Input<int>? InnodbLogBufferSize { get; set; }
 
         [Input("innodbOnlineAlterLogMaxSize")]
-        public Input<string>? InnodbOnlineAlterLogMaxSize { get; set; }
+        public Input<int>? InnodbOnlineAlterLogMaxSize { get; set; }
 
         [Input("innodbPrintAllDeadlocks")]
-        public Input<string>? InnodbPrintAllDeadlocks { get; set; }
+        public Input<bool>? InnodbPrintAllDeadlocks { get; set; }
 
         [Input("innodbReadIoThreads")]
-        public Input<string>? InnodbReadIoThreads { get; set; }
+        public Input<int>? InnodbReadIoThreads { get; set; }
 
         [Input("innodbRollbackOnTimeout")]
-        public Input<string>? InnodbRollbackOnTimeout { get; set; }
+        public Input<bool>? InnodbRollbackOnTimeout { get; set; }
 
         [Input("innodbThreadConcurrency")]
-        public Input<string>? InnodbThreadConcurrency { get; set; }
+        public Input<int>? InnodbThreadConcurrency { get; set; }
 
         [Input("innodbWriteIoThreads")]
-        public Input<string>? InnodbWriteIoThreads { get; set; }
+        public Input<int>? InnodbWriteIoThreads { get; set; }
 
         [Input("interactiveTimeout")]
-        public Input<string>? InteractiveTimeout { get; set; }
+        public Input<int>? InteractiveTimeout { get; set; }
 
         [Input("internalTmpMemStorageEngine")]
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         [Input("longQueryTime")]
-        public Input<string>? LongQueryTime { get; set; }
+        public Input<double>? LongQueryTime { get; set; }
 
         [Input("maxAllowedPacket")]
-        public Input<string>? MaxAllowedPacket { get; set; }
+        public Input<int>? MaxAllowedPacket { get; set; }
 
         [Input("maxHeapTableSize")]
-        public Input<string>? MaxHeapTableSize { get; set; }
+        public Input<int>? MaxHeapTableSize { get; set; }
 
         [Input("netBufferLength")]
-        public Input<string>? NetBufferLength { get; set; }
+        public Input<int>? NetBufferLength { get; set; }
 
         [Input("netReadTimeout")]
-        public Input<string>? NetReadTimeout { get; set; }
+        public Input<int>? NetReadTimeout { get; set; }
 
         [Input("netWriteTimeout")]
-        public Input<string>? NetWriteTimeout { get; set; }
+        public Input<int>? NetWriteTimeout { get; set; }
 
         [Input("slowQueryLog")]
-        public Input<string>? SlowQueryLog { get; set; }
+        public Input<bool>? SlowQueryLog { get; set; }
 
         [Input("sortBufferSize")]
-        public Input<string>? SortBufferSize { get; set; }
+        public Input<int>? SortBufferSize { get; set; }
 
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
 
         [Input("sqlRequirePrimaryKey")]
-        public Input<string>? SqlRequirePrimaryKey { get; set; }
+        public Input<bool>? SqlRequirePrimaryKey { get; set; }
 
         [Input("tmpTableSize")]
-        public Input<string>? TmpTableSize { get; set; }
+        public Input<int>? TmpTableSize { get; set; }
 
         [Input("waitTimeout")]
-        public Input<string>? WaitTimeout { get; set; }
+        public Input<int>? WaitTimeout { get; set; }
 
         public MySqlMysqlUserConfigMysqlArgs()
         {

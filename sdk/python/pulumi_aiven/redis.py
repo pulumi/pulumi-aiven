@@ -806,7 +806,7 @@ class Redis(pulumi.CustomResource):
             redis_user_config=aiven.RedisRedisUserConfigArgs(
                 redis_maxmemory_policy="allkeys-random",
                 public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
-                    redis="true",
+                    redis=True,
                 ),
             ))
         ```
@@ -879,7 +879,7 @@ class Redis(pulumi.CustomResource):
             redis_user_config=aiven.RedisRedisUserConfigArgs(
                 redis_maxmemory_policy="allkeys-random",
                 public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
-                    redis="true",
+                    redis=True,
                 ),
             ))
         ```

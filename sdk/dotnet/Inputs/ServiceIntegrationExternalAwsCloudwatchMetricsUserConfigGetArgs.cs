@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricGetArgs>? _droppedMetrics;
 
         /// <summary>
-        /// Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+        /// Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
         /// </summary>
         public InputList<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricGetArgs> DroppedMetrics
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricGetArgs>? _extraMetrics;
 
         /// <summary>
-        /// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+        /// Metrics to allow through to AWS CloudWatch (in addition to default metrics).
         /// </summary>
         public InputList<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricGetArgs> ExtraMetrics
         {

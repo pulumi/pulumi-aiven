@@ -15,7 +15,6 @@ import com.pulumi.aiven.outputs.ServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationMetricsUserConfig;
-import com.pulumi.aiven.outputs.ServiceIntegrationMirrormakerUserConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -175,14 +174,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return this.integrationId;
     }
     /**
-     * Type of the service integration
+     * Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
     @Export(name="integrationType", type=String.class, parameters={})
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration
+     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
     public Output<String> integrationType() {
@@ -257,20 +256,6 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ServiceIntegrationMetricsUserConfig>> metricsUserConfig() {
         return Codegen.optional(this.metricsUserConfig);
-    }
-    /**
-     * Mirrormaker user configurable settings
-     * 
-     */
-    @Export(name="mirrormakerUserConfig", type=ServiceIntegrationMirrormakerUserConfig.class, parameters={})
-    private Output</* @Nullable */ ServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfig;
-
-    /**
-     * @return Mirrormaker user configurable settings
-     * 
-     */
-    public Output<Optional<ServiceIntegrationMirrormakerUserConfig>> mirrormakerUserConfig() {
-        return Codegen.optional(this.mirrormakerUserConfig);
     }
     /**
      * Project the integration belongs to

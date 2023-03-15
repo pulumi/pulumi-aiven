@@ -7,26 +7,24 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs();
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs() {}
@@ -54,7 +52,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
             $ = new ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -63,7 +61,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
             return name(Output.of(name));
         }
 
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -73,6 +71,8 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
         }
 
         public ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

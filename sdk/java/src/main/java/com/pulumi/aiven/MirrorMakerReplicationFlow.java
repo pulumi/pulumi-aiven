@@ -153,14 +153,14 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return this.serviceName;
     }
     /**
-     * Source cluster alias. Maximum Length: `128`.
+     * Source cluster alias. Maximum length: `128`.
      * 
      */
     @Export(name="sourceCluster", type=String.class, parameters={})
     private Output<String> sourceCluster;
 
     /**
-     * @return Source cluster alias. Maximum Length: `128`.
+     * @return Source cluster alias. Maximum length: `128`.
      * 
      */
     public Output<String> sourceCluster() {
@@ -195,14 +195,14 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.syncGroupOffsetsIntervalSeconds);
     }
     /**
-     * Target cluster alias. Maximum Length: `128`.
+     * Target cluster alias. Maximum length: `128`.
      * 
      */
     @Export(name="targetCluster", type=String.class, parameters={})
     private Output<String> targetCluster;
 
     /**
-     * @return Target cluster alias. Maximum Length: `128`.
+     * @return Target cluster alias. Maximum length: `128`.
      * 
      */
     public Output<String> targetCluster() {

@@ -22,11 +22,11 @@ public final class CassandraCassandraUserConfigIpFilterObjectArgs extends com.pu
         return Optional.ofNullable(this.description);
     }
 
-    @Import(name="network")
-    private @Nullable Output<String> network;
+    @Import(name="network", required=true)
+    private Output<String> network;
 
-    public Optional<Output<String>> network() {
-        return Optional.ofNullable(this.network);
+    public Output<String> network() {
+        return this.network;
     }
 
     private CassandraCassandraUserConfigIpFilterObjectArgs() {}
@@ -63,7 +63,7 @@ public final class CassandraCassandraUserConfigIpFilterObjectArgs extends com.pu
             return description(Output.of(description));
         }
 
-        public Builder network(@Nullable Output<String> network) {
+        public Builder network(Output<String> network) {
             $.network = network;
             return this;
         }
@@ -73,6 +73,7 @@ public final class CassandraCassandraUserConfigIpFilterObjectArgs extends com.pu
         }
 
         public CassandraCassandraUserConfigIpFilterObjectArgs build() {
+            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             return $;
         }
     }

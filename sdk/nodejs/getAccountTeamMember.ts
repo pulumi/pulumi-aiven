@@ -22,11 +22,11 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
  */
 export interface GetAccountTeamMemberArgs {
     /**
-     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      */
     accountId: string;
     /**
-     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
      */
     teamId: string;
     /**
@@ -44,7 +44,7 @@ export interface GetAccountTeamMemberResult {
      */
     readonly accepted: boolean;
     /**
-     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly accountId: string;
     /**
@@ -60,7 +60,7 @@ export interface GetAccountTeamMemberResult {
      */
     readonly invitedByUserEmail: string;
     /**
-     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly teamId: string;
     /**
@@ -80,11 +80,11 @@ export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs,
  */
 export interface GetAccountTeamMemberOutputArgs {
     /**
-     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
      */
     teamId: pulumi.Input<string>;
     /**

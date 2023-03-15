@@ -5,7 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,72 +17,72 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     public static final KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs Empty = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs();
 
     @Import(name="emitCheckpointsEnabled")
-    private @Nullable Output<String> emitCheckpointsEnabled;
+    private @Nullable Output<Boolean> emitCheckpointsEnabled;
 
-    public Optional<Output<String>> emitCheckpointsEnabled() {
+    public Optional<Output<Boolean>> emitCheckpointsEnabled() {
         return Optional.ofNullable(this.emitCheckpointsEnabled);
     }
 
     @Import(name="emitCheckpointsIntervalSeconds")
-    private @Nullable Output<String> emitCheckpointsIntervalSeconds;
+    private @Nullable Output<Integer> emitCheckpointsIntervalSeconds;
 
-    public Optional<Output<String>> emitCheckpointsIntervalSeconds() {
+    public Optional<Output<Integer>> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
     }
 
     @Import(name="refreshGroupsEnabled")
-    private @Nullable Output<String> refreshGroupsEnabled;
+    private @Nullable Output<Boolean> refreshGroupsEnabled;
 
-    public Optional<Output<String>> refreshGroupsEnabled() {
+    public Optional<Output<Boolean>> refreshGroupsEnabled() {
         return Optional.ofNullable(this.refreshGroupsEnabled);
     }
 
     @Import(name="refreshGroupsIntervalSeconds")
-    private @Nullable Output<String> refreshGroupsIntervalSeconds;
+    private @Nullable Output<Integer> refreshGroupsIntervalSeconds;
 
-    public Optional<Output<String>> refreshGroupsIntervalSeconds() {
+    public Optional<Output<Integer>> refreshGroupsIntervalSeconds() {
         return Optional.ofNullable(this.refreshGroupsIntervalSeconds);
     }
 
     @Import(name="refreshTopicsEnabled")
-    private @Nullable Output<String> refreshTopicsEnabled;
+    private @Nullable Output<Boolean> refreshTopicsEnabled;
 
-    public Optional<Output<String>> refreshTopicsEnabled() {
+    public Optional<Output<Boolean>> refreshTopicsEnabled() {
         return Optional.ofNullable(this.refreshTopicsEnabled);
     }
 
     @Import(name="refreshTopicsIntervalSeconds")
-    private @Nullable Output<String> refreshTopicsIntervalSeconds;
+    private @Nullable Output<Integer> refreshTopicsIntervalSeconds;
 
-    public Optional<Output<String>> refreshTopicsIntervalSeconds() {
+    public Optional<Output<Integer>> refreshTopicsIntervalSeconds() {
         return Optional.ofNullable(this.refreshTopicsIntervalSeconds);
     }
 
     @Import(name="syncGroupOffsetsEnabled")
-    private @Nullable Output<String> syncGroupOffsetsEnabled;
+    private @Nullable Output<Boolean> syncGroupOffsetsEnabled;
 
-    public Optional<Output<String>> syncGroupOffsetsEnabled() {
+    public Optional<Output<Boolean>> syncGroupOffsetsEnabled() {
         return Optional.ofNullable(this.syncGroupOffsetsEnabled);
     }
 
     @Import(name="syncGroupOffsetsIntervalSeconds")
-    private @Nullable Output<String> syncGroupOffsetsIntervalSeconds;
+    private @Nullable Output<Integer> syncGroupOffsetsIntervalSeconds;
 
-    public Optional<Output<String>> syncGroupOffsetsIntervalSeconds() {
+    public Optional<Output<Integer>> syncGroupOffsetsIntervalSeconds() {
         return Optional.ofNullable(this.syncGroupOffsetsIntervalSeconds);
     }
 
     @Import(name="syncTopicConfigsEnabled")
-    private @Nullable Output<String> syncTopicConfigsEnabled;
+    private @Nullable Output<Boolean> syncTopicConfigsEnabled;
 
-    public Optional<Output<String>> syncTopicConfigsEnabled() {
+    public Optional<Output<Boolean>> syncTopicConfigsEnabled() {
         return Optional.ofNullable(this.syncTopicConfigsEnabled);
     }
 
     @Import(name="tasksMaxPerCpu")
-    private @Nullable Output<String> tasksMaxPerCpu;
+    private @Nullable Output<Integer> tasksMaxPerCpu;
 
-    public Optional<Output<String>> tasksMaxPerCpu() {
+    public Optional<Output<Integer>> tasksMaxPerCpu() {
         return Optional.ofNullable(this.tasksMaxPerCpu);
     }
 
@@ -118,93 +119,93 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
             $ = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder emitCheckpointsEnabled(@Nullable Output<String> emitCheckpointsEnabled) {
+        public Builder emitCheckpointsEnabled(@Nullable Output<Boolean> emitCheckpointsEnabled) {
             $.emitCheckpointsEnabled = emitCheckpointsEnabled;
             return this;
         }
 
-        public Builder emitCheckpointsEnabled(String emitCheckpointsEnabled) {
+        public Builder emitCheckpointsEnabled(Boolean emitCheckpointsEnabled) {
             return emitCheckpointsEnabled(Output.of(emitCheckpointsEnabled));
         }
 
-        public Builder emitCheckpointsIntervalSeconds(@Nullable Output<String> emitCheckpointsIntervalSeconds) {
+        public Builder emitCheckpointsIntervalSeconds(@Nullable Output<Integer> emitCheckpointsIntervalSeconds) {
             $.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             return this;
         }
 
-        public Builder emitCheckpointsIntervalSeconds(String emitCheckpointsIntervalSeconds) {
+        public Builder emitCheckpointsIntervalSeconds(Integer emitCheckpointsIntervalSeconds) {
             return emitCheckpointsIntervalSeconds(Output.of(emitCheckpointsIntervalSeconds));
         }
 
-        public Builder refreshGroupsEnabled(@Nullable Output<String> refreshGroupsEnabled) {
+        public Builder refreshGroupsEnabled(@Nullable Output<Boolean> refreshGroupsEnabled) {
             $.refreshGroupsEnabled = refreshGroupsEnabled;
             return this;
         }
 
-        public Builder refreshGroupsEnabled(String refreshGroupsEnabled) {
+        public Builder refreshGroupsEnabled(Boolean refreshGroupsEnabled) {
             return refreshGroupsEnabled(Output.of(refreshGroupsEnabled));
         }
 
-        public Builder refreshGroupsIntervalSeconds(@Nullable Output<String> refreshGroupsIntervalSeconds) {
+        public Builder refreshGroupsIntervalSeconds(@Nullable Output<Integer> refreshGroupsIntervalSeconds) {
             $.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             return this;
         }
 
-        public Builder refreshGroupsIntervalSeconds(String refreshGroupsIntervalSeconds) {
+        public Builder refreshGroupsIntervalSeconds(Integer refreshGroupsIntervalSeconds) {
             return refreshGroupsIntervalSeconds(Output.of(refreshGroupsIntervalSeconds));
         }
 
-        public Builder refreshTopicsEnabled(@Nullable Output<String> refreshTopicsEnabled) {
+        public Builder refreshTopicsEnabled(@Nullable Output<Boolean> refreshTopicsEnabled) {
             $.refreshTopicsEnabled = refreshTopicsEnabled;
             return this;
         }
 
-        public Builder refreshTopicsEnabled(String refreshTopicsEnabled) {
+        public Builder refreshTopicsEnabled(Boolean refreshTopicsEnabled) {
             return refreshTopicsEnabled(Output.of(refreshTopicsEnabled));
         }
 
-        public Builder refreshTopicsIntervalSeconds(@Nullable Output<String> refreshTopicsIntervalSeconds) {
+        public Builder refreshTopicsIntervalSeconds(@Nullable Output<Integer> refreshTopicsIntervalSeconds) {
             $.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             return this;
         }
 
-        public Builder refreshTopicsIntervalSeconds(String refreshTopicsIntervalSeconds) {
+        public Builder refreshTopicsIntervalSeconds(Integer refreshTopicsIntervalSeconds) {
             return refreshTopicsIntervalSeconds(Output.of(refreshTopicsIntervalSeconds));
         }
 
-        public Builder syncGroupOffsetsEnabled(@Nullable Output<String> syncGroupOffsetsEnabled) {
+        public Builder syncGroupOffsetsEnabled(@Nullable Output<Boolean> syncGroupOffsetsEnabled) {
             $.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             return this;
         }
 
-        public Builder syncGroupOffsetsEnabled(String syncGroupOffsetsEnabled) {
+        public Builder syncGroupOffsetsEnabled(Boolean syncGroupOffsetsEnabled) {
             return syncGroupOffsetsEnabled(Output.of(syncGroupOffsetsEnabled));
         }
 
-        public Builder syncGroupOffsetsIntervalSeconds(@Nullable Output<String> syncGroupOffsetsIntervalSeconds) {
+        public Builder syncGroupOffsetsIntervalSeconds(@Nullable Output<Integer> syncGroupOffsetsIntervalSeconds) {
             $.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             return this;
         }
 
-        public Builder syncGroupOffsetsIntervalSeconds(String syncGroupOffsetsIntervalSeconds) {
+        public Builder syncGroupOffsetsIntervalSeconds(Integer syncGroupOffsetsIntervalSeconds) {
             return syncGroupOffsetsIntervalSeconds(Output.of(syncGroupOffsetsIntervalSeconds));
         }
 
-        public Builder syncTopicConfigsEnabled(@Nullable Output<String> syncTopicConfigsEnabled) {
+        public Builder syncTopicConfigsEnabled(@Nullable Output<Boolean> syncTopicConfigsEnabled) {
             $.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
             return this;
         }
 
-        public Builder syncTopicConfigsEnabled(String syncTopicConfigsEnabled) {
+        public Builder syncTopicConfigsEnabled(Boolean syncTopicConfigsEnabled) {
             return syncTopicConfigsEnabled(Output.of(syncTopicConfigsEnabled));
         }
 
-        public Builder tasksMaxPerCpu(@Nullable Output<String> tasksMaxPerCpu) {
+        public Builder tasksMaxPerCpu(@Nullable Output<Integer> tasksMaxPerCpu) {
             $.tasksMaxPerCpu = tasksMaxPerCpu;
             return this;
         }
 
-        public Builder tasksMaxPerCpu(String tasksMaxPerCpu) {
+        public Builder tasksMaxPerCpu(Integer tasksMaxPerCpu) {
             return tasksMaxPerCpu(Output.of(tasksMaxPerCpu));
         }
 

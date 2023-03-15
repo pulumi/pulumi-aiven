@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        [Input("tag")]
-        public Input<string>? Tag { get; set; }
+        [Input("tag", required: true)]
+        public Input<string> Tag { get; set; } = null!;
 
         public ServiceIntegrationDatadogUserConfigDatadogTagGetArgs()
         {

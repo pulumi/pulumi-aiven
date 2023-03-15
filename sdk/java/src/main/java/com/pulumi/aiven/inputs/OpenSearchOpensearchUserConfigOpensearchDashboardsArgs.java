@@ -5,7 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,23 +17,23 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     public static final OpenSearchOpensearchUserConfigOpensearchDashboardsArgs Empty = new OpenSearchOpensearchUserConfigOpensearchDashboardsArgs();
 
     @Import(name="enabled")
-    private @Nullable Output<String> enabled;
+    private @Nullable Output<Boolean> enabled;
 
-    public Optional<Output<String>> enabled() {
+    public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     @Import(name="maxOldSpaceSize")
-    private @Nullable Output<String> maxOldSpaceSize;
+    private @Nullable Output<Integer> maxOldSpaceSize;
 
-    public Optional<Output<String>> maxOldSpaceSize() {
+    public Optional<Output<Integer>> maxOldSpaceSize() {
         return Optional.ofNullable(this.maxOldSpaceSize);
     }
 
     @Import(name="opensearchRequestTimeout")
-    private @Nullable Output<String> opensearchRequestTimeout;
+    private @Nullable Output<Integer> opensearchRequestTimeout;
 
-    public Optional<Output<String>> opensearchRequestTimeout() {
+    public Optional<Output<Integer>> opensearchRequestTimeout() {
         return Optional.ofNullable(this.opensearchRequestTimeout);
     }
 
@@ -62,30 +63,30 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
             $ = new OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder enabled(@Nullable Output<String> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        public Builder enabled(String enabled) {
+        public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        public Builder maxOldSpaceSize(@Nullable Output<String> maxOldSpaceSize) {
+        public Builder maxOldSpaceSize(@Nullable Output<Integer> maxOldSpaceSize) {
             $.maxOldSpaceSize = maxOldSpaceSize;
             return this;
         }
 
-        public Builder maxOldSpaceSize(String maxOldSpaceSize) {
+        public Builder maxOldSpaceSize(Integer maxOldSpaceSize) {
             return maxOldSpaceSize(Output.of(maxOldSpaceSize));
         }
 
-        public Builder opensearchRequestTimeout(@Nullable Output<String> opensearchRequestTimeout) {
+        public Builder opensearchRequestTimeout(@Nullable Output<Integer> opensearchRequestTimeout) {
             $.opensearchRequestTimeout = opensearchRequestTimeout;
             return this;
         }
 
-        public Builder opensearchRequestTimeout(String opensearchRequestTimeout) {
+        public Builder opensearchRequestTimeout(Integer opensearchRequestTimeout) {
             return opensearchRequestTimeout(Output.of(opensearchRequestTimeout));
         }
 

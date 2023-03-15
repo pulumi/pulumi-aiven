@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Output("poolMode")]
         public Output<string?> PoolMode { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Aiven
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Aiven
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }

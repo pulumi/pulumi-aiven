@@ -49,10 +49,20 @@ public final class GetFlinkApplicationVersionResult {
      */
     private String serviceName;
     /**
+     * @return Application sink
+     * 
+     */
+    private List<GetFlinkApplicationVersionSink> sink;
+    /**
      * @return Application sinks
      * 
      */
     private List<GetFlinkApplicationVersionSink> sinks;
+    /**
+     * @return Application source
+     * 
+     */
+    private List<GetFlinkApplicationVersionSource> source;
     /**
      * @return Application sources
      * 
@@ -120,11 +130,25 @@ public final class GetFlinkApplicationVersionResult {
         return this.serviceName;
     }
     /**
+     * @return Application sink
+     * 
+     */
+    public List<GetFlinkApplicationVersionSink> sink() {
+        return this.sink;
+    }
+    /**
      * @return Application sinks
      * 
      */
     public List<GetFlinkApplicationVersionSink> sinks() {
         return this.sinks;
+    }
+    /**
+     * @return Application source
+     * 
+     */
+    public List<GetFlinkApplicationVersionSource> source() {
+        return this.source;
     }
     /**
      * @return Application sources
@@ -164,7 +188,9 @@ public final class GetFlinkApplicationVersionResult {
         private String id;
         private String project;
         private String serviceName;
+        private List<GetFlinkApplicationVersionSink> sink;
         private List<GetFlinkApplicationVersionSink> sinks;
+        private List<GetFlinkApplicationVersionSource> source;
         private List<GetFlinkApplicationVersionSource> sources;
         private String statement;
         private Integer version;
@@ -178,7 +204,9 @@ public final class GetFlinkApplicationVersionResult {
     	      this.id = defaults.id;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.sink = defaults.sink;
     	      this.sinks = defaults.sinks;
+    	      this.source = defaults.source;
     	      this.sources = defaults.sources;
     	      this.statement = defaults.statement;
     	      this.version = defaults.version;
@@ -220,12 +248,28 @@ public final class GetFlinkApplicationVersionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sink(List<GetFlinkApplicationVersionSink> sink) {
+            this.sink = Objects.requireNonNull(sink);
+            return this;
+        }
+        public Builder sink(GetFlinkApplicationVersionSink... sink) {
+            return sink(List.of(sink));
+        }
+        @CustomType.Setter
         public Builder sinks(List<GetFlinkApplicationVersionSink> sinks) {
             this.sinks = Objects.requireNonNull(sinks);
             return this;
         }
         public Builder sinks(GetFlinkApplicationVersionSink... sinks) {
             return sinks(List.of(sinks));
+        }
+        @CustomType.Setter
+        public Builder source(List<GetFlinkApplicationVersionSource> source) {
+            this.source = Objects.requireNonNull(source);
+            return this;
+        }
+        public Builder source(GetFlinkApplicationVersionSource... source) {
+            return source(List.of(source));
         }
         @CustomType.Setter
         public Builder sources(List<GetFlinkApplicationVersionSource> sources) {
@@ -254,7 +298,9 @@ public final class GetFlinkApplicationVersionResult {
             o.id = id;
             o.project = project;
             o.serviceName = serviceName;
+            o.sink = sink;
             o.sinks = sinks;
+            o.source = source;
             o.sources = sources;
             o.statement = statement;
             o.version = version;

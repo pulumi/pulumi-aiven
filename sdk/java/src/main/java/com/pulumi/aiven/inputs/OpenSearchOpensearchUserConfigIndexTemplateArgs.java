@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,23 +16,23 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
     public static final OpenSearchOpensearchUserConfigIndexTemplateArgs Empty = new OpenSearchOpensearchUserConfigIndexTemplateArgs();
 
     @Import(name="mappingNestedObjectsLimit")
-    private @Nullable Output<String> mappingNestedObjectsLimit;
+    private @Nullable Output<Integer> mappingNestedObjectsLimit;
 
-    public Optional<Output<String>> mappingNestedObjectsLimit() {
+    public Optional<Output<Integer>> mappingNestedObjectsLimit() {
         return Optional.ofNullable(this.mappingNestedObjectsLimit);
     }
 
     @Import(name="numberOfReplicas")
-    private @Nullable Output<String> numberOfReplicas;
+    private @Nullable Output<Integer> numberOfReplicas;
 
-    public Optional<Output<String>> numberOfReplicas() {
+    public Optional<Output<Integer>> numberOfReplicas() {
         return Optional.ofNullable(this.numberOfReplicas);
     }
 
     @Import(name="numberOfShards")
-    private @Nullable Output<String> numberOfShards;
+    private @Nullable Output<Integer> numberOfShards;
 
-    public Optional<Output<String>> numberOfShards() {
+    public Optional<Output<Integer>> numberOfShards() {
         return Optional.ofNullable(this.numberOfShards);
     }
 
@@ -62,30 +62,30 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
             $ = new OpenSearchOpensearchUserConfigIndexTemplateArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder mappingNestedObjectsLimit(@Nullable Output<String> mappingNestedObjectsLimit) {
+        public Builder mappingNestedObjectsLimit(@Nullable Output<Integer> mappingNestedObjectsLimit) {
             $.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
             return this;
         }
 
-        public Builder mappingNestedObjectsLimit(String mappingNestedObjectsLimit) {
+        public Builder mappingNestedObjectsLimit(Integer mappingNestedObjectsLimit) {
             return mappingNestedObjectsLimit(Output.of(mappingNestedObjectsLimit));
         }
 
-        public Builder numberOfReplicas(@Nullable Output<String> numberOfReplicas) {
+        public Builder numberOfReplicas(@Nullable Output<Integer> numberOfReplicas) {
             $.numberOfReplicas = numberOfReplicas;
             return this;
         }
 
-        public Builder numberOfReplicas(String numberOfReplicas) {
+        public Builder numberOfReplicas(Integer numberOfReplicas) {
             return numberOfReplicas(Output.of(numberOfReplicas));
         }
 
-        public Builder numberOfShards(@Nullable Output<String> numberOfShards) {
+        public Builder numberOfShards(@Nullable Output<Integer> numberOfShards) {
             $.numberOfShards = numberOfShards;
             return this;
         }
 
-        public Builder numberOfShards(String numberOfShards) {
+        public Builder numberOfShards(Integer numberOfShards) {
             return numberOfShards(Output.of(numberOfShards));
         }
 

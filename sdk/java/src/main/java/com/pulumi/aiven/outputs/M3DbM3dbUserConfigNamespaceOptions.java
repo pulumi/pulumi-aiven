@@ -5,7 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class M3DbM3dbUserConfigNamespaceOptions {
     private @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
-    private @Nullable String snapshotEnabled;
-    private @Nullable String writesToCommitlog;
+    private @Nullable Boolean snapshotEnabled;
+    private @Nullable Boolean writesToCommitlog;
 
     private M3DbM3dbUserConfigNamespaceOptions() {}
     public Optional<M3DbM3dbUserConfigNamespaceOptionsRetentionOptions> retentionOptions() {
         return Optional.ofNullable(this.retentionOptions);
     }
-    public Optional<String> snapshotEnabled() {
+    public Optional<Boolean> snapshotEnabled() {
         return Optional.ofNullable(this.snapshotEnabled);
     }
-    public Optional<String> writesToCommitlog() {
+    public Optional<Boolean> writesToCommitlog() {
         return Optional.ofNullable(this.writesToCommitlog);
     }
 
@@ -37,8 +37,8 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
-        private @Nullable String snapshotEnabled;
-        private @Nullable String writesToCommitlog;
+        private @Nullable Boolean snapshotEnabled;
+        private @Nullable Boolean writesToCommitlog;
         public Builder() {}
         public Builder(M3DbM3dbUserConfigNamespaceOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -53,12 +53,12 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder snapshotEnabled(@Nullable String snapshotEnabled) {
+        public Builder snapshotEnabled(@Nullable Boolean snapshotEnabled) {
             this.snapshotEnabled = snapshotEnabled;
             return this;
         }
         @CustomType.Setter
-        public Builder writesToCommitlog(@Nullable String writesToCommitlog) {
+        public Builder writesToCommitlog(@Nullable Boolean writesToCommitlog) {
             this.writesToCommitlog = writesToCommitlog;
             return this;
         }

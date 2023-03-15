@@ -16,10 +16,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Grafana server provided values
         /// </summary>
-        public readonly string? Grafana;
+        public readonly bool? Grafana;
 
         [OutputConstructor]
-        private GetGrafanaGrafanaUserConfigPrivatelinkAccessResult(string? grafana)
+        private GetGrafanaGrafanaUserConfigPrivatelinkAccessResult(bool? grafana)
         {
             Grafana = grafana;
         }

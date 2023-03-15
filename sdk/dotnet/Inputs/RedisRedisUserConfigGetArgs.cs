@@ -25,6 +25,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -53,13 +54,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RedisAclChannelsDefault { get; set; }
 
         [Input("redisIoThreads")]
-        public Input<string>? RedisIoThreads { get; set; }
+        public Input<int>? RedisIoThreads { get; set; }
 
         [Input("redisLfuDecayTime")]
-        public Input<string>? RedisLfuDecayTime { get; set; }
+        public Input<int>? RedisLfuDecayTime { get; set; }
 
         [Input("redisLfuLogFactor")]
-        public Input<string>? RedisLfuLogFactor { get; set; }
+        public Input<int>? RedisLfuLogFactor { get; set; }
 
         [Input("redisMaxmemoryPolicy")]
         public Input<string>? RedisMaxmemoryPolicy { get; set; }
@@ -68,25 +69,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
         [Input("redisNumberOfDatabases")]
-        public Input<string>? RedisNumberOfDatabases { get; set; }
+        public Input<int>? RedisNumberOfDatabases { get; set; }
 
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
 
         [Input("redisPubsubClientOutputBufferLimit")]
-        public Input<string>? RedisPubsubClientOutputBufferLimit { get; set; }
+        public Input<int>? RedisPubsubClientOutputBufferLimit { get; set; }
 
         [Input("redisSsl")]
-        public Input<string>? RedisSsl { get; set; }
+        public Input<bool>? RedisSsl { get; set; }
 
         [Input("redisTimeout")]
-        public Input<string>? RedisTimeout { get; set; }
+        public Input<int>? RedisTimeout { get; set; }
 
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public Input<string>? StaticIps { get; set; }
+        public Input<bool>? StaticIps { get; set; }
 
         public RedisRedisUserConfigGetArgs()
         {

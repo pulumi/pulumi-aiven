@@ -4,17 +4,17 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigPublicAccess {
-    private @Nullable String m3coordinator;
+    private @Nullable Boolean m3coordinator;
 
     private GetM3DbM3dbUserConfigPublicAccess() {}
-    public Optional<String> m3coordinator() {
+    public Optional<Boolean> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }
 
@@ -27,7 +27,7 @@ public final class GetM3DbM3dbUserConfigPublicAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String m3coordinator;
+        private @Nullable Boolean m3coordinator;
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,7 +35,7 @@ public final class GetM3DbM3dbUserConfigPublicAccess {
         }
 
         @CustomType.Setter
-        public Builder m3coordinator(@Nullable String m3coordinator) {
+        public Builder m3coordinator(@Nullable Boolean m3coordinator) {
             this.m3coordinator = m3coordinator;
             return this;
         }

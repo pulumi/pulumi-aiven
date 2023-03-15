@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPgPgUserConfigIpFilterObject {
     private @Nullable String description;
-    private @Nullable String network;
+    private String network;
 
     private GetPgPgUserConfigIpFilterObject() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    public Optional<String> network() {
-        return Optional.ofNullable(this.network);
+    public String network() {
+        return this.network;
     }
 
     public static Builder builder() {
@@ -32,7 +32,7 @@ public final class GetPgPgUserConfigIpFilterObject {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
-        private @Nullable String network;
+        private String network;
         public Builder() {}
         public Builder(GetPgPgUserConfigIpFilterObject defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,8 +46,8 @@ public final class GetPgPgUserConfigIpFilterObject {
             return this;
         }
         @CustomType.Setter
-        public Builder network(@Nullable String network) {
-            this.network = network;
+        public Builder network(String network) {
+            this.network = Objects.requireNonNull(network);
             return this;
         }
         public GetPgPgUserConfigIpFilterObject build() {

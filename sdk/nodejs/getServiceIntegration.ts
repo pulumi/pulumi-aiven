@@ -45,7 +45,7 @@ export interface GetServiceIntegrationArgs {
      */
     destinationServiceName: string;
     /**
-     * Type of the service integration
+     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
      */
     integrationType: string;
     /**
@@ -95,7 +95,7 @@ export interface GetServiceIntegrationResult {
      */
     readonly integrationId: string;
     /**
-     * Type of the service integration
+     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
      */
     readonly integrationType: string;
     /**
@@ -118,10 +118,6 @@ export interface GetServiceIntegrationResult {
      * Metrics user configurable settings
      */
     readonly metricsUserConfigs: outputs.GetServiceIntegrationMetricsUserConfig[];
-    /**
-     * Mirrormaker user configurable settings
-     */
-    readonly mirrormakerUserConfigs: outputs.GetServiceIntegrationMirrormakerUserConfig[];
     /**
      * Project the integration belongs to
      */
@@ -167,7 +163,7 @@ export interface GetServiceIntegrationOutputArgs {
      */
     destinationServiceName: pulumi.Input<string>;
     /**
-     * Type of the service integration
+     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
      */
     integrationType: pulumi.Input<string>;
     /**

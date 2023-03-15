@@ -13,31 +13,31 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PEM encoded CA certificate
+        /// PEM encoded CA certificate.
         /// </summary>
         [Input("ca")]
         public Input<string>? Ca { get; set; }
 
         /// <summary>
-        /// Maximum number of days of logs to keep
+        /// Maximum number of days of logs to keep. The default value is `3`.
         /// </summary>
         [Input("indexDaysMax")]
-        public Input<string>? IndexDaysMax { get; set; }
+        public Input<int>? IndexDaysMax { get; set; }
 
         /// <summary>
-        /// OpenSearch index prefix
+        /// OpenSearch index prefix. The default value is `logs`.
         /// </summary>
         [Input("indexPrefix")]
         public Input<string>? IndexPrefix { get; set; }
 
         /// <summary>
-        /// OpenSearch request timeout limit
+        /// OpenSearch request timeout limit. The default value is `10.0`.
         /// </summary>
         [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
+        public Input<double>? Timeout { get; set; }
 
         /// <summary>
-        /// OpenSearch connection URL
+        /// OpenSearch connection URL.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

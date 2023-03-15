@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,20 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPgPgUserConfigMigration {
     private @Nullable String dbname;
-    private @Nullable String host;
+    private String host;
     private @Nullable String ignoreDbs;
     private @Nullable String method;
     private @Nullable String password;
-    private @Nullable String port;
-    private @Nullable String ssl;
+    private Integer port;
+    private @Nullable Boolean ssl;
     private @Nullable String username;
 
     private GetPgPgUserConfigMigration() {}
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
-    public Optional<String> host() {
-        return Optional.ofNullable(this.host);
+    public String host() {
+        return this.host;
     }
     public Optional<String> ignoreDbs() {
         return Optional.ofNullable(this.ignoreDbs);
@@ -36,10 +38,10 @@ public final class GetPgPgUserConfigMigration {
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
-    public Optional<String> port() {
-        return Optional.ofNullable(this.port);
+    public Integer port() {
+        return this.port;
     }
-    public Optional<String> ssl() {
+    public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }
     public Optional<String> username() {
@@ -56,12 +58,12 @@ public final class GetPgPgUserConfigMigration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbname;
-        private @Nullable String host;
+        private String host;
         private @Nullable String ignoreDbs;
         private @Nullable String method;
         private @Nullable String password;
-        private @Nullable String port;
-        private @Nullable String ssl;
+        private Integer port;
+        private @Nullable Boolean ssl;
         private @Nullable String username;
         public Builder() {}
         public Builder(GetPgPgUserConfigMigration defaults) {
@@ -82,8 +84,8 @@ public final class GetPgPgUserConfigMigration {
             return this;
         }
         @CustomType.Setter
-        public Builder host(@Nullable String host) {
-            this.host = host;
+        public Builder host(String host) {
+            this.host = Objects.requireNonNull(host);
             return this;
         }
         @CustomType.Setter
@@ -102,12 +104,12 @@ public final class GetPgPgUserConfigMigration {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable String port) {
-            this.port = port;
+        public Builder port(Integer port) {
+            this.port = Objects.requireNonNull(port);
             return this;
         }
         @CustomType.Setter
-        public Builder ssl(@Nullable String ssl) {
+        public Builder ssl(@Nullable Boolean ssl) {
             this.ssl = ssl;
             return this;
         }

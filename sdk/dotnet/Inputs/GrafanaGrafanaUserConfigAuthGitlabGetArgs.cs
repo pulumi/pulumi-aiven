@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigAuthGitlabGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public Input<string>? AllowSignUp { get; set; }
+        public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedGroups")]
         private InputList<string>? _allowedGroups;
@@ -29,11 +29,11 @@ namespace Pulumi.Aiven.Inputs
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
 
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
 
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        [Input("clientSecret", required: true)]
+        public Input<string> ClientSecret { get; set; } = null!;
 
         [Input("tokenUrl")]
         public Input<string>? TokenUrl { get; set; }

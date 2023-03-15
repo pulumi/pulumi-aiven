@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
 
         [Input("ignoreDbs")]
         public Input<string>? IgnoreDbs { get; set; }
@@ -36,11 +36,11 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
-        [Input("port")]
-        public Input<string>? Port { get; set; }
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
 
         [Input("ssl")]
-        public Input<string>? Ssl { get; set; }
+        public Input<bool>? Ssl { get; set; }
 
         [Input("username")]
         public Input<string>? Username { get; set; }

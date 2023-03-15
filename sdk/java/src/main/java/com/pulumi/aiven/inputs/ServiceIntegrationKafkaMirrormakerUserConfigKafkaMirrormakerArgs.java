@@ -5,7 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,37 +16,37 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     public static final ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs Empty = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs();
 
     @Import(name="consumerFetchMinBytes")
-    private @Nullable Output<String> consumerFetchMinBytes;
+    private @Nullable Output<Integer> consumerFetchMinBytes;
 
-    public Optional<Output<String>> consumerFetchMinBytes() {
+    public Optional<Output<Integer>> consumerFetchMinBytes() {
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
 
     @Import(name="producerBatchSize")
-    private @Nullable Output<String> producerBatchSize;
+    private @Nullable Output<Integer> producerBatchSize;
 
-    public Optional<Output<String>> producerBatchSize() {
+    public Optional<Output<Integer>> producerBatchSize() {
         return Optional.ofNullable(this.producerBatchSize);
     }
 
     @Import(name="producerBufferMemory")
-    private @Nullable Output<String> producerBufferMemory;
+    private @Nullable Output<Integer> producerBufferMemory;
 
-    public Optional<Output<String>> producerBufferMemory() {
+    public Optional<Output<Integer>> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
     }
 
     @Import(name="producerLingerMs")
-    private @Nullable Output<String> producerLingerMs;
+    private @Nullable Output<Integer> producerLingerMs;
 
-    public Optional<Output<String>> producerLingerMs() {
+    public Optional<Output<Integer>> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
 
     @Import(name="producerMaxRequestSize")
-    private @Nullable Output<String> producerMaxRequestSize;
+    private @Nullable Output<Integer> producerMaxRequestSize;
 
-    public Optional<Output<String>> producerMaxRequestSize() {
+    public Optional<Output<Integer>> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
 
@@ -78,48 +78,48 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
             $ = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder consumerFetchMinBytes(@Nullable Output<String> consumerFetchMinBytes) {
+        public Builder consumerFetchMinBytes(@Nullable Output<Integer> consumerFetchMinBytes) {
             $.consumerFetchMinBytes = consumerFetchMinBytes;
             return this;
         }
 
-        public Builder consumerFetchMinBytes(String consumerFetchMinBytes) {
+        public Builder consumerFetchMinBytes(Integer consumerFetchMinBytes) {
             return consumerFetchMinBytes(Output.of(consumerFetchMinBytes));
         }
 
-        public Builder producerBatchSize(@Nullable Output<String> producerBatchSize) {
+        public Builder producerBatchSize(@Nullable Output<Integer> producerBatchSize) {
             $.producerBatchSize = producerBatchSize;
             return this;
         }
 
-        public Builder producerBatchSize(String producerBatchSize) {
+        public Builder producerBatchSize(Integer producerBatchSize) {
             return producerBatchSize(Output.of(producerBatchSize));
         }
 
-        public Builder producerBufferMemory(@Nullable Output<String> producerBufferMemory) {
+        public Builder producerBufferMemory(@Nullable Output<Integer> producerBufferMemory) {
             $.producerBufferMemory = producerBufferMemory;
             return this;
         }
 
-        public Builder producerBufferMemory(String producerBufferMemory) {
+        public Builder producerBufferMemory(Integer producerBufferMemory) {
             return producerBufferMemory(Output.of(producerBufferMemory));
         }
 
-        public Builder producerLingerMs(@Nullable Output<String> producerLingerMs) {
+        public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {
             $.producerLingerMs = producerLingerMs;
             return this;
         }
 
-        public Builder producerLingerMs(String producerLingerMs) {
+        public Builder producerLingerMs(Integer producerLingerMs) {
             return producerLingerMs(Output.of(producerLingerMs));
         }
 
-        public Builder producerMaxRequestSize(@Nullable Output<String> producerMaxRequestSize) {
+        public Builder producerMaxRequestSize(@Nullable Output<Integer> producerMaxRequestSize) {
             $.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
 
-        public Builder producerMaxRequestSize(String producerMaxRequestSize) {
+        public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
             return producerMaxRequestSize(Output.of(producerMaxRequestSize));
         }
 

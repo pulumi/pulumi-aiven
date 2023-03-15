@@ -13,22 +13,22 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigLimitsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxRecentlyQueriedSeriesBlocks")]
-        public Input<string>? MaxRecentlyQueriedSeriesBlocks { get; set; }
+        public Input<int>? MaxRecentlyQueriedSeriesBlocks { get; set; }
 
         [Input("maxRecentlyQueriedSeriesDiskBytesRead")]
-        public Input<string>? MaxRecentlyQueriedSeriesDiskBytesRead { get; set; }
+        public Input<int>? MaxRecentlyQueriedSeriesDiskBytesRead { get; set; }
 
         [Input("maxRecentlyQueriedSeriesLookback")]
         public Input<string>? MaxRecentlyQueriedSeriesLookback { get; set; }
 
         [Input("queryDocs")]
-        public Input<string>? QueryDocs { get; set; }
+        public Input<int>? QueryDocs { get; set; }
 
         [Input("queryRequireExhaustive")]
-        public Input<string>? QueryRequireExhaustive { get; set; }
+        public Input<bool>? QueryRequireExhaustive { get; set; }
 
         [Input("querySeries")]
-        public Input<string>? QuerySeries { get; set; }
+        public Input<int>? QuerySeries { get; set; }
 
         public M3DbM3dbUserConfigLimitsGetArgs()
         {

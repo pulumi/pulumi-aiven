@@ -721,7 +721,7 @@ class InfluxDb(pulumi.CustomResource):
             maintenance_window_time="10:00:00",
             influxdb_user_config=aiven.InfluxDbInfluxdbUserConfigArgs(
                 public_access=aiven.InfluxDbInfluxdbUserConfigPublicAccessArgs(
-                    influxdb="true",
+                    influxdb=True,
                 ),
             ))
         ```
@@ -773,7 +773,7 @@ class InfluxDb(pulumi.CustomResource):
             maintenance_window_time="10:00:00",
             influxdb_user_config=aiven.InfluxDbInfluxdbUserConfigArgs(
                 public_access=aiven.InfluxDbInfluxdbUserConfigPublicAccessArgs(
-                    influxdb="true",
+                    influxdb=True,
                 ),
             ))
         ```

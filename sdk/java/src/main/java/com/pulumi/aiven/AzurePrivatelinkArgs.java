@@ -45,14 +45,14 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
+     * A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
     @Import(name="userSubscriptionIds", required=true)
     private Output<List<String>> userSubscriptionIds;
 
     /**
-     * @return A List of allowed Subscription IDs Maximum Length: `16`.
+     * @return A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
     public Output<List<String>> userSubscriptionIds() {
@@ -128,7 +128,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userSubscriptionIds A List of allowed Subscription IDs Maximum Length: `16`.
+         * @param userSubscriptionIds A List of allowed Subscription IDs. Maximum length: `16`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userSubscriptionIds A List of allowed Subscription IDs Maximum Length: `16`.
+         * @param userSubscriptionIds A List of allowed Subscription IDs. Maximum length: `16`.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userSubscriptionIds A List of allowed Subscription IDs Maximum Length: `16`.
+         * @param userSubscriptionIds A List of allowed Subscription IDs. Maximum length: `16`.
          * 
          * @return builder
          * 

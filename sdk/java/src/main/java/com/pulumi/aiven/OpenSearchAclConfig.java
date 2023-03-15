@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aiven.inputs.GetProjectArgs;
  * import com.pulumi.aiven.OpenSearch;
  * import com.pulumi.aiven.OpenSearchArgs;
- * import com.pulumi.aiven.ServiceUser;
- * import com.pulumi.aiven.ServiceUserArgs;
+ * import com.pulumi.aiven.OpensearchUser;
+ * import com.pulumi.aiven.OpensearchUserArgs;
  * import com.pulumi.aiven.OpenSearchAclConfig;
  * import com.pulumi.aiven.OpenSearchAclConfigArgs;
  * import java.util.List;
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowTime(&#34;10:00:00&#34;)
  *             .build());
  * 
- *         var fooServiceUser = new ServiceUser(&#34;fooServiceUser&#34;, ServiceUserArgs.builder()        
+ *         var fooOpensearchUser = new OpensearchUser(&#34;fooOpensearchUser&#34;, OpensearchUserArgs.builder()        
  *             .serviceName(bar.serviceName())
  *             .project(fooProject.applyValue(getProjectResult -&gt; getProjectResult.project()))
  *             .username(&#34;user-example&#34;)

@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,7 +55,7 @@ func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegratio
 type LookupServiceIntegrationArgs struct {
 	// Destination service for the integration (if any)
 	DestinationServiceName string `pulumi:"destinationServiceName"`
-	// Type of the service integration
+	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
 	IntegrationType string `pulumi:"integrationType"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
@@ -81,7 +81,7 @@ type LookupServiceIntegrationResult struct {
 	Id string `pulumi:"id"`
 	// Service Integration Id at aiven
 	IntegrationId string `pulumi:"integrationId"`
-	// Type of the service integration
+	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
 	IntegrationType string `pulumi:"integrationType"`
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfigs []GetServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfigs"`
@@ -93,8 +93,6 @@ type LookupServiceIntegrationResult struct {
 	LogsUserConfigs []GetServiceIntegrationLogsUserConfig `pulumi:"logsUserConfigs"`
 	// Metrics user configurable settings
 	MetricsUserConfigs []GetServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfigs"`
-	// Mirrormaker user configurable settings
-	MirrormakerUserConfigs []GetServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfigs"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
 	// Source endpoint for the integration (if any)
@@ -120,7 +118,7 @@ func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceInteg
 type LookupServiceIntegrationOutputArgs struct {
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringInput `pulumi:"destinationServiceName"`
-	// Type of the service integration
+	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
 	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
 	// Project the integration belongs to
 	Project pulumi.StringInput `pulumi:"project"`
@@ -195,7 +193,7 @@ func (o LookupServiceIntegrationResultOutput) IntegrationId() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
-// Type of the service integration
+// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
 func (o LookupServiceIntegrationResultOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
@@ -231,13 +229,6 @@ func (o LookupServiceIntegrationResultOutput) MetricsUserConfigs() GetServiceInt
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationMetricsUserConfig {
 		return v.MetricsUserConfigs
 	}).(GetServiceIntegrationMetricsUserConfigArrayOutput)
-}
-
-// Mirrormaker user configurable settings
-func (o LookupServiceIntegrationResultOutput) MirrormakerUserConfigs() GetServiceIntegrationMirrormakerUserConfigArrayOutput {
-	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationMirrormakerUserConfig {
-		return v.MirrormakerUserConfigs
-	}).(GetServiceIntegrationMirrormakerUserConfigArrayOutput)
 }
 
 // Project the integration belongs to

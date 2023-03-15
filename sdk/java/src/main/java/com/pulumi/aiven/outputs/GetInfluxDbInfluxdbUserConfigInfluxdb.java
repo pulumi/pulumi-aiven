@@ -4,37 +4,37 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
-    private @Nullable String logQueriesAfter;
-    private @Nullable String maxConnectionLimit;
-    private @Nullable String maxRowLimit;
-    private @Nullable String maxSelectBuckets;
-    private @Nullable String maxSelectPoint;
-    private @Nullable String queryTimeout;
+    private @Nullable Integer logQueriesAfter;
+    private @Nullable Integer maxConnectionLimit;
+    private @Nullable Integer maxRowLimit;
+    private @Nullable Integer maxSelectBuckets;
+    private @Nullable Integer maxSelectPoint;
+    private @Nullable Integer queryTimeout;
 
     private GetInfluxDbInfluxdbUserConfigInfluxdb() {}
-    public Optional<String> logQueriesAfter() {
+    public Optional<Integer> logQueriesAfter() {
         return Optional.ofNullable(this.logQueriesAfter);
     }
-    public Optional<String> maxConnectionLimit() {
+    public Optional<Integer> maxConnectionLimit() {
         return Optional.ofNullable(this.maxConnectionLimit);
     }
-    public Optional<String> maxRowLimit() {
+    public Optional<Integer> maxRowLimit() {
         return Optional.ofNullable(this.maxRowLimit);
     }
-    public Optional<String> maxSelectBuckets() {
+    public Optional<Integer> maxSelectBuckets() {
         return Optional.ofNullable(this.maxSelectBuckets);
     }
-    public Optional<String> maxSelectPoint() {
+    public Optional<Integer> maxSelectPoint() {
         return Optional.ofNullable(this.maxSelectPoint);
     }
-    public Optional<String> queryTimeout() {
+    public Optional<Integer> queryTimeout() {
         return Optional.ofNullable(this.queryTimeout);
     }
 
@@ -47,12 +47,12 @@ public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String logQueriesAfter;
-        private @Nullable String maxConnectionLimit;
-        private @Nullable String maxRowLimit;
-        private @Nullable String maxSelectBuckets;
-        private @Nullable String maxSelectPoint;
-        private @Nullable String queryTimeout;
+        private @Nullable Integer logQueriesAfter;
+        private @Nullable Integer maxConnectionLimit;
+        private @Nullable Integer maxRowLimit;
+        private @Nullable Integer maxSelectBuckets;
+        private @Nullable Integer maxSelectPoint;
+        private @Nullable Integer queryTimeout;
         public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfigInfluxdb defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,32 +65,32 @@ public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
         }
 
         @CustomType.Setter
-        public Builder logQueriesAfter(@Nullable String logQueriesAfter) {
+        public Builder logQueriesAfter(@Nullable Integer logQueriesAfter) {
             this.logQueriesAfter = logQueriesAfter;
             return this;
         }
         @CustomType.Setter
-        public Builder maxConnectionLimit(@Nullable String maxConnectionLimit) {
+        public Builder maxConnectionLimit(@Nullable Integer maxConnectionLimit) {
             this.maxConnectionLimit = maxConnectionLimit;
             return this;
         }
         @CustomType.Setter
-        public Builder maxRowLimit(@Nullable String maxRowLimit) {
+        public Builder maxRowLimit(@Nullable Integer maxRowLimit) {
             this.maxRowLimit = maxRowLimit;
             return this;
         }
         @CustomType.Setter
-        public Builder maxSelectBuckets(@Nullable String maxSelectBuckets) {
+        public Builder maxSelectBuckets(@Nullable Integer maxSelectBuckets) {
             this.maxSelectBuckets = maxSelectBuckets;
             return this;
         }
         @CustomType.Setter
-        public Builder maxSelectPoint(@Nullable String maxSelectPoint) {
+        public Builder maxSelectPoint(@Nullable Integer maxSelectPoint) {
             this.maxSelectPoint = maxSelectPoint;
             return this;
         }
         @CustomType.Setter
-        public Builder queryTimeout(@Nullable String queryTimeout) {
+        public Builder queryTimeout(@Nullable Integer queryTimeout) {
             this.queryTimeout = queryTimeout;
             return this;
         }

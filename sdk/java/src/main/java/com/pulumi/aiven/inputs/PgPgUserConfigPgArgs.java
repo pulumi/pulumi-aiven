@@ -5,6 +5,9 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,100 +19,100 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     public static final PgPgUserConfigPgArgs Empty = new PgPgUserConfigPgArgs();
 
     @Import(name="autovacuumAnalyzeScaleFactor")
-    private @Nullable Output<String> autovacuumAnalyzeScaleFactor;
+    private @Nullable Output<Double> autovacuumAnalyzeScaleFactor;
 
-    public Optional<Output<String>> autovacuumAnalyzeScaleFactor() {
+    public Optional<Output<Double>> autovacuumAnalyzeScaleFactor() {
         return Optional.ofNullable(this.autovacuumAnalyzeScaleFactor);
     }
 
     @Import(name="autovacuumAnalyzeThreshold")
-    private @Nullable Output<String> autovacuumAnalyzeThreshold;
+    private @Nullable Output<Integer> autovacuumAnalyzeThreshold;
 
-    public Optional<Output<String>> autovacuumAnalyzeThreshold() {
+    public Optional<Output<Integer>> autovacuumAnalyzeThreshold() {
         return Optional.ofNullable(this.autovacuumAnalyzeThreshold);
     }
 
     @Import(name="autovacuumFreezeMaxAge")
-    private @Nullable Output<String> autovacuumFreezeMaxAge;
+    private @Nullable Output<Integer> autovacuumFreezeMaxAge;
 
-    public Optional<Output<String>> autovacuumFreezeMaxAge() {
+    public Optional<Output<Integer>> autovacuumFreezeMaxAge() {
         return Optional.ofNullable(this.autovacuumFreezeMaxAge);
     }
 
     @Import(name="autovacuumMaxWorkers")
-    private @Nullable Output<String> autovacuumMaxWorkers;
+    private @Nullable Output<Integer> autovacuumMaxWorkers;
 
-    public Optional<Output<String>> autovacuumMaxWorkers() {
+    public Optional<Output<Integer>> autovacuumMaxWorkers() {
         return Optional.ofNullable(this.autovacuumMaxWorkers);
     }
 
     @Import(name="autovacuumNaptime")
-    private @Nullable Output<String> autovacuumNaptime;
+    private @Nullable Output<Integer> autovacuumNaptime;
 
-    public Optional<Output<String>> autovacuumNaptime() {
+    public Optional<Output<Integer>> autovacuumNaptime() {
         return Optional.ofNullable(this.autovacuumNaptime);
     }
 
     @Import(name="autovacuumVacuumCostDelay")
-    private @Nullable Output<String> autovacuumVacuumCostDelay;
+    private @Nullable Output<Integer> autovacuumVacuumCostDelay;
 
-    public Optional<Output<String>> autovacuumVacuumCostDelay() {
+    public Optional<Output<Integer>> autovacuumVacuumCostDelay() {
         return Optional.ofNullable(this.autovacuumVacuumCostDelay);
     }
 
     @Import(name="autovacuumVacuumCostLimit")
-    private @Nullable Output<String> autovacuumVacuumCostLimit;
+    private @Nullable Output<Integer> autovacuumVacuumCostLimit;
 
-    public Optional<Output<String>> autovacuumVacuumCostLimit() {
+    public Optional<Output<Integer>> autovacuumVacuumCostLimit() {
         return Optional.ofNullable(this.autovacuumVacuumCostLimit);
     }
 
     @Import(name="autovacuumVacuumScaleFactor")
-    private @Nullable Output<String> autovacuumVacuumScaleFactor;
+    private @Nullable Output<Double> autovacuumVacuumScaleFactor;
 
-    public Optional<Output<String>> autovacuumVacuumScaleFactor() {
+    public Optional<Output<Double>> autovacuumVacuumScaleFactor() {
         return Optional.ofNullable(this.autovacuumVacuumScaleFactor);
     }
 
     @Import(name="autovacuumVacuumThreshold")
-    private @Nullable Output<String> autovacuumVacuumThreshold;
+    private @Nullable Output<Integer> autovacuumVacuumThreshold;
 
-    public Optional<Output<String>> autovacuumVacuumThreshold() {
+    public Optional<Output<Integer>> autovacuumVacuumThreshold() {
         return Optional.ofNullable(this.autovacuumVacuumThreshold);
     }
 
     @Import(name="bgwriterDelay")
-    private @Nullable Output<String> bgwriterDelay;
+    private @Nullable Output<Integer> bgwriterDelay;
 
-    public Optional<Output<String>> bgwriterDelay() {
+    public Optional<Output<Integer>> bgwriterDelay() {
         return Optional.ofNullable(this.bgwriterDelay);
     }
 
     @Import(name="bgwriterFlushAfter")
-    private @Nullable Output<String> bgwriterFlushAfter;
+    private @Nullable Output<Integer> bgwriterFlushAfter;
 
-    public Optional<Output<String>> bgwriterFlushAfter() {
+    public Optional<Output<Integer>> bgwriterFlushAfter() {
         return Optional.ofNullable(this.bgwriterFlushAfter);
     }
 
     @Import(name="bgwriterLruMaxpages")
-    private @Nullable Output<String> bgwriterLruMaxpages;
+    private @Nullable Output<Integer> bgwriterLruMaxpages;
 
-    public Optional<Output<String>> bgwriterLruMaxpages() {
+    public Optional<Output<Integer>> bgwriterLruMaxpages() {
         return Optional.ofNullable(this.bgwriterLruMaxpages);
     }
 
     @Import(name="bgwriterLruMultiplier")
-    private @Nullable Output<String> bgwriterLruMultiplier;
+    private @Nullable Output<Double> bgwriterLruMultiplier;
 
-    public Optional<Output<String>> bgwriterLruMultiplier() {
+    public Optional<Output<Double>> bgwriterLruMultiplier() {
         return Optional.ofNullable(this.bgwriterLruMultiplier);
     }
 
     @Import(name="deadlockTimeout")
-    private @Nullable Output<String> deadlockTimeout;
+    private @Nullable Output<Integer> deadlockTimeout;
 
-    public Optional<Output<String>> deadlockTimeout() {
+    public Optional<Output<Integer>> deadlockTimeout() {
         return Optional.ofNullable(this.deadlockTimeout);
     }
 
@@ -121,23 +124,23 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     @Import(name="idleInTransactionSessionTimeout")
-    private @Nullable Output<String> idleInTransactionSessionTimeout;
+    private @Nullable Output<Integer> idleInTransactionSessionTimeout;
 
-    public Optional<Output<String>> idleInTransactionSessionTimeout() {
+    public Optional<Output<Integer>> idleInTransactionSessionTimeout() {
         return Optional.ofNullable(this.idleInTransactionSessionTimeout);
     }
 
     @Import(name="jit")
-    private @Nullable Output<String> jit;
+    private @Nullable Output<Boolean> jit;
 
-    public Optional<Output<String>> jit() {
+    public Optional<Output<Boolean>> jit() {
         return Optional.ofNullable(this.jit);
     }
 
     @Import(name="logAutovacuumMinDuration")
-    private @Nullable Output<String> logAutovacuumMinDuration;
+    private @Nullable Output<Integer> logAutovacuumMinDuration;
 
-    public Optional<Output<String>> logAutovacuumMinDuration() {
+    public Optional<Output<Integer>> logAutovacuumMinDuration() {
         return Optional.ofNullable(this.logAutovacuumMinDuration);
     }
 
@@ -156,121 +159,121 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     @Import(name="logMinDurationStatement")
-    private @Nullable Output<String> logMinDurationStatement;
+    private @Nullable Output<Integer> logMinDurationStatement;
 
-    public Optional<Output<String>> logMinDurationStatement() {
+    public Optional<Output<Integer>> logMinDurationStatement() {
         return Optional.ofNullable(this.logMinDurationStatement);
     }
 
     @Import(name="logTempFiles")
-    private @Nullable Output<String> logTempFiles;
+    private @Nullable Output<Integer> logTempFiles;
 
-    public Optional<Output<String>> logTempFiles() {
+    public Optional<Output<Integer>> logTempFiles() {
         return Optional.ofNullable(this.logTempFiles);
     }
 
     @Import(name="maxFilesPerProcess")
-    private @Nullable Output<String> maxFilesPerProcess;
+    private @Nullable Output<Integer> maxFilesPerProcess;
 
-    public Optional<Output<String>> maxFilesPerProcess() {
+    public Optional<Output<Integer>> maxFilesPerProcess() {
         return Optional.ofNullable(this.maxFilesPerProcess);
     }
 
     @Import(name="maxLocksPerTransaction")
-    private @Nullable Output<String> maxLocksPerTransaction;
+    private @Nullable Output<Integer> maxLocksPerTransaction;
 
-    public Optional<Output<String>> maxLocksPerTransaction() {
+    public Optional<Output<Integer>> maxLocksPerTransaction() {
         return Optional.ofNullable(this.maxLocksPerTransaction);
     }
 
     @Import(name="maxLogicalReplicationWorkers")
-    private @Nullable Output<String> maxLogicalReplicationWorkers;
+    private @Nullable Output<Integer> maxLogicalReplicationWorkers;
 
-    public Optional<Output<String>> maxLogicalReplicationWorkers() {
+    public Optional<Output<Integer>> maxLogicalReplicationWorkers() {
         return Optional.ofNullable(this.maxLogicalReplicationWorkers);
     }
 
     @Import(name="maxParallelWorkers")
-    private @Nullable Output<String> maxParallelWorkers;
+    private @Nullable Output<Integer> maxParallelWorkers;
 
-    public Optional<Output<String>> maxParallelWorkers() {
+    public Optional<Output<Integer>> maxParallelWorkers() {
         return Optional.ofNullable(this.maxParallelWorkers);
     }
 
     @Import(name="maxParallelWorkersPerGather")
-    private @Nullable Output<String> maxParallelWorkersPerGather;
+    private @Nullable Output<Integer> maxParallelWorkersPerGather;
 
-    public Optional<Output<String>> maxParallelWorkersPerGather() {
+    public Optional<Output<Integer>> maxParallelWorkersPerGather() {
         return Optional.ofNullable(this.maxParallelWorkersPerGather);
     }
 
     @Import(name="maxPredLocksPerTransaction")
-    private @Nullable Output<String> maxPredLocksPerTransaction;
+    private @Nullable Output<Integer> maxPredLocksPerTransaction;
 
-    public Optional<Output<String>> maxPredLocksPerTransaction() {
+    public Optional<Output<Integer>> maxPredLocksPerTransaction() {
         return Optional.ofNullable(this.maxPredLocksPerTransaction);
     }
 
     @Import(name="maxPreparedTransactions")
-    private @Nullable Output<String> maxPreparedTransactions;
+    private @Nullable Output<Integer> maxPreparedTransactions;
 
-    public Optional<Output<String>> maxPreparedTransactions() {
+    public Optional<Output<Integer>> maxPreparedTransactions() {
         return Optional.ofNullable(this.maxPreparedTransactions);
     }
 
     @Import(name="maxReplicationSlots")
-    private @Nullable Output<String> maxReplicationSlots;
+    private @Nullable Output<Integer> maxReplicationSlots;
 
-    public Optional<Output<String>> maxReplicationSlots() {
+    public Optional<Output<Integer>> maxReplicationSlots() {
         return Optional.ofNullable(this.maxReplicationSlots);
     }
 
     @Import(name="maxSlotWalKeepSize")
-    private @Nullable Output<String> maxSlotWalKeepSize;
+    private @Nullable Output<Integer> maxSlotWalKeepSize;
 
-    public Optional<Output<String>> maxSlotWalKeepSize() {
+    public Optional<Output<Integer>> maxSlotWalKeepSize() {
         return Optional.ofNullable(this.maxSlotWalKeepSize);
     }
 
     @Import(name="maxStackDepth")
-    private @Nullable Output<String> maxStackDepth;
+    private @Nullable Output<Integer> maxStackDepth;
 
-    public Optional<Output<String>> maxStackDepth() {
+    public Optional<Output<Integer>> maxStackDepth() {
         return Optional.ofNullable(this.maxStackDepth);
     }
 
     @Import(name="maxStandbyArchiveDelay")
-    private @Nullable Output<String> maxStandbyArchiveDelay;
+    private @Nullable Output<Integer> maxStandbyArchiveDelay;
 
-    public Optional<Output<String>> maxStandbyArchiveDelay() {
+    public Optional<Output<Integer>> maxStandbyArchiveDelay() {
         return Optional.ofNullable(this.maxStandbyArchiveDelay);
     }
 
     @Import(name="maxStandbyStreamingDelay")
-    private @Nullable Output<String> maxStandbyStreamingDelay;
+    private @Nullable Output<Integer> maxStandbyStreamingDelay;
 
-    public Optional<Output<String>> maxStandbyStreamingDelay() {
+    public Optional<Output<Integer>> maxStandbyStreamingDelay() {
         return Optional.ofNullable(this.maxStandbyStreamingDelay);
     }
 
     @Import(name="maxWalSenders")
-    private @Nullable Output<String> maxWalSenders;
+    private @Nullable Output<Integer> maxWalSenders;
 
-    public Optional<Output<String>> maxWalSenders() {
+    public Optional<Output<Integer>> maxWalSenders() {
         return Optional.ofNullable(this.maxWalSenders);
     }
 
     @Import(name="maxWorkerProcesses")
-    private @Nullable Output<String> maxWorkerProcesses;
+    private @Nullable Output<Integer> maxWorkerProcesses;
 
-    public Optional<Output<String>> maxWorkerProcesses() {
+    public Optional<Output<Integer>> maxWorkerProcesses() {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
 
     @Import(name="pgPartmanBgwDotInterval")
-    private @Nullable Output<String> pgPartmanBgwDotInterval;
+    private @Nullable Output<Integer> pgPartmanBgwDotInterval;
 
-    public Optional<Output<String>> pgPartmanBgwDotInterval() {
+    public Optional<Output<Integer>> pgPartmanBgwDotInterval() {
         return Optional.ofNullable(this.pgPartmanBgwDotInterval);
     }
 
@@ -281,6 +284,20 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.pgPartmanBgwDotRole);
     }
 
+    @Import(name="pgStatMonitorDotPgsmEnableQueryPlan")
+    private @Nullable Output<Boolean> pgStatMonitorDotPgsmEnableQueryPlan;
+
+    public Optional<Output<Boolean>> pgStatMonitorDotPgsmEnableQueryPlan() {
+        return Optional.ofNullable(this.pgStatMonitorDotPgsmEnableQueryPlan);
+    }
+
+    @Import(name="pgStatMonitorDotPgsmMaxBuckets")
+    private @Nullable Output<Integer> pgStatMonitorDotPgsmMaxBuckets;
+
+    public Optional<Output<Integer>> pgStatMonitorDotPgsmMaxBuckets() {
+        return Optional.ofNullable(this.pgStatMonitorDotPgsmMaxBuckets);
+    }
+
     @Import(name="pgStatStatementsDotTrack")
     private @Nullable Output<String> pgStatStatementsDotTrack;
 
@@ -289,9 +306,9 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     @Import(name="tempFileLimit")
-    private @Nullable Output<String> tempFileLimit;
+    private @Nullable Output<Integer> tempFileLimit;
 
-    public Optional<Output<String>> tempFileLimit() {
+    public Optional<Output<Integer>> tempFileLimit() {
         return Optional.ofNullable(this.tempFileLimit);
     }
 
@@ -303,9 +320,9 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     @Import(name="trackActivityQuerySize")
-    private @Nullable Output<String> trackActivityQuerySize;
+    private @Nullable Output<Integer> trackActivityQuerySize;
 
-    public Optional<Output<String>> trackActivityQuerySize() {
+    public Optional<Output<Integer>> trackActivityQuerySize() {
         return Optional.ofNullable(this.trackActivityQuerySize);
     }
 
@@ -331,16 +348,16 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     @Import(name="walSenderTimeout")
-    private @Nullable Output<String> walSenderTimeout;
+    private @Nullable Output<Integer> walSenderTimeout;
 
-    public Optional<Output<String>> walSenderTimeout() {
+    public Optional<Output<Integer>> walSenderTimeout() {
         return Optional.ofNullable(this.walSenderTimeout);
     }
 
     @Import(name="walWriterDelay")
-    private @Nullable Output<String> walWriterDelay;
+    private @Nullable Output<Integer> walWriterDelay;
 
-    public Optional<Output<String>> walWriterDelay() {
+    public Optional<Output<Integer>> walWriterDelay() {
         return Optional.ofNullable(this.walWriterDelay);
     }
 
@@ -385,6 +402,8 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.maxWorkerProcesses = $.maxWorkerProcesses;
         this.pgPartmanBgwDotInterval = $.pgPartmanBgwDotInterval;
         this.pgPartmanBgwDotRole = $.pgPartmanBgwDotRole;
+        this.pgStatMonitorDotPgsmEnableQueryPlan = $.pgStatMonitorDotPgsmEnableQueryPlan;
+        this.pgStatMonitorDotPgsmMaxBuckets = $.pgStatMonitorDotPgsmMaxBuckets;
         this.pgStatStatementsDotTrack = $.pgStatStatementsDotTrack;
         this.tempFileLimit = $.tempFileLimit;
         this.timezone = $.timezone;
@@ -414,129 +433,129 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             $ = new PgPgUserConfigPgArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder autovacuumAnalyzeScaleFactor(@Nullable Output<String> autovacuumAnalyzeScaleFactor) {
+        public Builder autovacuumAnalyzeScaleFactor(@Nullable Output<Double> autovacuumAnalyzeScaleFactor) {
             $.autovacuumAnalyzeScaleFactor = autovacuumAnalyzeScaleFactor;
             return this;
         }
 
-        public Builder autovacuumAnalyzeScaleFactor(String autovacuumAnalyzeScaleFactor) {
+        public Builder autovacuumAnalyzeScaleFactor(Double autovacuumAnalyzeScaleFactor) {
             return autovacuumAnalyzeScaleFactor(Output.of(autovacuumAnalyzeScaleFactor));
         }
 
-        public Builder autovacuumAnalyzeThreshold(@Nullable Output<String> autovacuumAnalyzeThreshold) {
+        public Builder autovacuumAnalyzeThreshold(@Nullable Output<Integer> autovacuumAnalyzeThreshold) {
             $.autovacuumAnalyzeThreshold = autovacuumAnalyzeThreshold;
             return this;
         }
 
-        public Builder autovacuumAnalyzeThreshold(String autovacuumAnalyzeThreshold) {
+        public Builder autovacuumAnalyzeThreshold(Integer autovacuumAnalyzeThreshold) {
             return autovacuumAnalyzeThreshold(Output.of(autovacuumAnalyzeThreshold));
         }
 
-        public Builder autovacuumFreezeMaxAge(@Nullable Output<String> autovacuumFreezeMaxAge) {
+        public Builder autovacuumFreezeMaxAge(@Nullable Output<Integer> autovacuumFreezeMaxAge) {
             $.autovacuumFreezeMaxAge = autovacuumFreezeMaxAge;
             return this;
         }
 
-        public Builder autovacuumFreezeMaxAge(String autovacuumFreezeMaxAge) {
+        public Builder autovacuumFreezeMaxAge(Integer autovacuumFreezeMaxAge) {
             return autovacuumFreezeMaxAge(Output.of(autovacuumFreezeMaxAge));
         }
 
-        public Builder autovacuumMaxWorkers(@Nullable Output<String> autovacuumMaxWorkers) {
+        public Builder autovacuumMaxWorkers(@Nullable Output<Integer> autovacuumMaxWorkers) {
             $.autovacuumMaxWorkers = autovacuumMaxWorkers;
             return this;
         }
 
-        public Builder autovacuumMaxWorkers(String autovacuumMaxWorkers) {
+        public Builder autovacuumMaxWorkers(Integer autovacuumMaxWorkers) {
             return autovacuumMaxWorkers(Output.of(autovacuumMaxWorkers));
         }
 
-        public Builder autovacuumNaptime(@Nullable Output<String> autovacuumNaptime) {
+        public Builder autovacuumNaptime(@Nullable Output<Integer> autovacuumNaptime) {
             $.autovacuumNaptime = autovacuumNaptime;
             return this;
         }
 
-        public Builder autovacuumNaptime(String autovacuumNaptime) {
+        public Builder autovacuumNaptime(Integer autovacuumNaptime) {
             return autovacuumNaptime(Output.of(autovacuumNaptime));
         }
 
-        public Builder autovacuumVacuumCostDelay(@Nullable Output<String> autovacuumVacuumCostDelay) {
+        public Builder autovacuumVacuumCostDelay(@Nullable Output<Integer> autovacuumVacuumCostDelay) {
             $.autovacuumVacuumCostDelay = autovacuumVacuumCostDelay;
             return this;
         }
 
-        public Builder autovacuumVacuumCostDelay(String autovacuumVacuumCostDelay) {
+        public Builder autovacuumVacuumCostDelay(Integer autovacuumVacuumCostDelay) {
             return autovacuumVacuumCostDelay(Output.of(autovacuumVacuumCostDelay));
         }
 
-        public Builder autovacuumVacuumCostLimit(@Nullable Output<String> autovacuumVacuumCostLimit) {
+        public Builder autovacuumVacuumCostLimit(@Nullable Output<Integer> autovacuumVacuumCostLimit) {
             $.autovacuumVacuumCostLimit = autovacuumVacuumCostLimit;
             return this;
         }
 
-        public Builder autovacuumVacuumCostLimit(String autovacuumVacuumCostLimit) {
+        public Builder autovacuumVacuumCostLimit(Integer autovacuumVacuumCostLimit) {
             return autovacuumVacuumCostLimit(Output.of(autovacuumVacuumCostLimit));
         }
 
-        public Builder autovacuumVacuumScaleFactor(@Nullable Output<String> autovacuumVacuumScaleFactor) {
+        public Builder autovacuumVacuumScaleFactor(@Nullable Output<Double> autovacuumVacuumScaleFactor) {
             $.autovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             return this;
         }
 
-        public Builder autovacuumVacuumScaleFactor(String autovacuumVacuumScaleFactor) {
+        public Builder autovacuumVacuumScaleFactor(Double autovacuumVacuumScaleFactor) {
             return autovacuumVacuumScaleFactor(Output.of(autovacuumVacuumScaleFactor));
         }
 
-        public Builder autovacuumVacuumThreshold(@Nullable Output<String> autovacuumVacuumThreshold) {
+        public Builder autovacuumVacuumThreshold(@Nullable Output<Integer> autovacuumVacuumThreshold) {
             $.autovacuumVacuumThreshold = autovacuumVacuumThreshold;
             return this;
         }
 
-        public Builder autovacuumVacuumThreshold(String autovacuumVacuumThreshold) {
+        public Builder autovacuumVacuumThreshold(Integer autovacuumVacuumThreshold) {
             return autovacuumVacuumThreshold(Output.of(autovacuumVacuumThreshold));
         }
 
-        public Builder bgwriterDelay(@Nullable Output<String> bgwriterDelay) {
+        public Builder bgwriterDelay(@Nullable Output<Integer> bgwriterDelay) {
             $.bgwriterDelay = bgwriterDelay;
             return this;
         }
 
-        public Builder bgwriterDelay(String bgwriterDelay) {
+        public Builder bgwriterDelay(Integer bgwriterDelay) {
             return bgwriterDelay(Output.of(bgwriterDelay));
         }
 
-        public Builder bgwriterFlushAfter(@Nullable Output<String> bgwriterFlushAfter) {
+        public Builder bgwriterFlushAfter(@Nullable Output<Integer> bgwriterFlushAfter) {
             $.bgwriterFlushAfter = bgwriterFlushAfter;
             return this;
         }
 
-        public Builder bgwriterFlushAfter(String bgwriterFlushAfter) {
+        public Builder bgwriterFlushAfter(Integer bgwriterFlushAfter) {
             return bgwriterFlushAfter(Output.of(bgwriterFlushAfter));
         }
 
-        public Builder bgwriterLruMaxpages(@Nullable Output<String> bgwriterLruMaxpages) {
+        public Builder bgwriterLruMaxpages(@Nullable Output<Integer> bgwriterLruMaxpages) {
             $.bgwriterLruMaxpages = bgwriterLruMaxpages;
             return this;
         }
 
-        public Builder bgwriterLruMaxpages(String bgwriterLruMaxpages) {
+        public Builder bgwriterLruMaxpages(Integer bgwriterLruMaxpages) {
             return bgwriterLruMaxpages(Output.of(bgwriterLruMaxpages));
         }
 
-        public Builder bgwriterLruMultiplier(@Nullable Output<String> bgwriterLruMultiplier) {
+        public Builder bgwriterLruMultiplier(@Nullable Output<Double> bgwriterLruMultiplier) {
             $.bgwriterLruMultiplier = bgwriterLruMultiplier;
             return this;
         }
 
-        public Builder bgwriterLruMultiplier(String bgwriterLruMultiplier) {
+        public Builder bgwriterLruMultiplier(Double bgwriterLruMultiplier) {
             return bgwriterLruMultiplier(Output.of(bgwriterLruMultiplier));
         }
 
-        public Builder deadlockTimeout(@Nullable Output<String> deadlockTimeout) {
+        public Builder deadlockTimeout(@Nullable Output<Integer> deadlockTimeout) {
             $.deadlockTimeout = deadlockTimeout;
             return this;
         }
 
-        public Builder deadlockTimeout(String deadlockTimeout) {
+        public Builder deadlockTimeout(Integer deadlockTimeout) {
             return deadlockTimeout(Output.of(deadlockTimeout));
         }
 
@@ -549,30 +568,30 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             return defaultToastCompression(Output.of(defaultToastCompression));
         }
 
-        public Builder idleInTransactionSessionTimeout(@Nullable Output<String> idleInTransactionSessionTimeout) {
+        public Builder idleInTransactionSessionTimeout(@Nullable Output<Integer> idleInTransactionSessionTimeout) {
             $.idleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             return this;
         }
 
-        public Builder idleInTransactionSessionTimeout(String idleInTransactionSessionTimeout) {
+        public Builder idleInTransactionSessionTimeout(Integer idleInTransactionSessionTimeout) {
             return idleInTransactionSessionTimeout(Output.of(idleInTransactionSessionTimeout));
         }
 
-        public Builder jit(@Nullable Output<String> jit) {
+        public Builder jit(@Nullable Output<Boolean> jit) {
             $.jit = jit;
             return this;
         }
 
-        public Builder jit(String jit) {
+        public Builder jit(Boolean jit) {
             return jit(Output.of(jit));
         }
 
-        public Builder logAutovacuumMinDuration(@Nullable Output<String> logAutovacuumMinDuration) {
+        public Builder logAutovacuumMinDuration(@Nullable Output<Integer> logAutovacuumMinDuration) {
             $.logAutovacuumMinDuration = logAutovacuumMinDuration;
             return this;
         }
 
-        public Builder logAutovacuumMinDuration(String logAutovacuumMinDuration) {
+        public Builder logAutovacuumMinDuration(Integer logAutovacuumMinDuration) {
             return logAutovacuumMinDuration(Output.of(logAutovacuumMinDuration));
         }
 
@@ -594,156 +613,156 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             return logLinePrefix(Output.of(logLinePrefix));
         }
 
-        public Builder logMinDurationStatement(@Nullable Output<String> logMinDurationStatement) {
+        public Builder logMinDurationStatement(@Nullable Output<Integer> logMinDurationStatement) {
             $.logMinDurationStatement = logMinDurationStatement;
             return this;
         }
 
-        public Builder logMinDurationStatement(String logMinDurationStatement) {
+        public Builder logMinDurationStatement(Integer logMinDurationStatement) {
             return logMinDurationStatement(Output.of(logMinDurationStatement));
         }
 
-        public Builder logTempFiles(@Nullable Output<String> logTempFiles) {
+        public Builder logTempFiles(@Nullable Output<Integer> logTempFiles) {
             $.logTempFiles = logTempFiles;
             return this;
         }
 
-        public Builder logTempFiles(String logTempFiles) {
+        public Builder logTempFiles(Integer logTempFiles) {
             return logTempFiles(Output.of(logTempFiles));
         }
 
-        public Builder maxFilesPerProcess(@Nullable Output<String> maxFilesPerProcess) {
+        public Builder maxFilesPerProcess(@Nullable Output<Integer> maxFilesPerProcess) {
             $.maxFilesPerProcess = maxFilesPerProcess;
             return this;
         }
 
-        public Builder maxFilesPerProcess(String maxFilesPerProcess) {
+        public Builder maxFilesPerProcess(Integer maxFilesPerProcess) {
             return maxFilesPerProcess(Output.of(maxFilesPerProcess));
         }
 
-        public Builder maxLocksPerTransaction(@Nullable Output<String> maxLocksPerTransaction) {
+        public Builder maxLocksPerTransaction(@Nullable Output<Integer> maxLocksPerTransaction) {
             $.maxLocksPerTransaction = maxLocksPerTransaction;
             return this;
         }
 
-        public Builder maxLocksPerTransaction(String maxLocksPerTransaction) {
+        public Builder maxLocksPerTransaction(Integer maxLocksPerTransaction) {
             return maxLocksPerTransaction(Output.of(maxLocksPerTransaction));
         }
 
-        public Builder maxLogicalReplicationWorkers(@Nullable Output<String> maxLogicalReplicationWorkers) {
+        public Builder maxLogicalReplicationWorkers(@Nullable Output<Integer> maxLogicalReplicationWorkers) {
             $.maxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
             return this;
         }
 
-        public Builder maxLogicalReplicationWorkers(String maxLogicalReplicationWorkers) {
+        public Builder maxLogicalReplicationWorkers(Integer maxLogicalReplicationWorkers) {
             return maxLogicalReplicationWorkers(Output.of(maxLogicalReplicationWorkers));
         }
 
-        public Builder maxParallelWorkers(@Nullable Output<String> maxParallelWorkers) {
+        public Builder maxParallelWorkers(@Nullable Output<Integer> maxParallelWorkers) {
             $.maxParallelWorkers = maxParallelWorkers;
             return this;
         }
 
-        public Builder maxParallelWorkers(String maxParallelWorkers) {
+        public Builder maxParallelWorkers(Integer maxParallelWorkers) {
             return maxParallelWorkers(Output.of(maxParallelWorkers));
         }
 
-        public Builder maxParallelWorkersPerGather(@Nullable Output<String> maxParallelWorkersPerGather) {
+        public Builder maxParallelWorkersPerGather(@Nullable Output<Integer> maxParallelWorkersPerGather) {
             $.maxParallelWorkersPerGather = maxParallelWorkersPerGather;
             return this;
         }
 
-        public Builder maxParallelWorkersPerGather(String maxParallelWorkersPerGather) {
+        public Builder maxParallelWorkersPerGather(Integer maxParallelWorkersPerGather) {
             return maxParallelWorkersPerGather(Output.of(maxParallelWorkersPerGather));
         }
 
-        public Builder maxPredLocksPerTransaction(@Nullable Output<String> maxPredLocksPerTransaction) {
+        public Builder maxPredLocksPerTransaction(@Nullable Output<Integer> maxPredLocksPerTransaction) {
             $.maxPredLocksPerTransaction = maxPredLocksPerTransaction;
             return this;
         }
 
-        public Builder maxPredLocksPerTransaction(String maxPredLocksPerTransaction) {
+        public Builder maxPredLocksPerTransaction(Integer maxPredLocksPerTransaction) {
             return maxPredLocksPerTransaction(Output.of(maxPredLocksPerTransaction));
         }
 
-        public Builder maxPreparedTransactions(@Nullable Output<String> maxPreparedTransactions) {
+        public Builder maxPreparedTransactions(@Nullable Output<Integer> maxPreparedTransactions) {
             $.maxPreparedTransactions = maxPreparedTransactions;
             return this;
         }
 
-        public Builder maxPreparedTransactions(String maxPreparedTransactions) {
+        public Builder maxPreparedTransactions(Integer maxPreparedTransactions) {
             return maxPreparedTransactions(Output.of(maxPreparedTransactions));
         }
 
-        public Builder maxReplicationSlots(@Nullable Output<String> maxReplicationSlots) {
+        public Builder maxReplicationSlots(@Nullable Output<Integer> maxReplicationSlots) {
             $.maxReplicationSlots = maxReplicationSlots;
             return this;
         }
 
-        public Builder maxReplicationSlots(String maxReplicationSlots) {
+        public Builder maxReplicationSlots(Integer maxReplicationSlots) {
             return maxReplicationSlots(Output.of(maxReplicationSlots));
         }
 
-        public Builder maxSlotWalKeepSize(@Nullable Output<String> maxSlotWalKeepSize) {
+        public Builder maxSlotWalKeepSize(@Nullable Output<Integer> maxSlotWalKeepSize) {
             $.maxSlotWalKeepSize = maxSlotWalKeepSize;
             return this;
         }
 
-        public Builder maxSlotWalKeepSize(String maxSlotWalKeepSize) {
+        public Builder maxSlotWalKeepSize(Integer maxSlotWalKeepSize) {
             return maxSlotWalKeepSize(Output.of(maxSlotWalKeepSize));
         }
 
-        public Builder maxStackDepth(@Nullable Output<String> maxStackDepth) {
+        public Builder maxStackDepth(@Nullable Output<Integer> maxStackDepth) {
             $.maxStackDepth = maxStackDepth;
             return this;
         }
 
-        public Builder maxStackDepth(String maxStackDepth) {
+        public Builder maxStackDepth(Integer maxStackDepth) {
             return maxStackDepth(Output.of(maxStackDepth));
         }
 
-        public Builder maxStandbyArchiveDelay(@Nullable Output<String> maxStandbyArchiveDelay) {
+        public Builder maxStandbyArchiveDelay(@Nullable Output<Integer> maxStandbyArchiveDelay) {
             $.maxStandbyArchiveDelay = maxStandbyArchiveDelay;
             return this;
         }
 
-        public Builder maxStandbyArchiveDelay(String maxStandbyArchiveDelay) {
+        public Builder maxStandbyArchiveDelay(Integer maxStandbyArchiveDelay) {
             return maxStandbyArchiveDelay(Output.of(maxStandbyArchiveDelay));
         }
 
-        public Builder maxStandbyStreamingDelay(@Nullable Output<String> maxStandbyStreamingDelay) {
+        public Builder maxStandbyStreamingDelay(@Nullable Output<Integer> maxStandbyStreamingDelay) {
             $.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
             return this;
         }
 
-        public Builder maxStandbyStreamingDelay(String maxStandbyStreamingDelay) {
+        public Builder maxStandbyStreamingDelay(Integer maxStandbyStreamingDelay) {
             return maxStandbyStreamingDelay(Output.of(maxStandbyStreamingDelay));
         }
 
-        public Builder maxWalSenders(@Nullable Output<String> maxWalSenders) {
+        public Builder maxWalSenders(@Nullable Output<Integer> maxWalSenders) {
             $.maxWalSenders = maxWalSenders;
             return this;
         }
 
-        public Builder maxWalSenders(String maxWalSenders) {
+        public Builder maxWalSenders(Integer maxWalSenders) {
             return maxWalSenders(Output.of(maxWalSenders));
         }
 
-        public Builder maxWorkerProcesses(@Nullable Output<String> maxWorkerProcesses) {
+        public Builder maxWorkerProcesses(@Nullable Output<Integer> maxWorkerProcesses) {
             $.maxWorkerProcesses = maxWorkerProcesses;
             return this;
         }
 
-        public Builder maxWorkerProcesses(String maxWorkerProcesses) {
+        public Builder maxWorkerProcesses(Integer maxWorkerProcesses) {
             return maxWorkerProcesses(Output.of(maxWorkerProcesses));
         }
 
-        public Builder pgPartmanBgwDotInterval(@Nullable Output<String> pgPartmanBgwDotInterval) {
+        public Builder pgPartmanBgwDotInterval(@Nullable Output<Integer> pgPartmanBgwDotInterval) {
             $.pgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             return this;
         }
 
-        public Builder pgPartmanBgwDotInterval(String pgPartmanBgwDotInterval) {
+        public Builder pgPartmanBgwDotInterval(Integer pgPartmanBgwDotInterval) {
             return pgPartmanBgwDotInterval(Output.of(pgPartmanBgwDotInterval));
         }
 
@@ -756,6 +775,24 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             return pgPartmanBgwDotRole(Output.of(pgPartmanBgwDotRole));
         }
 
+        public Builder pgStatMonitorDotPgsmEnableQueryPlan(@Nullable Output<Boolean> pgStatMonitorDotPgsmEnableQueryPlan) {
+            $.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
+            return this;
+        }
+
+        public Builder pgStatMonitorDotPgsmEnableQueryPlan(Boolean pgStatMonitorDotPgsmEnableQueryPlan) {
+            return pgStatMonitorDotPgsmEnableQueryPlan(Output.of(pgStatMonitorDotPgsmEnableQueryPlan));
+        }
+
+        public Builder pgStatMonitorDotPgsmMaxBuckets(@Nullable Output<Integer> pgStatMonitorDotPgsmMaxBuckets) {
+            $.pgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
+            return this;
+        }
+
+        public Builder pgStatMonitorDotPgsmMaxBuckets(Integer pgStatMonitorDotPgsmMaxBuckets) {
+            return pgStatMonitorDotPgsmMaxBuckets(Output.of(pgStatMonitorDotPgsmMaxBuckets));
+        }
+
         public Builder pgStatStatementsDotTrack(@Nullable Output<String> pgStatStatementsDotTrack) {
             $.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
             return this;
@@ -765,12 +802,12 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             return pgStatStatementsDotTrack(Output.of(pgStatStatementsDotTrack));
         }
 
-        public Builder tempFileLimit(@Nullable Output<String> tempFileLimit) {
+        public Builder tempFileLimit(@Nullable Output<Integer> tempFileLimit) {
             $.tempFileLimit = tempFileLimit;
             return this;
         }
 
-        public Builder tempFileLimit(String tempFileLimit) {
+        public Builder tempFileLimit(Integer tempFileLimit) {
             return tempFileLimit(Output.of(tempFileLimit));
         }
 
@@ -783,12 +820,12 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             return timezone(Output.of(timezone));
         }
 
-        public Builder trackActivityQuerySize(@Nullable Output<String> trackActivityQuerySize) {
+        public Builder trackActivityQuerySize(@Nullable Output<Integer> trackActivityQuerySize) {
             $.trackActivityQuerySize = trackActivityQuerySize;
             return this;
         }
 
-        public Builder trackActivityQuerySize(String trackActivityQuerySize) {
+        public Builder trackActivityQuerySize(Integer trackActivityQuerySize) {
             return trackActivityQuerySize(Output.of(trackActivityQuerySize));
         }
 
@@ -819,21 +856,21 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
             return trackIoTiming(Output.of(trackIoTiming));
         }
 
-        public Builder walSenderTimeout(@Nullable Output<String> walSenderTimeout) {
+        public Builder walSenderTimeout(@Nullable Output<Integer> walSenderTimeout) {
             $.walSenderTimeout = walSenderTimeout;
             return this;
         }
 
-        public Builder walSenderTimeout(String walSenderTimeout) {
+        public Builder walSenderTimeout(Integer walSenderTimeout) {
             return walSenderTimeout(Output.of(walSenderTimeout));
         }
 
-        public Builder walWriterDelay(@Nullable Output<String> walWriterDelay) {
+        public Builder walWriterDelay(@Nullable Output<Integer> walWriterDelay) {
             $.walWriterDelay = walWriterDelay;
             return this;
         }
 
-        public Builder walWriterDelay(String walWriterDelay) {
+        public Builder walWriterDelay(Integer walWriterDelay) {
             return walWriterDelay(Output.of(walWriterDelay));
         }
 

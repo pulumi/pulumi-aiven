@@ -11,6 +11,8 @@ import com.pulumi.aiven.inputs.MySqlMysqlUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -44,23 +46,23 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="backupHour")
-    private @Nullable Output<String> backupHour;
+    private @Nullable Output<Integer> backupHour;
 
-    public Optional<Output<String>> backupHour() {
+    public Optional<Output<Integer>> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
 
     @Import(name="backupMinute")
-    private @Nullable Output<String> backupMinute;
+    private @Nullable Output<Integer> backupMinute;
 
-    public Optional<Output<String>> backupMinute() {
+    public Optional<Output<Integer>> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
 
     @Import(name="binlogRetentionPeriod")
-    private @Nullable Output<String> binlogRetentionPeriod;
+    private @Nullable Output<Integer> binlogRetentionPeriod;
 
-    public Optional<Output<String>> binlogRetentionPeriod() {
+    public Optional<Output<Integer>> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
 
@@ -71,9 +73,21 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -142,9 +156,9 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -216,30 +230,30 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
             return adminUsername(Output.of(adminUsername));
         }
 
-        public Builder backupHour(@Nullable Output<String> backupHour) {
+        public Builder backupHour(@Nullable Output<Integer> backupHour) {
             $.backupHour = backupHour;
             return this;
         }
 
-        public Builder backupHour(String backupHour) {
+        public Builder backupHour(Integer backupHour) {
             return backupHour(Output.of(backupHour));
         }
 
-        public Builder backupMinute(@Nullable Output<String> backupMinute) {
+        public Builder backupMinute(@Nullable Output<Integer> backupMinute) {
             $.backupMinute = backupMinute;
             return this;
         }
 
-        public Builder backupMinute(String backupMinute) {
+        public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
         }
 
-        public Builder binlogRetentionPeriod(@Nullable Output<String> binlogRetentionPeriod) {
+        public Builder binlogRetentionPeriod(@Nullable Output<Integer> binlogRetentionPeriod) {
             $.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
 
-        public Builder binlogRetentionPeriod(String binlogRetentionPeriod) {
+        public Builder binlogRetentionPeriod(Integer binlogRetentionPeriod) {
             return binlogRetentionPeriod(Output.of(binlogRetentionPeriod));
         }
 
@@ -256,15 +270,39 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
+         */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -350,12 +388,12 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 

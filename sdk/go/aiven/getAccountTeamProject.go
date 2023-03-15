@@ -40,7 +40,7 @@ type LookupAccountTeamProjectResult struct {
 	ProjectName string `pulumi:"projectName"`
 	// An account team id
 	TeamId string `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType string `pulumi:"teamType"`
 }
 
@@ -106,7 +106,7 @@ func (o LookupAccountTeamProjectResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+// The Account team project type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
 func (o LookupAccountTeamProjectResultOutput) TeamType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.TeamType }).(pulumi.StringOutput)
 }

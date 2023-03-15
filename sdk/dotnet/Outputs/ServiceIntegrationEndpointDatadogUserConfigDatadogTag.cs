@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointDatadogUserConfigDatadogTag
     {
         public readonly string? Comment;
-        public readonly string? Tag;
+        public readonly string Tag;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointDatadogUserConfigDatadogTag(
             string? comment,
 
-            string? tag)
+            string tag)
         {
             Comment = comment;
             Tag = tag;

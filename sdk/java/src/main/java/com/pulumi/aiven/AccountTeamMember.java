@@ -47,14 +47,14 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
         return this.accepted;
     }
     /**
-     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> accountId() {
@@ -89,14 +89,14 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
         return this.invitedByUserEmail;
     }
     /**
-     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="teamId", type=String.class, parameters={})
     private Output<String> teamId;
 
     /**
-     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * @return An account team id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> teamId() {

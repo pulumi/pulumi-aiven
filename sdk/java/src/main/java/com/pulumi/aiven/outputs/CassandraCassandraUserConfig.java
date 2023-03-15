@@ -8,6 +8,7 @@ import com.pulumi.aiven.outputs.CassandraCassandraUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,37 +18,41 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CassandraCassandraUserConfig {
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return cassandra configuration values
+     * @return cassandra configuration values.
      * 
      */
     private @Nullable CassandraCassandraUserConfigCassandra cassandra;
     /**
-     * @return Cassandra major version
+     * @return Cassandra major version.
      * 
      */
     private @Nullable String cassandraVersion;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     private @Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      * 
      */
-    private @Nullable String migrateSstableloader;
+    private @Nullable Boolean migrateSstableloader;
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     private @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
@@ -57,7 +62,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
@@ -72,44 +77,48 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable String serviceToJoinWith;
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private CassandraCassandraUserConfig() {}
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return cassandra configuration values
+     * @return cassandra configuration values.
      * 
      */
     public Optional<CassandraCassandraUserConfigCassandra> cassandra() {
         return Optional.ofNullable(this.cassandra);
     }
     /**
-     * @return Cassandra major version
+     * @return Cassandra major version.
      * 
      */
     public Optional<String> cassandraVersion() {
         return Optional.ofNullable(this.cassandraVersion);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -117,11 +126,11 @@ public final class CassandraCassandraUserConfig {
      * @return Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
      * 
      */
-    public Optional<String> migrateSstableloader() {
+    public Optional<Boolean> migrateSstableloader() {
         return Optional.ofNullable(this.migrateSstableloader);
     }
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<CassandraCassandraUserConfigPrivateAccess> privateAccess() {
@@ -135,7 +144,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<CassandraCassandraUserConfigPublicAccess> publicAccess() {
@@ -156,10 +165,10 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.serviceToJoinWith);
     }
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -177,13 +186,13 @@ public final class CassandraCassandraUserConfig {
         private @Nullable String cassandraVersion;
         private @Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
-        private @Nullable String migrateSstableloader;
+        private @Nullable Boolean migrateSstableloader;
         private @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
         private @Nullable String serviceToJoinWith;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(CassandraCassandraUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -233,7 +242,7 @@ public final class CassandraCassandraUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
-        public Builder migrateSstableloader(@Nullable String migrateSstableloader) {
+        public Builder migrateSstableloader(@Nullable Boolean migrateSstableloader) {
             this.migrateSstableloader = migrateSstableloader;
             return this;
         }
@@ -263,7 +272,7 @@ public final class CassandraCassandraUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

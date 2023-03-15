@@ -20,13 +20,13 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
         /// </summary>
-        public readonly string? RetentionDays;
+        public readonly int? RetentionDays;
         /// <summary>
         /// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
         /// </summary>
         public readonly string? RoUsername;
         /// <summary>
-        /// Configuration options for metrics where source service is MySQL
+        /// Configuration options for metrics where source service is MySQL.
         /// </summary>
         public readonly Outputs.ServiceIntegrationMetricsUserConfigSourceMysql? SourceMysql;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         private ServiceIntegrationMetricsUserConfig(
             string? database,
 
-            string? retentionDays,
+            int? retentionDays,
 
             string? roUsername,
 

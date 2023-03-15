@@ -16,10 +16,10 @@ namespace Pulumi.Aiven.Inputs
         /// Flink server provided values
         /// </summary>
         [Input("flink")]
-        public Input<string>? Flink { get; set; }
+        public Input<bool>? Flink { get; set; }
 
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         public FlinkFlinkUserConfigPrivatelinkAccessGetArgs()
         {

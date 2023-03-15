@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,12 @@ public final class GetInfluxDbInfluxdbUserConfig {
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
     private @Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable GetInfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
     private @Nullable GetInfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
@@ -36,7 +43,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private GetInfluxDbInfluxdbUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -55,6 +62,12 @@ public final class GetInfluxDbInfluxdbUserConfig {
     public List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -80,7 +93,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -104,7 +117,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
         private @Nullable GetInfluxDbInfluxdbUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -184,7 +197,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

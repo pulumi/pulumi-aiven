@@ -56,7 +56,7 @@ class GetAccountTeamMemberResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        The unique account id This property cannot be changed, doing so forces recreation of the resource.
+        The unique account id. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -88,7 +88,7 @@ class GetAccountTeamMemberResult:
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
         """
-        An account team id This property cannot be changed, doing so forces recreation of the resource.
+        An account team id. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "team_id")
 
@@ -124,8 +124,8 @@ def get_account_team_member(account_id: Optional[str] = None,
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
 
-    :param str account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
-    :param str team_id: An account team id This property cannot be changed, doing so forces recreation of the resource.
+    :param str account_id: The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+    :param str team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
     :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
@@ -154,8 +154,8 @@ def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = Non
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
 
-    :param str account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
-    :param str team_id: An account team id This property cannot be changed, doing so forces recreation of the resource.
+    :param str account_id: The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+    :param str team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
     :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

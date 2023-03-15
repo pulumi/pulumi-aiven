@@ -65,7 +65,7 @@ export interface GetConnectionPoolResult {
      */
     readonly id: string;
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      */
     readonly poolMode: string;
     /**

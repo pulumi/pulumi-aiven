@@ -14,13 +14,13 @@ namespace Pulumi.Aiven.Outputs
     public sealed class M3AggregatorM3aggregatorUserConfigIpFilterObject
     {
         public readonly string? Description;
-        public readonly string? Network;
+        public readonly string Network;
 
         [OutputConstructor]
         private M3AggregatorM3aggregatorUserConfigIpFilterObject(
             string? description,
 
-            string? network)
+            string network)
         {
             Description = description;
             Network = network;

@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,9 +55,9 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 	Project string `pulumi:"project"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster string `pulumi:"sourceCluster"`
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster string `pulumi:"targetCluster"`
 }
 
@@ -77,13 +77,13 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	ReplicationPolicyClass string `pulumi:"replicationPolicyClass"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster string `pulumi:"sourceCluster"`
 	// Sync consumer group offsets. The default value is `false`.
 	SyncGroupOffsetsEnabled bool `pulumi:"syncGroupOffsetsEnabled"`
 	// Frequency of consumer group offset sync. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds int `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster string `pulumi:"targetCluster"`
 	// List of topics and/or regular expressions to replicate
 	Topics []string `pulumi:"topics"`
@@ -110,9 +110,9 @@ type LookupMirrorMakerReplicationFlowOutputArgs struct {
 	Project pulumi.StringInput `pulumi:"project"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Source cluster alias. Maximum Length: `128`.
+	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringInput `pulumi:"sourceCluster"`
-	// Target cluster alias. Maximum Length: `128`.
+	// Target cluster alias. Maximum length: `128`.
 	TargetCluster pulumi.StringInput `pulumi:"targetCluster"`
 }
 
@@ -170,7 +170,7 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ServiceName() pulumi.Strin
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Source cluster alias. Maximum Length: `128`.
+// Source cluster alias. Maximum length: `128`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) SourceCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.SourceCluster }).(pulumi.StringOutput)
 }
@@ -185,7 +185,7 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) SyncGroupOffsetsIntervalSe
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) int { return v.SyncGroupOffsetsIntervalSeconds }).(pulumi.IntOutput)
 }
 
-// Target cluster alias. Maximum Length: `128`.
+// Target cluster alias. Maximum length: `128`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) TargetCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.TargetCluster }).(pulumi.StringOutput)
 }

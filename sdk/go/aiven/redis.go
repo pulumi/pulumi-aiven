@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,7 +37,7 @@ import (
 //				RedisUserConfig: &aiven.RedisRedisUserConfigArgs{
 //					RedisMaxmemoryPolicy: pulumi.String("allkeys-random"),
 //					PublicAccess: &aiven.RedisRedisUserConfigPublicAccessArgs{
-//						Redis: pulumi.String("true"),
+//						Redis: pulumi.Bool(true),
 //					},
 //				},
 //			})

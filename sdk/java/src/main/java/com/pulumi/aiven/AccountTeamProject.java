@@ -73,14 +73,14 @@ public class AccountTeamProject extends com.pulumi.resources.CustomResource {
         return this.teamId;
     }
     /**
-     * The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
     @Export(name="teamType", type=String.class, parameters={})
     private Output</* @Nullable */ String> teamType;
 
     /**
-     * @return The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * @return The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
     public Output<Optional<String>> teamType() {

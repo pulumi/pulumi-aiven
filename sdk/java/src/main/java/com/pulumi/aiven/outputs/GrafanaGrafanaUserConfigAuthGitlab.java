@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,16 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthGitlab {
-    private @Nullable String allowSignUp;
+    private @Nullable Boolean allowSignUp;
     private @Nullable List<String> allowedGroups;
     private @Nullable String apiUrl;
     private @Nullable String authUrl;
-    private @Nullable String clientId;
-    private @Nullable String clientSecret;
+    private String clientId;
+    private String clientSecret;
     private @Nullable String tokenUrl;
 
     private GrafanaGrafanaUserConfigAuthGitlab() {}
-    public Optional<String> allowSignUp() {
+    public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
     public List<String> allowedGroups() {
@@ -33,11 +34,11 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
     public Optional<String> authUrl() {
         return Optional.ofNullable(this.authUrl);
     }
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public String clientId() {
+        return this.clientId;
     }
-    public Optional<String> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
+    public String clientSecret() {
+        return this.clientSecret;
     }
     public Optional<String> tokenUrl() {
         return Optional.ofNullable(this.tokenUrl);
@@ -52,12 +53,12 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String allowSignUp;
+        private @Nullable Boolean allowSignUp;
         private @Nullable List<String> allowedGroups;
         private @Nullable String apiUrl;
         private @Nullable String authUrl;
-        private @Nullable String clientId;
-        private @Nullable String clientSecret;
+        private String clientId;
+        private String clientSecret;
         private @Nullable String tokenUrl;
         public Builder() {}
         public Builder(GrafanaGrafanaUserConfigAuthGitlab defaults) {
@@ -72,7 +73,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
         }
 
         @CustomType.Setter
-        public Builder allowSignUp(@Nullable String allowSignUp) {
+        public Builder allowSignUp(@Nullable Boolean allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
@@ -95,13 +96,13 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
             return this;
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
-            this.clientId = clientId;
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
-        public Builder clientSecret(@Nullable String clientSecret) {
-            this.clientSecret = clientSecret;
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
         @CustomType.Setter

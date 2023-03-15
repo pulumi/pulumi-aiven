@@ -14,17 +14,17 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationLogsUserConfig
     {
         /// <summary>
-        /// Elasticsearch index retention limit
+        /// Elasticsearch index retention limit. The default value is `3`.
         /// </summary>
-        public readonly string? ElasticsearchIndexDaysMax;
+        public readonly int? ElasticsearchIndexDaysMax;
         /// <summary>
-        /// Elasticsearch index prefix
+        /// Elasticsearch index prefix. The default value is `logs`.
         /// </summary>
         public readonly string? ElasticsearchIndexPrefix;
 
         [OutputConstructor]
         private ServiceIntegrationLogsUserConfig(
-            string? elasticsearchIndexDaysMax,
+            int? elasticsearchIndexDaysMax,
 
             string? elasticsearchIndexPrefix)
         {

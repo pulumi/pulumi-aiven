@@ -12,6 +12,8 @@ import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,23 +26,29 @@ public final class GetOpenSearchOpensearchUserConfig {
     private @Nullable String customDomain;
     /**
      * @deprecated
-     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
-    private @Nullable String disableReplicationFactorAdjustment;
+    @Deprecated /* Usage of this field is discouraged. */
+    private @Nullable Boolean disableReplicationFactorAdjustment;
     private @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
     private @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
     private @Nullable List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
-    private @Nullable List<String> ipFilters;
-    private @Nullable String keepIndexRefreshInterval;
     /**
      * @deprecated
-     * DEPRECATED: use index_patterns instead
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
-    @Deprecated /* DEPRECATED: use index_patterns instead */
-    private @Nullable String maxIndexCount;
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    private @Nullable List<String> ipFilters;
+    private @Nullable Boolean keepIndexRefreshInterval;
+    /**
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
+    private @Nullable Integer maxIndexCount;
     /**
      * @return Opensearch server provided values
      * 
@@ -58,7 +66,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private GetOpenSearchOpensearchUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -69,11 +77,11 @@ public final class GetOpenSearchOpensearchUserConfig {
     }
     /**
      * @deprecated
-     * DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated. */
-    public Optional<String> disableReplicationFactorAdjustment() {
+    @Deprecated /* Usage of this field is discouraged. */
+    public Optional<Boolean> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
     public List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns() {
@@ -85,19 +93,25 @@ public final class GetOpenSearchOpensearchUserConfig {
     public List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    public Optional<String> keepIndexRefreshInterval() {
+    public Optional<Boolean> keepIndexRefreshInterval() {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
     /**
      * @deprecated
-     * DEPRECATED: use index_patterns instead
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* DEPRECATED: use index_patterns instead */
-    public Optional<String> maxIndexCount() {
+    @Deprecated /* Usage of this field is discouraged. */
+    public Optional<Integer> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
     /**
@@ -135,7 +149,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -150,13 +164,13 @@ public final class GetOpenSearchOpensearchUserConfig {
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
-        private @Nullable String disableReplicationFactorAdjustment;
+        private @Nullable Boolean disableReplicationFactorAdjustment;
         private @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
         private @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
         private @Nullable List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
-        private @Nullable String keepIndexRefreshInterval;
-        private @Nullable String maxIndexCount;
+        private @Nullable Boolean keepIndexRefreshInterval;
+        private @Nullable Integer maxIndexCount;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
         private @Nullable String opensearchVersion;
@@ -166,7 +180,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         private @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -202,7 +216,7 @@ public final class GetOpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder disableReplicationFactorAdjustment(@Nullable String disableReplicationFactorAdjustment) {
+        public Builder disableReplicationFactorAdjustment(@Nullable Boolean disableReplicationFactorAdjustment) {
             this.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             return this;
         }
@@ -236,12 +250,12 @@ public final class GetOpenSearchOpensearchUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
-        public Builder keepIndexRefreshInterval(@Nullable String keepIndexRefreshInterval) {
+        public Builder keepIndexRefreshInterval(@Nullable Boolean keepIndexRefreshInterval) {
             this.keepIndexRefreshInterval = keepIndexRefreshInterval;
             return this;
         }
         @CustomType.Setter
-        public Builder maxIndexCount(@Nullable String maxIndexCount) {
+        public Builder maxIndexCount(@Nullable Integer maxIndexCount) {
             this.maxIndexCount = maxIndexCount;
             return this;
         }
@@ -291,7 +305,7 @@ public final class GetOpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

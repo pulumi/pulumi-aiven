@@ -14,6 +14,9 @@ import com.pulumi.aiven.inputs.PgPgUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigTimescaledbArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -26,14 +29,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     public static final PgPgUserConfigArgs Empty = new PgPgUserConfigArgs();
 
     /**
-     * Additional Cloud Regions for Backup Replication
+     * Additional Cloud Regions for Backup Replication.
      * 
      */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
-     * @return Additional Cloud Regions for Backup Replication
+     * @return Additional Cloud Regions for Backup Replication.
      * 
      */
     public Optional<Output<String>> additionalBackupRegions() {
@@ -75,13 +78,13 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="backupHour")
-    private @Nullable Output<String> backupHour;
+    private @Nullable Output<Integer> backupHour;
 
     /**
      * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
      * 
      */
-    public Optional<Output<String>> backupHour() {
+    public Optional<Output<Integer>> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
 
@@ -90,40 +93,40 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="backupMinute")
-    private @Nullable Output<String> backupMinute;
+    private @Nullable Output<Integer> backupMinute;
 
     /**
      * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      * 
      */
-    public Optional<Output<String>> backupMinute() {
+    public Optional<Output<Integer>> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
 
     /**
-     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      * 
      */
     @Import(name="enableIpv6")
-    private @Nullable Output<String> enableIpv6;
+    private @Nullable Output<Boolean> enableIpv6;
 
     /**
-     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      * 
      */
-    public Optional<Output<String>> enableIpv6() {
+    public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<PgPgUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      */
     public Optional<Output<List<PgPgUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -131,29 +134,37 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     /**
-     * Migrate data from existing server
+     * Migrate data from existing server.
      * 
      */
     @Import(name="migration")
     private @Nullable Output<PgPgUserConfigMigrationArgs> migration;
 
     /**
-     * @return Migrate data from existing server
+     * @return Migrate data from existing server.
      * 
      */
     public Optional<Output<PgPgUserConfigMigrationArgs>> migration() {
@@ -161,14 +172,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * postgresql.conf configuration values
+     * postgresql.conf configuration values.
      * 
      */
     @Import(name="pg")
     private @Nullable Output<PgPgUserConfigPgArgs> pg;
 
     /**
-     * @return postgresql.conf configuration values
+     * @return postgresql.conf configuration values.
      * 
      */
     public Optional<Output<PgPgUserConfigPgArgs>> pg() {
@@ -176,63 +187,75 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Use read_replica service integration instead.
+     * 
      * @deprecated
-     * This setting is deprecated. Use read_replica service integration instead.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
+    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="pgReadReplica")
-    private @Nullable Output<String> pgReadReplica;
+    private @Nullable Output<Boolean> pgReadReplica;
 
     /**
+     * @return Use read_replica service integration instead.
+     * 
      * @deprecated
-     * This setting is deprecated. Use read_replica service integration instead.
+     * Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
-    public Optional<Output<String>> pgReadReplica() {
+    @Deprecated /* Usage of this field is discouraged. */
+    public Optional<Output<Boolean>> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
 
     /**
      * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
      * 
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
      */
+    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="pgServiceToForkFrom")
     private @Nullable Output<String> pgServiceToForkFrom;
 
     /**
      * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
      * 
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
      */
+    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<String>> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
 
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
      * 
      */
     @Import(name="pgStatMonitorEnable")
-    private @Nullable Output<String> pgStatMonitorEnable;
+    private @Nullable Output<Boolean> pgStatMonitorEnable;
 
     /**
-     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
      * 
      */
-    public Optional<Output<String>> pgStatMonitorEnable() {
+    public Optional<Output<Boolean>> pgStatMonitorEnable() {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
 
     /**
-     * PostgreSQL major version
+     * PostgreSQL major version.
      * 
      */
     @Import(name="pgVersion")
     private @Nullable Output<String> pgVersion;
 
     /**
-     * @return PostgreSQL major version
+     * @return PostgreSQL major version.
      * 
      */
     public Optional<Output<String>> pgVersion() {
@@ -240,14 +263,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * PGBouncer connection pooling settings
+     * PGBouncer connection pooling settings.
      * 
      */
     @Import(name="pgbouncer")
     private @Nullable Output<PgPgUserConfigPgbouncerArgs> pgbouncer;
 
     /**
-     * @return PGBouncer connection pooling settings
+     * @return PGBouncer connection pooling settings.
      * 
      */
     public Optional<Output<PgPgUserConfigPgbouncerArgs>> pgbouncer() {
@@ -255,14 +278,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * PGLookout settings
+     * PGLookout settings.
      * 
      */
     @Import(name="pglookout")
     private @Nullable Output<PgPgUserConfigPglookoutArgs> pglookout;
 
     /**
-     * @return PGLookout settings
+     * @return PGLookout settings.
      * 
      */
     public Optional<Output<PgPgUserConfigPglookoutArgs>> pglookout() {
@@ -270,14 +293,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow access to selected service ports from private networks
+     * Allow access to selected service ports from private networks.
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<PgPgUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks
+     * @return Allow access to selected service ports from private networks.
      * 
      */
     public Optional<Output<PgPgUserConfigPrivateAccessArgs>> privateAccess() {
@@ -285,14 +308,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow access to selected service components through Privatelink
+     * Allow access to selected service components through Privatelink.
      * 
      */
     @Import(name="privatelinkAccess")
     private @Nullable Output<PgPgUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
     /**
-     * @return Allow access to selected service components through Privatelink
+     * @return Allow access to selected service components through Privatelink.
      * 
      */
     public Optional<Output<PgPgUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
@@ -315,14 +338,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow access to selected service ports from the public Internet
+     * Allow access to selected service ports from the public Internet.
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<PgPgUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet
+     * @return Allow access to selected service ports from the public Internet.
      * 
      */
     public Optional<Output<PgPgUserConfigPublicAccessArgs>> publicAccess() {
@@ -364,28 +387,28 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="sharedBuffersPercentage")
-    private @Nullable Output<String> sharedBuffersPercentage;
+    private @Nullable Output<Double> sharedBuffersPercentage;
 
     /**
      * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
      * 
      */
-    public Optional<Output<String>> sharedBuffersPercentage() {
+    public Optional<Output<Double>> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
 
     /**
-     * Use static public IP addresses
+     * Use static public IP addresses.
      * 
      */
     @Import(name="staticIps")
-    private @Nullable Output<String> staticIps;
+    private @Nullable Output<Boolean> staticIps;
 
     /**
-     * @return Use static public IP addresses
+     * @return Use static public IP addresses.
      * 
      */
-    public Optional<Output<String>> staticIps() {
+    public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -405,14 +428,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * TimescaleDB extension configuration values
+     * TimescaleDB extension configuration values.
      * 
      */
     @Import(name="timescaledb")
     private @Nullable Output<PgPgUserConfigTimescaledbArgs> timescaledb;
 
     /**
-     * @return TimescaleDB extension configuration values
+     * @return TimescaleDB extension configuration values.
      * 
      */
     public Optional<Output<PgPgUserConfigTimescaledbArgs>> timescaledb() {
@@ -420,14 +443,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default
+     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     @Import(name="variant")
     private @Nullable Output<String> variant;
 
     /**
-     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default
+     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     public Optional<Output<String>> variant() {
@@ -439,13 +462,13 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="workMem")
-    private @Nullable Output<String> workMem;
+    private @Nullable Output<Integer> workMem;
 
     /**
      * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      * 
      */
-    public Optional<Output<String>> workMem() {
+    public Optional<Output<Integer>> workMem() {
         return Optional.ofNullable(this.workMem);
     }
 
@@ -501,7 +524,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
          * 
          * @return builder
          * 
@@ -512,7 +535,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
          * 
          * @return builder
          * 
@@ -569,7 +592,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder backupHour(@Nullable Output<String> backupHour) {
+        public Builder backupHour(@Nullable Output<Integer> backupHour) {
             $.backupHour = backupHour;
             return this;
         }
@@ -580,7 +603,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder backupHour(String backupHour) {
+        public Builder backupHour(Integer backupHour) {
             return backupHour(Output.of(backupHour));
         }
 
@@ -590,7 +613,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder backupMinute(@Nullable Output<String> backupMinute) {
+        public Builder backupMinute(@Nullable Output<Integer> backupMinute) {
             $.backupMinute = backupMinute;
             return this;
         }
@@ -601,33 +624,33 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder backupMinute(String backupMinute) {
+        public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
         }
 
         /**
-         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
          * 
          * @return builder
          * 
          */
-        public Builder enableIpv6(@Nullable Output<String> enableIpv6) {
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
             $.enableIpv6 = enableIpv6;
             return this;
         }
 
         /**
-         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
          * 
          * @return builder
          * 
          */
-        public Builder enableIpv6(String enableIpv6) {
+        public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -638,7 +661,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -648,7 +671,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
@@ -658,38 +681,50 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
         /**
-         * @param migration Migrate data from existing server
+         * @param migration Migrate data from existing server.
          * 
          * @return builder
          * 
@@ -700,7 +735,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param migration Migrate data from existing server
+         * @param migration Migrate data from existing server.
          * 
          * @return builder
          * 
@@ -710,7 +745,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pg postgresql.conf configuration values
+         * @param pg postgresql.conf configuration values.
          * 
          * @return builder
          * 
@@ -721,7 +756,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pg postgresql.conf configuration values
+         * @param pg postgresql.conf configuration values.
          * 
          * @return builder
          * 
@@ -731,27 +766,31 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param pgReadReplica Use read_replica service integration instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * This setting is deprecated. Use read_replica service integration instead.
+         * Usage of this field is discouraged.
          * 
          */
-        @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
-        public Builder pgReadReplica(@Nullable Output<String> pgReadReplica) {
+        @Deprecated /* Usage of this field is discouraged. */
+        public Builder pgReadReplica(@Nullable Output<Boolean> pgReadReplica) {
             $.pgReadReplica = pgReadReplica;
             return this;
         }
 
         /**
+         * @param pgReadReplica Use read_replica service integration instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * This setting is deprecated. Use read_replica service integration instead.
+         * Usage of this field is discouraged.
          * 
          */
-        @Deprecated /* This setting is deprecated. Use read_replica service integration instead. */
-        public Builder pgReadReplica(String pgReadReplica) {
+        @Deprecated /* Usage of this field is discouraged. */
+        public Builder pgReadReplica(Boolean pgReadReplica) {
             return pgReadReplica(Output.of(pgReadReplica));
         }
 
@@ -760,7 +799,11 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * Usage of this field is discouraged.
+         * 
          */
+        @Deprecated /* Usage of this field is discouraged. */
         public Builder pgServiceToForkFrom(@Nullable Output<String> pgServiceToForkFrom) {
             $.pgServiceToForkFrom = pgServiceToForkFrom;
             return this;
@@ -771,34 +814,38 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * Usage of this field is discouraged.
+         * 
          */
+        @Deprecated /* Usage of this field is discouraged. */
         public Builder pgServiceToForkFrom(String pgServiceToForkFrom) {
             return pgServiceToForkFrom(Output.of(pgServiceToForkFrom));
         }
 
         /**
-         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder pgStatMonitorEnable(@Nullable Output<String> pgStatMonitorEnable) {
+        public Builder pgStatMonitorEnable(@Nullable Output<Boolean> pgStatMonitorEnable) {
             $.pgStatMonitorEnable = pgStatMonitorEnable;
             return this;
         }
 
         /**
-         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
          * 
          * @return builder
          * 
          */
-        public Builder pgStatMonitorEnable(String pgStatMonitorEnable) {
+        public Builder pgStatMonitorEnable(Boolean pgStatMonitorEnable) {
             return pgStatMonitorEnable(Output.of(pgStatMonitorEnable));
         }
 
         /**
-         * @param pgVersion PostgreSQL major version
+         * @param pgVersion PostgreSQL major version.
          * 
          * @return builder
          * 
@@ -809,7 +856,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgVersion PostgreSQL major version
+         * @param pgVersion PostgreSQL major version.
          * 
          * @return builder
          * 
@@ -819,7 +866,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings
+         * @param pgbouncer PGBouncer connection pooling settings.
          * 
          * @return builder
          * 
@@ -830,7 +877,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings
+         * @param pgbouncer PGBouncer connection pooling settings.
          * 
          * @return builder
          * 
@@ -840,7 +887,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pglookout PGLookout settings
+         * @param pglookout PGLookout settings.
          * 
          * @return builder
          * 
@@ -851,7 +898,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pglookout PGLookout settings
+         * @param pglookout PGLookout settings.
          * 
          * @return builder
          * 
@@ -861,7 +908,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks
+         * @param privateAccess Allow access to selected service ports from private networks.
          * 
          * @return builder
          * 
@@ -872,7 +919,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks
+         * @param privateAccess Allow access to selected service ports from private networks.
          * 
          * @return builder
          * 
@@ -882,7 +929,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
          * 
          * @return builder
          * 
@@ -893,7 +940,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
          * 
          * @return builder
          * 
@@ -924,7 +971,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
+         * @param publicAccess Allow access to selected service ports from the public Internet.
          * 
          * @return builder
          * 
@@ -935,7 +982,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet
+         * @param publicAccess Allow access to selected service ports from the public Internet.
          * 
          * @return builder
          * 
@@ -992,7 +1039,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder sharedBuffersPercentage(@Nullable Output<String> sharedBuffersPercentage) {
+        public Builder sharedBuffersPercentage(@Nullable Output<Double> sharedBuffersPercentage) {
             $.sharedBuffersPercentage = sharedBuffersPercentage;
             return this;
         }
@@ -1003,28 +1050,28 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder sharedBuffersPercentage(String sharedBuffersPercentage) {
+        public Builder sharedBuffersPercentage(Double sharedBuffersPercentage) {
             return sharedBuffersPercentage(Output.of(sharedBuffersPercentage));
         }
 
         /**
-         * @param staticIps Use static public IP addresses
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
          */
-        public Builder staticIps(@Nullable Output<String> staticIps) {
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
         /**
-         * @param staticIps Use static public IP addresses
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
          */
-        public Builder staticIps(String staticIps) {
+        public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }
 
@@ -1050,7 +1097,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timescaledb TimescaleDB extension configuration values
+         * @param timescaledb TimescaleDB extension configuration values.
          * 
          * @return builder
          * 
@@ -1061,7 +1108,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timescaledb TimescaleDB extension configuration values
+         * @param timescaledb TimescaleDB extension configuration values.
          * 
          * @return builder
          * 
@@ -1071,7 +1118,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param variant Variant of the PostgreSQL service, may affect the features that are exposed by default
+         * @param variant Variant of the PostgreSQL service, may affect the features that are exposed by default.
          * 
          * @return builder
          * 
@@ -1082,7 +1129,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param variant Variant of the PostgreSQL service, may affect the features that are exposed by default
+         * @param variant Variant of the PostgreSQL service, may affect the features that are exposed by default.
          * 
          * @return builder
          * 
@@ -1097,7 +1144,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder workMem(@Nullable Output<String> workMem) {
+        public Builder workMem(@Nullable Output<Integer> workMem) {
             $.workMem = workMem;
             return this;
         }
@@ -1108,7 +1155,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder workMem(String workMem) {
+        public Builder workMem(Integer workMem) {
             return workMem(Output.of(workMem));
         }
 

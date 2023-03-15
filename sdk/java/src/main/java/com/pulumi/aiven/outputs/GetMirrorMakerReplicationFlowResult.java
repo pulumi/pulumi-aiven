@@ -48,7 +48,7 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private String serviceName;
     /**
-     * @return Source cluster alias. Maximum Length: `128`.
+     * @return Source cluster alias. Maximum length: `128`.
      * 
      */
     private String sourceCluster;
@@ -63,7 +63,7 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private Integer syncGroupOffsetsIntervalSeconds;
     /**
-     * @return Target cluster alias. Maximum Length: `128`.
+     * @return Target cluster alias. Maximum length: `128`.
      * 
      */
     private String targetCluster;
@@ -129,7 +129,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         return this.serviceName;
     }
     /**
-     * @return Source cluster alias. Maximum Length: `128`.
+     * @return Source cluster alias. Maximum length: `128`.
      * 
      */
     public String sourceCluster() {
@@ -150,7 +150,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         return this.syncGroupOffsetsIntervalSeconds;
     }
     /**
-     * @return Target cluster alias. Maximum Length: `128`.
+     * @return Target cluster alias. Maximum length: `128`.
      * 
      */
     public String targetCluster() {

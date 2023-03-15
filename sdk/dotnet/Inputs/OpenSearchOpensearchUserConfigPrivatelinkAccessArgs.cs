@@ -16,13 +16,13 @@ namespace Pulumi.Aiven.Inputs
         /// Opensearch server provided values
         /// </summary>
         [Input("opensearch")]
-        public Input<string>? Opensearch { get; set; }
+        public Input<bool>? Opensearch { get; set; }
 
         [Input("opensearchDashboards")]
-        public Input<string>? OpensearchDashboards { get; set; }
+        public Input<bool>? OpensearchDashboards { get; set; }
 
         [Input("prometheus")]
-        public Input<string>? Prometheus { get; set; }
+        public Input<bool>? Prometheus { get; set; }
 
         public OpenSearchOpensearchUserConfigPrivatelinkAccessArgs()
         {

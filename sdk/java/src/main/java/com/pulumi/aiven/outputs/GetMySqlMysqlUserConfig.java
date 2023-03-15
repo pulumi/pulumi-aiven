@@ -10,6 +10,8 @@ import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,10 +23,16 @@ public final class GetMySqlMysqlUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable String adminPassword;
     private @Nullable String adminUsername;
-    private @Nullable String backupHour;
-    private @Nullable String backupMinute;
-    private @Nullable String binlogRetentionPeriod;
+    private @Nullable Integer backupHour;
+    private @Nullable Integer backupMinute;
+    private @Nullable Integer binlogRetentionPeriod;
     private @Nullable List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable GetMySqlMysqlUserConfigMigration migration;
     /**
@@ -43,7 +51,7 @@ public final class GetMySqlMysqlUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private @Nullable String staticIps;
+    private @Nullable Boolean staticIps;
 
     private GetMySqlMysqlUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -55,18 +63,24 @@ public final class GetMySqlMysqlUserConfig {
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
-    public Optional<String> backupHour() {
+    public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
-    public Optional<String> backupMinute() {
+    public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
-    public Optional<String> binlogRetentionPeriod() {
+    public Optional<Integer> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
     public List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * 
+     */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -105,7 +119,7 @@ public final class GetMySqlMysqlUserConfig {
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    public Optional<String> staticIps() {
+    public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
@@ -121,9 +135,9 @@ public final class GetMySqlMysqlUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
-        private @Nullable String backupHour;
-        private @Nullable String backupMinute;
-        private @Nullable String binlogRetentionPeriod;
+        private @Nullable Integer backupHour;
+        private @Nullable Integer backupMinute;
+        private @Nullable Integer binlogRetentionPeriod;
         private @Nullable List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilters;
         private @Nullable GetMySqlMysqlUserConfigMigration migration;
@@ -135,7 +149,7 @@ public final class GetMySqlMysqlUserConfig {
         private @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryTargetTime;
         private @Nullable String serviceToForkFrom;
-        private @Nullable String staticIps;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetMySqlMysqlUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -175,17 +189,17 @@ public final class GetMySqlMysqlUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder backupHour(@Nullable String backupHour) {
+        public Builder backupHour(@Nullable Integer backupHour) {
             this.backupHour = backupHour;
             return this;
         }
         @CustomType.Setter
-        public Builder backupMinute(@Nullable String backupMinute) {
+        public Builder backupMinute(@Nullable Integer backupMinute) {
             this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
-        public Builder binlogRetentionPeriod(@Nullable String binlogRetentionPeriod) {
+        public Builder binlogRetentionPeriod(@Nullable Integer binlogRetentionPeriod) {
             this.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
@@ -251,7 +265,7 @@ public final class GetMySqlMysqlUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder staticIps(@Nullable String staticIps) {
+        public Builder staticIps(@Nullable Boolean staticIps) {
             this.staticIps = staticIps;
             return this;
         }

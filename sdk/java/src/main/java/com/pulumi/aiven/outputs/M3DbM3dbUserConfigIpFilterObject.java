@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class M3DbM3dbUserConfigIpFilterObject {
     private @Nullable String description;
-    private @Nullable String network;
+    private String network;
 
     private M3DbM3dbUserConfigIpFilterObject() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    public Optional<String> network() {
-        return Optional.ofNullable(this.network);
+    public String network() {
+        return this.network;
     }
 
     public static Builder builder() {
@@ -32,7 +32,7 @@ public final class M3DbM3dbUserConfigIpFilterObject {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
-        private @Nullable String network;
+        private String network;
         public Builder() {}
         public Builder(M3DbM3dbUserConfigIpFilterObject defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,8 +46,8 @@ public final class M3DbM3dbUserConfigIpFilterObject {
             return this;
         }
         @CustomType.Setter
-        public Builder network(@Nullable String network) {
-            this.network = network;
+        public Builder network(String network) {
+            this.network = Objects.requireNonNull(network);
             return this;
         }
         public M3DbM3dbUserConfigIpFilterObject build() {

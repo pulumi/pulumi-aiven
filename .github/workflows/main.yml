@@ -3,6 +3,7 @@
 env:
   AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
   AIVEN_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
+  VERSION_PREFIX: 6.0.0
   DOTNETVERSION: |
     6.0.x
     3.1.301

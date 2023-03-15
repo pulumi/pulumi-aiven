@@ -16,10 +16,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// InfluxDB server provided values
         /// </summary>
-        public readonly string? Influxdb;
+        public readonly bool? Influxdb;
 
         [OutputConstructor]
-        private InfluxDbInfluxdbUserConfigPublicAccess(string? influxdb)
+        private InfluxDbInfluxdbUserConfigPublicAccess(bool? influxdb)
         {
             Influxdb = influxdb;
         }

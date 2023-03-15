@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointSignalfxUserConfig
     {
         /// <summary>
-        /// list of metrics to send
+        /// list of metrics to send.
         /// </summary>
         public readonly ImmutableArray<string> EnabledMetrics;
         /// <summary>
-        /// SignalFX API key
+        /// SignalFX API key.
         /// </summary>
         public readonly string? SignalfxApiKey;
         /// <summary>
-        /// SignalFX realm
+        /// SignalFX realm. The default value is `us0`.
         /// </summary>
         public readonly string? SignalfxRealm;
 

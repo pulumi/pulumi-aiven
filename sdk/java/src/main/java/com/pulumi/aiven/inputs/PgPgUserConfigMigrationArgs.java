@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,11 +24,11 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.dbname);
     }
 
-    @Import(name="host")
-    private @Nullable Output<String> host;
+    @Import(name="host", required=true)
+    private Output<String> host;
 
-    public Optional<Output<String>> host() {
-        return Optional.ofNullable(this.host);
+    public Output<String> host() {
+        return this.host;
     }
 
     @Import(name="ignoreDbs")
@@ -50,17 +52,17 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.password);
     }
 
-    @Import(name="port")
-    private @Nullable Output<String> port;
+    @Import(name="port", required=true)
+    private Output<Integer> port;
 
-    public Optional<Output<String>> port() {
-        return Optional.ofNullable(this.port);
+    public Output<Integer> port() {
+        return this.port;
     }
 
     @Import(name="ssl")
-    private @Nullable Output<String> ssl;
+    private @Nullable Output<Boolean> ssl;
 
-    public Optional<Output<String>> ssl() {
+    public Optional<Output<Boolean>> ssl() {
         return Optional.ofNullable(this.ssl);
     }
 
@@ -111,7 +113,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
             return dbname(Output.of(dbname));
         }
 
-        public Builder host(@Nullable Output<String> host) {
+        public Builder host(Output<String> host) {
             $.host = host;
             return this;
         }
@@ -147,21 +149,21 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
             return password(Output.of(password));
         }
 
-        public Builder port(@Nullable Output<String> port) {
+        public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        public Builder port(String port) {
+        public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        public Builder ssl(@Nullable Output<String> ssl) {
+        public Builder ssl(@Nullable Output<Boolean> ssl) {
             $.ssl = ssl;
             return this;
         }
 
-        public Builder ssl(String ssl) {
+        public Builder ssl(Boolean ssl) {
             return ssl(Output.of(ssl));
         }
 
@@ -175,6 +177,8 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         public PgPgUserConfigMigrationArgs build() {
+            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
             return $;
         }
     }

@@ -98,7 +98,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string TeamId;
         /// <summary>
-        /// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+        /// The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         /// </summary>
         public readonly string TeamType;
 

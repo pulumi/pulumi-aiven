@@ -13,31 +13,35 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigKafkaRestConfigResult
     {
-        public readonly string? ConsumerEnableAutoCommit;
-        public readonly string? ConsumerRequestMaxBytes;
-        public readonly string? ConsumerRequestTimeoutMs;
+        public readonly bool? ConsumerEnableAutoCommit;
+        public readonly int? ConsumerRequestMaxBytes;
+        public readonly int? ConsumerRequestTimeoutMs;
         public readonly string? ProducerAcks;
-        public readonly string? ProducerLingerMs;
-        public readonly string? SimpleconsumerPoolSizeMax;
+        public readonly string? ProducerCompressionType;
+        public readonly int? ProducerLingerMs;
+        public readonly int? SimpleconsumerPoolSizeMax;
 
         [OutputConstructor]
         private GetKafkaKafkaUserConfigKafkaRestConfigResult(
-            string? consumerEnableAutoCommit,
+            bool? consumerEnableAutoCommit,
 
-            string? consumerRequestMaxBytes,
+            int? consumerRequestMaxBytes,
 
-            string? consumerRequestTimeoutMs,
+            int? consumerRequestTimeoutMs,
 
             string? producerAcks,
 
-            string? producerLingerMs,
+            string? producerCompressionType,
 
-            string? simpleconsumerPoolSizeMax)
+            int? producerLingerMs,
+
+            int? simpleconsumerPoolSizeMax)
         {
             ConsumerEnableAutoCommit = consumerEnableAutoCommit;
             ConsumerRequestMaxBytes = consumerRequestMaxBytes;
             ConsumerRequestTimeoutMs = consumerRequestTimeoutMs;
             ProducerAcks = producerAcks;
+            ProducerCompressionType = producerCompressionType;
             ProducerLingerMs = producerLingerMs;
             SimpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
         }

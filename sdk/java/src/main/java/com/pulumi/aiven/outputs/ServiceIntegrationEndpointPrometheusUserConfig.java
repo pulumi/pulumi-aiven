@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointPrometheusUserConfig {
     /**
-     * @return Prometheus basic authentication password
+     * @return Prometheus basic authentication password.
      * 
      */
     private @Nullable String basicAuthPassword;
     /**
-     * @return Prometheus basic authentication username
+     * @return Prometheus basic authentication username.
      * 
      */
     private @Nullable String basicAuthUsername;
 
     private ServiceIntegrationEndpointPrometheusUserConfig() {}
     /**
-     * @return Prometheus basic authentication password
+     * @return Prometheus basic authentication password.
      * 
      */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
     /**
-     * @return Prometheus basic authentication username
+     * @return Prometheus basic authentication username.
      * 
      */
     public Optional<String> basicAuthUsername() {

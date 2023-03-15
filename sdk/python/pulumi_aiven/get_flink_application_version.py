@@ -22,7 +22,7 @@ class GetFlinkApplicationVersionResult:
     """
     A collection of values returned by getFlinkApplicationVersion.
     """
-    def __init__(__self__, application_id=None, application_version_id=None, created_at=None, created_by=None, id=None, project=None, service_name=None, sinks=None, sources=None, statement=None, version=None):
+    def __init__(__self__, application_id=None, application_version_id=None, created_at=None, created_by=None, id=None, project=None, service_name=None, sink=None, sinks=None, source=None, sources=None, statement=None, version=None):
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
@@ -44,9 +44,15 @@ class GetFlinkApplicationVersionResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if sink and not isinstance(sink, list):
+            raise TypeError("Expected argument 'sink' to be a list")
+        pulumi.set(__self__, "sink", sink)
         if sinks and not isinstance(sinks, list):
             raise TypeError("Expected argument 'sinks' to be a list")
         pulumi.set(__self__, "sinks", sinks)
+        if source and not isinstance(source, list):
+            raise TypeError("Expected argument 'source' to be a list")
+        pulumi.set(__self__, "source", source)
         if sources and not isinstance(sources, list):
             raise TypeError("Expected argument 'sources' to be a list")
         pulumi.set(__self__, "sources", sources)
@@ -115,11 +121,27 @@ class GetFlinkApplicationVersionResult:
 
     @property
     @pulumi.getter
+    def sink(self) -> Sequence['outputs.GetFlinkApplicationVersionSinkResult']:
+        """
+        Application sink
+        """
+        return pulumi.get(self, "sink")
+
+    @property
+    @pulumi.getter
     def sinks(self) -> Sequence['outputs.GetFlinkApplicationVersionSinkResult']:
         """
         Application sinks
         """
         return pulumi.get(self, "sinks")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Sequence['outputs.GetFlinkApplicationVersionSourceResult']:
+        """
+        Application source
+        """
+        return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
@@ -159,7 +181,9 @@ class AwaitableGetFlinkApplicationVersionResult(GetFlinkApplicationVersionResult
             id=self.id,
             project=self.project,
             service_name=self.service_name,
+            sink=self.sink,
             sinks=self.sinks,
+            source=self.source,
             sources=self.sources,
             statement=self.statement,
             version=self.version)
@@ -207,7 +231,9 @@ def get_flink_application_version(application_id: Optional[str] = None,
         id=__ret__.id,
         project=__ret__.project,
         service_name=__ret__.service_name,
+        sink=__ret__.sink,
         sinks=__ret__.sinks,
+        source=__ret__.source,
         sources=__ret__.sources,
         statement=__ret__.statement,
         version=__ret__.version)

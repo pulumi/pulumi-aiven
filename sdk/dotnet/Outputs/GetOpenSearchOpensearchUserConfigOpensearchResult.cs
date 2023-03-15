@@ -13,47 +13,47 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchResult
     {
-        public readonly string? ActionAutoCreateIndexEnabled;
-        public readonly string? ActionDestructiveRequiresName;
-        public readonly string? ClusterMaxShardsPerNode;
-        public readonly string? ClusterRoutingAllocationNodeConcurrentRecoveries;
+        public readonly bool? ActionAutoCreateIndexEnabled;
+        public readonly bool? ActionDestructiveRequiresName;
+        public readonly int? ClusterMaxShardsPerNode;
+        public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
         public readonly string? EmailSenderName;
         public readonly string? EmailSenderPassword;
         public readonly string? EmailSenderUsername;
-        public readonly string? HttpMaxContentLength;
-        public readonly string? HttpMaxHeaderSize;
-        public readonly string? HttpMaxInitialLineLength;
-        public readonly string? IndicesFielddataCacheSize;
-        public readonly string? IndicesMemoryIndexBufferSize;
-        public readonly string? IndicesQueriesCacheSize;
-        public readonly string? IndicesQueryBoolMaxClauseCount;
-        public readonly string? IndicesRecoveryMaxBytesPerSec;
-        public readonly string? IndicesRecoveryMaxConcurrentFileChunks;
-        public readonly string? OverrideMainResponseVersion;
+        public readonly int? HttpMaxContentLength;
+        public readonly int? HttpMaxHeaderSize;
+        public readonly int? HttpMaxInitialLineLength;
+        public readonly int? IndicesFielddataCacheSize;
+        public readonly int? IndicesMemoryIndexBufferSize;
+        public readonly int? IndicesQueriesCacheSize;
+        public readonly int? IndicesQueryBoolMaxClauseCount;
+        public readonly int? IndicesRecoveryMaxBytesPerSec;
+        public readonly int? IndicesRecoveryMaxConcurrentFileChunks;
+        public readonly bool? OverrideMainResponseVersion;
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
         public readonly string? ScriptMaxCompilationsRate;
-        public readonly string? SearchMaxBuckets;
-        public readonly string? ThreadPoolAnalyzeQueueSize;
-        public readonly string? ThreadPoolAnalyzeSize;
-        public readonly string? ThreadPoolForceMergeSize;
-        public readonly string? ThreadPoolGetQueueSize;
-        public readonly string? ThreadPoolGetSize;
-        public readonly string? ThreadPoolSearchQueueSize;
-        public readonly string? ThreadPoolSearchSize;
-        public readonly string? ThreadPoolSearchThrottledQueueSize;
-        public readonly string? ThreadPoolSearchThrottledSize;
-        public readonly string? ThreadPoolWriteQueueSize;
-        public readonly string? ThreadPoolWriteSize;
+        public readonly int? SearchMaxBuckets;
+        public readonly int? ThreadPoolAnalyzeQueueSize;
+        public readonly int? ThreadPoolAnalyzeSize;
+        public readonly int? ThreadPoolForceMergeSize;
+        public readonly int? ThreadPoolGetQueueSize;
+        public readonly int? ThreadPoolGetSize;
+        public readonly int? ThreadPoolSearchQueueSize;
+        public readonly int? ThreadPoolSearchSize;
+        public readonly int? ThreadPoolSearchThrottledQueueSize;
+        public readonly int? ThreadPoolSearchThrottledSize;
+        public readonly int? ThreadPoolWriteQueueSize;
+        public readonly int? ThreadPoolWriteSize;
 
         [OutputConstructor]
         private GetOpenSearchOpensearchUserConfigOpensearchResult(
-            string? actionAutoCreateIndexEnabled,
+            bool? actionAutoCreateIndexEnabled,
 
-            string? actionDestructiveRequiresName,
+            bool? actionDestructiveRequiresName,
 
-            string? clusterMaxShardsPerNode,
+            int? clusterMaxShardsPerNode,
 
-            string? clusterRoutingAllocationNodeConcurrentRecoveries,
+            int? clusterRoutingAllocationNodeConcurrentRecoveries,
 
             string? emailSenderName,
 
@@ -61,53 +61,53 @@ namespace Pulumi.Aiven.Outputs
 
             string? emailSenderUsername,
 
-            string? httpMaxContentLength,
+            int? httpMaxContentLength,
 
-            string? httpMaxHeaderSize,
+            int? httpMaxHeaderSize,
 
-            string? httpMaxInitialLineLength,
+            int? httpMaxInitialLineLength,
 
-            string? indicesFielddataCacheSize,
+            int? indicesFielddataCacheSize,
 
-            string? indicesMemoryIndexBufferSize,
+            int? indicesMemoryIndexBufferSize,
 
-            string? indicesQueriesCacheSize,
+            int? indicesQueriesCacheSize,
 
-            string? indicesQueryBoolMaxClauseCount,
+            int? indicesQueryBoolMaxClauseCount,
 
-            string? indicesRecoveryMaxBytesPerSec,
+            int? indicesRecoveryMaxBytesPerSec,
 
-            string? indicesRecoveryMaxConcurrentFileChunks,
+            int? indicesRecoveryMaxConcurrentFileChunks,
 
-            string? overrideMainResponseVersion,
+            bool? overrideMainResponseVersion,
 
             ImmutableArray<string> reindexRemoteWhitelists,
 
             string? scriptMaxCompilationsRate,
 
-            string? searchMaxBuckets,
+            int? searchMaxBuckets,
 
-            string? threadPoolAnalyzeQueueSize,
+            int? threadPoolAnalyzeQueueSize,
 
-            string? threadPoolAnalyzeSize,
+            int? threadPoolAnalyzeSize,
 
-            string? threadPoolForceMergeSize,
+            int? threadPoolForceMergeSize,
 
-            string? threadPoolGetQueueSize,
+            int? threadPoolGetQueueSize,
 
-            string? threadPoolGetSize,
+            int? threadPoolGetSize,
 
-            string? threadPoolSearchQueueSize,
+            int? threadPoolSearchQueueSize,
 
-            string? threadPoolSearchSize,
+            int? threadPoolSearchSize,
 
-            string? threadPoolSearchThrottledQueueSize,
+            int? threadPoolSearchThrottledQueueSize,
 
-            string? threadPoolSearchThrottledSize,
+            int? threadPoolSearchThrottledSize,
 
-            string? threadPoolWriteQueueSize,
+            int? threadPoolWriteQueueSize,
 
-            string? threadPoolWriteSize)
+            int? threadPoolWriteSize)
         {
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
