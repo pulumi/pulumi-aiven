@@ -16,8 +16,6 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.56.0
 )
 
-require github.com/pulumi/pulumi-aiven/provider/v5 v5.0.0-20230309154641-64d48c757772
-
 require (
 	cloud.google.com/go v0.110.0 // indirect
 	cloud.google.com/go/compute v1.18.0 // indirect
