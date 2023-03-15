@@ -25,7 +25,7 @@ const service = new aiven.Grafana("my-new-service", {
     plan:"startup-4",
     grafanaUserConfig: {
         publicAccess: {
-            grafana: "true",
+            grafana: true,
         }
     }
 });
