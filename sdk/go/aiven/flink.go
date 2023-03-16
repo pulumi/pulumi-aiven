@@ -35,7 +35,7 @@ import (
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					FlinkVersion: pulumi.String("1.15"),
+//					FlinkVersion: pulumi.String("1.16"),
 //				},
 //			})
 //			if err != nil {

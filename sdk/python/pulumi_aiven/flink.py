@@ -737,7 +737,7 @@ class Flink(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             flink_user_config=aiven.FlinkFlinkUserConfigArgs(
-                flink_version="1.15",
+                flink_version="1.16",
             ))
         ```
 
@@ -788,7 +788,7 @@ class Flink(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             flink_user_config=aiven.FlinkFlinkUserConfigArgs(
-                flink_version="1.15",
+                flink_version="1.16",
             ))
         ```
 
