@@ -31,7 +31,7 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
     ///         {
-    ///             FlinkVersion = "1.15",
+    ///             FlinkVersion = "1.16",
     ///         },
     ///     });
     /// 

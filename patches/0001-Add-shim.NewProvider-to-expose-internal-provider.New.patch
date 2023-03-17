@@ -17,12 +17,12 @@ index 0000000..e3d316a
 +package shim
 +
 +import (
-+	"github.com/aiven/terraform-provider-aiven/internal/sdkprovider"
++	"github.com/aiven/terraform-provider-aiven/internal/sdkprovider/provider"
 +	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 +)
 +
 +func NewProvider() *schema.Provider {
-+	return sdkprovider.Provider()
++	return provider.Provider()
 +}
 --
 2.39.1
