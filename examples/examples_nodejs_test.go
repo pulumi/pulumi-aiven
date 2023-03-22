@@ -1,4 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
+//go:build nodejs || all
 // +build nodejs all
 
 package examples
@@ -11,7 +12,6 @@ import (
 )
 
 func TestAccService(t *testing.T) {
-	t.Skip() // due to https://github.com/pulumi/pulumi-aiven/issues/235
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "service"),
@@ -21,7 +21,6 @@ func TestAccService(t *testing.T) {
 }
 
 func TestAccPgService(t *testing.T) {
-	t.Skip() // due to https://github.com/pulumi/pulumi-aiven/issues/235
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "pg-service"),
