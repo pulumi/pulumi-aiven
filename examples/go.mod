@@ -11,9 +11,8 @@ replace (
 require (
 	github.com/pulumi/pulumi-aiven/provider/v6 v6.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi-terraform-bridge/testing v0.0.0-20230321210618-447b802f2ce1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.1
 	github.com/pulumi/pulumi/pkg/v3 v3.56.0
-	github.com/pulumi/pulumi/sdk/v3 v3.58.0
-	github.com/stretchr/testify v1.8.2
 )
 
 require (
@@ -171,7 +170,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.1 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.58.0 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
@@ -184,6 +183,7 @@ require (
 	github.com/skeema/knownhosts v1.1.0 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/stretchr/testify v1.8.2 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
