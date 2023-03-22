@@ -53,7 +53,17 @@ func TestRegressBridge892(t *testing.T) {
 	    },
 	    "preview": true
 	  },
-	  "response": {}
+	  "response": {
+            "properties": {
+              "cloudName": "*",
+              "grafanaUserConfig": "*",
+              "id": "",
+              "plan": "startup-4",
+              "project": "*",
+              "serviceName": "*",
+              "serviceType": "grafana"
+            }
+          }
 	}`
 	version.Version = "0.0.1"
 	info := provider.Provider()
