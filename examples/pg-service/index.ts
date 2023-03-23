@@ -27,7 +27,7 @@ const service = new aiven.Pg("my-new-service", {
             adminPassword: 'demoPassword1234-',
             pgVersion: '12',
             backupHour: 2,
-            backupMinute: 0,
+            backupMinute: 1,
         },
         maintenanceWindowDow: 'sunday',
         maintenanceWindowTime: '14:00:00',
