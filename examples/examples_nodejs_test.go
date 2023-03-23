@@ -24,12 +24,6 @@ func TestAccPgService(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "pg-service"),
-			EditDirs: []integration.EditDir{
-				{
-					Dir:      "step2",
-					Additive: true,
-				},
-			},
 		})
 
 	integration.ProgramTest(t, &test)
