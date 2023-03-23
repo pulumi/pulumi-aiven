@@ -67,7 +67,7 @@ func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProvider
 }
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(providerShim.NewProvider())
+	p := shimv2.NewProvider(providerShim.NewProvider(version.Version))
 
 	prov := tfbridge.ProviderInfo{
 		P:                 p,

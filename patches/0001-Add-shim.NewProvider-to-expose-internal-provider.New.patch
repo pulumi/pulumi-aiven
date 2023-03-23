@@ -21,8 +21,8 @@ index 0000000..e3d316a
 +	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 +)
 +
-+func NewProvider() *schema.Provider {
-+	return provider.Provider()
++func NewProvider(version string) *schema.Provider {
++	return provider.Provider(version)
 +}
 --
 2.39.1
