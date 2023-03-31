@@ -20,6 +20,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? Influxdb;
         public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
@@ -42,6 +43,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? privateAccess,
@@ -62,6 +65,7 @@ namespace Pulumi.Aiven.Outputs
             CustomDomain = customDomain;
             Influxdb = influxdb;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;

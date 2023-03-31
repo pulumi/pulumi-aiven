@@ -103,13 +103,6 @@ func NewKafkaConnector(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	if args.Config != nil {
-		args.Config = pulumi.ToSecret(args.Config).(pulumi.StringMapInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"config",
-	})
-	opts = append(opts, secrets)
 	var resource KafkaConnector
 	err := ctx.RegisterResource("aiven:index/kafkaConnector:KafkaConnector", name, args, &resource, opts...)
 	if err != nil {

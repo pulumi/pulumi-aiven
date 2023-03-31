@@ -25,12 +25,13 @@ public final class GetKafkaKafkaUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
     private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
+    private @Nullable List<String> ipFilterStrings;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Kafka server provided values
@@ -65,12 +66,15 @@ public final class GetKafkaKafkaUserConfig {
     public List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -137,6 +141,7 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
         private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaKafkaUserConfigKafka kafka;
         private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
@@ -158,6 +163,7 @@ public final class GetKafkaKafkaUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafka = defaults.kafka;
     	      this.kafkaAuthenticationMethods = defaults.kafkaAuthenticationMethods;
@@ -192,6 +198,14 @@ public final class GetKafkaKafkaUserConfig {
         }
         public Builder ipFilterObjects(GetKafkaKafkaUserConfigIpFilterObject... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
+        }
+        @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -276,6 +290,7 @@ public final class GetKafkaKafkaUserConfig {
             o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.kafka = kafka;
             o.kafkaAuthenticationMethods = kafkaAuthenticationMethods;

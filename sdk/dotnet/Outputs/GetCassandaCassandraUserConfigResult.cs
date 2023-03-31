@@ -20,6 +20,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetCassandaCassandraUserConfigCassandraResult? Cassandra;
         public readonly string? CassandraVersion;
         public readonly ImmutableArray<Outputs.GetCassandaCassandraUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly bool? MigrateSstableloader;
         public readonly Outputs.GetCassandaCassandraUserConfigPrivateAccessResult? PrivateAccess;
@@ -42,6 +43,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GetCassandaCassandraUserConfigIpFilterObjectResult> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             bool? migrateSstableloader,
@@ -62,6 +65,7 @@ namespace Pulumi.Aiven.Outputs
             Cassandra = cassandra;
             CassandraVersion = cassandraVersion;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;

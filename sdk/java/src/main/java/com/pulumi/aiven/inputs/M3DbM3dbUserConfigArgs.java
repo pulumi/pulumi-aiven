@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigLimitsArgs;
+import com.pulumi.aiven.inputs.M3DbM3dbUserConfigM3Args;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigNamespaceArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigPublicAccessArgs;
@@ -44,21 +45,28 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    @Import(name="ipFilterStrings")
+    private @Nullable Output<List<String>> ipFilterStrings;
+
+    public Optional<Output<List<String>>> ipFilterStrings() {
+        return Optional.ofNullable(this.ipFilterStrings);
+    }
+
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -68,6 +76,13 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<M3DbM3dbUserConfigLimitsArgs>> limits() {
         return Optional.ofNullable(this.limits);
+    }
+
+    @Import(name="m3")
+    private @Nullable Output<M3DbM3dbUserConfigM3Args> m3;
+
+    public Optional<Output<M3DbM3dbUserConfigM3Args>> m3() {
+        return Optional.ofNullable(this.m3);
     }
 
     /**
@@ -103,21 +118,9 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.m3dbVersion);
     }
 
-    /**
-     * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-     * 
-     */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     @Import(name="namespaces")
     private @Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces;
 
-    /**
-     * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-     * 
-     */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public Optional<Output<List<M3DbM3dbUserConfigNamespaceArgs>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -170,8 +173,10 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.customDomain = $.customDomain;
         this.ipFilterObjects = $.ipFilterObjects;
+        this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.limits = $.limits;
+        this.m3 = $.m3;
         this.m3Version = $.m3Version;
         this.m3coordinatorEnableGraphiteCarbonIngest = $.m3coordinatorEnableGraphiteCarbonIngest;
         this.m3dbVersion = $.m3dbVersion;
@@ -233,14 +238,27 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        public Builder ipFilterStrings(@Nullable Output<List<String>> ipFilterStrings) {
+            $.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+
+        public Builder ipFilterStrings(List<String> ipFilterStrings) {
+            return ipFilterStrings(Output.of(ipFilterStrings));
+        }
+
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
+        }
+
         /**
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -250,10 +268,10 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -262,10 +280,10 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -277,6 +295,15 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder limits(M3DbM3dbUserConfigLimitsArgs limits) {
             return limits(Output.of(limits));
+        }
+
+        public Builder m3(@Nullable Output<M3DbM3dbUserConfigM3Args> m3) {
+            $.m3 = m3;
+            return this;
+        }
+
+        public Builder m3(M3DbM3dbUserConfigM3Args m3) {
+            return m3(Output.of(m3));
         }
 
         /**
@@ -322,39 +349,15 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return m3dbVersion(Output.of(m3dbVersion));
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-         * 
-         */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(@Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-         * 
-         */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(List<M3DbM3dbUserConfigNamespaceArgs> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-         * 
-         */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(M3DbM3dbUserConfigNamespaceArgs... namespaces) {
             return namespaces(List.of(namespaces));
         }

@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? FlinkVersion;
         public readonly ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly int? NumberOfTaskSlots;
         public readonly Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
@@ -25,6 +26,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             int? numberOfTaskSlots,
@@ -33,6 +36,7 @@ namespace Pulumi.Aiven.Outputs
         {
             FlinkVersion = flinkVersion;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
             PrivatelinkAccess = privatelinkAccess;

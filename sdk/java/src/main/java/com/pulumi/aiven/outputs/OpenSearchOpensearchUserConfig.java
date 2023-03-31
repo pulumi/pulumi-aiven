@@ -59,11 +59,16 @@ public final class OpenSearchOpensearchUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
+     */
+    private @Nullable List<String> ipFilterStrings;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
@@ -180,11 +185,18 @@ public final class OpenSearchOpensearchUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
+     */
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -292,6 +304,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
         private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
         private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Boolean keepIndexRefreshInterval;
         private @Nullable Integer maxIndexCount;
@@ -314,6 +327,7 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.indexPatterns = defaults.indexPatterns;
     	      this.indexTemplate = defaults.indexTemplate;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.keepIndexRefreshInterval = defaults.keepIndexRefreshInterval;
     	      this.maxIndexCount = defaults.maxIndexCount;
@@ -364,6 +378,14 @@ public final class OpenSearchOpensearchUserConfig {
         }
         public Builder ipFilterObjects(OpenSearchOpensearchUserConfigIpFilterObject... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
+        }
+        @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -441,6 +463,7 @@ public final class OpenSearchOpensearchUserConfig {
             o.indexPatterns = indexPatterns;
             o.indexTemplate = indexTemplate;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.keepIndexRefreshInterval = keepIndexRefreshInterval;
             o.maxIndexCount = maxIndexCount;

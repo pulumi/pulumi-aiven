@@ -26,9 +26,17 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilterObjects = value;
         }
 
+        [Input("ipFilterStrings")]
+        private InputList<string>? _ipFilterStrings;
+        public InputList<string> IpFilterStrings
+        {
+            get => _ipFilterStrings ?? (_ipFilterStrings = new InputList<string>());
+            set => _ipFilterStrings = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -37,6 +45,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("limits")]
         public Input<Inputs.M3DbM3dbUserConfigLimitsArgs>? Limits { get; set; }
+
+        [Input("m3")]
+        public Input<Inputs.M3DbM3dbUserConfigM3Args>? M3 { get; set; }
 
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
@@ -49,7 +60,6 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("namespaces")]
         private InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>? _namespaces;
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
         public InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>());

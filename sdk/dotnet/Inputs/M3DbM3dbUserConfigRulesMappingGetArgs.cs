@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.")]
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());
@@ -44,6 +44,14 @@ namespace Pulumi.Aiven.Inputs
         {
             get => _namespacesObjects ?? (_namespacesObjects = new InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectGetArgs>());
             set => _namespacesObjects = value;
+        }
+
+        [Input("namespacesStrings")]
+        private InputList<string>? _namespacesStrings;
+        public InputList<string> NamespacesStrings
+        {
+            get => _namespacesStrings ?? (_namespacesStrings = new InputList<string>());
+            set => _namespacesStrings = value;
         }
 
         [Input("tags")]

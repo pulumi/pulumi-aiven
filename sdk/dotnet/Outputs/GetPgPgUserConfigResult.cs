@@ -20,6 +20,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? BackupMinute;
         public readonly bool? EnableIpv6;
         public readonly ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
         /// <summary>
@@ -63,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
             bool? enableIpv6,
 
             ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> ipFilterObjects,
+
+            ImmutableArray<string> ipFilterStrings,
 
             ImmutableArray<string> ipFilters,
 
@@ -113,6 +116,7 @@ namespace Pulumi.Aiven.Outputs
             BackupMinute = backupMinute;
             EnableIpv6 = enableIpv6;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Migration = migration;
             Pg = pg;

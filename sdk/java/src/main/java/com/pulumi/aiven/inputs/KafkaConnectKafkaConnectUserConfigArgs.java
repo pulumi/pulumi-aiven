@@ -36,21 +36,28 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    @Import(name="ipFilterStrings")
+    private @Nullable Output<List<String>> ipFilterStrings;
+
+    public Optional<Output<List<String>>> ipFilterStrings() {
+        return Optional.ofNullable(this.ipFilterStrings);
+    }
+
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -95,6 +102,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     private KafkaConnectKafkaConnectUserConfigArgs(KafkaConnectKafkaConnectUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.ipFilterObjects = $.ipFilterObjects;
+        this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.kafkaConnect = $.kafkaConnect;
         this.privateAccess = $.privateAccess;
@@ -143,14 +151,27 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        public Builder ipFilterStrings(@Nullable Output<List<String>> ipFilterStrings) {
+            $.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+
+        public Builder ipFilterStrings(List<String> ipFilterStrings) {
+            return ipFilterStrings(Output.of(ipFilterStrings));
+        }
+
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
+        }
+
         /**
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -160,10 +181,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -172,10 +193,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }

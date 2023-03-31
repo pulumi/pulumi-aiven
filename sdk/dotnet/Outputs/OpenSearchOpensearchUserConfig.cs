@@ -40,6 +40,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
@@ -104,6 +108,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             bool? keepIndexRefreshInterval,
@@ -136,6 +142,7 @@ namespace Pulumi.Aiven.Outputs
             IndexPatterns = indexPatterns;
             IndexTemplate = indexTemplate;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;

@@ -24,6 +24,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
@@ -40,6 +44,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.FlinkFlinkUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             int? numberOfTaskSlots,
@@ -48,6 +54,7 @@ namespace Pulumi.Aiven.Outputs
         {
             FlinkVersion = flinkVersion;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
             PrivatelinkAccess = privatelinkAccess;

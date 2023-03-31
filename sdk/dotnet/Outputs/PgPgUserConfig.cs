@@ -44,6 +44,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Migrate data from existing server.
@@ -142,6 +146,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.PgPgUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.PgPgUserConfigMigration? migration,
@@ -191,6 +197,7 @@ namespace Pulumi.Aiven.Outputs
             BackupMinute = backupMinute;
             EnableIpv6 = enableIpv6;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Migration = migration;
             Pg = pg;

@@ -16,8 +16,10 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigIpFilterObject> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.M3DbM3dbUserConfigLimits? Limits;
+        public readonly Outputs.M3DbM3dbUserConfigM3? M3;
         public readonly string? M3Version;
         public readonly bool? M3coordinatorEnableGraphiteCarbonIngest;
         public readonly string? M3dbVersion;
@@ -37,9 +39,13 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.M3DbM3dbUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.M3DbM3dbUserConfigLimits? limits,
+
+            Outputs.M3DbM3dbUserConfigM3? m3,
 
             string? m3Version,
 
@@ -64,8 +70,10 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Limits = limits;
+            M3 = m3;
             M3Version = m3Version;
             M3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             M3dbVersion = m3dbVersion;

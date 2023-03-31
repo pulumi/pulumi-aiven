@@ -24,6 +24,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -40,6 +44,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             string? projectToForkFrom,
@@ -48,6 +54,7 @@ namespace Pulumi.Aiven.Outputs
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             ProjectToForkFrom = projectToForkFrom;
             ServiceToForkFrom = serviceToForkFrom;

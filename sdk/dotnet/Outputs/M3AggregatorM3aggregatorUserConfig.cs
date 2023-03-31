@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? CustomDomain;
         public readonly ImmutableArray<Outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? M3Version;
         public readonly string? M3aggregatorVersion;
@@ -26,6 +27,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             string? m3Version,
@@ -36,6 +39,7 @@ namespace Pulumi.Aiven.Outputs
         {
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             M3Version = m3Version;
             M3aggregatorVersion = m3aggregatorVersion;

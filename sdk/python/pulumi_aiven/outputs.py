@@ -110,6 +110,8 @@ __all__ = [
     'M3DbM3dbUserConfig',
     'M3DbM3dbUserConfigIpFilterObject',
     'M3DbM3dbUserConfigLimits',
+    'M3DbM3dbUserConfigM3',
+    'M3DbM3dbUserConfigM3TagOptions',
     'M3DbM3dbUserConfigNamespace',
     'M3DbM3dbUserConfigNamespaceOptions',
     'M3DbM3dbUserConfigNamespaceOptionsRetentionOptions',
@@ -310,6 +312,8 @@ __all__ = [
     'GetM3DbM3dbUserConfigResult',
     'GetM3DbM3dbUserConfigIpFilterObjectResult',
     'GetM3DbM3dbUserConfigLimitsResult',
+    'GetM3DbM3dbUserConfigM3Result',
+    'GetM3DbM3dbUserConfigM3TagOptionsResult',
     'GetM3DbM3dbUserConfigNamespaceResult',
     'GetM3DbM3dbUserConfigNamespaceOptionsResult',
     'GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult',
@@ -511,6 +515,8 @@ class CassandraCassandraUserConfig(dict):
             suggest = "cassandra_version"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "migrateSstableloader":
@@ -544,6 +550,7 @@ class CassandraCassandraUserConfig(dict):
                  cassandra: Optional['outputs.CassandraCassandraUserConfigCassandra'] = None,
                  cassandra_version: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.CassandraCassandraUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[bool] = None,
                  private_access: Optional['outputs.CassandraCassandraUserConfigPrivateAccess'] = None,
@@ -557,6 +564,7 @@ class CassandraCassandraUserConfig(dict):
         :param 'CassandraCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values.
         :param str cassandra_version: Cassandra major version.
         :param Sequence['CassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
         :param 'CassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
@@ -574,6 +582,8 @@ class CassandraCassandraUserConfig(dict):
             pulumi.set(__self__, "cassandra_version", cassandra_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -622,6 +632,14 @@ class CassandraCassandraUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -952,6 +970,8 @@ class ClickhouseClickhouseUserConfig(dict):
             suggest = "additional_backup_regions"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "projectToForkFrom":
@@ -973,12 +993,14 @@ class ClickhouseClickhouseUserConfig(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.ClickhouseClickhouseUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  project_to_fork_from: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param Sequence['ClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
@@ -987,6 +1009,8 @@ class ClickhouseClickhouseUserConfig(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if project_to_fork_from is not None:
@@ -1009,6 +1033,14 @@ class ClickhouseClickhouseUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -1533,6 +1565,8 @@ class FlinkFlinkUserConfig(dict):
             suggest = "flink_version"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "numberOfTaskSlots":
@@ -1554,12 +1588,14 @@ class FlinkFlinkUserConfig(dict):
     def __init__(__self__, *,
                  flink_version: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.FlinkFlinkUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  number_of_task_slots: Optional[int] = None,
                  privatelink_access: Optional['outputs.FlinkFlinkUserConfigPrivatelinkAccess'] = None):
         """
         :param str flink_version: Flink major version.
         :param Sequence['FlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param int number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
         :param 'FlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
@@ -1568,6 +1604,8 @@ class FlinkFlinkUserConfig(dict):
             pulumi.set(__self__, "flink_version", flink_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if number_of_task_slots is not None:
@@ -1590,6 +1628,14 @@ class FlinkFlinkUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -1879,6 +1925,8 @@ class GrafanaGrafanaUserConfig(dict):
             suggest = "google_analytics_ua_id"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "metricsEnabled":
@@ -1943,6 +1991,7 @@ class GrafanaGrafanaUserConfig(dict):
                  external_image_storage: Optional['outputs.GrafanaGrafanaUserConfigExternalImageStorage'] = None,
                  google_analytics_ua_id: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GrafanaGrafanaUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[bool] = None,
                  private_access: Optional['outputs.GrafanaGrafanaUserConfigPrivateAccess'] = None,
@@ -2006,6 +2055,8 @@ class GrafanaGrafanaUserConfig(dict):
             pulumi.set(__self__, "google_analytics_ua_id", google_analytics_ua_id)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
@@ -2157,6 +2208,11 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GrafanaGrafanaUserConfigIpFilterObject']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -3113,6 +3169,8 @@ class InfluxDbInfluxdbUserConfig(dict):
             suggest = "custom_domain"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "privateAccess":
@@ -3146,6 +3204,7 @@ class InfluxDbInfluxdbUserConfig(dict):
                  custom_domain: Optional[str] = None,
                  influxdb: Optional['outputs.InfluxDbInfluxdbUserConfigInfluxdb'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.InfluxDbInfluxdbUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['outputs.InfluxDbInfluxdbUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess'] = None,
@@ -3159,6 +3218,7 @@ class InfluxDbInfluxdbUserConfig(dict):
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param 'InfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: influxdb.conf configuration values.
         :param Sequence['InfluxDbInfluxdbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'InfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
         :param 'InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
@@ -3176,6 +3236,8 @@ class InfluxDbInfluxdbUserConfig(dict):
             pulumi.set(__self__, "influxdb", influxdb)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -3224,6 +3286,14 @@ class InfluxDbInfluxdbUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -3695,6 +3765,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
             suggest = "additional_backup_regions"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "kafkaConnect":
@@ -3722,6 +3794,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_connect: Optional['outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect'] = None,
                  private_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess'] = None,
@@ -3732,6 +3805,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
@@ -3754,6 +3829,11 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -4285,6 +4365,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "custom_domain"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "kafkaAuthenticationMethods":
@@ -4329,6 +4411,7 @@ class KafkaKafkaUserConfig(dict):
                  additional_backup_regions: Optional[str] = None,
                  custom_domain: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.KafkaKafkaUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka: Optional['outputs.KafkaKafkaUserConfigKafka'] = None,
                  kafka_authentication_methods: Optional['outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods'] = None,
@@ -4348,6 +4431,7 @@ class KafkaKafkaUserConfig(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param Sequence['KafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'KafkaKafkaUserConfigKafkaArgs' kafka: Kafka broker configuration values.
         :param 'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods.
@@ -4370,6 +4454,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka is not None:
@@ -4424,6 +4510,14 @@ class KafkaKafkaUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -5614,6 +5708,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
             suggest = "additional_backup_regions"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "kafkaMirrormaker":
@@ -5635,6 +5731,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_mirrormaker: Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker'] = None,
                  static_ips: Optional[bool] = None):
@@ -5642,6 +5739,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
@@ -5658,6 +5757,11 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -6428,6 +6532,8 @@ class M3AggregatorM3aggregatorUserConfig(dict):
             suggest = "custom_domain"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "m3Version":
@@ -6451,6 +6557,7 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  m3_version: Optional[str] = None,
                  m3aggregator_version: Optional[str] = None,
@@ -6459,6 +6566,8 @@ class M3AggregatorM3aggregatorUserConfig(dict):
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if m3_version is not None:
@@ -6477,6 +6586,11 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -6671,6 +6785,8 @@ class M3DbM3dbUserConfig(dict):
             suggest = "custom_domain"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "m3Version":
@@ -6705,8 +6821,10 @@ class M3DbM3dbUserConfig(dict):
                  additional_backup_regions: Optional[str] = None,
                  custom_domain: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.M3DbM3dbUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  limits: Optional['outputs.M3DbM3dbUserConfigLimits'] = None,
+                 m3: Optional['outputs.M3DbM3dbUserConfigM3'] = None,
                  m3_version: Optional[str] = None,
                  m3coordinator_enable_graphite_carbon_ingest: Optional[bool] = None,
                  m3db_version: Optional[str] = None,
@@ -6723,10 +6841,14 @@ class M3DbM3dbUserConfig(dict):
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if m3 is not None:
+            pulumi.set(__self__, "m3", m3)
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
         if m3coordinator_enable_graphite_carbon_ingest is not None:
@@ -6764,6 +6886,11 @@ class M3DbM3dbUserConfig(dict):
         return pulumi.get(self, "ip_filter_objects")
 
     @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ip_filters")
@@ -6772,6 +6899,11 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter
     def limits(self) -> Optional['outputs.M3DbM3dbUserConfigLimits']:
         return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter
+    def m3(self) -> Optional['outputs.M3DbM3dbUserConfigM3']:
+        return pulumi.get(self, "m3")
 
     @property
     @pulumi.getter(name="m3Version")
@@ -6922,6 +7054,76 @@ class M3DbM3dbUserConfigLimits(dict):
     @pulumi.getter(name="querySeries")
     def query_series(self) -> Optional[int]:
         return pulumi.get(self, "query_series")
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigM3(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagOptions":
+            suggest = "tag_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfigM3. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3dbUserConfigM3.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3dbUserConfigM3.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_options: Optional['outputs.M3DbM3dbUserConfigM3TagOptions'] = None):
+        if tag_options is not None:
+            pulumi.set(__self__, "tag_options", tag_options)
+
+    @property
+    @pulumi.getter(name="tagOptions")
+    def tag_options(self) -> Optional['outputs.M3DbM3dbUserConfigM3TagOptions']:
+        return pulumi.get(self, "tag_options")
+
+
+@pulumi.output_type
+class M3DbM3dbUserConfigM3TagOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowTagNameDuplicates":
+            suggest = "allow_tag_name_duplicates"
+        elif key == "allowTagValueEmpty":
+            suggest = "allow_tag_value_empty"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfigM3TagOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3dbUserConfigM3TagOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3dbUserConfigM3TagOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_tag_name_duplicates: Optional[bool] = None,
+                 allow_tag_value_empty: Optional[bool] = None):
+        if allow_tag_name_duplicates is not None:
+            pulumi.set(__self__, "allow_tag_name_duplicates", allow_tag_name_duplicates)
+        if allow_tag_value_empty is not None:
+            pulumi.set(__self__, "allow_tag_value_empty", allow_tag_value_empty)
+
+    @property
+    @pulumi.getter(name="allowTagNameDuplicates")
+    def allow_tag_name_duplicates(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_tag_name_duplicates")
+
+    @property
+    @pulumi.getter(name="allowTagValueEmpty")
+    def allow_tag_value_empty(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_tag_value_empty")
 
 
 @pulumi.output_type
@@ -7125,6 +7327,8 @@ class M3DbM3dbUserConfigRulesMapping(dict):
         suggest = None
         if key == "namespacesObjects":
             suggest = "namespaces_objects"
+        elif key == "namespacesStrings":
+            suggest = "namespaces_strings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfigRulesMapping. Access the value via the '{suggest}' property getter instead.")
@@ -7144,6 +7348,7 @@ class M3DbM3dbUserConfigRulesMapping(dict):
                  name: Optional[str] = None,
                  namespaces: Optional[Sequence[str]] = None,
                  namespaces_objects: Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject']] = None,
+                 namespaces_strings: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMappingTag']] = None):
         pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
@@ -7156,6 +7361,8 @@ class M3DbM3dbUserConfigRulesMapping(dict):
             pulumi.set(__self__, "namespaces", namespaces)
         if namespaces_objects is not None:
             pulumi.set(__self__, "namespaces_objects", namespaces_objects)
+        if namespaces_strings is not None:
+            pulumi.set(__self__, "namespaces_strings", namespaces_strings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -7188,6 +7395,11 @@ class M3DbM3dbUserConfigRulesMapping(dict):
     @pulumi.getter(name="namespacesObjects")
     def namespaces_objects(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject']]:
         return pulumi.get(self, "namespaces_objects")
+
+    @property
+    @pulumi.getter(name="namespacesStrings")
+    def namespaces_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "namespaces_strings")
 
     @property
     @pulumi.getter
@@ -7395,6 +7607,8 @@ class MySqlMysqlUserConfig(dict):
             suggest = "binlog_retention_period"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "mysqlVersion":
@@ -7433,6 +7647,7 @@ class MySqlMysqlUserConfig(dict):
                  backup_minute: Optional[int] = None,
                  binlog_retention_period: Optional[int] = None,
                  ip_filter_objects: Optional[Sequence['outputs.MySqlMysqlUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.MySqlMysqlUserConfigMigration'] = None,
                  mysql: Optional['outputs.MySqlMysqlUserConfigMysql'] = None,
@@ -7458,6 +7673,8 @@ class MySqlMysqlUserConfig(dict):
             pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -7515,6 +7732,11 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.MySqlMysqlUserConfigIpFilterObject']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -8265,6 +8487,8 @@ class OpenSearchOpensearchUserConfig(dict):
             suggest = "index_template"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "keepIndexRefreshInterval":
@@ -8308,6 +8532,7 @@ class OpenSearchOpensearchUserConfig(dict):
                  index_patterns: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIndexPattern']] = None,
                  index_template: Optional['outputs.OpenSearchOpensearchUserConfigIndexTemplate'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  keep_index_refresh_interval: Optional[bool] = None,
                  max_index_count: Optional[int] = None,
@@ -8328,6 +8553,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param Sequence['OpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns.
         :param 'OpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes.
         :param Sequence['OpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param int max_index_count: Use index_patterns instead. The default value is `0`.
@@ -8354,6 +8580,8 @@ class OpenSearchOpensearchUserConfig(dict):
             pulumi.set(__self__, "index_template", index_template)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if keep_index_refresh_interval is not None:
@@ -8428,6 +8656,14 @@ class OpenSearchOpensearchUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -9492,6 +9728,8 @@ class PgPgUserConfig(dict):
             suggest = "enable_ipv6"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "pgReadReplica":
@@ -9542,6 +9780,7 @@ class PgPgUserConfig(dict):
                  backup_minute: Optional[int] = None,
                  enable_ipv6: Optional[bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.PgPgUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.PgPgUserConfigMigration'] = None,
                  pg: Optional['outputs.PgPgUserConfigPg'] = None,
@@ -9571,6 +9810,7 @@ class PgPgUserConfig(dict):
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['PgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'PgPgUserConfigMigrationArgs' migration: Migrate data from existing server.
         :param 'PgPgUserConfigPgArgs' pg: postgresql.conf configuration values.
@@ -9607,6 +9847,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -9705,6 +9947,14 @@ class PgPgUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -10959,6 +11209,8 @@ class RedisRedisUserConfig(dict):
             suggest = "additional_backup_regions"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
+        elif key == "ipFilterStrings":
+            suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "privateAccess":
@@ -11012,6 +11264,7 @@ class RedisRedisUserConfig(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.RedisRedisUserConfigIpFilterObject']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.RedisRedisUserConfigMigration'] = None,
                  private_access: Optional['outputs.RedisRedisUserConfigPrivateAccess'] = None,
@@ -11036,6 +11289,8 @@ class RedisRedisUserConfig(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -11086,6 +11341,11 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.RedisRedisUserConfigIpFilterObject']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -13513,6 +13773,7 @@ class GetCassandaCassandraUserConfigResult(dict):
                  cassandra: Optional['outputs.GetCassandaCassandraUserConfigCassandraResult'] = None,
                  cassandra_version: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetCassandaCassandraUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[bool] = None,
                  private_access: Optional['outputs.GetCassandaCassandraUserConfigPrivateAccessResult'] = None,
@@ -13533,6 +13794,8 @@ class GetCassandaCassandraUserConfigResult(dict):
             pulumi.set(__self__, "cassandra_version", cassandra_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -13572,6 +13835,11 @@ class GetCassandaCassandraUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetCassandaCassandraUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -13797,6 +14065,7 @@ class GetCassandraCassandraUserConfigResult(dict):
                  cassandra: Optional['outputs.GetCassandraCassandraUserConfigCassandraResult'] = None,
                  cassandra_version: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetCassandraCassandraUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migrate_sstableloader: Optional[bool] = None,
                  private_access: Optional['outputs.GetCassandraCassandraUserConfigPrivateAccessResult'] = None,
@@ -13817,6 +14086,8 @@ class GetCassandraCassandraUserConfigResult(dict):
             pulumi.set(__self__, "cassandra_version", cassandra_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -13856,6 +14127,11 @@ class GetCassandraCassandraUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetCassandraCassandraUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -14079,6 +14355,7 @@ class GetClickhouseClickhouseUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  project_to_fork_from: Optional[str] = None,
                  service_to_fork_from: Optional[str] = None):
@@ -14086,6 +14363,8 @@ class GetClickhouseClickhouseUserConfigResult(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if project_to_fork_from is not None:
@@ -14102,6 +14381,11 @@ class GetClickhouseClickhouseUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -14342,6 +14626,7 @@ class GetFlinkFlinkUserConfigResult(dict):
     def __init__(__self__, *,
                  flink_version: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetFlinkFlinkUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  number_of_task_slots: Optional[int] = None,
                  privatelink_access: Optional['outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult'] = None):
@@ -14349,6 +14634,8 @@ class GetFlinkFlinkUserConfigResult(dict):
             pulumi.set(__self__, "flink_version", flink_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if number_of_task_slots is not None:
@@ -14365,6 +14652,11 @@ class GetFlinkFlinkUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetFlinkFlinkUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -14555,6 +14847,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
                  external_image_storage: Optional['outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult'] = None,
                  google_analytics_ua_id: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[bool] = None,
                  private_access: Optional['outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult'] = None,
@@ -14621,6 +14914,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
             pulumi.set(__self__, "google_analytics_ua_id", google_analytics_ua_id)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
@@ -14772,6 +15067,11 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -15472,6 +15772,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
                  custom_domain: Optional[str] = None,
                  influxdb: Optional['outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  private_access: Optional['outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult'] = None,
@@ -15492,6 +15793,8 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
             pulumi.set(__self__, "influxdb", influxdb)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -15531,6 +15834,11 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -15863,6 +16171,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_connect: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult'] = None,
                  private_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult'] = None,
@@ -15877,6 +16186,8 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
@@ -15899,6 +16210,11 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -16280,6 +16596,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  additional_backup_regions: Optional[str] = None,
                  custom_domain: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetKafkaKafkaUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka: Optional['outputs.GetKafkaKafkaUserConfigKafkaResult'] = None,
                  kafka_authentication_methods: Optional['outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult'] = None,
@@ -16305,6 +16622,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka is not None:
@@ -16350,6 +16669,11 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetKafkaKafkaUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -17224,6 +17548,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_mirrormaker: Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult'] = None,
                  static_ips: Optional[bool] = None):
@@ -17235,6 +17560,8 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
@@ -17251,6 +17578,11 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -17737,6 +18069,7 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  m3_version: Optional[str] = None,
                  m3aggregator_version: Optional[str] = None,
@@ -17748,6 +18081,8 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if m3_version is not None:
@@ -17766,6 +18101,11 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -17915,8 +18255,10 @@ class GetM3DbM3dbUserConfigResult(dict):
                  additional_backup_regions: Optional[str] = None,
                  custom_domain: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetM3DbM3dbUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  limits: Optional['outputs.GetM3DbM3dbUserConfigLimitsResult'] = None,
+                 m3: Optional['outputs.GetM3DbM3dbUserConfigM3Result'] = None,
                  m3_version: Optional[str] = None,
                  m3coordinator_enable_graphite_carbon_ingest: Optional[bool] = None,
                  m3db_version: Optional[str] = None,
@@ -17936,10 +18278,14 @@ class GetM3DbM3dbUserConfigResult(dict):
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if m3 is not None:
+            pulumi.set(__self__, "m3", m3)
         if m3_version is not None:
             pulumi.set(__self__, "m3_version", m3_version)
         if m3coordinator_enable_graphite_carbon_ingest is not None:
@@ -17977,6 +18323,11 @@ class GetM3DbM3dbUserConfigResult(dict):
         return pulumi.get(self, "ip_filter_objects")
 
     @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ip_filters")
@@ -17985,6 +18336,11 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter
     def limits(self) -> Optional['outputs.GetM3DbM3dbUserConfigLimitsResult']:
         return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter
+    def m3(self) -> Optional['outputs.GetM3DbM3dbUserConfigM3Result']:
+        return pulumi.get(self, "m3")
 
     @property
     @pulumi.getter(name="m3Version")
@@ -18111,6 +18467,40 @@ class GetM3DbM3dbUserConfigLimitsResult(dict):
     @pulumi.getter(name="querySeries")
     def query_series(self) -> Optional[int]:
         return pulumi.get(self, "query_series")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigM3Result(dict):
+    def __init__(__self__, *,
+                 tag_options: Optional['outputs.GetM3DbM3dbUserConfigM3TagOptionsResult'] = None):
+        if tag_options is not None:
+            pulumi.set(__self__, "tag_options", tag_options)
+
+    @property
+    @pulumi.getter(name="tagOptions")
+    def tag_options(self) -> Optional['outputs.GetM3DbM3dbUserConfigM3TagOptionsResult']:
+        return pulumi.get(self, "tag_options")
+
+
+@pulumi.output_type
+class GetM3DbM3dbUserConfigM3TagOptionsResult(dict):
+    def __init__(__self__, *,
+                 allow_tag_name_duplicates: Optional[bool] = None,
+                 allow_tag_value_empty: Optional[bool] = None):
+        if allow_tag_name_duplicates is not None:
+            pulumi.set(__self__, "allow_tag_name_duplicates", allow_tag_name_duplicates)
+        if allow_tag_value_empty is not None:
+            pulumi.set(__self__, "allow_tag_value_empty", allow_tag_value_empty)
+
+    @property
+    @pulumi.getter(name="allowTagNameDuplicates")
+    def allow_tag_name_duplicates(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_tag_name_duplicates")
+
+    @property
+    @pulumi.getter(name="allowTagValueEmpty")
+    def allow_tag_value_empty(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_tag_value_empty")
 
 
 @pulumi.output_type
@@ -18270,6 +18660,7 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
                  name: Optional[str] = None,
                  namespaces: Optional[Sequence[str]] = None,
                  namespaces_objects: Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult']] = None,
+                 namespaces_strings: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingTagResult']] = None):
         pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
@@ -18282,6 +18673,8 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
             pulumi.set(__self__, "namespaces", namespaces)
         if namespaces_objects is not None:
             pulumi.set(__self__, "namespaces_objects", namespaces_objects)
+        if namespaces_strings is not None:
+            pulumi.set(__self__, "namespaces_strings", namespaces_strings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -18314,6 +18707,11 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
     @pulumi.getter(name="namespacesObjects")
     def namespaces_objects(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult']]:
         return pulumi.get(self, "namespaces_objects")
+
+    @property
+    @pulumi.getter(name="namespacesStrings")
+    def namespaces_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "namespaces_strings")
 
     @property
     @pulumi.getter
@@ -18469,6 +18867,7 @@ class GetMySqlMysqlUserConfigResult(dict):
                  backup_minute: Optional[int] = None,
                  binlog_retention_period: Optional[int] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetMySqlMysqlUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetMySqlMysqlUserConfigMigrationResult'] = None,
                  mysql: Optional['outputs.GetMySqlMysqlUserConfigMysqlResult'] = None,
@@ -18498,6 +18897,8 @@ class GetMySqlMysqlUserConfigResult(dict):
             pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -18555,6 +18956,11 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetMySqlMysqlUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -19168,6 +19574,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  index_patterns: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult']] = None,
                  index_template: Optional['outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  keep_index_refresh_interval: Optional[bool] = None,
                  max_index_count: Optional[int] = None,
@@ -19197,6 +19604,8 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
             pulumi.set(__self__, "index_template", index_template)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if keep_index_refresh_interval is not None:
@@ -19253,6 +19662,11 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -19959,6 +20373,7 @@ class GetPgPgUserConfigResult(dict):
                  backup_minute: Optional[int] = None,
                  enable_ipv6: Optional[bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetPgPgUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetPgPgUserConfigMigrationResult'] = None,
                  pg: Optional['outputs.GetPgPgUserConfigPgResult'] = None,
@@ -19998,6 +20413,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -20075,6 +20492,11 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetPgPgUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -21002,6 +21424,7 @@ class GetRedisRedisUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetRedisRedisUserConfigIpFilterObjectResult']] = None,
+                 ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetRedisRedisUserConfigMigrationResult'] = None,
                  private_access: Optional['outputs.GetRedisRedisUserConfigPrivateAccessResult'] = None,
@@ -21029,6 +21452,8 @@ class GetRedisRedisUserConfigResult(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -21079,6 +21504,11 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetRedisRedisUserConfigIpFilterObjectResult']]:
         return pulumi.get(self, "ip_filter_objects")
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ip_filter_strings")
 
     @property
     @pulumi.getter(name="ipFilters")

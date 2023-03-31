@@ -92,9 +92,17 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilterObjects = value;
         }
 
+        [Input("ipFilterStrings")]
+        private InputList<string>? _ipFilterStrings;
+        public InputList<string> IpFilterStrings
+        {
+            get => _ipFilterStrings ?? (_ipFilterStrings = new InputList<string>());
+            set => _ipFilterStrings = value;
+        }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());

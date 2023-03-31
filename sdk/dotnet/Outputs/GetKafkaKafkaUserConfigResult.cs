@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? AdditionalBackupRegions;
         public readonly string? CustomDomain;
         public readonly ImmutableArray<Outputs.GetKafkaKafkaUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Kafka server provided values
@@ -45,6 +46,8 @@ namespace Pulumi.Aiven.Outputs
             string? customDomain,
 
             ImmutableArray<Outputs.GetKafkaKafkaUserConfigIpFilterObjectResult> ipFilterObjects,
+
+            ImmutableArray<string> ipFilterStrings,
 
             ImmutableArray<string> ipFilters,
 
@@ -79,6 +82,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Kafka = kafka;
             KafkaAuthenticationMethods = kafkaAuthenticationMethods;
