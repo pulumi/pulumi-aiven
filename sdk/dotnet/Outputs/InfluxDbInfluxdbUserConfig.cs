@@ -32,6 +32,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Allow access to selected service ports from private networks.
@@ -72,6 +76,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.InfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.InfluxDbInfluxdbUserConfigPrivateAccess? privateAccess,
@@ -92,6 +98,7 @@ namespace Pulumi.Aiven.Outputs
             CustomDomain = customDomain;
             Influxdb = influxdb;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;

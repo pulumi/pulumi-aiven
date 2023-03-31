@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AdditionalBackupRegions;
         public readonly ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? ProjectToForkFrom;
         public readonly string? ServiceToForkFrom;
@@ -25,6 +26,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             string? projectToForkFrom,
@@ -33,6 +36,7 @@ namespace Pulumi.Aiven.Outputs
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             ProjectToForkFrom = projectToForkFrom;
             ServiceToForkFrom = serviceToForkFrom;

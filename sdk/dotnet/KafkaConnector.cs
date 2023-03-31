@@ -139,10 +139,6 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "config",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -175,11 +171,7 @@ namespace Pulumi.Aiven
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
-                _config = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _config = value;
         }
 
         /// <summary>
@@ -217,11 +209,7 @@ namespace Pulumi.Aiven
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
-                _config = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _config = value;
         }
 
         /// <summary>

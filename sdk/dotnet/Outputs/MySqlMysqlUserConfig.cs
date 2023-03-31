@@ -20,6 +20,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? BackupMinute;
         public readonly int? BinlogRetentionPeriod;
         public readonly ImmutableArray<Outputs.MySqlMysqlUserConfigIpFilterObject> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.MySqlMysqlUserConfigMigration? Migration;
         public readonly Outputs.MySqlMysqlUserConfigMysql? Mysql;
@@ -47,6 +48,8 @@ namespace Pulumi.Aiven.Outputs
             int? binlogRetentionPeriod,
 
             ImmutableArray<Outputs.MySqlMysqlUserConfigIpFilterObject> ipFilterObjects,
+
+            ImmutableArray<string> ipFilterStrings,
 
             ImmutableArray<string> ipFilters,
 
@@ -77,6 +80,7 @@ namespace Pulumi.Aiven.Outputs
             BackupMinute = backupMinute;
             BinlogRetentionPeriod = binlogRetentionPeriod;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Migration = migration;
             Mysql = mysql;

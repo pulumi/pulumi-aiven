@@ -38,6 +38,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GrafanaGrafanaUserConfigExternalImageStorage? ExternalImageStorage;
         public readonly string? GoogleAnalyticsUaId;
         public readonly ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly bool? MetricsEnabled;
         public readonly Outputs.GrafanaGrafanaUserConfigPrivateAccess? PrivateAccess;
@@ -104,6 +105,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             bool? metricsEnabled,
@@ -155,6 +158,7 @@ namespace Pulumi.Aiven.Outputs
             ExternalImageStorage = externalImageStorage;
             GoogleAnalyticsUaId = googleAnalyticsUaId;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
             PrivateAccess = privateAccess;

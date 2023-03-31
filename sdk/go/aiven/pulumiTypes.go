@@ -321,8 +321,10 @@ type CassandraCassandraUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []CassandraCassandraUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
 	MigrateSstableloader *bool `pulumi:"migrateSstableloader"`
@@ -361,8 +363,10 @@ type CassandraCassandraUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects CassandraCassandraUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
 	MigrateSstableloader pulumi.BoolPtrInput `pulumi:"migrateSstableloader"`
@@ -480,8 +484,13 @@ func (o CassandraCassandraUserConfigOutput) IpFilterObjects() CassandraCassandra
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o CassandraCassandraUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CassandraCassandraUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o CassandraCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -588,8 +597,18 @@ func (o CassandraCassandraUserConfigPtrOutput) IpFilterObjects() CassandraCassan
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o CassandraCassandraUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CassandraCassandraUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) []string {
 		if v == nil {
@@ -1634,8 +1653,10 @@ type ClickhouseClickhouseUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []ClickhouseClickhouseUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Name of another project to fork a service from. This has effect only when a new service is being created.
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
@@ -1660,8 +1681,10 @@ type ClickhouseClickhouseUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects ClickhouseClickhouseUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Name of another project to fork a service from. This has effect only when a new service is being created.
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
@@ -1759,8 +1782,13 @@ func (o ClickhouseClickhouseUserConfigOutput) IpFilterObjects() ClickhouseClickh
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o ClickhouseClickhouseUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o ClickhouseClickhouseUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -1820,8 +1848,18 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilterObjects() ClickhouseCli
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) []string {
 		if v == nil {
@@ -3008,8 +3046,10 @@ type FlinkFlinkUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []FlinkFlinkUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
 	NumberOfTaskSlots *int `pulumi:"numberOfTaskSlots"`
@@ -3034,8 +3074,10 @@ type FlinkFlinkUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects FlinkFlinkUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
 	NumberOfTaskSlots pulumi.IntPtrInput `pulumi:"numberOfTaskSlots"`
@@ -3131,8 +3173,13 @@ func (o FlinkFlinkUserConfigOutput) IpFilterObjects() FlinkFlinkUserConfigIpFilt
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o FlinkFlinkUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlinkFlinkUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o FlinkFlinkUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -3192,8 +3239,18 @@ func (o FlinkFlinkUserConfigPtrOutput) IpFilterObjects() FlinkFlinkUserConfigIpF
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o FlinkFlinkUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlinkFlinkUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o FlinkFlinkUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) []string {
 		if v == nil {
@@ -3931,7 +3988,8 @@ type GrafanaGrafanaUserConfig struct {
 	ExternalImageStorage         *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
 	GoogleAnalyticsUaId          *string                                       `pulumi:"googleAnalyticsUaId"`
 	IpFilterObjects              []GrafanaGrafanaUserConfigIpFilterObject      `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings              []string                                      `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters              []string                                   `pulumi:"ipFilters"`
 	MetricsEnabled         *bool                                      `pulumi:"metricsEnabled"`
 	PrivateAccess          *GrafanaGrafanaUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -3984,7 +4042,8 @@ type GrafanaGrafanaUserConfigArgs struct {
 	ExternalImageStorage         GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
 	GoogleAnalyticsUaId          pulumi.StringPtrInput                                `pulumi:"googleAnalyticsUaId"`
 	IpFilterObjects              GrafanaGrafanaUserConfigIpFilterObjectArrayInput     `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings              pulumi.StringArrayInput                              `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters              pulumi.StringArrayInput                           `pulumi:"ipFilters"`
 	MetricsEnabled         pulumi.BoolPtrInput                               `pulumi:"metricsEnabled"`
 	PrivateAccess          GrafanaGrafanaUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -4179,7 +4238,11 @@ func (o GrafanaGrafanaUserConfigOutput) IpFilterObjects() GrafanaGrafanaUserConf
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) []GrafanaGrafanaUserConfigIpFilterObject { return v.IpFilterObjects }).(GrafanaGrafanaUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GrafanaGrafanaUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -4483,7 +4546,16 @@ func (o GrafanaGrafanaUserConfigPtrOutput) IpFilterObjects() GrafanaGrafanaUserC
 	}).(GrafanaGrafanaUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GrafanaGrafanaUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) []string {
 		if v == nil {
@@ -7273,8 +7345,10 @@ type InfluxDbInfluxdbUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []InfluxDbInfluxdbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -7313,8 +7387,10 @@ type InfluxDbInfluxdbUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects InfluxDbInfluxdbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -7432,8 +7508,13 @@ func (o InfluxDbInfluxdbUserConfigOutput) IpFilterObjects() InfluxDbInfluxdbUser
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o InfluxDbInfluxdbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o InfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -7540,8 +7621,18 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilterObjects() InfluxDbInfluxdbU
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) []string {
 		if v == nil {
@@ -8903,7 +8994,8 @@ func (o KafkaConnectKafkaConnectArrayOutput) Index(i pulumi.IntInput) KafkaConne
 type KafkaConnectKafkaConnectUserConfig struct {
 	AdditionalBackupRegions *string                                            `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []KafkaConnectKafkaConnectUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                           `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters         []string                                             `pulumi:"ipFilters"`
 	KafkaConnect      *KafkaConnectKafkaConnectUserConfigKafkaConnect      `pulumi:"kafkaConnect"`
 	PrivateAccess     *KafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -8926,7 +9018,8 @@ type KafkaConnectKafkaConnectUserConfigInput interface {
 type KafkaConnectKafkaConnectUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                                      `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         KafkaConnectKafkaConnectUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                                    `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters         pulumi.StringArrayInput                                     `pulumi:"ipFilters"`
 	KafkaConnect      KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput      `pulumi:"kafkaConnect"`
 	PrivateAccess     KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -9022,7 +9115,11 @@ func (o KafkaConnectKafkaConnectUserConfigOutput) IpFilterObjects() KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o KafkaConnectKafkaConnectUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o KafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -9097,7 +9194,16 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilterObjects() KafkaConn
 	}).(KafkaConnectKafkaConnectUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) []string {
 		if v == nil {
@@ -10580,8 +10686,10 @@ type KafkaKafkaUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []KafkaKafkaUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Kafka broker configuration values.
 	Kafka *KafkaKafkaUserConfigKafka `pulumi:"kafka"`
@@ -10632,8 +10740,10 @@ type KafkaKafkaUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects KafkaKafkaUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Kafka broker configuration values.
 	Kafka KafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
@@ -10758,8 +10868,13 @@ func (o KafkaKafkaUserConfigOutput) IpFilterObjects() KafkaKafkaUserConfigIpFilt
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o KafkaKafkaUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o KafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -10891,8 +11006,18 @@ func (o KafkaKafkaUserConfigPtrOutput) IpFilterObjects() KafkaKafkaUserConfigIpF
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o KafkaKafkaUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) []string {
 		if v == nil {
@@ -13534,7 +13659,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerArrayOutput) Index(i pulumi.IntInput) Ka
 type KafkaMirrorMakerKafkaMirrormakerUserConfig struct {
 	AdditionalBackupRegions *string                                                    `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                                   `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters        []string                                                    `pulumi:"ipFilters"`
 	KafkaMirrormaker *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 	StaticIps        *bool                                                       `pulumi:"staticIps"`
@@ -13554,7 +13680,8 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 type KafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                                              `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                                            `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters        pulumi.StringArrayInput                                            `pulumi:"ipFilters"`
 	KafkaMirrormaker KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 	StaticIps        pulumi.BoolPtrInput                                                `pulumi:"staticIps"`
@@ -13647,7 +13774,11 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilterObjects() Kafk
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -13704,7 +13835,16 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilterObjects() K
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) []string {
 		if v == nil {
@@ -15431,7 +15571,8 @@ func (o M3AggregatorM3aggregatorArrayOutput) Index(i pulumi.IntInput) M3Aggregat
 type M3AggregatorM3aggregatorUserConfig struct {
 	CustomDomain    *string                                            `pulumi:"customDomain"`
 	IpFilterObjects []M3AggregatorM3aggregatorUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings []string                                           `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           *string `pulumi:"m3Version"`
@@ -15453,7 +15594,8 @@ type M3AggregatorM3aggregatorUserConfigInput interface {
 type M3AggregatorM3aggregatorUserConfigArgs struct {
 	CustomDomain    pulumi.StringPtrInput                                      `pulumi:"customDomain"`
 	IpFilterObjects M3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings pulumi.StringArrayInput                                    `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           pulumi.StringPtrInput `pulumi:"m3Version"`
@@ -15548,7 +15690,11 @@ func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilterObjects() M3Aggregator
 	}).(M3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -15608,7 +15754,16 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilterObjects() M3Aggrega
 	}).(M3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) []string {
 		if v == nil {
@@ -16168,21 +16323,22 @@ type M3DbM3dbUserConfig struct {
 	AdditionalBackupRegions *string                            `pulumi:"additionalBackupRegions"`
 	CustomDomain            *string                            `pulumi:"customDomain"`
 	IpFilterObjects         []M3DbM3dbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                           `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string                  `pulumi:"ipFilters"`
 	Limits    *M3DbM3dbUserConfigLimits `pulumi:"limits"`
+	M3        *M3DbM3dbUserConfigM3     `pulumi:"m3"`
 	// Deprecated: Usage of this field is discouraged.
-	M3Version                               *string `pulumi:"m3Version"`
-	M3coordinatorEnableGraphiteCarbonIngest *bool   `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	M3dbVersion                             *string `pulumi:"m3dbVersion"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
-	Namespaces        []M3DbM3dbUserConfigNamespace    `pulumi:"namespaces"`
-	PrivateAccess     *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	ProjectToForkFrom *string                          `pulumi:"projectToForkFrom"`
-	PublicAccess      *M3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	Rules             *M3DbM3dbUserConfigRules         `pulumi:"rules"`
-	ServiceToForkFrom *string                          `pulumi:"serviceToForkFrom"`
-	StaticIps         *bool                            `pulumi:"staticIps"`
+	M3Version                               *string                          `pulumi:"m3Version"`
+	M3coordinatorEnableGraphiteCarbonIngest *bool                            `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	M3dbVersion                             *string                          `pulumi:"m3dbVersion"`
+	Namespaces                              []M3DbM3dbUserConfigNamespace    `pulumi:"namespaces"`
+	PrivateAccess                           *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom                       *string                          `pulumi:"projectToForkFrom"`
+	PublicAccess                            *M3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	Rules                                   *M3DbM3dbUserConfigRules         `pulumi:"rules"`
+	ServiceToForkFrom                       *string                          `pulumi:"serviceToForkFrom"`
+	StaticIps                               *bool                            `pulumi:"staticIps"`
 }
 
 // M3DbM3dbUserConfigInput is an input type that accepts M3DbM3dbUserConfigArgs and M3DbM3dbUserConfigOutput values.
@@ -16200,21 +16356,22 @@ type M3DbM3dbUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                      `pulumi:"additionalBackupRegions"`
 	CustomDomain            pulumi.StringPtrInput                      `pulumi:"customDomain"`
 	IpFilterObjects         M3DbM3dbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                    `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput          `pulumi:"ipFilters"`
 	Limits    M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	M3        M3DbM3dbUserConfigM3PtrInput     `pulumi:"m3"`
 	// Deprecated: Usage of this field is discouraged.
-	M3Version                               pulumi.StringPtrInput `pulumi:"m3Version"`
-	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput   `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	M3dbVersion                             pulumi.StringPtrInput `pulumi:"m3dbVersion"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
-	Namespaces        M3DbM3dbUserConfigNamespaceArrayInput   `pulumi:"namespaces"`
-	PrivateAccess     M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	ProjectToForkFrom pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
-	PublicAccess      M3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	Rules             M3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
-	ServiceToForkFrom pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
-	StaticIps         pulumi.BoolPtrInput                     `pulumi:"staticIps"`
+	M3Version                               pulumi.StringPtrInput                   `pulumi:"m3Version"`
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput                     `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	M3dbVersion                             pulumi.StringPtrInput                   `pulumi:"m3dbVersion"`
+	Namespaces                              M3DbM3dbUserConfigNamespaceArrayInput   `pulumi:"namespaces"`
+	PrivateAccess                           M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom                       pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
+	PublicAccess                            M3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	Rules                                   M3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
+	ServiceToForkFrom                       pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
+	StaticIps                               pulumi.BoolPtrInput                     `pulumi:"staticIps"`
 }
 
 func (M3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -16306,13 +16463,21 @@ func (o M3DbM3dbUserConfigOutput) IpFilterObjects() M3DbM3dbUserConfigIpFilterOb
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []M3DbM3dbUserConfigIpFilterObject { return v.IpFilterObjects }).(M3DbM3dbUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o M3DbM3dbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o M3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
 func (o M3DbM3dbUserConfigOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits { return v.Limits }).(M3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigOutput) M3() M3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigM3 { return v.M3 }).(M3DbM3dbUserConfigM3PtrOutput)
 }
 
 // Deprecated: Usage of this field is discouraged.
@@ -16328,7 +16493,6 @@ func (o M3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
 func (o M3DbM3dbUserConfigOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace { return v.Namespaces }).(M3DbM3dbUserConfigNamespaceArrayOutput)
 }
@@ -16408,7 +16572,16 @@ func (o M3DbM3dbUserConfigPtrOutput) IpFilterObjects() M3DbM3dbUserConfigIpFilte
 	}).(M3DbM3dbUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o M3DbM3dbUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o M3DbM3dbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []string {
 		if v == nil {
@@ -16425,6 +16598,15 @@ func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput 
 		}
 		return v.Limits
 	}).(M3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigPtrOutput) M3() M3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigM3 {
+		if v == nil {
+			return nil
+		}
+		return v.M3
+	}).(M3DbM3dbUserConfigM3PtrOutput)
 }
 
 // Deprecated: Usage of this field is discouraged.
@@ -16455,7 +16637,6 @@ func (o M3DbM3dbUserConfigPtrOutput) M3dbVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
 func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace {
 		if v == nil {
@@ -16825,6 +17006,287 @@ func (o M3DbM3dbUserConfigLimitsPtrOutput) QuerySeries() pulumi.IntPtrOutput {
 		}
 		return v.QuerySeries
 	}).(pulumi.IntPtrOutput)
+}
+
+type M3DbM3dbUserConfigM3 struct {
+	TagOptions *M3DbM3dbUserConfigM3TagOptions `pulumi:"tagOptions"`
+}
+
+// M3DbM3dbUserConfigM3Input is an input type that accepts M3DbM3dbUserConfigM3Args and M3DbM3dbUserConfigM3Output values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigM3Input` via:
+//
+//	M3DbM3dbUserConfigM3Args{...}
+type M3DbM3dbUserConfigM3Input interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigM3Output() M3DbM3dbUserConfigM3Output
+	ToM3DbM3dbUserConfigM3OutputWithContext(context.Context) M3DbM3dbUserConfigM3Output
+}
+
+type M3DbM3dbUserConfigM3Args struct {
+	TagOptions M3DbM3dbUserConfigM3TagOptionsPtrInput `pulumi:"tagOptions"`
+}
+
+func (M3DbM3dbUserConfigM3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigM3Args) ToM3DbM3dbUserConfigM3Output() M3DbM3dbUserConfigM3Output {
+	return i.ToM3DbM3dbUserConfigM3OutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigM3Args) ToM3DbM3dbUserConfigM3OutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigM3Output)
+}
+
+func (i M3DbM3dbUserConfigM3Args) ToM3DbM3dbUserConfigM3PtrOutput() M3DbM3dbUserConfigM3PtrOutput {
+	return i.ToM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigM3Args) ToM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigM3Output).ToM3DbM3dbUserConfigM3PtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigM3PtrInput is an input type that accepts M3DbM3dbUserConfigM3Args, M3DbM3dbUserConfigM3Ptr and M3DbM3dbUserConfigM3PtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigM3PtrInput` via:
+//
+//	        M3DbM3dbUserConfigM3Args{...}
+//
+//	or:
+//
+//	        nil
+type M3DbM3dbUserConfigM3PtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigM3PtrOutput() M3DbM3dbUserConfigM3PtrOutput
+	ToM3DbM3dbUserConfigM3PtrOutputWithContext(context.Context) M3DbM3dbUserConfigM3PtrOutput
+}
+
+type m3dbM3dbUserConfigM3PtrType M3DbM3dbUserConfigM3Args
+
+func M3DbM3dbUserConfigM3Ptr(v *M3DbM3dbUserConfigM3Args) M3DbM3dbUserConfigM3PtrInput {
+	return (*m3dbM3dbUserConfigM3PtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigM3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigM3PtrType) ToM3DbM3dbUserConfigM3PtrOutput() M3DbM3dbUserConfigM3PtrOutput {
+	return i.ToM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigM3PtrType) ToM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigM3PtrOutput)
+}
+
+type M3DbM3dbUserConfigM3Output struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigM3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigM3Output) ToM3DbM3dbUserConfigM3Output() M3DbM3dbUserConfigM3Output {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3Output) ToM3DbM3dbUserConfigM3OutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3Output {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3Output) ToM3DbM3dbUserConfigM3PtrOutput() M3DbM3dbUserConfigM3PtrOutput {
+	return o.ToM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigM3Output) ToM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v M3DbM3dbUserConfigM3) *M3DbM3dbUserConfigM3 {
+		return &v
+	}).(M3DbM3dbUserConfigM3PtrOutput)
+}
+
+func (o M3DbM3dbUserConfigM3Output) TagOptions() M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigM3) *M3DbM3dbUserConfigM3TagOptions { return v.TagOptions }).(M3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type M3DbM3dbUserConfigM3PtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigM3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigM3PtrOutput) ToM3DbM3dbUserConfigM3PtrOutput() M3DbM3dbUserConfigM3PtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3PtrOutput) ToM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3PtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3PtrOutput) Elem() M3DbM3dbUserConfigM3Output {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigM3) M3DbM3dbUserConfigM3 {
+		if v != nil {
+			return *v
+		}
+		var ret M3DbM3dbUserConfigM3
+		return ret
+	}).(M3DbM3dbUserConfigM3Output)
+}
+
+func (o M3DbM3dbUserConfigM3PtrOutput) TagOptions() M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigM3) *M3DbM3dbUserConfigM3TagOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TagOptions
+	}).(M3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type M3DbM3dbUserConfigM3TagOptions struct {
+	AllowTagNameDuplicates *bool `pulumi:"allowTagNameDuplicates"`
+	AllowTagValueEmpty     *bool `pulumi:"allowTagValueEmpty"`
+}
+
+// M3DbM3dbUserConfigM3TagOptionsInput is an input type that accepts M3DbM3dbUserConfigM3TagOptionsArgs and M3DbM3dbUserConfigM3TagOptionsOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigM3TagOptionsInput` via:
+//
+//	M3DbM3dbUserConfigM3TagOptionsArgs{...}
+type M3DbM3dbUserConfigM3TagOptionsInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigM3TagOptionsOutput() M3DbM3dbUserConfigM3TagOptionsOutput
+	ToM3DbM3dbUserConfigM3TagOptionsOutputWithContext(context.Context) M3DbM3dbUserConfigM3TagOptionsOutput
+}
+
+type M3DbM3dbUserConfigM3TagOptionsArgs struct {
+	AllowTagNameDuplicates pulumi.BoolPtrInput `pulumi:"allowTagNameDuplicates"`
+	AllowTagValueEmpty     pulumi.BoolPtrInput `pulumi:"allowTagValueEmpty"`
+}
+
+func (M3DbM3dbUserConfigM3TagOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (i M3DbM3dbUserConfigM3TagOptionsArgs) ToM3DbM3dbUserConfigM3TagOptionsOutput() M3DbM3dbUserConfigM3TagOptionsOutput {
+	return i.ToM3DbM3dbUserConfigM3TagOptionsOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigM3TagOptionsArgs) ToM3DbM3dbUserConfigM3TagOptionsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3TagOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigM3TagOptionsOutput)
+}
+
+func (i M3DbM3dbUserConfigM3TagOptionsArgs) ToM3DbM3dbUserConfigM3TagOptionsPtrOutput() M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return i.ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i M3DbM3dbUserConfigM3TagOptionsArgs) ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigM3TagOptionsOutput).ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx)
+}
+
+// M3DbM3dbUserConfigM3TagOptionsPtrInput is an input type that accepts M3DbM3dbUserConfigM3TagOptionsArgs, M3DbM3dbUserConfigM3TagOptionsPtr and M3DbM3dbUserConfigM3TagOptionsPtrOutput values.
+// You can construct a concrete instance of `M3DbM3dbUserConfigM3TagOptionsPtrInput` via:
+//
+//	        M3DbM3dbUserConfigM3TagOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type M3DbM3dbUserConfigM3TagOptionsPtrInput interface {
+	pulumi.Input
+
+	ToM3DbM3dbUserConfigM3TagOptionsPtrOutput() M3DbM3dbUserConfigM3TagOptionsPtrOutput
+	ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Context) M3DbM3dbUserConfigM3TagOptionsPtrOutput
+}
+
+type m3dbM3dbUserConfigM3TagOptionsPtrType M3DbM3dbUserConfigM3TagOptionsArgs
+
+func M3DbM3dbUserConfigM3TagOptionsPtr(v *M3DbM3dbUserConfigM3TagOptionsArgs) M3DbM3dbUserConfigM3TagOptionsPtrInput {
+	return (*m3dbM3dbUserConfigM3TagOptionsPtrType)(v)
+}
+
+func (*m3dbM3dbUserConfigM3TagOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (i *m3dbM3dbUserConfigM3TagOptionsPtrType) ToM3DbM3dbUserConfigM3TagOptionsPtrOutput() M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return i.ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *m3dbM3dbUserConfigM3TagOptionsPtrType) ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type M3DbM3dbUserConfigM3TagOptionsOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigM3TagOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsOutput) ToM3DbM3dbUserConfigM3TagOptionsOutput() M3DbM3dbUserConfigM3TagOptionsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsOutput) ToM3DbM3dbUserConfigM3TagOptionsOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3TagOptionsOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsOutput) ToM3DbM3dbUserConfigM3TagOptionsPtrOutput() M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsOutput) ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v M3DbM3dbUserConfigM3TagOptions) *M3DbM3dbUserConfigM3TagOptions {
+		return &v
+	}).(M3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsOutput) AllowTagNameDuplicates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigM3TagOptions) *bool { return v.AllowTagNameDuplicates }).(pulumi.BoolPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsOutput) AllowTagValueEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigM3TagOptions) *bool { return v.AllowTagValueEmpty }).(pulumi.BoolPtrOutput)
+}
+
+type M3DbM3dbUserConfigM3TagOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (M3DbM3dbUserConfigM3TagOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**M3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsPtrOutput) ToM3DbM3dbUserConfigM3TagOptionsPtrOutput() M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsPtrOutput) ToM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) M3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsPtrOutput) Elem() M3DbM3dbUserConfigM3TagOptionsOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigM3TagOptions) M3DbM3dbUserConfigM3TagOptions {
+		if v != nil {
+			return *v
+		}
+		var ret M3DbM3dbUserConfigM3TagOptions
+		return ret
+	}).(M3DbM3dbUserConfigM3TagOptionsOutput)
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsPtrOutput) AllowTagNameDuplicates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigM3TagOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTagNameDuplicates
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigM3TagOptionsPtrOutput) AllowTagValueEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigM3TagOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTagValueEmpty
+	}).(pulumi.BoolPtrOutput)
 }
 
 type M3DbM3dbUserConfigNamespace struct {
@@ -17701,9 +18163,10 @@ type M3DbM3dbUserConfigRulesMapping struct {
 	Drop         *bool    `pulumi:"drop"`
 	Filter       string   `pulumi:"filter"`
 	Name         *string  `pulumi:"name"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
 	Namespaces        []string                                         `pulumi:"namespaces"`
 	NamespacesObjects []M3DbM3dbUserConfigRulesMappingNamespacesObject `pulumi:"namespacesObjects"`
+	NamespacesStrings []string                                         `pulumi:"namespacesStrings"`
 	Tags              []M3DbM3dbUserConfigRulesMappingTag              `pulumi:"tags"`
 }
 
@@ -17723,9 +18186,10 @@ type M3DbM3dbUserConfigRulesMappingArgs struct {
 	Drop         pulumi.BoolPtrInput     `pulumi:"drop"`
 	Filter       pulumi.StringInput      `pulumi:"filter"`
 	Name         pulumi.StringPtrInput   `pulumi:"name"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
 	Namespaces        pulumi.StringArrayInput                                  `pulumi:"namespaces"`
 	NamespacesObjects M3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput `pulumi:"namespacesObjects"`
+	NamespacesStrings pulumi.StringArrayInput                                  `pulumi:"namespacesStrings"`
 	Tags              M3DbM3dbUserConfigRulesMappingTagArrayInput              `pulumi:"tags"`
 }
 
@@ -17796,7 +18260,7 @@ func (o M3DbM3dbUserConfigRulesMappingOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
 func (o M3DbM3dbUserConfigRulesMappingOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
@@ -17805,6 +18269,10 @@ func (o M3DbM3dbUserConfigRulesMappingOutput) NamespacesObjects() M3DbM3dbUserCo
 	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) []M3DbM3dbUserConfigRulesMappingNamespacesObject {
 		return v.NamespacesObjects
 	}).(M3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput)
+}
+
+func (o M3DbM3dbUserConfigRulesMappingOutput) NamespacesStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigRulesMapping) []string { return v.NamespacesStrings }).(pulumi.StringArrayOutput)
 }
 
 func (o M3DbM3dbUserConfigRulesMappingOutput) Tags() M3DbM3dbUserConfigRulesMappingTagArrayOutput {
@@ -18457,7 +18925,8 @@ type MySqlMysqlUserConfig struct {
 	BackupMinute            *int                                 `pulumi:"backupMinute"`
 	BinlogRetentionPeriod   *int                                 `pulumi:"binlogRetentionPeriod"`
 	IpFilterObjects         []MySqlMysqlUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                             `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters          []string                               `pulumi:"ipFilters"`
 	Migration          *MySqlMysqlUserConfigMigration         `pulumi:"migration"`
 	Mysql              *MySqlMysqlUserConfigMysql             `pulumi:"mysql"`
@@ -18490,7 +18959,8 @@ type MySqlMysqlUserConfigArgs struct {
 	BackupMinute            pulumi.IntPtrInput                           `pulumi:"backupMinute"`
 	BinlogRetentionPeriod   pulumi.IntPtrInput                           `pulumi:"binlogRetentionPeriod"`
 	IpFilterObjects         MySqlMysqlUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                      `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters          pulumi.StringArrayInput                       `pulumi:"ipFilters"`
 	Migration          MySqlMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
 	Mysql              MySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
@@ -18609,7 +19079,11 @@ func (o MySqlMysqlUserConfigOutput) IpFilterObjects() MySqlMysqlUserConfigIpFilt
 	return o.ApplyT(func(v MySqlMysqlUserConfig) []MySqlMysqlUserConfigIpFilterObject { return v.IpFilterObjects }).(MySqlMysqlUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o MySqlMysqlUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o MySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -18741,7 +19215,16 @@ func (o MySqlMysqlUserConfigPtrOutput) IpFilterObjects() MySqlMysqlUserConfigIpF
 	}).(MySqlMysqlUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o MySqlMysqlUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) []string {
 		if v == nil {
@@ -20676,8 +21159,10 @@ type OpenSearchOpensearchUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []OpenSearchOpensearchUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
@@ -20734,8 +21219,10 @@ type OpenSearchOpensearchUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects OpenSearchOpensearchUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
@@ -20881,8 +21368,13 @@ func (o OpenSearchOpensearchUserConfigOutput) IpFilterObjects() OpenSearchOpense
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o OpenSearchOpensearchUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o OpenSearchOpensearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -21044,8 +21536,18 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilterObjects() OpenSearchOpe
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) []string {
 		if v == nil {
@@ -23442,8 +23944,10 @@ type PgPgUserConfig struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []PgPgUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Migrate data from existing server.
 	Migration *PgPgUserConfigMigration `pulumi:"migration"`
@@ -23518,8 +24022,10 @@ type PgPgUserConfigArgs struct {
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects PgPgUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Migrate data from existing server.
 	Migration PgPgUserConfigMigrationPtrInput `pulumi:"migration"`
@@ -23680,8 +24186,13 @@ func (o PgPgUserConfigOutput) IpFilterObjects() PgPgUserConfigIpFilterObjectArra
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o PgPgUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PgPgUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o PgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -23885,8 +24396,18 @@ func (o PgPgUserConfigPtrOutput) IpFilterObjects() PgPgUserConfigIpFilterObjectA
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+func (o PgPgUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) []string {
 		if v == nil {
@@ -26850,7 +27371,8 @@ func (o RedisRediArrayOutput) Index(i pulumi.IntInput) RedisRediOutput {
 type RedisRedisUserConfig struct {
 	AdditionalBackupRegions *string                              `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []RedisRedisUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                             `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters                          []string                               `pulumi:"ipFilters"`
 	Migration                          *RedisRedisUserConfigMigration         `pulumi:"migration"`
 	PrivateAccess                      *RedisRedisUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -26887,7 +27409,8 @@ type RedisRedisUserConfigInput interface {
 type RedisRedisUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                        `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         RedisRedisUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                      `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters                          pulumi.StringArrayInput                       `pulumi:"ipFilters"`
 	Migration                          RedisRedisUserConfigMigrationPtrInput         `pulumi:"migration"`
 	PrivateAccess                      RedisRedisUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -26995,7 +27518,11 @@ func (o RedisRedisUserConfigOutput) IpFilterObjects() RedisRedisUserConfigIpFilt
 	return o.ApplyT(func(v RedisRedisUserConfig) []RedisRedisUserConfigIpFilterObject { return v.IpFilterObjects }).(RedisRedisUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o RedisRedisUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o RedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -27118,7 +27645,16 @@ func (o RedisRedisUserConfigPtrOutput) IpFilterObjects() RedisRedisUserConfigIpF
 	}).(RedisRedisUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o RedisRedisUserConfigPtrOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilterStrings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) []string {
 		if v == nil {
@@ -34361,7 +34897,8 @@ type GetCassandaCassandraUserConfig struct {
 	Cassandra        *GetCassandaCassandraUserConfigCassandra       `pulumi:"cassandra"`
 	CassandraVersion *string                                        `pulumi:"cassandraVersion"`
 	IpFilterObjects  []GetCassandaCassandraUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings  []string                                       `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters            []string                                     `pulumi:"ipFilters"`
 	MigrateSstableloader *bool                                        `pulumi:"migrateSstableloader"`
 	PrivateAccess        *GetCassandaCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -34390,7 +34927,8 @@ type GetCassandaCassandraUserConfigArgs struct {
 	Cassandra        GetCassandaCassandraUserConfigCassandraPtrInput        `pulumi:"cassandra"`
 	CassandraVersion pulumi.StringPtrInput                                  `pulumi:"cassandraVersion"`
 	IpFilterObjects  GetCassandaCassandraUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings  pulumi.StringArrayInput                                `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters            pulumi.StringArrayInput                             `pulumi:"ipFilters"`
 	MigrateSstableloader pulumi.BoolPtrInput                                 `pulumi:"migrateSstableloader"`
 	PrivateAccess        GetCassandaCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -34472,7 +35010,11 @@ func (o GetCassandaCassandraUserConfigOutput) IpFilterObjects() GetCassandaCassa
 	}).(GetCassandaCassandraUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetCassandaCassandraUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCassandaCassandraUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetCassandaCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -35483,7 +36025,8 @@ type GetCassandraCassandraUserConfig struct {
 	Cassandra        *GetCassandraCassandraUserConfigCassandra       `pulumi:"cassandra"`
 	CassandraVersion *string                                         `pulumi:"cassandraVersion"`
 	IpFilterObjects  []GetCassandraCassandraUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings  []string                                        `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters            []string                                      `pulumi:"ipFilters"`
 	MigrateSstableloader *bool                                         `pulumi:"migrateSstableloader"`
 	PrivateAccess        *GetCassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -35512,7 +36055,8 @@ type GetCassandraCassandraUserConfigArgs struct {
 	Cassandra        GetCassandraCassandraUserConfigCassandraPtrInput        `pulumi:"cassandra"`
 	CassandraVersion pulumi.StringPtrInput                                   `pulumi:"cassandraVersion"`
 	IpFilterObjects  GetCassandraCassandraUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings  pulumi.StringArrayInput                                 `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters            pulumi.StringArrayInput                              `pulumi:"ipFilters"`
 	MigrateSstableloader pulumi.BoolPtrInput                                  `pulumi:"migrateSstableloader"`
 	PrivateAccess        GetCassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -35594,7 +36138,11 @@ func (o GetCassandraCassandraUserConfigOutput) IpFilterObjects() GetCassandraCas
 	}).(GetCassandraCassandraUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetCassandraCassandraUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCassandraCassandraUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetCassandraCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -36602,7 +37150,8 @@ func (o GetClickhouseClickhouseArrayOutput) Index(i pulumi.IntInput) GetClickhou
 type GetClickhouseClickhouseUserConfig struct {
 	AdditionalBackupRegions *string                                           `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []GetClickhouseClickhouseUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                          `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters         []string `pulumi:"ipFilters"`
 	ProjectToForkFrom *string  `pulumi:"projectToForkFrom"`
 	ServiceToForkFrom *string  `pulumi:"serviceToForkFrom"`
@@ -36622,7 +37171,8 @@ type GetClickhouseClickhouseUserConfigInput interface {
 type GetClickhouseClickhouseUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                                     `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         GetClickhouseClickhouseUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                                   `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters         pulumi.StringArrayInput `pulumi:"ipFilters"`
 	ProjectToForkFrom pulumi.StringPtrInput   `pulumi:"projectToForkFrom"`
 	ServiceToForkFrom pulumi.StringPtrInput   `pulumi:"serviceToForkFrom"`
@@ -36689,7 +37239,11 @@ func (o GetClickhouseClickhouseUserConfigOutput) IpFilterObjects() GetClickhouse
 	}).(GetClickhouseClickhouseUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetClickhouseClickhouseUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetClickhouseClickhouseUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -37579,7 +38133,8 @@ func (o GetFlinkFlinkArrayOutput) Index(i pulumi.IntInput) GetFlinkFlinkOutput {
 type GetFlinkFlinkUserConfig struct {
 	FlinkVersion    *string                                 `pulumi:"flinkVersion"`
 	IpFilterObjects []GetFlinkFlinkUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings []string                                `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters         []string                                  `pulumi:"ipFilters"`
 	NumberOfTaskSlots *int                                      `pulumi:"numberOfTaskSlots"`
 	PrivatelinkAccess *GetFlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
@@ -37599,7 +38154,8 @@ type GetFlinkFlinkUserConfigInput interface {
 type GetFlinkFlinkUserConfigArgs struct {
 	FlinkVersion    pulumi.StringPtrInput                           `pulumi:"flinkVersion"`
 	IpFilterObjects GetFlinkFlinkUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters         pulumi.StringArrayInput                          `pulumi:"ipFilters"`
 	NumberOfTaskSlots pulumi.IntPtrInput                               `pulumi:"numberOfTaskSlots"`
 	PrivatelinkAccess GetFlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
@@ -37664,7 +38220,11 @@ func (o GetFlinkFlinkUserConfigOutput) IpFilterObjects() GetFlinkFlinkUserConfig
 	return o.ApplyT(func(v GetFlinkFlinkUserConfig) []GetFlinkFlinkUserConfigIpFilterObject { return v.IpFilterObjects }).(GetFlinkFlinkUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetFlinkFlinkUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFlinkFlinkUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetFlinkFlinkUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlinkFlinkUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -38393,7 +38953,8 @@ type GetGrafanaGrafanaUserConfig struct {
 	ExternalImageStorage         *GetGrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
 	GoogleAnalyticsUaId          *string                                          `pulumi:"googleAnalyticsUaId"`
 	IpFilterObjects              []GetGrafanaGrafanaUserConfigIpFilterObject      `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings              []string                                         `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters              []string                                      `pulumi:"ipFilters"`
 	MetricsEnabled         *bool                                         `pulumi:"metricsEnabled"`
 	PrivateAccess          *GetGrafanaGrafanaUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -38447,7 +39008,8 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	ExternalImageStorage         GetGrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
 	GoogleAnalyticsUaId          pulumi.StringPtrInput                                   `pulumi:"googleAnalyticsUaId"`
 	IpFilterObjects              GetGrafanaGrafanaUserConfigIpFilterObjectArrayInput     `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings              pulumi.StringArrayInput                                 `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters              pulumi.StringArrayInput                              `pulumi:"ipFilters"`
 	MetricsEnabled         pulumi.BoolPtrInput                                  `pulumi:"metricsEnabled"`
 	PrivateAccess          GetGrafanaGrafanaUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -38621,7 +39183,11 @@ func (o GetGrafanaGrafanaUserConfigOutput) IpFilterObjects() GetGrafanaGrafanaUs
 	}).(GetGrafanaGrafanaUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetGrafanaGrafanaUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetGrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -41377,7 +41943,8 @@ type GetInfluxDbInfluxdbUserConfig struct {
 	// InfluxDB server provided values
 	Influxdb        *GetInfluxDbInfluxdbUserConfigInfluxdb        `pulumi:"influxdb"`
 	IpFilterObjects []GetInfluxDbInfluxdbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings []string                                      `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters              []string                                        `pulumi:"ipFilters"`
 	PrivateAccess          *GetInfluxDbInfluxdbUserConfigPrivateAccess     `pulumi:"privateAccess"`
 	PrivatelinkAccess      *GetInfluxDbInfluxdbUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
@@ -41406,7 +41973,8 @@ type GetInfluxDbInfluxdbUserConfigArgs struct {
 	// InfluxDB server provided values
 	Influxdb        GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput         `pulumi:"influxdb"`
 	IpFilterObjects GetInfluxDbInfluxdbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings pulumi.StringArrayInput                               `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters              pulumi.StringArrayInput                                `pulumi:"ipFilters"`
 	PrivateAccess          GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
 	PrivatelinkAccess      GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
@@ -41488,7 +42056,11 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) IpFilterObjects() GetInfluxDbInflux
 	}).(GetInfluxDbInfluxdbUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetInfluxDbInfluxdbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetInfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -42818,7 +43390,8 @@ func (o GetKafkaConnectKafkaConnectArrayOutput) Index(i pulumi.IntInput) GetKafk
 type GetKafkaConnectKafkaConnectUserConfig struct {
 	AdditionalBackupRegions *string                                               `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []GetKafkaConnectKafkaConnectUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                              `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Kafka Connect server provided values
 	KafkaConnect      *GetKafkaConnectKafkaConnectUserConfigKafkaConnect      `pulumi:"kafkaConnect"`
@@ -42843,7 +43416,8 @@ type GetKafkaConnectKafkaConnectUserConfigInput interface {
 type GetKafkaConnectKafkaConnectUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                                         `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                                       `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Kafka Connect server provided values
 	KafkaConnect      GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput      `pulumi:"kafkaConnect"`
@@ -42915,7 +43489,11 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) IpFilterObjects() GetKafkaC
 	}).(GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetKafkaConnectKafkaConnectUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -44313,7 +44891,8 @@ type GetKafkaKafkaUserConfig struct {
 	AdditionalBackupRegions *string                                 `pulumi:"additionalBackupRegions"`
 	CustomDomain            *string                                 `pulumi:"customDomain"`
 	IpFilterObjects         []GetKafkaKafkaUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Kafka server provided values
 	Kafka                      *GetKafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
@@ -44348,7 +44927,8 @@ type GetKafkaKafkaUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                           `pulumi:"additionalBackupRegions"`
 	CustomDomain            pulumi.StringPtrInput                           `pulumi:"customDomain"`
 	IpFilterObjects         GetKafkaKafkaUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Kafka server provided values
 	Kafka                      GetKafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
@@ -44431,7 +45011,11 @@ func (o GetKafkaKafkaUserConfigOutput) IpFilterObjects() GetKafkaKafkaUserConfig
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) []GetKafkaKafkaUserConfigIpFilterObject { return v.IpFilterObjects }).(GetKafkaKafkaUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetKafkaKafkaUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetKafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -47016,7 +47600,8 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerArrayOutput) Index(i pulumi.IntInput)
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
 	AdditionalBackupRegions *string                                                       `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                                      `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Kafka MirrorMaker 2 server provided values
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
@@ -47038,7 +47623,8 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                                                 `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                                               `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Kafka MirrorMaker 2 server provided values
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
@@ -47107,7 +47693,11 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilterObjects() G
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -48483,7 +49073,8 @@ func (o GetM3AggregatorM3aggregatorArrayOutput) Index(i pulumi.IntInput) GetM3Ag
 type GetM3AggregatorM3aggregatorUserConfig struct {
 	CustomDomain    *string                                               `pulumi:"customDomain"`
 	IpFilterObjects []GetM3AggregatorM3aggregatorUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings []string                                              `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string `pulumi:"ipFilters"`
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           *string `pulumi:"m3Version"`
@@ -48506,7 +49097,8 @@ type GetM3AggregatorM3aggregatorUserConfigInput interface {
 type GetM3AggregatorM3aggregatorUserConfigArgs struct {
 	CustomDomain    pulumi.StringPtrInput                                         `pulumi:"customDomain"`
 	IpFilterObjects GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings pulumi.StringArrayInput                                       `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           pulumi.StringPtrInput `pulumi:"m3Version"`
@@ -48576,7 +49168,11 @@ func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilterObjects() GetM3Aggr
 	}).(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -49137,20 +49733,21 @@ type GetM3DbM3dbUserConfig struct {
 	AdditionalBackupRegions *string                               `pulumi:"additionalBackupRegions"`
 	CustomDomain            *string                               `pulumi:"customDomain"`
 	IpFilterObjects         []GetM3DbM3dbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                              `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string                     `pulumi:"ipFilters"`
 	Limits    *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
+	M3        *GetM3DbM3dbUserConfigM3     `pulumi:"m3"`
 	// Deprecated: Usage of this field is discouraged.
-	M3Version                               *string `pulumi:"m3Version"`
-	M3coordinatorEnableGraphiteCarbonIngest *bool   `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	M3dbVersion                             *string `pulumi:"m3dbVersion"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
-	Namespaces        []GetM3DbM3dbUserConfigNamespace    `pulumi:"namespaces"`
-	PrivateAccess     *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	ProjectToForkFrom *string                             `pulumi:"projectToForkFrom"`
-	PublicAccess      *GetM3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	Rules             *GetM3DbM3dbUserConfigRules         `pulumi:"rules"`
-	ServiceToForkFrom *string                             `pulumi:"serviceToForkFrom"`
+	M3Version                               *string                             `pulumi:"m3Version"`
+	M3coordinatorEnableGraphiteCarbonIngest *bool                               `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	M3dbVersion                             *string                             `pulumi:"m3dbVersion"`
+	Namespaces                              []GetM3DbM3dbUserConfigNamespace    `pulumi:"namespaces"`
+	PrivateAccess                           *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom                       *string                             `pulumi:"projectToForkFrom"`
+	PublicAccess                            *GetM3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	Rules                                   *GetM3DbM3dbUserConfigRules         `pulumi:"rules"`
+	ServiceToForkFrom                       *string                             `pulumi:"serviceToForkFrom"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps *bool `pulumi:"staticIps"`
 }
@@ -49170,20 +49767,21 @@ type GetM3DbM3dbUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                         `pulumi:"additionalBackupRegions"`
 	CustomDomain            pulumi.StringPtrInput                         `pulumi:"customDomain"`
 	IpFilterObjects         GetM3DbM3dbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                       `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput             `pulumi:"ipFilters"`
 	Limits    GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	M3        GetM3DbM3dbUserConfigM3PtrInput     `pulumi:"m3"`
 	// Deprecated: Usage of this field is discouraged.
-	M3Version                               pulumi.StringPtrInput `pulumi:"m3Version"`
-	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput   `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	M3dbVersion                             pulumi.StringPtrInput `pulumi:"m3dbVersion"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
-	Namespaces        GetM3DbM3dbUserConfigNamespaceArrayInput   `pulumi:"namespaces"`
-	PrivateAccess     GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	ProjectToForkFrom pulumi.StringPtrInput                      `pulumi:"projectToForkFrom"`
-	PublicAccess      GetM3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	Rules             GetM3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
-	ServiceToForkFrom pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
+	M3Version                               pulumi.StringPtrInput                      `pulumi:"m3Version"`
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput                        `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	M3dbVersion                             pulumi.StringPtrInput                      `pulumi:"m3dbVersion"`
+	Namespaces                              GetM3DbM3dbUserConfigNamespaceArrayInput   `pulumi:"namespaces"`
+	PrivateAccess                           GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom                       pulumi.StringPtrInput                      `pulumi:"projectToForkFrom"`
+	PublicAccess                            GetM3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	Rules                                   GetM3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
+	ServiceToForkFrom                       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 }
@@ -49251,13 +49849,21 @@ func (o GetM3DbM3dbUserConfigOutput) IpFilterObjects() GetM3DbM3dbUserConfigIpFi
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigIpFilterObject { return v.IpFilterObjects }).(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetM3DbM3dbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetM3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
 func (o GetM3DbM3dbUserConfigOutput) Limits() GetM3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigLimits { return v.Limits }).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+func (o GetM3DbM3dbUserConfigOutput) M3() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigM3 { return v.M3 }).(GetM3DbM3dbUserConfigM3PtrOutput)
 }
 
 // Deprecated: Usage of this field is discouraged.
@@ -49273,7 +49879,6 @@ func (o GetM3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
 func (o GetM3DbM3dbUserConfigOutput) Namespaces() GetM3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigNamespace { return v.Namespaces }).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
 }
@@ -49629,6 +50234,287 @@ func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QuerySeries() pulumi.IntPtrOutput 
 		}
 		return v.QuerySeries
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3 struct {
+	TagOptions *GetM3DbM3dbUserConfigM3TagOptions `pulumi:"tagOptions"`
+}
+
+// GetM3DbM3dbUserConfigM3Input is an input type that accepts GetM3DbM3dbUserConfigM3Args and GetM3DbM3dbUserConfigM3Output values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3Input` via:
+//
+//	GetM3DbM3dbUserConfigM3Args{...}
+type GetM3DbM3dbUserConfigM3Input interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3Output() GetM3DbM3dbUserConfigM3Output
+	ToGetM3DbM3dbUserConfigM3OutputWithContext(context.Context) GetM3DbM3dbUserConfigM3Output
+}
+
+type GetM3DbM3dbUserConfigM3Args struct {
+	TagOptions GetM3DbM3dbUserConfigM3TagOptionsPtrInput `pulumi:"tagOptions"`
+}
+
+func (GetM3DbM3dbUserConfigM3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3Output() GetM3DbM3dbUserConfigM3Output {
+	return i.ToGetM3DbM3dbUserConfigM3OutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3OutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3Output)
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3Output).ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigM3PtrInput is an input type that accepts GetM3DbM3dbUserConfigM3Args, GetM3DbM3dbUserConfigM3Ptr and GetM3DbM3dbUserConfigM3PtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3PtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigM3Args{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigM3PtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput
+	ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigM3PtrOutput
+}
+
+type getM3DbM3dbUserConfigM3PtrType GetM3DbM3dbUserConfigM3Args
+
+func GetM3DbM3dbUserConfigM3Ptr(v *GetM3DbM3dbUserConfigM3Args) GetM3DbM3dbUserConfigM3PtrInput {
+	return (*getM3DbM3dbUserConfigM3PtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigM3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigM3PtrType) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigM3PtrType) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3PtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3Output struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3Output() GetM3DbM3dbUserConfigM3Output {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3OutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3Output {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigM3) *GetM3DbM3dbUserConfigM3 {
+		return &v
+	}).(GetM3DbM3dbUserConfigM3PtrOutput)
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) TagOptions() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigM3) *GetM3DbM3dbUserConfigM3TagOptions { return v.TagOptions }).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3PtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) Elem() GetM3DbM3dbUserConfigM3Output {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3) GetM3DbM3dbUserConfigM3 {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigM3
+		return ret
+	}).(GetM3DbM3dbUserConfigM3Output)
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) TagOptions() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3) *GetM3DbM3dbUserConfigM3TagOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TagOptions
+	}).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3TagOptions struct {
+	AllowTagNameDuplicates *bool `pulumi:"allowTagNameDuplicates"`
+	AllowTagValueEmpty     *bool `pulumi:"allowTagValueEmpty"`
+}
+
+// GetM3DbM3dbUserConfigM3TagOptionsInput is an input type that accepts GetM3DbM3dbUserConfigM3TagOptionsArgs and GetM3DbM3dbUserConfigM3TagOptionsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3TagOptionsInput` via:
+//
+//	GetM3DbM3dbUserConfigM3TagOptionsArgs{...}
+type GetM3DbM3dbUserConfigM3TagOptionsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3TagOptionsOutput() GetM3DbM3dbUserConfigM3TagOptionsOutput
+	ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(context.Context) GetM3DbM3dbUserConfigM3TagOptionsOutput
+}
+
+type GetM3DbM3dbUserConfigM3TagOptionsArgs struct {
+	AllowTagNameDuplicates pulumi.BoolPtrInput `pulumi:"allowTagNameDuplicates"`
+	AllowTagValueEmpty     pulumi.BoolPtrInput `pulumi:"allowTagValueEmpty"`
+}
+
+func (GetM3DbM3dbUserConfigM3TagOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsOutput() GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return i.ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3TagOptionsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3TagOptionsOutput).ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigM3TagOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigM3TagOptionsArgs, GetM3DbM3dbUserConfigM3TagOptionsPtr and GetM3DbM3dbUserConfigM3TagOptionsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3TagOptionsPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigM3TagOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigM3TagOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput
+	ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput
+}
+
+type getM3DbM3dbUserConfigM3TagOptionsPtrType GetM3DbM3dbUserConfigM3TagOptionsArgs
+
+func GetM3DbM3dbUserConfigM3TagOptionsPtr(v *GetM3DbM3dbUserConfigM3TagOptionsArgs) GetM3DbM3dbUserConfigM3TagOptionsPtrInput {
+	return (*getM3DbM3dbUserConfigM3TagOptionsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigM3TagOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigM3TagOptionsPtrType) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigM3TagOptionsPtrType) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3TagOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3TagOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsOutput() GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigM3TagOptions) *GetM3DbM3dbUserConfigM3TagOptions {
+		return &v
+	}).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) AllowTagNameDuplicates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigM3TagOptions) *bool { return v.AllowTagNameDuplicates }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) AllowTagValueEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigM3TagOptions) *bool { return v.AllowTagValueEmpty }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3TagOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) Elem() GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3TagOptions) GetM3DbM3dbUserConfigM3TagOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigM3TagOptions
+		return ret
+	}).(GetM3DbM3dbUserConfigM3TagOptionsOutput)
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) AllowTagNameDuplicates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3TagOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTagNameDuplicates
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) AllowTagValueEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3TagOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTagValueEmpty
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetM3DbM3dbUserConfigNamespace struct {
@@ -50509,9 +51395,10 @@ type GetM3DbM3dbUserConfigRulesMapping struct {
 	Drop         *bool    `pulumi:"drop"`
 	Filter       string   `pulumi:"filter"`
 	Name         *string  `pulumi:"name"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
 	Namespaces        []string                                            `pulumi:"namespaces"`
 	NamespacesObjects []GetM3DbM3dbUserConfigRulesMappingNamespacesObject `pulumi:"namespacesObjects"`
+	NamespacesStrings []string                                            `pulumi:"namespacesStrings"`
 	Tags              []GetM3DbM3dbUserConfigRulesMappingTag              `pulumi:"tags"`
 }
 
@@ -50531,9 +51418,10 @@ type GetM3DbM3dbUserConfigRulesMappingArgs struct {
 	Drop         pulumi.BoolPtrInput     `pulumi:"drop"`
 	Filter       pulumi.StringInput      `pulumi:"filter"`
 	Name         pulumi.StringPtrInput   `pulumi:"name"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
+	// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
 	Namespaces        pulumi.StringArrayInput                                     `pulumi:"namespaces"`
 	NamespacesObjects GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput `pulumi:"namespacesObjects"`
+	NamespacesStrings pulumi.StringArrayInput                                     `pulumi:"namespacesStrings"`
 	Tags              GetM3DbM3dbUserConfigRulesMappingTagArrayInput              `pulumi:"tags"`
 }
 
@@ -50604,7 +51492,7 @@ func (o GetM3DbM3dbUserConfigRulesMappingOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.
+// Deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
 func (o GetM3DbM3dbUserConfigRulesMappingOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
@@ -50613,6 +51501,10 @@ func (o GetM3DbM3dbUserConfigRulesMappingOutput) NamespacesObjects() GetM3DbM3db
 	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
 		return v.NamespacesObjects
 	}).(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput)
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) NamespacesStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []string { return v.NamespacesStrings }).(pulumi.StringArrayOutput)
 }
 
 func (o GetM3DbM3dbUserConfigRulesMappingOutput) Tags() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
@@ -51265,7 +52157,8 @@ type GetMySqlMysqlUserConfig struct {
 	BackupMinute            *int                                    `pulumi:"backupMinute"`
 	BinlogRetentionPeriod   *int                                    `pulumi:"binlogRetentionPeriod"`
 	IpFilterObjects         []GetMySqlMysqlUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string                          `pulumi:"ipFilters"`
 	Migration *GetMySqlMysqlUserConfigMigration `pulumi:"migration"`
 	// MySQL specific server provided values
@@ -51300,7 +52193,8 @@ type GetMySqlMysqlUserConfigArgs struct {
 	BackupMinute            pulumi.IntPtrInput                              `pulumi:"backupMinute"`
 	BinlogRetentionPeriod   pulumi.IntPtrInput                              `pulumi:"binlogRetentionPeriod"`
 	IpFilterObjects         GetMySqlMysqlUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput                  `pulumi:"ipFilters"`
 	Migration GetMySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
 	// MySQL specific server provided values
@@ -51395,7 +52289,11 @@ func (o GetMySqlMysqlUserConfigOutput) IpFilterObjects() GetMySqlMysqlUserConfig
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []GetMySqlMysqlUserConfigIpFilterObject { return v.IpFilterObjects }).(GetMySqlMysqlUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetMySqlMysqlUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetMySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -53301,7 +54199,8 @@ type GetOpenSearchOpensearchUserConfig struct {
 	IndexPatterns                      []GetOpenSearchOpensearchUserConfigIndexPattern   `pulumi:"indexPatterns"`
 	IndexTemplate                      *GetOpenSearchOpensearchUserConfigIndexTemplate   `pulumi:"indexTemplate"`
 	IpFilterObjects                    []GetOpenSearchOpensearchUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings                    []string                                          `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters                []string `pulumi:"ipFilters"`
 	KeepIndexRefreshInterval *bool    `pulumi:"keepIndexRefreshInterval"`
 	// Deprecated: Usage of this field is discouraged.
@@ -53339,7 +54238,8 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	IndexPatterns                      GetOpenSearchOpensearchUserConfigIndexPatternArrayInput   `pulumi:"indexPatterns"`
 	IndexTemplate                      GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput    `pulumi:"indexTemplate"`
 	IpFilterObjects                    GetOpenSearchOpensearchUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings                    pulumi.StringArrayInput                                   `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters                pulumi.StringArrayInput `pulumi:"ipFilters"`
 	KeepIndexRefreshInterval pulumi.BoolPtrInput     `pulumi:"keepIndexRefreshInterval"`
 	// Deprecated: Usage of this field is discouraged.
@@ -53440,7 +54340,11 @@ func (o GetOpenSearchOpensearchUserConfigOutput) IpFilterObjects() GetOpenSearch
 	}).(GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetOpenSearchOpensearchUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetOpenSearchOpensearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -55626,7 +56530,8 @@ type GetPgPgUserConfig struct {
 	BackupMinute            *int                              `pulumi:"backupMinute"`
 	EnableIpv6              *bool                             `pulumi:"enableIpv6"`
 	IpFilterObjects         []GetPgPgUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                          `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters []string                    `pulumi:"ipFilters"`
 	Migration *GetPgPgUserConfigMigration `pulumi:"migration"`
 	// PostgreSQL specific server provided values
@@ -55673,7 +56578,8 @@ type GetPgPgUserConfigArgs struct {
 	BackupMinute            pulumi.IntPtrInput                        `pulumi:"backupMinute"`
 	EnableIpv6              pulumi.BoolPtrInput                       `pulumi:"enableIpv6"`
 	IpFilterObjects         GetPgPgUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                   `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters pulumi.StringArrayInput            `pulumi:"ipFilters"`
 	Migration GetPgPgUserConfigMigrationPtrInput `pulumi:"migration"`
 	// PostgreSQL specific server provided values
@@ -55780,7 +56686,11 @@ func (o GetPgPgUserConfigOutput) IpFilterObjects() GetPgPgUserConfigIpFilterObje
 	return o.ApplyT(func(v GetPgPgUserConfig) []GetPgPgUserConfigIpFilterObject { return v.IpFilterObjects }).(GetPgPgUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetPgPgUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetPgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -58621,7 +59531,8 @@ func (o GetRedisRediArrayOutput) Index(i pulumi.IntInput) GetRedisRediOutput {
 type GetRedisRedisUserConfig struct {
 	AdditionalBackupRegions *string                                 `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         []GetRedisRedisUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         []string                                `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters                          []string                                  `pulumi:"ipFilters"`
 	Migration                          *GetRedisRedisUserConfigMigration         `pulumi:"migration"`
 	PrivateAccess                      *GetRedisRedisUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -58659,7 +59570,8 @@ type GetRedisRedisUserConfigInput interface {
 type GetRedisRedisUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                           `pulumi:"additionalBackupRegions"`
 	IpFilterObjects         GetRedisRedisUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+	IpFilterStrings         pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
+	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 	IpFilters                          pulumi.StringArrayInput                          `pulumi:"ipFilters"`
 	Migration                          GetRedisRedisUserConfigMigrationPtrInput         `pulumi:"migration"`
 	PrivateAccess                      GetRedisRedisUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -58742,7 +59654,11 @@ func (o GetRedisRedisUserConfigOutput) IpFilterObjects() GetRedisRedisUserConfig
 	return o.ApplyT(func(v GetRedisRedisUserConfig) []GetRedisRedisUserConfigIpFilterObject { return v.IpFilterObjects }).(GetRedisRedisUserConfigIpFilterObjectArrayOutput)
 }
 
-// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+func (o GetRedisRedisUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
 func (o GetRedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -64246,6 +65162,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigIpFilterObjectArrayInput)(nil)).Elem(), M3DbM3dbUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigLimitsInput)(nil)).Elem(), M3DbM3dbUserConfigLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigLimitsPtrInput)(nil)).Elem(), M3DbM3dbUserConfigLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigM3Input)(nil)).Elem(), M3DbM3dbUserConfigM3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigM3PtrInput)(nil)).Elem(), M3DbM3dbUserConfigM3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigM3TagOptionsInput)(nil)).Elem(), M3DbM3dbUserConfigM3TagOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigM3TagOptionsPtrInput)(nil)).Elem(), M3DbM3dbUserConfigM3TagOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigNamespaceInput)(nil)).Elem(), M3DbM3dbUserConfigNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigNamespaceArrayInput)(nil)).Elem(), M3DbM3dbUserConfigNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbUserConfigNamespaceOptionsInput)(nil)).Elem(), M3DbM3dbUserConfigNamespaceOptionsArgs{})
@@ -64646,6 +65566,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigLimitsInput)(nil)).Elem(), GetM3DbM3dbUserConfigLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigLimitsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3Input)(nil)).Elem(), GetM3DbM3dbUserConfigM3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3PtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigM3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigM3TagOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptionsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigM3TagOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsArgs{})
@@ -65032,6 +65956,10 @@ func init() {
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigLimitsOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigLimitsPtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigM3Output{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigM3PtrOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigM3TagOptionsOutput{})
+	pulumi.RegisterOutputType(M3DbM3dbUserConfigM3TagOptionsPtrOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbUserConfigNamespaceOptionsOutput{})
@@ -65432,6 +66360,10 @@ func init() {
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3Output{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3PtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3TagOptionsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsOutput{})

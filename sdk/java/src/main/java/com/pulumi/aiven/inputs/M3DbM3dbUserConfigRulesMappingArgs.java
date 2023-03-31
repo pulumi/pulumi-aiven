@@ -49,19 +49,19 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
 
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
     @Import(name="namespaces")
     private @Nullable Output<List<String>> namespaces;
 
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
     public Optional<Output<List<String>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -71,6 +71,13 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
 
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>>> namespacesObjects() {
         return Optional.ofNullable(this.namespacesObjects);
+    }
+
+    @Import(name="namespacesStrings")
+    private @Nullable Output<List<String>> namespacesStrings;
+
+    public Optional<Output<List<String>>> namespacesStrings() {
+        return Optional.ofNullable(this.namespacesStrings);
     }
 
     @Import(name="tags")
@@ -89,6 +96,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         this.name = $.name;
         this.namespaces = $.namespaces;
         this.namespacesObjects = $.namespacesObjects;
+        this.namespacesStrings = $.namespacesStrings;
         this.tags = $.tags;
     }
 
@@ -154,10 +162,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
         public Builder namespaces(@Nullable Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
@@ -167,10 +175,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
@@ -179,10 +187,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }
@@ -198,6 +206,19 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
 
         public Builder namespacesObjects(M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs... namespacesObjects) {
             return namespacesObjects(List.of(namespacesObjects));
+        }
+
+        public Builder namespacesStrings(@Nullable Output<List<String>> namespacesStrings) {
+            $.namespacesStrings = namespacesStrings;
+            return this;
+        }
+
+        public Builder namespacesStrings(List<String> namespacesStrings) {
+            return namespacesStrings(Output.of(namespacesStrings));
+        }
+
+        public Builder namespacesStrings(String... namespacesStrings) {
+            return namespacesStrings(List.of(namespacesStrings));
         }
 
         public Builder tags(@Nullable Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>> tags) {

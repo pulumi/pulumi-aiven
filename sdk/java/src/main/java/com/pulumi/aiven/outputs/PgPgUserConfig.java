@@ -62,11 +62,16 @@ public final class PgPgUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
+     */
+    private @Nullable List<String> ipFilterStrings;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Migrate data from existing server.
@@ -230,11 +235,18 @@ public final class PgPgUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
+     */
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -403,6 +415,7 @@ public final class PgPgUserConfig {
         private @Nullable Integer backupMinute;
         private @Nullable Boolean enableIpv6;
         private @Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable PgPgUserConfigMigration migration;
         private @Nullable PgPgUserConfigPg pg;
@@ -434,6 +447,7 @@ public final class PgPgUserConfig {
     	      this.backupMinute = defaults.backupMinute;
     	      this.enableIpv6 = defaults.enableIpv6;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.pg = defaults.pg;
@@ -494,6 +508,14 @@ public final class PgPgUserConfig {
         }
         public Builder ipFilterObjects(PgPgUserConfigIpFilterObject... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
+        }
+        @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -612,6 +634,7 @@ public final class PgPgUserConfig {
             o.backupMinute = backupMinute;
             o.enableIpv6 = enableIpv6;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.pg = pg;

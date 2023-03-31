@@ -19,6 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult> IndexPatterns;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult? IndexTemplate;
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly bool? KeepIndexRefreshInterval;
         public readonly int? MaxIndexCount;
@@ -53,6 +54,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             bool? keepIndexRefreshInterval,
@@ -85,6 +88,7 @@ namespace Pulumi.Aiven.Outputs
             IndexPatterns = indexPatterns;
             IndexTemplate = indexTemplate;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;

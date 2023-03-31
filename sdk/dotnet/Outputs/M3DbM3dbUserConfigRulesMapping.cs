@@ -19,6 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? Name;
         public readonly ImmutableArray<string> Namespaces;
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject> NamespacesObjects;
+        public readonly ImmutableArray<string> NamespacesStrings;
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMappingTag> Tags;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects,
 
+            ImmutableArray<string> namespacesStrings,
+
             ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMappingTag> tags)
         {
             Aggregations = aggregations;
@@ -43,6 +46,7 @@ namespace Pulumi.Aiven.Outputs
             Name = name;
             Namespaces = namespaces;
             NamespacesObjects = namespacesObjects;
+            NamespacesStrings = namespacesStrings;
             Tags = tags;
         }
     }

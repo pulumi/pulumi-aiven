@@ -32,6 +32,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
@@ -72,6 +76,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.CassandraCassandraUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             bool? migrateSstableloader,
@@ -92,6 +98,7 @@ namespace Pulumi.Aiven.Outputs
             Cassandra = cassandra;
             CassandraVersion = cassandraVersion;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;

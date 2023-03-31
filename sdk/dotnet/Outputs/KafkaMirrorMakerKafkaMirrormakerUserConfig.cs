@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AdditionalBackupRegions;
         public readonly ImmutableArray<Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> IpFilterObjects;
+        public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
         public readonly bool? StaticIps;
@@ -25,6 +26,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? kafkaMirrormaker,
@@ -33,6 +36,7 @@ namespace Pulumi.Aiven.Outputs
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             KafkaMirrormaker = kafkaMirrormaker;
             StaticIps = staticIps;

@@ -21,12 +21,13 @@ import javax.annotation.Nullable;
 public final class RedisRedisUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects;
+    private @Nullable List<String> ipFilterStrings;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     private @Nullable RedisRedisUserConfigMigration migration;
     private @Nullable RedisRedisUserConfigPrivateAccess privateAccess;
@@ -55,12 +56,15 @@ public final class RedisRedisUserConfig {
     public List<RedisRedisUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -133,6 +137,7 @@ public final class RedisRedisUserConfig {
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
         private @Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable RedisRedisUserConfigMigration migration;
         private @Nullable RedisRedisUserConfigPrivateAccess privateAccess;
@@ -158,6 +163,7 @@ public final class RedisRedisUserConfig {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.privateAccess = defaults.privateAccess;
@@ -192,6 +198,14 @@ public final class RedisRedisUserConfig {
         }
         public Builder ipFilterObjects(RedisRedisUserConfigIpFilterObject... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
+        }
+        @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -300,6 +314,7 @@ public final class RedisRedisUserConfig {
             final var o = new RedisRedisUserConfig();
             o.additionalBackupRegions = additionalBackupRegions;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.migration = migration;
             o.privateAccess = privateAccess;

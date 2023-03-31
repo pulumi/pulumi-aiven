@@ -50,8 +50,12 @@ export interface CassandraCassandraUserConfig {
     ipFilterObjects?: outputs.CassandraCassandraUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -149,8 +153,12 @@ export interface ClickhouseClickhouseUserConfig {
     ipFilterObjects?: outputs.ClickhouseClickhouseUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -280,8 +288,12 @@ export interface FlinkFlinkUserConfig {
     ipFilterObjects?: outputs.FlinkFlinkUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -348,8 +360,9 @@ export interface GetCassandaCassandraUserConfig {
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilterObjects?: outputs.GetCassandaCassandraUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migrateSstableloader?: boolean;
@@ -414,8 +427,9 @@ export interface GetCassandraCassandraUserConfig {
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilterObjects?: outputs.GetCassandraCassandraUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migrateSstableloader?: boolean;
@@ -475,8 +489,9 @@ export interface GetClickhouseClickhouse {
 export interface GetClickhouseClickhouseUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetClickhouseClickhouseUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     projectToForkFrom?: string;
@@ -535,8 +550,9 @@ export interface GetFlinkFlink {
 export interface GetFlinkFlinkUserConfig {
     flinkVersion?: string;
     ipFilterObjects?: outputs.GetFlinkFlinkUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     numberOfTaskSlots?: number;
@@ -605,8 +621,9 @@ export interface GetGrafanaGrafanaUserConfig {
     externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
     googleAnalyticsUaId?: string;
     ipFilterObjects?: outputs.GetGrafanaGrafanaUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     metricsEnabled?: boolean;
@@ -761,8 +778,9 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
     ipFilterObjects?: outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
@@ -848,8 +866,9 @@ export interface GetKafkaConnectKafkaConnect {
 export interface GetKafkaConnectKafkaConnectUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -943,8 +962,9 @@ export interface GetKafkaKafkaUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     ipFilterObjects?: outputs.GetKafkaKafkaUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -1104,8 +1124,9 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -1204,8 +1225,9 @@ export interface GetM3AggregatorM3aggregator {
 export interface GetM3AggregatorM3aggregatorUserConfig {
     customDomain?: string;
     ipFilterObjects?: outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -1251,20 +1273,19 @@ export interface GetM3DbM3dbUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     ipFilterObjects?: outputs.GetM3DbM3dbUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     limits?: outputs.GetM3DbM3dbUserConfigLimits;
+    m3?: outputs.GetM3DbM3dbUserConfigM3;
     /**
      * @deprecated Usage of this field is discouraged.
      */
     m3Version?: string;
     m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     m3dbVersion?: string;
-    /**
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
-     */
     namespaces?: outputs.GetM3DbM3dbUserConfigNamespace[];
     privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
     projectToForkFrom?: string;
@@ -1289,6 +1310,15 @@ export interface GetM3DbM3dbUserConfigLimits {
     queryDocs?: number;
     queryRequireExhaustive?: boolean;
     querySeries?: number;
+}
+
+export interface GetM3DbM3dbUserConfigM3 {
+    tagOptions?: outputs.GetM3DbM3dbUserConfigM3TagOptions;
+}
+
+export interface GetM3DbM3dbUserConfigM3TagOptions {
+    allowTagNameDuplicates?: boolean;
+    allowTagValueEmpty?: boolean;
 }
 
 export interface GetM3DbM3dbUserConfigNamespace {
@@ -1330,10 +1360,11 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
     filter: string;
     name?: string;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
      */
     namespaces?: string[];
     namespacesObjects?: outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObject[];
+    namespacesStrings?: string[];
     tags?: outputs.GetM3DbM3dbUserConfigRulesMappingTag[];
 }
 
@@ -1378,8 +1409,9 @@ export interface GetMySqlMysqlUserConfig {
     backupMinute?: number;
     binlogRetentionPeriod?: number;
     ipFilterObjects?: outputs.GetMySqlMysqlUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migration?: outputs.GetMySqlMysqlUserConfigMigration;
@@ -1510,8 +1542,9 @@ export interface GetOpenSearchOpensearchUserConfig {
     indexPatterns?: outputs.GetOpenSearchOpensearchUserConfigIndexPattern[];
     indexTemplate?: outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
     ipFilterObjects?: outputs.GetOpenSearchOpensearchUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     keepIndexRefreshInterval?: boolean;
@@ -1661,8 +1694,9 @@ export interface GetPgPgUserConfig {
     backupMinute?: number;
     enableIpv6?: boolean;
     ipFilterObjects?: outputs.GetPgPgUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migration?: outputs.GetPgPgUserConfigMigration;
@@ -1845,8 +1879,9 @@ export interface GetRedisRedi {
 export interface GetRedisRedisUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.GetRedisRedisUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migration?: outputs.GetRedisRedisUserConfigMigration;
@@ -2190,8 +2225,9 @@ export interface GrafanaGrafanaUserConfig {
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
     googleAnalyticsUaId?: string;
     ipFilterObjects?: outputs.GrafanaGrafanaUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     metricsEnabled?: boolean;
@@ -2345,8 +2381,12 @@ export interface InfluxDbInfluxdbUserConfig {
     ipFilterObjects?: outputs.InfluxDbInfluxdbUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -2462,8 +2502,9 @@ export interface KafkaConnectKafkaConnect {
 export interface KafkaConnectKafkaConnectUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
@@ -2568,8 +2609,12 @@ export interface KafkaKafkaUserConfig {
     ipFilterObjects?: outputs.KafkaKafkaUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -2765,8 +2810,9 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
@@ -2949,8 +2995,9 @@ export interface M3AggregatorM3aggregator {
 export interface M3AggregatorM3aggregatorUserConfig {
     customDomain?: string;
     ipFilterObjects?: outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -2993,20 +3040,19 @@ export interface M3DbM3dbUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
     ipFilterObjects?: outputs.M3DbM3dbUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     limits?: outputs.M3DbM3dbUserConfigLimits;
+    m3?: outputs.M3DbM3dbUserConfigM3;
     /**
      * @deprecated Usage of this field is discouraged.
      */
     m3Version?: string;
     m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     m3dbVersion?: string;
-    /**
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
-     */
     namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
     projectToForkFrom?: string;
@@ -3028,6 +3074,15 @@ export interface M3DbM3dbUserConfigLimits {
     queryDocs?: number;
     queryRequireExhaustive?: boolean;
     querySeries?: number;
+}
+
+export interface M3DbM3dbUserConfigM3 {
+    tagOptions?: outputs.M3DbM3dbUserConfigM3TagOptions;
+}
+
+export interface M3DbM3dbUserConfigM3TagOptions {
+    allowTagNameDuplicates?: boolean;
+    allowTagValueEmpty?: boolean;
 }
 
 export interface M3DbM3dbUserConfigNamespace {
@@ -3069,10 +3124,11 @@ export interface M3DbM3dbUserConfigRulesMapping {
     filter: string;
     name?: string;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
      */
     namespaces?: string[];
     namespacesObjects?: outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject[];
+    namespacesStrings?: string[];
     tags?: outputs.M3DbM3dbUserConfigRulesMappingTag[];
 }
 
@@ -3117,8 +3173,9 @@ export interface MySqlMysqlUserConfig {
     backupMinute?: number;
     binlogRetentionPeriod?: number;
     ipFilterObjects?: outputs.MySqlMysqlUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migration?: outputs.MySqlMysqlUserConfigMigration;
@@ -3253,8 +3310,12 @@ export interface OpenSearchOpensearchUserConfig {
     ipFilterObjects?: outputs.OpenSearchOpensearchUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -3495,8 +3556,12 @@ export interface PgPgUserConfig {
     ipFilterObjects?: outputs.PgPgUserConfigIpFilterObject[];
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     /**
@@ -3749,8 +3814,9 @@ export interface RedisRedi {
 export interface RedisRedisUserConfig {
     additionalBackupRegions?: string;
     ipFilterObjects?: outputs.RedisRedisUserConfigIpFilterObject[];
+    ipFilterStrings?: string[];
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      */
     ipFilters?: string[];
     migration?: outputs.RedisRedisUserConfigMigration;

@@ -28,6 +28,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
+        public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// Kafka broker configuration values.
@@ -94,6 +98,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.KafkaKafkaUserConfigIpFilterObject> ipFilterObjects,
 
+            ImmutableArray<string> ipFilterStrings,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.KafkaKafkaUserConfigKafka? kafka,
@@ -127,6 +133,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;
+            IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Kafka = kafka;
             KafkaAuthenticationMethods = kafkaAuthenticationMethods;

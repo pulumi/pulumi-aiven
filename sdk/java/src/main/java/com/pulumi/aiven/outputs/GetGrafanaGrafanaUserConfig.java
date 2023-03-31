@@ -51,12 +51,13 @@ public final class GetGrafanaGrafanaUserConfig {
     private @Nullable GetGrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
     private @Nullable String googleAnalyticsUaId;
     private @Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
+    private @Nullable List<String> ipFilterStrings;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     private @Nullable Boolean metricsEnabled;
     private @Nullable GetGrafanaGrafanaUserConfigPrivateAccess privateAccess;
@@ -151,12 +152,15 @@ public final class GetGrafanaGrafanaUserConfig {
     public List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -235,6 +239,7 @@ public final class GetGrafanaGrafanaUserConfig {
         private @Nullable GetGrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
         private @Nullable String googleAnalyticsUaId;
         private @Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Boolean metricsEnabled;
         private @Nullable GetGrafanaGrafanaUserConfigPrivateAccess privateAccess;
@@ -276,6 +281,7 @@ public final class GetGrafanaGrafanaUserConfig {
     	      this.externalImageStorage = defaults.externalImageStorage;
     	      this.googleAnalyticsUaId = defaults.googleAnalyticsUaId;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.metricsEnabled = defaults.metricsEnabled;
     	      this.privateAccess = defaults.privateAccess;
@@ -420,6 +426,14 @@ public final class GetGrafanaGrafanaUserConfig {
             return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
+        }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -514,6 +528,7 @@ public final class GetGrafanaGrafanaUserConfig {
             o.externalImageStorage = externalImageStorage;
             o.googleAnalyticsUaId = googleAnalyticsUaId;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.metricsEnabled = metricsEnabled;
             o.privateAccess = privateAccess;

@@ -109,6 +109,8 @@ __all__ = [
     'M3DbM3dbUserConfigArgs',
     'M3DbM3dbUserConfigIpFilterObjectArgs',
     'M3DbM3dbUserConfigLimitsArgs',
+    'M3DbM3dbUserConfigM3Args',
+    'M3DbM3dbUserConfigM3TagOptionsArgs',
     'M3DbM3dbUserConfigNamespaceArgs',
     'M3DbM3dbUserConfigNamespaceOptionsArgs',
     'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs',
@@ -305,6 +307,7 @@ class CassandraCassandraUserConfigArgs:
                  cassandra: Optional[pulumi.Input['CassandraCassandraUserConfigCassandraArgs']] = None,
                  cassandra_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migrate_sstableloader: Optional[pulumi.Input[bool]] = None,
                  private_access: Optional[pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgs']] = None,
@@ -318,6 +321,7 @@ class CassandraCassandraUserConfigArgs:
         :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: cassandra configuration values.
         :param pulumi.Input[str] cassandra_version: Cassandra major version.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[bool] migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
         :param pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
@@ -335,9 +339,11 @@ class CassandraCassandraUserConfigArgs:
             pulumi.set(__self__, "cassandra_version", cassandra_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migrate_sstableloader is not None:
@@ -402,6 +408,18 @@ class CassandraCassandraUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -777,12 +795,14 @@ class ClickhouseClickhouseUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
@@ -791,9 +811,11 @@ class ClickhouseClickhouseUserConfigArgs:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if project_to_fork_from is not None:
@@ -824,6 +846,18 @@ class ClickhouseClickhouseUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -1355,12 +1389,14 @@ class FlinkFlinkUserConfigArgs:
     def __init__(__self__, *,
                  flink_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  number_of_task_slots: Optional[pulumi.Input[int]] = None,
                  privatelink_access: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']] = None):
         """
         :param pulumi.Input[str] flink_version: Flink major version.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[int] number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
         :param pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
@@ -1369,9 +1405,11 @@ class FlinkFlinkUserConfigArgs:
             pulumi.set(__self__, "flink_version", flink_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if number_of_task_slots is not None:
@@ -1402,6 +1440,18 @@ class FlinkFlinkUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -1700,6 +1750,7 @@ class GrafanaGrafanaUserConfigArgs:
                  external_image_storage: Optional[pulumi.Input['GrafanaGrafanaUserConfigExternalImageStorageArgs']] = None,
                  google_analytics_ua_id: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  private_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs']] = None,
@@ -1763,9 +1814,11 @@ class GrafanaGrafanaUserConfigArgs:
             pulumi.set(__self__, "google_analytics_ua_id", google_analytics_ua_id)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
@@ -2017,6 +2070,15 @@ class GrafanaGrafanaUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -3036,6 +3098,7 @@ class InfluxDbInfluxdbUserConfigArgs:
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  influxdb: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs']] = None,
@@ -3049,6 +3112,7 @@ class InfluxDbInfluxdbUserConfigArgs:
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink.
@@ -3066,9 +3130,11 @@ class InfluxDbInfluxdbUserConfigArgs:
             pulumi.set(__self__, "influxdb", influxdb)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if private_access is not None:
@@ -3133,6 +3199,18 @@ class InfluxDbInfluxdbUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -3668,6 +3746,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_connect: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigKafkaConnectArgs']] = None,
                  private_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs']] = None,
@@ -3678,9 +3757,11 @@ class KafkaConnectKafkaConnectUserConfigArgs:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
@@ -3711,6 +3792,15 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -4261,6 +4351,7 @@ class KafkaKafkaUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaArgs']] = None,
                  kafka_authentication_methods: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs']] = None,
@@ -4280,6 +4371,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaArgs'] kafka: Kafka broker configuration values.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs'] kafka_authentication_methods: Kafka authentication methods.
@@ -4302,9 +4394,11 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka is not None:
@@ -4371,6 +4465,18 @@ class KafkaKafkaUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -5711,6 +5817,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_mirrormaker: Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']] = None,
                  static_ips: Optional[pulumi.Input[bool]] = None):
@@ -5718,9 +5825,11 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
@@ -5745,6 +5854,15 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -6584,6 +6702,7 @@ class M3AggregatorM3aggregatorUserConfigArgs:
     def __init__(__self__, *,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  m3_version: Optional[pulumi.Input[str]] = None,
                  m3aggregator_version: Optional[pulumi.Input[str]] = None,
@@ -6592,9 +6711,11 @@ class M3AggregatorM3aggregatorUserConfigArgs:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if m3_version is not None:
@@ -6624,6 +6745,15 @@ class M3AggregatorM3aggregatorUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -6845,8 +6975,10 @@ class M3DbM3dbUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limits: Optional[pulumi.Input['M3DbM3dbUserConfigLimitsArgs']] = None,
+                 m3: Optional[pulumi.Input['M3DbM3dbUserConfigM3Args']] = None,
                  m3_version: Optional[pulumi.Input[str]] = None,
                  m3coordinator_enable_graphite_carbon_ingest: Optional[pulumi.Input[bool]] = None,
                  m3db_version: Optional[pulumi.Input[str]] = None,
@@ -6863,13 +6995,17 @@ class M3DbM3dbUserConfigArgs:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if m3 is not None:
+            pulumi.set(__self__, "m3", m3)
         if m3_version is not None:
             warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
             pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
@@ -6879,9 +7015,6 @@ class M3DbM3dbUserConfigArgs:
             pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
         if m3db_version is not None:
             pulumi.set(__self__, "m3db_version", m3db_version)
-        if namespaces is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if private_access is not None:
@@ -6925,6 +7058,15 @@ class M3DbM3dbUserConfigArgs:
         pulumi.set(self, "ip_filter_objects", value)
 
     @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
+
+    @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ip_filters")
@@ -6941,6 +7083,15 @@ class M3DbM3dbUserConfigArgs:
     @limits.setter
     def limits(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigLimitsArgs']]):
         pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter
+    def m3(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigM3Args']]:
+        return pulumi.get(self, "m3")
+
+    @m3.setter
+    def m3(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigM3Args']]):
+        pulumi.set(self, "m3", value)
 
     @property
     @pulumi.getter(name="m3Version")
@@ -7136,6 +7287,52 @@ class M3DbM3dbUserConfigLimitsArgs:
     @query_series.setter
     def query_series(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "query_series", value)
+
+
+@pulumi.input_type
+class M3DbM3dbUserConfigM3Args:
+    def __init__(__self__, *,
+                 tag_options: Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']] = None):
+        if tag_options is not None:
+            pulumi.set(__self__, "tag_options", tag_options)
+
+    @property
+    @pulumi.getter(name="tagOptions")
+    def tag_options(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']]:
+        return pulumi.get(self, "tag_options")
+
+    @tag_options.setter
+    def tag_options(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']]):
+        pulumi.set(self, "tag_options", value)
+
+
+@pulumi.input_type
+class M3DbM3dbUserConfigM3TagOptionsArgs:
+    def __init__(__self__, *,
+                 allow_tag_name_duplicates: Optional[pulumi.Input[bool]] = None,
+                 allow_tag_value_empty: Optional[pulumi.Input[bool]] = None):
+        if allow_tag_name_duplicates is not None:
+            pulumi.set(__self__, "allow_tag_name_duplicates", allow_tag_name_duplicates)
+        if allow_tag_value_empty is not None:
+            pulumi.set(__self__, "allow_tag_value_empty", allow_tag_value_empty)
+
+    @property
+    @pulumi.getter(name="allowTagNameDuplicates")
+    def allow_tag_name_duplicates(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow_tag_name_duplicates")
+
+    @allow_tag_name_duplicates.setter
+    def allow_tag_name_duplicates(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_tag_name_duplicates", value)
+
+    @property
+    @pulumi.getter(name="allowTagValueEmpty")
+    def allow_tag_value_empty(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow_tag_value_empty")
+
+    @allow_tag_value_empty.setter
+    def allow_tag_value_empty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_tag_value_empty", value)
 
 
 @pulumi.input_type
@@ -7355,6 +7552,7 @@ class M3DbM3dbUserConfigRulesMappingArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  namespaces_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]] = None,
+                 namespaces_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]] = None):
         pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
@@ -7364,12 +7562,14 @@ class M3DbM3dbUserConfigRulesMappingArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespaces is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.""")
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
         if namespaces_objects is not None:
             pulumi.set(__self__, "namespaces_objects", namespaces_objects)
+        if namespaces_strings is not None:
+            pulumi.set(__self__, "namespaces_strings", namespaces_strings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -7426,6 +7626,15 @@ class M3DbM3dbUserConfigRulesMappingArgs:
     @namespaces_objects.setter
     def namespaces_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]]):
         pulumi.set(self, "namespaces_objects", value)
+
+    @property
+    @pulumi.getter(name="namespacesStrings")
+    def namespaces_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "namespaces_strings")
+
+    @namespaces_strings.setter
+    def namespaces_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces_strings", value)
 
     @property
     @pulumi.getter
@@ -7652,6 +7861,7 @@ class MySqlMysqlUserConfigArgs:
                  backup_minute: Optional[pulumi.Input[int]] = None,
                  binlog_retention_period: Optional[pulumi.Input[int]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['MySqlMysqlUserConfigMigrationArgs']] = None,
                  mysql: Optional[pulumi.Input['MySqlMysqlUserConfigMysqlArgs']] = None,
@@ -7677,9 +7887,11 @@ class MySqlMysqlUserConfigArgs:
             pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -7765,6 +7977,15 @@ class MySqlMysqlUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -8650,6 +8871,7 @@ class OpenSearchOpensearchUserConfigArgs:
                  index_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]]] = None,
                  index_template: Optional[pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs']] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  keep_index_refresh_interval: Optional[pulumi.Input[bool]] = None,
                  max_index_count: Optional[pulumi.Input[int]] = None,
@@ -8670,6 +8892,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]] index_patterns: Index patterns.
         :param pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs'] index_template: Template settings for all new indexes.
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param pulumi.Input[int] max_index_count: Use index_patterns instead. The default value is `0`.
@@ -8699,9 +8922,11 @@ class OpenSearchOpensearchUserConfigArgs:
             pulumi.set(__self__, "index_template", index_template)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if keep_index_refresh_interval is not None:
@@ -8803,6 +9028,18 @@ class OpenSearchOpensearchUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -9952,6 +10189,7 @@ class PgPgUserConfigArgs:
                  backup_minute: Optional[pulumi.Input[int]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['PgPgUserConfigMigrationArgs']] = None,
                  pg: Optional[pulumi.Input['PgPgUserConfigPgArgs']] = None,
@@ -9981,6 +10219,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param pulumi.Input[bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input['PgPgUserConfigMigrationArgs'] migration: Migrate data from existing server.
         :param pulumi.Input['PgPgUserConfigPgArgs'] pg: postgresql.conf configuration values.
@@ -10017,9 +10256,11 @@ class PgPgUserConfigArgs:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -10152,6 +10393,18 @@ class PgPgUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -11625,6 +11878,7 @@ class RedisRedisUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['RedisRedisUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['RedisRedisUserConfigMigrationArgs']] = None,
                  private_access: Optional[pulumi.Input['RedisRedisUserConfigPrivateAccessArgs']] = None,
@@ -11649,9 +11903,11 @@ class RedisRedisUserConfigArgs:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+            warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -11710,6 +11966,15 @@ class RedisRedisUserConfigArgs:
     @ip_filter_objects.setter
     def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RedisRedisUserConfigIpFilterObjectArgs']]]]):
         pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
 
     @property
     @pulumi.getter(name="ipFilters")

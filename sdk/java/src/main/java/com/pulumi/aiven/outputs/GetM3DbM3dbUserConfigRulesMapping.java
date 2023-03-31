@@ -21,12 +21,13 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     private @Nullable String name;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> namespaces;
     private @Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
+    private @Nullable List<String> namespacesStrings;
     private @Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags;
 
     private GetM3DbM3dbUserConfigRulesMapping() {}
@@ -44,15 +45,18 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
     public List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects() {
         return this.namespacesObjects == null ? List.of() : this.namespacesObjects;
+    }
+    public List<String> namespacesStrings() {
+        return this.namespacesStrings == null ? List.of() : this.namespacesStrings;
     }
     public List<GetM3DbM3dbUserConfigRulesMappingTag> tags() {
         return this.tags == null ? List.of() : this.tags;
@@ -73,6 +77,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
         private @Nullable String name;
         private @Nullable List<String> namespaces;
         private @Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
+        private @Nullable List<String> namespacesStrings;
         private @Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags;
         public Builder() {}
         public Builder(GetM3DbM3dbUserConfigRulesMapping defaults) {
@@ -83,6 +88,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     	      this.name = defaults.name;
     	      this.namespaces = defaults.namespaces;
     	      this.namespacesObjects = defaults.namespacesObjects;
+    	      this.namespacesStrings = defaults.namespacesStrings;
     	      this.tags = defaults.tags;
         }
 
@@ -126,6 +132,14 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
             return namespacesObjects(List.of(namespacesObjects));
         }
         @CustomType.Setter
+        public Builder namespacesStrings(@Nullable List<String> namespacesStrings) {
+            this.namespacesStrings = namespacesStrings;
+            return this;
+        }
+        public Builder namespacesStrings(String... namespacesStrings) {
+            return namespacesStrings(List.of(namespacesStrings));
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags) {
             this.tags = tags;
             return this;
@@ -141,6 +155,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
             o.name = name;
             o.namespaces = namespaces;
             o.namespacesObjects = namespacesObjects;
+            o.namespacesStrings = namespacesStrings;
             o.tags = tags;
             return o;
         }

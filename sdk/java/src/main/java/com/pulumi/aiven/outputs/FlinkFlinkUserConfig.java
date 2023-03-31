@@ -28,11 +28,16 @@ public final class FlinkFlinkUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
+     */
+    private @Nullable List<String> ipFilterStrings;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
@@ -63,11 +68,18 @@ public final class FlinkFlinkUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
+     */
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -97,6 +109,7 @@ public final class FlinkFlinkUserConfig {
     public static final class Builder {
         private @Nullable String flinkVersion;
         private @Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Integer numberOfTaskSlots;
         private @Nullable FlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
@@ -105,6 +118,7 @@ public final class FlinkFlinkUserConfig {
     	      Objects.requireNonNull(defaults);
     	      this.flinkVersion = defaults.flinkVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
@@ -122,6 +136,14 @@ public final class FlinkFlinkUserConfig {
         }
         public Builder ipFilterObjects(FlinkFlinkUserConfigIpFilterObject... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
+        }
+        @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
@@ -145,6 +167,7 @@ public final class FlinkFlinkUserConfig {
             final var o = new FlinkFlinkUserConfig();
             o.flinkVersion = flinkVersion;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.numberOfTaskSlots = numberOfTaskSlots;
             o.privatelinkAccess = privatelinkAccess;

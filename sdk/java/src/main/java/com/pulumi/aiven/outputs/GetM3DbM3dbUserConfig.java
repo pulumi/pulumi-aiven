@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigLimits;
+import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigM3;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigNamespace;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfigPublicAccess;
@@ -22,14 +23,16 @@ public final class GetM3DbM3dbUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable String customDomain;
     private @Nullable List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
+    private @Nullable List<String> ipFilterStrings;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     private @Nullable List<String> ipFilters;
     private @Nullable GetM3DbM3dbUserConfigLimits limits;
+    private @Nullable GetM3DbM3dbUserConfigM3 m3;
     /**
      * @deprecated
      * Usage of this field is discouraged.
@@ -39,12 +42,6 @@ public final class GetM3DbM3dbUserConfig {
     private @Nullable String m3Version;
     private @Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest;
     private @Nullable String m3dbVersion;
-    /**
-     * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-     * 
-     */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     private @Nullable List<GetM3DbM3dbUserConfigNamespace> namespaces;
     private @Nullable GetM3DbM3dbUserConfigPrivateAccess privateAccess;
     private @Nullable String projectToForkFrom;
@@ -67,17 +64,23 @@ public final class GetM3DbM3dbUserConfig {
     public List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    public List<String> ipFilterStrings() {
+        return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
+    }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     public Optional<GetM3DbM3dbUserConfigLimits> limits() {
         return Optional.ofNullable(this.limits);
+    }
+    public Optional<GetM3DbM3dbUserConfigM3> m3() {
+        return Optional.ofNullable(this.m3);
     }
     /**
      * @deprecated
@@ -94,12 +97,6 @@ public final class GetM3DbM3dbUserConfig {
     public Optional<String> m3dbVersion() {
         return Optional.ofNullable(this.m3dbVersion);
     }
-    /**
-     * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
-     * 
-     */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public List<GetM3DbM3dbUserConfigNamespace> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
@@ -138,8 +135,10 @@ public final class GetM3DbM3dbUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
         private @Nullable List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
+        private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable GetM3DbM3dbUserConfigLimits limits;
+        private @Nullable GetM3DbM3dbUserConfigM3 m3;
         private @Nullable String m3Version;
         private @Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest;
         private @Nullable String m3dbVersion;
@@ -156,8 +155,10 @@ public final class GetM3DbM3dbUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
+    	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.limits = defaults.limits;
+    	      this.m3 = defaults.m3;
     	      this.m3Version = defaults.m3Version;
     	      this.m3coordinatorEnableGraphiteCarbonIngest = defaults.m3coordinatorEnableGraphiteCarbonIngest;
     	      this.m3dbVersion = defaults.m3dbVersion;
@@ -189,6 +190,14 @@ public final class GetM3DbM3dbUserConfig {
             return ipFilterObjects(List.of(ipFilterObjects));
         }
         @CustomType.Setter
+        public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+            this.ipFilterStrings = ipFilterStrings;
+            return this;
+        }
+        public Builder ipFilterStrings(String... ipFilterStrings) {
+            return ipFilterStrings(List.of(ipFilterStrings));
+        }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -199,6 +208,11 @@ public final class GetM3DbM3dbUserConfig {
         @CustomType.Setter
         public Builder limits(@Nullable GetM3DbM3dbUserConfigLimits limits) {
             this.limits = limits;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder m3(@Nullable GetM3DbM3dbUserConfigM3 m3) {
+            this.m3 = m3;
             return this;
         }
         @CustomType.Setter
@@ -259,8 +273,10 @@ public final class GetM3DbM3dbUserConfig {
             o.additionalBackupRegions = additionalBackupRegions;
             o.customDomain = customDomain;
             o.ipFilterObjects = ipFilterObjects;
+            o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.limits = limits;
+            o.m3 = m3;
             o.m3Version = m3Version;
             o.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             o.m3dbVersion = m3dbVersion;
