@@ -65,10 +65,10 @@ public final class OpenSearchOpensearchUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
@@ -193,10 +193,10 @@ public final class OpenSearchOpensearchUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }

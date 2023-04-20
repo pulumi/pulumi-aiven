@@ -20,6 +20,7 @@ namespace Pulumi.Aiven
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
@@ -53,6 +54,7 @@ namespace Pulumi.Aiven
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 

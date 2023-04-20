@@ -23,10 +23,10 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     private @Nullable List<String> ipFilterStrings;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Kafka Connect server provided values
@@ -54,10 +54,10 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }

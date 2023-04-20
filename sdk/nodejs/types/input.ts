@@ -55,7 +55,7 @@ export interface CassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -158,7 +158,7 @@ export interface ClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -293,7 +293,7 @@ export interface FlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -382,7 +382,7 @@ export interface GrafanaGrafanaUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.GrafanaGrafanaUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     metricsEnabled?: pulumi.Input<boolean>;
@@ -541,7 +541,7 @@ export interface InfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -659,7 +659,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigKafkaConnect>;
@@ -769,7 +769,7 @@ export interface KafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -967,7 +967,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
@@ -1152,7 +1152,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1197,7 +1197,7 @@ export interface M3DbM3dbUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     limits?: pulumi.Input<inputs.M3DbM3dbUserConfigLimits>;
@@ -1279,7 +1279,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
     filter: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
      */
     namespaces?: pulumi.Input<pulumi.Input<string>[]>;
     namespacesObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingNamespacesObject>[]>;
@@ -1330,7 +1330,7 @@ export interface MySqlMysqlUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.MySqlMysqlUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     migration?: pulumi.Input<inputs.MySqlMysqlUserConfigMigration>;
@@ -1470,7 +1470,7 @@ export interface OpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1716,7 +1716,7 @@ export interface PgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1971,7 +1971,7 @@ export interface RedisRedisUserConfig {
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.RedisRedisUserConfigIpFilterObject>[]>;
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead. When switching to ip_filter_string, please apply the changes twice due to technical limitations.
+     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     migration?: pulumi.Input<inputs.RedisRedisUserConfigMigration>;
