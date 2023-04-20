@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.")]
+        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());

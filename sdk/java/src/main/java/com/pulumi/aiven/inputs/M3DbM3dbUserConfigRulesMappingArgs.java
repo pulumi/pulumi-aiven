@@ -49,19 +49,19 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
 
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     @Import(name="namespaces")
     private @Nullable Output<List<String>> namespaces;
 
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public Optional<Output<List<String>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -162,10 +162,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(@Nullable Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
@@ -175,10 +175,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
@@ -187,10 +187,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }

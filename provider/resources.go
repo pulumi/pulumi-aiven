@@ -16,6 +16,8 @@ package aiven
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"unicode"
 
@@ -290,7 +292,7 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				mainPkg: "Aiven",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	prov.RenameDataSource("aiven_cassandra", makeDataSource(mainMod, "getCassanda"),
@@ -303,7 +305,12 @@ func Provider() tfbridge.ProviderInfo {
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("aiven_", mainMod,
 		x.MakeStandardToken(mainPkg)))
 	contract.AssertNoError(err)
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-aiven/bridge-metadata.json
+var metadata []byte

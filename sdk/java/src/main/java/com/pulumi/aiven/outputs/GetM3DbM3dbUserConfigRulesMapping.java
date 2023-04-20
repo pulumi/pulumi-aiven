@@ -21,10 +21,10 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     private @Nullable String name;
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     private @Nullable List<String> namespaces;
     private @Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
     private @Nullable List<String> namespacesStrings;
@@ -45,10 +45,10 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     }
     /**
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations.
+     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. When switching to namespaces_string, please apply the changes twice due to technical limitations. */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
