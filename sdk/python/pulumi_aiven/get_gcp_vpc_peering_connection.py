@@ -129,7 +129,7 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_gcp_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+    foo = aiven.get_gcp_vpc_peering_connection(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         gcp_project_id="xxxx",
         peer_vpc="xxxx")
     ```
@@ -170,7 +170,7 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_gcp_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+    foo = aiven.get_gcp_vpc_peering_connection(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         gcp_project_id="xxxx",
         peer_vpc="xxxx")
     ```

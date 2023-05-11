@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the service integration endpoint
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -105,12 +105,6 @@ namespace Pulumi.Aiven
         [Output("rsyslogUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Signalfx user configurable settings
-        /// </summary>
-        [Output("signalfxUserConfig")]
-        public Output<Outputs.ServiceIntegrationEndpointSignalfxUserConfig?> SignalfxUserConfig { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a ServiceIntegrationEndpoint resource with the given unique name, arguments, and options.
@@ -170,7 +164,7 @@ namespace Pulumi.Aiven
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the service integration endpoint
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -241,12 +235,6 @@ namespace Pulumi.Aiven
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
 
-        /// <summary>
-        /// Signalfx user configurable settings
-        /// </summary>
-        [Input("signalfxUserConfig")]
-        public Input<Inputs.ServiceIntegrationEndpointSignalfxUserConfigArgs>? SignalfxUserConfig { get; set; }
-
         public ServiceIntegrationEndpointArgs()
         {
         }
@@ -280,7 +268,7 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// Type of the service integration endpoint
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -350,12 +338,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("rsyslogUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
-
-        /// <summary>
-        /// Signalfx user configurable settings
-        /// </summary>
-        [Input("signalfxUserConfig")]
-        public Input<Inputs.ServiceIntegrationEndpointSignalfxUserConfigGetArgs>? SignalfxUserConfig { get; set; }
 
         public ServiceIntegrationEndpointState()
         {

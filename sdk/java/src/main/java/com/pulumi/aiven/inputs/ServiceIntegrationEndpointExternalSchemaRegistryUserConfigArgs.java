@@ -19,15 +19,15 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
      * Authentication method.
      * 
      */
-    @Import(name="authentication")
-    private @Nullable Output<String> authentication;
+    @Import(name="authentication", required=true)
+    private Output<String> authentication;
 
     /**
      * @return Authentication method.
      * 
      */
-    public Optional<Output<String>> authentication() {
-        return Optional.ofNullable(this.authentication);
+    public Output<String> authentication() {
+        return this.authentication;
     }
 
     /**
@@ -64,15 +64,15 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
      * Schema Registry URL.
      * 
      */
-    @Import(name="url")
-    private @Nullable Output<String> url;
+    @Import(name="url", required=true)
+    private Output<String> url;
 
     /**
      * @return Schema Registry URL.
      * 
      */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     private ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs() {}
@@ -108,7 +108,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
          * @return builder
          * 
          */
-        public Builder authentication(@Nullable Output<String> authentication) {
+        public Builder authentication(Output<String> authentication) {
             $.authentication = authentication;
             return this;
         }
@@ -171,7 +171,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
          * @return builder
          * 
          */
-        public Builder url(@Nullable Output<String> url) {
+        public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
@@ -187,6 +187,8 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         public ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs build() {
+            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
+            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
             return $;
         }
     }

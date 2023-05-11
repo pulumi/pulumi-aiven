@@ -195,7 +195,7 @@ class ClickhouseUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.
@@ -228,7 +228,7 @@ class ClickhouseUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.

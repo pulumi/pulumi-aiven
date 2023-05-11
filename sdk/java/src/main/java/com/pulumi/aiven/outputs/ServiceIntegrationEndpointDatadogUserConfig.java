@@ -19,7 +19,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      * @return Datadog API key.
      * 
      */
-    private @Nullable String datadogApiKey;
+    private String datadogApiKey;
     /**
      * @return Custom tags provided by user.
      * 
@@ -56,8 +56,8 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      * @return Datadog API key.
      * 
      */
-    public Optional<String> datadogApiKey() {
-        return Optional.ofNullable(this.datadogApiKey);
+    public String datadogApiKey() {
+        return this.datadogApiKey;
     }
     /**
      * @return Custom tags provided by user.
@@ -111,7 +111,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String datadogApiKey;
+        private String datadogApiKey;
         private @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable Boolean disableConsumerStats;
         private @Nullable Integer kafkaConsumerCheckInstances;
@@ -131,8 +131,8 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         }
 
         @CustomType.Setter
-        public Builder datadogApiKey(@Nullable String datadogApiKey) {
-            this.datadogApiKey = datadogApiKey;
+        public Builder datadogApiKey(String datadogApiKey) {
+            this.datadogApiKey = Objects.requireNonNull(datadogApiKey);
             return this;
         }
         @CustomType.Setter

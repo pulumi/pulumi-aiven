@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
+//
+// ```
 type KafkaUser struct {
 	pulumi.CustomResourceState
 

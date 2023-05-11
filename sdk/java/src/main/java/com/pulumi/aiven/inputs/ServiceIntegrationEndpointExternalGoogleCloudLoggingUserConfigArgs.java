@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,45 +17,45 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
      * Google Cloud Logging log id.
      * 
      */
-    @Import(name="logId")
-    private @Nullable Output<String> logId;
+    @Import(name="logId", required=true)
+    private Output<String> logId;
 
     /**
      * @return Google Cloud Logging log id.
      * 
      */
-    public Optional<Output<String>> logId() {
-        return Optional.ofNullable(this.logId);
+    public Output<String> logId() {
+        return this.logId;
     }
 
     /**
      * GCP project id.
      * 
      */
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="projectId", required=true)
+    private Output<String> projectId;
 
     /**
      * @return GCP project id.
      * 
      */
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
 
     /**
      * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
-    @Import(name="serviceAccountCredentials")
-    private @Nullable Output<String> serviceAccountCredentials;
+    @Import(name="serviceAccountCredentials", required=true)
+    private Output<String> serviceAccountCredentials;
 
     /**
      * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
-    public Optional<Output<String>> serviceAccountCredentials() {
-        return Optional.ofNullable(this.serviceAccountCredentials);
+    public Output<String> serviceAccountCredentials() {
+        return this.serviceAccountCredentials;
     }
 
     private ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs() {}
@@ -92,7 +90,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
          * @return builder
          * 
          */
-        public Builder logId(@Nullable Output<String> logId) {
+        public Builder logId(Output<String> logId) {
             $.logId = logId;
             return this;
         }
@@ -113,7 +111,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
          * @return builder
          * 
          */
-        public Builder projectId(@Nullable Output<String> projectId) {
+        public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -134,7 +132,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
          * @return builder
          * 
          */
-        public Builder serviceAccountCredentials(@Nullable Output<String> serviceAccountCredentials) {
+        public Builder serviceAccountCredentials(Output<String> serviceAccountCredentials) {
             $.serviceAccountCredentials = serviceAccountCredentials;
             return this;
         }
@@ -150,6 +148,9 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs build() {
+            $.logId = Objects.requireNonNull($.logId, "expected parameter 'logId' to be non-null");
+            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.serviceAccountCredentials = Objects.requireNonNull($.serviceAccountCredentials, "expected parameter 'serviceAccountCredentials' to be non-null");
             return $;
         }
     }

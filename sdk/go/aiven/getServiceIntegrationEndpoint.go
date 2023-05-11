@@ -63,7 +63,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint
 	EndpointName string `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 	EndpointType string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
@@ -89,8 +89,6 @@ type LookupServiceIntegrationEndpointResult struct {
 	PrometheusUserConfigs []GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfigs"`
 	// Rsyslog user configurable settings
 	RsyslogUserConfigs []GetServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfigs"`
-	// Signalfx user configurable settings
-	SignalfxUserConfigs []GetServiceIntegrationEndpointSignalfxUserConfig `pulumi:"signalfxUserConfigs"`
 }
 
 func LookupServiceIntegrationEndpointOutput(ctx *pulumi.Context, args LookupServiceIntegrationEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServiceIntegrationEndpointResultOutput {
@@ -150,7 +148,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) EndpointName() pulumi.Stri
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// Type of the service integration endpoint
+// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 func (o LookupServiceIntegrationEndpointResultOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -233,13 +231,6 @@ func (o LookupServiceIntegrationEndpointResultOutput) RsyslogUserConfigs() GetSe
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointRsyslogUserConfig {
 		return v.RsyslogUserConfigs
 	}).(GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput)
-}
-
-// Signalfx user configurable settings
-func (o LookupServiceIntegrationEndpointResultOutput) SignalfxUserConfigs() GetServiceIntegrationEndpointSignalfxUserConfigArrayOutput {
-	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointSignalfxUserConfig {
-		return v.SignalfxUserConfigs
-	}).(GetServiceIntegrationEndpointSignalfxUserConfigArrayOutput)
 }
 
 func init() {

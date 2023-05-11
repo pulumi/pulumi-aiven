@@ -11,6 +11,7 @@ import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboard
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPublicAccessArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigSamlArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -321,6 +322,21 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * OpenSearch SAML configuration.
+     * 
+     */
+    @Import(name="saml")
+    private @Nullable Output<OpenSearchOpensearchUserConfigSamlArgs> saml;
+
+    /**
+     * @return OpenSearch SAML configuration.
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigSamlArgs>> saml() {
+        return Optional.ofNullable(this.saml);
+    }
+
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -371,6 +387,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryBasebackupName = $.recoveryBasebackupName;
+        this.saml = $.saml;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
     }
@@ -837,6 +854,27 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          */
         public Builder recoveryBasebackupName(String recoveryBasebackupName) {
             return recoveryBasebackupName(Output.of(recoveryBasebackupName));
+        }
+
+        /**
+         * @param saml OpenSearch SAML configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saml(@Nullable Output<OpenSearchOpensearchUserConfigSamlArgs> saml) {
+            $.saml = saml;
+            return this;
+        }
+
+        /**
+         * @param saml OpenSearch SAML configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saml(OpenSearchOpensearchUserConfigSamlArgs saml) {
+            return saml(Output.of(saml));
         }
 
         /**

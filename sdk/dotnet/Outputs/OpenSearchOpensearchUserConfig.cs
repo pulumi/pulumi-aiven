@@ -86,6 +86,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
+        /// OpenSearch SAML configuration.
+        /// </summary>
+        public readonly Outputs.OpenSearchOpensearchUserConfigSaml? Saml;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
@@ -132,6 +136,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            Outputs.OpenSearchOpensearchUserConfigSaml? saml,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -154,6 +160,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            Saml = saml;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

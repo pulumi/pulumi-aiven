@@ -226,6 +226,12 @@ class KafkaUser(pulumi.CustomResource):
             password="Test$1234")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The password of the Kafka User.
@@ -253,6 +259,12 @@ class KafkaUser(pulumi.CustomResource):
             project="my-project",
             username="user-1",
             password="Test$1234")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.

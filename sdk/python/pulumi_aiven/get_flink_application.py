@@ -153,7 +153,7 @@ def get_flink_application(name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application(project=data["aiven_project"]["pr1"]["project"],
+    app1 = aiven.get_flink_application(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="<SERVICE_NAME>",
         name="<APPLICATION_NAME>")
     ```
@@ -196,7 +196,7 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application(project=data["aiven_project"]["pr1"]["project"],
+    app1 = aiven.get_flink_application(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="<SERVICE_NAME>",
         name="<APPLICATION_NAME>")
     ```

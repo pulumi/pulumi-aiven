@@ -76,6 +76,8 @@ export class Flink extends pulumi.CustomResource {
     public /*out*/ readonly components!: pulumi.Output<outputs.FlinkComponent[]>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -272,6 +274,8 @@ export interface FlinkState {
     components?: pulumi.Input<pulumi.Input<inputs.FlinkComponent>[]>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -382,6 +386,8 @@ export interface FlinkArgs {
     cloudName?: pulumi.Input<string>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**

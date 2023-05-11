@@ -6,16 +6,14 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationKafkaLogsUserConfig {
-    private @Nullable String kafkaTopic;
+    private String kafkaTopic;
 
     private GetServiceIntegrationKafkaLogsUserConfig() {}
-    public Optional<String> kafkaTopic() {
-        return Optional.ofNullable(this.kafkaTopic);
+    public String kafkaTopic() {
+        return this.kafkaTopic;
     }
 
     public static Builder builder() {
@@ -27,7 +25,7 @@ public final class GetServiceIntegrationKafkaLogsUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String kafkaTopic;
+        private String kafkaTopic;
         public Builder() {}
         public Builder(GetServiceIntegrationKafkaLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +33,8 @@ public final class GetServiceIntegrationKafkaLogsUserConfig {
         }
 
         @CustomType.Setter
-        public Builder kafkaTopic(@Nullable String kafkaTopic) {
-            this.kafkaTopic = kafkaTopic;
+        public Builder kafkaTopic(String kafkaTopic) {
+            this.kafkaTopic = Objects.requireNonNull(kafkaTopic);
             return this;
         }
         public GetServiceIntegrationKafkaLogsUserConfig build() {

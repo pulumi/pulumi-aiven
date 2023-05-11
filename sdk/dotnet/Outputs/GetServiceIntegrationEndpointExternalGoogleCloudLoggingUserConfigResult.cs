@@ -13,17 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult
     {
-        public readonly string? LogId;
-        public readonly string? ProjectId;
-        public readonly string? ServiceAccountCredentials;
+        public readonly string LogId;
+        public readonly string ProjectId;
+        public readonly string ServiceAccountCredentials;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult(
-            string? logId,
+            string logId,
 
-            string? projectId,
+            string projectId,
 
-            string? serviceAccountCredentials)
+            string serviceAccountCredentials)
         {
             LogId = logId;
             ProjectId = projectId;

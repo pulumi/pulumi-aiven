@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        [Input("accessKey", required: true)]
+        public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
         /// AWS CloudWatch log group name.
@@ -27,14 +27,14 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// AWS region.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// AWS secret key.
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        [Input("secretKey", required: true)]
+        public Input<string> SecretKey { get; set; } = null!;
 
         public ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigGetArgs()
         {

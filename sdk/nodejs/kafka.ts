@@ -91,6 +91,8 @@ export class Kafka extends pulumi.CustomResource {
     public readonly defaultAcl!: pulumi.Output<boolean | undefined>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -110,15 +112,17 @@ export class Kafka extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
-     * Kafka server provided values
-     */
-    public readonly kafka!: pulumi.Output<outputs.KafkaKafka>;
-    /**
      * Kafka user configurable settings
      */
     public readonly kafkaUserConfig!: pulumi.Output<outputs.KafkaKafkaUserConfig | undefined>;
     /**
+     * Kafka server provided values
+     */
+    public /*out*/ readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
+    /**
      * Switch the service to use Karapace for schema registry and REST proxy
+     *
+     * @deprecated Usage of this field is discouraged.
      */
     public readonly karapace!: pulumi.Output<boolean | undefined>;
     /**
@@ -212,8 +216,8 @@ export class Kafka extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
             resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
             resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
-            resourceInputs["kafka"] = state ? state.kafka : undefined;
             resourceInputs["kafkaUserConfig"] = state ? state.kafkaUserConfig : undefined;
+            resourceInputs["kafkas"] = state ? state.kafkas : undefined;
             resourceInputs["karapace"] = state ? state.karapace : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
@@ -244,7 +248,6 @@ export class Kafka extends pulumi.CustomResource {
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["defaultAcl"] = args ? args.defaultAcl : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
-            resourceInputs["kafka"] = args ? args.kafka : undefined;
             resourceInputs["kafkaUserConfig"] = args ? args.kafkaUserConfig : undefined;
             resourceInputs["karapace"] = args ? args.karapace : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
@@ -262,6 +265,7 @@ export class Kafka extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
+            resourceInputs["kafkas"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -299,6 +303,8 @@ export interface KafkaState {
     defaultAcl?: pulumi.Input<boolean>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -318,15 +324,17 @@ export interface KafkaState {
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
-     * Kafka server provided values
-     */
-    kafka?: pulumi.Input<inputs.KafkaKafka>;
-    /**
      * Kafka user configurable settings
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
     /**
+     * Kafka server provided values
+     */
+    kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
+    /**
      * Switch the service to use Karapace for schema registry and REST proxy
+     *
+     * @deprecated Usage of this field is discouraged.
      */
     karapace?: pulumi.Input<boolean>;
     /**
@@ -417,18 +425,18 @@ export interface KafkaArgs {
     defaultAcl?: pulumi.Input<boolean>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
-    /**
-     * Kafka server provided values
-     */
-    kafka?: pulumi.Input<inputs.KafkaKafka>;
     /**
      * Kafka user configurable settings
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
     /**
      * Switch the service to use Karapace for schema registry and REST proxy
+     *
+     * @deprecated Usage of this field is discouraged.
      */
     karapace?: pulumi.Input<boolean>;
     /**

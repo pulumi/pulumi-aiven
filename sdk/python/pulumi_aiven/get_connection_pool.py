@@ -153,8 +153,8 @@ def get_connection_pool(pool_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
+    mytestpool = aiven.get_connection_pool(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         pool_name="mypool")
     ```
 
@@ -196,8 +196,8 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
+    mytestpool = aiven.get_connection_pool(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         pool_name="mypool")
     ```
 

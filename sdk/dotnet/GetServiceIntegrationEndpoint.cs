@@ -128,7 +128,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// Type of the service integration endpoint
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
@@ -179,10 +179,6 @@ namespace Pulumi.Aiven
         /// Rsyslog user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> RsyslogUserConfigs;
-        /// <summary>
-        /// Signalfx user configurable settings
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult> SignalfxUserConfigs;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointResult(
@@ -216,9 +212,7 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> prometheusUserConfigs,
 
-            ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> rsyslogUserConfigs,
-
-            ImmutableArray<Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult> signalfxUserConfigs)
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> rsyslogUserConfigs)
         {
             DatadogUserConfigs = datadogUserConfigs;
             EndpointConfig = endpointConfig;
@@ -236,7 +230,6 @@ namespace Pulumi.Aiven
             Project = project;
             PrometheusUserConfigs = prometheusUserConfigs;
             RsyslogUserConfigs = rsyslogUserConfigs;
-            SignalfxUserConfigs = signalfxUserConfigs;
         }
     }
 }

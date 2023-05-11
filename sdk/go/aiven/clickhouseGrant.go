@@ -63,12 +63,11 @@ import (
 //					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("INSERT"),
 //						Database:  demodb.Name,
-//						Table:     pulumi.String("*"),
+//						Table:     pulumi.String("demo-table"),
 //					},
 //					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("SELECT"),
 //						Database:  demodb.Name,
-//						Table:     pulumi.String("*"),
 //					},
 //				},
 //			})

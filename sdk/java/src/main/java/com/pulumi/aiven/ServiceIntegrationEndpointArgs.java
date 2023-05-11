@@ -14,7 +14,6 @@ import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalSchemaRegistryU
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointRsyslogUserConfigArgs;
-import com.pulumi.aiven.inputs.ServiceIntegrationEndpointSignalfxUserConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -58,14 +57,14 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Type of the service integration endpoint
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return Type of the service integration endpoint
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
     public Output<String> endpointType() {
@@ -237,21 +236,6 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.rsyslogUserConfig);
     }
 
-    /**
-     * Signalfx user configurable settings
-     * 
-     */
-    @Import(name="signalfxUserConfig")
-    private @Nullable Output<ServiceIntegrationEndpointSignalfxUserConfigArgs> signalfxUserConfig;
-
-    /**
-     * @return Signalfx user configurable settings
-     * 
-     */
-    public Optional<Output<ServiceIntegrationEndpointSignalfxUserConfigArgs>> signalfxUserConfig() {
-        return Optional.ofNullable(this.signalfxUserConfig);
-    }
-
     private ServiceIntegrationEndpointArgs() {}
 
     private ServiceIntegrationEndpointArgs(ServiceIntegrationEndpointArgs $) {
@@ -269,7 +253,6 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         this.project = $.project;
         this.prometheusUserConfig = $.prometheusUserConfig;
         this.rsyslogUserConfig = $.rsyslogUserConfig;
-        this.signalfxUserConfig = $.signalfxUserConfig;
     }
 
     public static Builder builder() {
@@ -333,7 +316,7 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param endpointType Type of the service integration endpoint
+         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
          * 
          * @return builder
          * 
@@ -344,7 +327,7 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param endpointType Type of the service integration endpoint
+         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
          * 
          * @return builder
          * 
@@ -582,27 +565,6 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
          */
         public Builder rsyslogUserConfig(ServiceIntegrationEndpointRsyslogUserConfigArgs rsyslogUserConfig) {
             return rsyslogUserConfig(Output.of(rsyslogUserConfig));
-        }
-
-        /**
-         * @param signalfxUserConfig Signalfx user configurable settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder signalfxUserConfig(@Nullable Output<ServiceIntegrationEndpointSignalfxUserConfigArgs> signalfxUserConfig) {
-            $.signalfxUserConfig = signalfxUserConfig;
-            return this;
-        }
-
-        /**
-         * @param signalfxUserConfig Signalfx user configurable settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder signalfxUserConfig(ServiceIntegrationEndpointSignalfxUserConfigArgs signalfxUserConfig) {
-            return signalfxUserConfig(Output.of(signalfxUserConfig));
         }
 
         public ServiceIntegrationEndpointArgs build() {

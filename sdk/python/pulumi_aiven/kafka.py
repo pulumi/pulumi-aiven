@@ -22,7 +22,6 @@ class KafkaArgs:
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  default_acl: Optional[pulumi.Input[bool]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
-                 kafka: Optional[pulumi.Input['KafkaKafkaArgs']] = None,
                  kafka_user_config: Optional[pulumi.Input['KafkaKafkaUserConfigArgs']] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
@@ -41,7 +40,6 @@ class KafkaArgs:
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[bool] default_acl: Create default wildcard Kafka ACL
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input['KafkaKafkaArgs'] kafka: Kafka server provided values
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -62,11 +60,15 @@ class KafkaArgs:
         if default_acl is not None:
             pulumi.set(__self__, "default_acl", default_acl)
         if disk_space is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+        if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
-        if kafka is not None:
-            pulumi.set(__self__, "kafka", kafka)
         if kafka_user_config is not None:
             pulumi.set(__self__, "kafka_user_config", kafka_user_config)
+        if karapace is not None:
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""karapace is deprecated: Usage of this field is discouraged.""")
         if karapace is not None:
             pulumi.set(__self__, "karapace", karapace)
         if maintenance_window_dow is not None:
@@ -157,18 +159,6 @@ class KafkaArgs:
     @disk_space.setter
     def disk_space(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_space", value)
-
-    @property
-    @pulumi.getter
-    def kafka(self) -> Optional[pulumi.Input['KafkaKafkaArgs']]:
-        """
-        Kafka server provided values
-        """
-        return pulumi.get(self, "kafka")
-
-    @kafka.setter
-    def kafka(self, value: Optional[pulumi.Input['KafkaKafkaArgs']]):
-        pulumi.set(self, "kafka", value)
 
     @property
     @pulumi.getter(name="kafkaUserConfig")
@@ -303,8 +293,8 @@ class _KafkaState:
                  disk_space_default: Optional[pulumi.Input[str]] = None,
                  disk_space_step: Optional[pulumi.Input[str]] = None,
                  disk_space_used: Optional[pulumi.Input[str]] = None,
-                 kafka: Optional[pulumi.Input['KafkaKafkaArgs']] = None,
                  kafka_user_config: Optional[pulumi.Input['KafkaKafkaUserConfigArgs']] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -334,8 +324,8 @@ class _KafkaState:
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input['KafkaKafkaArgs'] kafka: Kafka server provided values
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server provided values
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -364,6 +354,9 @@ class _KafkaState:
         if default_acl is not None:
             pulumi.set(__self__, "default_acl", default_acl)
         if disk_space is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+        if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if disk_space_cap is not None:
             pulumi.set(__self__, "disk_space_cap", disk_space_cap)
@@ -373,10 +366,13 @@ class _KafkaState:
             pulumi.set(__self__, "disk_space_step", disk_space_step)
         if disk_space_used is not None:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
-        if kafka is not None:
-            pulumi.set(__self__, "kafka", kafka)
         if kafka_user_config is not None:
             pulumi.set(__self__, "kafka_user_config", kafka_user_config)
+        if kafkas is not None:
+            pulumi.set(__self__, "kafkas", kafkas)
+        if karapace is not None:
+            warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+            pulumi.log.warn("""karapace is deprecated: Usage of this field is discouraged.""")
         if karapace is not None:
             pulumi.set(__self__, "karapace", karapace)
         if maintenance_window_dow is not None:
@@ -523,18 +519,6 @@ class _KafkaState:
         pulumi.set(self, "disk_space_used", value)
 
     @property
-    @pulumi.getter
-    def kafka(self) -> Optional[pulumi.Input['KafkaKafkaArgs']]:
-        """
-        Kafka server provided values
-        """
-        return pulumi.get(self, "kafka")
-
-    @kafka.setter
-    def kafka(self, value: Optional[pulumi.Input['KafkaKafkaArgs']]):
-        pulumi.set(self, "kafka", value)
-
-    @property
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigArgs']]:
         """
@@ -545,6 +529,18 @@ class _KafkaState:
     @kafka_user_config.setter
     def kafka_user_config(self, value: Optional[pulumi.Input['KafkaKafkaUserConfigArgs']]):
         pulumi.set(self, "kafka_user_config", value)
+
+    @property
+    @pulumi.getter
+    def kafkas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]]:
+        """
+        Kafka server provided values
+        """
+        return pulumi.get(self, "kafkas")
+
+    @kafkas.setter
+    def kafkas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]]):
+        pulumi.set(self, "kafkas", value)
 
     @property
     @pulumi.getter
@@ -772,7 +768,6 @@ class Kafka(pulumi.CustomResource):
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  default_acl: Optional[pulumi.Input[bool]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
-                 kafka: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]] = None,
                  kafka_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']]] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
@@ -830,7 +825,6 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[bool] default_acl: Create default wildcard Kafka ACL
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Kafka server provided values
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -907,7 +901,6 @@ class Kafka(pulumi.CustomResource):
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  default_acl: Optional[pulumi.Input[bool]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
-                 kafka: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]] = None,
                  kafka_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']]] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
@@ -932,9 +925,14 @@ class Kafka(pulumi.CustomResource):
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["default_acl"] = default_acl
+            if disk_space is not None and not opts.urn:
+                warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+                pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
             __props__.__dict__["disk_space"] = disk_space
-            __props__.__dict__["kafka"] = kafka
             __props__.__dict__["kafka_user_config"] = kafka_user_config
+            if karapace is not None and not opts.urn:
+                warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+                pulumi.log.warn("""karapace is deprecated: Usage of this field is discouraged.""")
             __props__.__dict__["karapace"] = karapace
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -955,6 +953,7 @@ class Kafka(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
+            __props__.__dict__["kafkas"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -983,8 +982,8 @@ class Kafka(pulumi.CustomResource):
             disk_space_default: Optional[pulumi.Input[str]] = None,
             disk_space_step: Optional[pulumi.Input[str]] = None,
             disk_space_used: Optional[pulumi.Input[str]] = None,
-            kafka: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]] = None,
             kafka_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']]] = None,
+            kafkas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]]] = None,
             karapace: Optional[pulumi.Input[bool]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -1019,8 +1018,8 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input[pulumi.InputType['KafkaKafkaArgs']] kafka: Kafka server provided values
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]] kafkas: Kafka server provided values
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1053,8 +1052,8 @@ class Kafka(pulumi.CustomResource):
         __props__.__dict__["disk_space_default"] = disk_space_default
         __props__.__dict__["disk_space_step"] = disk_space_step
         __props__.__dict__["disk_space_used"] = disk_space_used
-        __props__.__dict__["kafka"] = kafka
         __props__.__dict__["kafka_user_config"] = kafka_user_config
+        __props__.__dict__["kafkas"] = kafkas
         __props__.__dict__["karapace"] = karapace
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -1148,20 +1147,20 @@ class Kafka(pulumi.CustomResource):
         return pulumi.get(self, "disk_space_used")
 
     @property
-    @pulumi.getter
-    def kafka(self) -> pulumi.Output['outputs.KafkaKafka']:
-        """
-        Kafka server provided values
-        """
-        return pulumi.get(self, "kafka")
-
-    @property
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> pulumi.Output[Optional['outputs.KafkaKafkaUserConfig']]:
         """
         Kafka user configurable settings
         """
         return pulumi.get(self, "kafka_user_config")
+
+    @property
+    @pulumi.getter
+    def kafkas(self) -> pulumi.Output[Sequence['outputs.KafkaKafka']]:
+        """
+        Kafka server provided values
+        """
+        return pulumi.get(self, "kafkas")
 
     @property
     @pulumi.getter

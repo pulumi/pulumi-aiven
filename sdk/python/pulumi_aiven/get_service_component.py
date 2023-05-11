@@ -171,8 +171,8 @@ def get_service_component(component: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
-        service_name=aiven_kafka["service1"]["service_name"],
+    sc1 = aiven.get_service_component(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         component="kafka",
         route="dynamic",
         kafka_authentication_method="certificate")
@@ -231,8 +231,8 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
-        service_name=aiven_kafka["service1"]["service_name"],
+    sc1 = aiven.get_service_component(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         component="kafka",
         route="dynamic",
         kafka_authentication_method="certificate")

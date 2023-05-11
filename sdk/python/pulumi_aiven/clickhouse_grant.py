@@ -264,12 +264,11 @@ class ClickhouseGrant(pulumi.CustomResource):
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="INSERT",
                     database=demodb.name,
-                    table="*",
+                    table="demo-table",
                 ),
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="SELECT",
                     database=demodb.name,
-                    table="*",
                 ),
             ])
         demo_clickhouse_user = aiven.ClickhouseUser("demoClickhouseUser",
@@ -333,12 +332,11 @@ class ClickhouseGrant(pulumi.CustomResource):
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="INSERT",
                     database=demodb.name,
-                    table="*",
+                    table="demo-table",
                 ),
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="SELECT",
                     database=demodb.name,
-                    table="*",
                 ),
             ])
         demo_clickhouse_user = aiven.ClickhouseUser("demoClickhouseUser",

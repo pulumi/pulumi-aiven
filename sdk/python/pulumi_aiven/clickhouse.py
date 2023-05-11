@@ -56,6 +56,9 @@ class ClickhouseArgs:
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if disk_space is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+        if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -313,6 +316,9 @@ class _ClickhouseState:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
             pulumi.set(__self__, "components", components)
+        if disk_space is not None:
+            warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if disk_space_cap is not None:
@@ -815,6 +821,9 @@ class Clickhouse(pulumi.CustomResource):
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["clickhouse_user_config"] = clickhouse_user_config
             __props__.__dict__["cloud_name"] = cloud_name
+            if disk_space is not None and not opts.urn:
+                warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+                pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time

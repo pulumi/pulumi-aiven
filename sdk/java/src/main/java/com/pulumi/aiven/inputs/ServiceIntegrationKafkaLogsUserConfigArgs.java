@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +17,15 @@ public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.
      * Topic name.
      * 
      */
-    @Import(name="kafkaTopic")
-    private @Nullable Output<String> kafkaTopic;
+    @Import(name="kafkaTopic", required=true)
+    private Output<String> kafkaTopic;
 
     /**
      * @return Topic name.
      * 
      */
-    public Optional<Output<String>> kafkaTopic() {
-        return Optional.ofNullable(this.kafkaTopic);
+    public Output<String> kafkaTopic() {
+        return this.kafkaTopic;
     }
 
     private ServiceIntegrationKafkaLogsUserConfigArgs() {}
@@ -60,7 +58,7 @@ public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder kafkaTopic(@Nullable Output<String> kafkaTopic) {
+        public Builder kafkaTopic(Output<String> kafkaTopic) {
             $.kafkaTopic = kafkaTopic;
             return this;
         }
@@ -76,6 +74,7 @@ public final class ServiceIntegrationKafkaLogsUserConfigArgs extends com.pulumi.
         }
 
         public ServiceIntegrationKafkaLogsUserConfigArgs build() {
+            $.kafkaTopic = Objects.requireNonNull($.kafkaTopic, "expected parameter 'kafkaTopic' to be non-null");
             return $;
         }
     }

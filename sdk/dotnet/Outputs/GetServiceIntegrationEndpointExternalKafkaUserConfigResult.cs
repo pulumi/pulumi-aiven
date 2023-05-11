@@ -13,11 +13,11 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalKafkaUserConfigResult
     {
-        public readonly string? BootstrapServers;
+        public readonly string BootstrapServers;
         public readonly string? SaslMechanism;
         public readonly string? SaslPlainPassword;
         public readonly string? SaslPlainUsername;
-        public readonly string? SecurityProtocol;
+        public readonly string SecurityProtocol;
         public readonly string? SslCaCert;
         public readonly string? SslClientCert;
         public readonly string? SslClientKey;
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalKafkaUserConfigResult(
-            string? bootstrapServers,
+            string bootstrapServers,
 
             string? saslMechanism,
 
@@ -33,7 +33,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? saslPlainUsername,
 
-            string? securityProtocol,
+            string securityProtocol,
 
             string? sslCaCert,
 
