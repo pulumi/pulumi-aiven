@@ -27,7 +27,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
      * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
-    private @Nullable String indexPrefix;
+    private String indexPrefix;
     /**
      * @return Elasticsearch request timeout limit. The default value is `10.0`.
      * 
@@ -37,7 +37,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
      * @return Elasticsearch connection URL.
      * 
      */
-    private @Nullable String url;
+    private String url;
 
     private ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig() {}
     /**
@@ -58,8 +58,8 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
      * @return Elasticsearch index prefix. The default value is `logs`.
      * 
      */
-    public Optional<String> indexPrefix() {
-        return Optional.ofNullable(this.indexPrefix);
+    public String indexPrefix() {
+        return this.indexPrefix;
     }
     /**
      * @return Elasticsearch request timeout limit. The default value is `10.0`.
@@ -72,8 +72,8 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
      * @return Elasticsearch connection URL.
      * 
      */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -87,9 +87,9 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable Integer indexDaysMax;
-        private @Nullable String indexPrefix;
+        private String indexPrefix;
         private @Nullable Double timeout;
-        private @Nullable String url;
+        private String url;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -111,8 +111,8 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder indexPrefix(@Nullable String indexPrefix) {
-            this.indexPrefix = indexPrefix;
+        public Builder indexPrefix(String indexPrefix) {
+            this.indexPrefix = Objects.requireNonNull(indexPrefix);
             return this;
         }
         @CustomType.Setter
@@ -121,8 +121,8 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-            this.url = url;
+        public Builder url(String url) {
+            this.url = Objects.requireNonNull(url);
             return this;
         }
         public ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {

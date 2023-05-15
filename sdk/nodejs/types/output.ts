@@ -1563,6 +1563,7 @@ export interface GetOpenSearchOpensearchUserConfig {
     projectToForkFrom?: string;
     publicAccess?: outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
+    saml?: outputs.GetOpenSearchOpensearchUserConfigSaml;
     serviceToForkFrom?: string;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -1652,6 +1653,15 @@ export interface GetOpenSearchOpensearchUserConfigPublicAccess {
     opensearch?: boolean;
     opensearchDashboards?: boolean;
     prometheus?: boolean;
+}
+
+export interface GetOpenSearchOpensearchUserConfigSaml {
+    enabled: boolean;
+    idpEntityId: string;
+    idpMetadataUrl: string;
+    rolesKey?: string;
+    spEntityId: string;
+    subjectKey?: string;
 }
 
 export interface GetOpenSearchServiceIntegration {
@@ -2012,7 +2022,7 @@ export interface GetServiceIntegrationDatadogUserConfigOpensearch {
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
-    datadogApiKey?: string;
+    datadogApiKey: string;
     datadogTags?: outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     disableConsumerStats?: boolean;
     kafkaConsumerCheckInstances?: number;
@@ -2027,39 +2037,39 @@ export interface GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 }
 
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
-    accessKey?: string;
+    accessKey: string;
     logGroupName?: string;
-    region?: string;
-    secretKey?: string;
+    region: string;
+    secretKey: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
-    accessKey?: string;
-    namespace?: string;
-    region?: string;
-    secretKey?: string;
+    accessKey: string;
+    namespace: string;
+    region: string;
+    secretKey: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     ca?: string;
     indexDaysMax?: number;
-    indexPrefix?: string;
+    indexPrefix: string;
     timeout?: number;
-    url?: string;
+    url: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
-    logId?: string;
-    projectId?: string;
-    serviceAccountCredentials?: string;
+    logId: string;
+    projectId: string;
+    serviceAccountCredentials: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
-    bootstrapServers?: string;
+    bootstrapServers: string;
     saslMechanism?: string;
     saslPlainPassword?: string;
     saslPlainUsername?: string;
-    securityProtocol?: string;
+    securityProtocol: string;
     sslCaCert?: string;
     sslClientCert?: string;
     sslClientKey?: string;
@@ -2069,16 +2079,16 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
 export interface GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     ca?: string;
     indexDaysMax?: number;
-    indexPrefix?: string;
+    indexPrefix: string;
     timeout?: number;
-    url?: string;
+    url: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
-    authentication?: string;
+    authentication: string;
     basicAuthPassword?: string;
     basicAuthUsername?: string;
-    url?: string;
+    url: string;
 }
 
 export interface GetServiceIntegrationEndpointJolokiaUserConfig {
@@ -2094,19 +2104,13 @@ export interface GetServiceIntegrationEndpointPrometheusUserConfig {
 export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     ca?: string;
     cert?: string;
-    format?: string;
+    format: string;
     key?: string;
     logline?: string;
-    port?: number;
+    port: number;
     sd?: string;
-    server?: string;
-    tls?: boolean;
-}
-
-export interface GetServiceIntegrationEndpointSignalfxUserConfig {
-    enabledMetrics?: string[];
-    signalfxApiKey?: string;
-    signalfxRealm?: string;
+    server: string;
+    tls: boolean;
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
@@ -2136,7 +2140,7 @@ export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface GetServiceIntegrationKafkaLogsUserConfig {
-    kafkaTopic?: string;
+    kafkaTopic: string;
 }
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
@@ -2572,25 +2576,10 @@ export interface KafkaConnectorTask {
 }
 
 export interface KafkaKafka {
-    /**
-     * The Kafka client certificate
-     */
     accessCert: string;
-    /**
-     * The Kafka client certificate key
-     */
     accessKey: string;
-    /**
-     * The Kafka Connect URI, if any
-     */
     connectUri: string;
-    /**
-     * The Kafka REST URI, if any
-     */
     restUri: string;
-    /**
-     * The Schema Registry URI, if any
-     */
     schemaRegistryUri: string;
 }
 
@@ -3361,6 +3350,10 @@ export interface OpenSearchOpensearchUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
+     * OpenSearch SAML configuration.
+     */
+    saml?: outputs.OpenSearchOpensearchUserConfigSaml;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
@@ -3452,6 +3445,15 @@ export interface OpenSearchOpensearchUserConfigPublicAccess {
     opensearch?: boolean;
     opensearchDashboards?: boolean;
     prometheus?: boolean;
+}
+
+export interface OpenSearchOpensearchUserConfigSaml {
+    enabled: boolean;
+    idpEntityId: string;
+    idpMetadataUrl: string;
+    rolesKey?: string;
+    spEntityId: string;
+    subjectKey?: string;
 }
 
 export interface OpenSearchServiceIntegration {
@@ -3971,7 +3973,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
      * Datadog API key.
      */
-    datadogApiKey?: string;
+    datadogApiKey: string;
     /**
      * Custom tags provided by user.
      */
@@ -4007,7 +4009,7 @@ export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
      * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      */
-    accessKey?: string;
+    accessKey: string;
     /**
      * AWS CloudWatch log group name.
      */
@@ -4015,30 +4017,30 @@ export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
      * AWS region.
      */
-    region?: string;
+    region: string;
     /**
      * AWS secret key.
      */
-    secretKey?: string;
+    secretKey: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
      * AWS access key. Required permissions are cloudwatch:PutMetricData.
      */
-    accessKey?: string;
+    accessKey: string;
     /**
      * AWS CloudWatch Metrics Namespace.
      */
-    namespace?: string;
+    namespace: string;
     /**
      * AWS region.
      */
-    region?: string;
+    region: string;
     /**
      * AWS secret key.
      */
-    secretKey?: string;
+    secretKey: string;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
@@ -4053,7 +4055,7 @@ export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * Elasticsearch index prefix. The default value is `logs`.
      */
-    indexPrefix?: string;
+    indexPrefix: string;
     /**
      * Elasticsearch request timeout limit. The default value is `10.0`.
      */
@@ -4061,29 +4063,29 @@ export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * Elasticsearch connection URL.
      */
-    url?: string;
+    url: string;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
      * Google Cloud Logging log id.
      */
-    logId?: string;
+    logId: string;
     /**
      * GCP project id.
      */
-    projectId?: string;
+    projectId: string;
     /**
      * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      */
-    serviceAccountCredentials?: string;
+    serviceAccountCredentials: string;
 }
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
      * Bootstrap servers.
      */
-    bootstrapServers?: string;
+    bootstrapServers: string;
     /**
      * The list of SASL mechanisms enabled in the Kafka server.
      */
@@ -4099,7 +4101,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
      * Security protocol.
      */
-    securityProtocol?: string;
+    securityProtocol: string;
     /**
      * PEM-encoded CA certificate.
      */
@@ -4130,7 +4132,7 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
      * OpenSearch index prefix. The default value is `logs`.
      */
-    indexPrefix?: string;
+    indexPrefix: string;
     /**
      * OpenSearch request timeout limit. The default value is `10.0`.
      */
@@ -4138,14 +4140,14 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
      * OpenSearch connection URL.
      */
-    url?: string;
+    url: string;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
      * Authentication method.
      */
-    authentication?: string;
+    authentication: string;
     /**
      * Basic authentication password.
      */
@@ -4157,7 +4159,7 @@ export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
      * Schema Registry URL.
      */
-    url?: string;
+    url: string;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
@@ -4194,7 +4196,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
      * message format. The default value is `rfc5424`.
      */
-    format?: string;
+    format: string;
     /**
      * PEM encoded client key.
      */
@@ -4206,7 +4208,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
      * rsyslog server port. The default value is `514`.
      */
-    port?: number;
+    port: number;
     /**
      * Structured data block for log message.
      */
@@ -4214,26 +4216,11 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
      * rsyslog server IP address or hostname.
      */
-    server?: string;
+    server: string;
     /**
      * Require TLS. The default value is `true`.
      */
-    tls?: boolean;
-}
-
-export interface ServiceIntegrationEndpointSignalfxUserConfig {
-    /**
-     * list of metrics to send.
-     */
-    enabledMetrics?: string[];
-    /**
-     * SignalFX API key.
-     */
-    signalfxApiKey?: string;
-    /**
-     * SignalFX realm. The default value is `us0`.
-     */
-    signalfxRealm?: string;
+    tls: boolean;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
@@ -4275,7 +4262,7 @@ export interface ServiceIntegrationKafkaLogsUserConfig {
     /**
      * Topic name.
      */
-    kafkaTopic?: string;
+    kafkaTopic: string;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {

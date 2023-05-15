@@ -13,20 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult
     {
-        public readonly string? Authentication;
+        public readonly string Authentication;
         public readonly string? BasicAuthPassword;
         public readonly string? BasicAuthUsername;
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult(
-            string? authentication,
+            string authentication,
 
             string? basicAuthPassword,
 
             string? basicAuthUsername,
 
-            string? url)
+            string url)
         {
             Authentication = authentication;
             BasicAuthPassword = basicAuthPassword;

@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/m3dbUser:M3dbUser")]
     public partial class M3dbUser : global::Pulumi.CustomResource

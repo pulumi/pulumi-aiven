@@ -72,6 +72,8 @@ type OpenSearch struct {
 	// Service component information objects
 	Components OpenSearchComponentArrayOutput `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -168,6 +170,8 @@ type openSearchState struct {
 	// Service component information objects
 	Components []OpenSearchComponent `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -225,6 +229,8 @@ type OpenSearchState struct {
 	// Service component information objects
 	Components OpenSearchComponentArrayInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -284,6 +290,8 @@ type openSearchArgs struct {
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -316,6 +324,8 @@ type OpenSearchArgs struct {
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -444,6 +454,8 @@ func (o OpenSearchOutput) Components() OpenSearchComponentArrayOutput {
 }
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+//
+// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 func (o OpenSearchOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearch) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

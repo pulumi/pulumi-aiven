@@ -15,7 +15,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
      * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      * 
      */
-    private @Nullable String accessKey;
+    private String accessKey;
     /**
      * @return AWS CloudWatch log group name.
      * 
@@ -25,20 +25,20 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
      * @return AWS region.
      * 
      */
-    private @Nullable String region;
+    private String region;
     /**
      * @return AWS secret key.
      * 
      */
-    private @Nullable String secretKey;
+    private String secretKey;
 
     private ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig() {}
     /**
      * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      * 
      */
-    public Optional<String> accessKey() {
-        return Optional.ofNullable(this.accessKey);
+    public String accessKey() {
+        return this.accessKey;
     }
     /**
      * @return AWS CloudWatch log group name.
@@ -51,15 +51,15 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
      * @return AWS region.
      * 
      */
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
+    public String region() {
+        return this.region;
     }
     /**
      * @return AWS secret key.
      * 
      */
-    public Optional<String> secretKey() {
-        return Optional.ofNullable(this.secretKey);
+    public String secretKey() {
+        return this.secretKey;
     }
 
     public static Builder builder() {
@@ -71,10 +71,10 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accessKey;
+        private String accessKey;
         private @Nullable String logGroupName;
-        private @Nullable String region;
-        private @Nullable String secretKey;
+        private String region;
+        private String secretKey;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,8 +85,8 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         @CustomType.Setter
-        public Builder accessKey(@Nullable String accessKey) {
-            this.accessKey = accessKey;
+        public Builder accessKey(String accessKey) {
+            this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
         @CustomType.Setter
@@ -95,13 +95,13 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-            this.region = region;
+        public Builder region(String region) {
+            this.region = Objects.requireNonNull(region);
             return this;
         }
         @CustomType.Setter
-        public Builder secretKey(@Nullable String secretKey) {
-            this.secretKey = secretKey;
+        public Builder secretKey(String secretKey) {
+            this.secretKey = Objects.requireNonNull(secretKey);
             return this;
         }
         public ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig build() {

@@ -23,15 +23,15 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
      * Datadog API key.
      * 
      */
-    @Import(name="datadogApiKey")
-    private @Nullable Output<String> datadogApiKey;
+    @Import(name="datadogApiKey", required=true)
+    private Output<String> datadogApiKey;
 
     /**
      * @return Datadog API key.
      * 
      */
-    public Optional<Output<String>> datadogApiKey() {
-        return Optional.ofNullable(this.datadogApiKey);
+    public Output<String> datadogApiKey() {
+        return this.datadogApiKey;
     }
 
     /**
@@ -160,7 +160,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
          * @return builder
          * 
          */
-        public Builder datadogApiKey(@Nullable Output<String> datadogApiKey) {
+        public Builder datadogApiKey(Output<String> datadogApiKey) {
             $.datadogApiKey = datadogApiKey;
             return this;
         }
@@ -312,6 +312,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         public ServiceIntegrationEndpointDatadogUserConfigArgs build() {
+            $.datadogApiKey = Objects.requireNonNull($.datadogApiKey, "expected parameter 'datadogApiKey' to be non-null");
             return $;
         }
     }

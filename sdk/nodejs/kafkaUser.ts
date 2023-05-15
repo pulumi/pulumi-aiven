@@ -20,6 +20,12 @@ import * as utilities from "./utilities";
  *     password: "Test$1234",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
+ * ```
  */
 export class KafkaUser extends pulumi.CustomResource {
     /**

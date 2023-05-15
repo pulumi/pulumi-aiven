@@ -51,15 +51,15 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
      * OpenSearch index prefix. The default value is `logs`.
      * 
      */
-    @Import(name="indexPrefix")
-    private @Nullable Output<String> indexPrefix;
+    @Import(name="indexPrefix", required=true)
+    private Output<String> indexPrefix;
 
     /**
      * @return OpenSearch index prefix. The default value is `logs`.
      * 
      */
-    public Optional<Output<String>> indexPrefix() {
-        return Optional.ofNullable(this.indexPrefix);
+    public Output<String> indexPrefix() {
+        return this.indexPrefix;
     }
 
     /**
@@ -81,15 +81,15 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
      * OpenSearch connection URL.
      * 
      */
-    @Import(name="url")
-    private @Nullable Output<String> url;
+    @Import(name="url", required=true)
+    private Output<String> url;
 
     /**
      * @return OpenSearch connection URL.
      * 
      */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     private ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs() {}
@@ -168,7 +168,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
          * @return builder
          * 
          */
-        public Builder indexPrefix(@Nullable Output<String> indexPrefix) {
+        public Builder indexPrefix(Output<String> indexPrefix) {
             $.indexPrefix = indexPrefix;
             return this;
         }
@@ -210,7 +210,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
          * @return builder
          * 
          */
-        public Builder url(@Nullable Output<String> url) {
+        public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
@@ -226,6 +226,8 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         public ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs build() {
+            $.indexPrefix = Objects.requireNonNull($.indexPrefix, "expected parameter 'indexPrefix' to be non-null");
+            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
             return $;
         }
     }

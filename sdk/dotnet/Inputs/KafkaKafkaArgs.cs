@@ -14,10 +14,6 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("accessCert")]
         private Input<string>? _accessCert;
-
-        /// <summary>
-        /// The Kafka client certificate
-        /// </summary>
         public Input<string>? AccessCert
         {
             get => _accessCert;
@@ -30,10 +26,6 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("accessKey")]
         private Input<string>? _accessKey;
-
-        /// <summary>
-        /// The Kafka client certificate key
-        /// </summary>
         public Input<string>? AccessKey
         {
             get => _accessKey;
@@ -46,10 +38,6 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("connectUri")]
         private Input<string>? _connectUri;
-
-        /// <summary>
-        /// The Kafka Connect URI, if any
-        /// </summary>
         public Input<string>? ConnectUri
         {
             get => _connectUri;
@@ -62,10 +50,6 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("restUri")]
         private Input<string>? _restUri;
-
-        /// <summary>
-        /// The Kafka REST URI, if any
-        /// </summary>
         public Input<string>? RestUri
         {
             get => _restUri;
@@ -78,10 +62,6 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("schemaRegistryUri")]
         private Input<string>? _schemaRegistryUri;
-
-        /// <summary>
-        /// The Schema Registry URI, if any
-        /// </summary>
         public Input<string>? SchemaRegistryUri
         {
             get => _schemaRegistryUri;

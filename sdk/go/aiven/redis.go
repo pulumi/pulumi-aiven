@@ -74,6 +74,8 @@ type Redis struct {
 	Components RedisComponentArrayOutput `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -192,6 +194,8 @@ type redisState struct {
 	Components []RedisComponent `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -271,6 +275,8 @@ type RedisState struct {
 	Components RedisComponentArrayInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -352,6 +358,8 @@ type redisArgs struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -404,6 +412,8 @@ type RedisArgs struct {
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -552,6 +562,8 @@ func (o RedisOutput) Components() RedisComponentArrayOutput {
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
+//
+// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 func (o RedisOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

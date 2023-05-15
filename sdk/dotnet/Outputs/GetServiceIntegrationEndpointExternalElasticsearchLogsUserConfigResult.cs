@@ -15,9 +15,9 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? Ca;
         public readonly int? IndexDaysMax;
-        public readonly string? IndexPrefix;
+        public readonly string IndexPrefix;
         public readonly double? Timeout;
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult(
@@ -25,11 +25,11 @@ namespace Pulumi.Aiven.Outputs
 
             int? indexDaysMax,
 
-            string? indexPrefix,
+            string indexPrefix,
 
             double? timeout,
 
-            string? url)
+            string url)
         {
             Ca = ca;
             IndexDaysMax = indexDaysMax;

@@ -58,13 +58,12 @@ namespace Pulumi.Aiven
     ///             {
     ///                 Privilege = "INSERT",
     ///                 Database = demodb.Name,
-    ///                 Table = "*",
+    ///                 Table = "demo-table",
     ///             },
     ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
     ///             {
     ///                 Privilege = "SELECT",
     ///                 Database = demodb.Name,
-    ///                 Table = "*",
     ///             },
     ///         },
     ///     });

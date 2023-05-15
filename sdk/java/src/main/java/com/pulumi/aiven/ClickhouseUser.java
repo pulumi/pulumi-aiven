@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+ *  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
  * ```
  * 
  */

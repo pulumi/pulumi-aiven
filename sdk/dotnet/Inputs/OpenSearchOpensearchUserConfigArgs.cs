@@ -146,6 +146,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
+        /// OpenSearch SAML configuration.
+        /// </summary>
+        [Input("saml")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigSamlArgs>? Saml { get; set; }
+
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]

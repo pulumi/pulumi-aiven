@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/opensearchUser:OpensearchUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/opensearchUser:OpensearchUser")
 public class OpensearchUser extends com.pulumi.resources.CustomResource {

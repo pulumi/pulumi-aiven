@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Authentication method.
         /// </summary>
-        [Input("authentication")]
-        public Input<string>? Authentication { get; set; }
+        [Input("authentication", required: true)]
+        public Input<string> Authentication { get; set; } = null!;
 
         [Input("basicAuthPassword")]
         private Input<string>? _basicAuthPassword;
@@ -43,8 +43,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Schema Registry URL.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs()
         {

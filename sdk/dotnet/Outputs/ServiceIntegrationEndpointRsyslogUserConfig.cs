@@ -24,7 +24,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// message format. The default value is `rfc5424`.
         /// </summary>
-        public readonly string? Format;
+        public readonly string Format;
         /// <summary>
         /// PEM encoded client key.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// rsyslog server port. The default value is `514`.
         /// </summary>
-        public readonly int? Port;
+        public readonly int Port;
         /// <summary>
         /// Structured data block for log message.
         /// </summary>
@@ -44,11 +44,11 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// rsyslog server IP address or hostname.
         /// </summary>
-        public readonly string? Server;
+        public readonly string Server;
         /// <summary>
         /// Require TLS. The default value is `true`.
         /// </summary>
-        public readonly bool? Tls;
+        public readonly bool Tls;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointRsyslogUserConfig(
@@ -56,19 +56,19 @@ namespace Pulumi.Aiven.Outputs
 
             string? cert,
 
-            string? format,
+            string format,
 
             string? key,
 
             string? logline,
 
-            int? port,
+            int port,
 
             string? sd,
 
-            string? server,
+            string server,
 
-            bool? tls)
+            bool tls)
         {
             Ca = ca;
             Cert = cert;

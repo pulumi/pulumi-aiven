@@ -17,7 +17,6 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalSchemaRegistry
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointPrometheusUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointRsyslogUserConfig;
-import com.pulumi.aiven.outputs.ServiceIntegrationEndpointSignalfxUserConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -76,14 +75,14 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return this.endpointName;
     }
     /**
-     * Type of the service integration endpoint
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
     @Export(name="endpointType", type=String.class, parameters={})
     private Output<String> endpointType;
 
     /**
-     * @return Type of the service integration endpoint
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
     public Output<String> endpointType() {
@@ -242,20 +241,6 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<ServiceIntegrationEndpointRsyslogUserConfig>> rsyslogUserConfig() {
         return Codegen.optional(this.rsyslogUserConfig);
-    }
-    /**
-     * Signalfx user configurable settings
-     * 
-     */
-    @Export(name="signalfxUserConfig", type=ServiceIntegrationEndpointSignalfxUserConfig.class, parameters={})
-    private Output</* @Nullable */ ServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfig;
-
-    /**
-     * @return Signalfx user configurable settings
-     * 
-     */
-    public Output<Optional<ServiceIntegrationEndpointSignalfxUserConfig>> signalfxUserConfig() {
-        return Codegen.optional(this.signalfxUserConfig);
     }
 
     /**

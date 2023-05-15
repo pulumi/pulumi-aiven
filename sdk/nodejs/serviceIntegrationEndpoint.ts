@@ -50,7 +50,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
-     * Type of the service integration endpoint
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -97,10 +97,6 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      * Rsyslog user configurable settings
      */
     public readonly rsyslogUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
-    /**
-     * Signalfx user configurable settings
-     */
-    public readonly signalfxUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointSignalfxUserConfig | undefined>;
 
     /**
      * Create a ServiceIntegrationEndpoint resource with the given unique name, arguments, and options.
@@ -130,7 +126,6 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
             resourceInputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
-            resourceInputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationEndpointArgs | undefined;
             if ((!args || args.endpointName === undefined) && !opts.urn) {
@@ -156,7 +151,6 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
             resourceInputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
-            resourceInputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
             resourceInputs["endpointConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -181,7 +175,7 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -228,10 +222,6 @@ export interface ServiceIntegrationEndpointState {
      * Rsyslog user configurable settings
      */
     rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
-    /**
-     * Signalfx user configurable settings
-     */
-    signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }
 
 /**
@@ -247,7 +237,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -294,8 +284,4 @@ export interface ServiceIntegrationEndpointArgs {
      * Rsyslog user configurable settings
      */
     rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
-    /**
-     * Signalfx user configurable settings
-     */
-    signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }

@@ -14,7 +14,6 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalSchemaRegis
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
-import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointSignalfxUserConfig;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -39,7 +38,7 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private String endpointName;
     /**
-     * @return Type of the service integration endpoint
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
     private String endpointType;
@@ -103,11 +102,6 @@ public final class GetServiceIntegrationEndpointResult {
      * 
      */
     private List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
-    /**
-     * @return Signalfx user configurable settings
-     * 
-     */
-    private List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs;
 
     private GetServiceIntegrationEndpointResult() {}
     /**
@@ -132,7 +126,7 @@ public final class GetServiceIntegrationEndpointResult {
         return this.endpointName;
     }
     /**
-     * @return Type of the service integration endpoint
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
     public String endpointType() {
@@ -222,13 +216,6 @@ public final class GetServiceIntegrationEndpointResult {
     public List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs() {
         return this.rsyslogUserConfigs;
     }
-    /**
-     * @return Signalfx user configurable settings
-     * 
-     */
-    public List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs() {
-        return this.signalfxUserConfigs;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -255,7 +242,6 @@ public final class GetServiceIntegrationEndpointResult {
         private String project;
         private List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
         private List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
-        private List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -275,7 +261,6 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.project = defaults.project;
     	      this.prometheusUserConfigs = defaults.prometheusUserConfigs;
     	      this.rsyslogUserConfigs = defaults.rsyslogUserConfigs;
-    	      this.signalfxUserConfigs = defaults.signalfxUserConfigs;
         }
 
         @CustomType.Setter
@@ -391,14 +376,6 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder rsyslogUserConfigs(GetServiceIntegrationEndpointRsyslogUserConfig... rsyslogUserConfigs) {
             return rsyslogUserConfigs(List.of(rsyslogUserConfigs));
         }
-        @CustomType.Setter
-        public Builder signalfxUserConfigs(List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs) {
-            this.signalfxUserConfigs = Objects.requireNonNull(signalfxUserConfigs);
-            return this;
-        }
-        public Builder signalfxUserConfigs(GetServiceIntegrationEndpointSignalfxUserConfig... signalfxUserConfigs) {
-            return signalfxUserConfigs(List.of(signalfxUserConfigs));
-        }
         public GetServiceIntegrationEndpointResult build() {
             final var o = new GetServiceIntegrationEndpointResult();
             o.datadogUserConfigs = datadogUserConfigs;
@@ -417,7 +394,6 @@ public final class GetServiceIntegrationEndpointResult {
             o.project = project;
             o.prometheusUserConfigs = prometheusUserConfigs;
             o.rsyslogUserConfigs = rsyslogUserConfigs;
-            o.signalfxUserConfigs = signalfxUserConfigs;
             return o;
         }
     }

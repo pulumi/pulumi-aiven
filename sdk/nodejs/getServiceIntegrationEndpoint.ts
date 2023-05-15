@@ -61,7 +61,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly endpointName: string;
     /**
-     * Type of the service integration endpoint
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
      */
     readonly endpointType: string;
     /**
@@ -112,10 +112,6 @@ export interface GetServiceIntegrationEndpointResult {
      * Rsyslog user configurable settings
      */
     readonly rsyslogUserConfigs: outputs.GetServiceIntegrationEndpointRsyslogUserConfig[];
-    /**
-     * Signalfx user configurable settings
-     */
-    readonly signalfxUserConfigs: outputs.GetServiceIntegrationEndpointSignalfxUserConfig[];
 }
 /**
  * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.

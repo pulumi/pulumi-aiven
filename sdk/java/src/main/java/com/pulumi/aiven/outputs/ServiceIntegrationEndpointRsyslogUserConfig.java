@@ -27,7 +27,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return message format. The default value is `rfc5424`.
      * 
      */
-    private @Nullable String format;
+    private String format;
     /**
      * @return PEM encoded client key.
      * 
@@ -42,7 +42,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return rsyslog server port. The default value is `514`.
      * 
      */
-    private @Nullable Integer port;
+    private Integer port;
     /**
      * @return Structured data block for log message.
      * 
@@ -52,12 +52,12 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return rsyslog server IP address or hostname.
      * 
      */
-    private @Nullable String server;
+    private String server;
     /**
      * @return Require TLS. The default value is `true`.
      * 
      */
-    private @Nullable Boolean tls;
+    private Boolean tls;
 
     private ServiceIntegrationEndpointRsyslogUserConfig() {}
     /**
@@ -78,8 +78,8 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return message format. The default value is `rfc5424`.
      * 
      */
-    public Optional<String> format() {
-        return Optional.ofNullable(this.format);
+    public String format() {
+        return this.format;
     }
     /**
      * @return PEM encoded client key.
@@ -99,8 +99,8 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return rsyslog server port. The default value is `514`.
      * 
      */
-    public Optional<Integer> port() {
-        return Optional.ofNullable(this.port);
+    public Integer port() {
+        return this.port;
     }
     /**
      * @return Structured data block for log message.
@@ -113,15 +113,15 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      * @return rsyslog server IP address or hostname.
      * 
      */
-    public Optional<String> server() {
-        return Optional.ofNullable(this.server);
+    public String server() {
+        return this.server;
     }
     /**
      * @return Require TLS. The default value is `true`.
      * 
      */
-    public Optional<Boolean> tls() {
-        return Optional.ofNullable(this.tls);
+    public Boolean tls() {
+        return this.tls;
     }
 
     public static Builder builder() {
@@ -135,13 +135,13 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable String cert;
-        private @Nullable String format;
+        private String format;
         private @Nullable String key;
         private @Nullable String logline;
-        private @Nullable Integer port;
+        private Integer port;
         private @Nullable String sd;
-        private @Nullable String server;
-        private @Nullable Boolean tls;
+        private String server;
+        private Boolean tls;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointRsyslogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -167,8 +167,8 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder format(@Nullable String format) {
-            this.format = format;
+        public Builder format(String format) {
+            this.format = Objects.requireNonNull(format);
             return this;
         }
         @CustomType.Setter
@@ -182,8 +182,8 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
-            this.port = port;
+        public Builder port(Integer port) {
+            this.port = Objects.requireNonNull(port);
             return this;
         }
         @CustomType.Setter
@@ -192,13 +192,13 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder server(@Nullable String server) {
-            this.server = server;
+        public Builder server(String server) {
+            this.server = Objects.requireNonNull(server);
             return this;
         }
         @CustomType.Setter
-        public Builder tls(@Nullable Boolean tls) {
-            this.tls = tls;
+        public Builder tls(Boolean tls) {
+            this.tls = Objects.requireNonNull(tls);
             return this;
         }
         public ServiceIntegrationEndpointRsyslogUserConfig build() {

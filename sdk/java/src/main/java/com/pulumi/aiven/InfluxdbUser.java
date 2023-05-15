@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/influxdbUser:InfluxdbUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/influxdbUser:InfluxdbUser")
 public class InfluxdbUser extends com.pulumi.resources.CustomResource {

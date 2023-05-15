@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Topic name.
         /// </summary>
-        [Input("kafkaTopic")]
-        public Input<string>? KafkaTopic { get; set; }
+        [Input("kafkaTopic", required: true)]
+        public Input<string> KafkaTopic { get; set; } = null!;
 
         public ServiceIntegrationKafkaLogsUserConfigArgs()
         {

@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/kafkaUser:KafkaUser")
 public class KafkaUser extends com.pulumi.resources.CustomResource {

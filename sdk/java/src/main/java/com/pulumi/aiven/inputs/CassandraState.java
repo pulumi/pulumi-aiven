@@ -101,14 +101,22 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
      * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -608,7 +616,11 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
@@ -619,7 +631,11 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }

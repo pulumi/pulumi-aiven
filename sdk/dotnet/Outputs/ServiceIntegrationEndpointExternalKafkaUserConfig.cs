@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Bootstrap servers.
         /// </summary>
-        public readonly string? BootstrapServers;
+        public readonly string BootstrapServers;
         /// <summary>
         /// The list of SASL mechanisms enabled in the Kafka server.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Security protocol.
         /// </summary>
-        public readonly string? SecurityProtocol;
+        public readonly string SecurityProtocol;
         /// <summary>
         /// PEM-encoded CA certificate.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalKafkaUserConfig(
-            string? bootstrapServers,
+            string bootstrapServers,
 
             string? saslMechanism,
 
@@ -60,7 +60,7 @@ namespace Pulumi.Aiven.Outputs
 
             string? saslPlainUsername,
 
-            string? securityProtocol,
+            string securityProtocol,
 
             string? sslCaCert,
 

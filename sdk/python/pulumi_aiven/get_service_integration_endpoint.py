@@ -22,7 +22,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_opensearch_logs_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None, signalfx_user_configs=None):
+    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_opensearch_logs_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
         if datadog_user_configs and not isinstance(datadog_user_configs, list):
             raise TypeError("Expected argument 'datadog_user_configs' to be a list")
         pulumi.set(__self__, "datadog_user_configs", datadog_user_configs)
@@ -71,9 +71,6 @@ class GetServiceIntegrationEndpointResult:
         if rsyslog_user_configs and not isinstance(rsyslog_user_configs, list):
             raise TypeError("Expected argument 'rsyslog_user_configs' to be a list")
         pulumi.set(__self__, "rsyslog_user_configs", rsyslog_user_configs)
-        if signalfx_user_configs and not isinstance(signalfx_user_configs, list):
-            raise TypeError("Expected argument 'signalfx_user_configs' to be a list")
-        pulumi.set(__self__, "signalfx_user_configs", signalfx_user_configs)
 
     @property
     @pulumi.getter(name="datadogUserConfigs")
@@ -103,7 +100,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> str:
         """
-        Type of the service integration endpoint
+        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -203,14 +200,6 @@ class GetServiceIntegrationEndpointResult:
         """
         return pulumi.get(self, "rsyslog_user_configs")
 
-    @property
-    @pulumi.getter(name="signalfxUserConfigs")
-    def signalfx_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult']:
-        """
-        Signalfx user configurable settings
-        """
-        return pulumi.get(self, "signalfx_user_configs")
-
 
 class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpointResult):
     # pylint: disable=using-constant-test
@@ -233,8 +222,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             jolokia_user_configs=self.jolokia_user_configs,
             project=self.project,
             prometheus_user_configs=self.prometheus_user_configs,
-            rsyslog_user_configs=self.rsyslog_user_configs,
-            signalfx_user_configs=self.signalfx_user_configs)
+            rsyslog_user_configs=self.rsyslog_user_configs)
 
 
 def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
@@ -279,8 +267,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
         jolokia_user_configs=__ret__.jolokia_user_configs,
         project=__ret__.project,
         prometheus_user_configs=__ret__.prometheus_user_configs,
-        rsyslog_user_configs=__ret__.rsyslog_user_configs,
-        signalfx_user_configs=__ret__.signalfx_user_configs)
+        rsyslog_user_configs=__ret__.rsyslog_user_configs)
 
 
 @_utilities.lift_output_func(get_service_integration_endpoint)

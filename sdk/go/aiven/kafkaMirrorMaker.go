@@ -76,6 +76,8 @@ type KafkaMirrorMaker struct {
 	Components KafkaMirrorMakerComponentArrayOutput `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -194,6 +196,8 @@ type kafkaMirrorMakerState struct {
 	Components []KafkaMirrorMakerComponent `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -273,6 +277,8 @@ type KafkaMirrorMakerState struct {
 	Components KafkaMirrorMakerComponentArrayInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -354,6 +360,8 @@ type kafkaMirrorMakerArgs struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *KafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
@@ -406,6 +414,8 @@ type KafkaMirrorMakerArgs struct {
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput
@@ -554,6 +564,8 @@ func (o KafkaMirrorMakerOutput) Components() KafkaMirrorMakerComponentArrayOutpu
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
+//
+// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 func (o KafkaMirrorMakerOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

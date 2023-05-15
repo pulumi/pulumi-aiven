@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointDatadogUserConfigResult
     {
-        public readonly string? DatadogApiKey;
+        public readonly string DatadogApiKey;
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> DatadogTags;
         public readonly bool? DisableConsumerStats;
         public readonly int? KafkaConsumerCheckInstances;
@@ -23,7 +23,7 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointDatadogUserConfigResult(
-            string? datadogApiKey,
+            string datadogApiKey,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> datadogTags,
 
