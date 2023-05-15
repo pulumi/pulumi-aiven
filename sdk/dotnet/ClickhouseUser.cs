@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+    ///  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseUser:ClickhouseUser")]

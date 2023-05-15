@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/redisUser:RedisUser")]
     public partial class RedisUser : global::Pulumi.CustomResource

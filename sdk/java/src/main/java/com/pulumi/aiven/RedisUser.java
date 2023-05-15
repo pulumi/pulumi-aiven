@@ -51,6 +51,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/redisUser:RedisUser")
 public class RedisUser extends com.pulumi.resources.CustomResource {

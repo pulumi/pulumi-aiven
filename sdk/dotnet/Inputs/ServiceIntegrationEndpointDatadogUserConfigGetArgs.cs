@@ -12,7 +12,7 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointDatadogUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("datadogApiKey")]
+        [Input("datadogApiKey", required: true)]
         private Input<string>? _datadogApiKey;
 
         /// <summary>

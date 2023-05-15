@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/m3dbUser:M3dbUser")
 public class M3dbUser extends com.pulumi.resources.CustomResource {

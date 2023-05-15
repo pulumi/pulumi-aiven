@@ -51,6 +51,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/mysqlUser:MysqlUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/mysqlUser:MysqlUser")
 public class MysqlUser extends com.pulumi.resources.CustomResource {

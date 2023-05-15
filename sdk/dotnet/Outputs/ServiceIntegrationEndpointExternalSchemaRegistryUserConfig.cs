@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Authentication method.
         /// </summary>
-        public readonly string? Authentication;
+        public readonly string Authentication;
         /// <summary>
         /// Basic authentication password.
         /// </summary>
@@ -28,17 +28,17 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Schema Registry URL.
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(
-            string? authentication,
+            string authentication,
 
             string? basicAuthPassword,
 
             string? basicAuthUsername,
 
-            string? url)
+            string url)
         {
             Authentication = authentication;
             BasicAuthPassword = basicAuthPassword;

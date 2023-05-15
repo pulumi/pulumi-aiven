@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/opensearchUser:OpensearchUser foo project/service_name/username
+//
+// ```
 type OpensearchUser struct {
 	pulumi.CustomResourceState
 

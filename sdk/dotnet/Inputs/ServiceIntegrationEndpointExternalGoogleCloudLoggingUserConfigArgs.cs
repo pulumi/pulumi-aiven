@@ -15,20 +15,20 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Google Cloud Logging log id.
         /// </summary>
-        [Input("logId")]
-        public Input<string>? LogId { get; set; }
+        [Input("logId", required: true)]
+        public Input<string> LogId { get; set; } = null!;
 
         /// <summary>
         /// GCP project id.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         /// </summary>
-        [Input("serviceAccountCredentials")]
-        public Input<string>? ServiceAccountCredentials { get; set; }
+        [Input("serviceAccountCredentials", required: true)]
+        public Input<string> ServiceAccountCredentials { get; set; } = null!;
 
         public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs()
         {

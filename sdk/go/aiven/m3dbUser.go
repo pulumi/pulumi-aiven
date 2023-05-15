@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+//
+// ```
 type M3dbUser struct {
 	pulumi.CustomResourceState
 

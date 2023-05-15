@@ -86,14 +86,22 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
      * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -159,21 +167,6 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka server provided values
-     * 
-     */
-    @Import(name="kafka")
-    private @Nullable Output<KafkaKafkaArgs> kafka;
-
-    /**
-     * @return Kafka server provided values
-     * 
-     */
-    public Optional<Output<KafkaKafkaArgs>> kafka() {
-        return Optional.ofNullable(this.kafka);
-    }
-
-    /**
      * Kafka user configurable settings
      * 
      */
@@ -189,16 +182,39 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Kafka server provided values
      * 
      */
+    @Import(name="kafkas")
+    private @Nullable Output<List<KafkaKafkaArgs>> kafkas;
+
+    /**
+     * @return Kafka server provided values
+     * 
+     */
+    public Optional<Output<List<KafkaKafkaArgs>>> kafkas() {
+        return Optional.ofNullable(this.kafkas);
+    }
+
+    /**
+     * Switch the service to use Karapace for schema registry and REST proxy
+     * 
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="karapace")
     private @Nullable Output<Boolean> karapace;
 
     /**
      * @return Switch the service to use Karapace for schema registry and REST proxy
      * 
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
      */
+    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<Boolean>> karapace() {
         return Optional.ofNullable(this.karapace);
     }
@@ -470,8 +486,8 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         this.diskSpaceDefault = $.diskSpaceDefault;
         this.diskSpaceStep = $.diskSpaceStep;
         this.diskSpaceUsed = $.diskSpaceUsed;
-        this.kafka = $.kafka;
         this.kafkaUserConfig = $.kafkaUserConfig;
+        this.kafkas = $.kafkas;
         this.karapace = $.karapace;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -609,7 +625,11 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
@@ -620,7 +640,11 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }
@@ -710,27 +734,6 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafka Kafka server provided values
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kafka(@Nullable Output<KafkaKafkaArgs> kafka) {
-            $.kafka = kafka;
-            return this;
-        }
-
-        /**
-         * @param kafka Kafka server provided values
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kafka(KafkaKafkaArgs kafka) {
-            return kafka(Output.of(kafka));
-        }
-
-        /**
          * @param kafkaUserConfig Kafka user configurable settings
          * 
          * @return builder
@@ -752,11 +755,46 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use Karapace for schema registry and REST proxy
+         * @param kafkas Kafka server provided values
          * 
          * @return builder
          * 
          */
+        public Builder kafkas(@Nullable Output<List<KafkaKafkaArgs>> kafkas) {
+            $.kafkas = kafkas;
+            return this;
+        }
+
+        /**
+         * @param kafkas Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkas(List<KafkaKafkaArgs> kafkas) {
+            return kafkas(Output.of(kafkas));
+        }
+
+        /**
+         * @param kafkas Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkas(KafkaKafkaArgs... kafkas) {
+            return kafkas(List.of(kafkas));
+        }
+
+        /**
+         * @param karapace Switch the service to use Karapace for schema registry and REST proxy
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Usage of this field is discouraged.
+         * 
+         */
+        @Deprecated /* Usage of this field is discouraged. */
         public Builder karapace(@Nullable Output<Boolean> karapace) {
             $.karapace = karapace;
             return this;
@@ -767,7 +805,11 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Usage of this field is discouraged.
+         * 
          */
+        @Deprecated /* Usage of this field is discouraged. */
         public Builder karapace(Boolean karapace) {
             return karapace(Output.of(karapace));
         }

@@ -381,7 +381,7 @@ def get_kafka_connect(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kc1 = aiven.get_kafka_connect(project=data["aiven_project"]["pr1"]["project"],
+    kc1 = aiven.get_kafka_connect(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-kc1")
     ```
 
@@ -439,7 +439,7 @@ def get_kafka_connect_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kc1 = aiven.get_kafka_connect(project=data["aiven_project"]["pr1"]["project"],
+    kc1 = aiven.get_kafka_connect(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-kc1")
     ```
 

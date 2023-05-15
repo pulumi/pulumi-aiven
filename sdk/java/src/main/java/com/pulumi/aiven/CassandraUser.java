@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import aiven:index/cassandraUser:CassandraUser foo project/service_name/username
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/cassandraUser:CassandraUser")
 public class CassandraUser extends com.pulumi.resources.CustomResource {

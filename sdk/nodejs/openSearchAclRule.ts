@@ -57,15 +57,17 @@ import * as utilities from "./utilities";
  *     },
  * ];
  * const osAclRule: aiven.OpenSearchAclRule[] = [];
- * for (const range of Object.entries(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => { ...__obj, [i]: v })).map(([k, v]) => ({key: k, value: v}))) {
- *     osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {
- *         project: osAclsConfig.project,
- *         serviceName: osAclsConfig.serviceName,
- *         username: range.value.username,
- *         index: range.value.index,
- *         permission: range.value.permission,
- *     }));
- * }
+ * pulumi.all(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => ({ ...__obj, [i]: v }))).apply(rangeBody => {
+ *     for (const range of Object.entries(rangeBody).map(([k, v]) => ({key: k, value: v}))) {
+ *         osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {
+ *             project: osAclsConfig.project,
+ *             serviceName: osAclsConfig.serviceName,
+ *             username: range.value.username,
+ *             index: range.value.index,
+ *             permission: range.value.permission,
+ *         }));
+ *     }
+ * });
  * ```
  *
  * ## Import

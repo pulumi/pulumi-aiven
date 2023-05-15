@@ -24,7 +24,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Elasticsearch index prefix. The default value is `logs`.
         /// </summary>
-        public readonly string? IndexPrefix;
+        public readonly string IndexPrefix;
         /// <summary>
         /// Elasticsearch request timeout limit. The default value is `10.0`.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Elasticsearch connection URL.
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(
@@ -40,11 +40,11 @@ namespace Pulumi.Aiven.Outputs
 
             int? indexDaysMax,
 
-            string? indexPrefix,
+            string indexPrefix,
 
             double? timeout,
 
-            string? url)
+            string url)
         {
             Ca = ca;
             IndexDaysMax = indexDaysMax;

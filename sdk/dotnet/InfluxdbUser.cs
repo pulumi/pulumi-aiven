@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/influxdbUser:InfluxdbUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/influxdbUser:InfluxdbUser")]
     public partial class InfluxdbUser : global::Pulumi.CustomResource

@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchDashb
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigSaml;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -62,6 +63,7 @@ public final class GetOpenSearchOpensearchUserConfig {
     private @Nullable String projectToForkFrom;
     private @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryBasebackupName;
+    private @Nullable GetOpenSearchOpensearchUserConfigSaml saml;
     private @Nullable String serviceToForkFrom;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
@@ -146,6 +148,9 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    public Optional<GetOpenSearchOpensearchUserConfigSaml> saml() {
+        return Optional.ofNullable(this.saml);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -184,6 +189,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable GetOpenSearchOpensearchUserConfigSaml saml;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -207,6 +213,7 @@ public final class GetOpenSearchOpensearchUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.saml = defaults.saml;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
         }
@@ -314,6 +321,11 @@ public final class GetOpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder saml(@Nullable GetOpenSearchOpensearchUserConfigSaml saml) {
+            this.saml = saml;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
@@ -343,6 +355,7 @@ public final class GetOpenSearchOpensearchUserConfig {
             o.projectToForkFrom = projectToForkFrom;
             o.publicAccess = publicAccess;
             o.recoveryBasebackupName = recoveryBasebackupName;
+            o.saml = saml;
             o.serviceToForkFrom = serviceToForkFrom;
             o.staticIps = staticIps;
             return o;

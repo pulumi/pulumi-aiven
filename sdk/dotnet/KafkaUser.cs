@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaUser:KafkaUser")]
     public partial class KafkaUser : global::Pulumi.CustomResource

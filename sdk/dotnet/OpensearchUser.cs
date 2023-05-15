@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/opensearchUser:OpensearchUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/opensearchUser:OpensearchUser")]
     public partial class OpensearchUser : global::Pulumi.CustomResource

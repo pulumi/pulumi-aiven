@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/influxdbUser:InfluxdbUser foo project/service_name/username
+//
+// ```
 type InfluxdbUser struct {
 	pulumi.CustomResourceState
 

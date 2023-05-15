@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+//
+// ```
 type RedisUser struct {
 	pulumi.CustomResourceState
 

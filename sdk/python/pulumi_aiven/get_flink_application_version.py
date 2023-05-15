@@ -203,7 +203,7 @@ def get_flink_application_version(application_id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application_version(project=data["aiven_project"]["pr1"]["project"],
+    app1 = aiven.get_flink_application_version(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="<SERVICE_NAME>",
         application_id="<APPLICATION_ID>",
         application_version_id="<APPLICATION_VERSION_ID>")
@@ -254,7 +254,7 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application_version(project=data["aiven_project"]["pr1"]["project"],
+    app1 = aiven.get_flink_application_version(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="<SERVICE_NAME>",
         application_id="<APPLICATION_ID>",
         application_version_id="<APPLICATION_VERSION_ID>")

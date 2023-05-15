@@ -6,8 +6,6 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
@@ -15,39 +13,39 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
      * @return Google Cloud Logging log id.
      * 
      */
-    private @Nullable String logId;
+    private String logId;
     /**
      * @return GCP project id.
      * 
      */
-    private @Nullable String projectId;
+    private String projectId;
     /**
      * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
-    private @Nullable String serviceAccountCredentials;
+    private String serviceAccountCredentials;
 
     private ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig() {}
     /**
      * @return Google Cloud Logging log id.
      * 
      */
-    public Optional<String> logId() {
-        return Optional.ofNullable(this.logId);
+    public String logId() {
+        return this.logId;
     }
     /**
      * @return GCP project id.
      * 
      */
-    public Optional<String> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public String projectId() {
+        return this.projectId;
     }
     /**
      * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      * 
      */
-    public Optional<String> serviceAccountCredentials() {
-        return Optional.ofNullable(this.serviceAccountCredentials);
+    public String serviceAccountCredentials() {
+        return this.serviceAccountCredentials;
     }
 
     public static Builder builder() {
@@ -59,9 +57,9 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String logId;
-        private @Nullable String projectId;
-        private @Nullable String serviceAccountCredentials;
+        private String logId;
+        private String projectId;
+        private String serviceAccountCredentials;
         public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,18 +69,18 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         @CustomType.Setter
-        public Builder logId(@Nullable String logId) {
-            this.logId = logId;
+        public Builder logId(String logId) {
+            this.logId = Objects.requireNonNull(logId);
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(@Nullable String projectId) {
-            this.projectId = projectId;
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
         @CustomType.Setter
-        public Builder serviceAccountCredentials(@Nullable String serviceAccountCredentials) {
-            this.serviceAccountCredentials = serviceAccountCredentials;
+        public Builder serviceAccountCredentials(String serviceAccountCredentials) {
+            this.serviceAccountCredentials = Objects.requireNonNull(serviceAccountCredentials);
             return this;
         }
         public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {

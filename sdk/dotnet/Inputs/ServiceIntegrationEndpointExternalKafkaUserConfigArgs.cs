@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Bootstrap servers.
         /// </summary>
-        [Input("bootstrapServers")]
-        public Input<string>? BootstrapServers { get; set; }
+        [Input("bootstrapServers", required: true)]
+        public Input<string> BootstrapServers { get; set; } = null!;
 
         /// <summary>
         /// The list of SASL mechanisms enabled in the Kafka server.
@@ -49,8 +49,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Security protocol.
         /// </summary>
-        [Input("securityProtocol")]
-        public Input<string>? SecurityProtocol { get; set; }
+        [Input("securityProtocol", required: true)]
+        public Input<string> SecurityProtocol { get; set; } = null!;
 
         /// <summary>
         /// PEM-encoded CA certificate.

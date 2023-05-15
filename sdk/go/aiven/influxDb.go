@@ -66,6 +66,8 @@ type InfluxDb struct {
 	// Service component information objects
 	Components InfluxDbComponentArrayOutput `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -162,6 +164,8 @@ type influxDbState struct {
 	// Service component information objects
 	Components []InfluxDbComponent `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -219,6 +223,8 @@ type InfluxDbState struct {
 	// Service component information objects
 	Components InfluxDbComponentArrayInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -278,6 +284,8 @@ type influxDbArgs struct {
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
@@ -310,6 +318,8 @@ type InfluxDbArgs struct {
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
@@ -438,6 +448,8 @@ func (o InfluxDbOutput) Components() InfluxDbComponentArrayOutput {
 }
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+//
+// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 func (o InfluxDbOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

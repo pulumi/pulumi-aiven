@@ -5,7 +5,12 @@
                 "current": "aiven:index/account:Account"
             },
             "aiven_account_authentication": {
-                "current": "aiven:index/accountAuthentication:AccountAuthentication"
+                "current": "aiven:index/accountAuthentication:AccountAuthentication",
+                "fields": {
+                    "saml_field_mapping": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "aiven_account_team": {
                 "current": "aiven:index/accountTeam:AccountTeam"
@@ -17,13 +22,23 @@
                 "current": "aiven:index/accountTeamProject:AccountTeamProject"
             },
             "aiven_aws_privatelink": {
-                "current": "aiven:index/awsPrivatelink:AwsPrivatelink"
+                "current": "aiven:index/awsPrivatelink:AwsPrivatelink",
+                "fields": {
+                    "principals": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_aws_vpc_peering_connection": {
                 "current": "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection"
             },
             "aiven_azure_privatelink": {
-                "current": "aiven:index/azurePrivatelink:AzurePrivatelink"
+                "current": "aiven:index/azurePrivatelink:AzurePrivatelink",
+                "fields": {
+                    "user_subscription_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_azure_privatelink_connection_approval": {
                 "current": "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval"
@@ -32,22 +47,119 @@
                 "current": "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection"
             },
             "aiven_billing_group": {
-                "current": "aiven:index/billingGroup:BillingGroup"
+                "current": "aiven:index/billingGroup:BillingGroup",
+                "fields": {
+                    "address_lines": {
+                        "maxItemsOne": false
+                    },
+                    "billing_emails": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_cassandra": {
-                "current": "aiven:index/cassandra:Cassandra"
+                "current": "aiven:index/cassandra:Cassandra",
+                "fields": {
+                    "cassandra": {
+                        "maxItemsOne": false
+                    },
+                    "cassandra_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "cassandra": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_cassandra_user": {
                 "current": "aiven:index/cassandraUser:CassandraUser"
             },
             "aiven_clickhouse": {
-                "current": "aiven:index/clickhouse:Clickhouse"
+                "current": "aiven:index/clickhouse:Clickhouse",
+                "fields": {
+                    "clickhouse": {
+                        "maxItemsOne": false
+                    },
+                    "clickhouse_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_clickhouse_database": {
                 "current": "aiven:index/clickhouseDatabase:ClickhouseDatabase"
             },
             "aiven_clickhouse_grant": {
-                "current": "aiven:index/clickhouseGrant:ClickhouseGrant"
+                "current": "aiven:index/clickhouseGrant:ClickhouseGrant",
+                "fields": {
+                    "privilege_grant": {
+                        "maxItemsOne": false
+                    },
+                    "role_grant": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_clickhouse_role": {
                 "current": "aiven:index/clickhouseRole:ClickhouseRole"
@@ -59,22 +171,243 @@
                 "current": "aiven:index/connectionPool:ConnectionPool"
             },
             "aiven_flink": {
-                "current": "aiven:index/flink:Flink"
+                "current": "aiven:index/flink:Flink",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "flink": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "host_ports": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "flink_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_flink_application": {
                 "current": "aiven:index/flinkApplication:FlinkApplication"
             },
             "aiven_flink_application_version": {
-                "current": "aiven:index/flinkApplicationVersion:FlinkApplicationVersion"
+                "current": "aiven:index/flinkApplicationVersion:FlinkApplicationVersion",
+                "fields": {
+                    "sink": {
+                        "maxItemsOne": false
+                    },
+                    "sinks": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "maxItemsOne": false
+                    },
+                    "sources": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_gcp_vpc_peering_connection": {
                 "current": "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection"
             },
             "aiven_grafana": {
-                "current": "aiven:index/grafana:Grafana"
+                "current": "aiven:index/grafana:Grafana",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "grafana": {
+                        "maxItemsOne": false
+                    },
+                    "grafana_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "auth_azuread": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_domains": {
+                                                "maxItemsOne": false
+                                            },
+                                            "allowed_groups": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "auth_generic_oauth": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_domains": {
+                                                "maxItemsOne": false
+                                            },
+                                            "allowed_organizations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "scopes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "auth_github": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_organizations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "team_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "auth_gitlab": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_groups": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "auth_google": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_domains": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "date_formats": {
+                                    "maxItemsOne": true
+                                },
+                                "external_image_storage": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "smtp_server": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_influxdb": {
-                "current": "aiven:index/influxDb:InfluxDb"
+                "current": "aiven:index/influxDb:InfluxDb",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "influxdb": {
+                        "maxItemsOne": false
+                    },
+                    "influxdb_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "influxdb": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_influxdb_database": {
                 "current": "aiven:index/influxdbDatabase:InfluxdbDatabase"
@@ -83,19 +416,171 @@
                 "current": "aiven:index/influxdbUser:InfluxdbUser"
             },
             "aiven_kafka": {
-                "current": "aiven:index/kafka:Kafka"
+                "current": "aiven:index/kafka:Kafka",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "kafka": {
+                        "maxItemsOne": false
+                    },
+                    "kafka_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "kafka": {
+                                    "maxItemsOne": true
+                                },
+                                "kafka_authentication_methods": {
+                                    "maxItemsOne": true
+                                },
+                                "kafka_connect_config": {
+                                    "maxItemsOne": true
+                                },
+                                "kafka_rest_config": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "schema_registry_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_acl": {
                 "current": "aiven:index/kafkaAcl:KafkaAcl"
             },
             "aiven_kafka_connect": {
-                "current": "aiven:index/kafkaConnect:KafkaConnect"
+                "current": "aiven:index/kafkaConnect:KafkaConnect",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "kafka_connect": {
+                        "maxItemsOne": false
+                    },
+                    "kafka_connect_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "kafka_connect": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_connector": {
-                "current": "aiven:index/kafkaConnector:KafkaConnector"
+                "current": "aiven:index/kafkaConnector:KafkaConnector",
+                "fields": {
+                    "task": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_mirrormaker": {
-                "current": "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker"
+                "current": "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "kafka_mirrormaker": {
+                        "maxItemsOne": false
+                    },
+                    "kafka_mirrormaker_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "kafka_mirrormaker": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_schema": {
                 "current": "aiven:index/kafkaSchema:KafkaSchema"
@@ -107,25 +592,226 @@
                 "current": "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl"
             },
             "aiven_kafka_topic": {
-                "current": "aiven:index/kafkaTopic:KafkaTopic"
+                "current": "aiven:index/kafkaTopic:KafkaTopic",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/kafkaUser:KafkaUser"
             },
             "aiven_m3aggregator": {
-                "current": "aiven:index/m3Aggregator:M3Aggregator"
+                "current": "aiven:index/m3Aggregator:M3Aggregator",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "m3aggregator": {
+                        "maxItemsOne": false
+                    },
+                    "m3aggregator_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_m3db": {
-                "current": "aiven:index/m3Db:M3Db"
+                "current": "aiven:index/m3Db:M3Db",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "m3db": {
+                        "maxItemsOne": false
+                    },
+                    "m3db_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "limits": {
+                                    "maxItemsOne": true
+                                },
+                                "m3": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "tag_options": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "namespaces": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "options": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "retention_options": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "rules": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "mapping": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "aggregations": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "namespaces": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "namespaces_object": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "namespaces_string": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_m3db_user": {
                 "current": "aiven:index/m3dbUser:M3dbUser"
             },
             "aiven_mirrormaker_replication_flow": {
-                "current": "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow"
+                "current": "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow",
+                "fields": {
+                    "topics": {
+                        "maxItemsOne": false
+                    },
+                    "topics_blacklist": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_mysql": {
-                "current": "aiven:index/mySql:MySql"
+                "current": "aiven:index/mySql:MySql",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "mysql": {
+                        "maxItemsOne": false
+                    },
+                    "mysql_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "migration": {
+                                    "maxItemsOne": true
+                                },
+                                "mysql": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_mysql_database": {
                 "current": "aiven:index/mysqlDatabase:MysqlDatabase"
@@ -134,7 +820,74 @@
                 "current": "aiven:index/mysqlUser:MysqlUser"
             },
             "aiven_opensearch": {
-                "current": "aiven:index/openSearch:OpenSearch"
+                "current": "aiven:index/openSearch:OpenSearch",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "opensearch": {
+                        "maxItemsOne": false
+                    },
+                    "opensearch_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "index_patterns": {
+                                    "maxItemsOne": false
+                                },
+                                "index_template": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "opensearch": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "reindex_remote_whitelist": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "opensearch_dashboards": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "saml": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_opensearch_acl_config": {
                 "current": "aiven:index/openSearchAclConfig:OpenSearchAclConfig"
@@ -146,7 +899,74 @@
                 "current": "aiven:index/opensearchUser:OpensearchUser"
             },
             "aiven_pg": {
-                "current": "aiven:index/pg:Pg"
+                "current": "aiven:index/pg:Pg",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "pg": {
+                        "maxItemsOne": true
+                    },
+                    "pg_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "migration": {
+                                    "maxItemsOne": true
+                                },
+                                "pg": {
+                                    "maxItemsOne": true
+                                },
+                                "pgbouncer": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ignore_startup_parameters": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "pglookout": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "timescaledb": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_pg_database": {
                 "current": "aiven:index/pgDatabase:PgDatabase"
@@ -155,7 +975,15 @@
                 "current": "aiven:index/pgUser:PgUser"
             },
             "aiven_project": {
-                "current": "aiven:index/project:Project"
+                "current": "aiven:index/project:Project",
+                "fields": {
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "technical_emails": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_project_user": {
                 "current": "aiven:index/projectUser:ProjectUser"
@@ -164,22 +992,247 @@
                 "current": "aiven:index/projectVpc:ProjectVpc"
             },
             "aiven_redis": {
-                "current": "aiven:index/redis:Redis"
+                "current": "aiven:index/redis:Redis",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "redis": {
+                        "maxItemsOne": false
+                    },
+                    "redis_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "migration": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_redis_user": {
-                "current": "aiven:index/redisUser:RedisUser"
+                "current": "aiven:index/redisUser:RedisUser",
+                "fields": {
+                    "redis_acl_categories": {
+                        "maxItemsOne": false
+                    },
+                    "redis_acl_channels": {
+                        "maxItemsOne": false
+                    },
+                    "redis_acl_commands": {
+                        "maxItemsOne": false
+                    },
+                    "redis_acl_keys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_service_integration": {
-                "current": "aiven:index/serviceIntegration:ServiceIntegration"
+                "current": "aiven:index/serviceIntegration:ServiceIntegration",
+                "fields": {
+                    "clickhouse_kafka_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tables": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "columns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "topics": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "clickhouse_postgresql_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "databases": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "datadog_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "datadog_tags": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_consumer_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_topics": {
+                                    "maxItemsOne": false
+                                },
+                                "include_consumer_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "include_topics": {
+                                    "maxItemsOne": false
+                                },
+                                "kafka_custom_metrics": {
+                                    "maxItemsOne": false
+                                },
+                                "opensearch": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "external_aws_cloudwatch_metrics_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dropped_metrics": {
+                                    "maxItemsOne": false
+                                },
+                                "extra_metrics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "kafka_connect_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "kafka_connect": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "kafka_logs_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "kafka_mirrormaker_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "kafka_mirrormaker": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "logs_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "metrics_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "source_mysql": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "telegraf": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "aiven_service_integration_endpoint": {
-                "current": "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint"
+                "current": "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint",
+                "fields": {
+                    "datadog_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "datadog_tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "external_aws_cloudwatch_logs_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_aws_cloudwatch_metrics_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_elasticsearch_logs_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_google_cloud_logging_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_kafka_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_opensearch_logs_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_schema_registry_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "jolokia_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "prometheus_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "rsyslog_user_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "aiven_static_ip": {
                 "current": "aiven:index/staticIp:StaticIp"
             },
             "aiven_transit_gateway_vpc_attachment": {
-                "current": "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment"
+                "current": "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment",
+                "fields": {
+                    "user_peer_network_cidrs": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -1130,6 +2183,13 @@
             "aiven:index/OpenSearchOpensearchUserConfigPublicAccess:OpenSearchOpensearchUserConfigPublicAccess": {
                 "opensearchDashboards": "opensearch_dashboards"
             },
+            "aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml": {
+                "idpEntityId": "idp_entity_id",
+                "idpMetadataUrl": "idp_metadata_url",
+                "rolesKey": "roles_key",
+                "spEntityId": "sp_entity_id",
+                "subjectKey": "subject_key"
+            },
             "aiven:index/OpenSearchServiceIntegration:OpenSearchServiceIntegration": {
                 "integrationType": "integration_type",
                 "sourceServiceName": "source_service_name"
@@ -1344,11 +2404,6 @@
             "aiven:index/ServiceIntegrationEndpointPrometheusUserConfig:ServiceIntegrationEndpointPrometheusUserConfig": {
                 "basicAuthPassword": "basic_auth_password",
                 "basicAuthUsername": "basic_auth_username"
-            },
-            "aiven:index/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig": {
-                "enabledMetrics": "enabled_metrics",
-                "signalfxApiKey": "signalfx_api_key",
-                "signalfxRealm": "signalfx_realm"
             },
             "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
                 "droppedMetrics": "dropped_metrics",
@@ -2825,6 +3880,13 @@
             "aiven:index/getOpenSearchOpensearchUserConfigPublicAccess:getOpenSearchOpensearchUserConfigPublicAccess": {
                 "opensearchDashboards": "opensearch_dashboards"
             },
+            "aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml": {
+                "idpEntityId": "idp_entity_id",
+                "idpMetadataUrl": "idp_metadata_url",
+                "rolesKey": "roles_key",
+                "spEntityId": "sp_entity_id",
+                "subjectKey": "subject_key"
+            },
             "aiven:index/getOpenSearchServiceIntegration:getOpenSearchServiceIntegration": {
                 "integrationType": "integration_type",
                 "sourceServiceName": "source_service_name"
@@ -3116,8 +4178,7 @@
                 "externalSchemaRegistryUserConfigs": "external_schema_registry_user_config",
                 "jolokiaUserConfigs": "jolokia_user_config",
                 "prometheusUserConfigs": "prometheus_user_config",
-                "rsyslogUserConfigs": "rsyslog_user_config",
-                "signalfxUserConfigs": "signalfx_user_config"
+                "rsyslogUserConfigs": "rsyslog_user_config"
             },
             "aiven:index/getServiceIntegrationEndpointDatadogUserConfig:getServiceIntegrationEndpointDatadogUserConfig": {
                 "datadogApiKey": "datadog_api_key",
@@ -3171,11 +4232,6 @@
             "aiven:index/getServiceIntegrationEndpointPrometheusUserConfig:getServiceIntegrationEndpointPrometheusUserConfig": {
                 "basicAuthPassword": "basic_auth_password",
                 "basicAuthUsername": "basic_auth_username"
-            },
-            "aiven:index/getServiceIntegrationEndpointSignalfxUserConfig:getServiceIntegrationEndpointSignalfxUserConfig": {
-                "enabledMetrics": "enabled_metrics",
-                "signalfxApiKey": "signalfx_api_key",
-                "signalfxRealm": "signalfx_realm"
             },
             "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
                 "droppedMetrics": "dropped_metrics",
@@ -3308,6 +4364,7 @@
                 "diskSpaceStep": "disk_space_step",
                 "diskSpaceUsed": "disk_space_used",
                 "kafkaUserConfig": "kafka_user_config",
+                "kafkas": "kafka",
                 "maintenanceWindowDow": "maintenance_window_dow",
                 "maintenanceWindowTime": "maintenance_window_time",
                 "projectVpcId": "project_vpc_id",
@@ -3667,8 +4724,7 @@
                 "externalSchemaRegistryUserConfig": "external_schema_registry_user_config",
                 "jolokiaUserConfig": "jolokia_user_config",
                 "prometheusUserConfig": "prometheus_user_config",
-                "rsyslogUserConfig": "rsyslog_user_config",
-                "signalfxUserConfig": "signalfx_user_config"
+                "rsyslogUserConfig": "rsyslog_user_config"
             },
             "aiven:index/staticIp:StaticIp": {
                 "cloudName": "cloud_name",

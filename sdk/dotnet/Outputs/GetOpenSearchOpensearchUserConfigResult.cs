@@ -34,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigSamlResult? Saml;
         public readonly string? ServiceToForkFrom;
         /// <summary>
         /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -78,6 +79,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            Outputs.GetOpenSearchOpensearchUserConfigSamlResult? saml,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -100,6 +103,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            Saml = saml;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

@@ -131,8 +131,8 @@ def get_kafka_acl(permission: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
-        service_name=aiven_kafka["mykafka"]["service_name"],
+    mytestacl = aiven.get_kafka_acl(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         topic="<TOPIC_NAME_PATTERN>",
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
@@ -180,8 +180,8 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
-        service_name=aiven_kafka["mykafka"]["service_name"],
+    mytestacl = aiven.get_kafka_acl(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         topic="<TOPIC_NAME_PATTERN>",
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
