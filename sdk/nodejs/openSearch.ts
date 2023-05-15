@@ -84,6 +84,8 @@ export class OpenSearch extends pulumi.CustomResource {
     public /*out*/ readonly components!: pulumi.Output<outputs.OpenSearchComponent[]>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -280,6 +282,8 @@ export interface OpenSearchState {
     components?: pulumi.Input<pulumi.Input<inputs.OpenSearchComponent>[]>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -390,6 +394,8 @@ export interface OpenSearchArgs {
     cloudName?: pulumi.Input<string>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**

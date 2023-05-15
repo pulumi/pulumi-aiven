@@ -145,6 +145,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigPrivateAccess',
     'OpenSearchOpensearchUserConfigPrivatelinkAccess',
     'OpenSearchOpensearchUserConfigPublicAccess',
+    'OpenSearchOpensearchUserConfigSaml',
     'OpenSearchServiceIntegration',
     'OpenSearchTag',
     'PgComponent',
@@ -193,7 +194,6 @@ __all__ = [
     'ServiceIntegrationEndpointJolokiaUserConfig',
     'ServiceIntegrationEndpointPrometheusUserConfig',
     'ServiceIntegrationEndpointRsyslogUserConfig',
-    'ServiceIntegrationEndpointSignalfxUserConfig',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric',
@@ -347,6 +347,7 @@ __all__ = [
     'GetOpenSearchOpensearchUserConfigPrivateAccessResult',
     'GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult',
     'GetOpenSearchOpensearchUserConfigPublicAccessResult',
+    'GetOpenSearchOpensearchUserConfigSamlResult',
     'GetOpenSearchServiceIntegrationResult',
     'GetOpenSearchTagResult',
     'GetPgComponentResult',
@@ -395,7 +396,6 @@ __all__ = [
     'GetServiceIntegrationEndpointJolokiaUserConfigResult',
     'GetServiceIntegrationEndpointPrometheusUserConfigResult',
     'GetServiceIntegrationEndpointRsyslogUserConfigResult',
-    'GetServiceIntegrationEndpointSignalfxUserConfigResult',
     'GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult',
     'GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricResult',
     'GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricResult',
@@ -4295,13 +4295,6 @@ class KafkaKafka(dict):
                  connect_uri: Optional[str] = None,
                  rest_uri: Optional[str] = None,
                  schema_registry_uri: Optional[str] = None):
-        """
-        :param str access_cert: The Kafka client certificate
-        :param str access_key: The Kafka client certificate key
-        :param str connect_uri: The Kafka Connect URI, if any
-        :param str rest_uri: The Kafka REST URI, if any
-        :param str schema_registry_uri: The Schema Registry URI, if any
-        """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
         if access_key is not None:
@@ -4316,41 +4309,26 @@ class KafkaKafka(dict):
     @property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> Optional[str]:
-        """
-        The Kafka client certificate
-        """
         return pulumi.get(self, "access_cert")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
-        """
-        The Kafka client certificate key
-        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="connectUri")
     def connect_uri(self) -> Optional[str]:
-        """
-        The Kafka Connect URI, if any
-        """
         return pulumi.get(self, "connect_uri")
 
     @property
     @pulumi.getter(name="restUri")
     def rest_uri(self) -> Optional[str]:
-        """
-        The Kafka REST URI, if any
-        """
         return pulumi.get(self, "rest_uri")
 
     @property
     @pulumi.getter(name="schemaRegistryUri")
     def schema_registry_uri(self) -> Optional[str]:
-        """
-        The Schema Registry URI, if any
-        """
         return pulumi.get(self, "schema_registry_uri")
 
 
@@ -8544,6 +8522,7 @@ class OpenSearchOpensearchUserConfig(dict):
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.OpenSearchOpensearchUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
+                 saml: Optional['outputs.OpenSearchOpensearchUserConfigSaml'] = None,
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None):
         """
@@ -8565,6 +8544,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param 'OpenSearchOpensearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
+        :param 'OpenSearchOpensearchUserConfigSamlArgs' saml: OpenSearch SAML configuration.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -8604,6 +8584,8 @@ class OpenSearchOpensearchUserConfig(dict):
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if static_ips is not None:
@@ -8752,6 +8734,14 @@ class OpenSearchOpensearchUserConfig(dict):
         Name of the basebackup to restore in forked service.
         """
         return pulumi.get(self, "recovery_basebackup_name")
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional['outputs.OpenSearchOpensearchUserConfigSaml']:
+        """
+        OpenSearch SAML configuration.
+        """
+        return pulumi.get(self, "saml")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -9418,6 +9408,80 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpEntityId":
+            suggest = "idp_entity_id"
+        elif key == "idpMetadataUrl":
+            suggest = "idp_metadata_url"
+        elif key == "spEntityId":
+            suggest = "sp_entity_id"
+        elif key == "rolesKey":
+            suggest = "roles_key"
+        elif key == "subjectKey":
+            suggest = "subject_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 idp_entity_id: str,
+                 idp_metadata_url: str,
+                 sp_entity_id: str,
+                 roles_key: Optional[str] = None,
+                 subject_key: Optional[str] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
+        pulumi.set(__self__, "idp_metadata_url", idp_metadata_url)
+        pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="idpEntityId")
+    def idp_entity_id(self) -> str:
+        return pulumi.get(self, "idp_entity_id")
+
+    @property
+    @pulumi.getter(name="idpMetadataUrl")
+    def idp_metadata_url(self) -> str:
+        return pulumi.get(self, "idp_metadata_url")
+
+    @property
+    @pulumi.getter(name="spEntityId")
+    def sp_entity_id(self) -> str:
+        return pulumi.get(self, "sp_entity_id")
+
+    @property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[str]:
+        return pulumi.get(self, "roles_key")
+
+    @property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[str]:
+        return pulumi.get(self, "subject_key")
 
 
 @pulumi.output_type
@@ -12069,7 +12133,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 datadog_api_key: Optional[str] = None,
+                 datadog_api_key: str,
                  datadog_tags: Optional[Sequence['outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag']] = None,
                  disable_consumer_stats: Optional[bool] = None,
                  kafka_consumer_check_instances: Optional[int] = None,
@@ -12085,8 +12149,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
         :param int max_partition_contexts: Maximum number of partition contexts to send.
         :param str site: Datadog intake site. Defaults to datadoghq.com.
         """
-        if datadog_api_key is not None:
-            pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        pulumi.set(__self__, "datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
@@ -12102,7 +12165,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
 
     @property
     @pulumi.getter(name="datadogApiKey")
-    def datadog_api_key(self) -> Optional[str]:
+    def datadog_api_key(self) -> str:
         """
         Datadog API key.
         """
@@ -12184,10 +12247,10 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
-        elif key == "logGroupName":
-            suggest = "log_group_name"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "logGroupName":
+            suggest = "log_group_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12201,32 +12264,45 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_key: Optional[str] = None,
-                 log_group_name: Optional[str] = None,
-                 region: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 access_key: str,
+                 region: str,
+                 secret_key: str,
+                 log_group_name: Optional[str] = None):
         """
         :param str access_key: AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
-        :param str log_group_name: AWS CloudWatch log group name.
         :param str region: AWS region.
         :param str secret_key: AWS secret key.
+        :param str log_group_name: AWS CloudWatch log group name.
         """
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
         if log_group_name is not None:
             pulumi.set(__self__, "log_group_name", log_group_name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[str]:
+    def access_key(self) -> str:
         """
         AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        AWS region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        """
+        AWS secret key.
+        """
+        return pulumi.get(self, "secret_key")
 
     @property
     @pulumi.getter(name="logGroupName")
@@ -12235,22 +12311,6 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(dict):
         AWS CloudWatch log group name.
         """
         return pulumi.get(self, "log_group_name")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        """
-        AWS region.
-        """
-        return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[str]:
-        """
-        AWS secret key.
-        """
-        return pulumi.get(self, "secret_key")
 
 
 @pulumi.output_type
@@ -12275,28 +12335,24 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_key: Optional[str] = None,
-                 namespace: Optional[str] = None,
-                 region: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 access_key: str,
+                 namespace: str,
+                 region: str,
+                 secret_key: str):
         """
         :param str access_key: AWS access key. Required permissions are cloudwatch:PutMetricData.
         :param str namespace: AWS CloudWatch Metrics Namespace.
         :param str region: AWS region.
         :param str secret_key: AWS secret key.
         """
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[str]:
+    def access_key(self) -> str:
         """
         AWS access key. Required permissions are cloudwatch:PutMetricData.
         """
@@ -12304,7 +12360,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(dict):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> str:
         """
         AWS CloudWatch Metrics Namespace.
         """
@@ -12312,7 +12368,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(dict):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> str:
         """
         AWS region.
         """
@@ -12320,7 +12376,7 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(dict):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[str]:
+    def secret_key(self) -> str:
         """
         AWS secret key.
         """
@@ -12332,10 +12388,10 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "indexDaysMax":
-            suggest = "index_days_max"
-        elif key == "indexPrefix":
+        if key == "indexPrefix":
             suggest = "index_prefix"
+        elif key == "indexDaysMax":
+            suggest = "index_days_max"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12349,28 +12405,42 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 index_prefix: str,
+                 url: str,
                  ca: Optional[str] = None,
                  index_days_max: Optional[int] = None,
-                 index_prefix: Optional[str] = None,
-                 timeout: Optional[float] = None,
-                 url: Optional[str] = None):
+                 timeout: Optional[float] = None):
         """
+        :param str index_prefix: Elasticsearch index prefix. The default value is `logs`.
+        :param str url: Elasticsearch connection URL.
         :param str ca: PEM encoded CA certificate.
         :param int index_days_max: Maximum number of days of logs to keep. The default value is `3`.
-        :param str index_prefix: Elasticsearch index prefix. The default value is `logs`.
         :param float timeout: Elasticsearch request timeout limit. The default value is `10.0`.
-        :param str url: Elasticsearch connection URL.
         """
+        pulumi.set(__self__, "index_prefix", index_prefix)
+        pulumi.set(__self__, "url", url)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if index_days_max is not None:
             pulumi.set(__self__, "index_days_max", index_days_max)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="indexPrefix")
+    def index_prefix(self) -> str:
+        """
+        Elasticsearch index prefix. The default value is `logs`.
+        """
+        return pulumi.get(self, "index_prefix")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        Elasticsearch connection URL.
+        """
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
@@ -12389,28 +12459,12 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
         return pulumi.get(self, "index_days_max")
 
     @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        """
-        Elasticsearch index prefix. The default value is `logs`.
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @property
     @pulumi.getter
     def timeout(self) -> Optional[float]:
         """
         Elasticsearch request timeout limit. The default value is `10.0`.
         """
         return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        """
-        Elasticsearch connection URL.
-        """
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -12437,24 +12491,21 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 log_id: Optional[str] = None,
-                 project_id: Optional[str] = None,
-                 service_account_credentials: Optional[str] = None):
+                 log_id: str,
+                 project_id: str,
+                 service_account_credentials: str):
         """
         :param str log_id: Google Cloud Logging log id.
         :param str project_id: GCP project id.
         :param str service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         """
-        if log_id is not None:
-            pulumi.set(__self__, "log_id", log_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if service_account_credentials is not None:
-            pulumi.set(__self__, "service_account_credentials", service_account_credentials)
+        pulumi.set(__self__, "log_id", log_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "service_account_credentials", service_account_credentials)
 
     @property
     @pulumi.getter(name="logId")
-    def log_id(self) -> Optional[str]:
+    def log_id(self) -> str:
         """
         Google Cloud Logging log id.
         """
@@ -12462,7 +12513,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
+    def project_id(self) -> str:
         """
         GCP project id.
         """
@@ -12470,7 +12521,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
 
     @property
     @pulumi.getter(name="serviceAccountCredentials")
-    def service_account_credentials(self) -> Optional[str]:
+    def service_account_credentials(self) -> str:
         """
         This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         """
@@ -12484,14 +12535,14 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
         suggest = None
         if key == "bootstrapServers":
             suggest = "bootstrap_servers"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
         elif key == "saslMechanism":
             suggest = "sasl_mechanism"
         elif key == "saslPlainPassword":
             suggest = "sasl_plain_password"
         elif key == "saslPlainUsername":
             suggest = "sasl_plain_username"
-        elif key == "securityProtocol":
-            suggest = "security_protocol"
         elif key == "sslCaCert":
             suggest = "ssl_ca_cert"
         elif key == "sslClientCert":
@@ -12513,36 +12564,34 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 bootstrap_servers: Optional[str] = None,
+                 bootstrap_servers: str,
+                 security_protocol: str,
                  sasl_mechanism: Optional[str] = None,
                  sasl_plain_password: Optional[str] = None,
                  sasl_plain_username: Optional[str] = None,
-                 security_protocol: Optional[str] = None,
                  ssl_ca_cert: Optional[str] = None,
                  ssl_client_cert: Optional[str] = None,
                  ssl_client_key: Optional[str] = None,
                  ssl_endpoint_identification_algorithm: Optional[str] = None):
         """
         :param str bootstrap_servers: Bootstrap servers.
+        :param str security_protocol: Security protocol.
         :param str sasl_mechanism: The list of SASL mechanisms enabled in the Kafka server.
         :param str sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server.
         :param str sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server.
-        :param str security_protocol: Security protocol.
         :param str ssl_ca_cert: PEM-encoded CA certificate.
         :param str ssl_client_cert: PEM-encoded client certificate.
         :param str ssl_client_key: PEM-encoded client key.
         :param str ssl_endpoint_identification_algorithm: The endpoint identification algorithm to validate server hostname using server certificate.
         """
-        if bootstrap_servers is not None:
-            pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "security_protocol", security_protocol)
         if sasl_mechanism is not None:
             pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
         if sasl_plain_password is not None:
             pulumi.set(__self__, "sasl_plain_password", sasl_plain_password)
         if sasl_plain_username is not None:
             pulumi.set(__self__, "sasl_plain_username", sasl_plain_username)
-        if security_protocol is not None:
-            pulumi.set(__self__, "security_protocol", security_protocol)
         if ssl_ca_cert is not None:
             pulumi.set(__self__, "ssl_ca_cert", ssl_ca_cert)
         if ssl_client_cert is not None:
@@ -12554,11 +12603,19 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
 
     @property
     @pulumi.getter(name="bootstrapServers")
-    def bootstrap_servers(self) -> Optional[str]:
+    def bootstrap_servers(self) -> str:
         """
         Bootstrap servers.
         """
         return pulumi.get(self, "bootstrap_servers")
+
+    @property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> str:
+        """
+        Security protocol.
+        """
+        return pulumi.get(self, "security_protocol")
 
     @property
     @pulumi.getter(name="saslMechanism")
@@ -12583,14 +12640,6 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
         Username for SASL PLAIN mechanism in the Kafka server.
         """
         return pulumi.get(self, "sasl_plain_username")
-
-    @property
-    @pulumi.getter(name="securityProtocol")
-    def security_protocol(self) -> Optional[str]:
-        """
-        Security protocol.
-        """
-        return pulumi.get(self, "security_protocol")
 
     @property
     @pulumi.getter(name="sslCaCert")
@@ -12630,10 +12679,10 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "indexDaysMax":
-            suggest = "index_days_max"
-        elif key == "indexPrefix":
+        if key == "indexPrefix":
             suggest = "index_prefix"
+        elif key == "indexDaysMax":
+            suggest = "index_days_max"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalOpensearchLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12647,28 +12696,42 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 index_prefix: str,
+                 url: str,
                  ca: Optional[str] = None,
                  index_days_max: Optional[int] = None,
-                 index_prefix: Optional[str] = None,
-                 timeout: Optional[float] = None,
-                 url: Optional[str] = None):
+                 timeout: Optional[float] = None):
         """
+        :param str index_prefix: OpenSearch index prefix. The default value is `logs`.
+        :param str url: OpenSearch connection URL.
         :param str ca: PEM encoded CA certificate.
         :param int index_days_max: Maximum number of days of logs to keep. The default value is `3`.
-        :param str index_prefix: OpenSearch index prefix. The default value is `logs`.
         :param float timeout: OpenSearch request timeout limit. The default value is `10.0`.
-        :param str url: OpenSearch connection URL.
         """
+        pulumi.set(__self__, "index_prefix", index_prefix)
+        pulumi.set(__self__, "url", url)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if index_days_max is not None:
             pulumi.set(__self__, "index_days_max", index_days_max)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="indexPrefix")
+    def index_prefix(self) -> str:
+        """
+        OpenSearch index prefix. The default value is `logs`.
+        """
+        return pulumi.get(self, "index_prefix")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        OpenSearch connection URL.
+        """
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
@@ -12687,28 +12750,12 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig(dict):
         return pulumi.get(self, "index_days_max")
 
     @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        """
-        OpenSearch index prefix. The default value is `logs`.
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @property
     @pulumi.getter
     def timeout(self) -> Optional[float]:
         """
         OpenSearch request timeout limit. The default value is `10.0`.
         """
         return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        """
-        OpenSearch connection URL.
-        """
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -12733,32 +12780,38 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 authentication: Optional[str] = None,
+                 authentication: str,
+                 url: str,
                  basic_auth_password: Optional[str] = None,
-                 basic_auth_username: Optional[str] = None,
-                 url: Optional[str] = None):
+                 basic_auth_username: Optional[str] = None):
         """
         :param str authentication: Authentication method.
+        :param str url: Schema Registry URL.
         :param str basic_auth_password: Basic authentication password.
         :param str basic_auth_username: Basic authentication user name.
-        :param str url: Schema Registry URL.
         """
-        if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "url", url)
         if basic_auth_password is not None:
             pulumi.set(__self__, "basic_auth_password", basic_auth_password)
         if basic_auth_username is not None:
             pulumi.set(__self__, "basic_auth_username", basic_auth_username)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[str]:
+    def authentication(self) -> str:
         """
         Authentication method.
         """
         return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        Schema Registry URL.
+        """
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="basicAuthPassword")
@@ -12775,14 +12828,6 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
         Basic authentication user name.
         """
         return pulumi.get(self, "basic_auth_username")
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        """
-        Schema Registry URL.
-        """
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -12888,44 +12933,72 @@ class ServiceIntegrationEndpointPrometheusUserConfig(dict):
 @pulumi.output_type
 class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     def __init__(__self__, *,
+                 format: str,
+                 port: int,
+                 server: str,
+                 tls: bool,
                  ca: Optional[str] = None,
                  cert: Optional[str] = None,
-                 format: Optional[str] = None,
                  key: Optional[str] = None,
                  logline: Optional[str] = None,
-                 port: Optional[int] = None,
-                 sd: Optional[str] = None,
-                 server: Optional[str] = None,
-                 tls: Optional[bool] = None):
+                 sd: Optional[str] = None):
         """
-        :param str ca: PEM encoded CA certificate.
-        :param str cert: PEM encoded client certificate.
         :param str format: message format. The default value is `rfc5424`.
-        :param str key: PEM encoded client key.
-        :param str logline: custom syslog message format.
         :param int port: rsyslog server port. The default value is `514`.
-        :param str sd: Structured data block for log message.
         :param str server: rsyslog server IP address or hostname.
         :param bool tls: Require TLS. The default value is `true`.
+        :param str ca: PEM encoded CA certificate.
+        :param str cert: PEM encoded client certificate.
+        :param str key: PEM encoded client key.
+        :param str logline: custom syslog message format.
+        :param str sd: Structured data block for log message.
         """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "tls", tls)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
-        if format is not None:
-            pulumi.set(__self__, "format", format)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if logline is not None:
             pulumi.set(__self__, "logline", logline)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if sd is not None:
             pulumi.set(__self__, "sd", sd)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
-        if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        message format. The default value is `rfc5424`.
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        rsyslog server port. The default value is `514`.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        """
+        rsyslog server IP address or hostname.
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter
+    def tls(self) -> bool:
+        """
+        Require TLS. The default value is `true`.
+        """
+        return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter
@@ -12945,14 +13018,6 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[str]:
-        """
-        message format. The default value is `rfc5424`.
-        """
-        return pulumi.get(self, "format")
-
-    @property
-    @pulumi.getter
     def key(self) -> Optional[str]:
         """
         PEM encoded client key.
@@ -12969,99 +13034,11 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[int]:
-        """
-        rsyslog server port. The default value is `514`.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def sd(self) -> Optional[str]:
         """
         Structured data block for log message.
         """
         return pulumi.get(self, "sd")
-
-    @property
-    @pulumi.getter
-    def server(self) -> Optional[str]:
-        """
-        rsyslog server IP address or hostname.
-        """
-        return pulumi.get(self, "server")
-
-    @property
-    @pulumi.getter
-    def tls(self) -> Optional[bool]:
-        """
-        Require TLS. The default value is `true`.
-        """
-        return pulumi.get(self, "tls")
-
-
-@pulumi.output_type
-class ServiceIntegrationEndpointSignalfxUserConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enabledMetrics":
-            suggest = "enabled_metrics"
-        elif key == "signalfxApiKey":
-            suggest = "signalfx_api_key"
-        elif key == "signalfxRealm":
-            suggest = "signalfx_realm"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointSignalfxUserConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceIntegrationEndpointSignalfxUserConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceIntegrationEndpointSignalfxUserConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 enabled_metrics: Optional[Sequence[str]] = None,
-                 signalfx_api_key: Optional[str] = None,
-                 signalfx_realm: Optional[str] = None):
-        """
-        :param Sequence[str] enabled_metrics: list of metrics to send.
-        :param str signalfx_api_key: SignalFX API key.
-        :param str signalfx_realm: SignalFX realm. The default value is `us0`.
-        """
-        if enabled_metrics is not None:
-            pulumi.set(__self__, "enabled_metrics", enabled_metrics)
-        if signalfx_api_key is not None:
-            pulumi.set(__self__, "signalfx_api_key", signalfx_api_key)
-        if signalfx_realm is not None:
-            pulumi.set(__self__, "signalfx_realm", signalfx_realm)
-
-    @property
-    @pulumi.getter(name="enabledMetrics")
-    def enabled_metrics(self) -> Optional[Sequence[str]]:
-        """
-        list of metrics to send.
-        """
-        return pulumi.get(self, "enabled_metrics")
-
-    @property
-    @pulumi.getter(name="signalfxApiKey")
-    def signalfx_api_key(self) -> Optional[str]:
-        """
-        SignalFX API key.
-        """
-        return pulumi.get(self, "signalfx_api_key")
-
-    @property
-    @pulumi.getter(name="signalfxRealm")
-    def signalfx_realm(self) -> Optional[str]:
-        """
-        SignalFX realm. The default value is `us0`.
-        """
-        return pulumi.get(self, "signalfx_realm")
 
 
 @pulumi.output_type
@@ -13268,16 +13245,15 @@ class ServiceIntegrationKafkaLogsUserConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kafka_topic: Optional[str] = None):
+                 kafka_topic: str):
         """
         :param str kafka_topic: Topic name.
         """
-        if kafka_topic is not None:
-            pulumi.set(__self__, "kafka_topic", kafka_topic)
+        pulumi.set(__self__, "kafka_topic", kafka_topic)
 
     @property
     @pulumi.getter(name="kafkaTopic")
-    def kafka_topic(self) -> Optional[str]:
+    def kafka_topic(self) -> str:
         """
         Topic name.
         """
@@ -19586,6 +19562,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetOpenSearchOpensearchUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
+                 saml: Optional['outputs.GetOpenSearchOpensearchUserConfigSamlResult'] = None,
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None):
         """
@@ -19628,6 +19605,8 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if static_ips is not None:
@@ -19725,6 +19704,11 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="recoveryBasebackupName")
     def recovery_basebackup_name(self) -> Optional[str]:
         return pulumi.get(self, "recovery_basebackup_name")
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigSamlResult']:
+        return pulumi.get(self, "saml")
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -20201,6 +20185,55 @@ class GetOpenSearchOpensearchUserConfigPublicAccessResult(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigSamlResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 idp_entity_id: str,
+                 idp_metadata_url: str,
+                 sp_entity_id: str,
+                 roles_key: Optional[str] = None,
+                 subject_key: Optional[str] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
+        pulumi.set(__self__, "idp_metadata_url", idp_metadata_url)
+        pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="idpEntityId")
+    def idp_entity_id(self) -> str:
+        return pulumi.get(self, "idp_entity_id")
+
+    @property
+    @pulumi.getter(name="idpMetadataUrl")
+    def idp_metadata_url(self) -> str:
+        return pulumi.get(self, "idp_metadata_url")
+
+    @property
+    @pulumi.getter(name="spEntityId")
+    def sp_entity_id(self) -> str:
+        return pulumi.get(self, "sp_entity_id")
+
+    @property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[str]:
+        return pulumi.get(self, "roles_key")
+
+    @property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[str]:
+        return pulumi.get(self, "subject_key")
 
 
 @pulumi.output_type
@@ -22069,15 +22102,14 @@ class GetServiceIntegrationDatadogUserConfigOpensearchResult(dict):
 @pulumi.output_type
 class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
     def __init__(__self__, *,
-                 datadog_api_key: Optional[str] = None,
+                 datadog_api_key: str,
                  datadog_tags: Optional[Sequence['outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult']] = None,
                  disable_consumer_stats: Optional[bool] = None,
                  kafka_consumer_check_instances: Optional[int] = None,
                  kafka_consumer_stats_timeout: Optional[int] = None,
                  max_partition_contexts: Optional[int] = None,
                  site: Optional[str] = None):
-        if datadog_api_key is not None:
-            pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        pulumi.set(__self__, "datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
@@ -22093,7 +22125,7 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="datadogApiKey")
-    def datadog_api_key(self) -> Optional[str]:
+    def datadog_api_key(self) -> str:
         return pulumi.get(self, "datadog_api_key")
 
     @property
@@ -22150,95 +22182,96 @@ class GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult(dict):
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult(dict):
     def __init__(__self__, *,
-                 access_key: Optional[str] = None,
-                 log_group_name: Optional[str] = None,
-                 region: Optional[str] = None,
-                 secret_key: Optional[str] = None):
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+                 access_key: str,
+                 region: str,
+                 secret_key: str,
+                 log_group_name: Optional[str] = None):
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
         if log_group_name is not None:
             pulumi.set(__self__, "log_group_name", log_group_name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[str]:
+    def access_key(self) -> str:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        return pulumi.get(self, "secret_key")
 
     @property
     @pulumi.getter(name="logGroupName")
     def log_group_name(self) -> Optional[str]:
         return pulumi.get(self, "log_group_name")
 
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[str]:
-        return pulumi.get(self, "secret_key")
-
 
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult(dict):
     def __init__(__self__, *,
-                 access_key: Optional[str] = None,
-                 namespace: Optional[str] = None,
-                 region: Optional[str] = None,
-                 secret_key: Optional[str] = None):
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+                 access_key: str,
+                 namespace: str,
+                 region: str,
+                 secret_key: str):
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[str]:
+    def access_key(self) -> str:
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> str:
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> str:
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[str]:
+    def secret_key(self) -> str:
         return pulumi.get(self, "secret_key")
 
 
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult(dict):
     def __init__(__self__, *,
+                 index_prefix: str,
+                 url: str,
                  ca: Optional[str] = None,
                  index_days_max: Optional[int] = None,
-                 index_prefix: Optional[str] = None,
-                 timeout: Optional[float] = None,
-                 url: Optional[str] = None):
+                 timeout: Optional[float] = None):
+        pulumi.set(__self__, "index_prefix", index_prefix)
+        pulumi.set(__self__, "url", url)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if index_days_max is not None:
             pulumi.set(__self__, "index_days_max", index_days_max)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="indexPrefix")
+    def index_prefix(self) -> str:
+        return pulumi.get(self, "index_prefix")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
@@ -22251,72 +22284,57 @@ class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult(dic
         return pulumi.get(self, "index_days_max")
 
     @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        return pulumi.get(self, "index_prefix")
-
-    @property
     @pulumi.getter
     def timeout(self) -> Optional[float]:
         return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult(dict):
     def __init__(__self__, *,
-                 log_id: Optional[str] = None,
-                 project_id: Optional[str] = None,
-                 service_account_credentials: Optional[str] = None):
-        if log_id is not None:
-            pulumi.set(__self__, "log_id", log_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if service_account_credentials is not None:
-            pulumi.set(__self__, "service_account_credentials", service_account_credentials)
+                 log_id: str,
+                 project_id: str,
+                 service_account_credentials: str):
+        pulumi.set(__self__, "log_id", log_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "service_account_credentials", service_account_credentials)
 
     @property
     @pulumi.getter(name="logId")
-    def log_id(self) -> Optional[str]:
+    def log_id(self) -> str:
         return pulumi.get(self, "log_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
+    def project_id(self) -> str:
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="serviceAccountCredentials")
-    def service_account_credentials(self) -> Optional[str]:
+    def service_account_credentials(self) -> str:
         return pulumi.get(self, "service_account_credentials")
 
 
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     def __init__(__self__, *,
-                 bootstrap_servers: Optional[str] = None,
+                 bootstrap_servers: str,
+                 security_protocol: str,
                  sasl_mechanism: Optional[str] = None,
                  sasl_plain_password: Optional[str] = None,
                  sasl_plain_username: Optional[str] = None,
-                 security_protocol: Optional[str] = None,
                  ssl_ca_cert: Optional[str] = None,
                  ssl_client_cert: Optional[str] = None,
                  ssl_client_key: Optional[str] = None,
                  ssl_endpoint_identification_algorithm: Optional[str] = None):
-        if bootstrap_servers is not None:
-            pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "security_protocol", security_protocol)
         if sasl_mechanism is not None:
             pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
         if sasl_plain_password is not None:
             pulumi.set(__self__, "sasl_plain_password", sasl_plain_password)
         if sasl_plain_username is not None:
             pulumi.set(__self__, "sasl_plain_username", sasl_plain_username)
-        if security_protocol is not None:
-            pulumi.set(__self__, "security_protocol", security_protocol)
         if ssl_ca_cert is not None:
             pulumi.set(__self__, "ssl_ca_cert", ssl_ca_cert)
         if ssl_client_cert is not None:
@@ -22328,8 +22346,13 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="bootstrapServers")
-    def bootstrap_servers(self) -> Optional[str]:
+    def bootstrap_servers(self) -> str:
         return pulumi.get(self, "bootstrap_servers")
+
+    @property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> str:
+        return pulumi.get(self, "security_protocol")
 
     @property
     @pulumi.getter(name="saslMechanism")
@@ -22345,11 +22368,6 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     @pulumi.getter(name="saslPlainUsername")
     def sasl_plain_username(self) -> Optional[str]:
         return pulumi.get(self, "sasl_plain_username")
-
-    @property
-    @pulumi.getter(name="securityProtocol")
-    def security_protocol(self) -> Optional[str]:
-        return pulumi.get(self, "security_protocol")
 
     @property
     @pulumi.getter(name="sslCaCert")
@@ -22375,21 +22393,29 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult(dict):
     def __init__(__self__, *,
+                 index_prefix: str,
+                 url: str,
                  ca: Optional[str] = None,
                  index_days_max: Optional[int] = None,
-                 index_prefix: Optional[str] = None,
-                 timeout: Optional[float] = None,
-                 url: Optional[str] = None):
+                 timeout: Optional[float] = None):
+        pulumi.set(__self__, "index_prefix", index_prefix)
+        pulumi.set(__self__, "url", url)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if index_days_max is not None:
             pulumi.set(__self__, "index_days_max", index_days_max)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="indexPrefix")
+    def index_prefix(self) -> str:
+        return pulumi.get(self, "index_prefix")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
@@ -22402,41 +22428,34 @@ class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult(dict):
         return pulumi.get(self, "index_days_max")
 
     @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[str]:
-        return pulumi.get(self, "index_prefix")
-
-    @property
     @pulumi.getter
     def timeout(self) -> Optional[float]:
         return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
 class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult(dict):
     def __init__(__self__, *,
-                 authentication: Optional[str] = None,
+                 authentication: str,
+                 url: str,
                  basic_auth_password: Optional[str] = None,
-                 basic_auth_username: Optional[str] = None,
-                 url: Optional[str] = None):
-        if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
+                 basic_auth_username: Optional[str] = None):
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "url", url)
         if basic_auth_password is not None:
             pulumi.set(__self__, "basic_auth_password", basic_auth_password)
         if basic_auth_username is not None:
             pulumi.set(__self__, "basic_auth_username", basic_auth_username)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[str]:
+    def authentication(self) -> str:
         return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="basicAuthPassword")
@@ -22447,11 +22466,6 @@ class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult(dict):
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[str]:
         return pulumi.get(self, "basic_auth_username")
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -22499,33 +22513,49 @@ class GetServiceIntegrationEndpointPrometheusUserConfigResult(dict):
 @pulumi.output_type
 class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
     def __init__(__self__, *,
+                 format: str,
+                 port: int,
+                 server: str,
+                 tls: bool,
                  ca: Optional[str] = None,
                  cert: Optional[str] = None,
-                 format: Optional[str] = None,
                  key: Optional[str] = None,
                  logline: Optional[str] = None,
-                 port: Optional[int] = None,
-                 sd: Optional[str] = None,
-                 server: Optional[str] = None,
-                 tls: Optional[bool] = None):
+                 sd: Optional[str] = None):
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "tls", tls)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
-        if format is not None:
-            pulumi.set(__self__, "format", format)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if logline is not None:
             pulumi.set(__self__, "logline", logline)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if sd is not None:
             pulumi.set(__self__, "sd", sd)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
-        if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter
+    def tls(self) -> bool:
+        return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter
@@ -22539,11 +22569,6 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[str]:
-        return pulumi.get(self, "format")
-
-    @property
-    @pulumi.getter
     def key(self) -> Optional[str]:
         return pulumi.get(self, "key")
 
@@ -22554,52 +22579,8 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[int]:
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def sd(self) -> Optional[str]:
         return pulumi.get(self, "sd")
-
-    @property
-    @pulumi.getter
-    def server(self) -> Optional[str]:
-        return pulumi.get(self, "server")
-
-    @property
-    @pulumi.getter
-    def tls(self) -> Optional[bool]:
-        return pulumi.get(self, "tls")
-
-
-@pulumi.output_type
-class GetServiceIntegrationEndpointSignalfxUserConfigResult(dict):
-    def __init__(__self__, *,
-                 enabled_metrics: Optional[Sequence[str]] = None,
-                 signalfx_api_key: Optional[str] = None,
-                 signalfx_realm: Optional[str] = None):
-        if enabled_metrics is not None:
-            pulumi.set(__self__, "enabled_metrics", enabled_metrics)
-        if signalfx_api_key is not None:
-            pulumi.set(__self__, "signalfx_api_key", signalfx_api_key)
-        if signalfx_realm is not None:
-            pulumi.set(__self__, "signalfx_realm", signalfx_realm)
-
-    @property
-    @pulumi.getter(name="enabledMetrics")
-    def enabled_metrics(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "enabled_metrics")
-
-    @property
-    @pulumi.getter(name="signalfxApiKey")
-    def signalfx_api_key(self) -> Optional[str]:
-        return pulumi.get(self, "signalfx_api_key")
-
-    @property
-    @pulumi.getter(name="signalfxRealm")
-    def signalfx_realm(self) -> Optional[str]:
-        return pulumi.get(self, "signalfx_realm")
 
 
 @pulumi.output_type
@@ -22714,13 +22695,12 @@ class GetServiceIntegrationKafkaConnectUserConfigKafkaConnectResult(dict):
 @pulumi.output_type
 class GetServiceIntegrationKafkaLogsUserConfigResult(dict):
     def __init__(__self__, *,
-                 kafka_topic: Optional[str] = None):
-        if kafka_topic is not None:
-            pulumi.set(__self__, "kafka_topic", kafka_topic)
+                 kafka_topic: str):
+        pulumi.set(__self__, "kafka_topic", kafka_topic)
 
     @property
     @pulumi.getter(name="kafkaTopic")
-    def kafka_topic(self) -> Optional[str]:
+    def kafka_topic(self) -> str:
         return pulumi.get(self, "kafka_topic")
 
 

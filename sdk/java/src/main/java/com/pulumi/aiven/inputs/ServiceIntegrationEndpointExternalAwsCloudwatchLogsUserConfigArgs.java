@@ -19,15 +19,15 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
      * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      * 
      */
-    @Import(name="accessKey")
-    private @Nullable Output<String> accessKey;
+    @Import(name="accessKey", required=true)
+    private Output<String> accessKey;
 
     /**
      * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      * 
      */
-    public Optional<Output<String>> accessKey() {
-        return Optional.ofNullable(this.accessKey);
+    public Output<String> accessKey() {
+        return this.accessKey;
     }
 
     /**
@@ -49,30 +49,30 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
      * AWS region.
      * 
      */
-    @Import(name="region")
-    private @Nullable Output<String> region;
+    @Import(name="region", required=true)
+    private Output<String> region;
 
     /**
      * @return AWS region.
      * 
      */
-    public Optional<Output<String>> region() {
-        return Optional.ofNullable(this.region);
+    public Output<String> region() {
+        return this.region;
     }
 
     /**
      * AWS secret key.
      * 
      */
-    @Import(name="secretKey")
-    private @Nullable Output<String> secretKey;
+    @Import(name="secretKey", required=true)
+    private Output<String> secretKey;
 
     /**
      * @return AWS secret key.
      * 
      */
-    public Optional<Output<String>> secretKey() {
-        return Optional.ofNullable(this.secretKey);
+    public Output<String> secretKey() {
+        return this.secretKey;
     }
 
     private ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs() {}
@@ -108,7 +108,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
          * @return builder
          * 
          */
-        public Builder accessKey(@Nullable Output<String> accessKey) {
+        public Builder accessKey(Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
@@ -150,7 +150,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
          * @return builder
          * 
          */
-        public Builder region(@Nullable Output<String> region) {
+        public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
@@ -171,7 +171,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
          * @return builder
          * 
          */
-        public Builder secretKey(@Nullable Output<String> secretKey) {
+        public Builder secretKey(Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
@@ -187,6 +187,9 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         public ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs build() {
+            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
+            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
             return $;
         }
     }

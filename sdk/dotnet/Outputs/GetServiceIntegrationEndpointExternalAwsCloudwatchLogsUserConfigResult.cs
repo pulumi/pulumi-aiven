@@ -13,20 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult
     {
-        public readonly string? AccessKey;
+        public readonly string AccessKey;
         public readonly string? LogGroupName;
-        public readonly string? Region;
-        public readonly string? SecretKey;
+        public readonly string Region;
+        public readonly string SecretKey;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult(
-            string? accessKey,
+            string accessKey,
 
             string? logGroupName,
 
-            string? region,
+            string region,
 
-            string? secretKey)
+            string secretKey)
         {
             AccessKey = accessKey;
             LogGroupName = logGroupName;

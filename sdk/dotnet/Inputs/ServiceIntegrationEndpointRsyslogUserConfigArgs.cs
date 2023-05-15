@@ -27,8 +27,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// message format. The default value is `rfc5424`.
         /// </summary>
-        [Input("format")]
-        public Input<string>? Format { get; set; }
+        [Input("format", required: true)]
+        public Input<string> Format { get; set; } = null!;
 
         /// <summary>
         /// PEM encoded client key.
@@ -45,8 +45,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// rsyslog server port. The default value is `514`.
         /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
 
         /// <summary>
         /// Structured data block for log message.
@@ -57,14 +57,14 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// rsyslog server IP address or hostname.
         /// </summary>
-        [Input("server")]
-        public Input<string>? Server { get; set; }
+        [Input("server", required: true)]
+        public Input<string> Server { get; set; } = null!;
 
         /// <summary>
         /// Require TLS. The default value is `true`.
         /// </summary>
-        [Input("tls")]
-        public Input<bool>? Tls { get; set; }
+        [Input("tls", required: true)]
+        public Input<bool> Tls { get; set; } = null!;
 
         public ServiceIntegrationEndpointRsyslogUserConfigArgs()
         {

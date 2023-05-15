@@ -21,7 +21,7 @@ type ServiceIntegrationEndpoint struct {
 	EndpointConfig pulumi.StringMapOutput `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -45,8 +45,6 @@ type ServiceIntegrationEndpoint struct {
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
 	// Rsyslog user configurable settings
 	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrOutput `pulumi:"rsyslogUserConfig"`
-	// Signalfx user configurable settings
-	SignalfxUserConfig ServiceIntegrationEndpointSignalfxUserConfigPtrOutput `pulumi:"signalfxUserConfig"`
 }
 
 // NewServiceIntegrationEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -93,7 +91,7 @@ type serviceIntegrationEndpointState struct {
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint
 	EndpointName *string `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 	EndpointType *string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -117,8 +115,6 @@ type serviceIntegrationEndpointState struct {
 	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// Rsyslog user configurable settings
 	RsyslogUserConfig *ServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
-	// Signalfx user configurable settings
-	SignalfxUserConfig *ServiceIntegrationEndpointSignalfxUserConfig `pulumi:"signalfxUserConfig"`
 }
 
 type ServiceIntegrationEndpointState struct {
@@ -128,7 +124,7 @@ type ServiceIntegrationEndpointState struct {
 	EndpointConfig pulumi.StringMapInput
 	// Name of the service integration endpoint
 	EndpointName pulumi.StringPtrInput
-	// Type of the service integration endpoint
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 	EndpointType pulumi.StringPtrInput
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -152,8 +148,6 @@ type ServiceIntegrationEndpointState struct {
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
 	// Rsyslog user configurable settings
 	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrInput
-	// Signalfx user configurable settings
-	SignalfxUserConfig ServiceIntegrationEndpointSignalfxUserConfigPtrInput
 }
 
 func (ServiceIntegrationEndpointState) ElementType() reflect.Type {
@@ -165,7 +159,7 @@ type serviceIntegrationEndpointArgs struct {
 	DatadogUserConfig *ServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Name of the service integration endpoint
 	EndpointName string `pulumi:"endpointName"`
-	// Type of the service integration endpoint
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 	EndpointType string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -189,8 +183,6 @@ type serviceIntegrationEndpointArgs struct {
 	PrometheusUserConfig *ServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// Rsyslog user configurable settings
 	RsyslogUserConfig *ServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
-	// Signalfx user configurable settings
-	SignalfxUserConfig *ServiceIntegrationEndpointSignalfxUserConfig `pulumi:"signalfxUserConfig"`
 }
 
 // The set of arguments for constructing a ServiceIntegrationEndpoint resource.
@@ -199,7 +191,7 @@ type ServiceIntegrationEndpointArgs struct {
 	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrInput
 	// Name of the service integration endpoint
 	EndpointName pulumi.StringInput
-	// Type of the service integration endpoint
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 	EndpointType pulumi.StringInput
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -223,8 +215,6 @@ type ServiceIntegrationEndpointArgs struct {
 	PrometheusUserConfig ServiceIntegrationEndpointPrometheusUserConfigPtrInput
 	// Rsyslog user configurable settings
 	RsyslogUserConfig ServiceIntegrationEndpointRsyslogUserConfigPtrInput
-	// Signalfx user configurable settings
-	SignalfxUserConfig ServiceIntegrationEndpointSignalfxUserConfigPtrInput
 }
 
 func (ServiceIntegrationEndpointArgs) ElementType() reflect.Type {
@@ -331,7 +321,7 @@ func (o ServiceIntegrationEndpointOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// Type of the service integration endpoint
+// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
 func (o ServiceIntegrationEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -409,13 +399,6 @@ func (o ServiceIntegrationEndpointOutput) RsyslogUserConfig() ServiceIntegration
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointRsyslogUserConfigPtrOutput {
 		return v.RsyslogUserConfig
 	}).(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput)
-}
-
-// Signalfx user configurable settings
-func (o ServiceIntegrationEndpointOutput) SignalfxUserConfig() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
-		return v.SignalfxUserConfig
-	}).(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput)
 }
 
 type ServiceIntegrationEndpointArrayOutput struct{ *pulumi.OutputState }

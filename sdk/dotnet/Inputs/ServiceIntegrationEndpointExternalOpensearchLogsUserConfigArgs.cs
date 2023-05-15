@@ -27,8 +27,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// OpenSearch index prefix. The default value is `logs`.
         /// </summary>
-        [Input("indexPrefix")]
-        public Input<string>? IndexPrefix { get; set; }
+        [Input("indexPrefix", required: true)]
+        public Input<string> IndexPrefix { get; set; } = null!;
 
         /// <summary>
         /// OpenSearch request timeout limit. The default value is `10.0`.
@@ -39,8 +39,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// OpenSearch connection URL.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs()
         {

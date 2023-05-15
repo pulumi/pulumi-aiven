@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/cassandraUser:CassandraUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/cassandraUser:CassandraUser")]
     public partial class CassandraUser : global::Pulumi.CustomResource

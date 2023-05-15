@@ -51,15 +51,15 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
      * message format. The default value is `rfc5424`.
      * 
      */
-    @Import(name="format")
-    private @Nullable Output<String> format;
+    @Import(name="format", required=true)
+    private Output<String> format;
 
     /**
      * @return message format. The default value is `rfc5424`.
      * 
      */
-    public Optional<Output<String>> format() {
-        return Optional.ofNullable(this.format);
+    public Output<String> format() {
+        return this.format;
     }
 
     /**
@@ -96,15 +96,15 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
      * rsyslog server port. The default value is `514`.
      * 
      */
-    @Import(name="port")
-    private @Nullable Output<Integer> port;
+    @Import(name="port", required=true)
+    private Output<Integer> port;
 
     /**
      * @return rsyslog server port. The default value is `514`.
      * 
      */
-    public Optional<Output<Integer>> port() {
-        return Optional.ofNullable(this.port);
+    public Output<Integer> port() {
+        return this.port;
     }
 
     /**
@@ -126,30 +126,30 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
      * rsyslog server IP address or hostname.
      * 
      */
-    @Import(name="server")
-    private @Nullable Output<String> server;
+    @Import(name="server", required=true)
+    private Output<String> server;
 
     /**
      * @return rsyslog server IP address or hostname.
      * 
      */
-    public Optional<Output<String>> server() {
-        return Optional.ofNullable(this.server);
+    public Output<String> server() {
+        return this.server;
     }
 
     /**
      * Require TLS. The default value is `true`.
      * 
      */
-    @Import(name="tls")
-    private @Nullable Output<Boolean> tls;
+    @Import(name="tls", required=true)
+    private Output<Boolean> tls;
 
     /**
      * @return Require TLS. The default value is `true`.
      * 
      */
-    public Optional<Output<Boolean>> tls() {
-        return Optional.ofNullable(this.tls);
+    public Output<Boolean> tls() {
+        return this.tls;
     }
 
     private ServiceIntegrationEndpointRsyslogUserConfigArgs() {}
@@ -232,7 +232,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
          * @return builder
          * 
          */
-        public Builder format(@Nullable Output<String> format) {
+        public Builder format(Output<String> format) {
             $.format = format;
             return this;
         }
@@ -295,7 +295,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
          * @return builder
          * 
          */
-        public Builder port(@Nullable Output<Integer> port) {
+        public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -337,7 +337,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
          * @return builder
          * 
          */
-        public Builder server(@Nullable Output<String> server) {
+        public Builder server(Output<String> server) {
             $.server = server;
             return this;
         }
@@ -358,7 +358,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
          * @return builder
          * 
          */
-        public Builder tls(@Nullable Output<Boolean> tls) {
+        public Builder tls(Output<Boolean> tls) {
             $.tls = tls;
             return this;
         }
@@ -374,6 +374,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         public ServiceIntegrationEndpointRsyslogUserConfigArgs build() {
+            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
+            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
+            $.tls = Objects.requireNonNull($.tls, "expected parameter 'tls' to be non-null");
             return $;
         }
     }

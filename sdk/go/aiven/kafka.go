@@ -77,6 +77,8 @@ type Kafka struct {
 	// Create default wildcard Kafka ACL
 	DefaultAcl pulumi.BoolPtrOutput `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -86,11 +88,13 @@ type Kafka struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
-	// Kafka server provided values
-	Kafka KafkaKafkaOutput `pulumi:"kafka"`
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
+	// Kafka server provided values
+	Kafkas KafkaKafkaArrayOutput `pulumi:"kafkas"`
 	// Switch the service to use Karapace for schema registry and REST proxy
+	//
+	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrOutput `pulumi:"karapace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -177,6 +181,8 @@ type kafkaState struct {
 	// Create default wildcard Kafka ACL
 	DefaultAcl *bool `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -186,11 +192,13 @@ type kafkaState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
-	// Kafka server provided values
-	Kafka *KafkaKafka `pulumi:"kafka"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
+	// Kafka server provided values
+	Kafkas []KafkaKafka `pulumi:"kafkas"`
 	// Switch the service to use Karapace for schema registry and REST proxy
+	//
+	// Deprecated: Usage of this field is discouraged.
 	Karapace *bool `pulumi:"karapace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -238,6 +246,8 @@ type KafkaState struct {
 	// Create default wildcard Kafka ACL
 	DefaultAcl pulumi.BoolPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -247,11 +257,13 @@ type KafkaState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
-	// Kafka server provided values
-	Kafka KafkaKafkaPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
+	// Kafka server provided values
+	Kafkas KafkaKafkaArrayInput
 	// Switch the service to use Karapace for schema registry and REST proxy
+	//
+	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -301,12 +313,14 @@ type kafkaArgs struct {
 	// Create default wildcard Kafka ACL
 	DefaultAcl *bool `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
-	// Kafka server provided values
-	Kafka *KafkaKafka `pulumi:"kafka"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// Switch the service to use Karapace for schema registry and REST proxy
+	//
+	// Deprecated: Usage of this field is discouraged.
 	Karapace *bool `pulumi:"karapace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -339,12 +353,14 @@ type KafkaArgs struct {
 	// Create default wildcard Kafka ACL
 	DefaultAcl pulumi.BoolPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
-	// Kafka server provided values
-	Kafka KafkaKafkaPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
 	// Switch the service to use Karapace for schema registry and REST proxy
+	//
+	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -476,6 +492,8 @@ func (o KafkaOutput) DefaultAcl() pulumi.BoolPtrOutput {
 }
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+//
+// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 func (o KafkaOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -500,17 +518,19 @@ func (o KafkaOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// Kafka server provided values
-func (o KafkaOutput) Kafka() KafkaKafkaOutput {
-	return o.ApplyT(func(v *Kafka) KafkaKafkaOutput { return v.Kafka }).(KafkaKafkaOutput)
-}
-
 // Kafka user configurable settings
 func (o KafkaOutput) KafkaUserConfig() KafkaKafkaUserConfigPtrOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaUserConfigPtrOutput { return v.KafkaUserConfig }).(KafkaKafkaUserConfigPtrOutput)
 }
 
+// Kafka server provided values
+func (o KafkaOutput) Kafkas() KafkaKafkaArrayOutput {
+	return o.ApplyT(func(v *Kafka) KafkaKafkaArrayOutput { return v.Kafkas }).(KafkaKafkaArrayOutput)
+}
+
 // Switch the service to use Karapace for schema registry and REST proxy
+//
+// Deprecated: Usage of this field is discouraged.
 func (o KafkaOutput) Karapace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.BoolPtrOutput { return v.Karapace }).(pulumi.BoolPtrOutput)
 }

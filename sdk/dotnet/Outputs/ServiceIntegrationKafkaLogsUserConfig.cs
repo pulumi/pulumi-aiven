@@ -16,10 +16,10 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Topic name.
         /// </summary>
-        public readonly string? KafkaTopic;
+        public readonly string KafkaTopic;
 
         [OutputConstructor]
-        private ServiceIntegrationKafkaLogsUserConfig(string? kafkaTopic)
+        private ServiceIntegrationKafkaLogsUserConfig(string kafkaTopic)
         {
             KafkaTopic = kafkaTopic;
         }

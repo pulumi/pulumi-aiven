@@ -15,9 +15,9 @@ import javax.annotation.Nullable;
 public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     private @Nullable String ca;
     private @Nullable Integer indexDaysMax;
-    private @Nullable String indexPrefix;
+    private String indexPrefix;
     private @Nullable Double timeout;
-    private @Nullable String url;
+    private String url;
 
     private GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig() {}
     public Optional<String> ca() {
@@ -26,14 +26,14 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
     public Optional<Integer> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
-    public Optional<String> indexPrefix() {
-        return Optional.ofNullable(this.indexPrefix);
+    public String indexPrefix() {
+        return this.indexPrefix;
     }
     public Optional<Double> timeout() {
         return Optional.ofNullable(this.timeout);
     }
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -47,9 +47,9 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable Integer indexDaysMax;
-        private @Nullable String indexPrefix;
+        private String indexPrefix;
         private @Nullable Double timeout;
-        private @Nullable String url;
+        private String url;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,8 +71,8 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
             return this;
         }
         @CustomType.Setter
-        public Builder indexPrefix(@Nullable String indexPrefix) {
-            this.indexPrefix = indexPrefix;
+        public Builder indexPrefix(String indexPrefix) {
+            this.indexPrefix = Objects.requireNonNull(indexPrefix);
             return this;
         }
         @CustomType.Setter
@@ -81,8 +81,8 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-            this.url = url;
+        public Builder url(String url) {
+            this.url = Objects.requireNonNull(url);
             return this;
         }
         public GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {
