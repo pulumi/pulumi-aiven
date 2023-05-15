@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@22403eefd47643aa7e3be16f26866af046f8a6f9
+      uses: pulumi/pulumi-upgrade-provider-action@367f08c92f9bc282227315df893e504db421c17c
     - env:
         SLACK_CHANNEL: provider-upgrade-publish-status
         SLACK_COLOR: "#FF0000"
