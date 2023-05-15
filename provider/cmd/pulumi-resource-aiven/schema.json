@@ -1649,27 +1649,22 @@
             "properties": {
                 "accessCert": {
                     "type": "string",
-                    "description": "The Kafka client certificate\n",
                     "secret": true
                 },
                 "accessKey": {
                     "type": "string",
-                    "description": "The Kafka client certificate key\n",
                     "secret": true
                 },
                 "connectUri": {
                     "type": "string",
-                    "description": "The Kafka Connect URI, if any\n",
                     "secret": true
                 },
                 "restUri": {
                     "type": "string",
-                    "description": "The Kafka REST URI, if any\n",
                     "secret": true
                 },
                 "schemaRegistryUri": {
                     "type": "string",
-                    "description": "The Schema Registry URI, if any\n",
                     "secret": true
                 }
             },
@@ -3341,6 +3336,10 @@
                     "type": "string",
                     "description": "Name of the basebackup to restore in forked service.\n"
                 },
+                "saml": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml",
+                    "description": "OpenSearch SAML configuration.\n"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when a new service is being created.\n",
@@ -3559,6 +3558,35 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "idpEntityId": {
+                    "type": "string"
+                },
+                "idpMetadataUrl": {
+                    "type": "string"
+                },
+                "rolesKey": {
+                    "type": "string"
+                },
+                "spEntityId": {
+                    "type": "string"
+                },
+                "subjectKey": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "idpEntityId",
+                "idpMetadataUrl",
+                "spEntityId"
+            ]
         },
         "aiven:index/OpenSearchServiceIntegration:OpenSearchServiceIntegration": {
             "properties": {
@@ -4632,7 +4660,10 @@
                     "description": "Datadog intake site. Defaults to datadoghq.com.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "datadogApiKey"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointDatadogUserConfigDatadogTag:ServiceIntegrationEndpointDatadogUserConfigDatadogTag": {
             "properties": {
@@ -4667,7 +4698,12 @@
                     "description": "AWS secret key.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "accessKey",
+                "region",
+                "secretKey"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig": {
             "properties": {
@@ -4688,7 +4724,13 @@
                     "description": "AWS secret key.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "accessKey",
+                "namespace",
+                "region",
+                "secretKey"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig": {
             "properties": {
@@ -4713,7 +4755,11 @@
                     "description": "Elasticsearch connection URL.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "indexPrefix",
+                "url"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
             "properties": {
@@ -4730,7 +4776,12 @@
                     "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "logId",
+                "projectId",
+                "serviceAccountCredentials"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalKafkaUserConfig:ServiceIntegrationEndpointExternalKafkaUserConfig": {
             "properties": {
@@ -4772,7 +4823,11 @@
                     "description": "The endpoint identification algorithm to validate server hostname using server certificate.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "bootstrapServers",
+                "securityProtocol"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig": {
             "properties": {
@@ -4797,7 +4852,11 @@
                     "description": "OpenSearch connection URL.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "indexPrefix",
+                "url"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
             "properties": {
@@ -4819,7 +4878,11 @@
                     "description": "Schema Registry URL.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "authentication",
+                "url"
+            ]
         },
         "aiven:index/ServiceIntegrationEndpointJolokiaUserConfig:ServiceIntegrationEndpointJolokiaUserConfig": {
             "properties": {
@@ -4888,28 +4951,13 @@
                     "description": "Require TLS. The default value is `true`.\n"
                 }
             },
-            "type": "object"
-        },
-        "aiven:index/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig": {
-            "properties": {
-                "enabledMetrics": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "list of metrics to send.\n"
-                },
-                "signalfxApiKey": {
-                    "type": "string",
-                    "description": "SignalFX API key.\n",
-                    "secret": true
-                },
-                "signalfxRealm": {
-                    "type": "string",
-                    "description": "SignalFX realm. The default value is `us0`.\n"
-                }
-            },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "format",
+                "port",
+                "server",
+                "tls"
+            ]
         },
         "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
             "properties": {
@@ -4993,7 +5041,10 @@
                     "description": "Topic name.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "kafkaTopic"
+            ]
         },
         "aiven:index/ServiceIntegrationKafkaMirrormakerUserConfig:ServiceIntegrationKafkaMirrormakerUserConfig": {
             "properties": {
@@ -8665,6 +8716,9 @@
                 "recoveryBasebackupName": {
                     "type": "string"
                 },
+                "saml": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml"
+                },
                 "serviceToForkFrom": {
                     "type": "string"
                 },
@@ -8891,6 +8945,40 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "idpEntityId": {
+                    "type": "string"
+                },
+                "idpMetadataUrl": {
+                    "type": "string"
+                },
+                "rolesKey": {
+                    "type": "string"
+                },
+                "spEntityId": {
+                    "type": "string"
+                },
+                "subjectKey": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "idpEntityId",
+                "idpMetadataUrl",
+                "spEntityId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getOpenSearchServiceIntegration:getOpenSearchServiceIntegration": {
             "properties": {
@@ -9974,7 +10062,15 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "datadogApiKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointDatadogUserConfigDatadogTag:getServiceIntegrationEndpointDatadogUserConfigDatadogTag": {
             "properties": {
@@ -10010,7 +10106,17 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "accessKey",
+                "region",
+                "secretKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig": {
             "properties": {
@@ -10027,7 +10133,18 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "accessKey",
+                "namespace",
+                "region",
+                "secretKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:getServiceIntegrationEndpointExternalElasticsearchLogsUserConfig": {
             "properties": {
@@ -10047,7 +10164,16 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "indexPrefix",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
             "properties": {
@@ -10061,7 +10187,17 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "logId",
+                "projectId",
+                "serviceAccountCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointExternalKafkaUserConfig:getServiceIntegrationEndpointExternalKafkaUserConfig": {
             "properties": {
@@ -10094,7 +10230,16 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "bootstrapServers",
+                "securityProtocol"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointExternalOpensearchLogsUserConfig:getServiceIntegrationEndpointExternalOpensearchLogsUserConfig": {
             "properties": {
@@ -10114,7 +10259,16 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "indexPrefix",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointExternalSchemaRegistryUserConfig:getServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
             "properties": {
@@ -10132,7 +10286,16 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "authentication",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationEndpointJolokiaUserConfig:getServiceIntegrationEndpointJolokiaUserConfig": {
             "properties": {
@@ -10188,25 +10351,18 @@
                     "type": "boolean"
                 }
             },
-            "type": "object"
-        },
-        "aiven:index/getServiceIntegrationEndpointSignalfxUserConfig:getServiceIntegrationEndpointSignalfxUserConfig": {
-            "properties": {
-                "enabledMetrics": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "signalfxApiKey": {
-                    "type": "string",
-                    "secret": true
-                },
-                "signalfxRealm": {
-                    "type": "string"
+            "type": "object",
+            "required": [
+                "format",
+                "port",
+                "server",
+                "tls"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
-            },
-            "type": "object"
+            }
         },
         "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
             "properties": {
@@ -10296,7 +10452,15 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "kafkaTopic"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getServiceIntegrationKafkaMirrormakerUserConfig:getServiceIntegrationKafkaMirrormakerUserConfig": {
             "properties": {
@@ -11766,7 +11930,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -11896,7 +12061,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -11990,7 +12156,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -12094,7 +12261,7 @@
             }
         },
         "aiven:index/cassandraUser:CassandraUser": {
-            "description": "The Cassandra User resource allows the creation and management of Aiven Cassandra Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.CassandraUser(\"foo\", {\n    serviceName: aiven_cassandra.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.CassandraUser(\"foo\",\n    service_name=aiven_cassandra[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.CassandraUser(\"foo\", new()\n    {\n        ServiceName = aiven_cassandra.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewCassandraUser(ctx, \"foo\", \u0026aiven.CassandraUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_cassandra.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.CassandraUser;\nimport com.pulumi.aiven.CassandraUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new CassandraUser(\"foo\", CassandraUserArgs.builder()        \n            .serviceName(aiven_cassandra.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:CassandraUser\n    properties:\n      serviceName: ${aiven_cassandra.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The Cassandra User resource allows the creation and management of Aiven Cassandra Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.CassandraUser(\"foo\", {\n    serviceName: aiven_cassandra.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.CassandraUser(\"foo\",\n    service_name=aiven_cassandra[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.CassandraUser(\"foo\", new()\n    {\n        ServiceName = aiven_cassandra.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewCassandraUser(ctx, \"foo\", \u0026aiven.CassandraUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_cassandra.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.CassandraUser;\nimport com.pulumi.aiven.CassandraUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new CassandraUser(\"foo\", CassandraUserArgs.builder()        \n            .serviceName(aiven_cassandra.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:CassandraUser\n    properties:\n      serviceName: ${aiven_cassandra.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/cassandraUser:CassandraUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "accessCert": {
                     "type": "string",
@@ -12236,7 +12403,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -12366,7 +12534,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -12455,7 +12624,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -12635,7 +12805,7 @@
             }
         },
         "aiven:index/clickhouseGrant:ClickhouseGrant": {
-            "description": "The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.\n\nNotes:\n* Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.\n* Currently changes will first revoke all grants and then reissue the remaining grants for convergence.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst clickhouse = new aiven.Clickhouse(\"clickhouse\", {\n    project: _var.aiven_project_name,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-8\",\n    serviceName: \"exapmle-clickhouse\",\n});\nconst demodb = new aiven.ClickhouseDatabase(\"demodb\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n});\nconst demoClickhouseRole = new aiven.ClickhouseRole(\"demoClickhouseRole\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    role: \"demo-role\",\n});\nconst demo_role_grant = new aiven.ClickhouseGrant(\"demo-role-grant\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    role: demoClickhouseRole.role,\n    privilegeGrants: [\n        {\n            privilege: \"INSERT\",\n            database: demodb.name,\n            table: \"*\",\n        },\n        {\n            privilege: \"SELECT\",\n            database: demodb.name,\n            table: \"*\",\n        },\n    ],\n});\nconst demoClickhouseUser = new aiven.ClickhouseUser(\"demoClickhouseUser\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    username: \"demo-user\",\n});\nconst demo_user_grant = new aiven.ClickhouseGrant(\"demo-user-grant\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    user: demoClickhouseUser.username,\n    roleGrants: [{\n        role: demoClickhouseRole.role,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nclickhouse = aiven.Clickhouse(\"clickhouse\",\n    project=var[\"aiven_project_name\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-8\",\n    service_name=\"exapmle-clickhouse\")\ndemodb = aiven.ClickhouseDatabase(\"demodb\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name)\ndemo_clickhouse_role = aiven.ClickhouseRole(\"demoClickhouseRole\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    role=\"demo-role\")\ndemo_role_grant = aiven.ClickhouseGrant(\"demo-role-grant\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    role=demo_clickhouse_role.role,\n    privilege_grants=[\n        aiven.ClickhouseGrantPrivilegeGrantArgs(\n            privilege=\"INSERT\",\n            database=demodb.name,\n            table=\"*\",\n        ),\n        aiven.ClickhouseGrantPrivilegeGrantArgs(\n            privilege=\"SELECT\",\n            database=demodb.name,\n            table=\"*\",\n        ),\n    ])\ndemo_clickhouse_user = aiven.ClickhouseUser(\"demoClickhouseUser\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    username=\"demo-user\")\ndemo_user_grant = aiven.ClickhouseGrant(\"demo-user-grant\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    user=demo_clickhouse_user.username,\n    role_grants=[aiven.ClickhouseGrantRoleGrantArgs(\n        role=demo_clickhouse_role.role,\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var clickhouse = new Aiven.Clickhouse(\"clickhouse\", new()\n    {\n        Project = @var.Aiven_project_name,\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-8\",\n        ServiceName = \"exapmle-clickhouse\",\n    });\n\n    var demodb = new Aiven.ClickhouseDatabase(\"demodb\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n    });\n\n    var demoClickhouseRole = new Aiven.ClickhouseRole(\"demoClickhouseRole\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        Role = \"demo-role\",\n    });\n\n    var demo_role_grant = new Aiven.ClickhouseGrant(\"demo-role-grant\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        Role = demoClickhouseRole.Role,\n        PrivilegeGrants = new[]\n        {\n            new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs\n            {\n                Privilege = \"INSERT\",\n                Database = demodb.Name,\n                Table = \"*\",\n            },\n            new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs\n            {\n                Privilege = \"SELECT\",\n                Database = demodb.Name,\n                Table = \"*\",\n            },\n        },\n    });\n\n    var demoClickhouseUser = new Aiven.ClickhouseUser(\"demoClickhouseUser\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        Username = \"demo-user\",\n    });\n\n    var demo_user_grant = new Aiven.ClickhouseGrant(\"demo-user-grant\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        User = demoClickhouseUser.Username,\n        RoleGrants = new[]\n        {\n            new Aiven.Inputs.ClickhouseGrantRoleGrantArgs\n            {\n                Role = demoClickhouseRole.Role,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tclickhouse, err := aiven.NewClickhouse(ctx, \"clickhouse\", \u0026aiven.ClickhouseArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:        pulumi.String(\"startup-8\"),\n\t\t\tServiceName: pulumi.String(\"exapmle-clickhouse\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdemodb, err := aiven.NewClickhouseDatabase(ctx, \"demodb\", \u0026aiven.ClickhouseDatabaseArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdemoClickhouseRole, err := aiven.NewClickhouseRole(ctx, \"demoClickhouseRole\", \u0026aiven.ClickhouseRoleArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tRole:        pulumi.String(\"demo-role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewClickhouseGrant(ctx, \"demo-role-grant\", \u0026aiven.ClickhouseGrantArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tRole:        demoClickhouseRole.Role,\n\t\t\tPrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{\n\t\t\t\t\u0026aiven.ClickhouseGrantPrivilegeGrantArgs{\n\t\t\t\t\tPrivilege: pulumi.String(\"INSERT\"),\n\t\t\t\t\tDatabase:  demodb.Name,\n\t\t\t\t\tTable:     pulumi.String(\"*\"),\n\t\t\t\t},\n\t\t\t\t\u0026aiven.ClickhouseGrantPrivilegeGrantArgs{\n\t\t\t\t\tPrivilege: pulumi.String(\"SELECT\"),\n\t\t\t\t\tDatabase:  demodb.Name,\n\t\t\t\t\tTable:     pulumi.String(\"*\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdemoClickhouseUser, err := aiven.NewClickhouseUser(ctx, \"demoClickhouseUser\", \u0026aiven.ClickhouseUserArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tUsername:    pulumi.String(\"demo-user\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewClickhouseGrant(ctx, \"demo-user-grant\", \u0026aiven.ClickhouseGrantArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tUser:        demoClickhouseUser.Username,\n\t\t\tRoleGrants: aiven.ClickhouseGrantRoleGrantArray{\n\t\t\t\t\u0026aiven.ClickhouseGrantRoleGrantArgs{\n\t\t\t\t\tRole: demoClickhouseRole.Role,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Clickhouse;\nimport com.pulumi.aiven.ClickhouseArgs;\nimport com.pulumi.aiven.ClickhouseDatabase;\nimport com.pulumi.aiven.ClickhouseDatabaseArgs;\nimport com.pulumi.aiven.ClickhouseRole;\nimport com.pulumi.aiven.ClickhouseRoleArgs;\nimport com.pulumi.aiven.ClickhouseGrant;\nimport com.pulumi.aiven.ClickhouseGrantArgs;\nimport com.pulumi.aiven.inputs.ClickhouseGrantPrivilegeGrantArgs;\nimport com.pulumi.aiven.ClickhouseUser;\nimport com.pulumi.aiven.ClickhouseUserArgs;\nimport com.pulumi.aiven.inputs.ClickhouseGrantRoleGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var clickhouse = new Clickhouse(\"clickhouse\", ClickhouseArgs.builder()        \n            .project(var_.aiven_project_name())\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-8\")\n            .serviceName(\"exapmle-clickhouse\")\n            .build());\n\n        var demodb = new ClickhouseDatabase(\"demodb\", ClickhouseDatabaseArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .build());\n\n        var demoClickhouseRole = new ClickhouseRole(\"demoClickhouseRole\", ClickhouseRoleArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .role(\"demo-role\")\n            .build());\n\n        var demo_role_grant = new ClickhouseGrant(\"demo-role-grant\", ClickhouseGrantArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .role(demoClickhouseRole.role())\n            .privilegeGrants(            \n                ClickhouseGrantPrivilegeGrantArgs.builder()\n                    .privilege(\"INSERT\")\n                    .database(demodb.name())\n                    .table(\"*\")\n                    .build(),\n                ClickhouseGrantPrivilegeGrantArgs.builder()\n                    .privilege(\"SELECT\")\n                    .database(demodb.name())\n                    .table(\"*\")\n                    .build())\n            .build());\n\n        var demoClickhouseUser = new ClickhouseUser(\"demoClickhouseUser\", ClickhouseUserArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .username(\"demo-user\")\n            .build());\n\n        var demo_user_grant = new ClickhouseGrant(\"demo-user-grant\", ClickhouseGrantArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .user(demoClickhouseUser.username())\n            .roleGrants(ClickhouseGrantRoleGrantArgs.builder()\n                .role(demoClickhouseRole.role())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  clickhouse:\n    type: aiven:Clickhouse\n    properties:\n      project: ${var.aiven_project_name}\n      cloudName: google-europe-west1\n      plan: startup-8\n      serviceName: exapmle-clickhouse\n  demodb:\n    type: aiven:ClickhouseDatabase\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n  demoClickhouseRole:\n    type: aiven:ClickhouseRole\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      role: demo-role\n  demo-role-grant:\n    type: aiven:ClickhouseGrant\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      role: ${demoClickhouseRole.role}\n      privilegeGrants:\n        - privilege: INSERT\n          database: ${demodb.name}\n          table: '*'\n        - privilege: SELECT\n          database: ${demodb.name}\n          table: '*'\n  demoClickhouseUser:\n    type: aiven:ClickhouseUser\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      username: demo-user\n  demo-user-grant:\n    type: aiven:ClickhouseGrant\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      user: ${demoClickhouseUser.username}\n      roleGrants:\n        - role: ${demoClickhouseRole.role}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.\n\nNotes:\n* Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.\n* Currently changes will first revoke all grants and then reissue the remaining grants for convergence.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst clickhouse = new aiven.Clickhouse(\"clickhouse\", {\n    project: _var.aiven_project_name,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-8\",\n    serviceName: \"exapmle-clickhouse\",\n});\nconst demodb = new aiven.ClickhouseDatabase(\"demodb\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n});\nconst demoClickhouseRole = new aiven.ClickhouseRole(\"demoClickhouseRole\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    role: \"demo-role\",\n});\nconst demo_role_grant = new aiven.ClickhouseGrant(\"demo-role-grant\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    role: demoClickhouseRole.role,\n    privilegeGrants: [\n        {\n            privilege: \"INSERT\",\n            database: demodb.name,\n            table: \"demo-table\",\n        },\n        {\n            privilege: \"SELECT\",\n            database: demodb.name,\n        },\n    ],\n});\nconst demoClickhouseUser = new aiven.ClickhouseUser(\"demoClickhouseUser\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    username: \"demo-user\",\n});\nconst demo_user_grant = new aiven.ClickhouseGrant(\"demo-user-grant\", {\n    project: clickhouse.project,\n    serviceName: clickhouse.serviceName,\n    user: demoClickhouseUser.username,\n    roleGrants: [{\n        role: demoClickhouseRole.role,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nclickhouse = aiven.Clickhouse(\"clickhouse\",\n    project=var[\"aiven_project_name\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-8\",\n    service_name=\"exapmle-clickhouse\")\ndemodb = aiven.ClickhouseDatabase(\"demodb\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name)\ndemo_clickhouse_role = aiven.ClickhouseRole(\"demoClickhouseRole\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    role=\"demo-role\")\ndemo_role_grant = aiven.ClickhouseGrant(\"demo-role-grant\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    role=demo_clickhouse_role.role,\n    privilege_grants=[\n        aiven.ClickhouseGrantPrivilegeGrantArgs(\n            privilege=\"INSERT\",\n            database=demodb.name,\n            table=\"demo-table\",\n        ),\n        aiven.ClickhouseGrantPrivilegeGrantArgs(\n            privilege=\"SELECT\",\n            database=demodb.name,\n        ),\n    ])\ndemo_clickhouse_user = aiven.ClickhouseUser(\"demoClickhouseUser\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    username=\"demo-user\")\ndemo_user_grant = aiven.ClickhouseGrant(\"demo-user-grant\",\n    project=clickhouse.project,\n    service_name=clickhouse.service_name,\n    user=demo_clickhouse_user.username,\n    role_grants=[aiven.ClickhouseGrantRoleGrantArgs(\n        role=demo_clickhouse_role.role,\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var clickhouse = new Aiven.Clickhouse(\"clickhouse\", new()\n    {\n        Project = @var.Aiven_project_name,\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-8\",\n        ServiceName = \"exapmle-clickhouse\",\n    });\n\n    var demodb = new Aiven.ClickhouseDatabase(\"demodb\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n    });\n\n    var demoClickhouseRole = new Aiven.ClickhouseRole(\"demoClickhouseRole\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        Role = \"demo-role\",\n    });\n\n    var demo_role_grant = new Aiven.ClickhouseGrant(\"demo-role-grant\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        Role = demoClickhouseRole.Role,\n        PrivilegeGrants = new[]\n        {\n            new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs\n            {\n                Privilege = \"INSERT\",\n                Database = demodb.Name,\n                Table = \"demo-table\",\n            },\n            new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs\n            {\n                Privilege = \"SELECT\",\n                Database = demodb.Name,\n            },\n        },\n    });\n\n    var demoClickhouseUser = new Aiven.ClickhouseUser(\"demoClickhouseUser\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        Username = \"demo-user\",\n    });\n\n    var demo_user_grant = new Aiven.ClickhouseGrant(\"demo-user-grant\", new()\n    {\n        Project = clickhouse.Project,\n        ServiceName = clickhouse.ServiceName,\n        User = demoClickhouseUser.Username,\n        RoleGrants = new[]\n        {\n            new Aiven.Inputs.ClickhouseGrantRoleGrantArgs\n            {\n                Role = demoClickhouseRole.Role,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tclickhouse, err := aiven.NewClickhouse(ctx, \"clickhouse\", \u0026aiven.ClickhouseArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:        pulumi.String(\"startup-8\"),\n\t\t\tServiceName: pulumi.String(\"exapmle-clickhouse\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdemodb, err := aiven.NewClickhouseDatabase(ctx, \"demodb\", \u0026aiven.ClickhouseDatabaseArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdemoClickhouseRole, err := aiven.NewClickhouseRole(ctx, \"demoClickhouseRole\", \u0026aiven.ClickhouseRoleArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tRole:        pulumi.String(\"demo-role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewClickhouseGrant(ctx, \"demo-role-grant\", \u0026aiven.ClickhouseGrantArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tRole:        demoClickhouseRole.Role,\n\t\t\tPrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{\n\t\t\t\t\u0026aiven.ClickhouseGrantPrivilegeGrantArgs{\n\t\t\t\t\tPrivilege: pulumi.String(\"INSERT\"),\n\t\t\t\t\tDatabase:  demodb.Name,\n\t\t\t\t\tTable:     pulumi.String(\"demo-table\"),\n\t\t\t\t},\n\t\t\t\t\u0026aiven.ClickhouseGrantPrivilegeGrantArgs{\n\t\t\t\t\tPrivilege: pulumi.String(\"SELECT\"),\n\t\t\t\t\tDatabase:  demodb.Name,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdemoClickhouseUser, err := aiven.NewClickhouseUser(ctx, \"demoClickhouseUser\", \u0026aiven.ClickhouseUserArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tUsername:    pulumi.String(\"demo-user\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewClickhouseGrant(ctx, \"demo-user-grant\", \u0026aiven.ClickhouseGrantArgs{\n\t\t\tProject:     clickhouse.Project,\n\t\t\tServiceName: clickhouse.ServiceName,\n\t\t\tUser:        demoClickhouseUser.Username,\n\t\t\tRoleGrants: aiven.ClickhouseGrantRoleGrantArray{\n\t\t\t\t\u0026aiven.ClickhouseGrantRoleGrantArgs{\n\t\t\t\t\tRole: demoClickhouseRole.Role,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Clickhouse;\nimport com.pulumi.aiven.ClickhouseArgs;\nimport com.pulumi.aiven.ClickhouseDatabase;\nimport com.pulumi.aiven.ClickhouseDatabaseArgs;\nimport com.pulumi.aiven.ClickhouseRole;\nimport com.pulumi.aiven.ClickhouseRoleArgs;\nimport com.pulumi.aiven.ClickhouseGrant;\nimport com.pulumi.aiven.ClickhouseGrantArgs;\nimport com.pulumi.aiven.inputs.ClickhouseGrantPrivilegeGrantArgs;\nimport com.pulumi.aiven.ClickhouseUser;\nimport com.pulumi.aiven.ClickhouseUserArgs;\nimport com.pulumi.aiven.inputs.ClickhouseGrantRoleGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var clickhouse = new Clickhouse(\"clickhouse\", ClickhouseArgs.builder()        \n            .project(var_.aiven_project_name())\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-8\")\n            .serviceName(\"exapmle-clickhouse\")\n            .build());\n\n        var demodb = new ClickhouseDatabase(\"demodb\", ClickhouseDatabaseArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .build());\n\n        var demoClickhouseRole = new ClickhouseRole(\"demoClickhouseRole\", ClickhouseRoleArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .role(\"demo-role\")\n            .build());\n\n        var demo_role_grant = new ClickhouseGrant(\"demo-role-grant\", ClickhouseGrantArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .role(demoClickhouseRole.role())\n            .privilegeGrants(            \n                ClickhouseGrantPrivilegeGrantArgs.builder()\n                    .privilege(\"INSERT\")\n                    .database(demodb.name())\n                    .table(\"demo-table\")\n                    .build(),\n                ClickhouseGrantPrivilegeGrantArgs.builder()\n                    .privilege(\"SELECT\")\n                    .database(demodb.name())\n                    .build())\n            .build());\n\n        var demoClickhouseUser = new ClickhouseUser(\"demoClickhouseUser\", ClickhouseUserArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .username(\"demo-user\")\n            .build());\n\n        var demo_user_grant = new ClickhouseGrant(\"demo-user-grant\", ClickhouseGrantArgs.builder()        \n            .project(clickhouse.project())\n            .serviceName(clickhouse.serviceName())\n            .user(demoClickhouseUser.username())\n            .roleGrants(ClickhouseGrantRoleGrantArgs.builder()\n                .role(demoClickhouseRole.role())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  clickhouse:\n    type: aiven:Clickhouse\n    properties:\n      project: ${var.aiven_project_name}\n      cloudName: google-europe-west1\n      plan: startup-8\n      serviceName: exapmle-clickhouse\n  demodb:\n    type: aiven:ClickhouseDatabase\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n  demoClickhouseRole:\n    type: aiven:ClickhouseRole\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      role: demo-role\n  demo-role-grant:\n    type: aiven:ClickhouseGrant\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      role: ${demoClickhouseRole.role}\n      privilegeGrants:\n        - privilege: INSERT\n          database: ${demodb.name}\n          table: demo-table\n        - privilege: SELECT\n          database: ${demodb.name}\n  demoClickhouseUser:\n    type: aiven:ClickhouseUser\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      username: demo-user\n  demo-user-grant:\n    type: aiven:ClickhouseGrant\n    properties:\n      project: ${clickhouse.project}\n      serviceName: ${clickhouse.serviceName}\n      user: ${demoClickhouseUser.username}\n      roleGrants:\n        - role: ${demoClickhouseRole.role}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "privilegeGrants": {
                     "type": "array",
@@ -12823,7 +12993,7 @@
             }
         },
         "aiven:index/clickhouseUser:ClickhouseUser": {
-            "description": "The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst ch_user = new aiven.ClickhouseUser(\"ch-user\", {\n    project: aiven_project.myproject.project,\n    serviceName: aiven_clickhouse.myservice.service_name,\n    username: \"\u003cUSERNAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nch_user = aiven.ClickhouseUser(\"ch-user\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_clickhouse[\"myservice\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ch_user = new Aiven.ClickhouseUser(\"ch-user\", new()\n    {\n        Project = aiven_project.Myproject.Project,\n        ServiceName = aiven_clickhouse.Myservice.Service_name,\n        Username = \"\u003cUSERNAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewClickhouseUser(ctx, \"ch-user\", \u0026aiven.ClickhouseUserArgs{\n\t\t\tProject:     pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tServiceName: pulumi.Any(aiven_clickhouse.Myservice.Service_name),\n\t\t\tUsername:    pulumi.String(\"\u003cUSERNAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ClickhouseUser;\nimport com.pulumi.aiven.ClickhouseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ch_user = new ClickhouseUser(\"ch-user\", ClickhouseUserArgs.builder()        \n            .project(aiven_project.myproject().project())\n            .serviceName(aiven_clickhouse.myservice().service_name())\n            .username(\"\u003cUSERNAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ch-user:\n    type: aiven:ClickhouseUser\n    properties:\n      project: ${aiven_project.myproject.project}\n      serviceName: ${aiven_clickhouse.myservice.service_name}\n      username: \u003cUSERNAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id\n```\n\n ",
+            "description": "The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst ch_user = new aiven.ClickhouseUser(\"ch-user\", {\n    project: aiven_project.myproject.project,\n    serviceName: aiven_clickhouse.myservice.service_name,\n    username: \"\u003cUSERNAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nch_user = aiven.ClickhouseUser(\"ch-user\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    service_name=aiven_clickhouse[\"myservice\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ch_user = new Aiven.ClickhouseUser(\"ch-user\", new()\n    {\n        Project = aiven_project.Myproject.Project,\n        ServiceName = aiven_clickhouse.Myservice.Service_name,\n        Username = \"\u003cUSERNAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewClickhouseUser(ctx, \"ch-user\", \u0026aiven.ClickhouseUserArgs{\n\t\t\tProject:     pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tServiceName: pulumi.Any(aiven_clickhouse.Myservice.Service_name),\n\t\t\tUsername:    pulumi.String(\"\u003cUSERNAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ClickhouseUser;\nimport com.pulumi.aiven.ClickhouseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ch_user = new ClickhouseUser(\"ch-user\", ClickhouseUserArgs.builder()        \n            .project(aiven_project.myproject().project())\n            .serviceName(aiven_clickhouse.myservice().service_name())\n            .username(\"\u003cUSERNAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ch-user:\n    type: aiven:ClickhouseUser\n    properties:\n      project: ${aiven_project.myproject.project}\n      serviceName: ${aiven_clickhouse.myservice.service_name}\n      username: \u003cUSERNAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username\n```\n\n ",
             "properties": {
                 "password": {
                     "type": "string",
@@ -13064,7 +13234,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -13203,7 +13374,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
@@ -13294,7 +13466,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -13850,7 +14023,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -13992,7 +14166,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "grafanaUserConfig": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig",
@@ -14073,7 +14248,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -14212,7 +14388,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -14349,7 +14526,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -14431,7 +14609,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -14623,7 +14802,7 @@
             }
         },
         "aiven:index/influxdbUser:InfluxdbUser": {
-            "description": "The InfluxDB User resource allows the creation and management of Aiven InfluxDB Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.InfluxdbUser(\"foo\", {\n    serviceName: aiven_influxdb.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.InfluxdbUser(\"foo\",\n    service_name=aiven_influxdb[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.InfluxdbUser(\"foo\", new()\n    {\n        ServiceName = aiven_influxdb.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewInfluxdbUser(ctx, \"foo\", \u0026aiven.InfluxdbUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_influxdb.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.InfluxdbUser;\nimport com.pulumi.aiven.InfluxdbUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new InfluxdbUser(\"foo\", InfluxdbUserArgs.builder()        \n            .serviceName(aiven_influxdb.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:InfluxdbUser\n    properties:\n      serviceName: ${aiven_influxdb.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The InfluxDB User resource allows the creation and management of Aiven InfluxDB Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.InfluxdbUser(\"foo\", {\n    serviceName: aiven_influxdb.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.InfluxdbUser(\"foo\",\n    service_name=aiven_influxdb[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.InfluxdbUser(\"foo\", new()\n    {\n        ServiceName = aiven_influxdb.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewInfluxdbUser(ctx, \"foo\", \u0026aiven.InfluxdbUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_influxdb.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.InfluxdbUser;\nimport com.pulumi.aiven.InfluxdbUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new InfluxdbUser(\"foo\", InfluxdbUserArgs.builder()        \n            .serviceName(aiven_influxdb.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:InfluxdbUser\n    properties:\n      serviceName: ${aiven_influxdb.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/influxdbUser:InfluxdbUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "accessCert": {
                     "type": "string",
@@ -14758,7 +14937,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -14776,8 +14956,15 @@
                     "type": "string",
                     "description": "Disk space that service is currently using\n"
                 },
-                "kafka": {
-                    "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka",
+                "kafkaUserConfig": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
+                    "description": "Kafka user configurable settings\n"
+                },
+                "kafkas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
+                    },
                     "description": "Kafka server provided values\n",
                     "language": {
                         "csharp": {
@@ -14785,13 +14972,10 @@
                         }
                     }
                 },
-                "kafkaUserConfig": {
-                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
-                    "description": "Kafka user configurable settings\n"
-                },
                 "karapace": {
                     "type": "boolean",
-                    "description": "Switch the service to use Karapace for schema registry and REST proxy\n"
+                    "description": "Switch the service to use Karapace for schema registry and REST proxy\n",
+                    "deprecationMessage": "Usage of this field is discouraged."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -14879,7 +15063,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
-                "kafka",
+                "kafkas",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -14906,16 +15090,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
-                },
-                "kafka": {
-                    "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka",
-                    "description": "Kafka server provided values\n",
-                    "language": {
-                        "csharp": {
-                            "name": "KafkaServer"
-                        }
-                    }
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "kafkaUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
@@ -14923,7 +15099,8 @@
                 },
                 "karapace": {
                     "type": "boolean",
-                    "description": "Switch the service to use Karapace for schema registry and REST proxy\n"
+                    "description": "Switch the service to use Karapace for schema registry and REST proxy\n",
+                    "deprecationMessage": "Usage of this field is discouraged."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -15006,7 +15183,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -15024,8 +15202,15 @@
                         "type": "string",
                         "description": "Disk space that service is currently using\n"
                     },
-                    "kafka": {
-                        "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka",
+                    "kafkaUserConfig": {
+                        "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
+                        "description": "Kafka user configurable settings\n"
+                    },
+                    "kafkas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
+                        },
                         "description": "Kafka server provided values\n",
                         "language": {
                             "csharp": {
@@ -15033,13 +15218,10 @@
                             }
                         }
                     },
-                    "kafkaUserConfig": {
-                        "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
-                        "description": "Kafka user configurable settings\n"
-                    },
                     "karapace": {
                         "type": "boolean",
-                        "description": "Switch the service to use Karapace for schema registry and REST proxy\n"
+                        "description": "Switch the service to use Karapace for schema registry and REST proxy\n",
+                        "deprecationMessage": "Usage of this field is discouraged."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -15256,7 +15438,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -15398,7 +15581,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfig:KafkaConnectKafkaConnectUserConfig",
@@ -15480,7 +15664,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -15776,7 +15961,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -15913,7 +16099,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
@@ -15995,7 +16182,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -16533,7 +16721,7 @@
             }
         },
         "aiven:index/kafkaUser:KafkaUser": {
-            "description": "The Kafka User resource allows the creation and management of Aiven Kafka Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.KafkaUser(\"foo\", {\n    serviceName: aiven_kafka.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.KafkaUser(\"foo\",\n    service_name=aiven_kafka[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.KafkaUser(\"foo\", new()\n    {\n        ServiceName = aiven_kafka.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaUser(ctx, \"foo\", \u0026aiven.KafkaUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaUser;\nimport com.pulumi.aiven.KafkaUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new KafkaUser(\"foo\", KafkaUserArgs.builder()        \n            .serviceName(aiven_kafka.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:KafkaUser\n    properties:\n      serviceName: ${aiven_kafka.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The Kafka User resource allows the creation and management of Aiven Kafka Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.KafkaUser(\"foo\", {\n    serviceName: aiven_kafka.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.KafkaUser(\"foo\",\n    service_name=aiven_kafka[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.KafkaUser(\"foo\", new()\n    {\n        ServiceName = aiven_kafka.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaUser(ctx, \"foo\", \u0026aiven.KafkaUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaUser;\nimport com.pulumi.aiven.KafkaUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new KafkaUser(\"foo\", KafkaUserArgs.builder()        \n            .serviceName(aiven_kafka.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:KafkaUser\n    properties:\n      serviceName: ${aiven_kafka.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "accessCert": {
                     "type": "string",
@@ -16664,7 +16852,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -16801,7 +16990,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "m3aggregatorUserConfig": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
@@ -16883,7 +17073,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -17017,7 +17208,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -17154,7 +17346,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "m3dbUserConfig": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
@@ -17236,7 +17429,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -17351,7 +17545,7 @@
             }
         },
         "aiven:index/m3dbUser:M3dbUser": {
-            "description": "The M3DB User resource allows the creation and management of Aiven M3DB Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.M3dbUser(\"foo\", {\n    serviceName: aiven_m3db.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.M3dbUser(\"foo\",\n    service_name=aiven_m3db[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.M3dbUser(\"foo\", new()\n    {\n        ServiceName = aiven_m3db.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3dbUser(ctx, \"foo\", \u0026aiven.M3dbUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_m3db.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.M3dbUser;\nimport com.pulumi.aiven.M3dbUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new M3dbUser(\"foo\", M3dbUserArgs.builder()        \n            .serviceName(aiven_m3db.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:M3dbUser\n    properties:\n      serviceName: ${aiven_m3db.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The M3DB User resource allows the creation and management of Aiven M3DB Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.M3dbUser(\"foo\", {\n    serviceName: aiven_m3db.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.M3dbUser(\"foo\",\n    service_name=aiven_m3db[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.M3dbUser(\"foo\", new()\n    {\n        ServiceName = aiven_m3db.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewM3dbUser(ctx, \"foo\", \u0026aiven.M3dbUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_m3db.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.M3dbUser;\nimport com.pulumi.aiven.M3dbUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new M3dbUser(\"foo\", M3dbUserArgs.builder()        \n            .serviceName(aiven_m3db.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:M3dbUser\n    properties:\n      serviceName: ${aiven_m3db.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "password": {
                     "type": "string",
@@ -17653,7 +17847,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -17790,7 +17985,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -17872,7 +18068,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -18064,7 +18261,7 @@
             }
         },
         "aiven:index/mysqlUser:MysqlUser": {
-            "description": "The MySQL User resource allows the creation and management of Aiven MySQL Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.MysqlUser(\"foo\", {\n    serviceName: aiven_mysql.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.MysqlUser(\"foo\",\n    service_name=aiven_mysql[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.MysqlUser(\"foo\", new()\n    {\n        ServiceName = aiven_mysql.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMysqlUser(ctx, \"foo\", \u0026aiven.MysqlUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_mysql.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MysqlUser;\nimport com.pulumi.aiven.MysqlUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new MysqlUser(\"foo\", MysqlUserArgs.builder()        \n            .serviceName(aiven_mysql.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:MysqlUser\n    properties:\n      serviceName: ${aiven_mysql.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The MySQL User resource allows the creation and management of Aiven MySQL Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.MysqlUser(\"foo\", {\n    serviceName: aiven_mysql.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.MysqlUser(\"foo\",\n    service_name=aiven_mysql[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.MysqlUser(\"foo\", new()\n    {\n        ServiceName = aiven_mysql.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMysqlUser(ctx, \"foo\", \u0026aiven.MysqlUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_mysql.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MysqlUser;\nimport com.pulumi.aiven.MysqlUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new MysqlUser(\"foo\", MysqlUserArgs.builder()        \n            .serviceName(aiven_mysql.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:MysqlUser\n    properties:\n      serviceName: ${aiven_mysql.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/mysqlUser:MysqlUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "accessCert": {
                     "type": "string",
@@ -18207,7 +18404,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -18344,7 +18542,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -18426,7 +18625,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -18709,7 +18909,7 @@
             }
         },
         "aiven:index/opensearchUser:OpensearchUser": {
-            "description": "The Opensearch User resource allows the creation and management of Aiven Opensearch Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.OpensearchUser(\"foo\", {\n    serviceName: aiven_opensearch.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.OpensearchUser(\"foo\",\n    service_name=aiven_opensearch[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.OpensearchUser(\"foo\", new()\n    {\n        ServiceName = aiven_opensearch.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpensearchUser(ctx, \"foo\", \u0026aiven.OpensearchUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OpensearchUser;\nimport com.pulumi.aiven.OpensearchUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new OpensearchUser(\"foo\", OpensearchUserArgs.builder()        \n            .serviceName(aiven_opensearch.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:OpensearchUser\n    properties:\n      serviceName: ${aiven_opensearch.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The Opensearch User resource allows the creation and management of Aiven Opensearch Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.OpensearchUser(\"foo\", {\n    serviceName: aiven_opensearch.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.OpensearchUser(\"foo\",\n    service_name=aiven_opensearch[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.OpensearchUser(\"foo\", new()\n    {\n        ServiceName = aiven_opensearch.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpensearchUser(ctx, \"foo\", \u0026aiven.OpensearchUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OpensearchUser;\nimport com.pulumi.aiven.OpensearchUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new OpensearchUser(\"foo\", OpensearchUserArgs.builder()        \n            .serviceName(aiven_opensearch.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:OpensearchUser\n    properties:\n      serviceName: ${aiven_opensearch.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/opensearchUser:OpensearchUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "password": {
                     "type": "string",
@@ -18818,7 +19018,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -18957,7 +19158,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -19047,7 +19249,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -19762,7 +19965,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -19904,7 +20108,8 @@
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -19986,7 +20191,8 @@
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n"
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -20106,7 +20312,7 @@
             }
         },
         "aiven:index/redisUser:RedisUser": {
-            "description": "The Redis User resource allows the creation and management of Aiven Redis Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.RedisUser(\"foo\", {\n    serviceName: aiven_redis.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.RedisUser(\"foo\",\n    service_name=aiven_redis[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.RedisUser(\"foo\", new()\n    {\n        ServiceName = aiven_redis.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewRedisUser(ctx, \"foo\", \u0026aiven.RedisUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_redis.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.RedisUser;\nimport com.pulumi.aiven.RedisUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new RedisUser(\"foo\", RedisUserArgs.builder()        \n            .serviceName(aiven_redis.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:RedisUser\n    properties:\n      serviceName: ${aiven_redis.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The Redis User resource allows the creation and management of Aiven Redis Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.RedisUser(\"foo\", {\n    serviceName: aiven_redis.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.RedisUser(\"foo\",\n    service_name=aiven_redis[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.RedisUser(\"foo\", new()\n    {\n        ServiceName = aiven_redis.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewRedisUser(ctx, \"foo\", \u0026aiven.RedisUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_redis.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.RedisUser;\nimport com.pulumi.aiven.RedisUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new RedisUser(\"foo\", RedisUserArgs.builder()        \n            .serviceName(aiven_redis.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:RedisUser\n    properties:\n      serviceName: ${aiven_redis.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "password": {
                     "type": "string",
@@ -20529,7 +20735,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "Type of the service integration endpoint\n"
+                    "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n"
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
@@ -20574,10 +20780,6 @@
                 "rsyslogUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig",
                     "description": "Rsyslog user configurable settings\n"
-                },
-                "signalfxUserConfig": {
-                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig",
-                    "description": "Signalfx user configurable settings\n"
                 }
             },
             "required": [
@@ -20598,7 +20800,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "Type of the service integration endpoint\n",
+                    "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n",
                     "willReplaceOnChanges": true
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
@@ -20645,10 +20847,6 @@
                 "rsyslogUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig",
                     "description": "Rsyslog user configurable settings\n"
-                },
-                "signalfxUserConfig": {
-                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig",
-                    "description": "Signalfx user configurable settings\n"
                 }
             },
             "requiredInputs": [
@@ -20677,7 +20875,7 @@
                     },
                     "endpointType": {
                         "type": "string",
-                        "description": "Type of the service integration endpoint\n",
+                        "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n",
                         "willReplaceOnChanges": true
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
@@ -20724,10 +20922,6 @@
                     "rsyslogUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig",
                         "description": "Rsyslog user configurable settings\n"
-                    },
-                    "signalfxUserConfig": {
-                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointSignalfxUserConfig:ServiceIntegrationEndpointSignalfxUserConfig",
-                        "description": "Signalfx user configurable settings\n"
                     }
                 },
                 "type": "object"
@@ -27115,7 +27309,7 @@
                     },
                     "endpointType": {
                         "type": "string",
-                        "description": "Type of the service integration endpoint\n"
+                        "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n"
                     },
                     "externalAwsCloudwatchLogsUserConfigs": {
                         "type": "array",
@@ -27194,13 +27388,6 @@
                             "$ref": "#/types/aiven:index/getServiceIntegrationEndpointRsyslogUserConfig:getServiceIntegrationEndpointRsyslogUserConfig"
                         },
                         "description": "Rsyslog user configurable settings\n"
-                    },
-                    "signalfxUserConfigs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/aiven:index/getServiceIntegrationEndpointSignalfxUserConfig:getServiceIntegrationEndpointSignalfxUserConfig"
-                        },
-                        "description": "Signalfx user configurable settings\n"
                     }
                 },
                 "type": "object",
@@ -27220,7 +27407,6 @@
                     "project",
                     "prometheusUserConfigs",
                     "rsyslogUserConfigs",
-                    "signalfxUserConfigs",
                     "id"
                 ]
             }
