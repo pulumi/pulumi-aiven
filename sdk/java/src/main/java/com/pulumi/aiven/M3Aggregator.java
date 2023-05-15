@@ -131,7 +131,11 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
      * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
     @Export(name="diskSpace", type=String.class, parameters={})
     private Output</* @Nullable */ String> diskSpace;
 

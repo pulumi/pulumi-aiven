@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
         /// </summary>
-        public readonly string? AccessKey;
+        public readonly string AccessKey;
         /// <summary>
         /// AWS CloudWatch log group name.
         /// </summary>
@@ -24,21 +24,21 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// AWS region.
         /// </summary>
-        public readonly string? Region;
+        public readonly string Region;
         /// <summary>
         /// AWS secret key.
         /// </summary>
-        public readonly string? SecretKey;
+        public readonly string SecretKey;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(
-            string? accessKey,
+            string accessKey,
 
             string? logGroupName,
 
-            string? region,
+            string region,
 
-            string? secretKey)
+            string secretKey)
         {
             AccessKey = accessKey;
             LogGroupName = logGroupName;

@@ -116,16 +116,16 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka server provided values
-        /// </summary>
-        [Output("kafka")]
-        public Output<Outputs.KafkaKafka> KafkaServer { get; private set; } = null!;
-
-        /// <summary>
         /// Kafka user configurable settings
         /// </summary>
         [Output("kafkaUserConfig")]
         public Output<Outputs.KafkaKafkaUserConfig?> KafkaUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka server provided values
+        /// </summary>
+        [Output("kafkas")]
+        public Output<ImmutableArray<Outputs.KafkaKafka>> KafkaServer { get; private set; } = null!;
 
         /// <summary>
         /// Switch the service to use Karapace for schema registry and REST proxy
@@ -311,12 +311,6 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpace { get; set; }
 
         /// <summary>
-        /// Kafka server provided values
-        /// </summary>
-        [Input("kafka")]
-        public Input<Inputs.KafkaKafkaArgs>? KafkaServer { get; set; }
-
-        /// <summary>
         /// Kafka user configurable settings
         /// </summary>
         [Input("kafkaUserConfig")]
@@ -475,16 +469,22 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceUsed { get; set; }
 
         /// <summary>
-        /// Kafka server provided values
-        /// </summary>
-        [Input("kafka")]
-        public Input<Inputs.KafkaKafkaGetArgs>? KafkaServer { get; set; }
-
-        /// <summary>
         /// Kafka user configurable settings
         /// </summary>
         [Input("kafkaUserConfig")]
         public Input<Inputs.KafkaKafkaUserConfigGetArgs>? KafkaUserConfig { get; set; }
+
+        [Input("kafkas")]
+        private InputList<Inputs.KafkaKafkaGetArgs>? _kafkas;
+
+        /// <summary>
+        /// Kafka server provided values
+        /// </summary>
+        public InputList<Inputs.KafkaKafkaGetArgs> KafkaServer
+        {
+            get => _kafkas ?? (_kafkas = new InputList<Inputs.KafkaKafkaGetArgs>());
+            set => _kafkas = value;
+        }
 
         /// <summary>
         /// Switch the service to use Karapace for schema registry and REST proxy

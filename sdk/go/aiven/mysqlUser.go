@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import aiven:index/mysqlUser:MysqlUser foo project/service_name/username
+//
+// ```
 type MysqlUser struct {
 	pulumi.CustomResourceState
 

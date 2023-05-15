@@ -202,10 +202,10 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
-        service_name=aiven_kafka["mm"]["service_name"],
-        source_cluster=aiven_kafka["source"]["service_name"],
-        target_cluster=aiven_kafka["target"]["service_name"])
+    f1 = aiven.get_mirror_maker_replication_flow(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        source_cluster=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        target_cluster=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
 
@@ -253,10 +253,10 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
     import pulumi
     import pulumi_aiven as aiven
 
-    f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
-        service_name=aiven_kafka["mm"]["service_name"],
-        source_cluster=aiven_kafka["source"]["service_name"],
-        target_cluster=aiven_kafka["target"]["service_name"])
+    f1 = aiven.get_mirror_maker_replication_flow(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        source_cluster=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        target_cluster=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
 

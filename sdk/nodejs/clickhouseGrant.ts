@@ -42,12 +42,11 @@ import * as utilities from "./utilities";
  *         {
  *             privilege: "INSERT",
  *             database: demodb.name,
- *             table: "*",
+ *             table: "demo-table",
  *         },
  *         {
  *             privilege: "SELECT",
  *             database: demodb.name,
- *             table: "*",
  *         },
  *     ],
  * });

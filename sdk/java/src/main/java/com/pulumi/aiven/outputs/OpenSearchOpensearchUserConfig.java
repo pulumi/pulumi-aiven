@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchDashboar
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigSaml;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -124,6 +125,11 @@ public final class OpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String recoveryBasebackupName;
+    /**
+     * @return OpenSearch SAML configuration.
+     * 
+     */
+    private @Nullable OpenSearchOpensearchUserConfigSaml saml;
     /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
@@ -275,6 +281,13 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
     /**
+     * @return OpenSearch SAML configuration.
+     * 
+     */
+    public Optional<OpenSearchOpensearchUserConfigSaml> saml() {
+        return Optional.ofNullable(this.saml);
+    }
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -316,6 +329,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable OpenSearchOpensearchUserConfigSaml saml;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -339,6 +353,7 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.saml = defaults.saml;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
         }
@@ -446,6 +461,11 @@ public final class OpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder saml(@Nullable OpenSearchOpensearchUserConfigSaml saml) {
+            this.saml = saml;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
@@ -475,6 +495,7 @@ public final class OpenSearchOpensearchUserConfig {
             o.projectToForkFrom = projectToForkFrom;
             o.publicAccess = publicAccess;
             o.recoveryBasebackupName = recoveryBasebackupName;
+            o.saml = saml;
             o.serviceToForkFrom = serviceToForkFrom;
             o.staticIps = staticIps;
             return o;

@@ -82,12 +82,11 @@ import javax.annotation.Nullable;
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege(&#34;INSERT&#34;)
  *                     .database(demodb.name())
- *                     .table(&#34;*&#34;)
+ *                     .table(&#34;demo-table&#34;)
  *                     .build(),
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege(&#34;SELECT&#34;)
  *                     .database(demodb.name())
- *                     .table(&#34;*&#34;)
  *                     .build())
  *             .build());
  * 

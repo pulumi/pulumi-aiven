@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/mysqlUser:MysqlUser foo project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mysqlUser:MysqlUser")]
     public partial class MysqlUser : global::Pulumi.CustomResource

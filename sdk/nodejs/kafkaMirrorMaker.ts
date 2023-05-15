@@ -86,6 +86,8 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -304,6 +306,8 @@ export interface KafkaMirrorMakerState {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -436,6 +440,8 @@ export interface KafkaMirrorMakerArgs {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
+     *
+     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
      */
     diskSpace?: pulumi.Input<string>;
     /**

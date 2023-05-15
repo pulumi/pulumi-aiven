@@ -20,6 +20,12 @@ import * as utilities from "./utilities";
  *     password: "Test$1234",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/cassandraUser:CassandraUser foo project/service_name/username
+ * ```
  */
 export class CassandraUser extends pulumi.CustomResource {
     /**

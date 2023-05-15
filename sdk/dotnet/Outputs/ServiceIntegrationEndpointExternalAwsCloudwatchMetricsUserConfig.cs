@@ -16,29 +16,29 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// AWS access key. Required permissions are cloudwatch:PutMetricData.
         /// </summary>
-        public readonly string? AccessKey;
+        public readonly string AccessKey;
         /// <summary>
         /// AWS CloudWatch Metrics Namespace.
         /// </summary>
-        public readonly string? Namespace;
+        public readonly string Namespace;
         /// <summary>
         /// AWS region.
         /// </summary>
-        public readonly string? Region;
+        public readonly string Region;
         /// <summary>
         /// AWS secret key.
         /// </summary>
-        public readonly string? SecretKey;
+        public readonly string SecretKey;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(
-            string? accessKey,
+            string accessKey,
 
-            string? @namespace,
+            string @namespace,
 
-            string? region,
+            string region,
 
-            string? secretKey)
+            string secretKey)
         {
             AccessKey = accessKey;
             Namespace = @namespace;

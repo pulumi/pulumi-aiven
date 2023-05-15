@@ -15,13 +15,13 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? Ca;
         public readonly string? Cert;
-        public readonly string? Format;
+        public readonly string Format;
         public readonly string? Key;
         public readonly string? Logline;
-        public readonly int? Port;
+        public readonly int Port;
         public readonly string? Sd;
-        public readonly string? Server;
-        public readonly bool? Tls;
+        public readonly string Server;
+        public readonly bool Tls;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointRsyslogUserConfigResult(
@@ -29,19 +29,19 @@ namespace Pulumi.Aiven.Outputs
 
             string? cert,
 
-            string? format,
+            string format,
 
             string? key,
 
             string? logline,
 
-            int? port,
+            int port,
 
             string? sd,
 
-            string? server,
+            string server,
 
-            bool? tls)
+            bool tls)
         {
             Ca = ca;
             Cert = cert;

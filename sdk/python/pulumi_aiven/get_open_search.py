@@ -381,7 +381,7 @@ def get_open_search(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os1 = aiven.get_open_search(project=data["aiven_project"]["pr1"]["project"],
+    os1 = aiven.get_open_search(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-os1")
     ```
 
@@ -439,7 +439,7 @@ def get_open_search_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os1 = aiven.get_open_search(project=data["aiven_project"]["pr1"]["project"],
+    os1 = aiven.get_open_search(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-os1")
     ```
 

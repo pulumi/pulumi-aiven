@@ -77,6 +77,8 @@ type M3Db struct {
 	Components M3DbComponentArrayOutput `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -195,6 +197,8 @@ type m3dbState struct {
 	Components []M3DbComponent `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -274,6 +278,8 @@ type M3DbState struct {
 	Components M3DbComponentArrayInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -355,6 +361,8 @@ type m3dbArgs struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// M3db user configurable settings
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
@@ -407,6 +415,8 @@ type M3DbArgs struct {
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
+	//
+	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 	DiskSpace pulumi.StringPtrInput
 	// M3db user configurable settings
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
@@ -555,6 +565,8 @@ func (o M3DbOutput) Components() M3DbComponentArrayOutput {
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
+//
+// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
 func (o M3DbOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3Db) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

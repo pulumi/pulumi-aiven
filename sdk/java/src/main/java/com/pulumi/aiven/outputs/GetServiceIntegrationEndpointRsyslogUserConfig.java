@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     private @Nullable String ca;
     private @Nullable String cert;
-    private @Nullable String format;
+    private String format;
     private @Nullable String key;
     private @Nullable String logline;
-    private @Nullable Integer port;
+    private Integer port;
     private @Nullable String sd;
-    private @Nullable String server;
-    private @Nullable Boolean tls;
+    private String server;
+    private Boolean tls;
 
     private GetServiceIntegrationEndpointRsyslogUserConfig() {}
     public Optional<String> ca() {
@@ -30,8 +30,8 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
-    public Optional<String> format() {
-        return Optional.ofNullable(this.format);
+    public String format() {
+        return this.format;
     }
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
@@ -39,17 +39,17 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
-    public Optional<Integer> port() {
-        return Optional.ofNullable(this.port);
+    public Integer port() {
+        return this.port;
     }
     public Optional<String> sd() {
         return Optional.ofNullable(this.sd);
     }
-    public Optional<String> server() {
-        return Optional.ofNullable(this.server);
+    public String server() {
+        return this.server;
     }
-    public Optional<Boolean> tls() {
-        return Optional.ofNullable(this.tls);
+    public Boolean tls() {
+        return this.tls;
     }
 
     public static Builder builder() {
@@ -63,13 +63,13 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable String cert;
-        private @Nullable String format;
+        private String format;
         private @Nullable String key;
         private @Nullable String logline;
-        private @Nullable Integer port;
+        private Integer port;
         private @Nullable String sd;
-        private @Nullable String server;
-        private @Nullable Boolean tls;
+        private String server;
+        private Boolean tls;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointRsyslogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -95,8 +95,8 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder format(@Nullable String format) {
-            this.format = format;
+        public Builder format(String format) {
+            this.format = Objects.requireNonNull(format);
             return this;
         }
         @CustomType.Setter
@@ -110,8 +110,8 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
-            this.port = port;
+        public Builder port(Integer port) {
+            this.port = Objects.requireNonNull(port);
             return this;
         }
         @CustomType.Setter
@@ -120,13 +120,13 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder server(@Nullable String server) {
-            this.server = server;
+        public Builder server(String server) {
+            this.server = Objects.requireNonNull(server);
             return this;
         }
         @CustomType.Setter
-        public Builder tls(@Nullable Boolean tls) {
-            this.tls = tls;
+        public Builder tls(Boolean tls) {
+            this.tls = Objects.requireNonNull(tls);
             return this;
         }
         public GetServiceIntegrationEndpointRsyslogUserConfig build() {

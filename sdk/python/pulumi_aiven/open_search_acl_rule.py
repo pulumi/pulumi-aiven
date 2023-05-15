@@ -243,13 +243,16 @@ class OpenSearchAclRule(pulumi.CustomResource):
             },
         ]
         os_acl_rule = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({i: v for i, v in acl_rules})]:
-            os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
-                project=os_acls_config.project,
-                service_name=os_acls_config.service_name,
-                username=range["value"]["username"],
-                index=range["value"]["index"],
-                permission=range["value"]["permission"]))
+        def create_os_acl_rule(range_body):
+            for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+                os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                    project=os_acls_config.project,
+                    service_name=os_acls_config.service_name,
+                    username=range["value"]["username"],
+                    index=range["value"]["index"],
+                    permission=range["value"]["permission"]))
+
+        pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import
@@ -322,13 +325,16 @@ class OpenSearchAclRule(pulumi.CustomResource):
             },
         ]
         os_acl_rule = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({i: v for i, v in acl_rules})]:
-            os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
-                project=os_acls_config.project,
-                service_name=os_acls_config.service_name,
-                username=range["value"]["username"],
-                index=range["value"]["index"],
-                permission=range["value"]["permission"]))
+        def create_os_acl_rule(range_body):
+            for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+                os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                    project=os_acls_config.project,
+                    service_name=os_acls_config.service_name,
+                    username=range["value"]["username"],
+                    index=range["value"]["index"],
+                    permission=range["value"]["permission"]))
+
+        pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import

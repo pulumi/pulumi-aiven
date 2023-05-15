@@ -381,7 +381,7 @@ def get_grafana(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    gr1 = aiven.get_grafana(project=data["aiven_project"]["ps1"]["project"],
+    gr1 = aiven.get_grafana(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-gr1")
     ```
 
@@ -439,7 +439,7 @@ def get_grafana_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    gr1 = aiven.get_grafana(project=data["aiven_project"]["ps1"]["project"],
+    gr1 = aiven.get_grafana(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-gr1")
     ```
 

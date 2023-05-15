@@ -11,14 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
-    private @Nullable String authentication;
+    private String authentication;
     private @Nullable String basicAuthPassword;
     private @Nullable String basicAuthUsername;
-    private @Nullable String url;
+    private String url;
 
     private GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig() {}
-    public Optional<String> authentication() {
-        return Optional.ofNullable(this.authentication);
+    public String authentication() {
+        return this.authentication;
     }
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
@@ -26,8 +26,8 @@ public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig
     public Optional<String> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -39,10 +39,10 @@ public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String authentication;
+        private String authentication;
         private @Nullable String basicAuthPassword;
         private @Nullable String basicAuthUsername;
-        private @Nullable String url;
+        private String url;
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -53,8 +53,8 @@ public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig
         }
 
         @CustomType.Setter
-        public Builder authentication(@Nullable String authentication) {
-            this.authentication = authentication;
+        public Builder authentication(String authentication) {
+            this.authentication = Objects.requireNonNull(authentication);
             return this;
         }
         @CustomType.Setter
@@ -68,8 +68,8 @@ public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-            this.url = url;
+        public Builder url(String url) {
+            this.url = Objects.requireNonNull(url);
             return this;
         }
         public GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig build() {

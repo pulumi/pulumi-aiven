@@ -145,7 +145,11 @@ public class Kafka extends com.pulumi.resources.CustomResource {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
+     * @deprecated
+     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
     @Export(name="diskSpace", type=String.class, parameters={})
     private Output</* @Nullable */ String> diskSpace;
 
@@ -213,20 +217,6 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * Kafka server provided values
-     * 
-     */
-    @Export(name="kafka", type=KafkaKafka.class, parameters={})
-    private Output<KafkaKafka> kafka;
-
-    /**
-     * @return Kafka server provided values
-     * 
-     */
-    public Output<KafkaKafka> kafka() {
-        return this.kafka;
-    }
-    /**
      * Kafka user configurable settings
      * 
      */
@@ -241,9 +231,27 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kafkaUserConfig);
     }
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Kafka server provided values
      * 
      */
+    @Export(name="kafkas", type=List.class, parameters={KafkaKafka.class})
+    private Output<List<KafkaKafka>> kafkas;
+
+    /**
+     * @return Kafka server provided values
+     * 
+     */
+    public Output<List<KafkaKafka>> kafkas() {
+        return this.kafkas;
+    }
+    /**
+     * Switch the service to use Karapace for schema registry and REST proxy
+     * 
+     * @deprecated
+     * Usage of this field is discouraged.
+     * 
+     */
+    @Deprecated /* Usage of this field is discouraged. */
     @Export(name="karapace", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> karapace;
 

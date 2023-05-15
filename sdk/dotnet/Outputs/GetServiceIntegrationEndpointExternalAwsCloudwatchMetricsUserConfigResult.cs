@@ -13,20 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult
     {
-        public readonly string? AccessKey;
-        public readonly string? Namespace;
-        public readonly string? Region;
-        public readonly string? SecretKey;
+        public readonly string AccessKey;
+        public readonly string Namespace;
+        public readonly string Region;
+        public readonly string SecretKey;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult(
-            string? accessKey,
+            string accessKey,
 
-            string? @namespace,
+            string @namespace,
 
-            string? region,
+            string region,
 
-            string? secretKey)
+            string secretKey)
         {
             AccessKey = accessKey;
             Namespace = @namespace;

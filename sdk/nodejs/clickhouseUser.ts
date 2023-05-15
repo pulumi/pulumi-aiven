@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+ *  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
  * ```
  */
 export class ClickhouseUser extends pulumi.CustomResource {

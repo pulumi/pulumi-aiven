@@ -19,15 +19,15 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
      * Bootstrap servers.
      * 
      */
-    @Import(name="bootstrapServers")
-    private @Nullable Output<String> bootstrapServers;
+    @Import(name="bootstrapServers", required=true)
+    private Output<String> bootstrapServers;
 
     /**
      * @return Bootstrap servers.
      * 
      */
-    public Optional<Output<String>> bootstrapServers() {
-        return Optional.ofNullable(this.bootstrapServers);
+    public Output<String> bootstrapServers() {
+        return this.bootstrapServers;
     }
 
     /**
@@ -79,15 +79,15 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
      * Security protocol.
      * 
      */
-    @Import(name="securityProtocol")
-    private @Nullable Output<String> securityProtocol;
+    @Import(name="securityProtocol", required=true)
+    private Output<String> securityProtocol;
 
     /**
      * @return Security protocol.
      * 
      */
-    public Optional<Output<String>> securityProtocol() {
-        return Optional.ofNullable(this.securityProtocol);
+    public Output<String> securityProtocol() {
+        return this.securityProtocol;
     }
 
     /**
@@ -188,7 +188,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
          * @return builder
          * 
          */
-        public Builder bootstrapServers(@Nullable Output<String> bootstrapServers) {
+        public Builder bootstrapServers(Output<String> bootstrapServers) {
             $.bootstrapServers = bootstrapServers;
             return this;
         }
@@ -272,7 +272,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
          * @return builder
          * 
          */
-        public Builder securityProtocol(@Nullable Output<String> securityProtocol) {
+        public Builder securityProtocol(Output<String> securityProtocol) {
             $.securityProtocol = securityProtocol;
             return this;
         }
@@ -372,6 +372,8 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         public ServiceIntegrationEndpointExternalKafkaUserConfigArgs build() {
+            $.bootstrapServers = Objects.requireNonNull($.bootstrapServers, "expected parameter 'bootstrapServers' to be non-null");
+            $.securityProtocol = Objects.requireNonNull($.securityProtocol, "expected parameter 'securityProtocol' to be non-null");
             return $;
         }
     }

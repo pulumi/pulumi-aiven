@@ -11,19 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
-    private @Nullable String bootstrapServers;
+    private String bootstrapServers;
     private @Nullable String saslMechanism;
     private @Nullable String saslPlainPassword;
     private @Nullable String saslPlainUsername;
-    private @Nullable String securityProtocol;
+    private String securityProtocol;
     private @Nullable String sslCaCert;
     private @Nullable String sslClientCert;
     private @Nullable String sslClientKey;
     private @Nullable String sslEndpointIdentificationAlgorithm;
 
     private GetServiceIntegrationEndpointExternalKafkaUserConfig() {}
-    public Optional<String> bootstrapServers() {
-        return Optional.ofNullable(this.bootstrapServers);
+    public String bootstrapServers() {
+        return this.bootstrapServers;
     }
     public Optional<String> saslMechanism() {
         return Optional.ofNullable(this.saslMechanism);
@@ -34,8 +34,8 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
     public Optional<String> saslPlainUsername() {
         return Optional.ofNullable(this.saslPlainUsername);
     }
-    public Optional<String> securityProtocol() {
-        return Optional.ofNullable(this.securityProtocol);
+    public String securityProtocol() {
+        return this.securityProtocol;
     }
     public Optional<String> sslCaCert() {
         return Optional.ofNullable(this.sslCaCert);
@@ -59,11 +59,11 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String bootstrapServers;
+        private String bootstrapServers;
         private @Nullable String saslMechanism;
         private @Nullable String saslPlainPassword;
         private @Nullable String saslPlainUsername;
-        private @Nullable String securityProtocol;
+        private String securityProtocol;
         private @Nullable String sslCaCert;
         private @Nullable String sslClientCert;
         private @Nullable String sslClientKey;
@@ -83,8 +83,8 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
         }
 
         @CustomType.Setter
-        public Builder bootstrapServers(@Nullable String bootstrapServers) {
-            this.bootstrapServers = bootstrapServers;
+        public Builder bootstrapServers(String bootstrapServers) {
+            this.bootstrapServers = Objects.requireNonNull(bootstrapServers);
             return this;
         }
         @CustomType.Setter
@@ -103,8 +103,8 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder securityProtocol(@Nullable String securityProtocol) {
-            this.securityProtocol = securityProtocol;
+        public Builder securityProtocol(String securityProtocol) {
+            this.securityProtocol = Objects.requireNonNull(securityProtocol);
             return this;
         }
         @CustomType.Setter

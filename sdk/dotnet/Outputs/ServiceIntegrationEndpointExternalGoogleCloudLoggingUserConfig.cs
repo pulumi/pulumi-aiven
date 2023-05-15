@@ -16,23 +16,23 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Google Cloud Logging log id.
         /// </summary>
-        public readonly string? LogId;
+        public readonly string LogId;
         /// <summary>
         /// GCP project id.
         /// </summary>
-        public readonly string? ProjectId;
+        public readonly string ProjectId;
         /// <summary>
         /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         /// </summary>
-        public readonly string? ServiceAccountCredentials;
+        public readonly string ServiceAccountCredentials;
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(
-            string? logId,
+            string logId,
 
-            string? projectId,
+            string projectId,
 
-            string? serviceAccountCredentials)
+            string serviceAccountCredentials)
         {
             LogId = logId;
             ProjectId = projectId;

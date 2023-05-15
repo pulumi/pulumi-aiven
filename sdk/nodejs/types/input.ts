@@ -727,25 +727,10 @@ export interface KafkaConnectorTask {
 }
 
 export interface KafkaKafka {
-    /**
-     * The Kafka client certificate
-     */
     accessCert?: pulumi.Input<string>;
-    /**
-     * The Kafka client certificate key
-     */
     accessKey?: pulumi.Input<string>;
-    /**
-     * The Kafka Connect URI, if any
-     */
     connectUri?: pulumi.Input<string>;
-    /**
-     * The Kafka REST URI, if any
-     */
     restUri?: pulumi.Input<string>;
-    /**
-     * The Schema Registry URI, if any
-     */
     schemaRegistryUri?: pulumi.Input<string>;
 }
 
@@ -1516,6 +1501,10 @@ export interface OpenSearchOpensearchUserConfig {
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
+     * OpenSearch SAML configuration.
+     */
+    saml?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigSaml>;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
@@ -1607,6 +1596,15 @@ export interface OpenSearchOpensearchUserConfigPublicAccess {
     opensearch?: pulumi.Input<boolean>;
     opensearchDashboards?: pulumi.Input<boolean>;
     prometheus?: pulumi.Input<boolean>;
+}
+
+export interface OpenSearchOpensearchUserConfigSaml {
+    enabled: pulumi.Input<boolean>;
+    idpEntityId: pulumi.Input<string>;
+    idpMetadataUrl: pulumi.Input<string>;
+    rolesKey?: pulumi.Input<string>;
+    spEntityId: pulumi.Input<string>;
+    subjectKey?: pulumi.Input<string>;
 }
 
 export interface OpenSearchServiceIntegration {
@@ -2126,7 +2124,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
      * Datadog API key.
      */
-    datadogApiKey?: pulumi.Input<string>;
+    datadogApiKey: pulumi.Input<string>;
     /**
      * Custom tags provided by user.
      */
@@ -2162,7 +2160,7 @@ export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
      * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey: pulumi.Input<string>;
     /**
      * AWS CloudWatch log group name.
      */
@@ -2170,30 +2168,30 @@ export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
      * AWS region.
      */
-    region?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * AWS secret key.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
      * AWS access key. Required permissions are cloudwatch:PutMetricData.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey: pulumi.Input<string>;
     /**
      * AWS CloudWatch Metrics Namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace: pulumi.Input<string>;
     /**
      * AWS region.
      */
-    region?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * AWS secret key.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
@@ -2208,7 +2206,7 @@ export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * Elasticsearch index prefix. The default value is `logs`.
      */
-    indexPrefix?: pulumi.Input<string>;
+    indexPrefix: pulumi.Input<string>;
     /**
      * Elasticsearch request timeout limit. The default value is `10.0`.
      */
@@ -2216,29 +2214,29 @@ export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * Elasticsearch connection URL.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
      * Google Cloud Logging log id.
      */
-    logId?: pulumi.Input<string>;
+    logId: pulumi.Input<string>;
     /**
      * GCP project id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
      */
-    serviceAccountCredentials?: pulumi.Input<string>;
+    serviceAccountCredentials: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
      * Bootstrap servers.
      */
-    bootstrapServers?: pulumi.Input<string>;
+    bootstrapServers: pulumi.Input<string>;
     /**
      * The list of SASL mechanisms enabled in the Kafka server.
      */
@@ -2254,7 +2252,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
      * Security protocol.
      */
-    securityProtocol?: pulumi.Input<string>;
+    securityProtocol: pulumi.Input<string>;
     /**
      * PEM-encoded CA certificate.
      */
@@ -2285,7 +2283,7 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
      * OpenSearch index prefix. The default value is `logs`.
      */
-    indexPrefix?: pulumi.Input<string>;
+    indexPrefix: pulumi.Input<string>;
     /**
      * OpenSearch request timeout limit. The default value is `10.0`.
      */
@@ -2293,14 +2291,14 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
      * OpenSearch connection URL.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
      * Authentication method.
      */
-    authentication?: pulumi.Input<string>;
+    authentication: pulumi.Input<string>;
     /**
      * Basic authentication password.
      */
@@ -2312,7 +2310,7 @@ export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
      * Schema Registry URL.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
@@ -2349,7 +2347,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
      * message format. The default value is `rfc5424`.
      */
-    format?: pulumi.Input<string>;
+    format: pulumi.Input<string>;
     /**
      * PEM encoded client key.
      */
@@ -2361,7 +2359,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
      * rsyslog server port. The default value is `514`.
      */
-    port?: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * Structured data block for log message.
      */
@@ -2369,26 +2367,11 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
      * rsyslog server IP address or hostname.
      */
-    server?: pulumi.Input<string>;
+    server: pulumi.Input<string>;
     /**
      * Require TLS. The default value is `true`.
      */
-    tls?: pulumi.Input<boolean>;
-}
-
-export interface ServiceIntegrationEndpointSignalfxUserConfig {
-    /**
-     * list of metrics to send.
-     */
-    enabledMetrics?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * SignalFX API key.
-     */
-    signalfxApiKey?: pulumi.Input<string>;
-    /**
-     * SignalFX realm. The default value is `us0`.
-     */
-    signalfxRealm?: pulumi.Input<string>;
+    tls: pulumi.Input<boolean>;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
@@ -2430,7 +2413,7 @@ export interface ServiceIntegrationKafkaLogsUserConfig {
     /**
      * Topic name.
      */
-    kafkaTopic?: pulumi.Input<string>;
+    kafkaTopic: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {

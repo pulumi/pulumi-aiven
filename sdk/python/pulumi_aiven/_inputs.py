@@ -144,6 +144,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigPrivateAccessArgs',
     'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs',
     'OpenSearchOpensearchUserConfigPublicAccessArgs',
+    'OpenSearchOpensearchUserConfigSamlArgs',
     'OpenSearchServiceIntegrationArgs',
     'OpenSearchTagArgs',
     'PgComponentArgs',
@@ -192,7 +193,6 @@ __all__ = [
     'ServiceIntegrationEndpointJolokiaUserConfigArgs',
     'ServiceIntegrationEndpointPrometheusUserConfigArgs',
     'ServiceIntegrationEndpointRsyslogUserConfigArgs',
-    'ServiceIntegrationEndpointSignalfxUserConfigArgs',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs',
@@ -4266,13 +4266,6 @@ class KafkaKafkaArgs:
                  connect_uri: Optional[pulumi.Input[str]] = None,
                  rest_uri: Optional[pulumi.Input[str]] = None,
                  schema_registry_uri: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] access_cert: The Kafka client certificate
-        :param pulumi.Input[str] access_key: The Kafka client certificate key
-        :param pulumi.Input[str] connect_uri: The Kafka Connect URI, if any
-        :param pulumi.Input[str] rest_uri: The Kafka REST URI, if any
-        :param pulumi.Input[str] schema_registry_uri: The Schema Registry URI, if any
-        """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
         if access_key is not None:
@@ -4287,9 +4280,6 @@ class KafkaKafkaArgs:
     @property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kafka client certificate
-        """
         return pulumi.get(self, "access_cert")
 
     @access_cert.setter
@@ -4299,9 +4289,6 @@ class KafkaKafkaArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kafka client certificate key
-        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -4311,9 +4298,6 @@ class KafkaKafkaArgs:
     @property
     @pulumi.getter(name="connectUri")
     def connect_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kafka Connect URI, if any
-        """
         return pulumi.get(self, "connect_uri")
 
     @connect_uri.setter
@@ -4323,9 +4307,6 @@ class KafkaKafkaArgs:
     @property
     @pulumi.getter(name="restUri")
     def rest_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kafka REST URI, if any
-        """
         return pulumi.get(self, "rest_uri")
 
     @rest_uri.setter
@@ -4335,9 +4316,6 @@ class KafkaKafkaArgs:
     @property
     @pulumi.getter(name="schemaRegistryUri")
     def schema_registry_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Schema Registry URI, if any
-        """
         return pulumi.get(self, "schema_registry_uri")
 
     @schema_registry_uri.setter
@@ -8883,6 +8861,7 @@ class OpenSearchOpensearchUserConfigArgs:
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
                  public_access: Optional[pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input['OpenSearchOpensearchUserConfigSamlArgs']] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
@@ -8904,6 +8883,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet.
         :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigSamlArgs'] saml: OpenSearch SAML configuration.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
@@ -8952,6 +8932,8 @@ class OpenSearchOpensearchUserConfigArgs:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
         if static_ips is not None:
@@ -9172,6 +9154,18 @@ class OpenSearchOpensearchUserConfigArgs:
     @recovery_basebackup_name.setter
     def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigSamlArgs']]:
+        """
+        OpenSearch SAML configuration.
+        """
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigSamlArgs']]):
+        pulumi.set(self, "saml", value)
 
     @property
     @pulumi.getter(name="serviceToForkFrom")
@@ -9863,6 +9857,79 @@ class OpenSearchOpensearchUserConfigPublicAccessArgs:
     @prometheus.setter
     def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
+
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigSamlArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 idp_entity_id: pulumi.Input[str],
+                 idp_metadata_url: pulumi.Input[str],
+                 sp_entity_id: pulumi.Input[str],
+                 roles_key: Optional[pulumi.Input[str]] = None,
+                 subject_key: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
+        pulumi.set(__self__, "idp_metadata_url", idp_metadata_url)
+        pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="idpEntityId")
+    def idp_entity_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "idp_entity_id")
+
+    @idp_entity_id.setter
+    def idp_entity_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "idp_entity_id", value)
+
+    @property
+    @pulumi.getter(name="idpMetadataUrl")
+    def idp_metadata_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "idp_metadata_url")
+
+    @idp_metadata_url.setter
+    def idp_metadata_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "idp_metadata_url", value)
+
+    @property
+    @pulumi.getter(name="spEntityId")
+    def sp_entity_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sp_entity_id")
+
+    @sp_entity_id.setter
+    def sp_entity_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sp_entity_id", value)
+
+    @property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "roles_key")
+
+    @roles_key.setter
+    def roles_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "roles_key", value)
+
+    @property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "subject_key")
+
+    @subject_key.setter
+    def subject_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject_key", value)
 
 
 @pulumi.input_type
@@ -12828,7 +12895,7 @@ class ServiceIntegrationDatadogUserConfigOpensearchArgs:
 @pulumi.input_type
 class ServiceIntegrationEndpointDatadogUserConfigArgs:
     def __init__(__self__, *,
-                 datadog_api_key: Optional[pulumi.Input[str]] = None,
+                 datadog_api_key: pulumi.Input[str],
                  datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]] = None,
                  disable_consumer_stats: Optional[pulumi.Input[bool]] = None,
                  kafka_consumer_check_instances: Optional[pulumi.Input[int]] = None,
@@ -12844,8 +12911,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
         :param pulumi.Input[int] max_partition_contexts: Maximum number of partition contexts to send.
         :param pulumi.Input[str] site: Datadog intake site. Defaults to datadoghq.com.
         """
-        if datadog_api_key is not None:
-            pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        pulumi.set(__self__, "datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
@@ -12861,14 +12927,14 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
 
     @property
     @pulumi.getter(name="datadogApiKey")
-    def datadog_api_key(self) -> Optional[pulumi.Input[str]]:
+    def datadog_api_key(self) -> pulumi.Input[str]:
         """
         Datadog API key.
         """
         return pulumi.get(self, "datadog_api_key")
 
     @datadog_api_key.setter
-    def datadog_api_key(self, value: Optional[pulumi.Input[str]]):
+    def datadog_api_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "datadog_api_key", value)
 
     @property
@@ -12975,36 +13041,57 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[str]] = None,
-                 log_group_name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 secret_key: Optional[pulumi.Input[str]] = None):
+                 access_key: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 secret_key: pulumi.Input[str],
+                 log_group_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] access_key: AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
-        :param pulumi.Input[str] log_group_name: AWS CloudWatch log group name.
         :param pulumi.Input[str] region: AWS region.
         :param pulumi.Input[str] secret_key: AWS secret key.
+        :param pulumi.Input[str] log_group_name: AWS CloudWatch log group name.
         """
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
         if log_group_name is not None:
             pulumi.set(__self__, "log_group_name", log_group_name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[str]]:
+    def access_key(self) -> pulumi.Input[str]:
         """
         AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[str]]):
+    def access_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        AWS region.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Input[str]:
+        """
+        AWS secret key.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key", value)
 
     @property
     @pulumi.getter(name="logGroupName")
@@ -13018,127 +13105,121 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     def log_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_group_name", value)
 
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        AWS region.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        AWS secret key.
-        """
-        return pulumi.get(self, "secret_key")
-
-    @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_key", value)
-
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 secret_key: Optional[pulumi.Input[str]] = None):
+                 access_key: pulumi.Input[str],
+                 namespace: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 secret_key: pulumi.Input[str]):
         """
         :param pulumi.Input[str] access_key: AWS access key. Required permissions are cloudwatch:PutMetricData.
         :param pulumi.Input[str] namespace: AWS CloudWatch Metrics Namespace.
         :param pulumi.Input[str] region: AWS region.
         :param pulumi.Input[str] secret_key: AWS secret key.
         """
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[str]]:
+    def access_key(self) -> pulumi.Input[str]:
         """
         AWS access key. Required permissions are cloudwatch:PutMetricData.
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[str]]):
+    def access_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_key", value)
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[str]]:
+    def namespace(self) -> pulumi.Input[str]:
         """
         AWS CloudWatch Metrics Namespace.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[str]]):
+    def namespace(self, value: pulumi.Input[str]):
         pulumi.set(self, "namespace", value)
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
+    def region(self) -> pulumi.Input[str]:
         """
         AWS region.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
+    def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[str]]:
+    def secret_key(self) -> pulumi.Input[str]:
         """
         AWS secret key.
         """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[str]]):
+    def secret_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_key", value)
 
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     def __init__(__self__, *,
+                 index_prefix: pulumi.Input[str],
+                 url: pulumi.Input[str],
                  ca: Optional[pulumi.Input[str]] = None,
                  index_days_max: Optional[pulumi.Input[int]] = None,
-                 index_prefix: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 timeout: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input[str] index_prefix: Elasticsearch index prefix. The default value is `logs`.
+        :param pulumi.Input[str] url: Elasticsearch connection URL.
         :param pulumi.Input[str] ca: PEM encoded CA certificate.
         :param pulumi.Input[int] index_days_max: Maximum number of days of logs to keep. The default value is `3`.
-        :param pulumi.Input[str] index_prefix: Elasticsearch index prefix. The default value is `logs`.
         :param pulumi.Input[float] timeout: Elasticsearch request timeout limit. The default value is `10.0`.
-        :param pulumi.Input[str] url: Elasticsearch connection URL.
         """
+        pulumi.set(__self__, "index_prefix", index_prefix)
+        pulumi.set(__self__, "url", url)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if index_days_max is not None:
             pulumi.set(__self__, "index_days_max", index_days_max)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="indexPrefix")
+    def index_prefix(self) -> pulumi.Input[str]:
+        """
+        Elasticsearch index prefix. The default value is `logs`.
+        """
+        return pulumi.get(self, "index_prefix")
+
+    @index_prefix.setter
+    def index_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "index_prefix", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Elasticsearch connection URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
 
     @property
     @pulumi.getter
@@ -13165,18 +13246,6 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
         pulumi.set(self, "index_days_max", value)
 
     @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Elasticsearch index prefix. The default value is `logs`.
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @index_prefix.setter
-    def index_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "index_prefix", value)
-
-    @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[float]]:
         """
@@ -13188,107 +13257,90 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     def timeout(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "timeout", value)
 
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Elasticsearch connection URL.
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
-
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
     def __init__(__self__, *,
-                 log_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 service_account_credentials: Optional[pulumi.Input[str]] = None):
+                 log_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 service_account_credentials: pulumi.Input[str]):
         """
         :param pulumi.Input[str] log_id: Google Cloud Logging log id.
         :param pulumi.Input[str] project_id: GCP project id.
         :param pulumi.Input[str] service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         """
-        if log_id is not None:
-            pulumi.set(__self__, "log_id", log_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if service_account_credentials is not None:
-            pulumi.set(__self__, "service_account_credentials", service_account_credentials)
+        pulumi.set(__self__, "log_id", log_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "service_account_credentials", service_account_credentials)
 
     @property
     @pulumi.getter(name="logId")
-    def log_id(self) -> Optional[pulumi.Input[str]]:
+    def log_id(self) -> pulumi.Input[str]:
         """
         Google Cloud Logging log id.
         """
         return pulumi.get(self, "log_id")
 
     @log_id.setter
-    def log_id(self, value: Optional[pulumi.Input[str]]):
+    def log_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "log_id", value)
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    def project_id(self) -> pulumi.Input[str]:
         """
         GCP project id.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
+    def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="serviceAccountCredentials")
-    def service_account_credentials(self) -> Optional[pulumi.Input[str]]:
+    def service_account_credentials(self) -> pulumi.Input[str]:
         """
         This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
         """
         return pulumi.get(self, "service_account_credentials")
 
     @service_account_credentials.setter
-    def service_account_credentials(self, value: Optional[pulumi.Input[str]]):
+    def service_account_credentials(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_account_credentials", value)
 
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     def __init__(__self__, *,
-                 bootstrap_servers: Optional[pulumi.Input[str]] = None,
+                 bootstrap_servers: pulumi.Input[str],
+                 security_protocol: pulumi.Input[str],
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_plain_password: Optional[pulumi.Input[str]] = None,
                  sasl_plain_username: Optional[pulumi.Input[str]] = None,
-                 security_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_ca_cert: Optional[pulumi.Input[str]] = None,
                  ssl_client_cert: Optional[pulumi.Input[str]] = None,
                  ssl_client_key: Optional[pulumi.Input[str]] = None,
                  ssl_endpoint_identification_algorithm: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bootstrap_servers: Bootstrap servers.
+        :param pulumi.Input[str] security_protocol: Security protocol.
         :param pulumi.Input[str] sasl_mechanism: The list of SASL mechanisms enabled in the Kafka server.
         :param pulumi.Input[str] sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server.
         :param pulumi.Input[str] sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server.
-        :param pulumi.Input[str] security_protocol: Security protocol.
         :param pulumi.Input[str] ssl_ca_cert: PEM-encoded CA certificate.
         :param pulumi.Input[str] ssl_client_cert: PEM-encoded client certificate.
         :param pulumi.Input[str] ssl_client_key: PEM-encoded client key.
         :param pulumi.Input[str] ssl_endpoint_identification_algorithm: The endpoint identification algorithm to validate server hostname using server certificate.
         """
-        if bootstrap_servers is not None:
-            pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "security_protocol", security_protocol)
         if sasl_mechanism is not None:
             pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
         if sasl_plain_password is not None:
             pulumi.set(__self__, "sasl_plain_password", sasl_plain_password)
         if sasl_plain_username is not None:
             pulumi.set(__self__, "sasl_plain_username", sasl_plain_username)
-        if security_protocol is not None:
-            pulumi.set(__self__, "security_protocol", security_protocol)
         if ssl_ca_cert is not None:
             pulumi.set(__self__, "ssl_ca_cert", ssl_ca_cert)
         if ssl_client_cert is not None:
@@ -13300,15 +13352,27 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
 
     @property
     @pulumi.getter(name="bootstrapServers")
-    def bootstrap_servers(self) -> Optional[pulumi.Input[str]]:
+    def bootstrap_servers(self) -> pulumi.Input[str]:
         """
         Bootstrap servers.
         """
         return pulumi.get(self, "bootstrap_servers")
 
     @bootstrap_servers.setter
-    def bootstrap_servers(self, value: Optional[pulumi.Input[str]]):
+    def bootstrap_servers(self, value: pulumi.Input[str]):
         pulumi.set(self, "bootstrap_servers", value)
+
+    @property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> pulumi.Input[str]:
+        """
+        Security protocol.
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @security_protocol.setter
+    def security_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "security_protocol", value)
 
     @property
     @pulumi.getter(name="saslMechanism")
@@ -13345,18 +13409,6 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @sasl_plain_username.setter
     def sasl_plain_username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sasl_plain_username", value)
-
-    @property
-    @pulumi.getter(name="securityProtocol")
-    def security_protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Security protocol.
-        """
-        return pulumi.get(self, "security_protocol")
-
-    @security_protocol.setter
-    def security_protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "security_protocol", value)
 
     @property
     @pulumi.getter(name="sslCaCert")
@@ -13410,28 +13462,50 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
     def __init__(__self__, *,
+                 index_prefix: pulumi.Input[str],
+                 url: pulumi.Input[str],
                  ca: Optional[pulumi.Input[str]] = None,
                  index_days_max: Optional[pulumi.Input[int]] = None,
-                 index_prefix: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 timeout: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input[str] index_prefix: OpenSearch index prefix. The default value is `logs`.
+        :param pulumi.Input[str] url: OpenSearch connection URL.
         :param pulumi.Input[str] ca: PEM encoded CA certificate.
         :param pulumi.Input[int] index_days_max: Maximum number of days of logs to keep. The default value is `3`.
-        :param pulumi.Input[str] index_prefix: OpenSearch index prefix. The default value is `logs`.
         :param pulumi.Input[float] timeout: OpenSearch request timeout limit. The default value is `10.0`.
-        :param pulumi.Input[str] url: OpenSearch connection URL.
         """
+        pulumi.set(__self__, "index_prefix", index_prefix)
+        pulumi.set(__self__, "url", url)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if index_days_max is not None:
             pulumi.set(__self__, "index_days_max", index_days_max)
-        if index_prefix is not None:
-            pulumi.set(__self__, "index_prefix", index_prefix)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="indexPrefix")
+    def index_prefix(self) -> pulumi.Input[str]:
+        """
+        OpenSearch index prefix. The default value is `logs`.
+        """
+        return pulumi.get(self, "index_prefix")
+
+    @index_prefix.setter
+    def index_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "index_prefix", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        OpenSearch connection URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
 
     @property
     @pulumi.getter
@@ -13458,18 +13532,6 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
         pulumi.set(self, "index_days_max", value)
 
     @property
-    @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        OpenSearch index prefix. The default value is `logs`.
-        """
-        return pulumi.get(self, "index_prefix")
-
-    @index_prefix.setter
-    def index_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "index_prefix", value)
-
-    @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[float]]:
         """
@@ -13481,52 +13543,50 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
     def timeout(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "timeout", value)
 
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        OpenSearch connection URL.
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
-
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input[str]] = None,
+                 authentication: pulumi.Input[str],
+                 url: pulumi.Input[str],
                  basic_auth_password: Optional[pulumi.Input[str]] = None,
-                 basic_auth_username: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 basic_auth_username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] authentication: Authentication method.
+        :param pulumi.Input[str] url: Schema Registry URL.
         :param pulumi.Input[str] basic_auth_password: Basic authentication password.
         :param pulumi.Input[str] basic_auth_username: Basic authentication user name.
-        :param pulumi.Input[str] url: Schema Registry URL.
         """
-        if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "url", url)
         if basic_auth_password is not None:
             pulumi.set(__self__, "basic_auth_password", basic_auth_password)
         if basic_auth_username is not None:
             pulumi.set(__self__, "basic_auth_username", basic_auth_username)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input[str]]:
+    def authentication(self) -> pulumi.Input[str]:
         """
         Authentication method.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input[str]]):
+    def authentication(self, value: pulumi.Input[str]):
         pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Schema Registry URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
 
     @property
     @pulumi.getter(name="basicAuthPassword")
@@ -13551,18 +13611,6 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @basic_auth_username.setter
     def basic_auth_username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "basic_auth_username", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Schema Registry URL.
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
@@ -13646,44 +13694,88 @@ class ServiceIntegrationEndpointPrometheusUserConfigArgs:
 @pulumi.input_type
 class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 server: pulumi.Input[str],
+                 tls: pulumi.Input[bool],
                  ca: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  logline: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
-                 sd: Optional[pulumi.Input[str]] = None,
-                 server: Optional[pulumi.Input[str]] = None,
-                 tls: Optional[pulumi.Input[bool]] = None):
+                 sd: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ca: PEM encoded CA certificate.
-        :param pulumi.Input[str] cert: PEM encoded client certificate.
         :param pulumi.Input[str] format: message format. The default value is `rfc5424`.
-        :param pulumi.Input[str] key: PEM encoded client key.
-        :param pulumi.Input[str] logline: custom syslog message format.
         :param pulumi.Input[int] port: rsyslog server port. The default value is `514`.
-        :param pulumi.Input[str] sd: Structured data block for log message.
         :param pulumi.Input[str] server: rsyslog server IP address or hostname.
         :param pulumi.Input[bool] tls: Require TLS. The default value is `true`.
+        :param pulumi.Input[str] ca: PEM encoded CA certificate.
+        :param pulumi.Input[str] cert: PEM encoded client certificate.
+        :param pulumi.Input[str] key: PEM encoded client key.
+        :param pulumi.Input[str] logline: custom syslog message format.
+        :param pulumi.Input[str] sd: Structured data block for log message.
         """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "tls", tls)
         if ca is not None:
             pulumi.set(__self__, "ca", ca)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
-        if format is not None:
-            pulumi.set(__self__, "format", format)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if logline is not None:
             pulumi.set(__self__, "logline", logline)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if sd is not None:
             pulumi.set(__self__, "sd", sd)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
-        if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        """
+        message format. The default value is `rfc5424`.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        rsyslog server port. The default value is `514`.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[str]:
+        """
+        rsyslog server IP address or hostname.
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> pulumi.Input[bool]:
+        """
+        Require TLS. The default value is `true`.
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "tls", value)
 
     @property
     @pulumi.getter
@@ -13711,18 +13803,6 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[str]]:
-        """
-        message format. The default value is `rfc5424`.
-        """
-        return pulumi.get(self, "format")
-
-    @format.setter
-    def format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "format", value)
-
-    @property
-    @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
         PEM encoded client key.
@@ -13747,18 +13827,6 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        rsyslog server port. The default value is `514`.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
     def sd(self) -> Optional[pulumi.Input[str]]:
         """
         Structured data block for log message.
@@ -13768,85 +13836,6 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @sd.setter
     def sd(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sd", value)
-
-    @property
-    @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[str]]:
-        """
-        rsyslog server IP address or hostname.
-        """
-        return pulumi.get(self, "server")
-
-    @server.setter
-    def server(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "server", value)
-
-    @property
-    @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Require TLS. The default value is `true`.
-        """
-        return pulumi.get(self, "tls")
-
-    @tls.setter
-    def tls(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "tls", value)
-
-
-@pulumi.input_type
-class ServiceIntegrationEndpointSignalfxUserConfigArgs:
-    def __init__(__self__, *,
-                 enabled_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 signalfx_api_key: Optional[pulumi.Input[str]] = None,
-                 signalfx_realm: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_metrics: list of metrics to send.
-        :param pulumi.Input[str] signalfx_api_key: SignalFX API key.
-        :param pulumi.Input[str] signalfx_realm: SignalFX realm. The default value is `us0`.
-        """
-        if enabled_metrics is not None:
-            pulumi.set(__self__, "enabled_metrics", enabled_metrics)
-        if signalfx_api_key is not None:
-            pulumi.set(__self__, "signalfx_api_key", signalfx_api_key)
-        if signalfx_realm is not None:
-            pulumi.set(__self__, "signalfx_realm", signalfx_realm)
-
-    @property
-    @pulumi.getter(name="enabledMetrics")
-    def enabled_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        list of metrics to send.
-        """
-        return pulumi.get(self, "enabled_metrics")
-
-    @enabled_metrics.setter
-    def enabled_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "enabled_metrics", value)
-
-    @property
-    @pulumi.getter(name="signalfxApiKey")
-    def signalfx_api_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        SignalFX API key.
-        """
-        return pulumi.get(self, "signalfx_api_key")
-
-    @signalfx_api_key.setter
-    def signalfx_api_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "signalfx_api_key", value)
-
-    @property
-    @pulumi.getter(name="signalfxRealm")
-    def signalfx_realm(self) -> Optional[pulumi.Input[str]]:
-        """
-        SignalFX realm. The default value is `us0`.
-        """
-        return pulumi.get(self, "signalfx_realm")
-
-    @signalfx_realm.setter
-    def signalfx_realm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "signalfx_realm", value)
 
 
 @pulumi.input_type
@@ -14021,23 +14010,22 @@ class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs:
 @pulumi.input_type
 class ServiceIntegrationKafkaLogsUserConfigArgs:
     def __init__(__self__, *,
-                 kafka_topic: Optional[pulumi.Input[str]] = None):
+                 kafka_topic: pulumi.Input[str]):
         """
         :param pulumi.Input[str] kafka_topic: Topic name.
         """
-        if kafka_topic is not None:
-            pulumi.set(__self__, "kafka_topic", kafka_topic)
+        pulumi.set(__self__, "kafka_topic", kafka_topic)
 
     @property
     @pulumi.getter(name="kafkaTopic")
-    def kafka_topic(self) -> Optional[pulumi.Input[str]]:
+    def kafka_topic(self) -> pulumi.Input[str]:
         """
         Topic name.
         """
         return pulumi.get(self, "kafka_topic")
 
     @kafka_topic.setter
-    def kafka_topic(self, value: Optional[pulumi.Input[str]]):
+    def kafka_topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "kafka_topic", value)
 
 

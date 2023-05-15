@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointDatadogUserConfig {
-    private @Nullable String datadogApiKey;
+    private String datadogApiKey;
     private @Nullable List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
     private @Nullable Boolean disableConsumerStats;
     private @Nullable Integer kafkaConsumerCheckInstances;
@@ -24,8 +24,8 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
     private @Nullable String site;
 
     private GetServiceIntegrationEndpointDatadogUserConfig() {}
-    public Optional<String> datadogApiKey() {
-        return Optional.ofNullable(this.datadogApiKey);
+    public String datadogApiKey() {
+        return this.datadogApiKey;
     }
     public List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags() {
         return this.datadogTags == null ? List.of() : this.datadogTags;
@@ -55,7 +55,7 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String datadogApiKey;
+        private String datadogApiKey;
         private @Nullable List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable Boolean disableConsumerStats;
         private @Nullable Integer kafkaConsumerCheckInstances;
@@ -75,8 +75,8 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
         }
 
         @CustomType.Setter
-        public Builder datadogApiKey(@Nullable String datadogApiKey) {
-            this.datadogApiKey = datadogApiKey;
+        public Builder datadogApiKey(String datadogApiKey) {
+            this.datadogApiKey = Objects.requireNonNull(datadogApiKey);
             return this;
         }
         @CustomType.Setter

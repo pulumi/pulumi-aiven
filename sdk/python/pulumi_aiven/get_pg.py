@@ -381,7 +381,7 @@ def get_pg(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    pg = aiven.get_pg(project=data["aiven_project"]["pr1"]["project"],
+    pg = aiven.get_pg(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-pg1")
     ```
 
@@ -439,7 +439,7 @@ def get_pg_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    pg = aiven.get_pg(project=data["aiven_project"]["pr1"]["project"],
+    pg = aiven.get_pg(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         service_name="my-pg1")
     ```
 
