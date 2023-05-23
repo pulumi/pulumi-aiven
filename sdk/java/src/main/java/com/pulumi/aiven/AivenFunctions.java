@@ -96,6 +96,10 @@ import com.pulumi.aiven.inputs.GetOpenSearchArgs;
 import com.pulumi.aiven.inputs.GetOpenSearchPlainArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationArgs;
+import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
+import com.pulumi.aiven.inputs.GetOrganizationalUnitPlainArgs;
 import com.pulumi.aiven.inputs.GetPgArgs;
 import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
 import com.pulumi.aiven.inputs.GetPgDatabasePlainArgs;
@@ -166,6 +170,8 @@ import com.pulumi.aiven.outputs.GetOpenSearchAclConfigResult;
 import com.pulumi.aiven.outputs.GetOpenSearchAclRuleResult;
 import com.pulumi.aiven.outputs.GetOpenSearchResult;
 import com.pulumi.aiven.outputs.GetOpensearchUserResult;
+import com.pulumi.aiven.outputs.GetOrganizationResult;
+import com.pulumi.aiven.outputs.GetOrganizationalUnitResult;
 import com.pulumi.aiven.outputs.GetPgDatabaseResult;
 import com.pulumi.aiven.outputs.GetPgResult;
 import com.pulumi.aiven.outputs.GetPgUserResult;
@@ -6420,6 +6426,310 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetOpensearchUserResult> getOpensearchUserPlain(GetOpensearchUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpensearchUser:getOpensearchUser", TypeShape.of(GetOpensearchUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organization data source provides information about the existing Aiven Organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organization1 = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
+        return getOrganization(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Organization data source provides information about the existing Aiven Organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organization1 = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
+        return getOrganizationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Organization data source provides information about the existing Aiven Organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organization1 = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organization data source provides information about the existing Aiven Organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organization1 = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATION_NAME&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organizationalUnit1 = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATIONAL_UNIT_NAME&gt;&#34;)
+     *             .parentId(&#34;&lt;ORGANIZATION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args) {
+        return getOrganizationalUnit(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organizationalUnit1 = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATIONAL_UNIT_NAME&gt;&#34;)
+     *             .parentId(&#34;&lt;ORGANIZATION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationalUnitResult> getOrganizationalUnitPlain(GetOrganizationalUnitPlainArgs args) {
+        return getOrganizationalUnitPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organizationalUnit1 = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATIONAL_UNIT_NAME&gt;&#34;)
+     *             .parentId(&#34;&lt;ORGANIZATION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var organizationalUnit1 = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .name(&#34;&lt;ORGANIZATIONAL_UNIT_NAME&gt;&#34;)
+     *             .parentId(&#34;&lt;ORGANIZATION_ID&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationalUnitResult> getOrganizationalUnitPlain(GetOrganizationalUnitPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The PG data source provides information about the existing Aiven PostgreSQL service.

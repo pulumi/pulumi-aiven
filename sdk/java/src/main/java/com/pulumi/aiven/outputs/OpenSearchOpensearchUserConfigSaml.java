@@ -15,6 +15,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
     private Boolean enabled;
     private String idpEntityId;
     private String idpMetadataUrl;
+    private @Nullable String idpPemtrustedcasContent;
     private @Nullable String rolesKey;
     private String spEntityId;
     private @Nullable String subjectKey;
@@ -28,6 +29,9 @@ public final class OpenSearchOpensearchUserConfigSaml {
     }
     public String idpMetadataUrl() {
         return this.idpMetadataUrl;
+    }
+    public Optional<String> idpPemtrustedcasContent() {
+        return Optional.ofNullable(this.idpPemtrustedcasContent);
     }
     public Optional<String> rolesKey() {
         return Optional.ofNullable(this.rolesKey);
@@ -51,6 +55,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
         private Boolean enabled;
         private String idpEntityId;
         private String idpMetadataUrl;
+        private @Nullable String idpPemtrustedcasContent;
         private @Nullable String rolesKey;
         private String spEntityId;
         private @Nullable String subjectKey;
@@ -60,6 +65,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
     	      this.enabled = defaults.enabled;
     	      this.idpEntityId = defaults.idpEntityId;
     	      this.idpMetadataUrl = defaults.idpMetadataUrl;
+    	      this.idpPemtrustedcasContent = defaults.idpPemtrustedcasContent;
     	      this.rolesKey = defaults.rolesKey;
     	      this.spEntityId = defaults.spEntityId;
     	      this.subjectKey = defaults.subjectKey;
@@ -78,6 +84,11 @@ public final class OpenSearchOpensearchUserConfigSaml {
         @CustomType.Setter
         public Builder idpMetadataUrl(String idpMetadataUrl) {
             this.idpMetadataUrl = Objects.requireNonNull(idpMetadataUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idpPemtrustedcasContent(@Nullable String idpPemtrustedcasContent) {
+            this.idpPemtrustedcasContent = idpPemtrustedcasContent;
             return this;
         }
         @CustomType.Setter
@@ -100,6 +111,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
             o.enabled = enabled;
             o.idpEntityId = idpEntityId;
             o.idpMetadataUrl = idpMetadataUrl;
+            o.idpPemtrustedcasContent = idpPemtrustedcasContent;
             o.rolesKey = rolesKey;
             o.spEntityId = spEntityId;
             o.subjectKey = subjectKey;

@@ -47,16 +47,24 @@ type Account struct {
 	pulumi.CustomResourceState
 
 	// Account id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If true, user is part of the owners team for this account
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	IsAccountOwner pulumi.BoolOutput `pulumi:"isAccountOwner"`
 	// Account name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Owner team id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	OwnerTeamId pulumi.StringOutput `pulumi:"ownerTeamId"`
 	// Billing group id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	PrimaryBillingGroupId pulumi.StringPtrOutput `pulumi:"primaryBillingGroupId"`
 	// Tenant id
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
@@ -94,16 +102,24 @@ func GetAccount(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
 	// Account id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.
 	AccountId *string `pulumi:"accountId"`
 	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
 	// If true, user is part of the owners team for this account
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	IsAccountOwner *bool `pulumi:"isAccountOwner"`
 	// Account name
 	Name *string `pulumi:"name"`
 	// Owner team id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	OwnerTeamId *string `pulumi:"ownerTeamId"`
 	// Billing group id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	PrimaryBillingGroupId *string `pulumi:"primaryBillingGroupId"`
 	// Tenant id
 	TenantId *string `pulumi:"tenantId"`
@@ -113,16 +129,24 @@ type accountState struct {
 
 type AccountState struct {
 	// Account id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.
 	AccountId pulumi.StringPtrInput
 	// Time of creation
 	CreateTime pulumi.StringPtrInput
 	// If true, user is part of the owners team for this account
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	IsAccountOwner pulumi.BoolPtrInput
 	// Account name
 	Name pulumi.StringPtrInput
 	// Owner team id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	OwnerTeamId pulumi.StringPtrInput
 	// Billing group id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	PrimaryBillingGroupId pulumi.StringPtrInput
 	// Tenant id
 	TenantId pulumi.StringPtrInput
@@ -138,6 +162,8 @@ type accountArgs struct {
 	// Account name
 	Name *string `pulumi:"name"`
 	// Billing group id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	PrimaryBillingGroupId *string `pulumi:"primaryBillingGroupId"`
 }
 
@@ -146,6 +172,8 @@ type AccountArgs struct {
 	// Account name
 	Name pulumi.StringPtrInput
 	// Billing group id
+	//
+	// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 	PrimaryBillingGroupId pulumi.StringPtrInput
 }
 
@@ -237,6 +265,8 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 }
 
 // Account id
+//
+// Deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.
 func (o AccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -247,6 +277,8 @@ func (o AccountOutput) CreateTime() pulumi.StringOutput {
 }
 
 // If true, user is part of the owners team for this account
+//
+// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 func (o AccountOutput) IsAccountOwner() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.IsAccountOwner }).(pulumi.BoolOutput)
 }
@@ -257,11 +289,15 @@ func (o AccountOutput) Name() pulumi.StringOutput {
 }
 
 // Owner team id
+//
+// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 func (o AccountOutput) OwnerTeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.OwnerTeamId }).(pulumi.StringOutput)
 }
 
 // Billing group id
+//
+// Deprecated: The new aiven_organization resource won't have it, and will not have a replacement.
 func (o AccountOutput) PrimaryBillingGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.PrimaryBillingGroupId }).(pulumi.StringPtrOutput)
 }

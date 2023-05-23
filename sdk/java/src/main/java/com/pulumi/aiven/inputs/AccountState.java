@@ -19,14 +19,22 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * Account id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, use the built-in ID field instead.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, use the built-in ID field instead. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, use the built-in ID field instead.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, use the built-in ID field instead. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -49,14 +57,22 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, user is part of the owners team for this account
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     @Import(name="isAccountOwner")
     private @Nullable Output<Boolean> isAccountOwner;
 
     /**
      * @return If true, user is part of the owners team for this account
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     public Optional<Output<Boolean>> isAccountOwner() {
         return Optional.ofNullable(this.isAccountOwner);
     }
@@ -79,14 +95,22 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * Owner team id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     @Import(name="ownerTeamId")
     private @Nullable Output<String> ownerTeamId;
 
     /**
      * @return Owner team id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     public Optional<Output<String>> ownerTeamId() {
         return Optional.ofNullable(this.ownerTeamId);
     }
@@ -94,14 +118,22 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * Billing group id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     @Import(name="primaryBillingGroupId")
     private @Nullable Output<String> primaryBillingGroupId;
 
     /**
      * @return Billing group id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     public Optional<Output<String>> primaryBillingGroupId() {
         return Optional.ofNullable(this.primaryBillingGroupId);
     }
@@ -172,7 +204,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, use the built-in ID field instead.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, use the built-in ID field instead. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -183,7 +219,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, use the built-in ID field instead.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, use the built-in ID field instead. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -214,7 +254,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
         public Builder isAccountOwner(@Nullable Output<Boolean> isAccountOwner) {
             $.isAccountOwner = isAccountOwner;
             return this;
@@ -225,7 +269,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
         public Builder isAccountOwner(Boolean isAccountOwner) {
             return isAccountOwner(Output.of(isAccountOwner));
         }
@@ -256,7 +304,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
         public Builder ownerTeamId(@Nullable Output<String> ownerTeamId) {
             $.ownerTeamId = ownerTeamId;
             return this;
@@ -267,7 +319,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
         public Builder ownerTeamId(String ownerTeamId) {
             return ownerTeamId(Output.of(ownerTeamId));
         }
@@ -277,7 +333,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
         public Builder primaryBillingGroupId(@Nullable Output<String> primaryBillingGroupId) {
             $.primaryBillingGroupId = primaryBillingGroupId;
             return this;
@@ -288,7 +348,11 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * 
          */
+        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
         public Builder primaryBillingGroupId(String primaryBillingGroupId) {
             return primaryBillingGroupId(Output.of(primaryBillingGroupId));
         }

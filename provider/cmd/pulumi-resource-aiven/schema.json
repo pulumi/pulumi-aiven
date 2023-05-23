@@ -3570,6 +3570,9 @@
                 "idpMetadataUrl": {
                     "type": "string"
                 },
+                "idpPemtrustedcasContent": {
+                    "type": "string"
+                },
                 "rolesKey": {
                     "type": "string"
                 },
@@ -4791,7 +4794,7 @@
                 },
                 "saslMechanism": {
                     "type": "string",
-                    "description": "The list of SASL mechanisms enabled in the Kafka server.\n"
+                    "description": "SASL mechanism used for connections to the Kafka server.\n"
                 },
                 "saslPlainPassword": {
                     "type": "string",
@@ -8957,6 +8960,9 @@
                 "idpMetadataUrl": {
                     "type": "string"
                 },
+                "idpPemtrustedcasContent": {
+                    "type": "string"
+                },
                 "rolesKey": {
                     "type": "string"
                 },
@@ -10609,7 +10615,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account id\n"
+                    "description": "Account id\n",
+                    "deprecationMessage": "The new aiven_organization resource won't have it, use the built-in ID field instead."
                 },
                 "createTime": {
                     "type": "string",
@@ -10617,7 +10624,8 @@
                 },
                 "isAccountOwner": {
                     "type": "boolean",
-                    "description": "If true, user is part of the owners team for this account\n"
+                    "description": "If true, user is part of the owners team for this account\n",
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                 },
                 "name": {
                     "type": "string",
@@ -10625,11 +10633,13 @@
                 },
                 "ownerTeamId": {
                     "type": "string",
-                    "description": "Owner team id\n"
+                    "description": "Owner team id\n",
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                 },
                 "primaryBillingGroupId": {
                     "type": "string",
-                    "description": "Billing group id\n"
+                    "description": "Billing group id\n",
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                 },
                 "tenantId": {
                     "type": "string",
@@ -10657,6 +10667,7 @@
                 "primaryBillingGroupId": {
                     "type": "string",
                     "description": "Billing group id\n",
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement.",
                     "willReplaceOnChanges": true
                 }
             },
@@ -10665,7 +10676,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account id\n"
+                        "description": "Account id\n",
+                        "deprecationMessage": "The new aiven_organization resource won't have it, use the built-in ID field instead."
                     },
                     "createTime": {
                         "type": "string",
@@ -10673,7 +10685,8 @@
                     },
                     "isAccountOwner": {
                         "type": "boolean",
-                        "description": "If true, user is part of the owners team for this account\n"
+                        "description": "If true, user is part of the owners team for this account\n",
+                        "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                     },
                     "name": {
                         "type": "string",
@@ -10681,11 +10694,13 @@
                     },
                     "ownerTeamId": {
                         "type": "string",
-                        "description": "Owner team id\n"
+                        "description": "Owner team id\n",
+                        "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                     },
                     "primaryBillingGroupId": {
                         "type": "string",
                         "description": "Billing group id\n",
+                        "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement.",
                         "willReplaceOnChanges": true
                     },
                     "tenantId": {
@@ -18998,6 +19013,132 @@
                 "type": "object"
             }
         },
+        "aiven:index/organization:Organization": {
+            "description": "The Organization resource allows the creation and management of an Aiven Organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst organization1 = new aiven.Organization(\"organization1\", {});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\norganization1 = aiven.Organization(\"organization1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var organization1 = new Aiven.Organization(\"organization1\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganization(ctx, \"organization1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Organization;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var organization1 = new Organization(\"organization1\");\n\n    }\n}\n```\n```yaml\nresources:\n  organization1:\n    type: aiven:Organization\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/organization:Organization organization1 organization_id\n```\n\n ",
+            "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "Time of creation\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Organization name\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Tenant ID\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "Time of last update\n"
+                }
+            },
+            "required": [
+                "createTime",
+                "name",
+                "tenantId",
+                "updateTime"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Organization name\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Organization resources.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "Tenant ID\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of last update\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/organizationalUnit:OrganizationalUnit": {
+            "description": "The Organizational Unit resource allows the creation and management of Aiven Organizational Units.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst organizationalUnit1 = new aiven.OrganizationalUnit(\"organizationalUnit1\", {parentId: \"\u003cORGANIZATION_ID\u003e\"});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\norganizational_unit1 = aiven.OrganizationalUnit(\"organizationalUnit1\", parent_id=\"\u003cORGANIZATION_ID\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var organizationalUnit1 = new Aiven.OrganizationalUnit(\"organizationalUnit1\", new()\n    {\n        ParentId = \"\u003cORGANIZATION_ID\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganizationalUnit(ctx, \"organizationalUnit1\", \u0026aiven.OrganizationalUnitArgs{\n\t\t\tParentId: pulumi.String(\"\u003cORGANIZATION_ID\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationalUnit;\nimport com.pulumi.aiven.OrganizationalUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var organizationalUnit1 = new OrganizationalUnit(\"organizationalUnit1\", OrganizationalUnitArgs.builder()        \n            .parentId(\"\u003cORGANIZATION_ID\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  organizationalUnit1:\n    type: aiven:OrganizationalUnit\n    properties:\n      parentId: \u003cORGANIZATION_ID\u003e\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id\n```\n\n ",
+            "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "Time of creation\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Organizational Unit name\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "Parent ID\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Tenant ID\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "Time of last update\n"
+                }
+            },
+            "required": [
+                "createTime",
+                "name",
+                "parentId",
+                "tenantId",
+                "updateTime"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Organizational Unit name\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "Parent ID\n"
+                }
+            },
+            "requiredInputs": [
+                "parentId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationalUnit resources.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Organizational Unit name\n"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "Parent ID\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "Tenant ID\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of last update\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/pg:Pg": {
             "description": "The PG resource allows the creation and management of Aiven PostgreSQL services.\n\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/pg:Pg pg project/service_name\n```\n\n ",
             "properties": {
@@ -26181,6 +26322,109 @@
                     "serviceName",
                     "type",
                     "username",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getOrganization:getOrganization": {
+            "description": "The Organization data source provides information about the existing Aiven Organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst organization1 = aiven.getOrganization({\n    name: \"\u003cORGANIZATION_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\norganization1 = aiven.get_organization(name=\"\u003cORGANIZATION_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var organization1 = Aiven.GetOrganization.Invoke(new()\n    {\n        Name = \"\u003cORGANIZATION_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganization(ctx, \u0026aiven.LookupOrganizationArgs{\n\t\t\tName: \"\u003cORGANIZATION_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var organization1 = AivenFunctions.getOrganization(GetOrganizationArgs.builder()\n            .name(\"\u003cORGANIZATION_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  organization1:\n    fn::invoke:\n      Function: aiven:getOrganization\n      Arguments:\n        name: \u003cORGANIZATION_NAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganization.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganization.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "Tenant ID\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of last update\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createTime",
+                    "name",
+                    "tenantId",
+                    "updateTime",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
+            "description": "The Organizational Unit data source provides information about the existing Aiven Organizational Unit.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var organizationalUnit1 = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()\n            .name(\"\u003cORGANIZATIONAL_UNIT_NAME\u003e\")\n            .parentId(\"\u003cORGANIZATION_ID\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  organizationalUnit1:\n    fn::invoke:\n      Function: aiven:getOrganizationalUnit\n      Arguments:\n        name: \u003cORGANIZATIONAL_UNIT_NAME\u003e\n        parentId: \u003cORGANIZATION_ID\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationalUnit.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Organizational Unit name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationalUnit.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Organizational Unit name\n"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "Parent ID\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "Tenant ID\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of last update\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createTime",
+                    "name",
+                    "parentId",
+                    "tenantId",
+                    "updateTime",
                     "id"
                 ]
             }

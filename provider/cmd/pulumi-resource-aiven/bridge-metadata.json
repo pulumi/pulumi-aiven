@@ -898,6 +898,12 @@
             "aiven_opensearch_user": {
                 "current": "aiven:index/opensearchUser:OpensearchUser"
             },
+            "aiven_organization": {
+                "current": "aiven:index/organization:Organization"
+            },
+            "aiven_organizational_unit": {
+                "current": "aiven:index/organizationalUnit:OrganizationalUnit"
+            },
             "aiven_pg": {
                 "current": "aiven:index/pg:Pg",
                 "fields": {
@@ -1374,6 +1380,12 @@
             "aiven_opensearch_user": {
                 "current": "aiven:index/getOpensearchUser:getOpensearchUser"
             },
+            "aiven_organization": {
+                "current": "aiven:index/getOrganization:getOrganization"
+            },
+            "aiven_organizational_unit": {
+                "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit"
+            },
             "aiven_pg": {
                 "current": "aiven:index/getPg:getPg"
             },
@@ -1462,6 +1474,8 @@
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": "aiven_opensearch_acl_config",
             "aiven:index/openSearchAclRule:OpenSearchAclRule": "aiven_opensearch_acl_rule",
             "aiven:index/opensearchUser:OpensearchUser": "aiven_opensearch_user",
+            "aiven:index/organization:Organization": "aiven_organization",
+            "aiven:index/organizationalUnit:OrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/pg:Pg": "aiven_pg",
             "aiven:index/pgDatabase:PgDatabase": "aiven_pg_database",
             "aiven:index/pgUser:PgUser": "aiven_pg_user",
@@ -1522,6 +1536,8 @@
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": "aiven_opensearch_acl_config",
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": "aiven_opensearch_acl_rule",
             "aiven:index/getOpensearchUser:getOpensearchUser": "aiven_opensearch_user",
+            "aiven:index/getOrganization:getOrganization": "aiven_organization",
+            "aiven:index/getOrganizationalUnit:getOrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/getPg:getPg": "aiven_pg",
             "aiven:index/getPgDatabase:getPgDatabase": "aiven_pg_database",
             "aiven:index/getPgUser:getPgUser": "aiven_pg_user",
@@ -2186,6 +2202,7 @@
             "aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml": {
                 "idpEntityId": "idp_entity_id",
                 "idpMetadataUrl": "idp_metadata_url",
+                "idpPemtrustedcasContent": "idp_pemtrustedcas_content",
                 "rolesKey": "roles_key",
                 "spEntityId": "sp_entity_id",
                 "subjectKey": "subject_key"
@@ -3883,6 +3900,7 @@
             "aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml": {
                 "idpEntityId": "idp_entity_id",
                 "idpMetadataUrl": "idp_metadata_url",
+                "idpPemtrustedcasContent": "idp_pemtrustedcas_content",
                 "rolesKey": "roles_key",
                 "spEntityId": "sp_entity_id",
                 "subjectKey": "subject_key"
@@ -3893,6 +3911,17 @@
             },
             "aiven:index/getOpensearchUser:getOpensearchUser": {
                 "serviceName": "service_name"
+            },
+            "aiven:index/getOrganization:getOrganization": {
+                "createTime": "create_time",
+                "tenantId": "tenant_id",
+                "updateTime": "update_time"
+            },
+            "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
+                "createTime": "create_time",
+                "parentId": "parent_id",
+                "tenantId": "tenant_id",
+                "updateTime": "update_time"
             },
             "aiven:index/getPg:getPg": {
                 "additionalDiskSpace": "additional_disk_space",
@@ -4603,6 +4632,17 @@
             },
             "aiven:index/opensearchUser:OpensearchUser": {
                 "serviceName": "service_name"
+            },
+            "aiven:index/organization:Organization": {
+                "createTime": "create_time",
+                "tenantId": "tenant_id",
+                "updateTime": "update_time"
+            },
+            "aiven:index/organizationalUnit:OrganizationalUnit": {
+                "createTime": "create_time",
+                "parentId": "parent_id",
+                "tenantId": "tenant_id",
+                "updateTime": "update_time"
             },
             "aiven:index/pg:Pg": {
                 "additionalDiskSpace": "additional_disk_space",

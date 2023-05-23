@@ -17,7 +17,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private String bootstrapServers;
     /**
-     * @return The list of SASL mechanisms enabled in the Kafka server.
+     * @return SASL mechanism used for connections to the Kafka server.
      * 
      */
     private @Nullable String saslMechanism;
@@ -66,7 +66,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         return this.bootstrapServers;
     }
     /**
-     * @return The list of SASL mechanisms enabled in the Kafka server.
+     * @return SASL mechanism used for connections to the Kafka server.
      * 
      */
     public Optional<String> saslMechanism() {

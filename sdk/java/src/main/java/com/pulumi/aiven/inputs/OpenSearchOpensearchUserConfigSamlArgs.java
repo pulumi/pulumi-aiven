@@ -37,6 +37,13 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         return this.idpMetadataUrl;
     }
 
+    @Import(name="idpPemtrustedcasContent")
+    private @Nullable Output<String> idpPemtrustedcasContent;
+
+    public Optional<Output<String>> idpPemtrustedcasContent() {
+        return Optional.ofNullable(this.idpPemtrustedcasContent);
+    }
+
     @Import(name="rolesKey")
     private @Nullable Output<String> rolesKey;
 
@@ -64,6 +71,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         this.enabled = $.enabled;
         this.idpEntityId = $.idpEntityId;
         this.idpMetadataUrl = $.idpMetadataUrl;
+        this.idpPemtrustedcasContent = $.idpPemtrustedcasContent;
         this.rolesKey = $.rolesKey;
         this.spEntityId = $.spEntityId;
         this.subjectKey = $.subjectKey;
@@ -112,6 +120,15 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
 
         public Builder idpMetadataUrl(String idpMetadataUrl) {
             return idpMetadataUrl(Output.of(idpMetadataUrl));
+        }
+
+        public Builder idpPemtrustedcasContent(@Nullable Output<String> idpPemtrustedcasContent) {
+            $.idpPemtrustedcasContent = idpPemtrustedcasContent;
+            return this;
+        }
+
+        public Builder idpPemtrustedcasContent(String idpPemtrustedcasContent) {
+            return idpPemtrustedcasContent(Output.of(idpPemtrustedcasContent));
         }
 
         public Builder rolesKey(@Nullable Output<String> rolesKey) {

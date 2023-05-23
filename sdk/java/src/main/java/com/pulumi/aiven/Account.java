@@ -57,7 +57,11 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Account id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, use the built-in ID field instead.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, use the built-in ID field instead. */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
@@ -85,7 +89,11 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * If true, user is part of the owners team for this account
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     @Export(name="isAccountOwner", type=Boolean.class, parameters={})
     private Output<Boolean> isAccountOwner;
 
@@ -113,7 +121,11 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Owner team id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     @Export(name="ownerTeamId", type=String.class, parameters={})
     private Output<String> ownerTeamId;
 
@@ -127,7 +139,11 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Billing group id
      * 
+     * @deprecated
+     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * 
      */
+    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
     @Export(name="primaryBillingGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> primaryBillingGroupId;
 

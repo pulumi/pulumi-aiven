@@ -23222,12 +23222,13 @@ func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi
 }
 
 type OpenSearchOpensearchUserConfigSaml struct {
-	Enabled        bool    `pulumi:"enabled"`
-	IdpEntityId    string  `pulumi:"idpEntityId"`
-	IdpMetadataUrl string  `pulumi:"idpMetadataUrl"`
-	RolesKey       *string `pulumi:"rolesKey"`
-	SpEntityId     string  `pulumi:"spEntityId"`
-	SubjectKey     *string `pulumi:"subjectKey"`
+	Enabled                 bool    `pulumi:"enabled"`
+	IdpEntityId             string  `pulumi:"idpEntityId"`
+	IdpMetadataUrl          string  `pulumi:"idpMetadataUrl"`
+	IdpPemtrustedcasContent *string `pulumi:"idpPemtrustedcasContent"`
+	RolesKey                *string `pulumi:"rolesKey"`
+	SpEntityId              string  `pulumi:"spEntityId"`
+	SubjectKey              *string `pulumi:"subjectKey"`
 }
 
 // OpenSearchOpensearchUserConfigSamlInput is an input type that accepts OpenSearchOpensearchUserConfigSamlArgs and OpenSearchOpensearchUserConfigSamlOutput values.
@@ -23242,12 +23243,13 @@ type OpenSearchOpensearchUserConfigSamlInput interface {
 }
 
 type OpenSearchOpensearchUserConfigSamlArgs struct {
-	Enabled        pulumi.BoolInput      `pulumi:"enabled"`
-	IdpEntityId    pulumi.StringInput    `pulumi:"idpEntityId"`
-	IdpMetadataUrl pulumi.StringInput    `pulumi:"idpMetadataUrl"`
-	RolesKey       pulumi.StringPtrInput `pulumi:"rolesKey"`
-	SpEntityId     pulumi.StringInput    `pulumi:"spEntityId"`
-	SubjectKey     pulumi.StringPtrInput `pulumi:"subjectKey"`
+	Enabled                 pulumi.BoolInput      `pulumi:"enabled"`
+	IdpEntityId             pulumi.StringInput    `pulumi:"idpEntityId"`
+	IdpMetadataUrl          pulumi.StringInput    `pulumi:"idpMetadataUrl"`
+	IdpPemtrustedcasContent pulumi.StringPtrInput `pulumi:"idpPemtrustedcasContent"`
+	RolesKey                pulumi.StringPtrInput `pulumi:"rolesKey"`
+	SpEntityId              pulumi.StringInput    `pulumi:"spEntityId"`
+	SubjectKey              pulumi.StringPtrInput `pulumi:"subjectKey"`
 }
 
 func (OpenSearchOpensearchUserConfigSamlArgs) ElementType() reflect.Type {
@@ -23339,6 +23341,10 @@ func (o OpenSearchOpensearchUserConfigSamlOutput) IdpMetadataUrl() pulumi.String
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigSaml) string { return v.IdpMetadataUrl }).(pulumi.StringOutput)
 }
 
+func (o OpenSearchOpensearchUserConfigSamlOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigSaml) *string { return v.IdpPemtrustedcasContent }).(pulumi.StringPtrOutput)
+}
+
 func (o OpenSearchOpensearchUserConfigSamlOutput) RolesKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigSaml) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
 }
@@ -23399,6 +23405,15 @@ func (o OpenSearchOpensearchUserConfigSamlPtrOutput) IdpMetadataUrl() pulumi.Str
 			return nil
 		}
 		return &v.IdpMetadataUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigSamlPtrOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpPemtrustedcasContent
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31333,7 +31348,7 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 type ServiceIntegrationEndpointExternalKafkaUserConfig struct {
 	// Bootstrap servers.
 	BootstrapServers string `pulumi:"bootstrapServers"`
-	// The list of SASL mechanisms enabled in the Kafka server.
+	// SASL mechanism used for connections to the Kafka server.
 	SaslMechanism *string `pulumi:"saslMechanism"`
 	// Password for SASL PLAIN mechanism in the Kafka server.
 	SaslPlainPassword *string `pulumi:"saslPlainPassword"`
@@ -31365,7 +31380,7 @@ type ServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 type ServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
 	// Bootstrap servers.
 	BootstrapServers pulumi.StringInput `pulumi:"bootstrapServers"`
-	// The list of SASL mechanisms enabled in the Kafka server.
+	// SASL mechanism used for connections to the Kafka server.
 	SaslMechanism pulumi.StringPtrInput `pulumi:"saslMechanism"`
 	// Password for SASL PLAIN mechanism in the Kafka server.
 	SaslPlainPassword pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
@@ -31465,7 +31480,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServer
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) string { return v.BootstrapServers }).(pulumi.StringOutput)
 }
 
-// The list of SASL mechanisms enabled in the Kafka server.
+// SASL mechanism used for connections to the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
 }
@@ -31541,7 +31556,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapSer
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of SASL mechanisms enabled in the Kafka server.
+// SASL mechanism used for connections to the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -56014,12 +56029,13 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Prometheus() pul
 }
 
 type GetOpenSearchOpensearchUserConfigSaml struct {
-	Enabled        bool    `pulumi:"enabled"`
-	IdpEntityId    string  `pulumi:"idpEntityId"`
-	IdpMetadataUrl string  `pulumi:"idpMetadataUrl"`
-	RolesKey       *string `pulumi:"rolesKey"`
-	SpEntityId     string  `pulumi:"spEntityId"`
-	SubjectKey     *string `pulumi:"subjectKey"`
+	Enabled                 bool    `pulumi:"enabled"`
+	IdpEntityId             string  `pulumi:"idpEntityId"`
+	IdpMetadataUrl          string  `pulumi:"idpMetadataUrl"`
+	IdpPemtrustedcasContent *string `pulumi:"idpPemtrustedcasContent"`
+	RolesKey                *string `pulumi:"rolesKey"`
+	SpEntityId              string  `pulumi:"spEntityId"`
+	SubjectKey              *string `pulumi:"subjectKey"`
 }
 
 // GetOpenSearchOpensearchUserConfigSamlInput is an input type that accepts GetOpenSearchOpensearchUserConfigSamlArgs and GetOpenSearchOpensearchUserConfigSamlOutput values.
@@ -56034,12 +56050,13 @@ type GetOpenSearchOpensearchUserConfigSamlInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigSamlArgs struct {
-	Enabled        pulumi.BoolInput      `pulumi:"enabled"`
-	IdpEntityId    pulumi.StringInput    `pulumi:"idpEntityId"`
-	IdpMetadataUrl pulumi.StringInput    `pulumi:"idpMetadataUrl"`
-	RolesKey       pulumi.StringPtrInput `pulumi:"rolesKey"`
-	SpEntityId     pulumi.StringInput    `pulumi:"spEntityId"`
-	SubjectKey     pulumi.StringPtrInput `pulumi:"subjectKey"`
+	Enabled                 pulumi.BoolInput      `pulumi:"enabled"`
+	IdpEntityId             pulumi.StringInput    `pulumi:"idpEntityId"`
+	IdpMetadataUrl          pulumi.StringInput    `pulumi:"idpMetadataUrl"`
+	IdpPemtrustedcasContent pulumi.StringPtrInput `pulumi:"idpPemtrustedcasContent"`
+	RolesKey                pulumi.StringPtrInput `pulumi:"rolesKey"`
+	SpEntityId              pulumi.StringInput    `pulumi:"spEntityId"`
+	SubjectKey              pulumi.StringPtrInput `pulumi:"subjectKey"`
 }
 
 func (GetOpenSearchOpensearchUserConfigSamlArgs) ElementType() reflect.Type {
@@ -56131,6 +56148,10 @@ func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpMetadataUrl() pulumi.Str
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.IdpMetadataUrl }).(pulumi.StringOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.IdpPemtrustedcasContent }).(pulumi.StringPtrOutput)
+}
+
 func (o GetOpenSearchOpensearchUserConfigSamlOutput) RolesKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
 }
@@ -56191,6 +56212,15 @@ func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpMetadataUrl() pulumi.
 			return nil
 		}
 		return &v.IdpMetadataUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpPemtrustedcasContent
 	}).(pulumi.StringPtrOutput)
 }
 

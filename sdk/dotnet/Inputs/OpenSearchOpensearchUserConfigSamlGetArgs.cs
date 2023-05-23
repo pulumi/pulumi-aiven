@@ -21,6 +21,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("idpMetadataUrl", required: true)]
         public Input<string> IdpMetadataUrl { get; set; } = null!;
 
+        [Input("idpPemtrustedcasContent")]
+        public Input<string>? IdpPemtrustedcasContent { get; set; }
+
         [Input("rolesKey")]
         public Input<string>? RolesKey { get; set; }
 

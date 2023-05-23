@@ -9866,12 +9866,15 @@ class OpenSearchOpensearchUserConfigSamlArgs:
                  idp_entity_id: pulumi.Input[str],
                  idp_metadata_url: pulumi.Input[str],
                  sp_entity_id: pulumi.Input[str],
+                 idp_pemtrustedcas_content: Optional[pulumi.Input[str]] = None,
                  roles_key: Optional[pulumi.Input[str]] = None,
                  subject_key: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "idp_entity_id", idp_entity_id)
         pulumi.set(__self__, "idp_metadata_url", idp_metadata_url)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if idp_pemtrustedcas_content is not None:
+            pulumi.set(__self__, "idp_pemtrustedcas_content", idp_pemtrustedcas_content)
         if roles_key is not None:
             pulumi.set(__self__, "roles_key", roles_key)
         if subject_key is not None:
@@ -9912,6 +9915,15 @@ class OpenSearchOpensearchUserConfigSamlArgs:
     @sp_entity_id.setter
     def sp_entity_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "sp_entity_id", value)
+
+    @property
+    @pulumi.getter(name="idpPemtrustedcasContent")
+    def idp_pemtrustedcas_content(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "idp_pemtrustedcas_content")
+
+    @idp_pemtrustedcas_content.setter
+    def idp_pemtrustedcas_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "idp_pemtrustedcas_content", value)
 
     @property
     @pulumi.getter(name="rolesKey")
@@ -13325,7 +13337,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
         """
         :param pulumi.Input[str] bootstrap_servers: Bootstrap servers.
         :param pulumi.Input[str] security_protocol: Security protocol.
-        :param pulumi.Input[str] sasl_mechanism: The list of SASL mechanisms enabled in the Kafka server.
+        :param pulumi.Input[str] sasl_mechanism: SASL mechanism used for connections to the Kafka server.
         :param pulumi.Input[str] sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server.
         :param pulumi.Input[str] sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server.
         :param pulumi.Input[str] ssl_ca_cert: PEM-encoded CA certificate.
@@ -13378,7 +13390,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="saslMechanism")
     def sasl_mechanism(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of SASL mechanisms enabled in the Kafka server.
+        SASL mechanism used for connections to the Kafka server.
         """
         return pulumi.get(self, "sasl_mechanism")
 
