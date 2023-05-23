@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly bool Enabled;
         public readonly string IdpEntityId;
         public readonly string IdpMetadataUrl;
+        public readonly string? IdpPemtrustedcasContent;
         public readonly string? RolesKey;
         public readonly string SpEntityId;
         public readonly string? SubjectKey;
@@ -28,6 +29,8 @@ namespace Pulumi.Aiven.Outputs
 
             string idpMetadataUrl,
 
+            string? idpPemtrustedcasContent,
+
             string? rolesKey,
 
             string spEntityId,
@@ -37,6 +40,7 @@ namespace Pulumi.Aiven.Outputs
             Enabled = enabled;
             IdpEntityId = idpEntityId;
             IdpMetadataUrl = idpMetadataUrl;
+            IdpPemtrustedcasContent = idpPemtrustedcasContent;
             RolesKey = rolesKey;
             SpEntityId = spEntityId;
             SubjectKey = subjectKey;

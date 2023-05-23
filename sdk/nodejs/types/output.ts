@@ -1659,6 +1659,7 @@ export interface GetOpenSearchOpensearchUserConfigSaml {
     enabled: boolean;
     idpEntityId: string;
     idpMetadataUrl: string;
+    idpPemtrustedcasContent?: string;
     rolesKey?: string;
     spEntityId: string;
     subjectKey?: string;
@@ -3451,6 +3452,7 @@ export interface OpenSearchOpensearchUserConfigSaml {
     enabled: boolean;
     idpEntityId: string;
     idpMetadataUrl: string;
+    idpPemtrustedcasContent?: string;
     rolesKey?: string;
     spEntityId: string;
     subjectKey?: string;
@@ -4087,7 +4089,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     bootstrapServers: string;
     /**
-     * The list of SASL mechanisms enabled in the Kafka server.
+     * SASL mechanism used for connections to the Kafka server.
      */
     saslMechanism?: string;
     /**

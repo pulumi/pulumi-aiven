@@ -1602,6 +1602,7 @@ export interface OpenSearchOpensearchUserConfigSaml {
     enabled: pulumi.Input<boolean>;
     idpEntityId: pulumi.Input<string>;
     idpMetadataUrl: pulumi.Input<string>;
+    idpPemtrustedcasContent?: pulumi.Input<string>;
     rolesKey?: pulumi.Input<string>;
     spEntityId: pulumi.Input<string>;
     subjectKey?: pulumi.Input<string>;
@@ -2238,7 +2239,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     bootstrapServers: pulumi.Input<string>;
     /**
-     * The list of SASL mechanisms enabled in the Kafka server.
+     * SASL mechanism used for connections to the Kafka server.
      */
     saslMechanism?: pulumi.Input<string>;
     /**

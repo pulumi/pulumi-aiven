@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string BootstrapServers;
         /// <summary>
-        /// The list of SASL mechanisms enabled in the Kafka server.
+        /// SASL mechanism used for connections to the Kafka server.
         /// </summary>
         public readonly string? SaslMechanism;
         /// <summary>

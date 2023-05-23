@@ -31,14 +31,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * The list of SASL mechanisms enabled in the Kafka server.
+     * SASL mechanism used for connections to the Kafka server.
      * 
      */
     @Import(name="saslMechanism")
     private @Nullable Output<String> saslMechanism;
 
     /**
-     * @return The list of SASL mechanisms enabled in the Kafka server.
+     * @return SASL mechanism used for connections to the Kafka server.
      * 
      */
     public Optional<Output<String>> saslMechanism() {
@@ -204,7 +204,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslMechanism The list of SASL mechanisms enabled in the Kafka server.
+         * @param saslMechanism SASL mechanism used for connections to the Kafka server.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslMechanism The list of SASL mechanisms enabled in the Kafka server.
+         * @param saslMechanism SASL mechanism used for connections to the Kafka server.
          * 
          * @return builder
          * 

@@ -52,6 +52,8 @@ export class Account extends pulumi.CustomResource {
 
     /**
      * Account id
+     *
+     * @deprecated The new aiven_organization resource won't have it, use the built-in ID field instead.
      */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
     /**
@@ -60,6 +62,8 @@ export class Account extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * If true, user is part of the owners team for this account
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     public /*out*/ readonly isAccountOwner!: pulumi.Output<boolean>;
     /**
@@ -68,10 +72,14 @@ export class Account extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Owner team id
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     public /*out*/ readonly ownerTeamId!: pulumi.Output<string>;
     /**
      * Billing group id
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     public readonly primaryBillingGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -126,6 +134,8 @@ export class Account extends pulumi.CustomResource {
 export interface AccountState {
     /**
      * Account id
+     *
+     * @deprecated The new aiven_organization resource won't have it, use the built-in ID field instead.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -134,6 +144,8 @@ export interface AccountState {
     createTime?: pulumi.Input<string>;
     /**
      * If true, user is part of the owners team for this account
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     isAccountOwner?: pulumi.Input<boolean>;
     /**
@@ -142,10 +154,14 @@ export interface AccountState {
     name?: pulumi.Input<string>;
     /**
      * Owner team id
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     ownerTeamId?: pulumi.Input<string>;
     /**
      * Billing group id
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     primaryBillingGroupId?: pulumi.Input<string>;
     /**
@@ -168,6 +184,8 @@ export interface AccountArgs {
     name?: pulumi.Input<string>;
     /**
      * Billing group id
+     *
+     * @deprecated The new aiven_organization resource won't have it, and will not have a replacement.
      */
     primaryBillingGroupId?: pulumi.Input<string>;
 }

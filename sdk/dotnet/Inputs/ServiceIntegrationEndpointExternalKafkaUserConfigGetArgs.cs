@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> BootstrapServers { get; set; } = null!;
 
         /// <summary>
-        /// The list of SASL mechanisms enabled in the Kafka server.
+        /// SASL mechanism used for connections to the Kafka server.
         /// </summary>
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
