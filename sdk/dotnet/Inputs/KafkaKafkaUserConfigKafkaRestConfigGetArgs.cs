@@ -30,6 +30,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }
 
+        [Input("producerMaxRequestSize")]
+        public Input<int>? ProducerMaxRequestSize { get; set; }
+
         [Input("simpleconsumerPoolSizeMax")]
         public Input<int>? SimpleconsumerPoolSizeMax { get; set; }
 

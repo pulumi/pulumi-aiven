@@ -19,6 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProducerAcks;
         public readonly string? ProducerCompressionType;
         public readonly int? ProducerLingerMs;
+        public readonly int? ProducerMaxRequestSize;
         public readonly int? SimpleconsumerPoolSizeMax;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? producerLingerMs,
 
+            int? producerMaxRequestSize,
+
             int? simpleconsumerPoolSizeMax)
         {
             ConsumerEnableAutoCommit = consumerEnableAutoCommit;
@@ -43,6 +46,7 @@ namespace Pulumi.Aiven.Outputs
             ProducerAcks = producerAcks;
             ProducerCompressionType = producerCompressionType;
             ProducerLingerMs = producerLingerMs;
+            ProducerMaxRequestSize = producerMaxRequestSize;
             SimpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
         }
     }

@@ -129,9 +129,13 @@ public final class KafkaTopicConfig {
      */
     private @Nullable String segmentMs;
     /**
-     * @return unclean.leader.election.enable value
+     * @return unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     * 
+     * @deprecated
+     * This field is deprecated and no longer functional.
      * 
      */
+    @Deprecated /* This field is deprecated and no longer functional. */
     private @Nullable Boolean uncleanLeaderElectionEnable;
 
     private KafkaTopicConfig() {}
@@ -297,9 +301,13 @@ public final class KafkaTopicConfig {
         return Optional.ofNullable(this.segmentMs);
     }
     /**
-     * @return unclean.leader.election.enable value
+     * @return unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     * 
+     * @deprecated
+     * This field is deprecated and no longer functional.
      * 
      */
+    @Deprecated /* This field is deprecated and no longer functional. */
     public Optional<Boolean> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }

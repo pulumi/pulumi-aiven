@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  *             .terminationProtection(true)
  *             .config(KafkaTopicConfigArgs.builder()
  *                 .flushMs(10)
- *                 .uncleanLeaderElectionEnable(true)
  *                 .cleanupPolicy(&#34;compact,delete&#34;)
  *                 .build())
  *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))

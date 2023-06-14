@@ -405,7 +405,7 @@ def get_kafka(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka1 = aiven.get_kafka(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-kafka1")
     ```
 
@@ -465,7 +465,7 @@ def get_kafka_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka1 = aiven.get_kafka(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-kafka1")
     ```
 

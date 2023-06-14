@@ -363,16 +363,24 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * unclean.leader.election.enable value
+     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     * 
+     * @deprecated
+     * This field is deprecated and no longer functional.
      * 
      */
+    @Deprecated /* This field is deprecated and no longer functional. */
     @Import(name="uncleanLeaderElectionEnable")
     private @Nullable Output<Boolean> uncleanLeaderElectionEnable;
 
     /**
-     * @return unclean.leader.election.enable value
+     * @return unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     * 
+     * @deprecated
+     * This field is deprecated and no longer functional.
      * 
      */
+    @Deprecated /* This field is deprecated and no longer functional. */
     public Optional<Output<Boolean>> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }
@@ -908,22 +916,30 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value
+         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value; This field is deprecated and no longer functional.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and no longer functional.
+         * 
          */
+        @Deprecated /* This field is deprecated and no longer functional. */
         public Builder uncleanLeaderElectionEnable(@Nullable Output<Boolean> uncleanLeaderElectionEnable) {
             $.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
         }
 
         /**
-         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value
+         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value; This field is deprecated and no longer functional.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and no longer functional.
+         * 
          */
+        @Deprecated /* This field is deprecated and no longer functional. */
         public Builder uncleanLeaderElectionEnable(Boolean uncleanLeaderElectionEnable) {
             return uncleanLeaderElectionEnable(Output.of(uncleanLeaderElectionEnable));
         }

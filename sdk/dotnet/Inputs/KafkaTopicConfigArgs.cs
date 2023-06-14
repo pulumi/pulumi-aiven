@@ -151,7 +151,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SegmentMs { get; set; }
 
         /// <summary>
-        /// unclean.leader.election.enable value
+        /// unclean.leader.election.enable value; This field is deprecated and no longer functional.
         /// </summary>
         [Input("uncleanLeaderElectionEnable")]
         public Input<bool>? UncleanLeaderElectionEnable { get; set; }

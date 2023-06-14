@@ -21,6 +21,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("producerBufferMemory")]
         public Input<int>? ProducerBufferMemory { get; set; }
 
+        [Input("producerCompressionType")]
+        public Input<string>? ProducerCompressionType { get; set; }
+
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }
 

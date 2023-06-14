@@ -381,7 +381,7 @@ def get_influx_db(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    inf1 = aiven.get_influx_db(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    inf1 = aiven.get_influx_db(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-inf1")
     ```
 
@@ -439,7 +439,7 @@ def get_influx_db_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    inf1 = aiven.get_influx_db(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    inf1 = aiven.get_influx_db(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-inf1")
     ```
 

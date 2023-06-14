@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? ConsumerFetchMinBytes;
         public readonly int? ProducerBatchSize;
         public readonly int? ProducerBufferMemory;
+        public readonly string? ProducerCompressionType;
         public readonly int? ProducerLingerMs;
         public readonly int? ProducerMaxRequestSize;
 
@@ -27,6 +28,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? producerBufferMemory,
 
+            string? producerCompressionType,
+
             int? producerLingerMs,
 
             int? producerMaxRequestSize)
@@ -34,6 +37,7 @@ namespace Pulumi.Aiven.Outputs
             ConsumerFetchMinBytes = consumerFetchMinBytes;
             ProducerBatchSize = producerBatchSize;
             ProducerBufferMemory = producerBufferMemory;
+            ProducerCompressionType = producerCompressionType;
             ProducerLingerMs = producerLingerMs;
             ProducerMaxRequestSize = producerMaxRequestSize;
         }

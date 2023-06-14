@@ -54,7 +54,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
      */
-    public readonly availableCredits!: pulumi.Output<string>;
+    public /*out*/ readonly availableCredits!: pulumi.Output<string>;
     /**
      * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      */
@@ -129,7 +129,6 @@ export class Project extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["addAccountOwnersAdminAccess"] = args ? args.addAccountOwnersAdminAccess : undefined;
-            resourceInputs["availableCredits"] = args ? args.availableCredits : undefined;
             resourceInputs["billingGroup"] = args ? args.billingGroup : undefined;
             resourceInputs["copyFromProject"] = args ? args.copyFromProject : undefined;
             resourceInputs["defaultCloud"] = args ? args.defaultCloud : undefined;
@@ -137,6 +136,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
             resourceInputs["useSourceProjectBillingGroup"] = args ? args.useSourceProjectBillingGroup : undefined;
+            resourceInputs["availableCredits"] = undefined /*out*/;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["estimatedBalance"] = undefined /*out*/;
             resourceInputs["paymentMethod"] = undefined /*out*/;
@@ -218,10 +218,6 @@ export interface ProjectArgs {
      * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
-    /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-     */
-    availableCredits?: pulumi.Input<string>;
     /**
      * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      */

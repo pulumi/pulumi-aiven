@@ -14,6 +14,7 @@ import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -79,16 +80,20 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Export(name="peerRegion", type=String.class, parameters={})
-    private Output<String> peerRegion;
+    private Output</* @Nullable */ String> peerRegion;
 
     /**
      * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
      * 
      */
-    public Output<String> peerRegion() {
-        return this.peerRegion;
+    public Output<Optional<String>> peerRegion() {
+        return Codegen.optional(this.peerRegion);
     }
     /**
      * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.

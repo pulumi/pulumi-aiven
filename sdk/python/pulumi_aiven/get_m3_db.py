@@ -381,7 +381,7 @@ def get_m3_db(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3 = aiven.get_m3_db(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    m3 = aiven.get_m3_db(project=data["aiven_project"]["foo"]["project"],
         service_name="my-m3db")
     ```
 
@@ -439,7 +439,7 @@ def get_m3_db_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3 = aiven.get_m3_db(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    m3 = aiven.get_m3_db(project=data["aiven_project"]["foo"]["project"],
         service_name="my-m3db")
     ```
 

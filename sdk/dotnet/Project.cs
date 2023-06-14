@@ -162,12 +162,6 @@ namespace Pulumi.Aiven
         public Input<bool>? AddAccountOwnersAdminAccess { get; set; }
 
         /// <summary>
-        /// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        /// </summary>
-        [Input("availableCredits")]
-        public Input<string>? AvailableCredits { get; set; }
-
-        /// <summary>
         /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroup")]

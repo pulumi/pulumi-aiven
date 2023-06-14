@@ -18,8 +18,7 @@ class KafkaSchemaRegistryAclArgs:
                  project: pulumi.Input[str],
                  resource: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 username: pulumi.Input[str],
-                 acl_id: Optional[pulumi.Input[str]] = None):
+                 username: pulumi.Input[str]):
         """
         The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
         :param pulumi.Input[str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
@@ -27,15 +26,12 @@ class KafkaSchemaRegistryAclArgs:
         :param pulumi.Input[str] resource: Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] acl_id: Kafka Schema Registry ACL ID
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "username", username)
-        if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
 
     @property
     @pulumi.getter
@@ -96,18 +92,6 @@ class KafkaSchemaRegistryAclArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
-
-    @property
-    @pulumi.getter(name="aclId")
-    def acl_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Kafka Schema Registry ACL ID
-        """
-        return pulumi.get(self, "acl_id")
-
-    @acl_id.setter
-    def acl_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "acl_id", value)
 
 
 @pulumi.input_type
@@ -219,7 +203,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
@@ -231,7 +214,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_id: Kafka Schema Registry ACL ID
         :param pulumi.Input[str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] resource: Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
@@ -262,7 +244,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
@@ -277,7 +258,6 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KafkaSchemaRegistryAclArgs.__new__(KafkaSchemaRegistryAclArgs)
 
-            __props__.__dict__["acl_id"] = acl_id
             if permission is None and not opts.urn:
                 raise TypeError("Missing required property 'permission'")
             __props__.__dict__["permission"] = permission
@@ -293,6 +273,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
+            __props__.__dict__["acl_id"] = None
         super(KafkaSchemaRegistryAcl, __self__).__init__(
             'aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl',
             resource_name,

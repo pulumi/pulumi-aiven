@@ -59,7 +59,7 @@ export class KafkaAcl extends pulumi.CustomResource {
     /**
      * Kafka ACL ID
      */
-    public readonly aclId!: pulumi.Output<string>;
+    public /*out*/ readonly aclId!: pulumi.Output<string>;
     /**
      * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -117,12 +117,12 @@ export class KafkaAcl extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
             resourceInputs["permission"] = args ? args.permission : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["topic"] = args ? args.topic : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["aclId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaAcl.__pulumiType, name, resourceInputs, opts);
@@ -163,10 +163,6 @@ export interface KafkaAclState {
  * The set of arguments for constructing a KafkaAcl resource.
  */
 export interface KafkaAclArgs {
-    /**
-     * Kafka ACL ID
-     */
-    aclId?: pulumi.Input<string>;
     /**
      * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
      */

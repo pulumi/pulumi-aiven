@@ -15,23 +15,27 @@ __all__ = ['TransitGatewayVpcAttachmentArgs', 'TransitGatewayVpcAttachment']
 class TransitGatewayVpcAttachmentArgs:
     def __init__(__self__, *,
                  peer_cloud_account: pulumi.Input[str],
-                 peer_region: pulumi.Input[str],
                  peer_vpc: pulumi.Input[str],
                  user_peer_network_cidrs: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 vpc_id: pulumi.Input[str]):
+                 vpc_id: pulumi.Input[str],
+                 peer_region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransitGatewayVpcAttachment resource.
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
         pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
-        pulumi.set(__self__, "peer_region", peer_region)
         pulumi.set(__self__, "peer_vpc", peer_vpc)
         pulumi.set(__self__, "user_peer_network_cidrs", user_peer_network_cidrs)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if peer_region is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
+        if peer_region is not None:
+            pulumi.set(__self__, "peer_region", peer_region)
 
     @property
     @pulumi.getter(name="peerCloudAccount")
@@ -44,18 +48,6 @@ class TransitGatewayVpcAttachmentArgs:
     @peer_cloud_account.setter
     def peer_cloud_account(self, value: pulumi.Input[str]):
         pulumi.set(self, "peer_cloud_account", value)
-
-    @property
-    @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> pulumi.Input[str]:
-        """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC)
-        """
-        return pulumi.get(self, "peer_region")
-
-    @peer_region.setter
-    def peer_region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "peer_region", value)
 
     @property
     @pulumi.getter(name="peerVpc")
@@ -93,6 +85,18 @@ class TransitGatewayVpcAttachmentArgs:
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
 
+    @property
+    @pulumi.getter(name="peerRegion")
+    def peer_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        """
+        return pulumi.get(self, "peer_region")
+
+    @peer_region.setter
+    def peer_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_region", value)
+
 
 @pulumi.input_type
 class _TransitGatewayVpcAttachmentState:
@@ -118,6 +122,9 @@ class _TransitGatewayVpcAttachmentState:
         """
         if peer_cloud_account is not None:
             pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
+        if peer_region is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
         if peer_region is not None:
             pulumi.set(__self__, "peer_region", peer_region)
         if peer_vpc is not None:
@@ -333,8 +340,9 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
             if peer_cloud_account is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_cloud_account'")
             __props__.__dict__["peer_cloud_account"] = peer_cloud_account
-            if peer_region is None and not opts.urn:
-                raise TypeError("Missing required property 'peer_region'")
+            if peer_region is not None and not opts.urn:
+                warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+                pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
             __props__.__dict__["peer_region"] = peer_region
             if peer_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_vpc'")
@@ -406,7 +414,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> pulumi.Output[str]:
+    def peer_region(self) -> pulumi.Output[Optional[str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """

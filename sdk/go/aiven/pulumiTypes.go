@@ -12373,6 +12373,7 @@ type KafkaKafkaUserConfigKafkaRestConfig struct {
 	ProducerAcks              *string `pulumi:"producerAcks"`
 	ProducerCompressionType   *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs          *int    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize    *int    `pulumi:"producerMaxRequestSize"`
 	SimpleconsumerPoolSizeMax *int    `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -12394,6 +12395,7 @@ type KafkaKafkaUserConfigKafkaRestConfigArgs struct {
 	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
 	ProducerCompressionType   pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs          pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize    pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
 	SimpleconsumerPoolSizeMax pulumi.IntPtrInput    `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -12498,6 +12500,10 @@ func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.Int
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
 }
 
+func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *int { return v.ProducerMaxRequestSize }).(pulumi.IntPtrOutput)
+}
+
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *int { return v.SimpleconsumerPoolSizeMax }).(pulumi.IntPtrOutput)
 }
@@ -12577,6 +12583,15 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulumi.
 			return nil
 		}
 		return v.ProducerLingerMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -14622,7 +14637,9 @@ type KafkaTopicConfig struct {
 	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
 	// segment.ms value
 	SegmentMs *string `pulumi:"segmentMs"`
-	// unclean.leader.election.enable value
+	// unclean.leader.election.enable value; This field is deprecated and no longer functional.
+	//
+	// Deprecated: This field is deprecated and no longer functional.
 	UncleanLeaderElectionEnable *bool `pulumi:"uncleanLeaderElectionEnable"`
 }
 
@@ -14684,7 +14701,9 @@ type KafkaTopicConfigArgs struct {
 	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
 	// segment.ms value
 	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
-	// unclean.leader.election.enable value
+	// unclean.leader.election.enable value; This field is deprecated and no longer functional.
+	//
+	// Deprecated: This field is deprecated and no longer functional.
 	UncleanLeaderElectionEnable pulumi.BoolPtrInput `pulumi:"uncleanLeaderElectionEnable"`
 }
 
@@ -14880,7 +14899,9 @@ func (o KafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
 }
 
-// unclean.leader.election.enable value
+// unclean.leader.election.enable value; This field is deprecated and no longer functional.
+//
+// Deprecated: This field is deprecated and no longer functional.
 func (o KafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *bool { return v.UncleanLeaderElectionEnable }).(pulumi.BoolPtrOutput)
 }
@@ -15139,7 +15160,9 @@ func (o KafkaTopicConfigPtrOutput) SegmentMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// unclean.leader.election.enable value
+// unclean.leader.election.enable value; This field is deprecated and no longer functional.
+//
+// Deprecated: This field is deprecated and no longer functional.
 func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *bool {
 		if v == nil {
@@ -33617,11 +33640,12 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker(
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	ConsumerFetchMinBytes  *int `pulumi:"consumerFetchMinBytes"`
-	ProducerBatchSize      *int `pulumi:"producerBatchSize"`
-	ProducerBufferMemory   *int `pulumi:"producerBufferMemory"`
-	ProducerLingerMs       *int `pulumi:"producerLingerMs"`
-	ProducerMaxRequestSize *int `pulumi:"producerMaxRequestSize"`
+	ConsumerFetchMinBytes   *int    `pulumi:"consumerFetchMinBytes"`
+	ProducerBatchSize       *int    `pulumi:"producerBatchSize"`
+	ProducerBufferMemory    *int    `pulumi:"producerBufferMemory"`
+	ProducerCompressionType *string `pulumi:"producerCompressionType"`
+	ProducerLingerMs        *int    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize  *int    `pulumi:"producerMaxRequestSize"`
 }
 
 // ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs and ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -33636,11 +33660,12 @@ type ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput interface
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	ConsumerFetchMinBytes  pulumi.IntPtrInput `pulumi:"consumerFetchMinBytes"`
-	ProducerBatchSize      pulumi.IntPtrInput `pulumi:"producerBatchSize"`
-	ProducerBufferMemory   pulumi.IntPtrInput `pulumi:"producerBufferMemory"`
-	ProducerLingerMs       pulumi.IntPtrInput `pulumi:"producerLingerMs"`
-	ProducerMaxRequestSize pulumi.IntPtrInput `pulumi:"producerMaxRequestSize"`
+	ConsumerFetchMinBytes   pulumi.IntPtrInput    `pulumi:"consumerFetchMinBytes"`
+	ProducerBatchSize       pulumi.IntPtrInput    `pulumi:"producerBatchSize"`
+	ProducerBufferMemory    pulumi.IntPtrInput    `pulumi:"producerBufferMemory"`
+	ProducerCompressionType pulumi.StringPtrInput `pulumi:"producerCompressionType"`
+	ProducerLingerMs        pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize  pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
 }
 
 func (ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -33736,6 +33761,12 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Prod
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerCompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.ProducerCompressionType
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerLingerMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
 }
@@ -33795,6 +33826,15 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) P
 		}
 		return v.ProducerBufferMemory
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerCompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerCompressionType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
@@ -46381,6 +46421,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfig struct {
 	ProducerAcks              *string `pulumi:"producerAcks"`
 	ProducerCompressionType   *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs          *int    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize    *int    `pulumi:"producerMaxRequestSize"`
 	SimpleconsumerPoolSizeMax *int    `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -46402,6 +46443,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfigArgs struct {
 	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
 	ProducerCompressionType   pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs          pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize    pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
 	SimpleconsumerPoolSizeMax pulumi.IntPtrInput    `pulumi:"simpleconsumerPoolSizeMax"`
 }
 
@@ -46506,6 +46548,10 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ProducerLingerMs() pulumi.
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *int { return v.ProducerMaxRequestSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) SimpleconsumerPoolSizeMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *int { return v.SimpleconsumerPoolSizeMax }).(pulumi.IntPtrOutput)
 }
@@ -46585,6 +46631,15 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerLingerMs() pulu
 			return nil
 		}
 		return v.ProducerLingerMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -48516,7 +48571,8 @@ type GetKafkaTopicConfig struct {
 	SegmentIndexBytes               *string  `pulumi:"segmentIndexBytes"`
 	SegmentJitterMs                 *string  `pulumi:"segmentJitterMs"`
 	SegmentMs                       *string  `pulumi:"segmentMs"`
-	UncleanLeaderElectionEnable     *bool    `pulumi:"uncleanLeaderElectionEnable"`
+	// Deprecated: This field is deprecated and no longer functional.
+	UncleanLeaderElectionEnable *bool `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 // GetKafkaTopicConfigInput is an input type that accepts GetKafkaTopicConfigArgs and GetKafkaTopicConfigOutput values.
@@ -48554,7 +48610,8 @@ type GetKafkaTopicConfigArgs struct {
 	SegmentIndexBytes               pulumi.StringPtrInput  `pulumi:"segmentIndexBytes"`
 	SegmentJitterMs                 pulumi.StringPtrInput  `pulumi:"segmentJitterMs"`
 	SegmentMs                       pulumi.StringPtrInput  `pulumi:"segmentMs"`
-	UncleanLeaderElectionEnable     pulumi.BoolPtrInput    `pulumi:"uncleanLeaderElectionEnable"`
+	// Deprecated: This field is deprecated and no longer functional.
+	UncleanLeaderElectionEnable pulumi.BoolPtrInput `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 func (GetKafkaTopicConfigArgs) ElementType() reflect.Type {
@@ -48700,6 +48757,7 @@ func (o GetKafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: This field is deprecated and no longer functional.
 func (o GetKafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.UncleanLeaderElectionEnable }).(pulumi.BoolPtrOutput)
 }
@@ -64155,11 +64213,12 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput) Index(i pulu
 }
 
 type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	ConsumerFetchMinBytes  *int `pulumi:"consumerFetchMinBytes"`
-	ProducerBatchSize      *int `pulumi:"producerBatchSize"`
-	ProducerBufferMemory   *int `pulumi:"producerBufferMemory"`
-	ProducerLingerMs       *int `pulumi:"producerLingerMs"`
-	ProducerMaxRequestSize *int `pulumi:"producerMaxRequestSize"`
+	ConsumerFetchMinBytes   *int    `pulumi:"consumerFetchMinBytes"`
+	ProducerBatchSize       *int    `pulumi:"producerBatchSize"`
+	ProducerBufferMemory    *int    `pulumi:"producerBufferMemory"`
+	ProducerCompressionType *string `pulumi:"producerCompressionType"`
+	ProducerLingerMs        *int    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize  *int    `pulumi:"producerMaxRequestSize"`
 }
 
 // GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -64174,11 +64233,12 @@ type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput interf
 }
 
 type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	ConsumerFetchMinBytes  pulumi.IntPtrInput `pulumi:"consumerFetchMinBytes"`
-	ProducerBatchSize      pulumi.IntPtrInput `pulumi:"producerBatchSize"`
-	ProducerBufferMemory   pulumi.IntPtrInput `pulumi:"producerBufferMemory"`
-	ProducerLingerMs       pulumi.IntPtrInput `pulumi:"producerLingerMs"`
-	ProducerMaxRequestSize pulumi.IntPtrInput `pulumi:"producerMaxRequestSize"`
+	ConsumerFetchMinBytes   pulumi.IntPtrInput    `pulumi:"consumerFetchMinBytes"`
+	ProducerBatchSize       pulumi.IntPtrInput    `pulumi:"producerBatchSize"`
+	ProducerBufferMemory    pulumi.IntPtrInput    `pulumi:"producerBufferMemory"`
+	ProducerCompressionType pulumi.StringPtrInput `pulumi:"producerCompressionType"`
+	ProducerLingerMs        pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
+	ProducerMaxRequestSize  pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
 }
 
 func (GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -64276,6 +64336,12 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) P
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerCompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.ProducerCompressionType
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerLingerMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerLingerMs
@@ -64337,6 +64403,15 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 		}
 		return v.ProducerBufferMemory
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerCompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerCompressionType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {

@@ -7,28 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaSchemaRegistryAclArgs Empty = new KafkaSchemaRegistryAclArgs();
-
-    /**
-     * Kafka Schema Registry ACL ID
-     * 
-     */
-    @Import(name="aclId")
-    private @Nullable Output<String> aclId;
-
-    /**
-     * @return Kafka Schema Registry ACL ID
-     * 
-     */
-    public Optional<Output<String>> aclId() {
-        return Optional.ofNullable(this.aclId);
-    }
 
     /**
      * Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
@@ -108,7 +91,6 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     private KafkaSchemaRegistryAclArgs() {}
 
     private KafkaSchemaRegistryAclArgs(KafkaSchemaRegistryAclArgs $) {
-        this.aclId = $.aclId;
         this.permission = $.permission;
         this.project = $.project;
         this.resource = $.resource;
@@ -132,27 +114,6 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
 
         public Builder(KafkaSchemaRegistryAclArgs defaults) {
             $ = new KafkaSchemaRegistryAclArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param aclId Kafka Schema Registry ACL ID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aclId(@Nullable Output<String> aclId) {
-            $.aclId = aclId;
-            return this;
-        }
-
-        /**
-         * @param aclId Kafka Schema Registry ACL ID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aclId(String aclId) {
-            return aclId(Output.of(aclId));
         }
 
         /**

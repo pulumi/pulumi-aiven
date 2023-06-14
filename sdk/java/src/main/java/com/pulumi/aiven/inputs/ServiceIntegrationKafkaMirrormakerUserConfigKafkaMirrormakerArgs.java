@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,13 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         return Optional.ofNullable(this.producerBufferMemory);
     }
 
+    @Import(name="producerCompressionType")
+    private @Nullable Output<String> producerCompressionType;
+
+    public Optional<Output<String>> producerCompressionType() {
+        return Optional.ofNullable(this.producerCompressionType);
+    }
+
     @Import(name="producerLingerMs")
     private @Nullable Output<Integer> producerLingerMs;
 
@@ -56,6 +64,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         this.consumerFetchMinBytes = $.consumerFetchMinBytes;
         this.producerBatchSize = $.producerBatchSize;
         this.producerBufferMemory = $.producerBufferMemory;
+        this.producerCompressionType = $.producerCompressionType;
         this.producerLingerMs = $.producerLingerMs;
         this.producerMaxRequestSize = $.producerMaxRequestSize;
     }
@@ -103,6 +112,15 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
 
         public Builder producerBufferMemory(Integer producerBufferMemory) {
             return producerBufferMemory(Output.of(producerBufferMemory));
+        }
+
+        public Builder producerCompressionType(@Nullable Output<String> producerCompressionType) {
+            $.producerCompressionType = producerCompressionType;
+            return this;
+        }
+
+        public Builder producerCompressionType(String producerCompressionType) {
+            return producerCompressionType(Output.of(producerCompressionType));
         }
 
         public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {

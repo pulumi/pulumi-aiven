@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,16 +34,24 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
-    @Import(name="peerRegion", required=true)
-    private Output<String> peerRegion;
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Import(name="peerRegion")
+    private @Nullable Output<String> peerRegion;
 
     /**
      * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
-    public Output<String> peerRegion() {
-        return this.peerRegion;
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    public Optional<Output<String>> peerRegion() {
+        return Optional.ofNullable(this.peerRegion);
     }
 
     /**
@@ -143,8 +153,12 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release.
+         * 
          */
-        public Builder peerRegion(Output<String> peerRegion) {
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
+        public Builder peerRegion(@Nullable Output<String> peerRegion) {
             $.peerRegion = peerRegion;
             return this;
         }
@@ -154,7 +168,11 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder peerRegion(String peerRegion) {
             return peerRegion(Output.of(peerRegion));
         }
@@ -234,7 +252,6 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
 
         public TransitGatewayVpcAttachmentArgs build() {
             $.peerCloudAccount = Objects.requireNonNull($.peerCloudAccount, "expected parameter 'peerCloudAccount' to be non-null");
-            $.peerRegion = Objects.requireNonNull($.peerRegion, "expected parameter 'peerRegion' to be non-null");
             $.peerVpc = Objects.requireNonNull($.peerVpc, "expected parameter 'peerVpc' to be non-null");
             $.userPeerNetworkCidrs = Objects.requireNonNull($.userPeerNetworkCidrs, "expected parameter 'userPeerNetworkCidrs' to be non-null");
             $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");

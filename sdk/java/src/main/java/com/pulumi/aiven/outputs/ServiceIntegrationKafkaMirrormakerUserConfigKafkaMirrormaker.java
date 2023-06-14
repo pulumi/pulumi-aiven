@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     private @Nullable Integer consumerFetchMinBytes;
     private @Nullable Integer producerBatchSize;
     private @Nullable Integer producerBufferMemory;
+    private @Nullable String producerCompressionType;
     private @Nullable Integer producerLingerMs;
     private @Nullable Integer producerMaxRequestSize;
 
@@ -26,6 +28,9 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     }
     public Optional<Integer> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
+    }
+    public Optional<String> producerCompressionType() {
+        return Optional.ofNullable(this.producerCompressionType);
     }
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
@@ -46,6 +51,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         private @Nullable Integer consumerFetchMinBytes;
         private @Nullable Integer producerBatchSize;
         private @Nullable Integer producerBufferMemory;
+        private @Nullable String producerCompressionType;
         private @Nullable Integer producerLingerMs;
         private @Nullable Integer producerMaxRequestSize;
         public Builder() {}
@@ -54,6 +60,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     	      this.consumerFetchMinBytes = defaults.consumerFetchMinBytes;
     	      this.producerBatchSize = defaults.producerBatchSize;
     	      this.producerBufferMemory = defaults.producerBufferMemory;
+    	      this.producerCompressionType = defaults.producerCompressionType;
     	      this.producerLingerMs = defaults.producerLingerMs;
     	      this.producerMaxRequestSize = defaults.producerMaxRequestSize;
         }
@@ -74,6 +81,11 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
             return this;
         }
         @CustomType.Setter
+        public Builder producerCompressionType(@Nullable String producerCompressionType) {
+            this.producerCompressionType = producerCompressionType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
             this.producerLingerMs = producerLingerMs;
             return this;
@@ -88,6 +100,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
             o.consumerFetchMinBytes = consumerFetchMinBytes;
             o.producerBatchSize = producerBatchSize;
             o.producerBufferMemory = producerBufferMemory;
+            o.producerCompressionType = producerCompressionType;
             o.producerLingerMs = producerLingerMs;
             o.producerMaxRequestSize = producerMaxRequestSize;
             return o;

@@ -381,7 +381,7 @@ def get_cassandra(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    bar = aiven.get_cassandra(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    bar = aiven.get_cassandra(project=data["aiven_project"]["foo"]["project"],
         service_name="<SERVICE_NAME>")
     ```
 
@@ -439,7 +439,7 @@ def get_cassandra_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    bar = aiven.get_cassandra(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    bar = aiven.get_cassandra(project=data["aiven_project"]["foo"]["project"],
         service_name="<SERVICE_NAME>")
     ```
 

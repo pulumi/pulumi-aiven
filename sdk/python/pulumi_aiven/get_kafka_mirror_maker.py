@@ -381,7 +381,7 @@ def get_kafka_mirror_maker(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mm1 = aiven.get_kafka_mirror_maker(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    mm1 = aiven.get_kafka_mirror_maker(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-mm1")
     ```
 
@@ -439,7 +439,7 @@ def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mm1 = aiven.get_kafka_mirror_maker(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    mm1 = aiven.get_kafka_mirror_maker(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-mm1")
     ```
 

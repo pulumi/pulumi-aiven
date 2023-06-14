@@ -381,7 +381,7 @@ def get_redis(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    redis1 = aiven.get_redis(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    redis1 = aiven.get_redis(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-redis1")
     ```
 
@@ -439,7 +439,7 @@ def get_redis_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    redis1 = aiven.get_redis(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    redis1 = aiven.get_redis(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-redis1")
     ```
 

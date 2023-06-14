@@ -106,7 +106,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SegmentMs;
         /// <summary>
-        /// unclean.leader.election.enable value
+        /// unclean.leader.election.enable value; This field is deprecated and no longer functional.
         /// </summary>
         public readonly bool? UncleanLeaderElectionEnable;
 

@@ -1066,6 +1066,7 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
     producerAcks?: string;
     producerCompressionType?: string;
     producerLingerMs?: number;
+    producerMaxRequestSize?: number;
     simpleconsumerPoolSizeMax?: number;
 }
 
@@ -1201,6 +1202,9 @@ export interface GetKafkaTopicConfig {
     segmentIndexBytes?: string;
     segmentJitterMs?: string;
     segmentMs?: string;
+    /**
+     * @deprecated This field is deprecated and no longer functional.
+     */
     uncleanLeaderElectionEnable?: boolean;
 }
 
@@ -2153,6 +2157,7 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker
     consumerFetchMinBytes?: number;
     producerBatchSize?: number;
     producerBufferMemory?: number;
+    producerCompressionType?: string;
     producerLingerMs?: number;
     producerMaxRequestSize?: number;
 }
@@ -2742,6 +2747,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
     producerAcks?: string;
     producerCompressionType?: string;
     producerLingerMs?: number;
+    producerMaxRequestSize?: number;
     simpleconsumerPoolSizeMax?: number;
 }
 
@@ -2953,7 +2959,9 @@ export interface KafkaTopicConfig {
      */
     segmentMs?: string;
     /**
-     * unclean.leader.election.enable value
+     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     *
+     * @deprecated This field is deprecated and no longer functional.
      */
     uncleanLeaderElectionEnable?: boolean;
 }
@@ -4282,6 +4290,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
     consumerFetchMinBytes?: number;
     producerBatchSize?: number;
     producerBufferMemory?: number;
+    producerCompressionType?: string;
     producerLingerMs?: number;
     producerMaxRequestSize?: number;
 }

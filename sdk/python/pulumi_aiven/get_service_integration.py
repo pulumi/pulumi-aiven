@@ -253,7 +253,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myintegration = aiven.get_service_integration(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
         destination_service_name="<DESTINATION_SERVICE_NAME>",
         integration_type="datadog",
         source_service_name="<SOURCE_SERVICE_NAME>")
@@ -310,7 +310,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     import pulumi
     import pulumi_aiven as aiven
 
-    myintegration = aiven.get_service_integration(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
         destination_service_name="<DESTINATION_SERVICE_NAME>",
         integration_type="datadog",
         source_service_name="<SOURCE_SERVICE_NAME>")

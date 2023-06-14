@@ -107,8 +107,6 @@ func (KafkaSchemaRegistryAclState) ElementType() reflect.Type {
 }
 
 type kafkaSchemaRegistryAclArgs struct {
-	// Kafka Schema Registry ACL ID
-	AclId *string `pulumi:"aclId"`
 	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission string `pulumi:"permission"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -123,8 +121,6 @@ type kafkaSchemaRegistryAclArgs struct {
 
 // The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
 type KafkaSchemaRegistryAclArgs struct {
-	// Kafka Schema Registry ACL ID
-	AclId pulumi.StringPtrInput
 	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission pulumi.StringInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
