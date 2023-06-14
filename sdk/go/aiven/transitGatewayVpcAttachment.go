@@ -58,7 +58,9 @@ type TransitGatewayVpcAttachment struct {
 	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
 	PeerCloudAccount pulumi.StringOutput `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
-	PeerRegion pulumi.StringOutput `pulumi:"peerRegion"`
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
+	PeerRegion pulumi.StringPtrOutput `pulumi:"peerRegion"`
 	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc pulumi.StringOutput `pulumi:"peerVpc"`
 	// Cloud provider identifier for the peering connection if available
@@ -82,9 +84,6 @@ func NewTransitGatewayVpcAttachment(ctx *pulumi.Context,
 
 	if args.PeerCloudAccount == nil {
 		return nil, errors.New("invalid value for required argument 'PeerCloudAccount'")
-	}
-	if args.PeerRegion == nil {
-		return nil, errors.New("invalid value for required argument 'PeerRegion'")
 	}
 	if args.PeerVpc == nil {
 		return nil, errors.New("invalid value for required argument 'PeerVpc'")
@@ -120,6 +119,8 @@ type transitGatewayVpcAttachmentState struct {
 	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
 	PeerCloudAccount *string `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	PeerRegion *string `pulumi:"peerRegion"`
 	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc *string `pulumi:"peerVpc"`
@@ -139,6 +140,8 @@ type TransitGatewayVpcAttachmentState struct {
 	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
 	PeerCloudAccount pulumi.StringPtrInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	PeerRegion pulumi.StringPtrInput
 	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc pulumi.StringPtrInput
@@ -162,7 +165,9 @@ type transitGatewayVpcAttachmentArgs struct {
 	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
-	PeerRegion string `pulumi:"peerRegion"`
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
+	PeerRegion *string `pulumi:"peerRegion"`
 	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc string `pulumi:"peerVpc"`
 	// List of private IPv4 ranges to route through the peering connection
@@ -176,7 +181,9 @@ type TransitGatewayVpcAttachmentArgs struct {
 	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
 	PeerCloudAccount pulumi.StringInput
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
-	PeerRegion pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
+	PeerRegion pulumi.StringPtrInput
 	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
 	PeerVpc pulumi.StringInput
 	// List of private IPv4 ranges to route through the peering connection
@@ -278,8 +285,10 @@ func (o TransitGatewayVpcAttachmentOutput) PeerCloudAccount() pulumi.StringOutpu
 }
 
 // AWS region of the peered VPC (if not in the same region as Aiven VPC)
-func (o TransitGatewayVpcAttachmentOutput) PeerRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.PeerRegion }).(pulumi.StringOutput)
+//
+// Deprecated: This field is deprecated and will be removed in the next major release.
+func (o TransitGatewayVpcAttachmentOutput) PeerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringPtrOutput { return v.PeerRegion }).(pulumi.StringPtrOutput)
 }
 
 // Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.

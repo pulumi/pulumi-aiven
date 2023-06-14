@@ -98,12 +98,6 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaRegistryAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka Schema Registry ACL ID
-        /// </summary>
-        [Input("aclId")]
-        public Input<string>? AclId { get; set; }
-
-        /// <summary>
         /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]

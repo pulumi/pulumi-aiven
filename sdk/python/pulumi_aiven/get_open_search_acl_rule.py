@@ -119,8 +119,8 @@ def get_open_search_acl_rule(index: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os_acl_rule = aiven.get_open_search_acl_rule(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    os_acl_rule = aiven.get_open_search_acl_rule(project=aiven_opensearch_acl_config["os_acls_config"]["project"],
+        service_name=aiven_opensearch_acl_config["os_acls_config"]["service_name"],
         username="<USERNAME>",
         index="<INDEX>")
     ```
@@ -166,8 +166,8 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os_acl_rule = aiven.get_open_search_acl_rule(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    os_acl_rule = aiven.get_open_search_acl_rule(project=aiven_opensearch_acl_config["os_acls_config"]["project"],
+        service_name=aiven_opensearch_acl_config["os_acls_config"]["service_name"],
         username="<USERNAME>",
         index="<INDEX>")
     ```

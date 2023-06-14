@@ -1907,6 +1907,7 @@
                 "producerAcks": "producer_acks",
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
+                "producerMaxRequestSize": "producer_max_request_size",
                 "simpleconsumerPoolSizeMax": "simpleconsumer_pool_size_max"
             },
             "aiven:index/KafkaKafkaUserConfigPrivateAccess:KafkaKafkaUserConfigPrivateAccess": {
@@ -2446,6 +2447,7 @@
                 "consumerFetchMinBytes": "consumer_fetch_min_bytes",
                 "producerBatchSize": "producer_batch_size",
                 "producerBufferMemory": "producer_buffer_memory",
+                "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size"
             },
@@ -3421,6 +3423,7 @@
                 "producerAcks": "producer_acks",
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
+                "producerMaxRequestSize": "producer_max_request_size",
                 "simpleconsumerPoolSizeMax": "simpleconsumer_pool_size_max"
             },
             "aiven:index/getKafkaKafkaUserConfigPrivateAccess:getKafkaKafkaUserConfigPrivateAccess": {
@@ -4286,6 +4289,7 @@
                 "consumerFetchMinBytes": "consumer_fetch_min_bytes",
                 "producerBatchSize": "producer_batch_size",
                 "producerBufferMemory": "producer_buffer_memory",
+                "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size"
             },

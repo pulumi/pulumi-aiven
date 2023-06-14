@@ -36,6 +36,12 @@ public final class GetKafkaTopicConfig {
     private @Nullable String segmentIndexBytes;
     private @Nullable String segmentJitterMs;
     private @Nullable String segmentMs;
+    /**
+     * @deprecated
+     * This field is deprecated and no longer functional.
+     * 
+     */
+    @Deprecated /* This field is deprecated and no longer functional. */
     private @Nullable Boolean uncleanLeaderElectionEnable;
 
     private GetKafkaTopicConfig() {}
@@ -108,6 +114,12 @@ public final class GetKafkaTopicConfig {
     public Optional<String> segmentMs() {
         return Optional.ofNullable(this.segmentMs);
     }
+    /**
+     * @deprecated
+     * This field is deprecated and no longer functional.
+     * 
+     */
+    @Deprecated /* This field is deprecated and no longer functional. */
     public Optional<Boolean> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }

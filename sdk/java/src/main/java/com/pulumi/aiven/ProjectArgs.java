@@ -49,21 +49,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-     * 
-     */
-    @Import(name="availableCredits")
-    private @Nullable Output<String> availableCredits;
-
-    /**
-     * @return The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-     * 
-     */
-    public Optional<Output<String>> availableCredits() {
-        return Optional.ofNullable(this.availableCredits);
-    }
-
-    /**
      * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
@@ -173,7 +158,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     private ProjectArgs(ProjectArgs $) {
         this.accountId = $.accountId;
         this.addAccountOwnersAdminAccess = $.addAccountOwnersAdminAccess;
-        this.availableCredits = $.availableCredits;
         this.billingGroup = $.billingGroup;
         this.copyFromProject = $.copyFromProject;
         this.defaultCloud = $.defaultCloud;
@@ -241,27 +225,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addAccountOwnersAdminAccess(Boolean addAccountOwnersAdminAccess) {
             return addAccountOwnersAdminAccess(Output.of(addAccountOwnersAdminAccess));
-        }
-
-        /**
-         * @param availableCredits The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availableCredits(@Nullable Output<String> availableCredits) {
-            $.availableCredits = availableCredits;
-            return this;
-        }
-
-        /**
-         * @param availableCredits The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availableCredits(String availableCredits) {
-            return availableCredits(Output.of(availableCredits));
         }
 
         /**

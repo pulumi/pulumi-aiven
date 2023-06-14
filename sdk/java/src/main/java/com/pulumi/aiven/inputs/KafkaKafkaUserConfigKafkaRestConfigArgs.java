@@ -59,6 +59,13 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.producerLingerMs);
     }
 
+    @Import(name="producerMaxRequestSize")
+    private @Nullable Output<Integer> producerMaxRequestSize;
+
+    public Optional<Output<Integer>> producerMaxRequestSize() {
+        return Optional.ofNullable(this.producerMaxRequestSize);
+    }
+
     @Import(name="simpleconsumerPoolSizeMax")
     private @Nullable Output<Integer> simpleconsumerPoolSizeMax;
 
@@ -75,6 +82,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         this.producerAcks = $.producerAcks;
         this.producerCompressionType = $.producerCompressionType;
         this.producerLingerMs = $.producerLingerMs;
+        this.producerMaxRequestSize = $.producerMaxRequestSize;
         this.simpleconsumerPoolSizeMax = $.simpleconsumerPoolSizeMax;
     }
 
@@ -148,6 +156,15 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
 
         public Builder producerLingerMs(Integer producerLingerMs) {
             return producerLingerMs(Output.of(producerLingerMs));
+        }
+
+        public Builder producerMaxRequestSize(@Nullable Output<Integer> producerMaxRequestSize) {
+            $.producerMaxRequestSize = producerMaxRequestSize;
+            return this;
+        }
+
+        public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
+            return producerMaxRequestSize(Output.of(producerMaxRequestSize));
         }
 
         public Builder simpleconsumerPoolSizeMax(@Nullable Output<Integer> simpleconsumerPoolSizeMax) {

@@ -381,7 +381,7 @@ def get_m3_aggregator(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3a = aiven.get_m3_aggregator(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    m3a = aiven.get_m3_aggregator(project=data["aiven_project"]["foo"]["project"],
         service_name="my-m3a")
     ```
 
@@ -439,7 +439,7 @@ def get_m3_aggregator_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3a = aiven.get_m3_aggregator(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    m3a = aiven.get_m3_aggregator(project=data["aiven_project"]["foo"]["project"],
         service_name="my-m3a")
     ```
 

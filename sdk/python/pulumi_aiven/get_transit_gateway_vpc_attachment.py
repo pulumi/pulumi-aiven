@@ -153,7 +153,7 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=aiven_project_vpc["bar"]["id"],
         peer_cloud_account="<PEER_ACCOUNT_ID>",
         peer_vpc="google-project1")
     ```
@@ -196,7 +196,7 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
     import pulumi
     import pulumi_aiven as aiven
 
-    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=aiven_project_vpc["bar"]["id"],
         peer_cloud_account="<PEER_ACCOUNT_ID>",
         peer_vpc="google-project1")
     ```

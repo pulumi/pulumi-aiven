@@ -56,7 +56,7 @@ namespace Pulumi.Aiven
         /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
         /// </summary>
         [Output("peerRegion")]
-        public Output<string> PeerRegion { get; private set; } = null!;
+        public Output<string?> PeerRegion { get; private set; } = null!;
 
         /// <summary>
         /// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -149,8 +149,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
         /// </summary>
-        [Input("peerRegion", required: true)]
-        public Input<string> PeerRegion { get; set; } = null!;
+        [Input("peerRegion")]
+        public Input<string>? PeerRegion { get; set; }
 
         /// <summary>
         /// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.

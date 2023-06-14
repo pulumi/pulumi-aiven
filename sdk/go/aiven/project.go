@@ -153,8 +153,6 @@ type projectArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
-	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-	AvailableCredits *string `pulumi:"availableCredits"`
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup *string `pulumi:"billingGroup"`
 	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
@@ -177,8 +175,6 @@ type ProjectArgs struct {
 	AccountId pulumi.StringPtrInput
 	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
-	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-	AvailableCredits pulumi.StringPtrInput
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrInput
 	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.

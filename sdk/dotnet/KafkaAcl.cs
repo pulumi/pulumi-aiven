@@ -126,12 +126,6 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka ACL ID
-        /// </summary>
-        [Input("aclId")]
-        public Input<string>? AclId { get; set; }
-
-        /// <summary>
         /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]

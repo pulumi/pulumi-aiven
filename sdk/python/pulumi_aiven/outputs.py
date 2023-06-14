@@ -5256,6 +5256,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
             suggest = "producer_compression_type"
         elif key == "producerLingerMs":
             suggest = "producer_linger_ms"
+        elif key == "producerMaxRequestSize":
+            suggest = "producer_max_request_size"
         elif key == "simpleconsumerPoolSizeMax":
             suggest = "simpleconsumer_pool_size_max"
 
@@ -5277,6 +5279,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
                  producer_acks: Optional[str] = None,
                  producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
+                 producer_max_request_size: Optional[int] = None,
                  simpleconsumer_pool_size_max: Optional[int] = None):
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
@@ -5290,6 +5293,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
             pulumi.set(__self__, "producer_compression_type", producer_compression_type)
         if producer_linger_ms is not None:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if simpleconsumer_pool_size_max is not None:
             pulumi.set(__self__, "simpleconsumer_pool_size_max", simpleconsumer_pool_size_max)
 
@@ -5322,6 +5327,11 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[int]:
         return pulumi.get(self, "producer_linger_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[int]:
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="simpleconsumerPoolSizeMax")
@@ -6143,7 +6153,7 @@ class KafkaTopicConfig(dict):
         :param str segment_index_bytes: segment.index.bytes value
         :param str segment_jitter_ms: segment.jitter.ms value
         :param str segment_ms: segment.ms value
-        :param bool unclean_leader_election_enable: unclean.leader.election.enable value
+        :param bool unclean_leader_election_enable: unclean.leader.election.enable value; This field is deprecated and no longer functional.
         """
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -6382,7 +6392,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="uncleanLeaderElectionEnable")
     def unclean_leader_election_enable(self) -> Optional[bool]:
         """
-        unclean.leader.election.enable value
+        unclean.leader.election.enable value; This field is deprecated and no longer functional.
         """
         return pulumi.get(self, "unclean_leader_election_enable")
 
@@ -13331,6 +13341,8 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
             suggest = "producer_batch_size"
         elif key == "producerBufferMemory":
             suggest = "producer_buffer_memory"
+        elif key == "producerCompressionType":
+            suggest = "producer_compression_type"
         elif key == "producerLingerMs":
             suggest = "producer_linger_ms"
         elif key == "producerMaxRequestSize":
@@ -13351,6 +13363,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
                  consumer_fetch_min_bytes: Optional[int] = None,
                  producer_batch_size: Optional[int] = None,
                  producer_buffer_memory: Optional[int] = None,
+                 producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
                  producer_max_request_size: Optional[int] = None):
         if consumer_fetch_min_bytes is not None:
@@ -13359,6 +13372,8 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
             pulumi.set(__self__, "producer_batch_size", producer_batch_size)
         if producer_buffer_memory is not None:
             pulumi.set(__self__, "producer_buffer_memory", producer_buffer_memory)
+        if producer_compression_type is not None:
+            pulumi.set(__self__, "producer_compression_type", producer_compression_type)
         if producer_linger_ms is not None:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
@@ -13378,6 +13393,11 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerBufferMemory")
     def producer_buffer_memory(self) -> Optional[int]:
         return pulumi.get(self, "producer_buffer_memory")
+
+    @property
+    @pulumi.getter(name="producerCompressionType")
+    def producer_compression_type(self) -> Optional[str]:
+        return pulumi.get(self, "producer_compression_type")
 
     @property
     @pulumi.getter(name="producerLingerMs")
@@ -17235,6 +17255,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
                  producer_acks: Optional[str] = None,
                  producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
+                 producer_max_request_size: Optional[int] = None,
                  simpleconsumer_pool_size_max: Optional[int] = None):
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
@@ -17248,6 +17269,8 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
             pulumi.set(__self__, "producer_compression_type", producer_compression_type)
         if producer_linger_ms is not None:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
+        if producer_max_request_size is not None:
+            pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
         if simpleconsumer_pool_size_max is not None:
             pulumi.set(__self__, "simpleconsumer_pool_size_max", simpleconsumer_pool_size_max)
 
@@ -17280,6 +17303,11 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[int]:
         return pulumi.get(self, "producer_linger_ms")
+
+    @property
+    @pulumi.getter(name="producerMaxRequestSize")
+    def producer_max_request_size(self) -> Optional[int]:
+        return pulumi.get(self, "producer_max_request_size")
 
     @property
     @pulumi.getter(name="simpleconsumerPoolSizeMax")
@@ -22749,6 +22777,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
                  consumer_fetch_min_bytes: Optional[int] = None,
                  producer_batch_size: Optional[int] = None,
                  producer_buffer_memory: Optional[int] = None,
+                 producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
                  producer_max_request_size: Optional[int] = None):
         if consumer_fetch_min_bytes is not None:
@@ -22757,6 +22786,8 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
             pulumi.set(__self__, "producer_batch_size", producer_batch_size)
         if producer_buffer_memory is not None:
             pulumi.set(__self__, "producer_buffer_memory", producer_buffer_memory)
+        if producer_compression_type is not None:
+            pulumi.set(__self__, "producer_compression_type", producer_compression_type)
         if producer_linger_ms is not None:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
@@ -22776,6 +22807,11 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerBufferMemory")
     def producer_buffer_memory(self) -> Optional[int]:
         return pulumi.get(self, "producer_buffer_memory")
+
+    @property
+    @pulumi.getter(name="producerCompressionType")
+    def producer_compression_type(self) -> Optional[str]:
+        return pulumi.get(self, "producer_compression_type")
 
     @property
     @pulumi.getter(name="producerLingerMs")

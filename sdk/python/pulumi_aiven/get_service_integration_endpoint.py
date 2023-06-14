@@ -237,7 +237,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
 
@@ -283,7 +283,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
 

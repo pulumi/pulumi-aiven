@@ -38,7 +38,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
     /**
      * Kafka Schema Registry ACL ID
      */
-    public readonly aclId!: pulumi.Output<string>;
+    public /*out*/ readonly aclId!: pulumi.Output<string>;
     /**
      * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -96,12 +96,12 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
             resourceInputs["permission"] = args ? args.permission : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resource"] = args ? args.resource : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["aclId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaSchemaRegistryAcl.__pulumiType, name, resourceInputs, opts);
@@ -142,10 +142,6 @@ export interface KafkaSchemaRegistryAclState {
  * The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
  */
 export interface KafkaSchemaRegistryAclArgs {
-    /**
-     * Kafka Schema Registry ACL ID
-     */
-    aclId?: pulumi.Input<string>;
     /**
      * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
      */

@@ -116,8 +116,8 @@ def get_aws_privatelink(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_aws_privatelink(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
+        service_name=aiven_kafka["bar"]["service_name"])
     ```
 
 
@@ -152,8 +152,8 @@ def get_aws_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_aws_privatelink(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
+        service_name=aiven_kafka["bar"]["service_name"])
     ```
 
 

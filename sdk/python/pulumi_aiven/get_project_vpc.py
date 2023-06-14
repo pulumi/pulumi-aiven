@@ -117,9 +117,9 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myvpc = aiven.get_project_vpc(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
         cloud_name="google-europe-west1")
-    myvpc_id = aiven.get_project_vpc(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
     ```
 
 
@@ -157,9 +157,9 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_aiven as aiven
 
-    myvpc = aiven.get_project_vpc(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
         cloud_name="google-europe-west1")
-    myvpc_id = aiven.get_project_vpc(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
     ```
 
 

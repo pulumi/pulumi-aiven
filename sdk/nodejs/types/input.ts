@@ -892,6 +892,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
     producerAcks?: pulumi.Input<string>;
     producerCompressionType?: pulumi.Input<string>;
     producerLingerMs?: pulumi.Input<number>;
+    producerMaxRequestSize?: pulumi.Input<number>;
     simpleconsumerPoolSizeMax?: pulumi.Input<number>;
 }
 
@@ -1103,7 +1104,9 @@ export interface KafkaTopicConfig {
      */
     segmentMs?: pulumi.Input<string>;
     /**
-     * unclean.leader.election.enable value
+     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     *
+     * @deprecated This field is deprecated and no longer functional.
      */
     uncleanLeaderElectionEnable?: pulumi.Input<boolean>;
 }
@@ -2432,6 +2435,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
     consumerFetchMinBytes?: pulumi.Input<number>;
     producerBatchSize?: pulumi.Input<number>;
     producerBufferMemory?: pulumi.Input<number>;
+    producerCompressionType?: pulumi.Input<string>;
     producerLingerMs?: pulumi.Input<number>;
     producerMaxRequestSize?: pulumi.Input<number>;
 }

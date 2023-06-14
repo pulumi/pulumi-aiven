@@ -62,8 +62,10 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     public readonly peerCloudAccount!: pulumi.Output<string>;
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    public readonly peerRegion!: pulumi.Output<string>;
+    public readonly peerRegion!: pulumi.Output<string | undefined>;
     /**
      * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -115,9 +117,6 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
             if ((!args || args.peerCloudAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerCloudAccount'");
             }
-            if ((!args || args.peerRegion === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'peerRegion'");
-            }
             if ((!args || args.peerVpc === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
@@ -151,6 +150,8 @@ export interface TransitGatewayVpcAttachmentState {
     peerCloudAccount?: pulumi.Input<string>;
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     peerRegion?: pulumi.Input<string>;
     /**
@@ -189,8 +190,10 @@ export interface TransitGatewayVpcAttachmentArgs {
     peerCloudAccount: pulumi.Input<string>;
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    peerRegion: pulumi.Input<string>;
+    peerRegion?: pulumi.Input<string>;
     /**
      * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      */

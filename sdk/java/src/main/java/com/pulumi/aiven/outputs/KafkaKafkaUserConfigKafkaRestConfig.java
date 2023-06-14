@@ -19,6 +19,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     private @Nullable String producerAcks;
     private @Nullable String producerCompressionType;
     private @Nullable Integer producerLingerMs;
+    private @Nullable Integer producerMaxRequestSize;
     private @Nullable Integer simpleconsumerPoolSizeMax;
 
     private KafkaKafkaUserConfigKafkaRestConfig() {}
@@ -40,6 +41,9 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
+    public Optional<Integer> producerMaxRequestSize() {
+        return Optional.ofNullable(this.producerMaxRequestSize);
+    }
     public Optional<Integer> simpleconsumerPoolSizeMax() {
         return Optional.ofNullable(this.simpleconsumerPoolSizeMax);
     }
@@ -59,6 +63,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         private @Nullable String producerAcks;
         private @Nullable String producerCompressionType;
         private @Nullable Integer producerLingerMs;
+        private @Nullable Integer producerMaxRequestSize;
         private @Nullable Integer simpleconsumerPoolSizeMax;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigKafkaRestConfig defaults) {
@@ -69,6 +74,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     	      this.producerAcks = defaults.producerAcks;
     	      this.producerCompressionType = defaults.producerCompressionType;
     	      this.producerLingerMs = defaults.producerLingerMs;
+    	      this.producerMaxRequestSize = defaults.producerMaxRequestSize;
     	      this.simpleconsumerPoolSizeMax = defaults.simpleconsumerPoolSizeMax;
         }
 
@@ -103,6 +109,11 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder producerMaxRequestSize(@Nullable Integer producerMaxRequestSize) {
+            this.producerMaxRequestSize = producerMaxRequestSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder simpleconsumerPoolSizeMax(@Nullable Integer simpleconsumerPoolSizeMax) {
             this.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return this;
@@ -115,6 +126,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
             o.producerAcks = producerAcks;
             o.producerCompressionType = producerCompressionType;
             o.producerLingerMs = producerLingerMs;
+            o.producerMaxRequestSize = producerMaxRequestSize;
             o.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return o;
         }

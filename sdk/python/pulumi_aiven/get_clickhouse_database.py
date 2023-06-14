@@ -102,8 +102,8 @@ def get_clickhouse_database(name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse_db = aiven.get_clickhouse_database(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    clickhouse_db = aiven.get_clickhouse_database(project=aiven_clickhouse["ch"]["project"],
+        service_name=aiven_clickhouse["ch"]["service_name"],
         name="my-ch-db")
     ```
 
@@ -141,8 +141,8 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse_db = aiven.get_clickhouse_database(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    clickhouse_db = aiven.get_clickhouse_database(project=aiven_clickhouse["ch"]["project"],
+        service_name=aiven_clickhouse["ch"]["service_name"],
         name="my-ch-db")
     ```
 

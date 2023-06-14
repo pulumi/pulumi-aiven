@@ -7,28 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaAclArgs Empty = new KafkaAclArgs();
-
-    /**
-     * Kafka ACL ID
-     * 
-     */
-    @Import(name="aclId")
-    private @Nullable Output<String> aclId;
-
-    /**
-     * @return Kafka ACL ID
-     * 
-     */
-    public Optional<Output<String>> aclId() {
-        return Optional.ofNullable(this.aclId);
-    }
 
     /**
      * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
@@ -108,7 +91,6 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     private KafkaAclArgs() {}
 
     private KafkaAclArgs(KafkaAclArgs $) {
-        this.aclId = $.aclId;
         this.permission = $.permission;
         this.project = $.project;
         this.serviceName = $.serviceName;
@@ -132,27 +114,6 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(KafkaAclArgs defaults) {
             $ = new KafkaAclArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param aclId Kafka ACL ID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aclId(@Nullable Output<String> aclId) {
-            $.aclId = aclId;
-            return this;
-        }
-
-        /**
-         * @param aclId Kafka ACL ID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aclId(String aclId) {
-            return aclId(Output.of(aclId));
         }
 
         /**

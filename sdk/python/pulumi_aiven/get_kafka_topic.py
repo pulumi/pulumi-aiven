@@ -151,8 +151,8 @@ def get_kafka_topic(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytesttopic = aiven.get_kafka_topic(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
+        service_name=aiven_kafka["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
 
@@ -194,8 +194,8 @@ def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytesttopic = aiven.get_kafka_topic(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
+        service_name=aiven_kafka["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
 

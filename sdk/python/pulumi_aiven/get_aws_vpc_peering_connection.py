@@ -142,7 +142,7 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_aws_vpc_peering_connection(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    foo = aiven.get_aws_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
         aws_account_id="XXXXX",
         aws_vpc_id="XXXXX")
     ```
@@ -187,7 +187,7 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_aws_vpc_peering_connection(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    foo = aiven.get_aws_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
         aws_account_id="XXXXX",
         aws_vpc_id="XXXXX")
     ```
