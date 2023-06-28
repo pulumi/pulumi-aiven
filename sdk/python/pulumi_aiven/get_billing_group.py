@@ -238,22 +238,22 @@ def get_billing_group(billing_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getBillingGroup:getBillingGroup', __args__, opts=opts, typ=GetBillingGroupResult).value
 
     return AwaitableGetBillingGroupResult(
-        account_id=__ret__.account_id,
-        address_lines=__ret__.address_lines,
-        billing_currency=__ret__.billing_currency,
-        billing_emails=__ret__.billing_emails,
-        billing_extra_text=__ret__.billing_extra_text,
-        billing_group_id=__ret__.billing_group_id,
-        card_id=__ret__.card_id,
-        city=__ret__.city,
-        company=__ret__.company,
-        copy_from_billing_group=__ret__.copy_from_billing_group,
-        country_code=__ret__.country_code,
-        id=__ret__.id,
-        name=__ret__.name,
-        state=__ret__.state,
-        vat_id=__ret__.vat_id,
-        zip_code=__ret__.zip_code)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        address_lines=pulumi.get(__ret__, 'address_lines'),
+        billing_currency=pulumi.get(__ret__, 'billing_currency'),
+        billing_emails=pulumi.get(__ret__, 'billing_emails'),
+        billing_extra_text=pulumi.get(__ret__, 'billing_extra_text'),
+        billing_group_id=pulumi.get(__ret__, 'billing_group_id'),
+        card_id=pulumi.get(__ret__, 'card_id'),
+        city=pulumi.get(__ret__, 'city'),
+        company=pulumi.get(__ret__, 'company'),
+        copy_from_billing_group=pulumi.get(__ret__, 'copy_from_billing_group'),
+        country_code=pulumi.get(__ret__, 'country_code'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        vat_id=pulumi.get(__ret__, 'vat_id'),
+        zip_code=pulumi.get(__ret__, 'zip_code'))
 
 
 @_utilities.lift_output_func(get_billing_group)

@@ -112,11 +112,11 @@ def get_account_team_project(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamProject:getAccountTeamProject', __args__, opts=opts, typ=GetAccountTeamProjectResult).value
 
     return AwaitableGetAccountTeamProjectResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        project_name=__ret__.project_name,
-        team_id=__ret__.team_id,
-        team_type=__ret__.team_type)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        project_name=pulumi.get(__ret__, 'project_name'),
+        team_id=pulumi.get(__ret__, 'team_id'),
+        team_type=pulumi.get(__ret__, 'team_type'))
 
 
 @_utilities.lift_output_func(get_account_team_project)

@@ -155,14 +155,14 @@ def get_azure_privatelink(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAzurePrivatelink:getAzurePrivatelink', __args__, opts=opts, typ=GetAzurePrivatelinkResult).value
 
     return AwaitableGetAzurePrivatelinkResult(
-        azure_service_alias=__ret__.azure_service_alias,
-        azure_service_id=__ret__.azure_service_id,
-        id=__ret__.id,
-        message=__ret__.message,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        state=__ret__.state,
-        user_subscription_ids=__ret__.user_subscription_ids)
+        azure_service_alias=pulumi.get(__ret__, 'azure_service_alias'),
+        azure_service_id=pulumi.get(__ret__, 'azure_service_id'),
+        id=pulumi.get(__ret__, 'id'),
+        message=pulumi.get(__ret__, 'message'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        state=pulumi.get(__ret__, 'state'),
+        user_subscription_ids=pulumi.get(__ret__, 'user_subscription_ids'))
 
 
 @_utilities.lift_output_func(get_azure_privatelink)

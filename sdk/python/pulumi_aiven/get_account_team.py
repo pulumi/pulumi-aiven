@@ -121,12 +121,12 @@ def get_account_team(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeam:getAccountTeam', __args__, opts=opts, typ=GetAccountTeamResult).value
 
     return AwaitableGetAccountTeamResult(
-        account_id=__ret__.account_id,
-        create_time=__ret__.create_time,
-        id=__ret__.id,
-        name=__ret__.name,
-        team_id=__ret__.team_id,
-        update_time=__ret__.update_time)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        team_id=pulumi.get(__ret__, 'team_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_account_team)

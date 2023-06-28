@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigDatadogTagArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigOpensearchArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigRedisArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -155,6 +156,21 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.opensearch);
     }
 
+    /**
+     * Datadog Redis Options.
+     * 
+     */
+    @Import(name="redis")
+    private @Nullable Output<ServiceIntegrationDatadogUserConfigRedisArgs> redis;
+
+    /**
+     * @return Datadog Redis Options.
+     * 
+     */
+    public Optional<Output<ServiceIntegrationDatadogUserConfigRedisArgs>> redis() {
+        return Optional.ofNullable(this.redis);
+    }
+
     private ServiceIntegrationDatadogUserConfigArgs() {}
 
     private ServiceIntegrationDatadogUserConfigArgs(ServiceIntegrationDatadogUserConfigArgs $) {
@@ -167,6 +183,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         this.kafkaCustomMetrics = $.kafkaCustomMetrics;
         this.maxJmxMetrics = $.maxJmxMetrics;
         this.opensearch = $.opensearch;
+        this.redis = $.redis;
     }
 
     public static Builder builder() {
@@ -434,6 +451,27 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
          */
         public Builder opensearch(ServiceIntegrationDatadogUserConfigOpensearchArgs opensearch) {
             return opensearch(Output.of(opensearch));
+        }
+
+        /**
+         * @param redis Datadog Redis Options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redis(@Nullable Output<ServiceIntegrationDatadogUserConfigRedisArgs> redis) {
+            $.redis = redis;
+            return this;
+        }
+
+        /**
+         * @param redis Datadog Redis Options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redis(ServiceIntegrationDatadogUserConfigRedisArgs redis) {
+            return redis(Output.of(redis));
         }
 
         public ServiceIntegrationDatadogUserConfigArgs build() {

@@ -147,13 +147,13 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection', __args__, opts=opts, typ=GetGcpVpcPeeringConnectionResult).value
 
     return AwaitableGetGcpVpcPeeringConnectionResult(
-        gcp_project_id=__ret__.gcp_project_id,
-        id=__ret__.id,
-        peer_vpc=__ret__.peer_vpc,
-        self_link=__ret__.self_link,
-        state=__ret__.state,
-        state_info=__ret__.state_info,
-        vpc_id=__ret__.vpc_id)
+        gcp_project_id=pulumi.get(__ret__, 'gcp_project_id'),
+        id=pulumi.get(__ret__, 'id'),
+        peer_vpc=pulumi.get(__ret__, 'peer_vpc'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        state=pulumi.get(__ret__, 'state'),
+        state_info=pulumi.get(__ret__, 'state_info'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_gcp_vpc_peering_connection)

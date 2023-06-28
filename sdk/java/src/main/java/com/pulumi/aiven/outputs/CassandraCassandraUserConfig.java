@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.CassandraCassandraUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,16 @@ public final class CassandraCassandraUserConfig {
      * 
      */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    private @Nullable Integer backupHour;
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    private @Nullable Integer backupMinute;
     /**
      * @return cassandra configuration values.
      * 
@@ -94,6 +105,20 @@ public final class CassandraCassandraUserConfig {
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    public Optional<Integer> backupHour() {
+        return Optional.ofNullable(this.backupHour);
+    }
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    public Optional<Integer> backupMinute() {
+        return Optional.ofNullable(this.backupMinute);
     }
     /**
      * @return cassandra configuration values.
@@ -194,6 +219,8 @@ public final class CassandraCassandraUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable Integer backupHour;
+        private @Nullable Integer backupMinute;
         private @Nullable CassandraCassandraUserConfigCassandra cassandra;
         private @Nullable String cassandraVersion;
         private @Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
@@ -210,6 +237,8 @@ public final class CassandraCassandraUserConfig {
         public Builder(CassandraCassandraUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.backupHour = defaults.backupHour;
+    	      this.backupMinute = defaults.backupMinute;
     	      this.cassandra = defaults.cassandra;
     	      this.cassandraVersion = defaults.cassandraVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
@@ -227,6 +256,16 @@ public final class CassandraCassandraUserConfig {
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
             this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupHour(@Nullable Integer backupHour) {
+            this.backupHour = backupHour;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupMinute(@Nullable Integer backupMinute) {
+            this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
@@ -301,6 +340,8 @@ public final class CassandraCassandraUserConfig {
         public CassandraCassandraUserConfig build() {
             final var o = new CassandraCassandraUserConfig();
             o.additionalBackupRegions = additionalBackupRegions;
+            o.backupHour = backupHour;
+            o.backupMinute = backupMinute;
             o.cassandra = cassandra;
             o.cassandraVersion = cassandraVersion;
             o.ipFilterObjects = ipFilterObjects;

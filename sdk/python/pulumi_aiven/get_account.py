@@ -163,15 +163,15 @@ def get_account(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        account_id=__ret__.account_id,
-        create_time=__ret__.create_time,
-        id=__ret__.id,
-        is_account_owner=__ret__.is_account_owner,
-        name=__ret__.name,
-        owner_team_id=__ret__.owner_team_id,
-        primary_billing_group_id=__ret__.primary_billing_group_id,
-        tenant_id=__ret__.tenant_id,
-        update_time=__ret__.update_time)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        id=pulumi.get(__ret__, 'id'),
+        is_account_owner=pulumi.get(__ret__, 'is_account_owner'),
+        name=pulumi.get(__ret__, 'name'),
+        owner_team_id=pulumi.get(__ret__, 'owner_team_id'),
+        primary_billing_group_id=pulumi.get(__ret__, 'primary_billing_group_id'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_account)

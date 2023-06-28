@@ -19,6 +19,18 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// </summary>
+        [Input("backupHour")]
+        public Input<int>? BackupHour { get; set; }
+
+        /// <summary>
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// </summary>
+        [Input("backupMinute")]
+        public Input<int>? BackupMinute { get; set; }
+
+        /// <summary>
         /// cassandra configuration values.
         /// </summary>
         [Input("cassandra")]

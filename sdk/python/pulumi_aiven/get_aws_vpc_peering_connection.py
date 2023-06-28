@@ -162,14 +162,14 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection', __args__, opts=opts, typ=GetAwsVpcPeeringConnectionResult).value
 
     return AwaitableGetAwsVpcPeeringConnectionResult(
-        aws_account_id=__ret__.aws_account_id,
-        aws_vpc_id=__ret__.aws_vpc_id,
-        aws_vpc_peering_connection_id=__ret__.aws_vpc_peering_connection_id,
-        aws_vpc_region=__ret__.aws_vpc_region,
-        id=__ret__.id,
-        state=__ret__.state,
-        state_info=__ret__.state_info,
-        vpc_id=__ret__.vpc_id)
+        aws_account_id=pulumi.get(__ret__, 'aws_account_id'),
+        aws_vpc_id=pulumi.get(__ret__, 'aws_vpc_id'),
+        aws_vpc_peering_connection_id=pulumi.get(__ret__, 'aws_vpc_peering_connection_id'),
+        aws_vpc_region=pulumi.get(__ret__, 'aws_vpc_region'),
+        id=pulumi.get(__ret__, 'id'),
+        state=pulumi.get(__ret__, 'state'),
+        state_info=pulumi.get(__ret__, 'state_info'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_aws_vpc_peering_connection)

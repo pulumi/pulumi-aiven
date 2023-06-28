@@ -136,13 +136,13 @@ def get_account_team_member(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAccountTeamMember:getAccountTeamMember', __args__, opts=opts, typ=GetAccountTeamMemberResult).value
 
     return AwaitableGetAccountTeamMemberResult(
-        accepted=__ret__.accepted,
-        account_id=__ret__.account_id,
-        create_time=__ret__.create_time,
-        id=__ret__.id,
-        invited_by_user_email=__ret__.invited_by_user_email,
-        team_id=__ret__.team_id,
-        user_email=__ret__.user_email)
+        accepted=pulumi.get(__ret__, 'accepted'),
+        account_id=pulumi.get(__ret__, 'account_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        id=pulumi.get(__ret__, 'id'),
+        invited_by_user_email=pulumi.get(__ret__, 'invited_by_user_email'),
+        team_id=pulumi.get(__ret__, 'team_id'),
+        user_email=pulumi.get(__ret__, 'user_email'))
 
 
 @_utilities.lift_output_func(get_account_team_member)

@@ -10,6 +10,7 @@ import com.pulumi.aiven.inputs.CassandraCassandraUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,36 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
      */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    @Import(name="backupHour")
+    private @Nullable Output<Integer> backupHour;
+
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    public Optional<Output<Integer>> backupHour() {
+        return Optional.ofNullable(this.backupHour);
+    }
+
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    @Import(name="backupMinute")
+    private @Nullable Output<Integer> backupMinute;
+
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
+    public Optional<Output<Integer>> backupMinute() {
+        return Optional.ofNullable(this.backupMinute);
     }
 
     /**
@@ -228,6 +259,8 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
 
     private CassandraCassandraUserConfigArgs(CassandraCassandraUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.backupHour = $.backupHour;
+        this.backupMinute = $.backupMinute;
         this.cassandra = $.cassandra;
         this.cassandraVersion = $.cassandraVersion;
         this.ipFilterObjects = $.ipFilterObjects;
@@ -279,6 +312,48 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
          */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupHour(@Nullable Output<Integer> backupHour) {
+            $.backupHour = backupHour;
+            return this;
+        }
+
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupHour(Integer backupHour) {
+            return backupHour(Output.of(backupHour));
+        }
+
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupMinute(@Nullable Output<Integer> backupMinute) {
+            $.backupMinute = backupMinute;
+            return this;
+        }
+
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupMinute(Integer backupMinute) {
+            return backupMinute(Output.of(backupMinute));
         }
 
         /**

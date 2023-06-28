@@ -119,11 +119,11 @@ def get_open_search_acl_config(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig', __args__, opts=opts, typ=GetOpenSearchAclConfigResult).value
 
     return AwaitableGetOpenSearchAclConfigResult(
-        enabled=__ret__.enabled,
-        extended_acl=__ret__.extended_acl,
-        id=__ret__.id,
-        project=__ret__.project,
-        service_name=__ret__.service_name)
+        enabled=pulumi.get(__ret__, 'enabled'),
+        extended_acl=pulumi.get(__ret__, 'extended_acl'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'))
 
 
 @_utilities.lift_output_func(get_open_search_acl_config)

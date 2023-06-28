@@ -18,6 +18,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// </summary>
+        public readonly int? BackupHour;
+        /// <summary>
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// </summary>
+        public readonly int? BackupMinute;
+        /// <summary>
         /// cassandra configuration values.
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigCassandra? Cassandra;
@@ -70,6 +78,10 @@ namespace Pulumi.Aiven.Outputs
         private CassandraCassandraUserConfig(
             string? additionalBackupRegions,
 
+            int? backupHour,
+
+            int? backupMinute,
+
             Outputs.CassandraCassandraUserConfigCassandra? cassandra,
 
             string? cassandraVersion,
@@ -95,6 +107,8 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            BackupHour = backupHour;
+            BackupMinute = backupMinute;
             Cassandra = cassandra;
             CassandraVersion = cassandraVersion;
             IpFilterObjects = ipFilterObjects;

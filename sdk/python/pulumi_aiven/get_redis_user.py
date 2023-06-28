@@ -183,16 +183,16 @@ def get_redis_user(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getRedisUser:getRedisUser', __args__, opts=opts, typ=GetRedisUserResult).value
 
     return AwaitableGetRedisUserResult(
-        id=__ret__.id,
-        password=__ret__.password,
-        project=__ret__.project,
-        redis_acl_categories=__ret__.redis_acl_categories,
-        redis_acl_channels=__ret__.redis_acl_channels,
-        redis_acl_commands=__ret__.redis_acl_commands,
-        redis_acl_keys=__ret__.redis_acl_keys,
-        service_name=__ret__.service_name,
-        type=__ret__.type,
-        username=__ret__.username)
+        id=pulumi.get(__ret__, 'id'),
+        password=pulumi.get(__ret__, 'password'),
+        project=pulumi.get(__ret__, 'project'),
+        redis_acl_categories=pulumi.get(__ret__, 'redis_acl_categories'),
+        redis_acl_channels=pulumi.get(__ret__, 'redis_acl_channels'),
+        redis_acl_commands=pulumi.get(__ret__, 'redis_acl_commands'),
+        redis_acl_keys=pulumi.get(__ret__, 'redis_acl_keys'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        type=pulumi.get(__ret__, 'type'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_redis_user)

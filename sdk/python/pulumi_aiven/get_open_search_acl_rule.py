@@ -142,12 +142,12 @@ def get_open_search_acl_rule(index: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getOpenSearchAclRule:getOpenSearchAclRule', __args__, opts=opts, typ=GetOpenSearchAclRuleResult).value
 
     return AwaitableGetOpenSearchAclRuleResult(
-        id=__ret__.id,
-        index=__ret__.index,
-        permission=__ret__.permission,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        username=__ret__.username)
+        id=pulumi.get(__ret__, 'id'),
+        index=pulumi.get(__ret__, 'index'),
+        permission=pulumi.get(__ret__, 'permission'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_open_search_acl_rule)

@@ -224,20 +224,20 @@ def get_project(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        account_id=__ret__.account_id,
-        add_account_owners_admin_access=__ret__.add_account_owners_admin_access,
-        available_credits=__ret__.available_credits,
-        billing_group=__ret__.billing_group,
-        ca_cert=__ret__.ca_cert,
-        copy_from_project=__ret__.copy_from_project,
-        default_cloud=__ret__.default_cloud,
-        estimated_balance=__ret__.estimated_balance,
-        id=__ret__.id,
-        payment_method=__ret__.payment_method,
-        project=__ret__.project,
-        tags=__ret__.tags,
-        technical_emails=__ret__.technical_emails,
-        use_source_project_billing_group=__ret__.use_source_project_billing_group)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        add_account_owners_admin_access=pulumi.get(__ret__, 'add_account_owners_admin_access'),
+        available_credits=pulumi.get(__ret__, 'available_credits'),
+        billing_group=pulumi.get(__ret__, 'billing_group'),
+        ca_cert=pulumi.get(__ret__, 'ca_cert'),
+        copy_from_project=pulumi.get(__ret__, 'copy_from_project'),
+        default_cloud=pulumi.get(__ret__, 'default_cloud'),
+        estimated_balance=pulumi.get(__ret__, 'estimated_balance'),
+        id=pulumi.get(__ret__, 'id'),
+        payment_method=pulumi.get(__ret__, 'payment_method'),
+        project=pulumi.get(__ret__, 'project'),
+        tags=pulumi.get(__ret__, 'tags'),
+        technical_emails=pulumi.get(__ret__, 'technical_emails'),
+        use_source_project_billing_group=pulumi.get(__ret__, 'use_source_project_billing_group'))
 
 
 @_utilities.lift_output_func(get_project)

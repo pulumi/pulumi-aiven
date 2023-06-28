@@ -171,15 +171,15 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment', __args__, opts=opts, typ=GetTransitGatewayVpcAttachmentResult).value
 
     return AwaitableGetTransitGatewayVpcAttachmentResult(
-        id=__ret__.id,
-        peer_cloud_account=__ret__.peer_cloud_account,
-        peer_region=__ret__.peer_region,
-        peer_vpc=__ret__.peer_vpc,
-        peering_connection_id=__ret__.peering_connection_id,
-        state=__ret__.state,
-        state_info=__ret__.state_info,
-        user_peer_network_cidrs=__ret__.user_peer_network_cidrs,
-        vpc_id=__ret__.vpc_id)
+        id=pulumi.get(__ret__, 'id'),
+        peer_cloud_account=pulumi.get(__ret__, 'peer_cloud_account'),
+        peer_region=pulumi.get(__ret__, 'peer_region'),
+        peer_vpc=pulumi.get(__ret__, 'peer_vpc'),
+        peering_connection_id=pulumi.get(__ret__, 'peering_connection_id'),
+        state=pulumi.get(__ret__, 'state'),
+        state_info=pulumi.get(__ret__, 'state_info'),
+        user_peer_network_cidrs=pulumi.get(__ret__, 'user_peer_network_cidrs'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_transit_gateway_vpc_attachment)

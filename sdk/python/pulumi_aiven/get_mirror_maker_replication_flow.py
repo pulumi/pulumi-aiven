@@ -223,19 +223,19 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult).value
 
     return AwaitableGetMirrorMakerReplicationFlowResult(
-        emit_heartbeats_enabled=__ret__.emit_heartbeats_enabled,
-        enable=__ret__.enable,
-        id=__ret__.id,
-        offset_syncs_topic_location=__ret__.offset_syncs_topic_location,
-        project=__ret__.project,
-        replication_policy_class=__ret__.replication_policy_class,
-        service_name=__ret__.service_name,
-        source_cluster=__ret__.source_cluster,
-        sync_group_offsets_enabled=__ret__.sync_group_offsets_enabled,
-        sync_group_offsets_interval_seconds=__ret__.sync_group_offsets_interval_seconds,
-        target_cluster=__ret__.target_cluster,
-        topics=__ret__.topics,
-        topics_blacklists=__ret__.topics_blacklists)
+        emit_heartbeats_enabled=pulumi.get(__ret__, 'emit_heartbeats_enabled'),
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        offset_syncs_topic_location=pulumi.get(__ret__, 'offset_syncs_topic_location'),
+        project=pulumi.get(__ret__, 'project'),
+        replication_policy_class=pulumi.get(__ret__, 'replication_policy_class'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        source_cluster=pulumi.get(__ret__, 'source_cluster'),
+        sync_group_offsets_enabled=pulumi.get(__ret__, 'sync_group_offsets_enabled'),
+        sync_group_offsets_interval_seconds=pulumi.get(__ret__, 'sync_group_offsets_interval_seconds'),
+        target_cluster=pulumi.get(__ret__, 'target_cluster'),
+        topics=pulumi.get(__ret__, 'topics'),
+        topics_blacklists=pulumi.get(__ret__, 'topics_blacklists'))
 
 
 @_utilities.lift_output_func(get_mirror_maker_replication_flow)

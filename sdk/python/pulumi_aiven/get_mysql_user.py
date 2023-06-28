@@ -171,15 +171,15 @@ def get_mysql_user(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getMysqlUser:getMysqlUser', __args__, opts=opts, typ=GetMysqlUserResult).value
 
     return AwaitableGetMysqlUserResult(
-        access_cert=__ret__.access_cert,
-        access_key=__ret__.access_key,
-        authentication=__ret__.authentication,
-        id=__ret__.id,
-        password=__ret__.password,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        type=__ret__.type,
-        username=__ret__.username)
+        access_cert=pulumi.get(__ret__, 'access_cert'),
+        access_key=pulumi.get(__ret__, 'access_key'),
+        authentication=pulumi.get(__ret__, 'authentication'),
+        id=pulumi.get(__ret__, 'id'),
+        password=pulumi.get(__ret__, 'password'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        type=pulumi.get(__ret__, 'type'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_mysql_user)

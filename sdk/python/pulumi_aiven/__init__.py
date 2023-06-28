@@ -26,6 +26,7 @@ from .clickhouse_user import *
 from .connection_pool import *
 from .flink import *
 from .flink_application import *
+from .flink_application_deployment import *
 from .flink_application_version import *
 from .gcp_vpc_peering_connection import *
 from .get_account import *
@@ -307,6 +308,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/flinkApplication:FlinkApplication": "FlinkApplication"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkApplicationDeployment",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": "FlinkApplicationDeployment"
   }
  },
  {

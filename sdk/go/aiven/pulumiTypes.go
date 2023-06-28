@@ -314,6 +314,10 @@ func (o CassandraCassandraArrayOutput) Index(i pulumi.IntInput) CassandraCassand
 type CassandraCassandraUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupHour *int `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupMinute *int `pulumi:"backupMinute"`
 	// cassandra configuration values.
 	Cassandra *CassandraCassandraUserConfigCassandra `pulumi:"cassandra"`
 	// Cassandra major version.
@@ -356,6 +360,10 @@ type CassandraCassandraUserConfigInput interface {
 type CassandraCassandraUserConfigArgs struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
 	// cassandra configuration values.
 	Cassandra CassandraCassandraUserConfigCassandraPtrInput `pulumi:"cassandra"`
 	// Cassandra major version.
@@ -466,6 +474,16 @@ func (o CassandraCassandraUserConfigOutput) AdditionalBackupRegions() pulumi.Str
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+func (o CassandraCassandraUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CassandraCassandraUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+}
+
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+func (o CassandraCassandraUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CassandraCassandraUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+}
+
 // cassandra configuration values.
 func (o CassandraCassandraUserConfigOutput) Cassandra() CassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigCassandra { return v.Cassandra }).(CassandraCassandraUserConfigCassandraPtrOutput)
@@ -564,6 +582,26 @@ func (o CassandraCassandraUserConfigPtrOutput) AdditionalBackupRegions() pulumi.
 		}
 		return v.AdditionalBackupRegions
 	}).(pulumi.StringPtrOutput)
+}
+
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+func (o CassandraCassandraUserConfigPtrOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CassandraCassandraUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+func (o CassandraCassandraUserConfigPtrOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CassandraCassandraUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupMinute
+	}).(pulumi.IntPtrOutput)
 }
 
 // cassandra configuration values.
@@ -29700,6 +29738,8 @@ type ServiceIntegrationDatadogUserConfig struct {
 	MaxJmxMetrics *int `pulumi:"maxJmxMetrics"`
 	// Datadog Opensearch Options.
 	Opensearch *ServiceIntegrationDatadogUserConfigOpensearch `pulumi:"opensearch"`
+	// Datadog Redis Options.
+	Redis *ServiceIntegrationDatadogUserConfigRedis `pulumi:"redis"`
 }
 
 // ServiceIntegrationDatadogUserConfigInput is an input type that accepts ServiceIntegrationDatadogUserConfigArgs and ServiceIntegrationDatadogUserConfigOutput values.
@@ -29732,6 +29772,8 @@ type ServiceIntegrationDatadogUserConfigArgs struct {
 	MaxJmxMetrics pulumi.IntPtrInput `pulumi:"maxJmxMetrics"`
 	// Datadog Opensearch Options.
 	Opensearch ServiceIntegrationDatadogUserConfigOpensearchPtrInput `pulumi:"opensearch"`
+	// Datadog Redis Options.
+	Redis ServiceIntegrationDatadogUserConfigRedisPtrInput `pulumi:"redis"`
 }
 
 func (ServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -29860,6 +29902,11 @@ func (o ServiceIntegrationDatadogUserConfigOutput) Opensearch() ServiceIntegrati
 	}).(ServiceIntegrationDatadogUserConfigOpensearchPtrOutput)
 }
 
+// Datadog Redis Options.
+func (o ServiceIntegrationDatadogUserConfigOutput) Redis() ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfigRedis { return v.Redis }).(ServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
 type ServiceIntegrationDatadogUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationDatadogUserConfigPtrOutput) ElementType() reflect.Type {
@@ -29972,6 +30019,16 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) Opensearch() ServiceIntegr
 		}
 		return v.Opensearch
 	}).(ServiceIntegrationDatadogUserConfigOpensearchPtrOutput)
+}
+
+// Datadog Redis Options.
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) Redis() ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfigRedis {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(ServiceIntegrationDatadogUserConfigRedisPtrOutput)
 }
 
 type ServiceIntegrationDatadogUserConfigDatadogTag struct {
@@ -30234,6 +30291,139 @@ func (o ServiceIntegrationDatadogUserConfigOpensearchPtrOutput) PshardStatsEnabl
 			return nil
 		}
 		return v.PshardStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigRedis struct {
+	CommandStatsEnabled *bool `pulumi:"commandStatsEnabled"`
+}
+
+// ServiceIntegrationDatadogUserConfigRedisInput is an input type that accepts ServiceIntegrationDatadogUserConfigRedisArgs and ServiceIntegrationDatadogUserConfigRedisOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDatadogUserConfigRedisInput` via:
+//
+//	ServiceIntegrationDatadogUserConfigRedisArgs{...}
+type ServiceIntegrationDatadogUserConfigRedisInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDatadogUserConfigRedisOutput() ServiceIntegrationDatadogUserConfigRedisOutput
+	ToServiceIntegrationDatadogUserConfigRedisOutputWithContext(context.Context) ServiceIntegrationDatadogUserConfigRedisOutput
+}
+
+type ServiceIntegrationDatadogUserConfigRedisArgs struct {
+	CommandStatsEnabled pulumi.BoolPtrInput `pulumi:"commandStatsEnabled"`
+}
+
+func (ServiceIntegrationDatadogUserConfigRedisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (i ServiceIntegrationDatadogUserConfigRedisArgs) ToServiceIntegrationDatadogUserConfigRedisOutput() ServiceIntegrationDatadogUserConfigRedisOutput {
+	return i.ToServiceIntegrationDatadogUserConfigRedisOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDatadogUserConfigRedisArgs) ToServiceIntegrationDatadogUserConfigRedisOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigRedisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigRedisOutput)
+}
+
+func (i ServiceIntegrationDatadogUserConfigRedisArgs) ToServiceIntegrationDatadogUserConfigRedisPtrOutput() ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return i.ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationDatadogUserConfigRedisArgs) ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigRedisOutput).ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationDatadogUserConfigRedisPtrInput is an input type that accepts ServiceIntegrationDatadogUserConfigRedisArgs, ServiceIntegrationDatadogUserConfigRedisPtr and ServiceIntegrationDatadogUserConfigRedisPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationDatadogUserConfigRedisPtrInput` via:
+//
+//	        ServiceIntegrationDatadogUserConfigRedisArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIntegrationDatadogUserConfigRedisPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationDatadogUserConfigRedisPtrOutput() ServiceIntegrationDatadogUserConfigRedisPtrOutput
+	ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Context) ServiceIntegrationDatadogUserConfigRedisPtrOutput
+}
+
+type serviceIntegrationDatadogUserConfigRedisPtrType ServiceIntegrationDatadogUserConfigRedisArgs
+
+func ServiceIntegrationDatadogUserConfigRedisPtr(v *ServiceIntegrationDatadogUserConfigRedisArgs) ServiceIntegrationDatadogUserConfigRedisPtrInput {
+	return (*serviceIntegrationDatadogUserConfigRedisPtrType)(v)
+}
+
+func (*serviceIntegrationDatadogUserConfigRedisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (i *serviceIntegrationDatadogUserConfigRedisPtrType) ToServiceIntegrationDatadogUserConfigRedisPtrOutput() ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return i.ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationDatadogUserConfigRedisPtrType) ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigRedisOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDatadogUserConfigRedisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisOutput) ToServiceIntegrationDatadogUserConfigRedisOutput() ServiceIntegrationDatadogUserConfigRedisOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisOutput) ToServiceIntegrationDatadogUserConfigRedisOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigRedisOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisOutput) ToServiceIntegrationDatadogUserConfigRedisPtrOutput() ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisOutput) ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegrationDatadogUserConfigRedis) *ServiceIntegrationDatadogUserConfigRedis {
+		return &v
+	}).(ServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisOutput) CommandStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfigRedis) *bool { return v.CommandStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceIntegrationDatadogUserConfigRedisPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationDatadogUserConfigRedisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisPtrOutput) ToServiceIntegrationDatadogUserConfigRedisPtrOutput() ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisPtrOutput) ToServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) ServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisPtrOutput) Elem() ServiceIntegrationDatadogUserConfigRedisOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfigRedis) ServiceIntegrationDatadogUserConfigRedis {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIntegrationDatadogUserConfigRedis
+		return ret
+	}).(ServiceIntegrationDatadogUserConfigRedisOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigRedisPtrOutput) CommandStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfigRedis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommandStatsEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -34905,6 +35095,8 @@ func (o GetCassandaCassandraArrayOutput) Index(i pulumi.IntInput) GetCassandaCas
 
 type GetCassandaCassandraUserConfig struct {
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	BackupHour              *int    `pulumi:"backupHour"`
+	BackupMinute            *int    `pulumi:"backupMinute"`
 	// Cassandra server provided values
 	Cassandra        *GetCassandaCassandraUserConfigCassandra       `pulumi:"cassandra"`
 	CassandraVersion *string                                        `pulumi:"cassandraVersion"`
@@ -34935,6 +35127,8 @@ type GetCassandaCassandraUserConfigInput interface {
 
 type GetCassandaCassandraUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	BackupHour              pulumi.IntPtrInput    `pulumi:"backupHour"`
+	BackupMinute            pulumi.IntPtrInput    `pulumi:"backupMinute"`
 	// Cassandra server provided values
 	Cassandra        GetCassandaCassandraUserConfigCassandraPtrInput        `pulumi:"cassandra"`
 	CassandraVersion pulumi.StringPtrInput                                  `pulumi:"cassandraVersion"`
@@ -35005,6 +35199,14 @@ func (o GetCassandaCassandraUserConfigOutput) ToGetCassandaCassandraUserConfigOu
 
 func (o GetCassandaCassandraUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCassandaCassandraUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+}
+
+func (o GetCassandaCassandraUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
 }
 
 // Cassandra server provided values
@@ -36033,6 +36235,8 @@ func (o GetCassandraCassandraArrayOutput) Index(i pulumi.IntInput) GetCassandraC
 
 type GetCassandraCassandraUserConfig struct {
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	BackupHour              *int    `pulumi:"backupHour"`
+	BackupMinute            *int    `pulumi:"backupMinute"`
 	// Cassandra server provided values
 	Cassandra        *GetCassandraCassandraUserConfigCassandra       `pulumi:"cassandra"`
 	CassandraVersion *string                                         `pulumi:"cassandraVersion"`
@@ -36063,6 +36267,8 @@ type GetCassandraCassandraUserConfigInput interface {
 
 type GetCassandraCassandraUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	BackupHour              pulumi.IntPtrInput    `pulumi:"backupHour"`
+	BackupMinute            pulumi.IntPtrInput    `pulumi:"backupMinute"`
 	// Cassandra server provided values
 	Cassandra        GetCassandraCassandraUserConfigCassandraPtrInput        `pulumi:"cassandra"`
 	CassandraVersion pulumi.StringPtrInput                                   `pulumi:"cassandraVersion"`
@@ -36133,6 +36339,14 @@ func (o GetCassandraCassandraUserConfigOutput) ToGetCassandraCassandraUserConfig
 
 func (o GetCassandraCassandraUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCassandraCassandraUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+}
+
+func (o GetCassandraCassandraUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
 }
 
 // Cassandra server provided values
@@ -61631,6 +61845,7 @@ type GetServiceIntegrationDatadogUserConfig struct {
 	KafkaCustomMetrics    []string                                           `pulumi:"kafkaCustomMetrics"`
 	MaxJmxMetrics         *int                                               `pulumi:"maxJmxMetrics"`
 	Opensearch            *GetServiceIntegrationDatadogUserConfigOpensearch  `pulumi:"opensearch"`
+	Redis                 *GetServiceIntegrationDatadogUserConfigRedis       `pulumi:"redis"`
 }
 
 // GetServiceIntegrationDatadogUserConfigInput is an input type that accepts GetServiceIntegrationDatadogUserConfigArgs and GetServiceIntegrationDatadogUserConfigOutput values.
@@ -61654,6 +61869,7 @@ type GetServiceIntegrationDatadogUserConfigArgs struct {
 	KafkaCustomMetrics    pulumi.StringArrayInput                                    `pulumi:"kafkaCustomMetrics"`
 	MaxJmxMetrics         pulumi.IntPtrInput                                         `pulumi:"maxJmxMetrics"`
 	Opensearch            GetServiceIntegrationDatadogUserConfigOpensearchPtrInput   `pulumi:"opensearch"`
+	Redis                 GetServiceIntegrationDatadogUserConfigRedisPtrInput        `pulumi:"redis"`
 }
 
 func (GetServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -61745,6 +61961,12 @@ func (o GetServiceIntegrationDatadogUserConfigOutput) Opensearch() GetServiceInt
 	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *GetServiceIntegrationDatadogUserConfigOpensearch {
 		return v.Opensearch
 	}).(GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) Redis() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *GetServiceIntegrationDatadogUserConfigRedis {
+		return v.Redis
+	}).(GetServiceIntegrationDatadogUserConfigRedisPtrOutput)
 }
 
 type GetServiceIntegrationDatadogUserConfigArrayOutput struct{ *pulumi.OutputState }
@@ -62027,6 +62249,139 @@ func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) PshardStatsEn
 			return nil
 		}
 		return v.PshardStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigRedis struct {
+	CommandStatsEnabled *bool `pulumi:"commandStatsEnabled"`
+}
+
+// GetServiceIntegrationDatadogUserConfigRedisInput is an input type that accepts GetServiceIntegrationDatadogUserConfigRedisArgs and GetServiceIntegrationDatadogUserConfigRedisOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigRedisInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigRedisArgs{...}
+type GetServiceIntegrationDatadogUserConfigRedisInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigRedisOutput() GetServiceIntegrationDatadogUserConfigRedisOutput
+	ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigRedisOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigRedisArgs struct {
+	CommandStatsEnabled pulumi.BoolPtrInput `pulumi:"commandStatsEnabled"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigRedisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisOutput() GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigRedisOutput)
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigRedisOutput).ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationDatadogUserConfigRedisPtrInput is an input type that accepts GetServiceIntegrationDatadogUserConfigRedisArgs, GetServiceIntegrationDatadogUserConfigRedisPtr and GetServiceIntegrationDatadogUserConfigRedisPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigRedisPtrInput` via:
+//
+//	        GetServiceIntegrationDatadogUserConfigRedisArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationDatadogUserConfigRedisPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput
+	ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput
+}
+
+type getServiceIntegrationDatadogUserConfigRedisPtrType GetServiceIntegrationDatadogUserConfigRedisArgs
+
+func GetServiceIntegrationDatadogUserConfigRedisPtr(v *GetServiceIntegrationDatadogUserConfigRedisArgs) GetServiceIntegrationDatadogUserConfigRedisPtrInput {
+	return (*getServiceIntegrationDatadogUserConfigRedisPtrType)(v)
+}
+
+func (*getServiceIntegrationDatadogUserConfigRedisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationDatadogUserConfigRedisPtrType) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationDatadogUserConfigRedisPtrType) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigRedisOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigRedisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisOutput() GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationDatadogUserConfigRedis) *GetServiceIntegrationDatadogUserConfigRedis {
+		return &v
+	}).(GetServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) CommandStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigRedis) *bool { return v.CommandStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigRedisPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigRedisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) Elem() GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigRedis) GetServiceIntegrationDatadogUserConfigRedis {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationDatadogUserConfigRedis
+		return ret
+	}).(GetServiceIntegrationDatadogUserConfigRedisOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) CommandStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigRedis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommandStatsEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -65470,6 +65825,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationDatadogUserConfigDatadogTagArrayInput)(nil)).Elem(), ServiceIntegrationDatadogUserConfigDatadogTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationDatadogUserConfigOpensearchInput)(nil)).Elem(), ServiceIntegrationDatadogUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationDatadogUserConfigOpensearchPtrInput)(nil)).Elem(), ServiceIntegrationDatadogUserConfigOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationDatadogUserConfigRedisInput)(nil)).Elem(), ServiceIntegrationDatadogUserConfigRedisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationDatadogUserConfigRedisPtrInput)(nil)).Elem(), ServiceIntegrationDatadogUserConfigRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointDatadogUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointDatadogUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointDatadogUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointDatadogUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput)(nil)).Elem(), ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{})
@@ -65874,6 +66231,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearchInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearchPtrInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedisInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigRedisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedisPtrInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{})
@@ -66264,6 +66623,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigOpensearchOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigOpensearchPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigRedisOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationDatadogUserConfigRedisPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput{})
@@ -66668,6 +67029,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOpensearchOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigRedisOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigRedisPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput{})

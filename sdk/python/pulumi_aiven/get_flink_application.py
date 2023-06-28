@@ -171,15 +171,15 @@ def get_flink_application(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getFlinkApplication:getFlinkApplication', __args__, opts=opts, typ=GetFlinkApplicationResult).value
 
     return AwaitableGetFlinkApplicationResult(
-        application_id=__ret__.application_id,
-        created_at=__ret__.created_at,
-        created_by=__ret__.created_by,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        updated_at=__ret__.updated_at,
-        updated_by=__ret__.updated_by)
+        application_id=pulumi.get(__ret__, 'application_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        updated_at=pulumi.get(__ret__, 'updated_at'),
+        updated_by=pulumi.get(__ret__, 'updated_by'))
 
 
 @_utilities.lift_output_func(get_flink_application)

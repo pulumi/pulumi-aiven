@@ -47,6 +47,9 @@ class AccountArgs:
         """
         Billing group id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "primary_billing_group_id")
 
     @primary_billing_group_id.setter
@@ -111,6 +114,9 @@ class _AccountState:
         """
         Account id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")
+
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -135,6 +141,9 @@ class _AccountState:
         """
         If true, user is part of the owners team for this account
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""is_account_owner is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "is_account_owner")
 
     @is_account_owner.setter
@@ -159,6 +168,9 @@ class _AccountState:
         """
         Owner team id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""owner_team_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "owner_team_id")
 
     @owner_team_id.setter
@@ -171,6 +183,9 @@ class _AccountState:
         """
         Billing group id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "primary_billing_group_id")
 
     @primary_billing_group_id.setter
@@ -348,6 +363,9 @@ class Account(pulumi.CustomResource):
         """
         Account id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")
+
         return pulumi.get(self, "account_id")
 
     @property
@@ -364,6 +382,9 @@ class Account(pulumi.CustomResource):
         """
         If true, user is part of the owners team for this account
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""is_account_owner is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "is_account_owner")
 
     @property
@@ -380,6 +401,9 @@ class Account(pulumi.CustomResource):
         """
         Owner team id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""owner_team_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "owner_team_id")
 
     @property
@@ -388,6 +412,9 @@ class Account(pulumi.CustomResource):
         """
         Billing group id
         """
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
+
         return pulumi.get(self, "primary_billing_group_id")
 
     @property

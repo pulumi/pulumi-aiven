@@ -49,6 +49,10 @@ namespace Pulumi.Aiven.Outputs
         /// Datadog Opensearch Options.
         /// </summary>
         public readonly Outputs.ServiceIntegrationDatadogUserConfigOpensearch? Opensearch;
+        /// <summary>
+        /// Datadog Redis Options.
+        /// </summary>
+        public readonly Outputs.ServiceIntegrationDatadogUserConfigRedis? Redis;
 
         [OutputConstructor]
         private ServiceIntegrationDatadogUserConfig(
@@ -68,7 +72,9 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxJmxMetrics,
 
-            Outputs.ServiceIntegrationDatadogUserConfigOpensearch? opensearch)
+            Outputs.ServiceIntegrationDatadogUserConfigOpensearch? opensearch,
+
+            Outputs.ServiceIntegrationDatadogUserConfigRedis? redis)
         {
             DatadogDbmEnabled = datadogDbmEnabled;
             DatadogTags = datadogTags;
@@ -79,6 +85,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaCustomMetrics = kafkaCustomMetrics;
             MaxJmxMetrics = maxJmxMetrics;
             Opensearch = opensearch;
+            Redis = redis;
         }
     }
 }

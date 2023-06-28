@@ -119,11 +119,11 @@ def get_project_user(email: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getProjectUser:getProjectUser', __args__, opts=opts, typ=GetProjectUserResult).value
 
     return AwaitableGetProjectUserResult(
-        accepted=__ret__.accepted,
-        email=__ret__.email,
-        id=__ret__.id,
-        member_type=__ret__.member_type,
-        project=__ret__.project)
+        accepted=pulumi.get(__ret__, 'accepted'),
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        member_type=pulumi.get(__ret__, 'member_type'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_project_user)

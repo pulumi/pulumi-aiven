@@ -171,15 +171,15 @@ def get_connection_pool(pool_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getConnectionPool:getConnectionPool', __args__, opts=opts, typ=GetConnectionPoolResult).value
 
     return AwaitableGetConnectionPoolResult(
-        connection_uri=__ret__.connection_uri,
-        database_name=__ret__.database_name,
-        id=__ret__.id,
-        pool_mode=__ret__.pool_mode,
-        pool_name=__ret__.pool_name,
-        pool_size=__ret__.pool_size,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        username=__ret__.username)
+        connection_uri=pulumi.get(__ret__, 'connection_uri'),
+        database_name=pulumi.get(__ret__, 'database_name'),
+        id=pulumi.get(__ret__, 'id'),
+        pool_mode=pulumi.get(__ret__, 'pool_mode'),
+        pool_name=pulumi.get(__ret__, 'pool_name'),
+        pool_size=pulumi.get(__ret__, 'pool_size'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_connection_pool)

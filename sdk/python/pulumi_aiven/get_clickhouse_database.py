@@ -120,11 +120,11 @@ def get_clickhouse_database(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getClickhouseDatabase:getClickhouseDatabase', __args__, opts=opts, typ=GetClickhouseDatabaseResult).value
 
     return AwaitableGetClickhouseDatabaseResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        termination_protection=__ret__.termination_protection)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        termination_protection=pulumi.get(__ret__, 'termination_protection'))
 
 
 @_utilities.lift_output_func(get_clickhouse_database)
