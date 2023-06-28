@@ -188,6 +188,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"aiven_flink_application_deployment": {
+				Tok: makeResource(mainMod, "FlinkApplicationDeployment"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
 			"aiven_static_ip":                    {Tok: makeResource(mainMod, "StaticIp")},
 			"aiven_aws_vpc_peering_connection":   {Tok: makeResource(mainMod, "AwsVpcPeeringConnection")},
 			"aiven_azure_vpc_peering_connection": {Tok: makeResource(mainMod, "AzureVpcPeeringConnection")},

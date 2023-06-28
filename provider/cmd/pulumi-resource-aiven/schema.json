@@ -97,6 +97,14 @@
                     "type": "string",
                     "description": "Additional Cloud Regions for Backup Replication.\n"
                 },
+                "backupHour": {
+                    "type": "integer",
+                    "description": "The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.\n"
+                },
+                "backupMinute": {
+                    "type": "integer",
+                    "description": "The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.\n"
+                },
                 "cassandra": {
                     "$ref": "#/types/aiven:index/CassandraCassandraUserConfigCassandra:CassandraCassandraUserConfigCassandra",
                     "description": "cassandra configuration values.\n"
@@ -4600,6 +4608,10 @@
                 "opensearch": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigOpensearch:ServiceIntegrationDatadogUserConfigOpensearch",
                     "description": "Datadog Opensearch Options.\n"
+                },
+                "redis": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigRedis:ServiceIntegrationDatadogUserConfigRedis",
+                    "description": "Datadog Redis Options.\n"
                 }
             },
             "type": "object"
@@ -4627,6 +4639,14 @@
                     "type": "boolean"
                 },
                 "pshardStatsEnabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationDatadogUserConfigRedis:ServiceIntegrationDatadogUserConfigRedis": {
+            "properties": {
+                "commandStatsEnabled": {
                     "type": "boolean"
                 }
             },
@@ -5210,6 +5230,12 @@
                 "additionalBackupRegions": {
                     "type": "string"
                 },
+                "backupHour": {
+                    "type": "integer"
+                },
+                "backupMinute": {
+                    "type": "integer"
+                },
                 "cassandra": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra",
                     "description": "Cassandra server provided values\n"
@@ -5397,6 +5423,12 @@
             "properties": {
                 "additionalBackupRegions": {
                     "type": "string"
+                },
+                "backupHour": {
+                    "type": "integer"
+                },
+                "backupMinute": {
+                    "type": "integer"
                 },
                 "cassandra": {
                     "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigCassandra:getCassandraCassandraUserConfigCassandra",
@@ -10014,6 +10046,9 @@
                 },
                 "opensearch": {
                     "$ref": "#/types/aiven:index/getServiceIntegrationDatadogUserConfigOpensearch:getServiceIntegrationDatadogUserConfigOpensearch"
+                },
+                "redis": {
+                    "$ref": "#/types/aiven:index/getServiceIntegrationDatadogUserConfigRedis:getServiceIntegrationDatadogUserConfigRedis"
                 }
             },
             "type": "object"
@@ -10046,6 +10081,14 @@
                     "type": "boolean"
                 },
                 "pshardStatsEnabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationDatadogUserConfigRedis:getServiceIntegrationDatadogUserConfigRedis": {
+            "properties": {
+                "commandStatsEnabled": {
                     "type": "boolean"
                 }
             },
@@ -13719,6 +13762,146 @@
                 "type": "object"
             }
         },
+        "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": {
+            "properties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "Application ID\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Application deployment creation time\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Application deployment creator\n"
+                },
+                "parallelism": {
+                    "type": "integer",
+                    "description": "Flink Job parallelism\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "restartEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether a Flink Job is restarted in case it fails\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "startingSavepoint": {
+                    "type": "string",
+                    "description": "Job savepoint\n"
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "ApplicationVersion ID\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "createdAt",
+                "createdBy",
+                "project",
+                "serviceName",
+                "versionId"
+            ],
+            "inputProperties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "Application ID\n",
+                    "willReplaceOnChanges": true
+                },
+                "parallelism": {
+                    "type": "integer",
+                    "description": "Flink Job parallelism\n",
+                    "willReplaceOnChanges": true
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "restartEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether a Flink Job is restarted in case it fails\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "startingSavepoint": {
+                    "type": "string",
+                    "description": "Job savepoint\n",
+                    "willReplaceOnChanges": true
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "ApplicationVersion ID\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "applicationId",
+                "project",
+                "serviceName",
+                "versionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FlinkApplicationDeployment resources.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "Application ID\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Application deployment creation time\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "Application deployment creator\n"
+                    },
+                    "parallelism": {
+                        "type": "integer",
+                        "description": "Flink Job parallelism\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "restartEnabled": {
+                        "type": "boolean",
+                        "description": "Specifies whether a Flink Job is restarted in case it fails\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "startingSavepoint": {
+                        "type": "string",
+                        "description": "Job savepoint\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "ApplicationVersion ID\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": {
             "description": "The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.\n\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id\n```\n\n ",
             "properties": {
@@ -16323,7 +16506,7 @@
             }
         },
         "aiven:index/kafkaSchema:KafkaSchema": {
-            "description": "The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst kafka_schema1 = new aiven.KafkaSchema(\"kafka-schema1\", {\n    project: aiven_project[\"kafka-schemas-project1\"].project,\n    serviceName: aiven_kafka[\"kafka-service1\"].service_name,\n    subjectName: \"kafka-schema1\",\n    compatibilityLevel: \"FORWARD\",\n    schema: `    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nkafka_schema1 = aiven.KafkaSchema(\"kafka-schema1\",\n    project=aiven_project[\"kafka-schemas-project1\"][\"project\"],\n    service_name=aiven_kafka[\"kafka-service1\"][\"service_name\"],\n    subject_name=\"kafka-schema1\",\n    compatibility_level=\"FORWARD\",\n    schema=\"\"\"    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kafka_schema1 = new Aiven.KafkaSchema(\"kafka-schema1\", new()\n    {\n        Project = aiven_project.Kafka_schemas_project1.Project,\n        ServiceName = aiven_kafka.Kafka_service1.Service_name,\n        SubjectName = \"kafka-schema1\",\n        CompatibilityLevel = \"FORWARD\",\n        Schema = @\"    {\n       \"\"doc\"\": \"\"example\"\",\n       \"\"fields\"\": [{\n           \"\"default\"\": 5,\n           \"\"doc\"\": \"\"my test number\"\",\n           \"\"name\"\": \"\"test\"\",\n           \"\"namespace\"\": \"\"test\"\",\n           \"\"type\"\": \"\"int\"\"\n       }],\n       \"\"name\"\": \"\"example\"\",\n       \"\"namespace\"\": \"\"example\"\",\n       \"\"type\"\": \"\"record\"\"\n    }\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaSchema(ctx, \"kafka-schema1\", \u0026aiven.KafkaSchemaArgs{\n\t\t\tProject:            pulumi.Any(aiven_project.KafkaSchemasProject1.Project),\n\t\t\tServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),\n\t\t\tSubjectName:        pulumi.String(\"kafka-schema1\"),\n\t\t\tCompatibilityLevel: pulumi.String(\"FORWARD\"),\n\t\t\tSchema:             pulumi.String(\"    {\\n       \\\"doc\\\": \\\"example\\\",\\n       \\\"fields\\\": [{\\n           \\\"default\\\": 5,\\n           \\\"doc\\\": \\\"my test number\\\",\\n           \\\"name\\\": \\\"test\\\",\\n           \\\"namespace\\\": \\\"test\\\",\\n           \\\"type\\\": \\\"int\\\"\\n       }],\\n       \\\"name\\\": \\\"example\\\",\\n       \\\"namespace\\\": \\\"example\\\",\\n       \\\"type\\\": \\\"record\\\"\\n    }\\n\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaSchema;\nimport com.pulumi.aiven.KafkaSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var kafka_schema1 = new KafkaSchema(\"kafka-schema1\", KafkaSchemaArgs.builder()        \n            .project(aiven_project.kafka-schemas-project1().project())\n            .serviceName(aiven_kafka.kafka-service1().service_name())\n            .subjectName(\"kafka-schema1\")\n            .compatibilityLevel(\"FORWARD\")\n            .schema(\"\"\"\n    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  kafka-schema1:\n    type: aiven:KafkaSchema\n    properties:\n      project: ${aiven_project\"kafka-schemas-project1\"[%!s(MISSING)].project}\n      serviceName: ${aiven_kafka\"kafka-service1\"[%!s(MISSING)].service_name}\n      subjectName: kafka-schema1\n      compatibilityLevel: FORWARD\n      schema: |2\n            {\n               \"doc\": \"example\",\n               \"fields\": [{\n                   \"default\": 5,\n                   \"doc\": \"my test number\",\n                   \"name\": \"test\",\n                   \"namespace\": \"test\",\n                   \"type\": \"int\"\n               }],\n               \"name\": \"example\",\n               \"namespace\": \"example\",\n               \"type\": \"record\"\n            }\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name\n```\n\n ",
+            "description": "The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst kafka_schema1 = new aiven.KafkaSchema(\"kafka-schema1\", {\n    project: aiven_project[\"kafka-schemas-project1\"].project,\n    serviceName: aiven_kafka[\"kafka-service1\"].service_name,\n    subjectName: \"kafka-schema1\",\n    compatibilityLevel: \"FORWARD\",\n    schema: `    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nkafka_schema1 = aiven.KafkaSchema(\"kafka-schema1\",\n    project=aiven_project[\"kafka-schemas-project1\"][\"project\"],\n    service_name=aiven_kafka[\"kafka-service1\"][\"service_name\"],\n    subject_name=\"kafka-schema1\",\n    compatibility_level=\"FORWARD\",\n    schema=\"\"\"    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kafka_schema1 = new Aiven.KafkaSchema(\"kafka-schema1\", new()\n    {\n        Project = aiven_project.Kafka_schemas_project1.Project,\n        ServiceName = aiven_kafka.Kafka_service1.Service_name,\n        SubjectName = \"kafka-schema1\",\n        CompatibilityLevel = \"FORWARD\",\n        Schema = @\"    {\n       \"\"doc\"\": \"\"example\"\",\n       \"\"fields\"\": [{\n           \"\"default\"\": 5,\n           \"\"doc\"\": \"\"my test number\"\",\n           \"\"name\"\": \"\"test\"\",\n           \"\"namespace\"\": \"\"test\"\",\n           \"\"type\"\": \"\"int\"\"\n       }],\n       \"\"name\"\": \"\"example\"\",\n       \"\"namespace\"\": \"\"example\"\",\n       \"\"type\"\": \"\"record\"\"\n    }\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaSchema(ctx, \"kafka-schema1\", \u0026aiven.KafkaSchemaArgs{\n\t\t\tProject:            pulumi.Any(aiven_project.KafkaSchemasProject1.Project),\n\t\t\tServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),\n\t\t\tSubjectName:        pulumi.String(\"kafka-schema1\"),\n\t\t\tCompatibilityLevel: pulumi.String(\"FORWARD\"),\n\t\t\tSchema: pulumi.String(`    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n`),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaSchema;\nimport com.pulumi.aiven.KafkaSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var kafka_schema1 = new KafkaSchema(\"kafka-schema1\", KafkaSchemaArgs.builder()        \n            .project(aiven_project.kafka-schemas-project1().project())\n            .serviceName(aiven_kafka.kafka-service1().service_name())\n            .subjectName(\"kafka-schema1\")\n            .compatibilityLevel(\"FORWARD\")\n            .schema(\"\"\"\n    {\n       \"doc\": \"example\",\n       \"fields\": [{\n           \"default\": 5,\n           \"doc\": \"my test number\",\n           \"name\": \"test\",\n           \"namespace\": \"test\",\n           \"type\": \"int\"\n       }],\n       \"name\": \"example\",\n       \"namespace\": \"example\",\n       \"type\": \"record\"\n    }\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  kafka-schema1:\n    type: aiven:KafkaSchema\n    properties:\n      project: ${aiven_project\"kafka-schemas-project1\"[%!s(MISSING)].project}\n      serviceName: ${aiven_kafka\"kafka-service1\"[%!s(MISSING)].service_name}\n      subjectName: kafka-schema1\n      compatibilityLevel: FORWARD\n      schema: |2\n            {\n               \"doc\": \"example\",\n               \"fields\": [{\n                   \"default\": 5,\n                   \"doc\": \"my test number\",\n                   \"name\": \"test\",\n                   \"namespace\": \"test\",\n                   \"type\": \"int\"\n               }],\n               \"name\": \"example\",\n               \"namespace\": \"example\",\n               \"type\": \"record\"\n            }\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name\n```\n\n ",
             "properties": {
                 "compatibilityLevel": {
                     "type": "string",
