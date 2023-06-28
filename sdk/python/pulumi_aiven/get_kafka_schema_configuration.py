@@ -157,14 +157,14 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration', __args__, opts=opts, typ=GetKafkaSchemaConfigurationResult).value
 
     return AwaitableGetKafkaSchemaConfigurationResult(
-        compatibility_level=__ret__.compatibility_level,
-        id=__ret__.id,
-        project=__ret__.project,
-        schema=__ret__.schema,
-        schema_type=__ret__.schema_type,
-        service_name=__ret__.service_name,
-        subject_name=__ret__.subject_name,
-        version=__ret__.version)
+        compatibility_level=pulumi.get(__ret__, 'compatibility_level'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        schema=pulumi.get(__ret__, 'schema'),
+        schema_type=pulumi.get(__ret__, 'schema_type'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        subject_name=pulumi.get(__ret__, 'subject_name'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_kafka_schema_configuration)

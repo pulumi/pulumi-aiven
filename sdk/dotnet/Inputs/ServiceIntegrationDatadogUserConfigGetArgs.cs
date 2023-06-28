@@ -102,6 +102,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("opensearch")]
         public Input<Inputs.ServiceIntegrationDatadogUserConfigOpensearchGetArgs>? Opensearch { get; set; }
 
+        /// <summary>
+        /// Datadog Redis Options.
+        /// </summary>
+        [Input("redis")]
+        public Input<Inputs.ServiceIntegrationDatadogUserConfigRedisGetArgs>? Redis { get; set; }
+
         public ServiceIntegrationDatadogUserConfigGetArgs()
         {
         }

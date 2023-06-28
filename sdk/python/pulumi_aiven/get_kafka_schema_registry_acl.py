@@ -142,13 +142,13 @@ def get_kafka_schema_registry_acl(permission: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl', __args__, opts=opts, typ=GetKafkaSchemaRegistryAclResult).value
 
     return AwaitableGetKafkaSchemaRegistryAclResult(
-        acl_id=__ret__.acl_id,
-        id=__ret__.id,
-        permission=__ret__.permission,
-        project=__ret__.project,
-        resource=__ret__.resource,
-        service_name=__ret__.service_name,
-        username=__ret__.username)
+        acl_id=pulumi.get(__ret__, 'acl_id'),
+        id=pulumi.get(__ret__, 'id'),
+        permission=pulumi.get(__ret__, 'permission'),
+        project=pulumi.get(__ret__, 'project'),
+        resource=pulumi.get(__ret__, 'resource'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_kafka_schema_registry_acl)

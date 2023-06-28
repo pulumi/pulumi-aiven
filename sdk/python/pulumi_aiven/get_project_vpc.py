@@ -135,12 +135,12 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts, typ=GetProjectVpcResult).value
 
     return AwaitableGetProjectVpcResult(
-        cloud_name=__ret__.cloud_name,
-        id=__ret__.id,
-        network_cidr=__ret__.network_cidr,
-        project=__ret__.project,
-        state=__ret__.state,
-        vpc_id=__ret__.vpc_id)
+        cloud_name=pulumi.get(__ret__, 'cloud_name'),
+        id=pulumi.get(__ret__, 'id'),
+        network_cidr=pulumi.get(__ret__, 'network_cidr'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_project_vpc)

@@ -181,6 +181,7 @@ __all__ = [
     'ServiceIntegrationDatadogUserConfigArgs',
     'ServiceIntegrationDatadogUserConfigDatadogTagArgs',
     'ServiceIntegrationDatadogUserConfigOpensearchArgs',
+    'ServiceIntegrationDatadogUserConfigRedisArgs',
     'ServiceIntegrationEndpointDatadogUserConfigArgs',
     'ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs',
     'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs',
@@ -304,6 +305,8 @@ class CassandraCassandraArgs:
 class CassandraCassandraUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
+                 backup_hour: Optional[pulumi.Input[int]] = None,
+                 backup_minute: Optional[pulumi.Input[int]] = None,
                  cassandra: Optional[pulumi.Input['CassandraCassandraUserConfigCassandraArgs']] = None,
                  cassandra_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]]] = None,
@@ -318,6 +321,8 @@ class CassandraCassandraUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: cassandra configuration values.
         :param pulumi.Input[str] cassandra_version: Cassandra major version.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -333,6 +338,10 @@ class CassandraCassandraUserConfigArgs:
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if backup_hour is not None:
+            pulumi.set(__self__, "backup_hour", backup_hour)
+        if backup_minute is not None:
+            pulumi.set(__self__, "backup_minute", backup_minute)
         if cassandra is not None:
             pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_version is not None:
@@ -372,6 +381,30 @@ class CassandraCassandraUserConfigArgs:
     @additional_backup_regions.setter
     def additional_backup_regions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "additional_backup_regions", value)
+
+    @property
+    @pulumi.getter(name="backupHour")
+    def backup_hour(self) -> Optional[pulumi.Input[int]]:
+        """
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        """
+        return pulumi.get(self, "backup_hour")
+
+    @backup_hour.setter
+    def backup_hour(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_hour", value)
+
+    @property
+    @pulumi.getter(name="backupMinute")
+    def backup_minute(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        """
+        return pulumi.get(self, "backup_minute")
+
+    @backup_minute.setter
+    def backup_minute(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_minute", value)
 
     @property
     @pulumi.getter
@@ -427,6 +460,9 @@ class CassandraCassandraUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -865,6 +901,9 @@ class ClickhouseClickhouseUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -1459,6 +1498,9 @@ class FlinkFlinkUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -2083,6 +2125,9 @@ class GrafanaGrafanaUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -3218,6 +3263,9 @@ class InfluxDbInfluxdbUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -3805,6 +3853,9 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -4462,6 +4513,9 @@ class KafkaKafkaUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -5857,6 +5911,9 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -6550,6 +6607,9 @@ class KafkaTopicConfigArgs:
         """
         unclean.leader.election.enable value; This field is deprecated and no longer functional.
         """
+        warnings.warn("""This field is deprecated and no longer functional.""", DeprecationWarning)
+        pulumi.log.warn("""unclean_leader_election_enable is deprecated: This field is deprecated and no longer functional.""")
+
         return pulumi.get(self, "unclean_leader_election_enable")
 
     @unclean_leader_election_enable.setter
@@ -6751,6 +6811,9 @@ class M3AggregatorM3aggregatorUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -6760,6 +6823,9 @@ class M3AggregatorM3aggregatorUserConfigArgs:
     @property
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+        pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
+
         return pulumi.get(self, "m3_version")
 
     @m3_version.setter
@@ -7062,6 +7128,9 @@ class M3DbM3dbUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -7089,6 +7158,9 @@ class M3DbM3dbUserConfigArgs:
     @property
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+        pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
+
         return pulumi.get(self, "m3_version")
 
     @m3_version.setter
@@ -7605,6 +7677,9 @@ class M3DbM3dbUserConfigRulesMappingArgs:
     @property
     @pulumi.getter
     def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
+
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
@@ -7983,6 +8058,9 @@ class MySqlMysqlUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -8984,6 +9062,9 @@ class OpenSearchOpensearchUserConfigArgs:
         """
         Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         """
+        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+        pulumi.log.warn("""disable_replication_factor_adjustment is deprecated: Usage of this field is discouraged.""")
+
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @disable_replication_factor_adjustment.setter
@@ -9044,6 +9125,9 @@ class OpenSearchOpensearchUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -9068,6 +9152,9 @@ class OpenSearchOpensearchUserConfigArgs:
         """
         Use index_patterns instead. The default value is `0`.
         """
+        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+        pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
+
         return pulumi.get(self, "max_index_count")
 
     @max_index_count.setter
@@ -10506,6 +10593,9 @@ class PgPgUserConfigArgs:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -10542,6 +10632,9 @@ class PgPgUserConfigArgs:
         """
         Use read_replica service integration instead.
         """
+        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+        pulumi.log.warn("""pg_read_replica is deprecated: Usage of this field is discouraged.""")
+
         return pulumi.get(self, "pg_read_replica")
 
     @pg_read_replica.setter
@@ -10554,6 +10647,9 @@ class PgPgUserConfigArgs:
         """
         Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         """
+        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
+        pulumi.log.warn("""pg_service_to_fork_from is deprecated: Usage of this field is discouraged.""")
+
         return pulumi.get(self, "pg_service_to_fork_from")
 
     @pg_service_to_fork_from.setter
@@ -12073,6 +12169,9 @@ class RedisRedisUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -12710,7 +12809,8 @@ class ServiceIntegrationDatadogUserConfigArgs:
                  include_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_jmx_metrics: Optional[pulumi.Input[int]] = None,
-                 opensearch: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']] = None):
+                 opensearch: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']] = None,
+                 redis: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgs']] = None):
         """
         :param pulumi.Input[bool] datadog_dbm_enabled: Enable Datadog Database Monitoring.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user.
@@ -12721,6 +12821,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kafka_custom_metrics: List of custom metrics.
         :param pulumi.Input[int] max_jmx_metrics: Maximum number of JMX metrics to send.
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs'] opensearch: Datadog Opensearch Options.
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgs'] redis: Datadog Redis Options.
         """
         if datadog_dbm_enabled is not None:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
@@ -12740,6 +12841,8 @@ class ServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "max_jmx_metrics", max_jmx_metrics)
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
+        if redis is not None:
+            pulumi.set(__self__, "redis", redis)
 
     @property
     @pulumi.getter(name="datadogDbmEnabled")
@@ -12849,6 +12952,18 @@ class ServiceIntegrationDatadogUserConfigArgs:
     def opensearch(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']]):
         pulumi.set(self, "opensearch", value)
 
+    @property
+    @pulumi.getter
+    def redis(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgs']]:
+        """
+        Datadog Redis Options.
+        """
+        return pulumi.get(self, "redis")
+
+    @redis.setter
+    def redis(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgs']]):
+        pulumi.set(self, "redis", value)
+
 
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
@@ -12917,6 +13032,23 @@ class ServiceIntegrationDatadogUserConfigOpensearchArgs:
     @pshard_stats_enabled.setter
     def pshard_stats_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pshard_stats_enabled", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationDatadogUserConfigRedisArgs:
+    def __init__(__self__, *,
+                 command_stats_enabled: Optional[pulumi.Input[bool]] = None):
+        if command_stats_enabled is not None:
+            pulumi.set(__self__, "command_stats_enabled", command_stats_enabled)
+
+    @property
+    @pulumi.getter(name="commandStatsEnabled")
+    def command_stats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "command_stats_enabled")
+
+    @command_stats_enabled.setter
+    def command_stats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "command_stats_enabled", value)
 
 
 @pulumi.input_type

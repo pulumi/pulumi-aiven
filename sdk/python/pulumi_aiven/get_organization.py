@@ -115,11 +115,11 @@ def get_organization(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
-        create_time=__ret__.create_time,
-        id=__ret__.id,
-        name=__ret__.name,
-        tenant_id=__ret__.tenant_id,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_organization)

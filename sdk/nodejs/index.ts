@@ -110,6 +110,11 @@ export type FlinkApplication = import("./flinkApplication").FlinkApplication;
 export const FlinkApplication: typeof import("./flinkApplication").FlinkApplication = null as any;
 utilities.lazyLoad(exports, ["FlinkApplication"], () => require("./flinkApplication"));
 
+export { FlinkApplicationDeploymentArgs, FlinkApplicationDeploymentState } from "./flinkApplicationDeployment";
+export type FlinkApplicationDeployment = import("./flinkApplicationDeployment").FlinkApplicationDeployment;
+export const FlinkApplicationDeployment: typeof import("./flinkApplicationDeployment").FlinkApplicationDeployment = null as any;
+utilities.lazyLoad(exports, ["FlinkApplicationDeployment"], () => require("./flinkApplicationDeployment"));
+
 export { FlinkApplicationVersionArgs, FlinkApplicationVersionState } from "./flinkApplicationVersion";
 export type FlinkApplicationVersion = import("./flinkApplicationVersion").FlinkApplicationVersion;
 export const FlinkApplicationVersion: typeof import("./flinkApplicationVersion").FlinkApplicationVersion = null as any;
@@ -676,6 +681,8 @@ const _module = {
                 return new Flink(name, <any>undefined, { urn })
             case "aiven:index/flinkApplication:FlinkApplication":
                 return new FlinkApplication(name, <any>undefined, { urn })
+            case "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment":
+                return new FlinkApplicationDeployment(name, <any>undefined, { urn })
             case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
                 return new FlinkApplicationVersion(name, <any>undefined, { urn })
             case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
@@ -784,6 +791,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplication", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationDeployment", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationVersion", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)

@@ -120,11 +120,11 @@ def get_mysql_database(database_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getMysqlDatabase:getMysqlDatabase', __args__, opts=opts, typ=GetMysqlDatabaseResult).value
 
     return AwaitableGetMysqlDatabaseResult(
-        database_name=__ret__.database_name,
-        id=__ret__.id,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        termination_protection=__ret__.termination_protection)
+        database_name=pulumi.get(__ret__, 'database_name'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        termination_protection=pulumi.get(__ret__, 'termination_protection'))
 
 
 @_utilities.lift_output_func(get_mysql_database)

@@ -208,18 +208,18 @@ def get_kafka_connector(connector_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaConnector:getKafkaConnector', __args__, opts=opts, typ=GetKafkaConnectorResult).value
 
     return AwaitableGetKafkaConnectorResult(
-        config=__ret__.config,
-        connector_name=__ret__.connector_name,
-        id=__ret__.id,
-        plugin_author=__ret__.plugin_author,
-        plugin_class=__ret__.plugin_class,
-        plugin_doc_url=__ret__.plugin_doc_url,
-        plugin_title=__ret__.plugin_title,
-        plugin_type=__ret__.plugin_type,
-        plugin_version=__ret__.plugin_version,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        tasks=__ret__.tasks)
+        config=pulumi.get(__ret__, 'config'),
+        connector_name=pulumi.get(__ret__, 'connector_name'),
+        id=pulumi.get(__ret__, 'id'),
+        plugin_author=pulumi.get(__ret__, 'plugin_author'),
+        plugin_class=pulumi.get(__ret__, 'plugin_class'),
+        plugin_doc_url=pulumi.get(__ret__, 'plugin_doc_url'),
+        plugin_title=pulumi.get(__ret__, 'plugin_title'),
+        plugin_type=pulumi.get(__ret__, 'plugin_type'),
+        plugin_version=pulumi.get(__ret__, 'plugin_version'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        tasks=pulumi.get(__ret__, 'tasks'))
 
 
 @_utilities.lift_output_func(get_kafka_connector)

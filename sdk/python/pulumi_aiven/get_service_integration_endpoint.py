@@ -252,22 +252,22 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts, typ=GetServiceIntegrationEndpointResult).value
 
     return AwaitableGetServiceIntegrationEndpointResult(
-        datadog_user_configs=__ret__.datadog_user_configs,
-        endpoint_config=__ret__.endpoint_config,
-        endpoint_name=__ret__.endpoint_name,
-        endpoint_type=__ret__.endpoint_type,
-        external_aws_cloudwatch_logs_user_configs=__ret__.external_aws_cloudwatch_logs_user_configs,
-        external_aws_cloudwatch_metrics_user_configs=__ret__.external_aws_cloudwatch_metrics_user_configs,
-        external_elasticsearch_logs_user_configs=__ret__.external_elasticsearch_logs_user_configs,
-        external_google_cloud_logging_user_configs=__ret__.external_google_cloud_logging_user_configs,
-        external_kafka_user_configs=__ret__.external_kafka_user_configs,
-        external_opensearch_logs_user_configs=__ret__.external_opensearch_logs_user_configs,
-        external_schema_registry_user_configs=__ret__.external_schema_registry_user_configs,
-        id=__ret__.id,
-        jolokia_user_configs=__ret__.jolokia_user_configs,
-        project=__ret__.project,
-        prometheus_user_configs=__ret__.prometheus_user_configs,
-        rsyslog_user_configs=__ret__.rsyslog_user_configs)
+        datadog_user_configs=pulumi.get(__ret__, 'datadog_user_configs'),
+        endpoint_config=pulumi.get(__ret__, 'endpoint_config'),
+        endpoint_name=pulumi.get(__ret__, 'endpoint_name'),
+        endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
+        external_aws_cloudwatch_logs_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_logs_user_configs'),
+        external_aws_cloudwatch_metrics_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_metrics_user_configs'),
+        external_elasticsearch_logs_user_configs=pulumi.get(__ret__, 'external_elasticsearch_logs_user_configs'),
+        external_google_cloud_logging_user_configs=pulumi.get(__ret__, 'external_google_cloud_logging_user_configs'),
+        external_kafka_user_configs=pulumi.get(__ret__, 'external_kafka_user_configs'),
+        external_opensearch_logs_user_configs=pulumi.get(__ret__, 'external_opensearch_logs_user_configs'),
+        external_schema_registry_user_configs=pulumi.get(__ret__, 'external_schema_registry_user_configs'),
+        id=pulumi.get(__ret__, 'id'),
+        jolokia_user_configs=pulumi.get(__ret__, 'jolokia_user_configs'),
+        project=pulumi.get(__ret__, 'project'),
+        prometheus_user_configs=pulumi.get(__ret__, 'prometheus_user_configs'),
+        rsyslog_user_configs=pulumi.get(__ret__, 'rsyslog_user_configs'))
 
 
 @_utilities.lift_output_func(get_service_integration_endpoint)

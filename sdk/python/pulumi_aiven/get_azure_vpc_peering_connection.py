@@ -181,16 +181,16 @@ def get_azure_vpc_peering_connection(azure_subscription_id: Optional[str] = None
     __ret__ = pulumi.runtime.invoke('aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection', __args__, opts=opts, typ=GetAzureVpcPeeringConnectionResult).value
 
     return AwaitableGetAzureVpcPeeringConnectionResult(
-        azure_subscription_id=__ret__.azure_subscription_id,
-        id=__ret__.id,
-        peer_azure_app_id=__ret__.peer_azure_app_id,
-        peer_azure_tenant_id=__ret__.peer_azure_tenant_id,
-        peer_resource_group=__ret__.peer_resource_group,
-        peering_connection_id=__ret__.peering_connection_id,
-        state=__ret__.state,
-        state_info=__ret__.state_info,
-        vnet_name=__ret__.vnet_name,
-        vpc_id=__ret__.vpc_id)
+        azure_subscription_id=pulumi.get(__ret__, 'azure_subscription_id'),
+        id=pulumi.get(__ret__, 'id'),
+        peer_azure_app_id=pulumi.get(__ret__, 'peer_azure_app_id'),
+        peer_azure_tenant_id=pulumi.get(__ret__, 'peer_azure_tenant_id'),
+        peer_resource_group=pulumi.get(__ret__, 'peer_resource_group'),
+        peering_connection_id=pulumi.get(__ret__, 'peering_connection_id'),
+        state=pulumi.get(__ret__, 'state'),
+        state_info=pulumi.get(__ret__, 'state_info'),
+        vnet_name=pulumi.get(__ret__, 'vnet_name'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_azure_vpc_peering_connection)

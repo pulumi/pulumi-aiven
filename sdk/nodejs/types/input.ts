@@ -37,6 +37,14 @@ export interface CassandraCassandraUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
+    backupHour?: pulumi.Input<number>;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
+    backupMinute?: pulumi.Input<number>;
+    /**
      * cassandra configuration values.
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
@@ -2111,6 +2119,10 @@ export interface ServiceIntegrationDatadogUserConfig {
      * Datadog Opensearch Options.
      */
     opensearch?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigOpensearch>;
+    /**
+     * Datadog Redis Options.
+     */
+    redis?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigRedis>;
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
@@ -2122,6 +2134,10 @@ export interface ServiceIntegrationDatadogUserConfigOpensearch {
     indexStatsEnabled?: pulumi.Input<boolean>;
     pendingTaskStatsEnabled?: pulumi.Input<boolean>;
     pshardStatsEnabled?: pulumi.Input<boolean>;
+}
+
+export interface ServiceIntegrationDatadogUserConfigRedis {
+    commandStatsEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {

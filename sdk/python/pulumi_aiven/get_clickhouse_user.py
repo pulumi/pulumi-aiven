@@ -147,13 +147,13 @@ def get_clickhouse_user(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getClickhouseUser:getClickhouseUser', __args__, opts=opts, typ=GetClickhouseUserResult).value
 
     return AwaitableGetClickhouseUserResult(
-        id=__ret__.id,
-        password=__ret__.password,
-        project=__ret__.project,
-        required=__ret__.required,
-        service_name=__ret__.service_name,
-        username=__ret__.username,
-        uuid=__ret__.uuid)
+        id=pulumi.get(__ret__, 'id'),
+        password=pulumi.get(__ret__, 'password'),
+        project=pulumi.get(__ret__, 'project'),
+        required=pulumi.get(__ret__, 'required'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        username=pulumi.get(__ret__, 'username'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_clickhouse_user)

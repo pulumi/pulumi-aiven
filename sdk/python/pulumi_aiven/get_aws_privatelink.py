@@ -131,12 +131,12 @@ def get_aws_privatelink(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getAwsPrivatelink:getAwsPrivatelink', __args__, opts=opts, typ=GetAwsPrivatelinkResult).value
 
     return AwaitableGetAwsPrivatelinkResult(
-        aws_service_id=__ret__.aws_service_id,
-        aws_service_name=__ret__.aws_service_name,
-        id=__ret__.id,
-        principals=__ret__.principals,
-        project=__ret__.project,
-        service_name=__ret__.service_name)
+        aws_service_id=pulumi.get(__ret__, 'aws_service_id'),
+        aws_service_name=pulumi.get(__ret__, 'aws_service_name'),
+        id=pulumi.get(__ret__, 'id'),
+        principals=pulumi.get(__ret__, 'principals'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'))
 
 
 @_utilities.lift_output_func(get_aws_privatelink)

@@ -169,15 +169,15 @@ def get_kafka_topic(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaTopic:getKafkaTopic', __args__, opts=opts, typ=GetKafkaTopicResult).value
 
     return AwaitableGetKafkaTopicResult(
-        configs=__ret__.configs,
-        id=__ret__.id,
-        partitions=__ret__.partitions,
-        project=__ret__.project,
-        replication=__ret__.replication,
-        service_name=__ret__.service_name,
-        tags=__ret__.tags,
-        termination_protection=__ret__.termination_protection,
-        topic_name=__ret__.topic_name)
+        configs=pulumi.get(__ret__, 'configs'),
+        id=pulumi.get(__ret__, 'id'),
+        partitions=pulumi.get(__ret__, 'partitions'),
+        project=pulumi.get(__ret__, 'project'),
+        replication=pulumi.get(__ret__, 'replication'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        tags=pulumi.get(__ret__, 'tags'),
+        termination_protection=pulumi.get(__ret__, 'termination_protection'),
+        topic_name=pulumi.get(__ret__, 'topic_name'))
 
 
 @_utilities.lift_output_func(get_kafka_topic)

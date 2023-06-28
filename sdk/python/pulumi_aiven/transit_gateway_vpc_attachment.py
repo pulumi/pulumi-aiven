@@ -91,6 +91,9 @@ class TransitGatewayVpcAttachmentArgs:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
+
         return pulumi.get(self, "peer_region")
 
     @peer_region.setter
@@ -158,6 +161,9 @@ class _TransitGatewayVpcAttachmentState:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
+
         return pulumi.get(self, "peer_region")
 
     @peer_region.setter
@@ -418,6 +424,9 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
+
         return pulumi.get(self, "peer_region")
 
     @property

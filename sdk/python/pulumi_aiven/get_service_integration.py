@@ -274,23 +274,23 @@ def get_service_integration(destination_service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts, typ=GetServiceIntegrationResult).value
 
     return AwaitableGetServiceIntegrationResult(
-        clickhouse_kafka_user_configs=__ret__.clickhouse_kafka_user_configs,
-        clickhouse_postgresql_user_configs=__ret__.clickhouse_postgresql_user_configs,
-        datadog_user_configs=__ret__.datadog_user_configs,
-        destination_endpoint_id=__ret__.destination_endpoint_id,
-        destination_service_name=__ret__.destination_service_name,
-        external_aws_cloudwatch_metrics_user_configs=__ret__.external_aws_cloudwatch_metrics_user_configs,
-        id=__ret__.id,
-        integration_id=__ret__.integration_id,
-        integration_type=__ret__.integration_type,
-        kafka_connect_user_configs=__ret__.kafka_connect_user_configs,
-        kafka_logs_user_configs=__ret__.kafka_logs_user_configs,
-        kafka_mirrormaker_user_configs=__ret__.kafka_mirrormaker_user_configs,
-        logs_user_configs=__ret__.logs_user_configs,
-        metrics_user_configs=__ret__.metrics_user_configs,
-        project=__ret__.project,
-        source_endpoint_id=__ret__.source_endpoint_id,
-        source_service_name=__ret__.source_service_name)
+        clickhouse_kafka_user_configs=pulumi.get(__ret__, 'clickhouse_kafka_user_configs'),
+        clickhouse_postgresql_user_configs=pulumi.get(__ret__, 'clickhouse_postgresql_user_configs'),
+        datadog_user_configs=pulumi.get(__ret__, 'datadog_user_configs'),
+        destination_endpoint_id=pulumi.get(__ret__, 'destination_endpoint_id'),
+        destination_service_name=pulumi.get(__ret__, 'destination_service_name'),
+        external_aws_cloudwatch_metrics_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_metrics_user_configs'),
+        id=pulumi.get(__ret__, 'id'),
+        integration_id=pulumi.get(__ret__, 'integration_id'),
+        integration_type=pulumi.get(__ret__, 'integration_type'),
+        kafka_connect_user_configs=pulumi.get(__ret__, 'kafka_connect_user_configs'),
+        kafka_logs_user_configs=pulumi.get(__ret__, 'kafka_logs_user_configs'),
+        kafka_mirrormaker_user_configs=pulumi.get(__ret__, 'kafka_mirrormaker_user_configs'),
+        logs_user_configs=pulumi.get(__ret__, 'logs_user_configs'),
+        metrics_user_configs=pulumi.get(__ret__, 'metrics_user_configs'),
+        project=pulumi.get(__ret__, 'project'),
+        source_endpoint_id=pulumi.get(__ret__, 'source_endpoint_id'),
+        source_service_name=pulumi.get(__ret__, 'source_service_name'))
 
 
 @_utilities.lift_output_func(get_service_integration)

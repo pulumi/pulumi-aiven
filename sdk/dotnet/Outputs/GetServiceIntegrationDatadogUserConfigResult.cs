@@ -22,6 +22,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> KafkaCustomMetrics;
         public readonly int? MaxJmxMetrics;
         public readonly Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? Opensearch;
+        public readonly Outputs.GetServiceIntegrationDatadogUserConfigRedisResult? Redis;
 
         [OutputConstructor]
         private GetServiceIntegrationDatadogUserConfigResult(
@@ -41,7 +42,9 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxJmxMetrics,
 
-            Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? opensearch)
+            Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? opensearch,
+
+            Outputs.GetServiceIntegrationDatadogUserConfigRedisResult? redis)
         {
             DatadogDbmEnabled = datadogDbmEnabled;
             DatadogTags = datadogTags;
@@ -52,6 +55,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaCustomMetrics = kafkaCustomMetrics;
             MaxJmxMetrics = maxJmxMetrics;
             Opensearch = opensearch;
+            Redis = redis;
         }
     }
 }

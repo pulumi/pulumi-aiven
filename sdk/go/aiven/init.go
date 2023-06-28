@@ -62,6 +62,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Flink{}
 	case "aiven:index/flinkApplication:FlinkApplication":
 		r = &FlinkApplication{}
+	case "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment":
+		r = &FlinkApplicationDeployment{}
 	case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
 		r = &FlinkApplicationVersion{}
 	case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
@@ -275,6 +277,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/flinkApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flinkApplicationDeployment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

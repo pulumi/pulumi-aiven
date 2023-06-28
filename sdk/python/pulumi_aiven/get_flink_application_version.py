@@ -224,19 +224,19 @@ def get_flink_application_version(application_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion', __args__, opts=opts, typ=GetFlinkApplicationVersionResult).value
 
     return AwaitableGetFlinkApplicationVersionResult(
-        application_id=__ret__.application_id,
-        application_version_id=__ret__.application_version_id,
-        created_at=__ret__.created_at,
-        created_by=__ret__.created_by,
-        id=__ret__.id,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        sink=__ret__.sink,
-        sinks=__ret__.sinks,
-        source=__ret__.source,
-        sources=__ret__.sources,
-        statement=__ret__.statement,
-        version=__ret__.version)
+        application_id=pulumi.get(__ret__, 'application_id'),
+        application_version_id=pulumi.get(__ret__, 'application_version_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        sink=pulumi.get(__ret__, 'sink'),
+        sinks=pulumi.get(__ret__, 'sinks'),
+        source=pulumi.get(__ret__, 'source'),
+        sources=pulumi.get(__ret__, 'sources'),
+        statement=pulumi.get(__ret__, 'statement'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_flink_application_version)

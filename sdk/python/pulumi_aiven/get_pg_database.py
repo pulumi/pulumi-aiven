@@ -144,13 +144,13 @@ def get_pg_database(database_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getPgDatabase:getPgDatabase', __args__, opts=opts, typ=GetPgDatabaseResult).value
 
     return AwaitableGetPgDatabaseResult(
-        database_name=__ret__.database_name,
-        id=__ret__.id,
-        lc_collate=__ret__.lc_collate,
-        lc_ctype=__ret__.lc_ctype,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        termination_protection=__ret__.termination_protection)
+        database_name=pulumi.get(__ret__, 'database_name'),
+        id=pulumi.get(__ret__, 'id'),
+        lc_collate=pulumi.get(__ret__, 'lc_collate'),
+        lc_ctype=pulumi.get(__ret__, 'lc_ctype'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        termination_protection=pulumi.get(__ret__, 'termination_protection'))
 
 
 @_utilities.lift_output_func(get_pg_database)

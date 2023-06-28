@@ -171,15 +171,15 @@ def get_pg_user(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getPgUser:getPgUser', __args__, opts=opts, typ=GetPgUserResult).value
 
     return AwaitableGetPgUserResult(
-        access_cert=__ret__.access_cert,
-        access_key=__ret__.access_key,
-        id=__ret__.id,
-        password=__ret__.password,
-        pg_allow_replication=__ret__.pg_allow_replication,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        type=__ret__.type,
-        username=__ret__.username)
+        access_cert=pulumi.get(__ret__, 'access_cert'),
+        access_key=pulumi.get(__ret__, 'access_key'),
+        id=pulumi.get(__ret__, 'id'),
+        password=pulumi.get(__ret__, 'password'),
+        pg_allow_replication=pulumi.get(__ret__, 'pg_allow_replication'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        type=pulumi.get(__ret__, 'type'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_pg_user)

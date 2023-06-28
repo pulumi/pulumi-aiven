@@ -199,16 +199,16 @@ def get_service_component(component: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceComponent:getServiceComponent', __args__, opts=opts, typ=GetServiceComponentResult).value
 
     return AwaitableGetServiceComponentResult(
-        component=__ret__.component,
-        host=__ret__.host,
-        id=__ret__.id,
-        kafka_authentication_method=__ret__.kafka_authentication_method,
-        port=__ret__.port,
-        project=__ret__.project,
-        route=__ret__.route,
-        service_name=__ret__.service_name,
-        ssl=__ret__.ssl,
-        usage=__ret__.usage)
+        component=pulumi.get(__ret__, 'component'),
+        host=pulumi.get(__ret__, 'host'),
+        id=pulumi.get(__ret__, 'id'),
+        kafka_authentication_method=pulumi.get(__ret__, 'kafka_authentication_method'),
+        port=pulumi.get(__ret__, 'port'),
+        project=pulumi.get(__ret__, 'project'),
+        route=pulumi.get(__ret__, 'route'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        ssl=pulumi.get(__ret__, 'ssl'),
+        usage=pulumi.get(__ret__, 'usage'))
 
 
 @_utilities.lift_output_func(get_service_component)

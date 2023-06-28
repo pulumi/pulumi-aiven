@@ -37,6 +37,14 @@ export interface CassandraCassandraUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
+    backupMinute?: number;
+    /**
      * cassandra configuration values.
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
@@ -354,6 +362,8 @@ export interface GetCassandaCassandra {
 
 export interface GetCassandaCassandraUserConfig {
     additionalBackupRegions?: string;
+    backupHour?: number;
+    backupMinute?: number;
     /**
      * Cassandra server provided values
      */
@@ -421,6 +431,8 @@ export interface GetCassandraCassandra {
 
 export interface GetCassandraCassandraUserConfig {
     additionalBackupRegions?: string;
+    backupHour?: number;
+    backupMinute?: number;
     /**
      * Cassandra server provided values
      */
@@ -2013,6 +2025,7 @@ export interface GetServiceIntegrationDatadogUserConfig {
     kafkaCustomMetrics?: string[];
     maxJmxMetrics?: number;
     opensearch?: outputs.GetServiceIntegrationDatadogUserConfigOpensearch;
+    redis?: outputs.GetServiceIntegrationDatadogUserConfigRedis;
 }
 
 export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
@@ -2024,6 +2037,10 @@ export interface GetServiceIntegrationDatadogUserConfigOpensearch {
     indexStatsEnabled?: boolean;
     pendingTaskStatsEnabled?: boolean;
     pshardStatsEnabled?: boolean;
+}
+
+export interface GetServiceIntegrationDatadogUserConfigRedis {
+    commandStatsEnabled?: boolean;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
@@ -3966,6 +3983,10 @@ export interface ServiceIntegrationDatadogUserConfig {
      * Datadog Opensearch Options.
      */
     opensearch?: outputs.ServiceIntegrationDatadogUserConfigOpensearch;
+    /**
+     * Datadog Redis Options.
+     */
+    redis?: outputs.ServiceIntegrationDatadogUserConfigRedis;
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
@@ -3977,6 +3998,10 @@ export interface ServiceIntegrationDatadogUserConfigOpensearch {
     indexStatsEnabled?: boolean;
     pendingTaskStatsEnabled?: boolean;
     pshardStatsEnabled?: boolean;
+}
+
+export interface ServiceIntegrationDatadogUserConfigRedis {
+    commandStatsEnabled?: boolean;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {

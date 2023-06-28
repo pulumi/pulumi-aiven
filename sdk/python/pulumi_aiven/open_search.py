@@ -131,6 +131,9 @@ class OpenSearchArgs:
         """
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+
         return pulumi.get(self, "disk_space")
 
     @disk_space.setter
@@ -406,6 +409,9 @@ class _OpenSearchState:
         """
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+
         return pulumi.get(self, "disk_space")
 
     @disk_space.setter
@@ -1011,6 +1017,9 @@ class OpenSearch(pulumi.CustomResource):
         """
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
+        warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
+        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+
         return pulumi.get(self, "disk_space")
 
     @property

@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfigDatadogTag;
 import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfigOpensearch;
+import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfigRedis;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -61,6 +62,11 @@ public final class ServiceIntegrationDatadogUserConfig {
      * 
      */
     private @Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch;
+    /**
+     * @return Datadog Redis Options.
+     * 
+     */
+    private @Nullable ServiceIntegrationDatadogUserConfigRedis redis;
 
     private ServiceIntegrationDatadogUserConfig() {}
     /**
@@ -126,6 +132,13 @@ public final class ServiceIntegrationDatadogUserConfig {
     public Optional<ServiceIntegrationDatadogUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return Datadog Redis Options.
+     * 
+     */
+    public Optional<ServiceIntegrationDatadogUserConfigRedis> redis() {
+        return Optional.ofNullable(this.redis);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -145,6 +158,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         private @Nullable List<String> kafkaCustomMetrics;
         private @Nullable Integer maxJmxMetrics;
         private @Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch;
+        private @Nullable ServiceIntegrationDatadogUserConfigRedis redis;
         public Builder() {}
         public Builder(ServiceIntegrationDatadogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -157,6 +171,7 @@ public final class ServiceIntegrationDatadogUserConfig {
     	      this.kafkaCustomMetrics = defaults.kafkaCustomMetrics;
     	      this.maxJmxMetrics = defaults.maxJmxMetrics;
     	      this.opensearch = defaults.opensearch;
+    	      this.redis = defaults.redis;
         }
 
         @CustomType.Setter
@@ -222,6 +237,11 @@ public final class ServiceIntegrationDatadogUserConfig {
             this.opensearch = opensearch;
             return this;
         }
+        @CustomType.Setter
+        public Builder redis(@Nullable ServiceIntegrationDatadogUserConfigRedis redis) {
+            this.redis = redis;
+            return this;
+        }
         public ServiceIntegrationDatadogUserConfig build() {
             final var o = new ServiceIntegrationDatadogUserConfig();
             o.datadogDbmEnabled = datadogDbmEnabled;
@@ -233,6 +253,7 @@ public final class ServiceIntegrationDatadogUserConfig {
             o.kafkaCustomMetrics = kafkaCustomMetrics;
             o.maxJmxMetrics = maxJmxMetrics;
             o.opensearch = opensearch;
+            o.redis = redis;
             return o;
         }
     }

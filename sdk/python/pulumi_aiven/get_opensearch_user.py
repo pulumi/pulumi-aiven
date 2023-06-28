@@ -135,12 +135,12 @@ def get_opensearch_user(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getOpensearchUser:getOpensearchUser', __args__, opts=opts, typ=GetOpensearchUserResult).value
 
     return AwaitableGetOpensearchUserResult(
-        id=__ret__.id,
-        password=__ret__.password,
-        project=__ret__.project,
-        service_name=__ret__.service_name,
-        type=__ret__.type,
-        username=__ret__.username)
+        id=pulumi.get(__ret__, 'id'),
+        password=pulumi.get(__ret__, 'password'),
+        project=pulumi.get(__ret__, 'project'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        type=pulumi.get(__ret__, 'type'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_opensearch_user)

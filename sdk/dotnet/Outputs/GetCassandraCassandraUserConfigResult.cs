@@ -14,6 +14,8 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetCassandraCassandraUserConfigResult
     {
         public readonly string? AdditionalBackupRegions;
+        public readonly int? BackupHour;
+        public readonly int? BackupMinute;
         /// <summary>
         /// Cassandra server provided values
         /// </summary>
@@ -36,6 +38,10 @@ namespace Pulumi.Aiven.Outputs
         [OutputConstructor]
         private GetCassandraCassandraUserConfigResult(
             string? additionalBackupRegions,
+
+            int? backupHour,
+
+            int? backupMinute,
 
             Outputs.GetCassandraCassandraUserConfigCassandraResult? cassandra,
 
@@ -62,6 +68,8 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            BackupHour = backupHour;
+            BackupMinute = backupMinute;
             Cassandra = cassandra;
             CassandraVersion = cassandraVersion;
             IpFilterObjects = ipFilterObjects;

@@ -36,6 +36,7 @@
         "connectionPool.ts",
         "flink.ts",
         "flinkApplication.ts",
+        "flinkApplicationDeployment.ts",
         "flinkApplicationVersion.ts",
         "gcpVpcPeeringConnection.ts",
         "getAccount.ts",
