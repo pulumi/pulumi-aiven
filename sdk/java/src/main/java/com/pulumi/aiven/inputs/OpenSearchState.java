@@ -182,14 +182,14 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Opensearch user configurable settings
+     * OpenSearch user configurable settings
      * 
      */
     @Import(name="opensearchUserConfig")
     private @Nullable Output<OpenSearchOpensearchUserConfigArgs> opensearchUserConfig;
 
     /**
-     * @return Opensearch user configurable settings
+     * @return OpenSearch user configurable settings
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigArgs>> opensearchUserConfig() {
@@ -197,14 +197,14 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      * 
      */
     @Import(name="opensearches")
     private @Nullable Output<List<OpenSearchOpensearchArgs>> opensearches;
 
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     public Optional<Output<List<OpenSearchOpensearchArgs>>> opensearches() {
@@ -715,7 +715,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearchUserConfig Opensearch user configurable settings
+         * @param opensearchUserConfig OpenSearch user configurable settings
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearchUserConfig Opensearch user configurable settings
+         * @param opensearchUserConfig OpenSearch user configurable settings
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches Opensearch server provided values
+         * @param opensearches OpenSearch server provided values
          * 
          * @return builder
          * 
@@ -747,7 +747,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches Opensearch server provided values
+         * @param opensearches OpenSearch server provided values
          * 
          * @return builder
          * 
@@ -757,7 +757,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches Opensearch server provided values
+         * @param opensearches OpenSearch server provided values
          * 
          * @return builder
          * 

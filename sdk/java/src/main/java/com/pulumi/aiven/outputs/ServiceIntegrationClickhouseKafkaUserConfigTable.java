@@ -6,31 +6,65 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
+    private @Nullable String autoOffsetReset;
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
     private String dataFormat;
+    private @Nullable String dateTimeInputFormat;
     private String groupName;
+    private @Nullable String handleErrorMode;
+    private @Nullable Integer maxBlockSize;
+    private @Nullable Integer maxRowsPerMessage;
     private String name;
+    private @Nullable Integer numConsumers;
+    private @Nullable Integer pollMaxBatchSize;
+    private @Nullable Integer skipBrokenMessages;
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTable() {}
+    public Optional<String> autoOffsetReset() {
+        return Optional.ofNullable(this.autoOffsetReset);
+    }
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns() {
         return this.columns == null ? List.of() : this.columns;
     }
     public String dataFormat() {
         return this.dataFormat;
     }
+    public Optional<String> dateTimeInputFormat() {
+        return Optional.ofNullable(this.dateTimeInputFormat);
+    }
     public String groupName() {
         return this.groupName;
     }
+    public Optional<String> handleErrorMode() {
+        return Optional.ofNullable(this.handleErrorMode);
+    }
+    public Optional<Integer> maxBlockSize() {
+        return Optional.ofNullable(this.maxBlockSize);
+    }
+    public Optional<Integer> maxRowsPerMessage() {
+        return Optional.ofNullable(this.maxRowsPerMessage);
+    }
     public String name() {
         return this.name;
+    }
+    public Optional<Integer> numConsumers() {
+        return Optional.ofNullable(this.numConsumers);
+    }
+    public Optional<Integer> pollMaxBatchSize() {
+        return Optional.ofNullable(this.pollMaxBatchSize);
+    }
+    public Optional<Integer> skipBrokenMessages() {
+        return Optional.ofNullable(this.skipBrokenMessages);
     }
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics() {
         return this.topics == null ? List.of() : this.topics;
@@ -45,21 +79,42 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String autoOffsetReset;
         private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
         private String dataFormat;
+        private @Nullable String dateTimeInputFormat;
         private String groupName;
+        private @Nullable String handleErrorMode;
+        private @Nullable Integer maxBlockSize;
+        private @Nullable Integer maxRowsPerMessage;
         private String name;
+        private @Nullable Integer numConsumers;
+        private @Nullable Integer pollMaxBatchSize;
+        private @Nullable Integer skipBrokenMessages;
         private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
         public Builder() {}
         public Builder(ServiceIntegrationClickhouseKafkaUserConfigTable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoOffsetReset = defaults.autoOffsetReset;
     	      this.columns = defaults.columns;
     	      this.dataFormat = defaults.dataFormat;
+    	      this.dateTimeInputFormat = defaults.dateTimeInputFormat;
     	      this.groupName = defaults.groupName;
+    	      this.handleErrorMode = defaults.handleErrorMode;
+    	      this.maxBlockSize = defaults.maxBlockSize;
+    	      this.maxRowsPerMessage = defaults.maxRowsPerMessage;
     	      this.name = defaults.name;
+    	      this.numConsumers = defaults.numConsumers;
+    	      this.pollMaxBatchSize = defaults.pollMaxBatchSize;
+    	      this.skipBrokenMessages = defaults.skipBrokenMessages;
     	      this.topics = defaults.topics;
         }
 
+        @CustomType.Setter
+        public Builder autoOffsetReset(@Nullable String autoOffsetReset) {
+            this.autoOffsetReset = autoOffsetReset;
+            return this;
+        }
         @CustomType.Setter
         public Builder columns(@Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns) {
             this.columns = columns;
@@ -74,13 +129,48 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
             return this;
         }
         @CustomType.Setter
+        public Builder dateTimeInputFormat(@Nullable String dateTimeInputFormat) {
+            this.dateTimeInputFormat = dateTimeInputFormat;
+            return this;
+        }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
         @CustomType.Setter
+        public Builder handleErrorMode(@Nullable String handleErrorMode) {
+            this.handleErrorMode = handleErrorMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxBlockSize(@Nullable Integer maxBlockSize) {
+            this.maxBlockSize = maxBlockSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxRowsPerMessage(@Nullable Integer maxRowsPerMessage) {
+            this.maxRowsPerMessage = maxRowsPerMessage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numConsumers(@Nullable Integer numConsumers) {
+            this.numConsumers = numConsumers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pollMaxBatchSize(@Nullable Integer pollMaxBatchSize) {
+            this.pollMaxBatchSize = pollMaxBatchSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipBrokenMessages(@Nullable Integer skipBrokenMessages) {
+            this.skipBrokenMessages = skipBrokenMessages;
             return this;
         }
         @CustomType.Setter
@@ -93,10 +183,18 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         }
         public ServiceIntegrationClickhouseKafkaUserConfigTable build() {
             final var o = new ServiceIntegrationClickhouseKafkaUserConfigTable();
+            o.autoOffsetReset = autoOffsetReset;
             o.columns = columns;
             o.dataFormat = dataFormat;
+            o.dateTimeInputFormat = dateTimeInputFormat;
             o.groupName = groupName;
+            o.handleErrorMode = handleErrorMode;
+            o.maxBlockSize = maxBlockSize;
+            o.maxRowsPerMessage = maxRowsPerMessage;
             o.name = name;
+            o.numConsumers = numConsumers;
+            o.pollMaxBatchSize = pollMaxBatchSize;
+            o.skipBrokenMessages = skipBrokenMessages;
             o.topics = topics;
             return o;
         }

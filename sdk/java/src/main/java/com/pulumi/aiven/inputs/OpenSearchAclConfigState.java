@@ -17,14 +17,14 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
     public static final OpenSearchAclConfigState Empty = new OpenSearchAclConfigState();
 
     /**
-     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * @return Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -104,7 +104,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+         * @param enabled Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+         * @param enabled Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
          * 
          * @return builder
          * 

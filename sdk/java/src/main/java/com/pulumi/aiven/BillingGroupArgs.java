@@ -19,14 +19,22 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Account id
      * 
+     * @deprecated
+     * Use parent_id instead. This field will be removed in the next major release.
+     * 
      */
+    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account id
      * 
+     * @deprecated
+     * Use parent_id instead. This field will be removed in the next major release.
+     * 
      */
+    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -182,6 +190,21 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    @Import(name="parentId")
+    private @Nullable Output<String> parentId;
+
+    /**
+     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public Optional<Output<String>> parentId() {
+        return Optional.ofNullable(this.parentId);
+    }
+
+    /**
      * State
      * 
      */
@@ -240,6 +263,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.copyFromBillingGroup = $.copyFromBillingGroup;
         this.countryCode = $.countryCode;
         this.name = $.name;
+        this.parentId = $.parentId;
         this.state = $.state;
         this.vatId = $.vatId;
         this.zipCode = $.zipCode;
@@ -268,7 +292,11 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use parent_id instead. This field will be removed in the next major release.
+         * 
          */
+        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -279,7 +307,11 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use parent_id instead. This field will be removed in the next major release.
+         * 
          */
+        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -512,6 +544,27 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param parentId An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(@Nullable Output<String> parentId) {
+            $.parentId = parentId;
+            return this;
+        }
+
+        /**
+         * @param parentId An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(String parentId) {
+            return parentId(Output.of(parentId));
         }
 
         /**

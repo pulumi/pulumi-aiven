@@ -113,6 +113,12 @@ namespace Pulumi.Aiven
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Output("parentId")]
+        public Output<string?> ParentId { get; private set; } = null!;
+
+        /// <summary>
         /// State
         /// </summary>
         [Output("state")]
@@ -255,6 +261,12 @@ namespace Pulumi.Aiven
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        /// <summary>
         /// State
         /// </summary>
         [Input("state")]
@@ -357,6 +369,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
 
         /// <summary>
         /// State

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch resource allows the creation and management of Aiven Opensearch services.
+ * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
  *
  * ## Example Usage
  *
@@ -72,7 +72,7 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -128,7 +128,7 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
  */
 export interface OpenSearchAclConfigState {
     /**
-     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -150,7 +150,7 @@ export interface OpenSearchAclConfigState {
  */
 export interface OpenSearchAclConfigArgs {
     /**
-     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**

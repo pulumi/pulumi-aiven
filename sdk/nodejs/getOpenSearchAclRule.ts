@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+ * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
  *
  * ## Example Usage
  *
@@ -89,7 +89,7 @@ export interface GetOpenSearchAclRuleResult {
     readonly username: string;
 }
 /**
- * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+ * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
  *
  * ## Example Usage
  *

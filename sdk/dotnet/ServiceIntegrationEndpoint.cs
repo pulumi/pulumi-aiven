@@ -70,7 +70,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointExternalKafkaUserConfig?> ExternalKafkaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// ExternalOpensearchLogs user configurable settings
+        /// ExternalOpenSearchLogs user configurable settings
         /// </summary>
         [Output("externalOpensearchLogsUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig?> ExternalOpensearchLogsUserConfig { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs>? ExternalKafkaUserConfig { get; set; }
 
         /// <summary>
-        /// ExternalOpensearchLogs user configurable settings
+        /// ExternalOpenSearchLogs user configurable settings
         /// </summary>
         [Input("externalOpensearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>? ExternalOpensearchLogsUserConfig { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs>? ExternalKafkaUserConfig { get; set; }
 
         /// <summary>
-        /// ExternalOpensearchLogs user configurable settings
+        /// ExternalOpenSearchLogs user configurable settings
         /// </summary>
         [Input("externalOpensearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigGetArgs>? ExternalOpensearchLogsUserConfig { get; set; }

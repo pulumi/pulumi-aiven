@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
     public static final OpenSearchOpensearchUserConfigPublicAccessArgs Empty = new OpenSearchOpensearchUserConfigPublicAccessArgs();
 
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
@@ -71,7 +71,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearch Opensearch server provided values
+         * @param opensearch OpenSearch server provided values
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearch Opensearch server provided values
+         * @param opensearch OpenSearch server provided values
          * 
          * @return builder
          * 

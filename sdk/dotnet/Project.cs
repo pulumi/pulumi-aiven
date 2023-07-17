@@ -22,13 +22,13 @@ namespace Pulumi.Aiven
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        /// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         /// </summary>
         [Output("addAccountOwnersAdminAccess")]
         public Output<bool?> AddAccountOwnersAdminAccess { get; private set; } = null!;
@@ -68,6 +68,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("estimatedBalance")]
         public Output<string> EstimatedBalance { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Output("parentId")]
+        public Output<string?> ParentId { get; private set; } = null!;
 
         /// <summary>
         /// The method of invoicing used for payments for this project, e.g. `card`.
@@ -150,13 +156,13 @@ namespace Pulumi.Aiven
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        /// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         /// </summary>
         [Input("addAccountOwnersAdminAccess")]
         public Input<bool>? AddAccountOwnersAdminAccess { get; set; }
@@ -178,6 +184,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("defaultCloud")]
         public Input<string>? DefaultCloud { get; set; }
+
+        /// <summary>
+        /// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
 
         /// <summary>
         /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
@@ -224,13 +236,13 @@ namespace Pulumi.Aiven
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        /// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         /// </summary>
         [Input("addAccountOwnersAdminAccess")]
         public Input<bool>? AddAccountOwnersAdminAccess { get; set; }
@@ -280,6 +292,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("estimatedBalance")]
         public Input<string>? EstimatedBalance { get; set; }
+
+        /// <summary>
+        /// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
 
         /// <summary>
         /// The method of invoicing used for payments for this project, e.g. `card`.

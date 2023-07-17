@@ -111,7 +111,7 @@ def get_open_search_acl_rule(index: Optional[str] = None,
                              username: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenSearchAclRuleResult:
     """
-    The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+    The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
 
     ## Example Usage
 
@@ -158,7 +158,7 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
                                     username: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchAclRuleResult]:
     """
-    The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+    The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
 
     ## Example Usage
 

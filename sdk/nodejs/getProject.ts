@@ -43,11 +43,11 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly accountId: string;
     /**
-     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     readonly addAccountOwnersAdminAccess: boolean;
     /**
@@ -78,6 +78,10 @@ export interface GetProjectResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    readonly parentId: string;
     /**
      * The method of invoicing used for payments for this project, e.g. `card`.
      */

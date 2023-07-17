@@ -24,6 +24,9 @@ __all__ = [
     'ClickhouseClickhouse',
     'ClickhouseClickhouseUserConfig',
     'ClickhouseClickhouseUserConfigIpFilterObject',
+    'ClickhouseClickhouseUserConfigPrivateAccess',
+    'ClickhouseClickhouseUserConfigPrivatelinkAccess',
+    'ClickhouseClickhouseUserConfigPublicAccess',
     'ClickhouseComponent',
     'ClickhouseGrantPrivilegeGrant',
     'ClickhouseGrantRoleGrant',
@@ -229,6 +232,9 @@ __all__ = [
     'GetClickhouseClickhouseResult',
     'GetClickhouseClickhouseUserConfigResult',
     'GetClickhouseClickhouseUserConfigIpFilterObjectResult',
+    'GetClickhouseClickhouseUserConfigPrivateAccessResult',
+    'GetClickhouseClickhouseUserConfigPrivatelinkAccessResult',
+    'GetClickhouseClickhouseUserConfigPublicAccessResult',
     'GetClickhouseComponentResult',
     'GetClickhouseServiceIntegrationResult',
     'GetClickhouseTagResult',
@@ -1007,10 +1013,18 @@ class ClickhouseClickhouseUserConfig(dict):
             suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
         elif key == "projectToForkFrom":
             suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
         elif key == "serviceToForkFrom":
             suggest = "service_to_fork_from"
+        elif key == "staticIps":
+            suggest = "static_ips"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClickhouseClickhouseUserConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1028,15 +1042,23 @@ class ClickhouseClickhouseUserConfig(dict):
                  ip_filter_objects: Optional[Sequence['outputs.ClickhouseClickhouseUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
+                 private_access: Optional['outputs.ClickhouseClickhouseUserConfigPrivateAccess'] = None,
+                 privatelink_access: Optional['outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess'] = None,
                  project_to_fork_from: Optional[str] = None,
-                 service_to_fork_from: Optional[str] = None):
+                 public_access: Optional['outputs.ClickhouseClickhouseUserConfigPublicAccess'] = None,
+                 service_to_fork_from: Optional[str] = None,
+                 static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param Sequence['ClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param 'ClickhouseClickhouseUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'ClickhouseClickhouseUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
+        :param 'ClickhouseClickhouseUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
+        :param bool static_ips: Use static public IP addresses.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -1046,10 +1068,18 @@ class ClickhouseClickhouseUserConfig(dict):
             pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if project_to_fork_from is not None:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
@@ -1087,6 +1117,22 @@ class ClickhouseClickhouseUserConfig(dict):
         return pulumi.get(self, "ip_filters")
 
     @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['outputs.ClickhouseClickhouseUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks.
+        """
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess']:
+        """
+        Allow access to selected service components through Privatelink.
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @property
     @pulumi.getter(name="projectToForkFrom")
     def project_to_fork_from(self) -> Optional[str]:
         """
@@ -1095,12 +1141,28 @@ class ClickhouseClickhouseUserConfig(dict):
         return pulumi.get(self, "project_to_fork_from")
 
     @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional['outputs.ClickhouseClickhouseUserConfigPublicAccess']:
+        """
+        Allow access to selected service ports from the public Internet.
+        """
+        return pulumi.get(self, "public_access")
+
+    @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
         """
         Name of another service to fork from. This has effect only when a new service is being created.
         """
         return pulumi.get(self, "service_to_fork_from")
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[bool]:
+        """
+        Use static public IP addresses.
+        """
+        return pulumi.get(self, "static_ips")
 
 
 @pulumi.output_type
@@ -1121,6 +1183,162 @@ class ClickhouseClickhouseUserConfigIpFilterObject(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ClickhouseClickhouseUserConfigPrivateAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clickhouseHttps":
+            suggest = "clickhouse_https"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClickhouseClickhouseUserConfigPrivateAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClickhouseClickhouseUserConfigPrivateAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClickhouseClickhouseUserConfigPrivateAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clickhouse: Optional[bool] = None,
+                 clickhouse_https: Optional[bool] = None,
+                 prometheus: Optional[bool] = None):
+        """
+        :param bool clickhouse: Clickhouse server provided values
+        """
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
+        if clickhouse_https is not None:
+            pulumi.set(__self__, "clickhouse_https", clickhouse_https)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[bool]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter(name="clickhouseHttps")
+    def clickhouse_https(self) -> Optional[bool]:
+        return pulumi.get(self, "clickhouse_https")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[bool]:
+        return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class ClickhouseClickhouseUserConfigPrivatelinkAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clickhouseHttps":
+            suggest = "clickhouse_https"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClickhouseClickhouseUserConfigPrivatelinkAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClickhouseClickhouseUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClickhouseClickhouseUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clickhouse: Optional[bool] = None,
+                 clickhouse_https: Optional[bool] = None,
+                 prometheus: Optional[bool] = None):
+        """
+        :param bool clickhouse: Clickhouse server provided values
+        """
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
+        if clickhouse_https is not None:
+            pulumi.set(__self__, "clickhouse_https", clickhouse_https)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[bool]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter(name="clickhouseHttps")
+    def clickhouse_https(self) -> Optional[bool]:
+        return pulumi.get(self, "clickhouse_https")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[bool]:
+        return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class ClickhouseClickhouseUserConfigPublicAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clickhouseHttps":
+            suggest = "clickhouse_https"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClickhouseClickhouseUserConfigPublicAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClickhouseClickhouseUserConfigPublicAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClickhouseClickhouseUserConfigPublicAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clickhouse: Optional[bool] = None,
+                 clickhouse_https: Optional[bool] = None,
+                 prometheus: Optional[bool] = None):
+        """
+        :param bool clickhouse: Clickhouse server provided values
+        """
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
+        if clickhouse_https is not None:
+            pulumi.set(__self__, "clickhouse_https", clickhouse_https)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[bool]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter(name="clickhouseHttps")
+    def clickhouse_https(self) -> Optional[bool]:
+        return pulumi.get(self, "clickhouse_https")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[bool]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -3420,6 +3638,8 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
             suggest = "max_select_buckets"
         elif key == "maxSelectPoint":
             suggest = "max_select_point"
+        elif key == "queryLogEnabled":
+            suggest = "query_log_enabled"
         elif key == "queryTimeout":
             suggest = "query_timeout"
 
@@ -3440,6 +3660,7 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
                  max_row_limit: Optional[int] = None,
                  max_select_buckets: Optional[int] = None,
                  max_select_point: Optional[int] = None,
+                 query_log_enabled: Optional[bool] = None,
                  query_timeout: Optional[int] = None):
         if log_queries_after is not None:
             pulumi.set(__self__, "log_queries_after", log_queries_after)
@@ -3451,6 +3672,8 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
             pulumi.set(__self__, "max_select_buckets", max_select_buckets)
         if max_select_point is not None:
             pulumi.set(__self__, "max_select_point", max_select_point)
+        if query_log_enabled is not None:
+            pulumi.set(__self__, "query_log_enabled", query_log_enabled)
         if query_timeout is not None:
             pulumi.set(__self__, "query_timeout", query_timeout)
 
@@ -3478,6 +3701,11 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
     @pulumi.getter(name="maxSelectPoint")
     def max_select_point(self) -> Optional[int]:
         return pulumi.get(self, "max_select_point")
+
+    @property
+    @pulumi.getter(name="queryLogEnabled")
+    def query_log_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "query_log_enabled")
 
     @property
     @pulumi.getter(name="queryTimeout")
@@ -9372,7 +9600,7 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: Opensearch server provided values
+        :param bool opensearch: OpenSearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -9385,7 +9613,7 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -9424,7 +9652,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: Opensearch server provided values
+        :param bool opensearch: OpenSearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -9437,7 +9665,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -9476,7 +9704,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: Opensearch server provided values
+        :param bool opensearch: OpenSearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -9489,7 +9717,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -11880,6 +12108,22 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
             suggest = "data_format"
         elif key == "groupName":
             suggest = "group_name"
+        elif key == "autoOffsetReset":
+            suggest = "auto_offset_reset"
+        elif key == "dateTimeInputFormat":
+            suggest = "date_time_input_format"
+        elif key == "handleErrorMode":
+            suggest = "handle_error_mode"
+        elif key == "maxBlockSize":
+            suggest = "max_block_size"
+        elif key == "maxRowsPerMessage":
+            suggest = "max_rows_per_message"
+        elif key == "numConsumers":
+            suggest = "num_consumers"
+        elif key == "pollMaxBatchSize":
+            suggest = "poll_max_batch_size"
+        elif key == "skipBrokenMessages":
+            suggest = "skip_broken_messages"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationClickhouseKafkaUserConfigTable. Access the value via the '{suggest}' property getter instead.")
@@ -11896,13 +12140,37 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
                  data_format: str,
                  group_name: str,
                  name: str,
+                 auto_offset_reset: Optional[str] = None,
                  columns: Optional[Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn']] = None,
+                 date_time_input_format: Optional[str] = None,
+                 handle_error_mode: Optional[str] = None,
+                 max_block_size: Optional[int] = None,
+                 max_rows_per_message: Optional[int] = None,
+                 num_consumers: Optional[int] = None,
+                 poll_max_batch_size: Optional[int] = None,
+                 skip_broken_messages: Optional[int] = None,
                  topics: Optional[Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic']] = None):
         pulumi.set(__self__, "data_format", data_format)
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "name", name)
+        if auto_offset_reset is not None:
+            pulumi.set(__self__, "auto_offset_reset", auto_offset_reset)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
+        if date_time_input_format is not None:
+            pulumi.set(__self__, "date_time_input_format", date_time_input_format)
+        if handle_error_mode is not None:
+            pulumi.set(__self__, "handle_error_mode", handle_error_mode)
+        if max_block_size is not None:
+            pulumi.set(__self__, "max_block_size", max_block_size)
+        if max_rows_per_message is not None:
+            pulumi.set(__self__, "max_rows_per_message", max_rows_per_message)
+        if num_consumers is not None:
+            pulumi.set(__self__, "num_consumers", num_consumers)
+        if poll_max_batch_size is not None:
+            pulumi.set(__self__, "poll_max_batch_size", poll_max_batch_size)
+        if skip_broken_messages is not None:
+            pulumi.set(__self__, "skip_broken_messages", skip_broken_messages)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
 
@@ -11922,9 +12190,49 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="autoOffsetReset")
+    def auto_offset_reset(self) -> Optional[str]:
+        return pulumi.get(self, "auto_offset_reset")
+
+    @property
     @pulumi.getter
     def columns(self) -> Optional[Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn']]:
         return pulumi.get(self, "columns")
+
+    @property
+    @pulumi.getter(name="dateTimeInputFormat")
+    def date_time_input_format(self) -> Optional[str]:
+        return pulumi.get(self, "date_time_input_format")
+
+    @property
+    @pulumi.getter(name="handleErrorMode")
+    def handle_error_mode(self) -> Optional[str]:
+        return pulumi.get(self, "handle_error_mode")
+
+    @property
+    @pulumi.getter(name="maxBlockSize")
+    def max_block_size(self) -> Optional[int]:
+        return pulumi.get(self, "max_block_size")
+
+    @property
+    @pulumi.getter(name="maxRowsPerMessage")
+    def max_rows_per_message(self) -> Optional[int]:
+        return pulumi.get(self, "max_rows_per_message")
+
+    @property
+    @pulumi.getter(name="numConsumers")
+    def num_consumers(self) -> Optional[int]:
+        return pulumi.get(self, "num_consumers")
+
+    @property
+    @pulumi.getter(name="pollMaxBatchSize")
+    def poll_max_batch_size(self) -> Optional[int]:
+        return pulumi.get(self, "poll_max_batch_size")
+
+    @property
+    @pulumi.getter(name="skipBrokenMessages")
+    def skip_broken_messages(self) -> Optional[int]:
+        return pulumi.get(self, "skip_broken_messages")
 
     @property
     @pulumi.getter
@@ -12056,7 +12364,7 @@ class ServiceIntegrationDatadogUserConfig(dict):
         :param Sequence[str] include_topics: List of topics to include.
         :param Sequence[str] kafka_custom_metrics: List of custom metrics.
         :param int max_jmx_metrics: Maximum number of JMX metrics to send.
-        :param 'ServiceIntegrationDatadogUserConfigOpensearchArgs' opensearch: Datadog Opensearch Options.
+        :param 'ServiceIntegrationDatadogUserConfigOpensearchArgs' opensearch: Datadog OpenSearch Options.
         :param 'ServiceIntegrationDatadogUserConfigRedisArgs' redis: Datadog Redis Options.
         """
         if datadog_dbm_enabled is not None:
@@ -12148,7 +12456,7 @@ class ServiceIntegrationDatadogUserConfig(dict):
     @pulumi.getter
     def opensearch(self) -> Optional['outputs.ServiceIntegrationDatadogUserConfigOpensearch']:
         """
-        Datadog Opensearch Options.
+        Datadog OpenSearch Options.
         """
         return pulumi.get(self, "opensearch")
 
@@ -14539,8 +14847,15 @@ class GetClickhouseClickhouseUserConfigResult(dict):
                  ip_filter_objects: Optional[Sequence['outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
+                 private_access: Optional['outputs.GetClickhouseClickhouseUserConfigPrivateAccessResult'] = None,
+                 privatelink_access: Optional['outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccessResult'] = None,
                  project_to_fork_from: Optional[str] = None,
-                 service_to_fork_from: Optional[str] = None):
+                 public_access: Optional['outputs.GetClickhouseClickhouseUserConfigPublicAccessResult'] = None,
+                 service_to_fork_from: Optional[str] = None,
+                 static_ips: Optional[bool] = None):
+        """
+        :param bool static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
@@ -14549,10 +14864,18 @@ class GetClickhouseClickhouseUserConfigResult(dict):
             pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if project_to_fork_from is not None:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
@@ -14578,14 +14901,37 @@ class GetClickhouseClickhouseUserConfigResult(dict):
         return pulumi.get(self, "ip_filters")
 
     @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['outputs.GetClickhouseClickhouseUserConfigPrivateAccessResult']:
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccessResult']:
+        return pulumi.get(self, "privatelink_access")
+
+    @property
     @pulumi.getter(name="projectToForkFrom")
     def project_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "project_to_fork_from")
 
     @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional['outputs.GetClickhouseClickhouseUserConfigPublicAccessResult']:
+        return pulumi.get(self, "public_access")
+
+    @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[bool]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
 
 
 @pulumi.output_type
@@ -14606,6 +14952,111 @@ class GetClickhouseClickhouseUserConfigIpFilterObjectResult(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetClickhouseClickhouseUserConfigPrivateAccessResult(dict):
+    def __init__(__self__, *,
+                 clickhouse: Optional[bool] = None,
+                 clickhouse_https: Optional[bool] = None,
+                 prometheus: Optional[bool] = None):
+        """
+        :param bool clickhouse: Clickhouse server provided values
+        """
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
+        if clickhouse_https is not None:
+            pulumi.set(__self__, "clickhouse_https", clickhouse_https)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[bool]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter(name="clickhouseHttps")
+    def clickhouse_https(self) -> Optional[bool]:
+        return pulumi.get(self, "clickhouse_https")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[bool]:
+        return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class GetClickhouseClickhouseUserConfigPrivatelinkAccessResult(dict):
+    def __init__(__self__, *,
+                 clickhouse: Optional[bool] = None,
+                 clickhouse_https: Optional[bool] = None,
+                 prometheus: Optional[bool] = None):
+        """
+        :param bool clickhouse: Clickhouse server provided values
+        """
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
+        if clickhouse_https is not None:
+            pulumi.set(__self__, "clickhouse_https", clickhouse_https)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[bool]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter(name="clickhouseHttps")
+    def clickhouse_https(self) -> Optional[bool]:
+        return pulumi.get(self, "clickhouse_https")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[bool]:
+        return pulumi.get(self, "prometheus")
+
+
+@pulumi.output_type
+class GetClickhouseClickhouseUserConfigPublicAccessResult(dict):
+    def __init__(__self__, *,
+                 clickhouse: Optional[bool] = None,
+                 clickhouse_https: Optional[bool] = None,
+                 prometheus: Optional[bool] = None):
+        """
+        :param bool clickhouse: Clickhouse server provided values
+        """
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
+        if clickhouse_https is not None:
+            pulumi.set(__self__, "clickhouse_https", clickhouse_https)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[bool]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter(name="clickhouseHttps")
+    def clickhouse_https(self) -> Optional[bool]:
+        return pulumi.get(self, "clickhouse_https")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[bool]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -16086,6 +16537,7 @@ class GetInfluxDbInfluxdbUserConfigInfluxdbResult(dict):
                  max_row_limit: Optional[int] = None,
                  max_select_buckets: Optional[int] = None,
                  max_select_point: Optional[int] = None,
+                 query_log_enabled: Optional[bool] = None,
                  query_timeout: Optional[int] = None):
         if log_queries_after is not None:
             pulumi.set(__self__, "log_queries_after", log_queries_after)
@@ -16097,6 +16549,8 @@ class GetInfluxDbInfluxdbUserConfigInfluxdbResult(dict):
             pulumi.set(__self__, "max_select_buckets", max_select_buckets)
         if max_select_point is not None:
             pulumi.set(__self__, "max_select_point", max_select_point)
+        if query_log_enabled is not None:
+            pulumi.set(__self__, "query_log_enabled", query_log_enabled)
         if query_timeout is not None:
             pulumi.set(__self__, "query_timeout", query_timeout)
 
@@ -16124,6 +16578,11 @@ class GetInfluxDbInfluxdbUserConfigInfluxdbResult(dict):
     @pulumi.getter(name="maxSelectPoint")
     def max_select_point(self) -> Optional[int]:
         return pulumi.get(self, "max_select_point")
+
+    @property
+    @pulumi.getter(name="queryLogEnabled")
+    def query_log_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "query_log_enabled")
 
     @property
     @pulumi.getter(name="queryTimeout")
@@ -19822,7 +20281,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None):
         """
-        :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: Opensearch server provided values
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch server provided values
         :param bool static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         if additional_backup_regions is not None:
@@ -19931,7 +20390,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter
     def opensearch(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchResult']:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -20354,7 +20813,7 @@ class GetOpenSearchOpensearchUserConfigPrivateAccessResult(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: Opensearch server provided values
+        :param bool opensearch: OpenSearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -20367,7 +20826,7 @@ class GetOpenSearchOpensearchUserConfigPrivateAccessResult(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -20389,7 +20848,7 @@ class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: Opensearch server provided values
+        :param bool opensearch: OpenSearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -20402,7 +20861,7 @@ class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -20424,7 +20883,7 @@ class GetOpenSearchOpensearchUserConfigPublicAccessResult(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: Opensearch server provided values
+        :param bool opensearch: OpenSearch server provided values
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -20437,7 +20896,7 @@ class GetOpenSearchOpensearchUserConfigPublicAccessResult(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearch")
 
@@ -22157,13 +22616,37 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
                  data_format: str,
                  group_name: str,
                  name: str,
+                 auto_offset_reset: Optional[str] = None,
                  columns: Optional[Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult']] = None,
+                 date_time_input_format: Optional[str] = None,
+                 handle_error_mode: Optional[str] = None,
+                 max_block_size: Optional[int] = None,
+                 max_rows_per_message: Optional[int] = None,
+                 num_consumers: Optional[int] = None,
+                 poll_max_batch_size: Optional[int] = None,
+                 skip_broken_messages: Optional[int] = None,
                  topics: Optional[Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopicResult']] = None):
         pulumi.set(__self__, "data_format", data_format)
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "name", name)
+        if auto_offset_reset is not None:
+            pulumi.set(__self__, "auto_offset_reset", auto_offset_reset)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
+        if date_time_input_format is not None:
+            pulumi.set(__self__, "date_time_input_format", date_time_input_format)
+        if handle_error_mode is not None:
+            pulumi.set(__self__, "handle_error_mode", handle_error_mode)
+        if max_block_size is not None:
+            pulumi.set(__self__, "max_block_size", max_block_size)
+        if max_rows_per_message is not None:
+            pulumi.set(__self__, "max_rows_per_message", max_rows_per_message)
+        if num_consumers is not None:
+            pulumi.set(__self__, "num_consumers", num_consumers)
+        if poll_max_batch_size is not None:
+            pulumi.set(__self__, "poll_max_batch_size", poll_max_batch_size)
+        if skip_broken_messages is not None:
+            pulumi.set(__self__, "skip_broken_messages", skip_broken_messages)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
 
@@ -22183,9 +22666,49 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="autoOffsetReset")
+    def auto_offset_reset(self) -> Optional[str]:
+        return pulumi.get(self, "auto_offset_reset")
+
+    @property
     @pulumi.getter
     def columns(self) -> Optional[Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult']]:
         return pulumi.get(self, "columns")
+
+    @property
+    @pulumi.getter(name="dateTimeInputFormat")
+    def date_time_input_format(self) -> Optional[str]:
+        return pulumi.get(self, "date_time_input_format")
+
+    @property
+    @pulumi.getter(name="handleErrorMode")
+    def handle_error_mode(self) -> Optional[str]:
+        return pulumi.get(self, "handle_error_mode")
+
+    @property
+    @pulumi.getter(name="maxBlockSize")
+    def max_block_size(self) -> Optional[int]:
+        return pulumi.get(self, "max_block_size")
+
+    @property
+    @pulumi.getter(name="maxRowsPerMessage")
+    def max_rows_per_message(self) -> Optional[int]:
+        return pulumi.get(self, "max_rows_per_message")
+
+    @property
+    @pulumi.getter(name="numConsumers")
+    def num_consumers(self) -> Optional[int]:
+        return pulumi.get(self, "num_consumers")
+
+    @property
+    @pulumi.getter(name="pollMaxBatchSize")
+    def poll_max_batch_size(self) -> Optional[int]:
+        return pulumi.get(self, "poll_max_batch_size")
+
+    @property
+    @pulumi.getter(name="skipBrokenMessages")
+    def skip_broken_messages(self) -> Optional[int]:
+        return pulumi.get(self, "skip_broken_messages")
 
     @property
     @pulumi.getter

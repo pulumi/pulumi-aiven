@@ -27,6 +27,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("maxSelectPoint")]
         public Input<int>? MaxSelectPoint { get; set; }
 
+        [Input("queryLogEnabled")]
+        public Input<bool>? QueryLogEnabled { get; set; }
+
         [Input("queryTimeout")]
         public Input<int>? QueryTimeout { get; set; }
 

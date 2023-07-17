@@ -16,14 +16,14 @@ public final class OpensearchUserState extends com.pulumi.resources.ResourceArgs
     public static final OpensearchUserState Empty = new OpensearchUserState();
 
     /**
-     * The password of the Opensearch User.
+     * The password of the OpenSearch User.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the Opensearch User.
+     * @return The password of the OpenSearch User.
      * 
      */
     public Optional<Output<String>> password() {
@@ -76,14 +76,14 @@ public final class OpensearchUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -119,7 +119,7 @@ public final class OpensearchUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the Opensearch User.
+         * @param password The password of the OpenSearch User.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OpensearchUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the Opensearch User.
+         * @param password The password of the OpenSearch User.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class OpensearchUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param username The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class OpensearchUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param username The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

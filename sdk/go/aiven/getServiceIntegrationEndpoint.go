@@ -75,7 +75,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	ExternalGoogleCloudLoggingUserConfigs []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfigs"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfigs []GetServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfigs"`
-	// ExternalOpensearchLogs user configurable settings
+	// ExternalOpenSearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfigs []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfigs"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfigs []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfigs"`
@@ -188,7 +188,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) ExternalKafkaUserConfigs()
 	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput)
 }
 
-// ExternalOpensearchLogs user configurable settings
+// ExternalOpenSearchLogs user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalOpensearchLogsUserConfigs() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 		return v.ExternalOpensearchLogsUserConfigs

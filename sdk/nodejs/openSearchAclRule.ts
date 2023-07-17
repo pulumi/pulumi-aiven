@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+ * The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
  *
  * ## Example Usage
  *

@@ -24,7 +24,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly bool? KeepIndexRefreshInterval;
         public readonly int? MaxIndexCount;
         /// <summary>
-        /// Opensearch server provided values
+        /// OpenSearch server provided values
         /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchResult? Opensearch;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult? OpensearchDashboards;

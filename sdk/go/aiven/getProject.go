@@ -54,9 +54,9 @@ type LookupProjectArgs struct {
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 	AccountId string `pulumi:"accountId"`
-	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits string `pulumi:"availableCredits"`
@@ -72,6 +72,8 @@ type LookupProjectResult struct {
 	EstimatedBalance string `pulumi:"estimatedBalance"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId string `pulumi:"parentId"`
 	// The method of invoicing used for payments for this project, e.g. `card`.
 	PaymentMethod string `pulumi:"paymentMethod"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
@@ -122,12 +124,12 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
-// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 func (o LookupProjectResultOutput) AddAccountOwnersAdminAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.AddAccountOwnersAdminAccess }).(pulumi.BoolOutput)
 }
@@ -165,6 +167,11 @@ func (o LookupProjectResultOutput) EstimatedBalance() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+func (o LookupProjectResultOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
 // The method of invoicing used for payments for this project, e.g. `card`.

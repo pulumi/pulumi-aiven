@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Opensearch User data source provides information about the existing Aiven Cassandra User.
+// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
 //
 // ## Example Usage
 //
@@ -54,7 +54,7 @@ type LookupOpensearchUserArgs struct {
 	Project string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -62,7 +62,7 @@ type LookupOpensearchUserArgs struct {
 type LookupOpensearchUserResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The password of the Opensearch User.
+	// The password of the OpenSearch User.
 	Password string `pulumi:"password"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -70,7 +70,7 @@ type LookupOpensearchUserResult struct {
 	ServiceName string `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type string `pulumi:"type"`
-	// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -93,7 +93,7 @@ type LookupOpensearchUserOutputArgs struct {
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -121,7 +121,7 @@ func (o LookupOpensearchUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the Opensearch User.
+// The password of the OpenSearch User.
 func (o LookupOpensearchUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupOpensearchUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupOpensearchUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

@@ -44,11 +44,13 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     *
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     public readonly addAccountOwnersAdminAccess!: pulumi.Output<boolean | undefined>;
     /**
@@ -75,6 +77,10 @@ export class Project extends pulumi.CustomResource {
      * The current accumulated bill for this project in the current billing period.
      */
     public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
+    /**
+     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    public readonly parentId!: pulumi.Output<string | undefined>;
     /**
      * The method of invoicing used for payments for this project, e.g. `card`.
      */
@@ -117,6 +123,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["copyFromProject"] = state ? state.copyFromProject : undefined;
             resourceInputs["defaultCloud"] = state ? state.defaultCloud : undefined;
             resourceInputs["estimatedBalance"] = state ? state.estimatedBalance : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["paymentMethod"] = state ? state.paymentMethod : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -132,6 +139,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["billingGroup"] = args ? args.billingGroup : undefined;
             resourceInputs["copyFromProject"] = args ? args.copyFromProject : undefined;
             resourceInputs["defaultCloud"] = args ? args.defaultCloud : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
@@ -153,11 +161,13 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     *
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
@@ -185,6 +195,10 @@ export interface ProjectState {
      */
     estimatedBalance?: pulumi.Input<string>;
     /**
+     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    parentId?: pulumi.Input<string>;
+    /**
      * The method of invoicing used for payments for this project, e.g. `card`.
      */
     paymentMethod?: pulumi.Input<string>;
@@ -211,11 +225,13 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     *
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
@@ -230,6 +246,10 @@ export interface ProjectArgs {
      * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      */
     defaultCloud?: pulumi.Input<string>;
+    /**
+     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    parentId?: pulumi.Input<string>;
     /**
      * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */

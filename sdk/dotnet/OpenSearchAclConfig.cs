@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Opensearch resource allows the creation and management of Aiven Opensearch services.
+    /// The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
     /// 
     /// ## Example Usage
     /// 
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
     public partial class OpenSearchAclConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

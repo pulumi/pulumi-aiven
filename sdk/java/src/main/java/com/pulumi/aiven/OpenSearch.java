@@ -23,7 +23,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Opensearch resource allows the creation and management of Aiven Opensearch services.
+ * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
  * 
  * ## Example Usage
  * ```java
@@ -228,28 +228,28 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * Opensearch user configurable settings
+     * OpenSearch user configurable settings
      * 
      */
     @Export(name="opensearchUserConfig", type=OpenSearchOpensearchUserConfig.class, parameters={})
     private Output</* @Nullable */ OpenSearchOpensearchUserConfig> opensearchUserConfig;
 
     /**
-     * @return Opensearch user configurable settings
+     * @return OpenSearch user configurable settings
      * 
      */
     public Output<Optional<OpenSearchOpensearchUserConfig>> opensearchUserConfig() {
         return Codegen.optional(this.opensearchUserConfig);
     }
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      * 
      */
     @Export(name="opensearches", type=List.class, parameters={OpenSearchOpensearch.class})
     private Output<List<OpenSearchOpensearch>> opensearches;
 
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     public Output<List<OpenSearchOpensearch>> opensearches() {

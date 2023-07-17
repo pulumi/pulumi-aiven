@@ -4,7 +4,11 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigIpFilterObject;
+import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigPrivateAccess;
+import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccess;
+import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,8 +27,16 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
+    private @Nullable GetClickhouseClickhouseUserConfigPrivateAccess privateAccess;
+    private @Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable String projectToForkFrom;
+    private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
+    private @Nullable Boolean staticIps;
 
     private GetClickhouseClickhouseUserConfig() {}
     public Optional<String> additionalBackupRegions() {
@@ -45,11 +57,27 @@ public final class GetClickhouseClickhouseUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    public Optional<GetClickhouseClickhouseUserConfigPrivateAccess> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+    public Optional<GetClickhouseClickhouseUserConfigPrivatelinkAccess> privatelinkAccess() {
+        return Optional.ofNullable(this.privatelinkAccess);
+    }
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    public Optional<GetClickhouseClickhouseUserConfigPublicAccess> publicAccess() {
+        return Optional.ofNullable(this.publicAccess);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
+    }
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
+    public Optional<Boolean> staticIps() {
+        return Optional.ofNullable(this.staticIps);
     }
 
     public static Builder builder() {
@@ -65,8 +93,12 @@ public final class GetClickhouseClickhouseUserConfig {
         private @Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
+        private @Nullable GetClickhouseClickhouseUserConfigPrivateAccess privateAccess;
+        private @Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable String projectToForkFrom;
+        private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetClickhouseClickhouseUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -74,8 +106,12 @@ public final class GetClickhouseClickhouseUserConfig {
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
+    	      this.privateAccess = defaults.privateAccess;
+    	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
+    	      this.publicAccess = defaults.publicAccess;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
+    	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
@@ -108,13 +144,33 @@ public final class GetClickhouseClickhouseUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
+        public Builder privateAccess(@Nullable GetClickhouseClickhouseUserConfigPrivateAccess privateAccess) {
+            this.privateAccess = privateAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privatelinkAccess(@Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess) {
+            this.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
+        public Builder publicAccess(@Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess) {
+            this.publicAccess = publicAccess;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder staticIps(@Nullable Boolean staticIps) {
+            this.staticIps = staticIps;
             return this;
         }
         public GetClickhouseClickhouseUserConfig build() {
@@ -123,8 +179,12 @@ public final class GetClickhouseClickhouseUserConfig {
             o.ipFilterObjects = ipFilterObjects;
             o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
             o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
             o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
             return o;
         }
     }

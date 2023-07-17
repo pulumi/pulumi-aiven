@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOpenSearchAclConfigResult {
     /**
-     * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * @return Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     private Boolean enabled;
@@ -38,7 +38,7 @@ public final class GetOpenSearchAclConfigResult {
 
     private GetOpenSearchAclConfigResult() {}
     /**
-     * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * @return Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     public Boolean enabled() {

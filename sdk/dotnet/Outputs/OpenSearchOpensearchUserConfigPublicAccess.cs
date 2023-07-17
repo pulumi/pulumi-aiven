@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigPublicAccess
     {
         /// <summary>
-        /// Opensearch server provided values
+        /// OpenSearch server provided values
         /// </summary>
         public readonly bool? Opensearch;
         public readonly bool? OpensearchDashboards;

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -50,6 +51,13 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
         return Optional.ofNullable(this.maxSelectPoint);
     }
 
+    @Import(name="queryLogEnabled")
+    private @Nullable Output<Boolean> queryLogEnabled;
+
+    public Optional<Output<Boolean>> queryLogEnabled() {
+        return Optional.ofNullable(this.queryLogEnabled);
+    }
+
     @Import(name="queryTimeout")
     private @Nullable Output<Integer> queryTimeout;
 
@@ -65,6 +73,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
         this.maxRowLimit = $.maxRowLimit;
         this.maxSelectBuckets = $.maxSelectBuckets;
         this.maxSelectPoint = $.maxSelectPoint;
+        this.queryLogEnabled = $.queryLogEnabled;
         this.queryTimeout = $.queryTimeout;
     }
 
@@ -129,6 +138,15 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
 
         public Builder maxSelectPoint(Integer maxSelectPoint) {
             return maxSelectPoint(Output.of(maxSelectPoint));
+        }
+
+        public Builder queryLogEnabled(@Nullable Output<Boolean> queryLogEnabled) {
+            $.queryLogEnabled = queryLogEnabled;
+            return this;
+        }
+
+        public Builder queryLogEnabled(Boolean queryLogEnabled) {
+            return queryLogEnabled(Output.of(queryLogEnabled));
         }
 
         public Builder queryTimeout(@Nullable Output<Integer> queryTimeout) {

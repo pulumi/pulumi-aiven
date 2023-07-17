@@ -76,6 +76,11 @@ public final class GetBillingGroupResult {
      */
     private String name;
     /**
+     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    private String parentId;
+    /**
      * @return State
      * 
      */
@@ -184,6 +189,13 @@ public final class GetBillingGroupResult {
         return this.name;
     }
     /**
+     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public String parentId() {
+        return this.parentId;
+    }
+    /**
      * @return State
      * 
      */
@@ -227,6 +239,7 @@ public final class GetBillingGroupResult {
         private String countryCode;
         private String id;
         private String name;
+        private String parentId;
         private String state;
         private String vatId;
         private String zipCode;
@@ -246,6 +259,7 @@ public final class GetBillingGroupResult {
     	      this.countryCode = defaults.countryCode;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.parentId = defaults.parentId;
     	      this.state = defaults.state;
     	      this.vatId = defaults.vatId;
     	      this.zipCode = defaults.zipCode;
@@ -323,6 +337,11 @@ public final class GetBillingGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder parentId(String parentId) {
+            this.parentId = Objects.requireNonNull(parentId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
@@ -352,6 +371,7 @@ public final class GetBillingGroupResult {
             o.countryCode = countryCode;
             o.id = id;
             o.name = name;
+            o.parentId = parentId;
             o.state = state;
             o.vatId = vatId;
             o.zipCode = zipCode;

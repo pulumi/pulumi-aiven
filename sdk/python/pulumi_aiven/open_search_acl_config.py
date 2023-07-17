@@ -22,7 +22,7 @@ class OpenSearchAclConfigArgs:
         The set of arguments for constructing a OpenSearchAclConfig resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         """
         pulumi.set(__self__, "project", project)
@@ -60,7 +60,7 @@ class OpenSearchAclConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -90,7 +90,7 @@ class _OpenSearchAclConfigState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OpenSearchAclConfig resources.
-        :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -108,7 +108,7 @@ class _OpenSearchAclConfigState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -164,7 +164,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Opensearch resource allows the creation and management of Aiven Opensearch services.
+        The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
 
         ## Example Usage
 
@@ -199,7 +199,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -211,7 +211,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
                  args: OpenSearchAclConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Opensearch resource allows the creation and management of Aiven Opensearch services.
+        The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
 
         ## Example Usage
 
@@ -301,7 +301,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -320,7 +320,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 

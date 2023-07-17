@@ -68,7 +68,7 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpenSearchLogs user configurable settings
      * 
      */
     private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
@@ -168,7 +168,7 @@ public final class GetServiceIntegrationEndpointResult {
         return this.externalKafkaUserConfigs;
     }
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpenSearchLogs user configurable settings
      * 
      */
     public List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs() {

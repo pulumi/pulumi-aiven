@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpenSearchAclRule
     {
         /// <summary>
-        /// The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+        /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+        /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

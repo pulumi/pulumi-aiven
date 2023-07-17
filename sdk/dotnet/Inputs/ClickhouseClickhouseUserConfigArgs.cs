@@ -56,16 +56,40 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
+        [Input("privateAccess")]
+        public Input<Inputs.ClickhouseClickhouseUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Input<Inputs.ClickhouseClickhouseUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
+
+        /// <summary>
         /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
+        [Input("publicAccess")]
+        public Input<Inputs.ClickhouseClickhouseUserConfigPublicAccessArgs>? PublicAccess { get; set; }
+
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
+        [Input("staticIps")]
+        public Input<bool>? StaticIps { get; set; }
 
         public ClickhouseClickhouseUserConfigArgs()
         {

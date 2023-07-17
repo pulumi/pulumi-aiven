@@ -25,6 +25,7 @@ class BillingGroupArgs:
                  copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None,
                  zip_code: Optional[pulumi.Input[str]] = None):
@@ -41,10 +42,14 @@ class BillingGroupArgs:
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
+        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: State
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
         """
+        if account_id is not None:
+            warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if address_lines is not None:
@@ -67,6 +72,8 @@ class BillingGroupArgs:
             pulumi.set(__self__, "country_code", country_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if vat_id is not None:
@@ -80,6 +87,9 @@ class BillingGroupArgs:
         """
         Account id
         """
+        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
+
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -205,6 +215,18 @@ class BillingGroupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
 
     @property
     @pulumi.getter
@@ -257,6 +279,7 @@ class _BillingGroupState:
                  copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None,
                  zip_code: Optional[pulumi.Input[str]] = None):
@@ -273,10 +296,14 @@ class _BillingGroupState:
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
+        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: State
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
         """
+        if account_id is not None:
+            warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if address_lines is not None:
@@ -299,6 +326,8 @@ class _BillingGroupState:
             pulumi.set(__self__, "country_code", country_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if vat_id is not None:
@@ -312,6 +341,9 @@ class _BillingGroupState:
         """
         Account id
         """
+        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
+
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -437,6 +469,18 @@ class _BillingGroupState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
 
     @property
     @pulumi.getter
@@ -491,6 +535,7 @@ class BillingGroup(pulumi.CustomResource):
                  copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None,
                  zip_code: Optional[pulumi.Input[str]] = None,
@@ -531,6 +576,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
+        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: State
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
@@ -590,6 +636,7 @@ class BillingGroup(pulumi.CustomResource):
                  copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None,
                  zip_code: Optional[pulumi.Input[str]] = None,
@@ -602,6 +649,9 @@ class BillingGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BillingGroupArgs.__new__(BillingGroupArgs)
 
+            if account_id is not None and not opts.urn:
+                warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
+                pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["address_lines"] = address_lines
             __props__.__dict__["billing_currency"] = billing_currency
@@ -613,6 +663,7 @@ class BillingGroup(pulumi.CustomResource):
             __props__.__dict__["copy_from_billing_group"] = copy_from_billing_group
             __props__.__dict__["country_code"] = country_code
             __props__.__dict__["name"] = name
+            __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["state"] = state
             __props__.__dict__["vat_id"] = vat_id
             __props__.__dict__["zip_code"] = zip_code
@@ -637,6 +688,7 @@ class BillingGroup(pulumi.CustomResource):
             copy_from_billing_group: Optional[pulumi.Input[str]] = None,
             country_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            parent_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             vat_id: Optional[pulumi.Input[str]] = None,
             zip_code: Optional[pulumi.Input[str]] = None) -> 'BillingGroup':
@@ -658,6 +710,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
+        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: State
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
@@ -677,6 +730,7 @@ class BillingGroup(pulumi.CustomResource):
         __props__.__dict__["copy_from_billing_group"] = copy_from_billing_group
         __props__.__dict__["country_code"] = country_code
         __props__.__dict__["name"] = name
+        __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["state"] = state
         __props__.__dict__["vat_id"] = vat_id
         __props__.__dict__["zip_code"] = zip_code
@@ -688,6 +742,9 @@ class BillingGroup(pulumi.CustomResource):
         """
         Account id
         """
+        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
+
         return pulumi.get(self, "account_id")
 
     @property
@@ -769,6 +826,14 @@ class BillingGroup(pulumi.CustomResource):
         Billing Group name
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter

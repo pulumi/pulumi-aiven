@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
     private @Nullable Integer maxRowLimit;
     private @Nullable Integer maxSelectBuckets;
     private @Nullable Integer maxSelectPoint;
+    private @Nullable Boolean queryLogEnabled;
     private @Nullable Integer queryTimeout;
 
     private InfluxDbInfluxdbUserConfigInfluxdb() {}
@@ -33,6 +35,9 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
     }
     public Optional<Integer> maxSelectPoint() {
         return Optional.ofNullable(this.maxSelectPoint);
+    }
+    public Optional<Boolean> queryLogEnabled() {
+        return Optional.ofNullable(this.queryLogEnabled);
     }
     public Optional<Integer> queryTimeout() {
         return Optional.ofNullable(this.queryTimeout);
@@ -52,6 +57,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
         private @Nullable Integer maxRowLimit;
         private @Nullable Integer maxSelectBuckets;
         private @Nullable Integer maxSelectPoint;
+        private @Nullable Boolean queryLogEnabled;
         private @Nullable Integer queryTimeout;
         public Builder() {}
         public Builder(InfluxDbInfluxdbUserConfigInfluxdb defaults) {
@@ -61,6 +67,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
     	      this.maxRowLimit = defaults.maxRowLimit;
     	      this.maxSelectBuckets = defaults.maxSelectBuckets;
     	      this.maxSelectPoint = defaults.maxSelectPoint;
+    	      this.queryLogEnabled = defaults.queryLogEnabled;
     	      this.queryTimeout = defaults.queryTimeout;
         }
 
@@ -90,6 +97,11 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
             return this;
         }
         @CustomType.Setter
+        public Builder queryLogEnabled(@Nullable Boolean queryLogEnabled) {
+            this.queryLogEnabled = queryLogEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder queryTimeout(@Nullable Integer queryTimeout) {
             this.queryTimeout = queryTimeout;
             return this;
@@ -101,6 +113,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
             o.maxRowLimit = maxRowLimit;
             o.maxSelectBuckets = maxSelectBuckets;
             o.maxSelectPoint = maxSelectPoint;
+            o.queryLogEnabled = queryLogEnabled;
             o.queryTimeout = queryTimeout;
             return o;
         }

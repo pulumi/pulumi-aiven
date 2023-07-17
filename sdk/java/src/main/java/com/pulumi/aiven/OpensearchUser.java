@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The Opensearch User resource allows the creation and management of Aiven Opensearch Users.
+ * The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
  * 
  * ## Example Usage
  * ```java
@@ -60,14 +60,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/opensearchUser:OpensearchUser")
 public class OpensearchUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the Opensearch User.
+     * The password of the OpenSearch User.
      * 
      */
     @Export(name="password", type=String.class, parameters={})
     private Output<String> password;
 
     /**
-     * @return The password of the Opensearch User.
+     * @return The password of the OpenSearch User.
      * 
      */
     public Output<String> password() {
@@ -116,14 +116,14 @@ public class OpensearchUser extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="username", type=String.class, parameters={})
     private Output<String> username;
 
     /**
-     * @return The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> username() {

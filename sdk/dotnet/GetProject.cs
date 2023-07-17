@@ -102,11 +102,11 @@ namespace Pulumi.Aiven
     public sealed class GetProjectResult
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        /// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         /// </summary>
         public readonly bool AddAccountOwnersAdminAccess;
         /// <summary>
@@ -137,6 +137,10 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        public readonly string ParentId;
         /// <summary>
         /// The method of invoicing used for payments for this project, e.g. `card`.
         /// </summary>
@@ -178,6 +182,8 @@ namespace Pulumi.Aiven
 
             string id,
 
+            string parentId,
+
             string paymentMethod,
 
             string project,
@@ -197,6 +203,7 @@ namespace Pulumi.Aiven
             DefaultCloud = defaultCloud;
             EstimatedBalance = estimatedBalance;
             Id = id;
+            ParentId = parentId;
             PaymentMethod = paymentMethod;
             Project = project;
             Tags = tags;

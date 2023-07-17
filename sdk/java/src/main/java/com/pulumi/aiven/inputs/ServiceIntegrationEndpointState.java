@@ -163,14 +163,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpenSearchLogs user configurable settings
      * 
      */
     @Import(name="externalOpensearchLogsUserConfig")
     private @Nullable Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs> externalOpensearchLogsUserConfig;
 
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpenSearchLogs user configurable settings
      * 
      */
     public Optional<Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>> externalOpensearchLogsUserConfig() {
@@ -480,7 +480,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * @param externalOpensearchLogsUserConfig ExternalOpenSearchLogs user configurable settings
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * @param externalOpensearchLogsUserConfig ExternalOpenSearchLogs user configurable settings
          * 
          * @return builder
          * 

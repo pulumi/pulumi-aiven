@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpenSearch
     {
         /// <summary>
-        /// The Opensearch data source provides information about the existing Aiven Opensearch service.
+        /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -41,7 +41,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Opensearch data source provides information about the existing Aiven Opensearch service.
+        /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -160,11 +160,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// Opensearch user configurable settings
+        /// OpenSearch user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigResult> OpensearchUserConfigs;
         /// <summary>
-        /// Opensearch server provided values
+        /// OpenSearch server provided values
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchResult> Opensearches;
         /// <summary>

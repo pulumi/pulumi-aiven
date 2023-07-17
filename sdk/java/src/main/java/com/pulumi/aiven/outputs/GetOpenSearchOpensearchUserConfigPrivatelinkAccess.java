@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     private @Nullable Boolean opensearch;
@@ -21,7 +21,7 @@ public final class GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
 
     private GetOpenSearchOpensearchUserConfigPrivatelinkAccess() {}
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     public Optional<Boolean> opensearch() {

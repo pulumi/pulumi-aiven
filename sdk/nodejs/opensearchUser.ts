@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch User resource allows the creation and management of Aiven Opensearch Users.
+ * The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
  *
  * ## Example Usage
  *
@@ -56,7 +56,7 @@ export class OpensearchUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the Opensearch User.
+     * The password of the OpenSearch User.
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class OpensearchUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -123,7 +123,7 @@ export class OpensearchUser extends pulumi.CustomResource {
  */
 export interface OpensearchUserState {
     /**
-     * The password of the Opensearch User.
+     * The password of the OpenSearch User.
      */
     password?: pulumi.Input<string>;
     /**
@@ -139,7 +139,7 @@ export interface OpensearchUserState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -149,7 +149,7 @@ export interface OpensearchUserState {
  */
 export interface OpensearchUserArgs {
     /**
-     * The password of the Opensearch User.
+     * The password of the OpenSearch User.
      */
     password?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface OpensearchUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

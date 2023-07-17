@@ -44,14 +44,14 @@ public final class GetOpensearchUserArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -127,7 +127,7 @@ public final class GetOpensearchUserArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param username The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class GetOpensearchUserArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param username The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

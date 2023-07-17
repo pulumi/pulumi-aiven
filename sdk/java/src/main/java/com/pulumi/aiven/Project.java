@@ -30,28 +30,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     * @deprecated
+     * Use parent_id instead. This field will be removed in the next major release.
      * 
      */
+    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     @Export(name="addAccountOwnersAdminAccess", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> addAccountOwnersAdminAccess;
 
     /**
-     * @return If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     public Output<Optional<Boolean>> addAccountOwnersAdminAccess() {
@@ -140,6 +144,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> estimatedBalance() {
         return this.estimatedBalance;
+    }
+    /**
+     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    @Export(name="parentId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> parentId;
+
+    /**
+     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public Output<Optional<String>> parentId() {
+        return Codegen.optional(this.parentId);
     }
     /**
      * The method of invoicing used for payments for this project, e.g. `card`.
