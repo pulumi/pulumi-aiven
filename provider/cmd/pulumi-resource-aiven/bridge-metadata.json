@@ -129,6 +129,15 @@
                                 },
                                 "ip_filter_string": {
                                     "maxItemsOne": false
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -904,6 +913,9 @@
             "aiven_organization": {
                 "current": "aiven:index/organization:Organization"
             },
+            "aiven_organization_user": {
+                "current": "aiven:index/organizationUser:OrganizationUser"
+            },
             "aiven_organizational_unit": {
                 "current": "aiven:index/organizationalUnit:OrganizationalUnit"
             },
@@ -1421,6 +1433,15 @@
                                 },
                                 "ip_filter_string": {
                                     "maxItemsOne": false
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -2179,6 +2200,9 @@
             "aiven_organization": {
                 "current": "aiven:index/getOrganization:getOrganization"
             },
+            "aiven_organization_user": {
+                "current": "aiven:index/getOrganizationUser:getOrganizationUser"
+            },
             "aiven_organizational_unit": {
                 "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit"
             },
@@ -2575,6 +2599,7 @@
             "aiven:index/openSearchAclRule:OpenSearchAclRule": "aiven_opensearch_acl_rule",
             "aiven:index/opensearchUser:OpensearchUser": "aiven_opensearch_user",
             "aiven:index/organization:Organization": "aiven_organization",
+            "aiven:index/organizationUser:OrganizationUser": "aiven_organization_user",
             "aiven:index/organizationalUnit:OrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/pg:Pg": "aiven_pg",
             "aiven:index/pgDatabase:PgDatabase": "aiven_pg_database",
@@ -2637,6 +2662,7 @@
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": "aiven_opensearch_acl_rule",
             "aiven:index/getOpensearchUser:getOpensearchUser": "aiven_opensearch_user",
             "aiven:index/getOrganization:getOrganization": "aiven_organization",
+            "aiven:index/getOrganizationUser:getOrganizationUser": "aiven_organization_user",
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/getPg:getPg": "aiven_pg",
             "aiven:index/getPgDatabase:getPgDatabase": "aiven_pg_database",
@@ -2689,8 +2715,21 @@
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
+                "privateAccess": "private_access",
+                "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
-                "serviceToForkFrom": "service_to_fork_from"
+                "publicAccess": "public_access",
+                "serviceToForkFrom": "service_to_fork_from",
+                "staticIps": "static_ips"
+            },
+            "aiven:index/ClickhouseClickhouseUserConfigPrivateAccess:ClickhouseClickhouseUserConfigPrivateAccess": {
+                "clickhouseHttps": "clickhouse_https"
+            },
+            "aiven:index/ClickhouseClickhouseUserConfigPrivatelinkAccess:ClickhouseClickhouseUserConfigPrivatelinkAccess": {
+                "clickhouseHttps": "clickhouse_https"
+            },
+            "aiven:index/ClickhouseClickhouseUserConfigPublicAccess:ClickhouseClickhouseUserConfigPublicAccess": {
+                "clickhouseHttps": "clickhouse_https"
             },
             "aiven:index/ClickhouseComponent:ClickhouseComponent": {
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
@@ -2864,6 +2903,7 @@
                 "maxRowLimit": "max_row_limit",
                 "maxSelectBuckets": "max_select_buckets",
                 "maxSelectPoint": "max_select_point",
+                "queryLogEnabled": "query_log_enabled",
                 "queryTimeout": "query_timeout"
             },
             "aiven:index/InfluxDbServiceIntegration:InfluxDbServiceIntegration": {
@@ -3454,8 +3494,16 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTable:ServiceIntegrationClickhouseKafkaUserConfigTable": {
+                "autoOffsetReset": "auto_offset_reset",
                 "dataFormat": "data_format",
-                "groupName": "group_name"
+                "dateTimeInputFormat": "date_time_input_format",
+                "groupName": "group_name",
+                "handleErrorMode": "handle_error_mode",
+                "maxBlockSize": "max_block_size",
+                "maxRowsPerMessage": "max_rows_per_message",
+                "numConsumers": "num_consumers",
+                "pollMaxBatchSize": "poll_max_batch_size",
+                "skipBrokenMessages": "skip_broken_messages"
             },
             "aiven:index/ServiceIntegrationDatadogUserConfig:ServiceIntegrationDatadogUserConfig": {
                 "datadogDbmEnabled": "datadog_dbm_enabled",
@@ -3669,6 +3717,7 @@
                 "cardId": "card_id",
                 "copyFromBillingGroup": "copy_from_billing_group",
                 "countryCode": "country_code",
+                "parentId": "parent_id",
                 "vatId": "vat_id",
                 "zipCode": "zip_code"
             },
@@ -3894,6 +3943,7 @@
                 "cardId": "card_id",
                 "copyFromBillingGroup": "copy_from_billing_group",
                 "countryCode": "country_code",
+                "parentId": "parent_id",
                 "vatId": "vat_id",
                 "zipCode": "zip_code"
             },
@@ -4036,8 +4086,21 @@
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
+                "privateAccess": "private_access",
+                "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
-                "serviceToForkFrom": "service_to_fork_from"
+                "publicAccess": "public_access",
+                "serviceToForkFrom": "service_to_fork_from",
+                "staticIps": "static_ips"
+            },
+            "aiven:index/getClickhouseClickhouseUserConfigPrivateAccess:getClickhouseClickhouseUserConfigPrivateAccess": {
+                "clickhouseHttps": "clickhouse_https"
+            },
+            "aiven:index/getClickhouseClickhouseUserConfigPrivatelinkAccess:getClickhouseClickhouseUserConfigPrivatelinkAccess": {
+                "clickhouseHttps": "clickhouse_https"
+            },
+            "aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess": {
+                "clickhouseHttps": "clickhouse_https"
             },
             "aiven:index/getClickhouseComponent:getClickhouseComponent": {
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
@@ -4320,6 +4383,7 @@
                 "maxRowLimit": "max_row_limit",
                 "maxSelectBuckets": "max_select_buckets",
                 "maxSelectPoint": "max_select_point",
+                "queryLogEnabled": "query_log_enabled",
                 "queryTimeout": "query_timeout"
             },
             "aiven:index/getInfluxDbServiceIntegration:getInfluxDbServiceIntegration": {
@@ -5038,6 +5102,12 @@
                 "tenantId": "tenant_id",
                 "updateTime": "update_time"
             },
+            "aiven:index/getOrganizationUser:getOrganizationUser": {
+                "createTime": "create_time",
+                "invitedBy": "invited_by",
+                "organizationId": "organization_id",
+                "userEmail": "user_email"
+            },
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
                 "createTime": "create_time",
                 "parentId": "parent_id",
@@ -5196,6 +5266,7 @@
                 "copyFromProject": "copy_from_project",
                 "defaultCloud": "default_cloud",
                 "estimatedBalance": "estimated_balance",
+                "parentId": "parent_id",
                 "paymentMethod": "payment_method",
                 "tags": "tag",
                 "technicalEmails": "technical_emails",
@@ -5296,8 +5367,16 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/getServiceIntegrationClickhouseKafkaUserConfigTable:getServiceIntegrationClickhouseKafkaUserConfigTable": {
+                "autoOffsetReset": "auto_offset_reset",
                 "dataFormat": "data_format",
-                "groupName": "group_name"
+                "dateTimeInputFormat": "date_time_input_format",
+                "groupName": "group_name",
+                "handleErrorMode": "handle_error_mode",
+                "maxBlockSize": "max_block_size",
+                "maxRowsPerMessage": "max_rows_per_message",
+                "numConsumers": "num_consumers",
+                "pollMaxBatchSize": "poll_max_batch_size",
+                "skipBrokenMessages": "skip_broken_messages"
             },
             "aiven:index/getServiceIntegrationDatadogUserConfig:getServiceIntegrationDatadogUserConfig": {
                 "datadogDbmEnabled": "datadog_dbm_enabled",
@@ -5763,6 +5842,12 @@
                 "tenantId": "tenant_id",
                 "updateTime": "update_time"
             },
+            "aiven:index/organizationUser:OrganizationUser": {
+                "createTime": "create_time",
+                "invitedBy": "invited_by",
+                "organizationId": "organization_id",
+                "userEmail": "user_email"
+            },
             "aiven:index/organizationalUnit:OrganizationalUnit": {
                 "createTime": "create_time",
                 "parentId": "parent_id",
@@ -5815,6 +5900,7 @@
                 "copyFromProject": "copy_from_project",
                 "defaultCloud": "default_cloud",
                 "estimatedBalance": "estimated_balance",
+                "parentId": "parent_id",
                 "paymentMethod": "payment_method",
                 "tags": "tag",
                 "technicalEmails": "technical_emails",
