@@ -21,7 +21,7 @@ class GetBillingGroupResult:
     """
     A collection of values returned by getBillingGroup.
     """
-    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group_id=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, state=None, vat_id=None, zip_code=None):
+    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group_id=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, parent_id=None, state=None, vat_id=None, zip_code=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -61,6 +61,9 @@ class GetBillingGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if parent_id and not isinstance(parent_id, str):
+            raise TypeError("Expected argument 'parent_id' to be a str")
+        pulumi.set(__self__, "parent_id", parent_id)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -176,6 +179,14 @@ class GetBillingGroupResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -219,6 +230,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
             country_code=self.country_code,
             id=self.id,
             name=self.name,
+            parent_id=self.parent_id,
             state=self.state,
             vat_id=self.vat_id,
             zip_code=self.zip_code)
@@ -251,6 +263,7 @@ def get_billing_group(billing_group_id: Optional[str] = None,
         country_code=pulumi.get(__ret__, 'country_code'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        parent_id=pulumi.get(__ret__, 'parent_id'),
         state=pulumi.get(__ret__, 'state'),
         vat_id=pulumi.get(__ret__, 'vat_id'),
         zip_code=pulumi.get(__ret__, 'zip_code'))

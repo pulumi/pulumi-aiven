@@ -53,7 +53,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the Opensearch User.
+        The password of the OpenSearch User.
         """
         return pulumi.get(self, "password")
 
@@ -85,7 +85,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -109,7 +109,7 @@ def get_opensearch_user(project: Optional[str] = None,
                         username: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchUserResult:
     """
-    The Opensearch User data source provides information about the existing Aiven Cassandra User.
+    The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
 
     ## Example Usage
 
@@ -125,7 +125,7 @@ def get_opensearch_user(project: Optional[str] = None,
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -149,7 +149,7 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[str]] = None,
                                username: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpensearchUserResult]:
     """
-    The Opensearch User data source provides information about the existing Aiven Cassandra User.
+    The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
 
     ## Example Usage
 
@@ -165,6 +165,6 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

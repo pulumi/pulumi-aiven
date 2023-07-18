@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
 //
 // ## Example Usage
 //

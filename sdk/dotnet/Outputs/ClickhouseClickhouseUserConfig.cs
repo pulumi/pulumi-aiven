@@ -30,13 +30,29 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
+        public readonly Outputs.ClickhouseClickhouseUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
+        public readonly Outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
         /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
+        public readonly Outputs.ClickhouseClickhouseUserConfigPublicAccess? PublicAccess;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private ClickhouseClickhouseUserConfig(
@@ -48,16 +64,28 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            Outputs.ClickhouseClickhouseUserConfigPrivateAccess? privateAccess,
+
+            Outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess? privatelinkAccess,
+
             string? projectToForkFrom,
 
-            string? serviceToForkFrom)
+            Outputs.ClickhouseClickhouseUserConfigPublicAccess? publicAccess,
+
+            string? serviceToForkFrom,
+
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
+            PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
+            PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

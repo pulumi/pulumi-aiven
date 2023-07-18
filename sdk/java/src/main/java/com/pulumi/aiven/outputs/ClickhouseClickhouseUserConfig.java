@@ -4,7 +4,11 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigIpFilterObject;
+import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigPrivateAccess;
+import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess;
+import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -38,15 +42,35 @@ public final class ClickhouseClickhouseUserConfig {
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
+    private @Nullable ClickhouseClickhouseUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
+    private @Nullable ClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
     private @Nullable String projectToForkFrom;
     /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
+    private @Nullable ClickhouseClickhouseUserConfigPublicAccess publicAccess;
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
+    private @Nullable Boolean staticIps;
 
     private ClickhouseClickhouseUserConfig() {}
     /**
@@ -82,6 +106,20 @@ public final class ClickhouseClickhouseUserConfig {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
+    public Optional<ClickhouseClickhouseUserConfigPrivateAccess> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
+    public Optional<ClickhouseClickhouseUserConfigPrivatelinkAccess> privatelinkAccess() {
+        return Optional.ofNullable(this.privatelinkAccess);
+    }
+    /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
@@ -89,11 +127,25 @@ public final class ClickhouseClickhouseUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
+    public Optional<ClickhouseClickhouseUserConfigPublicAccess> publicAccess() {
+        return Optional.ofNullable(this.publicAccess);
+    }
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
+    }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
+    public Optional<Boolean> staticIps() {
+        return Optional.ofNullable(this.staticIps);
     }
 
     public static Builder builder() {
@@ -109,8 +161,12 @@ public final class ClickhouseClickhouseUserConfig {
         private @Nullable List<ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
+        private @Nullable ClickhouseClickhouseUserConfigPrivateAccess privateAccess;
+        private @Nullable ClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable String projectToForkFrom;
+        private @Nullable ClickhouseClickhouseUserConfigPublicAccess publicAccess;
         private @Nullable String serviceToForkFrom;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(ClickhouseClickhouseUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -118,8 +174,12 @@ public final class ClickhouseClickhouseUserConfig {
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
+    	      this.privateAccess = defaults.privateAccess;
+    	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
+    	      this.publicAccess = defaults.publicAccess;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
+    	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
@@ -152,13 +212,33 @@ public final class ClickhouseClickhouseUserConfig {
             return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
+        public Builder privateAccess(@Nullable ClickhouseClickhouseUserConfigPrivateAccess privateAccess) {
+            this.privateAccess = privateAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privatelinkAccess(@Nullable ClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess) {
+            this.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
+        public Builder publicAccess(@Nullable ClickhouseClickhouseUserConfigPublicAccess publicAccess) {
+            this.publicAccess = publicAccess;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder staticIps(@Nullable Boolean staticIps) {
+            this.staticIps = staticIps;
             return this;
         }
         public ClickhouseClickhouseUserConfig build() {
@@ -167,8 +247,12 @@ public final class ClickhouseClickhouseUserConfig {
             o.ipFilterObjects = ipFilterObjects;
             o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
             o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
             o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
             return o;
         }
     }

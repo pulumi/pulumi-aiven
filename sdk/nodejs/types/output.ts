@@ -170,18 +170,61 @@ export interface ClickhouseClickhouseUserConfig {
      */
     ipFilters?: string[];
     /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: outputs.ClickhouseClickhouseUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink.
+     */
+    privatelinkAccess?: outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess;
+    /**
      * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: outputs.ClickhouseClickhouseUserConfigPublicAccess;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
 }
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
     description?: string;
     network: string;
+}
+
+export interface ClickhouseClickhouseUserConfigPrivateAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: boolean;
+    clickhouseHttps?: boolean;
+    prometheus?: boolean;
+}
+
+export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: boolean;
+    clickhouseHttps?: boolean;
+    prometheus?: boolean;
+}
+
+export interface ClickhouseClickhouseUserConfigPublicAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: boolean;
+    clickhouseHttps?: boolean;
+    prometheus?: boolean;
 }
 
 export interface ClickhouseComponent {
@@ -506,13 +549,47 @@ export interface GetClickhouseClickhouseUserConfig {
      * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
+    privateAccess?: outputs.GetClickhouseClickhouseUserConfigPrivateAccess;
+    privatelinkAccess?: outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
+    publicAccess?: outputs.GetClickhouseClickhouseUserConfigPublicAccess;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    staticIps?: boolean;
 }
 
 export interface GetClickhouseClickhouseUserConfigIpFilterObject {
     description?: string;
     network: string;
+}
+
+export interface GetClickhouseClickhouseUserConfigPrivateAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: boolean;
+    clickhouseHttps?: boolean;
+    prometheus?: boolean;
+}
+
+export interface GetClickhouseClickhouseUserConfigPrivatelinkAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: boolean;
+    clickhouseHttps?: boolean;
+    prometheus?: boolean;
+}
+
+export interface GetClickhouseClickhouseUserConfigPublicAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: boolean;
+    clickhouseHttps?: boolean;
+    prometheus?: boolean;
 }
 
 export interface GetClickhouseComponent {
@@ -813,6 +890,7 @@ export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
     maxRowLimit?: number;
     maxSelectBuckets?: number;
     maxSelectPoint?: number;
+    queryLogEnabled?: boolean;
     queryTimeout?: number;
 }
 
@@ -1569,7 +1647,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     maxIndexCount?: number;
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: outputs.GetOpenSearchOpensearchUserConfigOpensearch;
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
@@ -1646,7 +1724,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
@@ -1655,7 +1733,7 @@ export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
 
 export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
@@ -1664,7 +1742,7 @@ export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
@@ -1990,10 +2068,18 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfig {
 }
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
+    autoOffsetReset?: string;
     columns?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     dataFormat: string;
+    dateTimeInputFormat?: string;
     groupName: string;
+    handleErrorMode?: string;
+    maxBlockSize?: number;
+    maxRowsPerMessage?: number;
     name: string;
+    numConsumers?: number;
+    pollMaxBatchSize?: number;
+    skipBrokenMessages?: number;
     topics?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
@@ -2452,6 +2538,7 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
     maxRowLimit?: number;
     maxSelectBuckets?: number;
     maxSelectPoint?: number;
+    queryLogEnabled?: boolean;
     queryTimeout?: number;
 }
 
@@ -3448,7 +3535,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
@@ -3457,7 +3544,7 @@ export interface OpenSearchOpensearchUserConfigPrivateAccess {
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
@@ -3466,7 +3553,7 @@ export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
@@ -3918,10 +4005,18 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
+    autoOffsetReset?: string;
     columns?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     dataFormat: string;
+    dateTimeInputFormat?: string;
     groupName: string;
+    handleErrorMode?: string;
+    maxBlockSize?: number;
+    maxRowsPerMessage?: number;
     name: string;
+    numConsumers?: number;
+    pollMaxBatchSize?: number;
+    skipBrokenMessages?: number;
     topics?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
@@ -3980,7 +4075,7 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: number;
     /**
-     * Datadog Opensearch Options.
+     * Datadog OpenSearch Options.
      */
     opensearch?: outputs.ServiceIntegrationDatadogUserConfigOpensearch;
     /**

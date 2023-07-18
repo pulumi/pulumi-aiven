@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch data source provides information about the existing Aiven Opensearch service.
+ * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
  *
  * ## Example Usage
  *
@@ -93,11 +93,11 @@ export interface GetOpenSearchResult {
      */
     readonly maintenanceWindowTime: string;
     /**
-     * Opensearch user configurable settings
+     * OpenSearch user configurable settings
      */
     readonly opensearchUserConfigs: outputs.GetOpenSearchOpensearchUserConfig[];
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     readonly opensearches: outputs.GetOpenSearchOpensearch[];
     /**
@@ -162,7 +162,7 @@ export interface GetOpenSearchResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Opensearch data source provides information about the existing Aiven Opensearch service.
+ * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
  *
  * ## Example Usage
  *

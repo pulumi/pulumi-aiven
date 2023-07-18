@@ -13,28 +13,60 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTable
     {
+        public readonly string? AutoOffsetReset;
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> Columns;
         public readonly string DataFormat;
+        public readonly string? DateTimeInputFormat;
         public readonly string GroupName;
+        public readonly string? HandleErrorMode;
+        public readonly int? MaxBlockSize;
+        public readonly int? MaxRowsPerMessage;
         public readonly string Name;
+        public readonly int? NumConsumers;
+        public readonly int? PollMaxBatchSize;
+        public readonly int? SkipBrokenMessages;
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> Topics;
 
         [OutputConstructor]
         private ServiceIntegrationClickhouseKafkaUserConfigTable(
+            string? autoOffsetReset,
+
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns,
 
             string dataFormat,
 
+            string? dateTimeInputFormat,
+
             string groupName,
+
+            string? handleErrorMode,
+
+            int? maxBlockSize,
+
+            int? maxRowsPerMessage,
 
             string name,
 
+            int? numConsumers,
+
+            int? pollMaxBatchSize,
+
+            int? skipBrokenMessages,
+
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics)
         {
+            AutoOffsetReset = autoOffsetReset;
             Columns = columns;
             DataFormat = dataFormat;
+            DateTimeInputFormat = dateTimeInputFormat;
             GroupName = groupName;
+            HandleErrorMode = handleErrorMode;
+            MaxBlockSize = maxBlockSize;
+            MaxRowsPerMessage = maxRowsPerMessage;
             Name = name;
+            NumConsumers = numConsumers;
+            PollMaxBatchSize = pollMaxBatchSize;
+            SkipBrokenMessages = skipBrokenMessages;
             Topics = topics;
         }
     }

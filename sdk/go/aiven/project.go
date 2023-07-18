@@ -23,9 +23,11 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrOutput `pulumi:"addAccountOwnersAdminAccess"`
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
@@ -39,6 +41,8 @@ type Project struct {
 	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
 	// The current accumulated bill for this project in the current billing period.
 	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
+	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
 	// The method of invoicing used for payments for this project, e.g. `card`.
 	PaymentMethod pulumi.StringOutput `pulumi:"paymentMethod"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
@@ -87,9 +91,11 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
-	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits *string `pulumi:"availableCredits"`
@@ -103,6 +109,8 @@ type projectState struct {
 	DefaultCloud *string `pulumi:"defaultCloud"`
 	// The current accumulated bill for this project in the current billing period.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
+	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId *string `pulumi:"parentId"`
 	// The method of invoicing used for payments for this project, e.g. `card`.
 	PaymentMethod *string `pulumi:"paymentMethod"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
@@ -116,9 +124,11 @@ type projectState struct {
 }
 
 type ProjectState struct {
-	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
-	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringPtrInput
@@ -132,6 +142,8 @@ type ProjectState struct {
 	DefaultCloud pulumi.StringPtrInput
 	// The current accumulated bill for this project in the current billing period.
 	EstimatedBalance pulumi.StringPtrInput
+	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId pulumi.StringPtrInput
 	// The method of invoicing used for payments for this project, e.g. `card`.
 	PaymentMethod pulumi.StringPtrInput
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
@@ -149,9 +161,11 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
-	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -159,6 +173,8 @@ type projectArgs struct {
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
+	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId *string `pulumi:"parentId"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project string `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
@@ -171,9 +187,11 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
-	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrInput
@@ -181,6 +199,8 @@ type ProjectArgs struct {
 	CopyFromProject pulumi.StringPtrInput
 	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
 	DefaultCloud pulumi.StringPtrInput
+	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId pulumi.StringPtrInput
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringInput
 	// Tags are key-value pairs that allow you to categorize projects.
@@ -278,12 +298,14 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+//
+// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 func (o ProjectOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 func (o ProjectOutput) AddAccountOwnersAdminAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AddAccountOwnersAdminAccess }).(pulumi.BoolPtrOutput)
 }
@@ -316,6 +338,11 @@ func (o ProjectOutput) DefaultCloud() pulumi.StringPtrOutput {
 // The current accumulated bill for this project in the current billing period.
 func (o ProjectOutput) EstimatedBalance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.EstimatedBalance }).(pulumi.StringOutput)
+}
+
+// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+func (o ProjectOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }
 
 // The method of invoicing used for payments for this project, e.g. `card`.

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+// The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
 //
 // ## Example Usage
 //

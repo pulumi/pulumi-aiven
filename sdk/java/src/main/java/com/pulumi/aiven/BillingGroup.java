@@ -68,7 +68,11 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
     /**
      * Account id
      * 
+     * @deprecated
+     * Use parent_id instead. This field will be removed in the next major release.
+     * 
      */
+    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
@@ -218,6 +222,20 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    @Export(name="parentId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> parentId;
+
+    /**
+     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public Output<Optional<String>> parentId() {
+        return Codegen.optional(this.parentId);
     }
     /**
      * State

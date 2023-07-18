@@ -82,6 +82,10 @@ export interface GetBillingGroupResult {
      */
     readonly name: string;
     /**
+     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    readonly parentId: string;
+    /**
      * State
      */
     readonly state: string;

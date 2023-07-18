@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? MaxRowLimit;
         public readonly int? MaxSelectBuckets;
         public readonly int? MaxSelectPoint;
+        public readonly bool? QueryLogEnabled;
         public readonly int? QueryTimeout;
 
         [OutputConstructor]
@@ -32,6 +33,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxSelectPoint,
 
+            bool? queryLogEnabled,
+
             int? queryTimeout)
         {
             LogQueriesAfter = logQueriesAfter;
@@ -39,6 +42,7 @@ namespace Pulumi.Aiven.Outputs
             MaxRowLimit = maxRowLimit;
             MaxSelectBuckets = maxSelectBuckets;
             MaxSelectPoint = maxSelectPoint;
+            QueryLogEnabled = queryLogEnabled;
             QueryTimeout = queryTimeout;
         }
     }

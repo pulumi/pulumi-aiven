@@ -1696,10 +1696,18 @@ type ClickhouseClickhouseUserConfig struct {
 	//
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters []string `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess *ClickhouseClickhouseUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink.
+	PrivatelinkAccess *ClickhouseClickhouseUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	// Name of another project to fork a service from. This has effect only when a new service is being created.
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess *ClickhouseClickhouseUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
 }
 
 // ClickhouseClickhouseUserConfigInput is an input type that accepts ClickhouseClickhouseUserConfigArgs and ClickhouseClickhouseUserConfigOutput values.
@@ -1724,10 +1732,18 @@ type ClickhouseClickhouseUserConfigArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks.
+	PrivateAccess ClickhouseClickhouseUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink.
+	PrivatelinkAccess ClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	// Name of another project to fork a service from. This has effect only when a new service is being created.
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet.
+	PublicAccess ClickhouseClickhouseUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 }
 
 func (ClickhouseClickhouseUserConfigArgs) ElementType() reflect.Type {
@@ -1831,14 +1847,40 @@ func (o ClickhouseClickhouseUserConfigOutput) IpFilters() pulumi.StringArrayOutp
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks.
+func (o ClickhouseClickhouseUserConfigOutput) PrivateAccess() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *ClickhouseClickhouseUserConfigPrivateAccess {
+		return v.PrivateAccess
+	}).(ClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink.
+func (o ClickhouseClickhouseUserConfigOutput) PrivatelinkAccess() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *ClickhouseClickhouseUserConfigPrivatelinkAccess {
+		return v.PrivatelinkAccess
+	}).(ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
 // Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
+func (o ClickhouseClickhouseUserConfigOutput) PublicAccess() ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *ClickhouseClickhouseUserConfigPublicAccess {
+		return v.PublicAccess
+	}).(ClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
 // Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o ClickhouseClickhouseUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
 
 type ClickhouseClickhouseUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1907,6 +1949,26 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilters() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks.
+func (o ClickhouseClickhouseUserConfigPtrOutput) PrivateAccess() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *ClickhouseClickhouseUserConfigPrivateAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(ClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink.
+func (o ClickhouseClickhouseUserConfigPtrOutput) PrivatelinkAccess() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *ClickhouseClickhouseUserConfigPrivatelinkAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatelinkAccess
+	}).(ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
 // Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *string {
@@ -1917,6 +1979,16 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) ProjectToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet.
+func (o ClickhouseClickhouseUserConfigPtrOutput) PublicAccess() ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *ClickhouseClickhouseUserConfigPublicAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(ClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
 // Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *string {
@@ -1925,6 +1997,16 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) ServiceToForkFrom() pulumi.Stri
 		}
 		return v.ServiceToForkFrom
 	}).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o ClickhouseClickhouseUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StaticIps
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClickhouseClickhouseUserConfigIpFilterObject struct {
@@ -2025,6 +2107,507 @@ func (o ClickhouseClickhouseUserConfigIpFilterObjectArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClickhouseClickhouseUserConfigIpFilterObject {
 		return vs[0].([]ClickhouseClickhouseUserConfigIpFilterObject)[vs[1].(int)]
 	}).(ClickhouseClickhouseUserConfigIpFilterObjectOutput)
+}
+
+type ClickhouseClickhouseUserConfigPrivateAccess struct {
+	// Clickhouse server provided values
+	Clickhouse      *bool `pulumi:"clickhouse"`
+	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	Prometheus      *bool `pulumi:"prometheus"`
+}
+
+// ClickhouseClickhouseUserConfigPrivateAccessInput is an input type that accepts ClickhouseClickhouseUserConfigPrivateAccessArgs and ClickhouseClickhouseUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `ClickhouseClickhouseUserConfigPrivateAccessInput` via:
+//
+//	ClickhouseClickhouseUserConfigPrivateAccessArgs{...}
+type ClickhouseClickhouseUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToClickhouseClickhouseUserConfigPrivateAccessOutput() ClickhouseClickhouseUserConfigPrivateAccessOutput
+	ToClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(context.Context) ClickhouseClickhouseUserConfigPrivateAccessOutput
+}
+
+type ClickhouseClickhouseUserConfigPrivateAccessArgs struct {
+	// Clickhouse server provided values
+	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
+	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (ClickhouseClickhouseUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i ClickhouseClickhouseUserConfigPrivateAccessArgs) ToClickhouseClickhouseUserConfigPrivateAccessOutput() ClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return i.ToClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i ClickhouseClickhouseUserConfigPrivateAccessArgs) ToClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPrivateAccessOutput)
+}
+
+func (i ClickhouseClickhouseUserConfigPrivateAccessArgs) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutput() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return i.ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i ClickhouseClickhouseUserConfigPrivateAccessArgs) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPrivateAccessOutput).ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// ClickhouseClickhouseUserConfigPrivateAccessPtrInput is an input type that accepts ClickhouseClickhouseUserConfigPrivateAccessArgs, ClickhouseClickhouseUserConfigPrivateAccessPtr and ClickhouseClickhouseUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `ClickhouseClickhouseUserConfigPrivateAccessPtrInput` via:
+//
+//	        ClickhouseClickhouseUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClickhouseClickhouseUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToClickhouseClickhouseUserConfigPrivateAccessPtrOutput() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput
+	ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Context) ClickhouseClickhouseUserConfigPrivateAccessPtrOutput
+}
+
+type clickhouseClickhouseUserConfigPrivateAccessPtrType ClickhouseClickhouseUserConfigPrivateAccessArgs
+
+func ClickhouseClickhouseUserConfigPrivateAccessPtr(v *ClickhouseClickhouseUserConfigPrivateAccessArgs) ClickhouseClickhouseUserConfigPrivateAccessPtrInput {
+	return (*clickhouseClickhouseUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*clickhouseClickhouseUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *clickhouseClickhouseUserConfigPrivateAccessPtrType) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutput() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return i.ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *clickhouseClickhouseUserConfigPrivateAccessPtrType) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseClickhouseUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ToClickhouseClickhouseUserConfigPrivateAccessOutput() ClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ToClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutput() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClickhouseClickhouseUserConfigPrivateAccess) *ClickhouseClickhouseUserConfigPrivateAccess {
+		return &v
+	}).(ClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.Clickhouse }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutput() ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ToClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Elem() ClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivateAccess) ClickhouseClickhouseUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret ClickhouseClickhouseUserConfigPrivateAccess
+		return ret
+	}).(ClickhouseClickhouseUserConfigPrivateAccessOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Clickhouse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseHttps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPrivatelinkAccess struct {
+	// Clickhouse server provided values
+	Clickhouse      *bool `pulumi:"clickhouse"`
+	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	Prometheus      *bool `pulumi:"prometheus"`
+}
+
+// ClickhouseClickhouseUserConfigPrivatelinkAccessInput is an input type that accepts ClickhouseClickhouseUserConfigPrivatelinkAccessArgs and ClickhouseClickhouseUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `ClickhouseClickhouseUserConfigPrivatelinkAccessInput` via:
+//
+//	ClickhouseClickhouseUserConfigPrivatelinkAccessArgs{...}
+type ClickhouseClickhouseUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToClickhouseClickhouseUserConfigPrivatelinkAccessOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessOutput
+	ToClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessOutput
+}
+
+type ClickhouseClickhouseUserConfigPrivatelinkAccessArgs struct {
+	// Clickhouse server provided values
+	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
+	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (ClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i ClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToClickhouseClickhouseUserConfigPrivatelinkAccessOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return i.ToClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i ClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPrivatelinkAccessOutput)
+}
+
+func (i ClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i ClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPrivatelinkAccessOutput).ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// ClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput is an input type that accepts ClickhouseClickhouseUserConfigPrivatelinkAccessArgs, ClickhouseClickhouseUserConfigPrivatelinkAccessPtr and ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `ClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        ClickhouseClickhouseUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput
+	ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput
+}
+
+type clickhouseClickhouseUserConfigPrivatelinkAccessPtrType ClickhouseClickhouseUserConfigPrivatelinkAccessArgs
+
+func ClickhouseClickhouseUserConfigPrivatelinkAccessPtr(v *ClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput {
+	return (*clickhouseClickhouseUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*clickhouseClickhouseUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *clickhouseClickhouseUserConfigPrivatelinkAccessPtrType) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *clickhouseClickhouseUserConfigPrivatelinkAccessPtrType) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToClickhouseClickhouseUserConfigPrivatelinkAccessOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClickhouseClickhouseUserConfigPrivatelinkAccess) *ClickhouseClickhouseUserConfigPrivatelinkAccess {
+		return &v
+	}).(ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.Clickhouse }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ToClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Elem() ClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivatelinkAccess) ClickhouseClickhouseUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret ClickhouseClickhouseUserConfigPrivatelinkAccess
+		return ret
+	}).(ClickhouseClickhouseUserConfigPrivatelinkAccessOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Clickhouse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseHttps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPublicAccess struct {
+	// Clickhouse server provided values
+	Clickhouse      *bool `pulumi:"clickhouse"`
+	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	Prometheus      *bool `pulumi:"prometheus"`
+}
+
+// ClickhouseClickhouseUserConfigPublicAccessInput is an input type that accepts ClickhouseClickhouseUserConfigPublicAccessArgs and ClickhouseClickhouseUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `ClickhouseClickhouseUserConfigPublicAccessInput` via:
+//
+//	ClickhouseClickhouseUserConfigPublicAccessArgs{...}
+type ClickhouseClickhouseUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToClickhouseClickhouseUserConfigPublicAccessOutput() ClickhouseClickhouseUserConfigPublicAccessOutput
+	ToClickhouseClickhouseUserConfigPublicAccessOutputWithContext(context.Context) ClickhouseClickhouseUserConfigPublicAccessOutput
+}
+
+type ClickhouseClickhouseUserConfigPublicAccessArgs struct {
+	// Clickhouse server provided values
+	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
+	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (ClickhouseClickhouseUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i ClickhouseClickhouseUserConfigPublicAccessArgs) ToClickhouseClickhouseUserConfigPublicAccessOutput() ClickhouseClickhouseUserConfigPublicAccessOutput {
+	return i.ToClickhouseClickhouseUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i ClickhouseClickhouseUserConfigPublicAccessArgs) ToClickhouseClickhouseUserConfigPublicAccessOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPublicAccessOutput)
+}
+
+func (i ClickhouseClickhouseUserConfigPublicAccessArgs) ToClickhouseClickhouseUserConfigPublicAccessPtrOutput() ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return i.ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i ClickhouseClickhouseUserConfigPublicAccessArgs) ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPublicAccessOutput).ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// ClickhouseClickhouseUserConfigPublicAccessPtrInput is an input type that accepts ClickhouseClickhouseUserConfigPublicAccessArgs, ClickhouseClickhouseUserConfigPublicAccessPtr and ClickhouseClickhouseUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `ClickhouseClickhouseUserConfigPublicAccessPtrInput` via:
+//
+//	        ClickhouseClickhouseUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClickhouseClickhouseUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToClickhouseClickhouseUserConfigPublicAccessPtrOutput() ClickhouseClickhouseUserConfigPublicAccessPtrOutput
+	ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Context) ClickhouseClickhouseUserConfigPublicAccessPtrOutput
+}
+
+type clickhouseClickhouseUserConfigPublicAccessPtrType ClickhouseClickhouseUserConfigPublicAccessArgs
+
+func ClickhouseClickhouseUserConfigPublicAccessPtr(v *ClickhouseClickhouseUserConfigPublicAccessArgs) ClickhouseClickhouseUserConfigPublicAccessPtrInput {
+	return (*clickhouseClickhouseUserConfigPublicAccessPtrType)(v)
+}
+
+func (*clickhouseClickhouseUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *clickhouseClickhouseUserConfigPublicAccessPtrType) ToClickhouseClickhouseUserConfigPublicAccessPtrOutput() ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return i.ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *clickhouseClickhouseUserConfigPublicAccessPtrType) ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseClickhouseUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ToClickhouseClickhouseUserConfigPublicAccessOutput() ClickhouseClickhouseUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ToClickhouseClickhouseUserConfigPublicAccessOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ToClickhouseClickhouseUserConfigPublicAccessPtrOutput() ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClickhouseClickhouseUserConfigPublicAccess) *ClickhouseClickhouseUserConfigPublicAccess {
+		return &v
+	}).(ClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPublicAccess) *bool { return v.Clickhouse }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPublicAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type ClickhouseClickhouseUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseClickhouseUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) ToClickhouseClickhouseUserConfigPublicAccessPtrOutput() ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) ToClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) ClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) Elem() ClickhouseClickhouseUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPublicAccess) ClickhouseClickhouseUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret ClickhouseClickhouseUserConfigPublicAccess
+		return ret
+	}).(ClickhouseClickhouseUserConfigPublicAccessOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Clickhouse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseHttps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClickhouseComponent struct {
@@ -7751,12 +8334,13 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
 }
 
 type InfluxDbInfluxdbUserConfigInfluxdb struct {
-	LogQueriesAfter    *int `pulumi:"logQueriesAfter"`
-	MaxConnectionLimit *int `pulumi:"maxConnectionLimit"`
-	MaxRowLimit        *int `pulumi:"maxRowLimit"`
-	MaxSelectBuckets   *int `pulumi:"maxSelectBuckets"`
-	MaxSelectPoint     *int `pulumi:"maxSelectPoint"`
-	QueryTimeout       *int `pulumi:"queryTimeout"`
+	LogQueriesAfter    *int  `pulumi:"logQueriesAfter"`
+	MaxConnectionLimit *int  `pulumi:"maxConnectionLimit"`
+	MaxRowLimit        *int  `pulumi:"maxRowLimit"`
+	MaxSelectBuckets   *int  `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint     *int  `pulumi:"maxSelectPoint"`
+	QueryLogEnabled    *bool `pulumi:"queryLogEnabled"`
+	QueryTimeout       *int  `pulumi:"queryTimeout"`
 }
 
 // InfluxDbInfluxdbUserConfigInfluxdbInput is an input type that accepts InfluxDbInfluxdbUserConfigInfluxdbArgs and InfluxDbInfluxdbUserConfigInfluxdbOutput values.
@@ -7771,12 +8355,13 @@ type InfluxDbInfluxdbUserConfigInfluxdbInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigInfluxdbArgs struct {
-	LogQueriesAfter    pulumi.IntPtrInput `pulumi:"logQueriesAfter"`
-	MaxConnectionLimit pulumi.IntPtrInput `pulumi:"maxConnectionLimit"`
-	MaxRowLimit        pulumi.IntPtrInput `pulumi:"maxRowLimit"`
-	MaxSelectBuckets   pulumi.IntPtrInput `pulumi:"maxSelectBuckets"`
-	MaxSelectPoint     pulumi.IntPtrInput `pulumi:"maxSelectPoint"`
-	QueryTimeout       pulumi.IntPtrInput `pulumi:"queryTimeout"`
+	LogQueriesAfter    pulumi.IntPtrInput  `pulumi:"logQueriesAfter"`
+	MaxConnectionLimit pulumi.IntPtrInput  `pulumi:"maxConnectionLimit"`
+	MaxRowLimit        pulumi.IntPtrInput  `pulumi:"maxRowLimit"`
+	MaxSelectBuckets   pulumi.IntPtrInput  `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint     pulumi.IntPtrInput  `pulumi:"maxSelectPoint"`
+	QueryLogEnabled    pulumi.BoolPtrInput `pulumi:"queryLogEnabled"`
+	QueryTimeout       pulumi.IntPtrInput  `pulumi:"queryTimeout"`
 }
 
 func (InfluxDbInfluxdbUserConfigInfluxdbArgs) ElementType() reflect.Type {
@@ -7876,6 +8461,10 @@ func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) MaxSelectPoint() pulumi.IntPtr
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *int { return v.MaxSelectPoint }).(pulumi.IntPtrOutput)
 }
 
+func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) QueryLogEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *bool { return v.QueryLogEnabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o InfluxDbInfluxdbUserConfigInfluxdbOutput) QueryTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigInfluxdb) *int { return v.QueryTimeout }).(pulumi.IntPtrOutput)
 }
@@ -7947,6 +8536,15 @@ func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectPoint() pulumi.Int
 		}
 		return v.MaxSelectPoint
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryLogEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigInfluxdb) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryLogEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.IntPtrOutput {
@@ -22782,7 +23380,7 @@ func (o OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) OpensearchR
 }
 
 type OpenSearchOpensearchUserConfigPrivateAccess struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           *bool `pulumi:"opensearch"`
 	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
 	Prometheus           *bool `pulumi:"prometheus"`
@@ -22800,7 +23398,7 @@ type OpenSearchOpensearchUserConfigPrivateAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPrivateAccessArgs struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           pulumi.BoolPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.BoolPtrInput `pulumi:"prometheus"`
@@ -22883,7 +23481,7 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessOutput) ToOpenSearchOpensearc
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPrivateAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
 }
@@ -22920,7 +23518,7 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() OpenSearchO
 	}).(OpenSearchOpensearchUserConfigPrivateAccessOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPrivateAccess) *bool {
 		if v == nil {
@@ -22949,7 +23547,7 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pulum
 }
 
 type OpenSearchOpensearchUserConfigPrivatelinkAccess struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           *bool `pulumi:"opensearch"`
 	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
 	Prometheus           *bool `pulumi:"prometheus"`
@@ -22967,7 +23565,7 @@ type OpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           pulumi.BoolPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.BoolPtrInput `pulumi:"prometheus"`
@@ -23050,7 +23648,7 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToOpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPrivatelinkAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
 }
@@ -23087,7 +23685,7 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() OpenSea
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPrivatelinkAccess) *bool {
 		if v == nil {
@@ -23116,7 +23714,7 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus() p
 }
 
 type OpenSearchOpensearchUserConfigPublicAccess struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           *bool `pulumi:"opensearch"`
 	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
 	Prometheus           *bool `pulumi:"prometheus"`
@@ -23134,7 +23732,7 @@ type OpenSearchOpensearchUserConfigPublicAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPublicAccessArgs struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           pulumi.BoolPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.BoolPtrInput `pulumi:"prometheus"`
@@ -23217,7 +23815,7 @@ func (o OpenSearchOpensearchUserConfigPublicAccessOutput) ToOpenSearchOpensearch
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o OpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPublicAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
 }
@@ -23254,7 +23852,7 @@ func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() OpenSearchOp
 	}).(OpenSearchOpensearchUserConfigPublicAccessOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPublicAccess) *bool {
 		if v == nil {
@@ -29165,11 +29763,19 @@ func (o ServiceIntegrationClickhouseKafkaUserConfigPtrOutput) Tables() ServiceIn
 }
 
 type ServiceIntegrationClickhouseKafkaUserConfigTable struct {
-	Columns    []ServiceIntegrationClickhouseKafkaUserConfigTableColumn `pulumi:"columns"`
-	DataFormat string                                                   `pulumi:"dataFormat"`
-	GroupName  string                                                   `pulumi:"groupName"`
-	Name       string                                                   `pulumi:"name"`
-	Topics     []ServiceIntegrationClickhouseKafkaUserConfigTableTopic  `pulumi:"topics"`
+	AutoOffsetReset     *string                                                  `pulumi:"autoOffsetReset"`
+	Columns             []ServiceIntegrationClickhouseKafkaUserConfigTableColumn `pulumi:"columns"`
+	DataFormat          string                                                   `pulumi:"dataFormat"`
+	DateTimeInputFormat *string                                                  `pulumi:"dateTimeInputFormat"`
+	GroupName           string                                                   `pulumi:"groupName"`
+	HandleErrorMode     *string                                                  `pulumi:"handleErrorMode"`
+	MaxBlockSize        *int                                                     `pulumi:"maxBlockSize"`
+	MaxRowsPerMessage   *int                                                     `pulumi:"maxRowsPerMessage"`
+	Name                string                                                   `pulumi:"name"`
+	NumConsumers        *int                                                     `pulumi:"numConsumers"`
+	PollMaxBatchSize    *int                                                     `pulumi:"pollMaxBatchSize"`
+	SkipBrokenMessages  *int                                                     `pulumi:"skipBrokenMessages"`
+	Topics              []ServiceIntegrationClickhouseKafkaUserConfigTableTopic  `pulumi:"topics"`
 }
 
 // ServiceIntegrationClickhouseKafkaUserConfigTableInput is an input type that accepts ServiceIntegrationClickhouseKafkaUserConfigTableArgs and ServiceIntegrationClickhouseKafkaUserConfigTableOutput values.
@@ -29184,11 +29790,19 @@ type ServiceIntegrationClickhouseKafkaUserConfigTableInput interface {
 }
 
 type ServiceIntegrationClickhouseKafkaUserConfigTableArgs struct {
-	Columns    ServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput `pulumi:"columns"`
-	DataFormat pulumi.StringInput                                               `pulumi:"dataFormat"`
-	GroupName  pulumi.StringInput                                               `pulumi:"groupName"`
-	Name       pulumi.StringInput                                               `pulumi:"name"`
-	Topics     ServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput  `pulumi:"topics"`
+	AutoOffsetReset     pulumi.StringPtrInput                                            `pulumi:"autoOffsetReset"`
+	Columns             ServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput `pulumi:"columns"`
+	DataFormat          pulumi.StringInput                                               `pulumi:"dataFormat"`
+	DateTimeInputFormat pulumi.StringPtrInput                                            `pulumi:"dateTimeInputFormat"`
+	GroupName           pulumi.StringInput                                               `pulumi:"groupName"`
+	HandleErrorMode     pulumi.StringPtrInput                                            `pulumi:"handleErrorMode"`
+	MaxBlockSize        pulumi.IntPtrInput                                               `pulumi:"maxBlockSize"`
+	MaxRowsPerMessage   pulumi.IntPtrInput                                               `pulumi:"maxRowsPerMessage"`
+	Name                pulumi.StringInput                                               `pulumi:"name"`
+	NumConsumers        pulumi.IntPtrInput                                               `pulumi:"numConsumers"`
+	PollMaxBatchSize    pulumi.IntPtrInput                                               `pulumi:"pollMaxBatchSize"`
+	SkipBrokenMessages  pulumi.IntPtrInput                                               `pulumi:"skipBrokenMessages"`
+	Topics              ServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput  `pulumi:"topics"`
 }
 
 func (ServiceIntegrationClickhouseKafkaUserConfigTableArgs) ElementType() reflect.Type {
@@ -29242,6 +29856,10 @@ func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) ToServiceIntegra
 	return o
 }
 
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) AutoOffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.AutoOffsetReset }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) Columns() ServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) []ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
 		return v.Columns
@@ -29252,12 +29870,40 @@ func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) DataFormat() pul
 	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.DataFormat }).(pulumi.StringOutput)
 }
 
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) DateTimeInputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.DateTimeInputFormat }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) HandleErrorMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.HandleErrorMode }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxBlockSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxBlockSize }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxRowsPerMessage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxRowsPerMessage }).(pulumi.IntPtrOutput)
+}
+
 func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) NumConsumers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.NumConsumers }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.PollMaxBatchSize }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) SkipBrokenMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.SkipBrokenMessages }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceIntegrationClickhouseKafkaUserConfigTableOutput) Topics() ServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
@@ -29736,7 +30382,7 @@ type ServiceIntegrationDatadogUserConfig struct {
 	KafkaCustomMetrics []string `pulumi:"kafkaCustomMetrics"`
 	// Maximum number of JMX metrics to send.
 	MaxJmxMetrics *int `pulumi:"maxJmxMetrics"`
-	// Datadog Opensearch Options.
+	// Datadog OpenSearch Options.
 	Opensearch *ServiceIntegrationDatadogUserConfigOpensearch `pulumi:"opensearch"`
 	// Datadog Redis Options.
 	Redis *ServiceIntegrationDatadogUserConfigRedis `pulumi:"redis"`
@@ -29770,7 +30416,7 @@ type ServiceIntegrationDatadogUserConfigArgs struct {
 	KafkaCustomMetrics pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
 	// Maximum number of JMX metrics to send.
 	MaxJmxMetrics pulumi.IntPtrInput `pulumi:"maxJmxMetrics"`
-	// Datadog Opensearch Options.
+	// Datadog OpenSearch Options.
 	Opensearch ServiceIntegrationDatadogUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// Datadog Redis Options.
 	Redis ServiceIntegrationDatadogUserConfigRedisPtrInput `pulumi:"redis"`
@@ -29895,7 +30541,7 @@ func (o ServiceIntegrationDatadogUserConfigOutput) MaxJmxMetrics() pulumi.IntPtr
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *int { return v.MaxJmxMetrics }).(pulumi.IntPtrOutput)
 }
 
-// Datadog Opensearch Options.
+// Datadog OpenSearch Options.
 func (o ServiceIntegrationDatadogUserConfigOutput) Opensearch() ServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfigOpensearch {
 		return v.Opensearch
@@ -30011,7 +30657,7 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) MaxJmxMetrics() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
-// Datadog Opensearch Options.
+// Datadog OpenSearch Options.
 func (o ServiceIntegrationDatadogUserConfigPtrOutput) Opensearch() ServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfigOpensearch {
 		if v == nil {
@@ -37378,9 +38024,14 @@ type GetClickhouseClickhouseUserConfig struct {
 	IpFilterObjects         []GetClickhouseClickhouseUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	IpFilterStrings         []string                                          `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters         []string `pulumi:"ipFilters"`
-	ProjectToForkFrom *string  `pulumi:"projectToForkFrom"`
-	ServiceToForkFrom *string  `pulumi:"serviceToForkFrom"`
+	IpFilters         []string                                            `pulumi:"ipFilters"`
+	PrivateAccess     *GetClickhouseClickhouseUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess *GetClickhouseClickhouseUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom *string                                             `pulumi:"projectToForkFrom"`
+	PublicAccess      *GetClickhouseClickhouseUserConfigPublicAccess      `pulumi:"publicAccess"`
+	ServiceToForkFrom *string                                             `pulumi:"serviceToForkFrom"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *bool `pulumi:"staticIps"`
 }
 
 // GetClickhouseClickhouseUserConfigInput is an input type that accepts GetClickhouseClickhouseUserConfigArgs and GetClickhouseClickhouseUserConfigOutput values.
@@ -37399,9 +38050,14 @@ type GetClickhouseClickhouseUserConfigArgs struct {
 	IpFilterObjects         GetClickhouseClickhouseUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	IpFilterStrings         pulumi.StringArrayInput                                   `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters         pulumi.StringArrayInput `pulumi:"ipFilters"`
-	ProjectToForkFrom pulumi.StringPtrInput   `pulumi:"projectToForkFrom"`
-	ServiceToForkFrom pulumi.StringPtrInput   `pulumi:"serviceToForkFrom"`
+	IpFilters         pulumi.StringArrayInput                                    `pulumi:"ipFilters"`
+	PrivateAccess     GetClickhouseClickhouseUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom pulumi.StringPtrInput                                      `pulumi:"projectToForkFrom"`
+	PublicAccess      GetClickhouseClickhouseUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	ServiceToForkFrom pulumi.StringPtrInput                                      `pulumi:"serviceToForkFrom"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 }
 
 func (GetClickhouseClickhouseUserConfigArgs) ElementType() reflect.Type {
@@ -37474,12 +38130,35 @@ func (o GetClickhouseClickhouseUserConfigOutput) IpFilters() pulumi.StringArrayO
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigOutput) PrivateAccess() GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *GetClickhouseClickhouseUserConfigPrivateAccess {
+		return v.PrivateAccess
+	}).(GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigOutput) PrivatelinkAccess() GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *GetClickhouseClickhouseUserConfigPrivatelinkAccess {
+		return v.PrivatelinkAccess
+	}).(GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigOutput) PublicAccess() GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *GetClickhouseClickhouseUserConfigPublicAccess {
+		return v.PublicAccess
+	}).(GetClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+func (o GetClickhouseClickhouseUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
 
 type GetClickhouseClickhouseUserConfigArrayOutput struct{ *pulumi.OutputState }
@@ -37600,6 +38279,507 @@ func (o GetClickhouseClickhouseUserConfigIpFilterObjectArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClickhouseClickhouseUserConfigIpFilterObject {
 		return vs[0].([]GetClickhouseClickhouseUserConfigIpFilterObject)[vs[1].(int)]
 	}).(GetClickhouseClickhouseUserConfigIpFilterObjectOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPrivateAccess struct {
+	// Clickhouse server provided values
+	Clickhouse      *bool `pulumi:"clickhouse"`
+	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	Prometheus      *bool `pulumi:"prometheus"`
+}
+
+// GetClickhouseClickhouseUserConfigPrivateAccessInput is an input type that accepts GetClickhouseClickhouseUserConfigPrivateAccessArgs and GetClickhouseClickhouseUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetClickhouseClickhouseUserConfigPrivateAccessInput` via:
+//
+//	GetClickhouseClickhouseUserConfigPrivateAccessArgs{...}
+type GetClickhouseClickhouseUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetClickhouseClickhouseUserConfigPrivateAccessOutput() GetClickhouseClickhouseUserConfigPrivateAccessOutput
+	ToGetClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(context.Context) GetClickhouseClickhouseUserConfigPrivateAccessOutput
+}
+
+type GetClickhouseClickhouseUserConfigPrivateAccessArgs struct {
+	// Clickhouse server provided values
+	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
+	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetClickhouseClickhouseUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivateAccessArgs) ToGetClickhouseClickhouseUserConfigPrivateAccessOutput() GetClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivateAccessArgs) ToGetClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPrivateAccessOutput)
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivateAccessArgs) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivateAccessArgs) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPrivateAccessOutput).ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetClickhouseClickhouseUserConfigPrivateAccessPtrInput is an input type that accepts GetClickhouseClickhouseUserConfigPrivateAccessArgs, GetClickhouseClickhouseUserConfigPrivateAccessPtr and GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetClickhouseClickhouseUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetClickhouseClickhouseUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClickhouseClickhouseUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput
+	ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput
+}
+
+type getClickhouseClickhouseUserConfigPrivateAccessPtrType GetClickhouseClickhouseUserConfigPrivateAccessArgs
+
+func GetClickhouseClickhouseUserConfigPrivateAccessPtr(v *GetClickhouseClickhouseUserConfigPrivateAccessArgs) GetClickhouseClickhouseUserConfigPrivateAccessPtrInput {
+	return (*getClickhouseClickhouseUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getClickhouseClickhouseUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getClickhouseClickhouseUserConfigPrivateAccessPtrType) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getClickhouseClickhouseUserConfigPrivateAccessPtrType) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseClickhouseUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ToGetClickhouseClickhouseUserConfigPrivateAccessOutput() GetClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ToGetClickhouseClickhouseUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClickhouseClickhouseUserConfigPrivateAccess) *GetClickhouseClickhouseUserConfigPrivateAccess {
+		return &v
+	}).(GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.Clickhouse }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClickhouseClickhouseUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ToGetClickhouseClickhouseUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Elem() GetClickhouseClickhouseUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivateAccess) GetClickhouseClickhouseUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetClickhouseClickhouseUserConfigPrivateAccess
+		return ret
+	}).(GetClickhouseClickhouseUserConfigPrivateAccessOutput)
+}
+
+// Clickhouse server provided values
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Clickhouse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseHttps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPrivatelinkAccess struct {
+	// Clickhouse server provided values
+	Clickhouse      *bool `pulumi:"clickhouse"`
+	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	Prometheus      *bool `pulumi:"prometheus"`
+}
+
+// GetClickhouseClickhouseUserConfigPrivatelinkAccessInput is an input type that accepts GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs and GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetClickhouseClickhouseUserConfigPrivatelinkAccessInput` via:
+//
+//	GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs{...}
+type GetClickhouseClickhouseUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput
+	ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput
+}
+
+type GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs struct {
+	// Clickhouse server provided values
+	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
+	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput).ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs, GetClickhouseClickhouseUserConfigPrivatelinkAccessPtr and GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput
+	ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getClickhouseClickhouseUserConfigPrivatelinkAccessPtrType GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs
+
+func GetClickhouseClickhouseUserConfigPrivatelinkAccessPtr(v *GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs) GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput {
+	return (*getClickhouseClickhouseUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getClickhouseClickhouseUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getClickhouseClickhouseUserConfigPrivatelinkAccessPtrType) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getClickhouseClickhouseUserConfigPrivatelinkAccessPtrType) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *GetClickhouseClickhouseUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.Clickhouse }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClickhouseClickhouseUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput() GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ToGetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Elem() GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivatelinkAccess) GetClickhouseClickhouseUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetClickhouseClickhouseUserConfigPrivatelinkAccess
+		return ret
+	}).(GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput)
+}
+
+// Clickhouse server provided values
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Clickhouse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseHttps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPublicAccess struct {
+	// Clickhouse server provided values
+	Clickhouse      *bool `pulumi:"clickhouse"`
+	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	Prometheus      *bool `pulumi:"prometheus"`
+}
+
+// GetClickhouseClickhouseUserConfigPublicAccessInput is an input type that accepts GetClickhouseClickhouseUserConfigPublicAccessArgs and GetClickhouseClickhouseUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetClickhouseClickhouseUserConfigPublicAccessInput` via:
+//
+//	GetClickhouseClickhouseUserConfigPublicAccessArgs{...}
+type GetClickhouseClickhouseUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetClickhouseClickhouseUserConfigPublicAccessOutput() GetClickhouseClickhouseUserConfigPublicAccessOutput
+	ToGetClickhouseClickhouseUserConfigPublicAccessOutputWithContext(context.Context) GetClickhouseClickhouseUserConfigPublicAccessOutput
+}
+
+type GetClickhouseClickhouseUserConfigPublicAccessArgs struct {
+	// Clickhouse server provided values
+	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
+	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetClickhouseClickhouseUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetClickhouseClickhouseUserConfigPublicAccessArgs) ToGetClickhouseClickhouseUserConfigPublicAccessOutput() GetClickhouseClickhouseUserConfigPublicAccessOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseClickhouseUserConfigPublicAccessArgs) ToGetClickhouseClickhouseUserConfigPublicAccessOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPublicAccessOutput)
+}
+
+func (i GetClickhouseClickhouseUserConfigPublicAccessArgs) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutput() GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseClickhouseUserConfigPublicAccessArgs) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPublicAccessOutput).ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetClickhouseClickhouseUserConfigPublicAccessPtrInput is an input type that accepts GetClickhouseClickhouseUserConfigPublicAccessArgs, GetClickhouseClickhouseUserConfigPublicAccessPtr and GetClickhouseClickhouseUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetClickhouseClickhouseUserConfigPublicAccessPtrInput` via:
+//
+//	        GetClickhouseClickhouseUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClickhouseClickhouseUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutput() GetClickhouseClickhouseUserConfigPublicAccessPtrOutput
+	ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Context) GetClickhouseClickhouseUserConfigPublicAccessPtrOutput
+}
+
+type getClickhouseClickhouseUserConfigPublicAccessPtrType GetClickhouseClickhouseUserConfigPublicAccessArgs
+
+func GetClickhouseClickhouseUserConfigPublicAccessPtr(v *GetClickhouseClickhouseUserConfigPublicAccessArgs) GetClickhouseClickhouseUserConfigPublicAccessPtrInput {
+	return (*getClickhouseClickhouseUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getClickhouseClickhouseUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getClickhouseClickhouseUserConfigPublicAccessPtrType) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutput() GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return i.ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getClickhouseClickhouseUserConfigPublicAccessPtrType) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseClickhouseUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ToGetClickhouseClickhouseUserConfigPublicAccessOutput() GetClickhouseClickhouseUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ToGetClickhouseClickhouseUserConfigPublicAccessOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutput() GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClickhouseClickhouseUserConfigPublicAccess) *GetClickhouseClickhouseUserConfigPublicAccess {
+		return &v
+	}).(GetClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPublicAccess) *bool { return v.Clickhouse }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPublicAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetClickhouseClickhouseUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClickhouseClickhouseUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutput() GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) ToGetClickhouseClickhouseUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetClickhouseClickhouseUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) Elem() GetClickhouseClickhouseUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPublicAccess) GetClickhouseClickhouseUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetClickhouseClickhouseUserConfigPublicAccess
+		return ret
+	}).(GetClickhouseClickhouseUserConfigPublicAccessOutput)
+}
+
+// Clickhouse server provided values
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) Clickhouse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Clickhouse
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) ClickhouseHttps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseHttps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetClickhouseComponent struct {
@@ -42347,12 +43527,13 @@ func (o GetInfluxDbInfluxdbUserConfigArrayOutput) Index(i pulumi.IntInput) GetIn
 }
 
 type GetInfluxDbInfluxdbUserConfigInfluxdb struct {
-	LogQueriesAfter    *int `pulumi:"logQueriesAfter"`
-	MaxConnectionLimit *int `pulumi:"maxConnectionLimit"`
-	MaxRowLimit        *int `pulumi:"maxRowLimit"`
-	MaxSelectBuckets   *int `pulumi:"maxSelectBuckets"`
-	MaxSelectPoint     *int `pulumi:"maxSelectPoint"`
-	QueryTimeout       *int `pulumi:"queryTimeout"`
+	LogQueriesAfter    *int  `pulumi:"logQueriesAfter"`
+	MaxConnectionLimit *int  `pulumi:"maxConnectionLimit"`
+	MaxRowLimit        *int  `pulumi:"maxRowLimit"`
+	MaxSelectBuckets   *int  `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint     *int  `pulumi:"maxSelectPoint"`
+	QueryLogEnabled    *bool `pulumi:"queryLogEnabled"`
+	QueryTimeout       *int  `pulumi:"queryTimeout"`
 }
 
 // GetInfluxDbInfluxdbUserConfigInfluxdbInput is an input type that accepts GetInfluxDbInfluxdbUserConfigInfluxdbArgs and GetInfluxDbInfluxdbUserConfigInfluxdbOutput values.
@@ -42367,12 +43548,13 @@ type GetInfluxDbInfluxdbUserConfigInfluxdbInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigInfluxdbArgs struct {
-	LogQueriesAfter    pulumi.IntPtrInput `pulumi:"logQueriesAfter"`
-	MaxConnectionLimit pulumi.IntPtrInput `pulumi:"maxConnectionLimit"`
-	MaxRowLimit        pulumi.IntPtrInput `pulumi:"maxRowLimit"`
-	MaxSelectBuckets   pulumi.IntPtrInput `pulumi:"maxSelectBuckets"`
-	MaxSelectPoint     pulumi.IntPtrInput `pulumi:"maxSelectPoint"`
-	QueryTimeout       pulumi.IntPtrInput `pulumi:"queryTimeout"`
+	LogQueriesAfter    pulumi.IntPtrInput  `pulumi:"logQueriesAfter"`
+	MaxConnectionLimit pulumi.IntPtrInput  `pulumi:"maxConnectionLimit"`
+	MaxRowLimit        pulumi.IntPtrInput  `pulumi:"maxRowLimit"`
+	MaxSelectBuckets   pulumi.IntPtrInput  `pulumi:"maxSelectBuckets"`
+	MaxSelectPoint     pulumi.IntPtrInput  `pulumi:"maxSelectPoint"`
+	QueryLogEnabled    pulumi.BoolPtrInput `pulumi:"queryLogEnabled"`
+	QueryTimeout       pulumi.IntPtrInput  `pulumi:"queryTimeout"`
 }
 
 func (GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ElementType() reflect.Type {
@@ -42472,6 +43654,10 @@ func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) MaxSelectPoint() pulumi.Int
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *int { return v.MaxSelectPoint }).(pulumi.IntPtrOutput)
 }
 
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) QueryLogEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *bool { return v.QueryLogEnabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetInfluxDbInfluxdbUserConfigInfluxdbOutput) QueryTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigInfluxdb) *int { return v.QueryTimeout }).(pulumi.IntPtrOutput)
 }
@@ -42543,6 +43729,15 @@ func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) MaxSelectPoint() pulumi.
 		}
 		return v.MaxSelectPoint
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryLogEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigInfluxdb) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryLogEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.IntPtrOutput {
@@ -54449,7 +55644,7 @@ type GetOpenSearchOpensearchUserConfig struct {
 	KeepIndexRefreshInterval *bool    `pulumi:"keepIndexRefreshInterval"`
 	// Deprecated: Usage of this field is discouraged.
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch             *GetOpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
 	OpensearchDashboards   *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
 	OpensearchVersion      *string                                                `pulumi:"opensearchVersion"`
@@ -54489,7 +55684,7 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	KeepIndexRefreshInterval pulumi.BoolPtrInput     `pulumi:"keepIndexRefreshInterval"`
 	// Deprecated: Usage of this field is discouraged.
 	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch             GetOpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
 	OpensearchDashboards   GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
 	OpensearchVersion      pulumi.StringPtrInput                                         `pulumi:"opensearchVersion"`
@@ -54604,7 +55799,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigOutput) Opensearch() GetOpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpensearch {
 		return v.Opensearch
@@ -55800,7 +56995,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Opensear
 }
 
 type GetOpenSearchOpensearchUserConfigPrivateAccess struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           *bool `pulumi:"opensearch"`
 	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
 	Prometheus           *bool `pulumi:"prometheus"`
@@ -55818,7 +57013,7 @@ type GetOpenSearchOpensearchUserConfigPrivateAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPrivateAccessArgs struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           pulumi.BoolPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.BoolPtrInput `pulumi:"prometheus"`
@@ -55901,7 +57096,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpe
 	}).(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivateAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
 }
@@ -55938,7 +57133,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigPrivateAccessOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) *bool {
 		if v == nil {
@@ -55967,7 +57162,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pu
 }
 
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccess struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           *bool `pulumi:"opensearch"`
 	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
 	Prometheus           *bool `pulumi:"prometheus"`
@@ -55985,7 +57180,7 @@ type GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           pulumi.BoolPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.BoolPtrInput `pulumi:"prometheus"`
@@ -56068,7 +57263,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearc
 	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
 }
@@ -56105,7 +57300,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() GetO
 	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool {
 		if v == nil {
@@ -56134,7 +57329,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus(
 }
 
 type GetOpenSearchOpensearchUserConfigPublicAccess struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           *bool `pulumi:"opensearch"`
 	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
 	Prometheus           *bool `pulumi:"prometheus"`
@@ -56152,7 +57347,7 @@ type GetOpenSearchOpensearchUserConfigPublicAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPublicAccessArgs struct {
-	// Opensearch server provided values
+	// OpenSearch server provided values
 	Opensearch           pulumi.BoolPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.BoolPtrInput `pulumi:"prometheus"`
@@ -56235,7 +57430,7 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpen
 	}).(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPublicAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
 }
@@ -56272,7 +57467,7 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() GetOpenSe
 	}).(GetOpenSearchOpensearchUserConfigPublicAccessOutput)
 }
 
-// Opensearch server provided values
+// OpenSearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) *bool {
 		if v == nil {
@@ -61324,11 +62519,19 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput) Index(i pulum
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTable struct {
-	Columns    []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn `pulumi:"columns"`
-	DataFormat string                                                      `pulumi:"dataFormat"`
-	GroupName  string                                                      `pulumi:"groupName"`
-	Name       string                                                      `pulumi:"name"`
-	Topics     []GetServiceIntegrationClickhouseKafkaUserConfigTableTopic  `pulumi:"topics"`
+	AutoOffsetReset     *string                                                     `pulumi:"autoOffsetReset"`
+	Columns             []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn `pulumi:"columns"`
+	DataFormat          string                                                      `pulumi:"dataFormat"`
+	DateTimeInputFormat *string                                                     `pulumi:"dateTimeInputFormat"`
+	GroupName           string                                                      `pulumi:"groupName"`
+	HandleErrorMode     *string                                                     `pulumi:"handleErrorMode"`
+	MaxBlockSize        *int                                                        `pulumi:"maxBlockSize"`
+	MaxRowsPerMessage   *int                                                        `pulumi:"maxRowsPerMessage"`
+	Name                string                                                      `pulumi:"name"`
+	NumConsumers        *int                                                        `pulumi:"numConsumers"`
+	PollMaxBatchSize    *int                                                        `pulumi:"pollMaxBatchSize"`
+	SkipBrokenMessages  *int                                                        `pulumi:"skipBrokenMessages"`
+	Topics              []GetServiceIntegrationClickhouseKafkaUserConfigTableTopic  `pulumi:"topics"`
 }
 
 // GetServiceIntegrationClickhouseKafkaUserConfigTableInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableArgs and GetServiceIntegrationClickhouseKafkaUserConfigTableOutput values.
@@ -61343,11 +62546,19 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTableInput interface {
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTableArgs struct {
-	Columns    GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput `pulumi:"columns"`
-	DataFormat pulumi.StringInput                                                  `pulumi:"dataFormat"`
-	GroupName  pulumi.StringInput                                                  `pulumi:"groupName"`
-	Name       pulumi.StringInput                                                  `pulumi:"name"`
-	Topics     GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput  `pulumi:"topics"`
+	AutoOffsetReset     pulumi.StringPtrInput                                               `pulumi:"autoOffsetReset"`
+	Columns             GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput `pulumi:"columns"`
+	DataFormat          pulumi.StringInput                                                  `pulumi:"dataFormat"`
+	DateTimeInputFormat pulumi.StringPtrInput                                               `pulumi:"dateTimeInputFormat"`
+	GroupName           pulumi.StringInput                                                  `pulumi:"groupName"`
+	HandleErrorMode     pulumi.StringPtrInput                                               `pulumi:"handleErrorMode"`
+	MaxBlockSize        pulumi.IntPtrInput                                                  `pulumi:"maxBlockSize"`
+	MaxRowsPerMessage   pulumi.IntPtrInput                                                  `pulumi:"maxRowsPerMessage"`
+	Name                pulumi.StringInput                                                  `pulumi:"name"`
+	NumConsumers        pulumi.IntPtrInput                                                  `pulumi:"numConsumers"`
+	PollMaxBatchSize    pulumi.IntPtrInput                                                  `pulumi:"pollMaxBatchSize"`
+	SkipBrokenMessages  pulumi.IntPtrInput                                                  `pulumi:"skipBrokenMessages"`
+	Topics              GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput  `pulumi:"topics"`
 }
 
 func (GetServiceIntegrationClickhouseKafkaUserConfigTableArgs) ElementType() reflect.Type {
@@ -61401,6 +62612,10 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ToGetServiceI
 	return o
 }
 
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) AutoOffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.AutoOffsetReset }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Columns() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
 		return v.Columns
@@ -61411,12 +62626,40 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) DataFormat() 
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.DataFormat }).(pulumi.StringOutput)
 }
 
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) DateTimeInputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.DateTimeInputFormat }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) HandleErrorMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.HandleErrorMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxBlockSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxBlockSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxRowsPerMessage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxRowsPerMessage }).(pulumi.IntPtrOutput)
+}
+
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) NumConsumers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.NumConsumers }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.PollMaxBatchSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) SkipBrokenMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.SkipBrokenMessages }).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Topics() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
@@ -65509,6 +66752,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPtrInput)(nil)).Elem(), ClickhouseClickhouseUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigIpFilterObjectInput)(nil)).Elem(), ClickhouseClickhouseUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigIpFilterObjectArrayInput)(nil)).Elem(), ClickhouseClickhouseUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivateAccessInput)(nil)).Elem(), ClickhouseClickhouseUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivateAccessPtrInput)(nil)).Elem(), ClickhouseClickhouseUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivatelinkAccessInput)(nil)).Elem(), ClickhouseClickhouseUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), ClickhouseClickhouseUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPublicAccessInput)(nil)).Elem(), ClickhouseClickhouseUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigPublicAccessPtrInput)(nil)).Elem(), ClickhouseClickhouseUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseComponentInput)(nil)).Elem(), ClickhouseComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseComponentArrayInput)(nil)).Elem(), ClickhouseComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseGrantPrivilegeGrantInput)(nil)).Elem(), ClickhouseGrantPrivilegeGrantArgs{})
@@ -65919,6 +67168,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigArrayInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigIpFilterObjectInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivateAccessInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigPublicAccessInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigPublicAccessPtrInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseComponentInput)(nil)).Elem(), GetClickhouseComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseComponentArrayInput)(nil)).Elem(), GetClickhouseComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseServiceIntegrationInput)(nil)).Elem(), GetClickhouseServiceIntegrationArgs{})
@@ -66307,6 +67562,12 @@ func init() {
 	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput{})
+	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(ClickhouseComponentOutput{})
 	pulumi.RegisterOutputType(ClickhouseComponentArrayOutput{})
 	pulumi.RegisterOutputType(ClickhouseGrantPrivilegeGrantOutput{})
@@ -66717,6 +67978,12 @@ func init() {
 	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetClickhouseComponentOutput{})
 	pulumi.RegisterOutputType(GetClickhouseComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetClickhouseServiceIntegrationOutput{})

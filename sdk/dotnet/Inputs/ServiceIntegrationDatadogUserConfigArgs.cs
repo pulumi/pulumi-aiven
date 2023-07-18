@@ -97,7 +97,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxJmxMetrics { get; set; }
 
         /// <summary>
-        /// Datadog Opensearch Options.
+        /// Datadog OpenSearch Options.
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.ServiceIntegrationDatadogUserConfigOpensearchArgs>? Opensearch { get; set; }

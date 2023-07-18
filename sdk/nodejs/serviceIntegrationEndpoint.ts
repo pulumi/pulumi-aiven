@@ -74,7 +74,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly externalKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpenSearchLogs user configurable settings
      */
     public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
     /**
@@ -199,7 +199,7 @@ export interface ServiceIntegrationEndpointState {
      */
     externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpenSearchLogs user configurable settings
      */
     externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
     /**
@@ -261,7 +261,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpenSearchLogs user configurable settings
      */
     externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
     /**

@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Opensearch resource allows the creation and management of Aiven Opensearch services.
+ * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
  * 
  * ## Example Usage
  * ```java
@@ -86,14 +86,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/openSearchAclConfig:OpenSearchAclConfig")
 public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * @return Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

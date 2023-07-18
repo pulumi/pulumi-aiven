@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpenSearchAclConfig
     {
         /// <summary>
-        /// The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+        /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -41,7 +41,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+        /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -116,7 +116,7 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchAclConfigResult
     {
         /// <summary>
-        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

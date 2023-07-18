@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoOffsetReset")]
+        public Input<string>? AutoOffsetReset { get; set; }
+
         [Input("columns")]
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>? _columns;
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs> Columns
@@ -23,11 +26,32 @@ namespace Pulumi.Aiven.Inputs
         [Input("dataFormat", required: true)]
         public Input<string> DataFormat { get; set; } = null!;
 
+        [Input("dateTimeInputFormat")]
+        public Input<string>? DateTimeInputFormat { get; set; }
+
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
+        [Input("handleErrorMode")]
+        public Input<string>? HandleErrorMode { get; set; }
+
+        [Input("maxBlockSize")]
+        public Input<int>? MaxBlockSize { get; set; }
+
+        [Input("maxRowsPerMessage")]
+        public Input<int>? MaxRowsPerMessage { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("numConsumers")]
+        public Input<int>? NumConsumers { get; set; }
+
+        [Input("pollMaxBatchSize")]
+        public Input<int>? PollMaxBatchSize { get; set; }
+
+        [Input("skipBrokenMessages")]
+        public Input<int>? SkipBrokenMessages { get; set; }
 
         [Input("topics")]
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>? _topics;

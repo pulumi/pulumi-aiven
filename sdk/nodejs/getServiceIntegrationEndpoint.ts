@@ -85,7 +85,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly externalKafkaUserConfigs: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig[];
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpenSearchLogs user configurable settings
      */
     readonly externalOpensearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig[];
     /**

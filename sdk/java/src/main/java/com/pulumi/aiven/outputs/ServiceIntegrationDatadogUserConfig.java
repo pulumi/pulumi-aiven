@@ -58,7 +58,7 @@ public final class ServiceIntegrationDatadogUserConfig {
      */
     private @Nullable Integer maxJmxMetrics;
     /**
-     * @return Datadog Opensearch Options.
+     * @return Datadog OpenSearch Options.
      * 
      */
     private @Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch;
@@ -126,7 +126,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         return Optional.ofNullable(this.maxJmxMetrics);
     }
     /**
-     * @return Datadog Opensearch Options.
+     * @return Datadog OpenSearch Options.
      * 
      */
     public Optional<ServiceIntegrationDatadogUserConfigOpensearch> opensearch() {

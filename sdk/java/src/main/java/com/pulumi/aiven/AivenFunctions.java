@@ -98,6 +98,8 @@ import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationArgs;
 import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
 import com.pulumi.aiven.inputs.GetOrganizationalUnitPlainArgs;
 import com.pulumi.aiven.inputs.GetPgArgs;
@@ -171,6 +173,7 @@ import com.pulumi.aiven.outputs.GetOpenSearchAclRuleResult;
 import com.pulumi.aiven.outputs.GetOpenSearchResult;
 import com.pulumi.aiven.outputs.GetOpensearchUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
+import com.pulumi.aiven.outputs.GetOrganizationUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationalUnitResult;
 import com.pulumi.aiven.outputs.GetPgDatabaseResult;
 import com.pulumi.aiven.outputs.GetPgResult;
@@ -5808,7 +5811,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getMysqlUser:getMysqlUser", TypeShape.of(GetMysqlUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch data source provides information about the existing Aiven Opensearch service.
+     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
      * ```java
@@ -5846,7 +5849,7 @@ public final class AivenFunctions {
         return getOpenSearch(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch data source provides information about the existing Aiven Opensearch service.
+     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
      * ```java
@@ -5884,7 +5887,7 @@ public final class AivenFunctions {
         return getOpenSearchPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch data source provides information about the existing Aiven Opensearch service.
+     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
      * ```java
@@ -5922,7 +5925,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch data source provides information about the existing Aiven Opensearch service.
+     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
      * ```java
@@ -5960,7 +5963,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
      * ```java
@@ -5998,7 +6001,7 @@ public final class AivenFunctions {
         return getOpenSearchAclConfig(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
      * ```java
@@ -6036,7 +6039,7 @@ public final class AivenFunctions {
         return getOpenSearchAclConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
      * ```java
@@ -6074,7 +6077,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
      * ```java
@@ -6112,7 +6115,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
      * ```java
@@ -6152,7 +6155,7 @@ public final class AivenFunctions {
         return getOpenSearchAclRule(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
      * ```java
@@ -6192,7 +6195,7 @@ public final class AivenFunctions {
         return getOpenSearchAclRulePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
      * ```java
@@ -6232,7 +6235,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
      * ```java
@@ -6272,7 +6275,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
      * ```java
@@ -6311,7 +6314,7 @@ public final class AivenFunctions {
         return getOpensearchUser(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
      * ```java
@@ -6350,7 +6353,7 @@ public final class AivenFunctions {
         return getOpensearchUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
      * ```java
@@ -6389,7 +6392,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchUser:getOpensearchUser", TypeShape.of(GetOpensearchUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
      * ```java
@@ -6574,6 +6577,34 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     */
+    public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args) {
+        return getOrganizationUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args) {
+        return getOrganizationUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     */
+    public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.

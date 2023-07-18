@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
     public static final OpenSearchOpensearchUserConfigPrivatelinkAccessArgs Empty = new OpenSearchOpensearchUserConfigPrivatelinkAccessArgs();
 
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
@@ -71,7 +71,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearch Opensearch server provided values
+         * @param opensearch OpenSearch server provided values
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearch Opensearch server provided values
+         * @param opensearch OpenSearch server provided values
          * 
          * @return builder
          * 

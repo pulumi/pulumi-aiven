@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> ExternalKafkaUserConfigs;
         /// <summary>
-        /// ExternalOpensearchLogs user configurable settings
+        /// ExternalOpenSearchLogs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> ExternalOpensearchLogsUserConfigs;
         /// <summary>

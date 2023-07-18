@@ -24,10 +24,9 @@ import (
 	providerShim "github.com/aiven/terraform-provider-aiven/shim"
 	"github.com/pulumi/pulumi-aiven/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -308,11 +307,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("aiven_", mainMod,
-		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("aiven_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
+
 	prov.SetAutonaming(255, "-")
 
 	return prov

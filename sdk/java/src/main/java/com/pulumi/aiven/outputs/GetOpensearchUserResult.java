@@ -15,7 +15,7 @@ public final class GetOpensearchUserResult {
      */
     private String id;
     /**
-     * @return The password of the Opensearch User.
+     * @return The password of the OpenSearch User.
      * 
      */
     private String password;
@@ -35,7 +35,7 @@ public final class GetOpensearchUserResult {
      */
     private String type;
     /**
-     * @return The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String username;
@@ -49,7 +49,7 @@ public final class GetOpensearchUserResult {
         return this.id;
     }
     /**
-     * @return The password of the Opensearch User.
+     * @return The password of the OpenSearch User.
      * 
      */
     public String password() {
@@ -77,7 +77,7 @@ public final class GetOpensearchUserResult {
         return this.type;
     }
     /**
-     * @return The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String username() {

@@ -4,8 +4,12 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigIpFilterObjectArgs;
+import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPrivateAccessArgs;
+import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPrivatelinkAccessArgs;
+import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,6 +90,36 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Allow access to selected service ports from private networks.
+     * 
+     */
+    @Import(name="privateAccess")
+    private @Nullable Output<ClickhouseClickhouseUserConfigPrivateAccessArgs> privateAccess;
+
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseUserConfigPrivateAccessArgs>> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+
+    /**
+     * Allow access to selected service components through Privatelink.
+     * 
+     */
+    @Import(name="privatelinkAccess")
+    private @Nullable Output<ClickhouseClickhouseUserConfigPrivatelinkAccessArgs> privatelinkAccess;
+
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
+        return Optional.ofNullable(this.privatelinkAccess);
+    }
+
+    /**
      * Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
@@ -98,6 +132,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
+    }
+
+    /**
+     * Allow access to selected service ports from the public Internet.
+     * 
+     */
+    @Import(name="publicAccess")
+    private @Nullable Output<ClickhouseClickhouseUserConfigPublicAccessArgs> publicAccess;
+
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseUserConfigPublicAccessArgs>> publicAccess() {
+        return Optional.ofNullable(this.publicAccess);
     }
 
     /**
@@ -115,6 +164,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * Use static public IP addresses.
+     * 
+     */
+    @Import(name="staticIps")
+    private @Nullable Output<Boolean> staticIps;
+
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
+    public Optional<Output<Boolean>> staticIps() {
+        return Optional.ofNullable(this.staticIps);
+    }
+
     private ClickhouseClickhouseUserConfigArgs() {}
 
     private ClickhouseClickhouseUserConfigArgs(ClickhouseClickhouseUserConfigArgs $) {
@@ -122,8 +186,12 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
+        this.privateAccess = $.privateAccess;
+        this.privatelinkAccess = $.privatelinkAccess;
         this.projectToForkFrom = $.projectToForkFrom;
+        this.publicAccess = $.publicAccess;
         this.serviceToForkFrom = $.serviceToForkFrom;
+        this.staticIps = $.staticIps;
     }
 
     public static Builder builder() {
@@ -271,6 +339,48 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(@Nullable Output<ClickhouseClickhouseUserConfigPrivateAccessArgs> privateAccess) {
+            $.privateAccess = privateAccess;
+            return this;
+        }
+
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(ClickhouseClickhouseUserConfigPrivateAccessArgs privateAccess) {
+            return privateAccess(Output.of(privateAccess));
+        }
+
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkAccess(@Nullable Output<ClickhouseClickhouseUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
+            $.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkAccess(ClickhouseClickhouseUserConfigPrivatelinkAccessArgs privatelinkAccess) {
+            return privatelinkAccess(Output.of(privatelinkAccess));
+        }
+
+        /**
          * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
          * 
          * @return builder
@@ -292,6 +402,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicAccess(@Nullable Output<ClickhouseClickhouseUserConfigPublicAccessArgs> publicAccess) {
+            $.publicAccess = publicAccess;
+            return this;
+        }
+
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicAccess(ClickhouseClickhouseUserConfigPublicAccessArgs publicAccess) {
+            return publicAccess(Output.of(publicAccess));
+        }
+
+        /**
          * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
          * 
          * @return builder
@@ -310,6 +441,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
+        }
+
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
+            $.staticIps = staticIps;
+            return this;
+        }
+
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticIps(Boolean staticIps) {
+            return staticIps(Output.of(staticIps));
         }
 
         public ClickhouseClickhouseUserConfigArgs build() {

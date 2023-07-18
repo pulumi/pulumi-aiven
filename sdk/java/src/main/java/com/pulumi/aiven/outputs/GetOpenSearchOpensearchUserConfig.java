@@ -52,7 +52,7 @@ public final class GetOpenSearchOpensearchUserConfig {
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable Integer maxIndexCount;
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch;
@@ -121,7 +121,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.maxIndexCount);
     }
     /**
-     * @return Opensearch server provided values
+     * @return OpenSearch server provided values
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearch> opensearch() {

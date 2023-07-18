@@ -200,7 +200,7 @@ class GetOpenSearchResult:
     @pulumi.getter(name="opensearchUserConfigs")
     def opensearch_user_configs(self) -> Sequence['outputs.GetOpenSearchOpensearchUserConfigResult']:
         """
-        Opensearch user configurable settings
+        OpenSearch user configurable settings
         """
         return pulumi.get(self, "opensearch_user_configs")
 
@@ -208,7 +208,7 @@ class GetOpenSearchResult:
     @pulumi.getter
     def opensearches(self) -> Sequence['outputs.GetOpenSearchOpensearchResult']:
         """
-        Opensearch server provided values
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearches")
 
@@ -373,7 +373,7 @@ def get_open_search(project: Optional[str] = None,
                     service_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenSearchResult:
     """
-    The Opensearch data source provides information about the existing Aiven Opensearch service.
+    The OpenSearch data source provides information about the existing Aiven OpenSearch service.
 
     ## Example Usage
 
@@ -431,7 +431,7 @@ def get_open_search_output(project: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchResult]:
     """
-    The Opensearch data source provides information about the existing Aiven Opensearch service.
+    The OpenSearch data source provides information about the existing Aiven OpenSearch service.
 
     ## Example Usage
 

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpensearchUser
     {
         /// <summary>
-        /// The Opensearch User data source provides information about the existing Aiven Cassandra User.
+        /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Opensearch User data source provides information about the existing Aiven Cassandra User.
+        /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -88,7 +88,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the Opensearch User.
+        /// The password of the OpenSearch User.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

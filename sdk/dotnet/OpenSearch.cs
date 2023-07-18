@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Opensearch resource allows the creation and management of Aiven Opensearch services.
+    /// The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
     /// 
     /// ## Example Usage
     /// 
@@ -119,13 +119,13 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// Opensearch user configurable settings
+        /// OpenSearch user configurable settings
         /// </summary>
         [Output("opensearchUserConfig")]
         public Output<Outputs.OpenSearchOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Opensearch server provided values
+        /// OpenSearch server provided values
         /// </summary>
         [Output("opensearches")]
         public Output<ImmutableArray<Outputs.OpenSearchOpensearch>> Opensearches { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Opensearch user configurable settings
+        /// OpenSearch user configurable settings
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.OpenSearchOpensearchUserConfigArgs>? OpensearchUserConfig { get; set; }
@@ -448,7 +448,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Opensearch user configurable settings
+        /// OpenSearch user configurable settings
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.OpenSearchOpensearchUserConfigGetArgs>? OpensearchUserConfig { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OpenSearchOpensearchGetArgs>? _opensearches;
 
         /// <summary>
-        /// Opensearch server provided values
+        /// OpenSearch server provided values
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchGetArgs> Opensearches
         {

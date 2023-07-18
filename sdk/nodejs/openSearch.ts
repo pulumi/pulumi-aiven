@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch resource allows the creation and management of Aiven Opensearch services.
+ * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
  *
  * ## Example Usage
  *
@@ -113,11 +113,11 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * Opensearch user configurable settings
+     * OpenSearch user configurable settings
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.OpenSearchOpensearchUserConfig | undefined>;
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     public /*out*/ readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
     /**
@@ -311,11 +311,11 @@ export interface OpenSearchState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Opensearch user configurable settings
+     * OpenSearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**
@@ -407,7 +407,7 @@ export interface OpenSearchArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Opensearch user configurable settings
+     * OpenSearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**

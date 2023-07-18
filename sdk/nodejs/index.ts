@@ -360,6 +360,11 @@ export const getOrganization: typeof import("./getOrganization").getOrganization
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
 
+export { GetOrganizationUserArgs, GetOrganizationUserResult, GetOrganizationUserOutputArgs } from "./getOrganizationUser";
+export const getOrganizationUser: typeof import("./getOrganizationUser").getOrganizationUser = null as any;
+export const getOrganizationUserOutput: typeof import("./getOrganizationUser").getOrganizationUserOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationUser","getOrganizationUserOutput"], () => require("./getOrganizationUser"));
+
 export { GetOrganizationalUnitArgs, GetOrganizationalUnitResult, GetOrganizationalUnitOutputArgs } from "./getOrganizationalUnit";
 export const getOrganizationalUnit: typeof import("./getOrganizationalUnit").getOrganizationalUnit = null as any;
 export const getOrganizationalUnitOutput: typeof import("./getOrganizationalUnit").getOrganizationalUnitOutput = null as any;
@@ -555,6 +560,11 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { OrganizationUserArgs, OrganizationUserState } from "./organizationUser";
+export type OrganizationUser = import("./organizationUser").OrganizationUser;
+export const OrganizationUser: typeof import("./organizationUser").OrganizationUser = null as any;
+utilities.lazyLoad(exports, ["OrganizationUser"], () => require("./organizationUser"));
+
 export { OrganizationalUnitArgs, OrganizationalUnitState } from "./organizationalUnit";
 export type OrganizationalUnit = import("./organizationalUnit").OrganizationalUnit;
 export const OrganizationalUnit: typeof import("./organizationalUnit").OrganizationalUnit = null as any;
@@ -739,6 +749,8 @@ const _module = {
                 return new OpensearchUser(name, <any>undefined, { urn })
             case "aiven:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "aiven:index/organizationUser:OrganizationUser":
+                return new OrganizationUser(name, <any>undefined, { urn })
             case "aiven:index/organizationalUnit:OrganizationalUnit":
                 return new OrganizationalUnit(name, <any>undefined, { urn })
             case "aiven:index/pg:Pg":
@@ -820,6 +832,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclConfig", _mod
 pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclRule", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/opensearchUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organization", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationalUnit", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pg", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pgDatabase", _module)

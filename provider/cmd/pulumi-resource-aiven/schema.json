@@ -39,6 +39,8 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Aiven cloud resources.",
             "packageName": "",
+            "pluginName": "",
+            "pluginVersion": "",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
             "typescriptVersion": ""
         },
@@ -316,15 +318,31 @@
                     "description": "Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.\n",
                     "deprecationMessage": "This will be removed in v5.0.0 and replaced with ip_filter_string instead."
                 },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfigPrivateAccess:ClickhouseClickhouseUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks.\n"
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfigPrivatelinkAccess:ClickhouseClickhouseUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink.\n"
+                },
                 "projectToForkFrom": {
                     "type": "string",
                     "description": "Name of another project to fork a service from. This has effect only when a new service is being created.\n",
                     "willReplaceOnChanges": true
                 },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfigPublicAccess:ClickhouseClickhouseUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet.\n"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when a new service is being created.\n",
                     "willReplaceOnChanges": true
+                },
+                "staticIps": {
+                    "type": "boolean",
+                    "description": "Use static public IP addresses.\n"
                 }
             },
             "type": "object"
@@ -342,6 +360,51 @@
             "required": [
                 "network"
             ]
+        },
+        "aiven:index/ClickhouseClickhouseUserConfigPrivateAccess:ClickhouseClickhouseUserConfigPrivateAccess": {
+            "properties": {
+                "clickhouse": {
+                    "type": "boolean",
+                    "description": "Clickhouse server provided values\n"
+                },
+                "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "prometheus": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ClickhouseClickhouseUserConfigPrivatelinkAccess:ClickhouseClickhouseUserConfigPrivatelinkAccess": {
+            "properties": {
+                "clickhouse": {
+                    "type": "boolean",
+                    "description": "Clickhouse server provided values\n"
+                },
+                "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "prometheus": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ClickhouseClickhouseUserConfigPublicAccess:ClickhouseClickhouseUserConfigPublicAccess": {
+            "properties": {
+                "clickhouse": {
+                    "type": "boolean",
+                    "description": "Clickhouse server provided values\n"
+                },
+                "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "prometheus": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/ClickhouseComponent:ClickhouseComponent": {
             "properties": {
@@ -1298,6 +1361,9 @@
                 },
                 "maxSelectPoint": {
                     "type": "integer"
+                },
+                "queryLogEnabled": {
+                    "type": "boolean"
                 },
                 "queryTimeout": {
                     "type": "integer"
@@ -3530,7 +3596,7 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -3545,7 +3611,7 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -3560,7 +3626,7 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -4475,6 +4541,9 @@
         },
         "aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTable:ServiceIntegrationClickhouseKafkaUserConfigTable": {
             "properties": {
+                "autoOffsetReset": {
+                    "type": "string"
+                },
                 "columns": {
                     "type": "array",
                     "items": {
@@ -4484,11 +4553,32 @@
                 "dataFormat": {
                     "type": "string"
                 },
+                "dateTimeInputFormat": {
+                    "type": "string"
+                },
                 "groupName": {
                     "type": "string"
                 },
+                "handleErrorMode": {
+                    "type": "string"
+                },
+                "maxBlockSize": {
+                    "type": "integer"
+                },
+                "maxRowsPerMessage": {
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string"
+                },
+                "numConsumers": {
+                    "type": "integer"
+                },
+                "pollMaxBatchSize": {
+                    "type": "integer"
+                },
+                "skipBrokenMessages": {
+                    "type": "integer"
                 },
                 "topics": {
                     "type": "array",
@@ -4607,7 +4697,7 @@
                 },
                 "opensearch": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigOpensearch:ServiceIntegrationDatadogUserConfigOpensearch",
-                    "description": "Datadog Opensearch Options.\n"
+                    "description": "Datadog OpenSearch Options.\n"
                 },
                 "redis": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigRedis:ServiceIntegrationDatadogUserConfigRedis",
@@ -5637,11 +5727,24 @@
                     },
                     "deprecationMessage": "This will be removed in v5.0.0 and replaced with ip_filter_string instead."
                 },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/getClickhouseClickhouseUserConfigPrivateAccess:getClickhouseClickhouseUserConfigPrivateAccess"
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getClickhouseClickhouseUserConfigPrivatelinkAccess:getClickhouseClickhouseUserConfigPrivatelinkAccess"
+                },
                 "projectToForkFrom": {
                     "type": "string"
                 },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess"
+                },
                 "serviceToForkFrom": {
                     "type": "string"
+                },
+                "staticIps": {
+                    "type": "boolean",
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 }
             },
             "type": "object"
@@ -5664,6 +5767,51 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "aiven:index/getClickhouseClickhouseUserConfigPrivateAccess:getClickhouseClickhouseUserConfigPrivateAccess": {
+            "properties": {
+                "clickhouse": {
+                    "type": "boolean",
+                    "description": "Clickhouse server provided values\n"
+                },
+                "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "prometheus": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getClickhouseClickhouseUserConfigPrivatelinkAccess:getClickhouseClickhouseUserConfigPrivatelinkAccess": {
+            "properties": {
+                "clickhouse": {
+                    "type": "boolean",
+                    "description": "Clickhouse server provided values\n"
+                },
+                "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "prometheus": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess": {
+            "properties": {
+                "clickhouse": {
+                    "type": "boolean",
+                    "description": "Clickhouse server provided values\n"
+                },
+                "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "prometheus": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/getClickhouseComponent:getClickhouseComponent": {
             "properties": {
@@ -6634,6 +6782,9 @@
                 },
                 "maxSelectPoint": {
                     "type": "integer"
+                },
+                "queryLogEnabled": {
+                    "type": "boolean"
                 },
                 "queryTimeout": {
                     "type": "integer"
@@ -8739,7 +8890,7 @@
                 },
                 "opensearch": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchDashboards:getOpenSearchOpensearchUserConfigOpensearchDashboards"
@@ -8951,7 +9102,7 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -8966,7 +9117,7 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -8981,7 +9132,7 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -9908,6 +10059,9 @@
         },
         "aiven:index/getServiceIntegrationClickhouseKafkaUserConfigTable:getServiceIntegrationClickhouseKafkaUserConfigTable": {
             "properties": {
+                "autoOffsetReset": {
+                    "type": "string"
+                },
                 "columns": {
                     "type": "array",
                     "items": {
@@ -9917,11 +10071,32 @@
                 "dataFormat": {
                     "type": "string"
                 },
+                "dateTimeInputFormat": {
+                    "type": "string"
+                },
                 "groupName": {
                     "type": "string"
                 },
+                "handleErrorMode": {
+                    "type": "string"
+                },
+                "maxBlockSize": {
+                    "type": "integer"
+                },
+                "maxRowsPerMessage": {
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string"
+                },
+                "numConsumers": {
+                    "type": "integer"
+                },
+                "pollMaxBatchSize": {
+                    "type": "integer"
+                },
+                "skipBrokenMessages": {
+                    "type": "integer"
                 },
                 "topics": {
                     "type": "array",
@@ -11769,7 +11944,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account id\n"
+                    "description": "Account id\n",
+                    "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                 },
                 "addressLines": {
                     "type": "array",
@@ -11816,6 +11992,10 @@
                 "name": {
                     "type": "string",
                     "description": "Billing Group name\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "state": {
                     "type": "string",
@@ -11836,7 +12016,8 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account id\n"
+                    "description": "Account id\n",
+                    "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                 },
                 "addressLines": {
                     "type": "array",
@@ -11884,6 +12065,10 @@
                     "type": "string",
                     "description": "Billing Group name\n"
                 },
+                "parentId": {
+                    "type": "string",
+                    "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                },
                 "state": {
                     "type": "string",
                     "description": "State\n"
@@ -11902,7 +12087,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account id\n"
+                        "description": "Account id\n",
+                        "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                     },
                     "addressLines": {
                         "type": "array",
@@ -11949,6 +12135,10 @@
                     "name": {
                         "type": "string",
                         "description": "Billing Group name\n"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "state": {
                         "type": "string",
@@ -18589,7 +18779,7 @@
             }
         },
         "aiven:index/openSearch:OpenSearch": {
-            "description": "The Opensearch resource allows the creation and management of Aiven Opensearch services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os1 = new aiven.OpenSearch(\"os1\", {\n    project: data.aiven_project.pr1.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"my-os1\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    opensearchUserConfig: {\n        opensearchVersion: \"1\",\n        opensearchDashboards: {\n            enabled: true,\n            opensearchRequestTimeout: 30000,\n        },\n        publicAccess: {\n            opensearch: true,\n            opensearchDashboards: true,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos1 = aiven.OpenSearch(\"os1\",\n    project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-4\",\n    service_name=\"my-os1\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(\n        opensearch_version=\"1\",\n        opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(\n            enabled=True,\n            opensearch_request_timeout=30000,\n        ),\n        public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(\n            opensearch=True,\n            opensearch_dashboards=True,\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var os1 = new Aiven.OpenSearch(\"os1\", new()\n    {\n        Project = data.Aiven_project.Pr1.Project,\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-4\",\n        ServiceName = \"my-os1\",\n        MaintenanceWindowDow = \"monday\",\n        MaintenanceWindowTime = \"10:00:00\",\n        OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs\n        {\n            OpensearchVersion = \"1\",\n            OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs\n            {\n                Enabled = true,\n                OpensearchRequestTimeout = 30000,\n            },\n            PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs\n            {\n                Opensearch = true,\n                OpensearchDashboards = true,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpenSearch(ctx, \"os1\", \u0026aiven.OpenSearchArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Pr1.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tServiceName:           pulumi.String(\"my-os1\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tOpensearchUserConfig: \u0026aiven.OpenSearchOpensearchUserConfigArgs{\n\t\t\t\tOpensearchVersion: pulumi.String(\"1\"),\n\t\t\t\tOpensearchDashboards: \u0026aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{\n\t\t\t\t\tEnabled:                  pulumi.Bool(true),\n\t\t\t\t\tOpensearchRequestTimeout: pulumi.Int(30000),\n\t\t\t\t},\n\t\t\t\tPublicAccess: \u0026aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{\n\t\t\t\t\tOpensearch:           pulumi.Bool(true),\n\t\t\t\t\tOpensearchDashboards: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OpenSearch;\nimport com.pulumi.aiven.OpenSearchArgs;\nimport com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigArgs;\nimport com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs;\nimport com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPublicAccessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var os1 = new OpenSearch(\"os1\", OpenSearchArgs.builder()        \n            .project(data.aiven_project().pr1().project())\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-4\")\n            .serviceName(\"my-os1\")\n            .maintenanceWindowDow(\"monday\")\n            .maintenanceWindowTime(\"10:00:00\")\n            .opensearchUserConfig(OpenSearchOpensearchUserConfigArgs.builder()\n                .opensearchVersion(1)\n                .opensearchDashboards(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs.builder()\n                    .enabled(true)\n                    .opensearchRequestTimeout(30000)\n                    .build())\n                .publicAccess(OpenSearchOpensearchUserConfigPublicAccessArgs.builder()\n                    .opensearch(true)\n                    .opensearchDashboards(true)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  os1:\n    type: aiven:OpenSearch\n    properties:\n      project: ${data.aiven_project.pr1.project}\n      cloudName: google-europe-west1\n      plan: startup-4\n      serviceName: my-os1\n      maintenanceWindowDow: monday\n      maintenanceWindowTime: 10:00:00\n      opensearchUserConfig:\n        opensearchVersion: 1\n        opensearchDashboards:\n          enabled: true\n          opensearchRequestTimeout: 30000\n        publicAccess:\n          opensearch: true\n          opensearchDashboards: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name\n```\n\n ",
+            "description": "The OpenSearch resource allows the creation and management of Aiven OpenSearch services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os1 = new aiven.OpenSearch(\"os1\", {\n    project: data.aiven_project.pr1.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"my-os1\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    opensearchUserConfig: {\n        opensearchVersion: \"1\",\n        opensearchDashboards: {\n            enabled: true,\n            opensearchRequestTimeout: 30000,\n        },\n        publicAccess: {\n            opensearch: true,\n            opensearchDashboards: true,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos1 = aiven.OpenSearch(\"os1\",\n    project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-4\",\n    service_name=\"my-os1\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(\n        opensearch_version=\"1\",\n        opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(\n            enabled=True,\n            opensearch_request_timeout=30000,\n        ),\n        public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(\n            opensearch=True,\n            opensearch_dashboards=True,\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var os1 = new Aiven.OpenSearch(\"os1\", new()\n    {\n        Project = data.Aiven_project.Pr1.Project,\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-4\",\n        ServiceName = \"my-os1\",\n        MaintenanceWindowDow = \"monday\",\n        MaintenanceWindowTime = \"10:00:00\",\n        OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs\n        {\n            OpensearchVersion = \"1\",\n            OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs\n            {\n                Enabled = true,\n                OpensearchRequestTimeout = 30000,\n            },\n            PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs\n            {\n                Opensearch = true,\n                OpensearchDashboards = true,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpenSearch(ctx, \"os1\", \u0026aiven.OpenSearchArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Pr1.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tServiceName:           pulumi.String(\"my-os1\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tOpensearchUserConfig: \u0026aiven.OpenSearchOpensearchUserConfigArgs{\n\t\t\t\tOpensearchVersion: pulumi.String(\"1\"),\n\t\t\t\tOpensearchDashboards: \u0026aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{\n\t\t\t\t\tEnabled:                  pulumi.Bool(true),\n\t\t\t\t\tOpensearchRequestTimeout: pulumi.Int(30000),\n\t\t\t\t},\n\t\t\t\tPublicAccess: \u0026aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{\n\t\t\t\t\tOpensearch:           pulumi.Bool(true),\n\t\t\t\t\tOpensearchDashboards: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OpenSearch;\nimport com.pulumi.aiven.OpenSearchArgs;\nimport com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigArgs;\nimport com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs;\nimport com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPublicAccessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var os1 = new OpenSearch(\"os1\", OpenSearchArgs.builder()        \n            .project(data.aiven_project().pr1().project())\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-4\")\n            .serviceName(\"my-os1\")\n            .maintenanceWindowDow(\"monday\")\n            .maintenanceWindowTime(\"10:00:00\")\n            .opensearchUserConfig(OpenSearchOpensearchUserConfigArgs.builder()\n                .opensearchVersion(1)\n                .opensearchDashboards(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs.builder()\n                    .enabled(true)\n                    .opensearchRequestTimeout(30000)\n                    .build())\n                .publicAccess(OpenSearchOpensearchUserConfigPublicAccessArgs.builder()\n                    .opensearch(true)\n                    .opensearchDashboards(true)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  os1:\n    type: aiven:OpenSearch\n    properties:\n      project: ${data.aiven_project.pr1.project}\n      cloudName: google-europe-west1\n      plan: startup-4\n      serviceName: my-os1\n      maintenanceWindowDow: monday\n      maintenanceWindowTime: 10:00:00\n      opensearchUserConfig:\n        opensearchVersion: 1\n        opensearchDashboards:\n          enabled: true\n          opensearchRequestTimeout: 30000\n        publicAccess:\n          opensearch: true\n          opensearchDashboards: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name\n```\n\n ",
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
@@ -18637,14 +18827,14 @@
                 },
                 "opensearchUserConfig": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
-                    "description": "Opensearch user configurable settings\n"
+                    "description": "OpenSearch user configurable settings\n"
                 },
                 "opensearches": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                     },
-                    "description": "Opensearch server provided values\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "plan": {
                     "type": "string",
@@ -18759,7 +18949,7 @@
                 },
                 "opensearchUserConfig": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
-                    "description": "Opensearch user configurable settings\n"
+                    "description": "OpenSearch user configurable settings\n"
                 },
                 "plan": {
                     "type": "string",
@@ -18858,14 +19048,14 @@
                     },
                     "opensearchUserConfig": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
-                        "description": "Opensearch user configurable settings\n"
+                        "description": "OpenSearch user configurable settings\n"
                     },
                     "opensearches": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                         },
-                        "description": "Opensearch server provided values\n"
+                        "description": "OpenSearch server provided values\n"
                     },
                     "plan": {
                         "type": "string",
@@ -18945,11 +19135,11 @@
             }
         },
         "aiven:index/openSearchAclConfig:OpenSearchAclConfig": {
-            "description": "The Opensearch resource allows the creation and management of Aiven Opensearch services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst fooProject = aiven.getProject({\n    project: \"example_project\",\n});\nconst bar = new aiven.OpenSearch(\"bar\", {\n    project: fooProject.then(fooProject =\u003e fooProject.project),\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"example_service_name\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n});\nconst fooOpensearchUser = new aiven.OpensearchUser(\"fooOpensearchUser\", {\n    serviceName: bar.serviceName,\n    project: fooProject.then(fooProject =\u003e fooProject.project),\n    username: \"user-example\",\n});\nconst fooOpenSearchAclConfig = new aiven.OpenSearchAclConfig(\"fooOpenSearchAclConfig\", {\n    project: fooProject.then(fooProject =\u003e fooProject.project),\n    serviceName: bar.serviceName,\n    enabled: true,\n    extendedAcl: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo_project = aiven.get_project(project=\"example_project\")\nbar = aiven.OpenSearch(\"bar\",\n    project=foo_project.project,\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-4\",\n    service_name=\"example_service_name\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\")\nfoo_opensearch_user = aiven.OpensearchUser(\"fooOpensearchUser\",\n    service_name=bar.service_name,\n    project=foo_project.project,\n    username=\"user-example\")\nfoo_open_search_acl_config = aiven.OpenSearchAclConfig(\"fooOpenSearchAclConfig\",\n    project=foo_project.project,\n    service_name=bar.service_name,\n    enabled=True,\n    extended_acl=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fooProject = Aiven.GetProject.Invoke(new()\n    {\n        Project = \"example_project\",\n    });\n\n    var bar = new Aiven.OpenSearch(\"bar\", new()\n    {\n        Project = fooProject.Apply(getProjectResult =\u003e getProjectResult.Project),\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-4\",\n        ServiceName = \"example_service_name\",\n        MaintenanceWindowDow = \"monday\",\n        MaintenanceWindowTime = \"10:00:00\",\n    });\n\n    var fooOpensearchUser = new Aiven.OpensearchUser(\"fooOpensearchUser\", new()\n    {\n        ServiceName = bar.ServiceName,\n        Project = fooProject.Apply(getProjectResult =\u003e getProjectResult.Project),\n        Username = \"user-example\",\n    });\n\n    var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig(\"fooOpenSearchAclConfig\", new()\n    {\n        Project = fooProject.Apply(getProjectResult =\u003e getProjectResult.Project),\n        ServiceName = bar.ServiceName,\n        Enabled = true,\n        ExtendedAcl = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooProject, err := aiven.LookupProject(ctx, \u0026aiven.LookupProjectArgs{\n\t\t\tProject: \"example_project\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbar, err := aiven.NewOpenSearch(ctx, \"bar\", \u0026aiven.OpenSearchArgs{\n\t\t\tProject:               *pulumi.String(fooProject.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tServiceName:           pulumi.String(\"example_service_name\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOpensearchUser(ctx, \"fooOpensearchUser\", \u0026aiven.OpensearchUserArgs{\n\t\t\tServiceName: bar.ServiceName,\n\t\t\tProject:     *pulumi.String(fooProject.Project),\n\t\t\tUsername:    pulumi.String(\"user-example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOpenSearchAclConfig(ctx, \"fooOpenSearchAclConfig\", \u0026aiven.OpenSearchAclConfigArgs{\n\t\t\tProject:     *pulumi.String(fooProject.Project),\n\t\t\tServiceName: bar.ServiceName,\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tExtendedAcl: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetProjectArgs;\nimport com.pulumi.aiven.OpenSearch;\nimport com.pulumi.aiven.OpenSearchArgs;\nimport com.pulumi.aiven.OpensearchUser;\nimport com.pulumi.aiven.OpensearchUserArgs;\nimport com.pulumi.aiven.OpenSearchAclConfig;\nimport com.pulumi.aiven.OpenSearchAclConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var fooProject = AivenFunctions.getProject(GetProjectArgs.builder()\n            .project(\"example_project\")\n            .build());\n\n        var bar = new OpenSearch(\"bar\", OpenSearchArgs.builder()        \n            .project(fooProject.applyValue(getProjectResult -\u003e getProjectResult.project()))\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-4\")\n            .serviceName(\"example_service_name\")\n            .maintenanceWindowDow(\"monday\")\n            .maintenanceWindowTime(\"10:00:00\")\n            .build());\n\n        var fooOpensearchUser = new OpensearchUser(\"fooOpensearchUser\", OpensearchUserArgs.builder()        \n            .serviceName(bar.serviceName())\n            .project(fooProject.applyValue(getProjectResult -\u003e getProjectResult.project()))\n            .username(\"user-example\")\n            .build());\n\n        var fooOpenSearchAclConfig = new OpenSearchAclConfig(\"fooOpenSearchAclConfig\", OpenSearchAclConfigArgs.builder()        \n            .project(fooProject.applyValue(getProjectResult -\u003e getProjectResult.project()))\n            .serviceName(bar.serviceName())\n            .enabled(true)\n            .extendedAcl(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bar:\n    type: aiven:OpenSearch\n    properties:\n      project: ${fooProject.project}\n      cloudName: google-europe-west1\n      plan: startup-4\n      serviceName: example_service_name\n      maintenanceWindowDow: monday\n      maintenanceWindowTime: 10:00:00\n  fooOpensearchUser:\n    type: aiven:OpensearchUser\n    properties:\n      serviceName: ${bar.serviceName}\n      project: ${fooProject.project}\n      username: user-example\n  fooOpenSearchAclConfig:\n    type: aiven:OpenSearchAclConfig\n    properties:\n      project: ${fooProject.project}\n      serviceName: ${bar.serviceName}\n      enabled: true\n      extendedAcl: false\nvariables:\n  fooProject:\n    fn::invoke:\n      Function: aiven:getProject\n      Arguments:\n        project: example_project\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name\n```\n\n ",
+            "description": "The OpenSearch resource allows the creation and management of Aiven OpenSearch services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst fooProject = aiven.getProject({\n    project: \"example_project\",\n});\nconst bar = new aiven.OpenSearch(\"bar\", {\n    project: fooProject.then(fooProject =\u003e fooProject.project),\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"example_service_name\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n});\nconst fooOpensearchUser = new aiven.OpensearchUser(\"fooOpensearchUser\", {\n    serviceName: bar.serviceName,\n    project: fooProject.then(fooProject =\u003e fooProject.project),\n    username: \"user-example\",\n});\nconst fooOpenSearchAclConfig = new aiven.OpenSearchAclConfig(\"fooOpenSearchAclConfig\", {\n    project: fooProject.then(fooProject =\u003e fooProject.project),\n    serviceName: bar.serviceName,\n    enabled: true,\n    extendedAcl: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo_project = aiven.get_project(project=\"example_project\")\nbar = aiven.OpenSearch(\"bar\",\n    project=foo_project.project,\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-4\",\n    service_name=\"example_service_name\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\")\nfoo_opensearch_user = aiven.OpensearchUser(\"fooOpensearchUser\",\n    service_name=bar.service_name,\n    project=foo_project.project,\n    username=\"user-example\")\nfoo_open_search_acl_config = aiven.OpenSearchAclConfig(\"fooOpenSearchAclConfig\",\n    project=foo_project.project,\n    service_name=bar.service_name,\n    enabled=True,\n    extended_acl=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fooProject = Aiven.GetProject.Invoke(new()\n    {\n        Project = \"example_project\",\n    });\n\n    var bar = new Aiven.OpenSearch(\"bar\", new()\n    {\n        Project = fooProject.Apply(getProjectResult =\u003e getProjectResult.Project),\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-4\",\n        ServiceName = \"example_service_name\",\n        MaintenanceWindowDow = \"monday\",\n        MaintenanceWindowTime = \"10:00:00\",\n    });\n\n    var fooOpensearchUser = new Aiven.OpensearchUser(\"fooOpensearchUser\", new()\n    {\n        ServiceName = bar.ServiceName,\n        Project = fooProject.Apply(getProjectResult =\u003e getProjectResult.Project),\n        Username = \"user-example\",\n    });\n\n    var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig(\"fooOpenSearchAclConfig\", new()\n    {\n        Project = fooProject.Apply(getProjectResult =\u003e getProjectResult.Project),\n        ServiceName = bar.ServiceName,\n        Enabled = true,\n        ExtendedAcl = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooProject, err := aiven.LookupProject(ctx, \u0026aiven.LookupProjectArgs{\n\t\t\tProject: \"example_project\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbar, err := aiven.NewOpenSearch(ctx, \"bar\", \u0026aiven.OpenSearchArgs{\n\t\t\tProject:               *pulumi.String(fooProject.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tServiceName:           pulumi.String(\"example_service_name\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOpensearchUser(ctx, \"fooOpensearchUser\", \u0026aiven.OpensearchUserArgs{\n\t\t\tServiceName: bar.ServiceName,\n\t\t\tProject:     *pulumi.String(fooProject.Project),\n\t\t\tUsername:    pulumi.String(\"user-example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOpenSearchAclConfig(ctx, \"fooOpenSearchAclConfig\", \u0026aiven.OpenSearchAclConfigArgs{\n\t\t\tProject:     *pulumi.String(fooProject.Project),\n\t\t\tServiceName: bar.ServiceName,\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tExtendedAcl: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetProjectArgs;\nimport com.pulumi.aiven.OpenSearch;\nimport com.pulumi.aiven.OpenSearchArgs;\nimport com.pulumi.aiven.OpensearchUser;\nimport com.pulumi.aiven.OpensearchUserArgs;\nimport com.pulumi.aiven.OpenSearchAclConfig;\nimport com.pulumi.aiven.OpenSearchAclConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var fooProject = AivenFunctions.getProject(GetProjectArgs.builder()\n            .project(\"example_project\")\n            .build());\n\n        var bar = new OpenSearch(\"bar\", OpenSearchArgs.builder()        \n            .project(fooProject.applyValue(getProjectResult -\u003e getProjectResult.project()))\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-4\")\n            .serviceName(\"example_service_name\")\n            .maintenanceWindowDow(\"monday\")\n            .maintenanceWindowTime(\"10:00:00\")\n            .build());\n\n        var fooOpensearchUser = new OpensearchUser(\"fooOpensearchUser\", OpensearchUserArgs.builder()        \n            .serviceName(bar.serviceName())\n            .project(fooProject.applyValue(getProjectResult -\u003e getProjectResult.project()))\n            .username(\"user-example\")\n            .build());\n\n        var fooOpenSearchAclConfig = new OpenSearchAclConfig(\"fooOpenSearchAclConfig\", OpenSearchAclConfigArgs.builder()        \n            .project(fooProject.applyValue(getProjectResult -\u003e getProjectResult.project()))\n            .serviceName(bar.serviceName())\n            .enabled(true)\n            .extendedAcl(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bar:\n    type: aiven:OpenSearch\n    properties:\n      project: ${fooProject.project}\n      cloudName: google-europe-west1\n      plan: startup-4\n      serviceName: example_service_name\n      maintenanceWindowDow: monday\n      maintenanceWindowTime: 10:00:00\n  fooOpensearchUser:\n    type: aiven:OpensearchUser\n    properties:\n      serviceName: ${bar.serviceName}\n      project: ${fooProject.project}\n      username: user-example\n  fooOpenSearchAclConfig:\n    type: aiven:OpenSearchAclConfig\n    properties:\n      project: ${fooProject.project}\n      serviceName: ${bar.serviceName}\n      enabled: true\n      extendedAcl: false\nvariables:\n  fooProject:\n    fn::invoke:\n      Function: aiven:getProject\n      Arguments:\n        project: example_project\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name\n```\n\n ",
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
+                    "description": "Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
                 },
                 "extendedAcl": {
                     "type": "boolean",
@@ -18971,7 +19161,7 @@
             "inputProperties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
+                    "description": "Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
                 },
                 "extendedAcl": {
                     "type": "boolean",
@@ -18997,7 +19187,7 @@
                 "properties": {
                     "enabled": {
                         "type": "boolean",
-                        "description": "Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
+                        "description": "Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
                     },
                     "extendedAcl": {
                         "type": "boolean",
@@ -19018,7 +19208,7 @@
             }
         },
         "aiven:index/openSearchAclRule:OpenSearchAclRule": {
-            "description": "The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst osUser = new aiven.OpensearchUser(\"osUser\", {\n    project: _var.aiven_project_name,\n    serviceName: aiven_opensearch.os_test.service_name,\n    username: \"documentation-user-1\",\n});\nconst osUser2 = new aiven.OpensearchUser(\"osUser2\", {\n    project: _var.aiven_project_name,\n    serviceName: aiven_opensearch.os_test.service_name,\n    username: \"documentation-user-2\",\n});\nconst osAclsConfig = new aiven.OpenSearchAclConfig(\"osAclsConfig\", {\n    project: _var.aiven_project_name,\n    serviceName: aiven_opensearch.os_test.service_name,\n    enabled: true,\n    extendedAcl: false,\n});\nconst aclRules = [\n    {\n        username: osUser.username,\n        index: \"index2\",\n        permission: \"readwrite\",\n    },\n    {\n        username: osUser.username,\n        index: \"index3\",\n        permission: \"read\",\n    },\n    {\n        username: osUser.username,\n        index: \"index5\",\n        permission: \"deny\",\n    },\n    {\n        username: osUser2.username,\n        index: \"index3\",\n        permission: \"write\",\n    },\n    {\n        username: osUser2.username,\n        index: \"index7\",\n        permission: \"readwrite\",\n    },\n];\nconst osAclRule: aiven.OpenSearchAclRule[] = [];\npulumi.all(aclRules.map((v, k) =\u003e [k, v]).reduce((__obj, [, ]) =\u003e ({ ...__obj, [i]: v }))).apply(rangeBody =\u003e {\n    for (const range of Object.entries(rangeBody).map(([k, v]) =\u003e ({key: k, value: v}))) {\n        osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {\n            project: osAclsConfig.project,\n            serviceName: osAclsConfig.serviceName,\n            username: range.value.username,\n            index: range.value.index,\n            permission: range.value.permission,\n        }));\n    }\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos_user = aiven.OpensearchUser(\"osUser\",\n    project=var[\"aiven_project_name\"],\n    service_name=aiven_opensearch[\"os_test\"][\"service_name\"],\n    username=\"documentation-user-1\")\nos_user2 = aiven.OpensearchUser(\"osUser2\",\n    project=var[\"aiven_project_name\"],\n    service_name=aiven_opensearch[\"os_test\"][\"service_name\"],\n    username=\"documentation-user-2\")\nos_acls_config = aiven.OpenSearchAclConfig(\"osAclsConfig\",\n    project=var[\"aiven_project_name\"],\n    service_name=aiven_opensearch[\"os_test\"][\"service_name\"],\n    enabled=True,\n    extended_acl=False)\nacl_rules = [\n    {\n        \"username\": os_user.username,\n        \"index\": \"index2\",\n        \"permission\": \"readwrite\",\n    },\n    {\n        \"username\": os_user.username,\n        \"index\": \"index3\",\n        \"permission\": \"read\",\n    },\n    {\n        \"username\": os_user.username,\n        \"index\": \"index5\",\n        \"permission\": \"deny\",\n    },\n    {\n        \"username\": os_user2.username,\n        \"index\": \"index3\",\n        \"permission\": \"write\",\n    },\n    {\n        \"username\": os_user2.username,\n        \"index\": \"index7\",\n        \"permission\": \"readwrite\",\n    },\n]\nos_acl_rule = []\ndef create_os_acl_rule(range_body):\n    for range in [{\"key\": k, \"value\": v} for [k, v] in enumerate(range_body)]:\n        os_acl_rule.append(aiven.OpenSearchAclRule(f\"osAclRule-{range['key']}\",\n            project=os_acls_config.project,\n            service_name=os_acls_config.service_name,\n            username=range[\"value\"][\"username\"],\n            index=range[\"value\"][\"index\"],\n            permission=range[\"value\"][\"permission\"]))\n\npulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var osUser = new Aiven.OpensearchUser(\"osUser\", new()\n    {\n        Project = @var.Aiven_project_name,\n        ServiceName = aiven_opensearch.Os_test.Service_name,\n        Username = \"documentation-user-1\",\n    });\n\n    var osUser2 = new Aiven.OpensearchUser(\"osUser2\", new()\n    {\n        Project = @var.Aiven_project_name,\n        ServiceName = aiven_opensearch.Os_test.Service_name,\n        Username = \"documentation-user-2\",\n    });\n\n    var osAclsConfig = new Aiven.OpenSearchAclConfig(\"osAclsConfig\", new()\n    {\n        Project = @var.Aiven_project_name,\n        ServiceName = aiven_opensearch.Os_test.Service_name,\n        Enabled = true,\n        ExtendedAcl = false,\n    });\n\n    var aclRules = new[]\n    {\n        \n        {\n            { \"username\", osUser.Username },\n            { \"index\", \"index2\" },\n            { \"permission\", \"readwrite\" },\n        },\n        \n        {\n            { \"username\", osUser.Username },\n            { \"index\", \"index3\" },\n            { \"permission\", \"read\" },\n        },\n        \n        {\n            { \"username\", osUser.Username },\n            { \"index\", \"index5\" },\n            { \"permission\", \"deny\" },\n        },\n        \n        {\n            { \"username\", osUser2.Username },\n            { \"index\", \"index3\" },\n            { \"permission\", \"write\" },\n        },\n        \n        {\n            { \"username\", osUser2.Username },\n            { \"index\", \"index7\" },\n            { \"permission\", \"readwrite\" },\n        },\n    };\n\n    var osAclRule = new List\u003cAiven.OpenSearchAclRule\u003e();\n    foreach (var range in aclRules.Select((value, i) =\u003e new { Key = i.ToString(), Value = pair.Value }).Select(v =\u003e \n    {\n        return  v;\n    }).Select(pair =\u003e new { pair.Key, pair.Value }))\n    {\n        osAclRule.Add(new Aiven.OpenSearchAclRule($\"osAclRule-{range.Key}\", new()\n        {\n            Project = osAclsConfig.Project,\n            ServiceName = osAclsConfig.ServiceName,\n            Username = range.Value.Username,\n            Index = range.Value.Index,\n            Permission = range.Value.Permission,\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tosUser, err := aiven.NewOpensearchUser(ctx, \"osUser\", \u0026aiven.OpensearchUserArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Os_test.Service_name),\n\t\t\tUsername:    pulumi.String(\"documentation-user-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tosUser2, err := aiven.NewOpensearchUser(ctx, \"osUser2\", \u0026aiven.OpensearchUserArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Os_test.Service_name),\n\t\t\tUsername:    pulumi.String(\"documentation-user-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tosAclsConfig, err := aiven.NewOpenSearchAclConfig(ctx, \"osAclsConfig\", \u0026aiven.OpenSearchAclConfigArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Os_test.Service_name),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tExtendedAcl: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\taclRules := []map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser.Username,\n\t\t\t\t\"index\":      \"index2\",\n\t\t\t\t\"permission\": \"readwrite\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser.Username,\n\t\t\t\t\"index\":      \"index3\",\n\t\t\t\t\"permission\": \"read\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser.Username,\n\t\t\t\t\"index\":      \"index5\",\n\t\t\t\t\"permission\": \"deny\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser2.Username,\n\t\t\t\t\"index\":      \"index3\",\n\t\t\t\t\"permission\": \"write\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser2.Username,\n\t\t\t\t\"index\":      \"index7\",\n\t\t\t\t\"permission\": \"readwrite\",\n\t\t\t},\n\t\t}\n\t\tvar osAclRule []*aiven.OpenSearchAclRule\n\t\tfor key0, val0 := range \"TODO: For expression\" {\n\t\t\t__res, err := aiven.NewOpenSearchAclRule(ctx, fmt.Sprintf(\"osAclRule-%v\", key0), \u0026aiven.OpenSearchAclRuleArgs{\n\t\t\t\tProject:     osAclsConfig.Project,\n\t\t\t\tServiceName: osAclsConfig.ServiceName,\n\t\t\t\tUsername:    pulumi.String(val0),\n\t\t\t\tIndex:       pulumi.String(val0),\n\t\t\t\tPermission:  pulumi.String(val0),\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tosAclRule = append(osAclRule, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```yaml\nresources:\n  osUser:\n    type: aiven:OpensearchUser\n    properties:\n      project: ${var.aiven_project_name}\n      serviceName: ${aiven_opensearch.os_test.service_name}\n      username: documentation-user-1\n  osUser2:\n    type: aiven:OpensearchUser\n    properties:\n      project: ${var.aiven_project_name}\n      serviceName: ${aiven_opensearch.os_test.service_name}\n      username: documentation-user-2\n  osAclsConfig:\n    type: aiven:OpenSearchAclConfig\n    properties:\n      project: ${var.aiven_project_name}\n      serviceName: ${aiven_opensearch.os_test.service_name}\n      enabled: true\n      extendedAcl: false\n  osAclRule:\n    type: aiven:OpenSearchAclRule\n    properties:\n      project: ${osAclsConfig.project}\n      serviceName: ${osAclsConfig.serviceName}\n      username: ${range.value.username}\n      index: ${range.value.index}\n      permission: ${range.value.permission}\n    options: {}\nvariables:\n  aclRules:\n    - username: ${osUser.username}\n      index: index2\n      permission: readwrite\n    - username: ${osUser.username}\n      index: index3\n      permission: read\n    - username: ${osUser.username}\n      index: index5\n      permission: deny\n    - username: ${osUser2.username}\n      index: index3\n      permission: write\n    - username: ${osUser2.username}\n      index: index7\n      permission: readwrite\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index\n```\n\n ",
+            "description": "The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst osUser = new aiven.OpensearchUser(\"osUser\", {\n    project: _var.aiven_project_name,\n    serviceName: aiven_opensearch.os_test.service_name,\n    username: \"documentation-user-1\",\n});\nconst osUser2 = new aiven.OpensearchUser(\"osUser2\", {\n    project: _var.aiven_project_name,\n    serviceName: aiven_opensearch.os_test.service_name,\n    username: \"documentation-user-2\",\n});\nconst osAclsConfig = new aiven.OpenSearchAclConfig(\"osAclsConfig\", {\n    project: _var.aiven_project_name,\n    serviceName: aiven_opensearch.os_test.service_name,\n    enabled: true,\n    extendedAcl: false,\n});\nconst aclRules = [\n    {\n        username: osUser.username,\n        index: \"index2\",\n        permission: \"readwrite\",\n    },\n    {\n        username: osUser.username,\n        index: \"index3\",\n        permission: \"read\",\n    },\n    {\n        username: osUser.username,\n        index: \"index5\",\n        permission: \"deny\",\n    },\n    {\n        username: osUser2.username,\n        index: \"index3\",\n        permission: \"write\",\n    },\n    {\n        username: osUser2.username,\n        index: \"index7\",\n        permission: \"readwrite\",\n    },\n];\nconst osAclRule: aiven.OpenSearchAclRule[] = [];\npulumi.all(aclRules.map((v, k) =\u003e [k, v]).reduce((__obj, [, ]) =\u003e ({ ...__obj, [i]: v }))).apply(rangeBody =\u003e {\n    for (const range of Object.entries(rangeBody).map(([k, v]) =\u003e ({key: k, value: v}))) {\n        osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {\n            project: osAclsConfig.project,\n            serviceName: osAclsConfig.serviceName,\n            username: range.value.username,\n            index: range.value.index,\n            permission: range.value.permission,\n        }));\n    }\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos_user = aiven.OpensearchUser(\"osUser\",\n    project=var[\"aiven_project_name\"],\n    service_name=aiven_opensearch[\"os_test\"][\"service_name\"],\n    username=\"documentation-user-1\")\nos_user2 = aiven.OpensearchUser(\"osUser2\",\n    project=var[\"aiven_project_name\"],\n    service_name=aiven_opensearch[\"os_test\"][\"service_name\"],\n    username=\"documentation-user-2\")\nos_acls_config = aiven.OpenSearchAclConfig(\"osAclsConfig\",\n    project=var[\"aiven_project_name\"],\n    service_name=aiven_opensearch[\"os_test\"][\"service_name\"],\n    enabled=True,\n    extended_acl=False)\nacl_rules = [\n    {\n        \"username\": os_user.username,\n        \"index\": \"index2\",\n        \"permission\": \"readwrite\",\n    },\n    {\n        \"username\": os_user.username,\n        \"index\": \"index3\",\n        \"permission\": \"read\",\n    },\n    {\n        \"username\": os_user.username,\n        \"index\": \"index5\",\n        \"permission\": \"deny\",\n    },\n    {\n        \"username\": os_user2.username,\n        \"index\": \"index3\",\n        \"permission\": \"write\",\n    },\n    {\n        \"username\": os_user2.username,\n        \"index\": \"index7\",\n        \"permission\": \"readwrite\",\n    },\n]\nos_acl_rule = []\ndef create_os_acl_rule(range_body):\n    for range in [{\"key\": k, \"value\": v} for [k, v] in enumerate(range_body)]:\n        os_acl_rule.append(aiven.OpenSearchAclRule(f\"osAclRule-{range['key']}\",\n            project=os_acls_config.project,\n            service_name=os_acls_config.service_name,\n            username=range[\"value\"][\"username\"],\n            index=range[\"value\"][\"index\"],\n            permission=range[\"value\"][\"permission\"]))\n\npulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var osUser = new Aiven.OpensearchUser(\"osUser\", new()\n    {\n        Project = @var.Aiven_project_name,\n        ServiceName = aiven_opensearch.Os_test.Service_name,\n        Username = \"documentation-user-1\",\n    });\n\n    var osUser2 = new Aiven.OpensearchUser(\"osUser2\", new()\n    {\n        Project = @var.Aiven_project_name,\n        ServiceName = aiven_opensearch.Os_test.Service_name,\n        Username = \"documentation-user-2\",\n    });\n\n    var osAclsConfig = new Aiven.OpenSearchAclConfig(\"osAclsConfig\", new()\n    {\n        Project = @var.Aiven_project_name,\n        ServiceName = aiven_opensearch.Os_test.Service_name,\n        Enabled = true,\n        ExtendedAcl = false,\n    });\n\n    var aclRules = new[]\n    {\n        \n        {\n            { \"username\", osUser.Username },\n            { \"index\", \"index2\" },\n            { \"permission\", \"readwrite\" },\n        },\n        \n        {\n            { \"username\", osUser.Username },\n            { \"index\", \"index3\" },\n            { \"permission\", \"read\" },\n        },\n        \n        {\n            { \"username\", osUser.Username },\n            { \"index\", \"index5\" },\n            { \"permission\", \"deny\" },\n        },\n        \n        {\n            { \"username\", osUser2.Username },\n            { \"index\", \"index3\" },\n            { \"permission\", \"write\" },\n        },\n        \n        {\n            { \"username\", osUser2.Username },\n            { \"index\", \"index7\" },\n            { \"permission\", \"readwrite\" },\n        },\n    };\n\n    var osAclRule = new List\u003cAiven.OpenSearchAclRule\u003e();\n    foreach (var range in aclRules.Select((value, i) =\u003e new { Key = i.ToString(), Value = pair.Value }).Select(v =\u003e \n    {\n        return  v;\n    }).Select(pair =\u003e new { pair.Key, pair.Value }))\n    {\n        osAclRule.Add(new Aiven.OpenSearchAclRule($\"osAclRule-{range.Key}\", new()\n        {\n            Project = osAclsConfig.Project,\n            ServiceName = osAclsConfig.ServiceName,\n            Username = range.Value.Username,\n            Index = range.Value.Index,\n            Permission = range.Value.Permission,\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tosUser, err := aiven.NewOpensearchUser(ctx, \"osUser\", \u0026aiven.OpensearchUserArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Os_test.Service_name),\n\t\t\tUsername:    pulumi.String(\"documentation-user-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tosUser2, err := aiven.NewOpensearchUser(ctx, \"osUser2\", \u0026aiven.OpensearchUserArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Os_test.Service_name),\n\t\t\tUsername:    pulumi.String(\"documentation-user-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tosAclsConfig, err := aiven.NewOpenSearchAclConfig(ctx, \"osAclsConfig\", \u0026aiven.OpenSearchAclConfigArgs{\n\t\t\tProject:     pulumi.Any(_var.Aiven_project_name),\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Os_test.Service_name),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tExtendedAcl: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\taclRules := []map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser.Username,\n\t\t\t\t\"index\":      \"index2\",\n\t\t\t\t\"permission\": \"readwrite\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser.Username,\n\t\t\t\t\"index\":      \"index3\",\n\t\t\t\t\"permission\": \"read\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser.Username,\n\t\t\t\t\"index\":      \"index5\",\n\t\t\t\t\"permission\": \"deny\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser2.Username,\n\t\t\t\t\"index\":      \"index3\",\n\t\t\t\t\"permission\": \"write\",\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"username\":   osUser2.Username,\n\t\t\t\t\"index\":      \"index7\",\n\t\t\t\t\"permission\": \"readwrite\",\n\t\t\t},\n\t\t}\n\t\tvar osAclRule []*aiven.OpenSearchAclRule\n\t\tfor key0, val0 := range \"TODO: For expression\" {\n\t\t\t__res, err := aiven.NewOpenSearchAclRule(ctx, fmt.Sprintf(\"osAclRule-%v\", key0), \u0026aiven.OpenSearchAclRuleArgs{\n\t\t\t\tProject:     osAclsConfig.Project,\n\t\t\t\tServiceName: osAclsConfig.ServiceName,\n\t\t\t\tUsername:    pulumi.String(val0),\n\t\t\t\tIndex:       pulumi.String(val0),\n\t\t\t\tPermission:  pulumi.String(val0),\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tosAclRule = append(osAclRule, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```yaml\nresources:\n  osUser:\n    type: aiven:OpensearchUser\n    properties:\n      project: ${var.aiven_project_name}\n      serviceName: ${aiven_opensearch.os_test.service_name}\n      username: documentation-user-1\n  osUser2:\n    type: aiven:OpensearchUser\n    properties:\n      project: ${var.aiven_project_name}\n      serviceName: ${aiven_opensearch.os_test.service_name}\n      username: documentation-user-2\n  osAclsConfig:\n    type: aiven:OpenSearchAclConfig\n    properties:\n      project: ${var.aiven_project_name}\n      serviceName: ${aiven_opensearch.os_test.service_name}\n      enabled: true\n      extendedAcl: false\n  osAclRule:\n    type: aiven:OpenSearchAclRule\n    properties:\n      project: ${osAclsConfig.project}\n      serviceName: ${osAclsConfig.serviceName}\n      username: ${range.value.username}\n      index: ${range.value.index}\n      permission: ${range.value.permission}\n    options: {}\nvariables:\n  aclRules:\n    - username: ${osUser.username}\n      index: index2\n      permission: readwrite\n    - username: ${osUser.username}\n      index: index3\n      permission: read\n    - username: ${osUser.username}\n      index: index5\n      permission: deny\n    - username: ${osUser2.username}\n      index: index3\n      permission: write\n    - username: ${osUser2.username}\n      index: index7\n      permission: readwrite\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index\n```\n\n ",
             "properties": {
                 "index": {
                     "type": "string",
@@ -19113,11 +19303,11 @@
             }
         },
         "aiven:index/opensearchUser:OpensearchUser": {
-            "description": "The Opensearch User resource allows the creation and management of Aiven Opensearch Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.OpensearchUser(\"foo\", {\n    serviceName: aiven_opensearch.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.OpensearchUser(\"foo\",\n    service_name=aiven_opensearch[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.OpensearchUser(\"foo\", new()\n    {\n        ServiceName = aiven_opensearch.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpensearchUser(ctx, \"foo\", \u0026aiven.OpensearchUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OpensearchUser;\nimport com.pulumi.aiven.OpensearchUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new OpensearchUser(\"foo\", OpensearchUserArgs.builder()        \n            .serviceName(aiven_opensearch.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:OpensearchUser\n    properties:\n      serviceName: ${aiven_opensearch.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/opensearchUser:OpensearchUser foo project/service_name/username\n```\n\n ",
+            "description": "The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.OpensearchUser(\"foo\", {\n    serviceName: aiven_opensearch.bar.service_name,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.OpensearchUser(\"foo\",\n    service_name=aiven_opensearch[\"bar\"][\"service_name\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.OpensearchUser(\"foo\", new()\n    {\n        ServiceName = aiven_opensearch.Bar.Service_name,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpensearchUser(ctx, \"foo\", \u0026aiven.OpensearchUserArgs{\n\t\t\tServiceName: pulumi.Any(aiven_opensearch.Bar.Service_name),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OpensearchUser;\nimport com.pulumi.aiven.OpensearchUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new OpensearchUser(\"foo\", OpensearchUserArgs.builder()        \n            .serviceName(aiven_opensearch.bar().service_name())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:OpensearchUser\n    properties:\n      serviceName: ${aiven_opensearch.bar.service_name}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/opensearchUser:OpensearchUser foo project/service_name/username\n```\n\n ",
             "properties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the Opensearch User.\n",
+                    "description": "The password of the OpenSearch User.\n",
                     "secret": true
                 },
                 "project": {
@@ -19134,7 +19324,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
                 }
             },
             "required": [
@@ -19147,7 +19337,7 @@
             "inputProperties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the Opensearch User.\n",
+                    "description": "The password of the OpenSearch User.\n",
                     "secret": true
                 },
                 "project": {
@@ -19162,7 +19352,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -19176,7 +19366,7 @@
                 "properties": {
                     "password": {
                         "type": "string",
-                        "description": "The password of the Opensearch User.\n",
+                        "description": "The password of the OpenSearch User.\n",
                         "secret": true
                     },
                     "project": {
@@ -19195,7 +19385,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -19252,6 +19442,82 @@
                     "updateTime": {
                         "type": "string",
                         "description": "Time of last update\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/organizationUser:OrganizationUser": {
+            "description": "The Organization User resource allows the creation and management of an Aiven Organization User.\n\nDuring the creation of `aiven.OrganizationUser`resource, an email invitation will be sent\nto a user using `user_email` address. If the user accepts an invitation, they will become\na member of the organization. The deletion of `aiven.OrganizationUser` will not only\ndelete the invitation if one was sent but not yet accepted by the user, it will also \neliminate the member from the organization if one has accepted an invitation previously.\n",
+            "properties": {
+                "accepted": {
+                    "type": "boolean",
+                    "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "Time of creation\n"
+                },
+                "invitedBy": {
+                    "type": "string",
+                    "description": "The email address of the user who sent an invitation to the user.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "userEmail": {
+                    "type": "string",
+                    "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
+                }
+            },
+            "required": [
+                "accepted",
+                "createTime",
+                "invitedBy",
+                "organizationId",
+                "userEmail"
+            ],
+            "inputProperties": {
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "userEmail": {
+                    "type": "string",
+                    "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "organizationId",
+                "userEmail"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationUser resources.\n",
+                "properties": {
+                    "accepted": {
+                        "type": "boolean",
+                        "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "invitedBy": {
+                        "type": "string",
+                        "description": "The email address of the user who sent an invitation to the user.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "userEmail": {
+                        "type": "string",
+                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -19932,11 +20198,12 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                    "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                 },
                 "addAccountOwnersAdminAccess": {
                     "type": "boolean",
-                    "description": "If account_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
+                    "description": "If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
                 },
                 "availableCredits": {
                     "type": "string",
@@ -19962,6 +20229,10 @@
                 "estimatedBalance": {
                     "type": "string",
                     "description": "The current accumulated bill for this project in the current billing period.\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "paymentMethod": {
                     "type": "string",
@@ -20005,11 +20276,12 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                    "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                 },
                 "addAccountOwnersAdminAccess": {
                     "type": "boolean",
-                    "description": "If account_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
+                    "description": "If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
                 },
                 "billingGroup": {
                     "type": "string",
@@ -20022,6 +20294,10 @@
                 "defaultCloud": {
                     "type": "string",
                     "description": "Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "project": {
                     "type": "string",
@@ -20059,11 +20335,12 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                        "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                     },
                     "addAccountOwnersAdminAccess": {
                         "type": "boolean",
-                        "description": "If account_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
+                        "description": "If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
                     },
                     "availableCredits": {
                         "type": "string",
@@ -20089,6 +20366,10 @@
                     "estimatedBalance": {
                         "type": "string",
                         "description": "The current accumulated bill for this project in the current billing period.\n"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "paymentMethod": {
                         "type": "string",
@@ -21085,7 +21366,7 @@
                 },
                 "externalOpensearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
-                    "description": "ExternalOpensearchLogs user configurable settings\n"
+                    "description": "ExternalOpenSearchLogs user configurable settings\n"
                 },
                 "externalSchemaRegistryUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -21151,7 +21432,7 @@
                 },
                 "externalOpensearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
-                    "description": "ExternalOpensearchLogs user configurable settings\n"
+                    "description": "ExternalOpenSearchLogs user configurable settings\n"
                 },
                 "externalSchemaRegistryUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -21226,7 +21507,7 @@
                     },
                     "externalOpensearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
-                        "description": "ExternalOpensearchLogs user configurable settings\n"
+                        "description": "ExternalOpenSearchLogs user configurable settings\n"
                     },
                     "externalSchemaRegistryUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -22253,6 +22534,10 @@
                         "type": "string",
                         "description": "Billing Group name\n"
                     },
+                    "parentId": {
+                        "type": "string",
+                        "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    },
                     "state": {
                         "type": "string",
                         "description": "State\n"
@@ -22280,6 +22565,7 @@
                     "copyFromBillingGroup",
                     "countryCode",
                     "name",
+                    "parentId",
                     "state",
                     "vatId",
                     "zipCode",
@@ -26131,7 +26417,7 @@
             }
         },
         "aiven:index/getOpenSearch:getOpenSearch": {
-            "description": "The Opensearch data source provides information about the existing Aiven Opensearch service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os1 = aiven.getOpenSearch({\n    project: data.aiven_project.pr1.project,\n    serviceName: \"my-os1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos1 = aiven.get_open_search(project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    service_name=\"my-os1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var os1 = Aiven.GetOpenSearch.Invoke(new()\n    {\n        Project = data.Aiven_project.Pr1.Project,\n        ServiceName = \"my-os1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpenSearch(ctx, \u0026aiven.LookupOpenSearchArgs{\n\t\t\tProject:     data.Aiven_project.Pr1.Project,\n\t\t\tServiceName: \"my-os1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpenSearchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()\n            .project(data.aiven_project().pr1().project())\n            .serviceName(\"my-os1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  os1:\n    fn::invoke:\n      Function: aiven:getOpenSearch\n      Arguments:\n        project: ${data.aiven_project.pr1.project}\n        serviceName: my-os1\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The OpenSearch data source provides information about the existing Aiven OpenSearch service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os1 = aiven.getOpenSearch({\n    project: data.aiven_project.pr1.project,\n    serviceName: \"my-os1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos1 = aiven.get_open_search(project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    service_name=\"my-os1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var os1 = Aiven.GetOpenSearch.Invoke(new()\n    {\n        Project = data.Aiven_project.Pr1.Project,\n        ServiceName = \"my-os1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpenSearch(ctx, \u0026aiven.LookupOpenSearchArgs{\n\t\t\tProject:     data.Aiven_project.Pr1.Project,\n\t\t\tServiceName: \"my-os1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpenSearchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()\n            .project(data.aiven_project().pr1().project())\n            .serviceName(\"my-os1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  os1:\n    fn::invoke:\n      Function: aiven:getOpenSearch\n      Arguments:\n        project: ${data.aiven_project.pr1.project}\n        serviceName: my-os1\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getOpenSearch.\n",
                 "properties": {
@@ -26205,14 +26491,14 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfig:getOpenSearchOpensearchUserConfig"
                         },
-                        "description": "Opensearch user configurable settings\n"
+                        "description": "OpenSearch user configurable settings\n"
                     },
                     "opensearches": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/getOpenSearchOpensearch:getOpenSearchOpensearch"
                         },
-                        "description": "Opensearch server provided values\n"
+                        "description": "OpenSearch server provided values\n"
                     },
                     "plan": {
                         "type": "string",
@@ -26320,7 +26606,7 @@
             }
         },
         "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": {
-            "description": "The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os-acl-config = aiven.getOpenSearchAclConfig({\n    project: aiven_project[\"os-project\"].project,\n    serviceName: aiven_opensearch.os.service_name,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos_acl_config = aiven.get_open_search_acl_config(project=aiven_project[\"os-project\"][\"project\"],\n    service_name=aiven_opensearch[\"os\"][\"service_name\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()\n    {\n        Project = aiven_project.Os_project.Project,\n        ServiceName = aiven_opensearch.Os.Service_name,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpenSearchAclConfig(ctx, \u0026aiven.LookupOpenSearchAclConfigArgs{\n\t\t\tProject:     aiven_project.OsProject.Project,\n\t\t\tServiceName: aiven_opensearch.Os.Service_name,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()\n            .project(aiven_project.os-project().project())\n            .serviceName(aiven_opensearch.os().service_name())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  os-acl-config:\n    fn::invoke:\n      Function: aiven:getOpenSearchAclConfig\n      Arguments:\n        project: ${aiven_project\"os-project\"[%!s(MISSING)].project}\n        serviceName: ${aiven_opensearch.os.service_name}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os-acl-config = aiven.getOpenSearchAclConfig({\n    project: aiven_project[\"os-project\"].project,\n    serviceName: aiven_opensearch.os.service_name,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos_acl_config = aiven.get_open_search_acl_config(project=aiven_project[\"os-project\"][\"project\"],\n    service_name=aiven_opensearch[\"os\"][\"service_name\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()\n    {\n        Project = aiven_project.Os_project.Project,\n        ServiceName = aiven_opensearch.Os.Service_name,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpenSearchAclConfig(ctx, \u0026aiven.LookupOpenSearchAclConfigArgs{\n\t\t\tProject:     aiven_project.OsProject.Project,\n\t\t\tServiceName: aiven_opensearch.Os.Service_name,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()\n            .project(aiven_project.os-project().project())\n            .serviceName(aiven_opensearch.os().service_name())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  os-acl-config:\n    fn::invoke:\n      Function: aiven:getOpenSearchAclConfig\n      Arguments:\n        project: ${aiven_project\"os-project\"[%!s(MISSING)].project}\n        serviceName: ${aiven_opensearch.os.service_name}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getOpenSearchAclConfig.\n",
                 "properties": {
@@ -26344,7 +26630,7 @@
                 "properties": {
                     "enabled": {
                         "type": "boolean",
-                        "description": "Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
+                        "description": "Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.\n"
                     },
                     "extendedAcl": {
                         "type": "boolean",
@@ -26374,7 +26660,7 @@
             }
         },
         "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": {
-            "description": "The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst osAclRule = aiven.getOpenSearchAclRule({\n    project: aiven_opensearch_acl_config.os_acls_config.project,\n    serviceName: aiven_opensearch_acl_config.os_acls_config.service_name,\n    username: \"\u003cUSERNAME\u003e\",\n    index: \"\u003cINDEX\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos_acl_rule = aiven.get_open_search_acl_rule(project=aiven_opensearch_acl_config[\"os_acls_config\"][\"project\"],\n    service_name=aiven_opensearch_acl_config[\"os_acls_config\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\",\n    index=\"\u003cINDEX\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()\n    {\n        Project = aiven_opensearch_acl_config.Os_acls_config.Project,\n        ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,\n        Username = \"\u003cUSERNAME\u003e\",\n        Index = \"\u003cINDEX\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpenSearchAclRule(ctx, \u0026aiven.LookupOpenSearchAclRuleArgs{\n\t\t\tProject:     aiven_opensearch_acl_config.Os_acls_config.Project,\n\t\t\tServiceName: aiven_opensearch_acl_config.Os_acls_config.Service_name,\n\t\t\tUsername:    \"\u003cUSERNAME\u003e\",\n\t\t\tIndex:       \"\u003cINDEX\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()\n            .project(aiven_opensearch_acl_config.os_acls_config().project())\n            .serviceName(aiven_opensearch_acl_config.os_acls_config().service_name())\n            .username(\"\u003cUSERNAME\u003e\")\n            .index(\"\u003cINDEX\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  osAclRule:\n    fn::invoke:\n      Function: aiven:getOpenSearchAclRule\n      Arguments:\n        project: ${aiven_opensearch_acl_config.os_acls_config.project}\n        serviceName: ${aiven_opensearch_acl_config.os_acls_config.service_name}\n        username: \u003cUSERNAME\u003e\n        index: \u003cINDEX\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst osAclRule = aiven.getOpenSearchAclRule({\n    project: aiven_opensearch_acl_config.os_acls_config.project,\n    serviceName: aiven_opensearch_acl_config.os_acls_config.service_name,\n    username: \"\u003cUSERNAME\u003e\",\n    index: \"\u003cINDEX\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos_acl_rule = aiven.get_open_search_acl_rule(project=aiven_opensearch_acl_config[\"os_acls_config\"][\"project\"],\n    service_name=aiven_opensearch_acl_config[\"os_acls_config\"][\"service_name\"],\n    username=\"\u003cUSERNAME\u003e\",\n    index=\"\u003cINDEX\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()\n    {\n        Project = aiven_opensearch_acl_config.Os_acls_config.Project,\n        ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,\n        Username = \"\u003cUSERNAME\u003e\",\n        Index = \"\u003cINDEX\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpenSearchAclRule(ctx, \u0026aiven.LookupOpenSearchAclRuleArgs{\n\t\t\tProject:     aiven_opensearch_acl_config.Os_acls_config.Project,\n\t\t\tServiceName: aiven_opensearch_acl_config.Os_acls_config.Service_name,\n\t\t\tUsername:    \"\u003cUSERNAME\u003e\",\n\t\t\tIndex:       \"\u003cINDEX\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()\n            .project(aiven_opensearch_acl_config.os_acls_config().project())\n            .serviceName(aiven_opensearch_acl_config.os_acls_config().service_name())\n            .username(\"\u003cUSERNAME\u003e\")\n            .index(\"\u003cINDEX\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  osAclRule:\n    fn::invoke:\n      Function: aiven:getOpenSearchAclRule\n      Arguments:\n        project: ${aiven_opensearch_acl_config.os_acls_config.project}\n        serviceName: ${aiven_opensearch_acl_config.os_acls_config.service_name}\n        username: \u003cUSERNAME\u003e\n        index: \u003cINDEX\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getOpenSearchAclRule.\n",
                 "properties": {
@@ -26448,7 +26734,7 @@
             }
         },
         "aiven:index/getOpensearchUser:getOpensearchUser": {
-            "description": "The Opensearch User data source provides information about the existing Aiven Cassandra User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst user = aiven.getOpensearchUser({\n    project: \"my-project\",\n    serviceName: \"my-service\",\n    username: \"user1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nuser = aiven.get_opensearch_user(project=\"my-project\",\n    service_name=\"my-service\",\n    username=\"user1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = Aiven.GetOpensearchUser.Invoke(new()\n    {\n        Project = \"my-project\",\n        ServiceName = \"my-service\",\n        Username = \"user1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpensearchUser(ctx, \u0026aiven.LookupOpensearchUserArgs{\n\t\t\tProject:     \"my-project\",\n\t\t\tServiceName: \"my-service\",\n\t\t\tUsername:    \"user1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpensearchUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()\n            .project(\"my-project\")\n            .serviceName(\"my-service\")\n            .username(\"user1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user:\n    fn::invoke:\n      Function: aiven:getOpensearchUser\n      Arguments:\n        project: my-project\n        serviceName: my-service\n        username: user1\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The OpenSearch User data source provides information about the existing Aiven OpenSearch User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst user = aiven.getOpensearchUser({\n    project: \"my-project\",\n    serviceName: \"my-service\",\n    username: \"user1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nuser = aiven.get_opensearch_user(project=\"my-project\",\n    service_name=\"my-service\",\n    username=\"user1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = Aiven.GetOpensearchUser.Invoke(new()\n    {\n        Project = \"my-project\",\n        ServiceName = \"my-service\",\n        Username = \"user1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOpensearchUser(ctx, \u0026aiven.LookupOpensearchUserArgs{\n\t\t\tProject:     \"my-project\",\n\t\t\tServiceName: \"my-service\",\n\t\t\tUsername:    \"user1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOpensearchUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()\n            .project(\"my-project\")\n            .serviceName(\"my-service\")\n            .username(\"user1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user:\n    fn::invoke:\n      Function: aiven:getOpensearchUser\n      Arguments:\n        project: my-project\n        serviceName: my-service\n        username: user1\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getOpensearchUser.\n",
                 "properties": {
@@ -26462,7 +26748,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -26481,7 +26767,7 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password of the Opensearch User.\n",
+                        "description": "The password of the OpenSearch User.\n",
                         "secret": true
                     },
                     "project": {
@@ -26498,7 +26784,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -26557,6 +26843,65 @@
                     "name",
                     "tenantId",
                     "updateTime",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getOrganizationUser:getOrganizationUser": {
+            "description": "The Organization User data source provides information about the existing Aiven Organization User.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationUser.\n",
+                "properties": {
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "userEmail": {
+                        "type": "string",
+                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "organizationId",
+                    "userEmail"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationUser.\n",
+                "properties": {
+                    "accepted": {
+                        "type": "boolean",
+                        "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "invitedBy": {
+                        "type": "string",
+                        "description": "The email address of the user who sent an invitation to the user.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "userEmail": {
+                        "type": "string",
+                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accepted",
+                    "createTime",
+                    "invitedBy",
+                    "organizationId",
+                    "userEmail",
                     "id"
                 ]
             }
@@ -26974,11 +27319,11 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "addAccountOwnersAdminAccess": {
                         "type": "boolean",
-                        "description": "If account_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
+                        "description": "If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.\n"
                     },
                     "availableCredits": {
                         "type": "string",
@@ -27008,6 +27353,10 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "paymentMethod": {
                         "type": "string",
@@ -27046,6 +27395,7 @@
                     "copyFromProject",
                     "defaultCloud",
                     "estimatedBalance",
+                    "parentId",
                     "paymentMethod",
                     "project",
                     "tags",
@@ -27781,7 +28131,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalOpensearchLogsUserConfig:getServiceIntegrationEndpointExternalOpensearchLogsUserConfig"
                         },
-                        "description": "ExternalOpensearchLogs user configurable settings\n"
+                        "description": "ExternalOpenSearchLogs user configurable settings\n"
                     },
                     "externalSchemaRegistryUserConfigs": {
                         "type": "array",

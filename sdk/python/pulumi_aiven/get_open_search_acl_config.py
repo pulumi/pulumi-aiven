@@ -42,7 +42,7 @@ class GetOpenSearchAclConfigResult:
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -96,7 +96,7 @@ def get_open_search_acl_config(project: Optional[str] = None,
                                service_name: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenSearchAclConfigResult:
     """
-    The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+    The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
 
     ## Example Usage
 
@@ -131,7 +131,7 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[str]] = Non
                                       service_name: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchAclConfigResult]:
     """
-    The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+    The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
 
     ## Example Usage
 

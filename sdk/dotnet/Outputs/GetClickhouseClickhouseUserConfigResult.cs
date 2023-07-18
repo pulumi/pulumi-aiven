@@ -17,8 +17,15 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
+        public readonly Outputs.GetClickhouseClickhouseUserConfigPrivateAccessResult? PrivateAccess;
+        public readonly Outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
+        public readonly Outputs.GetClickhouseClickhouseUserConfigPublicAccessResult? PublicAccess;
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetClickhouseClickhouseUserConfigResult(
@@ -30,16 +37,28 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            Outputs.GetClickhouseClickhouseUserConfigPrivateAccessResult? privateAccess,
+
+            Outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
             string? projectToForkFrom,
 
-            string? serviceToForkFrom)
+            Outputs.GetClickhouseClickhouseUserConfigPublicAccessResult? publicAccess,
+
+            string? serviceToForkFrom,
+
+            bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
+            PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
+            PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

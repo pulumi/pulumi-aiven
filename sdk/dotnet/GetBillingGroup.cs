@@ -110,6 +110,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        public readonly string ParentId;
+        /// <summary>
         /// State
         /// </summary>
         public readonly string State;
@@ -150,6 +154,8 @@ namespace Pulumi.Aiven
 
             string name,
 
+            string parentId,
+
             string state,
 
             string vatId,
@@ -169,6 +175,7 @@ namespace Pulumi.Aiven
             CountryCode = countryCode;
             Id = id;
             Name = name;
+            ParentId = parentId;
             State = state;
             VatId = vatId;
             ZipCode = zipCode;

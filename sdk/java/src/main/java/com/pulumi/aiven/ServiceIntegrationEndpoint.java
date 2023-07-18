@@ -159,14 +159,14 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.externalKafkaUserConfig);
     }
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpenSearchLogs user configurable settings
      * 
      */
     @Export(name="externalOpensearchLogsUserConfig", type=ServiceIntegrationEndpointExternalOpensearchLogsUserConfig.class, parameters={})
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfig;
 
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpenSearchLogs user configurable settings
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>> externalOpensearchLogsUserConfig() {

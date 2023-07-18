@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectResult {
     /**
-     * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String accountId;
     /**
-     * @return If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     private Boolean addAccountOwnersAdminAccess;
@@ -58,6 +58,11 @@ public final class GetProjectResult {
      */
     private String id;
     /**
+     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    private String parentId;
+    /**
      * @return The method of invoicing used for payments for this project, e.g. `card`.
      * 
      */
@@ -85,14 +90,14 @@ public final class GetProjectResult {
 
     private GetProjectResult() {}
     /**
-     * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     public Boolean addAccountOwnersAdminAccess() {
@@ -148,6 +153,13 @@ public final class GetProjectResult {
         return this.id;
     }
     /**
+     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public String parentId() {
+        return this.parentId;
+    }
+    /**
      * @return The method of invoicing used for payments for this project, e.g. `card`.
      * 
      */
@@ -201,6 +213,7 @@ public final class GetProjectResult {
         private String defaultCloud;
         private String estimatedBalance;
         private String id;
+        private String parentId;
         private String paymentMethod;
         private String project;
         private List<GetProjectTag> tags;
@@ -218,6 +231,7 @@ public final class GetProjectResult {
     	      this.defaultCloud = defaults.defaultCloud;
     	      this.estimatedBalance = defaults.estimatedBalance;
     	      this.id = defaults.id;
+    	      this.parentId = defaults.parentId;
     	      this.paymentMethod = defaults.paymentMethod;
     	      this.project = defaults.project;
     	      this.tags = defaults.tags;
@@ -271,6 +285,11 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder parentId(String parentId) {
+            this.parentId = Objects.requireNonNull(parentId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder paymentMethod(String paymentMethod) {
             this.paymentMethod = Objects.requireNonNull(paymentMethod);
             return this;
@@ -312,6 +331,7 @@ public final class GetProjectResult {
             o.defaultCloud = defaultCloud;
             o.estimatedBalance = estimatedBalance;
             o.id = id;
+            o.parentId = parentId;
             o.paymentMethod = paymentMethod;
             o.project = project;
             o.tags = tags;

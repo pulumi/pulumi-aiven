@@ -170,18 +170,61 @@ export interface ClickhouseClickhouseUserConfig {
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service components through Privatelink.
+     */
+    privatelinkAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPrivatelinkAccess>;
+    /**
      * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPublicAccess>;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
     network: pulumi.Input<string>;
+}
+
+export interface ClickhouseClickhouseUserConfigPrivateAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: pulumi.Input<boolean>;
+    clickhouseHttps?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
+}
+
+export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: pulumi.Input<boolean>;
+    clickhouseHttps?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
+}
+
+export interface ClickhouseClickhouseUserConfigPublicAccess {
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: pulumi.Input<boolean>;
+    clickhouseHttps?: pulumi.Input<boolean>;
+    prometheus?: pulumi.Input<boolean>;
 }
 
 export interface ClickhouseComponent {
@@ -588,6 +631,7 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
     maxRowLimit?: pulumi.Input<number>;
     maxSelectBuckets?: pulumi.Input<number>;
     maxSelectPoint?: pulumi.Input<number>;
+    queryLogEnabled?: pulumi.Input<boolean>;
     queryTimeout?: pulumi.Input<number>;
 }
 
@@ -1584,7 +1628,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: pulumi.Input<boolean>;
     opensearchDashboards?: pulumi.Input<boolean>;
@@ -1593,7 +1637,7 @@ export interface OpenSearchOpensearchUserConfigPrivateAccess {
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: pulumi.Input<boolean>;
     opensearchDashboards?: pulumi.Input<boolean>;
@@ -1602,7 +1646,7 @@ export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * Opensearch server provided values
+     * OpenSearch server provided values
      */
     opensearch?: pulumi.Input<boolean>;
     opensearchDashboards?: pulumi.Input<boolean>;
@@ -2054,10 +2098,18 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
+    autoOffsetReset?: pulumi.Input<string>;
     columns?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
     dataFormat: pulumi.Input<string>;
+    dateTimeInputFormat?: pulumi.Input<string>;
     groupName: pulumi.Input<string>;
+    handleErrorMode?: pulumi.Input<string>;
+    maxBlockSize?: pulumi.Input<number>;
+    maxRowsPerMessage?: pulumi.Input<number>;
     name: pulumi.Input<string>;
+    numConsumers?: pulumi.Input<number>;
+    pollMaxBatchSize?: pulumi.Input<number>;
+    skipBrokenMessages?: pulumi.Input<number>;
     topics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic>[]>;
 }
 
@@ -2116,7 +2168,7 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: pulumi.Input<number>;
     /**
-     * Datadog Opensearch Options.
+     * Datadog OpenSearch Options.
      */
     opensearch?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigOpensearch>;
     /**

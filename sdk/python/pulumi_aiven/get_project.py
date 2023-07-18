@@ -22,7 +22,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, add_account_owners_admin_access=None, available_credits=None, billing_group=None, ca_cert=None, copy_from_project=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, tags=None, technical_emails=None, use_source_project_billing_group=None):
+    def __init__(__self__, account_id=None, add_account_owners_admin_access=None, available_credits=None, billing_group=None, ca_cert=None, copy_from_project=None, default_cloud=None, estimated_balance=None, id=None, parent_id=None, payment_method=None, project=None, tags=None, technical_emails=None, use_source_project_billing_group=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -50,6 +50,9 @@ class GetProjectResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if parent_id and not isinstance(parent_id, str):
+            raise TypeError("Expected argument 'parent_id' to be a str")
+        pulumi.set(__self__, "parent_id", parent_id)
         if payment_method and not isinstance(payment_method, str):
             raise TypeError("Expected argument 'payment_method' to be a str")
         pulumi.set(__self__, "payment_method", payment_method)
@@ -70,7 +73,7 @@ class GetProjectResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
@@ -78,7 +81,7 @@ class GetProjectResult:
     @pulumi.getter(name="addAccountOwnersAdminAccess")
     def add_account_owners_admin_access(self) -> bool:
         """
-        If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
         return pulumi.get(self, "add_account_owners_admin_access")
 
@@ -139,6 +142,14 @@ class GetProjectResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> str:
         """
@@ -194,6 +205,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             default_cloud=self.default_cloud,
             estimated_balance=self.estimated_balance,
             id=self.id,
+            parent_id=self.parent_id,
             payment_method=self.payment_method,
             project=self.project,
             tags=self.tags,
@@ -233,6 +245,7 @@ def get_project(project: Optional[str] = None,
         default_cloud=pulumi.get(__ret__, 'default_cloud'),
         estimated_balance=pulumi.get(__ret__, 'estimated_balance'),
         id=pulumi.get(__ret__, 'id'),
+        parent_id=pulumi.get(__ret__, 'parent_id'),
         payment_method=pulumi.get(__ret__, 'payment_method'),
         project=pulumi.get(__ret__, 'project'),
         tags=pulumi.get(__ret__, 'tags'),

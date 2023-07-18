@@ -57,6 +57,8 @@ type BillingGroup struct {
 	pulumi.CustomResourceState
 
 	// Account id
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Address lines
 	AddressLines pulumi.StringArrayOutput `pulumi:"addressLines"`
@@ -78,6 +80,8 @@ type BillingGroup struct {
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// Billing Group name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
 	// State
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// VAT id
@@ -116,6 +120,8 @@ func GetBillingGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BillingGroup resources.
 type billingGroupState struct {
 	// Account id
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// Address lines
 	AddressLines []string `pulumi:"addressLines"`
@@ -137,6 +143,8 @@ type billingGroupState struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// Billing Group name
 	Name *string `pulumi:"name"`
+	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId *string `pulumi:"parentId"`
 	// State
 	State *string `pulumi:"state"`
 	// VAT id
@@ -147,6 +155,8 @@ type billingGroupState struct {
 
 type BillingGroupState struct {
 	// Account id
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// Address lines
 	AddressLines pulumi.StringArrayInput
@@ -168,6 +178,8 @@ type BillingGroupState struct {
 	CountryCode pulumi.StringPtrInput
 	// Billing Group name
 	Name pulumi.StringPtrInput
+	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId pulumi.StringPtrInput
 	// State
 	State pulumi.StringPtrInput
 	// VAT id
@@ -182,6 +194,8 @@ func (BillingGroupState) ElementType() reflect.Type {
 
 type billingGroupArgs struct {
 	// Account id
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// Address lines
 	AddressLines []string `pulumi:"addressLines"`
@@ -203,6 +217,8 @@ type billingGroupArgs struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// Billing Group name
 	Name *string `pulumi:"name"`
+	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId *string `pulumi:"parentId"`
 	// State
 	State *string `pulumi:"state"`
 	// VAT id
@@ -214,6 +230,8 @@ type billingGroupArgs struct {
 // The set of arguments for constructing a BillingGroup resource.
 type BillingGroupArgs struct {
 	// Account id
+	//
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// Address lines
 	AddressLines pulumi.StringArrayInput
@@ -235,6 +253,8 @@ type BillingGroupArgs struct {
 	CountryCode pulumi.StringPtrInput
 	// Billing Group name
 	Name pulumi.StringPtrInput
+	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	ParentId pulumi.StringPtrInput
 	// State
 	State pulumi.StringPtrInput
 	// VAT id
@@ -331,6 +351,8 @@ func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context)
 }
 
 // Account id
+//
+// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 func (o BillingGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -383,6 +405,11 @@ func (o BillingGroupOutput) CountryCode() pulumi.StringPtrOutput {
 // Billing Group name
 func (o BillingGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+func (o BillingGroupOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }
 
 // State

@@ -59,6 +59,8 @@ export class BillingGroup extends pulumi.CustomResource {
 
     /**
      * Account id
+     *
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -102,6 +104,10 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    public readonly parentId!: pulumi.Output<string | undefined>;
+    /**
      * State
      */
     public readonly state!: pulumi.Output<string | undefined>;
@@ -138,6 +144,7 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["copyFromBillingGroup"] = state ? state.copyFromBillingGroup : undefined;
             resourceInputs["countryCode"] = state ? state.countryCode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["vatId"] = state ? state.vatId : undefined;
             resourceInputs["zipCode"] = state ? state.zipCode : undefined;
@@ -154,6 +161,7 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["copyFromBillingGroup"] = args ? args.copyFromBillingGroup : undefined;
             resourceInputs["countryCode"] = args ? args.countryCode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["vatId"] = args ? args.vatId : undefined;
             resourceInputs["zipCode"] = args ? args.zipCode : undefined;
@@ -169,6 +177,8 @@ export class BillingGroup extends pulumi.CustomResource {
 export interface BillingGroupState {
     /**
      * Account id
+     *
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -211,6 +221,10 @@ export interface BillingGroupState {
      * Billing Group name
      */
     name?: pulumi.Input<string>;
+    /**
+     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    parentId?: pulumi.Input<string>;
     /**
      * State
      */
@@ -231,6 +245,8 @@ export interface BillingGroupState {
 export interface BillingGroupArgs {
     /**
      * Account id
+     *
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -273,6 +289,10 @@ export interface BillingGroupArgs {
      * Billing Group name
      */
     name?: pulumi.Input<string>;
+    /**
+     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     */
+    parentId?: pulumi.Input<string>;
     /**
      * State
      */

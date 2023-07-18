@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+    /// The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
     /// 
     /// ## Example Usage
     /// 

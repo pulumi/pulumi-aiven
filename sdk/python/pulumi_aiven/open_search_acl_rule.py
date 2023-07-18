@@ -194,7 +194,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+        The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
 
         ## Example Usage
 
@@ -276,7 +276,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                  args: OpenSearchAclRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+        The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
 
         ## Example Usage
 

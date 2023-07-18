@@ -19,29 +19,37 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     * @deprecated
+     * Use parent_id instead. This field will be removed in the next major release.
      * 
      */
+    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     * @deprecated
+     * Use parent_id instead. This field will be removed in the next major release.
      * 
      */
+    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     @Import(name="addAccountOwnersAdminAccess")
     private @Nullable Output<Boolean> addAccountOwnersAdminAccess;
 
     /**
-     * @return If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     public Optional<Output<Boolean>> addAccountOwnersAdminAccess() {
@@ -139,6 +147,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    @Import(name="parentId")
+    private @Nullable Output<String> parentId;
+
+    /**
+     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public Optional<Output<String>> parentId() {
+        return Optional.ofNullable(this.parentId);
+    }
+
+    /**
      * The method of invoicing used for payments for this project, e.g. `card`.
      * 
      */
@@ -224,6 +247,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.copyFromProject = $.copyFromProject;
         this.defaultCloud = $.defaultCloud;
         this.estimatedBalance = $.estimatedBalance;
+        this.parentId = $.parentId;
         this.paymentMethod = $.paymentMethod;
         this.project = $.project;
         this.tags = $.tags;
@@ -250,28 +274,36 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param accountId An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use parent_id instead. This field will be removed in the next major release.
+         * 
          */
+        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param accountId An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use parent_id instead. This field will be removed in the next major release.
+         * 
          */
+        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param addAccountOwnersAdminAccess If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+         * @param addAccountOwnersAdminAccess If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
          * 
          * @return builder
          * 
@@ -282,7 +314,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addAccountOwnersAdminAccess If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+         * @param addAccountOwnersAdminAccess If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
          * 
          * @return builder
          * 
@@ -415,6 +447,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder estimatedBalance(String estimatedBalance) {
             return estimatedBalance(Output.of(estimatedBalance));
+        }
+
+        /**
+         * @param parentId An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(@Nullable Output<String> parentId) {
+            $.parentId = parentId;
+            return this;
+        }
+
+        /**
+         * @param parentId An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(String parentId) {
+            return parentId(Output.of(parentId));
         }
 
         /**

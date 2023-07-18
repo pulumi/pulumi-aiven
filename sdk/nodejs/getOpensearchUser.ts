@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+ * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
  *
  * ## Example Usage
  *
@@ -43,7 +43,7 @@ export interface GetOpensearchUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: string;
 }
@@ -57,7 +57,7 @@ export interface GetOpensearchUserResult {
      */
     readonly id: string;
     /**
-     * The password of the Opensearch User.
+     * The password of the OpenSearch User.
      */
     readonly password: string;
     /**
@@ -73,12 +73,12 @@ export interface GetOpensearchUserResult {
      */
     readonly type: string;
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The Opensearch User data source provides information about the existing Aiven Cassandra User.
+ * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
  *
  * ## Example Usage
  *
@@ -110,7 +110,7 @@ export interface GetOpensearchUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Opensearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }
