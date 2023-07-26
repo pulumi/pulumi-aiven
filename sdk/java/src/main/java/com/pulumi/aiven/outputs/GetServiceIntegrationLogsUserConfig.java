@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetServiceIntegrationLogsUserConfig {
     private @Nullable Integer elasticsearchIndexDaysMax;
     private @Nullable String elasticsearchIndexPrefix;
+    private @Nullable List<String> selectedLogFields;
 
     private GetServiceIntegrationLogsUserConfig() {}
     public Optional<Integer> elasticsearchIndexDaysMax() {
@@ -21,6 +23,9 @@ public final class GetServiceIntegrationLogsUserConfig {
     }
     public Optional<String> elasticsearchIndexPrefix() {
         return Optional.ofNullable(this.elasticsearchIndexPrefix);
+    }
+    public List<String> selectedLogFields() {
+        return this.selectedLogFields == null ? List.of() : this.selectedLogFields;
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class GetServiceIntegrationLogsUserConfig {
     public static final class Builder {
         private @Nullable Integer elasticsearchIndexDaysMax;
         private @Nullable String elasticsearchIndexPrefix;
+        private @Nullable List<String> selectedLogFields;
         public Builder() {}
         public Builder(GetServiceIntegrationLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.elasticsearchIndexDaysMax = defaults.elasticsearchIndexDaysMax;
     	      this.elasticsearchIndexPrefix = defaults.elasticsearchIndexPrefix;
+    	      this.selectedLogFields = defaults.selectedLogFields;
         }
 
         @CustomType.Setter
@@ -51,10 +58,19 @@ public final class GetServiceIntegrationLogsUserConfig {
             this.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
             return this;
         }
+        @CustomType.Setter
+        public Builder selectedLogFields(@Nullable List<String> selectedLogFields) {
+            this.selectedLogFields = selectedLogFields;
+            return this;
+        }
+        public Builder selectedLogFields(String... selectedLogFields) {
+            return selectedLogFields(List.of(selectedLogFields));
+        }
         public GetServiceIntegrationLogsUserConfig build() {
             final var o = new GetServiceIntegrationLogsUserConfig();
             o.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             o.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
+            o.selectedLogFields = selectedLogFields;
             return o;
         }
     }

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 func LookupAzureVpcPeeringConnection(ctx *pulumi.Context, args *LookupAzureVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAzureVpcPeeringConnectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureVpcPeeringConnectionResult
 	err := ctx.Invoke("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args, &rv, opts...)
 	if err != nil {

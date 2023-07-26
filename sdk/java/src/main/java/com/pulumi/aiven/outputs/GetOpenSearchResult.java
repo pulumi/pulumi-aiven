@@ -73,7 +73,7 @@ public final class GetOpenSearchResult {
      */
     private String maintenanceWindowTime;
     /**
-     * @return OpenSearch user configurable settings
+     * @return Opensearch user configurable settings
      * 
      */
     private List<GetOpenSearchOpensearchUserConfig> opensearchUserConfigs;
@@ -237,7 +237,7 @@ public final class GetOpenSearchResult {
         return this.maintenanceWindowTime;
     }
     /**
-     * @return OpenSearch user configurable settings
+     * @return Opensearch user configurable settings
      * 
      */
     public List<GetOpenSearchOpensearchUserConfig> opensearchUserConfigs() {

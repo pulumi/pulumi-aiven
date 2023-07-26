@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupKafkaMirrorMaker(ctx *pulumi.Context, args *LookupKafkaMirrorMakerArgs, opts ...pulumi.InvokeOption) (*LookupKafkaMirrorMakerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaMirrorMakerResult
 	err := ctx.Invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args, &rv, opts...)
 	if err != nil {

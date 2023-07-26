@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMakerReplicationFlowArgs, opts ...pulumi.InvokeOption) (*LookupMirrorMakerReplicationFlowResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMirrorMakerReplicationFlowResult
 	err := ctx.Invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args, &rv, opts...)
 	if err != nil {

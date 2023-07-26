@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupRedisUser(ctx *pulumi.Context, args *LookupRedisUserArgs, opts ...pulumi.InvokeOption) (*LookupRedisUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRedisUserResult
 	err := ctx.Invoke("aiven:index/getRedisUser:getRedisUser", args, &rv, opts...)
 	if err != nil {

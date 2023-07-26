@@ -200,7 +200,7 @@ class GetOpenSearchResult:
     @pulumi.getter(name="opensearchUserConfigs")
     def opensearch_user_configs(self) -> Sequence['outputs.GetOpenSearchOpensearchUserConfigResult']:
         """
-        OpenSearch user configurable settings
+        Opensearch user configurable settings
         """
         return pulumi.get(self, "opensearch_user_configs")
 

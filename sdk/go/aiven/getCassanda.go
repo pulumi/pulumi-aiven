@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // Deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra
 func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.InvokeOption) (*GetCassandaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCassandaResult
 	err := ctx.Invoke("aiven:index/getCassanda:getCassanda", args, &rv, opts...)
 	if err != nil {

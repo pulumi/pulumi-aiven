@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxJmxMetrics;
         /// <summary>
-        /// Datadog OpenSearch Options.
+        /// Datadog Opensearch Options.
         /// </summary>
         public readonly Outputs.ServiceIntegrationDatadogUserConfigOpensearch? Opensearch;
         /// <summary>

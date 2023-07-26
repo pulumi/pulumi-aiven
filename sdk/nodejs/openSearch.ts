@@ -113,7 +113,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * OpenSearch user configurable settings
+     * Opensearch user configurable settings
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.OpenSearchOpensearchUserConfig | undefined>;
     /**
@@ -311,7 +311,7 @@ export interface OpenSearchState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * OpenSearch user configurable settings
+     * Opensearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
@@ -407,7 +407,7 @@ export interface OpenSearchArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * OpenSearch user configurable settings
+     * Opensearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**

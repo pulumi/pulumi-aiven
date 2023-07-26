@@ -2249,6 +2249,7 @@ export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 
 export interface GetServiceIntegrationKafkaLogsUserConfig {
     kafkaTopic: string;
+    selectedLogFields?: string[];
 }
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
@@ -2268,6 +2269,7 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker
 export interface GetServiceIntegrationLogsUserConfig {
     elasticsearchIndexDaysMax?: number;
     elasticsearchIndexPrefix?: string;
+    selectedLogFields?: string[];
 }
 
 export interface GetServiceIntegrationMetricsUserConfig {
@@ -4075,7 +4077,7 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: number;
     /**
-     * Datadog OpenSearch Options.
+     * Datadog Opensearch Options.
      */
     opensearch?: outputs.ServiceIntegrationDatadogUserConfigOpensearch;
     /**
@@ -4393,6 +4395,10 @@ export interface ServiceIntegrationKafkaLogsUserConfig {
      * Topic name.
      */
     kafkaTopic: string;
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
@@ -4424,6 +4430,10 @@ export interface ServiceIntegrationLogsUserConfig {
      * Elasticsearch index prefix. The default value is `logs`.
      */
     elasticsearchIndexPrefix?: string;
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
 }
 
 export interface ServiceIntegrationMetricsUserConfig {

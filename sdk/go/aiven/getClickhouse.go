@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupClickhouse(ctx *pulumi.Context, args *LookupClickhouseArgs, opts ...pulumi.InvokeOption) (*LookupClickhouseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClickhouseResult
 	err := ctx.Invoke("aiven:index/getClickhouse:getClickhouse", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +67,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlinkApplicationDeployment{}
 	case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
 		r = &FlinkApplicationVersion{}
+	case "aiven:index/gcpPrivatelink:GcpPrivatelink":
+		r = &GcpPrivatelink{}
+	case "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval":
+		r = &GcpPrivatelinkConnectionApproval{}
 	case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
 		r = &GcpVpcPeeringConnection{}
 	case "aiven:index/grafana:Grafana":
@@ -175,7 +180,10 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/account",
@@ -289,6 +297,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/flinkApplicationVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/gcpPrivatelink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/gcpPrivatelinkConnectionApproval",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

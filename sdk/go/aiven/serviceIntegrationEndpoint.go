@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ type ServiceIntegrationEndpoint struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput `pulumi:"externalKafkaUserConfig"`
-	// ExternalOpenSearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput `pulumi:"externalOpensearchLogsUserConfig"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput `pulumi:"externalSchemaRegistryUserConfig"`
@@ -63,6 +64,7 @@ func NewServiceIntegrationEndpoint(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceIntegrationEndpoint
 	err := ctx.RegisterResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, args, &resource, opts...)
 	if err != nil {
@@ -103,7 +105,7 @@ type serviceIntegrationEndpointState struct {
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
-	// ExternalOpenSearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig *ServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfig"`
@@ -136,7 +138,7 @@ type ServiceIntegrationEndpointState struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
-	// ExternalOpenSearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput
@@ -171,7 +173,7 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
-	// ExternalOpenSearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig *ServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfig"`
@@ -203,7 +205,7 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
-	// ExternalOpenSearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput
@@ -361,7 +363,7 @@ func (o ServiceIntegrationEndpointOutput) ExternalKafkaUserConfig() ServiceInteg
 	}).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
 }
 
-// ExternalOpenSearchLogs user configurable settings
+// ExternalOpensearchLogs user configurable settings
 func (o ServiceIntegrationEndpointOutput) ExternalOpensearchLogsUserConfig() ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput {
 		return v.ExternalOpensearchLogsUserConfig

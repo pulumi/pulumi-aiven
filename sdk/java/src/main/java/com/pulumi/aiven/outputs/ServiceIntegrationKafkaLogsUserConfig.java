@@ -5,7 +5,9 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaLogsUserConfig {
@@ -14,6 +16,11 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
      * 
      */
     private String kafkaTopic;
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
+    private @Nullable List<String> selectedLogFields;
 
     private ServiceIntegrationKafkaLogsUserConfig() {}
     /**
@@ -22,6 +29,13 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
      */
     public String kafkaTopic() {
         return this.kafkaTopic;
+    }
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
+    public List<String> selectedLogFields() {
+        return this.selectedLogFields == null ? List.of() : this.selectedLogFields;
     }
 
     public static Builder builder() {
@@ -34,10 +48,12 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private String kafkaTopic;
+        private @Nullable List<String> selectedLogFields;
         public Builder() {}
         public Builder(ServiceIntegrationKafkaLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaTopic = defaults.kafkaTopic;
+    	      this.selectedLogFields = defaults.selectedLogFields;
         }
 
         @CustomType.Setter
@@ -45,9 +61,18 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
             this.kafkaTopic = Objects.requireNonNull(kafkaTopic);
             return this;
         }
+        @CustomType.Setter
+        public Builder selectedLogFields(@Nullable List<String> selectedLogFields) {
+            this.selectedLogFields = selectedLogFields;
+            return this;
+        }
+        public Builder selectedLogFields(String... selectedLogFields) {
+            return selectedLogFields(List.of(selectedLogFields));
+        }
         public ServiceIntegrationKafkaLogsUserConfig build() {
             final var o = new ServiceIntegrationKafkaLogsUserConfig();
             o.kafkaTopic = kafkaTopic;
+            o.selectedLogFields = selectedLogFields;
             return o;
         }
     }

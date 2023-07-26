@@ -120,6 +120,16 @@ export type FlinkApplicationVersion = import("./flinkApplicationVersion").FlinkA
 export const FlinkApplicationVersion: typeof import("./flinkApplicationVersion").FlinkApplicationVersion = null as any;
 utilities.lazyLoad(exports, ["FlinkApplicationVersion"], () => require("./flinkApplicationVersion"));
 
+export { GcpPrivatelinkArgs, GcpPrivatelinkState } from "./gcpPrivatelink";
+export type GcpPrivatelink = import("./gcpPrivatelink").GcpPrivatelink;
+export const GcpPrivatelink: typeof import("./gcpPrivatelink").GcpPrivatelink = null as any;
+utilities.lazyLoad(exports, ["GcpPrivatelink"], () => require("./gcpPrivatelink"));
+
+export { GcpPrivatelinkConnectionApprovalArgs, GcpPrivatelinkConnectionApprovalState } from "./gcpPrivatelinkConnectionApproval";
+export type GcpPrivatelinkConnectionApproval = import("./gcpPrivatelinkConnectionApproval").GcpPrivatelinkConnectionApproval;
+export const GcpPrivatelinkConnectionApproval: typeof import("./gcpPrivatelinkConnectionApproval").GcpPrivatelinkConnectionApproval = null as any;
+utilities.lazyLoad(exports, ["GcpPrivatelinkConnectionApproval"], () => require("./gcpPrivatelinkConnectionApproval"));
+
 export { GcpVpcPeeringConnectionArgs, GcpVpcPeeringConnectionState } from "./gcpVpcPeeringConnection";
 export type GcpVpcPeeringConnection = import("./gcpVpcPeeringConnection").GcpVpcPeeringConnection;
 export const GcpVpcPeeringConnection: typeof import("./gcpVpcPeeringConnection").GcpVpcPeeringConnection = null as any;
@@ -224,6 +234,11 @@ export { GetFlinkApplicationVersionArgs, GetFlinkApplicationVersionResult, GetFl
 export const getFlinkApplicationVersion: typeof import("./getFlinkApplicationVersion").getFlinkApplicationVersion = null as any;
 export const getFlinkApplicationVersionOutput: typeof import("./getFlinkApplicationVersion").getFlinkApplicationVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getFlinkApplicationVersion","getFlinkApplicationVersionOutput"], () => require("./getFlinkApplicationVersion"));
+
+export { GetGcpPrivatelinkArgs, GetGcpPrivatelinkResult, GetGcpPrivatelinkOutputArgs } from "./getGcpPrivatelink";
+export const getGcpPrivatelink: typeof import("./getGcpPrivatelink").getGcpPrivatelink = null as any;
+export const getGcpPrivatelinkOutput: typeof import("./getGcpPrivatelink").getGcpPrivatelinkOutput = null as any;
+utilities.lazyLoad(exports, ["getGcpPrivatelink","getGcpPrivatelinkOutput"], () => require("./getGcpPrivatelink"));
 
 export { GetGcpVpcPeeringConnectionArgs, GetGcpVpcPeeringConnectionResult, GetGcpVpcPeeringConnectionOutputArgs } from "./getGcpVpcPeeringConnection";
 export const getGcpVpcPeeringConnection: typeof import("./getGcpVpcPeeringConnection").getGcpVpcPeeringConnection = null as any;
@@ -695,6 +710,10 @@ const _module = {
                 return new FlinkApplicationDeployment(name, <any>undefined, { urn })
             case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
                 return new FlinkApplicationVersion(name, <any>undefined, { urn })
+            case "aiven:index/gcpPrivatelink:GcpPrivatelink":
+                return new GcpPrivatelink(name, <any>undefined, { urn })
+            case "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval":
+                return new GcpPrivatelinkConnectionApproval(name, <any>undefined, { urn })
             case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
                 return new GcpVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
@@ -805,6 +824,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplication", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationDeployment", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationVersion", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelink", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)

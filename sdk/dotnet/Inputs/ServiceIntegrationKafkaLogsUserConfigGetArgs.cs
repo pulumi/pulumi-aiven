@@ -18,6 +18,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaTopic", required: true)]
         public Input<string> KafkaTopic { get; set; } = null!;
 
+        [Input("selectedLogFields")]
+        private InputList<string>? _selectedLogFields;
+
+        /// <summary>
+        /// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+        /// </summary>
+        public InputList<string> SelectedLogFields
+        {
+            get => _selectedLogFields ?? (_selectedLogFields = new InputList<string>());
+            set => _selectedLogFields = value;
+        }
+
         public ServiceIntegrationKafkaLogsUserConfigGetArgs()
         {
         }

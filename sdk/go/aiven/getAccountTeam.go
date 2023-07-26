@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Account Team data source provides information about the existing Account Team.
 func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountTeamResult
 	err := ctx.Invoke("aiven:index/getAccountTeam:getAccountTeam", args, &rv, opts...)
 	if err != nil {

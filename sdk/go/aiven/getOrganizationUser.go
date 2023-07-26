@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Organization User data source provides information about the existing Aiven Organization User.
 func LookupOrganizationUser(ctx *pulumi.Context, args *LookupOrganizationUserArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationUserResult
 	err := ctx.Invoke("aiven:index/getOrganizationUser:getOrganizationUser", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,11 +47,27 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         return Optional.ofNullable(this.elasticsearchIndexPrefix);
     }
 
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
+    @Import(name="selectedLogFields")
+    private @Nullable Output<List<String>> selectedLogFields;
+
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
+    public Optional<Output<List<String>>> selectedLogFields() {
+        return Optional.ofNullable(this.selectedLogFields);
+    }
+
     private ServiceIntegrationLogsUserConfigArgs() {}
 
     private ServiceIntegrationLogsUserConfigArgs(ServiceIntegrationLogsUserConfigArgs $) {
         this.elasticsearchIndexDaysMax = $.elasticsearchIndexDaysMax;
         this.elasticsearchIndexPrefix = $.elasticsearchIndexPrefix;
+        this.selectedLogFields = $.selectedLogFields;
     }
 
     public static Builder builder() {
@@ -111,6 +128,37 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
          */
         public Builder elasticsearchIndexPrefix(String elasticsearchIndexPrefix) {
             return elasticsearchIndexPrefix(Output.of(elasticsearchIndexPrefix));
+        }
+
+        /**
+         * @param selectedLogFields The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedLogFields(@Nullable Output<List<String>> selectedLogFields) {
+            $.selectedLogFields = selectedLogFields;
+            return this;
+        }
+
+        /**
+         * @param selectedLogFields The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedLogFields(List<String> selectedLogFields) {
+            return selectedLogFields(Output.of(selectedLogFields));
+        }
+
+        /**
+         * @param selectedLogFields The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedLogFields(String... selectedLogFields) {
+            return selectedLogFields(List.of(selectedLogFields));
         }
 
         public ServiceIntegrationLogsUserConfigArgs build() {

@@ -44,6 +44,8 @@ import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
 import com.pulumi.aiven.inputs.GetFlinkApplicationVersionPlainArgs;
 import com.pulumi.aiven.inputs.GetFlinkArgs;
 import com.pulumi.aiven.inputs.GetFlinkPlainArgs;
+import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
+import com.pulumi.aiven.inputs.GetGcpPrivatelinkPlainArgs;
 import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
 import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetGrafanaArgs;
@@ -146,6 +148,7 @@ import com.pulumi.aiven.outputs.GetConnectionPoolResult;
 import com.pulumi.aiven.outputs.GetFlinkApplicationResult;
 import com.pulumi.aiven.outputs.GetFlinkApplicationVersionResult;
 import com.pulumi.aiven.outputs.GetFlinkResult;
+import com.pulumi.aiven.outputs.GetGcpPrivatelinkResult;
 import com.pulumi.aiven.outputs.GetGcpVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetGrafanaResult;
 import com.pulumi.aiven.outputs.GetInfluxDbResult;
@@ -2657,6 +2660,18 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGcpPrivatelinkResult> getGcpPrivatelink(GetGcpPrivatelinkArgs args) {
+        return getGcpPrivatelink(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGcpPrivatelinkResult> getGcpPrivatelinkPlain(GetGcpPrivatelinkPlainArgs args) {
+        return getGcpPrivatelinkPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGcpPrivatelinkResult> getGcpPrivatelink(GetGcpPrivatelinkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getGcpPrivatelink:getGcpPrivatelink", TypeShape.of(GetGcpPrivatelinkResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGcpPrivatelinkResult> getGcpPrivatelinkPlain(GetGcpPrivatelinkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getGcpPrivatelink:getGcpPrivatelink", TypeShape.of(GetGcpPrivatelinkResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.

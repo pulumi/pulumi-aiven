@@ -24,6 +24,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("elasticsearchIndexPrefix")]
         public Input<string>? ElasticsearchIndexPrefix { get; set; }
 
+        [Input("selectedLogFields")]
+        private InputList<string>? _selectedLogFields;
+
+        /// <summary>
+        /// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+        /// </summary>
+        public InputList<string> SelectedLogFields
+        {
+            get => _selectedLogFields ?? (_selectedLogFields = new InputList<string>());
+            set => _selectedLogFields = value;
+        }
+
         public ServiceIntegrationLogsUserConfigArgs()
         {
         }

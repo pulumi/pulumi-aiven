@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIntegrationEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceIntegrationEndpointResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceIntegrationEndpointResult
 	err := ctx.Invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args, &rv, opts...)
 	if err != nil {
@@ -75,7 +77,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	ExternalGoogleCloudLoggingUserConfigs []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfigs"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfigs []GetServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfigs"`
-	// ExternalOpenSearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfigs []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfigs"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfigs []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfigs"`
@@ -188,7 +190,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) ExternalKafkaUserConfigs()
 	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput)
 }
 
-// ExternalOpenSearchLogs user configurable settings
+// ExternalOpensearchLogs user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalOpensearchLogsUserConfigs() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 		return v.ExternalOpensearchLogsUserConfigs

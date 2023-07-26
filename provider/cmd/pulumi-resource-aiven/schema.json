@@ -4697,7 +4697,7 @@
                 },
                 "opensearch": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigOpensearch:ServiceIntegrationDatadogUserConfigOpensearch",
-                    "description": "Datadog OpenSearch Options.\n"
+                    "description": "Datadog Opensearch Options.\n"
                 },
                 "redis": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationDatadogUserConfigRedis:ServiceIntegrationDatadogUserConfigRedis",
@@ -5156,6 +5156,13 @@
                 "kafkaTopic": {
                     "type": "string",
                     "description": "Topic name.\n"
+                },
+                "selectedLogFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.\n"
                 }
             },
             "type": "object",
@@ -5208,6 +5215,13 @@
                 "elasticsearchIndexPrefix": {
                     "type": "string",
                     "description": "Elasticsearch index prefix. The default value is `logs`.\n"
+                },
+                "selectedLogFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.\n"
                 }
             },
             "type": "object"
@@ -10685,6 +10699,12 @@
             "properties": {
                 "kafkaTopic": {
                     "type": "string"
+                },
+                "selectedLogFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "type": "object",
@@ -10738,6 +10758,12 @@
                 },
                 "elasticsearchIndexPrefix": {
                     "type": "string"
+                },
+                "selectedLogFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "type": "object"
@@ -14302,6 +14328,170 @@
                     "version": {
                         "type": "integer",
                         "description": "Application version number\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/gcpPrivatelink:GcpPrivatelink": {
+            "properties": {
+                "googleServiceAttachment": {
+                    "type": "string",
+                    "description": "Privatelink resource Google Service Attachment\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Printable result of the GCP Privatelink request\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Privatelink resource state\n"
+                }
+            },
+            "required": [
+                "googleServiceAttachment",
+                "message",
+                "project",
+                "serviceName",
+                "state"
+            ],
+            "inputProperties": {
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GcpPrivatelink resources.\n",
+                "properties": {
+                    "googleServiceAttachment": {
+                        "type": "string",
+                        "description": "Privatelink resource Google Service Attachment\n"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Printable result of the GCP Privatelink request\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Privatelink resource state\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": {
+            "properties": {
+                "privatelinkConnectionId": {
+                    "type": "string",
+                    "description": "Privatelink connection id\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "pscConnectionId": {
+                    "type": "string",
+                    "description": "Privatelink connection PSC connection id\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Privatelink connection state\n"
+                },
+                "userIpAddress": {
+                    "type": "string",
+                    "description": "Privatelink connection user IP address\n"
+                }
+            },
+            "required": [
+                "privatelinkConnectionId",
+                "project",
+                "pscConnectionId",
+                "serviceName",
+                "state",
+                "userIpAddress"
+            ],
+            "inputProperties": {
+                "project": {
+                    "type": "string",
+                    "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "userIpAddress": {
+                    "type": "string",
+                    "description": "Privatelink connection user IP address\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "serviceName",
+                "userIpAddress"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GcpPrivatelinkConnectionApproval resources.\n",
+                "properties": {
+                    "privatelinkConnectionId": {
+                        "type": "string",
+                        "description": "Privatelink connection id\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "pscConnectionId": {
+                        "type": "string",
+                        "description": "Privatelink connection PSC connection id\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this\nvariable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Privatelink connection state\n"
+                    },
+                    "userIpAddress": {
+                        "type": "string",
+                        "description": "Privatelink connection user IP address\n"
                     }
                 },
                 "type": "object"
@@ -18827,7 +19017,7 @@
                 },
                 "opensearchUserConfig": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
-                    "description": "OpenSearch user configurable settings\n"
+                    "description": "Opensearch user configurable settings\n"
                 },
                 "opensearches": {
                     "type": "array",
@@ -18949,7 +19139,7 @@
                 },
                 "opensearchUserConfig": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
-                    "description": "OpenSearch user configurable settings\n"
+                    "description": "Opensearch user configurable settings\n"
                 },
                 "plan": {
                     "type": "string",
@@ -19048,7 +19238,7 @@
                     },
                     "opensearchUserConfig": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
-                        "description": "OpenSearch user configurable settings\n"
+                        "description": "Opensearch user configurable settings\n"
                     },
                     "opensearches": {
                         "type": "array",
@@ -21366,7 +21556,7 @@
                 },
                 "externalOpensearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
-                    "description": "ExternalOpenSearchLogs user configurable settings\n"
+                    "description": "ExternalOpensearchLogs user configurable settings\n"
                 },
                 "externalSchemaRegistryUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -21432,7 +21622,7 @@
                 },
                 "externalOpensearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
-                    "description": "ExternalOpenSearchLogs user configurable settings\n"
+                    "description": "ExternalOpensearchLogs user configurable settings\n"
                 },
                 "externalSchemaRegistryUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -21507,7 +21697,7 @@
                     },
                     "externalOpensearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
-                        "description": "ExternalOpenSearchLogs user configurable settings\n"
+                        "description": "ExternalOpensearchLogs user configurable settings\n"
                     },
                     "externalSchemaRegistryUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -23806,6 +23996,57 @@
                     "sources",
                     "statement",
                     "version",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getGcpPrivatelink:getGcpPrivatelink": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGcpPrivatelink.\n",
+                "properties": {
+                    "project": {
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGcpPrivatelink.\n",
+                "properties": {
+                    "googleServiceAttachment": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "googleServiceAttachment",
+                    "message",
+                    "project",
+                    "serviceName",
+                    "state",
                     "id"
                 ]
             }
@@ -26491,7 +26732,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfig:getOpenSearchOpensearchUserConfig"
                         },
-                        "description": "OpenSearch user configurable settings\n"
+                        "description": "Opensearch user configurable settings\n"
                     },
                     "opensearches": {
                         "type": "array",
@@ -28131,7 +28372,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalOpensearchLogsUserConfig:getServiceIntegrationEndpointExternalOpensearchLogsUserConfig"
                         },
-                        "description": "ExternalOpenSearchLogs user configurable settings\n"
+                        "description": "ExternalOpensearchLogs user configurable settings\n"
                     },
                     "externalSchemaRegistryUserConfigs": {
                         "type": "array",

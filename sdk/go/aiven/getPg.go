@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupPg(ctx *pulumi.Context, args *LookupPgArgs, opts ...pulumi.InvokeOption) (*LookupPgResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPgResult
 	err := ctx.Invoke("aiven:index/getPg:getPg", args, &rv, opts...)
 	if err != nil {

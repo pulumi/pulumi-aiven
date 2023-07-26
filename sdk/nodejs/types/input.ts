@@ -2168,7 +2168,7 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: pulumi.Input<number>;
     /**
-     * Datadog OpenSearch Options.
+     * Datadog Opensearch Options.
      */
     opensearch?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigOpensearch>;
     /**
@@ -2486,6 +2486,10 @@ export interface ServiceIntegrationKafkaLogsUserConfig {
      * Topic name.
      */
     kafkaTopic: pulumi.Input<string>;
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
@@ -2517,6 +2521,10 @@ export interface ServiceIntegrationLogsUserConfig {
      * Elasticsearch index prefix. The default value is `logs`.
      */
     elasticsearchIndexPrefix?: pulumi.Input<string>;
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ServiceIntegrationMetricsUserConfig {

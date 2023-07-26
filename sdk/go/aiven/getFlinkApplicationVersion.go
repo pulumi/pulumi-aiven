@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupFlinkApplicationVersion(ctx *pulumi.Context, args *LookupFlinkApplicationVersionArgs, opts ...pulumi.InvokeOption) (*LookupFlinkApplicationVersionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlinkApplicationVersionResult
 	err := ctx.Invoke("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args, &rv, opts...)
 	if err != nil {

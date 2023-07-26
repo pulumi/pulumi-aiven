@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ func NewAccountTeam(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountTeam
 	err := ctx.RegisterResource("aiven:index/accountTeam:AccountTeam", name, args, &resource, opts...)
 	if err != nil {

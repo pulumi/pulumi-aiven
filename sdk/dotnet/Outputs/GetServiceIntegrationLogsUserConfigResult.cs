@@ -15,15 +15,19 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly int? ElasticsearchIndexDaysMax;
         public readonly string? ElasticsearchIndexPrefix;
+        public readonly ImmutableArray<string> SelectedLogFields;
 
         [OutputConstructor]
         private GetServiceIntegrationLogsUserConfigResult(
             int? elasticsearchIndexDaysMax,
 
-            string? elasticsearchIndexPrefix)
+            string? elasticsearchIndexPrefix,
+
+            ImmutableArray<string> selectedLogFields)
         {
             ElasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             ElasticsearchIndexPrefix = elasticsearchIndexPrefix;
+            SelectedLogFields = selectedLogFields;
         }
     }
 }
