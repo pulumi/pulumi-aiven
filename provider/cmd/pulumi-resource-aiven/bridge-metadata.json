@@ -248,6 +248,12 @@
                     }
                 }
             },
+            "aiven_gcp_privatelink": {
+                "current": "aiven:index/gcpPrivatelink:GcpPrivatelink"
+            },
+            "aiven_gcp_privatelink_connection_approval": {
+                "current": "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval"
+            },
             "aiven_gcp_vpc_peering_connection": {
                 "current": "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection"
             },
@@ -1168,7 +1174,14 @@
                         }
                     },
                     "kafka_logs_user_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "kafka_mirrormaker_user_config": {
                         "maxItemsOne": true,
@@ -1181,7 +1194,14 @@
                         }
                     },
                     "logs_user_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "metrics_user_config": {
                         "maxItemsOne": true,
@@ -1534,6 +1554,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "aiven_gcp_privatelink": {
+                "current": "aiven:index/getGcpPrivatelink:getGcpPrivatelink"
             },
             "aiven_gcp_vpc_peering_connection": {
                 "current": "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection"
@@ -2458,7 +2481,14 @@
                         }
                     },
                     "kafka_logs_user_config": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "kafka_mirrormaker_user_config": {
                         "maxItemsOne": false,
@@ -2471,7 +2501,14 @@
                         }
                     },
                     "logs_user_config": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "metrics_user_config": {
                         "maxItemsOne": false,
@@ -2572,6 +2609,8 @@
             "aiven:index/flinkApplication:FlinkApplication": "aiven_flink_application",
             "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": "aiven_flink_application_deployment",
             "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": "aiven_flink_application_version",
+            "aiven:index/gcpPrivatelink:GcpPrivatelink": "aiven_gcp_privatelink",
+            "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": "aiven_gcp_privatelink_connection_approval",
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": "aiven_gcp_vpc_peering_connection",
             "aiven:index/grafana:Grafana": "aiven_grafana",
             "aiven:index/influxDb:InfluxDb": "aiven_influxdb",
@@ -2635,6 +2674,7 @@
             "aiven:index/getFlink:getFlink": "aiven_flink",
             "aiven:index/getFlinkApplication:getFlinkApplication": "aiven_flink_application",
             "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": "aiven_flink_application_version",
+            "aiven:index/getGcpPrivatelink:getGcpPrivatelink": "aiven_gcp_privatelink",
             "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection": "aiven_gcp_vpc_peering_connection",
             "aiven:index/getGrafana:getGrafana": "aiven_grafana",
             "aiven:index/getInfluxDb:getInfluxDb": "aiven_influxdb",
@@ -3590,7 +3630,8 @@
                 "statusStorageTopic": "status_storage_topic"
             },
             "aiven:index/ServiceIntegrationKafkaLogsUserConfig:ServiceIntegrationKafkaLogsUserConfig": {
-                "kafkaTopic": "kafka_topic"
+                "kafkaTopic": "kafka_topic",
+                "selectedLogFields": "selected_log_fields"
             },
             "aiven:index/ServiceIntegrationKafkaMirrormakerUserConfig:ServiceIntegrationKafkaMirrormakerUserConfig": {
                 "clusterAlias": "cluster_alias",
@@ -3606,7 +3647,8 @@
             },
             "aiven:index/ServiceIntegrationLogsUserConfig:ServiceIntegrationLogsUserConfig": {
                 "elasticsearchIndexDaysMax": "elasticsearch_index_days_max",
-                "elasticsearchIndexPrefix": "elasticsearch_index_prefix"
+                "elasticsearchIndexPrefix": "elasticsearch_index_prefix",
+                "selectedLogFields": "selected_log_fields"
             },
             "aiven:index/ServiceIntegrationMetricsUserConfig:ServiceIntegrationMetricsUserConfig": {
                 "retentionDays": "retention_days",
@@ -3846,6 +3888,16 @@
                 "createdAt": "created_at",
                 "createdBy": "created_by",
                 "serviceName": "service_name"
+            },
+            "aiven:index/gcpPrivatelink:GcpPrivatelink": {
+                "googleServiceAttachment": "google_service_attachment",
+                "serviceName": "service_name"
+            },
+            "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": {
+                "privatelinkConnectionId": "privatelink_connection_id",
+                "pscConnectionId": "psc_connection_id",
+                "serviceName": "service_name",
+                "userIpAddress": "user_ip_address"
             },
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": {
                 "gcpProjectId": "gcp_project_id",
@@ -4189,6 +4241,10 @@
             "aiven:index/getFlinkServiceIntegration:getFlinkServiceIntegration": {
                 "integrationType": "integration_type",
                 "sourceServiceName": "source_service_name"
+            },
+            "aiven:index/getGcpPrivatelink:getGcpPrivatelink": {
+                "googleServiceAttachment": "google_service_attachment",
+                "serviceName": "service_name"
             },
             "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection": {
                 "gcpProjectId": "gcp_project_id",
@@ -5479,7 +5535,8 @@
                 "statusStorageTopic": "status_storage_topic"
             },
             "aiven:index/getServiceIntegrationKafkaLogsUserConfig:getServiceIntegrationKafkaLogsUserConfig": {
-                "kafkaTopic": "kafka_topic"
+                "kafkaTopic": "kafka_topic",
+                "selectedLogFields": "selected_log_fields"
             },
             "aiven:index/getServiceIntegrationKafkaMirrormakerUserConfig:getServiceIntegrationKafkaMirrormakerUserConfig": {
                 "clusterAlias": "cluster_alias",
@@ -5495,7 +5552,8 @@
             },
             "aiven:index/getServiceIntegrationLogsUserConfig:getServiceIntegrationLogsUserConfig": {
                 "elasticsearchIndexDaysMax": "elasticsearch_index_days_max",
-                "elasticsearchIndexPrefix": "elasticsearch_index_prefix"
+                "elasticsearchIndexPrefix": "elasticsearch_index_prefix",
+                "selectedLogFields": "selected_log_fields"
             },
             "aiven:index/getServiceIntegrationMetricsUserConfig:getServiceIntegrationMetricsUserConfig": {
                 "retentionDays": "retention_days",

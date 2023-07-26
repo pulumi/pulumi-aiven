@@ -10,9 +10,9 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.27.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.53.0
-	github.com/pulumi/pulumi/pkg/v3 v3.73.1-0.20230623071431-db579129f4c9 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.73.1-0.20230623071431-db579129f4c9
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.2
+	github.com/pulumi/pulumi/pkg/v3 v3.75.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.75.0
 )
 
 require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
@@ -53,8 +53,8 @@ require (
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
-	github.com/aiven/aiven-go-client v1.25.0 // indirect
-	github.com/aiven/go-api-schemas v1.18.0 // indirect
+	github.com/aiven/aiven-go-client v1.32.0 // indirect
+	github.com/aiven/go-api-schemas v1.20.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
