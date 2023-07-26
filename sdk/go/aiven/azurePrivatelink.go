@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ func NewAzurePrivatelink(ctx *pulumi.Context,
 	if args.UserSubscriptionIds == nil {
 		return nil, errors.New("invalid value for required argument 'UserSubscriptionIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzurePrivatelink
 	err := ctx.RegisterResource("aiven:index/azurePrivatelink:AzurePrivatelink", name, args, &resource, opts...)
 	if err != nil {

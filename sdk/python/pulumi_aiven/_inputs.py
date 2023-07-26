@@ -13136,7 +13136,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_topics: List of topics to include.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kafka_custom_metrics: List of custom metrics.
         :param pulumi.Input[int] max_jmx_metrics: Maximum number of JMX metrics to send.
-        :param pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs'] opensearch: Datadog OpenSearch Options.
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs'] opensearch: Datadog Opensearch Options.
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgs'] redis: Datadog Redis Options.
         """
         if datadog_dbm_enabled is not None:
@@ -13260,7 +13260,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']]:
         """
-        Datadog OpenSearch Options.
+        Datadog Opensearch Options.
         """
         return pulumi.get(self, "opensearch")
 
@@ -14485,11 +14485,15 @@ class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs:
 @pulumi.input_type
 class ServiceIntegrationKafkaLogsUserConfigArgs:
     def __init__(__self__, *,
-                 kafka_topic: pulumi.Input[str]):
+                 kafka_topic: pulumi.Input[str],
+                 selected_log_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] kafka_topic: Topic name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_log_fields: The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
         """
         pulumi.set(__self__, "kafka_topic", kafka_topic)
+        if selected_log_fields is not None:
+            pulumi.set(__self__, "selected_log_fields", selected_log_fields)
 
     @property
     @pulumi.getter(name="kafkaTopic")
@@ -14502,6 +14506,18 @@ class ServiceIntegrationKafkaLogsUserConfigArgs:
     @kafka_topic.setter
     def kafka_topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "kafka_topic", value)
+
+    @property
+    @pulumi.getter(name="selectedLogFields")
+    def selected_log_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+        """
+        return pulumi.get(self, "selected_log_fields")
+
+    @selected_log_fields.setter
+    def selected_log_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "selected_log_fields", value)
 
 
 @pulumi.input_type
@@ -14624,15 +14640,19 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
 class ServiceIntegrationLogsUserConfigArgs:
     def __init__(__self__, *,
                  elasticsearch_index_days_max: Optional[pulumi.Input[int]] = None,
-                 elasticsearch_index_prefix: Optional[pulumi.Input[str]] = None):
+                 elasticsearch_index_prefix: Optional[pulumi.Input[str]] = None,
+                 selected_log_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] elasticsearch_index_days_max: Elasticsearch index retention limit. The default value is `3`.
         :param pulumi.Input[str] elasticsearch_index_prefix: Elasticsearch index prefix. The default value is `logs`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_log_fields: The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
         """
         if elasticsearch_index_days_max is not None:
             pulumi.set(__self__, "elasticsearch_index_days_max", elasticsearch_index_days_max)
         if elasticsearch_index_prefix is not None:
             pulumi.set(__self__, "elasticsearch_index_prefix", elasticsearch_index_prefix)
+        if selected_log_fields is not None:
+            pulumi.set(__self__, "selected_log_fields", selected_log_fields)
 
     @property
     @pulumi.getter(name="elasticsearchIndexDaysMax")
@@ -14657,6 +14677,18 @@ class ServiceIntegrationLogsUserConfigArgs:
     @elasticsearch_index_prefix.setter
     def elasticsearch_index_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elasticsearch_index_prefix", value)
+
+    @property
+    @pulumi.getter(name="selectedLogFields")
+    def selected_log_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+        """
+        return pulumi.get(self, "selected_log_fields")
+
+    @selected_log_fields.setter
+    def selected_log_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "selected_log_fields", value)
 
 
 @pulumi.input_type

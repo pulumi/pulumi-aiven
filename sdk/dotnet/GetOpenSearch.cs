@@ -160,7 +160,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// OpenSearch user configurable settings
+        /// Opensearch user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigResult> OpensearchUserConfigs;
         /// <summary>

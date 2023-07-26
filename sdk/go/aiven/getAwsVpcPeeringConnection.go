@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupAwsVpcPeeringConnection(ctx *pulumi.Context, args *LookupAwsVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAwsVpcPeeringConnectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsVpcPeeringConnectionResult
 	err := ctx.Invoke("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args, &rv, opts...)
 	if err != nil {

@@ -14,11 +14,16 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationKafkaLogsUserConfigResult
     {
         public readonly string KafkaTopic;
+        public readonly ImmutableArray<string> SelectedLogFields;
 
         [OutputConstructor]
-        private GetServiceIntegrationKafkaLogsUserConfigResult(string kafkaTopic)
+        private GetServiceIntegrationKafkaLogsUserConfigResult(
+            string kafkaTopic,
+
+            ImmutableArray<string> selectedLogFields)
         {
             KafkaTopic = kafkaTopic;
+            SelectedLogFields = selectedLogFields;
         }
     }
 }

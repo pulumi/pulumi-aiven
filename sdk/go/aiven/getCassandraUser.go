@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupCassandraUser(ctx *pulumi.Context, args *LookupCassandraUserArgs, opts ...pulumi.InvokeOption) (*LookupCassandraUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraUserResult
 	err := ctx.Invoke("aiven:index/getCassandraUser:getCassandraUser", args, &rv, opts...)
 	if err != nil {

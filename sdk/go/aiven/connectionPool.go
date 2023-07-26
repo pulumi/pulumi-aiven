@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ func NewConnectionPool(ctx *pulumi.Context,
 		"connectionUri",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectionPool
 	err := ctx.RegisterResource("aiven:index/connectionPool:ConnectionPool", name, args, &resource, opts...)
 	if err != nil {

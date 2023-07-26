@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupM3dbUser(ctx *pulumi.Context, args *LookupM3dbUserArgs, opts ...pulumi.InvokeOption) (*LookupM3dbUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3dbUserResult
 	err := ctx.Invoke("aiven:index/getM3dbUser:getM3dbUser", args, &rv, opts...)
 	if err != nil {

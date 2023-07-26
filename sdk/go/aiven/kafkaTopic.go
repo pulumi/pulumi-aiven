@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,6 +65,7 @@ func NewKafkaTopic(ctx *pulumi.Context,
 	if args.TopicName == nil {
 		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KafkaTopic
 	err := ctx.RegisterResource("aiven:index/kafkaTopic:KafkaTopic", name, args, &resource, opts...)
 	if err != nil {

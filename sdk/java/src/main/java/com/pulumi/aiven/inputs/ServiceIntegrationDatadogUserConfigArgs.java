@@ -142,14 +142,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Datadog OpenSearch Options.
+     * Datadog Opensearch Options.
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<ServiceIntegrationDatadogUserConfigOpensearchArgs> opensearch;
 
     /**
-     * @return Datadog OpenSearch Options.
+     * @return Datadog Opensearch Options.
      * 
      */
     public Optional<Output<ServiceIntegrationDatadogUserConfigOpensearchArgs>> opensearch() {
@@ -433,7 +433,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param opensearch Datadog OpenSearch Options.
+         * @param opensearch Datadog Opensearch Options.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param opensearch Datadog OpenSearch Options.
+         * @param opensearch Datadog Opensearch Options.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupKafkaUser(ctx *pulumi.Context, args *LookupKafkaUserArgs, opts ...pulumi.InvokeOption) (*LookupKafkaUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaUserResult
 	err := ctx.Invoke("aiven:index/getKafkaUser:getKafkaUser", args, &rv, opts...)
 	if err != nil {

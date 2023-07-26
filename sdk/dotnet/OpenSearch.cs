@@ -119,7 +119,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// OpenSearch user configurable settings
+        /// Opensearch user configurable settings
         /// </summary>
         [Output("opensearchUserConfig")]
         public Output<Outputs.OpenSearchOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// OpenSearch user configurable settings
+        /// Opensearch user configurable settings
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.OpenSearchOpensearchUserConfigArgs>? OpensearchUserConfig { get; set; }
@@ -448,7 +448,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// OpenSearch user configurable settings
+        /// Opensearch user configurable settings
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.OpenSearchOpensearchUserConfigGetArgs>? OpensearchUserConfig { get; set; }

@@ -5,15 +5,21 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationKafkaLogsUserConfig {
     private String kafkaTopic;
+    private @Nullable List<String> selectedLogFields;
 
     private GetServiceIntegrationKafkaLogsUserConfig() {}
     public String kafkaTopic() {
         return this.kafkaTopic;
+    }
+    public List<String> selectedLogFields() {
+        return this.selectedLogFields == null ? List.of() : this.selectedLogFields;
     }
 
     public static Builder builder() {
@@ -26,10 +32,12 @@ public final class GetServiceIntegrationKafkaLogsUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private String kafkaTopic;
+        private @Nullable List<String> selectedLogFields;
         public Builder() {}
         public Builder(GetServiceIntegrationKafkaLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaTopic = defaults.kafkaTopic;
+    	      this.selectedLogFields = defaults.selectedLogFields;
         }
 
         @CustomType.Setter
@@ -37,9 +45,18 @@ public final class GetServiceIntegrationKafkaLogsUserConfig {
             this.kafkaTopic = Objects.requireNonNull(kafkaTopic);
             return this;
         }
+        @CustomType.Setter
+        public Builder selectedLogFields(@Nullable List<String> selectedLogFields) {
+            this.selectedLogFields = selectedLogFields;
+            return this;
+        }
+        public Builder selectedLogFields(String... selectedLogFields) {
+            return selectedLogFields(List.of(selectedLogFields));
+        }
         public GetServiceIntegrationKafkaLogsUserConfig build() {
             final var o = new GetServiceIntegrationKafkaLogsUserConfig();
             o.kafkaTopic = kafkaTopic;
+            o.selectedLogFields = selectedLogFields;
             return o;
         }
     }

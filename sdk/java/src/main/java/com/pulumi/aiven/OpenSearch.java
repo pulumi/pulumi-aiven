@@ -228,14 +228,14 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * OpenSearch user configurable settings
+     * Opensearch user configurable settings
      * 
      */
     @Export(name="opensearchUserConfig", type=OpenSearchOpensearchUserConfig.class, parameters={})
     private Output</* @Nullable */ OpenSearchOpensearchUserConfig> opensearchUserConfig;
 
     /**
-     * @return OpenSearch user configurable settings
+     * @return Opensearch user configurable settings
      * 
      */
     public Output<Optional<OpenSearchOpensearchUserConfig>> opensearchUserConfig() {

@@ -28,6 +28,8 @@ from .flink import *
 from .flink_application import *
 from .flink_application_deployment import *
 from .flink_application_version import *
+from .gcp_privatelink import *
+from .gcp_privatelink_connection_approval import *
 from .gcp_vpc_peering_connection import *
 from .get_account import *
 from .get_account_authentication import *
@@ -49,6 +51,7 @@ from .get_connection_pool import *
 from .get_flink import *
 from .get_flink_application import *
 from .get_flink_application_version import *
+from .get_gcp_privatelink import *
 from .get_gcp_vpc_peering_connection import *
 from .get_grafana import *
 from .get_influx_db import *
@@ -326,6 +329,22 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": "FlinkApplicationVersion"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/gcpPrivatelink",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/gcpPrivatelink:GcpPrivatelink": "GcpPrivatelink"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/gcpPrivatelinkConnectionApproval",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": "GcpPrivatelinkConnectionApproval"
   }
  },
  {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupAzurePrivatelink(ctx *pulumi.Context, args *LookupAzurePrivatelinkArgs, opts ...pulumi.InvokeOption) (*LookupAzurePrivatelinkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzurePrivatelinkResult
 	err := ctx.Invoke("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args, &rv, opts...)
 	if err != nil {

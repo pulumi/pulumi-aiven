@@ -93,7 +93,7 @@ export interface GetOpenSearchResult {
      */
     readonly maintenanceWindowTime: string;
     /**
-     * OpenSearch user configurable settings
+     * Opensearch user configurable settings
      */
     readonly opensearchUserConfigs: outputs.GetOpenSearchOpensearchUserConfig[];
     /**

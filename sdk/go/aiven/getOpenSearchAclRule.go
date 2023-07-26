@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupOpenSearchAclRule(ctx *pulumi.Context, args *LookupOpenSearchAclRuleArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchAclRuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenSearchAclRuleResult
 	err := ctx.Invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupM3Aggregator(ctx *pulumi.Context, args *LookupM3AggregatorArgs, opts ...pulumi.InvokeOption) (*LookupM3AggregatorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3AggregatorResult
 	err := ctx.Invoke("aiven:index/getM3Aggregator:getM3Aggregator", args, &rv, opts...)
 	if err != nil {

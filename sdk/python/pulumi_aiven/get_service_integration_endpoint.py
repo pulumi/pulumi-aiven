@@ -148,7 +148,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalOpensearchLogsUserConfigs")
     def external_opensearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult']:
         """
-        ExternalOpenSearchLogs user configurable settings
+        ExternalOpensearchLogs user configurable settings
         """
         return pulumi.get(self, "external_opensearch_logs_user_configs")
 

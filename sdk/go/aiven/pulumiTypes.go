@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AccountAuthenticationSamlFieldMapping struct {
 	// Field name for user email
@@ -30382,7 +30385,7 @@ type ServiceIntegrationDatadogUserConfig struct {
 	KafkaCustomMetrics []string `pulumi:"kafkaCustomMetrics"`
 	// Maximum number of JMX metrics to send.
 	MaxJmxMetrics *int `pulumi:"maxJmxMetrics"`
-	// Datadog OpenSearch Options.
+	// Datadog Opensearch Options.
 	Opensearch *ServiceIntegrationDatadogUserConfigOpensearch `pulumi:"opensearch"`
 	// Datadog Redis Options.
 	Redis *ServiceIntegrationDatadogUserConfigRedis `pulumi:"redis"`
@@ -30416,7 +30419,7 @@ type ServiceIntegrationDatadogUserConfigArgs struct {
 	KafkaCustomMetrics pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
 	// Maximum number of JMX metrics to send.
 	MaxJmxMetrics pulumi.IntPtrInput `pulumi:"maxJmxMetrics"`
-	// Datadog OpenSearch Options.
+	// Datadog Opensearch Options.
 	Opensearch ServiceIntegrationDatadogUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// Datadog Redis Options.
 	Redis ServiceIntegrationDatadogUserConfigRedisPtrInput `pulumi:"redis"`
@@ -30541,7 +30544,7 @@ func (o ServiceIntegrationDatadogUserConfigOutput) MaxJmxMetrics() pulumi.IntPtr
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *int { return v.MaxJmxMetrics }).(pulumi.IntPtrOutput)
 }
 
-// Datadog OpenSearch Options.
+// Datadog Opensearch Options.
 func (o ServiceIntegrationDatadogUserConfigOutput) Opensearch() ServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfigOpensearch {
 		return v.Opensearch
@@ -30657,7 +30660,7 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) MaxJmxMetrics() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
-// Datadog OpenSearch Options.
+// Datadog Opensearch Options.
 func (o ServiceIntegrationDatadogUserConfigPtrOutput) Opensearch() ServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) *ServiceIntegrationDatadogUserConfigOpensearch {
 		if v == nil {
@@ -34183,6 +34186,8 @@ func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusSto
 type ServiceIntegrationKafkaLogsUserConfig struct {
 	// Topic name.
 	KafkaTopic string `pulumi:"kafkaTopic"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
 }
 
 // ServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts ServiceIntegrationKafkaLogsUserConfigArgs and ServiceIntegrationKafkaLogsUserConfigOutput values.
@@ -34199,6 +34204,8 @@ type ServiceIntegrationKafkaLogsUserConfigInput interface {
 type ServiceIntegrationKafkaLogsUserConfigArgs struct {
 	// Topic name.
 	KafkaTopic pulumi.StringInput `pulumi:"kafkaTopic"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
 }
 
 func (ServiceIntegrationKafkaLogsUserConfigArgs) ElementType() reflect.Type {
@@ -34283,6 +34290,11 @@ func (o ServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringO
 	return o.ApplyT(func(v ServiceIntegrationKafkaLogsUserConfig) string { return v.KafkaTopic }).(pulumi.StringOutput)
 }
 
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o ServiceIntegrationKafkaLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationKafkaLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
 type ServiceIntegrationKafkaLogsUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationKafkaLogsUserConfigPtrOutput) ElementType() reflect.Type {
@@ -34315,6 +34327,16 @@ func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) KafkaTopic() pulumi.Stri
 		}
 		return &v.KafkaTopic
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationKafkaLogsUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedLogFields
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfig struct {
@@ -34696,6 +34718,8 @@ type ServiceIntegrationLogsUserConfig struct {
 	ElasticsearchIndexDaysMax *int `pulumi:"elasticsearchIndexDaysMax"`
 	// Elasticsearch index prefix. The default value is `logs`.
 	ElasticsearchIndexPrefix *string `pulumi:"elasticsearchIndexPrefix"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
 }
 
 // ServiceIntegrationLogsUserConfigInput is an input type that accepts ServiceIntegrationLogsUserConfigArgs and ServiceIntegrationLogsUserConfigOutput values.
@@ -34714,6 +34738,8 @@ type ServiceIntegrationLogsUserConfigArgs struct {
 	ElasticsearchIndexDaysMax pulumi.IntPtrInput `pulumi:"elasticsearchIndexDaysMax"`
 	// Elasticsearch index prefix. The default value is `logs`.
 	ElasticsearchIndexPrefix pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
 }
 
 func (ServiceIntegrationLogsUserConfigArgs) ElementType() reflect.Type {
@@ -34803,6 +34829,11 @@ func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulum
 	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
 }
 
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o ServiceIntegrationLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
 type ServiceIntegrationLogsUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationLogsUserConfigPtrOutput) ElementType() reflect.Type {
@@ -34845,6 +34876,16 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pu
 		}
 		return v.ElasticsearchIndexPrefix
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o ServiceIntegrationLogsUserConfigPtrOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedLogFields
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServiceIntegrationMetricsUserConfig struct {
@@ -65615,7 +65656,8 @@ func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) Status
 }
 
 type GetServiceIntegrationKafkaLogsUserConfig struct {
-	KafkaTopic string `pulumi:"kafkaTopic"`
+	KafkaTopic        string   `pulumi:"kafkaTopic"`
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
 }
 
 // GetServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts GetServiceIntegrationKafkaLogsUserConfigArgs and GetServiceIntegrationKafkaLogsUserConfigOutput values.
@@ -65630,7 +65672,8 @@ type GetServiceIntegrationKafkaLogsUserConfigInput interface {
 }
 
 type GetServiceIntegrationKafkaLogsUserConfigArgs struct {
-	KafkaTopic pulumi.StringInput `pulumi:"kafkaTopic"`
+	KafkaTopic        pulumi.StringInput      `pulumi:"kafkaTopic"`
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
 }
 
 func (GetServiceIntegrationKafkaLogsUserConfigArgs) ElementType() reflect.Type {
@@ -65686,6 +65729,10 @@ func (o GetServiceIntegrationKafkaLogsUserConfigOutput) ToGetServiceIntegrationK
 
 func (o GetServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaLogsUserConfig) string { return v.KafkaTopic }).(pulumi.StringOutput)
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
 }
 
 type GetServiceIntegrationKafkaLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
@@ -66031,8 +66078,9 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 }
 
 type GetServiceIntegrationLogsUserConfig struct {
-	ElasticsearchIndexDaysMax *int    `pulumi:"elasticsearchIndexDaysMax"`
-	ElasticsearchIndexPrefix  *string `pulumi:"elasticsearchIndexPrefix"`
+	ElasticsearchIndexDaysMax *int     `pulumi:"elasticsearchIndexDaysMax"`
+	ElasticsearchIndexPrefix  *string  `pulumi:"elasticsearchIndexPrefix"`
+	SelectedLogFields         []string `pulumi:"selectedLogFields"`
 }
 
 // GetServiceIntegrationLogsUserConfigInput is an input type that accepts GetServiceIntegrationLogsUserConfigArgs and GetServiceIntegrationLogsUserConfigOutput values.
@@ -66047,8 +66095,9 @@ type GetServiceIntegrationLogsUserConfigInput interface {
 }
 
 type GetServiceIntegrationLogsUserConfigArgs struct {
-	ElasticsearchIndexDaysMax pulumi.IntPtrInput    `pulumi:"elasticsearchIndexDaysMax"`
-	ElasticsearchIndexPrefix  pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
+	ElasticsearchIndexDaysMax pulumi.IntPtrInput      `pulumi:"elasticsearchIndexDaysMax"`
+	ElasticsearchIndexPrefix  pulumi.StringPtrInput   `pulumi:"elasticsearchIndexPrefix"`
+	SelectedLogFields         pulumi.StringArrayInput `pulumi:"selectedLogFields"`
 }
 
 func (GetServiceIntegrationLogsUserConfigArgs) ElementType() reflect.Type {
@@ -66108,6 +66157,10 @@ func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() p
 
 func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
 }
 
 type GetServiceIntegrationLogsUserConfigArrayOutput struct{ *pulumi.OutputState }

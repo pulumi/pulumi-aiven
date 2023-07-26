@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewOpenSearchAclConfig(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OpenSearchAclConfig
 	err := ctx.RegisterResource("aiven:index/openSearchAclConfig:OpenSearchAclConfig", name, args, &resource, opts...)
 	if err != nil {

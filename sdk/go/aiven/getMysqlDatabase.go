@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupMysqlDatabase(ctx *pulumi.Context, args *LookupMysqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupMysqlDatabaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMysqlDatabaseResult
 	err := ctx.Invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", args, &rv, opts...)
 	if err != nil {

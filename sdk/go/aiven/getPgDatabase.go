@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupPgDatabase(ctx *pulumi.Context, args *LookupPgDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupPgDatabaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPgDatabaseResult
 	err := ctx.Invoke("aiven:index/getPgDatabase:getPgDatabase", args, &rv, opts...)
 	if err != nil {

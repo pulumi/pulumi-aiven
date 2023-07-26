@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupOpenSearch(ctx *pulumi.Context, args *LookupOpenSearchArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenSearchResult
 	err := ctx.Invoke("aiven:index/getOpenSearch:getOpenSearch", args, &rv, opts...)
 	if err != nil {
@@ -79,7 +81,7 @@ type LookupOpenSearchResult struct {
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// OpenSearch user configurable settings
+	// Opensearch user configurable settings
 	OpensearchUserConfigs []GetOpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfigs"`
 	// OpenSearch server provided values
 	Opensearches []GetOpenSearchOpensearch `pulumi:"opensearches"`
@@ -210,7 +212,7 @@ func (o LookupOpenSearchResultOutput) MaintenanceWindowTime() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// OpenSearch user configurable settings
+// Opensearch user configurable settings
 func (o LookupOpenSearchResultOutput) OpensearchUserConfigs() GetOpenSearchOpensearchUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupOpenSearchResult) []GetOpenSearchOpensearchUserConfig { return v.OpensearchUserConfigs }).(GetOpenSearchOpensearchUserConfigArrayOutput)
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupOpensearchUser(ctx *pulumi.Context, args *LookupOpensearchUserArgs, opts ...pulumi.InvokeOption) (*LookupOpensearchUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpensearchUserResult
 	err := ctx.Invoke("aiven:index/getOpensearchUser:getOpensearchUser", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
 func LookupInfluxdbDatabase(ctx *pulumi.Context, args *LookupInfluxdbDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupInfluxdbDatabaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInfluxdbDatabaseResult
 	err := ctx.Invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args, &rv, opts...)
 	if err != nil {

@@ -104,14 +104,14 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenSearch user configurable settings
+     * Opensearch user configurable settings
      * 
      */
     @Import(name="opensearchUserConfig")
     private @Nullable Output<OpenSearchOpensearchUserConfigArgs> opensearchUserConfig;
 
     /**
-     * @return OpenSearch user configurable settings
+     * @return Opensearch user configurable settings
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigArgs>> opensearchUserConfig() {
@@ -389,7 +389,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearchUserConfig OpenSearch user configurable settings
+         * @param opensearchUserConfig Opensearch user configurable settings
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearchUserConfig OpenSearch user configurable settings
+         * @param opensearchUserConfig Opensearch user configurable settings
          * 
          * @return builder
          * 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Account Authentication data source provides information about the existing Aiven Account Authentication.
 func LookupAccountAuthentication(ctx *pulumi.Context, args *LookupAccountAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupAccountAuthenticationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountAuthenticationResult
 	err := ctx.Invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", args, &rv, opts...)
 	if err != nil {

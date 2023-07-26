@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupInfluxdbUser(ctx *pulumi.Context, args *LookupInfluxdbUserArgs, opts ...pulumi.InvokeOption) (*LookupInfluxdbUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInfluxdbUserResult
 	err := ctx.Invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", args, &rv, opts...)
 	if err != nil {
