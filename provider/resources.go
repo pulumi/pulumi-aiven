@@ -15,6 +15,7 @@
 package aiven
 
 import (
+	"context"
 	"fmt"
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -23,6 +24,7 @@ import (
 
 	providerShim "github.com/aiven/terraform-provider-aiven/shim"
 	"github.com/pulumi/pulumi-aiven/provider/v6/pkg/version"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -67,8 +69,10 @@ func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProvider
 	return &license
 }
 
-func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(providerShim.NewProvider(version.Version))
+func Provider(ctx context.Context) tfbridge.ProviderInfo {
+	p := pfbridge.MuxShimWithDisjointgPF(ctx,
+		shimv2.NewProvider(providerShim.NewProvider(version.Version)),
+		providerShim.NewPFProvider(version.Version))
 
 	prov := tfbridge.ProviderInfo{
 		P:                 p,
@@ -81,6 +85,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:        "https://github.com/pulumi/pulumi-aiven",
 		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
 		UpstreamRepoPath:  "./upstream",
+		Version:           version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_token": {
 				Secret: tfbridge.True(),

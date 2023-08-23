@@ -2,10 +2,12 @@
     "auto-aliasing": {
         "resources": {
             "aiven_account": {
-                "current": "aiven:index/account:Account"
+                "current": "aiven:index/account:Account",
+                "majorVersion": 6
             },
             "aiven_account_authentication": {
                 "current": "aiven:index/accountAuthentication:AccountAuthentication",
+                "majorVersion": 6,
                 "fields": {
                     "saml_field_mapping": {
                         "maxItemsOne": true
@@ -13,16 +15,20 @@
                 }
             },
             "aiven_account_team": {
-                "current": "aiven:index/accountTeam:AccountTeam"
+                "current": "aiven:index/accountTeam:AccountTeam",
+                "majorVersion": 6
             },
             "aiven_account_team_member": {
-                "current": "aiven:index/accountTeamMember:AccountTeamMember"
+                "current": "aiven:index/accountTeamMember:AccountTeamMember",
+                "majorVersion": 6
             },
             "aiven_account_team_project": {
-                "current": "aiven:index/accountTeamProject:AccountTeamProject"
+                "current": "aiven:index/accountTeamProject:AccountTeamProject",
+                "majorVersion": 6
             },
             "aiven_aws_privatelink": {
                 "current": "aiven:index/awsPrivatelink:AwsPrivatelink",
+                "majorVersion": 6,
                 "fields": {
                     "principals": {
                         "maxItemsOne": false
@@ -30,10 +36,12 @@
                 }
             },
             "aiven_aws_vpc_peering_connection": {
-                "current": "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection"
+                "current": "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_azure_privatelink": {
                 "current": "aiven:index/azurePrivatelink:AzurePrivatelink",
+                "majorVersion": 6,
                 "fields": {
                     "user_subscription_ids": {
                         "maxItemsOne": false
@@ -41,13 +49,16 @@
                 }
             },
             "aiven_azure_privatelink_connection_approval": {
-                "current": "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval"
+                "current": "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval",
+                "majorVersion": 6
             },
             "aiven_azure_vpc_peering_connection": {
-                "current": "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection"
+                "current": "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_billing_group": {
                 "current": "aiven:index/billingGroup:BillingGroup",
+                "majorVersion": 6,
                 "fields": {
                     "address_lines": {
                         "maxItemsOne": false
@@ -59,6 +70,7 @@
             },
             "aiven_cassandra": {
                 "current": "aiven:index/cassandra:Cassandra",
+                "majorVersion": 6,
                 "fields": {
                     "cassandra": {
                         "maxItemsOne": false
@@ -106,10 +118,12 @@
                 }
             },
             "aiven_cassandra_user": {
-                "current": "aiven:index/cassandraUser:CassandraUser"
+                "current": "aiven:index/cassandraUser:CassandraUser",
+                "majorVersion": 6
             },
             "aiven_clickhouse": {
                 "current": "aiven:index/clickhouse:Clickhouse",
+                "majorVersion": 6,
                 "fields": {
                     "clickhouse": {
                         "maxItemsOne": false
@@ -157,10 +171,12 @@
                 }
             },
             "aiven_clickhouse_database": {
-                "current": "aiven:index/clickhouseDatabase:ClickhouseDatabase"
+                "current": "aiven:index/clickhouseDatabase:ClickhouseDatabase",
+                "majorVersion": 6
             },
             "aiven_clickhouse_grant": {
                 "current": "aiven:index/clickhouseGrant:ClickhouseGrant",
+                "majorVersion": 6,
                 "fields": {
                     "privilege_grant": {
                         "maxItemsOne": false
@@ -171,16 +187,20 @@
                 }
             },
             "aiven_clickhouse_role": {
-                "current": "aiven:index/clickhouseRole:ClickhouseRole"
+                "current": "aiven:index/clickhouseRole:ClickhouseRole",
+                "majorVersion": 6
             },
             "aiven_clickhouse_user": {
-                "current": "aiven:index/clickhouseUser:ClickhouseUser"
+                "current": "aiven:index/clickhouseUser:ClickhouseUser",
+                "majorVersion": 6
             },
             "aiven_connection_pool": {
-                "current": "aiven:index/connectionPool:ConnectionPool"
+                "current": "aiven:index/connectionPool:ConnectionPool",
+                "majorVersion": 6
             },
             "aiven_flink": {
                 "current": "aiven:index/flink:Flink",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -226,13 +246,16 @@
                 }
             },
             "aiven_flink_application": {
-                "current": "aiven:index/flinkApplication:FlinkApplication"
+                "current": "aiven:index/flinkApplication:FlinkApplication",
+                "majorVersion": 6
             },
             "aiven_flink_application_deployment": {
-                "current": "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment"
+                "current": "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment",
+                "majorVersion": 6
             },
             "aiven_flink_application_version": {
                 "current": "aiven:index/flinkApplicationVersion:FlinkApplicationVersion",
+                "majorVersion": 6,
                 "fields": {
                     "sink": {
                         "maxItemsOne": false
@@ -249,16 +272,20 @@
                 }
             },
             "aiven_gcp_privatelink": {
-                "current": "aiven:index/gcpPrivatelink:GcpPrivatelink"
+                "current": "aiven:index/gcpPrivatelink:GcpPrivatelink",
+                "majorVersion": 6
             },
             "aiven_gcp_privatelink_connection_approval": {
-                "current": "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval"
+                "current": "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval",
+                "majorVersion": 6
             },
             "aiven_gcp_vpc_peering_connection": {
-                "current": "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection"
+                "current": "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_grafana": {
                 "current": "aiven:index/grafana:Grafana",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -378,6 +405,7 @@
             },
             "aiven_influxdb": {
                 "current": "aiven:index/influxDb:InfluxDb",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -428,13 +456,16 @@
                 }
             },
             "aiven_influxdb_database": {
-                "current": "aiven:index/influxdbDatabase:InfluxdbDatabase"
+                "current": "aiven:index/influxdbDatabase:InfluxdbDatabase",
+                "majorVersion": 6
             },
             "aiven_influxdb_user": {
-                "current": "aiven:index/influxdbUser:InfluxdbUser"
+                "current": "aiven:index/influxdbUser:InfluxdbUser",
+                "majorVersion": 6
             },
             "aiven_kafka": {
                 "current": "aiven:index/kafka:Kafka",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -497,10 +528,12 @@
                 }
             },
             "aiven_kafka_acl": {
-                "current": "aiven:index/kafkaAcl:KafkaAcl"
+                "current": "aiven:index/kafkaAcl:KafkaAcl",
+                "majorVersion": 6
             },
             "aiven_kafka_connect": {
                 "current": "aiven:index/kafkaConnect:KafkaConnect",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -552,6 +585,7 @@
             },
             "aiven_kafka_connector": {
                 "current": "aiven:index/kafkaConnector:KafkaConnector",
+                "majorVersion": 6,
                 "fields": {
                     "task": {
                         "maxItemsOne": false
@@ -560,6 +594,7 @@
             },
             "aiven_kafka_mirrormaker": {
                 "current": "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -601,16 +636,20 @@
                 }
             },
             "aiven_kafka_schema": {
-                "current": "aiven:index/kafkaSchema:KafkaSchema"
+                "current": "aiven:index/kafkaSchema:KafkaSchema",
+                "majorVersion": 6
             },
             "aiven_kafka_schema_configuration": {
-                "current": "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration"
+                "current": "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration",
+                "majorVersion": 6
             },
             "aiven_kafka_schema_registry_acl": {
-                "current": "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl"
+                "current": "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl",
+                "majorVersion": 6
             },
             "aiven_kafka_topic": {
                 "current": "aiven:index/kafkaTopic:KafkaTopic",
+                "majorVersion": 6,
                 "fields": {
                     "config": {
                         "maxItemsOne": true
@@ -621,10 +660,12 @@
                 }
             },
             "aiven_kafka_user": {
-                "current": "aiven:index/kafkaUser:KafkaUser"
+                "current": "aiven:index/kafkaUser:KafkaUser",
+                "majorVersion": 6
             },
             "aiven_m3aggregator": {
                 "current": "aiven:index/m3Aggregator:M3Aggregator",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -661,6 +702,7 @@
             },
             "aiven_m3db": {
                 "current": "aiven:index/m3Db:M3Db",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -764,10 +806,12 @@
                 }
             },
             "aiven_m3db_user": {
-                "current": "aiven:index/m3dbUser:M3dbUser"
+                "current": "aiven:index/m3dbUser:M3dbUser",
+                "majorVersion": 6
             },
             "aiven_mirrormaker_replication_flow": {
                 "current": "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow",
+                "majorVersion": 6,
                 "fields": {
                     "topics": {
                         "maxItemsOne": false
@@ -779,6 +823,7 @@
             },
             "aiven_mysql": {
                 "current": "aiven:index/mySql:MySql",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -832,13 +877,16 @@
                 }
             },
             "aiven_mysql_database": {
-                "current": "aiven:index/mysqlDatabase:MysqlDatabase"
+                "current": "aiven:index/mysqlDatabase:MysqlDatabase",
+                "majorVersion": 6
             },
             "aiven_mysql_user": {
-                "current": "aiven:index/mysqlUser:MysqlUser"
+                "current": "aiven:index/mysqlUser:MysqlUser",
+                "majorVersion": 6
             },
             "aiven_opensearch": {
                 "current": "aiven:index/openSearch:OpenSearch",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -867,6 +915,9 @@
                                 },
                                 "ip_filter_string": {
                                     "maxItemsOne": false
+                                },
+                                "openid": {
+                                    "maxItemsOne": true
                                 },
                                 "opensearch": {
                                     "maxItemsOne": true,
@@ -908,25 +959,36 @@
                 }
             },
             "aiven_opensearch_acl_config": {
-                "current": "aiven:index/openSearchAclConfig:OpenSearchAclConfig"
+                "current": "aiven:index/openSearchAclConfig:OpenSearchAclConfig",
+                "majorVersion": 6
             },
             "aiven_opensearch_acl_rule": {
-                "current": "aiven:index/openSearchAclRule:OpenSearchAclRule"
+                "current": "aiven:index/openSearchAclRule:OpenSearchAclRule",
+                "majorVersion": 6
             },
             "aiven_opensearch_user": {
-                "current": "aiven:index/opensearchUser:OpensearchUser"
+                "current": "aiven:index/opensearchUser:OpensearchUser",
+                "majorVersion": 6
             },
             "aiven_organization": {
-                "current": "aiven:index/organization:Organization"
+                "current": "aiven:index/organization:Organization",
+                "majorVersion": 6
             },
             "aiven_organization_user": {
-                "current": "aiven:index/organizationUser:OrganizationUser"
+                "current": "aiven:index/organizationUser:OrganizationUser",
+                "majorVersion": 6
+            },
+            "aiven_organization_user_group": {
+                "current": "aiven:index/organizationUserGroup:OrganizationUserGroup",
+                "majorVersion": 6
             },
             "aiven_organizational_unit": {
-                "current": "aiven:index/organizationalUnit:OrganizationalUnit"
+                "current": "aiven:index/organizationalUnit:OrganizationalUnit",
+                "majorVersion": 6
             },
             "aiven_pg": {
                 "current": "aiven:index/pg:Pg",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -996,13 +1058,16 @@
                 }
             },
             "aiven_pg_database": {
-                "current": "aiven:index/pgDatabase:PgDatabase"
+                "current": "aiven:index/pgDatabase:PgDatabase",
+                "majorVersion": 6
             },
             "aiven_pg_user": {
-                "current": "aiven:index/pgUser:PgUser"
+                "current": "aiven:index/pgUser:PgUser",
+                "majorVersion": 6
             },
             "aiven_project": {
                 "current": "aiven:index/project:Project",
+                "majorVersion": 6,
                 "fields": {
                     "tag": {
                         "maxItemsOne": false
@@ -1013,13 +1078,16 @@
                 }
             },
             "aiven_project_user": {
-                "current": "aiven:index/projectUser:ProjectUser"
+                "current": "aiven:index/projectUser:ProjectUser",
+                "majorVersion": 6
             },
             "aiven_project_vpc": {
-                "current": "aiven:index/projectVpc:ProjectVpc"
+                "current": "aiven:index/projectVpc:ProjectVpc",
+                "majorVersion": 6
             },
             "aiven_redis": {
                 "current": "aiven:index/redis:Redis",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1071,6 +1139,7 @@
             },
             "aiven_redis_user": {
                 "current": "aiven:index/redisUser:RedisUser",
+                "majorVersion": 6,
                 "fields": {
                     "redis_acl_categories": {
                         "maxItemsOne": false
@@ -1088,6 +1157,7 @@
             },
             "aiven_service_integration": {
                 "current": "aiven:index/serviceIntegration:ServiceIntegration",
+                "majorVersion": 6,
                 "fields": {
                     "clickhouse_kafka_user_config": {
                         "maxItemsOne": true,
@@ -1224,6 +1294,7 @@
             },
             "aiven_service_integration_endpoint": {
                 "current": "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint",
+                "majorVersion": 6,
                 "fields": {
                     "datadog_user_config": {
                         "maxItemsOne": true,
@@ -1268,10 +1339,12 @@
                 }
             },
             "aiven_static_ip": {
-                "current": "aiven:index/staticIp:StaticIp"
+                "current": "aiven:index/staticIp:StaticIp",
+                "majorVersion": 6
             },
             "aiven_transit_gateway_vpc_attachment": {
                 "current": "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment",
+                "majorVersion": 6,
                 "fields": {
                     "user_peer_network_cidrs": {
                         "maxItemsOne": false
@@ -1281,10 +1354,12 @@
         },
         "datasources": {
             "aiven_account": {
-                "current": "aiven:index/getAccount:getAccount"
+                "current": "aiven:index/getAccount:getAccount",
+                "majorVersion": 6
             },
             "aiven_account_authentication": {
                 "current": "aiven:index/getAccountAuthentication:getAccountAuthentication",
+                "majorVersion": 6,
                 "fields": {
                     "saml_field_mapping": {
                         "maxItemsOne": false
@@ -1292,16 +1367,20 @@
                 }
             },
             "aiven_account_team": {
-                "current": "aiven:index/getAccountTeam:getAccountTeam"
+                "current": "aiven:index/getAccountTeam:getAccountTeam",
+                "majorVersion": 6
             },
             "aiven_account_team_member": {
-                "current": "aiven:index/getAccountTeamMember:getAccountTeamMember"
+                "current": "aiven:index/getAccountTeamMember:getAccountTeamMember",
+                "majorVersion": 6
             },
             "aiven_account_team_project": {
-                "current": "aiven:index/getAccountTeamProject:getAccountTeamProject"
+                "current": "aiven:index/getAccountTeamProject:getAccountTeamProject",
+                "majorVersion": 6
             },
             "aiven_aws_privatelink": {
                 "current": "aiven:index/getAwsPrivatelink:getAwsPrivatelink",
+                "majorVersion": 6,
                 "fields": {
                     "principals": {
                         "maxItemsOne": false
@@ -1309,10 +1388,12 @@
                 }
             },
             "aiven_aws_vpc_peering_connection": {
-                "current": "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection"
+                "current": "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_azure_privatelink": {
                 "current": "aiven:index/getAzurePrivatelink:getAzurePrivatelink",
+                "majorVersion": 6,
                 "fields": {
                     "user_subscription_ids": {
                         "maxItemsOne": false
@@ -1320,10 +1401,12 @@
                 }
             },
             "aiven_azure_vpc_peering_connection": {
-                "current": "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection"
+                "current": "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_billing_group": {
                 "current": "aiven:index/getBillingGroup:getBillingGroup",
+                "majorVersion": 6,
                 "fields": {
                     "address_lines": {
                         "maxItemsOne": false
@@ -1335,6 +1418,7 @@
             },
             "aiven_cassandra": {
                 "current": "aiven:index/getCassandra:getCassandra",
+                "majorVersion": 6,
                 "fields": {
                     "cassandra": {
                         "maxItemsOne": false
@@ -1383,6 +1467,7 @@
             },
             "aiven_cassandra_legacy": {
                 "current": "aiven:index/getCassanda:getCassanda",
+                "majorVersion": 6,
                 "fields": {
                     "cassandra": {
                         "maxItemsOne": false
@@ -1430,10 +1515,12 @@
                 }
             },
             "aiven_cassandra_user": {
-                "current": "aiven:index/getCassandraUser:getCassandraUser"
+                "current": "aiven:index/getCassandraUser:getCassandraUser",
+                "majorVersion": 6
             },
             "aiven_clickhouse": {
                 "current": "aiven:index/getClickhouse:getClickhouse",
+                "majorVersion": 6,
                 "fields": {
                     "clickhouse": {
                         "maxItemsOne": false
@@ -1481,16 +1568,20 @@
                 }
             },
             "aiven_clickhouse_database": {
-                "current": "aiven:index/getClickhouseDatabase:getClickhouseDatabase"
+                "current": "aiven:index/getClickhouseDatabase:getClickhouseDatabase",
+                "majorVersion": 6
             },
             "aiven_clickhouse_user": {
-                "current": "aiven:index/getClickhouseUser:getClickhouseUser"
+                "current": "aiven:index/getClickhouseUser:getClickhouseUser",
+                "majorVersion": 6
             },
             "aiven_connection_pool": {
-                "current": "aiven:index/getConnectionPool:getConnectionPool"
+                "current": "aiven:index/getConnectionPool:getConnectionPool",
+                "majorVersion": 6
             },
             "aiven_flink": {
                 "current": "aiven:index/getFlink:getFlink",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1536,10 +1627,12 @@
                 }
             },
             "aiven_flink_application": {
-                "current": "aiven:index/getFlinkApplication:getFlinkApplication"
+                "current": "aiven:index/getFlinkApplication:getFlinkApplication",
+                "majorVersion": 6
             },
             "aiven_flink_application_version": {
                 "current": "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion",
+                "majorVersion": 6,
                 "fields": {
                     "sink": {
                         "maxItemsOne": false
@@ -1556,13 +1649,16 @@
                 }
             },
             "aiven_gcp_privatelink": {
-                "current": "aiven:index/getGcpPrivatelink:getGcpPrivatelink"
+                "current": "aiven:index/getGcpPrivatelink:getGcpPrivatelink",
+                "majorVersion": 6
             },
             "aiven_gcp_vpc_peering_connection": {
-                "current": "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection"
+                "current": "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_grafana": {
                 "current": "aiven:index/getGrafana:getGrafana",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1682,6 +1778,7 @@
             },
             "aiven_influxdb": {
                 "current": "aiven:index/getInfluxDb:getInfluxDb",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1732,13 +1829,16 @@
                 }
             },
             "aiven_influxdb_database": {
-                "current": "aiven:index/getInfluxdbDatabase:getInfluxdbDatabase"
+                "current": "aiven:index/getInfluxdbDatabase:getInfluxdbDatabase",
+                "majorVersion": 6
             },
             "aiven_influxdb_user": {
-                "current": "aiven:index/getInfluxdbUser:getInfluxdbUser"
+                "current": "aiven:index/getInfluxdbUser:getInfluxdbUser",
+                "majorVersion": 6
             },
             "aiven_kafka": {
                 "current": "aiven:index/getKafka:getKafka",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1801,10 +1901,12 @@
                 }
             },
             "aiven_kafka_acl": {
-                "current": "aiven:index/getKafkaAcl:getKafkaAcl"
+                "current": "aiven:index/getKafkaAcl:getKafkaAcl",
+                "majorVersion": 6
             },
             "aiven_kafka_connect": {
                 "current": "aiven:index/getKafkaConnect:getKafkaConnect",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1856,6 +1958,7 @@
             },
             "aiven_kafka_connector": {
                 "current": "aiven:index/getKafkaConnector:getKafkaConnector",
+                "majorVersion": 6,
                 "fields": {
                     "task": {
                         "maxItemsOne": false
@@ -1864,6 +1967,7 @@
             },
             "aiven_kafka_mirrormaker": {
                 "current": "aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1905,16 +2009,20 @@
                 }
             },
             "aiven_kafka_schema": {
-                "current": "aiven:index/getKafkaSchema:getKafkaSchema"
+                "current": "aiven:index/getKafkaSchema:getKafkaSchema",
+                "majorVersion": 6
             },
             "aiven_kafka_schema_configuration": {
-                "current": "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration"
+                "current": "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration",
+                "majorVersion": 6
             },
             "aiven_kafka_schema_registry_acl": {
-                "current": "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl"
+                "current": "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl",
+                "majorVersion": 6
             },
             "aiven_kafka_topic": {
                 "current": "aiven:index/getKafkaTopic:getKafkaTopic",
+                "majorVersion": 6,
                 "fields": {
                     "config": {
                         "maxItemsOne": false
@@ -1925,10 +2033,12 @@
                 }
             },
             "aiven_kafka_user": {
-                "current": "aiven:index/getKafkaUser:getKafkaUser"
+                "current": "aiven:index/getKafkaUser:getKafkaUser",
+                "majorVersion": 6
             },
             "aiven_m3aggregator": {
                 "current": "aiven:index/getM3Aggregator:getM3Aggregator",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -1965,6 +2075,7 @@
             },
             "aiven_m3db": {
                 "current": "aiven:index/getM3Db:getM3Db",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -2068,10 +2179,12 @@
                 }
             },
             "aiven_m3db_user": {
-                "current": "aiven:index/getM3dbUser:getM3dbUser"
+                "current": "aiven:index/getM3dbUser:getM3dbUser",
+                "majorVersion": 6
             },
             "aiven_mirrormaker_replication_flow": {
                 "current": "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow",
+                "majorVersion": 6,
                 "fields": {
                     "topics": {
                         "maxItemsOne": false
@@ -2083,6 +2196,7 @@
             },
             "aiven_mysql": {
                 "current": "aiven:index/getMySql:getMySql",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -2136,13 +2250,16 @@
                 }
             },
             "aiven_mysql_database": {
-                "current": "aiven:index/getMysqlDatabase:getMysqlDatabase"
+                "current": "aiven:index/getMysqlDatabase:getMysqlDatabase",
+                "majorVersion": 6
             },
             "aiven_mysql_user": {
-                "current": "aiven:index/getMysqlUser:getMysqlUser"
+                "current": "aiven:index/getMysqlUser:getMysqlUser",
+                "majorVersion": 6
             },
             "aiven_opensearch": {
                 "current": "aiven:index/getOpenSearch:getOpenSearch",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -2171,6 +2288,9 @@
                                 },
                                 "ip_filter_string": {
                                     "maxItemsOne": false
+                                },
+                                "openid": {
+                                    "maxItemsOne": true
                                 },
                                 "opensearch": {
                                     "maxItemsOne": true,
@@ -2212,25 +2332,36 @@
                 }
             },
             "aiven_opensearch_acl_config": {
-                "current": "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig"
+                "current": "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig",
+                "majorVersion": 6
             },
             "aiven_opensearch_acl_rule": {
-                "current": "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule"
+                "current": "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule",
+                "majorVersion": 6
             },
             "aiven_opensearch_user": {
-                "current": "aiven:index/getOpensearchUser:getOpensearchUser"
+                "current": "aiven:index/getOpensearchUser:getOpensearchUser",
+                "majorVersion": 6
             },
             "aiven_organization": {
-                "current": "aiven:index/getOrganization:getOrganization"
+                "current": "aiven:index/getOrganization:getOrganization",
+                "majorVersion": 6
             },
             "aiven_organization_user": {
-                "current": "aiven:index/getOrganizationUser:getOrganizationUser"
+                "current": "aiven:index/getOrganizationUser:getOrganizationUser",
+                "majorVersion": 6
+            },
+            "aiven_organization_user_group": {
+                "current": "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup",
+                "majorVersion": 6
             },
             "aiven_organizational_unit": {
-                "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit"
+                "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit",
+                "majorVersion": 6
             },
             "aiven_pg": {
                 "current": "aiven:index/getPg:getPg",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -2300,13 +2431,16 @@
                 }
             },
             "aiven_pg_database": {
-                "current": "aiven:index/getPgDatabase:getPgDatabase"
+                "current": "aiven:index/getPgDatabase:getPgDatabase",
+                "majorVersion": 6
             },
             "aiven_pg_user": {
-                "current": "aiven:index/getPgUser:getPgUser"
+                "current": "aiven:index/getPgUser:getPgUser",
+                "majorVersion": 6
             },
             "aiven_project": {
                 "current": "aiven:index/getProject:getProject",
+                "majorVersion": 6,
                 "fields": {
                     "tag": {
                         "maxItemsOne": false
@@ -2317,13 +2451,16 @@
                 }
             },
             "aiven_project_user": {
-                "current": "aiven:index/getProjectUser:getProjectUser"
+                "current": "aiven:index/getProjectUser:getProjectUser",
+                "majorVersion": 6
             },
             "aiven_project_vpc": {
-                "current": "aiven:index/getProjectVpc:getProjectVpc"
+                "current": "aiven:index/getProjectVpc:getProjectVpc",
+                "majorVersion": 6
             },
             "aiven_redis": {
                 "current": "aiven:index/getRedis:getRedis",
+                "majorVersion": 6,
                 "fields": {
                     "components": {
                         "maxItemsOne": false
@@ -2375,6 +2512,7 @@
             },
             "aiven_redis_user": {
                 "current": "aiven:index/getRedisUser:getRedisUser",
+                "majorVersion": 6,
                 "fields": {
                     "redis_acl_categories": {
                         "maxItemsOne": false
@@ -2391,10 +2529,12 @@
                 }
             },
             "aiven_service_component": {
-                "current": "aiven:index/getServiceComponent:getServiceComponent"
+                "current": "aiven:index/getServiceComponent:getServiceComponent",
+                "majorVersion": 6
             },
             "aiven_service_integration": {
                 "current": "aiven:index/getServiceIntegration:getServiceIntegration",
+                "majorVersion": 6,
                 "fields": {
                     "clickhouse_kafka_user_config": {
                         "maxItemsOne": false,
@@ -2531,6 +2671,7 @@
             },
             "aiven_service_integration_endpoint": {
                 "current": "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint",
+                "majorVersion": 6,
                 "fields": {
                     "datadog_user_config": {
                         "maxItemsOne": false,
@@ -2576,12 +2717,149 @@
             },
             "aiven_transit_gateway_vpc_attachment": {
                 "current": "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment",
+                "majorVersion": 6,
                 "fields": {
                     "user_peer_network_cidrs": {
                         "maxItemsOne": false
                     }
                 }
             }
+        }
+    },
+    "mux": {
+        "resources": {
+            "aiven:index/account:Account": 0,
+            "aiven:index/accountAuthentication:AccountAuthentication": 0,
+            "aiven:index/accountTeam:AccountTeam": 0,
+            "aiven:index/accountTeamMember:AccountTeamMember": 0,
+            "aiven:index/accountTeamProject:AccountTeamProject": 0,
+            "aiven:index/awsPrivatelink:AwsPrivatelink": 0,
+            "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": 0,
+            "aiven:index/azurePrivatelink:AzurePrivatelink": 0,
+            "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": 0,
+            "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": 0,
+            "aiven:index/billingGroup:BillingGroup": 0,
+            "aiven:index/cassandra:Cassandra": 0,
+            "aiven:index/cassandraUser:CassandraUser": 0,
+            "aiven:index/clickhouse:Clickhouse": 0,
+            "aiven:index/clickhouseDatabase:ClickhouseDatabase": 0,
+            "aiven:index/clickhouseGrant:ClickhouseGrant": 0,
+            "aiven:index/clickhouseRole:ClickhouseRole": 0,
+            "aiven:index/clickhouseUser:ClickhouseUser": 0,
+            "aiven:index/connectionPool:ConnectionPool": 0,
+            "aiven:index/flink:Flink": 0,
+            "aiven:index/flinkApplication:FlinkApplication": 0,
+            "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 0,
+            "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": 0,
+            "aiven:index/gcpPrivatelink:GcpPrivatelink": 0,
+            "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
+            "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,
+            "aiven:index/grafana:Grafana": 0,
+            "aiven:index/influxDb:InfluxDb": 0,
+            "aiven:index/influxdbDatabase:InfluxdbDatabase": 0,
+            "aiven:index/influxdbUser:InfluxdbUser": 0,
+            "aiven:index/kafka:Kafka": 0,
+            "aiven:index/kafkaAcl:KafkaAcl": 0,
+            "aiven:index/kafkaConnect:KafkaConnect": 0,
+            "aiven:index/kafkaConnector:KafkaConnector": 0,
+            "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker": 0,
+            "aiven:index/kafkaSchema:KafkaSchema": 0,
+            "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": 0,
+            "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 0,
+            "aiven:index/kafkaTopic:KafkaTopic": 0,
+            "aiven:index/kafkaUser:KafkaUser": 0,
+            "aiven:index/m3Aggregator:M3Aggregator": 0,
+            "aiven:index/m3Db:M3Db": 0,
+            "aiven:index/m3dbUser:M3dbUser": 0,
+            "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 0,
+            "aiven:index/mySql:MySql": 0,
+            "aiven:index/mysqlDatabase:MysqlDatabase": 0,
+            "aiven:index/mysqlUser:MysqlUser": 0,
+            "aiven:index/openSearch:OpenSearch": 0,
+            "aiven:index/openSearchAclConfig:OpenSearchAclConfig": 0,
+            "aiven:index/openSearchAclRule:OpenSearchAclRule": 0,
+            "aiven:index/opensearchUser:OpensearchUser": 0,
+            "aiven:index/organization:Organization": 1,
+            "aiven:index/organizationUser:OrganizationUser": 0,
+            "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
+            "aiven:index/organizationalUnit:OrganizationalUnit": 0,
+            "aiven:index/pg:Pg": 0,
+            "aiven:index/pgDatabase:PgDatabase": 0,
+            "aiven:index/pgUser:PgUser": 0,
+            "aiven:index/project:Project": 0,
+            "aiven:index/projectUser:ProjectUser": 0,
+            "aiven:index/projectVpc:ProjectVpc": 0,
+            "aiven:index/redis:Redis": 0,
+            "aiven:index/redisUser:RedisUser": 0,
+            "aiven:index/serviceIntegration:ServiceIntegration": 0,
+            "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": 0,
+            "aiven:index/staticIp:StaticIp": 0,
+            "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 0
+        },
+        "functions": {
+            "aiven:index/getAccount:getAccount": 0,
+            "aiven:index/getAccountAuthentication:getAccountAuthentication": 0,
+            "aiven:index/getAccountTeam:getAccountTeam": 0,
+            "aiven:index/getAccountTeamMember:getAccountTeamMember": 0,
+            "aiven:index/getAccountTeamProject:getAccountTeamProject": 0,
+            "aiven:index/getAwsPrivatelink:getAwsPrivatelink": 0,
+            "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection": 0,
+            "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 0,
+            "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection": 0,
+            "aiven:index/getBillingGroup:getBillingGroup": 0,
+            "aiven:index/getCassanda:getCassanda": 0,
+            "aiven:index/getCassandra:getCassandra": 0,
+            "aiven:index/getCassandraUser:getCassandraUser": 0,
+            "aiven:index/getClickhouse:getClickhouse": 0,
+            "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 0,
+            "aiven:index/getClickhouseUser:getClickhouseUser": 0,
+            "aiven:index/getConnectionPool:getConnectionPool": 0,
+            "aiven:index/getFlink:getFlink": 0,
+            "aiven:index/getFlinkApplication:getFlinkApplication": 0,
+            "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": 0,
+            "aiven:index/getGcpPrivatelink:getGcpPrivatelink": 0,
+            "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection": 0,
+            "aiven:index/getGrafana:getGrafana": 0,
+            "aiven:index/getInfluxDb:getInfluxDb": 0,
+            "aiven:index/getInfluxdbDatabase:getInfluxdbDatabase": 0,
+            "aiven:index/getInfluxdbUser:getInfluxdbUser": 0,
+            "aiven:index/getKafka:getKafka": 0,
+            "aiven:index/getKafkaAcl:getKafkaAcl": 0,
+            "aiven:index/getKafkaConnect:getKafkaConnect": 0,
+            "aiven:index/getKafkaConnector:getKafkaConnector": 0,
+            "aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker": 0,
+            "aiven:index/getKafkaSchema:getKafkaSchema": 0,
+            "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration": 0,
+            "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 0,
+            "aiven:index/getKafkaTopic:getKafkaTopic": 0,
+            "aiven:index/getKafkaUser:getKafkaUser": 0,
+            "aiven:index/getM3Aggregator:getM3Aggregator": 0,
+            "aiven:index/getM3Db:getM3Db": 0,
+            "aiven:index/getM3dbUser:getM3dbUser": 0,
+            "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": 0,
+            "aiven:index/getMySql:getMySql": 0,
+            "aiven:index/getMysqlDatabase:getMysqlDatabase": 0,
+            "aiven:index/getMysqlUser:getMysqlUser": 0,
+            "aiven:index/getOpenSearch:getOpenSearch": 0,
+            "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": 0,
+            "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": 0,
+            "aiven:index/getOpensearchUser:getOpensearchUser": 0,
+            "aiven:index/getOrganization:getOrganization": 1,
+            "aiven:index/getOrganizationUser:getOrganizationUser": 0,
+            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
+            "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
+            "aiven:index/getPg:getPg": 0,
+            "aiven:index/getPgDatabase:getPgDatabase": 0,
+            "aiven:index/getPgUser:getPgUser": 0,
+            "aiven:index/getProject:getProject": 0,
+            "aiven:index/getProjectUser:getProjectUser": 0,
+            "aiven:index/getProjectVpc:getProjectVpc": 0,
+            "aiven:index/getRedis:getRedis": 0,
+            "aiven:index/getRedisUser:getRedisUser": 0,
+            "aiven:index/getServiceComponent:getServiceComponent": 0,
+            "aiven:index/getServiceIntegration:getServiceIntegration": 0,
+            "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint": 0,
+            "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment": 0
         }
     },
     "renames": {
@@ -2639,6 +2917,7 @@
             "aiven:index/opensearchUser:OpensearchUser": "aiven_opensearch_user",
             "aiven:index/organization:Organization": "aiven_organization",
             "aiven:index/organizationUser:OrganizationUser": "aiven_organization_user",
+            "aiven:index/organizationUserGroup:OrganizationUserGroup": "aiven_organization_user_group",
             "aiven:index/organizationalUnit:OrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/pg:Pg": "aiven_pg",
             "aiven:index/pgDatabase:PgDatabase": "aiven_pg_database",
@@ -2703,6 +2982,7 @@
             "aiven:index/getOpensearchUser:getOpensearchUser": "aiven_opensearch_user",
             "aiven:index/getOrganization:getOrganization": "aiven_organization",
             "aiven:index/getOrganizationUser:getOrganizationUser": "aiven_organization_user",
+            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": "aiven_organization_user_group",
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/getPg:getPg": "aiven_pg",
             "aiven:index/getPgDatabase:getPgDatabase": "aiven_pg_database",
@@ -2839,6 +3119,7 @@
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "metricsEnabled": "metrics_enabled",
+                "oauthAllowInsecureEmailLookup": "oauth_allow_insecure_email_lookup",
                 "privateAccess": "private_access",
                 "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
@@ -2866,6 +3147,7 @@
                 "allowedOrganizations": "allowed_organizations",
                 "apiUrl": "api_url",
                 "authUrl": "auth_url",
+                "autoLogin": "auto_login",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "tokenUrl": "token_url"
@@ -2982,6 +3264,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/KafkaConnectKafkaConnectUserConfigPrivateAccess:KafkaConnectKafkaConnectUserConfigPrivateAccess": {
@@ -3080,6 +3363,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/KafkaKafkaUserConfigKafkaRestConfig:KafkaKafkaUserConfigKafkaRestConfig": {
@@ -3335,6 +3619,17 @@
                 "mappingNestedObjectsLimit": "mapping_nested_objects_limit",
                 "numberOfReplicas": "number_of_replicas",
                 "numberOfShards": "number_of_shards"
+            },
+            "aiven:index/OpenSearchOpensearchUserConfigOpenid:OpenSearchOpensearchUserConfigOpenid": {
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "connectUrl": "connect_url",
+                "jwtHeader": "jwt_header",
+                "jwtUrlParameter": "jwt_url_parameter",
+                "refreshRateLimitCount": "refresh_rate_limit_count",
+                "refreshRateLimitTimeWindowMs": "refresh_rate_limit_time_window_ms",
+                "rolesKey": "roles_key",
+                "subjectKey": "subject_key"
             },
             "aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch": {
                 "actionAutoCreateIndexEnabled": "action_auto_create_index_enabled",
@@ -4310,6 +4605,7 @@
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "metricsEnabled": "metrics_enabled",
+                "oauthAllowInsecureEmailLookup": "oauth_allow_insecure_email_lookup",
                 "privateAccess": "private_access",
                 "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
@@ -4337,6 +4633,7 @@
                 "allowedOrganizations": "allowed_organizations",
                 "apiUrl": "api_url",
                 "authUrl": "auth_url",
+                "autoLogin": "auto_login",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "tokenUrl": "token_url"
@@ -4543,6 +4840,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess": {
@@ -4652,6 +4950,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/getKafkaKafkaUserConfigKafkaRestConfig:getKafkaKafkaUserConfigKafkaRestConfig": {
@@ -5092,6 +5391,17 @@
                 "numberOfReplicas": "number_of_replicas",
                 "numberOfShards": "number_of_shards"
             },
+            "aiven:index/getOpenSearchOpensearchUserConfigOpenid:getOpenSearchOpensearchUserConfigOpenid": {
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "connectUrl": "connect_url",
+                "jwtHeader": "jwt_header",
+                "jwtUrlParameter": "jwt_url_parameter",
+                "refreshRateLimitCount": "refresh_rate_limit_count",
+                "refreshRateLimitTimeWindowMs": "refresh_rate_limit_time_window_ms",
+                "rolesKey": "roles_key",
+                "subjectKey": "subject_key"
+            },
             "aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch": {
                 "actionAutoCreateIndexEnabled": "action_auto_create_index_enabled",
                 "actionDestructiveRequiresName": "action_destructive_requires_name",
@@ -5163,6 +5473,11 @@
                 "invitedBy": "invited_by",
                 "organizationId": "organization_id",
                 "userEmail": "user_email"
+            },
+            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": {
+                "createTime": "create_time",
+                "organizationId": "organization_id",
+                "updateTime": "update_time"
             },
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
                 "createTime": "create_time",
@@ -5905,6 +6220,11 @@
                 "invitedBy": "invited_by",
                 "organizationId": "organization_id",
                 "userEmail": "user_email"
+            },
+            "aiven:index/organizationUserGroup:OrganizationUserGroup": {
+                "createTime": "create_time",
+                "organizationId": "organization_id",
+                "updateTime": "update_time"
             },
             "aiven:index/organizationalUnit:OrganizationalUnit": {
                 "createTime": "create_time",
