@@ -52,6 +52,13 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         return this.authUrl;
     }
 
+    @Import(name="autoLogin")
+    private @Nullable Output<Boolean> autoLogin;
+
+    public Optional<Output<Boolean>> autoLogin() {
+        return Optional.ofNullable(this.autoLogin);
+    }
+
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
@@ -95,6 +102,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         this.allowedOrganizations = $.allowedOrganizations;
         this.apiUrl = $.apiUrl;
         this.authUrl = $.authUrl;
+        this.autoLogin = $.autoLogin;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.name = $.name;
@@ -171,6 +179,15 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
 
         public Builder authUrl(String authUrl) {
             return authUrl(Output.of(authUrl));
+        }
+
+        public Builder autoLogin(@Nullable Output<Boolean> autoLogin) {
+            $.autoLogin = autoLogin;
+            return this;
+        }
+
+        public Builder autoLogin(Boolean autoLogin) {
+            return autoLogin(Output.of(autoLogin));
         }
 
         public Builder clientId(Output<String> clientId) {

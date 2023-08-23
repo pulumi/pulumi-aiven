@@ -114,6 +114,13 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
 
+    @Import(name="scheduledRebalanceMaxDelayMs")
+    private @Nullable Output<Integer> scheduledRebalanceMaxDelayMs;
+
+    public Optional<Output<Integer>> scheduledRebalanceMaxDelayMs() {
+        return Optional.ofNullable(this.scheduledRebalanceMaxDelayMs);
+    }
+
     @Import(name="sessionTimeoutMs")
     private @Nullable Output<Integer> sessionTimeoutMs;
 
@@ -138,6 +145,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         this.producerCompressionType = $.producerCompressionType;
         this.producerLingerMs = $.producerLingerMs;
         this.producerMaxRequestSize = $.producerMaxRequestSize;
+        this.scheduledRebalanceMaxDelayMs = $.scheduledRebalanceMaxDelayMs;
         this.sessionTimeoutMs = $.sessionTimeoutMs;
     }
 
@@ -283,6 +291,15 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
 
         public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
             return producerMaxRequestSize(Output.of(producerMaxRequestSize));
+        }
+
+        public Builder scheduledRebalanceMaxDelayMs(@Nullable Output<Integer> scheduledRebalanceMaxDelayMs) {
+            $.scheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
+            return this;
+        }
+
+        public Builder scheduledRebalanceMaxDelayMs(Integer scheduledRebalanceMaxDelayMs) {
+            return scheduledRebalanceMaxDelayMs(Output.of(scheduledRebalanceMaxDelayMs));
         }
 
         public Builder sessionTimeoutMs(@Nullable Output<Integer> sessionTimeoutMs) {

@@ -132,10 +132,10 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      * will result in the service rebalancing.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Export(name="diskSpace", type=String.class, parameters={})
     private Output</* @Nullable */ String> diskSpace;
 
@@ -273,7 +273,7 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="plan", type=String.class, parameters={})
-    private Output</* @Nullable */ String> plan;
+    private Output<String> plan;
 
     /**
      * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
@@ -284,8 +284,8 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    public Output<Optional<String>> plan() {
-        return Codegen.optional(this.plan);
+    public Output<String> plan() {
+        return this.plan;
     }
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a

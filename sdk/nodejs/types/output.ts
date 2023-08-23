@@ -716,6 +716,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     ipFilters?: string[];
     metricsEnabled?: boolean;
+    oauthAllowInsecureEmailLookup?: boolean;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
@@ -748,6 +749,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
     allowedOrganizations?: string[];
     apiUrl: string;
     authUrl: string;
+    autoLogin?: boolean;
     clientId: string;
     clientSecret: string;
     name?: string;
@@ -994,6 +996,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
     producerCompressionType?: string;
     producerLingerMs?: number;
     producerMaxRequestSize?: number;
+    scheduledRebalanceMaxDelayMs?: number;
     sessionTimeoutMs?: number;
 }
 
@@ -1146,6 +1149,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     producerCompressionType?: string;
     producerLingerMs?: number;
     producerMaxRequestSize?: number;
+    scheduledRebalanceMaxDelayMs?: number;
     sessionTimeoutMs?: number;
 }
 
@@ -1646,6 +1650,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      * @deprecated Usage of this field is discouraged.
      */
     maxIndexCount?: number;
+    openid?: outputs.GetOpenSearchOpensearchUserConfigOpenid;
     /**
      * OpenSearch server provided values
      */
@@ -1680,6 +1685,21 @@ export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
 export interface GetOpenSearchOpensearchUserConfigIpFilterObject {
     description?: string;
     network: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpenid {
+    clientId: string;
+    clientSecret: string;
+    connectUrl: string;
+    enabled?: boolean;
+    header?: string;
+    jwtHeader?: string;
+    jwtUrlParameter?: string;
+    refreshRateLimitCount?: number;
+    refreshRateLimitTimeWindowMs?: number;
+    rolesKey?: string;
+    scope?: string;
+    subjectKey?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearch {
@@ -2346,6 +2366,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     ipFilters?: string[];
     metricsEnabled?: boolean;
+    oauthAllowInsecureEmailLookup?: boolean;
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
@@ -2375,6 +2396,7 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
     allowedOrganizations?: string[];
     apiUrl: string;
     authUrl: string;
+    autoLogin?: boolean;
     clientId: string;
     clientSecret: string;
     name?: string;
@@ -2650,6 +2672,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     producerCompressionType?: string;
     producerLingerMs?: number;
     producerMaxRequestSize?: number;
+    scheduledRebalanceMaxDelayMs?: number;
     sessionTimeoutMs?: number;
 }
 
@@ -2843,6 +2866,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
     producerCompressionType?: string;
     producerLingerMs?: number;
     producerMaxRequestSize?: number;
+    scheduledRebalanceMaxDelayMs?: number;
     sessionTimeoutMs?: number;
 }
 
@@ -3433,6 +3457,10 @@ export interface OpenSearchOpensearchUserConfig {
      */
     maxIndexCount?: number;
     /**
+     * OpenSearch OpenID Connect Configuration.
+     */
+    openid?: outputs.OpenSearchOpensearchUserConfigOpenid;
+    /**
      * OpenSearch settings.
      */
     opensearch?: outputs.OpenSearchOpensearchUserConfigOpensearch;
@@ -3493,6 +3521,21 @@ export interface OpenSearchOpensearchUserConfigIndexTemplate {
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
     description?: string;
     network: string;
+}
+
+export interface OpenSearchOpensearchUserConfigOpenid {
+    clientId: string;
+    clientSecret: string;
+    connectUrl: string;
+    enabled?: boolean;
+    header?: string;
+    jwtHeader?: string;
+    jwtUrlParameter?: string;
+    refreshRateLimitCount?: number;
+    refreshRateLimitTimeWindowMs?: number;
+    rolesKey?: string;
+    scope?: string;
+    subjectKey?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearch {

@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> AllowedOrganizations;
         public readonly string ApiUrl;
         public readonly string AuthUrl;
+        public readonly bool? AutoLogin;
         public readonly string ClientId;
         public readonly string ClientSecret;
         public readonly string? Name;
@@ -36,6 +37,8 @@ namespace Pulumi.Aiven.Outputs
 
             string authUrl,
 
+            bool? autoLogin,
+
             string clientId,
 
             string clientSecret,
@@ -51,6 +54,7 @@ namespace Pulumi.Aiven.Outputs
             AllowedOrganizations = allowedOrganizations;
             ApiUrl = apiUrl;
             AuthUrl = authUrl;
+            AutoLogin = autoLogin;
             ClientId = clientId;
             ClientSecret = clientSecret;
             Name = name;

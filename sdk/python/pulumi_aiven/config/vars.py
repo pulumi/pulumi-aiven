@@ -18,7 +18,7 @@ class _ExportableConfig(types.ModuleType):
     @property
     def api_token(self) -> Optional[str]:
         """
-        Aiven Authentication Token
+        Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         """
         return __config__.get('apiToken')
 

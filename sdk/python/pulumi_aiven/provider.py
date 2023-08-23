@@ -14,23 +14,24 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_token: pulumi.Input[str]):
+                 api_token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] api_token: Aiven Authentication Token
+        :param pulumi.Input[str] api_token: Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         """
-        pulumi.set(__self__, "api_token", api_token)
+        if api_token is not None:
+            pulumi.set(__self__, "api_token", api_token)
 
     @property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> pulumi.Input[str]:
+    def api_token(self) -> Optional[pulumi.Input[str]]:
         """
-        Aiven Authentication Token
+        Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: pulumi.Input[str]):
+    def api_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "api_token", value)
 
 
@@ -49,13 +50,13 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_token: Aiven Authentication Token
+        :param pulumi.Input[str] api_token: Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the aiven package. By default, resources use package-wide configuration
@@ -88,8 +89,6 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if api_token is None and not opts.urn:
-                raise TypeError("Missing required property 'api_token'")
             __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -101,9 +100,9 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> pulumi.Output[str]:
+    def api_token(self) -> pulumi.Output[Optional[str]]:
         """
-        Aiven Authentication Token
+        Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         """
         return pulumi.get(self, "api_token")
 

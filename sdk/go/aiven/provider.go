@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -19,22 +18,19 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// Aiven Authentication Token
-	ApiToken pulumi.StringOutput `pulumi:"apiToken"`
+	// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
+	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.ApiToken == nil {
-		return nil, errors.New("invalid value for required argument 'ApiToken'")
-	}
 	if args.ApiToken != nil {
-		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringInput)
+		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"apiToken",
@@ -50,14 +46,14 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Aiven Authentication Token
-	ApiToken string `pulumi:"apiToken"`
+	// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
+	ApiToken *string `pulumi:"apiToken"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Aiven Authentication Token
-	ApiToken pulumi.StringInput
+	// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
+	ApiToken pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -97,9 +93,9 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// Aiven Authentication Token
-func (o ProviderOutput) ApiToken() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ApiToken }).(pulumi.StringOutput)
+// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
+func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
 func init() {

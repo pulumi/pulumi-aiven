@@ -437,6 +437,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     metricsEnabled?: pulumi.Input<boolean>;
+    oauthAllowInsecureEmailLookup?: pulumi.Input<boolean>;
     privateAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivateAccess>;
     privatelinkAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivatelinkAccess>;
     projectToForkFrom?: pulumi.Input<string>;
@@ -466,6 +467,7 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
     apiUrl: pulumi.Input<string>;
     authUrl: pulumi.Input<string>;
+    autoLogin?: pulumi.Input<boolean>;
     clientId: pulumi.Input<string>;
     clientSecret: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -741,6 +743,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     producerCompressionType?: pulumi.Input<string>;
     producerLingerMs?: pulumi.Input<number>;
     producerMaxRequestSize?: pulumi.Input<number>;
+    scheduledRebalanceMaxDelayMs?: pulumi.Input<number>;
     sessionTimeoutMs?: pulumi.Input<number>;
 }
 
@@ -934,6 +937,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
     producerCompressionType?: pulumi.Input<string>;
     producerLingerMs?: pulumi.Input<number>;
     producerMaxRequestSize?: pulumi.Input<number>;
+    scheduledRebalanceMaxDelayMs?: pulumi.Input<number>;
     sessionTimeoutMs?: pulumi.Input<number>;
 }
 
@@ -1524,6 +1528,10 @@ export interface OpenSearchOpensearchUserConfig {
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
+     * OpenSearch OpenID Connect Configuration.
+     */
+    openid?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpenid>;
+    /**
      * OpenSearch settings.
      */
     opensearch?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearch>;
@@ -1584,6 +1592,21 @@ export interface OpenSearchOpensearchUserConfigIndexTemplate {
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
     description?: pulumi.Input<string>;
     network: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpenid {
+    clientId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
+    connectUrl: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    header?: pulumi.Input<string>;
+    jwtHeader?: pulumi.Input<string>;
+    jwtUrlParameter?: pulumi.Input<string>;
+    refreshRateLimitCount?: pulumi.Input<number>;
+    refreshRateLimitTimeWindowMs?: pulumi.Input<number>;
+    rolesKey?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
+    subjectKey?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearch {

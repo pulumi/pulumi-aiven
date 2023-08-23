@@ -3,55 +3,23 @@
 
 package com.pulumi.aiven;
 
-import com.pulumi.aiven.OrganizationArgs;
+import com.pulumi.aiven.OrganizationUserGroupArgs;
 import com.pulumi.aiven.Utilities;
-import com.pulumi.aiven.inputs.OrganizationState;
+import com.pulumi.aiven.inputs.OrganizationUserGroupState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Organization resource allows the creation and management of an Aiven Organization.
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Organization;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var organization1 = new Organization(&#34;organization1&#34;);
- * 
- *     }
- * }
- * ```
- * 
- * ## Import
- * 
- * ```sh
- *  $ pulumi import aiven:index/organization:Organization organization1 organization_id
- * ```
+ * The Organization User Group resource allows the creation and management of an Aiven Organization Groups.
  * 
  */
-@ResourceType(type="aiven:index/organization:Organization")
-public class Organization extends com.pulumi.resources.CustomResource {
+@ResourceType(type="aiven:index/organizationUserGroup:OrganizationUserGroup")
+public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
     /**
      * Time of creation
      * 
@@ -67,32 +35,46 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Organization name
+     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    @Export(name="description", type=String.class, parameters={})
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Organization name
+     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Tenant ID
+     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
-    private Output<String> tenantId;
+    @Export(name="organizationId", type=String.class, parameters={})
+    private Output<String> organizationId;
 
     /**
-     * @return Tenant ID
+     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    public Output<String> tenantId() {
-        return this.tenantId;
+    public Output<String> organizationId() {
+        return this.organizationId;
     }
     /**
      * Time of last update
@@ -113,15 +95,15 @@ public class Organization extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Organization(String name) {
-        this(name, OrganizationArgs.Empty);
+    public OrganizationUserGroup(String name) {
+        this(name, OrganizationUserGroupArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Organization(String name, @Nullable OrganizationArgs args) {
+    public OrganizationUserGroup(String name, OrganizationUserGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -130,12 +112,12 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Organization(String name, @Nullable OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organization:Organization", name, args == null ? OrganizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OrganizationUserGroup(String name, OrganizationUserGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationUserGroup:OrganizationUserGroup", name, args == null ? OrganizationUserGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Organization(String name, Output<String> id, @Nullable OrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organization:Organization", name, state, makeResourceOptions(options, id));
+    private OrganizationUserGroup(String name, Output<String> id, @Nullable OrganizationUserGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationUserGroup:OrganizationUserGroup", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -154,7 +136,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Organization get(String name, Output<String> id, @Nullable OrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new Organization(name, id, state, options);
+    public static OrganizationUserGroup get(String name, Output<String> id, @Nullable OrganizationUserGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new OrganizationUserGroup(name, id, state, options);
     }
 }

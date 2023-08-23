@@ -23,6 +23,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly bool? KeepIndexRefreshInterval;
         public readonly int? MaxIndexCount;
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigOpenidResult? Openid;
         /// <summary>
         /// OpenSearch server provided values
         /// </summary>
@@ -63,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxIndexCount,
 
+            Outputs.GetOpenSearchOpensearchUserConfigOpenidResult? openid,
+
             Outputs.GetOpenSearchOpensearchUserConfigOpensearchResult? opensearch,
 
             Outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult? opensearchDashboards,
@@ -95,6 +98,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;
+            Openid = openid;
             Opensearch = opensearch;
             OpensearchDashboards = opensearchDashboards;
             OpensearchVersion = opensearchVersion;

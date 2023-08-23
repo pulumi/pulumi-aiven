@@ -8,40 +8,52 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetOrganizationResult {
+public final class GetOrganizationUserGroupResult {
     /**
      * @return Time of creation
      * 
      */
     private String createTime;
     /**
+     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    private String description;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Organization name
+     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String name;
     /**
-     * @return Tenant ID
+     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private String tenantId;
+    private String organizationId;
     /**
      * @return Time of last update
      * 
      */
     private String updateTime;
 
-    private GetOrganizationResult() {}
+    private GetOrganizationUserGroupResult() {}
     /**
      * @return Time of creation
      * 
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    public String description() {
+        return this.description;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -51,18 +63,18 @@ public final class GetOrganizationResult {
         return this.id;
     }
     /**
-     * @return Organization name
+     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Tenant ID
+     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    public String tenantId() {
-        return this.tenantId;
+    public String organizationId() {
+        return this.organizationId;
     }
     /**
      * @return Time of last update
@@ -76,29 +88,36 @@ public final class GetOrganizationResult {
         return new Builder();
     }
 
-    public static Builder builder(GetOrganizationResult defaults) {
+    public static Builder builder(GetOrganizationUserGroupResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String description;
         private String id;
         private String name;
-        private String tenantId;
+        private String organizationId;
         private String updateTime;
         public Builder() {}
-        public Builder(GetOrganizationResult defaults) {
+        public Builder(GetOrganizationUserGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
-    	      this.tenantId = defaults.tenantId;
+    	      this.organizationId = defaults.organizationId;
     	      this.updateTime = defaults.updateTime;
         }
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
             return this;
         }
         @CustomType.Setter
@@ -112,8 +131,8 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+        public Builder organizationId(String organizationId) {
+            this.organizationId = Objects.requireNonNull(organizationId);
             return this;
         }
         @CustomType.Setter
@@ -121,12 +140,13 @@ public final class GetOrganizationResult {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
-        public GetOrganizationResult build() {
-            final var o = new GetOrganizationResult();
+        public GetOrganizationUserGroupResult build() {
+            final var o = new GetOrganizationUserGroupResult();
             o.createTime = createTime;
+            o.description = description;
             o.id = id;
             o.name = name;
-            o.tenantId = tenantId;
+            o.organizationId = organizationId;
             o.updateTime = updateTime;
             return o;
         }

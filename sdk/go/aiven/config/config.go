@@ -11,7 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Aiven Authentication Token
+// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "aiven:apiToken")
 }

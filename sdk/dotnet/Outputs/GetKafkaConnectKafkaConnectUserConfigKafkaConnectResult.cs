@@ -27,6 +27,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProducerCompressionType;
         public readonly int? ProducerLingerMs;
         public readonly int? ProducerMaxRequestSize;
+        public readonly int? ScheduledRebalanceMaxDelayMs;
         public readonly int? SessionTimeoutMs;
 
         [OutputConstructor]
@@ -59,6 +60,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? producerMaxRequestSize,
 
+            int? scheduledRebalanceMaxDelayMs,
+
             int? sessionTimeoutMs)
         {
             ConnectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
@@ -75,6 +78,7 @@ namespace Pulumi.Aiven.Outputs
             ProducerCompressionType = producerCompressionType;
             ProducerLingerMs = producerLingerMs;
             ProducerMaxRequestSize = producerMaxRequestSize;
+            ScheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
             SessionTimeoutMs = sessionTimeoutMs;
         }
     }
