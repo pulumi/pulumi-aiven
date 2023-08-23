@@ -14,21 +14,22 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
             "namespaces": {
                 "aiven": "Aiven"
             },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing Aiven cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -36,33 +37,26 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Aiven cloud resources.",
-            "packageName": "",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
         "variables": {
             "apiToken": {
                 "type": "string",
-                "description": "Aiven Authentication Token\n",
+                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
                 "secret": true
             }
-        },
-        "defaults": [
-            "apiToken"
-        ]
+        }
     },
     "types": {
         "aiven:index/AccountAuthenticationSamlFieldMapping:AccountAuthenticationSamlFieldMapping": {
@@ -853,6 +847,9 @@
                 "metricsEnabled": {
                     "type": "boolean"
                 },
+                "oauthAllowInsecureEmailLookup": {
+                    "type": "boolean"
+                },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfigPrivateAccess:GrafanaGrafanaUserConfigPrivateAccess"
                 },
@@ -951,6 +948,9 @@
                 },
                 "authUrl": {
                     "type": "string"
+                },
+                "autoLogin": {
+                    "type": "boolean"
                 },
                 "clientId": {
                     "type": "string"
@@ -1627,6 +1627,9 @@
                 "producerMaxRequestSize": {
                     "type": "integer"
                 },
+                "scheduledRebalanceMaxDelayMs": {
+                    "type": "integer"
+                },
                 "sessionTimeoutMs": {
                     "type": "integer"
                 }
@@ -2035,6 +2038,9 @@
                     "type": "integer"
                 },
                 "producerMaxRequestSize": {
+                    "type": "integer"
+                },
+                "scheduledRebalanceMaxDelayMs": {
                     "type": "integer"
                 },
                 "sessionTimeoutMs": {
@@ -3381,6 +3387,10 @@
                     "description": "Use index_patterns instead. The default value is `0`.\n",
                     "deprecationMessage": "Usage of this field is discouraged."
                 },
+                "openid": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpenid:OpenSearchOpensearchUserConfigOpenid",
+                    "description": "OpenSearch OpenID Connect Configuration.\n"
+                },
                 "opensearch": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch",
                     "description": "OpenSearch settings.\n"
@@ -3474,6 +3484,52 @@
             "type": "object",
             "required": [
                 "network"
+            ]
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpenid:OpenSearchOpensearchUserConfigOpenid": {
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "connectUrl": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "header": {
+                    "type": "string"
+                },
+                "jwtHeader": {
+                    "type": "string"
+                },
+                "jwtUrlParameter": {
+                    "type": "string"
+                },
+                "refreshRateLimitCount": {
+                    "type": "integer"
+                },
+                "refreshRateLimitTimeWindowMs": {
+                    "type": "integer"
+                },
+                "rolesKey": {
+                    "type": "string"
+                },
+                "scope": {
+                    "type": "string"
+                },
+                "subjectKey": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "connectUrl"
             ]
         },
         "aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch": {
@@ -6247,6 +6303,9 @@
                 "metricsEnabled": {
                     "type": "boolean"
                 },
+                "oauthAllowInsecureEmailLookup": {
+                    "type": "boolean"
+                },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getGrafanaGrafanaUserConfigPrivateAccess:getGrafanaGrafanaUserConfigPrivateAccess"
                 },
@@ -6349,6 +6408,9 @@
                 },
                 "authUrl": {
                     "type": "string"
+                },
+                "autoLogin": {
+                    "type": "boolean"
                 },
                 "clientId": {
                     "type": "string"
@@ -7082,6 +7144,9 @@
                 "producerMaxRequestSize": {
                     "type": "integer"
                 },
+                "scheduledRebalanceMaxDelayMs": {
+                    "type": "integer"
+                },
                 "sessionTimeoutMs": {
                     "type": "integer"
                 }
@@ -7493,6 +7558,9 @@
                     "type": "integer"
                 },
                 "producerMaxRequestSize": {
+                    "type": "integer"
+                },
+                "scheduledRebalanceMaxDelayMs": {
                     "type": "integer"
                 },
                 "sessionTimeoutMs": {
@@ -8902,6 +8970,9 @@
                     "type": "integer",
                     "deprecationMessage": "Usage of this field is discouraged."
                 },
+                "openid": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpenid:getOpenSearchOpensearchUserConfigOpenid"
+                },
                 "opensearch": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch",
                     "description": "OpenSearch server provided values\n"
@@ -8989,6 +9060,57 @@
             "type": "object",
             "required": [
                 "network"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpenid:getOpenSearchOpensearchUserConfigOpenid": {
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "connectUrl": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "header": {
+                    "type": "string"
+                },
+                "jwtHeader": {
+                    "type": "string"
+                },
+                "jwtUrlParameter": {
+                    "type": "string"
+                },
+                "refreshRateLimitCount": {
+                    "type": "integer"
+                },
+                "refreshRateLimitTimeWindowMs": {
+                    "type": "integer"
+                },
+                "rolesKey": {
+                    "type": "string"
+                },
+                "scope": {
+                    "type": "string"
+                },
+                "subjectKey": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "connectUrl"
             ],
             "language": {
                 "nodejs": {
@@ -10849,23 +10971,17 @@
         "properties": {
             "apiToken": {
                 "type": "string",
-                "description": "Aiven Authentication Token\n",
+                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
                 "secret": true
             }
         },
-        "required": [
-            "apiToken"
-        ],
         "inputProperties": {
             "apiToken": {
                 "type": "string",
-                "description": "Aiven Authentication Token\n",
+                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
                 "secret": true
             }
-        },
-        "requiredInputs": [
-            "apiToken"
-        ]
+        }
     },
     "resources": {
         "aiven:index/account:Account": {
@@ -12219,7 +12335,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -12324,6 +12440,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -12350,7 +12467,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -12405,6 +12522,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -12445,7 +12563,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -12692,7 +12810,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -12797,6 +12915,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -12823,7 +12942,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -12878,6 +12997,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -12913,7 +13033,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -13523,7 +13643,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -13641,6 +13761,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "flink",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -13663,7 +13784,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
@@ -13731,6 +13852,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -13755,7 +13877,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -14616,7 +14738,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -14737,6 +14859,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "grafanas",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -14759,7 +14882,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "grafanaUserConfig": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig",
@@ -14818,6 +14941,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project"
             ],
             "stateInputs": {
@@ -14841,7 +14965,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -14981,7 +15105,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -15097,6 +15221,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "influxdbs",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -15119,7 +15244,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -15178,6 +15303,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -15202,7 +15328,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -15530,7 +15656,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -15656,6 +15782,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "kafkas",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -15683,7 +15810,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "kafkaUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
@@ -15747,6 +15874,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -15776,7 +15904,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -16027,7 +16155,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -16148,6 +16276,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "kafkaConnects",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -16170,7 +16299,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfig:KafkaConnectKafkaConnectUserConfig",
@@ -16229,6 +16358,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -16253,7 +16383,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -16550,7 +16680,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -16666,6 +16796,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "kafkaMirrormakers",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -16688,7 +16819,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
@@ -16747,6 +16878,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -16771,7 +16903,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -17437,7 +17569,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -17553,6 +17685,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "m3aggregators",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -17575,7 +17708,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "m3aggregatorUserConfig": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
@@ -17634,6 +17767,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -17658,7 +17792,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -17793,7 +17927,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -17909,6 +18043,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "m3dbs",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -17931,7 +18066,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "m3dbUserConfig": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
@@ -17990,6 +18125,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -18014,7 +18150,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -18432,7 +18568,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -18548,6 +18684,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "mysqls",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -18570,7 +18707,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -18629,6 +18766,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -18653,7 +18791,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -18989,7 +19127,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -19105,6 +19243,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "opensearches",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -19127,7 +19266,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -19186,6 +19325,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -19210,7 +19350,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -19582,61 +19722,6 @@
                 "type": "object"
             }
         },
-        "aiven:index/organization:Organization": {
-            "description": "The Organization resource allows the creation and management of an Aiven Organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst organization1 = new aiven.Organization(\"organization1\", {});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\norganization1 = aiven.Organization(\"organization1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var organization1 = new Aiven.Organization(\"organization1\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganization(ctx, \"organization1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Organization;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var organization1 = new Organization(\"organization1\");\n\n    }\n}\n```\n```yaml\nresources:\n  organization1:\n    type: aiven:Organization\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/organization:Organization organization1 organization_id\n```\n\n ",
-            "properties": {
-                "createTime": {
-                    "type": "string",
-                    "description": "Time of creation\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Organization name\n"
-                },
-                "tenantId": {
-                    "type": "string",
-                    "description": "Tenant ID\n"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "description": "Time of last update\n"
-                }
-            },
-            "required": [
-                "createTime",
-                "name",
-                "tenantId",
-                "updateTime"
-            ],
-            "inputProperties": {
-                "name": {
-                    "type": "string",
-                    "description": "Organization name\n"
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Organization resources.\n",
-                "properties": {
-                    "createTime": {
-                        "type": "string",
-                        "description": "Time of creation\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Organization name\n"
-                    },
-                    "tenantId": {
-                        "type": "string",
-                        "description": "Tenant ID\n"
-                    },
-                    "updateTime": {
-                        "type": "string",
-                        "description": "Time of last update\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "aiven:index/organizationUser:OrganizationUser": {
             "description": "The Organization User resource allows the creation and management of an Aiven Organization User.\n\nDuring the creation of `aiven.OrganizationUser`resource, an email invitation will be sent\nto a user using `user_email` address. If the user accepts an invitation, they will become\na member of the organization. The deletion of `aiven.OrganizationUser` will not only\ndelete the invitation if one was sent but not yet accepted by the user, it will also \neliminate the member from the organization if one has accepted an invitation previously.\n",
             "properties": {
@@ -19708,6 +19793,84 @@
                         "type": "string",
                         "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/organizationUserGroup:OrganizationUserGroup": {
+            "description": "The Organization User Group resource allows the creation and management of an Aiven Organization Groups.\n",
+            "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "Time of creation\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "Time of last update\n"
+                }
+            },
+            "required": [
+                "createTime",
+                "name",
+                "organizationId",
+                "updateTime"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "organizationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationUserGroup resources.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of last update\n"
                     }
                 },
                 "type": "object"
@@ -19805,7 +19968,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -19923,6 +20086,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "pg",
+                "plan",
                 "project",
                 "serviceHost",
                 "serviceName",
@@ -19945,7 +20109,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -20013,6 +20177,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project"
             ],
             "stateInputs": {
@@ -20036,7 +20201,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -20763,7 +20928,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
@@ -20883,6 +21048,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "plan",
                 "project",
                 "redis",
                 "serviceHost",
@@ -20906,7 +21072,7 @@
                 "diskSpace": {
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                    "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -20965,6 +21131,7 @@
                 }
             },
             "requiredInputs": [
+                "plan",
                 "project",
                 "serviceName"
             ],
@@ -20989,7 +21156,7 @@
                     "diskSpace": {
                         "type": "string",
                         "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
-                        "deprecationMessage": "This will be removed in v5.0.0 and replaced with additional_disk_space instead."
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
@@ -27039,55 +27206,6 @@
                 ]
             }
         },
-        "aiven:index/getOrganization:getOrganization": {
-            "description": "The Organization data source provides information about the existing Aiven Organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst organization1 = aiven.getOrganization({\n    name: \"\u003cORGANIZATION_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\norganization1 = aiven.get_organization(name=\"\u003cORGANIZATION_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var organization1 = Aiven.GetOrganization.Invoke(new()\n    {\n        Name = \"\u003cORGANIZATION_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganization(ctx, \u0026aiven.LookupOrganizationArgs{\n\t\t\tName: \"\u003cORGANIZATION_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var organization1 = AivenFunctions.getOrganization(GetOrganizationArgs.builder()\n            .name(\"\u003cORGANIZATION_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  organization1:\n    fn::invoke:\n      Function: aiven:getOrganization\n      Arguments:\n        name: \u003cORGANIZATION_NAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
-            "inputs": {
-                "description": "A collection of arguments for invoking getOrganization.\n",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "description": "Organization name\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "name"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getOrganization.\n",
-                "properties": {
-                    "createTime": {
-                        "type": "string",
-                        "description": "Time of creation\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Organization name\n"
-                    },
-                    "tenantId": {
-                        "type": "string",
-                        "description": "Tenant ID\n"
-                    },
-                    "updateTime": {
-                        "type": "string",
-                        "description": "Time of last update\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "createTime",
-                    "name",
-                    "tenantId",
-                    "updateTime",
-                    "id"
-                ]
-            }
-        },
         "aiven:index/getOrganizationUser:getOrganizationUser": {
             "description": "The Organization User data source provides information about the existing Aiven Organization User.\n",
             "inputs": {
@@ -27143,6 +27261,65 @@
                     "invitedBy",
                     "organizationId",
                     "userEmail",
+                    "id"
+                ]
+            }
+        },
+        "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": {
+            "description": "The Organization User Groupe data source provides information about the existing Aiven Organization User Group.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationUserGroup.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "organizationId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationUserGroup.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of last update\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createTime",
+                    "description",
+                    "name",
+                    "organizationId",
+                    "updateTime",
                     "id"
                 ]
             }

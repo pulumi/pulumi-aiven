@@ -868,6 +868,9 @@
                                 "ip_filter_string": {
                                     "maxItemsOne": false
                                 },
+                                "openid": {
+                                    "maxItemsOne": true
+                                },
                                 "opensearch": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -921,6 +924,9 @@
             },
             "aiven_organization_user": {
                 "current": "aiven:index/organizationUser:OrganizationUser"
+            },
+            "aiven_organization_user_group": {
+                "current": "aiven:index/organizationUserGroup:OrganizationUserGroup"
             },
             "aiven_organizational_unit": {
                 "current": "aiven:index/organizationalUnit:OrganizationalUnit"
@@ -2172,6 +2178,9 @@
                                 "ip_filter_string": {
                                     "maxItemsOne": false
                                 },
+                                "openid": {
+                                    "maxItemsOne": true
+                                },
                                 "opensearch": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2225,6 +2234,9 @@
             },
             "aiven_organization_user": {
                 "current": "aiven:index/getOrganizationUser:getOrganizationUser"
+            },
+            "aiven_organization_user_group": {
+                "current": "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup"
             },
             "aiven_organizational_unit": {
                 "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit"
@@ -2637,8 +2649,8 @@
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": "aiven_opensearch_acl_config",
             "aiven:index/openSearchAclRule:OpenSearchAclRule": "aiven_opensearch_acl_rule",
             "aiven:index/opensearchUser:OpensearchUser": "aiven_opensearch_user",
-            "aiven:index/organization:Organization": "aiven_organization",
             "aiven:index/organizationUser:OrganizationUser": "aiven_organization_user",
+            "aiven:index/organizationUserGroup:OrganizationUserGroup": "aiven_organization_user_group",
             "aiven:index/organizationalUnit:OrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/pg:Pg": "aiven_pg",
             "aiven:index/pgDatabase:PgDatabase": "aiven_pg_database",
@@ -2701,8 +2713,8 @@
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": "aiven_opensearch_acl_config",
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": "aiven_opensearch_acl_rule",
             "aiven:index/getOpensearchUser:getOpensearchUser": "aiven_opensearch_user",
-            "aiven:index/getOrganization:getOrganization": "aiven_organization",
             "aiven:index/getOrganizationUser:getOrganizationUser": "aiven_organization_user",
+            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": "aiven_organization_user_group",
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": "aiven_organizational_unit",
             "aiven:index/getPg:getPg": "aiven_pg",
             "aiven:index/getPgDatabase:getPgDatabase": "aiven_pg_database",
@@ -2839,6 +2851,7 @@
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "metricsEnabled": "metrics_enabled",
+                "oauthAllowInsecureEmailLookup": "oauth_allow_insecure_email_lookup",
                 "privateAccess": "private_access",
                 "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
@@ -2866,6 +2879,7 @@
                 "allowedOrganizations": "allowed_organizations",
                 "apiUrl": "api_url",
                 "authUrl": "auth_url",
+                "autoLogin": "auto_login",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "tokenUrl": "token_url"
@@ -2982,6 +2996,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/KafkaConnectKafkaConnectUserConfigPrivateAccess:KafkaConnectKafkaConnectUserConfigPrivateAccess": {
@@ -3080,6 +3095,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/KafkaKafkaUserConfigKafkaRestConfig:KafkaKafkaUserConfigKafkaRestConfig": {
@@ -3335,6 +3351,17 @@
                 "mappingNestedObjectsLimit": "mapping_nested_objects_limit",
                 "numberOfReplicas": "number_of_replicas",
                 "numberOfShards": "number_of_shards"
+            },
+            "aiven:index/OpenSearchOpensearchUserConfigOpenid:OpenSearchOpensearchUserConfigOpenid": {
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "connectUrl": "connect_url",
+                "jwtHeader": "jwt_header",
+                "jwtUrlParameter": "jwt_url_parameter",
+                "refreshRateLimitCount": "refresh_rate_limit_count",
+                "refreshRateLimitTimeWindowMs": "refresh_rate_limit_time_window_ms",
+                "rolesKey": "roles_key",
+                "subjectKey": "subject_key"
             },
             "aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch": {
                 "actionAutoCreateIndexEnabled": "action_auto_create_index_enabled",
@@ -4310,6 +4337,7 @@
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "metricsEnabled": "metrics_enabled",
+                "oauthAllowInsecureEmailLookup": "oauth_allow_insecure_email_lookup",
                 "privateAccess": "private_access",
                 "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
@@ -4337,6 +4365,7 @@
                 "allowedOrganizations": "allowed_organizations",
                 "apiUrl": "api_url",
                 "authUrl": "auth_url",
+                "autoLogin": "auto_login",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "tokenUrl": "token_url"
@@ -4543,6 +4572,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess": {
@@ -4652,6 +4682,7 @@
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
                 "producerMaxRequestSize": "producer_max_request_size",
+                "scheduledRebalanceMaxDelayMs": "scheduled_rebalance_max_delay_ms",
                 "sessionTimeoutMs": "session_timeout_ms"
             },
             "aiven:index/getKafkaKafkaUserConfigKafkaRestConfig:getKafkaKafkaUserConfigKafkaRestConfig": {
@@ -5092,6 +5123,17 @@
                 "numberOfReplicas": "number_of_replicas",
                 "numberOfShards": "number_of_shards"
             },
+            "aiven:index/getOpenSearchOpensearchUserConfigOpenid:getOpenSearchOpensearchUserConfigOpenid": {
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "connectUrl": "connect_url",
+                "jwtHeader": "jwt_header",
+                "jwtUrlParameter": "jwt_url_parameter",
+                "refreshRateLimitCount": "refresh_rate_limit_count",
+                "refreshRateLimitTimeWindowMs": "refresh_rate_limit_time_window_ms",
+                "rolesKey": "roles_key",
+                "subjectKey": "subject_key"
+            },
             "aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch": {
                 "actionAutoCreateIndexEnabled": "action_auto_create_index_enabled",
                 "actionDestructiveRequiresName": "action_destructive_requires_name",
@@ -5153,16 +5195,16 @@
             "aiven:index/getOpensearchUser:getOpensearchUser": {
                 "serviceName": "service_name"
             },
-            "aiven:index/getOrganization:getOrganization": {
-                "createTime": "create_time",
-                "tenantId": "tenant_id",
-                "updateTime": "update_time"
-            },
             "aiven:index/getOrganizationUser:getOrganizationUser": {
                 "createTime": "create_time",
                 "invitedBy": "invited_by",
                 "organizationId": "organization_id",
                 "userEmail": "user_email"
+            },
+            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": {
+                "createTime": "create_time",
+                "organizationId": "organization_id",
+                "updateTime": "update_time"
             },
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
                 "createTime": "create_time",
@@ -5895,16 +5937,16 @@
             "aiven:index/opensearchUser:OpensearchUser": {
                 "serviceName": "service_name"
             },
-            "aiven:index/organization:Organization": {
-                "createTime": "create_time",
-                "tenantId": "tenant_id",
-                "updateTime": "update_time"
-            },
             "aiven:index/organizationUser:OrganizationUser": {
                 "createTime": "create_time",
                 "invitedBy": "invited_by",
                 "organizationId": "organization_id",
                 "userEmail": "user_email"
+            },
+            "aiven:index/organizationUserGroup:OrganizationUserGroup": {
+                "createTime": "create_time",
+                "organizationId": "organization_id",
+                "updateTime": "update_time"
             },
             "aiven:index/organizationalUnit:OrganizationalUnit": {
                 "createTime": "create_time",
