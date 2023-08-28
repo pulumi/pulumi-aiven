@@ -60,6 +60,7 @@ public final class GrafanaGrafanaUserConfig {
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable Boolean metricsEnabled;
+    private @Nullable Boolean oauthAllowInsecureEmailLookup;
     private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
     private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable String projectToForkFrom;
@@ -163,6 +164,9 @@ public final class GrafanaGrafanaUserConfig {
     public Optional<Boolean> metricsEnabled() {
         return Optional.ofNullable(this.metricsEnabled);
     }
+    public Optional<Boolean> oauthAllowInsecureEmailLookup() {
+        return Optional.ofNullable(this.oauthAllowInsecureEmailLookup);
+    }
     public Optional<GrafanaGrafanaUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
@@ -234,6 +238,7 @@ public final class GrafanaGrafanaUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Boolean metricsEnabled;
+        private @Nullable Boolean oauthAllowInsecureEmailLookup;
         private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
         private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable String projectToForkFrom;
@@ -276,6 +281,7 @@ public final class GrafanaGrafanaUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.metricsEnabled = defaults.metricsEnabled;
+    	      this.oauthAllowInsecureEmailLookup = defaults.oauthAllowInsecureEmailLookup;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
@@ -439,6 +445,11 @@ public final class GrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder oauthAllowInsecureEmailLookup(@Nullable Boolean oauthAllowInsecureEmailLookup) {
+            this.oauthAllowInsecureEmailLookup = oauthAllowInsecureEmailLookup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
@@ -523,6 +534,7 @@ public final class GrafanaGrafanaUserConfig {
             o.ipFilterStrings = ipFilterStrings;
             o.ipFilters = ipFilters;
             o.metricsEnabled = metricsEnabled;
+            o.oauthAllowInsecureEmailLookup = oauthAllowInsecureEmailLookup;
             o.privateAccess = privateAccess;
             o.privatelinkAccess = privatelinkAccess;
             o.projectToForkFrom = projectToForkFrom;

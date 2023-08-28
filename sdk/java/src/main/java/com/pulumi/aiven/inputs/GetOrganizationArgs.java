@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,23 +16,39 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetOrganizationArgs Empty = new GetOrganizationArgs();
 
     /**
-     * Organization name
+     * Identifier of the organization.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
-     * @return Organization name
+     * @return Identifier of the organization.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * Name of the organization.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of the organization.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetOrganizationArgs() {}
 
     private GetOrganizationArgs(GetOrganizationArgs $) {
+        this.id = $.id;
         this.name = $.name;
     }
 
@@ -53,18 +71,39 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Organization name
+         * @param id Identifier of the organization.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id Identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param name Name of the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Organization name
+         * @param name Name of the organization.
          * 
          * @return builder
          * 
@@ -74,7 +113,6 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetOrganizationArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

@@ -18,6 +18,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     private @Nullable List<String> allowedOrganizations;
     private String apiUrl;
     private String authUrl;
+    private @Nullable Boolean autoLogin;
     private String clientId;
     private String clientSecret;
     private @Nullable String name;
@@ -39,6 +40,9 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     }
     public String authUrl() {
         return this.authUrl;
+    }
+    public Optional<Boolean> autoLogin() {
+        return Optional.ofNullable(this.autoLogin);
     }
     public String clientId() {
         return this.clientId;
@@ -70,6 +74,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         private @Nullable List<String> allowedOrganizations;
         private String apiUrl;
         private String authUrl;
+        private @Nullable Boolean autoLogin;
         private String clientId;
         private String clientSecret;
         private @Nullable String name;
@@ -83,6 +88,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     	      this.allowedOrganizations = defaults.allowedOrganizations;
     	      this.apiUrl = defaults.apiUrl;
     	      this.authUrl = defaults.authUrl;
+    	      this.autoLogin = defaults.autoLogin;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.name = defaults.name;
@@ -122,6 +128,11 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
             return this;
         }
         @CustomType.Setter
+        public Builder autoLogin(@Nullable Boolean autoLogin) {
+            this.autoLogin = autoLogin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
@@ -156,6 +167,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
             o.allowedOrganizations = allowedOrganizations;
             o.apiUrl = apiUrl;
             o.authUrl = authUrl;
+            o.autoLogin = autoLogin;
             o.clientId = clientId;
             o.clientSecret = clientSecret;
             o.name = name;

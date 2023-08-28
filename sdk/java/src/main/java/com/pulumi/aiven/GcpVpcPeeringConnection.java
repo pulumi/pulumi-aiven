@@ -63,7 +63,7 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="gcpProjectId", type=String.class, parameters={})
+    @Export(name="gcpProjectId", refs={String.class}, tree="[0]")
     private Output<String> gcpProjectId;
 
     /**
@@ -77,7 +77,7 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="peerVpc", type=String.class, parameters={})
+    @Export(name="peerVpc", refs={String.class}, tree="[0]")
     private Output<String> peerVpc;
 
     /**
@@ -91,7 +91,7 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * Computed GCP network peering link
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -105,7 +105,7 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * State of the peering connection
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -119,7 +119,7 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * State-specific help or error information
      * 
      */
-    @Export(name="stateInfo", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
@@ -133,7 +133,7 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

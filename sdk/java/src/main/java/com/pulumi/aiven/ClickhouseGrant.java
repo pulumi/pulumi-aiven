@@ -116,7 +116,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="privilegeGrants", type=List.class, parameters={ClickhouseGrantPrivilegeGrant.class})
+    @Export(name="privilegeGrants", refs={List.class,ClickhouseGrantPrivilegeGrant.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseGrantPrivilegeGrant>> privilegeGrants;
 
     /**
@@ -130,7 +130,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -144,7 +144,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
     /**
@@ -158,7 +158,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="roleGrants", type=List.class, parameters={ClickhouseGrantRoleGrant.class})
+    @Export(name="roleGrants", refs={List.class,ClickhouseGrantRoleGrant.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseGrantRoleGrant>> roleGrants;
 
     /**
@@ -172,7 +172,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -186,7 +186,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> user;
 
     /**

@@ -80,7 +80,7 @@ type MySql struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -106,7 +106,7 @@ type MySql struct {
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan pulumi.StringPtrOutput `pulumi:"plan"`
+	Plan pulumi.StringOutput `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -152,6 +152,9 @@ func NewMySql(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Plan == nil {
+		return nil, errors.New("invalid value for required argument 'Plan'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -201,7 +204,7 @@ type mySqlState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -282,7 +285,7 @@ type MySqlState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -365,7 +368,7 @@ type mySqlArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -379,7 +382,7 @@ type mySqlArgs struct {
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan *string `pulumi:"plan"`
+	Plan string `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -419,7 +422,7 @@ type MySqlArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -433,7 +436,7 @@ type MySqlArgs struct {
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan pulumi.StringPtrInput
+	Plan pulumi.StringInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
@@ -569,7 +572,7 @@ func (o MySqlOutput) Components() MySqlComponentArrayOutput {
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 func (o MySqlOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -622,8 +625,8 @@ func (o MySqlOutput) Mysqls() MySqlMysqlArrayOutput {
 // `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 // other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 // options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-func (o MySqlOutput) Plan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.Plan }).(pulumi.StringPtrOutput)
+func (o MySqlOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a

@@ -26,6 +26,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
     private @Nullable String producerCompressionType;
     private @Nullable Integer producerLingerMs;
     private @Nullable Integer producerMaxRequestSize;
+    private @Nullable Integer scheduledRebalanceMaxDelayMs;
     private @Nullable Integer sessionTimeoutMs;
 
     private KafkaKafkaUserConfigKafkaConnectConfig() {}
@@ -71,6 +72,9 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
     public Optional<Integer> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
+    public Optional<Integer> scheduledRebalanceMaxDelayMs() {
+        return Optional.ofNullable(this.scheduledRebalanceMaxDelayMs);
+    }
     public Optional<Integer> sessionTimeoutMs() {
         return Optional.ofNullable(this.sessionTimeoutMs);
     }
@@ -98,6 +102,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
         private @Nullable String producerCompressionType;
         private @Nullable Integer producerLingerMs;
         private @Nullable Integer producerMaxRequestSize;
+        private @Nullable Integer scheduledRebalanceMaxDelayMs;
         private @Nullable Integer sessionTimeoutMs;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigKafkaConnectConfig defaults) {
@@ -116,6 +121,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
     	      this.producerCompressionType = defaults.producerCompressionType;
     	      this.producerLingerMs = defaults.producerLingerMs;
     	      this.producerMaxRequestSize = defaults.producerMaxRequestSize;
+    	      this.scheduledRebalanceMaxDelayMs = defaults.scheduledRebalanceMaxDelayMs;
     	      this.sessionTimeoutMs = defaults.sessionTimeoutMs;
         }
 
@@ -190,6 +196,11 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder scheduledRebalanceMaxDelayMs(@Nullable Integer scheduledRebalanceMaxDelayMs) {
+            this.scheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionTimeoutMs(@Nullable Integer sessionTimeoutMs) {
             this.sessionTimeoutMs = sessionTimeoutMs;
             return this;
@@ -210,6 +221,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
             o.producerCompressionType = producerCompressionType;
             o.producerLingerMs = producerLingerMs;
             o.producerMaxRequestSize = producerMaxRequestSize;
+            o.scheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
             o.sessionTimeoutMs = sessionTimeoutMs;
             return o;
         }

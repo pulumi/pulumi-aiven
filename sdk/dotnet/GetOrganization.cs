@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganization
     {
         /// <summary>
-        /// The Organization data source provides information about the existing Aiven Organization.
+        /// Retrieves information about an organization from Aiven.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -36,11 +36,11 @@ namespace Pulumi.Aiven
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs args, InvokeOptions? options = null)
+        public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("aiven:index/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Organization data source provides information about the existing Aiven Organization.
+        /// Retrieves information about an organization from Aiven.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("aiven:index/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
     }
 
@@ -72,10 +72,16 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Organization name
+        /// Identifier of the organization.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Name of the organization.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetOrganizationArgs()
         {
@@ -86,10 +92,16 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Organization name
+        /// Identifier of the organization.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Name of the organization.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetOrganizationInvokeArgs()
         {
@@ -102,23 +114,23 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationResult
     {
         /// <summary>
-        /// Time of creation
+        /// Timestamp of the creation of the organization.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identifier of the organization.
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         /// <summary>
-        /// Organization name
+        /// Name of the organization.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// Tenant ID
+        /// Tenant identifier of the organization.
         /// </summary>
         public readonly string TenantId;
         /// <summary>
-        /// Time of last update
+        /// Timestamp of the last update of the organization.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -126,9 +138,9 @@ namespace Pulumi.Aiven
         private GetOrganizationResult(
             string createTime,
 
-            string id,
+            string? id,
 
-            string name,
+            string? name,
 
             string tenantId,
 

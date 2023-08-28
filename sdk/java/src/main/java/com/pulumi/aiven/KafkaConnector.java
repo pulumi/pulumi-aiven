@@ -73,7 +73,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The Kafka Connector configuration parameters.
      * 
      */
-    @Export(name="config", type=Map.class, parameters={String.class, String.class})
+    @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> config;
 
     /**
@@ -87,7 +87,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="connectorName", type=String.class, parameters={})
+    @Export(name="connectorName", refs={String.class}, tree="[0]")
     private Output<String> connectorName;
 
     /**
@@ -101,7 +101,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The Kafka connector author.
      * 
      */
-    @Export(name="pluginAuthor", type=String.class, parameters={})
+    @Export(name="pluginAuthor", refs={String.class}, tree="[0]")
     private Output<String> pluginAuthor;
 
     /**
@@ -115,7 +115,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The Kafka connector Java class.
      * 
      */
-    @Export(name="pluginClass", type=String.class, parameters={})
+    @Export(name="pluginClass", refs={String.class}, tree="[0]")
     private Output<String> pluginClass;
 
     /**
@@ -129,7 +129,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The Kafka connector documentation URL.
      * 
      */
-    @Export(name="pluginDocUrl", type=String.class, parameters={})
+    @Export(name="pluginDocUrl", refs={String.class}, tree="[0]")
     private Output<String> pluginDocUrl;
 
     /**
@@ -143,7 +143,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The Kafka connector title.
      * 
      */
-    @Export(name="pluginTitle", type=String.class, parameters={})
+    @Export(name="pluginTitle", refs={String.class}, tree="[0]")
     private Output<String> pluginTitle;
 
     /**
@@ -157,7 +157,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The Kafka connector type.
      * 
      */
-    @Export(name="pluginType", type=String.class, parameters={})
+    @Export(name="pluginType", refs={String.class}, tree="[0]")
     private Output<String> pluginType;
 
     /**
@@ -171,7 +171,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * The version of the kafka connector.
      * 
      */
-    @Export(name="pluginVersion", type=String.class, parameters={})
+    @Export(name="pluginVersion", refs={String.class}, tree="[0]")
     private Output<String> pluginVersion;
 
     /**
@@ -185,7 +185,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -199,7 +199,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -213,7 +213,7 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * List of tasks of a connector.
      * 
      */
-    @Export(name="tasks", type=List.class, parameters={KafkaConnectorTask.class})
+    @Export(name="tasks", refs={List.class,KafkaConnectorTask.class}, tree="[0,1]")
     private Output<List<KafkaConnectorTask>> tasks;
 
     /**

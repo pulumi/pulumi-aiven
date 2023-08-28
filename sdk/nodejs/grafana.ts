@@ -86,7 +86,7 @@ export class Grafana extends pulumi.CustomResource {
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * @deprecated This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -131,7 +131,7 @@ export class Grafana extends pulumi.CustomResource {
      * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
      * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
-    public readonly plan!: pulumi.Output<string | undefined>;
+    public readonly plan!: pulumi.Output<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -239,6 +239,9 @@ export class Grafana extends pulumi.CustomResource {
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as GrafanaArgs | undefined;
+            if ((!args || args.plan === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'plan'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -303,7 +306,7 @@ export interface GrafanaState {
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * @deprecated This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -437,7 +440,7 @@ export interface GrafanaArgs {
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
      * will result in the service rebalancing.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * @deprecated This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -460,7 +463,7 @@ export interface GrafanaArgs {
      * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
      * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
-    plan?: pulumi.Input<string>;
+    plan: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. This property cannot be changed, doing so forces recreation of the resource.

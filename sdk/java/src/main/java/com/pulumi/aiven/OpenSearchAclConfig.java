@@ -89,7 +89,7 @@ public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
      * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -103,7 +103,7 @@ public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
      * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      * 
      */
-    @Export(name="extendedAcl", type=Boolean.class, parameters={})
+    @Export(name="extendedAcl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> extendedAcl;
 
     /**
@@ -117,7 +117,7 @@ public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -131,7 +131,7 @@ public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**

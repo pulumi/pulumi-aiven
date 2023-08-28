@@ -54,10 +54,10 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
@@ -65,10 +65,10 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
      * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -122,15 +122,15 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
      * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    @Import(name="plan")
-    private @Nullable Output<String> plan;
+    @Import(name="plan", required=true)
+    private Output<String> plan;
 
     /**
      * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    public Optional<Output<String>> plan() {
-        return Optional.ofNullable(this.plan);
+    public Output<String> plan() {
+        return this.plan;
     }
 
     /**
@@ -323,10 +323,10 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
+        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
@@ -338,10 +338,10 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
+        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }
@@ -415,7 +415,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder plan(@Nullable Output<String> plan) {
+        public Builder plan(Output<String> plan) {
             $.plan = plan;
             return this;
         }
@@ -608,6 +608,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OpenSearchArgs build() {
+            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
             $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
             return $;

@@ -67,7 +67,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="peerCloudAccount", type=String.class, parameters={})
+    @Export(name="peerCloudAccount", refs={String.class}, tree="[0]")
     private Output<String> peerCloudAccount;
 
     /**
@@ -85,7 +85,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * 
      */
     @Deprecated /* This field is deprecated and will be removed in the next major release. */
-    @Export(name="peerRegion", type=String.class, parameters={})
+    @Export(name="peerRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerRegion;
 
     /**
@@ -99,7 +99,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="peerVpc", type=String.class, parameters={})
+    @Export(name="peerVpc", refs={String.class}, tree="[0]")
     private Output<String> peerVpc;
 
     /**
@@ -113,7 +113,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * Cloud provider identifier for the peering connection if available
      * 
      */
-    @Export(name="peeringConnectionId", type=String.class, parameters={})
+    @Export(name="peeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> peeringConnectionId;
 
     /**
@@ -127,7 +127,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * State of the peering connection
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -141,7 +141,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * State-specific help or error information
      * 
      */
-    @Export(name="stateInfo", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
@@ -155,7 +155,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * List of private IPv4 ranges to route through the peering connection
      * 
      */
-    @Export(name="userPeerNetworkCidrs", type=List.class, parameters={String.class})
+    @Export(name="userPeerNetworkCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userPeerNetworkCidrs;
 
     /**
@@ -169,7 +169,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

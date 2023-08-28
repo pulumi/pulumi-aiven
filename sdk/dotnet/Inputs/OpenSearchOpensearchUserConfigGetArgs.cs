@@ -98,6 +98,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxIndexCount { get; set; }
 
         /// <summary>
+        /// OpenSearch OpenID Connect Configuration.
+        /// </summary>
+        [Input("openid")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpenidGetArgs>? Openid { get; set; }
+
+        /// <summary>
         /// OpenSearch settings.
         /// </summary>
         [Input("opensearch")]

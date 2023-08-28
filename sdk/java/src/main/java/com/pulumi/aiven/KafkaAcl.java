@@ -63,7 +63,7 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * Kafka ACL ID
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
@@ -77,7 +77,7 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
@@ -91,7 +91,7 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -105,7 +105,7 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -119,7 +119,7 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="topic", type=String.class, parameters={})
+    @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
@@ -133,7 +133,7 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
      * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

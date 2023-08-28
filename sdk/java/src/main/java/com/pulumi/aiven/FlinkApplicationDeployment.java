@@ -22,7 +22,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * Application ID
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -36,7 +36,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * Application deployment creation time
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -50,7 +50,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * Application deployment creator
      * 
      */
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
@@ -64,7 +64,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * Flink Job parallelism
      * 
      */
-    @Export(name="parallelism", type=Integer.class, parameters={})
+    @Export(name="parallelism", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> parallelism;
 
     /**
@@ -79,7 +79,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -94,7 +94,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * Specifies whether a Flink Job is restarted in case it fails
      * 
      */
-    @Export(name="restartEnabled", type=Boolean.class, parameters={})
+    @Export(name="restartEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> restartEnabled;
 
     /**
@@ -109,7 +109,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -124,7 +124,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * Job savepoint
      * 
      */
-    @Export(name="startingSavepoint", type=String.class, parameters={})
+    @Export(name="startingSavepoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startingSavepoint;
 
     /**
@@ -138,7 +138,7 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
      * ApplicationVersion ID
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**

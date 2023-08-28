@@ -63,7 +63,7 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="databaseName", type=String.class, parameters={})
+    @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
@@ -77,7 +77,7 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="lcCollate", type=String.class, parameters={})
+    @Export(name="lcCollate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lcCollate;
 
     /**
@@ -91,7 +91,7 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="lcCtype", type=String.class, parameters={})
+    @Export(name="lcCtype", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lcCtype;
 
     /**
@@ -105,7 +105,7 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -119,7 +119,7 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -134,7 +134,7 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * recommended to enable this for any production databases containing critical data. The default value is `false`.
      * 
      */
-    @Export(name="terminationProtection", type=Boolean.class, parameters={})
+    @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**

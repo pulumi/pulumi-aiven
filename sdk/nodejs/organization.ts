@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Organization resource allows the creation and management of an Aiven Organization.
+ * Creates and manages an organization in Aiven.
  *
  * ## Example Usage
  *
@@ -51,19 +53,20 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
-     * Time of creation
+     * Timestamp of the creation of the organization.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Organization name
+     * Name of the organization.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Tenant ID
+     * Tenant identifier of the organization.
      */
     public /*out*/ readonly tenantId!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.OrganizationTimeouts | undefined>;
     /**
-     * Time of last update
+     * Timestamp of the last update of the organization.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -83,10 +86,12 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -101,19 +106,20 @@ export class Organization extends pulumi.CustomResource {
  */
 export interface OrganizationState {
     /**
-     * Time of creation
+     * Timestamp of the creation of the organization.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Organization name
+     * Name of the organization.
      */
     name?: pulumi.Input<string>;
     /**
-     * Tenant ID
+     * Tenant identifier of the organization.
      */
     tenantId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;
     /**
-     * Time of last update
+     * Timestamp of the last update of the organization.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -123,7 +129,8 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     /**
-     * Organization name
+     * Name of the organization.
      */
     name?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;
 }

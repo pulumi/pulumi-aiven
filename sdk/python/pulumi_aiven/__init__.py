@@ -80,6 +80,7 @@ from .get_open_search_acl_rule import *
 from .get_opensearch_user import *
 from .get_organization import *
 from .get_organization_user import *
+from .get_organization_user_group import *
 from .get_organizational_unit import *
 from .get_pg import *
 from .get_pg_database import *
@@ -120,6 +121,7 @@ from .open_search_acl_rule import *
 from .opensearch_user import *
 from .organization import *
 from .organization_user import *
+from .organization_user_group import *
 from .organizational_unit import *
 from .pg import *
 from .pg_database import *
@@ -569,6 +571,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organizationUser:OrganizationUser": "OrganizationUser"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationUserGroup",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationUserGroup:OrganizationUserGroup": "OrganizationUserGroup"
   }
  },
  {

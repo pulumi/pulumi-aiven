@@ -54,6 +54,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }
 
+        [Input("scheduledRebalanceMaxDelayMs")]
+        public Input<int>? ScheduledRebalanceMaxDelayMs { get; set; }
+
         [Input("sessionTimeoutMs")]
         public Input<int>? SessionTimeoutMs { get; set; }
 

@@ -62,7 +62,7 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
      * The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -76,7 +76,7 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -90,7 +90,7 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -106,7 +106,7 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
      * default value is `false`.
      * 
      */
-    @Export(name="terminationProtection", type=Boolean.class, parameters={})
+    @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**

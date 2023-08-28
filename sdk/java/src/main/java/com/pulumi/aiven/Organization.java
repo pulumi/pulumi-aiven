@@ -6,15 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationState;
+import com.pulumi.aiven.outputs.OrganizationTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Organization resource allows the creation and management of an Aiven Organization.
+ * Creates and manages an organization in Aiven.
  * 
  * ## Example Usage
  * ```java
@@ -53,56 +55,62 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/organization:Organization")
 public class Organization extends com.pulumi.resources.CustomResource {
     /**
-     * Time of creation
+     * Timestamp of the creation of the organization.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time of creation
+     * @return Timestamp of the creation of the organization.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Organization name
+     * Name of the organization.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Organization name
+     * @return Name of the organization.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Tenant ID
+     * Tenant identifier of the organization.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
-     * @return Tenant ID
+     * @return Tenant identifier of the organization.
      * 
      */
     public Output<String> tenantId() {
         return this.tenantId;
     }
+    @Export(name="timeouts", refs={OrganizationTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationTimeouts> timeouts;
+
+    public Output<Optional<OrganizationTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Time of last update
+     * Timestamp of the last update of the organization.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time of last update
+     * @return Timestamp of the last update of the organization.
      * 
      */
     public Output<String> updateTime() {

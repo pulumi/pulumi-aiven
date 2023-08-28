@@ -72,7 +72,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Emit heartbeats enabled. The default value is `false`.
      * 
      */
-    @Export(name="emitHeartbeatsEnabled", type=Boolean.class, parameters={})
+    @Export(name="emitHeartbeatsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> emitHeartbeatsEnabled;
 
     /**
@@ -86,7 +86,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Enable of disable replication flows for a service.
      * 
      */
-    @Export(name="enable", type=Boolean.class, parameters={})
+    @Export(name="enable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enable;
 
     /**
@@ -100,7 +100,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Offset syncs topic location.
      * 
      */
-    @Export(name="offsetSyncsTopicLocation", type=String.class, parameters={})
+    @Export(name="offsetSyncsTopicLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> offsetSyncsTopicLocation;
 
     /**
@@ -114,7 +114,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -128,7 +128,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
-    @Export(name="replicationPolicyClass", type=String.class, parameters={})
+    @Export(name="replicationPolicyClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replicationPolicyClass;
 
     /**
@@ -142,7 +142,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -156,7 +156,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Source cluster alias. Maximum length: `128`.
      * 
      */
-    @Export(name="sourceCluster", type=String.class, parameters={})
+    @Export(name="sourceCluster", refs={String.class}, tree="[0]")
     private Output<String> sourceCluster;
 
     /**
@@ -170,7 +170,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Sync consumer group offsets. The default value is `false`.
      * 
      */
-    @Export(name="syncGroupOffsetsEnabled", type=Boolean.class, parameters={})
+    @Export(name="syncGroupOffsetsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncGroupOffsetsEnabled;
 
     /**
@@ -184,7 +184,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Frequency of consumer group offset sync. The default value is `1`.
      * 
      */
-    @Export(name="syncGroupOffsetsIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="syncGroupOffsetsIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> syncGroupOffsetsIntervalSeconds;
 
     /**
@@ -198,7 +198,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * Target cluster alias. Maximum length: `128`.
      * 
      */
-    @Export(name="targetCluster", type=String.class, parameters={})
+    @Export(name="targetCluster", refs={String.class}, tree="[0]")
     private Output<String> targetCluster;
 
     /**
@@ -212,7 +212,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * List of topics and/or regular expressions to replicate
      * 
      */
-    @Export(name="topics", type=List.class, parameters={String.class})
+    @Export(name="topics", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> topics;
 
     /**
@@ -226,7 +226,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * List of topics and/or regular expressions to not replicate.
      * 
      */
-    @Export(name="topicsBlacklists", type=List.class, parameters={String.class})
+    @Export(name="topicsBlacklists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> topicsBlacklists;
 
     /**

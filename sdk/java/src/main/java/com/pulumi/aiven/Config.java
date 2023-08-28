@@ -5,15 +5,16 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("aiven");
 /**
- * Aiven Authentication Token
+ * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
  * 
  */
-    public String apiToken() {
-        return Codegen.stringProp("apiToken").config(config).require();
+    public Optional<String> apiToken() {
+        return Codegen.stringProp("apiToken").config(config).get();
     }
 }

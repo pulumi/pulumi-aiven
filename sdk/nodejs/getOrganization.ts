@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Organization data source provides information about the existing Aiven Organization.
+ * Retrieves information about an organization from Aiven.
  *
  * ## Example Usage
  *
@@ -18,10 +18,12 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
+export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganization:getOrganization", {
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -31,9 +33,13 @@ export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeO
  */
 export interface GetOrganizationArgs {
     /**
-     * Organization name
+     * Identifier of the organization.
      */
-    name: string;
+    id?: string;
+    /**
+     * Name of the organization.
+     */
+    name?: string;
 }
 
 /**
@@ -41,28 +47,28 @@ export interface GetOrganizationArgs {
  */
 export interface GetOrganizationResult {
     /**
-     * Time of creation
+     * Timestamp of the creation of the organization.
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identifier of the organization.
      */
-    readonly id: string;
+    readonly id?: string;
     /**
-     * Organization name
+     * Name of the organization.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
-     * Tenant ID
+     * Tenant identifier of the organization.
      */
     readonly tenantId: string;
     /**
-     * Time of last update
+     * Timestamp of the last update of the organization.
      */
     readonly updateTime: string;
 }
 /**
- * The Organization data source provides information about the existing Aiven Organization.
+ * Retrieves information about an organization from Aiven.
  *
  * ## Example Usage
  *
@@ -75,7 +81,7 @@ export interface GetOrganizationResult {
  * });
  * ```
  */
-export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
+export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
     return pulumi.output(args).apply((a: any) => getOrganization(a, opts))
 }
 
@@ -84,7 +90,11 @@ export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pu
  */
 export interface GetOrganizationOutputArgs {
     /**
-     * Organization name
+     * Identifier of the organization.
      */
-    name: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the organization.
+     */
+    name?: pulumi.Input<string>;
 }

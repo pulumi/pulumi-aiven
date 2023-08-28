@@ -36,7 +36,7 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
      * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
      */
-    @Export(name="accepted", type=Boolean.class, parameters={})
+    @Export(name="accepted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accepted;
 
     /**
@@ -50,7 +50,7 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
      * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -64,7 +64,7 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -78,7 +78,7 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
      * The email address that invited this user.
      * 
      */
-    @Export(name="invitedByUserEmail", type=String.class, parameters={})
+    @Export(name="invitedByUserEmail", refs={String.class}, tree="[0]")
     private Output<String> invitedByUserEmail;
 
     /**
@@ -92,7 +92,7 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
      * An account team id. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="teamId", type=String.class, parameters={})
+    @Export(name="teamId", refs={String.class}, tree="[0]")
     private Output<String> teamId;
 
     /**
@@ -106,7 +106,7 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
      * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="userEmail", type=String.class, parameters={})
+    @Export(name="userEmail", refs={String.class}, tree="[0]")
     private Output<String> userEmail;
 
     /**

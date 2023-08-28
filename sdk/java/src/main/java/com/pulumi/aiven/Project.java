@@ -37,7 +37,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -51,7 +51,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
-    @Export(name="addAccountOwnersAdminAccess", type=Boolean.class, parameters={})
+    @Export(name="addAccountOwnersAdminAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> addAccountOwnersAdminAccess;
 
     /**
@@ -65,7 +65,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
      * 
      */
-    @Export(name="availableCredits", type=String.class, parameters={})
+    @Export(name="availableCredits", refs={String.class}, tree="[0]")
     private Output<String> availableCredits;
 
     /**
@@ -79,7 +79,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    @Export(name="billingGroup", type=String.class, parameters={})
+    @Export(name="billingGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingGroup;
 
     /**
@@ -93,7 +93,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
      * 
      */
-    @Export(name="caCert", type=String.class, parameters={})
+    @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
@@ -107,7 +107,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    @Export(name="copyFromProject", type=String.class, parameters={})
+    @Export(name="copyFromProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> copyFromProject;
 
     /**
@@ -121,7 +121,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      * 
      */
-    @Export(name="defaultCloud", type=String.class, parameters={})
+    @Export(name="defaultCloud", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCloud;
 
     /**
@@ -135,7 +135,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The current accumulated bill for this project in the current billing period.
      * 
      */
-    @Export(name="estimatedBalance", type=String.class, parameters={})
+    @Export(name="estimatedBalance", refs={String.class}, tree="[0]")
     private Output<String> estimatedBalance;
 
     /**
@@ -149,7 +149,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
@@ -163,7 +163,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The method of invoicing used for payments for this project, e.g. `card`.
      * 
      */
-    @Export(name="paymentMethod", type=String.class, parameters={})
+    @Export(name="paymentMethod", refs={String.class}, tree="[0]")
     private Output<String> paymentMethod;
 
     /**
@@ -177,7 +177,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -191,7 +191,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Tags are key-value pairs that allow you to categorize projects.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={ProjectTag.class})
+    @Export(name="tags", refs={List.class,ProjectTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectTag>> tags;
 
     /**
@@ -205,7 +205,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
-    @Export(name="technicalEmails", type=List.class, parameters={String.class})
+    @Export(name="technicalEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> technicalEmails;
 
     /**
@@ -219,7 +219,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Use the same billing group that is used in source project.
      * 
      */
-    @Export(name="useSourceProjectBillingGroup", type=Boolean.class, parameters={})
+    @Export(name="useSourceProjectBillingGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useSourceProjectBillingGroup;
 
     /**

@@ -143,6 +143,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigIndexPattern',
     'OpenSearchOpensearchUserConfigIndexTemplate',
     'OpenSearchOpensearchUserConfigIpFilterObject',
+    'OpenSearchOpensearchUserConfigOpenid',
     'OpenSearchOpensearchUserConfigOpensearch',
     'OpenSearchOpensearchUserConfigOpensearchDashboards',
     'OpenSearchOpensearchUserConfigPrivateAccess',
@@ -151,6 +152,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigSaml',
     'OpenSearchServiceIntegration',
     'OpenSearchTag',
+    'OrganizationTimeouts',
     'PgComponent',
     'PgPg',
     'PgPgUserConfig',
@@ -349,6 +351,7 @@ __all__ = [
     'GetOpenSearchOpensearchUserConfigIndexPatternResult',
     'GetOpenSearchOpensearchUserConfigIndexTemplateResult',
     'GetOpenSearchOpensearchUserConfigIpFilterObjectResult',
+    'GetOpenSearchOpensearchUserConfigOpenidResult',
     'GetOpenSearchOpensearchUserConfigOpensearchResult',
     'GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult',
     'GetOpenSearchOpensearchUserConfigPrivateAccessResult',
@@ -2188,6 +2191,8 @@ class GrafanaGrafanaUserConfig(dict):
             suggest = "ip_filters"
         elif key == "metricsEnabled":
             suggest = "metrics_enabled"
+        elif key == "oauthAllowInsecureEmailLookup":
+            suggest = "oauth_allow_insecure_email_lookup"
         elif key == "privateAccess":
             suggest = "private_access"
         elif key == "privatelinkAccess":
@@ -2251,6 +2256,7 @@ class GrafanaGrafanaUserConfig(dict):
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[bool] = None,
+                 oauth_allow_insecure_email_lookup: Optional[bool] = None,
                  private_access: Optional['outputs.GrafanaGrafanaUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.GrafanaGrafanaUserConfigPrivatelinkAccess'] = None,
                  project_to_fork_from: Optional[str] = None,
@@ -2318,6 +2324,8 @@ class GrafanaGrafanaUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
+        if oauth_allow_insecure_email_lookup is not None:
+            pulumi.set(__self__, "oauth_allow_insecure_email_lookup", oauth_allow_insecure_email_lookup)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -2485,6 +2493,11 @@ class GrafanaGrafanaUserConfig(dict):
         return pulumi.get(self, "metrics_enabled")
 
     @property
+    @pulumi.getter(name="oauthAllowInsecureEmailLookup")
+    def oauth_allow_insecure_email_lookup(self) -> Optional[bool]:
+        return pulumi.get(self, "oauth_allow_insecure_email_lookup")
+
+    @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GrafanaGrafanaUserConfigPrivateAccess']:
         return pulumi.get(self, "private_access")
@@ -2647,6 +2660,8 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
             suggest = "allowed_domains"
         elif key == "allowedOrganizations":
             suggest = "allowed_organizations"
+        elif key == "autoLogin":
+            suggest = "auto_login"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigAuthGenericOauth. Access the value via the '{suggest}' property getter instead.")
@@ -2668,6 +2683,7 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
                  allow_sign_up: Optional[bool] = None,
                  allowed_domains: Optional[Sequence[str]] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
+                 auto_login: Optional[bool] = None,
                  name: Optional[str] = None,
                  scopes: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "api_url", api_url)
@@ -2681,6 +2697,8 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if auto_login is not None:
+            pulumi.set(__self__, "auto_login", auto_login)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
@@ -2725,6 +2743,11 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_organizations")
+
+    @property
+    @pulumi.getter(name="autoLogin")
+    def auto_login(self) -> Optional[bool]:
+        return pulumi.get(self, "auto_login")
 
     @property
     @pulumi.getter
@@ -4195,6 +4218,8 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
             suggest = "producer_linger_ms"
         elif key == "producerMaxRequestSize":
             suggest = "producer_max_request_size"
+        elif key == "scheduledRebalanceMaxDelayMs":
+            suggest = "scheduled_rebalance_max_delay_ms"
         elif key == "sessionTimeoutMs":
             suggest = "session_timeout_ms"
 
@@ -4224,6 +4249,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
                  producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
                  producer_max_request_size: Optional[int] = None,
+                 scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
@@ -4253,6 +4279,8 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
+        if scheduled_rebalance_max_delay_ms is not None:
+            pulumi.set(__self__, "scheduled_rebalance_max_delay_ms", scheduled_rebalance_max_delay_ms)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -4325,6 +4353,11 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[int]:
         return pulumi.get(self, "producer_max_request_size")
+
+    @property
+    @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
+    def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
+        return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -5381,6 +5414,8 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
             suggest = "producer_linger_ms"
         elif key == "producerMaxRequestSize":
             suggest = "producer_max_request_size"
+        elif key == "scheduledRebalanceMaxDelayMs":
+            suggest = "scheduled_rebalance_max_delay_ms"
         elif key == "sessionTimeoutMs":
             suggest = "session_timeout_ms"
 
@@ -5410,6 +5445,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
                  producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
                  producer_max_request_size: Optional[int] = None,
+                 scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
@@ -5439,6 +5475,8 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
+        if scheduled_rebalance_max_delay_ms is not None:
+            pulumi.set(__self__, "scheduled_rebalance_max_delay_ms", scheduled_rebalance_max_delay_ms)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -5511,6 +5549,11 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[int]:
         return pulumi.get(self, "producer_max_request_size")
+
+    @property
+    @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
+    def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
+        return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -8827,6 +8870,7 @@ class OpenSearchOpensearchUserConfig(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  keep_index_refresh_interval: Optional[bool] = None,
                  max_index_count: Optional[int] = None,
+                 openid: Optional['outputs.OpenSearchOpensearchUserConfigOpenid'] = None,
                  opensearch: Optional['outputs.OpenSearchOpensearchUserConfigOpensearch'] = None,
                  opensearch_dashboards: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchDashboards'] = None,
                  opensearch_version: Optional[str] = None,
@@ -8849,6 +8893,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param int max_index_count: Use index_patterns instead. The default value is `0`.
+        :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration.
         :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings.
         :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings.
         :param str opensearch_version: OpenSearch major version.
@@ -8881,6 +8926,8 @@ class OpenSearchOpensearchUserConfig(dict):
             pulumi.set(__self__, "keep_index_refresh_interval", keep_index_refresh_interval)
         if max_index_count is not None:
             pulumi.set(__self__, "max_index_count", max_index_count)
+        if openid is not None:
+            pulumi.set(__self__, "openid", openid)
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
@@ -8992,6 +9039,14 @@ class OpenSearchOpensearchUserConfig(dict):
         pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
 
         return pulumi.get(self, "max_index_count")
+
+    @property
+    @pulumi.getter
+    def openid(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpenid']:
+        """
+        OpenSearch OpenID Connect Configuration.
+        """
+        return pulumi.get(self, "openid")
 
     @property
     @pulumi.getter
@@ -9196,6 +9251,137 @@ class OpenSearchOpensearchUserConfigIpFilterObject(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigOpenid(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectUrl":
+            suggest = "connect_url"
+        elif key == "jwtHeader":
+            suggest = "jwt_header"
+        elif key == "jwtUrlParameter":
+            suggest = "jwt_url_parameter"
+        elif key == "refreshRateLimitCount":
+            suggest = "refresh_rate_limit_count"
+        elif key == "refreshRateLimitTimeWindowMs":
+            suggest = "refresh_rate_limit_time_window_ms"
+        elif key == "rolesKey":
+            suggest = "roles_key"
+        elif key == "subjectKey":
+            suggest = "subject_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigOpenid. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigOpenid.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigOpenid.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 client_secret: str,
+                 connect_url: str,
+                 enabled: Optional[bool] = None,
+                 header: Optional[str] = None,
+                 jwt_header: Optional[str] = None,
+                 jwt_url_parameter: Optional[str] = None,
+                 refresh_rate_limit_count: Optional[int] = None,
+                 refresh_rate_limit_time_window_ms: Optional[int] = None,
+                 roles_key: Optional[str] = None,
+                 scope: Optional[str] = None,
+                 subject_key: Optional[str] = None):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "connect_url", connect_url)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if jwt_header is not None:
+            pulumi.set(__self__, "jwt_header", jwt_header)
+        if jwt_url_parameter is not None:
+            pulumi.set(__self__, "jwt_url_parameter", jwt_url_parameter)
+        if refresh_rate_limit_count is not None:
+            pulumi.set(__self__, "refresh_rate_limit_count", refresh_rate_limit_count)
+        if refresh_rate_limit_time_window_ms is not None:
+            pulumi.set(__self__, "refresh_rate_limit_time_window_ms", refresh_rate_limit_time_window_ms)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="connectUrl")
+    def connect_url(self) -> str:
+        return pulumi.get(self, "connect_url")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[str]:
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter(name="jwtHeader")
+    def jwt_header(self) -> Optional[str]:
+        return pulumi.get(self, "jwt_header")
+
+    @property
+    @pulumi.getter(name="jwtUrlParameter")
+    def jwt_url_parameter(self) -> Optional[str]:
+        return pulumi.get(self, "jwt_url_parameter")
+
+    @property
+    @pulumi.getter(name="refreshRateLimitCount")
+    def refresh_rate_limit_count(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_rate_limit_count")
+
+    @property
+    @pulumi.getter(name="refreshRateLimitTimeWindowMs")
+    def refresh_rate_limit_time_window_ms(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_rate_limit_time_window_ms")
+
+    @property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[str]:
+        return pulumi.get(self, "roles_key")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[str]:
+        return pulumi.get(self, "subject_key")
 
 
 @pulumi.output_type
@@ -9891,6 +10077,61 @@ class OpenSearchTag(dict):
         Service tag value
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OrganizationTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -15517,6 +15758,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  metrics_enabled: Optional[bool] = None,
+                 oauth_allow_insecure_email_lookup: Optional[bool] = None,
                  private_access: Optional['outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccessResult'] = None,
                  project_to_fork_from: Optional[str] = None,
@@ -15587,6 +15829,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
+        if oauth_allow_insecure_email_lookup is not None:
+            pulumi.set(__self__, "oauth_allow_insecure_email_lookup", oauth_allow_insecure_email_lookup)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -15754,6 +15998,11 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         return pulumi.get(self, "metrics_enabled")
 
     @property
+    @pulumi.getter(name="oauthAllowInsecureEmailLookup")
+    def oauth_allow_insecure_email_lookup(self) -> Optional[bool]:
+        return pulumi.get(self, "oauth_allow_insecure_email_lookup")
+
+    @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult']:
         return pulumi.get(self, "private_access")
@@ -15880,6 +16129,7 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthResult(dict):
                  allow_sign_up: Optional[bool] = None,
                  allowed_domains: Optional[Sequence[str]] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
+                 auto_login: Optional[bool] = None,
                  name: Optional[str] = None,
                  scopes: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "api_url", api_url)
@@ -15893,6 +16143,8 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthResult(dict):
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if auto_login is not None:
+            pulumi.set(__self__, "auto_login", auto_login)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
@@ -15937,6 +16189,11 @@ class GetGrafanaGrafanaUserConfigAuthGenericOauthResult(dict):
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_organizations")
+
+    @property
+    @pulumi.getter(name="autoLogin")
+    def auto_login(self) -> Optional[bool]:
+        return pulumi.get(self, "auto_login")
 
     @property
     @pulumi.getter
@@ -16974,6 +17231,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
                  producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
                  producer_max_request_size: Optional[int] = None,
+                 scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
@@ -17003,6 +17261,8 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
+        if scheduled_rebalance_max_delay_ms is not None:
+            pulumi.set(__self__, "scheduled_rebalance_max_delay_ms", scheduled_rebalance_max_delay_ms)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -17075,6 +17335,11 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[int]:
         return pulumi.get(self, "producer_max_request_size")
+
+    @property
+    @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
+    def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
+        return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -17819,6 +18084,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
                  producer_compression_type: Optional[str] = None,
                  producer_linger_ms: Optional[int] = None,
                  producer_max_request_size: Optional[int] = None,
+                 scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
@@ -17848,6 +18114,8 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
+        if scheduled_rebalance_max_delay_ms is not None:
+            pulumi.set(__self__, "scheduled_rebalance_max_delay_ms", scheduled_rebalance_max_delay_ms)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -17920,6 +18188,11 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[int]:
         return pulumi.get(self, "producer_max_request_size")
+
+    @property
+    @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
+    def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
+        return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -20297,6 +20570,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  ip_filters: Optional[Sequence[str]] = None,
                  keep_index_refresh_interval: Optional[bool] = None,
                  max_index_count: Optional[int] = None,
+                 openid: Optional['outputs.GetOpenSearchOpensearchUserConfigOpenidResult'] = None,
                  opensearch: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchResult'] = None,
                  opensearch_dashboards: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult'] = None,
                  opensearch_version: Optional[str] = None,
@@ -20332,6 +20606,8 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
             pulumi.set(__self__, "keep_index_refresh_interval", keep_index_refresh_interval)
         if max_index_count is not None:
             pulumi.set(__self__, "max_index_count", max_index_count)
+        if openid is not None:
+            pulumi.set(__self__, "openid", openid)
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
@@ -20413,6 +20689,11 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
 
         return pulumi.get(self, "max_index_count")
+
+    @property
+    @pulumi.getter
+    def openid(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpenidResult']:
+        return pulumi.get(self, "openid")
 
     @property
     @pulumi.getter
@@ -20550,6 +20831,104 @@ class GetOpenSearchOpensearchUserConfigIpFilterObjectResult(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigOpenidResult(dict):
+    def __init__(__self__, *,
+                 client_id: str,
+                 client_secret: str,
+                 connect_url: str,
+                 enabled: Optional[bool] = None,
+                 header: Optional[str] = None,
+                 jwt_header: Optional[str] = None,
+                 jwt_url_parameter: Optional[str] = None,
+                 refresh_rate_limit_count: Optional[int] = None,
+                 refresh_rate_limit_time_window_ms: Optional[int] = None,
+                 roles_key: Optional[str] = None,
+                 scope: Optional[str] = None,
+                 subject_key: Optional[str] = None):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "connect_url", connect_url)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if jwt_header is not None:
+            pulumi.set(__self__, "jwt_header", jwt_header)
+        if jwt_url_parameter is not None:
+            pulumi.set(__self__, "jwt_url_parameter", jwt_url_parameter)
+        if refresh_rate_limit_count is not None:
+            pulumi.set(__self__, "refresh_rate_limit_count", refresh_rate_limit_count)
+        if refresh_rate_limit_time_window_ms is not None:
+            pulumi.set(__self__, "refresh_rate_limit_time_window_ms", refresh_rate_limit_time_window_ms)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="connectUrl")
+    def connect_url(self) -> str:
+        return pulumi.get(self, "connect_url")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[str]:
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter(name="jwtHeader")
+    def jwt_header(self) -> Optional[str]:
+        return pulumi.get(self, "jwt_header")
+
+    @property
+    @pulumi.getter(name="jwtUrlParameter")
+    def jwt_url_parameter(self) -> Optional[str]:
+        return pulumi.get(self, "jwt_url_parameter")
+
+    @property
+    @pulumi.getter(name="refreshRateLimitCount")
+    def refresh_rate_limit_count(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_rate_limit_count")
+
+    @property
+    @pulumi.getter(name="refreshRateLimitTimeWindowMs")
+    def refresh_rate_limit_time_window_ms(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_rate_limit_time_window_ms")
+
+    @property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[str]:
+        return pulumi.get(self, "roles_key")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[str]:
+        return pulumi.get(self, "subject_key")
 
 
 @pulumi.output_type

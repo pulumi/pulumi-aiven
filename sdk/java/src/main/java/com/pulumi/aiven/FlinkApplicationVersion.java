@@ -34,7 +34,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application ID
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -48,7 +48,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application version ID
      * 
      */
-    @Export(name="applicationVersionId", type=String.class, parameters={})
+    @Export(name="applicationVersionId", refs={String.class}, tree="[0]")
     private Output<String> applicationVersionId;
 
     /**
@@ -62,7 +62,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application version creation time
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -76,7 +76,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application version creator
      * 
      */
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
@@ -90,7 +90,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -104,7 +104,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -118,7 +118,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application sink
      * 
      */
-    @Export(name="sink", type=List.class, parameters={FlinkApplicationVersionSink.class})
+    @Export(name="sink", refs={List.class,FlinkApplicationVersionSink.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSink>> sink;
 
     /**
@@ -136,7 +136,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * 
      */
     @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
-    @Export(name="sinks", type=List.class, parameters={FlinkApplicationVersionSink.class})
+    @Export(name="sinks", refs={List.class,FlinkApplicationVersionSink.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSink>> sinks;
 
     /**
@@ -150,7 +150,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application source
      * 
      */
-    @Export(name="source", type=List.class, parameters={FlinkApplicationVersionSource.class})
+    @Export(name="source", refs={List.class,FlinkApplicationVersionSource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSource>> source;
 
     /**
@@ -168,7 +168,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * 
      */
     @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
-    @Export(name="sources", type=List.class, parameters={FlinkApplicationVersionSource.class})
+    @Export(name="sources", refs={List.class,FlinkApplicationVersionSource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSource>> sources;
 
     /**
@@ -182,7 +182,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Job SQL statement
      * 
      */
-    @Export(name="statement", type=String.class, parameters={})
+    @Export(name="statement", refs={String.class}, tree="[0]")
     private Output<String> statement;
 
     /**
@@ -196,7 +196,7 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * Application version number
      * 
      */
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     /**

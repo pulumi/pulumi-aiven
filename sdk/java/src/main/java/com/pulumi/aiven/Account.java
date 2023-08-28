@@ -62,7 +62,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The new aiven_organization resource won't have it, use the built-in ID field instead. */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -76,7 +76,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -94,7 +94,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
-    @Export(name="isAccountOwner", type=Boolean.class, parameters={})
+    @Export(name="isAccountOwner", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isAccountOwner;
 
     /**
@@ -108,7 +108,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Account name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -126,7 +126,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
-    @Export(name="ownerTeamId", type=String.class, parameters={})
+    @Export(name="ownerTeamId", refs={String.class}, tree="[0]")
     private Output<String> ownerTeamId;
 
     /**
@@ -144,7 +144,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
-    @Export(name="primaryBillingGroupId", type=String.class, parameters={})
+    @Export(name="primaryBillingGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> primaryBillingGroupId;
 
     /**
@@ -158,7 +158,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Tenant id
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -172,7 +172,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Time of last update
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

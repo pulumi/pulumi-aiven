@@ -62,7 +62,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * Azure Privatelink service alias
      * 
      */
-    @Export(name="azureServiceAlias", type=String.class, parameters={})
+    @Export(name="azureServiceAlias", refs={String.class}, tree="[0]")
     private Output<String> azureServiceAlias;
 
     /**
@@ -76,7 +76,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * Azure Privatelink service ID
      * 
      */
-    @Export(name="azureServiceId", type=String.class, parameters={})
+    @Export(name="azureServiceId", refs={String.class}, tree="[0]")
     private Output<String> azureServiceId;
 
     /**
@@ -90,7 +90,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * Printable result of the Azure Privatelink request
      * 
      */
-    @Export(name="message", type=String.class, parameters={})
+    @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
@@ -104,7 +104,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -118,7 +118,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -132,7 +132,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * Privatelink resource state
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -146,7 +146,7 @@ public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
      * A List of allowed Subscription IDs. Maximum length: `16`.
      * 
      */
-    @Export(name="userSubscriptionIds", type=List.class, parameters={String.class})
+    @Export(name="userSubscriptionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userSubscriptionIds;
 
     /**

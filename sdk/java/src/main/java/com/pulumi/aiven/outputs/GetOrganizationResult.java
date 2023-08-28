@@ -6,66 +6,68 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationResult {
     /**
-     * @return Time of creation
+     * @return Timestamp of the creation of the organization.
      * 
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier of the organization.
      * 
      */
-    private String id;
+    private @Nullable String id;
     /**
-     * @return Organization name
+     * @return Name of the organization.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return Tenant ID
+     * @return Tenant identifier of the organization.
      * 
      */
     private String tenantId;
     /**
-     * @return Time of last update
+     * @return Timestamp of the last update of the organization.
      * 
      */
     private String updateTime;
 
     private GetOrganizationResult() {}
     /**
-     * @return Time of creation
+     * @return Timestamp of the creation of the organization.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier of the organization.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
-     * @return Organization name
+     * @return Name of the organization.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return Tenant ID
+     * @return Tenant identifier of the organization.
      * 
      */
     public String tenantId() {
         return this.tenantId;
     }
     /**
-     * @return Time of last update
+     * @return Timestamp of the last update of the organization.
      * 
      */
     public String updateTime() {
@@ -82,8 +84,8 @@ public final class GetOrganizationResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private String id;
-        private String name;
+        private @Nullable String id;
+        private @Nullable String name;
         private String tenantId;
         private String updateTime;
         public Builder() {}
@@ -102,13 +104,13 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable String id) {
+            this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter

@@ -62,7 +62,7 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
      * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      * 
      */
-    @Export(name="accepted", type=Boolean.class, parameters={})
+    @Export(name="accepted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accepted;
 
     /**
@@ -76,7 +76,7 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
      * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -90,7 +90,7 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
      * Project membership type. The possible values are `admin`, `developer` and `operator`.
      * 
      */
-    @Export(name="memberType", type=String.class, parameters={})
+    @Export(name="memberType", refs={String.class}, tree="[0]")
     private Output<String> memberType;
 
     /**
@@ -104,7 +104,7 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

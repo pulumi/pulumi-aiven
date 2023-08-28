@@ -36,7 +36,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Datadog user configurable settings
      * 
      */
-    @Export(name="datadogUserConfig", type=ServiceIntegrationEndpointDatadogUserConfig.class, parameters={})
+    @Export(name="datadogUserConfig", refs={ServiceIntegrationEndpointDatadogUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointDatadogUserConfig> datadogUserConfig;
 
     /**
@@ -50,7 +50,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Integration endpoint specific backend configuration
      * 
      */
-    @Export(name="endpointConfig", type=Map.class, parameters={String.class, String.class})
+    @Export(name="endpointConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> endpointConfig;
 
     /**
@@ -64,7 +64,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Name of the service integration endpoint
      * 
      */
-    @Export(name="endpointName", type=String.class, parameters={})
+    @Export(name="endpointName", refs={String.class}, tree="[0]")
     private Output<String> endpointName;
 
     /**
@@ -78,7 +78,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
      * 
      */
-    @Export(name="endpointType", type=String.class, parameters={})
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
@@ -92,7 +92,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalAwsCloudwatchLogs user configurable settings
      * 
      */
-    @Export(name="externalAwsCloudwatchLogsUserConfig", type=ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig.class, parameters={})
+    @Export(name="externalAwsCloudwatchLogsUserConfig", refs={ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfig;
 
     /**
@@ -106,7 +106,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
-    @Export(name="externalAwsCloudwatchMetricsUserConfig", type=ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig.class, parameters={})
+    @Export(name="externalAwsCloudwatchMetricsUserConfig", refs={ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfig;
 
     /**
@@ -120,7 +120,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalElasticsearchLogs user configurable settings
      * 
      */
-    @Export(name="externalElasticsearchLogsUserConfig", type=ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig.class, parameters={})
+    @Export(name="externalElasticsearchLogsUserConfig", refs={ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfig;
 
     /**
@@ -134,7 +134,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalGoogleCloudLogging user configurable settings
      * 
      */
-    @Export(name="externalGoogleCloudLoggingUserConfig", type=ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig.class, parameters={})
+    @Export(name="externalGoogleCloudLoggingUserConfig", refs={ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfig;
 
     /**
@@ -148,7 +148,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalKafka user configurable settings
      * 
      */
-    @Export(name="externalKafkaUserConfig", type=ServiceIntegrationEndpointExternalKafkaUserConfig.class, parameters={})
+    @Export(name="externalKafkaUserConfig", refs={ServiceIntegrationEndpointExternalKafkaUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfig;
 
     /**
@@ -162,7 +162,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalOpensearchLogs user configurable settings
      * 
      */
-    @Export(name="externalOpensearchLogsUserConfig", type=ServiceIntegrationEndpointExternalOpensearchLogsUserConfig.class, parameters={})
+    @Export(name="externalOpensearchLogsUserConfig", refs={ServiceIntegrationEndpointExternalOpensearchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfig;
 
     /**
@@ -176,7 +176,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * ExternalSchemaRegistry user configurable settings
      * 
      */
-    @Export(name="externalSchemaRegistryUserConfig", type=ServiceIntegrationEndpointExternalSchemaRegistryUserConfig.class, parameters={})
+    @Export(name="externalSchemaRegistryUserConfig", refs={ServiceIntegrationEndpointExternalSchemaRegistryUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfig;
 
     /**
@@ -190,7 +190,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Jolokia user configurable settings
      * 
      */
-    @Export(name="jolokiaUserConfig", type=ServiceIntegrationEndpointJolokiaUserConfig.class, parameters={})
+    @Export(name="jolokiaUserConfig", refs={ServiceIntegrationEndpointJolokiaUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfig;
 
     /**
@@ -204,7 +204,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Project the service integration endpoint belongs to
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -218,7 +218,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Prometheus user configurable settings
      * 
      */
-    @Export(name="prometheusUserConfig", type=ServiceIntegrationEndpointPrometheusUserConfig.class, parameters={})
+    @Export(name="prometheusUserConfig", refs={ServiceIntegrationEndpointPrometheusUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfig;
 
     /**
@@ -232,7 +232,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * Rsyslog user configurable settings
      * 
      */
-    @Export(name="rsyslogUserConfig", type=ServiceIntegrationEndpointRsyslogUserConfig.class, parameters={})
+    @Export(name="rsyslogUserConfig", refs={ServiceIntegrationEndpointRsyslogUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfig;
 
     /**

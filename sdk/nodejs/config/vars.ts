@@ -8,7 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("aiven");
 
 /**
- * Aiven Authentication Token
+ * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {

@@ -65,7 +65,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * Access certificate for the user
      * 
      */
-    @Export(name="accessCert", type=String.class, parameters={})
+    @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
@@ -79,7 +79,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * Access certificate key for the user
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
@@ -93,7 +93,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * The password of the PG User ( not applicable for all services ).
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -107,7 +107,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="pgAllowReplication", type=Boolean.class, parameters={})
+    @Export(name="pgAllowReplication", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pgAllowReplication;
 
     /**
@@ -121,7 +121,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -135,7 +135,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -149,7 +149,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * Type of the user account. Tells whether the user is the primary account or a regular account.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -163,7 +163,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

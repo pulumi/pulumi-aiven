@@ -4614,19 +4614,20 @@ type GrafanaGrafanaUserConfig struct {
 	IpFilterObjects              []GrafanaGrafanaUserConfigIpFilterObject      `pulumi:"ipFilterObjects"`
 	IpFilterStrings              []string                                      `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters              []string                                   `pulumi:"ipFilters"`
-	MetricsEnabled         *bool                                      `pulumi:"metricsEnabled"`
-	PrivateAccess          *GrafanaGrafanaUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess      *GrafanaGrafanaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      *string                                    `pulumi:"projectToForkFrom"`
-	PublicAccess           *GrafanaGrafanaUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryBasebackupName *string                                    `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      *string                                    `pulumi:"serviceToForkFrom"`
-	SmtpServer             *GrafanaGrafanaUserConfigSmtpServer        `pulumi:"smtpServer"`
-	StaticIps              *bool                                      `pulumi:"staticIps"`
-	UserAutoAssignOrg      *bool                                      `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole  *string                                    `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit         *bool                                      `pulumi:"viewersCanEdit"`
+	IpFilters                     []string                                   `pulumi:"ipFilters"`
+	MetricsEnabled                *bool                                      `pulumi:"metricsEnabled"`
+	OauthAllowInsecureEmailLookup *bool                                      `pulumi:"oauthAllowInsecureEmailLookup"`
+	PrivateAccess                 *GrafanaGrafanaUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess             *GrafanaGrafanaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom             *string                                    `pulumi:"projectToForkFrom"`
+	PublicAccess                  *GrafanaGrafanaUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryBasebackupName        *string                                    `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom             *string                                    `pulumi:"serviceToForkFrom"`
+	SmtpServer                    *GrafanaGrafanaUserConfigSmtpServer        `pulumi:"smtpServer"`
+	StaticIps                     *bool                                      `pulumi:"staticIps"`
+	UserAutoAssignOrg             *bool                                      `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole         *string                                    `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit                *bool                                      `pulumi:"viewersCanEdit"`
 }
 
 // GrafanaGrafanaUserConfigInput is an input type that accepts GrafanaGrafanaUserConfigArgs and GrafanaGrafanaUserConfigOutput values.
@@ -4668,19 +4669,20 @@ type GrafanaGrafanaUserConfigArgs struct {
 	IpFilterObjects              GrafanaGrafanaUserConfigIpFilterObjectArrayInput     `pulumi:"ipFilterObjects"`
 	IpFilterStrings              pulumi.StringArrayInput                              `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters              pulumi.StringArrayInput                           `pulumi:"ipFilters"`
-	MetricsEnabled         pulumi.BoolPtrInput                               `pulumi:"metricsEnabled"`
-	PrivateAccess          GrafanaGrafanaUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess      GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
-	PublicAccess           GrafanaGrafanaUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryBasebackupName pulumi.StringPtrInput                             `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
-	SmtpServer             GrafanaGrafanaUserConfigSmtpServerPtrInput        `pulumi:"smtpServer"`
-	StaticIps              pulumi.BoolPtrInput                               `pulumi:"staticIps"`
-	UserAutoAssignOrg      pulumi.BoolPtrInput                               `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole  pulumi.StringPtrInput                             `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit         pulumi.BoolPtrInput                               `pulumi:"viewersCanEdit"`
+	IpFilters                     pulumi.StringArrayInput                           `pulumi:"ipFilters"`
+	MetricsEnabled                pulumi.BoolPtrInput                               `pulumi:"metricsEnabled"`
+	OauthAllowInsecureEmailLookup pulumi.BoolPtrInput                               `pulumi:"oauthAllowInsecureEmailLookup"`
+	PrivateAccess                 GrafanaGrafanaUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess             GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom             pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
+	PublicAccess                  GrafanaGrafanaUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryBasebackupName        pulumi.StringPtrInput                             `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom             pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
+	SmtpServer                    GrafanaGrafanaUserConfigSmtpServerPtrInput        `pulumi:"smtpServer"`
+	StaticIps                     pulumi.BoolPtrInput                               `pulumi:"staticIps"`
+	UserAutoAssignOrg             pulumi.BoolPtrInput                               `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole         pulumi.StringPtrInput                             `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit                pulumi.BoolPtrInput                               `pulumi:"viewersCanEdit"`
 }
 
 func (GrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -4873,6 +4875,10 @@ func (o GrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 
 func (o GrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigOutput) OauthAllowInsecureEmailLookup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *bool { return v.OauthAllowInsecureEmailLookup }).(pulumi.BoolPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigOutput) PrivateAccess() GrafanaGrafanaUserConfigPrivateAccessPtrOutput {
@@ -5195,6 +5201,15 @@ func (o GrafanaGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.BoolPtrOutput
 			return nil
 		}
 		return v.MetricsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigPtrOutput) OauthAllowInsecureEmailLookup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OauthAllowInsecureEmailLookup
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -5526,6 +5541,7 @@ type GrafanaGrafanaUserConfigAuthGenericOauth struct {
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
 	ApiUrl               string   `pulumi:"apiUrl"`
 	AuthUrl              string   `pulumi:"authUrl"`
+	AutoLogin            *bool    `pulumi:"autoLogin"`
 	ClientId             string   `pulumi:"clientId"`
 	ClientSecret         string   `pulumi:"clientSecret"`
 	Name                 *string  `pulumi:"name"`
@@ -5550,6 +5566,7 @@ type GrafanaGrafanaUserConfigAuthGenericOauthArgs struct {
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
 	ApiUrl               pulumi.StringInput      `pulumi:"apiUrl"`
 	AuthUrl              pulumi.StringInput      `pulumi:"authUrl"`
+	AutoLogin            pulumi.BoolPtrInput     `pulumi:"autoLogin"`
 	ClientId             pulumi.StringInput      `pulumi:"clientId"`
 	ClientSecret         pulumi.StringInput      `pulumi:"clientSecret"`
 	Name                 pulumi.StringPtrInput   `pulumi:"name"`
@@ -5654,6 +5671,10 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) AuthUrl() pulumi.StringO
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) string { return v.AuthUrl }).(pulumi.StringOutput)
 }
 
+func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) *bool { return v.AutoLogin }).(pulumi.BoolPtrOutput)
+}
+
 func (o GrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGenericOauth) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -5741,6 +5762,15 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.Stri
 		}
 		return &v.AuthUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGenericOauth) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogin
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
@@ -10012,6 +10042,7 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 	ProducerCompressionType             *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    *int    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              *int    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        *int    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    *int    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -10041,6 +10072,7 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
 	ProducerCompressionType             pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        pulumi.IntPtrInput    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    pulumi.IntPtrInput    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -10177,6 +10209,10 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ProducerLingerMs()
 
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *int { return v.ProducerMaxRequestSize }).(pulumi.IntPtrOutput)
+}
+
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigKafkaConnect) *int { return v.ScheduledRebalanceMaxDelayMs }).(pulumi.IntPtrOutput)
 }
 
 func (o KafkaConnectKafkaConnectUserConfigKafkaConnectOutput) SessionTimeoutMs() pulumi.IntPtrOutput {
@@ -10330,6 +10366,15 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ProducerMaxRequ
 			return nil
 		}
 		return v.ProducerMaxRequestSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigKafkaConnect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledRebalanceMaxDelayMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -12677,6 +12722,7 @@ type KafkaKafkaUserConfigKafkaConnectConfig struct {
 	ProducerCompressionType             *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    *int    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              *int    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        *int    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    *int    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -12706,6 +12752,7 @@ type KafkaKafkaUserConfigKafkaConnectConfigArgs struct {
 	ProducerCompressionType             pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        pulumi.IntPtrInput    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    pulumi.IntPtrInput    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -12840,6 +12887,10 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ProducerLingerMs() pulumi.
 
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *int { return v.ProducerMaxRequestSize }).(pulumi.IntPtrOutput)
+}
+
+func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaConnectConfig) *int { return v.ScheduledRebalanceMaxDelayMs }).(pulumi.IntPtrOutput)
 }
 
 func (o KafkaKafkaUserConfigKafkaConnectConfigOutput) SessionTimeoutMs() pulumi.IntPtrOutput {
@@ -12993,6 +13044,15 @@ func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ProducerMaxRequestSize(
 			return nil
 		}
 		return v.ProducerMaxRequestSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o KafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaConnectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledRebalanceMaxDelayMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -21737,6 +21797,8 @@ type OpenSearchOpensearchUserConfig struct {
 	//
 	// Deprecated: Usage of this field is discouraged.
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
+	// OpenSearch OpenID Connect Configuration.
+	Openid *OpenSearchOpensearchUserConfigOpenid `pulumi:"openid"`
 	// OpenSearch settings.
 	Opensearch *OpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings.
@@ -21799,6 +21861,8 @@ type OpenSearchOpensearchUserConfigArgs struct {
 	//
 	// Deprecated: Usage of this field is discouraged.
 	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
+	// OpenSearch OpenID Connect Configuration.
+	Openid OpenSearchOpensearchUserConfigOpenidPtrInput `pulumi:"openid"`
 	// OpenSearch settings.
 	Opensearch OpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings.
@@ -21960,6 +22024,11 @@ func (o OpenSearchOpensearchUserConfigOutput) KeepIndexRefreshInterval() pulumi.
 // Deprecated: Usage of this field is discouraged.
 func (o OpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+}
+
+// OpenSearch OpenID Connect Configuration.
+func (o OpenSearchOpensearchUserConfigOutput) Openid() OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpenid { return v.Openid }).(OpenSearchOpensearchUserConfigOpenidPtrOutput)
 }
 
 // OpenSearch settings.
@@ -22153,6 +22222,16 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) MaxIndexCount() pulumi.IntPtrOu
 		}
 		return v.MaxIndexCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// OpenSearch OpenID Connect Configuration.
+func (o OpenSearchOpensearchUserConfigPtrOutput) Openid() OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpenid {
+		if v == nil {
+			return nil
+		}
+		return v.Openid
+	}).(OpenSearchOpensearchUserConfigOpenidPtrOutput)
 }
 
 // OpenSearch settings.
@@ -22632,6 +22711,304 @@ func (o OpenSearchOpensearchUserConfigIpFilterObjectArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenSearchOpensearchUserConfigIpFilterObject {
 		return vs[0].([]OpenSearchOpensearchUserConfigIpFilterObject)[vs[1].(int)]
 	}).(OpenSearchOpensearchUserConfigIpFilterObjectOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpenid struct {
+	ClientId                     string  `pulumi:"clientId"`
+	ClientSecret                 string  `pulumi:"clientSecret"`
+	ConnectUrl                   string  `pulumi:"connectUrl"`
+	Enabled                      *bool   `pulumi:"enabled"`
+	Header                       *string `pulumi:"header"`
+	JwtHeader                    *string `pulumi:"jwtHeader"`
+	JwtUrlParameter              *string `pulumi:"jwtUrlParameter"`
+	RefreshRateLimitCount        *int    `pulumi:"refreshRateLimitCount"`
+	RefreshRateLimitTimeWindowMs *int    `pulumi:"refreshRateLimitTimeWindowMs"`
+	RolesKey                     *string `pulumi:"rolesKey"`
+	Scope                        *string `pulumi:"scope"`
+	SubjectKey                   *string `pulumi:"subjectKey"`
+}
+
+// OpenSearchOpensearchUserConfigOpenidInput is an input type that accepts OpenSearchOpensearchUserConfigOpenidArgs and OpenSearchOpensearchUserConfigOpenidOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpenidInput` via:
+//
+//	OpenSearchOpensearchUserConfigOpenidArgs{...}
+type OpenSearchOpensearchUserConfigOpenidInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpenidOutput() OpenSearchOpensearchUserConfigOpenidOutput
+	ToOpenSearchOpensearchUserConfigOpenidOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpenidOutput
+}
+
+type OpenSearchOpensearchUserConfigOpenidArgs struct {
+	ClientId                     pulumi.StringInput    `pulumi:"clientId"`
+	ClientSecret                 pulumi.StringInput    `pulumi:"clientSecret"`
+	ConnectUrl                   pulumi.StringInput    `pulumi:"connectUrl"`
+	Enabled                      pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Header                       pulumi.StringPtrInput `pulumi:"header"`
+	JwtHeader                    pulumi.StringPtrInput `pulumi:"jwtHeader"`
+	JwtUrlParameter              pulumi.StringPtrInput `pulumi:"jwtUrlParameter"`
+	RefreshRateLimitCount        pulumi.IntPtrInput    `pulumi:"refreshRateLimitCount"`
+	RefreshRateLimitTimeWindowMs pulumi.IntPtrInput    `pulumi:"refreshRateLimitTimeWindowMs"`
+	RolesKey                     pulumi.StringPtrInput `pulumi:"rolesKey"`
+	Scope                        pulumi.StringPtrInput `pulumi:"scope"`
+	SubjectKey                   pulumi.StringPtrInput `pulumi:"subjectKey"`
+}
+
+func (OpenSearchOpensearchUserConfigOpenidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (i OpenSearchOpensearchUserConfigOpenidArgs) ToOpenSearchOpensearchUserConfigOpenidOutput() OpenSearchOpensearchUserConfigOpenidOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpenidOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpenidArgs) ToOpenSearchOpensearchUserConfigOpenidOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpenidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpenidOutput)
+}
+
+func (i OpenSearchOpensearchUserConfigOpenidArgs) ToOpenSearchOpensearchUserConfigOpenidPtrOutput() OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpenidArgs) ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpenidOutput).ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx)
+}
+
+// OpenSearchOpensearchUserConfigOpenidPtrInput is an input type that accepts OpenSearchOpensearchUserConfigOpenidArgs, OpenSearchOpensearchUserConfigOpenidPtr and OpenSearchOpensearchUserConfigOpenidPtrOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpenidPtrInput` via:
+//
+//	        OpenSearchOpensearchUserConfigOpenidArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenSearchOpensearchUserConfigOpenidPtrInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpenidPtrOutput() OpenSearchOpensearchUserConfigOpenidPtrOutput
+	ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpenidPtrOutput
+}
+
+type openSearchOpensearchUserConfigOpenidPtrType OpenSearchOpensearchUserConfigOpenidArgs
+
+func OpenSearchOpensearchUserConfigOpenidPtr(v *OpenSearchOpensearchUserConfigOpenidArgs) OpenSearchOpensearchUserConfigOpenidPtrInput {
+	return (*openSearchOpensearchUserConfigOpenidPtrType)(v)
+}
+
+func (*openSearchOpensearchUserConfigOpenidPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (i *openSearchOpensearchUserConfigOpenidPtrType) ToOpenSearchOpensearchUserConfigOpenidPtrOutput() OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Background())
+}
+
+func (i *openSearchOpensearchUserConfigOpenidPtrType) ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpenidPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpenidOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpenidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ToOpenSearchOpensearchUserConfigOpenidOutput() OpenSearchOpensearchUserConfigOpenidOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ToOpenSearchOpensearchUserConfigOpenidOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpenidOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ToOpenSearchOpensearchUserConfigOpenidPtrOutput() OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Background())
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearchOpensearchUserConfigOpenid) *OpenSearchOpensearchUserConfigOpenid {
+		return &v
+	}).(OpenSearchOpensearchUserConfigOpenidPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) ConnectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) string { return v.ConnectUrl }).(pulumi.StringOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *string { return v.JwtHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) JwtUrlParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *string { return v.JwtUrlParameter }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) RefreshRateLimitCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *int { return v.RefreshRateLimitCount }).(pulumi.IntPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) RefreshRateLimitTimeWindowMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *int { return v.RefreshRateLimitTimeWindowMs }).(pulumi.IntPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *string { return v.SubjectKey }).(pulumi.StringPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpenidPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpenidPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) ToOpenSearchOpensearchUserConfigOpenidPtrOutput() OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) ToOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) Elem() OpenSearchOpensearchUserConfigOpenidOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) OpenSearchOpensearchUserConfigOpenid {
+		if v != nil {
+			return *v
+		}
+		var ret OpenSearchOpensearchUserConfigOpenid
+		return ret
+	}).(OpenSearchOpensearchUserConfigOpenidOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) ConnectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Header
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) JwtUrlParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtUrlParameter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) RefreshRateLimitCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshRateLimitCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) RefreshRateLimitTimeWindowMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshRateLimitTimeWindowMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolesKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type OpenSearchOpensearchUserConfigOpensearch struct {
@@ -24316,6 +24693,200 @@ func (o OpenSearchTagArrayOutput) Index(i pulumi.IntInput) OpenSearchTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenSearchTag {
 		return vs[0].([]OpenSearchTag)[vs[1].(int)]
 	}).(OpenSearchTagOutput)
+}
+
+type OrganizationTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OrganizationTimeoutsInput is an input type that accepts OrganizationTimeoutsArgs and OrganizationTimeoutsOutput values.
+// You can construct a concrete instance of `OrganizationTimeoutsInput` via:
+//
+//	OrganizationTimeoutsArgs{...}
+type OrganizationTimeoutsInput interface {
+	pulumi.Input
+
+	ToOrganizationTimeoutsOutput() OrganizationTimeoutsOutput
+	ToOrganizationTimeoutsOutputWithContext(context.Context) OrganizationTimeoutsOutput
+}
+
+type OrganizationTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OrganizationTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationTimeouts)(nil)).Elem()
+}
+
+func (i OrganizationTimeoutsArgs) ToOrganizationTimeoutsOutput() OrganizationTimeoutsOutput {
+	return i.ToOrganizationTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OrganizationTimeoutsArgs) ToOrganizationTimeoutsOutputWithContext(ctx context.Context) OrganizationTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTimeoutsOutput)
+}
+
+func (i OrganizationTimeoutsArgs) ToOrganizationTimeoutsPtrOutput() OrganizationTimeoutsPtrOutput {
+	return i.ToOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationTimeoutsArgs) ToOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) OrganizationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTimeoutsOutput).ToOrganizationTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OrganizationTimeoutsPtrInput is an input type that accepts OrganizationTimeoutsArgs, OrganizationTimeoutsPtr and OrganizationTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OrganizationTimeoutsPtrInput` via:
+//
+//	        OrganizationTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationTimeoutsPtrOutput() OrganizationTimeoutsPtrOutput
+	ToOrganizationTimeoutsPtrOutputWithContext(context.Context) OrganizationTimeoutsPtrOutput
+}
+
+type organizationTimeoutsPtrType OrganizationTimeoutsArgs
+
+func OrganizationTimeoutsPtr(v *OrganizationTimeoutsArgs) OrganizationTimeoutsPtrInput {
+	return (*organizationTimeoutsPtrType)(v)
+}
+
+func (*organizationTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationTimeouts)(nil)).Elem()
+}
+
+func (i *organizationTimeoutsPtrType) ToOrganizationTimeoutsPtrOutput() OrganizationTimeoutsPtrOutput {
+	return i.ToOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationTimeoutsPtrType) ToOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) OrganizationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTimeoutsPtrOutput)
+}
+
+type OrganizationTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationTimeouts)(nil)).Elem()
+}
+
+func (o OrganizationTimeoutsOutput) ToOrganizationTimeoutsOutput() OrganizationTimeoutsOutput {
+	return o
+}
+
+func (o OrganizationTimeoutsOutput) ToOrganizationTimeoutsOutputWithContext(ctx context.Context) OrganizationTimeoutsOutput {
+	return o
+}
+
+func (o OrganizationTimeoutsOutput) ToOrganizationTimeoutsPtrOutput() OrganizationTimeoutsPtrOutput {
+	return o.ToOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationTimeoutsOutput) ToOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) OrganizationTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationTimeouts) *OrganizationTimeouts {
+		return &v
+	}).(OrganizationTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OrganizationTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OrganizationTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OrganizationTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OrganizationTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationTimeouts)(nil)).Elem()
+}
+
+func (o OrganizationTimeoutsPtrOutput) ToOrganizationTimeoutsPtrOutput() OrganizationTimeoutsPtrOutput {
+	return o
+}
+
+func (o OrganizationTimeoutsPtrOutput) ToOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) OrganizationTimeoutsPtrOutput {
+	return o
+}
+
+func (o OrganizationTimeoutsPtrOutput) Elem() OrganizationTimeoutsOutput {
+	return o.ApplyT(func(v *OrganizationTimeouts) OrganizationTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationTimeouts
+		return ret
+	}).(OrganizationTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OrganizationTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OrganizationTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OrganizationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OrganizationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type PgComponent struct {
@@ -40402,15 +40973,16 @@ type GetGrafanaGrafanaUserConfig struct {
 	IpFilterObjects              []GetGrafanaGrafanaUserConfigIpFilterObject      `pulumi:"ipFilterObjects"`
 	IpFilterStrings              []string                                         `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters              []string                                      `pulumi:"ipFilters"`
-	MetricsEnabled         *bool                                         `pulumi:"metricsEnabled"`
-	PrivateAccess          *GetGrafanaGrafanaUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess      *GetGrafanaGrafanaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      *string                                       `pulumi:"projectToForkFrom"`
-	PublicAccess           *GetGrafanaGrafanaUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryBasebackupName *string                                       `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      *string                                       `pulumi:"serviceToForkFrom"`
-	SmtpServer             *GetGrafanaGrafanaUserConfigSmtpServer        `pulumi:"smtpServer"`
+	IpFilters                     []string                                      `pulumi:"ipFilters"`
+	MetricsEnabled                *bool                                         `pulumi:"metricsEnabled"`
+	OauthAllowInsecureEmailLookup *bool                                         `pulumi:"oauthAllowInsecureEmailLookup"`
+	PrivateAccess                 *GetGrafanaGrafanaUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess             *GetGrafanaGrafanaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom             *string                                       `pulumi:"projectToForkFrom"`
+	PublicAccess                  *GetGrafanaGrafanaUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryBasebackupName        *string                                       `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom             *string                                       `pulumi:"serviceToForkFrom"`
+	SmtpServer                    *GetGrafanaGrafanaUserConfigSmtpServer        `pulumi:"smtpServer"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps             *bool   `pulumi:"staticIps"`
 	UserAutoAssignOrg     *bool   `pulumi:"userAutoAssignOrg"`
@@ -40457,15 +41029,16 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	IpFilterObjects              GetGrafanaGrafanaUserConfigIpFilterObjectArrayInput     `pulumi:"ipFilterObjects"`
 	IpFilterStrings              pulumi.StringArrayInput                                 `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters              pulumi.StringArrayInput                              `pulumi:"ipFilters"`
-	MetricsEnabled         pulumi.BoolPtrInput                                  `pulumi:"metricsEnabled"`
-	PrivateAccess          GetGrafanaGrafanaUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess      GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
-	PublicAccess           GetGrafanaGrafanaUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryBasebackupName pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
-	SmtpServer             GetGrafanaGrafanaUserConfigSmtpServerPtrInput        `pulumi:"smtpServer"`
+	IpFilters                     pulumi.StringArrayInput                              `pulumi:"ipFilters"`
+	MetricsEnabled                pulumi.BoolPtrInput                                  `pulumi:"metricsEnabled"`
+	OauthAllowInsecureEmailLookup pulumi.BoolPtrInput                                  `pulumi:"oauthAllowInsecureEmailLookup"`
+	PrivateAccess                 GetGrafanaGrafanaUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess             GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom             pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
+	PublicAccess                  GetGrafanaGrafanaUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryBasebackupName        pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom             pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
+	SmtpServer                    GetGrafanaGrafanaUserConfigSmtpServerPtrInput        `pulumi:"smtpServer"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps             pulumi.BoolPtrInput   `pulumi:"staticIps"`
 	UserAutoAssignOrg     pulumi.BoolPtrInput   `pulumi:"userAutoAssignOrg"`
@@ -40641,6 +41214,10 @@ func (o GetGrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput 
 
 func (o GetGrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigOutput) OauthAllowInsecureEmailLookup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *bool { return v.OauthAllowInsecureEmailLookup }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGrafanaGrafanaUserConfigOutput) PrivateAccess() GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput {
@@ -40939,6 +41516,7 @@ type GetGrafanaGrafanaUserConfigAuthGenericOauth struct {
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
 	ApiUrl               string   `pulumi:"apiUrl"`
 	AuthUrl              string   `pulumi:"authUrl"`
+	AutoLogin            *bool    `pulumi:"autoLogin"`
 	ClientId             string   `pulumi:"clientId"`
 	ClientSecret         string   `pulumi:"clientSecret"`
 	Name                 *string  `pulumi:"name"`
@@ -40963,6 +41541,7 @@ type GetGrafanaGrafanaUserConfigAuthGenericOauthArgs struct {
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
 	ApiUrl               pulumi.StringInput      `pulumi:"apiUrl"`
 	AuthUrl              pulumi.StringInput      `pulumi:"authUrl"`
+	AutoLogin            pulumi.BoolPtrInput     `pulumi:"autoLogin"`
 	ClientId             pulumi.StringInput      `pulumi:"clientId"`
 	ClientSecret         pulumi.StringInput      `pulumi:"clientSecret"`
 	Name                 pulumi.StringPtrInput   `pulumi:"name"`
@@ -41067,6 +41646,10 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AuthUrl() pulumi.Stri
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) string { return v.AuthUrl }).(pulumi.StringOutput)
 }
 
+func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) *bool { return v.AutoLogin }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGenericOauth) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -41154,6 +41737,15 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AuthUrl() pulumi.S
 		}
 		return &v.AuthUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGenericOauth) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogin
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
@@ -45125,6 +45717,7 @@ type GetKafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 	ProducerCompressionType             *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    *int    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              *int    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        *int    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    *int    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -45154,6 +45747,7 @@ type GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs struct {
 	ProducerCompressionType             pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        pulumi.IntPtrInput    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    pulumi.IntPtrInput    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -45292,6 +45886,10 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ProducerLingerM
 
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *int { return v.ProducerMaxRequestSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *int { return v.ScheduledRebalanceMaxDelayMs }).(pulumi.IntPtrOutput)
 }
 
 func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput) SessionTimeoutMs() pulumi.IntPtrOutput {
@@ -45445,6 +46043,15 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ProducerMaxR
 			return nil
 		}
 		return v.ProducerMaxRequestSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigKafkaConnect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledRebalanceMaxDelayMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -47534,6 +48141,7 @@ type GetKafkaKafkaUserConfigKafkaConnectConfig struct {
 	ProducerCompressionType             *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    *int    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              *int    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        *int    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    *int    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -47563,6 +48171,7 @@ type GetKafkaKafkaUserConfigKafkaConnectConfigArgs struct {
 	ProducerCompressionType             pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs                    pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
 	ProducerMaxRequestSize              pulumi.IntPtrInput    `pulumi:"producerMaxRequestSize"`
+	ScheduledRebalanceMaxDelayMs        pulumi.IntPtrInput    `pulumi:"scheduledRebalanceMaxDelayMs"`
 	SessionTimeoutMs                    pulumi.IntPtrInput    `pulumi:"sessionTimeoutMs"`
 }
 
@@ -47699,6 +48308,10 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ProducerLingerMs() pulu
 
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *int { return v.ProducerMaxRequestSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaConnectConfig) *int { return v.ScheduledRebalanceMaxDelayMs }).(pulumi.IntPtrOutput)
 }
 
 func (o GetKafkaKafkaUserConfigKafkaConnectConfigOutput) SessionTimeoutMs() pulumi.IntPtrOutput {
@@ -47852,6 +48465,15 @@ func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ProducerMaxRequestSi
 			return nil
 		}
 		return v.ProducerMaxRequestSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput) ScheduledRebalanceMaxDelayMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaConnectConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledRebalanceMaxDelayMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -55684,7 +56306,8 @@ type GetOpenSearchOpensearchUserConfig struct {
 	IpFilters                []string `pulumi:"ipFilters"`
 	KeepIndexRefreshInterval *bool    `pulumi:"keepIndexRefreshInterval"`
 	// Deprecated: Usage of this field is discouraged.
-	MaxIndexCount *int `pulumi:"maxIndexCount"`
+	MaxIndexCount *int                                     `pulumi:"maxIndexCount"`
+	Openid        *GetOpenSearchOpensearchUserConfigOpenid `pulumi:"openid"`
 	// OpenSearch server provided values
 	Opensearch             *GetOpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
 	OpensearchDashboards   *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
@@ -55724,7 +56347,8 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	IpFilters                pulumi.StringArrayInput `pulumi:"ipFilters"`
 	KeepIndexRefreshInterval pulumi.BoolPtrInput     `pulumi:"keepIndexRefreshInterval"`
 	// Deprecated: Usage of this field is discouraged.
-	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
+	MaxIndexCount pulumi.IntPtrInput                              `pulumi:"maxIndexCount"`
+	Openid        GetOpenSearchOpensearchUserConfigOpenidPtrInput `pulumi:"openid"`
 	// OpenSearch server provided values
 	Opensearch             GetOpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
 	OpensearchDashboards   GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
@@ -55838,6 +56462,10 @@ func (o GetOpenSearchOpensearchUserConfigOutput) KeepIndexRefreshInterval() pulu
 // Deprecated: Usage of this field is discouraged.
 func (o GetOpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOutput) Openid() GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpenid { return v.Openid }).(GetOpenSearchOpensearchUserConfigOpenidPtrOutput)
 }
 
 // OpenSearch server provided values
@@ -56283,6 +56911,304 @@ func (o GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchOpensearchUserConfigIpFilterObject {
 		return vs[0].([]GetOpenSearchOpensearchUserConfigIpFilterObject)[vs[1].(int)]
 	}).(GetOpenSearchOpensearchUserConfigIpFilterObjectOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpenid struct {
+	ClientId                     string  `pulumi:"clientId"`
+	ClientSecret                 string  `pulumi:"clientSecret"`
+	ConnectUrl                   string  `pulumi:"connectUrl"`
+	Enabled                      *bool   `pulumi:"enabled"`
+	Header                       *string `pulumi:"header"`
+	JwtHeader                    *string `pulumi:"jwtHeader"`
+	JwtUrlParameter              *string `pulumi:"jwtUrlParameter"`
+	RefreshRateLimitCount        *int    `pulumi:"refreshRateLimitCount"`
+	RefreshRateLimitTimeWindowMs *int    `pulumi:"refreshRateLimitTimeWindowMs"`
+	RolesKey                     *string `pulumi:"rolesKey"`
+	Scope                        *string `pulumi:"scope"`
+	SubjectKey                   *string `pulumi:"subjectKey"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpenidInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpenidArgs and GetOpenSearchOpensearchUserConfigOpenidOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpenidInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpenidArgs{...}
+type GetOpenSearchOpensearchUserConfigOpenidInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpenidOutput() GetOpenSearchOpensearchUserConfigOpenidOutput
+	ToGetOpenSearchOpensearchUserConfigOpenidOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpenidOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpenidArgs struct {
+	ClientId                     pulumi.StringInput    `pulumi:"clientId"`
+	ClientSecret                 pulumi.StringInput    `pulumi:"clientSecret"`
+	ConnectUrl                   pulumi.StringInput    `pulumi:"connectUrl"`
+	Enabled                      pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Header                       pulumi.StringPtrInput `pulumi:"header"`
+	JwtHeader                    pulumi.StringPtrInput `pulumi:"jwtHeader"`
+	JwtUrlParameter              pulumi.StringPtrInput `pulumi:"jwtUrlParameter"`
+	RefreshRateLimitCount        pulumi.IntPtrInput    `pulumi:"refreshRateLimitCount"`
+	RefreshRateLimitTimeWindowMs pulumi.IntPtrInput    `pulumi:"refreshRateLimitTimeWindowMs"`
+	RolesKey                     pulumi.StringPtrInput `pulumi:"rolesKey"`
+	Scope                        pulumi.StringPtrInput `pulumi:"scope"`
+	SubjectKey                   pulumi.StringPtrInput `pulumi:"subjectKey"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpenidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpenidArgs) ToGetOpenSearchOpensearchUserConfigOpenidOutput() GetOpenSearchOpensearchUserConfigOpenidOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpenidOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpenidArgs) ToGetOpenSearchOpensearchUserConfigOpenidOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpenidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpenidOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpenidArgs) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutput() GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpenidArgs) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpenidOutput).ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpenidPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpenidArgs, GetOpenSearchOpensearchUserConfigOpenidPtr and GetOpenSearchOpensearchUserConfigOpenidPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpenidPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpenidArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpenidPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpenidPtrOutput() GetOpenSearchOpensearchUserConfigOpenidPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpenidPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpenidPtrType GetOpenSearchOpensearchUserConfigOpenidArgs
+
+func GetOpenSearchOpensearchUserConfigOpenidPtr(v *GetOpenSearchOpensearchUserConfigOpenidArgs) GetOpenSearchOpensearchUserConfigOpenidPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpenidPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpenidPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpenidPtrType) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutput() GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpenidPtrType) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpenidPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpenidOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpenidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ToGetOpenSearchOpensearchUserConfigOpenidOutput() GetOpenSearchOpensearchUserConfigOpenidOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ToGetOpenSearchOpensearchUserConfigOpenidOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpenidOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutput() GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpenid) *GetOpenSearchOpensearchUserConfigOpenid {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpenidPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ConnectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) string { return v.ConnectUrl }).(pulumi.StringOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *string { return v.JwtHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) JwtUrlParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *string { return v.JwtUrlParameter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) RefreshRateLimitCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *int { return v.RefreshRateLimitCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) RefreshRateLimitTimeWindowMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *int { return v.RefreshRateLimitTimeWindowMs }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *string { return v.SubjectKey }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpenidPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpenidPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpenid)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutput() GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) ToGetOpenSearchOpensearchUserConfigOpenidPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpenidOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) GetOpenSearchOpensearchUserConfigOpenid {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpenid
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpenidOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) ConnectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Header
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) JwtUrlParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtUrlParameter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) RefreshRateLimitCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshRateLimitCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) RefreshRateLimitTimeWindowMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshRateLimitTimeWindowMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolesKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpenid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearch struct {
@@ -67043,6 +67969,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigIndexTemplatePtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigIndexTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigIpFilterObjectInput)(nil)).Elem(), OpenSearchOpensearchUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigIpFilterObjectArrayInput)(nil)).Elem(), OpenSearchOpensearchUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpenidInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpenidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpenidPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpenidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
@@ -67059,6 +67987,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchServiceIntegrationArrayInput)(nil)).Elem(), OpenSearchServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchTagInput)(nil)).Elem(), OpenSearchTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchTagArrayInput)(nil)).Elem(), OpenSearchTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTimeoutsInput)(nil)).Elem(), OrganizationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTimeoutsPtrInput)(nil)).Elem(), OrganizationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgComponentInput)(nil)).Elem(), PgComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgComponentArrayInput)(nil)).Elem(), PgComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgInput)(nil)).Elem(), PgPgArgs{})
@@ -67455,6 +68385,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIndexTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIpFilterObjectInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenidInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpenidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenidPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpenidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
@@ -67853,6 +68785,8 @@ func init() {
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpenidOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpenidPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
@@ -67869,6 +68803,8 @@ func init() {
 	pulumi.RegisterOutputType(OpenSearchServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(OpenSearchTagOutput{})
 	pulumi.RegisterOutputType(OpenSearchTagArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationTimeoutsOutput{})
+	pulumi.RegisterOutputType(OrganizationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PgComponentOutput{})
 	pulumi.RegisterOutputType(PgComponentArrayOutput{})
 	pulumi.RegisterOutputType(PgPgOutput{})
@@ -68265,6 +69201,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpenidOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpenidPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})

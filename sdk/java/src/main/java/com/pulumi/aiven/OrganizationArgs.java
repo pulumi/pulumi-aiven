@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,24 +17,32 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     public static final OrganizationArgs Empty = new OrganizationArgs();
 
     /**
-     * Organization name
+     * Name of the organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Organization name
+     * @return Name of the organization.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private OrganizationArgs() {}
 
     private OrganizationArgs(OrganizationArgs $) {
         this.name = $.name;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -55,7 +64,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Organization name
+         * @param name Name of the organization.
          * 
          * @return builder
          * 
@@ -66,13 +75,22 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Organization name
+         * @param name Name of the organization.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationArgs build() {

@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
 
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
-        /// Aiven Authentication Token
+        /// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         /// </summary>
         public static string? ApiToken
         {

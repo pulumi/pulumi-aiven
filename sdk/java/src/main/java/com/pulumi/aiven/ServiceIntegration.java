@@ -79,7 +79,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * ClickhouseKafka user configurable settings
      * 
      */
-    @Export(name="clickhouseKafkaUserConfig", type=ServiceIntegrationClickhouseKafkaUserConfig.class, parameters={})
+    @Export(name="clickhouseKafkaUserConfig", refs={ServiceIntegrationClickhouseKafkaUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfig;
 
     /**
@@ -93,7 +93,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * ClickhousePostgresql user configurable settings
      * 
      */
-    @Export(name="clickhousePostgresqlUserConfig", type=ServiceIntegrationClickhousePostgresqlUserConfig.class, parameters={})
+    @Export(name="clickhousePostgresqlUserConfig", refs={ServiceIntegrationClickhousePostgresqlUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfig;
 
     /**
@@ -107,7 +107,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Datadog user configurable settings
      * 
      */
-    @Export(name="datadogUserConfig", type=ServiceIntegrationDatadogUserConfig.class, parameters={})
+    @Export(name="datadogUserConfig", refs={ServiceIntegrationDatadogUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationDatadogUserConfig> datadogUserConfig;
 
     /**
@@ -121,7 +121,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Destination endpoint for the integration (if any)
      * 
      */
-    @Export(name="destinationEndpointId", type=String.class, parameters={})
+    @Export(name="destinationEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointId;
 
     /**
@@ -135,7 +135,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Destination service for the integration (if any)
      * 
      */
-    @Export(name="destinationServiceName", type=String.class, parameters={})
+    @Export(name="destinationServiceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationServiceName;
 
     /**
@@ -149,7 +149,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
-    @Export(name="externalAwsCloudwatchMetricsUserConfig", type=ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig.class, parameters={})
+    @Export(name="externalAwsCloudwatchMetricsUserConfig", refs={ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfig;
 
     /**
@@ -163,7 +163,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Service Integration Id at aiven
      * 
      */
-    @Export(name="integrationId", type=String.class, parameters={})
+    @Export(name="integrationId", refs={String.class}, tree="[0]")
     private Output<String> integrationId;
 
     /**
@@ -177,7 +177,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
      * 
      */
-    @Export(name="integrationType", type=String.class, parameters={})
+    @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
     /**
@@ -191,7 +191,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * KafkaConnect user configurable settings
      * 
      */
-    @Export(name="kafkaConnectUserConfig", type=ServiceIntegrationKafkaConnectUserConfig.class, parameters={})
+    @Export(name="kafkaConnectUserConfig", refs={ServiceIntegrationKafkaConnectUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfig;
 
     /**
@@ -205,7 +205,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * KafkaLogs user configurable settings
      * 
      */
-    @Export(name="kafkaLogsUserConfig", type=ServiceIntegrationKafkaLogsUserConfig.class, parameters={})
+    @Export(name="kafkaLogsUserConfig", refs={ServiceIntegrationKafkaLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfig;
 
     /**
@@ -219,7 +219,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * KafkaMirrormaker user configurable settings
      * 
      */
-    @Export(name="kafkaMirrormakerUserConfig", type=ServiceIntegrationKafkaMirrormakerUserConfig.class, parameters={})
+    @Export(name="kafkaMirrormakerUserConfig", refs={ServiceIntegrationKafkaMirrormakerUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfig;
 
     /**
@@ -233,7 +233,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Logs user configurable settings
      * 
      */
-    @Export(name="logsUserConfig", type=ServiceIntegrationLogsUserConfig.class, parameters={})
+    @Export(name="logsUserConfig", refs={ServiceIntegrationLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationLogsUserConfig> logsUserConfig;
 
     /**
@@ -247,7 +247,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Metrics user configurable settings
      * 
      */
-    @Export(name="metricsUserConfig", type=ServiceIntegrationMetricsUserConfig.class, parameters={})
+    @Export(name="metricsUserConfig", refs={ServiceIntegrationMetricsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationMetricsUserConfig> metricsUserConfig;
 
     /**
@@ -261,7 +261,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Project the integration belongs to
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -275,7 +275,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Source endpoint for the integration (if any)
      * 
      */
-    @Export(name="sourceEndpointId", type=String.class, parameters={})
+    @Export(name="sourceEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointId;
 
     /**
@@ -289,7 +289,7 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * Source service for the integration (if any)
      * 
      */
-    @Export(name="sourceServiceName", type=String.class, parameters={})
+    @Export(name="sourceServiceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceServiceName;
 
     /**

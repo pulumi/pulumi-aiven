@@ -63,7 +63,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="awsAccountId", type=String.class, parameters={})
+    @Export(name="awsAccountId", refs={String.class}, tree="[0]")
     private Output<String> awsAccountId;
 
     /**
@@ -77,7 +77,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="awsVpcId", type=String.class, parameters={})
+    @Export(name="awsVpcId", refs={String.class}, tree="[0]")
     private Output<String> awsVpcId;
 
     /**
@@ -91,7 +91,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * AWS VPC peering connection ID
      * 
      */
-    @Export(name="awsVpcPeeringConnectionId", type=String.class, parameters={})
+    @Export(name="awsVpcPeeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> awsVpcPeeringConnectionId;
 
     /**
@@ -105,7 +105,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="awsVpcRegion", type=String.class, parameters={})
+    @Export(name="awsVpcRegion", refs={String.class}, tree="[0]")
     private Output<String> awsVpcRegion;
 
     /**
@@ -119,7 +119,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * State of the peering connection
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -133,7 +133,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * State-specific help or error information
      * 
      */
-    @Export(name="stateInfo", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
@@ -147,7 +147,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

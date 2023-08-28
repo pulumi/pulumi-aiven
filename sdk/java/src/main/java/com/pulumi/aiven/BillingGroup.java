@@ -73,7 +73,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -87,7 +87,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Address lines
      * 
      */
-    @Export(name="addressLines", type=List.class, parameters={String.class})
+    @Export(name="addressLines", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> addressLines;
 
     /**
@@ -101,7 +101,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Billing currency
      * 
      */
-    @Export(name="billingCurrency", type=String.class, parameters={})
+    @Export(name="billingCurrency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingCurrency;
 
     /**
@@ -115,7 +115,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Billing contact emails
      * 
      */
-    @Export(name="billingEmails", type=List.class, parameters={String.class})
+    @Export(name="billingEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> billingEmails;
 
     /**
@@ -129,7 +129,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Billing extra text
      * 
      */
-    @Export(name="billingExtraText", type=String.class, parameters={})
+    @Export(name="billingExtraText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingExtraText;
 
     /**
@@ -143,7 +143,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Credit card id
      * 
      */
-    @Export(name="cardId", type=String.class, parameters={})
+    @Export(name="cardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cardId;
 
     /**
@@ -157,7 +157,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * City
      * 
      */
-    @Export(name="city", type=String.class, parameters={})
+    @Export(name="city", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> city;
 
     /**
@@ -171,7 +171,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Company name
      * 
      */
-    @Export(name="company", type=String.class, parameters={})
+    @Export(name="company", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> company;
 
     /**
@@ -185,7 +185,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * ID of the billing group to copy from
      * 
      */
-    @Export(name="copyFromBillingGroup", type=String.class, parameters={})
+    @Export(name="copyFromBillingGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> copyFromBillingGroup;
 
     /**
@@ -199,7 +199,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Country code
      * 
      */
-    @Export(name="countryCode", type=String.class, parameters={})
+    @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> countryCode;
 
     /**
@@ -213,7 +213,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Billing Group name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -227,7 +227,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
@@ -241,7 +241,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * State
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
@@ -255,7 +255,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * VAT id
      * 
      */
-    @Export(name="vatId", type=String.class, parameters={})
+    @Export(name="vatId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vatId;
 
     /**
@@ -269,7 +269,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Zip Code
      * 
      */
-    @Export(name="zipCode", type=String.class, parameters={})
+    @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**

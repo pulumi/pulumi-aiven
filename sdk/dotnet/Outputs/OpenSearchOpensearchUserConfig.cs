@@ -54,6 +54,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxIndexCount;
         /// <summary>
+        /// OpenSearch OpenID Connect Configuration.
+        /// </summary>
+        public readonly Outputs.OpenSearchOpensearchUserConfigOpenid? Openid;
+        /// <summary>
         /// OpenSearch settings.
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearch? Opensearch;
@@ -120,6 +124,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxIndexCount,
 
+            Outputs.OpenSearchOpensearchUserConfigOpenid? openid,
+
             Outputs.OpenSearchOpensearchUserConfigOpensearch? opensearch,
 
             Outputs.OpenSearchOpensearchUserConfigOpensearchDashboards? opensearchDashboards,
@@ -152,6 +158,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;
+            Openid = openid;
             Opensearch = opensearch;
             OpensearchDashboards = opensearchDashboards;
             OpensearchVersion = opensearchVersion;

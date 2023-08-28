@@ -77,7 +77,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * Kafka topic configuration
      * 
      */
-    @Export(name="config", type=KafkaTopicConfig.class, parameters={})
+    @Export(name="config", refs={KafkaTopicConfig.class}, tree="[0]")
     private Output</* @Nullable */ KafkaTopicConfig> config;
 
     /**
@@ -91,7 +91,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * The number of partitions to create in the topic.
      * 
      */
-    @Export(name="partitions", type=Integer.class, parameters={})
+    @Export(name="partitions", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitions;
 
     /**
@@ -105,7 +105,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -119,7 +119,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * The replication factor for the topic.
      * 
      */
-    @Export(name="replication", type=Integer.class, parameters={})
+    @Export(name="replication", refs={Integer.class}, tree="[0]")
     private Output<Integer> replication;
 
     /**
@@ -133,7 +133,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -147,7 +147,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * Kafka Topic tag.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={KafkaTopicTag.class})
+    @Export(name="tags", refs={List.class,KafkaTopicTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KafkaTopicTag>> tags;
 
     /**
@@ -162,7 +162,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * enable this for any production Kafka topic containing critical data.
      * 
      */
-    @Export(name="terminationProtection", type=Boolean.class, parameters={})
+    @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**
@@ -177,7 +177,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
      * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="topicName", type=String.class, parameters={})
+    @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**

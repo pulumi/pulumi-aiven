@@ -30,7 +30,7 @@ public class AzurePrivatelinkConnectionApproval extends com.pulumi.resources.Cus
      * IP address of Azure private endpoint
      * 
      */
-    @Export(name="endpointIpAddress", type=String.class, parameters={})
+    @Export(name="endpointIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointIpAddress;
 
     /**
@@ -44,7 +44,7 @@ public class AzurePrivatelinkConnectionApproval extends com.pulumi.resources.Cus
      * Privatelink connection id
      * 
      */
-    @Export(name="privatelinkConnectionId", type=String.class, parameters={})
+    @Export(name="privatelinkConnectionId", refs={String.class}, tree="[0]")
     private Output<String> privatelinkConnectionId;
 
     /**
@@ -58,7 +58,7 @@ public class AzurePrivatelinkConnectionApproval extends com.pulumi.resources.Cus
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -72,7 +72,7 @@ public class AzurePrivatelinkConnectionApproval extends com.pulumi.resources.Cus
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -86,7 +86,7 @@ public class AzurePrivatelinkConnectionApproval extends com.pulumi.resources.Cus
      * Privatelink connection state
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

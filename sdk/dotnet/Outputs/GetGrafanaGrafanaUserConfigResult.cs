@@ -41,6 +41,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly bool? MetricsEnabled;
+        public readonly bool? OauthAllowInsecureEmailLookup;
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
@@ -114,6 +115,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? metricsEnabled,
 
+            bool? oauthAllowInsecureEmailLookup,
+
             Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? privateAccess,
 
             Outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccessResult? privatelinkAccess,
@@ -164,6 +167,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             MetricsEnabled = metricsEnabled;
+            OauthAllowInsecureEmailLookup = oauthAllowInsecureEmailLookup;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;

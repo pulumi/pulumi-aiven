@@ -142,6 +142,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigIndexPatternArgs',
     'OpenSearchOpensearchUserConfigIndexTemplateArgs',
     'OpenSearchOpensearchUserConfigIpFilterObjectArgs',
+    'OpenSearchOpensearchUserConfigOpenidArgs',
     'OpenSearchOpensearchUserConfigOpensearchArgs',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs',
     'OpenSearchOpensearchUserConfigPrivateAccessArgs',
@@ -150,6 +151,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigSamlArgs',
     'OpenSearchServiceIntegrationArgs',
     'OpenSearchTagArgs',
+    'OrganizationTimeoutsArgs',
     'PgComponentArgs',
     'PgPgArgs',
     'PgPgUserConfigArgs',
@@ -2003,6 +2005,7 @@ class GrafanaGrafanaUserConfigArgs:
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metrics_enabled: Optional[pulumi.Input[bool]] = None,
+                 oauth_allow_insecure_email_lookup: Optional[pulumi.Input[bool]] = None,
                  private_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivatelinkAccessArgs']] = None,
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
@@ -2073,6 +2076,8 @@ class GrafanaGrafanaUserConfigArgs:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if metrics_enabled is not None:
             pulumi.set(__self__, "metrics_enabled", metrics_enabled)
+        if oauth_allow_insecure_email_lookup is not None:
+            pulumi.set(__self__, "oauth_allow_insecure_email_lookup", oauth_allow_insecure_email_lookup)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -2352,6 +2357,15 @@ class GrafanaGrafanaUserConfigArgs:
         pulumi.set(self, "metrics_enabled", value)
 
     @property
+    @pulumi.getter(name="oauthAllowInsecureEmailLookup")
+    def oauth_allow_insecure_email_lookup(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "oauth_allow_insecure_email_lookup")
+
+    @oauth_allow_insecure_email_lookup.setter
+    def oauth_allow_insecure_email_lookup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "oauth_allow_insecure_email_lookup", value)
+
+    @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs']]:
         return pulumi.get(self, "private_access")
@@ -2547,6 +2561,7 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
                  allow_sign_up: Optional[pulumi.Input[bool]] = None,
                  allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_organizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 auto_login: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "api_url", api_url)
@@ -2560,6 +2575,8 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if auto_login is not None:
+            pulumi.set(__self__, "auto_login", auto_login)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
@@ -2636,6 +2653,15 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
     @allowed_organizations.setter
     def allowed_organizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_organizations", value)
+
+    @property
+    @pulumi.getter(name="autoLogin")
+    def auto_login(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_login")
+
+    @auto_login.setter
+    def auto_login(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_login", value)
 
     @property
     @pulumi.getter
@@ -4173,6 +4199,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
                  producer_compression_type: Optional[pulumi.Input[str]] = None,
                  producer_linger_ms: Optional[pulumi.Input[int]] = None,
                  producer_max_request_size: Optional[pulumi.Input[int]] = None,
+                 scheduled_rebalance_max_delay_ms: Optional[pulumi.Input[int]] = None,
                  session_timeout_ms: Optional[pulumi.Input[int]] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
@@ -4202,6 +4229,8 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
+        if scheduled_rebalance_max_delay_ms is not None:
+            pulumi.set(__self__, "scheduled_rebalance_max_delay_ms", scheduled_rebalance_max_delay_ms)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -4330,6 +4359,15 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @producer_max_request_size.setter
     def producer_max_request_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_max_request_size", value)
+
+    @property
+    @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
+    def scheduled_rebalance_max_delay_ms(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
+
+    @scheduled_rebalance_max_delay_ms.setter
+    def scheduled_rebalance_max_delay_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scheduled_rebalance_max_delay_ms", value)
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -5458,6 +5496,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
                  producer_compression_type: Optional[pulumi.Input[str]] = None,
                  producer_linger_ms: Optional[pulumi.Input[int]] = None,
                  producer_max_request_size: Optional[pulumi.Input[int]] = None,
+                 scheduled_rebalance_max_delay_ms: Optional[pulumi.Input[int]] = None,
                  session_timeout_ms: Optional[pulumi.Input[int]] = None):
         if connector_client_config_override_policy is not None:
             pulumi.set(__self__, "connector_client_config_override_policy", connector_client_config_override_policy)
@@ -5487,6 +5526,8 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
             pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
         if producer_max_request_size is not None:
             pulumi.set(__self__, "producer_max_request_size", producer_max_request_size)
+        if scheduled_rebalance_max_delay_ms is not None:
+            pulumi.set(__self__, "scheduled_rebalance_max_delay_ms", scheduled_rebalance_max_delay_ms)
         if session_timeout_ms is not None:
             pulumi.set(__self__, "session_timeout_ms", session_timeout_ms)
 
@@ -5615,6 +5656,15 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     @producer_max_request_size.setter
     def producer_max_request_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "producer_max_request_size", value)
+
+    @property
+    @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
+    def scheduled_rebalance_max_delay_ms(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
+
+    @scheduled_rebalance_max_delay_ms.setter
+    def scheduled_rebalance_max_delay_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scheduled_rebalance_max_delay_ms", value)
 
     @property
     @pulumi.getter(name="sessionTimeoutMs")
@@ -9166,6 +9216,7 @@ class OpenSearchOpensearchUserConfigArgs:
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  keep_index_refresh_interval: Optional[pulumi.Input[bool]] = None,
                  max_index_count: Optional[pulumi.Input[int]] = None,
+                 openid: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs']] = None,
                  opensearch: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs']] = None,
                  opensearch_dashboards: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs']] = None,
                  opensearch_version: Optional[pulumi.Input[str]] = None,
@@ -9188,6 +9239,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param pulumi.Input[int] max_index_count: Use index_patterns instead. The default value is `0`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs'] openid: OpenSearch OpenID Connect Configuration.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings.
         :param pulumi.Input[str] opensearch_version: OpenSearch major version.
@@ -9229,6 +9281,8 @@ class OpenSearchOpensearchUserConfigArgs:
             pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
         if max_index_count is not None:
             pulumi.set(__self__, "max_index_count", max_index_count)
+        if openid is not None:
+            pulumi.set(__self__, "openid", openid)
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
@@ -9380,6 +9434,18 @@ class OpenSearchOpensearchUserConfigArgs:
     @max_index_count.setter
     def max_index_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_index_count", value)
+
+    @property
+    @pulumi.getter
+    def openid(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs']]:
+        """
+        OpenSearch OpenID Connect Configuration.
+        """
+        return pulumi.get(self, "openid")
+
+    @openid.setter
+    def openid(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs']]):
+        pulumi.set(self, "openid", value)
 
     @property
     @pulumi.getter
@@ -9620,6 +9686,152 @@ class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpenidArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 connect_url: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 header: Optional[pulumi.Input[str]] = None,
+                 jwt_header: Optional[pulumi.Input[str]] = None,
+                 jwt_url_parameter: Optional[pulumi.Input[str]] = None,
+                 refresh_rate_limit_count: Optional[pulumi.Input[int]] = None,
+                 refresh_rate_limit_time_window_ms: Optional[pulumi.Input[int]] = None,
+                 roles_key: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 subject_key: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "connect_url", connect_url)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if jwt_header is not None:
+            pulumi.set(__self__, "jwt_header", jwt_header)
+        if jwt_url_parameter is not None:
+            pulumi.set(__self__, "jwt_url_parameter", jwt_url_parameter)
+        if refresh_rate_limit_count is not None:
+            pulumi.set(__self__, "refresh_rate_limit_count", refresh_rate_limit_count)
+        if refresh_rate_limit_time_window_ms is not None:
+            pulumi.set(__self__, "refresh_rate_limit_time_window_ms", refresh_rate_limit_time_window_ms)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="connectUrl")
+    def connect_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connect_url")
+
+    @connect_url.setter
+    def connect_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connect_url", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header", value)
+
+    @property
+    @pulumi.getter(name="jwtHeader")
+    def jwt_header(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "jwt_header")
+
+    @jwt_header.setter
+    def jwt_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jwt_header", value)
+
+    @property
+    @pulumi.getter(name="jwtUrlParameter")
+    def jwt_url_parameter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "jwt_url_parameter")
+
+    @jwt_url_parameter.setter
+    def jwt_url_parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jwt_url_parameter", value)
+
+    @property
+    @pulumi.getter(name="refreshRateLimitCount")
+    def refresh_rate_limit_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "refresh_rate_limit_count")
+
+    @refresh_rate_limit_count.setter
+    def refresh_rate_limit_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_rate_limit_count", value)
+
+    @property
+    @pulumi.getter(name="refreshRateLimitTimeWindowMs")
+    def refresh_rate_limit_time_window_ms(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "refresh_rate_limit_time_window_ms")
+
+    @refresh_rate_limit_time_window_ms.setter
+    def refresh_rate_limit_time_window_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_rate_limit_time_window_ms", value)
+
+    @property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "roles_key")
+
+    @roles_key.setter
+    def roles_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "roles_key", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "subject_key")
+
+    @subject_key.setter
+    def subject_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject_key", value)
 
 
 @pulumi.input_type
@@ -10338,6 +10550,77 @@ class OpenSearchTagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OrganizationTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
 
 
 @pulumi.input_type

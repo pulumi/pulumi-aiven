@@ -112,6 +112,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("metricsEnabled")]
         public Input<bool>? MetricsEnabled { get; set; }
 
+        [Input("oauthAllowInsecureEmailLookup")]
+        public Input<bool>? OauthAllowInsecureEmailLookup { get; set; }
+
         [Input("privateAccess")]
         public Input<Inputs.GrafanaGrafanaUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 

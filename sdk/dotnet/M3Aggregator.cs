@@ -138,7 +138,7 @@ namespace Pulumi.Aiven
         /// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Output("plan")]
-        public Output<string?> Plan { get; private set; } = null!;
+        public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
@@ -334,8 +334,8 @@ namespace Pulumi.Aiven
         /// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
         /// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
+        [Input("plan", required: true)]
+        public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
