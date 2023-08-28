@@ -29,7 +29,7 @@ public class AccountTeam extends com.pulumi.resources.CustomResource {
      * The unique account id
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -43,7 +43,7 @@ public class AccountTeam extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -57,7 +57,7 @@ public class AccountTeam extends com.pulumi.resources.CustomResource {
      * The account team name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -71,7 +71,7 @@ public class AccountTeam extends com.pulumi.resources.CustomResource {
      * The auto-generated unique account team id
      * 
      */
-    @Export(name="teamId", type=String.class, parameters={})
+    @Export(name="teamId", refs={String.class}, tree="[0]")
     private Output<String> teamId;
 
     /**
@@ -85,7 +85,7 @@ public class AccountTeam extends com.pulumi.resources.CustomResource {
      * Time of last update
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

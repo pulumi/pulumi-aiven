@@ -16,6 +16,7 @@ __all__ = ['GrafanaArgs', 'Grafana']
 @pulumi.input_type
 class GrafanaArgs:
     def __init__(__self__, *,
+                 plan: pulumi.Input[str],
                  project: pulumi.Input[str],
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
@@ -23,7 +24,6 @@ class GrafanaArgs:
                  grafana_user_config: Optional[pulumi.Input['GrafanaGrafanaUserConfigArgs']] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaServiceIntegrationArgs']]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -32,6 +32,12 @@ class GrafanaArgs:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Grafana resource.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+               are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+               store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+               `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+               other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -47,12 +53,6 @@ class GrafanaArgs:
         :param pulumi.Input['GrafanaGrafanaUserConfigArgs'] grafana_user_config: Grafana user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-               are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-               store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-               `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-               other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
@@ -67,14 +67,15 @@ class GrafanaArgs:
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
         """
+        pulumi.set(__self__, "plan", plan)
         pulumi.set(__self__, "project", project)
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if disk_space is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
-            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+            warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if grafana_user_config is not None:
@@ -83,8 +84,6 @@ class GrafanaArgs:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
-        if plan is not None:
-            pulumi.set(__self__, "plan", plan)
         if project_vpc_id is not None:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_integrations is not None:
@@ -97,6 +96,23 @@ class GrafanaArgs:
             pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> pulumi.Input[str]:
+        """
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+        are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+        store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+        `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+        other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter
@@ -148,8 +164,8 @@ class GrafanaArgs:
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
         will result in the service rebalancing.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
-        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+        warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
 
         return pulumi.get(self, "disk_space")
 
@@ -192,23 +208,6 @@ class GrafanaArgs:
     @maintenance_window_time.setter
     def maintenance_window_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "maintenance_window_time", value)
-
-    @property
-    @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[str]]:
-        """
-        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter(name="projectVpcId")
@@ -379,8 +378,8 @@ class _GrafanaState:
         if components is not None:
             pulumi.set(__self__, "components", components)
         if disk_space is not None:
-            warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
-            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+            warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if disk_space_cap is not None:
@@ -479,8 +478,8 @@ class _GrafanaState:
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
         will result in the service rebalancing.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
-        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+        warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
 
         return pulumi.get(self, "disk_space")
 
@@ -942,12 +941,14 @@ class Grafana(pulumi.CustomResource):
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
             if disk_space is not None and not opts.urn:
-                warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
-                pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+                warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+                pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["grafana_user_config"] = grafana_user_config
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
+            if plan is None and not opts.urn:
+                raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -1137,8 +1138,8 @@ class Grafana(pulumi.CustomResource):
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
         will result in the service rebalancing.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with additional_disk_space instead.""", DeprecationWarning)
-        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.""")
+        warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
 
         return pulumi.get(self, "disk_space")
 
@@ -1210,7 +1211,7 @@ class Grafana(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plan(self) -> pulumi.Output[Optional[str]]:
+    def plan(self) -> pulumi.Output[str]:
         """
         Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
         are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to

@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -23,18 +24,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:aiven")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * Aiven Authentication Token
+     * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      * 
      */
-    @Export(name="apiToken", type=String.class, parameters={})
-    private Output<String> apiToken;
+    @Export(name="apiToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiToken;
 
     /**
-     * @return Aiven Authentication Token
+     * @return Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      * 
      */
-    public Output<String> apiToken() {
-        return this.apiToken;
+    public Output<Optional<String>> apiToken() {
+        return Codegen.optional(this.apiToken);
     }
 
     /**
@@ -49,7 +50,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(String name, ProviderArgs args) {
+    public Provider(String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -58,7 +59,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexPatternArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexTemplateArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIpFilterObjectArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpenidArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPrivateAccessArgs;
@@ -202,6 +203,21 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * OpenSearch OpenID Connect Configuration.
+     * 
+     */
+    @Import(name="openid")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpenidArgs> openid;
+
+    /**
+     * @return OpenSearch OpenID Connect Configuration.
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigOpenidArgs>> openid() {
+        return Optional.ofNullable(this.openid);
+    }
+
+    /**
      * OpenSearch settings.
      * 
      */
@@ -379,6 +395,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         this.ipFilters = $.ipFilters;
         this.keepIndexRefreshInterval = $.keepIndexRefreshInterval;
         this.maxIndexCount = $.maxIndexCount;
+        this.openid = $.openid;
         this.opensearch = $.opensearch;
         this.opensearchDashboards = $.opensearchDashboards;
         this.opensearchVersion = $.opensearchVersion;
@@ -686,6 +703,27 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         @Deprecated /* Usage of this field is discouraged. */
         public Builder maxIndexCount(Integer maxIndexCount) {
             return maxIndexCount(Output.of(maxIndexCount));
+        }
+
+        /**
+         * @param openid OpenSearch OpenID Connect Configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openid(@Nullable Output<OpenSearchOpensearchUserConfigOpenidArgs> openid) {
+            $.openid = openid;
+            return this;
+        }
+
+        /**
+         * @param openid OpenSearch OpenID Connect Configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openid(OpenSearchOpensearchUserConfigOpenidArgs openid) {
+            return openid(Output.of(openid));
         }
 
         /**

@@ -30,7 +30,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
      * 
      */
-    @Export(name="accepted", type=Boolean.class, parameters={})
+    @Export(name="accepted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accepted;
 
     /**
@@ -44,7 +44,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -58,7 +58,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * The email address of the user who sent an invitation to the user.
      * 
      */
-    @Export(name="invitedBy", type=String.class, parameters={})
+    @Export(name="invitedBy", refs={String.class}, tree="[0]")
     private Output<String> invitedBy;
 
     /**
@@ -72,7 +72,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
@@ -86,7 +86,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="userEmail", type=String.class, parameters={})
+    @Export(name="userEmail", refs={String.class}, tree="[0]")
     private Output<String> userEmail;
 
     /**

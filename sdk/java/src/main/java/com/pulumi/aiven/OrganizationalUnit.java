@@ -59,7 +59,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -73,7 +73,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * Organizational Unit name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -87,7 +87,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * Parent ID
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -101,7 +101,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * Tenant ID
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -115,7 +115,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * Time of last update
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -23,7 +23,7 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
      * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="cloudName", type=String.class, parameters={})
+    @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output<String> cloudName;
 
     /**
@@ -37,7 +37,7 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
      * The address of the static ip.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -51,7 +51,7 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -65,7 +65,7 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
      * The service name the static ip is associated with.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -79,7 +79,7 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
      * The state the static ip is in.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -93,7 +93,7 @@ public class StaticIp extends com.pulumi.resources.CustomResource {
      * The static ip id of the resource. Should be used as a reference elsewhere.
      * 
      */
-    @Export(name="staticIpAddressId", type=String.class, parameters={})
+    @Export(name="staticIpAddressId", refs={String.class}, tree="[0]")
     private Output<String> staticIpAddressId;
 
     /**

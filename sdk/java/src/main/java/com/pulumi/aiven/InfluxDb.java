@@ -80,7 +80,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
-    @Export(name="additionalDiskSpace", type=String.class, parameters={})
+    @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalDiskSpace;
 
     /**
@@ -94,7 +94,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
-    @Export(name="cloudName", type=String.class, parameters={})
+    @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudName;
 
     /**
@@ -108,7 +108,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Service component information objects
      * 
      */
-    @Export(name="components", type=List.class, parameters={InfluxDbComponent.class})
+    @Export(name="components", refs={List.class,InfluxDbComponent.class}, tree="[0,1]")
     private Output<List<InfluxDbComponent>> components;
 
     /**
@@ -122,11 +122,11 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
-    @Export(name="diskSpace", type=String.class, parameters={})
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Export(name="diskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskSpace;
 
     /**
@@ -140,7 +140,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
      * 
      */
-    @Export(name="diskSpaceCap", type=String.class, parameters={})
+    @Export(name="diskSpaceCap", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceCap;
 
     /**
@@ -154,7 +154,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
      * 
      */
-    @Export(name="diskSpaceDefault", type=String.class, parameters={})
+    @Export(name="diskSpaceDefault", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceDefault;
 
     /**
@@ -168,7 +168,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
      * 
      */
-    @Export(name="diskSpaceStep", type=String.class, parameters={})
+    @Export(name="diskSpaceStep", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceStep;
 
     /**
@@ -182,7 +182,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Disk space that service is currently using
      * 
      */
-    @Export(name="diskSpaceUsed", type=String.class, parameters={})
+    @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
     /**
@@ -196,7 +196,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Influxdb user configurable settings
      * 
      */
-    @Export(name="influxdbUserConfig", type=InfluxDbInfluxdbUserConfig.class, parameters={})
+    @Export(name="influxdbUserConfig", refs={InfluxDbInfluxdbUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ InfluxDbInfluxdbUserConfig> influxdbUserConfig;
 
     /**
@@ -210,7 +210,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * InfluxDB server provided values
      * 
      */
-    @Export(name="influxdbs", type=List.class, parameters={InfluxDbInfluxdb.class})
+    @Export(name="influxdbs", refs={List.class,InfluxDbInfluxdb.class}, tree="[0,1]")
     private Output<List<InfluxDbInfluxdb>> influxdbs;
 
     /**
@@ -224,7 +224,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
-    @Export(name="maintenanceWindowDow", type=String.class, parameters={})
+    @Export(name="maintenanceWindowDow", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maintenanceWindowDow;
 
     /**
@@ -238,7 +238,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      * 
      */
-    @Export(name="maintenanceWindowTime", type=String.class, parameters={})
+    @Export(name="maintenanceWindowTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maintenanceWindowTime;
 
     /**
@@ -252,21 +252,21 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    @Export(name="plan", type=String.class, parameters={})
-    private Output</* @Nullable */ String> plan;
+    @Export(name="plan", refs={String.class}, tree="[0]")
+    private Output<String> plan;
 
     /**
      * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    public Output<Optional<String>> plan() {
-        return Codegen.optional(this.plan);
+    public Output<String> plan() {
+        return this.plan;
     }
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -280,7 +280,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      * 
      */
-    @Export(name="projectVpcId", type=String.class, parameters={})
+    @Export(name="projectVpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectVpcId;
 
     /**
@@ -294,7 +294,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * The hostname of the service.
      * 
      */
-    @Export(name="serviceHost", type=String.class, parameters={})
+    @Export(name="serviceHost", refs={String.class}, tree="[0]")
     private Output<String> serviceHost;
 
     /**
@@ -308,7 +308,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
-    @Export(name="serviceIntegrations", type=List.class, parameters={InfluxDbServiceIntegration.class})
+    @Export(name="serviceIntegrations", refs={List.class,InfluxDbServiceIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfluxDbServiceIntegration>> serviceIntegrations;
 
     /**
@@ -322,7 +322,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -336,7 +336,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Password used for connecting to the service, if applicable
      * 
      */
-    @Export(name="servicePassword", type=String.class, parameters={})
+    @Export(name="servicePassword", refs={String.class}, tree="[0]")
     private Output<String> servicePassword;
 
     /**
@@ -350,7 +350,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * The port of the service
      * 
      */
-    @Export(name="servicePort", type=Integer.class, parameters={})
+    @Export(name="servicePort", refs={Integer.class}, tree="[0]")
     private Output<Integer> servicePort;
 
     /**
@@ -364,7 +364,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Aiven internal service type code
      * 
      */
-    @Export(name="serviceType", type=String.class, parameters={})
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
@@ -378,7 +378,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * URI for connecting to the service. Service specific info is under &#34;kafka&#34;, &#34;pg&#34;, etc.
      * 
      */
-    @Export(name="serviceUri", type=String.class, parameters={})
+    @Export(name="serviceUri", refs={String.class}, tree="[0]")
     private Output<String> serviceUri;
 
     /**
@@ -392,7 +392,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Username used for connecting to the service, if applicable
      * 
      */
-    @Export(name="serviceUsername", type=String.class, parameters={})
+    @Export(name="serviceUsername", refs={String.class}, tree="[0]")
     private Output<String> serviceUsername;
 
     /**
@@ -406,7 +406,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -420,7 +420,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    @Export(name="staticIps", type=List.class, parameters={String.class})
+    @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
@@ -434,7 +434,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Tags are key-value pairs that allow you to categorize services.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={InfluxDbTag.class})
+    @Export(name="tags", refs={List.class,InfluxDbTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfluxDbTag>> tags;
 
     /**
@@ -448,7 +448,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
-    @Export(name="terminationProtection", type=Boolean.class, parameters={})
+    @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**

@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexPattern;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexTemplate;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIpFilterObject;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpenid;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearch;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivateAccess;
@@ -85,6 +86,11 @@ public final class OpenSearchOpensearchUserConfig {
      */
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable Integer maxIndexCount;
+    /**
+     * @return OpenSearch OpenID Connect Configuration.
+     * 
+     */
+    private @Nullable OpenSearchOpensearchUserConfigOpenid openid;
     /**
      * @return OpenSearch settings.
      * 
@@ -225,6 +231,13 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.maxIndexCount);
     }
     /**
+     * @return OpenSearch OpenID Connect Configuration.
+     * 
+     */
+    public Optional<OpenSearchOpensearchUserConfigOpenid> openid() {
+        return Optional.ofNullable(this.openid);
+    }
+    /**
      * @return OpenSearch settings.
      * 
      */
@@ -321,6 +334,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable Boolean keepIndexRefreshInterval;
         private @Nullable Integer maxIndexCount;
+        private @Nullable OpenSearchOpensearchUserConfigOpenid openid;
         private @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
         private @Nullable String opensearchVersion;
@@ -345,6 +359,7 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.ipFilters = defaults.ipFilters;
     	      this.keepIndexRefreshInterval = defaults.keepIndexRefreshInterval;
     	      this.maxIndexCount = defaults.maxIndexCount;
+    	      this.openid = defaults.openid;
     	      this.opensearch = defaults.opensearch;
     	      this.opensearchDashboards = defaults.opensearchDashboards;
     	      this.opensearchVersion = defaults.opensearchVersion;
@@ -421,6 +436,11 @@ public final class OpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder openid(@Nullable OpenSearchOpensearchUserConfigOpenid openid) {
+            this.openid = openid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder opensearch(@Nullable OpenSearchOpensearchUserConfigOpensearch opensearch) {
             this.opensearch = opensearch;
             return this;
@@ -487,6 +507,7 @@ public final class OpenSearchOpensearchUserConfig {
             o.ipFilters = ipFilters;
             o.keepIndexRefreshInterval = keepIndexRefreshInterval;
             o.maxIndexCount = maxIndexCount;
+            o.openid = openid;
             o.opensearch = opensearch;
             o.opensearchDashboards = opensearchDashboards;
             o.opensearchVersion = opensearchVersion;

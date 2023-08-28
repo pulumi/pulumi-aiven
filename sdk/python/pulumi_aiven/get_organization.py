@@ -42,23 +42,23 @@ class GetOrganizationResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time of creation
+        Timestamp of the creation of the organization.
         """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The provider-assigned unique ID for this managed resource.
+        Identifier of the organization.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Organization name
+        Name of the organization.
         """
         return pulumi.get(self, "name")
 
@@ -66,7 +66,7 @@ class GetOrganizationResult:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         """
-        Tenant ID
+        Tenant identifier of the organization.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -74,7 +74,7 @@ class GetOrganizationResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        Time of last update
+        Timestamp of the last update of the organization.
         """
         return pulumi.get(self, "update_time")
 
@@ -92,10 +92,11 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             update_time=self.update_time)
 
 
-def get_organization(name: Optional[str] = None,
+def get_organization(id: Optional[str] = None,
+                     name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
-    The Organization data source provides information about the existing Aiven Organization.
+    Retrieves information about an organization from Aiven.
 
     ## Example Usage
 
@@ -107,9 +108,11 @@ def get_organization(name: Optional[str] = None,
     ```
 
 
-    :param str name: Organization name
+    :param str id: Identifier of the organization.
+    :param str name: Name of the organization.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
@@ -123,10 +126,11 @@ def get_organization(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_organization)
-def get_organization_output(name: Optional[pulumi.Input[str]] = None,
+def get_organization_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                            name: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
-    The Organization data source provides information about the existing Aiven Organization.
+    Retrieves information about an organization from Aiven.
 
     ## Example Usage
 
@@ -138,6 +142,7 @@ def get_organization_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str name: Organization name
+    :param str id: Identifier of the organization.
+    :param str name: Name of the organization.
     """
     ...

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OrganizationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +17,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     public static final OrganizationState Empty = new OrganizationState();
 
     /**
-     * Time of creation
+     * Timestamp of the creation of the organization.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time of creation
+     * @return Timestamp of the creation of the organization.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -31,14 +32,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Organization name
+     * Name of the organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Organization name
+     * @return Name of the organization.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,29 +47,36 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tenant ID
+     * Tenant identifier of the organization.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant ID
+     * @return Tenant identifier of the organization.
      * 
      */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Time of last update
+     * Timestamp of the last update of the organization.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time of last update
+     * @return Timestamp of the last update of the organization.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -81,6 +89,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.name = $.name;
         this.tenantId = $.tenantId;
+        this.timeouts = $.timeouts;
         this.updateTime = $.updateTime;
     }
 
@@ -103,7 +112,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Time of creation
+         * @param createTime Timestamp of the creation of the organization.
          * 
          * @return builder
          * 
@@ -114,7 +123,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Time of creation
+         * @param createTime Timestamp of the creation of the organization.
          * 
          * @return builder
          * 
@@ -124,7 +133,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Organization name
+         * @param name Name of the organization.
          * 
          * @return builder
          * 
@@ -135,7 +144,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Organization name
+         * @param name Name of the organization.
          * 
          * @return builder
          * 
@@ -145,7 +154,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant ID
+         * @param tenantId Tenant identifier of the organization.
          * 
          * @return builder
          * 
@@ -156,7 +165,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant ID
+         * @param tenantId Tenant identifier of the organization.
          * 
          * @return builder
          * 
@@ -165,8 +174,17 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
             return tenantId(Output.of(tenantId));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param updateTime Time of last update
+         * @param updateTime Timestamp of the last update of the organization.
          * 
          * @return builder
          * 
@@ -177,7 +195,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Time of last update
+         * @param updateTime Timestamp of the last update of the organization.
          * 
          * @return builder
          * 

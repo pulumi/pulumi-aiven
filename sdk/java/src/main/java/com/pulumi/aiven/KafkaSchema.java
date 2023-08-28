@@ -79,7 +79,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      * 
      */
-    @Export(name="compatibilityLevel", type=String.class, parameters={})
+    @Export(name="compatibilityLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compatibilityLevel;
 
     /**
@@ -93,7 +93,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -107,7 +107,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * Kafka Schema configuration should be a valid Avro Schema JSON format.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
@@ -121,7 +121,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * Kafka Schema type JSON or AVRO
      * 
      */
-    @Export(name="schemaType", type=String.class, parameters={})
+    @Export(name="schemaType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schemaType;
 
     /**
@@ -135,7 +135,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -149,7 +149,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="subjectName", type=String.class, parameters={})
+    @Export(name="subjectName", refs={String.class}, tree="[0]")
     private Output<String> subjectName;
 
     /**
@@ -163,7 +163,7 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * Kafka Schema configuration version.
      * 
      */
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     /**

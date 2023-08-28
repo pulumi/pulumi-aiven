@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,18 +16,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * Aiven Authentication Token
+     * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      * 
      */
-    @Import(name="apiToken", required=true)
-    private Output<String> apiToken;
+    @Import(name="apiToken")
+    private @Nullable Output<String> apiToken;
 
     /**
-     * @return Aiven Authentication Token
+     * @return Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      * 
      */
-    public Output<String> apiToken() {
-        return this.apiToken;
+    public Optional<Output<String>> apiToken() {
+        return Optional.ofNullable(this.apiToken);
     }
 
     private ProviderArgs() {}
@@ -53,18 +55,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiToken Aiven Authentication Token
+         * @param apiToken Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
          * 
          * @return builder
          * 
          */
-        public Builder apiToken(Output<String> apiToken) {
+        public Builder apiToken(@Nullable Output<String> apiToken) {
             $.apiToken = apiToken;
             return this;
         }
 
         /**
-         * @param apiToken Aiven Authentication Token
+         * @param apiToken Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
          * 
          * @return builder
          * 
@@ -74,7 +76,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.apiToken = Objects.requireNonNull($.apiToken, "expected parameter 'apiToken' to be non-null");
             return $;
         }
     }

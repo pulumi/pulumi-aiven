@@ -8,31 +8,45 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OrganizationArgs', 'Organization']
 
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input[str] name: Organization name
+        :param pulumi.Input[str] name: Name of the organization.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization name
+        Name of the organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -41,13 +55,14 @@ class _OrganizationState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] name: Organization name
-        :param pulumi.Input[str] tenant_id: Tenant ID
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] create_time: Timestamp of the creation of the organization.
+        :param pulumi.Input[str] name: Name of the organization.
+        :param pulumi.Input[str] tenant_id: Tenant identifier of the organization.
+        :param pulumi.Input[str] update_time: Timestamp of the last update of the organization.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -55,6 +70,8 @@ class _OrganizationState:
             pulumi.set(__self__, "name", name)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -62,7 +79,7 @@ class _OrganizationState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time of creation
+        Timestamp of the creation of the organization.
         """
         return pulumi.get(self, "create_time")
 
@@ -74,7 +91,7 @@ class _OrganizationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization name
+        Name of the organization.
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +103,7 @@ class _OrganizationState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Tenant ID
+        Tenant identifier of the organization.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -95,10 +112,19 @@ class _OrganizationState:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time of last update
+        Timestamp of the last update of the organization.
         """
         return pulumi.get(self, "update_time")
 
@@ -113,9 +139,10 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        The Organization resource allows the creation and management of an Aiven Organization.
+        Creates and manages an organization in Aiven.
 
         ## Example Usage
 
@@ -134,7 +161,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Organization name
+        :param pulumi.Input[str] name: Name of the organization.
         """
         ...
     @overload
@@ -143,7 +170,7 @@ class Organization(pulumi.CustomResource):
                  args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Organization resource allows the creation and management of an Aiven Organization.
+        Creates and manages an organization in Aiven.
 
         ## Example Usage
 
@@ -176,6 +203,7 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -186,6 +214,7 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["create_time"] = None
             __props__.__dict__["tenant_id"] = None
             __props__.__dict__["update_time"] = None
@@ -202,6 +231,7 @@ class Organization(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationTimeoutsArgs']]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
@@ -210,10 +240,10 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] name: Organization name
-        :param pulumi.Input[str] tenant_id: Tenant ID
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] create_time: Timestamp of the creation of the organization.
+        :param pulumi.Input[str] name: Name of the organization.
+        :param pulumi.Input[str] tenant_id: Tenant identifier of the organization.
+        :param pulumi.Input[str] update_time: Timestamp of the last update of the organization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -222,6 +252,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["name"] = name
         __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["update_time"] = update_time
         return Organization(resource_name, opts=opts, __props__=__props__)
 
@@ -229,7 +260,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time of creation
+        Timestamp of the creation of the organization.
         """
         return pulumi.get(self, "create_time")
 
@@ -237,7 +268,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Organization name
+        Name of the organization.
         """
         return pulumi.get(self, "name")
 
@@ -245,15 +276,20 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        Tenant ID
+        Tenant identifier of the organization.
         """
         return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time of last update
+        Timestamp of the last update of the organization.
         """
         return pulumi.get(self, "update_time")
 

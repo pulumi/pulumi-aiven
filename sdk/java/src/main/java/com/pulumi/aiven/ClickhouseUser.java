@@ -63,7 +63,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
      * The password of the clickhouse user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -77,7 +77,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -91,7 +91,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
      * Indicates if a clickhouse user is required
      * 
      */
-    @Export(name="required", type=Boolean.class, parameters={})
+    @Export(name="required", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> required;
 
     /**
@@ -105,7 +105,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -119,7 +119,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
      * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
@@ -133,7 +133,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
      * UUID of the clickhouse user.
      * 
      */
-    @Export(name="uuid", type=String.class, parameters={})
+    @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**

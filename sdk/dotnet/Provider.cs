@@ -19,10 +19,10 @@ namespace Pulumi.Aiven
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// Aiven Authentication Token
+        /// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         /// </summary>
         [Output("apiToken")]
-        public Output<string> ApiToken { get; private set; } = null!;
+        public Output<string?> ApiToken { get; private set; } = null!;
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("aiven", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -56,11 +56,11 @@ namespace Pulumi.Aiven
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("apiToken", required: true)]
+        [Input("apiToken")]
         private Input<string>? _apiToken;
 
         /// <summary>
-        /// Aiven Authentication Token
+        /// Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
         /// </summary>
         public Input<string>? ApiToken
         {

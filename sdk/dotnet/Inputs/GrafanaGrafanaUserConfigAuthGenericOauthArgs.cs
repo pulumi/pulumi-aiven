@@ -37,6 +37,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
 
+        [Input("autoLogin")]
+        public Input<bool>? AutoLogin { get; set; }
+
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 

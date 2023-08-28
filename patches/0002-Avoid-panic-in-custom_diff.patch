@@ -1,7 +1,7 @@
-From 992a4677dad6873ce8b65206d04ef0d485350fc5 Mon Sep 17 00:00:00 2001
+From 1549e8211905cfe8fb432a8fdd3c82f70bb26f89 Mon Sep 17 00:00:00 2001
 From: Anton Tayanovskyy <anton@pulumi.com>
 Date: Thu, 20 Apr 2023 16:24:38 -0400
-Subject: [PATCH] Avoid panic in custom_diff
+Subject: [PATCH 2/2] Avoid panic in custom_diff
 
 ---
  internal/schemautil/custom_diff.go | 4 ++++
@@ -23,5 +23,5 @@ index 5019feb..ed27976 100644
  		if strings.Contains(k, "_user_config") { // we only care about *_user_config
  			if err := checkForMultipleValues(v); err != nil {
 -- 
-2.37.1 (Apple Git-137.1)
+2.41.0
 

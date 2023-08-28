@@ -78,7 +78,7 @@ type KafkaMirrorMaker struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -104,7 +104,7 @@ type KafkaMirrorMaker struct {
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan pulumi.StringPtrOutput `pulumi:"plan"`
+	Plan pulumi.StringOutput `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -150,6 +150,9 @@ func NewKafkaMirrorMaker(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Plan == nil {
+		return nil, errors.New("invalid value for required argument 'Plan'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -199,7 +202,7 @@ type kafkaMirrorMakerState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -280,7 +283,7 @@ type KafkaMirrorMakerState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -363,7 +366,7 @@ type kafkaMirrorMakerArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *KafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
@@ -377,7 +380,7 @@ type kafkaMirrorMakerArgs struct {
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan *string `pulumi:"plan"`
+	Plan string `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -417,7 +420,7 @@ type KafkaMirrorMakerArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput
@@ -431,7 +434,7 @@ type KafkaMirrorMakerArgs struct {
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan pulumi.StringPtrInput
+	Plan pulumi.StringInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
@@ -567,7 +570,7 @@ func (o KafkaMirrorMakerOutput) Components() KafkaMirrorMakerComponentArrayOutpu
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
 //
-// Deprecated: This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 func (o KafkaMirrorMakerOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -622,8 +625,8 @@ func (o KafkaMirrorMakerOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 // `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 // other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 // options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-func (o KafkaMirrorMakerOutput) Plan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.Plan }).(pulumi.StringPtrOutput)
+func (o KafkaMirrorMakerOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a

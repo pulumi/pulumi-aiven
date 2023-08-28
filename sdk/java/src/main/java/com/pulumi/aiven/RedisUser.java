@@ -64,7 +64,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * The password of the Redis User.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -78,7 +78,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -92,7 +92,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="redisAclCategories", type=List.class, parameters={String.class})
+    @Export(name="redisAclCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclCategories;
 
     /**
@@ -106,7 +106,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="redisAclChannels", type=List.class, parameters={String.class})
+    @Export(name="redisAclChannels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclChannels;
 
     /**
@@ -120,7 +120,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="redisAclCommands", type=List.class, parameters={String.class})
+    @Export(name="redisAclCommands", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclCommands;
 
     /**
@@ -134,7 +134,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="redisAclKeys", type=List.class, parameters={String.class})
+    @Export(name="redisAclKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclKeys;
 
     /**
@@ -148,7 +148,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -162,7 +162,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * Type of the user account. Tells whether the user is the primary account or a regular account.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -176,7 +176,7 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
      * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

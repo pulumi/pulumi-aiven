@@ -62,7 +62,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      * 
      */
-    @Export(name="compatibilityLevel", type=String.class, parameters={})
+    @Export(name="compatibilityLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compatibilityLevel;
 
     /**
@@ -76,7 +76,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -90,7 +90,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**

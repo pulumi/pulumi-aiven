@@ -15,12 +15,12 @@
 package main
 
 import (
+	"context"
+
 	aiven "github.com/pulumi/pulumi-aiven/provider/v6"
-	"github.com/pulumi/pulumi-aiven/provider/v6/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
-	// Modify the path to point to the new provider
-	tfgen.Main("aiven", version.Version, aiven.Provider())
+	tfgen.MainWithMuxer("aiven", aiven.Provider(context.Background()))
 }

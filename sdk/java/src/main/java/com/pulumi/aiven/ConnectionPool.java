@@ -68,7 +68,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * The URI for connecting to the pool
      * 
      */
-    @Export(name="connectionUri", type=String.class, parameters={})
+    @Export(name="connectionUri", refs={String.class}, tree="[0]")
     private Output<String> connectionUri;
 
     /**
@@ -82,7 +82,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="databaseName", type=String.class, parameters={})
+    @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
@@ -96,7 +96,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
-    @Export(name="poolMode", type=String.class, parameters={})
+    @Export(name="poolMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> poolMode;
 
     /**
@@ -110,7 +110,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="poolName", type=String.class, parameters={})
+    @Export(name="poolName", refs={String.class}, tree="[0]")
     private Output<String> poolName;
 
     /**
@@ -124,7 +124,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
      * 
      */
-    @Export(name="poolSize", type=Integer.class, parameters={})
+    @Export(name="poolSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> poolSize;
 
     /**
@@ -138,7 +138,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -152,7 +152,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -166,7 +166,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**

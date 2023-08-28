@@ -238,6 +238,13 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.metricsEnabled);
     }
 
+    @Import(name="oauthAllowInsecureEmailLookup")
+    private @Nullable Output<Boolean> oauthAllowInsecureEmailLookup;
+
+    public Optional<Output<Boolean>> oauthAllowInsecureEmailLookup() {
+        return Optional.ofNullable(this.oauthAllowInsecureEmailLookup);
+    }
+
     @Import(name="privateAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPrivateAccessArgs> privateAccess;
 
@@ -346,6 +353,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.metricsEnabled = $.metricsEnabled;
+        this.oauthAllowInsecureEmailLookup = $.oauthAllowInsecureEmailLookup;
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.projectToForkFrom = $.projectToForkFrom;
@@ -663,6 +671,15 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
 
         public Builder metricsEnabled(Boolean metricsEnabled) {
             return metricsEnabled(Output.of(metricsEnabled));
+        }
+
+        public Builder oauthAllowInsecureEmailLookup(@Nullable Output<Boolean> oauthAllowInsecureEmailLookup) {
+            $.oauthAllowInsecureEmailLookup = oauthAllowInsecureEmailLookup;
+            return this;
+        }
+
+        public Builder oauthAllowInsecureEmailLookup(Boolean oauthAllowInsecureEmailLookup) {
+            return oauthAllowInsecureEmailLookup(Output.of(oauthAllowInsecureEmailLookup));
         }
 
         public Builder privateAccess(@Nullable Output<GrafanaGrafanaUserConfigPrivateAccessArgs> privateAccess) {

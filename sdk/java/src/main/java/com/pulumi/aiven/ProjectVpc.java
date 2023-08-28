@@ -63,7 +63,7 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
      * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="cloudName", type=String.class, parameters={})
+    @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output<String> cloudName;
 
     /**
@@ -77,7 +77,7 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
      * Network address range used by the VPC like 192.168.0.0/24
      * 
      */
-    @Export(name="networkCidr", type=String.class, parameters={})
+    @Export(name="networkCidr", refs={String.class}, tree="[0]")
     private Output<String> networkCidr;
 
     /**
@@ -91,7 +91,7 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -105,7 +105,7 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
      * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

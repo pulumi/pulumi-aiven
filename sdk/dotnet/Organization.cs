@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Organization resource allows the creation and management of an Aiven Organization.
+    /// Creates and manages an organization in Aiven.
     /// 
     /// ## Example Usage
     /// 
@@ -37,25 +37,28 @@ namespace Pulumi.Aiven
     public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time of creation
+        /// Timestamp of the creation of the organization.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Organization name
+        /// Name of the organization.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant ID
+        /// Tenant identifier of the organization.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Time of last update
+        /// Timestamp of the last update of the organization.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -107,10 +110,13 @@ namespace Pulumi.Aiven
     public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organization name
+        /// Name of the organization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationTimeoutsArgs>? Timeouts { get; set; }
 
         public OrganizationArgs()
         {
@@ -121,25 +127,28 @@ namespace Pulumi.Aiven
     public sealed class OrganizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of creation
+        /// Timestamp of the creation of the organization.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Organization name
+        /// Name of the organization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tenant ID
+        /// Tenant identifier of the organization.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Time of last update
+        /// Timestamp of the last update of the organization.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

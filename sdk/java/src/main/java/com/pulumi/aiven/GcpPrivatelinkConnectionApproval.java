@@ -19,7 +19,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * Privatelink connection id
      * 
      */
-    @Export(name="privatelinkConnectionId", type=String.class, parameters={})
+    @Export(name="privatelinkConnectionId", refs={String.class}, tree="[0]")
     private Output<String> privatelinkConnectionId;
 
     /**
@@ -34,7 +34,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -49,7 +49,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * Privatelink connection PSC connection id
      * 
      */
-    @Export(name="pscConnectionId", type=String.class, parameters={})
+    @Export(name="pscConnectionId", refs={String.class}, tree="[0]")
     private Output<String> pscConnectionId;
 
     /**
@@ -64,7 +64,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -79,7 +79,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * Privatelink connection state
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -93,7 +93,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * Privatelink connection user IP address
      * 
      */
-    @Export(name="userIpAddress", type=String.class, parameters={})
+    @Export(name="userIpAddress", refs={String.class}, tree="[0]")
     private Output<String> userIpAddress;
 
     /**

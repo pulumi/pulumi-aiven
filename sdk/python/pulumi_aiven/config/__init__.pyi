@@ -11,6 +11,6 @@ from .. import _utilities
 
 apiToken: Optional[str]
 """
-Aiven Authentication Token
+Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
 """
 

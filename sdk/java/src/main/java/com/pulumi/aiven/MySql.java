@@ -87,7 +87,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * reducing will result in the service rebalancing.
      * 
      */
-    @Export(name="additionalDiskSpace", type=String.class, parameters={})
+    @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalDiskSpace;
 
     /**
@@ -107,7 +107,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
-    @Export(name="cloudName", type=String.class, parameters={})
+    @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudName;
 
     /**
@@ -126,7 +126,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Service component information objects
      * 
      */
-    @Export(name="components", type=List.class, parameters={MySqlComponent.class})
+    @Export(name="components", refs={List.class,MySqlComponent.class}, tree="[0,1]")
     private Output<List<MySqlComponent>> components;
 
     /**
@@ -141,11 +141,11 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * will result in the service rebalancing.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with additional_disk_space instead.
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with additional_disk_space instead. */
-    @Export(name="diskSpace", type=String.class, parameters={})
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Export(name="diskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskSpace;
 
     /**
@@ -160,7 +160,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
      * 
      */
-    @Export(name="diskSpaceCap", type=String.class, parameters={})
+    @Export(name="diskSpaceCap", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceCap;
 
     /**
@@ -175,7 +175,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Its also the minimum value for `disk_space`
      * 
      */
-    @Export(name="diskSpaceDefault", type=String.class, parameters={})
+    @Export(name="diskSpaceDefault", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceDefault;
 
     /**
@@ -191,7 +191,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
      * 
      */
-    @Export(name="diskSpaceStep", type=String.class, parameters={})
+    @Export(name="diskSpaceStep", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceStep;
 
     /**
@@ -206,7 +206,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Disk space that service is currently using
      * 
      */
-    @Export(name="diskSpaceUsed", type=String.class, parameters={})
+    @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
     /**
@@ -220,7 +220,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
-    @Export(name="maintenanceWindowDow", type=String.class, parameters={})
+    @Export(name="maintenanceWindowDow", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maintenanceWindowDow;
 
     /**
@@ -234,7 +234,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      * 
      */
-    @Export(name="maintenanceWindowTime", type=String.class, parameters={})
+    @Export(name="maintenanceWindowTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maintenanceWindowTime;
 
     /**
@@ -248,7 +248,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Mysql user configurable settings
      * 
      */
-    @Export(name="mysqlUserConfig", type=MySqlMysqlUserConfig.class, parameters={})
+    @Export(name="mysqlUserConfig", refs={MySqlMysqlUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ MySqlMysqlUserConfig> mysqlUserConfig;
 
     /**
@@ -262,7 +262,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * MySQL specific server provided values
      * 
      */
-    @Export(name="mysqls", type=List.class, parameters={MySqlMysql.class})
+    @Export(name="mysqls", refs={List.class,MySqlMysql.class}, tree="[0,1]")
     private Output<List<MySqlMysql>> mysqls;
 
     /**
@@ -281,8 +281,8 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    @Export(name="plan", type=String.class, parameters={})
-    private Output</* @Nullable */ String> plan;
+    @Export(name="plan", refs={String.class}, tree="[0]")
+    private Output<String> plan;
 
     /**
      * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
@@ -293,15 +293,15 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
-    public Output<Optional<String>> plan() {
-        return Codegen.optional(this.plan);
+    public Output<String> plan() {
+        return this.plan;
     }
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -319,7 +319,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * servers so the operation can take significant amount of time to complete if the service has a lot of data.
      * 
      */
-    @Export(name="projectVpcId", type=String.class, parameters={})
+    @Export(name="projectVpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectVpcId;
 
     /**
@@ -336,7 +336,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * The hostname of the service.
      * 
      */
-    @Export(name="serviceHost", type=String.class, parameters={})
+    @Export(name="serviceHost", refs={String.class}, tree="[0]")
     private Output<String> serviceHost;
 
     /**
@@ -350,7 +350,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
-    @Export(name="serviceIntegrations", type=List.class, parameters={MySqlServiceIntegration.class})
+    @Export(name="serviceIntegrations", refs={List.class,MySqlServiceIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MySqlServiceIntegration>> serviceIntegrations;
 
     /**
@@ -365,7 +365,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -380,7 +380,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Password used for connecting to the service, if applicable
      * 
      */
-    @Export(name="servicePassword", type=String.class, parameters={})
+    @Export(name="servicePassword", refs={String.class}, tree="[0]")
     private Output<String> servicePassword;
 
     /**
@@ -394,7 +394,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * The port of the service
      * 
      */
-    @Export(name="servicePort", type=Integer.class, parameters={})
+    @Export(name="servicePort", refs={Integer.class}, tree="[0]")
     private Output<Integer> servicePort;
 
     /**
@@ -408,7 +408,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Aiven internal service type code
      * 
      */
-    @Export(name="serviceType", type=String.class, parameters={})
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
@@ -422,7 +422,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * URI for connecting to the service. Service specific info is under &#34;kafka&#34;, &#34;pg&#34;, etc.
      * 
      */
-    @Export(name="serviceUri", type=String.class, parameters={})
+    @Export(name="serviceUri", refs={String.class}, tree="[0]")
     private Output<String> serviceUri;
 
     /**
@@ -436,7 +436,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Username used for connecting to the service, if applicable
      * 
      */
-    @Export(name="serviceUsername", type=String.class, parameters={})
+    @Export(name="serviceUsername", refs={String.class}, tree="[0]")
     private Output<String> serviceUsername;
 
     /**
@@ -450,7 +450,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -465,7 +465,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    @Export(name="staticIps", type=List.class, parameters={String.class})
+    @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
@@ -480,7 +480,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * Tags are key-value pairs that allow you to categorize services.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={MySqlTag.class})
+    @Export(name="tags", refs={List.class,MySqlTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MySqlTag>> tags;
 
     /**
@@ -496,7 +496,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
-    @Export(name="terminationProtection", type=Boolean.class, parameters={})
+    @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**

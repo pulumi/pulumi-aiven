@@ -32,7 +32,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * The unique id of the account.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -46,7 +46,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Account authentication id
      * 
      */
-    @Export(name="authenticationId", type=String.class, parameters={})
+    @Export(name="authenticationId", refs={String.class}, tree="[0]")
     private Output<String> authenticationId;
 
     /**
@@ -60,7 +60,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Team ID
      * 
      */
-    @Export(name="autoJoinTeamId", type=String.class, parameters={})
+    @Export(name="autoJoinTeamId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoJoinTeamId;
 
     /**
@@ -74,7 +74,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -88,7 +88,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Status of account authentication method. The default value is `false`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -102,7 +102,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * The name of the account authentication.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -116,7 +116,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * SAML Assertion Consumer Service URL
      * 
      */
-    @Export(name="samlAcsUrl", type=String.class, parameters={})
+    @Export(name="samlAcsUrl", refs={String.class}, tree="[0]")
     private Output<String> samlAcsUrl;
 
     /**
@@ -130,7 +130,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * SAML Certificate
      * 
      */
-    @Export(name="samlCertificate", type=String.class, parameters={})
+    @Export(name="samlCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samlCertificate;
 
     /**
@@ -144,7 +144,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Digest algorithm. This is an advanced option that typically does not need to be set.
      * 
      */
-    @Export(name="samlDigestAlgorithm", type=String.class, parameters={})
+    @Export(name="samlDigestAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samlDigestAlgorithm;
 
     /**
@@ -158,7 +158,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * SAML Entity id
      * 
      */
-    @Export(name="samlEntityId", type=String.class, parameters={})
+    @Export(name="samlEntityId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samlEntityId;
 
     /**
@@ -172,7 +172,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Map IdP fields
      * 
      */
-    @Export(name="samlFieldMapping", type=AccountAuthenticationSamlFieldMapping.class, parameters={})
+    @Export(name="samlFieldMapping", refs={AccountAuthenticationSamlFieldMapping.class}, tree="[0]")
     private Output</* @Nullable */ AccountAuthenticationSamlFieldMapping> samlFieldMapping;
 
     /**
@@ -186,7 +186,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Set to &#39;true&#39; to enable IdP initiated login
      * 
      */
-    @Export(name="samlIdpLoginAllowed", type=Boolean.class, parameters={})
+    @Export(name="samlIdpLoginAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> samlIdpLoginAllowed;
 
     /**
@@ -200,7 +200,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * SAML Idp URL
      * 
      */
-    @Export(name="samlIdpUrl", type=String.class, parameters={})
+    @Export(name="samlIdpUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samlIdpUrl;
 
     /**
@@ -214,7 +214,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * SAML Metadata URL
      * 
      */
-    @Export(name="samlMetadataUrl", type=String.class, parameters={})
+    @Export(name="samlMetadataUrl", refs={String.class}, tree="[0]")
     private Output<String> samlMetadataUrl;
 
     /**
@@ -228,7 +228,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Signature algorithm. This is an advanced option that typically does not need to be set.
      * 
      */
-    @Export(name="samlSignatureAlgorithm", type=String.class, parameters={})
+    @Export(name="samlSignatureAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samlSignatureAlgorithm;
 
     /**
@@ -242,7 +242,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * SAML server variant
      * 
      */
-    @Export(name="samlVariant", type=String.class, parameters={})
+    @Export(name="samlVariant", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samlVariant;
 
     /**
@@ -256,7 +256,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * The account authentication type. The possible values are `internal` and `saml`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -270,7 +270,7 @@ public class AccountAuthentication extends com.pulumi.resources.CustomResource {
      * Time of last update
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

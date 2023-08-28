@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Organization resource allows the creation and management of an Aiven Organization.
+// Creates and manages an organization in Aiven.
 //
 // ## Example Usage
 //
@@ -47,13 +47,14 @@ import (
 type Organization struct {
 	pulumi.CustomResourceState
 
-	// Time of creation
+	// Timestamp of the creation of the organization.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Organization name
+	// Name of the organization.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Tenant ID
-	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Time of last update
+	// Tenant identifier of the organization.
+	TenantId pulumi.StringOutput           `pulumi:"tenantId"`
+	Timeouts OrganizationTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Timestamp of the last update of the organization.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -87,24 +88,26 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
-	// Time of creation
+	// Timestamp of the creation of the organization.
 	CreateTime *string `pulumi:"createTime"`
-	// Organization name
+	// Name of the organization.
 	Name *string `pulumi:"name"`
-	// Tenant ID
-	TenantId *string `pulumi:"tenantId"`
-	// Time of last update
+	// Tenant identifier of the organization.
+	TenantId *string               `pulumi:"tenantId"`
+	Timeouts *OrganizationTimeouts `pulumi:"timeouts"`
+	// Timestamp of the last update of the organization.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationState struct {
-	// Time of creation
+	// Timestamp of the creation of the organization.
 	CreateTime pulumi.StringPtrInput
-	// Organization name
+	// Name of the organization.
 	Name pulumi.StringPtrInput
-	// Tenant ID
+	// Tenant identifier of the organization.
 	TenantId pulumi.StringPtrInput
-	// Time of last update
+	Timeouts OrganizationTimeoutsPtrInput
+	// Timestamp of the last update of the organization.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -113,14 +116,16 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// Organization name
-	Name *string `pulumi:"name"`
+	// Name of the organization.
+	Name     *string               `pulumi:"name"`
+	Timeouts *OrganizationTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// Organization name
-	Name pulumi.StringPtrInput
+	// Name of the organization.
+	Name     pulumi.StringPtrInput
+	Timeouts OrganizationTimeoutsPtrInput
 }
 
 func (OrganizationArgs) ElementType() reflect.Type {
@@ -210,22 +215,26 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Time of creation
+// Timestamp of the creation of the organization.
 func (o OrganizationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Organization name
+// Name of the organization.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tenant ID
+// Tenant identifier of the organization.
 func (o OrganizationOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Time of last update
+func (o OrganizationOutput) Timeouts() OrganizationTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Organization) OrganizationTimeoutsPtrOutput { return v.Timeouts }).(OrganizationTimeoutsPtrOutput)
+}
+
+// Timestamp of the last update of the organization.
 func (o OrganizationOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

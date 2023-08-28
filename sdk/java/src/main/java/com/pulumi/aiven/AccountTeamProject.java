@@ -34,7 +34,7 @@ public class AccountTeamProject extends com.pulumi.resources.CustomResource {
      * The unique account id
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -48,7 +48,7 @@ public class AccountTeamProject extends com.pulumi.resources.CustomResource {
      * The name of an already existing project
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectName;
 
     /**
@@ -62,7 +62,7 @@ public class AccountTeamProject extends com.pulumi.resources.CustomResource {
      * An account team id
      * 
      */
-    @Export(name="teamId", type=String.class, parameters={})
+    @Export(name="teamId", refs={String.class}, tree="[0]")
     private Output<String> teamId;
 
     /**
@@ -76,7 +76,7 @@ public class AccountTeamProject extends com.pulumi.resources.CustomResource {
      * The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
-    @Export(name="teamType", type=String.class, parameters={})
+    @Export(name="teamType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> teamType;
 
     /**

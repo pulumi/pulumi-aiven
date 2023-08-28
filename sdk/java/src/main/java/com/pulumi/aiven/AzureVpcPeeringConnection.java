@@ -66,7 +66,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="azureSubscriptionId", type=String.class, parameters={})
+    @Export(name="azureSubscriptionId", refs={String.class}, tree="[0]")
     private Output<String> azureSubscriptionId;
 
     /**
@@ -80,7 +80,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="peerAzureAppId", type=String.class, parameters={})
+    @Export(name="peerAzureAppId", refs={String.class}, tree="[0]")
     private Output<String> peerAzureAppId;
 
     /**
@@ -94,7 +94,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="peerAzureTenantId", type=String.class, parameters={})
+    @Export(name="peerAzureTenantId", refs={String.class}, tree="[0]")
     private Output<String> peerAzureTenantId;
 
     /**
@@ -108,7 +108,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="peerResourceGroup", type=String.class, parameters={})
+    @Export(name="peerResourceGroup", refs={String.class}, tree="[0]")
     private Output<String> peerResourceGroup;
 
     /**
@@ -122,7 +122,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * Cloud provider identifier for the peering connection if available
      * 
      */
-    @Export(name="peeringConnectionId", type=String.class, parameters={})
+    @Export(name="peeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> peeringConnectionId;
 
     /**
@@ -136,7 +136,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * State of the peering connection
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -150,7 +150,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * State-specific help or error information
      * 
      */
-    @Export(name="stateInfo", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
@@ -164,7 +164,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="vnetName", type=String.class, parameters={})
+    @Export(name="vnetName", refs={String.class}, tree="[0]")
     private Output<String> vnetName;
 
     /**
@@ -178,7 +178,7 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
      * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

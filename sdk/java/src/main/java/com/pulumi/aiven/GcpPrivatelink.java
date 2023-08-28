@@ -19,7 +19,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * Privatelink resource Google Service Attachment
      * 
      */
-    @Export(name="googleServiceAttachment", type=String.class, parameters={})
+    @Export(name="googleServiceAttachment", refs={String.class}, tree="[0]")
     private Output<String> googleServiceAttachment;
 
     /**
@@ -33,7 +33,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * Printable result of the GCP Privatelink request
      * 
      */
-    @Export(name="message", type=String.class, parameters={})
+    @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
@@ -48,7 +48,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -64,7 +64,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -79,7 +79,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * Privatelink resource state
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
