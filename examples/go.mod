@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-aiven/examples/v6
 
-go 1.20
+go 1.21
 
 require github.com/pulumi/pulumi/pkg/v3 v3.56.0
 
