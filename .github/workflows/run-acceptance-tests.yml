@@ -331,11 +331,15 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: ${{ matrix.language }}.test.tar.gz
-        path: ${{ github.workspace }}/examples/${{matrix.language}}.test.tar.gz
+        path: ${{ github.workspace }}/bin
+    - run: cd ${{github.workspace}}/bin && ls -R
     - name: Untar test binary
       run: >-
-        tar -zxf ${{ github.workspace }}/examples/${{matrix.language}}.test.tar.gz -C ${{
-        github.workspace }}/bin
+        tar -zxf ${{ github.workspace }}/bin/${{matrix.language}}.tar.gz -C ${{
+        github.workspace}}/bin
+
+        (cd ${{github.workspace}}/bin && ls -R)
+        ls ${{github.workspace}}/bin
 
         mv ${{ github.workspace }}/bin/${{matrix.language}}.test ${{ github.workspace
         }}/examples/${{matrix.language}}.test
@@ -440,7 +444,7 @@ jobs:
     - name: Build
       run: cd examples && go test -c -o ${{ github.workspace }}/bin/${{matrix.language}}.test -tags=${{ matrix.language }}
     - name: Tar
-      run: tar -zcf ${{ github.workspace }}/bin/${{matrix.language}}.test.tar.gz ${{ github.workspace }}/bin/${{matrix.language}}.test
+      run: tar -zcf ${{ github.workspace }}/bin/${{matrix.language}}.tar.gz ${{ github.workspace }}/bin
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
