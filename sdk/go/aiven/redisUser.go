@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Redis User resource allows the creation and management of Aiven Redis Users.
@@ -226,6 +227,12 @@ func (i *RedisUser) ToRedisUserOutputWithContext(ctx context.Context) RedisUserO
 	return pulumi.ToOutputWithContext(ctx, i).(RedisUserOutput)
 }
 
+func (i *RedisUser) ToOutput(ctx context.Context) pulumix.Output[*RedisUser] {
+	return pulumix.Output[*RedisUser]{
+		OutputState: i.ToRedisUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RedisUserArrayInput is an input type that accepts RedisUserArray and RedisUserArrayOutput values.
 // You can construct a concrete instance of `RedisUserArrayInput` via:
 //
@@ -249,6 +256,12 @@ func (i RedisUserArray) ToRedisUserArrayOutput() RedisUserArrayOutput {
 
 func (i RedisUserArray) ToRedisUserArrayOutputWithContext(ctx context.Context) RedisUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RedisUserArrayOutput)
+}
+
+func (i RedisUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*RedisUser] {
+	return pulumix.Output[[]*RedisUser]{
+		OutputState: i.ToRedisUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RedisUserMapInput is an input type that accepts RedisUserMap and RedisUserMapOutput values.
@@ -276,6 +289,12 @@ func (i RedisUserMap) ToRedisUserMapOutputWithContext(ctx context.Context) Redis
 	return pulumi.ToOutputWithContext(ctx, i).(RedisUserMapOutput)
 }
 
+func (i RedisUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RedisUser] {
+	return pulumix.Output[map[string]*RedisUser]{
+		OutputState: i.ToRedisUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RedisUserOutput struct{ *pulumi.OutputState }
 
 func (RedisUserOutput) ElementType() reflect.Type {
@@ -288,6 +307,12 @@ func (o RedisUserOutput) ToRedisUserOutput() RedisUserOutput {
 
 func (o RedisUserOutput) ToRedisUserOutputWithContext(ctx context.Context) RedisUserOutput {
 	return o
+}
+
+func (o RedisUserOutput) ToOutput(ctx context.Context) pulumix.Output[*RedisUser] {
+	return pulumix.Output[*RedisUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password of the Redis User.
@@ -349,6 +374,12 @@ func (o RedisUserArrayOutput) ToRedisUserArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o RedisUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RedisUser] {
+	return pulumix.Output[[]*RedisUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RedisUserArrayOutput) Index(i pulumi.IntInput) RedisUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RedisUser {
 		return vs[0].([]*RedisUser)[vs[1].(int)]
@@ -367,6 +398,12 @@ func (o RedisUserMapOutput) ToRedisUserMapOutput() RedisUserMapOutput {
 
 func (o RedisUserMapOutput) ToRedisUserMapOutputWithContext(ctx context.Context) RedisUserMapOutput {
 	return o
+}
+
+func (o RedisUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RedisUser] {
+	return pulumix.Output[map[string]*RedisUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RedisUserMapOutput) MapIndex(k pulumi.StringInput) RedisUserOutput {

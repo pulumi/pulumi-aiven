@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
@@ -217,6 +218,12 @@ func (i *TransitGatewayVpcAttachment) ToTransitGatewayVpcAttachmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentOutput)
 }
 
+func (i *TransitGatewayVpcAttachment) ToOutput(ctx context.Context) pulumix.Output[*TransitGatewayVpcAttachment] {
+	return pulumix.Output[*TransitGatewayVpcAttachment]{
+		OutputState: i.ToTransitGatewayVpcAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitGatewayVpcAttachmentArrayInput is an input type that accepts TransitGatewayVpcAttachmentArray and TransitGatewayVpcAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitGatewayVpcAttachmentArrayInput` via:
 //
@@ -240,6 +247,12 @@ func (i TransitGatewayVpcAttachmentArray) ToTransitGatewayVpcAttachmentArrayOutp
 
 func (i TransitGatewayVpcAttachmentArray) ToTransitGatewayVpcAttachmentArrayOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentArrayOutput)
+}
+
+func (i TransitGatewayVpcAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitGatewayVpcAttachment] {
+	return pulumix.Output[[]*TransitGatewayVpcAttachment]{
+		OutputState: i.ToTransitGatewayVpcAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitGatewayVpcAttachmentMapInput is an input type that accepts TransitGatewayVpcAttachmentMap and TransitGatewayVpcAttachmentMapOutput values.
@@ -267,6 +280,12 @@ func (i TransitGatewayVpcAttachmentMap) ToTransitGatewayVpcAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentMapOutput)
 }
 
+func (i TransitGatewayVpcAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitGatewayVpcAttachment] {
+	return pulumix.Output[map[string]*TransitGatewayVpcAttachment]{
+		OutputState: i.ToTransitGatewayVpcAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitGatewayVpcAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitGatewayVpcAttachmentOutput) ElementType() reflect.Type {
@@ -279,6 +298,12 @@ func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutput()
 
 func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput {
 	return o
+}
+
+func (o TransitGatewayVpcAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitGatewayVpcAttachment] {
+	return pulumix.Output[*TransitGatewayVpcAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
@@ -337,6 +362,12 @@ func (o TransitGatewayVpcAttachmentArrayOutput) ToTransitGatewayVpcAttachmentArr
 	return o
 }
 
+func (o TransitGatewayVpcAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitGatewayVpcAttachment] {
+	return pulumix.Output[[]*TransitGatewayVpcAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitGatewayVpcAttachmentArrayOutput) Index(i pulumi.IntInput) TransitGatewayVpcAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitGatewayVpcAttachment {
 		return vs[0].([]*TransitGatewayVpcAttachment)[vs[1].(int)]
@@ -355,6 +386,12 @@ func (o TransitGatewayVpcAttachmentMapOutput) ToTransitGatewayVpcAttachmentMapOu
 
 func (o TransitGatewayVpcAttachmentMapOutput) ToTransitGatewayVpcAttachmentMapOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentMapOutput {
 	return o
+}
+
+func (o TransitGatewayVpcAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitGatewayVpcAttachment] {
+	return pulumix.Output[map[string]*TransitGatewayVpcAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitGatewayVpcAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitGatewayVpcAttachmentOutput {

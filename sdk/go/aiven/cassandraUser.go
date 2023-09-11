@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Cassandra User resource allows the creation and management of Aiven Cassandra Users.
@@ -200,6 +201,12 @@ func (i *CassandraUser) ToCassandraUserOutputWithContext(ctx context.Context) Ca
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraUserOutput)
 }
 
+func (i *CassandraUser) ToOutput(ctx context.Context) pulumix.Output[*CassandraUser] {
+	return pulumix.Output[*CassandraUser]{
+		OutputState: i.ToCassandraUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CassandraUserArrayInput is an input type that accepts CassandraUserArray and CassandraUserArrayOutput values.
 // You can construct a concrete instance of `CassandraUserArrayInput` via:
 //
@@ -223,6 +230,12 @@ func (i CassandraUserArray) ToCassandraUserArrayOutput() CassandraUserArrayOutpu
 
 func (i CassandraUserArray) ToCassandraUserArrayOutputWithContext(ctx context.Context) CassandraUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraUserArrayOutput)
+}
+
+func (i CassandraUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*CassandraUser] {
+	return pulumix.Output[[]*CassandraUser]{
+		OutputState: i.ToCassandraUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CassandraUserMapInput is an input type that accepts CassandraUserMap and CassandraUserMapOutput values.
@@ -250,6 +263,12 @@ func (i CassandraUserMap) ToCassandraUserMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraUserMapOutput)
 }
 
+func (i CassandraUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CassandraUser] {
+	return pulumix.Output[map[string]*CassandraUser]{
+		OutputState: i.ToCassandraUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CassandraUserOutput struct{ *pulumi.OutputState }
 
 func (CassandraUserOutput) ElementType() reflect.Type {
@@ -262,6 +281,12 @@ func (o CassandraUserOutput) ToCassandraUserOutput() CassandraUserOutput {
 
 func (o CassandraUserOutput) ToCassandraUserOutputWithContext(ctx context.Context) CassandraUserOutput {
 	return o
+}
+
+func (o CassandraUserOutput) ToOutput(ctx context.Context) pulumix.Output[*CassandraUser] {
+	return pulumix.Output[*CassandraUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access certificate for the user if applicable for the service in question
@@ -313,6 +338,12 @@ func (o CassandraUserArrayOutput) ToCassandraUserArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o CassandraUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CassandraUser] {
+	return pulumix.Output[[]*CassandraUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CassandraUserArrayOutput) Index(i pulumi.IntInput) CassandraUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CassandraUser {
 		return vs[0].([]*CassandraUser)[vs[1].(int)]
@@ -331,6 +362,12 @@ func (o CassandraUserMapOutput) ToCassandraUserMapOutput() CassandraUserMapOutpu
 
 func (o CassandraUserMapOutput) ToCassandraUserMapOutputWithContext(ctx context.Context) CassandraUserMapOutput {
 	return o
+}
+
+func (o CassandraUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CassandraUser] {
+	return pulumix.Output[map[string]*CassandraUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CassandraUserMapOutput) MapIndex(k pulumi.StringInput) CassandraUserOutput {

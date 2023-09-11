@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
@@ -178,6 +179,12 @@ func (i *ClickhouseDatabase) ToClickhouseDatabaseOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseDatabaseOutput)
 }
 
+func (i *ClickhouseDatabase) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseDatabase] {
+	return pulumix.Output[*ClickhouseDatabase]{
+		OutputState: i.ToClickhouseDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClickhouseDatabaseArrayInput is an input type that accepts ClickhouseDatabaseArray and ClickhouseDatabaseArrayOutput values.
 // You can construct a concrete instance of `ClickhouseDatabaseArrayInput` via:
 //
@@ -201,6 +208,12 @@ func (i ClickhouseDatabaseArray) ToClickhouseDatabaseArrayOutput() ClickhouseDat
 
 func (i ClickhouseDatabaseArray) ToClickhouseDatabaseArrayOutputWithContext(ctx context.Context) ClickhouseDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseDatabaseArrayOutput)
+}
+
+func (i ClickhouseDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseDatabase] {
+	return pulumix.Output[[]*ClickhouseDatabase]{
+		OutputState: i.ToClickhouseDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClickhouseDatabaseMapInput is an input type that accepts ClickhouseDatabaseMap and ClickhouseDatabaseMapOutput values.
@@ -228,6 +241,12 @@ func (i ClickhouseDatabaseMap) ToClickhouseDatabaseMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseDatabaseMapOutput)
 }
 
+func (i ClickhouseDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseDatabase] {
+	return pulumix.Output[map[string]*ClickhouseDatabase]{
+		OutputState: i.ToClickhouseDatabaseMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClickhouseDatabaseOutput struct{ *pulumi.OutputState }
 
 func (ClickhouseDatabaseOutput) ElementType() reflect.Type {
@@ -240,6 +259,12 @@ func (o ClickhouseDatabaseOutput) ToClickhouseDatabaseOutput() ClickhouseDatabas
 
 func (o ClickhouseDatabaseOutput) ToClickhouseDatabaseOutputWithContext(ctx context.Context) ClickhouseDatabaseOutput {
 	return o
+}
+
+func (o ClickhouseDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseDatabase] {
+	return pulumix.Output[*ClickhouseDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
@@ -278,6 +303,12 @@ func (o ClickhouseDatabaseArrayOutput) ToClickhouseDatabaseArrayOutputWithContex
 	return o
 }
 
+func (o ClickhouseDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseDatabase] {
+	return pulumix.Output[[]*ClickhouseDatabase]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClickhouseDatabaseArrayOutput) Index(i pulumi.IntInput) ClickhouseDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClickhouseDatabase {
 		return vs[0].([]*ClickhouseDatabase)[vs[1].(int)]
@@ -296,6 +327,12 @@ func (o ClickhouseDatabaseMapOutput) ToClickhouseDatabaseMapOutput() ClickhouseD
 
 func (o ClickhouseDatabaseMapOutput) ToClickhouseDatabaseMapOutputWithContext(ctx context.Context) ClickhouseDatabaseMapOutput {
 	return o
+}
+
+func (o ClickhouseDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseDatabase] {
+	return pulumix.Output[map[string]*ClickhouseDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClickhouseDatabaseMapOutput) MapIndex(k pulumi.StringInput) ClickhouseDatabaseOutput {

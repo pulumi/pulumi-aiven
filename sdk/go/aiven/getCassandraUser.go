@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Cassandra User data source provides information about the existing Aiven Cassandra User.
@@ -120,6 +121,12 @@ func (o LookupCassandraUserResultOutput) ToLookupCassandraUserResultOutput() Loo
 
 func (o LookupCassandraUserResultOutput) ToLookupCassandraUserResultOutputWithContext(ctx context.Context) LookupCassandraUserResultOutput {
 	return o
+}
+
+func (o LookupCassandraUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCassandraUserResult] {
+	return pulumix.Output[LookupCassandraUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access certificate for the user if applicable for the service in question

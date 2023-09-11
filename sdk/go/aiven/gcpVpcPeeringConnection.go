@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
@@ -180,6 +181,12 @@ func (i *GcpVpcPeeringConnection) ToGcpVpcPeeringConnectionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GcpVpcPeeringConnectionOutput)
 }
 
+func (i *GcpVpcPeeringConnection) ToOutput(ctx context.Context) pulumix.Output[*GcpVpcPeeringConnection] {
+	return pulumix.Output[*GcpVpcPeeringConnection]{
+		OutputState: i.ToGcpVpcPeeringConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GcpVpcPeeringConnectionArrayInput is an input type that accepts GcpVpcPeeringConnectionArray and GcpVpcPeeringConnectionArrayOutput values.
 // You can construct a concrete instance of `GcpVpcPeeringConnectionArrayInput` via:
 //
@@ -203,6 +210,12 @@ func (i GcpVpcPeeringConnectionArray) ToGcpVpcPeeringConnectionArrayOutput() Gcp
 
 func (i GcpVpcPeeringConnectionArray) ToGcpVpcPeeringConnectionArrayOutputWithContext(ctx context.Context) GcpVpcPeeringConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpVpcPeeringConnectionArrayOutput)
+}
+
+func (i GcpVpcPeeringConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*GcpVpcPeeringConnection] {
+	return pulumix.Output[[]*GcpVpcPeeringConnection]{
+		OutputState: i.ToGcpVpcPeeringConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GcpVpcPeeringConnectionMapInput is an input type that accepts GcpVpcPeeringConnectionMap and GcpVpcPeeringConnectionMapOutput values.
@@ -230,6 +243,12 @@ func (i GcpVpcPeeringConnectionMap) ToGcpVpcPeeringConnectionMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GcpVpcPeeringConnectionMapOutput)
 }
 
+func (i GcpVpcPeeringConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpVpcPeeringConnection] {
+	return pulumix.Output[map[string]*GcpVpcPeeringConnection]{
+		OutputState: i.ToGcpVpcPeeringConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GcpVpcPeeringConnectionOutput struct{ *pulumi.OutputState }
 
 func (GcpVpcPeeringConnectionOutput) ElementType() reflect.Type {
@@ -242,6 +261,12 @@ func (o GcpVpcPeeringConnectionOutput) ToGcpVpcPeeringConnectionOutput() GcpVpcP
 
 func (o GcpVpcPeeringConnectionOutput) ToGcpVpcPeeringConnectionOutputWithContext(ctx context.Context) GcpVpcPeeringConnectionOutput {
 	return o
+}
+
+func (o GcpVpcPeeringConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpVpcPeeringConnection] {
+	return pulumix.Output[*GcpVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -288,6 +313,12 @@ func (o GcpVpcPeeringConnectionArrayOutput) ToGcpVpcPeeringConnectionArrayOutput
 	return o
 }
 
+func (o GcpVpcPeeringConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GcpVpcPeeringConnection] {
+	return pulumix.Output[[]*GcpVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GcpVpcPeeringConnectionArrayOutput) Index(i pulumi.IntInput) GcpVpcPeeringConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpVpcPeeringConnection {
 		return vs[0].([]*GcpVpcPeeringConnection)[vs[1].(int)]
@@ -306,6 +337,12 @@ func (o GcpVpcPeeringConnectionMapOutput) ToGcpVpcPeeringConnectionMapOutput() G
 
 func (o GcpVpcPeeringConnectionMapOutput) ToGcpVpcPeeringConnectionMapOutputWithContext(ctx context.Context) GcpVpcPeeringConnectionMapOutput {
 	return o
+}
+
+func (o GcpVpcPeeringConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpVpcPeeringConnection] {
+	return pulumix.Output[map[string]*GcpVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GcpVpcPeeringConnectionMapOutput) MapIndex(k pulumi.StringInput) GcpVpcPeeringConnectionOutput {

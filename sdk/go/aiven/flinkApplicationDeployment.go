@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type FlinkApplicationDeployment struct {
@@ -190,6 +191,12 @@ func (i *FlinkApplicationDeployment) ToFlinkApplicationDeploymentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationDeploymentOutput)
 }
 
+func (i *FlinkApplicationDeployment) ToOutput(ctx context.Context) pulumix.Output[*FlinkApplicationDeployment] {
+	return pulumix.Output[*FlinkApplicationDeployment]{
+		OutputState: i.ToFlinkApplicationDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FlinkApplicationDeploymentArrayInput is an input type that accepts FlinkApplicationDeploymentArray and FlinkApplicationDeploymentArrayOutput values.
 // You can construct a concrete instance of `FlinkApplicationDeploymentArrayInput` via:
 //
@@ -213,6 +220,12 @@ func (i FlinkApplicationDeploymentArray) ToFlinkApplicationDeploymentArrayOutput
 
 func (i FlinkApplicationDeploymentArray) ToFlinkApplicationDeploymentArrayOutputWithContext(ctx context.Context) FlinkApplicationDeploymentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationDeploymentArrayOutput)
+}
+
+func (i FlinkApplicationDeploymentArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlinkApplicationDeployment] {
+	return pulumix.Output[[]*FlinkApplicationDeployment]{
+		OutputState: i.ToFlinkApplicationDeploymentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FlinkApplicationDeploymentMapInput is an input type that accepts FlinkApplicationDeploymentMap and FlinkApplicationDeploymentMapOutput values.
@@ -240,6 +253,12 @@ func (i FlinkApplicationDeploymentMap) ToFlinkApplicationDeploymentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationDeploymentMapOutput)
 }
 
+func (i FlinkApplicationDeploymentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlinkApplicationDeployment] {
+	return pulumix.Output[map[string]*FlinkApplicationDeployment]{
+		OutputState: i.ToFlinkApplicationDeploymentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FlinkApplicationDeploymentOutput struct{ *pulumi.OutputState }
 
 func (FlinkApplicationDeploymentOutput) ElementType() reflect.Type {
@@ -252,6 +271,12 @@ func (o FlinkApplicationDeploymentOutput) ToFlinkApplicationDeploymentOutput() F
 
 func (o FlinkApplicationDeploymentOutput) ToFlinkApplicationDeploymentOutputWithContext(ctx context.Context) FlinkApplicationDeploymentOutput {
 	return o
+}
+
+func (o FlinkApplicationDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkApplicationDeployment] {
+	return pulumix.Output[*FlinkApplicationDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Application ID
@@ -315,6 +340,12 @@ func (o FlinkApplicationDeploymentArrayOutput) ToFlinkApplicationDeploymentArray
 	return o
 }
 
+func (o FlinkApplicationDeploymentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlinkApplicationDeployment] {
+	return pulumix.Output[[]*FlinkApplicationDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FlinkApplicationDeploymentArrayOutput) Index(i pulumi.IntInput) FlinkApplicationDeploymentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlinkApplicationDeployment {
 		return vs[0].([]*FlinkApplicationDeployment)[vs[1].(int)]
@@ -333,6 +364,12 @@ func (o FlinkApplicationDeploymentMapOutput) ToFlinkApplicationDeploymentMapOutp
 
 func (o FlinkApplicationDeploymentMapOutput) ToFlinkApplicationDeploymentMapOutputWithContext(ctx context.Context) FlinkApplicationDeploymentMapOutput {
 	return o
+}
+
+func (o FlinkApplicationDeploymentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlinkApplicationDeployment] {
+	return pulumix.Output[map[string]*FlinkApplicationDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkApplicationDeploymentMapOutput) MapIndex(k pulumi.StringInput) FlinkApplicationDeploymentOutput {

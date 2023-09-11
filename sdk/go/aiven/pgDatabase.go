@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
@@ -197,6 +198,12 @@ func (i *PgDatabase) ToPgDatabaseOutputWithContext(ctx context.Context) PgDataba
 	return pulumi.ToOutputWithContext(ctx, i).(PgDatabaseOutput)
 }
 
+func (i *PgDatabase) ToOutput(ctx context.Context) pulumix.Output[*PgDatabase] {
+	return pulumix.Output[*PgDatabase]{
+		OutputState: i.ToPgDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PgDatabaseArrayInput is an input type that accepts PgDatabaseArray and PgDatabaseArrayOutput values.
 // You can construct a concrete instance of `PgDatabaseArrayInput` via:
 //
@@ -220,6 +227,12 @@ func (i PgDatabaseArray) ToPgDatabaseArrayOutput() PgDatabaseArrayOutput {
 
 func (i PgDatabaseArray) ToPgDatabaseArrayOutputWithContext(ctx context.Context) PgDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgDatabaseArrayOutput)
+}
+
+func (i PgDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*PgDatabase] {
+	return pulumix.Output[[]*PgDatabase]{
+		OutputState: i.ToPgDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PgDatabaseMapInput is an input type that accepts PgDatabaseMap and PgDatabaseMapOutput values.
@@ -247,6 +260,12 @@ func (i PgDatabaseMap) ToPgDatabaseMapOutputWithContext(ctx context.Context) PgD
 	return pulumi.ToOutputWithContext(ctx, i).(PgDatabaseMapOutput)
 }
 
+func (i PgDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PgDatabase] {
+	return pulumix.Output[map[string]*PgDatabase]{
+		OutputState: i.ToPgDatabaseMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PgDatabaseOutput struct{ *pulumi.OutputState }
 
 func (PgDatabaseOutput) ElementType() reflect.Type {
@@ -259,6 +278,12 @@ func (o PgDatabaseOutput) ToPgDatabaseOutput() PgDatabaseOutput {
 
 func (o PgDatabaseOutput) ToPgDatabaseOutputWithContext(ctx context.Context) PgDatabaseOutput {
 	return o
+}
+
+func (o PgDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*PgDatabase] {
+	return pulumix.Output[*PgDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -306,6 +331,12 @@ func (o PgDatabaseArrayOutput) ToPgDatabaseArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o PgDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PgDatabase] {
+	return pulumix.Output[[]*PgDatabase]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PgDatabaseArrayOutput) Index(i pulumi.IntInput) PgDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PgDatabase {
 		return vs[0].([]*PgDatabase)[vs[1].(int)]
@@ -324,6 +355,12 @@ func (o PgDatabaseMapOutput) ToPgDatabaseMapOutput() PgDatabaseMapOutput {
 
 func (o PgDatabaseMapOutput) ToPgDatabaseMapOutputWithContext(ctx context.Context) PgDatabaseMapOutput {
 	return o
+}
+
+func (o PgDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PgDatabase] {
+	return pulumix.Output[map[string]*PgDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PgDatabaseMapOutput) MapIndex(k pulumi.StringInput) PgDatabaseOutput {

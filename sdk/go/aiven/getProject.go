@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Project data source provides information about the existing Aiven Project.
@@ -124,6 +125,12 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectRe
 
 func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
 	return o
+}
+
+func (o LookupProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectResult] {
+	return pulumix.Output[LookupProjectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.

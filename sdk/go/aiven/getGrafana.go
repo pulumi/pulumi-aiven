@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Grafana data source provides information about the existing Aiven Grafana service.
@@ -155,6 +156,12 @@ func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutput() LookupGrafanaRe
 
 func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutputWithContext(ctx context.Context) LookupGrafanaResultOutput {
 	return o
+}
+
+func (o LookupGrafanaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGrafanaResult] {
+	return pulumix.Output[LookupGrafanaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

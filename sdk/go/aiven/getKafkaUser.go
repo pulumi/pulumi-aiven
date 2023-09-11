@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka User data source provides information about the existing Aiven Kafka User.
@@ -120,6 +121,12 @@ func (o LookupKafkaUserResultOutput) ToLookupKafkaUserResultOutput() LookupKafka
 
 func (o LookupKafkaUserResultOutput) ToLookupKafkaUserResultOutputWithContext(ctx context.Context) LookupKafkaUserResultOutput {
 	return o
+}
+
+func (o LookupKafkaUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaUserResult] {
+	return pulumix.Output[LookupKafkaUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access certificate for the user

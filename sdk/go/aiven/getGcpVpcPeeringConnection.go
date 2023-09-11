@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
@@ -118,6 +119,12 @@ func (o LookupGcpVpcPeeringConnectionResultOutput) ToLookupGcpVpcPeeringConnecti
 
 func (o LookupGcpVpcPeeringConnectionResultOutput) ToLookupGcpVpcPeeringConnectionResultOutputWithContext(ctx context.Context) LookupGcpVpcPeeringConnectionResultOutput {
 	return o
+}
+
+func (o LookupGcpVpcPeeringConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGcpVpcPeeringConnectionResult] {
+	return pulumix.Output[LookupGcpVpcPeeringConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // GCP project ID. This property cannot be changed, doing so forces recreation of the resource.

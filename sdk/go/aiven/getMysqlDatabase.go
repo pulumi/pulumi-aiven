@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MySQL Database data source provides information about the existing Aiven MySQL Database.
@@ -113,6 +114,12 @@ func (o LookupMysqlDatabaseResultOutput) ToLookupMysqlDatabaseResultOutput() Loo
 
 func (o LookupMysqlDatabaseResultOutput) ToLookupMysqlDatabaseResultOutputWithContext(ctx context.Context) LookupMysqlDatabaseResultOutput {
 	return o
+}
+
+func (o LookupMysqlDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMysqlDatabaseResult] {
+	return pulumix.Output[LookupMysqlDatabaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the service database. This property cannot be changed, doing so forces recreation of the resource.

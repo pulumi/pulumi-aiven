@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The InfluxDB User resource allows the creation and management of Aiven InfluxDB Users.
@@ -200,6 +201,12 @@ func (i *InfluxdbUser) ToInfluxdbUserOutputWithContext(ctx context.Context) Infl
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxdbUserOutput)
 }
 
+func (i *InfluxdbUser) ToOutput(ctx context.Context) pulumix.Output[*InfluxdbUser] {
+	return pulumix.Output[*InfluxdbUser]{
+		OutputState: i.ToInfluxdbUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InfluxdbUserArrayInput is an input type that accepts InfluxdbUserArray and InfluxdbUserArrayOutput values.
 // You can construct a concrete instance of `InfluxdbUserArrayInput` via:
 //
@@ -223,6 +230,12 @@ func (i InfluxdbUserArray) ToInfluxdbUserArrayOutput() InfluxdbUserArrayOutput {
 
 func (i InfluxdbUserArray) ToInfluxdbUserArrayOutputWithContext(ctx context.Context) InfluxdbUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxdbUserArrayOutput)
+}
+
+func (i InfluxdbUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*InfluxdbUser] {
+	return pulumix.Output[[]*InfluxdbUser]{
+		OutputState: i.ToInfluxdbUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InfluxdbUserMapInput is an input type that accepts InfluxdbUserMap and InfluxdbUserMapOutput values.
@@ -250,6 +263,12 @@ func (i InfluxdbUserMap) ToInfluxdbUserMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxdbUserMapOutput)
 }
 
+func (i InfluxdbUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InfluxdbUser] {
+	return pulumix.Output[map[string]*InfluxdbUser]{
+		OutputState: i.ToInfluxdbUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InfluxdbUserOutput struct{ *pulumi.OutputState }
 
 func (InfluxdbUserOutput) ElementType() reflect.Type {
@@ -262,6 +281,12 @@ func (o InfluxdbUserOutput) ToInfluxdbUserOutput() InfluxdbUserOutput {
 
 func (o InfluxdbUserOutput) ToInfluxdbUserOutputWithContext(ctx context.Context) InfluxdbUserOutput {
 	return o
+}
+
+func (o InfluxdbUserOutput) ToOutput(ctx context.Context) pulumix.Output[*InfluxdbUser] {
+	return pulumix.Output[*InfluxdbUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access certificate for the user if applicable for the service in question
@@ -313,6 +338,12 @@ func (o InfluxdbUserArrayOutput) ToInfluxdbUserArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o InfluxdbUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InfluxdbUser] {
+	return pulumix.Output[[]*InfluxdbUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InfluxdbUserArrayOutput) Index(i pulumi.IntInput) InfluxdbUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InfluxdbUser {
 		return vs[0].([]*InfluxdbUser)[vs[1].(int)]
@@ -331,6 +362,12 @@ func (o InfluxdbUserMapOutput) ToInfluxdbUserMapOutput() InfluxdbUserMapOutput {
 
 func (o InfluxdbUserMapOutput) ToInfluxdbUserMapOutputWithContext(ctx context.Context) InfluxdbUserMapOutput {
 	return o
+}
+
+func (o InfluxdbUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InfluxdbUser] {
+	return pulumix.Output[map[string]*InfluxdbUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InfluxdbUserMapOutput) MapIndex(k pulumi.StringInput) InfluxdbUserOutput {

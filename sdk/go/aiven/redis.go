@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Redis resource allows the creation and management of Aiven Redis services.
@@ -480,6 +481,12 @@ func (i *Redis) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RedisOutput)
 }
 
+func (i *Redis) ToOutput(ctx context.Context) pulumix.Output[*Redis] {
+	return pulumix.Output[*Redis]{
+		OutputState: i.ToRedisOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RedisArrayInput is an input type that accepts RedisArray and RedisArrayOutput values.
 // You can construct a concrete instance of `RedisArrayInput` via:
 //
@@ -503,6 +510,12 @@ func (i RedisArray) ToRedisArrayOutput() RedisArrayOutput {
 
 func (i RedisArray) ToRedisArrayOutputWithContext(ctx context.Context) RedisArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RedisArrayOutput)
+}
+
+func (i RedisArray) ToOutput(ctx context.Context) pulumix.Output[[]*Redis] {
+	return pulumix.Output[[]*Redis]{
+		OutputState: i.ToRedisArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RedisMapInput is an input type that accepts RedisMap and RedisMapOutput values.
@@ -530,6 +543,12 @@ func (i RedisMap) ToRedisMapOutputWithContext(ctx context.Context) RedisMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RedisMapOutput)
 }
 
+func (i RedisMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Redis] {
+	return pulumix.Output[map[string]*Redis]{
+		OutputState: i.ToRedisMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RedisOutput struct{ *pulumi.OutputState }
 
 func (RedisOutput) ElementType() reflect.Type {
@@ -542,6 +561,12 @@ func (o RedisOutput) ToRedisOutput() RedisOutput {
 
 func (o RedisOutput) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 	return o
+}
+
+func (o RedisOutput) ToOutput(ctx context.Context) pulumix.Output[*Redis] {
+	return pulumix.Output[*Redis]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -717,6 +742,12 @@ func (o RedisArrayOutput) ToRedisArrayOutputWithContext(ctx context.Context) Red
 	return o
 }
 
+func (o RedisArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Redis] {
+	return pulumix.Output[[]*Redis]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RedisArrayOutput) Index(i pulumi.IntInput) RedisOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Redis {
 		return vs[0].([]*Redis)[vs[1].(int)]
@@ -735,6 +766,12 @@ func (o RedisMapOutput) ToRedisMapOutput() RedisMapOutput {
 
 func (o RedisMapOutput) ToRedisMapOutputWithContext(ctx context.Context) RedisMapOutput {
 	return o
+}
+
+func (o RedisMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Redis] {
+	return pulumix.Output[map[string]*Redis]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RedisMapOutput) MapIndex(k pulumi.StringInput) RedisOutput {

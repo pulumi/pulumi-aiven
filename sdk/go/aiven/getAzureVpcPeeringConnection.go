@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
@@ -108,6 +109,12 @@ func (o LookupAzureVpcPeeringConnectionResultOutput) ToLookupAzureVpcPeeringConn
 
 func (o LookupAzureVpcPeeringConnectionResultOutput) ToLookupAzureVpcPeeringConnectionResultOutputWithContext(ctx context.Context) LookupAzureVpcPeeringConnectionResultOutput {
 	return o
+}
+
+func (o LookupAzureVpcPeeringConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureVpcPeeringConnectionResult] {
+	return pulumix.Output[LookupAzureVpcPeeringConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.

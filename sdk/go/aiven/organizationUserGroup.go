@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Organization User Group resource allows the creation and management of an Aiven Organization Groups.
@@ -132,6 +133,12 @@ func (i *OrganizationUserGroup) ToOrganizationUserGroupOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationUserGroupOutput)
 }
 
+func (i *OrganizationUserGroup) ToOutput(ctx context.Context) pulumix.Output[*OrganizationUserGroup] {
+	return pulumix.Output[*OrganizationUserGroup]{
+		OutputState: i.ToOrganizationUserGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationUserGroupArrayInput is an input type that accepts OrganizationUserGroupArray and OrganizationUserGroupArrayOutput values.
 // You can construct a concrete instance of `OrganizationUserGroupArrayInput` via:
 //
@@ -155,6 +162,12 @@ func (i OrganizationUserGroupArray) ToOrganizationUserGroupArrayOutput() Organiz
 
 func (i OrganizationUserGroupArray) ToOrganizationUserGroupArrayOutputWithContext(ctx context.Context) OrganizationUserGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationUserGroupArrayOutput)
+}
+
+func (i OrganizationUserGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationUserGroup] {
+	return pulumix.Output[[]*OrganizationUserGroup]{
+		OutputState: i.ToOrganizationUserGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrganizationUserGroupMapInput is an input type that accepts OrganizationUserGroupMap and OrganizationUserGroupMapOutput values.
@@ -182,6 +195,12 @@ func (i OrganizationUserGroupMap) ToOrganizationUserGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationUserGroupMapOutput)
 }
 
+func (i OrganizationUserGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationUserGroup] {
+	return pulumix.Output[map[string]*OrganizationUserGroup]{
+		OutputState: i.ToOrganizationUserGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationUserGroupOutput struct{ *pulumi.OutputState }
 
 func (OrganizationUserGroupOutput) ElementType() reflect.Type {
@@ -194,6 +213,12 @@ func (o OrganizationUserGroupOutput) ToOrganizationUserGroupOutput() Organizatio
 
 func (o OrganizationUserGroupOutput) ToOrganizationUserGroupOutputWithContext(ctx context.Context) OrganizationUserGroupOutput {
 	return o
+}
+
+func (o OrganizationUserGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationUserGroup] {
+	return pulumix.Output[*OrganizationUserGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time of creation
@@ -235,6 +260,12 @@ func (o OrganizationUserGroupArrayOutput) ToOrganizationUserGroupArrayOutputWith
 	return o
 }
 
+func (o OrganizationUserGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationUserGroup] {
+	return pulumix.Output[[]*OrganizationUserGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationUserGroupArrayOutput) Index(i pulumi.IntInput) OrganizationUserGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationUserGroup {
 		return vs[0].([]*OrganizationUserGroup)[vs[1].(int)]
@@ -253,6 +284,12 @@ func (o OrganizationUserGroupMapOutput) ToOrganizationUserGroupMapOutput() Organ
 
 func (o OrganizationUserGroupMapOutput) ToOrganizationUserGroupMapOutputWithContext(ctx context.Context) OrganizationUserGroupMapOutput {
 	return o
+}
+
+func (o OrganizationUserGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationUserGroup] {
+	return pulumix.Output[map[string]*OrganizationUserGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationUserGroupMapOutput) MapIndex(k pulumi.StringInput) OrganizationUserGroupOutput {

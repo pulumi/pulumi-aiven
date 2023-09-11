@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The M3 DB resource allows the creation and management of Aiven M3 services.
@@ -483,6 +484,12 @@ func (i *M3Db) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbOutput)
 }
 
+func (i *M3Db) ToOutput(ctx context.Context) pulumix.Output[*M3Db] {
+	return pulumix.Output[*M3Db]{
+		OutputState: i.ToM3DbOutputWithContext(ctx).OutputState,
+	}
+}
+
 // M3DbArrayInput is an input type that accepts M3DbArray and M3DbArrayOutput values.
 // You can construct a concrete instance of `M3DbArrayInput` via:
 //
@@ -506,6 +513,12 @@ func (i M3DbArray) ToM3DbArrayOutput() M3DbArrayOutput {
 
 func (i M3DbArray) ToM3DbArrayOutputWithContext(ctx context.Context) M3DbArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbArrayOutput)
+}
+
+func (i M3DbArray) ToOutput(ctx context.Context) pulumix.Output[[]*M3Db] {
+	return pulumix.Output[[]*M3Db]{
+		OutputState: i.ToM3DbArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // M3DbMapInput is an input type that accepts M3DbMap and M3DbMapOutput values.
@@ -533,6 +546,12 @@ func (i M3DbMap) ToM3DbMapOutputWithContext(ctx context.Context) M3DbMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbMapOutput)
 }
 
+func (i M3DbMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3Db] {
+	return pulumix.Output[map[string]*M3Db]{
+		OutputState: i.ToM3DbMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type M3DbOutput struct{ *pulumi.OutputState }
 
 func (M3DbOutput) ElementType() reflect.Type {
@@ -545,6 +564,12 @@ func (o M3DbOutput) ToM3DbOutput() M3DbOutput {
 
 func (o M3DbOutput) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return o
+}
+
+func (o M3DbOutput) ToOutput(ctx context.Context) pulumix.Output[*M3Db] {
+	return pulumix.Output[*M3Db]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -720,6 +745,12 @@ func (o M3DbArrayOutput) ToM3DbArrayOutputWithContext(ctx context.Context) M3DbA
 	return o
 }
 
+func (o M3DbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*M3Db] {
+	return pulumix.Output[[]*M3Db]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o M3DbArrayOutput) Index(i pulumi.IntInput) M3DbOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *M3Db {
 		return vs[0].([]*M3Db)[vs[1].(int)]
@@ -738,6 +769,12 @@ func (o M3DbMapOutput) ToM3DbMapOutput() M3DbMapOutput {
 
 func (o M3DbMapOutput) ToM3DbMapOutputWithContext(ctx context.Context) M3DbMapOutput {
 	return o
+}
+
+func (o M3DbMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3Db] {
+	return pulumix.Output[map[string]*M3Db]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o M3DbMapOutput) MapIndex(k pulumi.StringInput) M3DbOutput {

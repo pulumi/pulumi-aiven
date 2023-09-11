@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
@@ -268,6 +269,12 @@ func (i *MirrorMakerReplicationFlow) ToMirrorMakerReplicationFlowOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MirrorMakerReplicationFlowOutput)
 }
 
+func (i *MirrorMakerReplicationFlow) ToOutput(ctx context.Context) pulumix.Output[*MirrorMakerReplicationFlow] {
+	return pulumix.Output[*MirrorMakerReplicationFlow]{
+		OutputState: i.ToMirrorMakerReplicationFlowOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MirrorMakerReplicationFlowArrayInput is an input type that accepts MirrorMakerReplicationFlowArray and MirrorMakerReplicationFlowArrayOutput values.
 // You can construct a concrete instance of `MirrorMakerReplicationFlowArrayInput` via:
 //
@@ -291,6 +298,12 @@ func (i MirrorMakerReplicationFlowArray) ToMirrorMakerReplicationFlowArrayOutput
 
 func (i MirrorMakerReplicationFlowArray) ToMirrorMakerReplicationFlowArrayOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MirrorMakerReplicationFlowArrayOutput)
+}
+
+func (i MirrorMakerReplicationFlowArray) ToOutput(ctx context.Context) pulumix.Output[[]*MirrorMakerReplicationFlow] {
+	return pulumix.Output[[]*MirrorMakerReplicationFlow]{
+		OutputState: i.ToMirrorMakerReplicationFlowArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MirrorMakerReplicationFlowMapInput is an input type that accepts MirrorMakerReplicationFlowMap and MirrorMakerReplicationFlowMapOutput values.
@@ -318,6 +331,12 @@ func (i MirrorMakerReplicationFlowMap) ToMirrorMakerReplicationFlowMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MirrorMakerReplicationFlowMapOutput)
 }
 
+func (i MirrorMakerReplicationFlowMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MirrorMakerReplicationFlow] {
+	return pulumix.Output[map[string]*MirrorMakerReplicationFlow]{
+		OutputState: i.ToMirrorMakerReplicationFlowMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MirrorMakerReplicationFlowOutput struct{ *pulumi.OutputState }
 
 func (MirrorMakerReplicationFlowOutput) ElementType() reflect.Type {
@@ -330,6 +349,12 @@ func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutput() M
 
 func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
 	return o
+}
+
+func (o MirrorMakerReplicationFlowOutput) ToOutput(ctx context.Context) pulumix.Output[*MirrorMakerReplicationFlow] {
+	return pulumix.Output[*MirrorMakerReplicationFlow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Emit heartbeats enabled. The default value is `false`.
@@ -406,6 +431,12 @@ func (o MirrorMakerReplicationFlowArrayOutput) ToMirrorMakerReplicationFlowArray
 	return o
 }
 
+func (o MirrorMakerReplicationFlowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MirrorMakerReplicationFlow] {
+	return pulumix.Output[[]*MirrorMakerReplicationFlow]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MirrorMakerReplicationFlowArrayOutput) Index(i pulumi.IntInput) MirrorMakerReplicationFlowOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MirrorMakerReplicationFlow {
 		return vs[0].([]*MirrorMakerReplicationFlow)[vs[1].(int)]
@@ -424,6 +455,12 @@ func (o MirrorMakerReplicationFlowMapOutput) ToMirrorMakerReplicationFlowMapOutp
 
 func (o MirrorMakerReplicationFlowMapOutput) ToMirrorMakerReplicationFlowMapOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowMapOutput {
 	return o
+}
+
+func (o MirrorMakerReplicationFlowMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MirrorMakerReplicationFlow] {
+	return pulumix.Output[map[string]*MirrorMakerReplicationFlow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MirrorMakerReplicationFlowMapOutput) MapIndex(k pulumi.StringInput) MirrorMakerReplicationFlowOutput {

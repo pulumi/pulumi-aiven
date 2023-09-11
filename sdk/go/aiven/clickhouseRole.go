@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
@@ -173,6 +174,12 @@ func (i *ClickhouseRole) ToClickhouseRoleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseRoleOutput)
 }
 
+func (i *ClickhouseRole) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseRole] {
+	return pulumix.Output[*ClickhouseRole]{
+		OutputState: i.ToClickhouseRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClickhouseRoleArrayInput is an input type that accepts ClickhouseRoleArray and ClickhouseRoleArrayOutput values.
 // You can construct a concrete instance of `ClickhouseRoleArrayInput` via:
 //
@@ -196,6 +203,12 @@ func (i ClickhouseRoleArray) ToClickhouseRoleArrayOutput() ClickhouseRoleArrayOu
 
 func (i ClickhouseRoleArray) ToClickhouseRoleArrayOutputWithContext(ctx context.Context) ClickhouseRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseRoleArrayOutput)
+}
+
+func (i ClickhouseRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseRole] {
+	return pulumix.Output[[]*ClickhouseRole]{
+		OutputState: i.ToClickhouseRoleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClickhouseRoleMapInput is an input type that accepts ClickhouseRoleMap and ClickhouseRoleMapOutput values.
@@ -223,6 +236,12 @@ func (i ClickhouseRoleMap) ToClickhouseRoleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseRoleMapOutput)
 }
 
+func (i ClickhouseRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseRole] {
+	return pulumix.Output[map[string]*ClickhouseRole]{
+		OutputState: i.ToClickhouseRoleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClickhouseRoleOutput struct{ *pulumi.OutputState }
 
 func (ClickhouseRoleOutput) ElementType() reflect.Type {
@@ -235,6 +254,12 @@ func (o ClickhouseRoleOutput) ToClickhouseRoleOutput() ClickhouseRoleOutput {
 
 func (o ClickhouseRoleOutput) ToClickhouseRoleOutputWithContext(ctx context.Context) ClickhouseRoleOutput {
 	return o
+}
+
+func (o ClickhouseRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseRole] {
+	return pulumix.Output[*ClickhouseRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -266,6 +291,12 @@ func (o ClickhouseRoleArrayOutput) ToClickhouseRoleArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ClickhouseRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseRole] {
+	return pulumix.Output[[]*ClickhouseRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClickhouseRoleArrayOutput) Index(i pulumi.IntInput) ClickhouseRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClickhouseRole {
 		return vs[0].([]*ClickhouseRole)[vs[1].(int)]
@@ -284,6 +315,12 @@ func (o ClickhouseRoleMapOutput) ToClickhouseRoleMapOutput() ClickhouseRoleMapOu
 
 func (o ClickhouseRoleMapOutput) ToClickhouseRoleMapOutputWithContext(ctx context.Context) ClickhouseRoleMapOutput {
 	return o
+}
+
+func (o ClickhouseRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseRole] {
+	return pulumix.Output[map[string]*ClickhouseRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClickhouseRoleMapOutput) MapIndex(k pulumi.StringInput) ClickhouseRoleOutput {

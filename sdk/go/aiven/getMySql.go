@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MySQL data source provides information about the existing Aiven MySQL service.
@@ -155,6 +156,12 @@ func (o LookupMySqlResultOutput) ToLookupMySqlResultOutput() LookupMySqlResultOu
 
 func (o LookupMySqlResultOutput) ToLookupMySqlResultOutputWithContext(ctx context.Context) LookupMySqlResultOutput {
 	return o
+}
+
+func (o LookupMySqlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMySqlResult] {
+	return pulumix.Output[LookupMySqlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

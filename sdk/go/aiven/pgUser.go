@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The PG User resource allows the creation and management of Aiven PG Users.
@@ -210,6 +211,12 @@ func (i *PgUser) ToPgUserOutputWithContext(ctx context.Context) PgUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgUserOutput)
 }
 
+func (i *PgUser) ToOutput(ctx context.Context) pulumix.Output[*PgUser] {
+	return pulumix.Output[*PgUser]{
+		OutputState: i.ToPgUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PgUserArrayInput is an input type that accepts PgUserArray and PgUserArrayOutput values.
 // You can construct a concrete instance of `PgUserArrayInput` via:
 //
@@ -233,6 +240,12 @@ func (i PgUserArray) ToPgUserArrayOutput() PgUserArrayOutput {
 
 func (i PgUserArray) ToPgUserArrayOutputWithContext(ctx context.Context) PgUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgUserArrayOutput)
+}
+
+func (i PgUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*PgUser] {
+	return pulumix.Output[[]*PgUser]{
+		OutputState: i.ToPgUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PgUserMapInput is an input type that accepts PgUserMap and PgUserMapOutput values.
@@ -260,6 +273,12 @@ func (i PgUserMap) ToPgUserMapOutputWithContext(ctx context.Context) PgUserMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(PgUserMapOutput)
 }
 
+func (i PgUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PgUser] {
+	return pulumix.Output[map[string]*PgUser]{
+		OutputState: i.ToPgUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PgUserOutput struct{ *pulumi.OutputState }
 
 func (PgUserOutput) ElementType() reflect.Type {
@@ -272,6 +291,12 @@ func (o PgUserOutput) ToPgUserOutput() PgUserOutput {
 
 func (o PgUserOutput) ToPgUserOutputWithContext(ctx context.Context) PgUserOutput {
 	return o
+}
+
+func (o PgUserOutput) ToOutput(ctx context.Context) pulumix.Output[*PgUser] {
+	return pulumix.Output[*PgUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access certificate for the user
@@ -328,6 +353,12 @@ func (o PgUserArrayOutput) ToPgUserArrayOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o PgUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PgUser] {
+	return pulumix.Output[[]*PgUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PgUserArrayOutput) Index(i pulumi.IntInput) PgUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PgUser {
 		return vs[0].([]*PgUser)[vs[1].(int)]
@@ -346,6 +377,12 @@ func (o PgUserMapOutput) ToPgUserMapOutput() PgUserMapOutput {
 
 func (o PgUserMapOutput) ToPgUserMapOutputWithContext(ctx context.Context) PgUserMapOutput {
 	return o
+}
+
+func (o PgUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PgUser] {
+	return pulumix.Output[map[string]*PgUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PgUserMapOutput) MapIndex(k pulumi.StringInput) PgUserOutput {

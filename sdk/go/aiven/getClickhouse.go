@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse data source provides information about the existing Aiven Clickhouse service.
@@ -155,6 +156,12 @@ func (o LookupClickhouseResultOutput) ToLookupClickhouseResultOutput() LookupCli
 
 func (o LookupClickhouseResultOutput) ToLookupClickhouseResultOutputWithContext(ctx context.Context) LookupClickhouseResultOutput {
 	return o
+}
+
+func (o LookupClickhouseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClickhouseResult] {
+	return pulumix.Output[LookupClickhouseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

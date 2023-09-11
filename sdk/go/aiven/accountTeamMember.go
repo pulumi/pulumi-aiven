@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account Team Member resource allows the creation and management of an Aiven Account Team Member.
@@ -158,6 +159,12 @@ func (i *AccountTeamMember) ToAccountTeamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberOutput)
 }
 
+func (i *AccountTeamMember) ToOutput(ctx context.Context) pulumix.Output[*AccountTeamMember] {
+	return pulumix.Output[*AccountTeamMember]{
+		OutputState: i.ToAccountTeamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountTeamMemberArrayInput is an input type that accepts AccountTeamMemberArray and AccountTeamMemberArrayOutput values.
 // You can construct a concrete instance of `AccountTeamMemberArrayInput` via:
 //
@@ -181,6 +188,12 @@ func (i AccountTeamMemberArray) ToAccountTeamMemberArrayOutput() AccountTeamMemb
 
 func (i AccountTeamMemberArray) ToAccountTeamMemberArrayOutputWithContext(ctx context.Context) AccountTeamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberArrayOutput)
+}
+
+func (i AccountTeamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountTeamMember] {
+	return pulumix.Output[[]*AccountTeamMember]{
+		OutputState: i.ToAccountTeamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountTeamMemberMapInput is an input type that accepts AccountTeamMemberMap and AccountTeamMemberMapOutput values.
@@ -208,6 +221,12 @@ func (i AccountTeamMemberMap) ToAccountTeamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberMapOutput)
 }
 
+func (i AccountTeamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountTeamMember] {
+	return pulumix.Output[map[string]*AccountTeamMember]{
+		OutputState: i.ToAccountTeamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountTeamMemberOutput struct{ *pulumi.OutputState }
 
 func (AccountTeamMemberOutput) ElementType() reflect.Type {
@@ -220,6 +239,12 @@ func (o AccountTeamMemberOutput) ToAccountTeamMemberOutput() AccountTeamMemberOu
 
 func (o AccountTeamMemberOutput) ToAccountTeamMemberOutputWithContext(ctx context.Context) AccountTeamMemberOutput {
 	return o
+}
+
+func (o AccountTeamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountTeamMember] {
+	return pulumix.Output[*AccountTeamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
@@ -266,6 +291,12 @@ func (o AccountTeamMemberArrayOutput) ToAccountTeamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o AccountTeamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountTeamMember] {
+	return pulumix.Output[[]*AccountTeamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountTeamMemberArrayOutput) Index(i pulumi.IntInput) AccountTeamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountTeamMember {
 		return vs[0].([]*AccountTeamMember)[vs[1].(int)]
@@ -284,6 +315,12 @@ func (o AccountTeamMemberMapOutput) ToAccountTeamMemberMapOutput() AccountTeamMe
 
 func (o AccountTeamMemberMapOutput) ToAccountTeamMemberMapOutputWithContext(ctx context.Context) AccountTeamMemberMapOutput {
 	return o
+}
+
+func (o AccountTeamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountTeamMember] {
+	return pulumix.Output[map[string]*AccountTeamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountTeamMemberMapOutput) MapIndex(k pulumi.StringInput) AccountTeamMemberOutput {

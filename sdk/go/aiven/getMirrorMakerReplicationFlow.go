@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
@@ -135,6 +136,12 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplica
 
 func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplicationFlowResultOutputWithContext(ctx context.Context) LookupMirrorMakerReplicationFlowResultOutput {
 	return o
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMirrorMakerReplicationFlowResult] {
+	return pulumix.Output[LookupMirrorMakerReplicationFlowResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Emit heartbeats enabled. The default value is `false`.

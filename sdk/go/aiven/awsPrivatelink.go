@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
@@ -176,6 +177,12 @@ func (i *AwsPrivatelink) ToAwsPrivatelinkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AwsPrivatelinkOutput)
 }
 
+func (i *AwsPrivatelink) ToOutput(ctx context.Context) pulumix.Output[*AwsPrivatelink] {
+	return pulumix.Output[*AwsPrivatelink]{
+		OutputState: i.ToAwsPrivatelinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AwsPrivatelinkArrayInput is an input type that accepts AwsPrivatelinkArray and AwsPrivatelinkArrayOutput values.
 // You can construct a concrete instance of `AwsPrivatelinkArrayInput` via:
 //
@@ -199,6 +206,12 @@ func (i AwsPrivatelinkArray) ToAwsPrivatelinkArrayOutput() AwsPrivatelinkArrayOu
 
 func (i AwsPrivatelinkArray) ToAwsPrivatelinkArrayOutputWithContext(ctx context.Context) AwsPrivatelinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsPrivatelinkArrayOutput)
+}
+
+func (i AwsPrivatelinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*AwsPrivatelink] {
+	return pulumix.Output[[]*AwsPrivatelink]{
+		OutputState: i.ToAwsPrivatelinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AwsPrivatelinkMapInput is an input type that accepts AwsPrivatelinkMap and AwsPrivatelinkMapOutput values.
@@ -226,6 +239,12 @@ func (i AwsPrivatelinkMap) ToAwsPrivatelinkMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AwsPrivatelinkMapOutput)
 }
 
+func (i AwsPrivatelinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsPrivatelink] {
+	return pulumix.Output[map[string]*AwsPrivatelink]{
+		OutputState: i.ToAwsPrivatelinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AwsPrivatelinkOutput struct{ *pulumi.OutputState }
 
 func (AwsPrivatelinkOutput) ElementType() reflect.Type {
@@ -238,6 +257,12 @@ func (o AwsPrivatelinkOutput) ToAwsPrivatelinkOutput() AwsPrivatelinkOutput {
 
 func (o AwsPrivatelinkOutput) ToAwsPrivatelinkOutputWithContext(ctx context.Context) AwsPrivatelinkOutput {
 	return o
+}
+
+func (o AwsPrivatelinkOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsPrivatelink] {
+	return pulumix.Output[*AwsPrivatelink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS service ID
@@ -279,6 +304,12 @@ func (o AwsPrivatelinkArrayOutput) ToAwsPrivatelinkArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o AwsPrivatelinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AwsPrivatelink] {
+	return pulumix.Output[[]*AwsPrivatelink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AwsPrivatelinkArrayOutput) Index(i pulumi.IntInput) AwsPrivatelinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsPrivatelink {
 		return vs[0].([]*AwsPrivatelink)[vs[1].(int)]
@@ -297,6 +328,12 @@ func (o AwsPrivatelinkMapOutput) ToAwsPrivatelinkMapOutput() AwsPrivatelinkMapOu
 
 func (o AwsPrivatelinkMapOutput) ToAwsPrivatelinkMapOutputWithContext(ctx context.Context) AwsPrivatelinkMapOutput {
 	return o
+}
+
+func (o AwsPrivatelinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsPrivatelink] {
+	return pulumix.Output[map[string]*AwsPrivatelink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsPrivatelinkMapOutput) MapIndex(k pulumi.StringInput) AwsPrivatelinkOutput {
