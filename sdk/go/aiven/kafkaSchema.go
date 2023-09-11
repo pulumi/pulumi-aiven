@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
@@ -218,6 +219,12 @@ func (i *KafkaSchema) ToKafkaSchemaOutputWithContext(ctx context.Context) KafkaS
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaOutput)
 }
 
+func (i *KafkaSchema) ToOutput(ctx context.Context) pulumix.Output[*KafkaSchema] {
+	return pulumix.Output[*KafkaSchema]{
+		OutputState: i.ToKafkaSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KafkaSchemaArrayInput is an input type that accepts KafkaSchemaArray and KafkaSchemaArrayOutput values.
 // You can construct a concrete instance of `KafkaSchemaArrayInput` via:
 //
@@ -241,6 +248,12 @@ func (i KafkaSchemaArray) ToKafkaSchemaArrayOutput() KafkaSchemaArrayOutput {
 
 func (i KafkaSchemaArray) ToKafkaSchemaArrayOutputWithContext(ctx context.Context) KafkaSchemaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaArrayOutput)
+}
+
+func (i KafkaSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaSchema] {
+	return pulumix.Output[[]*KafkaSchema]{
+		OutputState: i.ToKafkaSchemaArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KafkaSchemaMapInput is an input type that accepts KafkaSchemaMap and KafkaSchemaMapOutput values.
@@ -268,6 +281,12 @@ func (i KafkaSchemaMap) ToKafkaSchemaMapOutputWithContext(ctx context.Context) K
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaMapOutput)
 }
 
+func (i KafkaSchemaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaSchema] {
+	return pulumix.Output[map[string]*KafkaSchema]{
+		OutputState: i.ToKafkaSchemaMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KafkaSchemaOutput struct{ *pulumi.OutputState }
 
 func (KafkaSchemaOutput) ElementType() reflect.Type {
@@ -280,6 +299,12 @@ func (o KafkaSchemaOutput) ToKafkaSchemaOutput() KafkaSchemaOutput {
 
 func (o KafkaSchemaOutput) ToKafkaSchemaOutputWithContext(ctx context.Context) KafkaSchemaOutput {
 	return o
+}
+
+func (o KafkaSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaSchema] {
+	return pulumix.Output[*KafkaSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
@@ -331,6 +356,12 @@ func (o KafkaSchemaArrayOutput) ToKafkaSchemaArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o KafkaSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaSchema] {
+	return pulumix.Output[[]*KafkaSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KafkaSchemaArrayOutput) Index(i pulumi.IntInput) KafkaSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaSchema {
 		return vs[0].([]*KafkaSchema)[vs[1].(int)]
@@ -349,6 +380,12 @@ func (o KafkaSchemaMapOutput) ToKafkaSchemaMapOutput() KafkaSchemaMapOutput {
 
 func (o KafkaSchemaMapOutput) ToKafkaSchemaMapOutputWithContext(ctx context.Context) KafkaSchemaMapOutput {
 	return o
+}
+
+func (o KafkaSchemaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaSchema] {
+	return pulumix.Output[map[string]*KafkaSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KafkaSchemaMapOutput) MapIndex(k pulumi.StringInput) KafkaSchemaOutput {

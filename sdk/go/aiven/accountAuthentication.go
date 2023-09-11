@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
@@ -261,6 +262,12 @@ func (i *AccountAuthentication) ToAccountAuthenticationOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationOutput)
 }
 
+func (i *AccountAuthentication) ToOutput(ctx context.Context) pulumix.Output[*AccountAuthentication] {
+	return pulumix.Output[*AccountAuthentication]{
+		OutputState: i.ToAccountAuthenticationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountAuthenticationArrayInput is an input type that accepts AccountAuthenticationArray and AccountAuthenticationArrayOutput values.
 // You can construct a concrete instance of `AccountAuthenticationArrayInput` via:
 //
@@ -284,6 +291,12 @@ func (i AccountAuthenticationArray) ToAccountAuthenticationArrayOutput() Account
 
 func (i AccountAuthenticationArray) ToAccountAuthenticationArrayOutputWithContext(ctx context.Context) AccountAuthenticationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationArrayOutput)
+}
+
+func (i AccountAuthenticationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountAuthentication] {
+	return pulumix.Output[[]*AccountAuthentication]{
+		OutputState: i.ToAccountAuthenticationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountAuthenticationMapInput is an input type that accepts AccountAuthenticationMap and AccountAuthenticationMapOutput values.
@@ -311,6 +324,12 @@ func (i AccountAuthenticationMap) ToAccountAuthenticationMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationMapOutput)
 }
 
+func (i AccountAuthenticationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountAuthentication] {
+	return pulumix.Output[map[string]*AccountAuthentication]{
+		OutputState: i.ToAccountAuthenticationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (AccountAuthenticationOutput) ElementType() reflect.Type {
@@ -323,6 +342,12 @@ func (o AccountAuthenticationOutput) ToAccountAuthenticationOutput() AccountAuth
 
 func (o AccountAuthenticationOutput) ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput {
 	return o
+}
+
+func (o AccountAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountAuthentication] {
+	return pulumix.Output[*AccountAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique id of the account.
@@ -431,6 +456,12 @@ func (o AccountAuthenticationArrayOutput) ToAccountAuthenticationArrayOutputWith
 	return o
 }
 
+func (o AccountAuthenticationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountAuthentication] {
+	return pulumix.Output[[]*AccountAuthentication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountAuthenticationArrayOutput) Index(i pulumi.IntInput) AccountAuthenticationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountAuthentication {
 		return vs[0].([]*AccountAuthentication)[vs[1].(int)]
@@ -449,6 +480,12 @@ func (o AccountAuthenticationMapOutput) ToAccountAuthenticationMapOutput() Accou
 
 func (o AccountAuthenticationMapOutput) ToAccountAuthenticationMapOutputWithContext(ctx context.Context) AccountAuthenticationMapOutput {
 	return o
+}
+
+func (o AccountAuthenticationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountAuthentication] {
+	return pulumix.Output[map[string]*AccountAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountAuthenticationMapOutput) MapIndex(k pulumi.StringInput) AccountAuthenticationOutput {

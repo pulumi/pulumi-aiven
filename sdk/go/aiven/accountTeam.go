@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account Team resource allows the creation and management of an Account Team.
@@ -136,6 +137,12 @@ func (i *AccountTeam) ToAccountTeamOutputWithContext(ctx context.Context) Accoun
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamOutput)
 }
 
+func (i *AccountTeam) ToOutput(ctx context.Context) pulumix.Output[*AccountTeam] {
+	return pulumix.Output[*AccountTeam]{
+		OutputState: i.ToAccountTeamOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountTeamArrayInput is an input type that accepts AccountTeamArray and AccountTeamArrayOutput values.
 // You can construct a concrete instance of `AccountTeamArrayInput` via:
 //
@@ -159,6 +166,12 @@ func (i AccountTeamArray) ToAccountTeamArrayOutput() AccountTeamArrayOutput {
 
 func (i AccountTeamArray) ToAccountTeamArrayOutputWithContext(ctx context.Context) AccountTeamArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamArrayOutput)
+}
+
+func (i AccountTeamArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountTeam] {
+	return pulumix.Output[[]*AccountTeam]{
+		OutputState: i.ToAccountTeamArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountTeamMapInput is an input type that accepts AccountTeamMap and AccountTeamMapOutput values.
@@ -186,6 +199,12 @@ func (i AccountTeamMap) ToAccountTeamMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMapOutput)
 }
 
+func (i AccountTeamMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountTeam] {
+	return pulumix.Output[map[string]*AccountTeam]{
+		OutputState: i.ToAccountTeamMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountTeamOutput struct{ *pulumi.OutputState }
 
 func (AccountTeamOutput) ElementType() reflect.Type {
@@ -198,6 +217,12 @@ func (o AccountTeamOutput) ToAccountTeamOutput() AccountTeamOutput {
 
 func (o AccountTeamOutput) ToAccountTeamOutputWithContext(ctx context.Context) AccountTeamOutput {
 	return o
+}
+
+func (o AccountTeamOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountTeam] {
+	return pulumix.Output[*AccountTeam]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique account id
@@ -239,6 +264,12 @@ func (o AccountTeamArrayOutput) ToAccountTeamArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AccountTeamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountTeam] {
+	return pulumix.Output[[]*AccountTeam]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountTeamArrayOutput) Index(i pulumi.IntInput) AccountTeamOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountTeam {
 		return vs[0].([]*AccountTeam)[vs[1].(int)]
@@ -257,6 +288,12 @@ func (o AccountTeamMapOutput) ToAccountTeamMapOutput() AccountTeamMapOutput {
 
 func (o AccountTeamMapOutput) ToAccountTeamMapOutputWithContext(ctx context.Context) AccountTeamMapOutput {
 	return o
+}
+
+func (o AccountTeamMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountTeam] {
+	return pulumix.Output[map[string]*AccountTeam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountTeamMapOutput) MapIndex(k pulumi.StringInput) AccountTeamOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
@@ -85,6 +86,12 @@ func (o LookupInfluxdbDatabaseResultOutput) ToLookupInfluxdbDatabaseResultOutput
 
 func (o LookupInfluxdbDatabaseResultOutput) ToLookupInfluxdbDatabaseResultOutputWithContext(ctx context.Context) LookupInfluxdbDatabaseResultOutput {
 	return o
+}
+
+func (o LookupInfluxdbDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInfluxdbDatabaseResult] {
+	return pulumix.Output[LookupInfluxdbDatabaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the service database. This property cannot be changed, doing so forces recreation of the resource.

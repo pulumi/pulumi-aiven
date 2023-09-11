@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
@@ -193,6 +194,12 @@ func (i *AwsVpcPeeringConnection) ToAwsVpcPeeringConnectionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AwsVpcPeeringConnectionOutput)
 }
 
+func (i *AwsVpcPeeringConnection) ToOutput(ctx context.Context) pulumix.Output[*AwsVpcPeeringConnection] {
+	return pulumix.Output[*AwsVpcPeeringConnection]{
+		OutputState: i.ToAwsVpcPeeringConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AwsVpcPeeringConnectionArrayInput is an input type that accepts AwsVpcPeeringConnectionArray and AwsVpcPeeringConnectionArrayOutput values.
 // You can construct a concrete instance of `AwsVpcPeeringConnectionArrayInput` via:
 //
@@ -216,6 +223,12 @@ func (i AwsVpcPeeringConnectionArray) ToAwsVpcPeeringConnectionArrayOutput() Aws
 
 func (i AwsVpcPeeringConnectionArray) ToAwsVpcPeeringConnectionArrayOutputWithContext(ctx context.Context) AwsVpcPeeringConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsVpcPeeringConnectionArrayOutput)
+}
+
+func (i AwsVpcPeeringConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*AwsVpcPeeringConnection] {
+	return pulumix.Output[[]*AwsVpcPeeringConnection]{
+		OutputState: i.ToAwsVpcPeeringConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AwsVpcPeeringConnectionMapInput is an input type that accepts AwsVpcPeeringConnectionMap and AwsVpcPeeringConnectionMapOutput values.
@@ -243,6 +256,12 @@ func (i AwsVpcPeeringConnectionMap) ToAwsVpcPeeringConnectionMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AwsVpcPeeringConnectionMapOutput)
 }
 
+func (i AwsVpcPeeringConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsVpcPeeringConnection] {
+	return pulumix.Output[map[string]*AwsVpcPeeringConnection]{
+		OutputState: i.ToAwsVpcPeeringConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AwsVpcPeeringConnectionOutput struct{ *pulumi.OutputState }
 
 func (AwsVpcPeeringConnectionOutput) ElementType() reflect.Type {
@@ -255,6 +274,12 @@ func (o AwsVpcPeeringConnectionOutput) ToAwsVpcPeeringConnectionOutput() AwsVpcP
 
 func (o AwsVpcPeeringConnectionOutput) ToAwsVpcPeeringConnectionOutputWithContext(ctx context.Context) AwsVpcPeeringConnectionOutput {
 	return o
+}
+
+func (o AwsVpcPeeringConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsVpcPeeringConnection] {
+	return pulumix.Output[*AwsVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -306,6 +331,12 @@ func (o AwsVpcPeeringConnectionArrayOutput) ToAwsVpcPeeringConnectionArrayOutput
 	return o
 }
 
+func (o AwsVpcPeeringConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AwsVpcPeeringConnection] {
+	return pulumix.Output[[]*AwsVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AwsVpcPeeringConnectionArrayOutput) Index(i pulumi.IntInput) AwsVpcPeeringConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsVpcPeeringConnection {
 		return vs[0].([]*AwsVpcPeeringConnection)[vs[1].(int)]
@@ -324,6 +355,12 @@ func (o AwsVpcPeeringConnectionMapOutput) ToAwsVpcPeeringConnectionMapOutput() A
 
 func (o AwsVpcPeeringConnectionMapOutput) ToAwsVpcPeeringConnectionMapOutputWithContext(ctx context.Context) AwsVpcPeeringConnectionMapOutput {
 	return o
+}
+
+func (o AwsVpcPeeringConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsVpcPeeringConnection] {
+	return pulumix.Output[map[string]*AwsVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsVpcPeeringConnectionMapOutput) MapIndex(k pulumi.StringInput) AwsVpcPeeringConnectionOutput {

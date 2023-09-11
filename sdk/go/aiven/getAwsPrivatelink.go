@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
@@ -111,6 +112,12 @@ func (o LookupAwsPrivatelinkResultOutput) ToLookupAwsPrivatelinkResultOutput() L
 
 func (o LookupAwsPrivatelinkResultOutput) ToLookupAwsPrivatelinkResultOutputWithContext(ctx context.Context) LookupAwsPrivatelinkResultOutput {
 	return o
+}
+
+func (o LookupAwsPrivatelinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAwsPrivatelinkResult] {
+	return pulumix.Output[LookupAwsPrivatelinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS service ID

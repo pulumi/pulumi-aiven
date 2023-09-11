@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
@@ -155,6 +156,12 @@ func (o LookupM3AggregatorResultOutput) ToLookupM3AggregatorResultOutput() Looku
 
 func (o LookupM3AggregatorResultOutput) ToLookupM3AggregatorResultOutputWithContext(ctx context.Context) LookupM3AggregatorResultOutput {
 	return o
+}
+
+func (o LookupM3AggregatorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupM3AggregatorResult] {
+	return pulumix.Output[LookupM3AggregatorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

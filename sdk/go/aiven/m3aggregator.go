@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
@@ -477,6 +478,12 @@ func (i *M3Aggregator) ToM3AggregatorOutputWithContext(ctx context.Context) M3Ag
 	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorOutput)
 }
 
+func (i *M3Aggregator) ToOutput(ctx context.Context) pulumix.Output[*M3Aggregator] {
+	return pulumix.Output[*M3Aggregator]{
+		OutputState: i.ToM3AggregatorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // M3AggregatorArrayInput is an input type that accepts M3AggregatorArray and M3AggregatorArrayOutput values.
 // You can construct a concrete instance of `M3AggregatorArrayInput` via:
 //
@@ -500,6 +507,12 @@ func (i M3AggregatorArray) ToM3AggregatorArrayOutput() M3AggregatorArrayOutput {
 
 func (i M3AggregatorArray) ToM3AggregatorArrayOutputWithContext(ctx context.Context) M3AggregatorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorArrayOutput)
+}
+
+func (i M3AggregatorArray) ToOutput(ctx context.Context) pulumix.Output[[]*M3Aggregator] {
+	return pulumix.Output[[]*M3Aggregator]{
+		OutputState: i.ToM3AggregatorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // M3AggregatorMapInput is an input type that accepts M3AggregatorMap and M3AggregatorMapOutput values.
@@ -527,6 +540,12 @@ func (i M3AggregatorMap) ToM3AggregatorMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorMapOutput)
 }
 
+func (i M3AggregatorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3Aggregator] {
+	return pulumix.Output[map[string]*M3Aggregator]{
+		OutputState: i.ToM3AggregatorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type M3AggregatorOutput struct{ *pulumi.OutputState }
 
 func (M3AggregatorOutput) ElementType() reflect.Type {
@@ -539,6 +558,12 @@ func (o M3AggregatorOutput) ToM3AggregatorOutput() M3AggregatorOutput {
 
 func (o M3AggregatorOutput) ToM3AggregatorOutputWithContext(ctx context.Context) M3AggregatorOutput {
 	return o
+}
+
+func (o M3AggregatorOutput) ToOutput(ctx context.Context) pulumix.Output[*M3Aggregator] {
+	return pulumix.Output[*M3Aggregator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -714,6 +739,12 @@ func (o M3AggregatorArrayOutput) ToM3AggregatorArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o M3AggregatorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*M3Aggregator] {
+	return pulumix.Output[[]*M3Aggregator]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o M3AggregatorArrayOutput) Index(i pulumi.IntInput) M3AggregatorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *M3Aggregator {
 		return vs[0].([]*M3Aggregator)[vs[1].(int)]
@@ -732,6 +763,12 @@ func (o M3AggregatorMapOutput) ToM3AggregatorMapOutput() M3AggregatorMapOutput {
 
 func (o M3AggregatorMapOutput) ToM3AggregatorMapOutputWithContext(ctx context.Context) M3AggregatorMapOutput {
 	return o
+}
+
+func (o M3AggregatorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3Aggregator] {
+	return pulumix.Output[map[string]*M3Aggregator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o M3AggregatorMapOutput) MapIndex(k pulumi.StringInput) M3AggregatorOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
@@ -222,6 +223,12 @@ func (i *AzureVpcPeeringConnection) ToAzureVpcPeeringConnectionOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AzureVpcPeeringConnectionOutput)
 }
 
+func (i *AzureVpcPeeringConnection) ToOutput(ctx context.Context) pulumix.Output[*AzureVpcPeeringConnection] {
+	return pulumix.Output[*AzureVpcPeeringConnection]{
+		OutputState: i.ToAzureVpcPeeringConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AzureVpcPeeringConnectionArrayInput is an input type that accepts AzureVpcPeeringConnectionArray and AzureVpcPeeringConnectionArrayOutput values.
 // You can construct a concrete instance of `AzureVpcPeeringConnectionArrayInput` via:
 //
@@ -245,6 +252,12 @@ func (i AzureVpcPeeringConnectionArray) ToAzureVpcPeeringConnectionArrayOutput()
 
 func (i AzureVpcPeeringConnectionArray) ToAzureVpcPeeringConnectionArrayOutputWithContext(ctx context.Context) AzureVpcPeeringConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureVpcPeeringConnectionArrayOutput)
+}
+
+func (i AzureVpcPeeringConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*AzureVpcPeeringConnection] {
+	return pulumix.Output[[]*AzureVpcPeeringConnection]{
+		OutputState: i.ToAzureVpcPeeringConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AzureVpcPeeringConnectionMapInput is an input type that accepts AzureVpcPeeringConnectionMap and AzureVpcPeeringConnectionMapOutput values.
@@ -272,6 +285,12 @@ func (i AzureVpcPeeringConnectionMap) ToAzureVpcPeeringConnectionMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AzureVpcPeeringConnectionMapOutput)
 }
 
+func (i AzureVpcPeeringConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureVpcPeeringConnection] {
+	return pulumix.Output[map[string]*AzureVpcPeeringConnection]{
+		OutputState: i.ToAzureVpcPeeringConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureVpcPeeringConnectionOutput struct{ *pulumi.OutputState }
 
 func (AzureVpcPeeringConnectionOutput) ElementType() reflect.Type {
@@ -284,6 +303,12 @@ func (o AzureVpcPeeringConnectionOutput) ToAzureVpcPeeringConnectionOutput() Azu
 
 func (o AzureVpcPeeringConnectionOutput) ToAzureVpcPeeringConnectionOutputWithContext(ctx context.Context) AzureVpcPeeringConnectionOutput {
 	return o
+}
+
+func (o AzureVpcPeeringConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureVpcPeeringConnection] {
+	return pulumix.Output[*AzureVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -345,6 +370,12 @@ func (o AzureVpcPeeringConnectionArrayOutput) ToAzureVpcPeeringConnectionArrayOu
 	return o
 }
 
+func (o AzureVpcPeeringConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AzureVpcPeeringConnection] {
+	return pulumix.Output[[]*AzureVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AzureVpcPeeringConnectionArrayOutput) Index(i pulumi.IntInput) AzureVpcPeeringConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureVpcPeeringConnection {
 		return vs[0].([]*AzureVpcPeeringConnection)[vs[1].(int)]
@@ -363,6 +394,12 @@ func (o AzureVpcPeeringConnectionMapOutput) ToAzureVpcPeeringConnectionMapOutput
 
 func (o AzureVpcPeeringConnectionMapOutput) ToAzureVpcPeeringConnectionMapOutputWithContext(ctx context.Context) AzureVpcPeeringConnectionMapOutput {
 	return o
+}
+
+func (o AzureVpcPeeringConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureVpcPeeringConnection] {
+	return pulumix.Output[map[string]*AzureVpcPeeringConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureVpcPeeringConnectionMapOutput) MapIndex(k pulumi.StringInput) AzureVpcPeeringConnectionOutput {

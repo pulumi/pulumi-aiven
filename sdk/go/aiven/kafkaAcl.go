@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
@@ -196,6 +197,12 @@ func (i *KafkaAcl) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclOutput)
 }
 
+func (i *KafkaAcl) ToOutput(ctx context.Context) pulumix.Output[*KafkaAcl] {
+	return pulumix.Output[*KafkaAcl]{
+		OutputState: i.ToKafkaAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KafkaAclArrayInput is an input type that accepts KafkaAclArray and KafkaAclArrayOutput values.
 // You can construct a concrete instance of `KafkaAclArrayInput` via:
 //
@@ -219,6 +226,12 @@ func (i KafkaAclArray) ToKafkaAclArrayOutput() KafkaAclArrayOutput {
 
 func (i KafkaAclArray) ToKafkaAclArrayOutputWithContext(ctx context.Context) KafkaAclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclArrayOutput)
+}
+
+func (i KafkaAclArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaAcl] {
+	return pulumix.Output[[]*KafkaAcl]{
+		OutputState: i.ToKafkaAclArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KafkaAclMapInput is an input type that accepts KafkaAclMap and KafkaAclMapOutput values.
@@ -246,6 +259,12 @@ func (i KafkaAclMap) ToKafkaAclMapOutputWithContext(ctx context.Context) KafkaAc
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclMapOutput)
 }
 
+func (i KafkaAclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaAcl] {
+	return pulumix.Output[map[string]*KafkaAcl]{
+		OutputState: i.ToKafkaAclMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KafkaAclOutput struct{ *pulumi.OutputState }
 
 func (KafkaAclOutput) ElementType() reflect.Type {
@@ -258,6 +277,12 @@ func (o KafkaAclOutput) ToKafkaAclOutput() KafkaAclOutput {
 
 func (o KafkaAclOutput) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutput {
 	return o
+}
+
+func (o KafkaAclOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaAcl] {
+	return pulumix.Output[*KafkaAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kafka ACL ID
@@ -304,6 +329,12 @@ func (o KafkaAclArrayOutput) ToKafkaAclArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o KafkaAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaAcl] {
+	return pulumix.Output[[]*KafkaAcl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KafkaAclArrayOutput) Index(i pulumi.IntInput) KafkaAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaAcl {
 		return vs[0].([]*KafkaAcl)[vs[1].(int)]
@@ -322,6 +353,12 @@ func (o KafkaAclMapOutput) ToKafkaAclMapOutput() KafkaAclMapOutput {
 
 func (o KafkaAclMapOutput) ToKafkaAclMapOutputWithContext(ctx context.Context) KafkaAclMapOutput {
 	return o
+}
+
+func (o KafkaAclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaAcl] {
+	return pulumix.Output[map[string]*KafkaAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KafkaAclMapOutput) MapIndex(k pulumi.StringInput) KafkaAclOutput {

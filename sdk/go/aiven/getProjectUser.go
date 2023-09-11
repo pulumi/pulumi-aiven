@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Project User data source provides information about the existing Aiven Project User.
@@ -109,6 +110,12 @@ func (o LookupProjectUserResultOutput) ToLookupProjectUserResultOutput() LookupP
 
 func (o LookupProjectUserResultOutput) ToLookupProjectUserResultOutputWithContext(ctx context.Context) LookupProjectUserResultOutput {
 	return o
+}
+
+func (o LookupProjectUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectUserResult] {
+	return pulumix.Output[LookupProjectUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Flink data source provides information about the existing Aiven Flink service.
@@ -155,6 +156,12 @@ func (o LookupFlinkResultOutput) ToLookupFlinkResultOutput() LookupFlinkResultOu
 
 func (o LookupFlinkResultOutput) ToLookupFlinkResultOutputWithContext(ctx context.Context) LookupFlinkResultOutput {
 	return o
+}
+
+func (o LookupFlinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFlinkResult] {
+	return pulumix.Output[LookupFlinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

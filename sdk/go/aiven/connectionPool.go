@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Connection Pool resource allows the creation and management of Aiven Connection Pools.
@@ -219,6 +220,12 @@ func (i *ConnectionPool) ToConnectionPoolOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolOutput)
 }
 
+func (i *ConnectionPool) ToOutput(ctx context.Context) pulumix.Output[*ConnectionPool] {
+	return pulumix.Output[*ConnectionPool]{
+		OutputState: i.ToConnectionPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionPoolArrayInput is an input type that accepts ConnectionPoolArray and ConnectionPoolArrayOutput values.
 // You can construct a concrete instance of `ConnectionPoolArrayInput` via:
 //
@@ -242,6 +249,12 @@ func (i ConnectionPoolArray) ToConnectionPoolArrayOutput() ConnectionPoolArrayOu
 
 func (i ConnectionPoolArray) ToConnectionPoolArrayOutputWithContext(ctx context.Context) ConnectionPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolArrayOutput)
+}
+
+func (i ConnectionPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionPool] {
+	return pulumix.Output[[]*ConnectionPool]{
+		OutputState: i.ToConnectionPoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConnectionPoolMapInput is an input type that accepts ConnectionPoolMap and ConnectionPoolMapOutput values.
@@ -269,6 +282,12 @@ func (i ConnectionPoolMap) ToConnectionPoolMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolMapOutput)
 }
 
+func (i ConnectionPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionPool] {
+	return pulumix.Output[map[string]*ConnectionPool]{
+		OutputState: i.ToConnectionPoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionPoolOutput struct{ *pulumi.OutputState }
 
 func (ConnectionPoolOutput) ElementType() reflect.Type {
@@ -281,6 +300,12 @@ func (o ConnectionPoolOutput) ToConnectionPoolOutput() ConnectionPoolOutput {
 
 func (o ConnectionPoolOutput) ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput {
 	return o
+}
+
+func (o ConnectionPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionPool] {
+	return pulumix.Output[*ConnectionPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI for connecting to the pool
@@ -337,6 +362,12 @@ func (o ConnectionPoolArrayOutput) ToConnectionPoolArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ConnectionPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionPool] {
+	return pulumix.Output[[]*ConnectionPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionPoolArrayOutput) Index(i pulumi.IntInput) ConnectionPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionPool {
 		return vs[0].([]*ConnectionPool)[vs[1].(int)]
@@ -355,6 +386,12 @@ func (o ConnectionPoolMapOutput) ToConnectionPoolMapOutput() ConnectionPoolMapOu
 
 func (o ConnectionPoolMapOutput) ToConnectionPoolMapOutputWithContext(ctx context.Context) ConnectionPoolMapOutput {
 	return o
+}
+
+func (o ConnectionPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionPool] {
+	return pulumix.Output[map[string]*ConnectionPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionPoolMapOutput) MapIndex(k pulumi.StringInput) ConnectionPoolOutput {

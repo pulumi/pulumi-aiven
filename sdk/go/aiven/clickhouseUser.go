@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
@@ -184,6 +185,12 @@ func (i *ClickhouseUser) ToClickhouseUserOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseUserOutput)
 }
 
+func (i *ClickhouseUser) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseUser] {
+	return pulumix.Output[*ClickhouseUser]{
+		OutputState: i.ToClickhouseUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClickhouseUserArrayInput is an input type that accepts ClickhouseUserArray and ClickhouseUserArrayOutput values.
 // You can construct a concrete instance of `ClickhouseUserArrayInput` via:
 //
@@ -207,6 +214,12 @@ func (i ClickhouseUserArray) ToClickhouseUserArrayOutput() ClickhouseUserArrayOu
 
 func (i ClickhouseUserArray) ToClickhouseUserArrayOutputWithContext(ctx context.Context) ClickhouseUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseUserArrayOutput)
+}
+
+func (i ClickhouseUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseUser] {
+	return pulumix.Output[[]*ClickhouseUser]{
+		OutputState: i.ToClickhouseUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClickhouseUserMapInput is an input type that accepts ClickhouseUserMap and ClickhouseUserMapOutput values.
@@ -234,6 +247,12 @@ func (i ClickhouseUserMap) ToClickhouseUserMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseUserMapOutput)
 }
 
+func (i ClickhouseUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseUser] {
+	return pulumix.Output[map[string]*ClickhouseUser]{
+		OutputState: i.ToClickhouseUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClickhouseUserOutput struct{ *pulumi.OutputState }
 
 func (ClickhouseUserOutput) ElementType() reflect.Type {
@@ -246,6 +265,12 @@ func (o ClickhouseUserOutput) ToClickhouseUserOutput() ClickhouseUserOutput {
 
 func (o ClickhouseUserOutput) ToClickhouseUserOutputWithContext(ctx context.Context) ClickhouseUserOutput {
 	return o
+}
+
+func (o ClickhouseUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseUser] {
+	return pulumix.Output[*ClickhouseUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password of the clickhouse user.
@@ -292,6 +317,12 @@ func (o ClickhouseUserArrayOutput) ToClickhouseUserArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ClickhouseUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseUser] {
+	return pulumix.Output[[]*ClickhouseUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClickhouseUserArrayOutput) Index(i pulumi.IntInput) ClickhouseUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClickhouseUser {
 		return vs[0].([]*ClickhouseUser)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o ClickhouseUserMapOutput) ToClickhouseUserMapOutput() ClickhouseUserMapOu
 
 func (o ClickhouseUserMapOutput) ToClickhouseUserMapOutputWithContext(ctx context.Context) ClickhouseUserMapOutput {
 	return o
+}
+
+func (o ClickhouseUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseUser] {
+	return pulumix.Output[map[string]*ClickhouseUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClickhouseUserMapOutput) MapIndex(k pulumi.StringInput) ClickhouseUserOutput {

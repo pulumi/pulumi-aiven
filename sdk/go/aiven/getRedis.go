@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Redis data source provides information about the existing Aiven Redis service.
@@ -155,6 +156,12 @@ func (o LookupRedisResultOutput) ToLookupRedisResultOutput() LookupRedisResultOu
 
 func (o LookupRedisResultOutput) ToLookupRedisResultOutputWithContext(ctx context.Context) LookupRedisResultOutput {
 	return o
+}
+
+func (o LookupRedisResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRedisResult] {
+	return pulumix.Output[LookupRedisResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

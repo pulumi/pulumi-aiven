@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
@@ -379,6 +380,12 @@ func (i *OpenSearch) ToOpenSearchOutputWithContext(ctx context.Context) OpenSear
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOutput)
 }
 
+func (i *OpenSearch) ToOutput(ctx context.Context) pulumix.Output[*OpenSearch] {
+	return pulumix.Output[*OpenSearch]{
+		OutputState: i.ToOpenSearchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OpenSearchArrayInput is an input type that accepts OpenSearchArray and OpenSearchArrayOutput values.
 // You can construct a concrete instance of `OpenSearchArrayInput` via:
 //
@@ -402,6 +409,12 @@ func (i OpenSearchArray) ToOpenSearchArrayOutput() OpenSearchArrayOutput {
 
 func (i OpenSearchArray) ToOpenSearchArrayOutputWithContext(ctx context.Context) OpenSearchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchArrayOutput)
+}
+
+func (i OpenSearchArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpenSearch] {
+	return pulumix.Output[[]*OpenSearch]{
+		OutputState: i.ToOpenSearchArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OpenSearchMapInput is an input type that accepts OpenSearchMap and OpenSearchMapOutput values.
@@ -429,6 +442,12 @@ func (i OpenSearchMap) ToOpenSearchMapOutputWithContext(ctx context.Context) Ope
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchMapOutput)
 }
 
+func (i OpenSearchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenSearch] {
+	return pulumix.Output[map[string]*OpenSearch]{
+		OutputState: i.ToOpenSearchMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OpenSearchOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchOutput) ElementType() reflect.Type {
@@ -441,6 +460,12 @@ func (o OpenSearchOutput) ToOpenSearchOutput() OpenSearchOutput {
 
 func (o OpenSearchOutput) ToOpenSearchOutputWithContext(ctx context.Context) OpenSearchOutput {
 	return o
+}
+
+func (o OpenSearchOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenSearch] {
+	return pulumix.Output[*OpenSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -594,6 +619,12 @@ func (o OpenSearchArrayOutput) ToOpenSearchArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o OpenSearchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpenSearch] {
+	return pulumix.Output[[]*OpenSearch]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OpenSearchArrayOutput) Index(i pulumi.IntInput) OpenSearchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpenSearch {
 		return vs[0].([]*OpenSearch)[vs[1].(int)]
@@ -612,6 +643,12 @@ func (o OpenSearchMapOutput) ToOpenSearchMapOutput() OpenSearchMapOutput {
 
 func (o OpenSearchMapOutput) ToOpenSearchMapOutputWithContext(ctx context.Context) OpenSearchMapOutput {
 	return o
+}
+
+func (o OpenSearchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenSearch] {
+	return pulumix.Output[map[string]*OpenSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OpenSearchMapOutput) MapIndex(k pulumi.StringInput) OpenSearchOutput {

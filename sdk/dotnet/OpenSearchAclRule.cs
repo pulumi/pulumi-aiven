@@ -79,10 +79,7 @@ namespace Pulumi.Aiven
     ///     };
     /// 
     ///     var osAclRule = new List&lt;Aiven.OpenSearchAclRule&gt;();
-    ///     foreach (var range in aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(v =&gt; 
-    ///     {
-    ///         return  v;
-    ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
+    ///     foreach (var range in aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
     ///         osAclRule.Add(new Aiven.OpenSearchAclRule($"osAclRule-{range.Key}", new()
     ///         {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
@@ -159,6 +160,12 @@ func (i *KafkaSchemaConfiguration) ToKafkaSchemaConfigurationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaConfigurationOutput)
 }
 
+func (i *KafkaSchemaConfiguration) ToOutput(ctx context.Context) pulumix.Output[*KafkaSchemaConfiguration] {
+	return pulumix.Output[*KafkaSchemaConfiguration]{
+		OutputState: i.ToKafkaSchemaConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KafkaSchemaConfigurationArrayInput is an input type that accepts KafkaSchemaConfigurationArray and KafkaSchemaConfigurationArrayOutput values.
 // You can construct a concrete instance of `KafkaSchemaConfigurationArrayInput` via:
 //
@@ -182,6 +189,12 @@ func (i KafkaSchemaConfigurationArray) ToKafkaSchemaConfigurationArrayOutput() K
 
 func (i KafkaSchemaConfigurationArray) ToKafkaSchemaConfigurationArrayOutputWithContext(ctx context.Context) KafkaSchemaConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaConfigurationArrayOutput)
+}
+
+func (i KafkaSchemaConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaSchemaConfiguration] {
+	return pulumix.Output[[]*KafkaSchemaConfiguration]{
+		OutputState: i.ToKafkaSchemaConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KafkaSchemaConfigurationMapInput is an input type that accepts KafkaSchemaConfigurationMap and KafkaSchemaConfigurationMapOutput values.
@@ -209,6 +222,12 @@ func (i KafkaSchemaConfigurationMap) ToKafkaSchemaConfigurationMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaConfigurationMapOutput)
 }
 
+func (i KafkaSchemaConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaSchemaConfiguration] {
+	return pulumix.Output[map[string]*KafkaSchemaConfiguration]{
+		OutputState: i.ToKafkaSchemaConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KafkaSchemaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (KafkaSchemaConfigurationOutput) ElementType() reflect.Type {
@@ -221,6 +240,12 @@ func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutput() Kafka
 
 func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput {
 	return o
+}
+
+func (o KafkaSchemaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaSchemaConfiguration] {
+	return pulumix.Output[*KafkaSchemaConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
@@ -252,6 +277,12 @@ func (o KafkaSchemaConfigurationArrayOutput) ToKafkaSchemaConfigurationArrayOutp
 	return o
 }
 
+func (o KafkaSchemaConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaSchemaConfiguration] {
+	return pulumix.Output[[]*KafkaSchemaConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KafkaSchemaConfigurationArrayOutput) Index(i pulumi.IntInput) KafkaSchemaConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaSchemaConfiguration {
 		return vs[0].([]*KafkaSchemaConfiguration)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o KafkaSchemaConfigurationMapOutput) ToKafkaSchemaConfigurationMapOutput()
 
 func (o KafkaSchemaConfigurationMapOutput) ToKafkaSchemaConfigurationMapOutputWithContext(ctx context.Context) KafkaSchemaConfigurationMapOutput {
 	return o
+}
+
+func (o KafkaSchemaConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaSchemaConfiguration] {
+	return pulumix.Output[map[string]*KafkaSchemaConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KafkaSchemaConfigurationMapOutput) MapIndex(k pulumi.StringInput) KafkaSchemaConfigurationOutput {

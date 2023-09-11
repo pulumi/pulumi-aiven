@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The M3DB User data source provides information about the existing Aiven M3DB User.
@@ -116,6 +117,12 @@ func (o LookupM3dbUserResultOutput) ToLookupM3dbUserResultOutput() LookupM3dbUse
 
 func (o LookupM3dbUserResultOutput) ToLookupM3dbUserResultOutputWithContext(ctx context.Context) LookupM3dbUserResultOutput {
 	return o
+}
+
+func (o LookupM3dbUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupM3dbUserResult] {
+	return pulumix.Output[LookupM3dbUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

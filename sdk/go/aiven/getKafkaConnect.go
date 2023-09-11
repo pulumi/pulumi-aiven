@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
@@ -155,6 +156,12 @@ func (o LookupKafkaConnectResultOutput) ToLookupKafkaConnectResultOutput() Looku
 
 func (o LookupKafkaConnectResultOutput) ToLookupKafkaConnectResultOutputWithContext(ctx context.Context) LookupKafkaConnectResultOutput {
 	return o
+}
+
+func (o LookupKafkaConnectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaConnectResult] {
+	return pulumix.Output[LookupKafkaConnectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

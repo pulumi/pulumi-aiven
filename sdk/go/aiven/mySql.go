@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MySQL resource allows the creation and management of Aiven MySQL services.
@@ -484,6 +485,12 @@ func (i *MySql) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlOutput)
 }
 
+func (i *MySql) ToOutput(ctx context.Context) pulumix.Output[*MySql] {
+	return pulumix.Output[*MySql]{
+		OutputState: i.ToMySqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MySqlArrayInput is an input type that accepts MySqlArray and MySqlArrayOutput values.
 // You can construct a concrete instance of `MySqlArrayInput` via:
 //
@@ -507,6 +514,12 @@ func (i MySqlArray) ToMySqlArrayOutput() MySqlArrayOutput {
 
 func (i MySqlArray) ToMySqlArrayOutputWithContext(ctx context.Context) MySqlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlArrayOutput)
+}
+
+func (i MySqlArray) ToOutput(ctx context.Context) pulumix.Output[[]*MySql] {
+	return pulumix.Output[[]*MySql]{
+		OutputState: i.ToMySqlArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MySqlMapInput is an input type that accepts MySqlMap and MySqlMapOutput values.
@@ -534,6 +547,12 @@ func (i MySqlMap) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlMapOutput)
 }
 
+func (i MySqlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MySql] {
+	return pulumix.Output[map[string]*MySql]{
+		OutputState: i.ToMySqlMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MySqlOutput struct{ *pulumi.OutputState }
 
 func (MySqlOutput) ElementType() reflect.Type {
@@ -546,6 +565,12 @@ func (o MySqlOutput) ToMySqlOutput() MySqlOutput {
 
 func (o MySqlOutput) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return o
+}
+
+func (o MySqlOutput) ToOutput(ctx context.Context) pulumix.Output[*MySql] {
+	return pulumix.Output[*MySql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -721,6 +746,12 @@ func (o MySqlArrayOutput) ToMySqlArrayOutputWithContext(ctx context.Context) MyS
 	return o
 }
 
+func (o MySqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MySql] {
+	return pulumix.Output[[]*MySql]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MySqlArrayOutput) Index(i pulumi.IntInput) MySqlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MySql {
 		return vs[0].([]*MySql)[vs[1].(int)]
@@ -739,6 +770,12 @@ func (o MySqlMapOutput) ToMySqlMapOutput() MySqlMapOutput {
 
 func (o MySqlMapOutput) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMapOutput {
 	return o
+}
+
+func (o MySqlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MySql] {
+	return pulumix.Output[map[string]*MySql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MySqlMapOutput) MapIndex(k pulumi.StringInput) MySqlOutput {

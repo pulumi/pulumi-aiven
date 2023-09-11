@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
@@ -124,6 +125,12 @@ func (o LookupAwsVpcPeeringConnectionResultOutput) ToLookupAwsVpcPeeringConnecti
 
 func (o LookupAwsVpcPeeringConnectionResultOutput) ToLookupAwsVpcPeeringConnectionResultOutputWithContext(ctx context.Context) LookupAwsVpcPeeringConnectionResultOutput {
 	return o
+}
+
+func (o LookupAwsVpcPeeringConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAwsVpcPeeringConnectionResult] {
+	return pulumix.Output[LookupAwsVpcPeeringConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS account ID. This property cannot be changed, doing so forces recreation of the resource.

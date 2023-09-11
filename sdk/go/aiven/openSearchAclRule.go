@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
@@ -246,6 +247,12 @@ func (i *OpenSearchAclRule) ToOpenSearchAclRuleOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclRuleOutput)
 }
 
+func (i *OpenSearchAclRule) ToOutput(ctx context.Context) pulumix.Output[*OpenSearchAclRule] {
+	return pulumix.Output[*OpenSearchAclRule]{
+		OutputState: i.ToOpenSearchAclRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OpenSearchAclRuleArrayInput is an input type that accepts OpenSearchAclRuleArray and OpenSearchAclRuleArrayOutput values.
 // You can construct a concrete instance of `OpenSearchAclRuleArrayInput` via:
 //
@@ -269,6 +276,12 @@ func (i OpenSearchAclRuleArray) ToOpenSearchAclRuleArrayOutput() OpenSearchAclRu
 
 func (i OpenSearchAclRuleArray) ToOpenSearchAclRuleArrayOutputWithContext(ctx context.Context) OpenSearchAclRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclRuleArrayOutput)
+}
+
+func (i OpenSearchAclRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpenSearchAclRule] {
+	return pulumix.Output[[]*OpenSearchAclRule]{
+		OutputState: i.ToOpenSearchAclRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OpenSearchAclRuleMapInput is an input type that accepts OpenSearchAclRuleMap and OpenSearchAclRuleMapOutput values.
@@ -296,6 +309,12 @@ func (i OpenSearchAclRuleMap) ToOpenSearchAclRuleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclRuleMapOutput)
 }
 
+func (i OpenSearchAclRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenSearchAclRule] {
+	return pulumix.Output[map[string]*OpenSearchAclRule]{
+		OutputState: i.ToOpenSearchAclRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OpenSearchAclRuleOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchAclRuleOutput) ElementType() reflect.Type {
@@ -308,6 +327,12 @@ func (o OpenSearchAclRuleOutput) ToOpenSearchAclRuleOutput() OpenSearchAclRuleOu
 
 func (o OpenSearchAclRuleOutput) ToOpenSearchAclRuleOutputWithContext(ctx context.Context) OpenSearchAclRuleOutput {
 	return o
+}
+
+func (o OpenSearchAclRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenSearchAclRule] {
+	return pulumix.Output[*OpenSearchAclRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
@@ -349,6 +374,12 @@ func (o OpenSearchAclRuleArrayOutput) ToOpenSearchAclRuleArrayOutputWithContext(
 	return o
 }
 
+func (o OpenSearchAclRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpenSearchAclRule] {
+	return pulumix.Output[[]*OpenSearchAclRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OpenSearchAclRuleArrayOutput) Index(i pulumi.IntInput) OpenSearchAclRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpenSearchAclRule {
 		return vs[0].([]*OpenSearchAclRule)[vs[1].(int)]
@@ -367,6 +398,12 @@ func (o OpenSearchAclRuleMapOutput) ToOpenSearchAclRuleMapOutput() OpenSearchAcl
 
 func (o OpenSearchAclRuleMapOutput) ToOpenSearchAclRuleMapOutputWithContext(ctx context.Context) OpenSearchAclRuleMapOutput {
 	return o
+}
+
+func (o OpenSearchAclRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenSearchAclRule] {
+	return pulumix.Output[map[string]*OpenSearchAclRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OpenSearchAclRuleMapOutput) MapIndex(k pulumi.StringInput) OpenSearchAclRuleOutput {

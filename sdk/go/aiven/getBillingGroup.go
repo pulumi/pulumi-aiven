@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Billing Group data source provides information about the existing Aiven Account.
@@ -102,6 +103,12 @@ func (o LookupBillingGroupResultOutput) ToLookupBillingGroupResultOutput() Looku
 
 func (o LookupBillingGroupResultOutput) ToLookupBillingGroupResultOutputWithContext(ctx context.Context) LookupBillingGroupResultOutput {
 	return o
+}
+
+func (o LookupBillingGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBillingGroupResult] {
+	return pulumix.Output[LookupBillingGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account id

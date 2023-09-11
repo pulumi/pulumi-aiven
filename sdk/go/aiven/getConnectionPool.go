@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Connection Pool data source provides information about the existing Aiven Connection Pool.
@@ -122,6 +123,12 @@ func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutput() L
 
 func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutputWithContext(ctx context.Context) LookupConnectionPoolResultOutput {
 	return o
+}
+
+func (o LookupConnectionPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionPoolResult] {
+	return pulumix.Output[LookupConnectionPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI for connecting to the pool

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MySQL User data source provides information about the existing Aiven MySQL User.
@@ -122,6 +123,12 @@ func (o LookupMysqlUserResultOutput) ToLookupMysqlUserResultOutput() LookupMysql
 
 func (o LookupMysqlUserResultOutput) ToLookupMysqlUserResultOutputWithContext(ctx context.Context) LookupMysqlUserResultOutput {
 	return o
+}
+
+func (o LookupMysqlUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMysqlUserResult] {
+	return pulumix.Output[LookupMysqlUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access certificate for the user

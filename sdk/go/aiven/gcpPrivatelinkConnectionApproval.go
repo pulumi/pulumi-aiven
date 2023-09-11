@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type GcpPrivatelinkConnectionApproval struct {
@@ -153,6 +154,12 @@ func (i *GcpPrivatelinkConnectionApproval) ToGcpPrivatelinkConnectionApprovalOut
 	return pulumi.ToOutputWithContext(ctx, i).(GcpPrivatelinkConnectionApprovalOutput)
 }
 
+func (i *GcpPrivatelinkConnectionApproval) ToOutput(ctx context.Context) pulumix.Output[*GcpPrivatelinkConnectionApproval] {
+	return pulumix.Output[*GcpPrivatelinkConnectionApproval]{
+		OutputState: i.ToGcpPrivatelinkConnectionApprovalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GcpPrivatelinkConnectionApprovalArrayInput is an input type that accepts GcpPrivatelinkConnectionApprovalArray and GcpPrivatelinkConnectionApprovalArrayOutput values.
 // You can construct a concrete instance of `GcpPrivatelinkConnectionApprovalArrayInput` via:
 //
@@ -176,6 +183,12 @@ func (i GcpPrivatelinkConnectionApprovalArray) ToGcpPrivatelinkConnectionApprova
 
 func (i GcpPrivatelinkConnectionApprovalArray) ToGcpPrivatelinkConnectionApprovalArrayOutputWithContext(ctx context.Context) GcpPrivatelinkConnectionApprovalArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpPrivatelinkConnectionApprovalArrayOutput)
+}
+
+func (i GcpPrivatelinkConnectionApprovalArray) ToOutput(ctx context.Context) pulumix.Output[[]*GcpPrivatelinkConnectionApproval] {
+	return pulumix.Output[[]*GcpPrivatelinkConnectionApproval]{
+		OutputState: i.ToGcpPrivatelinkConnectionApprovalArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GcpPrivatelinkConnectionApprovalMapInput is an input type that accepts GcpPrivatelinkConnectionApprovalMap and GcpPrivatelinkConnectionApprovalMapOutput values.
@@ -203,6 +216,12 @@ func (i GcpPrivatelinkConnectionApprovalMap) ToGcpPrivatelinkConnectionApprovalM
 	return pulumi.ToOutputWithContext(ctx, i).(GcpPrivatelinkConnectionApprovalMapOutput)
 }
 
+func (i GcpPrivatelinkConnectionApprovalMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpPrivatelinkConnectionApproval] {
+	return pulumix.Output[map[string]*GcpPrivatelinkConnectionApproval]{
+		OutputState: i.ToGcpPrivatelinkConnectionApprovalMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GcpPrivatelinkConnectionApprovalOutput struct{ *pulumi.OutputState }
 
 func (GcpPrivatelinkConnectionApprovalOutput) ElementType() reflect.Type {
@@ -215,6 +234,12 @@ func (o GcpPrivatelinkConnectionApprovalOutput) ToGcpPrivatelinkConnectionApprov
 
 func (o GcpPrivatelinkConnectionApprovalOutput) ToGcpPrivatelinkConnectionApprovalOutputWithContext(ctx context.Context) GcpPrivatelinkConnectionApprovalOutput {
 	return o
+}
+
+func (o GcpPrivatelinkConnectionApprovalOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpPrivatelinkConnectionApproval] {
+	return pulumix.Output[*GcpPrivatelinkConnectionApproval]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Privatelink connection id
@@ -263,6 +288,12 @@ func (o GcpPrivatelinkConnectionApprovalArrayOutput) ToGcpPrivatelinkConnectionA
 	return o
 }
 
+func (o GcpPrivatelinkConnectionApprovalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GcpPrivatelinkConnectionApproval] {
+	return pulumix.Output[[]*GcpPrivatelinkConnectionApproval]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GcpPrivatelinkConnectionApprovalArrayOutput) Index(i pulumi.IntInput) GcpPrivatelinkConnectionApprovalOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpPrivatelinkConnectionApproval {
 		return vs[0].([]*GcpPrivatelinkConnectionApproval)[vs[1].(int)]
@@ -281,6 +312,12 @@ func (o GcpPrivatelinkConnectionApprovalMapOutput) ToGcpPrivatelinkConnectionApp
 
 func (o GcpPrivatelinkConnectionApprovalMapOutput) ToGcpPrivatelinkConnectionApprovalMapOutputWithContext(ctx context.Context) GcpPrivatelinkConnectionApprovalMapOutput {
 	return o
+}
+
+func (o GcpPrivatelinkConnectionApprovalMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpPrivatelinkConnectionApproval] {
+	return pulumix.Output[map[string]*GcpPrivatelinkConnectionApproval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GcpPrivatelinkConnectionApprovalMapOutput) MapIndex(k pulumi.StringInput) GcpPrivatelinkConnectionApprovalOutput {

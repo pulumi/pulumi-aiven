@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account data source provides information about the existing Aiven Account.
@@ -112,6 +113,12 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountRe
 
 func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
+}
+
+func (o LookupAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountResult] {
+	return pulumix.Output[LookupAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account id
