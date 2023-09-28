@@ -966,6 +966,10 @@
                 "current": "aiven:index/openSearchAclRule:OpenSearchAclRule",
                 "majorVersion": 6
             },
+            "aiven_opensearch_security_plugin_config": {
+                "current": "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig",
+                "majorVersion": 6
+            },
             "aiven_opensearch_user": {
                 "current": "aiven:index/opensearchUser:OpensearchUser",
                 "majorVersion": 6
@@ -2339,6 +2343,10 @@
                 "current": "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule",
                 "majorVersion": 6
             },
+            "aiven_opensearch_security_plugin_config": {
+                "current": "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig",
+                "majorVersion": 6
+            },
             "aiven_opensearch_user": {
                 "current": "aiven:index/getOpensearchUser:getOpensearchUser",
                 "majorVersion": 6
@@ -2778,6 +2786,7 @@
             "aiven:index/openSearch:OpenSearch": 0,
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": 0,
             "aiven:index/openSearchAclRule:OpenSearchAclRule": 0,
+            "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": 0,
             "aiven:index/opensearchUser:OpensearchUser": 0,
             "aiven:index/organization:Organization": 1,
             "aiven:index/organizationUser:OrganizationUser": 0,
@@ -2843,6 +2852,7 @@
             "aiven:index/getOpenSearch:getOpenSearch": 0,
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": 0,
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": 0,
+            "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": 0,
             "aiven:index/getOpensearchUser:getOpensearchUser": 0,
             "aiven:index/getOrganization:getOrganization": 1,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
@@ -2914,6 +2924,7 @@
             "aiven:index/openSearch:OpenSearch": "aiven_opensearch",
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": "aiven_opensearch_acl_config",
             "aiven:index/openSearchAclRule:OpenSearchAclRule": "aiven_opensearch_acl_rule",
+            "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": "aiven_opensearch_security_plugin_config",
             "aiven:index/opensearchUser:OpensearchUser": "aiven_opensearch_user",
             "aiven:index/organization:Organization": "aiven_organization",
             "aiven:index/organizationUser:OrganizationUser": "aiven_organization_user",
@@ -2979,6 +2990,7 @@
             "aiven:index/getOpenSearch:getOpenSearch": "aiven_opensearch",
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": "aiven_opensearch_acl_config",
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": "aiven_opensearch_acl_rule",
+            "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": "aiven_opensearch_security_plugin_config",
             "aiven:index/getOpensearchUser:getOpensearchUser": "aiven_opensearch_user",
             "aiven:index/getOrganization:getOrganization": "aiven_organization",
             "aiven:index/getOrganizationUser:getOrganizationUser": "aiven_organization_user",
@@ -5460,6 +5472,11 @@
                 "integrationType": "integration_type",
                 "sourceServiceName": "source_service_name"
             },
+            "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": {
+                "adminEnabled": "admin_enabled",
+                "adminPassword": "admin_password",
+                "serviceName": "service_name"
+            },
             "aiven:index/getOpensearchUser:getOpensearchUser": {
                 "serviceName": "service_name"
             },
@@ -6205,6 +6222,11 @@
                 "serviceName": "service_name"
             },
             "aiven:index/openSearchAclRule:OpenSearchAclRule": {
+                "serviceName": "service_name"
+            },
+            "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": {
+                "adminEnabled": "admin_enabled",
+                "adminPassword": "admin_password",
                 "serviceName": "service_name"
             },
             "aiven:index/opensearchUser:OpensearchUser": {
