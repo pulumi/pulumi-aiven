@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+// The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
 //
 // ## Example Usage
 //

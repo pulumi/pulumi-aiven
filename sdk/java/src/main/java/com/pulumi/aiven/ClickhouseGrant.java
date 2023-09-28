@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
  * 
  * Notes:
  * * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
+ * * To grant a privilege on all tables of a database, do not write table = &#34;*&#34;. Instead, omit the table and only keep the database.
  * * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
  * 
  * ## Example Usage

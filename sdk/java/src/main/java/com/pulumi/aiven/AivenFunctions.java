@@ -96,6 +96,8 @@ import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
 import com.pulumi.aiven.inputs.GetOpenSearchAclRulePlainArgs;
 import com.pulumi.aiven.inputs.GetOpenSearchArgs;
 import com.pulumi.aiven.inputs.GetOpenSearchPlainArgs;
+import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
+import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigPlainArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationArgs;
@@ -176,6 +178,7 @@ import com.pulumi.aiven.outputs.GetMysqlUserResult;
 import com.pulumi.aiven.outputs.GetOpenSearchAclConfigResult;
 import com.pulumi.aiven.outputs.GetOpenSearchAclRuleResult;
 import com.pulumi.aiven.outputs.GetOpenSearchResult;
+import com.pulumi.aiven.outputs.GetOpensearchSecurityPluginConfigResult;
 import com.pulumi.aiven.outputs.GetOpensearchUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
@@ -6291,6 +6294,158 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetOpenSearchAclRuleResult> getOpenSearchAclRulePlain(GetOpenSearchAclRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project(aiven_project.os-project().project())
+     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs args) {
+        return getOpensearchSecurityPluginConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project(aiven_project.os-project().project())
+     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfigPlain(GetOpensearchSecurityPluginConfigPlainArgs args) {
+        return getOpensearchSecurityPluginConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project(aiven_project.os-project().project())
+     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project(aiven_project.os-project().project())
+     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfigPlain(GetOpensearchSecurityPluginConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.

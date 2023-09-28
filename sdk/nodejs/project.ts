@@ -51,6 +51,8 @@ export class Project extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      */
     public readonly addAccountOwnersAdminAccess!: pulumi.Output<boolean | undefined>;
     /**
@@ -99,6 +101,8 @@ export class Project extends pulumi.CustomResource {
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
      * Use the same billing group that is used in source project.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     public readonly useSourceProjectBillingGroup!: pulumi.Output<boolean | undefined>;
 
@@ -168,6 +172,8 @@ export interface ProjectState {
     accountId?: pulumi.Input<string>;
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
@@ -216,6 +222,8 @@ export interface ProjectState {
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use the same billing group that is used in source project.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     useSourceProjectBillingGroup?: pulumi.Input<boolean>;
 }
@@ -232,6 +240,8 @@ export interface ProjectArgs {
     accountId?: pulumi.Input<string>;
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
@@ -264,6 +274,8 @@ export interface ProjectArgs {
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use the same billing group that is used in source project.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     useSourceProjectBillingGroup?: pulumi.Input<boolean>;
 }

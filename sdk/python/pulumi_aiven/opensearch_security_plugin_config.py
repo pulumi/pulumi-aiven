@@ -9,28 +9,35 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['OpenSearchAclConfigArgs', 'OpenSearchAclConfig']
+__all__ = ['OpensearchSecurityPluginConfigArgs', 'OpensearchSecurityPluginConfig']
 
 @pulumi.input_type
-class OpenSearchAclConfigArgs:
+class OpensearchSecurityPluginConfigArgs:
     def __init__(__self__, *,
+                 admin_password: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 service_name: pulumi.Input[str],
-                 enabled: Optional[pulumi.Input[bool]] = None,
-                 extended_acl: Optional[pulumi.Input[bool]] = None):
+                 service_name: pulumi.Input[str]):
         """
-        The set of arguments for constructing a OpenSearchAclConfig resource.
+        The set of arguments for constructing a OpensearchSecurityPluginConfig resource.
+        :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         """
+        pulumi.set(__self__, "admin_password", admin_password)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if extended_acl is not None:
-            pulumi.set(__self__, "extended_acl", extended_acl)
+
+    @property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> pulumi.Input[str]:
+        """
+        The password for the os-sec-admin user.
+        """
+        return pulumi.get(self, "admin_password")
+
+    @admin_password.setter
+    def admin_password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "admin_password", value)
 
     @property
     @pulumi.getter
@@ -56,77 +63,85 @@ class OpenSearchAclConfigArgs:
     def service_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_name", value)
 
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter(name="extendedAcl")
-    def extended_acl(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-        """
-        return pulumi.get(self, "extended_acl")
-
-    @extended_acl.setter
-    def extended_acl(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "extended_acl", value)
-
 
 @pulumi.input_type
-class _OpenSearchAclConfigState:
+class _OpensearchSecurityPluginConfigState:
     def __init__(__self__, *,
+                 admin_enabled: Optional[pulumi.Input[bool]] = None,
+                 admin_password: Optional[pulumi.Input[str]] = None,
+                 available: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 extended_acl: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering OpenSearchAclConfig resources.
-        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        Input properties used for looking up and filtering OpensearchSecurityPluginConfig resources.
+        :param pulumi.Input[bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
+        :param pulumi.Input[bool] available: Whether the security plugin is available. This is always true for recently created services.
+        :param pulumi.Input[bool] enabled: Whether the security plugin is enabled. This is always true for recently created services.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
+        if admin_enabled is not None:
+            pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if admin_password is not None:
+            pulumi.set(__self__, "admin_password", admin_password)
+        if available is not None:
+            pulumi.set(__self__, "available", available)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if extended_acl is not None:
-            pulumi.set(__self__, "extended_acl", extended_acl)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
 
     @property
+    @pulumi.getter(name="adminEnabled")
+    def admin_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        """
+        return pulumi.get(self, "admin_enabled")
+
+    @admin_enabled.setter
+    def admin_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_enabled", value)
+
+    @property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the os-sec-admin user.
+        """
+        return pulumi.get(self, "admin_password")
+
+    @admin_password.setter
+    def admin_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin_password", value)
+
+    @property
+    @pulumi.getter
+    def available(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the security plugin is available. This is always true for recently created services.
+        """
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "available", value)
+
+    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Whether the security plugin is enabled. This is always true for recently created services.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter(name="extendedAcl")
-    def extended_acl(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-        """
-        return pulumi.get(self, "extended_acl")
-
-    @extended_acl.setter
-    def extended_acl(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "extended_acl", value)
 
     @property
     @pulumi.getter
@@ -153,54 +168,27 @@ class _OpenSearchAclConfigState:
         pulumi.set(self, "service_name", value)
 
 
-class OpenSearchAclConfig(pulumi.CustomResource):
+class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
-                 extended_acl: Optional[pulumi.Input[bool]] = None,
+                 admin_password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo_project = aiven.get_project(project="example_project")
-        bar = aiven.OpenSearch("bar",
-            project=foo_project.project,
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example_service_name",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
-            service_name=bar.service_name,
-            project=foo_project.project,
-            username="user-example")
-        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
-            project=foo_project.project,
-            service_name=bar.service_name,
-            enabled=True,
-            extended_acl=False)
-        ```
+        The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
+         $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
@@ -208,49 +196,24 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OpenSearchAclConfigArgs,
+                 args: OpensearchSecurityPluginConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo_project = aiven.get_project(project="example_project")
-        bar = aiven.OpenSearch("bar",
-            project=foo_project.project,
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example_service_name",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
-            service_name=bar.service_name,
-            project=foo_project.project,
-            username="user-example")
-        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
-            project=foo_project.project,
-            service_name=bar.service_name,
-            enabled=True,
-            extended_acl=False)
-        ```
+        The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
+         $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.
-        :param OpenSearchAclConfigArgs args: The arguments to use to populate this resource's properties.
+        :param OpensearchSecurityPluginConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OpenSearchAclConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OpensearchSecurityPluginConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -259,8 +222,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
-                 extended_acl: Optional[pulumi.Input[bool]] = None,
+                 admin_password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -270,18 +232,24 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OpenSearchAclConfigArgs.__new__(OpenSearchAclConfigArgs)
+            __props__ = OpensearchSecurityPluginConfigArgs.__new__(OpensearchSecurityPluginConfigArgs)
 
-            __props__.__dict__["enabled"] = enabled
-            __props__.__dict__["extended_acl"] = extended_acl
+            if admin_password is None and not opts.urn:
+                raise TypeError("Missing required property 'admin_password'")
+            __props__.__dict__["admin_password"] = None if admin_password is None else pulumi.Output.secret(admin_password)
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
-        super(OpenSearchAclConfig, __self__).__init__(
-            'aiven:index/openSearchAclConfig:OpenSearchAclConfig',
+            __props__.__dict__["admin_enabled"] = None
+            __props__.__dict__["available"] = None
+            __props__.__dict__["enabled"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["adminPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
+        super(OpensearchSecurityPluginConfig, __self__).__init__(
+            'aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig',
             resource_name,
             __props__,
             opts)
@@ -290,47 +258,69 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            admin_enabled: Optional[pulumi.Input[bool]] = None,
+            admin_password: Optional[pulumi.Input[str]] = None,
+            available: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            extended_acl: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            service_name: Optional[pulumi.Input[str]] = None) -> 'OpenSearchAclConfig':
+            service_name: Optional[pulumi.Input[str]] = None) -> 'OpensearchSecurityPluginConfig':
         """
-        Get an existing OpenSearchAclConfig resource's state with the given name, id, and optional extra
+        Get an existing OpensearchSecurityPluginConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        :param pulumi.Input[bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
+        :param pulumi.Input[bool] available: Whether the security plugin is available. This is always true for recently created services.
+        :param pulumi.Input[bool] enabled: Whether the security plugin is enabled. This is always true for recently created services.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _OpenSearchAclConfigState.__new__(_OpenSearchAclConfigState)
+        __props__ = _OpensearchSecurityPluginConfigState.__new__(_OpensearchSecurityPluginConfigState)
 
+        __props__.__dict__["admin_enabled"] = admin_enabled
+        __props__.__dict__["admin_password"] = admin_password
+        __props__.__dict__["available"] = available
         __props__.__dict__["enabled"] = enabled
-        __props__.__dict__["extended_acl"] = extended_acl
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
-        return OpenSearchAclConfig(resource_name, opts=opts, __props__=__props__)
+        return OpensearchSecurityPluginConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adminEnabled")
+    def admin_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        """
+        return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> pulumi.Output[str]:
+        """
+        The password for the os-sec-admin user.
+        """
+        return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[bool]]:
+    def available(self) -> pulumi.Output[bool]:
         """
-        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Whether the security plugin is available. This is always true for recently created services.
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "available")
 
     @property
-    @pulumi.getter(name="extendedAcl")
-    def extended_acl(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[bool]:
         """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        Whether the security plugin is enabled. This is always true for recently created services.
         """
-        return pulumi.get(self, "extended_acl")
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter

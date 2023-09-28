@@ -50,7 +50,11 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
     @Export(name="addAccountOwnersAdminAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> addAccountOwnersAdminAccess;
 
@@ -218,7 +222,11 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Use the same billing group that is used in source project.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Export(name="useSourceProjectBillingGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useSourceProjectBillingGroup;
 

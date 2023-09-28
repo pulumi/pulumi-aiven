@@ -365,6 +365,11 @@ export const getOpenSearchAclRule: typeof import("./getOpenSearchAclRule").getOp
 export const getOpenSearchAclRuleOutput: typeof import("./getOpenSearchAclRule").getOpenSearchAclRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getOpenSearchAclRule","getOpenSearchAclRuleOutput"], () => require("./getOpenSearchAclRule"));
 
+export { GetOpensearchSecurityPluginConfigArgs, GetOpensearchSecurityPluginConfigResult, GetOpensearchSecurityPluginConfigOutputArgs } from "./getOpensearchSecurityPluginConfig";
+export const getOpensearchSecurityPluginConfig: typeof import("./getOpensearchSecurityPluginConfig").getOpensearchSecurityPluginConfig = null as any;
+export const getOpensearchSecurityPluginConfigOutput: typeof import("./getOpensearchSecurityPluginConfig").getOpensearchSecurityPluginConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOpensearchSecurityPluginConfig","getOpensearchSecurityPluginConfigOutput"], () => require("./getOpensearchSecurityPluginConfig"));
+
 export { GetOpensearchUserArgs, GetOpensearchUserResult, GetOpensearchUserOutputArgs } from "./getOpensearchUser";
 export const getOpensearchUser: typeof import("./getOpensearchUser").getOpensearchUser = null as any;
 export const getOpensearchUserOutput: typeof import("./getOpensearchUser").getOpensearchUserOutput = null as any;
@@ -570,6 +575,11 @@ export type OpenSearchAclRule = import("./openSearchAclRule").OpenSearchAclRule;
 export const OpenSearchAclRule: typeof import("./openSearchAclRule").OpenSearchAclRule = null as any;
 utilities.lazyLoad(exports, ["OpenSearchAclRule"], () => require("./openSearchAclRule"));
 
+export { OpensearchSecurityPluginConfigArgs, OpensearchSecurityPluginConfigState } from "./opensearchSecurityPluginConfig";
+export type OpensearchSecurityPluginConfig = import("./opensearchSecurityPluginConfig").OpensearchSecurityPluginConfig;
+export const OpensearchSecurityPluginConfig: typeof import("./opensearchSecurityPluginConfig").OpensearchSecurityPluginConfig = null as any;
+utilities.lazyLoad(exports, ["OpensearchSecurityPluginConfig"], () => require("./opensearchSecurityPluginConfig"));
+
 export { OpensearchUserArgs, OpensearchUserState } from "./opensearchUser";
 export type OpensearchUser = import("./opensearchUser").OpensearchUser;
 export const OpensearchUser: typeof import("./opensearchUser").OpensearchUser = null as any;
@@ -774,6 +784,8 @@ const _module = {
                 return new OpenSearchAclConfig(name, <any>undefined, { urn })
             case "aiven:index/openSearchAclRule:OpenSearchAclRule":
                 return new OpenSearchAclRule(name, <any>undefined, { urn })
+            case "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig":
+                return new OpensearchSecurityPluginConfig(name, <any>undefined, { urn })
             case "aiven:index/opensearchUser:OpensearchUser":
                 return new OpensearchUser(name, <any>undefined, { urn })
             case "aiven:index/organization:Organization":
@@ -863,6 +875,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/mysqlUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/openSearch", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclConfig", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclRule", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/opensearchSecurityPluginConfig", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/opensearchUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organization", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUser", _module)
