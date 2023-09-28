@@ -77,6 +77,7 @@ from .get_mysql_user import *
 from .get_open_search import *
 from .get_open_search_acl_config import *
 from .get_open_search_acl_rule import *
+from .get_opensearch_security_plugin_config import *
 from .get_opensearch_user import *
 from .get_organization import *
 from .get_organization_user import *
@@ -118,6 +119,7 @@ from .mysql_user import *
 from .open_search import *
 from .open_search_acl_config import *
 from .open_search_acl_rule import *
+from .opensearch_security_plugin_config import *
 from .opensearch_user import *
 from .organization import *
 from .organization_user import *
@@ -547,6 +549,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/openSearchAclRule:OpenSearchAclRule": "OpenSearchAclRule"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/opensearchSecurityPluginConfig",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": "OpensearchSecurityPluginConfig"
   }
  },
  {

@@ -1,0 +1,25 @@
+From 08b1e731685c88d95465f1245562dac997424d88 Mon Sep 17 00:00:00 2001
+From: Thomas Kappler <tkappler@pulumi.com>
+Date: Thu, 28 Sep 2023 20:48:51 +0200
+Subject: [PATCH 3/3] Internal provider has moved, update shim
+
+---
+ shim/shim.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/shim/shim.go b/shim/shim.go
+index 796cd94..53e4cf3 100644
+--- a/shim/shim.go
++++ b/shim/shim.go
+@@ -4,7 +4,7 @@ import (
+ 	pf "github.com/hashicorp/terraform-plugin-framework/provider"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 
+-	pfProvider "github.com/aiven/terraform-provider-aiven/internal/provider"
++	pfProvider "github.com/aiven/terraform-provider-aiven/internal/plugin"
+ 	"github.com/aiven/terraform-provider-aiven/internal/sdkprovider/provider"
+ )
+ 
+-- 
+2.39.3 (Apple Git-145)
+

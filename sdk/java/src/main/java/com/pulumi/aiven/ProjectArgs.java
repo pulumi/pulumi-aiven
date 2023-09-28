@@ -44,14 +44,22 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
     @Import(name="addAccountOwnersAdminAccess")
     private @Nullable Output<Boolean> addAccountOwnersAdminAccess;
 
     /**
      * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
     public Optional<Output<Boolean>> addAccountOwnersAdminAccess() {
         return Optional.ofNullable(this.addAccountOwnersAdminAccess);
     }
@@ -164,14 +172,22 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Use the same billing group that is used in source project.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Import(name="useSourceProjectBillingGroup")
     private @Nullable Output<Boolean> useSourceProjectBillingGroup;
 
     /**
      * @return Use the same billing group that is used in source project.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     public Optional<Output<Boolean>> useSourceProjectBillingGroup() {
         return Optional.ofNullable(this.useSourceProjectBillingGroup);
     }
@@ -243,7 +259,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
         public Builder addAccountOwnersAdminAccess(@Nullable Output<Boolean> addAccountOwnersAdminAccess) {
             $.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
             return this;
@@ -254,7 +274,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
         public Builder addAccountOwnersAdminAccess(Boolean addAccountOwnersAdminAccess) {
             return addAccountOwnersAdminAccess(Output.of(addAccountOwnersAdminAccess));
         }
@@ -431,7 +455,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder useSourceProjectBillingGroup(@Nullable Output<Boolean> useSourceProjectBillingGroup) {
             $.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
             return this;
@@ -442,7 +470,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder useSourceProjectBillingGroup(Boolean useSourceProjectBillingGroup) {
             return useSourceProjectBillingGroup(Output.of(useSourceProjectBillingGroup));
         }

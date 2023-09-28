@@ -46,6 +46,9 @@ class ProjectArgs:
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if add_account_owners_admin_access is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
+            pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
+        if add_account_owners_admin_access is not None:
             pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if billing_group is not None:
             pulumi.set(__self__, "billing_group", billing_group)
@@ -59,6 +62,9 @@ class ProjectArgs:
             pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
+        if use_source_project_billing_group is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
         if use_source_project_billing_group is not None:
             pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
 
@@ -95,6 +101,9 @@ class ProjectArgs:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
+        pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
+
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @add_account_owners_admin_access.setter
@@ -179,6 +188,9 @@ class ProjectArgs:
         """
         Use the same billing group that is used in source project.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
+
         return pulumi.get(self, "use_source_project_billing_group")
 
     @use_source_project_billing_group.setter
@@ -226,6 +238,9 @@ class _ProjectState:
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if add_account_owners_admin_access is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
+            pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
+        if add_account_owners_admin_access is not None:
             pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if available_credits is not None:
             pulumi.set(__self__, "available_credits", available_credits)
@@ -250,6 +265,9 @@ class _ProjectState:
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
         if use_source_project_billing_group is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
+        if use_source_project_billing_group is not None:
             pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
 
     @property
@@ -273,6 +291,9 @@ class _ProjectState:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
+        pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
+
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @add_account_owners_admin_access.setter
@@ -417,6 +438,9 @@ class _ProjectState:
         """
         Use the same billing group that is used in source project.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
+
         return pulumi.get(self, "use_source_project_billing_group")
 
     @use_source_project_billing_group.setter
@@ -515,6 +539,9 @@ class Project(pulumi.CustomResource):
                 warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
                 pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
             __props__.__dict__["account_id"] = account_id
+            if add_account_owners_admin_access is not None and not opts.urn:
+                warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
+                pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
             __props__.__dict__["add_account_owners_admin_access"] = add_account_owners_admin_access
             __props__.__dict__["billing_group"] = billing_group
             __props__.__dict__["copy_from_project"] = copy_from_project
@@ -525,6 +552,9 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["technical_emails"] = technical_emails
+            if use_source_project_billing_group is not None and not opts.urn:
+                warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+                pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
             __props__.__dict__["use_source_project_billing_group"] = use_source_project_billing_group
             __props__.__dict__["available_credits"] = None
             __props__.__dict__["ca_cert"] = None
@@ -615,6 +645,9 @@ class Project(pulumi.CustomResource):
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
+        pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
+
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @property
@@ -711,5 +744,8 @@ class Project(pulumi.CustomResource):
         """
         Use the same billing group that is used in source project.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+        pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
+
         return pulumi.get(self, "use_source_project_billing_group")
 

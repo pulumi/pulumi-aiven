@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+ * The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
  * 
  * ## Example Usage
  * ```java

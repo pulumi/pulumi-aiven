@@ -30,6 +30,8 @@ type Project struct {
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrOutput `pulumi:"addAccountOwnersAdminAccess"`
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
@@ -54,6 +56,8 @@ type Project struct {
 	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	UseSourceProjectBillingGroup pulumi.BoolPtrOutput `pulumi:"useSourceProjectBillingGroup"`
 }
 
@@ -99,6 +103,8 @@ type projectState struct {
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits *string `pulumi:"availableCredits"`
@@ -123,6 +129,8 @@ type projectState struct {
 	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	UseSourceProjectBillingGroup *bool `pulumi:"useSourceProjectBillingGroup"`
 }
 
@@ -132,6 +140,8 @@ type ProjectState struct {
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits pulumi.StringPtrInput
@@ -156,6 +166,8 @@ type ProjectState struct {
 	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// Use the same billing group that is used in source project.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	UseSourceProjectBillingGroup pulumi.BoolPtrInput
 }
 
@@ -169,6 +181,8 @@ type projectArgs struct {
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -185,6 +199,8 @@ type projectArgs struct {
 	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	UseSourceProjectBillingGroup *bool `pulumi:"useSourceProjectBillingGroup"`
 }
 
@@ -195,6 +211,8 @@ type ProjectArgs struct {
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrInput
@@ -211,6 +229,8 @@ type ProjectArgs struct {
 	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// Use the same billing group that is used in source project.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	UseSourceProjectBillingGroup pulumi.BoolPtrInput
 }
 
@@ -333,6 +353,8 @@ func (o ProjectOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
+//
+// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 func (o ProjectOutput) AddAccountOwnersAdminAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AddAccountOwnersAdminAccess }).(pulumi.BoolPtrOutput)
 }
@@ -393,6 +415,8 @@ func (o ProjectOutput) TechnicalEmails() pulumi.StringArrayOutput {
 }
 
 // Use the same billing group that is used in source project.
+//
+// Deprecated: This field is deprecated and will be removed in the next major release.
 func (o ProjectOutput) UseSourceProjectBillingGroup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.UseSourceProjectBillingGroup }).(pulumi.BoolPtrOutput)
 }

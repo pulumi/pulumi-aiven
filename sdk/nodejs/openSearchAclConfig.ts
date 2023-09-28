@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+ * The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
  *
  * ## Example Usage
  *
