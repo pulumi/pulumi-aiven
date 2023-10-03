@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// postgresql.conf configuration values.
         /// </summary>
         [Output("pg")]
         public Output<Outputs.PgPg> PgServer { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// postgresql.conf configuration values.
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgArgs>? PgServer { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -417,7 +417,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// postgresql.conf configuration values.
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgGetArgs>? PgServer { get; set; }
@@ -530,7 +530,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {

@@ -16,44 +16,92 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
 
     public static final ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs Empty = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs();
 
+    /**
+     * The minimum amount of data the server should return for a fetch request.
+     * 
+     */
     @Import(name="consumerFetchMinBytes")
     private @Nullable Output<Integer> consumerFetchMinBytes;
 
+    /**
+     * @return The minimum amount of data the server should return for a fetch request.
+     * 
+     */
     public Optional<Output<Integer>> consumerFetchMinBytes() {
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
 
+    /**
+     * The batch size in bytes producer will attempt to collect before publishing to broker.
+     * 
+     */
     @Import(name="producerBatchSize")
     private @Nullable Output<Integer> producerBatchSize;
 
+    /**
+     * @return The batch size in bytes producer will attempt to collect before publishing to broker.
+     * 
+     */
     public Optional<Output<Integer>> producerBatchSize() {
         return Optional.ofNullable(this.producerBatchSize);
     }
 
+    /**
+     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * 
+     */
     @Import(name="producerBufferMemory")
     private @Nullable Output<Integer> producerBufferMemory;
 
+    /**
+     * @return The amount of bytes producer can use for buffering data before publishing to broker.
+     * 
+     */
     public Optional<Output<Integer>> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
     }
 
+    /**
+     * Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     public Optional<Output<String>> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
 
+    /**
+     * The linger time (ms) for waiting new data to arrive for publishing.
+     * 
+     */
     @Import(name="producerLingerMs")
     private @Nullable Output<Integer> producerLingerMs;
 
+    /**
+     * @return The linger time (ms) for waiting new data to arrive for publishing.
+     * 
+     */
     public Optional<Output<Integer>> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
 
+    /**
+     * The maximum request size in bytes.
+     * 
+     */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
+    /**
+     * @return The maximum request size in bytes.
+     * 
+     */
     public Optional<Output<Integer>> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
@@ -87,56 +135,128 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
             $ = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerFetchMinBytes(@Nullable Output<Integer> consumerFetchMinBytes) {
             $.consumerFetchMinBytes = consumerFetchMinBytes;
             return this;
         }
 
+        /**
+         * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerFetchMinBytes(Integer consumerFetchMinBytes) {
             return consumerFetchMinBytes(Output.of(consumerFetchMinBytes));
         }
 
+        /**
+         * @param producerBatchSize The batch size in bytes producer will attempt to collect before publishing to broker.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerBatchSize(@Nullable Output<Integer> producerBatchSize) {
             $.producerBatchSize = producerBatchSize;
             return this;
         }
 
+        /**
+         * @param producerBatchSize The batch size in bytes producer will attempt to collect before publishing to broker.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerBatchSize(Integer producerBatchSize) {
             return producerBatchSize(Output.of(producerBatchSize));
         }
 
+        /**
+         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerBufferMemory(@Nullable Output<Integer> producerBufferMemory) {
             $.producerBufferMemory = producerBufferMemory;
             return this;
         }
 
+        /**
+         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerBufferMemory(Integer producerBufferMemory) {
             return producerBufferMemory(Output.of(producerBufferMemory));
         }
 
+        /**
+         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerCompressionType(@Nullable Output<String> producerCompressionType) {
             $.producerCompressionType = producerCompressionType;
             return this;
         }
 
+        /**
+         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerCompressionType(String producerCompressionType) {
             return producerCompressionType(Output.of(producerCompressionType));
         }
 
+        /**
+         * @param producerLingerMs The linger time (ms) for waiting new data to arrive for publishing.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {
             $.producerLingerMs = producerLingerMs;
             return this;
         }
 
+        /**
+         * @param producerLingerMs The linger time (ms) for waiting new data to arrive for publishing.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerLingerMs(Integer producerLingerMs) {
             return producerLingerMs(Output.of(producerLingerMs));
         }
 
+        /**
+         * @param producerMaxRequestSize The maximum request size in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerMaxRequestSize(@Nullable Output<Integer> producerMaxRequestSize) {
             $.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
 
+        /**
+         * @param producerMaxRequestSize The maximum request size in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
             return producerMaxRequestSize(Output.of(producerMaxRequestSize));
         }

@@ -179,14 +179,14 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      * 
      */
     @Export(name="pg", refs={PgPg.class}, tree="[0]")
     private Output<PgPg> pg;
 
     /**
-     * @return PostgreSQL specific server provided values
+     * @return postgresql.conf configuration values.
      * 
      */
     public Output<PgPg> pg() {
@@ -375,14 +375,14 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Output<Optional<List<String>>> staticIps() {

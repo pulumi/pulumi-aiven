@@ -16,23 +16,47 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
 
     public static final CassandraCassandraUserConfigCassandraArgs Empty = new CassandraCassandraUserConfigCassandraArgs();
 
+    /**
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * 
+     */
     @Import(name="batchSizeFailThresholdInKb")
     private @Nullable Output<Integer> batchSizeFailThresholdInKb;
 
+    /**
+     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * 
+     */
     public Optional<Output<Integer>> batchSizeFailThresholdInKb() {
         return Optional.ofNullable(this.batchSizeFailThresholdInKb);
     }
 
+    /**
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * 
+     */
     @Import(name="batchSizeWarnThresholdInKb")
     private @Nullable Output<Integer> batchSizeWarnThresholdInKb;
 
+    /**
+     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * 
+     */
     public Optional<Output<Integer>> batchSizeWarnThresholdInKb() {
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
     }
 
+    /**
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * 
+     */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
+    /**
+     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * 
+     */
     public Optional<Output<String>> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
@@ -63,29 +87,65 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
             $ = new CassandraCassandraUserConfigCassandraArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param batchSizeFailThresholdInKb Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizeFailThresholdInKb(@Nullable Output<Integer> batchSizeFailThresholdInKb) {
             $.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             return this;
         }
 
+        /**
+         * @param batchSizeFailThresholdInKb Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizeFailThresholdInKb(Integer batchSizeFailThresholdInKb) {
             return batchSizeFailThresholdInKb(Output.of(batchSizeFailThresholdInKb));
         }
 
+        /**
+         * @param batchSizeWarnThresholdInKb Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizeWarnThresholdInKb(@Nullable Output<Integer> batchSizeWarnThresholdInKb) {
             $.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             return this;
         }
 
+        /**
+         * @param batchSizeWarnThresholdInKb Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizeWarnThresholdInKb(Integer batchSizeWarnThresholdInKb) {
             return batchSizeWarnThresholdInKb(Output.of(batchSizeWarnThresholdInKb));
         }
 
+        /**
+         * @param datacenter Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenter(@Nullable Output<String> datacenter) {
             $.datacenter = datacenter;
             return this;
         }
 
+        /**
+         * @param datacenter Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenter(String datacenter) {
             return datacenter(Output.of(datacenter));
         }

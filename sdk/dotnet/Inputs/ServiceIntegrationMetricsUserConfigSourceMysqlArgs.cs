@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationMetricsUserConfigSourceMysqlArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration options for Telegraf MySQL input plugin.
+        /// </summary>
         [Input("telegraf")]
         public Input<Inputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs>? Telegraf { get; set; }
 

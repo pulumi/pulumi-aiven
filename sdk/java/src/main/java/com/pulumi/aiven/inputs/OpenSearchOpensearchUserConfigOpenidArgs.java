@@ -17,86 +17,182 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
 
     public static final OpenSearchOpensearchUserConfigOpenidArgs Empty = new OpenSearchOpensearchUserConfigOpenidArgs();
 
+    /**
+     * The ID of the OpenID Connect client configured in your IdP. Required.
+     * 
+     */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
+    /**
+     * @return The ID of the OpenID Connect client configured in your IdP. Required.
+     * 
+     */
     public Output<String> clientId() {
         return this.clientId;
     }
 
+    /**
+     * The client secret of the OpenID Connect client configured in your IdP. Required.
+     * 
+     */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
+    /**
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
 
+    /**
+     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * 
+     */
     @Import(name="connectUrl", required=true)
     private Output<String> connectUrl;
 
+    /**
+     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * 
+     */
     public Output<String> connectUrl() {
         return this.connectUrl;
     }
 
+    /**
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * 
+     */
     @Import(name="header")
     private @Nullable Output<String> header;
 
+    /**
+     * @return HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * 
+     */
     public Optional<Output<String>> header() {
         return Optional.ofNullable(this.header);
     }
 
+    /**
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     * 
+     */
     @Import(name="jwtHeader")
     private @Nullable Output<String> jwtHeader;
 
+    /**
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     * 
+     */
     public Optional<Output<String>> jwtHeader() {
         return Optional.ofNullable(this.jwtHeader);
     }
 
+    /**
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * 
+     */
     @Import(name="jwtUrlParameter")
     private @Nullable Output<String> jwtUrlParameter;
 
+    /**
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * 
+     */
     public Optional<Output<String>> jwtUrlParameter() {
         return Optional.ofNullable(this.jwtUrlParameter);
     }
 
+    /**
+     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * 
+     */
     @Import(name="refreshRateLimitCount")
     private @Nullable Output<Integer> refreshRateLimitCount;
 
+    /**
+     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * 
+     */
     public Optional<Output<Integer>> refreshRateLimitCount() {
         return Optional.ofNullable(this.refreshRateLimitCount);
     }
 
+    /**
+     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * 
+     */
     @Import(name="refreshRateLimitTimeWindowMs")
     private @Nullable Output<Integer> refreshRateLimitTimeWindowMs;
 
+    /**
+     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * 
+     */
     public Optional<Output<Integer>> refreshRateLimitTimeWindowMs() {
         return Optional.ofNullable(this.refreshRateLimitTimeWindowMs);
     }
 
+    /**
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * 
+     */
     @Import(name="rolesKey")
     private @Nullable Output<String> rolesKey;
 
+    /**
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * 
+     */
     public Optional<Output<String>> rolesKey() {
         return Optional.ofNullable(this.rolesKey);
     }
 
+    /**
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * 
+     */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
+    /**
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * 
+     */
     public Optional<Output<String>> scope() {
         return Optional.ofNullable(this.scope);
     }
 
+    /**
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * 
+     */
     @Import(name="subjectKey")
     private @Nullable Output<String> subjectKey;
 
+    /**
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * 
+     */
     public Optional<Output<String>> subjectKey() {
         return Optional.ofNullable(this.subjectKey);
     }
@@ -136,110 +232,254 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
             $ = new OpenSearchOpensearchUserConfigOpenidArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param connectUrl The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectUrl(Output<String> connectUrl) {
             $.connectUrl = connectUrl;
             return this;
         }
 
+        /**
+         * @param connectUrl The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectUrl(String connectUrl) {
             return connectUrl(Output.of(connectUrl));
         }
 
+        /**
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param header HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(@Nullable Output<String> header) {
             $.header = header;
             return this;
         }
 
+        /**
+         * @param header HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(String header) {
             return header(Output.of(header));
         }
 
+        /**
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jwtHeader(@Nullable Output<String> jwtHeader) {
             $.jwtHeader = jwtHeader;
             return this;
         }
 
+        /**
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jwtHeader(String jwtHeader) {
             return jwtHeader(Output.of(jwtHeader));
         }
 
+        /**
+         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jwtUrlParameter(@Nullable Output<String> jwtUrlParameter) {
             $.jwtUrlParameter = jwtUrlParameter;
             return this;
         }
 
+        /**
+         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jwtUrlParameter(String jwtUrlParameter) {
             return jwtUrlParameter(Output.of(jwtUrlParameter));
         }
 
+        /**
+         * @param refreshRateLimitCount The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshRateLimitCount(@Nullable Output<Integer> refreshRateLimitCount) {
             $.refreshRateLimitCount = refreshRateLimitCount;
             return this;
         }
 
+        /**
+         * @param refreshRateLimitCount The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshRateLimitCount(Integer refreshRateLimitCount) {
             return refreshRateLimitCount(Output.of(refreshRateLimitCount));
         }
 
+        /**
+         * @param refreshRateLimitTimeWindowMs The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshRateLimitTimeWindowMs(@Nullable Output<Integer> refreshRateLimitTimeWindowMs) {
             $.refreshRateLimitTimeWindowMs = refreshRateLimitTimeWindowMs;
             return this;
         }
 
+        /**
+         * @param refreshRateLimitTimeWindowMs The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshRateLimitTimeWindowMs(Integer refreshRateLimitTimeWindowMs) {
             return refreshRateLimitTimeWindowMs(Output.of(refreshRateLimitTimeWindowMs));
         }
 
+        /**
+         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rolesKey(@Nullable Output<String> rolesKey) {
             $.rolesKey = rolesKey;
             return this;
         }
 
+        /**
+         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rolesKey(String rolesKey) {
             return rolesKey(Output.of(rolesKey));
         }
 
+        /**
+         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(@Nullable Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
+        /**
+         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }
 
+        /**
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKey(@Nullable Output<String> subjectKey) {
             $.subjectKey = subjectKey;
             return this;
         }
 
+        /**
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKey(String subjectKey) {
             return subjectKey(Output.of(subjectKey));
         }

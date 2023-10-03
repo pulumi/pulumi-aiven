@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,46 +40,83 @@ class PgArgs:
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input['PgPgArgs'] pg: PostgreSQL specific server provided values
+        :param pulumi.Input['PgPgArgs'] pg: postgresql.conf configuration values.
         :param pulumi.Input['PgPgUserConfigArgs'] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
-        pulumi.set(__self__, "plan", plan)
-        pulumi.set(__self__, "project", project)
+        PgArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            project=project,
+            additional_disk_space=additional_disk_space,
+            cloud_name=cloud_name,
+            disk_space=disk_space,
+            maintenance_window_dow=maintenance_window_dow,
+            maintenance_window_time=maintenance_window_time,
+            pg=pg,
+            pg_user_config=pg_user_config,
+            project_vpc_id=project_vpc_id,
+            service_integrations=service_integrations,
+            service_name=service_name,
+            static_ips=static_ips,
+            tags=tags,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: pulumi.Input[str],
+             project: pulumi.Input[str],
+             additional_disk_space: Optional[pulumi.Input[str]] = None,
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             disk_space: Optional[pulumi.Input[str]] = None,
+             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+             maintenance_window_time: Optional[pulumi.Input[str]] = None,
+             pg: Optional[pulumi.Input['PgPgArgs']] = None,
+             pg_user_config: Optional[pulumi.Input['PgPgUserConfigArgs']] = None,
+             project_vpc_id: Optional[pulumi.Input[str]] = None,
+             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plan", plan)
+        _setter("project", project)
         if additional_disk_space is not None:
-            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+            _setter("additional_disk_space", additional_disk_space)
         if cloud_name is not None:
-            pulumi.set(__self__, "cloud_name", cloud_name)
+            _setter("cloud_name", cloud_name)
         if disk_space is not None:
             warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
-            pulumi.set(__self__, "disk_space", disk_space)
+            _setter("disk_space", disk_space)
         if maintenance_window_dow is not None:
-            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+            _setter("maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
-            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+            _setter("maintenance_window_time", maintenance_window_time)
         if pg is not None:
-            pulumi.set(__self__, "pg", pg)
+            _setter("pg", pg)
         if pg_user_config is not None:
-            pulumi.set(__self__, "pg_user_config", pg_user_config)
+            _setter("pg_user_config", pg_user_config)
         if project_vpc_id is not None:
-            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+            _setter("project_vpc_id", project_vpc_id)
         if service_integrations is not None:
-            pulumi.set(__self__, "service_integrations", service_integrations)
+            _setter("service_integrations", service_integrations)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
+            _setter("static_ips", static_ips)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter
@@ -172,7 +209,7 @@ class PgArgs:
     @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['PgPgArgs']]:
         """
-        PostgreSQL specific server provided values
+        postgresql.conf configuration values.
         """
         return pulumi.get(self, "pg")
 
@@ -232,7 +269,7 @@ class PgArgs:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
@@ -307,7 +344,7 @@ class _PgState:
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input['PgPgArgs'] pg: PostgreSQL specific server provided values
+        :param pulumi.Input['PgPgArgs'] pg: postgresql.conf configuration values.
         :param pulumi.Input['PgPgUserConfigArgs'] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -321,67 +358,128 @@ class _PgState:
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
+        _PgState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_disk_space=additional_disk_space,
+            cloud_name=cloud_name,
+            components=components,
+            disk_space=disk_space,
+            disk_space_cap=disk_space_cap,
+            disk_space_default=disk_space_default,
+            disk_space_step=disk_space_step,
+            disk_space_used=disk_space_used,
+            maintenance_window_dow=maintenance_window_dow,
+            maintenance_window_time=maintenance_window_time,
+            pg=pg,
+            pg_user_config=pg_user_config,
+            plan=plan,
+            project=project,
+            project_vpc_id=project_vpc_id,
+            service_host=service_host,
+            service_integrations=service_integrations,
+            service_name=service_name,
+            service_password=service_password,
+            service_port=service_port,
+            service_type=service_type,
+            service_uri=service_uri,
+            service_username=service_username,
+            state=state,
+            static_ips=static_ips,
+            tags=tags,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_disk_space: Optional[pulumi.Input[str]] = None,
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             components: Optional[pulumi.Input[Sequence[pulumi.Input['PgComponentArgs']]]] = None,
+             disk_space: Optional[pulumi.Input[str]] = None,
+             disk_space_cap: Optional[pulumi.Input[str]] = None,
+             disk_space_default: Optional[pulumi.Input[str]] = None,
+             disk_space_step: Optional[pulumi.Input[str]] = None,
+             disk_space_used: Optional[pulumi.Input[str]] = None,
+             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+             maintenance_window_time: Optional[pulumi.Input[str]] = None,
+             pg: Optional[pulumi.Input['PgPgArgs']] = None,
+             pg_user_config: Optional[pulumi.Input['PgPgUserConfigArgs']] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_vpc_id: Optional[pulumi.Input[str]] = None,
+             service_host: Optional[pulumi.Input[str]] = None,
+             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             service_password: Optional[pulumi.Input[str]] = None,
+             service_port: Optional[pulumi.Input[int]] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
+             service_uri: Optional[pulumi.Input[str]] = None,
+             service_username: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_disk_space is not None:
-            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+            _setter("additional_disk_space", additional_disk_space)
         if cloud_name is not None:
-            pulumi.set(__self__, "cloud_name", cloud_name)
+            _setter("cloud_name", cloud_name)
         if components is not None:
-            pulumi.set(__self__, "components", components)
+            _setter("components", components)
         if disk_space is not None:
             warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
-            pulumi.set(__self__, "disk_space", disk_space)
+            _setter("disk_space", disk_space)
         if disk_space_cap is not None:
-            pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+            _setter("disk_space_cap", disk_space_cap)
         if disk_space_default is not None:
-            pulumi.set(__self__, "disk_space_default", disk_space_default)
+            _setter("disk_space_default", disk_space_default)
         if disk_space_step is not None:
-            pulumi.set(__self__, "disk_space_step", disk_space_step)
+            _setter("disk_space_step", disk_space_step)
         if disk_space_used is not None:
-            pulumi.set(__self__, "disk_space_used", disk_space_used)
+            _setter("disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
-            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+            _setter("maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
-            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+            _setter("maintenance_window_time", maintenance_window_time)
         if pg is not None:
-            pulumi.set(__self__, "pg", pg)
+            _setter("pg", pg)
         if pg_user_config is not None:
-            pulumi.set(__self__, "pg_user_config", pg_user_config)
+            _setter("pg_user_config", pg_user_config)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if project_vpc_id is not None:
-            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+            _setter("project_vpc_id", project_vpc_id)
         if service_host is not None:
-            pulumi.set(__self__, "service_host", service_host)
+            _setter("service_host", service_host)
         if service_integrations is not None:
-            pulumi.set(__self__, "service_integrations", service_integrations)
+            _setter("service_integrations", service_integrations)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if service_password is not None:
-            pulumi.set(__self__, "service_password", service_password)
+            _setter("service_password", service_password)
         if service_port is not None:
-            pulumi.set(__self__, "service_port", service_port)
+            _setter("service_port", service_port)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
         if service_uri is not None:
-            pulumi.set(__self__, "service_uri", service_uri)
+            _setter("service_uri", service_uri)
         if service_username is not None:
-            pulumi.set(__self__, "service_username", service_username)
+            _setter("service_username", service_username)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
+            _setter("static_ips", static_ips)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
@@ -510,7 +608,7 @@ class _PgState:
     @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['PgPgArgs']]:
         """
-        PostgreSQL specific server provided values
+        postgresql.conf configuration values.
         """
         return pulumi.get(self, "pg")
 
@@ -678,7 +776,7 @@ class _PgState:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
@@ -748,14 +846,14 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: postgresql.conf configuration values.
         :param pulumi.Input[pulumi.InputType['PgPgUserConfigArgs']] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
@@ -784,6 +882,10 @@ class Pg(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PgArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -815,13 +917,20 @@ class Pg(pulumi.CustomResource):
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
-            if disk_space is not None and not opts.urn:
-                warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-                pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
+            if pg is not None and not isinstance(pg, PgPgArgs):
+                pg = pg or {}
+                def _setter(key, value):
+                    pg[key] = value
+                PgPgArgs._configure(_setter, **pg)
             __props__.__dict__["pg"] = pg
+            if pg_user_config is not None and not isinstance(pg_user_config, PgPgUserConfigArgs):
+                pg_user_config = pg_user_config or {}
+                def _setter(key, value):
+                    pg_user_config[key] = value
+                PgPgUserConfigArgs._configure(_setter, **pg_user_config)
             __props__.__dict__["pg_user_config"] = pg_user_config
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
@@ -903,7 +1012,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['PgPgArgs']] pg: postgresql.conf configuration values.
         :param pulumi.Input[pulumi.InputType['PgPgUserConfigArgs']] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -917,7 +1026,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
@@ -1041,7 +1150,7 @@ class Pg(pulumi.CustomResource):
     @pulumi.getter
     def pg(self) -> pulumi.Output['outputs.PgPg']:
         """
-        PostgreSQL specific server provided values
+        postgresql.conf configuration values.
         """
         return pulumi.get(self, "pg")
 
@@ -1153,7 +1262,7 @@ class Pg(pulumi.CustomResource):
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 

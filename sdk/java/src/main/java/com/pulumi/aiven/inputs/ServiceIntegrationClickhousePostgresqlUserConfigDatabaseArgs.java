@@ -15,16 +15,32 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
 
     public static final ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs Empty = new ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs();
 
+    /**
+     * PostgreSQL database to expose. The default value is `defaultdb`.
+     * 
+     */
     @Import(name="database")
     private @Nullable Output<String> database;
 
+    /**
+     * @return PostgreSQL database to expose. The default value is `defaultdb`.
+     * 
+     */
     public Optional<Output<String>> database() {
         return Optional.ofNullable(this.database);
     }
 
+    /**
+     * PostgreSQL schema to expose. The default value is `public`.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
+    /**
+     * @return PostgreSQL schema to expose. The default value is `public`.
+     * 
+     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
@@ -54,20 +70,44 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
             $ = new ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param database PostgreSQL database to expose. The default value is `defaultdb`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(@Nullable Output<String> database) {
             $.database = database;
             return this;
         }
 
+        /**
+         * @param database PostgreSQL database to expose. The default value is `defaultdb`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(String database) {
             return database(Output.of(database));
         }
 
+        /**
+         * @param schema PostgreSQL schema to expose. The default value is `public`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema PostgreSQL schema to expose. The default value is `public`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }

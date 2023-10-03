@@ -25,15 +25,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Kafka MirrorMaker 2 server provided values
-     * 
-     */
     private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetKafkaMirrorMakerKafkaMirrormakerUserConfig() {}
@@ -55,17 +47,9 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Kafka MirrorMaker 2 server provided values
-     * 
-     */
     public Optional<GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

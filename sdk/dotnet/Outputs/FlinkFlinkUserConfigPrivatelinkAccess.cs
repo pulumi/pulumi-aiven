@@ -14,9 +14,12 @@ namespace Pulumi.Aiven.Outputs
     public sealed class FlinkFlinkUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// Flink server provided values
+        /// Enable flink.
         /// </summary>
         public readonly bool? Flink;
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

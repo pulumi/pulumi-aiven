@@ -11,19 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMySqlMysqlUserConfigPrivatelinkAccess {
-    /**
-     * @return MySQL specific server provided values
-     * 
-     */
     private @Nullable Boolean mysql;
     private @Nullable Boolean mysqlx;
     private @Nullable Boolean prometheus;
 
     private GetMySqlMysqlUserConfigPrivatelinkAccess() {}
-    /**
-     * @return MySQL specific server provided values
-     * 
-     */
     public Optional<Boolean> mysql() {
         return Optional.ofNullable(this.mysql);
     }

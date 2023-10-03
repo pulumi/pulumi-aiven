@@ -152,14 +152,14 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Flink server provided values
+     * Enable flink.
      * 
      */
     @Import(name="flink")
     private @Nullable Output<FlinkFlinkArgs> flink;
 
     /**
-     * @return Flink server provided values
+     * @return Enable flink.
      * 
      */
     public Optional<Output<FlinkFlinkArgs>> flink() {
@@ -673,7 +673,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flink Flink server provided values
+         * @param flink Enable flink.
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flink Flink server provided values
+         * @param flink Enable flink.
          * 
          * @return builder
          * 

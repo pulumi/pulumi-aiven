@@ -16,23 +16,47 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
 
     public static final OpenSearchOpensearchUserConfigOpensearchDashboardsArgs Empty = new OpenSearchOpensearchUserConfigOpensearchDashboardsArgs();
 
+    /**
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * 
+     */
     @Import(name="maxOldSpaceSize")
     private @Nullable Output<Integer> maxOldSpaceSize;
 
+    /**
+     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * 
+     */
     public Optional<Output<Integer>> maxOldSpaceSize() {
         return Optional.ofNullable(this.maxOldSpaceSize);
     }
 
+    /**
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * 
+     */
     @Import(name="opensearchRequestTimeout")
     private @Nullable Output<Integer> opensearchRequestTimeout;
 
+    /**
+     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * 
+     */
     public Optional<Output<Integer>> opensearchRequestTimeout() {
         return Optional.ofNullable(this.opensearchRequestTimeout);
     }
@@ -63,29 +87,65 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
             $ = new OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param maxOldSpaceSize Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxOldSpaceSize(@Nullable Output<Integer> maxOldSpaceSize) {
             $.maxOldSpaceSize = maxOldSpaceSize;
             return this;
         }
 
+        /**
+         * @param maxOldSpaceSize Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxOldSpaceSize(Integer maxOldSpaceSize) {
             return maxOldSpaceSize(Output.of(maxOldSpaceSize));
         }
 
+        /**
+         * @param opensearchRequestTimeout Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearchRequestTimeout(@Nullable Output<Integer> opensearchRequestTimeout) {
             $.opensearchRequestTimeout = opensearchRequestTimeout;
             return this;
         }
 
+        /**
+         * @param opensearchRequestTimeout Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearchRequestTimeout(Integer opensearchRequestTimeout) {
             return opensearchRequestTimeout(Output.of(opensearchRequestTimeout));
         }

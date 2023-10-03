@@ -66,7 +66,7 @@ type Cassandra struct {
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
-	// Cassandra server provided values
+	// cassandra configuration values.
 	Cassandras CassandraCassandraArrayOutput `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -112,7 +112,7 @@ type Cassandra struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags CassandraTagArrayOutput `pulumi:"tags"`
@@ -168,7 +168,7 @@ type cassandraState struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	// Cassandra server provided values
+	// cassandra configuration values.
 	Cassandras []CassandraCassandra `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -214,7 +214,7 @@ type cassandraState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []CassandraTag `pulumi:"tags"`
@@ -227,7 +227,7 @@ type CassandraState struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
-	// Cassandra server provided values
+	// cassandra configuration values.
 	Cassandras CassandraCassandraArrayInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -273,7 +273,7 @@ type CassandraState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags CassandraTagArrayInput
@@ -310,7 +310,7 @@ type cassandraArgs struct {
 	ServiceIntegrations []CassandraServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []CassandraTag `pulumi:"tags"`
@@ -344,7 +344,7 @@ type CassandraArgs struct {
 	ServiceIntegrations CassandraServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags CassandraTagArrayInput
@@ -473,7 +473,7 @@ func (o CassandraOutput) CassandraUserConfig() CassandraCassandraUserConfigPtrOu
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraUserConfigPtrOutput { return v.CassandraUserConfig }).(CassandraCassandraUserConfigPtrOutput)
 }
 
-// Cassandra server provided values
+// cassandra configuration values.
 func (o CassandraOutput) Cassandras() CassandraCassandraArrayOutput {
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraArrayOutput { return v.Cassandras }).(CassandraCassandraArrayOutput)
 }
@@ -585,7 +585,7 @@ func (o CassandraOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cassandra) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Use static public IP addresses.
 func (o CassandraOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cassandra) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

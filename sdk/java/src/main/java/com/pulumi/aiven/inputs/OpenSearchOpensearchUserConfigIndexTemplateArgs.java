@@ -15,23 +15,47 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
 
     public static final OpenSearchOpensearchUserConfigIndexTemplateArgs Empty = new OpenSearchOpensearchUserConfigIndexTemplateArgs();
 
+    /**
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * 
+     */
     @Import(name="mappingNestedObjectsLimit")
     private @Nullable Output<Integer> mappingNestedObjectsLimit;
 
+    /**
+     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * 
+     */
     public Optional<Output<Integer>> mappingNestedObjectsLimit() {
         return Optional.ofNullable(this.mappingNestedObjectsLimit);
     }
 
+    /**
+     * The number of replicas each primary shard has.
+     * 
+     */
     @Import(name="numberOfReplicas")
     private @Nullable Output<Integer> numberOfReplicas;
 
+    /**
+     * @return The number of replicas each primary shard has.
+     * 
+     */
     public Optional<Output<Integer>> numberOfReplicas() {
         return Optional.ofNullable(this.numberOfReplicas);
     }
 
+    /**
+     * The number of primary shards that an index should have.
+     * 
+     */
     @Import(name="numberOfShards")
     private @Nullable Output<Integer> numberOfShards;
 
+    /**
+     * @return The number of primary shards that an index should have.
+     * 
+     */
     public Optional<Output<Integer>> numberOfShards() {
         return Optional.ofNullable(this.numberOfShards);
     }
@@ -62,29 +86,65 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
             $ = new OpenSearchOpensearchUserConfigIndexTemplateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mappingNestedObjectsLimit The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappingNestedObjectsLimit(@Nullable Output<Integer> mappingNestedObjectsLimit) {
             $.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
             return this;
         }
 
+        /**
+         * @param mappingNestedObjectsLimit The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappingNestedObjectsLimit(Integer mappingNestedObjectsLimit) {
             return mappingNestedObjectsLimit(Output.of(mappingNestedObjectsLimit));
         }
 
+        /**
+         * @param numberOfReplicas The number of replicas each primary shard has.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numberOfReplicas(@Nullable Output<Integer> numberOfReplicas) {
             $.numberOfReplicas = numberOfReplicas;
             return this;
         }
 
+        /**
+         * @param numberOfReplicas The number of replicas each primary shard has.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numberOfReplicas(Integer numberOfReplicas) {
             return numberOfReplicas(Output.of(numberOfReplicas));
         }
 
+        /**
+         * @param numberOfShards The number of primary shards that an index should have.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numberOfShards(@Nullable Output<Integer> numberOfShards) {
             $.numberOfShards = numberOfShards;
             return this;
         }
 
+        /**
+         * @param numberOfShards The number of primary shards that an index should have.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numberOfShards(Integer numberOfShards) {
             return numberOfShards(Output.of(numberOfShards));
         }

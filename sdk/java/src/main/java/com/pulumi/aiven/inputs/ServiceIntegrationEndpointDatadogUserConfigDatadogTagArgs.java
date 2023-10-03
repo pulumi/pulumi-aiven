@@ -15,16 +15,32 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
 
     public static final ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs Empty = new ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs();
 
+    /**
+     * Optional tag explanation.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Optional tag explanation.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * 
+     */
     @Import(name="tag", required=true)
     private Output<String> tag;
 
+    /**
+     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * 
+     */
     public Output<String> tag() {
         return this.tag;
     }
@@ -54,20 +70,44 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
             $ = new ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comment Optional tag explanation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Optional tag explanation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }

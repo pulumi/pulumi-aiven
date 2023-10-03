@@ -17,16 +17,10 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Kafka Connect server provided values
-        /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult? KafkaConnect;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

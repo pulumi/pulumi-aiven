@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    /**
+     * @return Identifier of a value in the metric.
+     * 
+     */
     private String field;
+    /**
+     * @return Identifier of the metric.
+     * 
+     */
     private String metric;
 
     private ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric() {}
+    /**
+     * @return Identifier of a value in the metric.
+     * 
+     */
     public String field() {
         return this.field;
     }
+    /**
+     * @return Identifier of the metric.
+     * 
+     */
     public String metric() {
         return this.metric;
     }

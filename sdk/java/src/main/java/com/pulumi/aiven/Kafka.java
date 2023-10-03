@@ -231,14 +231,14 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kafkaUserConfig);
     }
     /**
-     * Kafka server provided values
+     * Kafka broker configuration values.
      * 
      */
     @Export(name="kafkas", refs={List.class,KafkaKafka.class}, tree="[0,1]")
     private Output<List<KafkaKafka>> kafkas;
 
     /**
-     * @return Kafka server provided values
+     * @return Kafka broker configuration values.
      * 
      */
     public Output<List<KafkaKafka>> kafkas() {
@@ -459,14 +459,14 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Output<Optional<List<String>>> staticIps() {

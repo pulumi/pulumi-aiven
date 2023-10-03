@@ -12,12 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchUserConfigIndexPatternArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of indexes to keep.
+        /// </summary>
         [Input("maxIndexCount", required: true)]
         public Input<int> MaxIndexCount { get; set; } = null!;
 
+        /// <summary>
+        /// fnmatch pattern.
+        /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
+        /// <summary>
+        /// Deletion sorting algorithm. The default value is `creation_date`.
+        /// </summary>
         [Input("sortingAlgorithm")]
         public Input<string>? SortingAlgorithm { get; set; }
 

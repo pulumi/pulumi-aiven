@@ -15,30 +15,62 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
 
     public static final ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs Empty = new ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs();
 
+    /**
+     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     @Import(name="configStorageTopic")
     private @Nullable Output<String> configStorageTopic;
 
+    /**
+     * @return The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     public Optional<Output<String>> configStorageTopic() {
         return Optional.ofNullable(this.configStorageTopic);
     }
 
+    /**
+     * A unique string that identifies the Connect cluster group this worker belongs to.
+     * 
+     */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
+    /**
+     * @return A unique string that identifies the Connect cluster group this worker belongs to.
+     * 
+     */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
 
+    /**
+     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     @Import(name="offsetStorageTopic")
     private @Nullable Output<String> offsetStorageTopic;
 
+    /**
+     * @return The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     public Optional<Output<String>> offsetStorageTopic() {
         return Optional.ofNullable(this.offsetStorageTopic);
     }
 
+    /**
+     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     @Import(name="statusStorageTopic")
     private @Nullable Output<String> statusStorageTopic;
 
+    /**
+     * @return The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     public Optional<Output<String>> statusStorageTopic() {
         return Optional.ofNullable(this.statusStorageTopic);
     }
@@ -70,38 +102,86 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
             $ = new ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configStorageTopic The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configStorageTopic(@Nullable Output<String> configStorageTopic) {
             $.configStorageTopic = configStorageTopic;
             return this;
         }
 
+        /**
+         * @param configStorageTopic The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configStorageTopic(String configStorageTopic) {
             return configStorageTopic(Output.of(configStorageTopic));
         }
 
+        /**
+         * @param groupId A unique string that identifies the Connect cluster group this worker belongs to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(@Nullable Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId A unique string that identifies the Connect cluster group this worker belongs to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param offsetStorageTopic The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder offsetStorageTopic(@Nullable Output<String> offsetStorageTopic) {
             $.offsetStorageTopic = offsetStorageTopic;
             return this;
         }
 
+        /**
+         * @param offsetStorageTopic The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder offsetStorageTopic(String offsetStorageTopic) {
             return offsetStorageTopic(Output.of(offsetStorageTopic));
         }
 
+        /**
+         * @param statusStorageTopic The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusStorageTopic(@Nullable Output<String> statusStorageTopic) {
             $.statusStorageTopic = statusStorageTopic;
             return this;
         }
 
+        /**
+         * @param statusStorageTopic The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusStorageTopic(String statusStorageTopic) {
             return statusStorageTopic(Output.of(statusStorageTopic));
         }

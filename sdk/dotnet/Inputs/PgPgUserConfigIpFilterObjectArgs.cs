@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigIpFilterObjectArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Description for IP filter list entry.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// CIDR address block.
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 

@@ -13,16 +13,32 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
 
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs();
 
+    /**
+     * Column name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Column name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Column type.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Column type.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -52,20 +68,44 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
             $ = new ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Column name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Column name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param type Column type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Column type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

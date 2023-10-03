@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AwsPrivatelinkArgs', 'AwsPrivatelink']
@@ -23,9 +23,22 @@ class AwsPrivatelinkArgs:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "principals", principals)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        AwsPrivatelinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            principals=principals,
+            project=project,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             principals: pulumi.Input[Sequence[pulumi.Input[str]]],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("principals", principals)
+        _setter("project", project)
+        _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -80,16 +93,33 @@ class _AwsPrivatelinkState:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _AwsPrivatelinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_service_id=aws_service_id,
+            aws_service_name=aws_service_name,
+            principals=principals,
+            project=project,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_service_id: Optional[pulumi.Input[str]] = None,
+             aws_service_name: Optional[pulumi.Input[str]] = None,
+             principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aws_service_id is not None:
-            pulumi.set(__self__, "aws_service_id", aws_service_id)
+            _setter("aws_service_id", aws_service_id)
         if aws_service_name is not None:
-            pulumi.set(__self__, "aws_service_name", aws_service_name)
+            _setter("aws_service_name", aws_service_name)
         if principals is not None:
-            pulumi.set(__self__, "principals", principals)
+            _setter("principals", principals)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter(name="awsServiceId")
@@ -225,6 +255,10 @@ class AwsPrivatelink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AwsPrivatelinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

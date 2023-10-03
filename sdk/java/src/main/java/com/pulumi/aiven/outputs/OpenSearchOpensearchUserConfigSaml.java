@@ -12,33 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigSaml {
+    /**
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * 
+     */
     private String idpEntityId;
+    /**
+     * @return The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * 
+     */
     private String idpMetadataUrl;
+    /**
+     * @return This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * 
+     */
     private @Nullable String idpPemtrustedcasContent;
+    /**
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * 
+     */
     private @Nullable String rolesKey;
+    /**
+     * @return The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * 
+     */
     private String spEntityId;
+    /**
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * 
+     */
     private @Nullable String subjectKey;
 
     private OpenSearchOpensearchUserConfigSaml() {}
+    /**
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * 
+     */
     public String idpEntityId() {
         return this.idpEntityId;
     }
+    /**
+     * @return The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * 
+     */
     public String idpMetadataUrl() {
         return this.idpMetadataUrl;
     }
+    /**
+     * @return This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * 
+     */
     public Optional<String> idpPemtrustedcasContent() {
         return Optional.ofNullable(this.idpPemtrustedcasContent);
     }
+    /**
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * 
+     */
     public Optional<String> rolesKey() {
         return Optional.ofNullable(this.rolesKey);
     }
+    /**
+     * @return The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * 
+     */
     public String spEntityId() {
         return this.spEntityId;
     }
+    /**
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * 
+     */
     public Optional<String> subjectKey() {
         return Optional.ofNullable(this.subjectKey);
     }

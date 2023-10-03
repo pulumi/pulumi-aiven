@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FlinkFlinkUserConfigPrivatelinkAccess {
     /**
-     * @return Flink server provided values
+     * @return Enable flink.
      * 
      */
     private @Nullable Boolean flink;
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private FlinkFlinkUserConfigPrivatelinkAccess() {}
     /**
-     * @return Flink server provided values
+     * @return Enable flink.
      * 
      */
     public Optional<Boolean> flink() {
         return Optional.ofNullable(this.flink);
     }
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

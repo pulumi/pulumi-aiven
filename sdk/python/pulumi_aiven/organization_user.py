@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OrganizationUserArgs', 'OrganizationUser']
@@ -21,8 +21,19 @@ class OrganizationUserArgs:
         :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "user_email", user_email)
+        OrganizationUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            organization_id=organization_id,
+            user_email=user_email,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             organization_id: pulumi.Input[str],
+             user_email: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("organization_id", organization_id)
+        _setter("user_email", user_email)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -65,16 +76,33 @@ class _OrganizationUserState:
         :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _OrganizationUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepted=accepted,
+            create_time=create_time,
+            invited_by=invited_by,
+            organization_id=organization_id,
+            user_email=user_email,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepted: Optional[pulumi.Input[bool]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             invited_by: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             user_email: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accepted is not None:
-            pulumi.set(__self__, "accepted", accepted)
+            _setter("accepted", accepted)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if invited_by is not None:
-            pulumi.set(__self__, "invited_by", invited_by)
+            _setter("invited_by", invited_by)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if user_email is not None:
-            pulumi.set(__self__, "user_email", user_email)
+            _setter("user_email", user_email)
 
     @property
     @pulumi.getter
@@ -184,6 +212,10 @@ class OrganizationUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,24 +35,47 @@ class FlinkApplicationVersionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: Application source
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] sources: Application sources
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "statement", statement)
+        FlinkApplicationVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            project=project,
+            service_name=service_name,
+            statement=statement,
+            sink=sink,
+            sinks=sinks,
+            source=source,
+            sources=sources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: pulumi.Input[str],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             statement: pulumi.Input[str],
+             sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+             sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+             source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("statement", statement)
         if sink is not None:
-            pulumi.set(__self__, "sink", sink)
+            _setter("sink", sink)
         if sinks is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
             pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
         if sinks is not None:
-            pulumi.set(__self__, "sinks", sinks)
+            _setter("sinks", sinks)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if sources is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
             pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -187,36 +210,67 @@ class _FlinkApplicationVersionState:
         :param pulumi.Input[str] statement: Job SQL statement
         :param pulumi.Input[int] version: Application version number
         """
+        _FlinkApplicationVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            application_version_id=application_version_id,
+            created_at=created_at,
+            created_by=created_by,
+            project=project,
+            service_name=service_name,
+            sink=sink,
+            sinks=sinks,
+            source=source,
+            sources=sources,
+            statement=statement,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_version_id: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+             sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+             source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+             statement: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if application_version_id is not None:
-            pulumi.set(__self__, "application_version_id", application_version_id)
+            _setter("application_version_id", application_version_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if sink is not None:
-            pulumi.set(__self__, "sink", sink)
+            _setter("sink", sink)
         if sinks is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
             pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
         if sinks is not None:
-            pulumi.set(__self__, "sinks", sinks)
+            _setter("sinks", sinks)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if sources is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
             pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
         if statement is not None:
-            pulumi.set(__self__, "statement", statement)
+            _setter("statement", statement)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -428,6 +482,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlinkApplicationVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -460,14 +518,8 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["sink"] = sink
-            if sinks is not None and not opts.urn:
-                warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
-                pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
             __props__.__dict__["sinks"] = sinks
             __props__.__dict__["source"] = source
-            if sources is not None and not opts.urn:
-                warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
-                pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
             __props__.__dict__["sources"] = sources
             if statement is None and not opts.urn:
                 raise TypeError("Missing required property 'statement'")

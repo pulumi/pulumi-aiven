@@ -12,61 +12,173 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+     * 
+     */
     private @Nullable Boolean gatherEventWaits;
+    /**
+     * @return gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * 
+     */
     private @Nullable Boolean gatherFileEventsStats;
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+     * 
+     */
     private @Nullable Boolean gatherIndexIoWaits;
+    /**
+     * @return Gather auto_increment columns and max values from information schema.
+     * 
+     */
     private @Nullable Boolean gatherInfoSchemaAutoInc;
+    /**
+     * @return Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+     * 
+     */
     private @Nullable Boolean gatherInnodbMetrics;
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+     * 
+     */
     private @Nullable Boolean gatherPerfEventsStatements;
+    /**
+     * @return Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+     * 
+     */
     private @Nullable Boolean gatherProcessList;
+    /**
+     * @return Gather metrics from SHOW SLAVE STATUS command output.
+     * 
+     */
     private @Nullable Boolean gatherSlaveStatus;
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+     * 
+     */
     private @Nullable Boolean gatherTableIoWaits;
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+     * 
+     */
     private @Nullable Boolean gatherTableLockWaits;
+    /**
+     * @return Gather metrics from INFORMATION_SCHEMA.TABLES.
+     * 
+     */
     private @Nullable Boolean gatherTableSchema;
+    /**
+     * @return Truncates digest text from perf*events*statements into this many characters.
+     * 
+     */
     private @Nullable Integer perfEventsStatementsDigestTextLimit;
+    /**
+     * @return Limits metrics from perf*events*statements.
+     * 
+     */
     private @Nullable Integer perfEventsStatementsLimit;
+    /**
+     * @return Only include perf*events*statements whose last seen is less than this many seconds.
+     * 
+     */
     private @Nullable Integer perfEventsStatementsTimeLimit;
 
     private ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf() {}
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+     * 
+     */
     public Optional<Boolean> gatherEventWaits() {
         return Optional.ofNullable(this.gatherEventWaits);
     }
+    /**
+     * @return gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * 
+     */
     public Optional<Boolean> gatherFileEventsStats() {
         return Optional.ofNullable(this.gatherFileEventsStats);
     }
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+     * 
+     */
     public Optional<Boolean> gatherIndexIoWaits() {
         return Optional.ofNullable(this.gatherIndexIoWaits);
     }
+    /**
+     * @return Gather auto_increment columns and max values from information schema.
+     * 
+     */
     public Optional<Boolean> gatherInfoSchemaAutoInc() {
         return Optional.ofNullable(this.gatherInfoSchemaAutoInc);
     }
+    /**
+     * @return Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+     * 
+     */
     public Optional<Boolean> gatherInnodbMetrics() {
         return Optional.ofNullable(this.gatherInnodbMetrics);
     }
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+     * 
+     */
     public Optional<Boolean> gatherPerfEventsStatements() {
         return Optional.ofNullable(this.gatherPerfEventsStatements);
     }
+    /**
+     * @return Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+     * 
+     */
     public Optional<Boolean> gatherProcessList() {
         return Optional.ofNullable(this.gatherProcessList);
     }
+    /**
+     * @return Gather metrics from SHOW SLAVE STATUS command output.
+     * 
+     */
     public Optional<Boolean> gatherSlaveStatus() {
         return Optional.ofNullable(this.gatherSlaveStatus);
     }
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+     * 
+     */
     public Optional<Boolean> gatherTableIoWaits() {
         return Optional.ofNullable(this.gatherTableIoWaits);
     }
+    /**
+     * @return Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+     * 
+     */
     public Optional<Boolean> gatherTableLockWaits() {
         return Optional.ofNullable(this.gatherTableLockWaits);
     }
+    /**
+     * @return Gather metrics from INFORMATION_SCHEMA.TABLES.
+     * 
+     */
     public Optional<Boolean> gatherTableSchema() {
         return Optional.ofNullable(this.gatherTableSchema);
     }
+    /**
+     * @return Truncates digest text from perf*events*statements into this many characters.
+     * 
+     */
     public Optional<Integer> perfEventsStatementsDigestTextLimit() {
         return Optional.ofNullable(this.perfEventsStatementsDigestTextLimit);
     }
+    /**
+     * @return Limits metrics from perf*events*statements.
+     * 
+     */
     public Optional<Integer> perfEventsStatementsLimit() {
         return Optional.ofNullable(this.perfEventsStatementsLimit);
     }
+    /**
+     * @return Only include perf*events*statements whose last seen is less than this many seconds.
+     * 
+     */
     public Optional<Integer> perfEventsStatementsTimeLimit() {
         return Optional.ofNullable(this.perfEventsStatementsTimeLimit);
     }

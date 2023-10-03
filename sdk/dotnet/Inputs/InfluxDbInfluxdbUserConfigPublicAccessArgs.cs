@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class InfluxDbInfluxdbUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// InfluxDB server provided values
+        /// influxdb.conf configuration values.
         /// </summary>
         [Input("influxdb")]
         public Input<bool>? Influxdb { get; set; }

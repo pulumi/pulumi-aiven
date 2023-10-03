@@ -12,12 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationDatadogUserConfigOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable Datadog Opensearch Index Monitoring.
+        /// </summary>
         [Input("indexStatsEnabled")]
         public Input<bool>? IndexStatsEnabled { get; set; }
 
+        /// <summary>
+        /// Enable Datadog Opensearch Pending Task Monitoring.
+        /// </summary>
         [Input("pendingTaskStatsEnabled")]
         public Input<bool>? PendingTaskStatsEnabled { get; set; }
 
+        /// <summary>
+        /// Enable Datadog Opensearch Primary Shard Monitoring.
+        /// </summary>
         [Input("pshardStatsEnabled")]
         public Input<bool>? PshardStatsEnabled { get; set; }
 

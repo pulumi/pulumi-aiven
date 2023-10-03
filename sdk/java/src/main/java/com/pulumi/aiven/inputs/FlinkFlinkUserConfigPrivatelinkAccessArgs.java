@@ -16,23 +16,31 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
     public static final FlinkFlinkUserConfigPrivatelinkAccessArgs Empty = new FlinkFlinkUserConfigPrivatelinkAccessArgs();
 
     /**
-     * Flink server provided values
+     * Enable flink.
      * 
      */
     @Import(name="flink")
     private @Nullable Output<Boolean> flink;
 
     /**
-     * @return Flink server provided values
+     * @return Enable flink.
      * 
      */
     public Optional<Output<Boolean>> flink() {
         return Optional.ofNullable(this.flink);
     }
 
+    /**
+     * Enable prometheus.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -63,7 +71,7 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param flink Flink server provided values
+         * @param flink Enable flink.
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param flink Flink server provided values
+         * @param flink Enable flink.
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
             return flink(Output.of(flink));
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

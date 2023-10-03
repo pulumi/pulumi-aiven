@@ -16,14 +16,14 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
     public static final InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs Empty = new InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs();
 
     /**
-     * InfluxDB server provided values
+     * influxdb.conf configuration values.
      * 
      */
     @Import(name="influxdb")
     private @Nullable Output<Boolean> influxdb;
 
     /**
-     * @return InfluxDB server provided values
+     * @return influxdb.conf configuration values.
      * 
      */
     public Optional<Output<Boolean>> influxdb() {
@@ -55,7 +55,7 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
         }
 
         /**
-         * @param influxdb InfluxDB server provided values
+         * @param influxdb influxdb.conf configuration values.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
         }
 
         /**
-         * @param influxdb InfluxDB server provided values
+         * @param influxdb influxdb.conf configuration values.
          * 
          * @return builder
          * 

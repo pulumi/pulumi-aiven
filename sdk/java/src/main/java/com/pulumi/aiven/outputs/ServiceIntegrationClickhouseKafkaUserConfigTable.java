@@ -15,57 +15,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
+    /**
+     * @return Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * 
+     */
     private @Nullable String autoOffsetReset;
+    /**
+     * @return Table columns.
+     * 
+     */
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
+    /**
+     * @return Message data format. The default value is `JSONEachRow`.
+     * 
+     */
     private String dataFormat;
+    /**
+     * @return Method to read DateTime from text input formats. The default value is `basic`.
+     * 
+     */
     private @Nullable String dateTimeInputFormat;
+    /**
+     * @return Kafka consumers group. The default value is `clickhouse`.
+     * 
+     */
     private String groupName;
+    /**
+     * @return How to handle errors for Kafka engine. The default value is `default`.
+     * 
+     */
     private @Nullable String handleErrorMode;
+    /**
+     * @return Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * 
+     */
     private @Nullable Integer maxBlockSize;
+    /**
+     * @return The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * 
+     */
     private @Nullable Integer maxRowsPerMessage;
+    /**
+     * @return Column name.
+     * 
+     */
     private String name;
+    /**
+     * @return The number of consumers per table per replica. The default value is `1`.
+     * 
+     */
     private @Nullable Integer numConsumers;
+    /**
+     * @return Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * 
+     */
     private @Nullable Integer pollMaxBatchSize;
+    /**
+     * @return Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * 
+     */
     private @Nullable Integer skipBrokenMessages;
+    /**
+     * @return Kafka topics.
+     * 
+     */
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTable() {}
+    /**
+     * @return Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * 
+     */
     public Optional<String> autoOffsetReset() {
         return Optional.ofNullable(this.autoOffsetReset);
     }
+    /**
+     * @return Table columns.
+     * 
+     */
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns() {
         return this.columns == null ? List.of() : this.columns;
     }
+    /**
+     * @return Message data format. The default value is `JSONEachRow`.
+     * 
+     */
     public String dataFormat() {
         return this.dataFormat;
     }
+    /**
+     * @return Method to read DateTime from text input formats. The default value is `basic`.
+     * 
+     */
     public Optional<String> dateTimeInputFormat() {
         return Optional.ofNullable(this.dateTimeInputFormat);
     }
+    /**
+     * @return Kafka consumers group. The default value is `clickhouse`.
+     * 
+     */
     public String groupName() {
         return this.groupName;
     }
+    /**
+     * @return How to handle errors for Kafka engine. The default value is `default`.
+     * 
+     */
     public Optional<String> handleErrorMode() {
         return Optional.ofNullable(this.handleErrorMode);
     }
+    /**
+     * @return Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * 
+     */
     public Optional<Integer> maxBlockSize() {
         return Optional.ofNullable(this.maxBlockSize);
     }
+    /**
+     * @return The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * 
+     */
     public Optional<Integer> maxRowsPerMessage() {
         return Optional.ofNullable(this.maxRowsPerMessage);
     }
+    /**
+     * @return Column name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The number of consumers per table per replica. The default value is `1`.
+     * 
+     */
     public Optional<Integer> numConsumers() {
         return Optional.ofNullable(this.numConsumers);
     }
+    /**
+     * @return Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * 
+     */
     public Optional<Integer> pollMaxBatchSize() {
         return Optional.ofNullable(this.pollMaxBatchSize);
     }
+    /**
+     * @return Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * 
+     */
     public Optional<Integer> skipBrokenMessages() {
         return Optional.ofNullable(this.skipBrokenMessages);
     }
+    /**
+     * @return Kafka topics.
+     * 
+     */
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics() {
         return this.topics == null ? List.of() : this.topics;
     }

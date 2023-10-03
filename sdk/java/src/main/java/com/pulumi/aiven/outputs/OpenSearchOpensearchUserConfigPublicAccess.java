@@ -12,24 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * @return OpenSearch server provided values
+     * @return OpenSearch settings.
      * 
      */
     private @Nullable Boolean opensearch;
+    /**
+     * @return OpenSearch Dashboards settings.
+     * 
+     */
     private @Nullable Boolean opensearchDashboards;
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private OpenSearchOpensearchUserConfigPublicAccess() {}
     /**
-     * @return OpenSearch server provided values
+     * @return OpenSearch settings.
      * 
      */
     public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return OpenSearch Dashboards settings.
+     * 
+     */
     public Optional<Boolean> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

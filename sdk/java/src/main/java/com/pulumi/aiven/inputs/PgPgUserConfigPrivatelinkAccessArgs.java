@@ -16,30 +16,46 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
     public static final PgPgUserConfigPrivatelinkAccessArgs Empty = new PgPgUserConfigPrivatelinkAccessArgs();
 
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      * 
      */
     @Import(name="pg")
     private @Nullable Output<Boolean> pg;
 
     /**
-     * @return PostgreSQL specific server provided values
+     * @return postgresql.conf configuration values.
      * 
      */
     public Optional<Output<Boolean>> pg() {
         return Optional.ofNullable(this.pg);
     }
 
+    /**
+     * PGBouncer connection pooling settings.
+     * 
+     */
     @Import(name="pgbouncer")
     private @Nullable Output<Boolean> pgbouncer;
 
+    /**
+     * @return PGBouncer connection pooling settings.
+     * 
+     */
     public Optional<Output<Boolean>> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -71,7 +87,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pg PostgreSQL specific server provided values
+         * @param pg postgresql.conf configuration values.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pg PostgreSQL specific server provided values
+         * @param pg postgresql.conf configuration values.
          * 
          * @return builder
          * 
@@ -91,20 +107,44 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
             return pg(Output.of(pg));
         }
 
+        /**
+         * @param pgbouncer PGBouncer connection pooling settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pgbouncer(@Nullable Output<Boolean> pgbouncer) {
             $.pgbouncer = pgbouncer;
             return this;
         }
 
+        /**
+         * @param pgbouncer PGBouncer connection pooling settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pgbouncer(Boolean pgbouncer) {
             return pgbouncer(Output.of(pgbouncer));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

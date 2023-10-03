@@ -15,9 +15,17 @@ public final class CassandraCassandraUserConfigPrivateAccessArgs extends com.pul
 
     public static final CassandraCassandraUserConfigPrivateAccessArgs Empty = new CassandraCassandraUserConfigPrivateAccessArgs();
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -46,11 +54,23 @@ public final class CassandraCassandraUserConfigPrivateAccessArgs extends com.pul
             $ = new CassandraCassandraUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

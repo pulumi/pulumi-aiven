@@ -103,7 +103,7 @@ export class InfluxDb extends pulumi.CustomResource {
      */
     public readonly influxdbUserConfig!: pulumi.Output<outputs.InfluxDbInfluxdbUserConfig | undefined>;
     /**
-     * InfluxDB server provided values
+     * influxdb.conf configuration values.
      */
     public /*out*/ readonly influxdbs!: pulumi.Output<outputs.InfluxDbInfluxdb[]>;
     /**
@@ -163,7 +163,7 @@ export class InfluxDb extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -304,7 +304,7 @@ export interface InfluxDbState {
      */
     influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**
-     * InfluxDB server provided values
+     * influxdb.conf configuration values.
      */
     influxdbs?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdb>[]>;
     /**
@@ -364,7 +364,7 @@ export interface InfluxDbState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -428,7 +428,7 @@ export interface InfluxDbArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

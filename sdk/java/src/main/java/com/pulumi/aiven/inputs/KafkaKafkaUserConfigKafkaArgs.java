@@ -18,275 +18,587 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
 
     public static final KafkaKafkaUserConfigKafkaArgs Empty = new KafkaKafkaUserConfigKafkaArgs();
 
+    /**
+     * Enable auto creation of topics.
+     * 
+     */
     @Import(name="autoCreateTopicsEnable")
     private @Nullable Output<Boolean> autoCreateTopicsEnable;
 
+    /**
+     * @return Enable auto creation of topics.
+     * 
+     */
     public Optional<Output<Boolean>> autoCreateTopicsEnable() {
         return Optional.ofNullable(this.autoCreateTopicsEnable);
     }
 
+    /**
+     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * 
+     */
     @Import(name="compressionType")
     private @Nullable Output<String> compressionType;
 
+    /**
+     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * 
+     */
     public Optional<Output<String>> compressionType() {
         return Optional.ofNullable(this.compressionType);
     }
 
+    /**
+     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * 
+     */
     @Import(name="connectionsMaxIdleMs")
     private @Nullable Output<Integer> connectionsMaxIdleMs;
 
+    /**
+     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * 
+     */
     public Optional<Output<Integer>> connectionsMaxIdleMs() {
         return Optional.ofNullable(this.connectionsMaxIdleMs);
     }
 
+    /**
+     * Replication factor for autocreated topics.
+     * 
+     */
     @Import(name="defaultReplicationFactor")
     private @Nullable Output<Integer> defaultReplicationFactor;
 
+    /**
+     * @return Replication factor for autocreated topics.
+     * 
+     */
     public Optional<Output<Integer>> defaultReplicationFactor() {
         return Optional.ofNullable(this.defaultReplicationFactor);
     }
 
+    /**
+     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * 
+     */
     @Import(name="groupInitialRebalanceDelayMs")
     private @Nullable Output<Integer> groupInitialRebalanceDelayMs;
 
+    /**
+     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * 
+     */
     public Optional<Output<Integer>> groupInitialRebalanceDelayMs() {
         return Optional.ofNullable(this.groupInitialRebalanceDelayMs);
     }
 
+    /**
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     @Import(name="groupMaxSessionTimeoutMs")
     private @Nullable Output<Integer> groupMaxSessionTimeoutMs;
 
+    /**
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     public Optional<Output<Integer>> groupMaxSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMaxSessionTimeoutMs);
     }
 
+    /**
+     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     @Import(name="groupMinSessionTimeoutMs")
     private @Nullable Output<Integer> groupMinSessionTimeoutMs;
 
+    /**
+     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     public Optional<Output<Integer>> groupMinSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
     }
 
+    /**
+     * How long are delete records retained?.
+     * 
+     */
     @Import(name="logCleanerDeleteRetentionMs")
     private @Nullable Output<Integer> logCleanerDeleteRetentionMs;
 
+    /**
+     * @return How long are delete records retained?.
+     * 
+     */
     public Optional<Output<Integer>> logCleanerDeleteRetentionMs() {
         return Optional.ofNullable(this.logCleanerDeleteRetentionMs);
     }
 
+    /**
+     * The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+     * 
+     */
     @Import(name="logCleanerMaxCompactionLagMs")
     private @Nullable Output<Integer> logCleanerMaxCompactionLagMs;
 
+    /**
+     * @return The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+     * 
+     */
     public Optional<Output<Integer>> logCleanerMaxCompactionLagMs() {
         return Optional.ofNullable(this.logCleanerMaxCompactionLagMs);
     }
 
+    /**
+     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * 
+     */
     @Import(name="logCleanerMinCleanableRatio")
     private @Nullable Output<Double> logCleanerMinCleanableRatio;
 
+    /**
+     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * 
+     */
     public Optional<Output<Double>> logCleanerMinCleanableRatio() {
         return Optional.ofNullable(this.logCleanerMinCleanableRatio);
     }
 
+    /**
+     * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+     * 
+     */
     @Import(name="logCleanerMinCompactionLagMs")
     private @Nullable Output<Integer> logCleanerMinCompactionLagMs;
 
+    /**
+     * @return The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+     * 
+     */
     public Optional<Output<Integer>> logCleanerMinCompactionLagMs() {
         return Optional.ofNullable(this.logCleanerMinCompactionLagMs);
     }
 
+    /**
+     * The default cleanup policy for segments beyond the retention window.
+     * 
+     */
     @Import(name="logCleanupPolicy")
     private @Nullable Output<String> logCleanupPolicy;
 
+    /**
+     * @return The default cleanup policy for segments beyond the retention window.
+     * 
+     */
     public Optional<Output<String>> logCleanupPolicy() {
         return Optional.ofNullable(this.logCleanupPolicy);
     }
 
+    /**
+     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     * 
+     */
     @Import(name="logFlushIntervalMessages")
     private @Nullable Output<Integer> logFlushIntervalMessages;
 
+    /**
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk.
+     * 
+     */
     public Optional<Output<Integer>> logFlushIntervalMessages() {
         return Optional.ofNullable(this.logFlushIntervalMessages);
     }
 
+    /**
+     * The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     * 
+     */
     @Import(name="logFlushIntervalMs")
     private @Nullable Output<Integer> logFlushIntervalMs;
 
+    /**
+     * @return The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     * 
+     */
     public Optional<Output<Integer>> logFlushIntervalMs() {
         return Optional.ofNullable(this.logFlushIntervalMs);
     }
 
+    /**
+     * The interval with which Kafka adds an entry to the offset index.
+     * 
+     */
     @Import(name="logIndexIntervalBytes")
     private @Nullable Output<Integer> logIndexIntervalBytes;
 
+    /**
+     * @return The interval with which Kafka adds an entry to the offset index.
+     * 
+     */
     public Optional<Output<Integer>> logIndexIntervalBytes() {
         return Optional.ofNullable(this.logIndexIntervalBytes);
     }
 
+    /**
+     * The maximum size in bytes of the offset index.
+     * 
+     */
     @Import(name="logIndexSizeMaxBytes")
     private @Nullable Output<Integer> logIndexSizeMaxBytes;
 
+    /**
+     * @return The maximum size in bytes of the offset index.
+     * 
+     */
     public Optional<Output<Integer>> logIndexSizeMaxBytes() {
         return Optional.ofNullable(this.logIndexSizeMaxBytes);
     }
 
+    /**
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * 
+     */
     @Import(name="logMessageDownconversionEnable")
     private @Nullable Output<Boolean> logMessageDownconversionEnable;
 
+    /**
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * 
+     */
     public Optional<Output<Boolean>> logMessageDownconversionEnable() {
         return Optional.ofNullable(this.logMessageDownconversionEnable);
     }
 
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+     * 
+     */
     @Import(name="logMessageTimestampDifferenceMaxMs")
     private @Nullable Output<Integer> logMessageTimestampDifferenceMaxMs;
 
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+     * 
+     */
     public Optional<Output<Integer>> logMessageTimestampDifferenceMaxMs() {
         return Optional.ofNullable(this.logMessageTimestampDifferenceMaxMs);
     }
 
+    /**
+     * Define whether the timestamp in the message is message create time or log append time.
+     * 
+     */
     @Import(name="logMessageTimestampType")
     private @Nullable Output<String> logMessageTimestampType;
 
+    /**
+     * @return Define whether the timestamp in the message is message create time or log append time.
+     * 
+     */
     public Optional<Output<String>> logMessageTimestampType() {
         return Optional.ofNullable(this.logMessageTimestampType);
     }
 
+    /**
+     * Should pre allocate file when create new segment?.
+     * 
+     */
     @Import(name="logPreallocate")
     private @Nullable Output<Boolean> logPreallocate;
 
+    /**
+     * @return Should pre allocate file when create new segment?.
+     * 
+     */
     public Optional<Output<Boolean>> logPreallocate() {
         return Optional.ofNullable(this.logPreallocate);
     }
 
+    /**
+     * The maximum size of the log before deleting messages.
+     * 
+     */
     @Import(name="logRetentionBytes")
     private @Nullable Output<Integer> logRetentionBytes;
 
+    /**
+     * @return The maximum size of the log before deleting messages.
+     * 
+     */
     public Optional<Output<Integer>> logRetentionBytes() {
         return Optional.ofNullable(this.logRetentionBytes);
     }
 
+    /**
+     * The number of hours to keep a log file before deleting it.
+     * 
+     */
     @Import(name="logRetentionHours")
     private @Nullable Output<Integer> logRetentionHours;
 
+    /**
+     * @return The number of hours to keep a log file before deleting it.
+     * 
+     */
     public Optional<Output<Integer>> logRetentionHours() {
         return Optional.ofNullable(this.logRetentionHours);
     }
 
+    /**
+     * The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+     * 
+     */
     @Import(name="logRetentionMs")
     private @Nullable Output<Integer> logRetentionMs;
 
+    /**
+     * @return The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+     * 
+     */
     public Optional<Output<Integer>> logRetentionMs() {
         return Optional.ofNullable(this.logRetentionMs);
     }
 
+    /**
+     * The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     * 
+     */
     @Import(name="logRollJitterMs")
     private @Nullable Output<Integer> logRollJitterMs;
 
+    /**
+     * @return The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     * 
+     */
     public Optional<Output<Integer>> logRollJitterMs() {
         return Optional.ofNullable(this.logRollJitterMs);
     }
 
+    /**
+     * The maximum time before a new log segment is rolled out (in milliseconds).
+     * 
+     */
     @Import(name="logRollMs")
     private @Nullable Output<Integer> logRollMs;
 
+    /**
+     * @return The maximum time before a new log segment is rolled out (in milliseconds).
+     * 
+     */
     public Optional<Output<Integer>> logRollMs() {
         return Optional.ofNullable(this.logRollMs);
     }
 
+    /**
+     * The maximum size of a single log file.
+     * 
+     */
     @Import(name="logSegmentBytes")
     private @Nullable Output<Integer> logSegmentBytes;
 
+    /**
+     * @return The maximum size of a single log file.
+     * 
+     */
     public Optional<Output<Integer>> logSegmentBytes() {
         return Optional.ofNullable(this.logSegmentBytes);
     }
 
+    /**
+     * The amount of time to wait before deleting a file from the filesystem.
+     * 
+     */
     @Import(name="logSegmentDeleteDelayMs")
     private @Nullable Output<Integer> logSegmentDeleteDelayMs;
 
+    /**
+     * @return The amount of time to wait before deleting a file from the filesystem.
+     * 
+     */
     public Optional<Output<Integer>> logSegmentDeleteDelayMs() {
         return Optional.ofNullable(this.logSegmentDeleteDelayMs);
     }
 
+    /**
+     * The maximum number of connections allowed from each ip address (defaults to 2147483647).
+     * 
+     */
     @Import(name="maxConnectionsPerIp")
     private @Nullable Output<Integer> maxConnectionsPerIp;
 
+    /**
+     * @return The maximum number of connections allowed from each ip address (defaults to 2147483647).
+     * 
+     */
     public Optional<Output<Integer>> maxConnectionsPerIp() {
         return Optional.ofNullable(this.maxConnectionsPerIp);
     }
 
+    /**
+     * The maximum number of incremental fetch sessions that the broker will maintain.
+     * 
+     */
     @Import(name="maxIncrementalFetchSessionCacheSlots")
     private @Nullable Output<Integer> maxIncrementalFetchSessionCacheSlots;
 
+    /**
+     * @return The maximum number of incremental fetch sessions that the broker will maintain.
+     * 
+     */
     public Optional<Output<Integer>> maxIncrementalFetchSessionCacheSlots() {
         return Optional.ofNullable(this.maxIncrementalFetchSessionCacheSlots);
     }
 
+    /**
+     * The maximum size of message that the server can receive.
+     * 
+     */
     @Import(name="messageMaxBytes")
     private @Nullable Output<Integer> messageMaxBytes;
 
+    /**
+     * @return The maximum size of message that the server can receive.
+     * 
+     */
     public Optional<Output<Integer>> messageMaxBytes() {
         return Optional.ofNullable(this.messageMaxBytes);
     }
 
+    /**
+     * When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * 
+     */
     @Import(name="minInsyncReplicas")
     private @Nullable Output<Integer> minInsyncReplicas;
 
+    /**
+     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * 
+     */
     public Optional<Output<Integer>> minInsyncReplicas() {
         return Optional.ofNullable(this.minInsyncReplicas);
     }
 
+    /**
+     * Number of partitions for autocreated topics.
+     * 
+     */
     @Import(name="numPartitions")
     private @Nullable Output<Integer> numPartitions;
 
+    /**
+     * @return Number of partitions for autocreated topics.
+     * 
+     */
     public Optional<Output<Integer>> numPartitions() {
         return Optional.ofNullable(this.numPartitions);
     }
 
+    /**
+     * Log retention window in minutes for offsets topic.
+     * 
+     */
     @Import(name="offsetsRetentionMinutes")
     private @Nullable Output<Integer> offsetsRetentionMinutes;
 
+    /**
+     * @return Log retention window in minutes for offsets topic.
+     * 
+     */
     public Optional<Output<Integer>> offsetsRetentionMinutes() {
         return Optional.ofNullable(this.offsetsRetentionMinutes);
     }
 
+    /**
+     * The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+     * 
+     */
     @Import(name="producerPurgatoryPurgeIntervalRequests")
     private @Nullable Output<Integer> producerPurgatoryPurgeIntervalRequests;
 
+    /**
+     * @return The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+     * 
+     */
     public Optional<Output<Integer>> producerPurgatoryPurgeIntervalRequests() {
         return Optional.ofNullable(this.producerPurgatoryPurgeIntervalRequests);
     }
 
+    /**
+     * The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+     * 
+     */
     @Import(name="replicaFetchMaxBytes")
     private @Nullable Output<Integer> replicaFetchMaxBytes;
 
+    /**
+     * @return The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+     * 
+     */
     public Optional<Output<Integer>> replicaFetchMaxBytes() {
         return Optional.ofNullable(this.replicaFetchMaxBytes);
     }
 
+    /**
+     * Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     * 
+     */
     @Import(name="replicaFetchResponseMaxBytes")
     private @Nullable Output<Integer> replicaFetchResponseMaxBytes;
 
+    /**
+     * @return Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     * 
+     */
     public Optional<Output<Integer>> replicaFetchResponseMaxBytes() {
         return Optional.ofNullable(this.replicaFetchResponseMaxBytes);
     }
 
+    /**
+     * The maximum number of bytes in a socket request (defaults to 104857600).
+     * 
+     */
     @Import(name="socketRequestMaxBytes")
     private @Nullable Output<Integer> socketRequestMaxBytes;
 
+    /**
+     * @return The maximum number of bytes in a socket request (defaults to 104857600).
+     * 
+     */
     public Optional<Output<Integer>> socketRequestMaxBytes() {
         return Optional.ofNullable(this.socketRequestMaxBytes);
     }
 
+    /**
+     * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+     * 
+     */
     @Import(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
     private @Nullable Output<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs;
 
+    /**
+     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+     * 
+     */
     public Optional<Output<Integer>> transactionRemoveExpiredTransactionCleanupIntervalMs() {
         return Optional.ofNullable(this.transactionRemoveExpiredTransactionCleanupIntervalMs);
     }
 
+    /**
+     * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+     * 
+     */
     @Import(name="transactionStateLogSegmentBytes")
     private @Nullable Output<Integer> transactionStateLogSegmentBytes;
 
+    /**
+     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+     * 
+     */
     public Optional<Output<Integer>> transactionStateLogSegmentBytes() {
         return Optional.ofNullable(this.transactionStateLogSegmentBytes);
     }
@@ -353,353 +665,821 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
             $ = new KafkaKafkaUserConfigKafkaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoCreateTopicsEnable Enable auto creation of topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoCreateTopicsEnable(@Nullable Output<Boolean> autoCreateTopicsEnable) {
             $.autoCreateTopicsEnable = autoCreateTopicsEnable;
             return this;
         }
 
+        /**
+         * @param autoCreateTopicsEnable Enable auto creation of topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoCreateTopicsEnable(Boolean autoCreateTopicsEnable) {
             return autoCreateTopicsEnable(Output.of(autoCreateTopicsEnable));
         }
 
+        /**
+         * @param compressionType Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compressionType(@Nullable Output<String> compressionType) {
             $.compressionType = compressionType;
             return this;
         }
 
+        /**
+         * @param compressionType Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compressionType(String compressionType) {
             return compressionType(Output.of(compressionType));
         }
 
+        /**
+         * @param connectionsMaxIdleMs Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionsMaxIdleMs(@Nullable Output<Integer> connectionsMaxIdleMs) {
             $.connectionsMaxIdleMs = connectionsMaxIdleMs;
             return this;
         }
 
+        /**
+         * @param connectionsMaxIdleMs Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionsMaxIdleMs(Integer connectionsMaxIdleMs) {
             return connectionsMaxIdleMs(Output.of(connectionsMaxIdleMs));
         }
 
+        /**
+         * @param defaultReplicationFactor Replication factor for autocreated topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultReplicationFactor(@Nullable Output<Integer> defaultReplicationFactor) {
             $.defaultReplicationFactor = defaultReplicationFactor;
             return this;
         }
 
+        /**
+         * @param defaultReplicationFactor Replication factor for autocreated topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultReplicationFactor(Integer defaultReplicationFactor) {
             return defaultReplicationFactor(Output.of(defaultReplicationFactor));
         }
 
+        /**
+         * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupInitialRebalanceDelayMs(@Nullable Output<Integer> groupInitialRebalanceDelayMs) {
             $.groupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             return this;
         }
 
+        /**
+         * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupInitialRebalanceDelayMs(Integer groupInitialRebalanceDelayMs) {
             return groupInitialRebalanceDelayMs(Output.of(groupInitialRebalanceDelayMs));
         }
 
+        /**
+         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupMaxSessionTimeoutMs(@Nullable Output<Integer> groupMaxSessionTimeoutMs) {
             $.groupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             return this;
         }
 
+        /**
+         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupMaxSessionTimeoutMs(Integer groupMaxSessionTimeoutMs) {
             return groupMaxSessionTimeoutMs(Output.of(groupMaxSessionTimeoutMs));
         }
 
+        /**
+         * @param groupMinSessionTimeoutMs The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupMinSessionTimeoutMs(@Nullable Output<Integer> groupMinSessionTimeoutMs) {
             $.groupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
             return this;
         }
 
+        /**
+         * @param groupMinSessionTimeoutMs The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupMinSessionTimeoutMs(Integer groupMinSessionTimeoutMs) {
             return groupMinSessionTimeoutMs(Output.of(groupMinSessionTimeoutMs));
         }
 
+        /**
+         * @param logCleanerDeleteRetentionMs How long are delete records retained?.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerDeleteRetentionMs(@Nullable Output<Integer> logCleanerDeleteRetentionMs) {
             $.logCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             return this;
         }
 
+        /**
+         * @param logCleanerDeleteRetentionMs How long are delete records retained?.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerDeleteRetentionMs(Integer logCleanerDeleteRetentionMs) {
             return logCleanerDeleteRetentionMs(Output.of(logCleanerDeleteRetentionMs));
         }
 
+        /**
+         * @param logCleanerMaxCompactionLagMs The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerMaxCompactionLagMs(@Nullable Output<Integer> logCleanerMaxCompactionLagMs) {
             $.logCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             return this;
         }
 
+        /**
+         * @param logCleanerMaxCompactionLagMs The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerMaxCompactionLagMs(Integer logCleanerMaxCompactionLagMs) {
             return logCleanerMaxCompactionLagMs(Output.of(logCleanerMaxCompactionLagMs));
         }
 
+        /**
+         * @param logCleanerMinCleanableRatio Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerMinCleanableRatio(@Nullable Output<Double> logCleanerMinCleanableRatio) {
             $.logCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
             return this;
         }
 
+        /**
+         * @param logCleanerMinCleanableRatio Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerMinCleanableRatio(Double logCleanerMinCleanableRatio) {
             return logCleanerMinCleanableRatio(Output.of(logCleanerMinCleanableRatio));
         }
 
+        /**
+         * @param logCleanerMinCompactionLagMs The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerMinCompactionLagMs(@Nullable Output<Integer> logCleanerMinCompactionLagMs) {
             $.logCleanerMinCompactionLagMs = logCleanerMinCompactionLagMs;
             return this;
         }
 
+        /**
+         * @param logCleanerMinCompactionLagMs The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanerMinCompactionLagMs(Integer logCleanerMinCompactionLagMs) {
             return logCleanerMinCompactionLagMs(Output.of(logCleanerMinCompactionLagMs));
         }
 
+        /**
+         * @param logCleanupPolicy The default cleanup policy for segments beyond the retention window.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanupPolicy(@Nullable Output<String> logCleanupPolicy) {
             $.logCleanupPolicy = logCleanupPolicy;
             return this;
         }
 
+        /**
+         * @param logCleanupPolicy The default cleanup policy for segments beyond the retention window.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logCleanupPolicy(String logCleanupPolicy) {
             return logCleanupPolicy(Output.of(logCleanupPolicy));
         }
 
+        /**
+         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logFlushIntervalMessages(@Nullable Output<Integer> logFlushIntervalMessages) {
             $.logFlushIntervalMessages = logFlushIntervalMessages;
             return this;
         }
 
+        /**
+         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logFlushIntervalMessages(Integer logFlushIntervalMessages) {
             return logFlushIntervalMessages(Output.of(logFlushIntervalMessages));
         }
 
+        /**
+         * @param logFlushIntervalMs The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logFlushIntervalMs(@Nullable Output<Integer> logFlushIntervalMs) {
             $.logFlushIntervalMs = logFlushIntervalMs;
             return this;
         }
 
+        /**
+         * @param logFlushIntervalMs The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logFlushIntervalMs(Integer logFlushIntervalMs) {
             return logFlushIntervalMs(Output.of(logFlushIntervalMs));
         }
 
+        /**
+         * @param logIndexIntervalBytes The interval with which Kafka adds an entry to the offset index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logIndexIntervalBytes(@Nullable Output<Integer> logIndexIntervalBytes) {
             $.logIndexIntervalBytes = logIndexIntervalBytes;
             return this;
         }
 
+        /**
+         * @param logIndexIntervalBytes The interval with which Kafka adds an entry to the offset index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logIndexIntervalBytes(Integer logIndexIntervalBytes) {
             return logIndexIntervalBytes(Output.of(logIndexIntervalBytes));
         }
 
+        /**
+         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logIndexSizeMaxBytes(@Nullable Output<Integer> logIndexSizeMaxBytes) {
             $.logIndexSizeMaxBytes = logIndexSizeMaxBytes;
             return this;
         }
 
+        /**
+         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logIndexSizeMaxBytes(Integer logIndexSizeMaxBytes) {
             return logIndexSizeMaxBytes(Output.of(logIndexSizeMaxBytes));
         }
 
+        /**
+         * @param logMessageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+         * 
+         * @return builder
+         * 
+         */
         public Builder logMessageDownconversionEnable(@Nullable Output<Boolean> logMessageDownconversionEnable) {
             $.logMessageDownconversionEnable = logMessageDownconversionEnable;
             return this;
         }
 
+        /**
+         * @param logMessageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+         * 
+         * @return builder
+         * 
+         */
         public Builder logMessageDownconversionEnable(Boolean logMessageDownconversionEnable) {
             return logMessageDownconversionEnable(Output.of(logMessageDownconversionEnable));
         }
 
+        /**
+         * @param logMessageTimestampDifferenceMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logMessageTimestampDifferenceMaxMs(@Nullable Output<Integer> logMessageTimestampDifferenceMaxMs) {
             $.logMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             return this;
         }
 
+        /**
+         * @param logMessageTimestampDifferenceMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logMessageTimestampDifferenceMaxMs(Integer logMessageTimestampDifferenceMaxMs) {
             return logMessageTimestampDifferenceMaxMs(Output.of(logMessageTimestampDifferenceMaxMs));
         }
 
+        /**
+         * @param logMessageTimestampType Define whether the timestamp in the message is message create time or log append time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logMessageTimestampType(@Nullable Output<String> logMessageTimestampType) {
             $.logMessageTimestampType = logMessageTimestampType;
             return this;
         }
 
+        /**
+         * @param logMessageTimestampType Define whether the timestamp in the message is message create time or log append time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logMessageTimestampType(String logMessageTimestampType) {
             return logMessageTimestampType(Output.of(logMessageTimestampType));
         }
 
+        /**
+         * @param logPreallocate Should pre allocate file when create new segment?.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logPreallocate(@Nullable Output<Boolean> logPreallocate) {
             $.logPreallocate = logPreallocate;
             return this;
         }
 
+        /**
+         * @param logPreallocate Should pre allocate file when create new segment?.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logPreallocate(Boolean logPreallocate) {
             return logPreallocate(Output.of(logPreallocate));
         }
 
+        /**
+         * @param logRetentionBytes The maximum size of the log before deleting messages.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRetentionBytes(@Nullable Output<Integer> logRetentionBytes) {
             $.logRetentionBytes = logRetentionBytes;
             return this;
         }
 
+        /**
+         * @param logRetentionBytes The maximum size of the log before deleting messages.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRetentionBytes(Integer logRetentionBytes) {
             return logRetentionBytes(Output.of(logRetentionBytes));
         }
 
+        /**
+         * @param logRetentionHours The number of hours to keep a log file before deleting it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRetentionHours(@Nullable Output<Integer> logRetentionHours) {
             $.logRetentionHours = logRetentionHours;
             return this;
         }
 
+        /**
+         * @param logRetentionHours The number of hours to keep a log file before deleting it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRetentionHours(Integer logRetentionHours) {
             return logRetentionHours(Output.of(logRetentionHours));
         }
 
+        /**
+         * @param logRetentionMs The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRetentionMs(@Nullable Output<Integer> logRetentionMs) {
             $.logRetentionMs = logRetentionMs;
             return this;
         }
 
+        /**
+         * @param logRetentionMs The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRetentionMs(Integer logRetentionMs) {
             return logRetentionMs(Output.of(logRetentionMs));
         }
 
+        /**
+         * @param logRollJitterMs The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRollJitterMs(@Nullable Output<Integer> logRollJitterMs) {
             $.logRollJitterMs = logRollJitterMs;
             return this;
         }
 
+        /**
+         * @param logRollJitterMs The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRollJitterMs(Integer logRollJitterMs) {
             return logRollJitterMs(Output.of(logRollJitterMs));
         }
 
+        /**
+         * @param logRollMs The maximum time before a new log segment is rolled out (in milliseconds).
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRollMs(@Nullable Output<Integer> logRollMs) {
             $.logRollMs = logRollMs;
             return this;
         }
 
+        /**
+         * @param logRollMs The maximum time before a new log segment is rolled out (in milliseconds).
+         * 
+         * @return builder
+         * 
+         */
         public Builder logRollMs(Integer logRollMs) {
             return logRollMs(Output.of(logRollMs));
         }
 
+        /**
+         * @param logSegmentBytes The maximum size of a single log file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logSegmentBytes(@Nullable Output<Integer> logSegmentBytes) {
             $.logSegmentBytes = logSegmentBytes;
             return this;
         }
 
+        /**
+         * @param logSegmentBytes The maximum size of a single log file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logSegmentBytes(Integer logSegmentBytes) {
             return logSegmentBytes(Output.of(logSegmentBytes));
         }
 
+        /**
+         * @param logSegmentDeleteDelayMs The amount of time to wait before deleting a file from the filesystem.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logSegmentDeleteDelayMs(@Nullable Output<Integer> logSegmentDeleteDelayMs) {
             $.logSegmentDeleteDelayMs = logSegmentDeleteDelayMs;
             return this;
         }
 
+        /**
+         * @param logSegmentDeleteDelayMs The amount of time to wait before deleting a file from the filesystem.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logSegmentDeleteDelayMs(Integer logSegmentDeleteDelayMs) {
             return logSegmentDeleteDelayMs(Output.of(logSegmentDeleteDelayMs));
         }
 
+        /**
+         * @param maxConnectionsPerIp The maximum number of connections allowed from each ip address (defaults to 2147483647).
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxConnectionsPerIp(@Nullable Output<Integer> maxConnectionsPerIp) {
             $.maxConnectionsPerIp = maxConnectionsPerIp;
             return this;
         }
 
+        /**
+         * @param maxConnectionsPerIp The maximum number of connections allowed from each ip address (defaults to 2147483647).
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxConnectionsPerIp(Integer maxConnectionsPerIp) {
             return maxConnectionsPerIp(Output.of(maxConnectionsPerIp));
         }
 
+        /**
+         * @param maxIncrementalFetchSessionCacheSlots The maximum number of incremental fetch sessions that the broker will maintain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxIncrementalFetchSessionCacheSlots(@Nullable Output<Integer> maxIncrementalFetchSessionCacheSlots) {
             $.maxIncrementalFetchSessionCacheSlots = maxIncrementalFetchSessionCacheSlots;
             return this;
         }
 
+        /**
+         * @param maxIncrementalFetchSessionCacheSlots The maximum number of incremental fetch sessions that the broker will maintain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxIncrementalFetchSessionCacheSlots(Integer maxIncrementalFetchSessionCacheSlots) {
             return maxIncrementalFetchSessionCacheSlots(Output.of(maxIncrementalFetchSessionCacheSlots));
         }
 
+        /**
+         * @param messageMaxBytes The maximum size of message that the server can receive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageMaxBytes(@Nullable Output<Integer> messageMaxBytes) {
             $.messageMaxBytes = messageMaxBytes;
             return this;
         }
 
+        /**
+         * @param messageMaxBytes The maximum size of message that the server can receive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageMaxBytes(Integer messageMaxBytes) {
             return messageMaxBytes(Output.of(messageMaxBytes));
         }
 
+        /**
+         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minInsyncReplicas(@Nullable Output<Integer> minInsyncReplicas) {
             $.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
 
+        /**
+         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minInsyncReplicas(Integer minInsyncReplicas) {
             return minInsyncReplicas(Output.of(minInsyncReplicas));
         }
 
+        /**
+         * @param numPartitions Number of partitions for autocreated topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numPartitions(@Nullable Output<Integer> numPartitions) {
             $.numPartitions = numPartitions;
             return this;
         }
 
+        /**
+         * @param numPartitions Number of partitions for autocreated topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numPartitions(Integer numPartitions) {
             return numPartitions(Output.of(numPartitions));
         }
 
+        /**
+         * @param offsetsRetentionMinutes Log retention window in minutes for offsets topic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder offsetsRetentionMinutes(@Nullable Output<Integer> offsetsRetentionMinutes) {
             $.offsetsRetentionMinutes = offsetsRetentionMinutes;
             return this;
         }
 
+        /**
+         * @param offsetsRetentionMinutes Log retention window in minutes for offsets topic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder offsetsRetentionMinutes(Integer offsetsRetentionMinutes) {
             return offsetsRetentionMinutes(Output.of(offsetsRetentionMinutes));
         }
 
+        /**
+         * @param producerPurgatoryPurgeIntervalRequests The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerPurgatoryPurgeIntervalRequests(@Nullable Output<Integer> producerPurgatoryPurgeIntervalRequests) {
             $.producerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;
             return this;
         }
 
+        /**
+         * @param producerPurgatoryPurgeIntervalRequests The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerPurgatoryPurgeIntervalRequests(Integer producerPurgatoryPurgeIntervalRequests) {
             return producerPurgatoryPurgeIntervalRequests(Output.of(producerPurgatoryPurgeIntervalRequests));
         }
 
+        /**
+         * @param replicaFetchMaxBytes The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicaFetchMaxBytes(@Nullable Output<Integer> replicaFetchMaxBytes) {
             $.replicaFetchMaxBytes = replicaFetchMaxBytes;
             return this;
         }
 
+        /**
+         * @param replicaFetchMaxBytes The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicaFetchMaxBytes(Integer replicaFetchMaxBytes) {
             return replicaFetchMaxBytes(Output.of(replicaFetchMaxBytes));
         }
 
+        /**
+         * @param replicaFetchResponseMaxBytes Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicaFetchResponseMaxBytes(@Nullable Output<Integer> replicaFetchResponseMaxBytes) {
             $.replicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
             return this;
         }
 
+        /**
+         * @param replicaFetchResponseMaxBytes Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicaFetchResponseMaxBytes(Integer replicaFetchResponseMaxBytes) {
             return replicaFetchResponseMaxBytes(Output.of(replicaFetchResponseMaxBytes));
         }
 
+        /**
+         * @param socketRequestMaxBytes The maximum number of bytes in a socket request (defaults to 104857600).
+         * 
+         * @return builder
+         * 
+         */
         public Builder socketRequestMaxBytes(@Nullable Output<Integer> socketRequestMaxBytes) {
             $.socketRequestMaxBytes = socketRequestMaxBytes;
             return this;
         }
 
+        /**
+         * @param socketRequestMaxBytes The maximum number of bytes in a socket request (defaults to 104857600).
+         * 
+         * @return builder
+         * 
+         */
         public Builder socketRequestMaxBytes(Integer socketRequestMaxBytes) {
             return socketRequestMaxBytes(Output.of(socketRequestMaxBytes));
         }
 
+        /**
+         * @param transactionRemoveExpiredTransactionCleanupIntervalMs The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(@Nullable Output<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs) {
             $.transactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
             return this;
         }
 
+        /**
+         * @param transactionRemoveExpiredTransactionCleanupIntervalMs The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(Integer transactionRemoveExpiredTransactionCleanupIntervalMs) {
             return transactionRemoveExpiredTransactionCleanupIntervalMs(Output.of(transactionRemoveExpiredTransactionCleanupIntervalMs));
         }
 
+        /**
+         * @param transactionStateLogSegmentBytes The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transactionStateLogSegmentBytes(@Nullable Output<Integer> transactionStateLogSegmentBytes) {
             $.transactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
             return this;
         }
 
+        /**
+         * @param transactionStateLogSegmentBytes The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transactionStateLogSegmentBytes(Integer transactionStateLogSegmentBytes) {
             return transactionStateLogSegmentBytes(Output.of(transactionStateLogSegmentBytes));
         }

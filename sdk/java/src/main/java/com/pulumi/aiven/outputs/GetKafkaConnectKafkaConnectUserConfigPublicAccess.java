@@ -11,18 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     private @Nullable Boolean kafkaConnect;
     private @Nullable Boolean prometheus;
 
     private GetKafkaConnectKafkaConnectUserConfigPublicAccess() {}
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }

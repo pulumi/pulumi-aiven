@@ -15,16 +15,32 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
 
     public static final KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs Empty = new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs();
 
+    /**
+     * Enable certificate/SSL authentication. The default value is `true`.
+     * 
+     */
     @Import(name="certificate")
     private @Nullable Output<Boolean> certificate;
 
+    /**
+     * @return Enable certificate/SSL authentication. The default value is `true`.
+     * 
+     */
     public Optional<Output<Boolean>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
+    /**
+     * Enable SASL authentication. The default value is `false`.
+     * 
+     */
     @Import(name="sasl")
     private @Nullable Output<Boolean> sasl;
 
+    /**
+     * @return Enable SASL authentication. The default value is `false`.
+     * 
+     */
     public Optional<Output<Boolean>> sasl() {
         return Optional.ofNullable(this.sasl);
     }
@@ -54,20 +70,44 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
             $ = new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param certificate Enable certificate/SSL authentication. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificate(@Nullable Output<Boolean> certificate) {
             $.certificate = certificate;
             return this;
         }
 
+        /**
+         * @param certificate Enable certificate/SSL authentication. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificate(Boolean certificate) {
             return certificate(Output.of(certificate));
         }
 
+        /**
+         * @param sasl Enable SASL authentication. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sasl(@Nullable Output<Boolean> sasl) {
             $.sasl = sasl;
             return this;
         }
 
+        /**
+         * @param sasl Enable SASL authentication. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sasl(Boolean sasl) {
             return sasl(Output.of(sasl));
         }

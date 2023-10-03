@@ -13,28 +13,64 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigMigration {
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     private @Nullable String dbname;
     private String host;
+    /**
+     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * 
+     */
     private @Nullable String ignoreDbs;
+    /**
+     * @return The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * 
+     */
     private @Nullable String method;
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     private @Nullable String password;
     private Integer port;
     private @Nullable Boolean ssl;
+    /**
+     * @return User name for authentication with the server where to migrate data from.
+     * 
+     */
     private @Nullable String username;
 
     private PgPgUserConfigMigration() {}
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
     public String host() {
         return this.host;
     }
+    /**
+     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * 
+     */
     public Optional<String> ignoreDbs() {
         return Optional.ofNullable(this.ignoreDbs);
     }
+    /**
+     * @return The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * 
+     */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
@@ -44,6 +80,10 @@ public final class PgPgUserConfigMigration {
     public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }
+    /**
+     * @return User name for authentication with the server where to migrate data from.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

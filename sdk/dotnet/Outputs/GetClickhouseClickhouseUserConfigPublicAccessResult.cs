@@ -13,9 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetClickhouseClickhouseUserConfigPublicAccessResult
     {
-        /// <summary>
-        /// Clickhouse server provided values
-        /// </summary>
         public readonly bool? Clickhouse;
         public readonly bool? ClickhouseHttps;
         public readonly bool? Prometheus;

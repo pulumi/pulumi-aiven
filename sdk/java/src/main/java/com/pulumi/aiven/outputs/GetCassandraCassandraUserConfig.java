@@ -21,10 +21,6 @@ public final class GetCassandraCassandraUserConfig {
     private @Nullable String additionalBackupRegions;
     private @Nullable Integer backupHour;
     private @Nullable Integer backupMinute;
-    /**
-     * @return Cassandra server provided values
-     * 
-     */
     private @Nullable GetCassandraCassandraUserConfigCassandra cassandra;
     private @Nullable String cassandraVersion;
     private @Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
@@ -42,10 +38,6 @@ public final class GetCassandraCassandraUserConfig {
     private @Nullable GetCassandraCassandraUserConfigPublicAccess publicAccess;
     private @Nullable String serviceToForkFrom;
     private @Nullable String serviceToJoinWith;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetCassandraCassandraUserConfig() {}
@@ -58,10 +50,6 @@ public final class GetCassandraCassandraUserConfig {
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
-    /**
-     * @return Cassandra server provided values
-     * 
-     */
     public Optional<GetCassandraCassandraUserConfigCassandra> cassandra() {
         return Optional.ofNullable(this.cassandra);
     }
@@ -101,10 +89,6 @@ public final class GetCassandraCassandraUserConfig {
     public Optional<String> serviceToJoinWith() {
         return Optional.ofNullable(this.serviceToJoinWith);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

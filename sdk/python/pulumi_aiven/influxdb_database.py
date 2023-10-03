@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InfluxdbDatabaseArgs', 'InfluxdbDatabase']
@@ -26,11 +26,26 @@ class InfluxdbDatabaseArgs:
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
-        pulumi.set(__self__, "database_name", database_name)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        InfluxdbDatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_name=database_name,
+            project=project,
+            service_name=service_name,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_name: pulumi.Input[str],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database_name", database_name)
+        _setter("project", project)
+        _setter("service_name", service_name)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -97,14 +112,29 @@ class _InfluxdbDatabaseState:
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
+        _InfluxdbDatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_name=database_name,
+            project=project,
+            service_name=service_name,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
+            _setter("database_name", database_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -196,6 +226,10 @@ class InfluxdbDatabase(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InfluxdbDatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

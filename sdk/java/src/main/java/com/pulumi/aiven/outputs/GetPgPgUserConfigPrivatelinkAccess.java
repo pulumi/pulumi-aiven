@@ -11,19 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPrivatelinkAccess {
-    /**
-     * @return PostgreSQL specific server provided values
-     * 
-     */
     private @Nullable Boolean pg;
     private @Nullable Boolean pgbouncer;
     private @Nullable Boolean prometheus;
 
     private GetPgPgUserConfigPrivatelinkAccess() {}
-    /**
-     * @return PostgreSQL specific server provided values
-     * 
-     */
     public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }

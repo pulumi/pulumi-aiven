@@ -13,11 +13,14 @@ namespace Pulumi.Aiven.Inputs
     public sealed class FlinkFlinkUserConfigPrivatelinkAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flink server provided values
+        /// Enable flink.
         /// </summary>
         [Input("flink")]
         public Input<bool>? Flink { get; set; }
 
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }
 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClickhouseUserArgs', 'ClickhouseUser']
@@ -23,9 +23,22 @@ class ClickhouseUserArgs:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "username", username)
+        ClickhouseUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             username: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -82,18 +95,37 @@ class _ClickhouseUserState:
         :param pulumi.Input[str] username: The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] uuid: UUID of the clickhouse user.
         """
+        _ClickhouseUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            project=project,
+            required=required,
+            service_name=service_name,
+            username=username,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             required: Optional[pulumi.Input[bool]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if required is not None:
-            pulumi.set(__self__, "required", required)
+            _setter("required", required)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter
@@ -241,6 +273,10 @@ class ClickhouseUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClickhouseUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

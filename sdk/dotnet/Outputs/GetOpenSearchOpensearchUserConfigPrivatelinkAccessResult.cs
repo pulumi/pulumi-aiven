@@ -13,9 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult
     {
-        /// <summary>
-        /// OpenSearch server provided values
-        /// </summary>
         public readonly bool? Opensearch;
         public readonly bool? OpensearchDashboards;
         public readonly bool? Prometheus;

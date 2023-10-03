@@ -98,14 +98,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clickhouseUserConfig);
     }
     /**
-     * Clickhouse server provided values
+     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Export(name="clickhouses", refs={List.class,ClickhouseClickhouse.class}, tree="[0,1]")
     private Output<List<ClickhouseClickhouse>> clickhouses;
 
     /**
-     * @return Clickhouse server provided values
+     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Output<List<ClickhouseClickhouse>> clickhouses() {
@@ -410,14 +410,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Output<Optional<List<String>>> staticIps() {

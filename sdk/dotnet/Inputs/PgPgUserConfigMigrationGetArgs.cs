@@ -12,20 +12,33 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigMigrationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Primary PostgreSQL database name
+        /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
+        /// <summary>
+        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+        /// </summary>
         [Input("ignoreDbs")]
         public Input<string>? IgnoreDbs { get; set; }
 
+        /// <summary>
+        /// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+        /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// PostgreSQL admin user password
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -42,6 +55,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
+        /// <summary>
+        /// User name for authentication with the server where to migrate data from.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

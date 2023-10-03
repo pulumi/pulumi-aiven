@@ -77,7 +77,7 @@ type Flink struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
-	// Flink server provided values
+	// Enable flink.
 	Flink FlinkFlinkOutput `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrOutput `pulumi:"flinkUserConfig"`
@@ -179,7 +179,7 @@ type flinkState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
-	// Flink server provided values
+	// Enable flink.
 	Flink *FlinkFlink `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig *FlinkFlinkUserConfig `pulumi:"flinkUserConfig"`
@@ -238,7 +238,7 @@ type FlinkState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
-	// Flink server provided values
+	// Enable flink.
 	Flink FlinkFlinkPtrInput
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrInput
@@ -291,7 +291,7 @@ type flinkArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
-	// Flink server provided values
+	// Enable flink.
 	Flink *FlinkFlink `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig *FlinkFlinkUserConfig `pulumi:"flinkUserConfig"`
@@ -327,7 +327,7 @@ type FlinkArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
-	// Flink server provided values
+	// Enable flink.
 	Flink FlinkFlinkPtrInput
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrInput
@@ -506,7 +506,7 @@ func (o FlinkOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// Flink server provided values
+// Enable flink.
 func (o FlinkOutput) Flink() FlinkFlinkOutput {
 	return o.ApplyT(func(v *Flink) FlinkFlinkOutput { return v.Flink }).(FlinkFlinkOutput)
 }

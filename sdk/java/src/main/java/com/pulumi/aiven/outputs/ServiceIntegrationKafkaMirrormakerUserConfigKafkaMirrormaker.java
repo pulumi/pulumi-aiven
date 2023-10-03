@@ -12,29 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * @return The minimum amount of data the server should return for a fetch request.
+     * 
+     */
     private @Nullable Integer consumerFetchMinBytes;
+    /**
+     * @return The batch size in bytes producer will attempt to collect before publishing to broker.
+     * 
+     */
     private @Nullable Integer producerBatchSize;
+    /**
+     * @return The amount of bytes producer can use for buffering data before publishing to broker.
+     * 
+     */
     private @Nullable Integer producerBufferMemory;
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     private @Nullable String producerCompressionType;
+    /**
+     * @return The linger time (ms) for waiting new data to arrive for publishing.
+     * 
+     */
     private @Nullable Integer producerLingerMs;
+    /**
+     * @return The maximum request size in bytes.
+     * 
+     */
     private @Nullable Integer producerMaxRequestSize;
 
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker() {}
+    /**
+     * @return The minimum amount of data the server should return for a fetch request.
+     * 
+     */
     public Optional<Integer> consumerFetchMinBytes() {
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
+    /**
+     * @return The batch size in bytes producer will attempt to collect before publishing to broker.
+     * 
+     */
     public Optional<Integer> producerBatchSize() {
         return Optional.ofNullable(this.producerBatchSize);
     }
+    /**
+     * @return The amount of bytes producer can use for buffering data before publishing to broker.
+     * 
+     */
     public Optional<Integer> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
     }
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     public Optional<String> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
+    /**
+     * @return The linger time (ms) for waiting new data to arrive for publishing.
+     * 
+     */
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
+    /**
+     * @return The maximum request size in bytes.
+     * 
+     */
     public Optional<Integer> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }

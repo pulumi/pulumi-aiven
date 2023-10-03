@@ -86,7 +86,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      */
     public readonly pg!: pulumi.Output<outputs.PgPg>;
     /**
@@ -142,7 +142,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -284,7 +284,7 @@ export interface PgState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      */
     pg?: pulumi.Input<inputs.PgPg>;
     /**
@@ -340,7 +340,7 @@ export interface PgState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -380,7 +380,7 @@ export interface PgArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      */
     pg?: pulumi.Input<inputs.PgPg>;
     /**
@@ -408,7 +408,7 @@ export interface PgArgs {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

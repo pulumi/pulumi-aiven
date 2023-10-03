@@ -14,9 +14,6 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaKafkaUserConfigPrivatelinkAccessResult
     {
         public readonly bool? Jolokia;
-        /// <summary>
-        /// Kafka server provided values
-        /// </summary>
         public readonly bool? Kafka;
         public readonly bool? KafkaConnect;
         public readonly bool? KafkaRest;

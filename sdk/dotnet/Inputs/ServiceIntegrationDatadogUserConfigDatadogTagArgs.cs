@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationDatadogUserConfigDatadogTagArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional tag explanation.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+        /// </summary>
         [Input("tag", required: true)]
         public Input<string> Tag { get; set; } = null!;
 

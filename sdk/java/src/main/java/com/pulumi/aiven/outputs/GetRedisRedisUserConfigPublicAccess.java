@@ -12,20 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRedisRedisUserConfigPublicAccess {
     private @Nullable Boolean prometheus;
-    /**
-     * @return Redis server provided values
-     * 
-     */
     private @Nullable Boolean redis;
 
     private GetRedisRedisUserConfigPublicAccess() {}
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
-    /**
-     * @return Redis server provided values
-     * 
-     */
     public Optional<Boolean> redis() {
         return Optional.ofNullable(this.redis);
     }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -21,13 +21,24 @@ class AccountArgs:
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[str] primary_billing_group_id: Billing group id
         """
+        AccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            primary_billing_group_id=primary_billing_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             primary_billing_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_billing_group_id is not None:
             warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
             pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if primary_billing_group_id is not None:
-            pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
+            _setter("primary_billing_group_id", primary_billing_group_id)
 
     @property
     @pulumi.getter
@@ -79,34 +90,57 @@ class _AccountState:
         :param pulumi.Input[str] tenant_id: Tenant id
         :param pulumi.Input[str] update_time: Time of last update
         """
+        _AccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            create_time=create_time,
+            is_account_owner=is_account_owner,
+            name=name,
+            owner_team_id=owner_team_id,
+            primary_billing_group_id=primary_billing_group_id,
+            tenant_id=tenant_id,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             is_account_owner: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner_team_id: Optional[pulumi.Input[str]] = None,
+             primary_billing_group_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
             warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if is_account_owner is not None:
             warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
             pulumi.log.warn("""is_account_owner is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if is_account_owner is not None:
-            pulumi.set(__self__, "is_account_owner", is_account_owner)
+            _setter("is_account_owner", is_account_owner)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner_team_id is not None:
             warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
             pulumi.log.warn("""owner_team_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if owner_team_id is not None:
-            pulumi.set(__self__, "owner_team_id", owner_team_id)
+            _setter("owner_team_id", owner_team_id)
         if primary_billing_group_id is not None:
             warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
             pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if primary_billing_group_id is not None:
-            pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
+            _setter("primary_billing_group_id", primary_billing_group_id)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="accountId")
@@ -282,6 +316,10 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -299,9 +337,6 @@ class Account(pulumi.CustomResource):
             __props__ = AccountArgs.__new__(AccountArgs)
 
             __props__.__dict__["name"] = name
-            if primary_billing_group_id is not None and not opts.urn:
-                warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-                pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
             __props__.__dict__["primary_billing_group_id"] = primary_billing_group_id
             __props__.__dict__["account_id"] = None
             __props__.__dict__["create_time"] = None

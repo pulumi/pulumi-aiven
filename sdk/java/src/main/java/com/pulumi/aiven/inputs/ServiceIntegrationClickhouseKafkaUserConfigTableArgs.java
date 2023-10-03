@@ -19,93 +19,197 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
 
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableArgs();
 
+    /**
+     * Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * 
+     */
     @Import(name="autoOffsetReset")
     private @Nullable Output<String> autoOffsetReset;
 
+    /**
+     * @return Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * 
+     */
     public Optional<Output<String>> autoOffsetReset() {
         return Optional.ofNullable(this.autoOffsetReset);
     }
 
+    /**
+     * Table columns.
+     * 
+     */
     @Import(name="columns")
     private @Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns;
 
+    /**
+     * @return Table columns.
+     * 
+     */
     public Optional<Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>>> columns() {
         return Optional.ofNullable(this.columns);
     }
 
+    /**
+     * Message data format. The default value is `JSONEachRow`.
+     * 
+     */
     @Import(name="dataFormat", required=true)
     private Output<String> dataFormat;
 
+    /**
+     * @return Message data format. The default value is `JSONEachRow`.
+     * 
+     */
     public Output<String> dataFormat() {
         return this.dataFormat;
     }
 
+    /**
+     * Method to read DateTime from text input formats. The default value is `basic`.
+     * 
+     */
     @Import(name="dateTimeInputFormat")
     private @Nullable Output<String> dateTimeInputFormat;
 
+    /**
+     * @return Method to read DateTime from text input formats. The default value is `basic`.
+     * 
+     */
     public Optional<Output<String>> dateTimeInputFormat() {
         return Optional.ofNullable(this.dateTimeInputFormat);
     }
 
+    /**
+     * Kafka consumers group. The default value is `clickhouse`.
+     * 
+     */
     @Import(name="groupName", required=true)
     private Output<String> groupName;
 
+    /**
+     * @return Kafka consumers group. The default value is `clickhouse`.
+     * 
+     */
     public Output<String> groupName() {
         return this.groupName;
     }
 
+    /**
+     * How to handle errors for Kafka engine. The default value is `default`.
+     * 
+     */
     @Import(name="handleErrorMode")
     private @Nullable Output<String> handleErrorMode;
 
+    /**
+     * @return How to handle errors for Kafka engine. The default value is `default`.
+     * 
+     */
     public Optional<Output<String>> handleErrorMode() {
         return Optional.ofNullable(this.handleErrorMode);
     }
 
+    /**
+     * Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * 
+     */
     @Import(name="maxBlockSize")
     private @Nullable Output<Integer> maxBlockSize;
 
+    /**
+     * @return Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * 
+     */
     public Optional<Output<Integer>> maxBlockSize() {
         return Optional.ofNullable(this.maxBlockSize);
     }
 
+    /**
+     * The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * 
+     */
     @Import(name="maxRowsPerMessage")
     private @Nullable Output<Integer> maxRowsPerMessage;
 
+    /**
+     * @return The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * 
+     */
     public Optional<Output<Integer>> maxRowsPerMessage() {
         return Optional.ofNullable(this.maxRowsPerMessage);
     }
 
+    /**
+     * Column name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Column name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The number of consumers per table per replica. The default value is `1`.
+     * 
+     */
     @Import(name="numConsumers")
     private @Nullable Output<Integer> numConsumers;
 
+    /**
+     * @return The number of consumers per table per replica. The default value is `1`.
+     * 
+     */
     public Optional<Output<Integer>> numConsumers() {
         return Optional.ofNullable(this.numConsumers);
     }
 
+    /**
+     * Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * 
+     */
     @Import(name="pollMaxBatchSize")
     private @Nullable Output<Integer> pollMaxBatchSize;
 
+    /**
+     * @return Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * 
+     */
     public Optional<Output<Integer>> pollMaxBatchSize() {
         return Optional.ofNullable(this.pollMaxBatchSize);
     }
 
+    /**
+     * Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * 
+     */
     @Import(name="skipBrokenMessages")
     private @Nullable Output<Integer> skipBrokenMessages;
 
+    /**
+     * @return Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * 
+     */
     public Optional<Output<Integer>> skipBrokenMessages() {
         return Optional.ofNullable(this.skipBrokenMessages);
     }
 
+    /**
+     * Kafka topics.
+     * 
+     */
     @Import(name="topics")
     private @Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics;
 
+    /**
+     * @return Kafka topics.
+     * 
+     */
     public Optional<Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>>> topics() {
         return Optional.ofNullable(this.topics);
     }
@@ -146,127 +250,295 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
             $ = new ServiceIntegrationClickhouseKafkaUserConfigTableArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoOffsetReset Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoOffsetReset(@Nullable Output<String> autoOffsetReset) {
             $.autoOffsetReset = autoOffsetReset;
             return this;
         }
 
+        /**
+         * @param autoOffsetReset Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoOffsetReset(String autoOffsetReset) {
             return autoOffsetReset(Output.of(autoOffsetReset));
         }
 
+        /**
+         * @param columns Table columns.
+         * 
+         * @return builder
+         * 
+         */
         public Builder columns(@Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns) {
             $.columns = columns;
             return this;
         }
 
+        /**
+         * @param columns Table columns.
+         * 
+         * @return builder
+         * 
+         */
         public Builder columns(List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs> columns) {
             return columns(Output.of(columns));
         }
 
+        /**
+         * @param columns Table columns.
+         * 
+         * @return builder
+         * 
+         */
         public Builder columns(ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs... columns) {
             return columns(List.of(columns));
         }
 
+        /**
+         * @param dataFormat Message data format. The default value is `JSONEachRow`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataFormat(Output<String> dataFormat) {
             $.dataFormat = dataFormat;
             return this;
         }
 
+        /**
+         * @param dataFormat Message data format. The default value is `JSONEachRow`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataFormat(String dataFormat) {
             return dataFormat(Output.of(dataFormat));
         }
 
+        /**
+         * @param dateTimeInputFormat Method to read DateTime from text input formats. The default value is `basic`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dateTimeInputFormat(@Nullable Output<String> dateTimeInputFormat) {
             $.dateTimeInputFormat = dateTimeInputFormat;
             return this;
         }
 
+        /**
+         * @param dateTimeInputFormat Method to read DateTime from text input formats. The default value is `basic`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dateTimeInputFormat(String dateTimeInputFormat) {
             return dateTimeInputFormat(Output.of(dateTimeInputFormat));
         }
 
+        /**
+         * @param groupName Kafka consumers group. The default value is `clickhouse`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupName(Output<String> groupName) {
             $.groupName = groupName;
             return this;
         }
 
+        /**
+         * @param groupName Kafka consumers group. The default value is `clickhouse`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupName(String groupName) {
             return groupName(Output.of(groupName));
         }
 
+        /**
+         * @param handleErrorMode How to handle errors for Kafka engine. The default value is `default`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder handleErrorMode(@Nullable Output<String> handleErrorMode) {
             $.handleErrorMode = handleErrorMode;
             return this;
         }
 
+        /**
+         * @param handleErrorMode How to handle errors for Kafka engine. The default value is `default`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder handleErrorMode(String handleErrorMode) {
             return handleErrorMode(Output.of(handleErrorMode));
         }
 
+        /**
+         * @param maxBlockSize Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxBlockSize(@Nullable Output<Integer> maxBlockSize) {
             $.maxBlockSize = maxBlockSize;
             return this;
         }
 
+        /**
+         * @param maxBlockSize Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxBlockSize(Integer maxBlockSize) {
             return maxBlockSize(Output.of(maxBlockSize));
         }
 
+        /**
+         * @param maxRowsPerMessage The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRowsPerMessage(@Nullable Output<Integer> maxRowsPerMessage) {
             $.maxRowsPerMessage = maxRowsPerMessage;
             return this;
         }
 
+        /**
+         * @param maxRowsPerMessage The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRowsPerMessage(Integer maxRowsPerMessage) {
             return maxRowsPerMessage(Output.of(maxRowsPerMessage));
         }
 
+        /**
+         * @param name Column name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Column name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param numConsumers The number of consumers per table per replica. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numConsumers(@Nullable Output<Integer> numConsumers) {
             $.numConsumers = numConsumers;
             return this;
         }
 
+        /**
+         * @param numConsumers The number of consumers per table per replica. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numConsumers(Integer numConsumers) {
             return numConsumers(Output.of(numConsumers));
         }
 
+        /**
+         * @param pollMaxBatchSize Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pollMaxBatchSize(@Nullable Output<Integer> pollMaxBatchSize) {
             $.pollMaxBatchSize = pollMaxBatchSize;
             return this;
         }
 
+        /**
+         * @param pollMaxBatchSize Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pollMaxBatchSize(Integer pollMaxBatchSize) {
             return pollMaxBatchSize(Output.of(pollMaxBatchSize));
         }
 
+        /**
+         * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipBrokenMessages(@Nullable Output<Integer> skipBrokenMessages) {
             $.skipBrokenMessages = skipBrokenMessages;
             return this;
         }
 
+        /**
+         * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipBrokenMessages(Integer skipBrokenMessages) {
             return skipBrokenMessages(Output.of(skipBrokenMessages));
         }
 
+        /**
+         * @param topics Kafka topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topics(@Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics) {
             $.topics = topics;
             return this;
         }
 
+        /**
+         * @param topics Kafka topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topics(List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs> topics) {
             return topics(Output.of(topics));
         }
 
+        /**
+         * @param topics Kafka topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topics(ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs... topics) {
             return topics(List.of(topics));
         }

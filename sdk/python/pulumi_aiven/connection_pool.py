@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectionPoolArgs', 'ConnectionPool']
@@ -31,16 +31,37 @@ class ConnectionPoolArgs:
         :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         """
-        pulumi.set(__self__, "database_name", database_name)
-        pulumi.set(__self__, "pool_name", pool_name)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        ConnectionPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_name=database_name,
+            pool_name=pool_name,
+            project=project,
+            service_name=service_name,
+            pool_mode=pool_mode,
+            pool_size=pool_size,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_name: pulumi.Input[str],
+             pool_name: pulumi.Input[str],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             pool_mode: Optional[pulumi.Input[str]] = None,
+             pool_size: Optional[pulumi.Input[int]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database_name", database_name)
+        _setter("pool_name", pool_name)
+        _setter("project", project)
+        _setter("service_name", service_name)
         if pool_mode is not None:
-            pulumi.set(__self__, "pool_mode", pool_mode)
+            _setter("pool_mode", pool_mode)
         if pool_size is not None:
-            pulumi.set(__self__, "pool_size", pool_size)
+            _setter("pool_size", pool_size)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -149,22 +170,45 @@ class _ConnectionPoolState:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         """
+        _ConnectionPoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_uri=connection_uri,
+            database_name=database_name,
+            pool_mode=pool_mode,
+            pool_name=pool_name,
+            pool_size=pool_size,
+            project=project,
+            service_name=service_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_uri: Optional[pulumi.Input[str]] = None,
+             database_name: Optional[pulumi.Input[str]] = None,
+             pool_mode: Optional[pulumi.Input[str]] = None,
+             pool_name: Optional[pulumi.Input[str]] = None,
+             pool_size: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_uri is not None:
-            pulumi.set(__self__, "connection_uri", connection_uri)
+            _setter("connection_uri", connection_uri)
         if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
+            _setter("database_name", database_name)
         if pool_mode is not None:
-            pulumi.set(__self__, "pool_mode", pool_mode)
+            _setter("pool_mode", pool_mode)
         if pool_name is not None:
-            pulumi.set(__self__, "pool_name", pool_name)
+            _setter("pool_name", pool_name)
         if pool_size is not None:
-            pulumi.set(__self__, "pool_size", pool_size)
+            _setter("pool_size", pool_size)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="connectionUri")
@@ -352,6 +396,10 @@ class ConnectionPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

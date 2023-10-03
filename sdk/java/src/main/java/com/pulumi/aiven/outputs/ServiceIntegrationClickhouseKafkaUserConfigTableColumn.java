@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
+    /**
+     * @return Column name.
+     * 
+     */
     private String name;
+    /**
+     * @return Column type.
+     * 
+     */
     private String type;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableColumn() {}
+    /**
+     * @return Column name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Column type.
+     * 
+     */
     public String type() {
         return this.type;
     }

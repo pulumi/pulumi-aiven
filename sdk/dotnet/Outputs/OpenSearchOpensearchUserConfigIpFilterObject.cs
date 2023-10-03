@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class OpenSearchOpensearchUserConfigIpFilterObject
     {
+        /// <summary>
+        /// Description for IP filter list entry.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// CIDR address block.
+        /// </summary>
         public readonly string Network;
 
         [OutputConstructor]

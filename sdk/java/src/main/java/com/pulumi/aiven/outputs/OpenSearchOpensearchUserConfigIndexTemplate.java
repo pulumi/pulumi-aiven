@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigIndexTemplate {
+    /**
+     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * 
+     */
     private @Nullable Integer mappingNestedObjectsLimit;
+    /**
+     * @return The number of replicas each primary shard has.
+     * 
+     */
     private @Nullable Integer numberOfReplicas;
+    /**
+     * @return The number of primary shards that an index should have.
+     * 
+     */
     private @Nullable Integer numberOfShards;
 
     private OpenSearchOpensearchUserConfigIndexTemplate() {}
+    /**
+     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * 
+     */
     public Optional<Integer> mappingNestedObjectsLimit() {
         return Optional.ofNullable(this.mappingNestedObjectsLimit);
     }
+    /**
+     * @return The number of replicas each primary shard has.
+     * 
+     */
     public Optional<Integer> numberOfReplicas() {
         return Optional.ofNullable(this.numberOfReplicas);
     }
+    /**
+     * @return The number of primary shards that an index should have.
+     * 
+     */
     public Optional<Integer> numberOfShards() {
         return Optional.ofNullable(this.numberOfShards);
     }

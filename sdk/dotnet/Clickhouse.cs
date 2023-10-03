@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ClickhouseClickhouseUserConfig?> ClickhouseUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Clickhouse server provided values
+        /// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Output("clickhouses")]
         public Output<ImmutableArray<Outputs.ClickhouseClickhouse>> Clickhouses { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -333,7 +333,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -383,7 +383,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseClickhouseGetArgs>? _clickhouses;
 
         /// <summary>
-        /// Clickhouse server provided values
+        /// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public InputList<Inputs.ClickhouseClickhouseGetArgs> Clickhouses
         {
@@ -553,7 +553,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {

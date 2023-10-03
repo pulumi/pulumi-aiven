@@ -13,54 +13,201 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPg
     {
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+        /// </summary>
         public readonly double? AutovacuumAnalyzeScaleFactor;
+        /// <summary>
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
         public readonly int? AutovacuumAnalyzeThreshold;
+        /// <summary>
+        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        /// </summary>
         public readonly int? AutovacuumFreezeMaxAge;
+        /// <summary>
+        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        /// </summary>
         public readonly int? AutovacuumMaxWorkers;
+        /// <summary>
+        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+        /// </summary>
         public readonly int? AutovacuumNaptime;
+        /// <summary>
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+        /// </summary>
         public readonly int? AutovacuumVacuumCostDelay;
+        /// <summary>
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+        /// </summary>
         public readonly int? AutovacuumVacuumCostLimit;
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// </summary>
         public readonly double? AutovacuumVacuumScaleFactor;
+        /// <summary>
+        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        /// </summary>
         public readonly int? AutovacuumVacuumThreshold;
+        /// <summary>
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        /// </summary>
         public readonly int? BgwriterDelay;
+        /// <summary>
+        /// Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// </summary>
         public readonly int? BgwriterFlushAfter;
+        /// <summary>
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        /// </summary>
         public readonly int? BgwriterLruMaxpages;
+        /// <summary>
+        /// The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// </summary>
         public readonly double? BgwriterLruMultiplier;
+        /// <summary>
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        /// </summary>
         public readonly int? DeadlockTimeout;
+        /// <summary>
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// </summary>
         public readonly string? DefaultToastCompression;
+        /// <summary>
+        /// Time out sessions with open transactions after this number of milliseconds.
+        /// </summary>
         public readonly int? IdleInTransactionSessionTimeout;
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
         public readonly bool? Jit;
+        /// <summary>
+        /// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+        /// </summary>
         public readonly int? LogAutovacuumMinDuration;
+        /// <summary>
+        /// Controls the amount of detail written in the server log for each message that is logged.
+        /// </summary>
         public readonly string? LogErrorVerbosity;
+        /// <summary>
+        /// Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        /// </summary>
         public readonly string? LogLinePrefix;
+        /// <summary>
+        /// Log statements that take more than this number of milliseconds to run, -1 disables.
+        /// </summary>
         public readonly int? LogMinDurationStatement;
+        /// <summary>
+        /// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+        /// </summary>
         public readonly int? LogTempFiles;
+        /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process.
+        /// </summary>
         public readonly int? MaxFilesPerProcess;
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction.
+        /// </summary>
         public readonly int? MaxLocksPerTransaction;
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+        /// </summary>
         public readonly int? MaxLogicalReplicationWorkers;
+        /// <summary>
+        /// Sets the maximum number of workers that the system can support for parallel queries.
+        /// </summary>
         public readonly int? MaxParallelWorkers;
+        /// <summary>
+        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        /// </summary>
         public readonly int? MaxParallelWorkersPerGather;
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction.
+        /// </summary>
         public readonly int? MaxPredLocksPerTransaction;
+        /// <summary>
+        /// PostgreSQL maximum prepared transactions.
+        /// </summary>
         public readonly int? MaxPreparedTransactions;
+        /// <summary>
+        /// PostgreSQL maximum replication slots.
+        /// </summary>
         public readonly int? MaxReplicationSlots;
+        /// <summary>
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+        /// </summary>
         public readonly int? MaxSlotWalKeepSize;
+        /// <summary>
+        /// Maximum depth of the stack in bytes.
+        /// </summary>
         public readonly int? MaxStackDepth;
+        /// <summary>
+        /// Max standby archive delay in milliseconds.
+        /// </summary>
         public readonly int? MaxStandbyArchiveDelay;
+        /// <summary>
+        /// Max standby streaming delay in milliseconds.
+        /// </summary>
         public readonly int? MaxStandbyStreamingDelay;
+        /// <summary>
+        /// PostgreSQL maximum WAL senders.
+        /// </summary>
         public readonly int? MaxWalSenders;
+        /// <summary>
+        /// Sets the maximum number of background processes that the system can support.
+        /// </summary>
         public readonly int? MaxWorkerProcesses;
+        /// <summary>
+        /// Sets the time interval to run pg_partman's scheduled tasks.
+        /// </summary>
         public readonly int? PgPartmanBgwDotInterval;
+        /// <summary>
+        /// Controls which role to use for pg_partman's scheduled background tasks.
+        /// </summary>
         public readonly string? PgPartmanBgwDotRole;
+        /// <summary>
+        /// Enables or disables query plan monitoring.
+        /// </summary>
         public readonly bool? PgStatMonitorDotPgsmEnableQueryPlan;
+        /// <summary>
+        /// Sets the maximum number of buckets .
+        /// </summary>
         public readonly int? PgStatMonitorDotPgsmMaxBuckets;
+        /// <summary>
+        /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// </summary>
         public readonly string? PgStatStatementsDotTrack;
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        /// </summary>
         public readonly int? TempFileLimit;
+        /// <summary>
+        /// PostgreSQL service timezone.
+        /// </summary>
         public readonly string? Timezone;
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session.
+        /// </summary>
         public readonly int? TrackActivityQuerySize;
+        /// <summary>
+        /// Record commit time of transactions.
+        /// </summary>
         public readonly string? TrackCommitTimestamp;
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
         public readonly string? TrackFunctions;
+        /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// </summary>
         public readonly string? TrackIoTiming;
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        /// </summary>
         public readonly int? WalSenderTimeout;
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        /// </summary>
         public readonly int? WalWriterDelay;
 
         [OutputConstructor]

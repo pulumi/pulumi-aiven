@@ -97,21 +97,42 @@ export interface CassandraCassandraUserConfig {
 }
 
 export interface CassandraCassandraUserConfigCassandra {
+    /**
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     */
     batchSizeFailThresholdInKb?: number;
+    /**
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     */
     batchSizeWarnThresholdInKb?: number;
+    /**
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     */
     datacenter?: string;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface CassandraCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
@@ -196,34 +217,58 @@ export interface ClickhouseClickhouseUserConfig {
 }
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface ClickhouseClickhouseUserConfigPrivateAccess {
     /**
-     * Clickhouse server provided values
+     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouse?: boolean;
+    /**
+     * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     clickhouseHttps?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
     /**
-     * Clickhouse server provided values
+     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouse?: boolean;
+    /**
+     * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     clickhouseHttps?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface ClickhouseClickhouseUserConfigPublicAccess {
     /**
-     * Clickhouse server provided values
+     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouse?: boolean;
+    /**
+     * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     clickhouseHttps?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
@@ -358,15 +403,24 @@ export interface FlinkFlinkUserConfig {
 }
 
 export interface FlinkFlinkUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface FlinkFlinkUserConfigPrivatelinkAccess {
     /**
-     * Flink server provided values
+     * Enable flink.
      */
     flink?: boolean;
+    /**
+     * Enable prometheus.
+     */
     prometheus?: boolean;
 }
 
@@ -407,9 +461,6 @@ export interface GetCassandaCassandraUserConfig {
     additionalBackupRegions?: string;
     backupHour?: number;
     backupMinute?: number;
-    /**
-     * Cassandra server provided values
-     */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilterObjects?: outputs.GetCassandaCassandraUserConfigIpFilterObject[];
@@ -424,9 +475,6 @@ export interface GetCassandaCassandraUserConfig {
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
     serviceToJoinWith?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -476,9 +524,6 @@ export interface GetCassandraCassandraUserConfig {
     additionalBackupRegions?: string;
     backupHour?: number;
     backupMinute?: number;
-    /**
-     * Cassandra server provided values
-     */
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilterObjects?: outputs.GetCassandraCassandraUserConfigIpFilterObject[];
@@ -493,9 +538,6 @@ export interface GetCassandraCassandraUserConfig {
     publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
     serviceToJoinWith?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -554,9 +596,6 @@ export interface GetClickhouseClickhouseUserConfig {
     projectToForkFrom?: string;
     publicAccess?: outputs.GetClickhouseClickhouseUserConfigPublicAccess;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -566,27 +605,18 @@ export interface GetClickhouseClickhouseUserConfigIpFilterObject {
 }
 
 export interface GetClickhouseClickhouseUserConfigPrivateAccess {
-    /**
-     * Clickhouse server provided values
-     */
     clickhouse?: boolean;
     clickhouseHttps?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetClickhouseClickhouseUserConfigPrivatelinkAccess {
-    /**
-     * Clickhouse server provided values
-     */
     clickhouse?: boolean;
     clickhouseHttps?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetClickhouseClickhouseUserConfigPublicAccess {
-    /**
-     * Clickhouse server provided values
-     */
     clickhouse?: boolean;
     clickhouseHttps?: boolean;
     prometheus?: boolean;
@@ -654,9 +684,6 @@ export interface GetFlinkFlinkUserConfigIpFilterObject {
 }
 
 export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
-    /**
-     * Flink server provided values
-     */
     flink?: boolean;
     prometheus?: boolean;
 }
@@ -724,9 +751,6 @@ export interface GetGrafanaGrafanaUserConfig {
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
     smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
     userAutoAssignOrg?: boolean;
     userAutoAssignOrgRole?: string;
@@ -806,23 +830,14 @@ export interface GetGrafanaGrafanaUserConfigIpFilterObject {
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivatelinkAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: boolean;
 }
 
@@ -864,9 +879,6 @@ export interface GetInfluxDbInfluxdb {
 export interface GetInfluxDbInfluxdbUserConfig {
     additionalBackupRegions?: string;
     customDomain?: string;
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
     ipFilterObjects?: outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject[];
     ipFilterStrings?: string[];
@@ -880,9 +892,6 @@ export interface GetInfluxDbInfluxdbUserConfig {
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -902,23 +911,14 @@ export interface GetInfluxDbInfluxdbUserConfigIpFilterObject {
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: boolean;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: boolean;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: boolean;
 }
 
@@ -963,16 +963,10 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1001,26 +995,17 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     jolokia?: boolean;
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: boolean;
     prometheus?: boolean;
 }
@@ -1037,9 +1022,6 @@ export interface GetKafkaConnectTag {
 
 export interface GetKafkaConnectorTask {
     connector: string;
-    /**
-     * List of tasks of a connector.
-     */
     task: number;
 }
 
@@ -1060,9 +1042,6 @@ export interface GetKafkaKafkaUserConfig {
      * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
-    /**
-     * Kafka server provided values
-     */
     kafka?: outputs.GetKafkaKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
     kafkaConnect?: boolean;
@@ -1076,9 +1055,6 @@ export interface GetKafkaKafkaUserConfig {
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
     schemaRegistry?: boolean;
     schemaRegistryConfig?: outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1165,9 +1141,6 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
-    /**
-     * Kafka server provided values
-     */
     kafka?: boolean;
     kafkaConnect?: boolean;
     kafkaRest?: boolean;
@@ -1177,9 +1150,6 @@ export interface GetKafkaKafkaUserConfigPrivateAccess {
 
 export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
     jolokia?: boolean;
-    /**
-     * Kafka server provided values
-     */
     kafka?: boolean;
     kafkaConnect?: boolean;
     kafkaRest?: boolean;
@@ -1188,9 +1158,6 @@ export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccess {
-    /**
-     * Kafka server provided values
-     */
     kafka?: boolean;
     kafkaConnect?: boolean;
     kafkaRest?: boolean;
@@ -1224,13 +1191,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      */
     ipFilters?: string[];
-    /**
-     * Kafka MirrorMaker 2 server provided values
-     */
     kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1333,9 +1294,6 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
      */
     m3Version?: string;
     m3aggregatorVersion?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1390,9 +1348,6 @@ export interface GetM3DbM3dbUserConfig {
     publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
     rules?: outputs.GetM3DbM3dbUserConfigRules;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1513,9 +1468,6 @@ export interface GetMySqlMysqlUserConfig {
      */
     ipFilters?: string[];
     migration?: outputs.GetMySqlMysqlUserConfigMigration;
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
@@ -1524,9 +1476,6 @@ export interface GetMySqlMysqlUserConfig {
     publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1580,27 +1529,18 @@ export interface GetMySqlMysqlUserConfigMysql {
 }
 
 export interface GetMySqlMysqlUserConfigPrivateAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: boolean;
     mysqlx?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: boolean;
     mysqlx?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: boolean;
     mysqlx?: boolean;
     prometheus?: boolean;
@@ -1651,9 +1591,6 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     maxIndexCount?: number;
     openid?: outputs.GetOpenSearchOpensearchUserConfigOpenid;
-    /**
-     * OpenSearch server provided values
-     */
     opensearch?: outputs.GetOpenSearchOpensearchUserConfigOpensearch;
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     opensearchVersion?: string;
@@ -1664,9 +1601,6 @@ export interface GetOpenSearchOpensearchUserConfig {
     recoveryBasebackupName?: string;
     saml?: outputs.GetOpenSearchOpensearchUserConfigSaml;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -1743,27 +1677,18 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
-    /**
-     * OpenSearch server provided values
-     */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
-    /**
-     * OpenSearch server provided values
-     */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
-    /**
-     * OpenSearch server provided values
-     */
     opensearch?: boolean;
     opensearchDashboards?: boolean;
     prometheus?: boolean;
@@ -1825,9 +1750,6 @@ export interface GetPgPgUserConfig {
      */
     ipFilters?: string[];
     migration?: outputs.GetPgPgUserConfigMigration;
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: outputs.GetPgPgUserConfigPg;
     /**
      * @deprecated Usage of this field is discouraged.
@@ -1848,9 +1770,6 @@ export interface GetPgPgUserConfig {
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
     sharedBuffersPercentage?: number;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
     synchronousReplication?: string;
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
@@ -1943,27 +1862,18 @@ export interface GetPgPgUserConfigPglookout {
 }
 
 export interface GetPgPgUserConfigPrivateAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: boolean;
     pgbouncer?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetPgPgUserConfigPrivatelinkAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: boolean;
     pgbouncer?: boolean;
     prometheus?: boolean;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: boolean;
     pgbouncer?: boolean;
     prometheus?: boolean;
@@ -2027,9 +1937,6 @@ export interface GetRedisRedisUserConfig {
     redisSsl?: boolean;
     redisTimeout?: number;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: boolean;
 }
 
@@ -2051,25 +1958,16 @@ export interface GetRedisRedisUserConfigMigration {
 
 export interface GetRedisRedisUserConfigPrivateAccess {
     prometheus?: boolean;
-    /**
-     * Redis server provided values
-     */
     redis?: boolean;
 }
 
 export interface GetRedisRedisUserConfigPrivatelinkAccess {
     prometheus?: boolean;
-    /**
-     * Redis server provided values
-     */
     redis?: boolean;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
     prometheus?: boolean;
-    /**
-     * Redis server provided values
-     */
     redis?: boolean;
 }
 
@@ -2557,37 +2455,64 @@ export interface InfluxDbInfluxdbUserConfig {
 }
 
 export interface InfluxDbInfluxdbUserConfigInfluxdb {
+    /**
+     * The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+     */
     logQueriesAfter?: number;
+    /**
+     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     */
     maxConnectionLimit?: number;
+    /**
+     * The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
+     */
     maxRowLimit?: number;
+    /**
+     * The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
+     */
     maxSelectBuckets?: number;
+    /**
+     * The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+     */
     maxSelectPoint?: number;
+    /**
+     * Whether queries should be logged before execution. May log sensitive data contained within a query.
+     */
     queryLogEnabled?: boolean;
+    /**
+     * The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
+     */
     queryTimeout?: number;
 }
 
 export interface InfluxDbInfluxdbUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
-     * InfluxDB server provided values
+     * influxdb.conf configuration values.
      */
     influxdb?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
-     * InfluxDB server provided values
+     * influxdb.conf configuration values.
      */
     influxdb?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * InfluxDB server provided values
+     * influxdb.conf configuration values.
      */
     influxdb?: boolean;
 }
@@ -2704,9 +2629,6 @@ export interface KafkaConnectTag {
 
 export interface KafkaConnectorTask {
     connector: string;
-    /**
-     * List of tasks of a connector.
-     */
     task: number;
 }
 
@@ -2800,123 +2722,369 @@ export interface KafkaKafkaUserConfig {
 }
 
 export interface KafkaKafkaUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface KafkaKafkaUserConfigKafka {
+    /**
+     * Enable auto creation of topics.
+     */
     autoCreateTopicsEnable?: boolean;
+    /**
+     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     */
     compressionType?: string;
+    /**
+     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     */
     connectionsMaxIdleMs?: number;
+    /**
+     * Replication factor for autocreated topics.
+     */
     defaultReplicationFactor?: number;
+    /**
+     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     */
     groupInitialRebalanceDelayMs?: number;
+    /**
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     */
     groupMaxSessionTimeoutMs?: number;
+    /**
+     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     */
     groupMinSessionTimeoutMs?: number;
+    /**
+     * How long are delete records retained?.
+     */
     logCleanerDeleteRetentionMs?: number;
+    /**
+     * The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+     */
     logCleanerMaxCompactionLagMs?: number;
+    /**
+     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     */
     logCleanerMinCleanableRatio?: number;
+    /**
+     * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+     */
     logCleanerMinCompactionLagMs?: number;
+    /**
+     * The default cleanup policy for segments beyond the retention window.
+     */
     logCleanupPolicy?: string;
+    /**
+     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     */
     logFlushIntervalMessages?: number;
+    /**
+     * The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     */
     logFlushIntervalMs?: number;
+    /**
+     * The interval with which Kafka adds an entry to the offset index.
+     */
     logIndexIntervalBytes?: number;
+    /**
+     * The maximum size in bytes of the offset index.
+     */
     logIndexSizeMaxBytes?: number;
+    /**
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     */
     logMessageDownconversionEnable?: boolean;
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+     */
     logMessageTimestampDifferenceMaxMs?: number;
+    /**
+     * Define whether the timestamp in the message is message create time or log append time.
+     */
     logMessageTimestampType?: string;
+    /**
+     * Should pre allocate file when create new segment?.
+     */
     logPreallocate?: boolean;
+    /**
+     * The maximum size of the log before deleting messages.
+     */
     logRetentionBytes?: number;
+    /**
+     * The number of hours to keep a log file before deleting it.
+     */
     logRetentionHours?: number;
+    /**
+     * The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+     */
     logRetentionMs?: number;
+    /**
+     * The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     */
     logRollJitterMs?: number;
+    /**
+     * The maximum time before a new log segment is rolled out (in milliseconds).
+     */
     logRollMs?: number;
+    /**
+     * The maximum size of a single log file.
+     */
     logSegmentBytes?: number;
+    /**
+     * The amount of time to wait before deleting a file from the filesystem.
+     */
     logSegmentDeleteDelayMs?: number;
+    /**
+     * The maximum number of connections allowed from each ip address (defaults to 2147483647).
+     */
     maxConnectionsPerIp?: number;
+    /**
+     * The maximum number of incremental fetch sessions that the broker will maintain.
+     */
     maxIncrementalFetchSessionCacheSlots?: number;
+    /**
+     * The maximum size of message that the server can receive.
+     */
     messageMaxBytes?: number;
+    /**
+     * When a producer sets acks to 'all' (or '-1'), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     */
     minInsyncReplicas?: number;
+    /**
+     * Number of partitions for autocreated topics.
+     */
     numPartitions?: number;
+    /**
+     * Log retention window in minutes for offsets topic.
+     */
     offsetsRetentionMinutes?: number;
+    /**
+     * The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+     */
     producerPurgatoryPurgeIntervalRequests?: number;
+    /**
+     * The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+     */
     replicaFetchMaxBytes?: number;
+    /**
+     * Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     */
     replicaFetchResponseMaxBytes?: number;
+    /**
+     * The maximum number of bytes in a socket request (defaults to 104857600).
+     */
     socketRequestMaxBytes?: number;
+    /**
+     * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+     */
     transactionRemoveExpiredTransactionCleanupIntervalMs?: number;
+    /**
+     * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+     */
     transactionStateLogSegmentBytes?: number;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
+    /**
+     * Enable certificate/SSL authentication. The default value is `true`.
+     */
     certificate?: boolean;
+    /**
+     * Enable SASL authentication. The default value is `false`.
+     */
     sasl?: boolean;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
+    /**
+     * Defines what client configurations can be overridden by the connector. Default is None.
+     */
     connectorClientConfigOverridePolicy?: string;
+    /**
+     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     */
     consumerAutoOffsetReset?: string;
+    /**
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     */
     consumerFetchMaxBytes?: number;
+    /**
+     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     */
     consumerIsolationLevel?: string;
+    /**
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     */
     consumerMaxPartitionFetchBytes?: number;
+    /**
+     * The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
+     */
     consumerMaxPollIntervalMs?: number;
+    /**
+     * The maximum number of records returned in a single call to poll() (defaults to 500).
+     */
     consumerMaxPollRecords?: number;
+    /**
+     * The interval at which to try committing offsets for tasks (defaults to 60000).
+     */
     offsetFlushIntervalMs?: number;
+    /**
+     * Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     */
     offsetFlushTimeoutMs?: number;
+    /**
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     */
     producerBatchSize?: number;
+    /**
+     * The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
+     */
     producerBufferMemory?: number;
+    /**
+     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     */
     producerCompressionType?: string;
+    /**
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     */
     producerLingerMs?: number;
+    /**
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     */
     producerMaxRequestSize?: number;
+    /**
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     */
     scheduledRebalanceMaxDelayMs?: number;
+    /**
+     * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
+     */
     sessionTimeoutMs?: number;
 }
 
 export interface KafkaKafkaUserConfigKafkaRestConfig {
+    /**
+     * If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
+     */
     consumerEnableAutoCommit?: boolean;
+    /**
+     * Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     */
     consumerRequestMaxBytes?: number;
+    /**
+     * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     */
     consumerRequestTimeoutMs?: number;
+    /**
+     * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     */
     producerAcks?: string;
+    /**
+     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     */
     producerCompressionType?: string;
+    /**
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     */
     producerLingerMs?: number;
+    /**
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     */
     producerMaxRequestSize?: number;
+    /**
+     * Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     */
     simpleconsumerPoolSizeMax?: number;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
     /**
-     * Kafka server provided values
+     * Kafka broker configuration values.
      */
     kafka?: boolean;
+    /**
+     * Enable Kafka Connect service. The default value is `false`.
+     */
     kafkaConnect?: boolean;
+    /**
+     * Enable Kafka-REST service. The default value is `false`.
+     */
     kafkaRest?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
+    /**
+     * Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     schemaRegistry?: boolean;
 }
 
 export interface KafkaKafkaUserConfigPrivatelinkAccess {
+    /**
+     * Enable jolokia.
+     */
     jolokia?: boolean;
     /**
-     * Kafka server provided values
+     * Kafka broker configuration values.
      */
     kafka?: boolean;
+    /**
+     * Enable Kafka Connect service. The default value is `false`.
+     */
     kafkaConnect?: boolean;
+    /**
+     * Enable Kafka-REST service. The default value is `false`.
+     */
     kafkaRest?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
+    /**
+     * Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     schemaRegistry?: boolean;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
-     * Kafka server provided values
+     * Kafka broker configuration values.
      */
     kafka?: boolean;
+    /**
+     * Enable Kafka Connect service. The default value is `false`.
+     */
     kafkaConnect?: boolean;
+    /**
+     * Enable Kafka-REST service. The default value is `false`.
+     */
     kafkaRest?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
+    /**
+     * Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     schemaRegistry?: boolean;
 }
 
 export interface KafkaKafkaUserConfigSchemaRegistryConfig {
+    /**
+     * If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+     */
     leaderEligibility?: boolean;
+    /**
+     * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+     */
     topicName?: string;
 }
 
@@ -3507,111 +3675,312 @@ export interface OpenSearchOpensearchUserConfig {
 }
 
 export interface OpenSearchOpensearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep.
+     */
     maxIndexCount: number;
+    /**
+     * fnmatch pattern.
+     */
     pattern: string;
+    /**
+     * Deletion sorting algorithm. The default value is `creationDate`.
+     */
     sortingAlgorithm?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     */
     mappingNestedObjectsLimit?: number;
+    /**
+     * The number of replicas each primary shard has.
+     */
     numberOfReplicas?: number;
+    /**
+     * The number of primary shards that an index should have.
+     */
     numberOfShards?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpenid {
+    /**
+     * The ID of the OpenID Connect client configured in your IdP. Required.
+     */
     clientId: string;
+    /**
+     * The client secret of the OpenID Connect client configured in your IdP. Required.
+     */
     clientSecret: string;
+    /**
+     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     */
     connectUrl: string;
+    /**
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     */
     enabled?: boolean;
+    /**
+     * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     */
     header?: string;
+    /**
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     */
     jwtHeader?: string;
+    /**
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     */
     jwtUrlParameter?: string;
+    /**
+     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     */
     refreshRateLimitCount?: number;
+    /**
+     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     */
     refreshRateLimitTimeWindowMs?: number;
+    /**
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     */
     rolesKey?: string;
+    /**
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     */
     scope?: string;
+    /**
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional.
+     */
     subjectKey?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearch {
+    /**
+     * Explicitly allow or block automatic creation of indices. Defaults to true.
+     */
     actionAutoCreateIndexEnabled?: boolean;
+    /**
+     * Require explicit index names when deleting.
+     */
     actionDestructiveRequiresName?: boolean;
+    /**
+     * Controls the number of shards allowed in the cluster per data node.
+     */
     clusterMaxShardsPerNode?: number;
+    /**
+     * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
+    /**
+     * This should be identical to the Sender name defined in Opensearch dashboards.
+     */
     emailSenderName?: string;
+    /**
+     * Sender password for Opensearch alerts to authenticate with SMTP server.
+     */
     emailSenderPassword?: string;
+    /**
+     * Sender username for Opensearch alerts.
+     */
     emailSenderUsername?: string;
+    /**
+     * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+     */
     httpMaxContentLength?: number;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
     httpMaxHeaderSize?: number;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
     httpMaxInitialLineLength?: number;
+    /**
+     * Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+     */
     indicesFielddataCacheSize?: number;
+    /**
+     * Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     */
     indicesMemoryIndexBufferSize?: number;
+    /**
+     * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     */
     indicesQueriesCacheSize?: number;
+    /**
+     * Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+     */
     indicesQueryBoolMaxClauseCount?: number;
+    /**
+     * Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+     */
     indicesRecoveryMaxBytesPerSec?: number;
+    /**
+     * Number of file chunks sent in parallel for each recovery. Defaults to 2.
+     */
     indicesRecoveryMaxConcurrentFileChunks?: number;
+    /**
+     * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     */
     overrideMainResponseVersion?: boolean;
+    /**
+     * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+     */
     reindexRemoteWhitelists?: string[];
+    /**
+     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     */
     scriptMaxCompilationsRate?: string;
+    /**
+     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     */
     searchMaxBuckets?: number;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
     threadPoolAnalyzeQueueSize?: number;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolAnalyzeSize?: number;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolForceMergeSize?: number;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
     threadPoolGetQueueSize?: number;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolGetSize?: number;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
     threadPoolSearchQueueSize?: number;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchSize?: number;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
     threadPoolSearchThrottledQueueSize?: number;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolSearchThrottledSize?: number;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
     threadPoolWriteQueueSize?: number;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
     threadPoolWriteSize?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
+    /**
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     */
     enabled?: boolean;
+    /**
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     */
     maxOldSpaceSize?: number;
+    /**
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     */
     opensearchRequestTimeout?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      */
     opensearch?: boolean;
+    /**
+     * OpenSearch Dashboards settings.
+     */
     opensearchDashboards?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      */
     opensearch?: boolean;
+    /**
+     * OpenSearch Dashboards settings.
+     */
     opensearchDashboards?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      */
     opensearch?: boolean;
+    /**
+     * OpenSearch Dashboards settings.
+     */
     opensearchDashboards?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigSaml {
+    /**
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     */
     enabled: boolean;
+    /**
+     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     */
     idpEntityId: string;
+    /**
+     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     */
     idpMetadataUrl: string;
+    /**
+     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     */
     idpPemtrustedcasContent?: string;
+    /**
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     */
     rolesKey?: string;
+    /**
+     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     */
     spEntityId: string;
+    /**
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional.
+     */
     subjectKey?: string;
 }
 
@@ -3831,117 +4200,336 @@ export interface PgPgUserConfig {
 }
 
 export interface PgPgUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
     description?: string;
+    /**
+     * CIDR address block.
+     */
     network: string;
 }
 
 export interface PgPgUserConfigMigration {
+    /**
+     * Primary PostgreSQL database name
+     */
     dbname?: string;
     host: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     */
     ignoreDbs?: string;
+    /**
+     * The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     */
     method?: string;
+    /**
+     * PostgreSQL admin user password
+     */
     password?: string;
     port: number;
     ssl?: boolean;
+    /**
+     * User name for authentication with the server where to migrate data from.
+     */
     username?: string;
 }
 
 export interface PgPgUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     */
     autovacuumAnalyzeScaleFactor?: number;
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     */
     autovacuumAnalyzeThreshold?: number;
+    /**
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     */
     autovacuumFreezeMaxAge?: number;
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     */
     autovacuumMaxWorkers?: number;
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     */
     autovacuumNaptime?: number;
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+     */
     autovacuumVacuumCostDelay?: number;
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+     */
     autovacuumVacuumCostLimit?: number;
+    /**
+     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
     autovacuumVacuumScaleFactor?: number;
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     */
     autovacuumVacuumThreshold?: number;
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     */
     bgwriterDelay?: number;
+    /**
+     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     */
     bgwriterFlushAfter?: number;
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     */
     bgwriterLruMaxpages?: number;
+    /**
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     */
     bgwriterLruMultiplier?: number;
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     */
     deadlockTimeout?: number;
+    /**
+     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     */
     defaultToastCompression?: string;
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     */
     idleInTransactionSessionTimeout?: number;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
     jit?: boolean;
+    /**
+     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     */
     logAutovacuumMinDuration?: number;
+    /**
+     * Controls the amount of detail written in the server log for each message that is logged.
+     */
     logErrorVerbosity?: string;
+    /**
+     * Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     */
     logLinePrefix?: string;
+    /**
+     * Log statements that take more than this number of milliseconds to run, -1 disables.
+     */
     logMinDurationStatement?: number;
+    /**
+     * Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+     */
     logTempFiles?: number;
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     */
     maxFilesPerProcess?: number;
+    /**
+     * PostgreSQL maximum locks per transaction.
+     */
     maxLocksPerTransaction?: number;
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+     */
     maxLogicalReplicationWorkers?: number;
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     */
     maxParallelWorkers?: number;
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     */
     maxParallelWorkersPerGather?: number;
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     */
     maxPredLocksPerTransaction?: number;
+    /**
+     * PostgreSQL maximum prepared transactions.
+     */
     maxPreparedTransactions?: number;
+    /**
+     * PostgreSQL maximum replication slots.
+     */
     maxReplicationSlots?: number;
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+     */
     maxSlotWalKeepSize?: number;
+    /**
+     * Maximum depth of the stack in bytes.
+     */
     maxStackDepth?: number;
+    /**
+     * Max standby archive delay in milliseconds.
+     */
     maxStandbyArchiveDelay?: number;
+    /**
+     * Max standby streaming delay in milliseconds.
+     */
     maxStandbyStreamingDelay?: number;
+    /**
+     * PostgreSQL maximum WAL senders.
+     */
     maxWalSenders?: number;
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     */
     maxWorkerProcesses?: number;
+    /**
+     * Sets the time interval to run pg_partman's scheduled tasks.
+     */
     pgPartmanBgwDotInterval?: number;
+    /**
+     * Controls which role to use for pg_partman's scheduled background tasks.
+     */
     pgPartmanBgwDotRole?: string;
+    /**
+     * Enables or disables query plan monitoring.
+     */
     pgStatMonitorDotPgsmEnableQueryPlan?: boolean;
+    /**
+     * Sets the maximum number of buckets .
+     */
     pgStatMonitorDotPgsmMaxBuckets?: number;
+    /**
+     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     */
     pgStatStatementsDotTrack?: string;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     */
     tempFileLimit?: number;
+    /**
+     * PostgreSQL service timezone.
+     */
     timezone?: string;
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     */
     trackActivityQuerySize?: number;
+    /**
+     * Record commit time of transactions.
+     */
     trackCommitTimestamp?: string;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
     trackFunctions?: string;
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     */
     trackIoTiming?: string;
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     */
     walSenderTimeout?: number;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     */
     walWriterDelay?: number;
 }
 
 export interface PgPgUserConfigPgbouncer {
+    /**
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     */
     autodbIdleTimeout?: number;
+    /**
+     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     */
     autodbMaxDbConnections?: number;
+    /**
+     * PGBouncer pool mode.
+     */
     autodbPoolMode?: string;
+    /**
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+     */
     autodbPoolSize?: number;
+    /**
+     * List of parameters to ignore when given in startup packet.
+     */
     ignoreStartupParameters?: string[];
+    /**
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     */
     minPoolSize?: number;
+    /**
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     */
     serverIdleTimeout?: number;
+    /**
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     */
     serverLifetime?: number;
+    /**
+     * Run server*reset*query (DISCARD ALL) in all pooling modes.
+     */
     serverResetQueryAlways?: boolean;
 }
 
 export interface PgPgUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     */
     maxFailoverReplicationTimeLag?: number;
 }
 
 export interface PgPgUserConfigPrivateAccess {
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      */
     pg?: boolean;
+    /**
+     * PGBouncer connection pooling settings.
+     */
     pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      */
     pg?: boolean;
+    /**
+     * PGBouncer connection pooling settings.
+     */
     pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface PgPgUserConfigPublicAccess {
     /**
-     * PostgreSQL specific server provided values
+     * postgresql.conf configuration values.
      */
     pg?: boolean;
+    /**
+     * PGBouncer connection pooling settings.
+     */
     pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
     prometheus?: boolean;
 }
 
 export interface PgPgUserConfigTimescaledb {
+    /**
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+     */
     maxBackgroundWorkers?: number;
 }
 
@@ -4069,27 +4657,75 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
+    /**
+     * Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     */
     autoOffsetReset?: string;
+    /**
+     * Table columns.
+     */
     columns?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
+    /**
+     * Message data format. The default value is `JSONEachRow`.
+     */
     dataFormat: string;
+    /**
+     * Method to read DateTime from text input formats. The default value is `basic`.
+     */
     dateTimeInputFormat?: string;
+    /**
+     * Kafka consumers group. The default value is `clickhouse`.
+     */
     groupName: string;
+    /**
+     * How to handle errors for Kafka engine. The default value is `default`.
+     */
     handleErrorMode?: string;
+    /**
+     * Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     */
     maxBlockSize?: number;
+    /**
+     * The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     */
     maxRowsPerMessage?: number;
+    /**
+     * Column name.
+     */
     name: string;
+    /**
+     * The number of consumers per table per replica. The default value is `1`.
+     */
     numConsumers?: number;
+    /**
+     * Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     */
     pollMaxBatchSize?: number;
+    /**
+     * Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     */
     skipBrokenMessages?: number;
+    /**
+     * Kafka topics.
+     */
     topics?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
+    /**
+     * Column name.
+     */
     name: string;
+    /**
+     * Column type.
+     */
     type: string;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
+    /**
+     * Column name.
+     */
     name: string;
 }
 
@@ -4101,7 +4737,13 @@ export interface ServiceIntegrationClickhousePostgresqlUserConfig {
 }
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
+    /**
+     * PostgreSQL database to expose. The default value is `defaultdb`.
+     */
     database?: string;
+    /**
+     * PostgreSQL schema to expose. The default value is `public`.
+     */
     schema?: string;
 }
 
@@ -4149,17 +4791,35 @@ export interface ServiceIntegrationDatadogUserConfig {
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
+    /**
+     * Optional tag explanation.
+     */
     comment?: string;
+    /**
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     */
     tag: string;
 }
 
 export interface ServiceIntegrationDatadogUserConfigOpensearch {
+    /**
+     * Enable Datadog Opensearch Index Monitoring.
+     */
     indexStatsEnabled?: boolean;
+    /**
+     * Enable Datadog Opensearch Pending Task Monitoring.
+     */
     pendingTaskStatsEnabled?: boolean;
+    /**
+     * Enable Datadog Opensearch Primary Shard Monitoring.
+     */
     pshardStatsEnabled?: boolean;
 }
 
 export interface ServiceIntegrationDatadogUserConfigRedis {
+    /**
+     * Enable commandStats option in the agent's configuration. The default value is `false`.
+     */
     commandStatsEnabled?: boolean;
 }
 
@@ -4195,7 +4855,13 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+    /**
+     * Optional tag explanation.
+     */
     comment?: string;
+    /**
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     */
     tag: string;
 }
 
@@ -4429,12 +5095,24 @@ export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    /**
+     * Identifier of a value in the metric.
+     */
     field: string;
+    /**
+     * Identifier of the metric.
+     */
     metric: string;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+    /**
+     * Identifier of a value in the metric.
+     */
     field: string;
+    /**
+     * Identifier of the metric.
+     */
     metric: string;
 }
 
@@ -4446,9 +5124,21 @@ export interface ServiceIntegrationKafkaConnectUserConfig {
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+    /**
+     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     */
     configStorageTopic?: string;
+    /**
+     * A unique string that identifies the Connect cluster group this worker belongs to.
+     */
     groupId?: string;
+    /**
+     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     */
     offsetStorageTopic?: string;
+    /**
+     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     */
     statusStorageTopic?: string;
 }
 
@@ -4475,11 +5165,29 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * The minimum amount of data the server should return for a fetch request.
+     */
     consumerFetchMinBytes?: number;
+    /**
+     * The batch size in bytes producer will attempt to collect before publishing to broker.
+     */
     producerBatchSize?: number;
+    /**
+     * The amount of bytes producer can use for buffering data before publishing to broker.
+     */
     producerBufferMemory?: number;
+    /**
+     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     */
     producerCompressionType?: string;
+    /**
+     * The linger time (ms) for waiting new data to arrive for publishing.
+     */
     producerLingerMs?: number;
+    /**
+     * The maximum request size in bytes.
+     */
     producerMaxRequestSize?: number;
 }
 
@@ -4522,23 +5230,68 @@ export interface ServiceIntegrationMetricsUserConfig {
 }
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysql {
+    /**
+     * Configuration options for Telegraf MySQL input plugin.
+     */
     telegraf?: outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf;
 }
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+     */
     gatherEventWaits?: boolean;
+    /**
+     * gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     */
     gatherFileEventsStats?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+     */
     gatherIndexIoWaits?: boolean;
+    /**
+     * Gather autoIncrement columns and max values from information schema.
+     */
     gatherInfoSchemaAutoInc?: boolean;
+    /**
+     * Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+     */
     gatherInnodbMetrics?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+     */
     gatherPerfEventsStatements?: boolean;
+    /**
+     * Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+     */
     gatherProcessList?: boolean;
+    /**
+     * Gather metrics from SHOW SLAVE STATUS command output.
+     */
     gatherSlaveStatus?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+     */
     gatherTableIoWaits?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+     */
     gatherTableLockWaits?: boolean;
+    /**
+     * Gather metrics from INFORMATION_SCHEMA.TABLES.
+     */
     gatherTableSchema?: boolean;
+    /**
+     * Truncates digest text from perf*events*statements into this many characters.
+     */
     perfEventsStatementsDigestTextLimit?: number;
+    /**
+     * Limits metrics from perf*events*statements.
+     */
     perfEventsStatementsLimit?: number;
+    /**
+     * Only include perf*events*statements whose last seen is less than this many seconds.
+     */
     perfEventsStatementsTimeLimit?: number;
 }
 

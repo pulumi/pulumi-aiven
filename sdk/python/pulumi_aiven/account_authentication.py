@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,30 +45,63 @@ class AccountAuthenticationArgs:
         :param pulumi.Input[str] saml_signature_algorithm: Signature algorithm. This is an advanced option that typically does not need to be set.
         :param pulumi.Input[str] saml_variant: SAML server variant
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "type", type)
+        AccountAuthenticationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            type=type,
+            auto_join_team_id=auto_join_team_id,
+            enabled=enabled,
+            name=name,
+            saml_certificate=saml_certificate,
+            saml_digest_algorithm=saml_digest_algorithm,
+            saml_entity_id=saml_entity_id,
+            saml_field_mapping=saml_field_mapping,
+            saml_idp_login_allowed=saml_idp_login_allowed,
+            saml_idp_url=saml_idp_url,
+            saml_signature_algorithm=saml_signature_algorithm,
+            saml_variant=saml_variant,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             type: pulumi.Input[str],
+             auto_join_team_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             saml_certificate: Optional[pulumi.Input[str]] = None,
+             saml_digest_algorithm: Optional[pulumi.Input[str]] = None,
+             saml_entity_id: Optional[pulumi.Input[str]] = None,
+             saml_field_mapping: Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']] = None,
+             saml_idp_login_allowed: Optional[pulumi.Input[bool]] = None,
+             saml_idp_url: Optional[pulumi.Input[str]] = None,
+             saml_signature_algorithm: Optional[pulumi.Input[str]] = None,
+             saml_variant: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("type", type)
         if auto_join_team_id is not None:
-            pulumi.set(__self__, "auto_join_team_id", auto_join_team_id)
+            _setter("auto_join_team_id", auto_join_team_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if saml_certificate is not None:
-            pulumi.set(__self__, "saml_certificate", saml_certificate)
+            _setter("saml_certificate", saml_certificate)
         if saml_digest_algorithm is not None:
-            pulumi.set(__self__, "saml_digest_algorithm", saml_digest_algorithm)
+            _setter("saml_digest_algorithm", saml_digest_algorithm)
         if saml_entity_id is not None:
-            pulumi.set(__self__, "saml_entity_id", saml_entity_id)
+            _setter("saml_entity_id", saml_entity_id)
         if saml_field_mapping is not None:
-            pulumi.set(__self__, "saml_field_mapping", saml_field_mapping)
+            _setter("saml_field_mapping", saml_field_mapping)
         if saml_idp_login_allowed is not None:
-            pulumi.set(__self__, "saml_idp_login_allowed", saml_idp_login_allowed)
+            _setter("saml_idp_login_allowed", saml_idp_login_allowed)
         if saml_idp_url is not None:
-            pulumi.set(__self__, "saml_idp_url", saml_idp_url)
+            _setter("saml_idp_url", saml_idp_url)
         if saml_signature_algorithm is not None:
-            pulumi.set(__self__, "saml_signature_algorithm", saml_signature_algorithm)
+            _setter("saml_signature_algorithm", saml_signature_algorithm)
         if saml_variant is not None:
-            pulumi.set(__self__, "saml_variant", saml_variant)
+            _setter("saml_variant", saml_variant)
 
     @property
     @pulumi.getter(name="accountId")
@@ -269,42 +302,85 @@ class _AccountAuthenticationState:
         :param pulumi.Input[str] type: The account authentication type. The possible values are `internal` and `saml`.
         :param pulumi.Input[str] update_time: Time of last update
         """
+        _AccountAuthenticationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            authentication_id=authentication_id,
+            auto_join_team_id=auto_join_team_id,
+            create_time=create_time,
+            enabled=enabled,
+            name=name,
+            saml_acs_url=saml_acs_url,
+            saml_certificate=saml_certificate,
+            saml_digest_algorithm=saml_digest_algorithm,
+            saml_entity_id=saml_entity_id,
+            saml_field_mapping=saml_field_mapping,
+            saml_idp_login_allowed=saml_idp_login_allowed,
+            saml_idp_url=saml_idp_url,
+            saml_metadata_url=saml_metadata_url,
+            saml_signature_algorithm=saml_signature_algorithm,
+            saml_variant=saml_variant,
+            type=type,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             authentication_id: Optional[pulumi.Input[str]] = None,
+             auto_join_team_id: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             saml_acs_url: Optional[pulumi.Input[str]] = None,
+             saml_certificate: Optional[pulumi.Input[str]] = None,
+             saml_digest_algorithm: Optional[pulumi.Input[str]] = None,
+             saml_entity_id: Optional[pulumi.Input[str]] = None,
+             saml_field_mapping: Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']] = None,
+             saml_idp_login_allowed: Optional[pulumi.Input[bool]] = None,
+             saml_idp_url: Optional[pulumi.Input[str]] = None,
+             saml_metadata_url: Optional[pulumi.Input[str]] = None,
+             saml_signature_algorithm: Optional[pulumi.Input[str]] = None,
+             saml_variant: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if authentication_id is not None:
-            pulumi.set(__self__, "authentication_id", authentication_id)
+            _setter("authentication_id", authentication_id)
         if auto_join_team_id is not None:
-            pulumi.set(__self__, "auto_join_team_id", auto_join_team_id)
+            _setter("auto_join_team_id", auto_join_team_id)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if saml_acs_url is not None:
-            pulumi.set(__self__, "saml_acs_url", saml_acs_url)
+            _setter("saml_acs_url", saml_acs_url)
         if saml_certificate is not None:
-            pulumi.set(__self__, "saml_certificate", saml_certificate)
+            _setter("saml_certificate", saml_certificate)
         if saml_digest_algorithm is not None:
-            pulumi.set(__self__, "saml_digest_algorithm", saml_digest_algorithm)
+            _setter("saml_digest_algorithm", saml_digest_algorithm)
         if saml_entity_id is not None:
-            pulumi.set(__self__, "saml_entity_id", saml_entity_id)
+            _setter("saml_entity_id", saml_entity_id)
         if saml_field_mapping is not None:
-            pulumi.set(__self__, "saml_field_mapping", saml_field_mapping)
+            _setter("saml_field_mapping", saml_field_mapping)
         if saml_idp_login_allowed is not None:
-            pulumi.set(__self__, "saml_idp_login_allowed", saml_idp_login_allowed)
+            _setter("saml_idp_login_allowed", saml_idp_login_allowed)
         if saml_idp_url is not None:
-            pulumi.set(__self__, "saml_idp_url", saml_idp_url)
+            _setter("saml_idp_url", saml_idp_url)
         if saml_metadata_url is not None:
-            pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+            _setter("saml_metadata_url", saml_metadata_url)
         if saml_signature_algorithm is not None:
-            pulumi.set(__self__, "saml_signature_algorithm", saml_signature_algorithm)
+            _setter("saml_signature_algorithm", saml_signature_algorithm)
         if saml_variant is not None:
-            pulumi.set(__self__, "saml_variant", saml_variant)
+            _setter("saml_variant", saml_variant)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="accountId")
@@ -592,6 +668,10 @@ class AccountAuthentication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountAuthenticationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -628,6 +708,11 @@ class AccountAuthentication(pulumi.CustomResource):
             __props__.__dict__["saml_certificate"] = saml_certificate
             __props__.__dict__["saml_digest_algorithm"] = saml_digest_algorithm
             __props__.__dict__["saml_entity_id"] = saml_entity_id
+            if saml_field_mapping is not None and not isinstance(saml_field_mapping, AccountAuthenticationSamlFieldMappingArgs):
+                saml_field_mapping = saml_field_mapping or {}
+                def _setter(key, value):
+                    saml_field_mapping[key] = value
+                AccountAuthenticationSamlFieldMappingArgs._configure(_setter, **saml_field_mapping)
             __props__.__dict__["saml_field_mapping"] = saml_field_mapping
             __props__.__dict__["saml_idp_login_allowed"] = saml_idp_login_allowed
             __props__.__dict__["saml_idp_url"] = saml_idp_url

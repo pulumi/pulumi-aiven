@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CassandraCassandraUserConfigCassandra {
+    /**
+     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * 
+     */
     private @Nullable Integer batchSizeFailThresholdInKb;
+    /**
+     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * 
+     */
     private @Nullable Integer batchSizeWarnThresholdInKb;
+    /**
+     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * 
+     */
     private @Nullable String datacenter;
 
     private CassandraCassandraUserConfigCassandra() {}
+    /**
+     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * 
+     */
     public Optional<Integer> batchSizeFailThresholdInKb() {
         return Optional.ofNullable(this.batchSizeFailThresholdInKb);
     }
+    /**
+     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * 
+     */
     public Optional<Integer> batchSizeWarnThresholdInKb() {
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
     }
+    /**
+     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * 
+     */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }

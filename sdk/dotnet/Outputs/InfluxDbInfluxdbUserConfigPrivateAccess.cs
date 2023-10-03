@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class InfluxDbInfluxdbUserConfigPrivateAccess
     {
         /// <summary>
-        /// InfluxDB server provided values
+        /// influxdb.conf configuration values.
         /// </summary>
         public readonly bool? Influxdb;
 

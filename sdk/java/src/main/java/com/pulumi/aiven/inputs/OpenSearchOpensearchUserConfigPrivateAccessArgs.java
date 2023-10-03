@@ -16,30 +16,46 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
     public static final OpenSearchOpensearchUserConfigPrivateAccessArgs Empty = new OpenSearchOpensearchUserConfigPrivateAccessArgs();
 
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return OpenSearch server provided values
+     * @return OpenSearch settings.
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
 
+    /**
+     * OpenSearch Dashboards settings.
+     * 
+     */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
+    /**
+     * @return OpenSearch Dashboards settings.
+     * 
+     */
     public Optional<Output<Boolean>> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -71,7 +87,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearch OpenSearch server provided values
+         * @param opensearch OpenSearch settings.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearch OpenSearch server provided values
+         * @param opensearch OpenSearch settings.
          * 
          * @return builder
          * 
@@ -91,20 +107,44 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
             return opensearch(Output.of(opensearch));
         }
 
+        /**
+         * @param opensearchDashboards OpenSearch Dashboards settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearchDashboards(@Nullable Output<Boolean> opensearchDashboards) {
             $.opensearchDashboards = opensearchDashboards;
             return this;
         }
 
+        /**
+         * @param opensearchDashboards OpenSearch Dashboards settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearchDashboards(Boolean opensearchDashboards) {
             return opensearchDashboards(Output.of(opensearchDashboards));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

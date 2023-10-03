@@ -12,24 +12,45 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchUserConfigSamlArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+        /// </summary>
         [Input("idpEntityId", required: true)]
         public Input<string> IdpEntityId { get; set; } = null!;
 
+        /// <summary>
+        /// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+        /// </summary>
         [Input("idpMetadataUrl", required: true)]
         public Input<string> IdpMetadataUrl { get; set; } = null!;
 
+        /// <summary>
+        /// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+        /// </summary>
         [Input("idpPemtrustedcasContent")]
         public Input<string>? IdpPemtrustedcasContent { get; set; }
 
+        /// <summary>
+        /// The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+        /// </summary>
         [Input("rolesKey")]
         public Input<string>? RolesKey { get; set; }
 
+        /// <summary>
+        /// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+        /// </summary>
         [Input("spEntityId", required: true)]
         public Input<string> SpEntityId { get; set; } = null!;
 
+        /// <summary>
+        /// The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+        /// </summary>
         [Input("subjectKey")]
         public Input<string>? SubjectKey { get; set; }
 

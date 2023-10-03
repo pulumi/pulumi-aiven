@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -67,34 +67,69 @@ class RedisArgs:
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
         """
-        pulumi.set(__self__, "plan", plan)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        RedisArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            project=project,
+            service_name=service_name,
+            additional_disk_space=additional_disk_space,
+            cloud_name=cloud_name,
+            disk_space=disk_space,
+            maintenance_window_dow=maintenance_window_dow,
+            maintenance_window_time=maintenance_window_time,
+            project_vpc_id=project_vpc_id,
+            redis_user_config=redis_user_config,
+            service_integrations=service_integrations,
+            static_ips=static_ips,
+            tags=tags,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: pulumi.Input[str],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             additional_disk_space: Optional[pulumi.Input[str]] = None,
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             disk_space: Optional[pulumi.Input[str]] = None,
+             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+             maintenance_window_time: Optional[pulumi.Input[str]] = None,
+             project_vpc_id: Optional[pulumi.Input[str]] = None,
+             redis_user_config: Optional[pulumi.Input['RedisRedisUserConfigArgs']] = None,
+             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]]] = None,
+             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plan", plan)
+        _setter("project", project)
+        _setter("service_name", service_name)
         if additional_disk_space is not None:
-            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+            _setter("additional_disk_space", additional_disk_space)
         if cloud_name is not None:
-            pulumi.set(__self__, "cloud_name", cloud_name)
+            _setter("cloud_name", cloud_name)
         if disk_space is not None:
             warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
-            pulumi.set(__self__, "disk_space", disk_space)
+            _setter("disk_space", disk_space)
         if maintenance_window_dow is not None:
-            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+            _setter("maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
-            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+            _setter("maintenance_window_time", maintenance_window_time)
         if project_vpc_id is not None:
-            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+            _setter("project_vpc_id", project_vpc_id)
         if redis_user_config is not None:
-            pulumi.set(__self__, "redis_user_config", redis_user_config)
+            _setter("redis_user_config", redis_user_config)
         if service_integrations is not None:
-            pulumi.set(__self__, "service_integrations", service_integrations)
+            _setter("service_integrations", service_integrations)
         if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
+            _setter("static_ips", static_ips)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter
@@ -370,63 +405,124 @@ class _RedisState:
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
         """
+        _RedisState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_disk_space=additional_disk_space,
+            cloud_name=cloud_name,
+            components=components,
+            disk_space=disk_space,
+            disk_space_cap=disk_space_cap,
+            disk_space_default=disk_space_default,
+            disk_space_step=disk_space_step,
+            disk_space_used=disk_space_used,
+            maintenance_window_dow=maintenance_window_dow,
+            maintenance_window_time=maintenance_window_time,
+            plan=plan,
+            project=project,
+            project_vpc_id=project_vpc_id,
+            redis=redis,
+            redis_user_config=redis_user_config,
+            service_host=service_host,
+            service_integrations=service_integrations,
+            service_name=service_name,
+            service_password=service_password,
+            service_port=service_port,
+            service_type=service_type,
+            service_uri=service_uri,
+            service_username=service_username,
+            state=state,
+            static_ips=static_ips,
+            tags=tags,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_disk_space: Optional[pulumi.Input[str]] = None,
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             components: Optional[pulumi.Input[Sequence[pulumi.Input['RedisComponentArgs']]]] = None,
+             disk_space: Optional[pulumi.Input[str]] = None,
+             disk_space_cap: Optional[pulumi.Input[str]] = None,
+             disk_space_default: Optional[pulumi.Input[str]] = None,
+             disk_space_step: Optional[pulumi.Input[str]] = None,
+             disk_space_used: Optional[pulumi.Input[str]] = None,
+             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
+             maintenance_window_time: Optional[pulumi.Input[str]] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_vpc_id: Optional[pulumi.Input[str]] = None,
+             redis: Optional[pulumi.Input[Sequence[pulumi.Input['RedisRediArgs']]]] = None,
+             redis_user_config: Optional[pulumi.Input['RedisRedisUserConfigArgs']] = None,
+             service_host: Optional[pulumi.Input[str]] = None,
+             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             service_password: Optional[pulumi.Input[str]] = None,
+             service_port: Optional[pulumi.Input[int]] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
+             service_uri: Optional[pulumi.Input[str]] = None,
+             service_username: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_disk_space is not None:
-            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+            _setter("additional_disk_space", additional_disk_space)
         if cloud_name is not None:
-            pulumi.set(__self__, "cloud_name", cloud_name)
+            _setter("cloud_name", cloud_name)
         if components is not None:
-            pulumi.set(__self__, "components", components)
+            _setter("components", components)
         if disk_space is not None:
             warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
-            pulumi.set(__self__, "disk_space", disk_space)
+            _setter("disk_space", disk_space)
         if disk_space_cap is not None:
-            pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+            _setter("disk_space_cap", disk_space_cap)
         if disk_space_default is not None:
-            pulumi.set(__self__, "disk_space_default", disk_space_default)
+            _setter("disk_space_default", disk_space_default)
         if disk_space_step is not None:
-            pulumi.set(__self__, "disk_space_step", disk_space_step)
+            _setter("disk_space_step", disk_space_step)
         if disk_space_used is not None:
-            pulumi.set(__self__, "disk_space_used", disk_space_used)
+            _setter("disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
-            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+            _setter("maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
-            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+            _setter("maintenance_window_time", maintenance_window_time)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if project_vpc_id is not None:
-            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+            _setter("project_vpc_id", project_vpc_id)
         if redis is not None:
-            pulumi.set(__self__, "redis", redis)
+            _setter("redis", redis)
         if redis_user_config is not None:
-            pulumi.set(__self__, "redis_user_config", redis_user_config)
+            _setter("redis_user_config", redis_user_config)
         if service_host is not None:
-            pulumi.set(__self__, "service_host", service_host)
+            _setter("service_host", service_host)
         if service_integrations is not None:
-            pulumi.set(__self__, "service_integrations", service_integrations)
+            _setter("service_integrations", service_integrations)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if service_password is not None:
-            pulumi.set(__self__, "service_password", service_password)
+            _setter("service_password", service_password)
         if service_port is not None:
-            pulumi.set(__self__, "service_port", service_port)
+            _setter("service_port", service_port)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
         if service_uri is not None:
-            pulumi.set(__self__, "service_uri", service_uri)
+            _setter("service_uri", service_uri)
         if service_username is not None:
-            pulumi.set(__self__, "service_username", service_username)
+            _setter("service_username", service_username)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
+            _setter("static_ips", static_ips)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
@@ -911,6 +1007,10 @@ class Redis(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RedisArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -941,9 +1041,6 @@ class Redis(pulumi.CustomResource):
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
-            if disk_space is not None and not opts.urn:
-                warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-                pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -954,6 +1051,11 @@ class Redis(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_vpc_id"] = project_vpc_id
+            if redis_user_config is not None and not isinstance(redis_user_config, RedisRedisUserConfigArgs):
+                redis_user_config = redis_user_config or {}
+                def _setter(key, value):
+                    redis_user_config[key] = value
+                RedisRedisUserConfigArgs._configure(_setter, **redis_user_config)
             __props__.__dict__["redis_user_config"] = redis_user_config
             __props__.__dict__["service_integrations"] = service_integrations
             if service_name is None and not opts.urn:

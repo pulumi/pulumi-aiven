@@ -28,18 +28,10 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     private @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetKafkaConnectKafkaConnectUserConfig() {}
@@ -61,10 +53,6 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     public Optional<GetKafkaConnectKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
@@ -77,10 +65,6 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public Optional<GetKafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

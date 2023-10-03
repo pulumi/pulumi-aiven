@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboards
     {
+        /// <summary>
+        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+        /// </summary>
         public readonly int? MaxOldSpaceSize;
+        /// <summary>
+        /// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+        /// </summary>
         public readonly int? OpensearchRequestTimeout;
 
         [OutputConstructor]

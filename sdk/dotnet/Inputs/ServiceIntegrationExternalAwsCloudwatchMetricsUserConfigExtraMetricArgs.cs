@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Identifier of a value in the metric.
+        /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the metric.
+        /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
 

@@ -14,9 +14,6 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetRedisRedisUserConfigPrivateAccessResult
     {
         public readonly bool? Prometheus;
-        /// <summary>
-        /// Redis server provided values
-        /// </summary>
         public readonly bool? Redis;
 
         [OutputConstructor]

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['BillingGroupArgs', 'BillingGroup']
@@ -47,39 +47,76 @@ class BillingGroupArgs:
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
         """
+        BillingGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            address_lines=address_lines,
+            billing_currency=billing_currency,
+            billing_emails=billing_emails,
+            billing_extra_text=billing_extra_text,
+            card_id=card_id,
+            city=city,
+            company=company,
+            copy_from_billing_group=copy_from_billing_group,
+            country_code=country_code,
+            name=name,
+            parent_id=parent_id,
+            state=state,
+            vat_id=vat_id,
+            zip_code=zip_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_currency: Optional[pulumi.Input[str]] = None,
+             billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_extra_text: Optional[pulumi.Input[str]] = None,
+             card_id: Optional[pulumi.Input[str]] = None,
+             city: Optional[pulumi.Input[str]] = None,
+             company: Optional[pulumi.Input[str]] = None,
+             copy_from_billing_group: Optional[pulumi.Input[str]] = None,
+             country_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             vat_id: Optional[pulumi.Input[str]] = None,
+             zip_code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if address_lines is not None:
-            pulumi.set(__self__, "address_lines", address_lines)
+            _setter("address_lines", address_lines)
         if billing_currency is not None:
-            pulumi.set(__self__, "billing_currency", billing_currency)
+            _setter("billing_currency", billing_currency)
         if billing_emails is not None:
-            pulumi.set(__self__, "billing_emails", billing_emails)
+            _setter("billing_emails", billing_emails)
         if billing_extra_text is not None:
-            pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+            _setter("billing_extra_text", billing_extra_text)
         if card_id is not None:
-            pulumi.set(__self__, "card_id", card_id)
+            _setter("card_id", card_id)
         if city is not None:
-            pulumi.set(__self__, "city", city)
+            _setter("city", city)
         if company is not None:
-            pulumi.set(__self__, "company", company)
+            _setter("company", company)
         if copy_from_billing_group is not None:
-            pulumi.set(__self__, "copy_from_billing_group", copy_from_billing_group)
+            _setter("copy_from_billing_group", copy_from_billing_group)
         if country_code is not None:
-            pulumi.set(__self__, "country_code", country_code)
+            _setter("country_code", country_code)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if vat_id is not None:
-            pulumi.set(__self__, "vat_id", vat_id)
+            _setter("vat_id", vat_id)
         if zip_code is not None:
-            pulumi.set(__self__, "zip_code", zip_code)
+            _setter("zip_code", zip_code)
 
     @property
     @pulumi.getter(name="accountId")
@@ -301,39 +338,76 @@ class _BillingGroupState:
         :param pulumi.Input[str] vat_id: VAT id
         :param pulumi.Input[str] zip_code: Zip Code
         """
+        _BillingGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            address_lines=address_lines,
+            billing_currency=billing_currency,
+            billing_emails=billing_emails,
+            billing_extra_text=billing_extra_text,
+            card_id=card_id,
+            city=city,
+            company=company,
+            copy_from_billing_group=copy_from_billing_group,
+            country_code=country_code,
+            name=name,
+            parent_id=parent_id,
+            state=state,
+            vat_id=vat_id,
+            zip_code=zip_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_currency: Optional[pulumi.Input[str]] = None,
+             billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_extra_text: Optional[pulumi.Input[str]] = None,
+             card_id: Optional[pulumi.Input[str]] = None,
+             city: Optional[pulumi.Input[str]] = None,
+             company: Optional[pulumi.Input[str]] = None,
+             copy_from_billing_group: Optional[pulumi.Input[str]] = None,
+             country_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             vat_id: Optional[pulumi.Input[str]] = None,
+             zip_code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if address_lines is not None:
-            pulumi.set(__self__, "address_lines", address_lines)
+            _setter("address_lines", address_lines)
         if billing_currency is not None:
-            pulumi.set(__self__, "billing_currency", billing_currency)
+            _setter("billing_currency", billing_currency)
         if billing_emails is not None:
-            pulumi.set(__self__, "billing_emails", billing_emails)
+            _setter("billing_emails", billing_emails)
         if billing_extra_text is not None:
-            pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+            _setter("billing_extra_text", billing_extra_text)
         if card_id is not None:
-            pulumi.set(__self__, "card_id", card_id)
+            _setter("card_id", card_id)
         if city is not None:
-            pulumi.set(__self__, "city", city)
+            _setter("city", city)
         if company is not None:
-            pulumi.set(__self__, "company", company)
+            _setter("company", company)
         if copy_from_billing_group is not None:
-            pulumi.set(__self__, "copy_from_billing_group", copy_from_billing_group)
+            _setter("copy_from_billing_group", copy_from_billing_group)
         if country_code is not None:
-            pulumi.set(__self__, "country_code", country_code)
+            _setter("country_code", country_code)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if vat_id is not None:
-            pulumi.set(__self__, "vat_id", vat_id)
+            _setter("vat_id", vat_id)
         if zip_code is not None:
-            pulumi.set(__self__, "zip_code", zip_code)
+            _setter("zip_code", zip_code)
 
     @property
     @pulumi.getter(name="accountId")
@@ -620,6 +694,10 @@ class BillingGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BillingGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -649,9 +727,6 @@ class BillingGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BillingGroupArgs.__new__(BillingGroupArgs)
 
-            if account_id is not None and not opts.urn:
-                warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-                pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["address_lines"] = address_lines
             __props__.__dict__["billing_currency"] = billing_currency

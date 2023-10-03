@@ -12,24 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPgUserConfigPublicAccess {
     /**
-     * @return PostgreSQL specific server provided values
+     * @return postgresql.conf configuration values.
      * 
      */
     private @Nullable Boolean pg;
+    /**
+     * @return PGBouncer connection pooling settings.
+     * 
+     */
     private @Nullable Boolean pgbouncer;
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private PgPgUserConfigPublicAccess() {}
     /**
-     * @return PostgreSQL specific server provided values
+     * @return postgresql.conf configuration values.
      * 
      */
     public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }
+    /**
+     * @return PGBouncer connection pooling settings.
+     * 
+     */
     public Optional<Boolean> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

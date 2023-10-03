@@ -68,10 +68,6 @@ public final class GetGrafanaGrafanaUserConfig {
     private @Nullable String recoveryBasebackupName;
     private @Nullable String serviceToForkFrom;
     private @Nullable GetGrafanaGrafanaUserConfigSmtpServer smtpServer;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
     private @Nullable Boolean userAutoAssignOrg;
     private @Nullable String userAutoAssignOrgRole;
@@ -192,10 +188,6 @@ public final class GetGrafanaGrafanaUserConfig {
     public Optional<GetGrafanaGrafanaUserConfigSmtpServer> smtpServer() {
         return Optional.ofNullable(this.smtpServer);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

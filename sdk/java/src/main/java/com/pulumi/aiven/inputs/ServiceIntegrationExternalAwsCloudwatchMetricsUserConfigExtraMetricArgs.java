@@ -13,16 +13,32 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
 
     public static final ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs Empty = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs();
 
+    /**
+     * Identifier of a value in the metric.
+     * 
+     */
     @Import(name="field", required=true)
     private Output<String> field;
 
+    /**
+     * @return Identifier of a value in the metric.
+     * 
+     */
     public Output<String> field() {
         return this.field;
     }
 
+    /**
+     * Identifier of the metric.
+     * 
+     */
     @Import(name="metric", required=true)
     private Output<String> metric;
 
+    /**
+     * @return Identifier of the metric.
+     * 
+     */
     public Output<String> metric() {
         return this.metric;
     }
@@ -52,20 +68,44 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
             $ = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param field Identifier of a value in the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder field(Output<String> field) {
             $.field = field;
             return this;
         }
 
+        /**
+         * @param field Identifier of a value in the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder field(String field) {
             return field(Output.of(field));
         }
 
+        /**
+         * @param metric Identifier of the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(Output<String> metric) {
             $.metric = metric;
             return this;
         }
 
+        /**
+         * @param metric Identifier of the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(String metric) {
             return metric(Output.of(metric));
         }

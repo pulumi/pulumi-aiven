@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
+    /**
+     * @return Column name.
+     * 
+     */
     private String name;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableTopic() {}
+    /**
+     * @return Column name.
+     * 
+     */
     public String name() {
         return this.name;
     }

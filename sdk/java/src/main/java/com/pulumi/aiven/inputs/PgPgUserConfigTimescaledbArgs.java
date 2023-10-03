@@ -15,9 +15,17 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
 
     public static final PgPgUserConfigTimescaledbArgs Empty = new PgPgUserConfigTimescaledbArgs();
 
+    /**
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+     * 
+     */
     @Import(name="maxBackgroundWorkers")
     private @Nullable Output<Integer> maxBackgroundWorkers;
 
+    /**
+     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+     * 
+     */
     public Optional<Output<Integer>> maxBackgroundWorkers() {
         return Optional.ofNullable(this.maxBackgroundWorkers);
     }
@@ -46,11 +54,23 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
             $ = new PgPgUserConfigTimescaledbArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxBackgroundWorkers The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxBackgroundWorkers(@Nullable Output<Integer> maxBackgroundWorkers) {
             $.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
         }
 
+        /**
+         * @param maxBackgroundWorkers The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxBackgroundWorkers(Integer maxBackgroundWorkers) {
             return maxBackgroundWorkers(Output.of(maxBackgroundWorkers));
         }

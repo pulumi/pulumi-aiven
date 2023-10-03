@@ -97,7 +97,7 @@ export class Flink extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
-     * Flink server provided values
+     * Enable flink.
      */
     public readonly flink!: pulumi.Output<outputs.FlinkFlink>;
     /**
@@ -298,7 +298,7 @@ export interface FlinkState {
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
-     * Flink server provided values
+     * Enable flink.
      */
     flink?: pulumi.Input<inputs.FlinkFlink>;
     /**
@@ -394,7 +394,7 @@ export interface FlinkArgs {
      */
     diskSpace?: pulumi.Input<string>;
     /**
-     * Flink server provided values
+     * Enable flink.
      */
     flink?: pulumi.Input<inputs.FlinkFlink>;
     /**
