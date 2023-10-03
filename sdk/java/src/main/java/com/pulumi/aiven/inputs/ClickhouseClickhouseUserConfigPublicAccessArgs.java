@@ -16,30 +16,46 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     public static final ClickhouseClickhouseUserConfigPublicAccessArgs Empty = new ClickhouseClickhouseUserConfigPublicAccessArgs();
 
     /**
-     * Clickhouse server provided values
+     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="clickhouse")
     private @Nullable Output<Boolean> clickhouse;
 
     /**
-     * @return Clickhouse server provided values
+     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }
 
+    /**
+     * Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="clickhouseHttps")
     private @Nullable Output<Boolean> clickhouseHttps;
 
+    /**
+     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -71,7 +87,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouse Clickhouse server provided values
+         * @param clickhouse Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouse Clickhouse server provided values
+         * @param clickhouse Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -91,20 +107,44 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
             return clickhouse(Output.of(clickhouse));
         }
 
+        /**
+         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clickhouseHttps(@Nullable Output<Boolean> clickhouseHttps) {
             $.clickhouseHttps = clickhouseHttps;
             return this;
         }
 
+        /**
+         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clickhouseHttps(Boolean clickhouseHttps) {
             return clickhouseHttps(Output.of(clickhouseHttps));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

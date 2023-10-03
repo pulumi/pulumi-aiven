@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigIpFilterObject {
+    /**
+     * @return Description for IP filter list entry.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return CIDR address block.
+     * 
+     */
     private String network;
 
     private KafkaKafkaUserConfigIpFilterObject() {}
+    /**
+     * @return Description for IP filter list entry.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return CIDR address block.
+     * 
+     */
     public String network() {
         return this.network;
     }

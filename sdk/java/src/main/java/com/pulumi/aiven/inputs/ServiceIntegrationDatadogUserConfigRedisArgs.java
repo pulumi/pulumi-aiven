@@ -15,9 +15,17 @@ public final class ServiceIntegrationDatadogUserConfigRedisArgs extends com.pulu
 
     public static final ServiceIntegrationDatadogUserConfigRedisArgs Empty = new ServiceIntegrationDatadogUserConfigRedisArgs();
 
+    /**
+     * Enable command_stats option in the agent&#39;s configuration. The default value is `false`.
+     * 
+     */
     @Import(name="commandStatsEnabled")
     private @Nullable Output<Boolean> commandStatsEnabled;
 
+    /**
+     * @return Enable command_stats option in the agent&#39;s configuration. The default value is `false`.
+     * 
+     */
     public Optional<Output<Boolean>> commandStatsEnabled() {
         return Optional.ofNullable(this.commandStatsEnabled);
     }
@@ -46,11 +54,23 @@ public final class ServiceIntegrationDatadogUserConfigRedisArgs extends com.pulu
             $ = new ServiceIntegrationDatadogUserConfigRedisArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param commandStatsEnabled Enable command_stats option in the agent&#39;s configuration. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commandStatsEnabled(@Nullable Output<Boolean> commandStatsEnabled) {
             $.commandStatsEnabled = commandStatsEnabled;
             return this;
         }
 
+        /**
+         * @param commandStatsEnabled Enable command_stats option in the agent&#39;s configuration. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commandStatsEnabled(Boolean commandStatsEnabled) {
             return commandStatsEnabled(Output.of(commandStatsEnabled));
         }

@@ -36,10 +36,6 @@ public final class GetMySqlMysqlUserConfig {
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable GetMySqlMysqlUserConfigMigration migration;
-    /**
-     * @return MySQL specific server provided values
-     * 
-     */
     private @Nullable GetMySqlMysqlUserConfigMysql mysql;
     private @Nullable String mysqlVersion;
     private @Nullable GetMySqlMysqlUserConfigPrivateAccess privateAccess;
@@ -48,10 +44,6 @@ public final class GetMySqlMysqlUserConfig {
     private @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryTargetTime;
     private @Nullable String serviceToForkFrom;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetMySqlMysqlUserConfig() {}
@@ -91,10 +83,6 @@ public final class GetMySqlMysqlUserConfig {
     public Optional<GetMySqlMysqlUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
-    /**
-     * @return MySQL specific server provided values
-     * 
-     */
     public Optional<GetMySqlMysqlUserConfigMysql> mysql() {
         return Optional.ofNullable(this.mysql);
     }
@@ -119,10 +107,6 @@ public final class GetMySqlMysqlUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

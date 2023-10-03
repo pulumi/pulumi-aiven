@@ -125,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OpenSearchOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// OpenSearch server provided values
+        /// OpenSearch settings.
         /// </summary>
         [Output("opensearches")]
         public Output<ImmutableArray<Outputs.OpenSearchOpensearch>> Opensearches { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -457,7 +457,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OpenSearchOpensearchGetArgs>? _opensearches;
 
         /// <summary>
-        /// OpenSearch server provided values
+        /// OpenSearch settings.
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchGetArgs> Opensearches
         {
@@ -567,7 +567,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {

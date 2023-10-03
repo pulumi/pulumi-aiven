@@ -74,7 +74,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
     /**
-     * Cassandra server provided values
+     * cassandra configuration values.
      */
     public /*out*/ readonly cassandras!: pulumi.Output<outputs.CassandraCassandra[]>;
     /**
@@ -164,7 +164,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -275,7 +275,7 @@ export interface CassandraState {
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
     /**
-     * Cassandra server provided values
+     * cassandra configuration values.
      */
     cassandras?: pulumi.Input<pulumi.Input<inputs.CassandraCassandra>[]>;
     /**
@@ -365,7 +365,7 @@ export interface CassandraState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -429,7 +429,7 @@ export interface CassandraArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

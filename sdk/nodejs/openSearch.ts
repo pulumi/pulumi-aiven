@@ -117,7 +117,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.OpenSearchOpensearchUserConfig | undefined>;
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      */
     public /*out*/ readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
     /**
@@ -169,7 +169,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -318,7 +318,7 @@ export interface OpenSearchState {
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      */
     opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**
@@ -370,7 +370,7 @@ export interface OpenSearchState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -434,7 +434,7 @@ export interface OpenSearchArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

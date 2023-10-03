@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
+    /**
+     * @return Enable certificate/SSL authentication. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean certificate;
+    /**
+     * @return Enable SASL authentication. The default value is `false`.
+     * 
+     */
     private @Nullable Boolean sasl;
 
     private KafkaKafkaUserConfigKafkaAuthenticationMethods() {}
+    /**
+     * @return Enable certificate/SSL authentication. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> certificate() {
         return Optional.ofNullable(this.certificate);
     }
+    /**
+     * @return Enable SASL authentication. The default value is `false`.
+     * 
+     */
     public Optional<Boolean> sasl() {
         return Optional.ofNullable(this.sasl);
     }

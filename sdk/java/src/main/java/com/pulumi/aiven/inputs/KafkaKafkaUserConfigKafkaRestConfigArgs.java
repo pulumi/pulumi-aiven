@@ -17,58 +17,122 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
 
     public static final KafkaKafkaUserConfigKafkaRestConfigArgs Empty = new KafkaKafkaUserConfigKafkaRestConfigArgs();
 
+    /**
+     * If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * 
+     */
     @Import(name="consumerEnableAutoCommit")
     private @Nullable Output<Boolean> consumerEnableAutoCommit;
 
+    /**
+     * @return If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * 
+     */
     public Optional<Output<Boolean>> consumerEnableAutoCommit() {
         return Optional.ofNullable(this.consumerEnableAutoCommit);
     }
 
+    /**
+     * Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * 
+     */
     @Import(name="consumerRequestMaxBytes")
     private @Nullable Output<Integer> consumerRequestMaxBytes;
 
+    /**
+     * @return Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * 
+     */
     public Optional<Output<Integer>> consumerRequestMaxBytes() {
         return Optional.ofNullable(this.consumerRequestMaxBytes);
     }
 
+    /**
+     * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * 
+     */
     @Import(name="consumerRequestTimeoutMs")
     private @Nullable Output<Integer> consumerRequestTimeoutMs;
 
+    /**
+     * @return The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * 
+     */
     public Optional<Output<Integer>> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
 
+    /**
+     * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * 
+     */
     @Import(name="producerAcks")
     private @Nullable Output<String> producerAcks;
 
+    /**
+     * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * 
+     */
     public Optional<Output<String>> producerAcks() {
         return Optional.ofNullable(this.producerAcks);
     }
 
+    /**
+     * Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     public Optional<Output<String>> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
 
+    /**
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * 
+     */
     @Import(name="producerLingerMs")
     private @Nullable Output<Integer> producerLingerMs;
 
+    /**
+     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * 
+     */
     public Optional<Output<Integer>> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
 
+    /**
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * 
+     */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
+    /**
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * 
+     */
     public Optional<Output<Integer>> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
 
+    /**
+     * Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * 
+     */
     @Import(name="simpleconsumerPoolSizeMax")
     private @Nullable Output<Integer> simpleconsumerPoolSizeMax;
 
+    /**
+     * @return Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * 
+     */
     public Optional<Output<Integer>> simpleconsumerPoolSizeMax() {
         return Optional.ofNullable(this.simpleconsumerPoolSizeMax);
     }
@@ -104,74 +168,170 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
             $ = new KafkaKafkaUserConfigKafkaRestConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param consumerEnableAutoCommit If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerEnableAutoCommit(@Nullable Output<Boolean> consumerEnableAutoCommit) {
             $.consumerEnableAutoCommit = consumerEnableAutoCommit;
             return this;
         }
 
+        /**
+         * @param consumerEnableAutoCommit If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerEnableAutoCommit(Boolean consumerEnableAutoCommit) {
             return consumerEnableAutoCommit(Output.of(consumerEnableAutoCommit));
         }
 
+        /**
+         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerRequestMaxBytes(@Nullable Output<Integer> consumerRequestMaxBytes) {
             $.consumerRequestMaxBytes = consumerRequestMaxBytes;
             return this;
         }
 
+        /**
+         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerRequestMaxBytes(Integer consumerRequestMaxBytes) {
             return consumerRequestMaxBytes(Output.of(consumerRequestMaxBytes));
         }
 
+        /**
+         * @param consumerRequestTimeoutMs The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerRequestTimeoutMs(@Nullable Output<Integer> consumerRequestTimeoutMs) {
             $.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             return this;
         }
 
+        /**
+         * @param consumerRequestTimeoutMs The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerRequestTimeoutMs(Integer consumerRequestTimeoutMs) {
             return consumerRequestTimeoutMs(Output.of(consumerRequestTimeoutMs));
         }
 
+        /**
+         * @param producerAcks The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerAcks(@Nullable Output<String> producerAcks) {
             $.producerAcks = producerAcks;
             return this;
         }
 
+        /**
+         * @param producerAcks The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerAcks(String producerAcks) {
             return producerAcks(Output.of(producerAcks));
         }
 
+        /**
+         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerCompressionType(@Nullable Output<String> producerCompressionType) {
             $.producerCompressionType = producerCompressionType;
             return this;
         }
 
+        /**
+         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerCompressionType(String producerCompressionType) {
             return producerCompressionType(Output.of(producerCompressionType));
         }
 
+        /**
+         * @param producerLingerMs This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {
             $.producerLingerMs = producerLingerMs;
             return this;
         }
 
+        /**
+         * @param producerLingerMs This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerLingerMs(Integer producerLingerMs) {
             return producerLingerMs(Output.of(producerLingerMs));
         }
 
+        /**
+         * @param producerMaxRequestSize This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerMaxRequestSize(@Nullable Output<Integer> producerMaxRequestSize) {
             $.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
 
+        /**
+         * @param producerMaxRequestSize This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
             return producerMaxRequestSize(Output.of(producerMaxRequestSize));
         }
 
+        /**
+         * @param simpleconsumerPoolSizeMax Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder simpleconsumerPoolSizeMax(@Nullable Output<Integer> simpleconsumerPoolSizeMax) {
             $.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return this;
         }
 
+        /**
+         * @param simpleconsumerPoolSizeMax Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder simpleconsumerPoolSizeMax(Integer simpleconsumerPoolSizeMax) {
             return simpleconsumerPoolSizeMax(Output.of(simpleconsumerPoolSizeMax));
         }

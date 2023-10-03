@@ -15,23 +15,47 @@ public final class ServiceIntegrationDatadogUserConfigOpensearchArgs extends com
 
     public static final ServiceIntegrationDatadogUserConfigOpensearchArgs Empty = new ServiceIntegrationDatadogUserConfigOpensearchArgs();
 
+    /**
+     * Enable Datadog Opensearch Index Monitoring.
+     * 
+     */
     @Import(name="indexStatsEnabled")
     private @Nullable Output<Boolean> indexStatsEnabled;
 
+    /**
+     * @return Enable Datadog Opensearch Index Monitoring.
+     * 
+     */
     public Optional<Output<Boolean>> indexStatsEnabled() {
         return Optional.ofNullable(this.indexStatsEnabled);
     }
 
+    /**
+     * Enable Datadog Opensearch Pending Task Monitoring.
+     * 
+     */
     @Import(name="pendingTaskStatsEnabled")
     private @Nullable Output<Boolean> pendingTaskStatsEnabled;
 
+    /**
+     * @return Enable Datadog Opensearch Pending Task Monitoring.
+     * 
+     */
     public Optional<Output<Boolean>> pendingTaskStatsEnabled() {
         return Optional.ofNullable(this.pendingTaskStatsEnabled);
     }
 
+    /**
+     * Enable Datadog Opensearch Primary Shard Monitoring.
+     * 
+     */
     @Import(name="pshardStatsEnabled")
     private @Nullable Output<Boolean> pshardStatsEnabled;
 
+    /**
+     * @return Enable Datadog Opensearch Primary Shard Monitoring.
+     * 
+     */
     public Optional<Output<Boolean>> pshardStatsEnabled() {
         return Optional.ofNullable(this.pshardStatsEnabled);
     }
@@ -62,29 +86,65 @@ public final class ServiceIntegrationDatadogUserConfigOpensearchArgs extends com
             $ = new ServiceIntegrationDatadogUserConfigOpensearchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param indexStatsEnabled Enable Datadog Opensearch Index Monitoring.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexStatsEnabled(@Nullable Output<Boolean> indexStatsEnabled) {
             $.indexStatsEnabled = indexStatsEnabled;
             return this;
         }
 
+        /**
+         * @param indexStatsEnabled Enable Datadog Opensearch Index Monitoring.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexStatsEnabled(Boolean indexStatsEnabled) {
             return indexStatsEnabled(Output.of(indexStatsEnabled));
         }
 
+        /**
+         * @param pendingTaskStatsEnabled Enable Datadog Opensearch Pending Task Monitoring.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pendingTaskStatsEnabled(@Nullable Output<Boolean> pendingTaskStatsEnabled) {
             $.pendingTaskStatsEnabled = pendingTaskStatsEnabled;
             return this;
         }
 
+        /**
+         * @param pendingTaskStatsEnabled Enable Datadog Opensearch Pending Task Monitoring.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pendingTaskStatsEnabled(Boolean pendingTaskStatsEnabled) {
             return pendingTaskStatsEnabled(Output.of(pendingTaskStatsEnabled));
         }
 
+        /**
+         * @param pshardStatsEnabled Enable Datadog Opensearch Primary Shard Monitoring.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pshardStatsEnabled(@Nullable Output<Boolean> pshardStatsEnabled) {
             $.pshardStatsEnabled = pshardStatsEnabled;
             return this;
         }
 
+        /**
+         * @param pshardStatsEnabled Enable Datadog Opensearch Primary Shard Monitoring.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pshardStatsEnabled(Boolean pshardStatsEnabled) {
             return pshardStatsEnabled(Output.of(pshardStatsEnabled));
         }

@@ -54,14 +54,14 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Clickhouse server provided values
+     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="clickhouses")
     private @Nullable Output<List<ClickhouseClickhouseArgs>> clickhouses;
 
     /**
-     * @return Clickhouse server provided values
+     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<List<ClickhouseClickhouseArgs>>> clickhouses() {
@@ -392,14 +392,14 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Optional<Output<List<String>>> staticIps() {
@@ -529,7 +529,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouses Clickhouse server provided values
+         * @param clickhouses Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouses Clickhouse server provided values
+         * @param clickhouses Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouses Clickhouse server provided values
+         * @param clickhouses Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -1029,7 +1029,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -1040,7 +1040,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -1050,7 +1050,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 

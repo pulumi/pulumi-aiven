@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.InfluxDbInfluxdbUserConfig?> InfluxdbUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// InfluxDB server provided values
+        /// influxdb.conf configuration values.
         /// </summary>
         [Output("influxdbs")]
         public Output<ImmutableArray<Outputs.InfluxDbInfluxdb>> Influxdbs { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -340,7 +340,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -438,7 +438,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.InfluxDbInfluxdbGetArgs>? _influxdbs;
 
         /// <summary>
-        /// InfluxDB server provided values
+        /// influxdb.conf configuration values.
         /// </summary>
         public InputList<Inputs.InfluxDbInfluxdbGetArgs> Influxdbs
         {
@@ -560,7 +560,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {

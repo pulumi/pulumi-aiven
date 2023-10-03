@@ -13,18 +13,57 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTable
     {
+        /// <summary>
+        /// Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        /// </summary>
         public readonly string? AutoOffsetReset;
+        /// <summary>
+        /// Table columns.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> Columns;
+        /// <summary>
+        /// Message data format. The default value is `JSONEachRow`.
+        /// </summary>
         public readonly string DataFormat;
+        /// <summary>
+        /// Method to read DateTime from text input formats. The default value is `basic`.
+        /// </summary>
         public readonly string? DateTimeInputFormat;
+        /// <summary>
+        /// Kafka consumers group. The default value is `clickhouse`.
+        /// </summary>
         public readonly string GroupName;
+        /// <summary>
+        /// How to handle errors for Kafka engine. The default value is `default`.
+        /// </summary>
         public readonly string? HandleErrorMode;
+        /// <summary>
+        /// Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+        /// </summary>
         public readonly int? MaxBlockSize;
+        /// <summary>
+        /// The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+        /// </summary>
         public readonly int? MaxRowsPerMessage;
+        /// <summary>
+        /// Column name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The number of consumers per table per replica. The default value is `1`.
+        /// </summary>
         public readonly int? NumConsumers;
+        /// <summary>
+        /// Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+        /// </summary>
         public readonly int? PollMaxBatchSize;
+        /// <summary>
+        /// Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+        /// </summary>
         public readonly int? SkipBrokenMessages;
+        /// <summary>
+        /// Kafka topics.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> Topics;
 
         [OutputConstructor]

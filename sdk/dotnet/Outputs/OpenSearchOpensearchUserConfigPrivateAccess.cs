@@ -14,10 +14,16 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigPrivateAccess
     {
         /// <summary>
-        /// OpenSearch server provided values
+        /// OpenSearch settings.
         /// </summary>
         public readonly bool? Opensearch;
+        /// <summary>
+        /// OpenSearch Dashboards settings.
+        /// </summary>
         public readonly bool? OpensearchDashboards;
+        /// <summary>
+        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

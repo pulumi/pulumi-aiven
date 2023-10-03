@@ -15,9 +15,17 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlArgs extends co
 
     public static final ServiceIntegrationMetricsUserConfigSourceMysqlArgs Empty = new ServiceIntegrationMetricsUserConfigSourceMysqlArgs();
 
+    /**
+     * Configuration options for Telegraf MySQL input plugin.
+     * 
+     */
     @Import(name="telegraf")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs> telegraf;
 
+    /**
+     * @return Configuration options for Telegraf MySQL input plugin.
+     * 
+     */
     public Optional<Output<ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs>> telegraf() {
         return Optional.ofNullable(this.telegraf);
     }
@@ -46,11 +54,23 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlArgs extends co
             $ = new ServiceIntegrationMetricsUserConfigSourceMysqlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param telegraf Configuration options for Telegraf MySQL input plugin.
+         * 
+         * @return builder
+         * 
+         */
         public Builder telegraf(@Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs> telegraf) {
             $.telegraf = telegraf;
             return this;
         }
 
+        /**
+         * @param telegraf Configuration options for Telegraf MySQL input plugin.
+         * 
+         * @return builder
+         * 
+         */
         public Builder telegraf(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs telegraf) {
             return telegraf(Output.of(telegraf));
         }

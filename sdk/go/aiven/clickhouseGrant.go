@@ -110,7 +110,7 @@ type ClickhouseGrant struct {
 	PrivilegeGrants ClickhouseGrantPrivilegeGrantArrayOutput `pulumi:"privilegeGrants"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
 	RoleGrants ClickhouseGrantRoleGrantArrayOutput `pulumi:"roleGrants"`
@@ -160,7 +160,7 @@ type clickhouseGrantState struct {
 	PrivilegeGrants []ClickhouseGrantPrivilegeGrant `pulumi:"privilegeGrants"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role *string `pulumi:"role"`
 	// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
 	RoleGrants []ClickhouseGrantRoleGrant `pulumi:"roleGrants"`
@@ -175,7 +175,7 @@ type ClickhouseGrantState struct {
 	PrivilegeGrants ClickhouseGrantPrivilegeGrantArrayInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role pulumi.StringPtrInput
 	// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
 	RoleGrants ClickhouseGrantRoleGrantArrayInput
@@ -194,7 +194,7 @@ type clickhouseGrantArgs struct {
 	PrivilegeGrants []ClickhouseGrantPrivilegeGrant `pulumi:"privilegeGrants"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role *string `pulumi:"role"`
 	// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
 	RoleGrants []ClickhouseGrantRoleGrant `pulumi:"roleGrants"`
@@ -210,7 +210,7 @@ type ClickhouseGrantArgs struct {
 	PrivilegeGrants ClickhouseGrantPrivilegeGrantArrayInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role pulumi.StringPtrInput
 	// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
 	RoleGrants ClickhouseGrantRoleGrantArrayInput
@@ -341,7 +341,7 @@ func (o ClickhouseGrantOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }

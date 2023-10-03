@@ -81,7 +81,7 @@ type InfluxDb struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrOutput `pulumi:"influxdbUserConfig"`
-	// InfluxDB server provided values
+	// influxdb.conf configuration values.
 	Influxdbs InfluxDbInfluxdbArrayOutput `pulumi:"influxdbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -111,7 +111,7 @@ type InfluxDb struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayOutput `pulumi:"tags"`
@@ -183,7 +183,7 @@ type influxDbState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
-	// InfluxDB server provided values
+	// influxdb.conf configuration values.
 	Influxdbs []InfluxDbInfluxdb `pulumi:"influxdbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -213,7 +213,7 @@ type influxDbState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
@@ -242,7 +242,7 @@ type InfluxDbState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
-	// InfluxDB server provided values
+	// influxdb.conf configuration values.
 	Influxdbs InfluxDbInfluxdbArrayInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -272,7 +272,7 @@ type InfluxDbState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
@@ -309,7 +309,7 @@ type influxDbArgs struct {
 	ServiceIntegrations []InfluxDbServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
@@ -343,7 +343,7 @@ type InfluxDbArgs struct {
 	ServiceIntegrations InfluxDbServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
@@ -509,7 +509,7 @@ func (o InfluxDbOutput) InfluxdbUserConfig() InfluxDbInfluxdbUserConfigPtrOutput
 	return o.ApplyT(func(v *InfluxDb) InfluxDbInfluxdbUserConfigPtrOutput { return v.InfluxdbUserConfig }).(InfluxDbInfluxdbUserConfigPtrOutput)
 }
 
-// InfluxDB server provided values
+// influxdb.conf configuration values.
 func (o InfluxDbOutput) Influxdbs() InfluxDbInfluxdbArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbInfluxdbArrayOutput { return v.Influxdbs }).(InfluxDbInfluxdbArrayOutput)
 }
@@ -584,7 +584,7 @@ func (o InfluxDbOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Use static public IP addresses.
 func (o InfluxDbOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

@@ -12,24 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseClickhouseUserConfigPrivateAccess {
     /**
-     * @return Clickhouse server provided values
+     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean clickhouse;
+    /**
+     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean clickhouseHttps;
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private ClickhouseClickhouseUserConfigPrivateAccess() {}
     /**
-     * @return Clickhouse server provided values
+     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }
+    /**
+     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

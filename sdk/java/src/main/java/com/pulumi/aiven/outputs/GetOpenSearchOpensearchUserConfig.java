@@ -53,10 +53,6 @@ public final class GetOpenSearchOpensearchUserConfig {
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable Integer maxIndexCount;
     private @Nullable GetOpenSearchOpensearchUserConfigOpenid openid;
-    /**
-     * @return OpenSearch server provided values
-     * 
-     */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch;
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
     private @Nullable String opensearchVersion;
@@ -67,10 +63,6 @@ public final class GetOpenSearchOpensearchUserConfig {
     private @Nullable String recoveryBasebackupName;
     private @Nullable GetOpenSearchOpensearchUserConfigSaml saml;
     private @Nullable String serviceToForkFrom;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetOpenSearchOpensearchUserConfig() {}
@@ -125,10 +117,6 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<GetOpenSearchOpensearchUserConfigOpenid> openid() {
         return Optional.ofNullable(this.openid);
     }
-    /**
-     * @return OpenSearch server provided values
-     * 
-     */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
@@ -159,10 +147,6 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

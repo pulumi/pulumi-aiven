@@ -12,10 +12,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     private @Nullable Boolean jolokia;
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     private @Nullable Boolean kafkaConnect;
     private @Nullable Boolean prometheus;
 
@@ -23,10 +19,6 @@ public final class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     public Optional<Boolean> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
-    /**
-     * @return Kafka Connect server provided values
-     * 
-     */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }

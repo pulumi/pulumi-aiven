@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GcpPrivatelinkConnectionApprovalArgs', 'GcpPrivatelinkConnectionApproval']
@@ -25,9 +25,22 @@ class GcpPrivatelinkConnectionApprovalArgs:
                variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_ip_address: Privatelink connection user IP address
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "user_ip_address", user_ip_address)
+        GcpPrivatelinkConnectionApprovalArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+            user_ip_address=user_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             user_ip_address: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("user_ip_address", user_ip_address)
 
     @property
     @pulumi.getter
@@ -88,18 +101,37 @@ class _GcpPrivatelinkConnectionApprovalState:
         :param pulumi.Input[str] state: Privatelink connection state
         :param pulumi.Input[str] user_ip_address: Privatelink connection user IP address
         """
+        _GcpPrivatelinkConnectionApprovalState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            privatelink_connection_id=privatelink_connection_id,
+            project=project,
+            psc_connection_id=psc_connection_id,
+            service_name=service_name,
+            state=state,
+            user_ip_address=user_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             privatelink_connection_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_connection_id: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             user_ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if privatelink_connection_id is not None:
-            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
+            _setter("privatelink_connection_id", privatelink_connection_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+            _setter("psc_connection_id", psc_connection_id)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if user_ip_address is not None:
-            pulumi.set(__self__, "user_ip_address", user_ip_address)
+            _setter("user_ip_address", user_ip_address)
 
     @property
     @pulumi.getter(name="privatelinkConnectionId")
@@ -213,6 +245,10 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GcpPrivatelinkConnectionApprovalArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaKafkaUserConfig?> KafkaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka server provided values
+        /// Kafka broker configuration values.
         /// </summary>
         [Output("kafkas")]
         public Output<ImmutableArray<Outputs.KafkaKafka>> KafkaServer { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -374,7 +374,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -478,7 +478,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaKafkaGetArgs>? _kafkas;
 
         /// <summary>
-        /// Kafka server provided values
+        /// Kafka broker configuration values.
         /// </summary>
         public InputList<Inputs.KafkaKafkaGetArgs> KafkaServer
         {
@@ -606,7 +606,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {

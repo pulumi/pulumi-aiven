@@ -47,10 +47,6 @@ public final class GetRedisRedisUserConfig {
     private @Nullable Boolean redisSsl;
     private @Nullable Integer redisTimeout;
     private @Nullable String serviceToForkFrom;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetRedisRedisUserConfig() {}
@@ -126,10 +122,6 @@ public final class GetRedisRedisUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

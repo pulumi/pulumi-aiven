@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccountTeamProjectArgs', 'AccountTeamProject']
@@ -25,12 +25,27 @@ class AccountTeamProjectArgs:
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "team_id", team_id)
+        AccountTeamProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            team_id=team_id,
+            project_name=project_name,
+            team_type=team_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             team_id: pulumi.Input[str],
+             project_name: Optional[pulumi.Input[str]] = None,
+             team_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("team_id", team_id)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if team_type is not None:
-            pulumi.set(__self__, "team_type", team_type)
+            _setter("team_type", team_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -95,14 +110,29 @@ class _AccountTeamProjectState:
         :param pulumi.Input[str] team_id: An account team id
         :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
+        _AccountTeamProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            project_name=project_name,
+            team_id=team_id,
+            team_type=team_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             team_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if team_type is not None:
-            pulumi.set(__self__, "team_type", team_type)
+            _setter("team_type", team_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -212,6 +242,10 @@ class AccountTeamProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountTeamProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

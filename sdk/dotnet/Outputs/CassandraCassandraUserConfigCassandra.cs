@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class CassandraCassandraUserConfigCassandra
     {
+        /// <summary>
+        /// Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+        /// </summary>
         public readonly int? BatchSizeFailThresholdInKb;
+        /// <summary>
+        /// Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+        /// </summary>
         public readonly int? BatchSizeWarnThresholdInKb;
+        /// <summary>
+        /// Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+        /// </summary>
         public readonly string? Datacenter;
 
         [OutputConstructor]

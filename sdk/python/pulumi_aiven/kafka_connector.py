@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,10 +27,25 @@ class KafkaConnectorArgs:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "connector_name", connector_name)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        KafkaConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            connector_name=connector_name,
+            project=project,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             connector_name: pulumi.Input[str],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config", config)
+        _setter("connector_name", connector_name)
+        _setter("project", project)
+        _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -109,28 +124,57 @@ class _KafkaConnectorState:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]] tasks: List of tasks of a connector.
         """
+        _KafkaConnectorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            connector_name=connector_name,
+            plugin_author=plugin_author,
+            plugin_class=plugin_class,
+            plugin_doc_url=plugin_doc_url,
+            plugin_title=plugin_title,
+            plugin_type=plugin_type,
+            plugin_version=plugin_version,
+            project=project,
+            service_name=service_name,
+            tasks=tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             connector_name: Optional[pulumi.Input[str]] = None,
+             plugin_author: Optional[pulumi.Input[str]] = None,
+             plugin_class: Optional[pulumi.Input[str]] = None,
+             plugin_doc_url: Optional[pulumi.Input[str]] = None,
+             plugin_title: Optional[pulumi.Input[str]] = None,
+             plugin_type: Optional[pulumi.Input[str]] = None,
+             plugin_version: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             tasks: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if connector_name is not None:
-            pulumi.set(__self__, "connector_name", connector_name)
+            _setter("connector_name", connector_name)
         if plugin_author is not None:
-            pulumi.set(__self__, "plugin_author", plugin_author)
+            _setter("plugin_author", plugin_author)
         if plugin_class is not None:
-            pulumi.set(__self__, "plugin_class", plugin_class)
+            _setter("plugin_class", plugin_class)
         if plugin_doc_url is not None:
-            pulumi.set(__self__, "plugin_doc_url", plugin_doc_url)
+            _setter("plugin_doc_url", plugin_doc_url)
         if plugin_title is not None:
-            pulumi.set(__self__, "plugin_title", plugin_title)
+            _setter("plugin_title", plugin_title)
         if plugin_type is not None:
-            pulumi.set(__self__, "plugin_type", plugin_type)
+            _setter("plugin_type", plugin_type)
         if plugin_version is not None:
-            pulumi.set(__self__, "plugin_version", plugin_version)
+            _setter("plugin_version", plugin_version)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if tasks is not None:
-            pulumi.set(__self__, "tasks", tasks)
+            _setter("tasks", tasks)
 
     @property
     @pulumi.getter
@@ -358,6 +402,10 @@ class KafkaConnector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KafkaConnectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

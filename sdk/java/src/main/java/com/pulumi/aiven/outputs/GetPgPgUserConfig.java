@@ -40,10 +40,6 @@ public final class GetPgPgUserConfig {
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     private @Nullable GetPgPgUserConfigMigration migration;
-    /**
-     * @return PostgreSQL specific server provided values
-     * 
-     */
     private @Nullable GetPgPgUserConfigPg pg;
     /**
      * @deprecated
@@ -70,10 +66,6 @@ public final class GetPgPgUserConfig {
     private @Nullable String recoveryTargetTime;
     private @Nullable String serviceToForkFrom;
     private @Nullable Double sharedBuffersPercentage;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
     private @Nullable String synchronousReplication;
     private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
@@ -117,10 +109,6 @@ public final class GetPgPgUserConfig {
     public Optional<GetPgPgUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
-    /**
-     * @return PostgreSQL specific server provided values
-     * 
-     */
     public Optional<GetPgPgUserConfigPg> pg() {
         return Optional.ofNullable(this.pg);
     }
@@ -175,10 +163,6 @@ public final class GetPgPgUserConfig {
     public Optional<Double> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

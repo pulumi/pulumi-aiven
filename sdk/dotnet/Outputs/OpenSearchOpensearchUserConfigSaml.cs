@@ -13,12 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class OpenSearchOpensearchUserConfigSaml
     {
+        /// <summary>
+        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+        /// </summary>
         public readonly string IdpEntityId;
+        /// <summary>
+        /// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+        /// </summary>
         public readonly string IdpMetadataUrl;
+        /// <summary>
+        /// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+        /// </summary>
         public readonly string? IdpPemtrustedcasContent;
+        /// <summary>
+        /// The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+        /// </summary>
         public readonly string? RolesKey;
+        /// <summary>
+        /// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+        /// </summary>
         public readonly string SpEntityId;
+        /// <summary>
+        /// The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+        /// </summary>
         public readonly string? SubjectKey;
 
         [OutputConstructor]

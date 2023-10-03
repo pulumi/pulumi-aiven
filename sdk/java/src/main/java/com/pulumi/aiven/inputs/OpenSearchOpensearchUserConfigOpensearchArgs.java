@@ -18,219 +18,467 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
 
     public static final OpenSearchOpensearchUserConfigOpensearchArgs Empty = new OpenSearchOpensearchUserConfigOpensearchArgs();
 
+    /**
+     * Explicitly allow or block automatic creation of indices. Defaults to true.
+     * 
+     */
     @Import(name="actionAutoCreateIndexEnabled")
     private @Nullable Output<Boolean> actionAutoCreateIndexEnabled;
 
+    /**
+     * @return Explicitly allow or block automatic creation of indices. Defaults to true.
+     * 
+     */
     public Optional<Output<Boolean>> actionAutoCreateIndexEnabled() {
         return Optional.ofNullable(this.actionAutoCreateIndexEnabled);
     }
 
+    /**
+     * Require explicit index names when deleting.
+     * 
+     */
     @Import(name="actionDestructiveRequiresName")
     private @Nullable Output<Boolean> actionDestructiveRequiresName;
 
+    /**
+     * @return Require explicit index names when deleting.
+     * 
+     */
     public Optional<Output<Boolean>> actionDestructiveRequiresName() {
         return Optional.ofNullable(this.actionDestructiveRequiresName);
     }
 
+    /**
+     * Controls the number of shards allowed in the cluster per data node.
+     * 
+     */
     @Import(name="clusterMaxShardsPerNode")
     private @Nullable Output<Integer> clusterMaxShardsPerNode;
 
+    /**
+     * @return Controls the number of shards allowed in the cluster per data node.
+     * 
+     */
     public Optional<Output<Integer>> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
 
+    /**
+     * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * 
+     */
     @Import(name="clusterRoutingAllocationNodeConcurrentRecoveries")
     private @Nullable Output<Integer> clusterRoutingAllocationNodeConcurrentRecoveries;
 
+    /**
+     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * 
+     */
     public Optional<Output<Integer>> clusterRoutingAllocationNodeConcurrentRecoveries() {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
 
+    /**
+     * This should be identical to the Sender name defined in Opensearch dashboards.
+     * 
+     */
     @Import(name="emailSenderName")
     private @Nullable Output<String> emailSenderName;
 
+    /**
+     * @return This should be identical to the Sender name defined in Opensearch dashboards.
+     * 
+     */
     public Optional<Output<String>> emailSenderName() {
         return Optional.ofNullable(this.emailSenderName);
     }
 
+    /**
+     * Sender password for Opensearch alerts to authenticate with SMTP server.
+     * 
+     */
     @Import(name="emailSenderPassword")
     private @Nullable Output<String> emailSenderPassword;
 
+    /**
+     * @return Sender password for Opensearch alerts to authenticate with SMTP server.
+     * 
+     */
     public Optional<Output<String>> emailSenderPassword() {
         return Optional.ofNullable(this.emailSenderPassword);
     }
 
+    /**
+     * Sender username for Opensearch alerts.
+     * 
+     */
     @Import(name="emailSenderUsername")
     private @Nullable Output<String> emailSenderUsername;
 
+    /**
+     * @return Sender username for Opensearch alerts.
+     * 
+     */
     public Optional<Output<String>> emailSenderUsername() {
         return Optional.ofNullable(this.emailSenderUsername);
     }
 
+    /**
+     * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+     * 
+     */
     @Import(name="httpMaxContentLength")
     private @Nullable Output<Integer> httpMaxContentLength;
 
+    /**
+     * @return Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+     * 
+     */
     public Optional<Output<Integer>> httpMaxContentLength() {
         return Optional.ofNullable(this.httpMaxContentLength);
     }
 
+    /**
+     * The max size of allowed headers, in bytes.
+     * 
+     */
     @Import(name="httpMaxHeaderSize")
     private @Nullable Output<Integer> httpMaxHeaderSize;
 
+    /**
+     * @return The max size of allowed headers, in bytes.
+     * 
+     */
     public Optional<Output<Integer>> httpMaxHeaderSize() {
         return Optional.ofNullable(this.httpMaxHeaderSize);
     }
 
+    /**
+     * The max length of an HTTP URL, in bytes.
+     * 
+     */
     @Import(name="httpMaxInitialLineLength")
     private @Nullable Output<Integer> httpMaxInitialLineLength;
 
+    /**
+     * @return The max length of an HTTP URL, in bytes.
+     * 
+     */
     public Optional<Output<Integer>> httpMaxInitialLineLength() {
         return Optional.ofNullable(this.httpMaxInitialLineLength);
     }
 
+    /**
+     * Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+     * 
+     */
     @Import(name="indicesFielddataCacheSize")
     private @Nullable Output<Integer> indicesFielddataCacheSize;
 
+    /**
+     * @return Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+     * 
+     */
     public Optional<Output<Integer>> indicesFielddataCacheSize() {
         return Optional.ofNullable(this.indicesFielddataCacheSize);
     }
 
+    /**
+     * Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * 
+     */
     @Import(name="indicesMemoryIndexBufferSize")
     private @Nullable Output<Integer> indicesMemoryIndexBufferSize;
 
+    /**
+     * @return Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * 
+     */
     public Optional<Output<Integer>> indicesMemoryIndexBufferSize() {
         return Optional.ofNullable(this.indicesMemoryIndexBufferSize);
     }
 
+    /**
+     * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * 
+     */
     @Import(name="indicesQueriesCacheSize")
     private @Nullable Output<Integer> indicesQueriesCacheSize;
 
+    /**
+     * @return Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * 
+     */
     public Optional<Output<Integer>> indicesQueriesCacheSize() {
         return Optional.ofNullable(this.indicesQueriesCacheSize);
     }
 
+    /**
+     * Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+     * 
+     */
     @Import(name="indicesQueryBoolMaxClauseCount")
     private @Nullable Output<Integer> indicesQueryBoolMaxClauseCount;
 
+    /**
+     * @return Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+     * 
+     */
     public Optional<Output<Integer>> indicesQueryBoolMaxClauseCount() {
         return Optional.ofNullable(this.indicesQueryBoolMaxClauseCount);
     }
 
+    /**
+     * Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+     * 
+     */
     @Import(name="indicesRecoveryMaxBytesPerSec")
     private @Nullable Output<Integer> indicesRecoveryMaxBytesPerSec;
 
+    /**
+     * @return Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+     * 
+     */
     public Optional<Output<Integer>> indicesRecoveryMaxBytesPerSec() {
         return Optional.ofNullable(this.indicesRecoveryMaxBytesPerSec);
     }
 
+    /**
+     * Number of file chunks sent in parallel for each recovery. Defaults to 2.
+     * 
+     */
     @Import(name="indicesRecoveryMaxConcurrentFileChunks")
     private @Nullable Output<Integer> indicesRecoveryMaxConcurrentFileChunks;
 
+    /**
+     * @return Number of file chunks sent in parallel for each recovery. Defaults to 2.
+     * 
+     */
     public Optional<Output<Integer>> indicesRecoveryMaxConcurrentFileChunks() {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
     }
 
+    /**
+     * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * 
+     */
     @Import(name="overrideMainResponseVersion")
     private @Nullable Output<Boolean> overrideMainResponseVersion;
 
+    /**
+     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * 
+     */
     public Optional<Output<Boolean>> overrideMainResponseVersion() {
         return Optional.ofNullable(this.overrideMainResponseVersion);
     }
 
+    /**
+     * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+     * 
+     */
     @Import(name="reindexRemoteWhitelists")
     private @Nullable Output<List<String>> reindexRemoteWhitelists;
 
+    /**
+     * @return Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+     * 
+     */
     public Optional<Output<List<String>>> reindexRemoteWhitelists() {
         return Optional.ofNullable(this.reindexRemoteWhitelists);
     }
 
+    /**
+     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * 
+     */
     @Import(name="scriptMaxCompilationsRate")
     private @Nullable Output<String> scriptMaxCompilationsRate;
 
+    /**
+     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * 
+     */
     public Optional<Output<String>> scriptMaxCompilationsRate() {
         return Optional.ofNullable(this.scriptMaxCompilationsRate);
     }
 
+    /**
+     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * 
+     */
     @Import(name="searchMaxBuckets")
     private @Nullable Output<Integer> searchMaxBuckets;
 
+    /**
+     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * 
+     */
     public Optional<Output<Integer>> searchMaxBuckets() {
         return Optional.ofNullable(this.searchMaxBuckets);
     }
 
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     @Import(name="threadPoolAnalyzeQueueSize")
     private @Nullable Output<Integer> threadPoolAnalyzeQueueSize;
 
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolAnalyzeQueueSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeQueueSize);
     }
 
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     @Import(name="threadPoolAnalyzeSize")
     private @Nullable Output<Integer> threadPoolAnalyzeSize;
 
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolAnalyzeSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeSize);
     }
 
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     @Import(name="threadPoolForceMergeSize")
     private @Nullable Output<Integer> threadPoolForceMergeSize;
 
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolForceMergeSize() {
         return Optional.ofNullable(this.threadPoolForceMergeSize);
     }
 
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     @Import(name="threadPoolGetQueueSize")
     private @Nullable Output<Integer> threadPoolGetQueueSize;
 
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolGetQueueSize() {
         return Optional.ofNullable(this.threadPoolGetQueueSize);
     }
 
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     @Import(name="threadPoolGetSize")
     private @Nullable Output<Integer> threadPoolGetSize;
 
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolGetSize() {
         return Optional.ofNullable(this.threadPoolGetSize);
     }
 
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     @Import(name="threadPoolSearchQueueSize")
     private @Nullable Output<Integer> threadPoolSearchQueueSize;
 
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolSearchQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchQueueSize);
     }
 
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     @Import(name="threadPoolSearchSize")
     private @Nullable Output<Integer> threadPoolSearchSize;
 
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolSearchSize() {
         return Optional.ofNullable(this.threadPoolSearchSize);
     }
 
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     @Import(name="threadPoolSearchThrottledQueueSize")
     private @Nullable Output<Integer> threadPoolSearchThrottledQueueSize;
 
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolSearchThrottledQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledQueueSize);
     }
 
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     @Import(name="threadPoolSearchThrottledSize")
     private @Nullable Output<Integer> threadPoolSearchThrottledSize;
 
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolSearchThrottledSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledSize);
     }
 
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     @Import(name="threadPoolWriteQueueSize")
     private @Nullable Output<Integer> threadPoolWriteQueueSize;
 
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolWriteQueueSize() {
         return Optional.ofNullable(this.threadPoolWriteQueueSize);
     }
 
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     @Import(name="threadPoolWriteSize")
     private @Nullable Output<Integer> threadPoolWriteSize;
 
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Output<Integer>> threadPoolWriteSize() {
         return Optional.ofNullable(this.threadPoolWriteSize);
     }
@@ -289,285 +537,663 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
             $ = new OpenSearchOpensearchUserConfigOpensearchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionAutoCreateIndexEnabled Explicitly allow or block automatic creation of indices. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionAutoCreateIndexEnabled(@Nullable Output<Boolean> actionAutoCreateIndexEnabled) {
             $.actionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             return this;
         }
 
+        /**
+         * @param actionAutoCreateIndexEnabled Explicitly allow or block automatic creation of indices. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionAutoCreateIndexEnabled(Boolean actionAutoCreateIndexEnabled) {
             return actionAutoCreateIndexEnabled(Output.of(actionAutoCreateIndexEnabled));
         }
 
+        /**
+         * @param actionDestructiveRequiresName Require explicit index names when deleting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionDestructiveRequiresName(@Nullable Output<Boolean> actionDestructiveRequiresName) {
             $.actionDestructiveRequiresName = actionDestructiveRequiresName;
             return this;
         }
 
+        /**
+         * @param actionDestructiveRequiresName Require explicit index names when deleting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionDestructiveRequiresName(Boolean actionDestructiveRequiresName) {
             return actionDestructiveRequiresName(Output.of(actionDestructiveRequiresName));
         }
 
+        /**
+         * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterMaxShardsPerNode(@Nullable Output<Integer> clusterMaxShardsPerNode) {
             $.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
             return this;
         }
 
+        /**
+         * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterMaxShardsPerNode(Integer clusterMaxShardsPerNode) {
             return clusterMaxShardsPerNode(Output.of(clusterMaxShardsPerNode));
         }
 
+        /**
+         * @param clusterRoutingAllocationNodeConcurrentRecoveries How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterRoutingAllocationNodeConcurrentRecoveries(@Nullable Output<Integer> clusterRoutingAllocationNodeConcurrentRecoveries) {
             $.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             return this;
         }
 
+        /**
+         * @param clusterRoutingAllocationNodeConcurrentRecoveries How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterRoutingAllocationNodeConcurrentRecoveries(Integer clusterRoutingAllocationNodeConcurrentRecoveries) {
             return clusterRoutingAllocationNodeConcurrentRecoveries(Output.of(clusterRoutingAllocationNodeConcurrentRecoveries));
         }
 
+        /**
+         * @param emailSenderName This should be identical to the Sender name defined in Opensearch dashboards.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailSenderName(@Nullable Output<String> emailSenderName) {
             $.emailSenderName = emailSenderName;
             return this;
         }
 
+        /**
+         * @param emailSenderName This should be identical to the Sender name defined in Opensearch dashboards.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailSenderName(String emailSenderName) {
             return emailSenderName(Output.of(emailSenderName));
         }
 
+        /**
+         * @param emailSenderPassword Sender password for Opensearch alerts to authenticate with SMTP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailSenderPassword(@Nullable Output<String> emailSenderPassword) {
             $.emailSenderPassword = emailSenderPassword;
             return this;
         }
 
+        /**
+         * @param emailSenderPassword Sender password for Opensearch alerts to authenticate with SMTP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailSenderPassword(String emailSenderPassword) {
             return emailSenderPassword(Output.of(emailSenderPassword));
         }
 
+        /**
+         * @param emailSenderUsername Sender username for Opensearch alerts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailSenderUsername(@Nullable Output<String> emailSenderUsername) {
             $.emailSenderUsername = emailSenderUsername;
             return this;
         }
 
+        /**
+         * @param emailSenderUsername Sender username for Opensearch alerts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailSenderUsername(String emailSenderUsername) {
             return emailSenderUsername(Output.of(emailSenderUsername));
         }
 
+        /**
+         * @param httpMaxContentLength Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMaxContentLength(@Nullable Output<Integer> httpMaxContentLength) {
             $.httpMaxContentLength = httpMaxContentLength;
             return this;
         }
 
+        /**
+         * @param httpMaxContentLength Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMaxContentLength(Integer httpMaxContentLength) {
             return httpMaxContentLength(Output.of(httpMaxContentLength));
         }
 
+        /**
+         * @param httpMaxHeaderSize The max size of allowed headers, in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMaxHeaderSize(@Nullable Output<Integer> httpMaxHeaderSize) {
             $.httpMaxHeaderSize = httpMaxHeaderSize;
             return this;
         }
 
+        /**
+         * @param httpMaxHeaderSize The max size of allowed headers, in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMaxHeaderSize(Integer httpMaxHeaderSize) {
             return httpMaxHeaderSize(Output.of(httpMaxHeaderSize));
         }
 
+        /**
+         * @param httpMaxInitialLineLength The max length of an HTTP URL, in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMaxInitialLineLength(@Nullable Output<Integer> httpMaxInitialLineLength) {
             $.httpMaxInitialLineLength = httpMaxInitialLineLength;
             return this;
         }
 
+        /**
+         * @param httpMaxInitialLineLength The max length of an HTTP URL, in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMaxInitialLineLength(Integer httpMaxInitialLineLength) {
             return httpMaxInitialLineLength(Output.of(httpMaxInitialLineLength));
         }
 
+        /**
+         * @param indicesFielddataCacheSize Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesFielddataCacheSize(@Nullable Output<Integer> indicesFielddataCacheSize) {
             $.indicesFielddataCacheSize = indicesFielddataCacheSize;
             return this;
         }
 
+        /**
+         * @param indicesFielddataCacheSize Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesFielddataCacheSize(Integer indicesFielddataCacheSize) {
             return indicesFielddataCacheSize(Output.of(indicesFielddataCacheSize));
         }
 
+        /**
+         * @param indicesMemoryIndexBufferSize Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesMemoryIndexBufferSize(@Nullable Output<Integer> indicesMemoryIndexBufferSize) {
             $.indicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
             return this;
         }
 
+        /**
+         * @param indicesMemoryIndexBufferSize Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesMemoryIndexBufferSize(Integer indicesMemoryIndexBufferSize) {
             return indicesMemoryIndexBufferSize(Output.of(indicesMemoryIndexBufferSize));
         }
 
+        /**
+         * @param indicesQueriesCacheSize Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesQueriesCacheSize(@Nullable Output<Integer> indicesQueriesCacheSize) {
             $.indicesQueriesCacheSize = indicesQueriesCacheSize;
             return this;
         }
 
+        /**
+         * @param indicesQueriesCacheSize Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesQueriesCacheSize(Integer indicesQueriesCacheSize) {
             return indicesQueriesCacheSize(Output.of(indicesQueriesCacheSize));
         }
 
+        /**
+         * @param indicesQueryBoolMaxClauseCount Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesQueryBoolMaxClauseCount(@Nullable Output<Integer> indicesQueryBoolMaxClauseCount) {
             $.indicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             return this;
         }
 
+        /**
+         * @param indicesQueryBoolMaxClauseCount Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesQueryBoolMaxClauseCount(Integer indicesQueryBoolMaxClauseCount) {
             return indicesQueryBoolMaxClauseCount(Output.of(indicesQueryBoolMaxClauseCount));
         }
 
+        /**
+         * @param indicesRecoveryMaxBytesPerSec Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesRecoveryMaxBytesPerSec(@Nullable Output<Integer> indicesRecoveryMaxBytesPerSec) {
             $.indicesRecoveryMaxBytesPerSec = indicesRecoveryMaxBytesPerSec;
             return this;
         }
 
+        /**
+         * @param indicesRecoveryMaxBytesPerSec Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesRecoveryMaxBytesPerSec(Integer indicesRecoveryMaxBytesPerSec) {
             return indicesRecoveryMaxBytesPerSec(Output.of(indicesRecoveryMaxBytesPerSec));
         }
 
+        /**
+         * @param indicesRecoveryMaxConcurrentFileChunks Number of file chunks sent in parallel for each recovery. Defaults to 2.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesRecoveryMaxConcurrentFileChunks(@Nullable Output<Integer> indicesRecoveryMaxConcurrentFileChunks) {
             $.indicesRecoveryMaxConcurrentFileChunks = indicesRecoveryMaxConcurrentFileChunks;
             return this;
         }
 
+        /**
+         * @param indicesRecoveryMaxConcurrentFileChunks Number of file chunks sent in parallel for each recovery. Defaults to 2.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indicesRecoveryMaxConcurrentFileChunks(Integer indicesRecoveryMaxConcurrentFileChunks) {
             return indicesRecoveryMaxConcurrentFileChunks(Output.of(indicesRecoveryMaxConcurrentFileChunks));
         }
 
+        /**
+         * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideMainResponseVersion(@Nullable Output<Boolean> overrideMainResponseVersion) {
             $.overrideMainResponseVersion = overrideMainResponseVersion;
             return this;
         }
 
+        /**
+         * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder overrideMainResponseVersion(Boolean overrideMainResponseVersion) {
             return overrideMainResponseVersion(Output.of(overrideMainResponseVersion));
         }
 
+        /**
+         * @param reindexRemoteWhitelists Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reindexRemoteWhitelists(@Nullable Output<List<String>> reindexRemoteWhitelists) {
             $.reindexRemoteWhitelists = reindexRemoteWhitelists;
             return this;
         }
 
+        /**
+         * @param reindexRemoteWhitelists Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reindexRemoteWhitelists(List<String> reindexRemoteWhitelists) {
             return reindexRemoteWhitelists(Output.of(reindexRemoteWhitelists));
         }
 
+        /**
+         * @param reindexRemoteWhitelists Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reindexRemoteWhitelists(String... reindexRemoteWhitelists) {
             return reindexRemoteWhitelists(List.of(reindexRemoteWhitelists));
         }
 
+        /**
+         * @param scriptMaxCompilationsRate Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scriptMaxCompilationsRate(@Nullable Output<String> scriptMaxCompilationsRate) {
             $.scriptMaxCompilationsRate = scriptMaxCompilationsRate;
             return this;
         }
 
+        /**
+         * @param scriptMaxCompilationsRate Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scriptMaxCompilationsRate(String scriptMaxCompilationsRate) {
             return scriptMaxCompilationsRate(Output.of(scriptMaxCompilationsRate));
         }
 
+        /**
+         * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+         * 
+         * @return builder
+         * 
+         */
         public Builder searchMaxBuckets(@Nullable Output<Integer> searchMaxBuckets) {
             $.searchMaxBuckets = searchMaxBuckets;
             return this;
         }
 
+        /**
+         * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+         * 
+         * @return builder
+         * 
+         */
         public Builder searchMaxBuckets(Integer searchMaxBuckets) {
             return searchMaxBuckets(Output.of(searchMaxBuckets));
         }
 
+        /**
+         * @param threadPoolAnalyzeQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolAnalyzeQueueSize(@Nullable Output<Integer> threadPoolAnalyzeQueueSize) {
             $.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             return this;
         }
 
+        /**
+         * @param threadPoolAnalyzeQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolAnalyzeQueueSize(Integer threadPoolAnalyzeQueueSize) {
             return threadPoolAnalyzeQueueSize(Output.of(threadPoolAnalyzeQueueSize));
         }
 
+        /**
+         * @param threadPoolAnalyzeSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolAnalyzeSize(@Nullable Output<Integer> threadPoolAnalyzeSize) {
             $.threadPoolAnalyzeSize = threadPoolAnalyzeSize;
             return this;
         }
 
+        /**
+         * @param threadPoolAnalyzeSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolAnalyzeSize(Integer threadPoolAnalyzeSize) {
             return threadPoolAnalyzeSize(Output.of(threadPoolAnalyzeSize));
         }
 
+        /**
+         * @param threadPoolForceMergeSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolForceMergeSize(@Nullable Output<Integer> threadPoolForceMergeSize) {
             $.threadPoolForceMergeSize = threadPoolForceMergeSize;
             return this;
         }
 
+        /**
+         * @param threadPoolForceMergeSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolForceMergeSize(Integer threadPoolForceMergeSize) {
             return threadPoolForceMergeSize(Output.of(threadPoolForceMergeSize));
         }
 
+        /**
+         * @param threadPoolGetQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolGetQueueSize(@Nullable Output<Integer> threadPoolGetQueueSize) {
             $.threadPoolGetQueueSize = threadPoolGetQueueSize;
             return this;
         }
 
+        /**
+         * @param threadPoolGetQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolGetQueueSize(Integer threadPoolGetQueueSize) {
             return threadPoolGetQueueSize(Output.of(threadPoolGetQueueSize));
         }
 
+        /**
+         * @param threadPoolGetSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolGetSize(@Nullable Output<Integer> threadPoolGetSize) {
             $.threadPoolGetSize = threadPoolGetSize;
             return this;
         }
 
+        /**
+         * @param threadPoolGetSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolGetSize(Integer threadPoolGetSize) {
             return threadPoolGetSize(Output.of(threadPoolGetSize));
         }
 
+        /**
+         * @param threadPoolSearchQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchQueueSize(@Nullable Output<Integer> threadPoolSearchQueueSize) {
             $.threadPoolSearchQueueSize = threadPoolSearchQueueSize;
             return this;
         }
 
+        /**
+         * @param threadPoolSearchQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchQueueSize(Integer threadPoolSearchQueueSize) {
             return threadPoolSearchQueueSize(Output.of(threadPoolSearchQueueSize));
         }
 
+        /**
+         * @param threadPoolSearchSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchSize(@Nullable Output<Integer> threadPoolSearchSize) {
             $.threadPoolSearchSize = threadPoolSearchSize;
             return this;
         }
 
+        /**
+         * @param threadPoolSearchSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchSize(Integer threadPoolSearchSize) {
             return threadPoolSearchSize(Output.of(threadPoolSearchSize));
         }
 
+        /**
+         * @param threadPoolSearchThrottledQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchThrottledQueueSize(@Nullable Output<Integer> threadPoolSearchThrottledQueueSize) {
             $.threadPoolSearchThrottledQueueSize = threadPoolSearchThrottledQueueSize;
             return this;
         }
 
+        /**
+         * @param threadPoolSearchThrottledQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchThrottledQueueSize(Integer threadPoolSearchThrottledQueueSize) {
             return threadPoolSearchThrottledQueueSize(Output.of(threadPoolSearchThrottledQueueSize));
         }
 
+        /**
+         * @param threadPoolSearchThrottledSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchThrottledSize(@Nullable Output<Integer> threadPoolSearchThrottledSize) {
             $.threadPoolSearchThrottledSize = threadPoolSearchThrottledSize;
             return this;
         }
 
+        /**
+         * @param threadPoolSearchThrottledSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolSearchThrottledSize(Integer threadPoolSearchThrottledSize) {
             return threadPoolSearchThrottledSize(Output.of(threadPoolSearchThrottledSize));
         }
 
+        /**
+         * @param threadPoolWriteQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolWriteQueueSize(@Nullable Output<Integer> threadPoolWriteQueueSize) {
             $.threadPoolWriteQueueSize = threadPoolWriteQueueSize;
             return this;
         }
 
+        /**
+         * @param threadPoolWriteQueueSize Size for the thread pool queue. See documentation for exact details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolWriteQueueSize(Integer threadPoolWriteQueueSize) {
             return threadPoolWriteQueueSize(Output.of(threadPoolWriteQueueSize));
         }
 
+        /**
+         * @param threadPoolWriteSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolWriteSize(@Nullable Output<Integer> threadPoolWriteSize) {
             $.threadPoolWriteSize = threadPoolWriteSize;
             return this;
         }
 
+        /**
+         * @param threadPoolWriteSize Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadPoolWriteSize(Integer threadPoolWriteSize) {
             return threadPoolWriteSize(Output.of(threadPoolWriteSize));
         }

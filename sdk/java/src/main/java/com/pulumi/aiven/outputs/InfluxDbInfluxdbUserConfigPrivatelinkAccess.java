@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
-     * @return InfluxDB server provided values
+     * @return influxdb.conf configuration values.
      * 
      */
     private @Nullable Boolean influxdb;
 
     private InfluxDbInfluxdbUserConfigPrivatelinkAccess() {}
     /**
-     * @return InfluxDB server provided values
+     * @return influxdb.conf configuration values.
      * 
      */
     public Optional<Boolean> influxdb() {

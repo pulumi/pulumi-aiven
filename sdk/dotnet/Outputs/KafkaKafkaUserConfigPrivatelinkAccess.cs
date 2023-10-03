@@ -13,14 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigPrivatelinkAccess
     {
+        /// <summary>
+        /// Enable jolokia.
+        /// </summary>
         public readonly bool? Jolokia;
         /// <summary>
-        /// Kafka server provided values
+        /// Kafka broker configuration values.
         /// </summary>
         public readonly bool? Kafka;
+        /// <summary>
+        /// Enable Kafka Connect service. The default value is `false`.
+        /// </summary>
         public readonly bool? KafkaConnect;
+        /// <summary>
+        /// Enable Kafka-REST service. The default value is `false`.
+        /// </summary>
         public readonly bool? KafkaRest;
+        /// <summary>
+        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? Prometheus;
+        /// <summary>
+        /// Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? SchemaRegistry;
 
         [OutputConstructor]

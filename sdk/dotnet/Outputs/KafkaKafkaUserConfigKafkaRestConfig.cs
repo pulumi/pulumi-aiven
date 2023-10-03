@@ -13,13 +13,37 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigKafkaRestConfig
     {
+        /// <summary>
+        /// If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
+        /// </summary>
         public readonly bool? ConsumerEnableAutoCommit;
+        /// <summary>
+        /// Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+        /// </summary>
         public readonly int? ConsumerRequestMaxBytes;
+        /// <summary>
+        /// The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        /// </summary>
         public readonly int? ConsumerRequestTimeoutMs;
+        /// <summary>
+        /// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        /// </summary>
         public readonly string? ProducerAcks;
+        /// <summary>
+        /// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// </summary>
         public readonly string? ProducerCompressionType;
+        /// <summary>
+        /// This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+        /// </summary>
         public readonly int? ProducerLingerMs;
+        /// <summary>
+        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+        /// </summary>
         public readonly int? ProducerMaxRequestSize;
+        /// <summary>
+        /// Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+        /// </summary>
         public readonly int? SimpleconsumerPoolSizeMax;
 
         [OutputConstructor]

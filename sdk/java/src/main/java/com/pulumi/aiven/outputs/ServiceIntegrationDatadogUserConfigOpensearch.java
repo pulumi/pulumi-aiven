@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationDatadogUserConfigOpensearch {
+    /**
+     * @return Enable Datadog Opensearch Index Monitoring.
+     * 
+     */
     private @Nullable Boolean indexStatsEnabled;
+    /**
+     * @return Enable Datadog Opensearch Pending Task Monitoring.
+     * 
+     */
     private @Nullable Boolean pendingTaskStatsEnabled;
+    /**
+     * @return Enable Datadog Opensearch Primary Shard Monitoring.
+     * 
+     */
     private @Nullable Boolean pshardStatsEnabled;
 
     private ServiceIntegrationDatadogUserConfigOpensearch() {}
+    /**
+     * @return Enable Datadog Opensearch Index Monitoring.
+     * 
+     */
     public Optional<Boolean> indexStatsEnabled() {
         return Optional.ofNullable(this.indexStatsEnabled);
     }
+    /**
+     * @return Enable Datadog Opensearch Pending Task Monitoring.
+     * 
+     */
     public Optional<Boolean> pendingTaskStatsEnabled() {
         return Optional.ofNullable(this.pendingTaskStatsEnabled);
     }
+    /**
+     * @return Enable Datadog Opensearch Primary Shard Monitoring.
+     * 
+     */
     public Optional<Boolean> pshardStatsEnabled() {
         return Optional.ofNullable(this.pshardStatsEnabled);
     }

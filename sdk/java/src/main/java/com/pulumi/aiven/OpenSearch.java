@@ -242,14 +242,14 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.opensearchUserConfig);
     }
     /**
-     * OpenSearch server provided values
+     * OpenSearch settings.
      * 
      */
     @Export(name="opensearches", refs={List.class,OpenSearchOpensearch.class}, tree="[0,1]")
     private Output<List<OpenSearchOpensearch>> opensearches;
 
     /**
-     * @return OpenSearch server provided values
+     * @return OpenSearch settings.
      * 
      */
     public Output<List<OpenSearchOpensearch>> opensearches() {
@@ -424,14 +424,14 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Output<Optional<List<String>>> staticIps() {

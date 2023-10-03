@@ -13,14 +13,41 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPgbouncer
     {
+        /// <summary>
+        /// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+        /// </summary>
         public readonly int? AutodbIdleTimeout;
+        /// <summary>
+        /// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+        /// </summary>
         public readonly int? AutodbMaxDbConnections;
+        /// <summary>
+        /// PGBouncer pool mode.
+        /// </summary>
         public readonly string? AutodbPoolMode;
+        /// <summary>
+        /// If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+        /// </summary>
         public readonly int? AutodbPoolSize;
+        /// <summary>
+        /// List of parameters to ignore when given in startup packet.
+        /// </summary>
         public readonly ImmutableArray<string> IgnoreStartupParameters;
+        /// <summary>
+        /// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+        /// </summary>
         public readonly int? MinPoolSize;
+        /// <summary>
+        /// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+        /// </summary>
         public readonly int? ServerIdleTimeout;
+        /// <summary>
+        /// The pooler will close an unused server connection that has been connected longer than this. (seconds).
+        /// </summary>
         public readonly int? ServerLifetime;
+        /// <summary>
+        /// Run server*reset*query (DISCARD ALL) in all pooling modes.
+        /// </summary>
         public readonly bool? ServerResetQueryAlways;
 
         [OutputConstructor]

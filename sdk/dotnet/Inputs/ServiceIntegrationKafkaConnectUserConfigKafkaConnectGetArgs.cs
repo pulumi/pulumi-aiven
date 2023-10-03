@@ -12,15 +12,27 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationKafkaConnectUserConfigKafkaConnectGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+        /// </summary>
         [Input("configStorageTopic")]
         public Input<string>? ConfigStorageTopic { get; set; }
 
+        /// <summary>
+        /// A unique string that identifies the Connect cluster group this worker belongs to.
+        /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
+        /// <summary>
+        /// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+        /// </summary>
         [Input("offsetStorageTopic")]
         public Input<string>? OffsetStorageTopic { get; set; }
 
+        /// <summary>
+        /// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+        /// </summary>
         [Input("statusStorageTopic")]
         public Input<string>? StatusStorageTopic { get; set; }
 

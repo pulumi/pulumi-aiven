@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigTimescaledbArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+        /// </summary>
         [Input("maxBackgroundWorkers")]
         public Input<int>? MaxBackgroundWorkers { get; set; }
 

@@ -14,201 +14,593 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigPg {
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * 
+     */
     private @Nullable Double autovacuumAnalyzeScaleFactor;
+    /**
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * 
+     */
     private @Nullable Integer autovacuumAnalyzeThreshold;
+    /**
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * 
+     */
     private @Nullable Integer autovacuumFreezeMaxAge;
+    /**
+     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     */
     private @Nullable Integer autovacuumMaxWorkers;
+    /**
+     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     * 
+     */
     private @Nullable Integer autovacuumNaptime;
+    /**
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+     * 
+     */
     private @Nullable Integer autovacuumVacuumCostDelay;
+    /**
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+     * 
+     */
     private @Nullable Integer autovacuumVacuumCostLimit;
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * 
+     */
     private @Nullable Double autovacuumVacuumScaleFactor;
+    /**
+     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     */
     private @Nullable Integer autovacuumVacuumThreshold;
+    /**
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     */
     private @Nullable Integer bgwriterDelay;
+    /**
+     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     */
     private @Nullable Integer bgwriterFlushAfter;
+    /**
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     */
     private @Nullable Integer bgwriterLruMaxpages;
+    /**
+     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     */
     private @Nullable Double bgwriterLruMultiplier;
+    /**
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     */
     private @Nullable Integer deadlockTimeout;
+    /**
+     * @return Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     */
     private @Nullable String defaultToastCompression;
+    /**
+     * @return Time out sessions with open transactions after this number of milliseconds.
+     * 
+     */
     private @Nullable Integer idleInTransactionSessionTimeout;
+    /**
+     * @return Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     */
     private @Nullable Boolean jit;
+    /**
+     * @return Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     * 
+     */
     private @Nullable Integer logAutovacuumMinDuration;
+    /**
+     * @return Controls the amount of detail written in the server log for each message that is logged.
+     * 
+     */
     private @Nullable String logErrorVerbosity;
+    /**
+     * @return Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * 
+     */
     private @Nullable String logLinePrefix;
+    /**
+     * @return Log statements that take more than this number of milliseconds to run, -1 disables.
+     * 
+     */
     private @Nullable Integer logMinDurationStatement;
+    /**
+     * @return Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+     * 
+     */
     private @Nullable Integer logTempFiles;
+    /**
+     * @return PostgreSQL maximum number of files that can be open per process.
+     * 
+     */
     private @Nullable Integer maxFilesPerProcess;
+    /**
+     * @return PostgreSQL maximum locks per transaction.
+     * 
+     */
     private @Nullable Integer maxLocksPerTransaction;
+    /**
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+     * 
+     */
     private @Nullable Integer maxLogicalReplicationWorkers;
+    /**
+     * @return Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     */
     private @Nullable Integer maxParallelWorkers;
+    /**
+     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     */
     private @Nullable Integer maxParallelWorkersPerGather;
+    /**
+     * @return PostgreSQL maximum predicate locks per transaction.
+     * 
+     */
     private @Nullable Integer maxPredLocksPerTransaction;
+    /**
+     * @return PostgreSQL maximum prepared transactions.
+     * 
+     */
     private @Nullable Integer maxPreparedTransactions;
+    /**
+     * @return PostgreSQL maximum replication slots.
+     * 
+     */
     private @Nullable Integer maxReplicationSlots;
+    /**
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+     * 
+     */
     private @Nullable Integer maxSlotWalKeepSize;
+    /**
+     * @return Maximum depth of the stack in bytes.
+     * 
+     */
     private @Nullable Integer maxStackDepth;
+    /**
+     * @return Max standby archive delay in milliseconds.
+     * 
+     */
     private @Nullable Integer maxStandbyArchiveDelay;
+    /**
+     * @return Max standby streaming delay in milliseconds.
+     * 
+     */
     private @Nullable Integer maxStandbyStreamingDelay;
+    /**
+     * @return PostgreSQL maximum WAL senders.
+     * 
+     */
     private @Nullable Integer maxWalSenders;
+    /**
+     * @return Sets the maximum number of background processes that the system can support.
+     * 
+     */
     private @Nullable Integer maxWorkerProcesses;
+    /**
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     */
     private @Nullable Integer pgPartmanBgwDotInterval;
+    /**
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     */
     private @Nullable String pgPartmanBgwDotRole;
+    /**
+     * @return Enables or disables query plan monitoring.
+     * 
+     */
     private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
+    /**
+     * @return Sets the maximum number of buckets .
+     * 
+     */
     private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
+    /**
+     * @return Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     */
     private @Nullable String pgStatStatementsDotTrack;
+    /**
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     */
     private @Nullable Integer tempFileLimit;
+    /**
+     * @return PostgreSQL service timezone.
+     * 
+     */
     private @Nullable String timezone;
+    /**
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     */
     private @Nullable Integer trackActivityQuerySize;
+    /**
+     * @return Record commit time of transactions.
+     * 
+     */
     private @Nullable String trackCommitTimestamp;
+    /**
+     * @return Enables tracking of function call counts and time used.
+     * 
+     */
     private @Nullable String trackFunctions;
+    /**
+     * @return Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     */
     private @Nullable String trackIoTiming;
+    /**
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     */
     private @Nullable Integer walSenderTimeout;
+    /**
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     */
     private @Nullable Integer walWriterDelay;
 
     private PgPgUserConfigPg() {}
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * 
+     */
     public Optional<Double> autovacuumAnalyzeScaleFactor() {
         return Optional.ofNullable(this.autovacuumAnalyzeScaleFactor);
     }
+    /**
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * 
+     */
     public Optional<Integer> autovacuumAnalyzeThreshold() {
         return Optional.ofNullable(this.autovacuumAnalyzeThreshold);
     }
+    /**
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * 
+     */
     public Optional<Integer> autovacuumFreezeMaxAge() {
         return Optional.ofNullable(this.autovacuumFreezeMaxAge);
     }
+    /**
+     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     */
     public Optional<Integer> autovacuumMaxWorkers() {
         return Optional.ofNullable(this.autovacuumMaxWorkers);
     }
+    /**
+     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     * 
+     */
     public Optional<Integer> autovacuumNaptime() {
         return Optional.ofNullable(this.autovacuumNaptime);
     }
+    /**
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+     * 
+     */
     public Optional<Integer> autovacuumVacuumCostDelay() {
         return Optional.ofNullable(this.autovacuumVacuumCostDelay);
     }
+    /**
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+     * 
+     */
     public Optional<Integer> autovacuumVacuumCostLimit() {
         return Optional.ofNullable(this.autovacuumVacuumCostLimit);
     }
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * 
+     */
     public Optional<Double> autovacuumVacuumScaleFactor() {
         return Optional.ofNullable(this.autovacuumVacuumScaleFactor);
     }
+    /**
+     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     */
     public Optional<Integer> autovacuumVacuumThreshold() {
         return Optional.ofNullable(this.autovacuumVacuumThreshold);
     }
+    /**
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     */
     public Optional<Integer> bgwriterDelay() {
         return Optional.ofNullable(this.bgwriterDelay);
     }
+    /**
+     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     */
     public Optional<Integer> bgwriterFlushAfter() {
         return Optional.ofNullable(this.bgwriterFlushAfter);
     }
+    /**
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     */
     public Optional<Integer> bgwriterLruMaxpages() {
         return Optional.ofNullable(this.bgwriterLruMaxpages);
     }
+    /**
+     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     */
     public Optional<Double> bgwriterLruMultiplier() {
         return Optional.ofNullable(this.bgwriterLruMultiplier);
     }
+    /**
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     */
     public Optional<Integer> deadlockTimeout() {
         return Optional.ofNullable(this.deadlockTimeout);
     }
+    /**
+     * @return Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     */
     public Optional<String> defaultToastCompression() {
         return Optional.ofNullable(this.defaultToastCompression);
     }
+    /**
+     * @return Time out sessions with open transactions after this number of milliseconds.
+     * 
+     */
     public Optional<Integer> idleInTransactionSessionTimeout() {
         return Optional.ofNullable(this.idleInTransactionSessionTimeout);
     }
+    /**
+     * @return Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     */
     public Optional<Boolean> jit() {
         return Optional.ofNullable(this.jit);
     }
+    /**
+     * @return Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     * 
+     */
     public Optional<Integer> logAutovacuumMinDuration() {
         return Optional.ofNullable(this.logAutovacuumMinDuration);
     }
+    /**
+     * @return Controls the amount of detail written in the server log for each message that is logged.
+     * 
+     */
     public Optional<String> logErrorVerbosity() {
         return Optional.ofNullable(this.logErrorVerbosity);
     }
+    /**
+     * @return Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * 
+     */
     public Optional<String> logLinePrefix() {
         return Optional.ofNullable(this.logLinePrefix);
     }
+    /**
+     * @return Log statements that take more than this number of milliseconds to run, -1 disables.
+     * 
+     */
     public Optional<Integer> logMinDurationStatement() {
         return Optional.ofNullable(this.logMinDurationStatement);
     }
+    /**
+     * @return Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+     * 
+     */
     public Optional<Integer> logTempFiles() {
         return Optional.ofNullable(this.logTempFiles);
     }
+    /**
+     * @return PostgreSQL maximum number of files that can be open per process.
+     * 
+     */
     public Optional<Integer> maxFilesPerProcess() {
         return Optional.ofNullable(this.maxFilesPerProcess);
     }
+    /**
+     * @return PostgreSQL maximum locks per transaction.
+     * 
+     */
     public Optional<Integer> maxLocksPerTransaction() {
         return Optional.ofNullable(this.maxLocksPerTransaction);
     }
+    /**
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+     * 
+     */
     public Optional<Integer> maxLogicalReplicationWorkers() {
         return Optional.ofNullable(this.maxLogicalReplicationWorkers);
     }
+    /**
+     * @return Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     */
     public Optional<Integer> maxParallelWorkers() {
         return Optional.ofNullable(this.maxParallelWorkers);
     }
+    /**
+     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     */
     public Optional<Integer> maxParallelWorkersPerGather() {
         return Optional.ofNullable(this.maxParallelWorkersPerGather);
     }
+    /**
+     * @return PostgreSQL maximum predicate locks per transaction.
+     * 
+     */
     public Optional<Integer> maxPredLocksPerTransaction() {
         return Optional.ofNullable(this.maxPredLocksPerTransaction);
     }
+    /**
+     * @return PostgreSQL maximum prepared transactions.
+     * 
+     */
     public Optional<Integer> maxPreparedTransactions() {
         return Optional.ofNullable(this.maxPreparedTransactions);
     }
+    /**
+     * @return PostgreSQL maximum replication slots.
+     * 
+     */
     public Optional<Integer> maxReplicationSlots() {
         return Optional.ofNullable(this.maxReplicationSlots);
     }
+    /**
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+     * 
+     */
     public Optional<Integer> maxSlotWalKeepSize() {
         return Optional.ofNullable(this.maxSlotWalKeepSize);
     }
+    /**
+     * @return Maximum depth of the stack in bytes.
+     * 
+     */
     public Optional<Integer> maxStackDepth() {
         return Optional.ofNullable(this.maxStackDepth);
     }
+    /**
+     * @return Max standby archive delay in milliseconds.
+     * 
+     */
     public Optional<Integer> maxStandbyArchiveDelay() {
         return Optional.ofNullable(this.maxStandbyArchiveDelay);
     }
+    /**
+     * @return Max standby streaming delay in milliseconds.
+     * 
+     */
     public Optional<Integer> maxStandbyStreamingDelay() {
         return Optional.ofNullable(this.maxStandbyStreamingDelay);
     }
+    /**
+     * @return PostgreSQL maximum WAL senders.
+     * 
+     */
     public Optional<Integer> maxWalSenders() {
         return Optional.ofNullable(this.maxWalSenders);
     }
+    /**
+     * @return Sets the maximum number of background processes that the system can support.
+     * 
+     */
     public Optional<Integer> maxWorkerProcesses() {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
+    /**
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     */
     public Optional<Integer> pgPartmanBgwDotInterval() {
         return Optional.ofNullable(this.pgPartmanBgwDotInterval);
     }
+    /**
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     */
     public Optional<String> pgPartmanBgwDotRole() {
         return Optional.ofNullable(this.pgPartmanBgwDotRole);
     }
+    /**
+     * @return Enables or disables query plan monitoring.
+     * 
+     */
     public Optional<Boolean> pgStatMonitorDotPgsmEnableQueryPlan() {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmEnableQueryPlan);
     }
+    /**
+     * @return Sets the maximum number of buckets .
+     * 
+     */
     public Optional<Integer> pgStatMonitorDotPgsmMaxBuckets() {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmMaxBuckets);
     }
+    /**
+     * @return Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     */
     public Optional<String> pgStatStatementsDotTrack() {
         return Optional.ofNullable(this.pgStatStatementsDotTrack);
     }
+    /**
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     */
     public Optional<Integer> tempFileLimit() {
         return Optional.ofNullable(this.tempFileLimit);
     }
+    /**
+     * @return PostgreSQL service timezone.
+     * 
+     */
     public Optional<String> timezone() {
         return Optional.ofNullable(this.timezone);
     }
+    /**
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     */
     public Optional<Integer> trackActivityQuerySize() {
         return Optional.ofNullable(this.trackActivityQuerySize);
     }
+    /**
+     * @return Record commit time of transactions.
+     * 
+     */
     public Optional<String> trackCommitTimestamp() {
         return Optional.ofNullable(this.trackCommitTimestamp);
     }
+    /**
+     * @return Enables tracking of function call counts and time used.
+     * 
+     */
     public Optional<String> trackFunctions() {
         return Optional.ofNullable(this.trackFunctions);
     }
+    /**
+     * @return Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     */
     public Optional<String> trackIoTiming() {
         return Optional.ofNullable(this.trackIoTiming);
     }
+    /**
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     */
     public Optional<Integer> walSenderTimeout() {
         return Optional.ofNullable(this.walSenderTimeout);
     }
+    /**
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     */
     public Optional<Integer> walWriterDelay() {
         return Optional.ofNullable(this.walWriterDelay);
     }

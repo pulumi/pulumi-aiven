@@ -11,19 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClickhouseClickhouseUserConfigPublicAccess {
-    /**
-     * @return Clickhouse server provided values
-     * 
-     */
     private @Nullable Boolean clickhouse;
     private @Nullable Boolean clickhouseHttps;
     private @Nullable Boolean prometheus;
 
     private GetClickhouseClickhouseUserConfigPublicAccess() {}
-    /**
-     * @return Clickhouse server provided values
-     * 
-     */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }

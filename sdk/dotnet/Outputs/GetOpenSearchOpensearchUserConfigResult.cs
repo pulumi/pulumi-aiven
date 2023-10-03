@@ -24,9 +24,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly bool? KeepIndexRefreshInterval;
         public readonly int? MaxIndexCount;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpenidResult? Openid;
-        /// <summary>
-        /// OpenSearch server provided values
-        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchResult? Opensearch;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult? OpensearchDashboards;
         public readonly string? OpensearchVersion;
@@ -37,9 +34,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RecoveryBasebackupName;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigSamlResult? Saml;
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

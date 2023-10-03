@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigKafkaAuthenticationMethods
     {
+        /// <summary>
+        /// Enable certificate/SSL authentication. The default value is `true`.
+        /// </summary>
         public readonly bool? Certificate;
+        /// <summary>
+        /// Enable SASL authentication. The default value is `false`.
+        /// </summary>
         public readonly bool? Sasl;
 
         [OutputConstructor]

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FlinkApplicationDeploymentArgs', 'FlinkApplicationDeployment']
@@ -33,16 +33,37 @@ class FlinkApplicationDeploymentArgs:
         :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
         :param pulumi.Input[str] starting_savepoint: Job savepoint
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "version_id", version_id)
+        FlinkApplicationDeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            project=project,
+            service_name=service_name,
+            version_id=version_id,
+            parallelism=parallelism,
+            restart_enabled=restart_enabled,
+            starting_savepoint=starting_savepoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: pulumi.Input[str],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             version_id: pulumi.Input[str],
+             parallelism: Optional[pulumi.Input[int]] = None,
+             restart_enabled: Optional[pulumi.Input[bool]] = None,
+             starting_savepoint: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("version_id", version_id)
         if parallelism is not None:
-            pulumi.set(__self__, "parallelism", parallelism)
+            _setter("parallelism", parallelism)
         if restart_enabled is not None:
-            pulumi.set(__self__, "restart_enabled", restart_enabled)
+            _setter("restart_enabled", restart_enabled)
         if starting_savepoint is not None:
-            pulumi.set(__self__, "starting_savepoint", starting_savepoint)
+            _setter("starting_savepoint", starting_savepoint)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -157,24 +178,49 @@ class _FlinkApplicationDeploymentState:
         :param pulumi.Input[str] starting_savepoint: Job savepoint
         :param pulumi.Input[str] version_id: ApplicationVersion ID
         """
+        _FlinkApplicationDeploymentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            created_at=created_at,
+            created_by=created_by,
+            parallelism=parallelism,
+            project=project,
+            restart_enabled=restart_enabled,
+            service_name=service_name,
+            starting_savepoint=starting_savepoint,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             parallelism: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restart_enabled: Optional[pulumi.Input[bool]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             starting_savepoint: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if parallelism is not None:
-            pulumi.set(__self__, "parallelism", parallelism)
+            _setter("parallelism", parallelism)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restart_enabled is not None:
-            pulumi.set(__self__, "restart_enabled", restart_enabled)
+            _setter("restart_enabled", restart_enabled)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if starting_savepoint is not None:
-            pulumi.set(__self__, "starting_savepoint", starting_savepoint)
+            _setter("starting_savepoint", starting_savepoint)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -332,6 +378,10 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlinkApplicationDeploymentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

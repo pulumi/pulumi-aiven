@@ -16,51 +16,107 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
 
     public static final OpenSearchOpensearchUserConfigSamlArgs Empty = new OpenSearchOpensearchUserConfigSamlArgs();
 
+    /**
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
+    /**
+     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * 
+     */
     @Import(name="idpEntityId", required=true)
     private Output<String> idpEntityId;
 
+    /**
+     * @return The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * 
+     */
     public Output<String> idpEntityId() {
         return this.idpEntityId;
     }
 
+    /**
+     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * 
+     */
     @Import(name="idpMetadataUrl", required=true)
     private Output<String> idpMetadataUrl;
 
+    /**
+     * @return The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * 
+     */
     public Output<String> idpMetadataUrl() {
         return this.idpMetadataUrl;
     }
 
+    /**
+     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * 
+     */
     @Import(name="idpPemtrustedcasContent")
     private @Nullable Output<String> idpPemtrustedcasContent;
 
+    /**
+     * @return This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * 
+     */
     public Optional<Output<String>> idpPemtrustedcasContent() {
         return Optional.ofNullable(this.idpPemtrustedcasContent);
     }
 
+    /**
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * 
+     */
     @Import(name="rolesKey")
     private @Nullable Output<String> rolesKey;
 
+    /**
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * 
+     */
     public Optional<Output<String>> rolesKey() {
         return Optional.ofNullable(this.rolesKey);
     }
 
+    /**
+     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * 
+     */
     @Import(name="spEntityId", required=true)
     private Output<String> spEntityId;
 
+    /**
+     * @return The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * 
+     */
     public Output<String> spEntityId() {
         return this.spEntityId;
     }
 
+    /**
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * 
+     */
     @Import(name="subjectKey")
     private @Nullable Output<String> subjectKey;
 
+    /**
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * 
+     */
     public Optional<Output<String>> subjectKey() {
         return Optional.ofNullable(this.subjectKey);
     }
@@ -95,65 +151,149 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
             $ = new OpenSearchOpensearchUserConfigSamlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param idpEntityId The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpEntityId(Output<String> idpEntityId) {
             $.idpEntityId = idpEntityId;
             return this;
         }
 
+        /**
+         * @param idpEntityId The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpEntityId(String idpEntityId) {
             return idpEntityId(Output.of(idpEntityId));
         }
 
+        /**
+         * @param idpMetadataUrl The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpMetadataUrl(Output<String> idpMetadataUrl) {
             $.idpMetadataUrl = idpMetadataUrl;
             return this;
         }
 
+        /**
+         * @param idpMetadataUrl The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpMetadataUrl(String idpMetadataUrl) {
             return idpMetadataUrl(Output.of(idpMetadataUrl));
         }
 
+        /**
+         * @param idpPemtrustedcasContent This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpPemtrustedcasContent(@Nullable Output<String> idpPemtrustedcasContent) {
             $.idpPemtrustedcasContent = idpPemtrustedcasContent;
             return this;
         }
 
+        /**
+         * @param idpPemtrustedcasContent This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpPemtrustedcasContent(String idpPemtrustedcasContent) {
             return idpPemtrustedcasContent(Output.of(idpPemtrustedcasContent));
         }
 
+        /**
+         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rolesKey(@Nullable Output<String> rolesKey) {
             $.rolesKey = rolesKey;
             return this;
         }
 
+        /**
+         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rolesKey(String rolesKey) {
             return rolesKey(Output.of(rolesKey));
         }
 
+        /**
+         * @param spEntityId The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder spEntityId(Output<String> spEntityId) {
             $.spEntityId = spEntityId;
             return this;
         }
 
+        /**
+         * @param spEntityId The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder spEntityId(String spEntityId) {
             return spEntityId(Output.of(spEntityId));
         }
 
+        /**
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKey(@Nullable Output<String> subjectKey) {
             $.subjectKey = subjectKey;
             return this;
         }
 
+        /**
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKey(String subjectKey) {
             return subjectKey(Output.of(subjectKey));
         }

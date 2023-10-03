@@ -13,13 +13,28 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigMigration
     {
+        /// <summary>
+        /// Primary PostgreSQL database name
+        /// </summary>
         public readonly string? Dbname;
         public readonly string Host;
+        /// <summary>
+        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+        /// </summary>
         public readonly string? IgnoreDbs;
+        /// <summary>
+        /// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+        /// </summary>
         public readonly string? Method;
+        /// <summary>
+        /// PostgreSQL admin user password
+        /// </summary>
         public readonly string? Password;
         public readonly int Port;
         public readonly bool? Ssl;
+        /// <summary>
+        /// User name for authentication with the server where to migrate data from.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

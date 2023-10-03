@@ -32,10 +32,6 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
     private @Nullable String m3aggregatorVersion;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetM3AggregatorM3aggregatorUserConfig() {}
@@ -69,10 +65,6 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
     public Optional<String> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

@@ -17,13 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Kafka MirrorMaker 2 server provided values
-        /// </summary>
         public readonly Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? KafkaMirrormaker;
-        /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

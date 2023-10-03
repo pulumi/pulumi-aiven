@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PostgreSQL database to expose. The default value is `defaultdb`.
+        /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
+        /// <summary>
+        /// PostgreSQL schema to expose. The default value is `public`.
+        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 

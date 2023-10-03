@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationDatadogUserConfigOpensearch
     {
+        /// <summary>
+        /// Enable Datadog Opensearch Index Monitoring.
+        /// </summary>
         public readonly bool? IndexStatsEnabled;
+        /// <summary>
+        /// Enable Datadog Opensearch Pending Task Monitoring.
+        /// </summary>
         public readonly bool? PendingTaskStatsEnabled;
+        /// <summary>
+        /// Enable Datadog Opensearch Primary Shard Monitoring.
+        /// </summary>
         public readonly bool? PshardStatsEnabled;
 
         [OutputConstructor]

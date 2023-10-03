@@ -16,16 +16,32 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
 
     public static final KafkaKafkaUserConfigSchemaRegistryConfigArgs Empty = new KafkaKafkaUserConfigSchemaRegistryConfigArgs();
 
+    /**
+     * If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+     * 
+     */
     @Import(name="leaderEligibility")
     private @Nullable Output<Boolean> leaderEligibility;
 
+    /**
+     * @return If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+     * 
+     */
     public Optional<Output<Boolean>> leaderEligibility() {
         return Optional.ofNullable(this.leaderEligibility);
     }
 
+    /**
+     * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+     * 
+     */
     @Import(name="topicName")
     private @Nullable Output<String> topicName;
 
+    /**
+     * @return The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+     * 
+     */
     public Optional<Output<String>> topicName() {
         return Optional.ofNullable(this.topicName);
     }
@@ -55,20 +71,44 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
             $ = new KafkaKafkaUserConfigSchemaRegistryConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param leaderEligibility If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder leaderEligibility(@Nullable Output<Boolean> leaderEligibility) {
             $.leaderEligibility = leaderEligibility;
             return this;
         }
 
+        /**
+         * @param leaderEligibility If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder leaderEligibility(Boolean leaderEligibility) {
             return leaderEligibility(Output.of(leaderEligibility));
         }
 
+        /**
+         * @param topicName The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topicName(@Nullable Output<String> topicName) {
             $.topicName = topicName;
             return this;
         }
 
+        /**
+         * @param topicName The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topicName(String topicName) {
             return topicName(Output.of(topicName));
         }

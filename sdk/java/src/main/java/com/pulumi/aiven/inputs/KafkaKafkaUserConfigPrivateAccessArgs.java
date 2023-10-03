@@ -16,44 +16,76 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     public static final KafkaKafkaUserConfigPrivateAccessArgs Empty = new KafkaKafkaUserConfigPrivateAccessArgs();
 
     /**
-     * Kafka server provided values
+     * Kafka broker configuration values.
      * 
      */
     @Import(name="kafka")
     private @Nullable Output<Boolean> kafka;
 
     /**
-     * @return Kafka server provided values
+     * @return Kafka broker configuration values.
      * 
      */
     public Optional<Output<Boolean>> kafka() {
         return Optional.ofNullable(this.kafka);
     }
 
+    /**
+     * Enable Kafka Connect service. The default value is `false`.
+     * 
+     */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
+    /**
+     * @return Enable Kafka Connect service. The default value is `false`.
+     * 
+     */
     public Optional<Output<Boolean>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
+    /**
+     * Enable Kafka-REST service. The default value is `false`.
+     * 
+     */
     @Import(name="kafkaRest")
     private @Nullable Output<Boolean> kafkaRest;
 
+    /**
+     * @return Enable Kafka-REST service. The default value is `false`.
+     * 
+     */
     public Optional<Output<Boolean>> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
+    /**
+     * Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="schemaRegistry")
     private @Nullable Output<Boolean> schemaRegistry;
 
+    /**
+     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
@@ -87,7 +119,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafka Kafka server provided values
+         * @param kafka Kafka broker configuration values.
          * 
          * @return builder
          * 
@@ -98,7 +130,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafka Kafka server provided values
+         * @param kafka Kafka broker configuration values.
          * 
          * @return builder
          * 
@@ -107,38 +139,86 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
             return kafka(Output.of(kafka));
         }
 
+        /**
+         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
+        /**
+         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(Boolean kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
+        /**
+         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaRest(@Nullable Output<Boolean> kafkaRest) {
             $.kafkaRest = kafkaRest;
             return this;
         }
 
+        /**
+         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaRest(Boolean kafkaRest) {
             return kafkaRest(Output.of(kafkaRest));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 
+        /**
+         * @param schemaRegistry Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistry(@Nullable Output<Boolean> schemaRegistry) {
             $.schemaRegistry = schemaRegistry;
             return this;
         }
 
+        /**
+         * @param schemaRegistry Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistry(Boolean schemaRegistry) {
             return schemaRegistry(Output.of(schemaRegistry));
         }

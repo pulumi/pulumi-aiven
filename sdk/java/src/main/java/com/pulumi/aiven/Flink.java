@@ -190,14 +190,14 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * Flink server provided values
+     * Enable flink.
      * 
      */
     @Export(name="flink", refs={FlinkFlink.class}, tree="[0]")
     private Output<FlinkFlink> flink;
 
     /**
-     * @return Flink server provided values
+     * @return Enable flink.
      * 
      */
     public Output<FlinkFlink> flink() {

@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+    /**
+     * @return The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     private @Nullable String configStorageTopic;
+    /**
+     * @return A unique string that identifies the Connect cluster group this worker belongs to.
+     * 
+     */
     private @Nullable String groupId;
+    /**
+     * @return The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     private @Nullable String offsetStorageTopic;
+    /**
+     * @return The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     private @Nullable String statusStorageTopic;
 
     private ServiceIntegrationKafkaConnectUserConfigKafkaConnect() {}
+    /**
+     * @return The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     public Optional<String> configStorageTopic() {
         return Optional.ofNullable(this.configStorageTopic);
     }
+    /**
+     * @return A unique string that identifies the Connect cluster group this worker belongs to.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
+    /**
+     * @return The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     public Optional<String> offsetStorageTopic() {
         return Optional.ofNullable(this.offsetStorageTopic);
     }
+    /**
+     * @return The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * 
+     */
     public Optional<String> statusStorageTopic() {
         return Optional.ofNullable(this.statusStorageTopic);
     }

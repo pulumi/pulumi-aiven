@@ -11,20 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaConnectorTask {
     private String connector;
-    /**
-     * @return List of tasks of a connector.
-     * 
-     */
     private Integer task;
 
     private GetKafkaConnectorTask() {}
     public String connector() {
         return this.connector;
     }
-    /**
-     * @return List of tasks of a connector.
-     * 
-     */
     public Integer task() {
         return this.task;
     }

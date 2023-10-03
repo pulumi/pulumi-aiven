@@ -47,7 +47,7 @@ type Pg struct {
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// PostgreSQL specific server provided values
+	// postgresql.conf configuration values.
 	Pg PgPgOutput `pulumi:"pg"`
 	// Pg user configurable settings
 	PgUserConfig PgPgUserConfigPtrOutput `pulumi:"pgUserConfig"`
@@ -75,7 +75,7 @@ type Pg struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags PgTagArrayOutput `pulumi:"tags"`
@@ -146,7 +146,7 @@ type pgState struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// PostgreSQL specific server provided values
+	// postgresql.conf configuration values.
 	Pg *PgPg `pulumi:"pg"`
 	// Pg user configurable settings
 	PgUserConfig *PgPgUserConfig `pulumi:"pgUserConfig"`
@@ -174,7 +174,7 @@ type pgState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []PgTag `pulumi:"tags"`
@@ -205,7 +205,7 @@ type PgState struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// PostgreSQL specific server provided values
+	// postgresql.conf configuration values.
 	Pg PgPgPtrInput
 	// Pg user configurable settings
 	PgUserConfig PgPgUserConfigPtrInput
@@ -233,7 +233,7 @@ type PgState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags PgTagArrayInput
@@ -258,7 +258,7 @@ type pgArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// PostgreSQL specific server provided values
+	// postgresql.conf configuration values.
 	Pg *PgPg `pulumi:"pg"`
 	// Pg user configurable settings
 	PgUserConfig *PgPgUserConfig `pulumi:"pgUserConfig"`
@@ -272,7 +272,7 @@ type pgArgs struct {
 	ServiceIntegrations []PgServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []PgTag `pulumi:"tags"`
@@ -294,7 +294,7 @@ type PgArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// PostgreSQL specific server provided values
+	// postgresql.conf configuration values.
 	Pg PgPgPtrInput
 	// Pg user configurable settings
 	PgUserConfig PgPgUserConfigPtrInput
@@ -308,7 +308,7 @@ type PgArgs struct {
 	ServiceIntegrations PgServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags PgTagArrayInput
@@ -479,7 +479,7 @@ func (o PgOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pg) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL specific server provided values
+// postgresql.conf configuration values.
 func (o PgOutput) Pg() PgPgOutput {
 	return o.ApplyT(func(v *Pg) PgPgOutput { return v.Pg }).(PgPgOutput)
 }
@@ -549,7 +549,7 @@ func (o PgOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pg) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Use static public IP addresses.
 func (o PgOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Pg) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

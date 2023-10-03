@@ -103,7 +103,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface ClickhouseGrantState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface ClickhouseGrantArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**

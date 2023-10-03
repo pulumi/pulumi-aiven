@@ -97,7 +97,7 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
-        /// Flink server provided values
+        /// Enable flink.
         /// </summary>
         [Output("flink")]
         public Output<Outputs.FlinkFlink> FlinkDetails { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpace { get; set; }
 
         /// <summary>
-        /// Flink server provided values
+        /// Enable flink.
         /// </summary>
         [Input("flink")]
         public Input<Inputs.FlinkFlinkArgs>? FlinkDetails { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceUsed { get; set; }
 
         /// <summary>
-        /// Flink server provided values
+        /// Enable flink.
         /// </summary>
         [Input("flink")]
         public Input<Inputs.FlinkFlinkGetArgs>? FlinkDetails { get; set; }

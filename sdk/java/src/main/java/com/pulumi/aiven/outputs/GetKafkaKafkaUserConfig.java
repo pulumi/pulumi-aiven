@@ -33,10 +33,6 @@ public final class GetKafkaKafkaUserConfig {
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
-    /**
-     * @return Kafka server provided values
-     * 
-     */
     private @Nullable GetKafkaKafkaUserConfigKafka kafka;
     private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
     private @Nullable Boolean kafkaConnect;
@@ -50,10 +46,6 @@ public final class GetKafkaKafkaUserConfig {
     private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
     private @Nullable Boolean schemaRegistry;
     private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private @Nullable Boolean staticIps;
 
     private GetKafkaKafkaUserConfig() {}
@@ -78,10 +70,6 @@ public final class GetKafkaKafkaUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
-    /**
-     * @return Kafka server provided values
-     * 
-     */
     public Optional<GetKafkaKafkaUserConfigKafka> kafka() {
         return Optional.ofNullable(this.kafka);
     }
@@ -121,10 +109,6 @@ public final class GetKafkaKafkaUserConfig {
     public Optional<GetKafkaKafkaUserConfigSchemaRegistryConfig> schemaRegistryConfig() {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

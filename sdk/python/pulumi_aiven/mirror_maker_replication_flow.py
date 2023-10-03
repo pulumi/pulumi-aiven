@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MirrorMakerReplicationFlowArgs', 'MirrorMakerReplicationFlow']
@@ -41,25 +41,56 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "source_cluster", source_cluster)
-        pulumi.set(__self__, "target_cluster", target_cluster)
+        MirrorMakerReplicationFlowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            project=project,
+            service_name=service_name,
+            source_cluster=source_cluster,
+            target_cluster=target_cluster,
+            emit_heartbeats_enabled=emit_heartbeats_enabled,
+            offset_syncs_topic_location=offset_syncs_topic_location,
+            replication_policy_class=replication_policy_class,
+            sync_group_offsets_enabled=sync_group_offsets_enabled,
+            sync_group_offsets_interval_seconds=sync_group_offsets_interval_seconds,
+            topics=topics,
+            topics_blacklists=topics_blacklists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: pulumi.Input[bool],
+             project: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             source_cluster: pulumi.Input[str],
+             target_cluster: pulumi.Input[str],
+             emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
+             offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
+             replication_policy_class: Optional[pulumi.Input[str]] = None,
+             sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+             sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
+             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enable", enable)
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("source_cluster", source_cluster)
+        _setter("target_cluster", target_cluster)
         if emit_heartbeats_enabled is not None:
-            pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
+            _setter("emit_heartbeats_enabled", emit_heartbeats_enabled)
         if offset_syncs_topic_location is not None:
-            pulumi.set(__self__, "offset_syncs_topic_location", offset_syncs_topic_location)
+            _setter("offset_syncs_topic_location", offset_syncs_topic_location)
         if replication_policy_class is not None:
-            pulumi.set(__self__, "replication_policy_class", replication_policy_class)
+            _setter("replication_policy_class", replication_policy_class)
         if sync_group_offsets_enabled is not None:
-            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+            _setter("sync_group_offsets_enabled", sync_group_offsets_enabled)
         if sync_group_offsets_interval_seconds is not None:
-            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
+            _setter("sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
         if topics is not None:
-            pulumi.set(__self__, "topics", topics)
+            _setter("topics", topics)
         if topics_blacklists is not None:
-            pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+            _setter("topics_blacklists", topics_blacklists)
 
     @property
     @pulumi.getter
@@ -236,30 +267,61 @@ class _MirrorMakerReplicationFlowState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
+        _MirrorMakerReplicationFlowState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            emit_heartbeats_enabled=emit_heartbeats_enabled,
+            enable=enable,
+            offset_syncs_topic_location=offset_syncs_topic_location,
+            project=project,
+            replication_policy_class=replication_policy_class,
+            service_name=service_name,
+            source_cluster=source_cluster,
+            sync_group_offsets_enabled=sync_group_offsets_enabled,
+            sync_group_offsets_interval_seconds=sync_group_offsets_interval_seconds,
+            target_cluster=target_cluster,
+            topics=topics,
+            topics_blacklists=topics_blacklists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             replication_policy_class: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             source_cluster: Optional[pulumi.Input[str]] = None,
+             sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+             sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
+             target_cluster: Optional[pulumi.Input[str]] = None,
+             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if emit_heartbeats_enabled is not None:
-            pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
+            _setter("emit_heartbeats_enabled", emit_heartbeats_enabled)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if offset_syncs_topic_location is not None:
-            pulumi.set(__self__, "offset_syncs_topic_location", offset_syncs_topic_location)
+            _setter("offset_syncs_topic_location", offset_syncs_topic_location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if replication_policy_class is not None:
-            pulumi.set(__self__, "replication_policy_class", replication_policy_class)
+            _setter("replication_policy_class", replication_policy_class)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if source_cluster is not None:
-            pulumi.set(__self__, "source_cluster", source_cluster)
+            _setter("source_cluster", source_cluster)
         if sync_group_offsets_enabled is not None:
-            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+            _setter("sync_group_offsets_enabled", sync_group_offsets_enabled)
         if sync_group_offsets_interval_seconds is not None:
-            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
+            _setter("sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
         if target_cluster is not None:
-            pulumi.set(__self__, "target_cluster", target_cluster)
+            _setter("target_cluster", target_cluster)
         if topics is not None:
-            pulumi.set(__self__, "topics", topics)
+            _setter("topics", topics)
         if topics_blacklists is not None:
-            pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+            _setter("topics_blacklists", topics_blacklists)
 
     @property
     @pulumi.getter(name="emitHeartbeatsEnabled")
@@ -513,6 +575,10 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MirrorMakerReplicationFlowArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

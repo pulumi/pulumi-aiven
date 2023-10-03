@@ -23,9 +23,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
-        /// <summary>
-        /// PostgreSQL specific server provided values
-        /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgResult? Pg;
         public readonly bool? PgReadReplica;
         public readonly string? PgServiceToForkFrom;
@@ -40,9 +37,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
         public readonly double? SharedBuffersPercentage;
-        /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        /// </summary>
         public readonly bool? StaticIps;
         public readonly string? SynchronousReplication;
         public readonly Outputs.GetPgPgUserConfigTimescaledbResult? Timescaledb;

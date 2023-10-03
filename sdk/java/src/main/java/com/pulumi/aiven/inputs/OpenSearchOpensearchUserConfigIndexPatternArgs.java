@@ -16,23 +16,47 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
 
     public static final OpenSearchOpensearchUserConfigIndexPatternArgs Empty = new OpenSearchOpensearchUserConfigIndexPatternArgs();
 
+    /**
+     * Maximum number of indexes to keep.
+     * 
+     */
     @Import(name="maxIndexCount", required=true)
     private Output<Integer> maxIndexCount;
 
+    /**
+     * @return Maximum number of indexes to keep.
+     * 
+     */
     public Output<Integer> maxIndexCount() {
         return this.maxIndexCount;
     }
 
+    /**
+     * fnmatch pattern.
+     * 
+     */
     @Import(name="pattern", required=true)
     private Output<String> pattern;
 
+    /**
+     * @return fnmatch pattern.
+     * 
+     */
     public Output<String> pattern() {
         return this.pattern;
     }
 
+    /**
+     * Deletion sorting algorithm. The default value is `creation_date`.
+     * 
+     */
     @Import(name="sortingAlgorithm")
     private @Nullable Output<String> sortingAlgorithm;
 
+    /**
+     * @return Deletion sorting algorithm. The default value is `creation_date`.
+     * 
+     */
     public Optional<Output<String>> sortingAlgorithm() {
         return Optional.ofNullable(this.sortingAlgorithm);
     }
@@ -63,29 +87,65 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
             $ = new OpenSearchOpensearchUserConfigIndexPatternArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxIndexCount Maximum number of indexes to keep.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxIndexCount(Output<Integer> maxIndexCount) {
             $.maxIndexCount = maxIndexCount;
             return this;
         }
 
+        /**
+         * @param maxIndexCount Maximum number of indexes to keep.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxIndexCount(Integer maxIndexCount) {
             return maxIndexCount(Output.of(maxIndexCount));
         }
 
+        /**
+         * @param pattern fnmatch pattern.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
+        /**
+         * @param pattern fnmatch pattern.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
+        /**
+         * @param sortingAlgorithm Deletion sorting algorithm. The default value is `creation_date`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortingAlgorithm(@Nullable Output<String> sortingAlgorithm) {
             $.sortingAlgorithm = sortingAlgorithm;
             return this;
         }
 
+        /**
+         * @param sortingAlgorithm Deletion sorting algorithm. The default value is `creation_date`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortingAlgorithm(String sortingAlgorithm) {
             return sortingAlgorithm(Output.of(sortingAlgorithm));
         }
