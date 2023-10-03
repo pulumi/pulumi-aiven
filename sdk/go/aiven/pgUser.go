@@ -58,9 +58,9 @@ type PgUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// Access certificate key for the user
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The password of the PG User ( not applicable for all services ).
+	// The password of the PG User (not applicable for all services).
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+	// Defines whether replication is allowed.
 	PgAllowReplication pulumi.BoolPtrOutput `pulumi:"pgAllowReplication"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -124,9 +124,9 @@ type pgUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// Access certificate key for the user
 	AccessKey *string `pulumi:"accessKey"`
-	// The password of the PG User ( not applicable for all services ).
+	// The password of the PG User (not applicable for all services).
 	Password *string `pulumi:"password"`
-	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+	// Defines whether replication is allowed.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -143,9 +143,9 @@ type PgUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// Access certificate key for the user
 	AccessKey pulumi.StringPtrInput
-	// The password of the PG User ( not applicable for all services ).
+	// The password of the PG User (not applicable for all services).
 	Password pulumi.StringPtrInput
-	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+	// Defines whether replication is allowed.
 	PgAllowReplication pulumi.BoolPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -162,9 +162,9 @@ func (PgUserState) ElementType() reflect.Type {
 }
 
 type pgUserArgs struct {
-	// The password of the PG User ( not applicable for all services ).
+	// The password of the PG User (not applicable for all services).
 	Password *string `pulumi:"password"`
-	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+	// Defines whether replication is allowed.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -176,9 +176,9 @@ type pgUserArgs struct {
 
 // The set of arguments for constructing a PgUser resource.
 type PgUserArgs struct {
-	// The password of the PG User ( not applicable for all services ).
+	// The password of the PG User (not applicable for all services).
 	Password pulumi.StringPtrInput
-	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+	// Defines whether replication is allowed.
 	PgAllowReplication pulumi.BoolPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
@@ -309,12 +309,12 @@ func (o PgUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The password of the PG User ( not applicable for all services ).
+// The password of the PG User (not applicable for all services).
 func (o PgUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+// Defines whether replication is allowed.
 func (o PgUserOutput) PgAllowReplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.BoolPtrOutput { return v.PgAllowReplication }).(pulumi.BoolPtrOutput)
 }

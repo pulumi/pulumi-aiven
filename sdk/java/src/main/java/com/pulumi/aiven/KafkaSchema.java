@@ -104,28 +104,28 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      * 
      */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
-     * @return Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * @return Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      * 
      */
     public Output<String> schema() {
         return this.schema;
     }
     /**
-     * Kafka Schema type JSON or AVRO
+     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
      * 
      */
     @Export(name="schemaType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schemaType;
 
     /**
-     * @return Kafka Schema type JSON or AVRO
+     * @return Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
      * 
      */
     public Output<Optional<String>> schemaType() {

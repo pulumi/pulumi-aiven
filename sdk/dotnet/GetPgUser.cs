@@ -142,11 +142,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the PG User ( not applicable for all services ).
+        /// The password of the PG User (not applicable for all services).
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines whether replication is allowed.
         /// </summary>
         public readonly bool PgAllowReplication;
         /// <summary>

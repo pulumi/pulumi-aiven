@@ -74,9 +74,9 @@ type KafkaSchema struct {
 	CompatibilityLevel pulumi.StringPtrOutput `pulumi:"compatibilityLevel"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Kafka Schema configuration should be a valid Avro Schema JSON format.
+	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringOutput `pulumi:"schema"`
-	// Kafka Schema type JSON or AVRO
+	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
 	SchemaType pulumi.StringPtrOutput `pulumi:"schemaType"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -132,9 +132,9 @@ type kafkaSchemaState struct {
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Kafka Schema configuration should be a valid Avro Schema JSON format.
+	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema *string `pulumi:"schema"`
-	// Kafka Schema type JSON or AVRO
+	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
 	SchemaType *string `pulumi:"schemaType"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
@@ -149,9 +149,9 @@ type KafkaSchemaState struct {
 	CompatibilityLevel pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Kafka Schema configuration should be a valid Avro Schema JSON format.
+	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringPtrInput
-	// Kafka Schema type JSON or AVRO
+	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
 	SchemaType pulumi.StringPtrInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
@@ -170,9 +170,9 @@ type kafkaSchemaArgs struct {
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Kafka Schema configuration should be a valid Avro Schema JSON format.
+	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema string `pulumi:"schema"`
-	// Kafka Schema type JSON or AVRO
+	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
 	SchemaType *string `pulumi:"schemaType"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
@@ -186,9 +186,9 @@ type KafkaSchemaArgs struct {
 	CompatibilityLevel pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Kafka Schema configuration should be a valid Avro Schema JSON format.
+	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringInput
-	// Kafka Schema type JSON or AVRO
+	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
 	SchemaType pulumi.StringPtrInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
@@ -317,12 +317,12 @@ func (o KafkaSchemaOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchema) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Kafka Schema configuration should be a valid Avro Schema JSON format.
+// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 func (o KafkaSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchema) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
 
-// Kafka Schema type JSON or AVRO
+// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
 func (o KafkaSchemaOutput) SchemaType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaSchema) pulumi.StringPtrOutput { return v.SchemaType }).(pulumi.StringPtrOutput)
 }

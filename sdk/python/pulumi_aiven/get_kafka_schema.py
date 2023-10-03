@@ -75,7 +75,7 @@ class GetKafkaSchemaResult:
     @pulumi.getter
     def schema(self) -> str:
         """
-        Kafka Schema configuration should be a valid Avro Schema JSON format.
+        Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         """
         return pulumi.get(self, "schema")
 
@@ -83,7 +83,7 @@ class GetKafkaSchemaResult:
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> str:
         """
-        Kafka Schema type JSON or AVRO
+        Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
         """
         return pulumi.get(self, "schema_type")
 
