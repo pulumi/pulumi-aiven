@@ -17304,11 +17304,11 @@
                 },
                 "schema": {
                     "type": "string",
-                    "description": "Kafka Schema configuration should be a valid Avro Schema JSON format.\n"
+                    "description": "Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.\n"
                 },
                 "schemaType": {
                     "type": "string",
-                    "description": "Kafka Schema type JSON or AVRO\n"
+                    "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -17342,11 +17342,11 @@
                 },
                 "schema": {
                     "type": "string",
-                    "description": "Kafka Schema configuration should be a valid Avro Schema JSON format.\n"
+                    "description": "Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.\n"
                 },
                 "schemaType": {
                     "type": "string",
-                    "description": "Kafka Schema type JSON or AVRO\n",
+                    "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
@@ -17380,11 +17380,11 @@
                     },
                     "schema": {
                         "type": "string",
-                        "description": "Kafka Schema configuration should be a valid Avro Schema JSON format.\n"
+                        "description": "Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.\n"
                     },
                     "schemaType": {
                         "type": "string",
-                        "description": "Kafka Schema type JSON or AVRO\n",
+                        "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
@@ -20868,12 +20868,12 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password of the PG User ( not applicable for all services ).\n",
+                    "description": "The password of the PG User (not applicable for all services).\n",
                     "secret": true
                 },
                 "pgAllowReplication": {
                     "type": "boolean",
-                    "description": "Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "Defines whether replication is allowed.\n"
                 },
                 "project": {
                     "type": "string",
@@ -20904,13 +20904,12 @@
             "inputProperties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the PG User ( not applicable for all services ).\n",
+                    "description": "The password of the PG User (not applicable for all services).\n",
                     "secret": true
                 },
                 "pgAllowReplication": {
                     "type": "boolean",
-                    "description": "Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Defines whether replication is allowed.\n"
                 },
                 "project": {
                     "type": "string",
@@ -20948,13 +20947,12 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password of the PG User ( not applicable for all services ).\n",
+                        "description": "The password of the PG User (not applicable for all services).\n",
                         "secret": true
                     },
                     "pgAllowReplication": {
                         "type": "boolean",
-                        "description": "Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Defines whether replication is allowed.\n"
                     },
                     "project": {
                         "type": "string",
@@ -26038,11 +26036,11 @@
                     },
                     "schema": {
                         "type": "string",
-                        "description": "Kafka Schema configuration should be a valid Avro Schema JSON format.\n"
+                        "description": "Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.\n"
                     },
                     "schemaType": {
                         "type": "string",
-                        "description": "Kafka Schema type JSON or AVRO\n"
+                        "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -26107,11 +26105,11 @@
                     },
                     "schema": {
                         "type": "string",
-                        "description": "Kafka Schema configuration should be a valid Avro Schema JSON format.\n"
+                        "description": "Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.\n"
                     },
                     "schemaType": {
                         "type": "string",
-                        "description": "Kafka Schema type JSON or AVRO\n"
+                        "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n"
                     },
                     "serviceName": {
                         "type": "string",
@@ -28229,12 +28227,12 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password of the PG User ( not applicable for all services ).\n",
+                        "description": "The password of the PG User (not applicable for all services).\n",
                         "secret": true
                     },
                     "pgAllowReplication": {
                         "type": "boolean",
-                        "description": "Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "Defines whether replication is allowed.\n"
                     },
                     "project": {
                         "type": "string",
