@@ -169,13 +169,16 @@
         "aiven:index/CassandraCassandraUserConfigCassandra:CassandraCassandraUserConfigCassandra": {
             "properties": {
                 "batchSizeFailThresholdInKb": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.\n"
                 },
                 "batchSizeWarnThresholdInKb": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.\n"
                 },
                 "datacenter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.\n"
                 }
             },
             "type": "object"
@@ -183,10 +186,12 @@
         "aiven:index/CassandraCassandraUserConfigIpFilterObject:CassandraCassandraUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -197,7 +202,8 @@
         "aiven:index/CassandraCassandraUserConfigPrivateAccess:CassandraCassandraUserConfigPrivateAccess": {
             "properties": {
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -205,7 +211,8 @@
         "aiven:index/CassandraCassandraUserConfigPublicAccess:CassandraCassandraUserConfigPublicAccess": {
             "properties": {
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -346,10 +353,12 @@
         "aiven:index/ClickhouseClickhouseUserConfigIpFilterObject:ClickhouseClickhouseUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -361,13 +370,15 @@
             "properties": {
                 "clickhouse": {
                     "type": "boolean",
-                    "description": "Clickhouse server provided values\n"
+                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "clickhouseHttps": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -376,13 +387,15 @@
             "properties": {
                 "clickhouse": {
                     "type": "boolean",
-                    "description": "Clickhouse server provided values\n"
+                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "clickhouseHttps": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -391,13 +404,15 @@
             "properties": {
                 "clickhouse": {
                     "type": "boolean",
-                    "description": "Clickhouse server provided values\n"
+                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "clickhouseHttps": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -654,10 +669,12 @@
         "aiven:index/FlinkFlinkUserConfigIpFilterObject:FlinkFlinkUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -669,10 +686,11 @@
             "properties": {
                 "flink": {
                     "type": "boolean",
-                    "description": "Flink server provided values\n"
+                    "description": "Enable flink.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable prometheus.\n"
                 }
             },
             "type": "object"
@@ -1350,25 +1368,32 @@
         "aiven:index/InfluxDbInfluxdbUserConfigInfluxdb:InfluxDbInfluxdbUserConfigInfluxdb": {
             "properties": {
                 "logQueriesAfter": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.\n"
                 },
                 "maxConnectionLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.\n"
                 },
                 "maxRowLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.\n"
                 },
                 "maxSelectBuckets": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.\n"
                 },
                 "maxSelectPoint": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.\n"
                 },
                 "queryLogEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether queries should be logged before execution. May log sensitive data contained within a query.\n"
                 },
                 "queryTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.\n"
                 }
             },
             "type": "object"
@@ -1376,10 +1401,12 @@
         "aiven:index/InfluxDbInfluxdbUserConfigIpFilterObject:InfluxDbInfluxdbUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -1391,7 +1418,7 @@
             "properties": {
                 "influxdb": {
                     "type": "boolean",
-                    "description": "InfluxDB server provided values\n"
+                    "description": "influxdb.conf configuration values.\n"
                 }
             },
             "type": "object"
@@ -1400,7 +1427,7 @@
             "properties": {
                 "influxdb": {
                     "type": "boolean",
-                    "description": "InfluxDB server provided values\n"
+                    "description": "influxdb.conf configuration values.\n"
                 }
             },
             "type": "object"
@@ -1409,7 +1436,7 @@
             "properties": {
                 "influxdb": {
                     "type": "boolean",
-                    "description": "InfluxDB server provided values\n"
+                    "description": "influxdb.conf configuration values.\n"
                 }
             },
             "type": "object"
@@ -1710,8 +1737,7 @@
                     "type": "string"
                 },
                 "task": {
-                    "type": "integer",
-                    "description": "List of tasks of a connector.\n"
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -1854,10 +1880,12 @@
         "aiven:index/KafkaKafkaUserConfigIpFilterObject:KafkaKafkaUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -1868,121 +1896,160 @@
         "aiven:index/KafkaKafkaUserConfigKafka:KafkaKafkaUserConfigKafka": {
             "properties": {
                 "autoCreateTopicsEnable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable auto creation of topics.\n"
                 },
                 "compressionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.\n"
                 },
                 "connectionsMaxIdleMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.\n"
                 },
                 "defaultReplicationFactor": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Replication factor for autocreated topics.\n"
                 },
                 "groupInitialRebalanceDelayMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.\n"
                 },
                 "groupMaxSessionTimeoutMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.\n"
                 },
                 "groupMinSessionTimeoutMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.\n"
                 },
                 "logCleanerDeleteRetentionMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How long are delete records retained?.\n"
                 },
                 "logCleanerMaxCompactionLagMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.\n"
                 },
                 "logCleanerMinCleanableRatio": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.\n"
                 },
                 "logCleanerMinCompactionLagMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.\n"
                 },
                 "logCleanupPolicy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default cleanup policy for segments beyond the retention window.\n"
                 },
                 "logFlushIntervalMessages": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of messages accumulated on a log partition before messages are flushed to disk.\n"
                 },
                 "logFlushIntervalMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.\n"
                 },
                 "logIndexIntervalBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The interval with which Kafka adds an entry to the offset index.\n"
                 },
                 "logIndexSizeMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum size in bytes of the offset index.\n"
                 },
                 "logMessageDownconversionEnable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .\n"
                 },
                 "logMessageTimestampDifferenceMaxMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.\n"
                 },
                 "logMessageTimestampType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Define whether the timestamp in the message is message create time or log append time.\n"
                 },
                 "logPreallocate": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Should pre allocate file when create new segment?.\n"
                 },
                 "logRetentionBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum size of the log before deleting messages.\n"
                 },
                 "logRetentionHours": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of hours to keep a log file before deleting it.\n"
                 },
                 "logRetentionMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.\n"
                 },
                 "logRollJitterMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.\n"
                 },
                 "logRollMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum time before a new log segment is rolled out (in milliseconds).\n"
                 },
                 "logSegmentBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum size of a single log file.\n"
                 },
                 "logSegmentDeleteDelayMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time to wait before deleting a file from the filesystem.\n"
                 },
                 "maxConnectionsPerIp": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of connections allowed from each ip address (defaults to 2147483647).\n"
                 },
                 "maxIncrementalFetchSessionCacheSlots": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of incremental fetch sessions that the broker will maintain.\n"
                 },
                 "messageMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum size of message that the server can receive.\n"
                 },
                 "minInsyncReplicas": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "When a producer sets acks to 'all' (or '-1'), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.\n"
                 },
                 "numPartitions": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of partitions for autocreated topics.\n"
                 },
                 "offsetsRetentionMinutes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Log retention window in minutes for offsets topic.\n"
                 },
                 "producerPurgatoryPurgeIntervalRequests": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).\n"
                 },
                 "replicaFetchMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.\n"
                 },
                 "replicaFetchResponseMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.\n"
                 },
                 "socketRequestMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of bytes in a socket request (defaults to 104857600).\n"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).\n"
                 },
                 "transactionStateLogSegmentBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).\n"
                 }
             },
             "type": "object"
@@ -1990,10 +2057,12 @@
         "aiven:index/KafkaKafkaUserConfigKafkaAuthenticationMethods:KafkaKafkaUserConfigKafkaAuthenticationMethods": {
             "properties": {
                 "certificate": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable certificate/SSL authentication. The default value is `true`.\n"
                 },
                 "sasl": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable SASL authentication. The default value is `false`.\n"
                 }
             },
             "type": "object"
@@ -2001,52 +2070,68 @@
         "aiven:index/KafkaKafkaUserConfigKafkaConnectConfig:KafkaKafkaUserConfigKafkaConnectConfig": {
             "properties": {
                 "connectorClientConfigOverridePolicy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Defines what client configurations can be overridden by the connector. Default is None.\n"
                 },
                 "consumerAutoOffsetReset": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
                 },
                 "consumerFetchMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.\n"
                 },
                 "consumerIsolationLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .\n"
                 },
                 "consumerMaxPollIntervalMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).\n"
                 },
                 "consumerMaxPollRecords": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of records returned in a single call to poll() (defaults to 500).\n"
                 },
                 "offsetFlushIntervalMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The interval at which to try committing offsets for tasks (defaults to 60000).\n"
                 },
                 "offsetFlushTimeoutMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).\n"
                 },
                 "producerBatchSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).\n"
                 },
                 "producerBufferMemory": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).\n"
                 },
                 "producerCompressionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.\n"
                 },
                 "producerMaxRequestSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.\n"
                 },
                 "scheduledRebalanceMaxDelayMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.\n"
                 },
                 "sessionTimeoutMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).\n"
                 }
             },
             "type": "object"
@@ -2054,28 +2139,36 @@
         "aiven:index/KafkaKafkaUserConfigKafkaRestConfig:KafkaKafkaUserConfigKafkaRestConfig": {
             "properties": {
                 "consumerEnableAutoCommit": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.\n"
                 },
                 "consumerRequestMaxBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.\n"
                 },
                 "consumerRequestTimeoutMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
                 },
                 "producerAcks": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.\n"
                 },
                 "producerCompressionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.\n"
                 },
                 "producerMaxRequestSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.\n"
                 },
                 "simpleconsumerPoolSizeMax": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.\n"
                 }
             },
             "type": "object"
@@ -2084,19 +2177,23 @@
             "properties": {
                 "kafka": {
                     "type": "boolean",
-                    "description": "Kafka server provided values\n"
+                    "description": "Kafka broker configuration values.\n"
                 },
                 "kafkaConnect": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka Connect service. The default value is `false`.\n"
                 },
                 "kafkaRest": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka-REST service. The default value is `false`.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "schemaRegistry": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -2104,23 +2201,28 @@
         "aiven:index/KafkaKafkaUserConfigPrivatelinkAccess:KafkaKafkaUserConfigPrivatelinkAccess": {
             "properties": {
                 "jolokia": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable jolokia.\n"
                 },
                 "kafka": {
                     "type": "boolean",
-                    "description": "Kafka server provided values\n"
+                    "description": "Kafka broker configuration values.\n"
                 },
                 "kafkaConnect": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka Connect service. The default value is `false`.\n"
                 },
                 "kafkaRest": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka-REST service. The default value is `false`.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "schemaRegistry": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -2129,19 +2231,23 @@
             "properties": {
                 "kafka": {
                     "type": "boolean",
-                    "description": "Kafka server provided values\n"
+                    "description": "Kafka broker configuration values.\n"
                 },
                 "kafkaConnect": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka Connect service. The default value is `false`.\n"
                 },
                 "kafkaRest": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka-REST service. The default value is `false`.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "schemaRegistry": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -2149,10 +2255,12 @@
         "aiven:index/KafkaKafkaUserConfigSchemaRegistryConfig:KafkaKafkaUserConfigSchemaRegistryConfig": {
             "properties": {
                 "leaderEligibility": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.\n"
                 },
                 "topicName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.\n"
                 }
             },
             "type": "object"
@@ -3445,13 +3553,16 @@
         "aiven:index/OpenSearchOpensearchUserConfigIndexPattern:OpenSearchOpensearchUserConfigIndexPattern": {
             "properties": {
                 "maxIndexCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of indexes to keep.\n"
                 },
                 "pattern": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "fnmatch pattern.\n"
                 },
                 "sortingAlgorithm": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Deletion sorting algorithm. The default value is `creation_date`.\n"
                 }
             },
             "type": "object",
@@ -3463,13 +3574,16 @@
         "aiven:index/OpenSearchOpensearchUserConfigIndexTemplate:OpenSearchOpensearchUserConfigIndexTemplate": {
             "properties": {
                 "mappingNestedObjectsLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.\n"
                 },
                 "numberOfReplicas": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of replicas each primary shard has.\n"
                 },
                 "numberOfShards": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of primary shards that an index should have.\n"
                 }
             },
             "type": "object"
@@ -3477,10 +3591,12 @@
         "aiven:index/OpenSearchOpensearchUserConfigIpFilterObject:OpenSearchOpensearchUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -3491,40 +3607,52 @@
         "aiven:index/OpenSearchOpensearchUserConfigOpenid:OpenSearchOpensearchUserConfigOpenid": {
             "properties": {
                 "clientId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the OpenID Connect client configured in your IdP. Required.\n"
                 },
                 "clientSecret": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The client secret of the OpenID Connect client configured in your IdP. Required.\n"
                 },
                 "connectUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.\n"
                 },
                 "header": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.\n"
                 },
                 "jwtHeader": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \\n\\n. Optional. Default is Authorization.\n"
                 },
                 "jwtUrlParameter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.\n"
                 },
                 "refreshRateLimitCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.\n"
                 },
                 "refreshRateLimitTimeWindowMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.\n"
                 },
                 "rolesKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.\n"
                 },
                 "scope": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.\n"
                 },
                 "subjectKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.\n"
                 }
             },
             "type": "object",
@@ -3537,101 +3665,132 @@
         "aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch": {
             "properties": {
                 "actionAutoCreateIndexEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Explicitly allow or block automatic creation of indices. Defaults to true.\n"
                 },
                 "actionDestructiveRequiresName": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Require explicit index names when deleting.\n"
                 },
                 "clusterMaxShardsPerNode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Controls the number of shards allowed in the cluster per data node.\n"
                 },
                 "clusterRoutingAllocationNodeConcurrentRecoveries": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.\n"
                 },
                 "emailSenderName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This should be identical to the Sender name defined in Opensearch dashboards.\n"
                 },
                 "emailSenderPassword": {
                     "type": "string",
+                    "description": "Sender password for Opensearch alerts to authenticate with SMTP server.\n",
                     "secret": true
                 },
                 "emailSenderUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sender username for Opensearch alerts.\n"
                 },
                 "httpMaxContentLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.\n"
                 },
                 "httpMaxHeaderSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The max size of allowed headers, in bytes.\n"
                 },
                 "httpMaxInitialLineLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The max length of an HTTP URL, in bytes.\n"
                 },
                 "indicesFielddataCacheSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.\n"
                 },
                 "indicesMemoryIndexBufferSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.\n"
                 },
                 "indicesQueriesCacheSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.\n"
                 },
                 "indicesQueryBoolMaxClauseCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.\n"
                 },
                 "indicesRecoveryMaxBytesPerSec": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.\n"
                 },
                 "indicesRecoveryMaxConcurrentFileChunks": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of file chunks sent in parallel for each recovery. Defaults to 2.\n"
                 },
                 "overrideMainResponseVersion": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.\n"
                 },
                 "reindexRemoteWhitelists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.\n"
                 },
                 "scriptMaxCompilationsRate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.\n"
                 },
                 "searchMaxBuckets": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.\n"
                 },
                 "threadPoolAnalyzeQueueSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool queue. See documentation for exact details.\n"
                 },
                 "threadPoolAnalyzeSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                 },
                 "threadPoolForceMergeSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                 },
                 "threadPoolGetQueueSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool queue. See documentation for exact details.\n"
                 },
                 "threadPoolGetSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                 },
                 "threadPoolSearchQueueSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool queue. See documentation for exact details.\n"
                 },
                 "threadPoolSearchSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                 },
                 "threadPoolSearchThrottledQueueSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool queue. See documentation for exact details.\n"
                 },
                 "threadPoolSearchThrottledSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                 },
                 "threadPoolWriteQueueSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool queue. See documentation for exact details.\n"
                 },
                 "threadPoolWriteSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                 }
             },
             "type": "object"
@@ -3639,13 +3798,16 @@
         "aiven:index/OpenSearchOpensearchUserConfigOpensearchDashboards:OpenSearchOpensearchUserConfigOpensearchDashboards": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.\n"
                 },
                 "maxOldSpaceSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.\n"
                 },
                 "opensearchRequestTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.\n"
                 }
             },
             "type": "object"
@@ -3654,13 +3816,15 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "OpenSearch server provided values\n"
+                    "description": "OpenSearch settings.\n"
                 },
                 "opensearchDashboards": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "OpenSearch Dashboards settings.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -3669,13 +3833,15 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "OpenSearch server provided values\n"
+                    "description": "OpenSearch settings.\n"
                 },
                 "opensearchDashboards": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "OpenSearch Dashboards settings.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -3684,13 +3850,15 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "OpenSearch server provided values\n"
+                    "description": "OpenSearch settings.\n"
                 },
                 "opensearchDashboards": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "OpenSearch Dashboards settings.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -3698,25 +3866,32 @@
         "aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.\n"
                 },
                 "idpEntityId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.\n"
                 },
                 "idpMetadataUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.\n"
                 },
                 "idpPemtrustedcasContent": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.\n"
                 },
                 "rolesKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.\n"
                 },
                 "spEntityId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.\n"
                 },
                 "subjectKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.\n"
                 }
             },
             "type": "object",
@@ -4023,10 +4198,12 @@
         "aiven:index/PgPgUserConfigIpFilterObject:PgPgUserConfigIpFilterObject": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description for IP filter list entry.\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CIDR address block.\n"
                 }
             },
             "type": "object",
@@ -4037,19 +4214,23 @@
         "aiven:index/PgPgUserConfigMigration:PgPgUserConfigMigration": {
             "properties": {
                 "dbname": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Primary PostgreSQL database name\n"
                 },
                 "host": {
                     "type": "string"
                 },
                 "ignoreDbs": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).\n"
                 },
                 "method": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
+                    "description": "PostgreSQL admin user password\n",
                     "secret": true
                 },
                 "port": {
@@ -4059,7 +4240,8 @@
                     "type": "boolean"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User name for authentication with the server where to migrate data from.\n"
                 }
             },
             "type": "object",
@@ -4071,151 +4253,200 @@
         "aiven:index/PgPgUserConfigPg:PgPgUserConfigPg": {
             "properties": {
                 "autovacuumAnalyzeScaleFactor": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).\n"
                 },
                 "autovacuumAnalyzeThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.\n"
                 },
                 "autovacuumFreezeMaxAge": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.\n"
                 },
                 "autovacuumMaxWorkers": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.\n"
                 },
                 "autovacuumNaptime": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.\n"
                 },
                 "autovacuumVacuumCostDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.\n"
                 },
                 "autovacuumVacuumCostLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.\n"
                 },
                 "autovacuumVacuumScaleFactor": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).\n"
                 },
                 "autovacuumVacuumThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.\n"
                 },
                 "bgwriterDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.\n"
                 },
                 "bgwriterFlushAfter": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.\n"
                 },
                 "bgwriterLruMaxpages": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.\n"
                 },
                 "bgwriterLruMultiplier": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.\n"
                 },
                 "deadlockTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.\n"
                 },
                 "defaultToastCompression": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies the default TOAST compression method for values of compressible columns (the default is lz4).\n"
                 },
                 "idleInTransactionSessionTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Time out sessions with open transactions after this number of milliseconds.\n"
                 },
                 "jit": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Controls system-wide use of Just-in-Time Compilation (JIT).\n"
                 },
                 "logAutovacuumMinDuration": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.\n"
                 },
                 "logErrorVerbosity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls the amount of detail written in the server log for each message that is logged.\n"
                 },
                 "logLinePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
                 },
                 "logMinDurationStatement": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Log statements that take more than this number of milliseconds to run, -1 disables.\n"
                 },
                 "logTempFiles": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Log statements for each temporary file created larger than this number of kilobytes, -1 disables.\n"
                 },
                 "maxFilesPerProcess": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum number of files that can be open per process.\n"
                 },
                 "maxLocksPerTransaction": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum locks per transaction.\n"
                 },
                 "maxLogicalReplicationWorkers": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).\n"
                 },
                 "maxParallelWorkers": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Sets the maximum number of workers that the system can support for parallel queries.\n"
                 },
                 "maxParallelWorkersPerGather": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.\n"
                 },
                 "maxPredLocksPerTransaction": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum predicate locks per transaction.\n"
                 },
                 "maxPreparedTransactions": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum prepared transactions.\n"
                 },
                 "maxReplicationSlots": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum replication slots.\n"
                 },
                 "maxSlotWalKeepSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.\n"
                 },
                 "maxStackDepth": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum depth of the stack in bytes.\n"
                 },
                 "maxStandbyArchiveDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Max standby archive delay in milliseconds.\n"
                 },
                 "maxStandbyStreamingDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Max standby streaming delay in milliseconds.\n"
                 },
                 "maxWalSenders": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL maximum WAL senders.\n"
                 },
                 "maxWorkerProcesses": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Sets the maximum number of background processes that the system can support.\n"
                 },
                 "pgPartmanBgwDotInterval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Sets the time interval to run pg_partman's scheduled tasks.\n"
                 },
                 "pgPartmanBgwDotRole": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls which role to use for pg_partman's scheduled background tasks.\n"
                 },
                 "pgStatMonitorDotPgsmEnableQueryPlan": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enables or disables query plan monitoring.\n"
                 },
                 "pgStatMonitorDotPgsmMaxBuckets": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Sets the maximum number of buckets .\n"
                 },
                 "pgStatStatementsDotTrack": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.\n"
                 },
                 "tempFileLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "PostgreSQL temporary file limit in KiB, -1 for unlimited.\n"
                 },
                 "timezone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PostgreSQL service timezone.\n"
                 },
                 "trackActivityQuerySize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies the number of bytes reserved to track the currently executing command for each active session.\n"
                 },
                 "trackCommitTimestamp": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Record commit time of transactions.\n"
                 },
                 "trackFunctions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enables tracking of function call counts and time used.\n"
                 },
                 "trackIoTiming": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.\n"
                 },
                 "walSenderTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.\n"
                 },
                 "walWriterDelay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.\n"
                 }
             },
             "type": "object"
@@ -4223,34 +4454,43 @@
         "aiven:index/PgPgUserConfigPgbouncer:PgPgUserConfigPgbouncer": {
             "properties": {
                 "autodbIdleTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).\n"
                 },
                 "autodbMaxDbConnections": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.\n"
                 },
                 "autodbPoolMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PGBouncer pool mode.\n"
                 },
                 "autodbPoolSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If non-zero then create automatically a pool of that size per user when a pool doesn't exist.\n"
                 },
                 "ignoreStartupParameters": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of parameters to ignore when given in startup packet.\n"
                 },
                 "minPoolSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.\n"
                 },
                 "serverIdleTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).\n"
                 },
                 "serverLifetime": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The pooler will close an unused server connection that has been connected longer than this. (seconds).\n"
                 },
                 "serverResetQueryAlways": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Run server*reset*query (DISCARD ALL) in all pooling modes.\n"
                 }
             },
             "type": "object"
@@ -4258,7 +4498,8 @@
         "aiven:index/PgPgUserConfigPglookout:PgPgUserConfigPglookout": {
             "properties": {
                 "maxFailoverReplicationTimeLag": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.\n"
                 }
             },
             "type": "object"
@@ -4267,13 +4508,15 @@
             "properties": {
                 "pg": {
                     "type": "boolean",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "description": "postgresql.conf configuration values.\n"
                 },
                 "pgbouncer": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "PGBouncer connection pooling settings.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -4282,13 +4525,15 @@
             "properties": {
                 "pg": {
                     "type": "boolean",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "description": "postgresql.conf configuration values.\n"
                 },
                 "pgbouncer": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "PGBouncer connection pooling settings.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -4297,13 +4542,15 @@
             "properties": {
                 "pg": {
                     "type": "boolean",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "description": "postgresql.conf configuration values.\n"
                 },
                 "pgbouncer": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "PGBouncer connection pooling settings.\n"
                 },
                 "prometheus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 }
             },
             "type": "object"
@@ -4311,7 +4558,8 @@
         "aiven:index/PgPgUserConfigTimescaledb:PgPgUserConfigTimescaledb": {
             "properties": {
                 "maxBackgroundWorkers": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.\n"
                 }
             },
             "type": "object"
@@ -4621,49 +4869,62 @@
         "aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTable:ServiceIntegrationClickhouseKafkaUserConfigTable": {
             "properties": {
                 "autoOffsetReset": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.\n"
                 },
                 "columns": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTableColumn:ServiceIntegrationClickhouseKafkaUserConfigTableColumn"
-                    }
+                    },
+                    "description": "Table columns.\n"
                 },
                 "dataFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Message data format. The default value is `JSONEachRow`.\n"
                 },
                 "dateTimeInputFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Method to read DateTime from text input formats. The default value is `basic`.\n"
                 },
                 "groupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Kafka consumers group. The default value is `clickhouse`.\n"
                 },
                 "handleErrorMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "How to handle errors for Kafka engine. The default value is `default`.\n"
                 },
                 "maxBlockSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.\n"
                 },
                 "maxRowsPerMessage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Column name.\n"
                 },
                 "numConsumers": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of consumers per table per replica. The default value is `1`.\n"
                 },
                 "pollMaxBatchSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.\n"
                 },
                 "skipBrokenMessages": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.\n"
                 },
                 "topics": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTableTopic:ServiceIntegrationClickhouseKafkaUserConfigTableTopic"
-                    }
+                    },
+                    "description": "Kafka topics.\n"
                 }
             },
             "type": "object",
@@ -4676,10 +4937,12 @@
         "aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTableColumn:ServiceIntegrationClickhouseKafkaUserConfigTableColumn": {
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Column name.\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Column type.\n"
                 }
             },
             "type": "object",
@@ -4691,7 +4954,8 @@
         "aiven:index/ServiceIntegrationClickhouseKafkaUserConfigTableTopic:ServiceIntegrationClickhouseKafkaUserConfigTableTopic": {
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Column name.\n"
                 }
             },
             "type": "object",
@@ -4714,10 +4978,12 @@
         "aiven:index/ServiceIntegrationClickhousePostgresqlUserConfigDatabase:ServiceIntegrationClickhousePostgresqlUserConfigDatabase": {
             "properties": {
                 "database": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PostgreSQL database to expose. The default value is `defaultdb`.\n"
                 },
                 "schema": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PostgreSQL schema to expose. The default value is `public`.\n"
                 }
             },
             "type": "object"
@@ -4788,10 +5054,12 @@
         "aiven:index/ServiceIntegrationDatadogUserConfigDatadogTag:ServiceIntegrationDatadogUserConfigDatadogTag": {
             "properties": {
                 "comment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional tag explanation.\n"
                 },
                 "tag": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.\n"
                 }
             },
             "type": "object",
@@ -4802,13 +5070,16 @@
         "aiven:index/ServiceIntegrationDatadogUserConfigOpensearch:ServiceIntegrationDatadogUserConfigOpensearch": {
             "properties": {
                 "indexStatsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Datadog Opensearch Index Monitoring.\n"
                 },
                 "pendingTaskStatsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Datadog Opensearch Pending Task Monitoring.\n"
                 },
                 "pshardStatsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Datadog Opensearch Primary Shard Monitoring.\n"
                 }
             },
             "type": "object"
@@ -4816,7 +5087,8 @@
         "aiven:index/ServiceIntegrationDatadogUserConfigRedis:ServiceIntegrationDatadogUserConfigRedis": {
             "properties": {
                 "commandStatsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable command_stats option in the agent's configuration. The default value is `false`.\n"
                 }
             },
             "type": "object"
@@ -4864,10 +5136,12 @@
         "aiven:index/ServiceIntegrationEndpointDatadogUserConfigDatadogTag:ServiceIntegrationEndpointDatadogUserConfigDatadogTag": {
             "properties": {
                 "comment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional tag explanation.\n"
                 },
                 "tag": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.\n"
                 }
             },
             "type": "object",
@@ -5177,10 +5451,12 @@
         "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric": {
             "properties": {
                 "field": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of a value in the metric.\n"
                 },
                 "metric": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the metric.\n"
                 }
             },
             "type": "object",
@@ -5192,10 +5468,12 @@
         "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric": {
             "properties": {
                 "field": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of a value in the metric.\n"
                 },
                 "metric": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the metric.\n"
                 }
             },
             "type": "object",
@@ -5216,16 +5494,20 @@
         "aiven:index/ServiceIntegrationKafkaConnectUserConfigKafkaConnect:ServiceIntegrationKafkaConnectUserConfigKafkaConnect": {
             "properties": {
                 "configStorageTopic": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.\n"
                 },
                 "groupId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unique string that identifies the Connect cluster group this worker belongs to.\n"
                 },
                 "offsetStorageTopic": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.\n"
                 },
                 "statusStorageTopic": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.\n"
                 }
             },
             "type": "object"
@@ -5265,22 +5547,28 @@
         "aiven:index/ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker:ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
                 "consumerFetchMinBytes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum amount of data the server should return for a fetch request.\n"
                 },
                 "producerBatchSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The batch size in bytes producer will attempt to collect before publishing to broker.\n"
                 },
                 "producerBufferMemory": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of bytes producer can use for buffering data before publishing to broker.\n"
                 },
                 "producerCompressionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The linger time (ms) for waiting new data to arrive for publishing.\n"
                 },
                 "producerMaxRequestSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum request size in bytes.\n"
                 }
             },
             "type": "object"
@@ -5333,7 +5621,8 @@
         "aiven:index/ServiceIntegrationMetricsUserConfigSourceMysql:ServiceIntegrationMetricsUserConfigSourceMysql": {
             "properties": {
                 "telegraf": {
-                    "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf"
+                    "$ref": "#/types/aiven:index/ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf",
+                    "description": "Configuration options for Telegraf MySQL input plugin.\n"
                 }
             },
             "type": "object"
@@ -5341,46 +5630,60 @@
         "aiven:index/ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf:ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf": {
             "properties": {
                 "gatherEventWaits": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.\n"
                 },
                 "gatherFileEventsStats": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.\n"
                 },
                 "gatherIndexIoWaits": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.\n"
                 },
                 "gatherInfoSchemaAutoInc": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather auto_increment columns and max values from information schema.\n"
                 },
                 "gatherInnodbMetrics": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.\n"
                 },
                 "gatherPerfEventsStatements": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.\n"
                 },
                 "gatherProcessList": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.\n"
                 },
                 "gatherSlaveStatus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from SHOW SLAVE STATUS command output.\n"
                 },
                 "gatherTableIoWaits": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.\n"
                 },
                 "gatherTableLockWaits": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.\n"
                 },
                 "gatherTableSchema": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Gather metrics from INFORMATION_SCHEMA.TABLES.\n"
                 },
                 "perfEventsStatementsDigestTextLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Truncates digest text from perf*events*statements into this many characters.\n"
                 },
                 "perfEventsStatementsLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Limits metrics from perf*events*statements.\n"
                 },
                 "perfEventsStatementsTimeLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Only include perf*events*statements whose last seen is less than this many seconds.\n"
                 }
             },
             "type": "object"
@@ -5420,8 +5723,7 @@
                     "type": "integer"
                 },
                 "cassandra": {
-                    "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra",
-                    "description": "Cassandra server provided values\n"
+                    "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra"
                 },
                 "cassandraVersion": {
                     "type": "string"
@@ -5464,8 +5766,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -5614,8 +5915,7 @@
                     "type": "integer"
                 },
                 "cassandra": {
-                    "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigCassandra:getCassandraCassandraUserConfigCassandra",
-                    "description": "Cassandra server provided values\n"
+                    "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigCassandra:getCassandraCassandraUserConfigCassandra"
                 },
                 "cassandraVersion": {
                     "type": "string"
@@ -5658,8 +5958,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -5836,8 +6135,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -5864,8 +6162,7 @@
         "aiven:index/getClickhouseClickhouseUserConfigPrivateAccess:getClickhouseClickhouseUserConfigPrivateAccess": {
             "properties": {
                 "clickhouse": {
-                    "type": "boolean",
-                    "description": "Clickhouse server provided values\n"
+                    "type": "boolean"
                 },
                 "clickhouseHttps": {
                     "type": "boolean"
@@ -5879,8 +6176,7 @@
         "aiven:index/getClickhouseClickhouseUserConfigPrivatelinkAccess:getClickhouseClickhouseUserConfigPrivatelinkAccess": {
             "properties": {
                 "clickhouse": {
-                    "type": "boolean",
-                    "description": "Clickhouse server provided values\n"
+                    "type": "boolean"
                 },
                 "clickhouseHttps": {
                     "type": "boolean"
@@ -5894,8 +6190,7 @@
         "aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess": {
             "properties": {
                 "clickhouse": {
-                    "type": "boolean",
-                    "description": "Clickhouse server provided values\n"
+                    "type": "boolean"
                 },
                 "clickhouseHttps": {
                     "type": "boolean"
@@ -6138,8 +6433,7 @@
         "aiven:index/getFlinkFlinkUserConfigPrivatelinkAccess:getFlinkFlinkUserConfigPrivatelinkAccess": {
             "properties": {
                 "flink": {
-                    "type": "boolean",
-                    "description": "Flink server provided values\n"
+                    "type": "boolean"
                 },
                 "prometheus": {
                     "type": "boolean"
@@ -6351,8 +6645,7 @@
                     "$ref": "#/types/aiven:index/getGrafanaGrafanaUserConfigSmtpServer:getGrafanaGrafanaUserConfigSmtpServer"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 },
                 "userAutoAssignOrg": {
                     "type": "boolean"
@@ -6649,8 +6942,7 @@
         "aiven:index/getGrafanaGrafanaUserConfigPrivateAccess:getGrafanaGrafanaUserConfigPrivateAccess": {
             "properties": {
                 "grafana": {
-                    "type": "boolean",
-                    "description": "Grafana server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6658,8 +6950,7 @@
         "aiven:index/getGrafanaGrafanaUserConfigPrivatelinkAccess:getGrafanaGrafanaUserConfigPrivatelinkAccess": {
             "properties": {
                 "grafana": {
-                    "type": "boolean",
-                    "description": "Grafana server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6667,8 +6958,7 @@
         "aiven:index/getGrafanaGrafanaUserConfigPublicAccess:getGrafanaGrafanaUserConfigPublicAccess": {
             "properties": {
                 "grafana": {
-                    "type": "boolean",
-                    "description": "Grafana server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6818,8 +7108,7 @@
                     "type": "string"
                 },
                 "influxdb": {
-                    "$ref": "#/types/aiven:index/getInfluxDbInfluxdbUserConfigInfluxdb:getInfluxDbInfluxdbUserConfigInfluxdb",
-                    "description": "InfluxDB server provided values\n"
+                    "$ref": "#/types/aiven:index/getInfluxDbInfluxdbUserConfigInfluxdb:getInfluxDbInfluxdbUserConfigInfluxdb"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -6859,8 +7148,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6913,8 +7201,7 @@
         "aiven:index/getInfluxDbInfluxdbUserConfigPrivateAccess:getInfluxDbInfluxdbUserConfigPrivateAccess": {
             "properties": {
                 "influxdb": {
-                    "type": "boolean",
-                    "description": "InfluxDB server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6922,8 +7209,7 @@
         "aiven:index/getInfluxDbInfluxdbUserConfigPrivatelinkAccess:getInfluxDbInfluxdbUserConfigPrivatelinkAccess": {
             "properties": {
                 "influxdb": {
-                    "type": "boolean",
-                    "description": "InfluxDB server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6931,8 +7217,7 @@
         "aiven:index/getInfluxDbInfluxdbUserConfigPublicAccess:getInfluxDbInfluxdbUserConfigPublicAccess": {
             "properties": {
                 "influxdb": {
-                    "type": "boolean",
-                    "description": "InfluxDB server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -7085,8 +7370,7 @@
                     "deprecationMessage": "This will be removed in v5.0.0 and replaced with ip_filter_string instead."
                 },
                 "kafkaConnect": {
-                    "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigKafkaConnect:getKafkaConnectKafkaConnectUserConfigKafkaConnect",
-                    "description": "Kafka Connect server provided values\n"
+                    "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigKafkaConnect:getKafkaConnectKafkaConnectUserConfigKafkaConnect"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess"
@@ -7098,8 +7382,7 @@
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPublicAccess:getKafkaConnectKafkaConnectUserConfigPublicAccess"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -7179,8 +7462,7 @@
         "aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess": {
             "properties": {
                 "kafkaConnect": {
-                    "type": "boolean",
-                    "description": "Kafka Connect server provided values\n"
+                    "type": "boolean"
                 },
                 "prometheus": {
                     "type": "boolean"
@@ -7194,8 +7476,7 @@
                     "type": "boolean"
                 },
                 "kafkaConnect": {
-                    "type": "boolean",
-                    "description": "Kafka Connect server provided values\n"
+                    "type": "boolean"
                 },
                 "prometheus": {
                     "type": "boolean"
@@ -7206,8 +7487,7 @@
         "aiven:index/getKafkaConnectKafkaConnectUserConfigPublicAccess:getKafkaConnectKafkaConnectUserConfigPublicAccess": {
             "properties": {
                 "kafkaConnect": {
-                    "type": "boolean",
-                    "description": "Kafka Connect server provided values\n"
+                    "type": "boolean"
                 },
                 "prometheus": {
                     "type": "boolean"
@@ -7261,8 +7541,7 @@
                     "type": "string"
                 },
                 "task": {
-                    "type": "integer",
-                    "description": "List of tasks of a connector.\n"
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -7341,8 +7620,7 @@
                     "deprecationMessage": "This will be removed in v5.0.0 and replaced with ip_filter_string instead."
                 },
                 "kafka": {
-                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafka:getKafkaKafkaUserConfigKafka",
-                    "description": "Kafka server provided values\n"
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafka:getKafkaKafkaUserConfigKafka"
                 },
                 "kafkaAuthenticationMethods": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaAuthenticationMethods:getKafkaKafkaUserConfigKafkaAuthenticationMethods"
@@ -7381,8 +7659,7 @@
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigSchemaRegistryConfig:getKafkaKafkaUserConfigSchemaRegistryConfig"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -7624,8 +7901,7 @@
         "aiven:index/getKafkaKafkaUserConfigPrivateAccess:getKafkaKafkaUserConfigPrivateAccess": {
             "properties": {
                 "kafka": {
-                    "type": "boolean",
-                    "description": "Kafka server provided values\n"
+                    "type": "boolean"
                 },
                 "kafkaConnect": {
                     "type": "boolean"
@@ -7648,8 +7924,7 @@
                     "type": "boolean"
                 },
                 "kafka": {
-                    "type": "boolean",
-                    "description": "Kafka server provided values\n"
+                    "type": "boolean"
                 },
                 "kafkaConnect": {
                     "type": "boolean"
@@ -7669,8 +7944,7 @@
         "aiven:index/getKafkaKafkaUserConfigPublicAccess:getKafkaKafkaUserConfigPublicAccess": {
             "properties": {
                 "kafka": {
-                    "type": "boolean",
-                    "description": "Kafka server provided values\n"
+                    "type": "boolean"
                 },
                 "kafkaConnect": {
                     "type": "boolean"
@@ -7766,12 +8040,10 @@
                     "deprecationMessage": "This will be removed in v5.0.0 and replaced with ip_filter_string instead."
                 },
                 "kafkaMirrormaker": {
-                    "$ref": "#/types/aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker",
-                    "description": "Kafka MirrorMaker 2 server provided values\n"
+                    "$ref": "#/types/aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -8082,8 +8354,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -8255,8 +8526,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -8620,8 +8890,7 @@
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMigration:getMySqlMysqlUserConfigMigration"
                 },
                 "mysql": {
-                    "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMysql:getMySqlMysqlUserConfigMysql",
-                    "description": "MySQL specific server provided values\n"
+                    "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMysql:getMySqlMysqlUserConfigMysql"
                 },
                 "mysqlVersion": {
                     "type": "string"
@@ -8645,8 +8914,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -8807,8 +9075,7 @@
         "aiven:index/getMySqlMysqlUserConfigPrivateAccess:getMySqlMysqlUserConfigPrivateAccess": {
             "properties": {
                 "mysql": {
-                    "type": "boolean",
-                    "description": "MySQL specific server provided values\n"
+                    "type": "boolean"
                 },
                 "mysqlx": {
                     "type": "boolean"
@@ -8822,8 +9089,7 @@
         "aiven:index/getMySqlMysqlUserConfigPrivatelinkAccess:getMySqlMysqlUserConfigPrivatelinkAccess": {
             "properties": {
                 "mysql": {
-                    "type": "boolean",
-                    "description": "MySQL specific server provided values\n"
+                    "type": "boolean"
                 },
                 "mysqlx": {
                     "type": "boolean"
@@ -8837,8 +9103,7 @@
         "aiven:index/getMySqlMysqlUserConfigPublicAccess:getMySqlMysqlUserConfigPublicAccess": {
             "properties": {
                 "mysql": {
-                    "type": "boolean",
-                    "description": "MySQL specific server provided values\n"
+                    "type": "boolean"
                 },
                 "mysqlx": {
                     "type": "boolean"
@@ -8997,8 +9262,7 @@
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpenid:getOpenSearchOpensearchUserConfigOpenid"
                 },
                 "opensearch": {
-                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch",
-                    "description": "OpenSearch server provided values\n"
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch"
                 },
                 "opensearchDashboards": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchDashboards:getOpenSearchOpensearchUserConfigOpensearchDashboards"
@@ -9028,8 +9292,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -9260,8 +9523,7 @@
         "aiven:index/getOpenSearchOpensearchUserConfigPrivateAccess:getOpenSearchOpensearchUserConfigPrivateAccess": {
             "properties": {
                 "opensearch": {
-                    "type": "boolean",
-                    "description": "OpenSearch server provided values\n"
+                    "type": "boolean"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -9275,8 +9537,7 @@
         "aiven:index/getOpenSearchOpensearchUserConfigPrivatelinkAccess:getOpenSearchOpensearchUserConfigPrivatelinkAccess": {
             "properties": {
                 "opensearch": {
-                    "type": "boolean",
-                    "description": "OpenSearch server provided values\n"
+                    "type": "boolean"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -9290,8 +9551,7 @@
         "aiven:index/getOpenSearchOpensearchUserConfigPublicAccess:getOpenSearchOpensearchUserConfigPublicAccess": {
             "properties": {
                 "opensearch": {
-                    "type": "boolean",
-                    "description": "OpenSearch server provided values\n"
+                    "type": "boolean"
                 },
                 "opensearchDashboards": {
                     "type": "boolean"
@@ -9514,8 +9774,7 @@
                     "$ref": "#/types/aiven:index/getPgPgUserConfigMigration:getPgPgUserConfigMigration"
                 },
                 "pg": {
-                    "$ref": "#/types/aiven:index/getPgPgUserConfigPg:getPgPgUserConfigPg",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "$ref": "#/types/aiven:index/getPgPgUserConfigPg:getPgPgUserConfigPg"
                 },
                 "pgReadReplica": {
                     "type": "boolean",
@@ -9559,8 +9818,7 @@
                     "type": "number"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 },
                 "synchronousReplication": {
                     "type": "string"
@@ -9833,8 +10091,7 @@
         "aiven:index/getPgPgUserConfigPrivateAccess:getPgPgUserConfigPrivateAccess": {
             "properties": {
                 "pg": {
-                    "type": "boolean",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "type": "boolean"
                 },
                 "pgbouncer": {
                     "type": "boolean"
@@ -9848,8 +10105,7 @@
         "aiven:index/getPgPgUserConfigPrivatelinkAccess:getPgPgUserConfigPrivatelinkAccess": {
             "properties": {
                 "pg": {
-                    "type": "boolean",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "type": "boolean"
                 },
                 "pgbouncer": {
                     "type": "boolean"
@@ -9863,8 +10119,7 @@
         "aiven:index/getPgPgUserConfigPublicAccess:getPgPgUserConfigPublicAccess": {
             "properties": {
                 "pg": {
-                    "type": "boolean",
-                    "description": "PostgreSQL specific server provided values\n"
+                    "type": "boolean"
                 },
                 "pgbouncer": {
                     "type": "boolean"
@@ -10065,8 +10320,7 @@
                     "type": "string"
                 },
                 "staticIps": {
-                    "type": "boolean",
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -10135,8 +10389,7 @@
                     "type": "boolean"
                 },
                 "redis": {
-                    "type": "boolean",
-                    "description": "Redis server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -10147,8 +10400,7 @@
                     "type": "boolean"
                 },
                 "redis": {
-                    "type": "boolean",
-                    "description": "Redis server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -10159,8 +10411,7 @@
                     "type": "boolean"
                 },
                 "redis": {
-                    "type": "boolean",
-                    "description": "Redis server provided values\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -12337,7 +12588,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra"
                     },
-                    "description": "Cassandra server provided values\n",
+                    "description": "cassandra configuration values.\n",
                     "language": {
                         "csharp": {
                             "name": "CassandraServer"
@@ -12442,7 +12693,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -12530,7 +12781,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -12565,7 +12816,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra"
                         },
-                        "description": "Cassandra server provided values\n",
+                        "description": "cassandra configuration values.\n",
                         "language": {
                             "csharp": {
                                 "name": "CassandraServer"
@@ -12672,7 +12923,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -12817,7 +13068,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse"
                     },
-                    "description": "Clickhouse server provided values\n"
+                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -12917,7 +13168,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -13005,7 +13256,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -13040,7 +13291,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse"
                         },
-                        "description": "Clickhouse server provided values\n"
+                        "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -13142,7 +13393,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -13251,7 +13502,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
                 "roleGrants": {
                     "type": "array",
@@ -13289,7 +13540,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "roleGrants": {
@@ -13333,7 +13584,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "roleGrants": {
@@ -13686,7 +13937,7 @@
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
-                    "description": "Flink server provided values\n",
+                    "description": "Enable flink.\n",
                     "language": {
                         "csharp": {
                             "name": "FlinkDetails"
@@ -13811,7 +14062,7 @@
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
-                    "description": "Flink server provided values\n",
+                    "description": "Enable flink.\n",
                     "language": {
                         "csharp": {
                             "name": "FlinkDetails"
@@ -13920,7 +14171,7 @@
                     },
                     "flink": {
                         "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
-                        "description": "Flink server provided values\n",
+                        "description": "Enable flink.\n",
                         "language": {
                             "csharp": {
                                 "name": "FlinkDetails"
@@ -15155,7 +15406,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                     },
-                    "description": "InfluxDB server provided values\n"
+                    "description": "influxdb.conf configuration values.\n"
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -15223,7 +15474,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -15311,7 +15562,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -15378,7 +15629,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                         },
-                        "description": "InfluxDB server provided values\n"
+                        "description": "influxdb.conf configuration values.\n"
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -15448,7 +15699,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -15706,7 +15957,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
                     },
-                    "description": "Kafka server provided values\n",
+                    "description": "Kafka broker configuration values.\n",
                     "language": {
                         "csharp": {
                             "name": "KafkaServer"
@@ -15784,7 +16035,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -15882,7 +16133,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -15954,7 +16205,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
                         },
-                        "description": "Kafka server provided values\n",
+                        "description": "Kafka broker configuration values.\n",
                         "language": {
                             "csharp": {
                                 "name": "KafkaServer"
@@ -16034,7 +16285,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -19185,7 +19436,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                     },
-                    "description": "OpenSearch server provided values\n"
+                    "description": "OpenSearch settings.\n"
                 },
                 "plan": {
                     "type": "string",
@@ -19245,7 +19496,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -19333,7 +19584,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -19408,7 +19659,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                         },
-                        "description": "OpenSearch server provided values\n"
+                        "description": "OpenSearch settings.\n"
                     },
                     "plan": {
                         "type": "string",
@@ -19470,7 +19721,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -20176,7 +20427,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "PostgreSQL specific server provided values\n",
+                    "description": "postgresql.conf configuration values.\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -20245,7 +20496,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -20301,7 +20552,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "PostgreSQL specific server provided values\n",
+                    "description": "postgresql.conf configuration values.\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -20342,7 +20593,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -20409,7 +20660,7 @@
                     },
                     "pg": {
                         "$ref": "#/types/aiven:index/PgPg:PgPg",
-                        "description": "PostgreSQL specific server provided values\n",
+                        "description": "postgresql.conf configuration values.\n",
                         "language": {
                             "csharp": {
                                 "name": "PgServer"
@@ -20480,7 +20731,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
