@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-aiven/provider/v6
 
-go 1.21
+go 1.21.1
 
 replace (
 	github.com/aiven/terraform-provider-aiven => ../upstream
@@ -9,7 +9,7 @@ replace (
 )
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.28.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.17.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.61.0
 	github.com/pulumi/pulumi/pkg/v3 v3.86.0 // indirect
@@ -55,7 +55,7 @@ require (
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
-	github.com/aiven/aiven-go-client v1.36.0 // indirect
+	github.com/aiven/aiven-go-client/v2 v2.1.0 // indirect
 	github.com/aiven/go-api-schemas v1.27.1-0.20230823111901-1e0306909d02 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
@@ -156,7 +156,6 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-mux v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.5.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.2 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
