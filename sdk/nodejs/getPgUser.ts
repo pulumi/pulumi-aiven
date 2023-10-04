@@ -65,11 +65,11 @@ export interface GetPgUserResult {
      */
     readonly id: string;
     /**
-     * The password of the PG User ( not applicable for all services ).
+     * The password of the PG User (not applicable for all services).
      */
     readonly password: string;
     /**
-     * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines whether replication is allowed.
      */
     readonly pgAllowReplication: boolean;
     /**

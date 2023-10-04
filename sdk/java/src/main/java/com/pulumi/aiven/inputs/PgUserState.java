@@ -47,14 +47,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the PG User ( not applicable for all services ).
+     * The password of the PG User (not applicable for all services).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the PG User ( not applicable for all services ).
+     * @return The password of the PG User (not applicable for all services).
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,14 +62,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines whether replication is allowed.
      * 
      */
     @Import(name="pgAllowReplication")
     private @Nullable Output<Boolean> pgAllowReplication;
 
     /**
-     * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines whether replication is allowed.
      * 
      */
     public Optional<Output<Boolean>> pgAllowReplication() {
@@ -210,7 +210,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the PG User ( not applicable for all services ).
+         * @param password The password of the PG User (not applicable for all services).
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the PG User ( not applicable for all services ).
+         * @param password The password of the PG User (not applicable for all services).
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+         * @param pgAllowReplication Defines whether replication is allowed.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+         * @param pgAllowReplication Defines whether replication is allowed.
          * 
          * @return builder
          * 

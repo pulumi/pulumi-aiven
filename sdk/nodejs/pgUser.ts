@@ -64,11 +64,11 @@ export class PgUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * The password of the PG User ( not applicable for all services ).
+     * The password of the PG User (not applicable for all services).
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines whether replication is allowed.
      */
     public readonly pgAllowReplication!: pulumi.Output<boolean | undefined>;
     /**
@@ -149,11 +149,11 @@ export interface PgUserState {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The password of the PG User ( not applicable for all services ).
+     * The password of the PG User (not applicable for all services).
      */
     password?: pulumi.Input<string>;
     /**
-     * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines whether replication is allowed.
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**
@@ -179,11 +179,11 @@ export interface PgUserState {
  */
 export interface PgUserArgs {
     /**
-     * The password of the PG User ( not applicable for all services ).
+     * The password of the PG User (not applicable for all services).
      */
     password?: pulumi.Input<string>;
     /**
-     * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines whether replication is allowed.
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**

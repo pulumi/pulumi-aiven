@@ -26,12 +26,12 @@ public final class GetKafkaSchemaConfigurationResult {
      */
     private String project;
     /**
-     * @return Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * @return Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      * 
      */
     private String schema;
     /**
-     * @return Kafka Schema type JSON or AVRO
+     * @return Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
      * 
      */
     private String schemaType;
@@ -74,14 +74,14 @@ public final class GetKafkaSchemaConfigurationResult {
         return this.project;
     }
     /**
-     * @return Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * @return Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      * 
      */
     public String schema() {
         return this.schema;
     }
     /**
-     * @return Kafka Schema type JSON or AVRO
+     * @return Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
      * 
      */
     public String schemaType() {
