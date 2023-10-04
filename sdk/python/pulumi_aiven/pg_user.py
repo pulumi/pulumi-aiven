@@ -24,8 +24,8 @@ class PgUserArgs:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] password: The password of the PG User ( not applicable for all services ).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
+        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
         """
         PgUserArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -92,7 +92,7 @@ class PgUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the PG User ( not applicable for all services ).
+        The password of the PG User (not applicable for all services).
         """
         return pulumi.get(self, "password")
 
@@ -104,7 +104,7 @@ class PgUserArgs:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        Defines whether replication is allowed.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -128,8 +128,8 @@ class _PgUserState:
         Input properties used for looking up and filtering PgUser resources.
         :param pulumi.Input[str] access_cert: Access certificate for the user
         :param pulumi.Input[str] access_key: Access certificate key for the user
-        :param pulumi.Input[str] password: The password of the PG User ( not applicable for all services ).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
+        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
@@ -203,7 +203,7 @@ class _PgUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the PG User ( not applicable for all services ).
+        The password of the PG User (not applicable for all services).
         """
         return pulumi.get(self, "password")
 
@@ -215,7 +215,7 @@ class _PgUserState:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        Defines whether replication is allowed.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -307,8 +307,8 @@ class PgUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the PG User ( not applicable for all services ).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
+        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -417,8 +417,8 @@ class PgUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_cert: Access certificate for the user
         :param pulumi.Input[str] access_key: Access certificate key for the user
-        :param pulumi.Input[str] password: The password of the PG User ( not applicable for all services ).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
+        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
@@ -458,7 +458,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the PG User ( not applicable for all services ).
+        The password of the PG User (not applicable for all services).
         """
         return pulumi.get(self, "password")
 
@@ -466,7 +466,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> pulumi.Output[Optional[bool]]:
         """
-        Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        Defines whether replication is allowed.
         """
         return pulumi.get(self, "pg_allow_replication")
 

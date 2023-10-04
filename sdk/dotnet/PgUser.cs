@@ -55,13 +55,13 @@ namespace Pulumi.Aiven
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the PG User ( not applicable for all services ).
+        /// The password of the PG User (not applicable for all services).
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines whether replication is allowed.
         /// </summary>
         [Output("pgAllowReplication")]
         public Output<bool?> PgAllowReplication { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the PG User ( not applicable for all services ).
+        /// The password of the PG User (not applicable for all services).
         /// </summary>
         public Input<string>? Password
         {
@@ -159,7 +159,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines whether replication is allowed.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the PG User ( not applicable for all services ).
+        /// The password of the PG User (not applicable for all services).
         /// </summary>
         public Input<string>? Password
         {
@@ -239,7 +239,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines whether replication is allowed.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }

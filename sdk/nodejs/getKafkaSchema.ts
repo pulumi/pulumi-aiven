@@ -64,11 +64,11 @@ export interface GetKafkaSchemaResult {
      */
     readonly project: string;
     /**
-     * Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      */
     readonly schema: string;
     /**
-     * Kafka Schema type JSON or AVRO
+     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
      */
     readonly schemaType: string;
     /**

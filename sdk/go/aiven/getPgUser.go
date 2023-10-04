@@ -69,9 +69,9 @@ type LookupPgUserResult struct {
 	AccessKey string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The password of the PG User ( not applicable for all services ).
+	// The password of the PG User (not applicable for all services).
 	Password string `pulumi:"password"`
-	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+	// Defines whether replication is allowed.
 	PgAllowReplication bool `pulumi:"pgAllowReplication"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -146,12 +146,12 @@ func (o LookupPgUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the PG User ( not applicable for all services ).
+// The password of the PG User (not applicable for all services).
 func (o LookupPgUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+// Defines whether replication is allowed.
 func (o LookupPgUserResultOutput) PgAllowReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPgUserResult) bool { return v.PgAllowReplication }).(pulumi.BoolOutput)
 }

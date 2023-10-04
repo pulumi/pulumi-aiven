@@ -69,13 +69,13 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Schema type JSON or AVRO
+        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
         /// </summary>
         [Output("schemaType")]
         public Output<string?> SchemaType { get; private set; } = null!;
@@ -157,13 +157,13 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         /// </summary>
         [Input("schema", required: true)]
         public Input<string> Schema { get; set; } = null!;
 
         /// <summary>
-        /// Kafka Schema type JSON or AVRO
+        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
         /// </summary>
         [Input("schemaType")]
         public Input<string>? SchemaType { get; set; }
@@ -201,13 +201,13 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Kafka Schema type JSON or AVRO
+        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
         /// </summary>
         [Input("schemaType")]
         public Input<string>? SchemaType { get; set; }

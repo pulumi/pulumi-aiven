@@ -140,11 +140,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         /// </summary>
         public readonly string Schema;
         /// <summary>
-        /// Kafka Schema type JSON or AVRO
+        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
         /// </summary>
         public readonly string SchemaType;
         /// <summary>

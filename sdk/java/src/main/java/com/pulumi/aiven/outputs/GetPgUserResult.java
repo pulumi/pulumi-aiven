@@ -26,12 +26,12 @@ public final class GetPgUserResult {
      */
     private String id;
     /**
-     * @return The password of the PG User ( not applicable for all services ).
+     * @return The password of the PG User (not applicable for all services).
      * 
      */
     private String password;
     /**
-     * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines whether replication is allowed.
      * 
      */
     private Boolean pgAllowReplication;
@@ -79,14 +79,14 @@ public final class GetPgUserResult {
         return this.id;
     }
     /**
-     * @return The password of the PG User ( not applicable for all services ).
+     * @return The password of the PG User (not applicable for all services).
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines whether replication is allowed.
      * 
      */
     public Boolean pgAllowReplication() {

@@ -78,7 +78,7 @@ class GetPgUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the PG User ( not applicable for all services ).
+        The password of the PG User (not applicable for all services).
         """
         return pulumi.get(self, "password")
 
@@ -86,7 +86,7 @@ class GetPgUserResult:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> bool:
         """
-        Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        Defines whether replication is allowed.
         """
         return pulumi.get(self, "pg_allow_replication")
 

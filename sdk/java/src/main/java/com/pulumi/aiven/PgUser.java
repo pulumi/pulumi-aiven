@@ -90,28 +90,28 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return this.accessKey;
     }
     /**
-     * The password of the PG User ( not applicable for all services ).
+     * The password of the PG User (not applicable for all services).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the PG User ( not applicable for all services ).
+     * @return The password of the PG User (not applicable for all services).
      * 
      */
     public Output<String> password() {
         return this.password;
     }
     /**
-     * Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines whether replication is allowed.
      * 
      */
     @Export(name="pgAllowReplication", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pgAllowReplication;
 
     /**
-     * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines whether replication is allowed.
      * 
      */
     public Output<Optional<Boolean>> pgAllowReplication() {
