@@ -7,4 +7,5 @@ set -euo pipefail
 ~/code/upgrade-provider/upgrade-provider \
     pulumi/pulumi-aiven \
     --kind=bridge \
-    --target-bridge-version=$(cd ~/code/pulumi-terraform-bridge && git rev-parse HEAD)
+    --target-bridge-version=$(cd ~/code/pulumi-terraform-bridge && git rev-parse HEAD) \
+    --pr-reviewers "@t0yv0"
