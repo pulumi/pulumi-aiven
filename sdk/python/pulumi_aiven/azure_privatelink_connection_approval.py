@@ -32,10 +32,20 @@ class AzurePrivatelinkConnectionApprovalArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              endpoint_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if endpoint_ip_address is None and 'endpointIpAddress' in kwargs:
+            endpoint_ip_address = kwargs['endpointIpAddress']
+
         _setter("project", project)
         _setter("service_name", service_name)
         if endpoint_ip_address is not None:
@@ -110,7 +120,15 @@ class _AzurePrivatelinkConnectionApprovalState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint_ip_address is None and 'endpointIpAddress' in kwargs:
+            endpoint_ip_address = kwargs['endpointIpAddress']
+        if privatelink_connection_id is None and 'privatelinkConnectionId' in kwargs:
+            privatelink_connection_id = kwargs['privatelinkConnectionId']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if endpoint_ip_address is not None:
             _setter("endpoint_ip_address", endpoint_ip_address)
         if privatelink_connection_id is not None:

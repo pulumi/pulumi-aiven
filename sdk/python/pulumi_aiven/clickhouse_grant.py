@@ -43,13 +43,25 @@ class ClickhouseGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if privilege_grants is None and 'privilegeGrants' in kwargs:
+            privilege_grants = kwargs['privilegeGrants']
+        if role_grants is None and 'roleGrants' in kwargs:
+            role_grants = kwargs['roleGrants']
+
         _setter("project", project)
         _setter("service_name", service_name)
         if privilege_grants is not None:
@@ -170,7 +182,15 @@ class _ClickhouseGrantState:
              role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if privilege_grants is None and 'privilegeGrants' in kwargs:
+            privilege_grants = kwargs['privilegeGrants']
+        if role_grants is None and 'roleGrants' in kwargs:
+            role_grants = kwargs['roleGrants']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if privilege_grants is not None:
             _setter("privilege_grants", privilege_grants)
         if project is not None:

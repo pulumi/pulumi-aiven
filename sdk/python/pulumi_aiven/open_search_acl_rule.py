@@ -38,12 +38,26 @@ class OpenSearchAclRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             index: pulumi.Input[str],
-             permission: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             index: Optional[pulumi.Input[str]] = None,
+             permission: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index is None:
+            raise TypeError("Missing 'index' argument")
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("index", index)
         _setter("permission", permission)
         _setter("project", project)
@@ -143,7 +157,11 @@ class _OpenSearchAclRuleState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if index is not None:
             _setter("index", index)
         if permission is not None:

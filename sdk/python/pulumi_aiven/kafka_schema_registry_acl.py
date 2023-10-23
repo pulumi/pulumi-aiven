@@ -38,12 +38,26 @@ class KafkaSchemaRegistryAclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission: pulumi.Input[str],
-             project: pulumi.Input[str],
-             resource: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permission: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resource: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("permission", permission)
         _setter("project", project)
         _setter("resource", resource)
@@ -147,7 +161,13 @@ class _KafkaSchemaRegistryAclState:
              resource: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_id is None and 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if permission is not None:

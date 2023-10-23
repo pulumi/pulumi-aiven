@@ -41,13 +41,31 @@ class KafkaSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             schema: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             subject_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             subject_name: Optional[pulumi.Input[str]] = None,
              compatibility_level: Optional[pulumi.Input[str]] = None,
              schema_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if subject_name is None and 'subjectName' in kwargs:
+            subject_name = kwargs['subjectName']
+        if subject_name is None:
+            raise TypeError("Missing 'subject_name' argument")
+        if compatibility_level is None and 'compatibilityLevel' in kwargs:
+            compatibility_level = kwargs['compatibilityLevel']
+        if schema_type is None and 'schemaType' in kwargs:
+            schema_type = kwargs['schemaType']
+
         _setter("project", project)
         _setter("schema", schema)
         _setter("service_name", service_name)
@@ -170,7 +188,17 @@ class _KafkaSchemaState:
              service_name: Optional[pulumi.Input[str]] = None,
              subject_name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compatibility_level is None and 'compatibilityLevel' in kwargs:
+            compatibility_level = kwargs['compatibilityLevel']
+        if schema_type is None and 'schemaType' in kwargs:
+            schema_type = kwargs['schemaType']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if subject_name is None and 'subjectName' in kwargs:
+            subject_name = kwargs['subjectName']
+
         if compatibility_level is not None:
             _setter("compatibility_level", compatibility_level)
         if project is not None:

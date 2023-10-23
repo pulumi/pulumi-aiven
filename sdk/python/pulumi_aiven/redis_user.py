@@ -47,15 +47,33 @@ class RedisUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             username: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if redis_acl_categories is None and 'redisAclCategories' in kwargs:
+            redis_acl_categories = kwargs['redisAclCategories']
+        if redis_acl_channels is None and 'redisAclChannels' in kwargs:
+            redis_acl_channels = kwargs['redisAclChannels']
+        if redis_acl_commands is None and 'redisAclCommands' in kwargs:
+            redis_acl_commands = kwargs['redisAclCommands']
+        if redis_acl_keys is None and 'redisAclKeys' in kwargs:
+            redis_acl_keys = kwargs['redisAclKeys']
+
         _setter("project", project)
         _setter("service_name", service_name)
         _setter("username", username)
@@ -215,7 +233,19 @@ class _RedisUserState:
              service_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redis_acl_categories is None and 'redisAclCategories' in kwargs:
+            redis_acl_categories = kwargs['redisAclCategories']
+        if redis_acl_channels is None and 'redisAclChannels' in kwargs:
+            redis_acl_channels = kwargs['redisAclChannels']
+        if redis_acl_commands is None and 'redisAclCommands' in kwargs:
+            redis_acl_commands = kwargs['redisAclCommands']
+        if redis_acl_keys is None and 'redisAclKeys' in kwargs:
+            redis_acl_keys = kwargs['redisAclKeys']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if password is not None:
             _setter("password", password)
         if project is not None:

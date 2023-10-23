@@ -55,7 +55,7 @@ class ProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
              billing_group: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,27 @@ class ProjectArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
              technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if add_account_owners_admin_access is None and 'addAccountOwnersAdminAccess' in kwargs:
+            add_account_owners_admin_access = kwargs['addAccountOwnersAdminAccess']
+        if billing_group is None and 'billingGroup' in kwargs:
+            billing_group = kwargs['billingGroup']
+        if copy_from_project is None and 'copyFromProject' in kwargs:
+            copy_from_project = kwargs['copyFromProject']
+        if default_cloud is None and 'defaultCloud' in kwargs:
+            default_cloud = kwargs['defaultCloud']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if technical_emails is None and 'technicalEmails' in kwargs:
+            technical_emails = kwargs['technicalEmails']
+        if use_source_project_billing_group is None and 'useSourceProjectBillingGroup' in kwargs:
+            use_source_project_billing_group = kwargs['useSourceProjectBillingGroup']
+
         _setter("project", project)
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
@@ -293,7 +313,33 @@ class _ProjectState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
              technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if add_account_owners_admin_access is None and 'addAccountOwnersAdminAccess' in kwargs:
+            add_account_owners_admin_access = kwargs['addAccountOwnersAdminAccess']
+        if available_credits is None and 'availableCredits' in kwargs:
+            available_credits = kwargs['availableCredits']
+        if billing_group is None and 'billingGroup' in kwargs:
+            billing_group = kwargs['billingGroup']
+        if ca_cert is None and 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if copy_from_project is None and 'copyFromProject' in kwargs:
+            copy_from_project = kwargs['copyFromProject']
+        if default_cloud is None and 'defaultCloud' in kwargs:
+            default_cloud = kwargs['defaultCloud']
+        if estimated_balance is None and 'estimatedBalance' in kwargs:
+            estimated_balance = kwargs['estimatedBalance']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if payment_method is None and 'paymentMethod' in kwargs:
+            payment_method = kwargs['paymentMethod']
+        if technical_emails is None and 'technicalEmails' in kwargs:
+            technical_emails = kwargs['technicalEmails']
+        if use_source_project_billing_group is None and 'useSourceProjectBillingGroup' in kwargs:
+            use_source_project_billing_group = kwargs['useSourceProjectBillingGroup']
+
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")

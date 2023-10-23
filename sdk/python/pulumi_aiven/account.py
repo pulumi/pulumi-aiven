@@ -31,7 +31,11 @@ class AccountArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              primary_billing_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primary_billing_group_id is None and 'primaryBillingGroupId' in kwargs:
+            primary_billing_group_id = kwargs['primaryBillingGroupId']
+
         if name is not None:
             _setter("name", name)
         if primary_billing_group_id is not None:
@@ -112,7 +116,23 @@ class _AccountState:
              primary_billing_group_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if is_account_owner is None and 'isAccountOwner' in kwargs:
+            is_account_owner = kwargs['isAccountOwner']
+        if owner_team_id is None and 'ownerTeamId' in kwargs:
+            owner_team_id = kwargs['ownerTeamId']
+        if primary_billing_group_id is None and 'primaryBillingGroupId' in kwargs:
+            primary_billing_group_id = kwargs['primaryBillingGroupId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if account_id is not None:
             warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")

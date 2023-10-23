@@ -32,10 +32,20 @@ class AwsPrivatelinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             principals: pulumi.Input[Sequence[pulumi.Input[str]]],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if principals is None:
+            raise TypeError("Missing 'principals' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("principals", principals)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -109,7 +119,15 @@ class _AwsPrivatelinkState:
              principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_service_id is None and 'awsServiceId' in kwargs:
+            aws_service_id = kwargs['awsServiceId']
+        if aws_service_name is None and 'awsServiceName' in kwargs:
+            aws_service_name = kwargs['awsServiceName']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if aws_service_id is not None:
             _setter("aws_service_id", aws_service_id)
         if aws_service_name is not None:

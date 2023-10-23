@@ -50,15 +50,33 @@ class KafkaTopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             partitions: pulumi.Input[int],
-             project: pulumi.Input[str],
-             replication: pulumi.Input[int],
-             service_name: pulumi.Input[str],
-             topic_name: pulumi.Input[str],
+             partitions: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             replication: Optional[pulumi.Input[int]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['KafkaTopicConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if partitions is None:
+            raise TypeError("Missing 'partitions' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if replication is None:
+            raise TypeError("Missing 'replication' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         _setter("partitions", partitions)
         _setter("project", project)
         _setter("replication", replication)
@@ -214,7 +232,15 @@ class _KafkaTopicState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if config is not None:
             _setter("config", config)
         if partitions is not None:

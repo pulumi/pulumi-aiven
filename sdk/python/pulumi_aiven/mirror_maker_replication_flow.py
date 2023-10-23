@@ -59,11 +59,11 @@ class MirrorMakerReplicationFlowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable: pulumi.Input[bool],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             source_cluster: pulumi.Input[str],
-             target_cluster: pulumi.Input[str],
+             enable: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             source_cluster: Optional[pulumi.Input[str]] = None,
+             target_cluster: Optional[pulumi.Input[str]] = None,
              emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
              offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
              replication_policy_class: Optional[pulumi.Input[str]] = None,
@@ -71,7 +71,37 @@ class MirrorMakerReplicationFlowArgs:
              sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
              topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if source_cluster is None and 'sourceCluster' in kwargs:
+            source_cluster = kwargs['sourceCluster']
+        if source_cluster is None:
+            raise TypeError("Missing 'source_cluster' argument")
+        if target_cluster is None and 'targetCluster' in kwargs:
+            target_cluster = kwargs['targetCluster']
+        if target_cluster is None:
+            raise TypeError("Missing 'target_cluster' argument")
+        if emit_heartbeats_enabled is None and 'emitHeartbeatsEnabled' in kwargs:
+            emit_heartbeats_enabled = kwargs['emitHeartbeatsEnabled']
+        if offset_syncs_topic_location is None and 'offsetSyncsTopicLocation' in kwargs:
+            offset_syncs_topic_location = kwargs['offsetSyncsTopicLocation']
+        if replication_policy_class is None and 'replicationPolicyClass' in kwargs:
+            replication_policy_class = kwargs['replicationPolicyClass']
+        if sync_group_offsets_enabled is None and 'syncGroupOffsetsEnabled' in kwargs:
+            sync_group_offsets_enabled = kwargs['syncGroupOffsetsEnabled']
+        if sync_group_offsets_interval_seconds is None and 'syncGroupOffsetsIntervalSeconds' in kwargs:
+            sync_group_offsets_interval_seconds = kwargs['syncGroupOffsetsIntervalSeconds']
+        if topics_blacklists is None and 'topicsBlacklists' in kwargs:
+            topics_blacklists = kwargs['topicsBlacklists']
+
         _setter("enable", enable)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -297,7 +327,27 @@ class _MirrorMakerReplicationFlowState:
              target_cluster: Optional[pulumi.Input[str]] = None,
              topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if emit_heartbeats_enabled is None and 'emitHeartbeatsEnabled' in kwargs:
+            emit_heartbeats_enabled = kwargs['emitHeartbeatsEnabled']
+        if offset_syncs_topic_location is None and 'offsetSyncsTopicLocation' in kwargs:
+            offset_syncs_topic_location = kwargs['offsetSyncsTopicLocation']
+        if replication_policy_class is None and 'replicationPolicyClass' in kwargs:
+            replication_policy_class = kwargs['replicationPolicyClass']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if source_cluster is None and 'sourceCluster' in kwargs:
+            source_cluster = kwargs['sourceCluster']
+        if sync_group_offsets_enabled is None and 'syncGroupOffsetsEnabled' in kwargs:
+            sync_group_offsets_enabled = kwargs['syncGroupOffsetsEnabled']
+        if sync_group_offsets_interval_seconds is None and 'syncGroupOffsetsIntervalSeconds' in kwargs:
+            sync_group_offsets_interval_seconds = kwargs['syncGroupOffsetsIntervalSeconds']
+        if target_cluster is None and 'targetCluster' in kwargs:
+            target_cluster = kwargs['targetCluster']
+        if topics_blacklists is None and 'topicsBlacklists' in kwargs:
+            topics_blacklists = kwargs['topicsBlacklists']
+
         if emit_heartbeats_enabled is not None:
             _setter("emit_heartbeats_enabled", emit_heartbeats_enabled)
         if enable is not None:

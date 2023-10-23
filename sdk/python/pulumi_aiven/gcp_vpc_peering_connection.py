@@ -32,10 +32,24 @@ class GcpVpcPeeringConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gcp_project_id: pulumi.Input[str],
-             peer_vpc: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gcp_project_id: Optional[pulumi.Input[str]] = None,
+             peer_vpc: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_project_id is None and 'gcpProjectId' in kwargs:
+            gcp_project_id = kwargs['gcpProjectId']
+        if gcp_project_id is None:
+            raise TypeError("Missing 'gcp_project_id' argument")
+        if peer_vpc is None and 'peerVpc' in kwargs:
+            peer_vpc = kwargs['peerVpc']
+        if peer_vpc is None:
+            raise TypeError("Missing 'peer_vpc' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
         _setter("gcp_project_id", gcp_project_id)
         _setter("peer_vpc", peer_vpc)
         _setter("vpc_id", vpc_id)
@@ -113,7 +127,19 @@ class _GcpVpcPeeringConnectionState:
              state: Optional[pulumi.Input[str]] = None,
              state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_project_id is None and 'gcpProjectId' in kwargs:
+            gcp_project_id = kwargs['gcpProjectId']
+        if peer_vpc is None and 'peerVpc' in kwargs:
+            peer_vpc = kwargs['peerVpc']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if state_info is None and 'stateInfo' in kwargs:
+            state_info = kwargs['stateInfo']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if gcp_project_id is not None:
             _setter("gcp_project_id", gcp_project_id)
         if peer_vpc is not None:

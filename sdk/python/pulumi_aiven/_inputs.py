@@ -244,7 +244,15 @@ class AccountAuthenticationSamlFieldMappingArgs:
              identity: Optional[pulumi.Input[str]] = None,
              last_name: Optional[pulumi.Input[str]] = None,
              real_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if first_name is None and 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if last_name is None and 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if real_name is None and 'realName' in kwargs:
+            real_name = kwargs['realName']
+
         if email is not None:
             _setter("email", email)
         if first_name is not None:
@@ -324,8 +332,10 @@ class CassandraCassandraArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -399,7 +409,37 @@ class CassandraCassandraUserConfigArgs:
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              service_to_join_with: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if backup_hour is None and 'backupHour' in kwargs:
+            backup_hour = kwargs['backupHour']
+        if backup_minute is None and 'backupMinute' in kwargs:
+            backup_minute = kwargs['backupMinute']
+        if cassandra_version is None and 'cassandraVersion' in kwargs:
+            cassandra_version = kwargs['cassandraVersion']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if migrate_sstableloader is None and 'migrateSstableloader' in kwargs:
+            migrate_sstableloader = kwargs['migrateSstableloader']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if service_to_join_with is None and 'serviceToJoinWith' in kwargs:
+            service_to_join_with = kwargs['serviceToJoinWith']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if backup_hour is not None:
@@ -641,7 +681,13 @@ class CassandraCassandraUserConfigCassandraArgs:
              batch_size_fail_threshold_in_kb: Optional[pulumi.Input[int]] = None,
              batch_size_warn_threshold_in_kb: Optional[pulumi.Input[int]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if batch_size_fail_threshold_in_kb is None and 'batchSizeFailThresholdInKb' in kwargs:
+            batch_size_fail_threshold_in_kb = kwargs['batchSizeFailThresholdInKb']
+        if batch_size_warn_threshold_in_kb is None and 'batchSizeWarnThresholdInKb' in kwargs:
+            batch_size_warn_threshold_in_kb = kwargs['batchSizeWarnThresholdInKb']
+
         if batch_size_fail_threshold_in_kb is not None:
             _setter("batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
         if batch_size_warn_threshold_in_kb is not None:
@@ -703,9 +749,13 @@ class CassandraCassandraUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -750,7 +800,9 @@ class CassandraCassandraUserConfigPrivateAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if prometheus is not None:
             _setter("prometheus", prometheus)
 
@@ -782,7 +834,9 @@ class CassandraCassandraUserConfigPublicAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if prometheus is not None:
             _setter("prometheus", prometheus)
 
@@ -829,7 +883,11 @@ class CassandraComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -926,9 +984,19 @@ class CassandraServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -974,9 +1042,15 @@ class CassandraTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -1012,8 +1086,10 @@ class ClickhouseClickhouseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -1067,7 +1143,29 @@ class ClickhouseClickhouseUserConfigArgs:
              public_access: Optional[pulumi.Input['ClickhouseClickhouseUserConfigPublicAccessArgs']] = None,
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
@@ -1233,9 +1331,13 @@ class ClickhouseClickhouseUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -1288,7 +1390,11 @@ class ClickhouseClickhouseUserConfigPrivateAccessArgs:
              clickhouse: Optional[pulumi.Input[bool]] = None,
              clickhouse_https: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if clickhouse_https is None and 'clickhouseHttps' in kwargs:
+            clickhouse_https = kwargs['clickhouseHttps']
+
         if clickhouse is not None:
             _setter("clickhouse", clickhouse)
         if clickhouse_https is not None:
@@ -1356,7 +1462,11 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs:
              clickhouse: Optional[pulumi.Input[bool]] = None,
              clickhouse_https: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if clickhouse_https is None and 'clickhouseHttps' in kwargs:
+            clickhouse_https = kwargs['clickhouseHttps']
+
         if clickhouse is not None:
             _setter("clickhouse", clickhouse)
         if clickhouse_https is not None:
@@ -1424,7 +1534,11 @@ class ClickhouseClickhouseUserConfigPublicAccessArgs:
              clickhouse: Optional[pulumi.Input[bool]] = None,
              clickhouse_https: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if clickhouse_https is None and 'clickhouseHttps' in kwargs:
+            clickhouse_https = kwargs['clickhouseHttps']
+
         if clickhouse is not None:
             _setter("clickhouse", clickhouse)
         if clickhouse_https is not None:
@@ -1499,7 +1613,11 @@ class ClickhouseComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -1605,12 +1723,18 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
              column: Optional[pulumi.Input[str]] = None,
              privilege: Optional[pulumi.Input[str]] = None,
              table: Optional[pulumi.Input[str]] = None,
              with_grant: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if with_grant is None and 'withGrant' in kwargs:
+            with_grant = kwargs['withGrant']
+
         _setter("database", database)
         if column is not None:
             _setter("column", column)
@@ -1697,7 +1821,9 @@ class ClickhouseGrantRoleGrantArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if role is not None:
             _setter("role", role)
 
@@ -1731,9 +1857,19 @@ class ClickhouseServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -1779,9 +1915,15 @@ class ClickhouseTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -1827,9 +1969,17 @@ class FlinkApplicationVersionSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_table: pulumi.Input[str],
+             create_table: Optional[pulumi.Input[str]] = None,
              integration_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_table is None and 'createTable' in kwargs:
+            create_table = kwargs['createTable']
+        if create_table is None:
+            raise TypeError("Missing 'create_table' argument")
+        if integration_id is None and 'integrationId' in kwargs:
+            integration_id = kwargs['integrationId']
+
         _setter("create_table", create_table)
         if integration_id is not None:
             _setter("integration_id", integration_id)
@@ -1876,9 +2026,17 @@ class FlinkApplicationVersionSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_table: pulumi.Input[str],
+             create_table: Optional[pulumi.Input[str]] = None,
              integration_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_table is None and 'createTable' in kwargs:
+            create_table = kwargs['createTable']
+        if create_table is None:
+            raise TypeError("Missing 'create_table' argument")
+        if integration_id is None and 'integrationId' in kwargs:
+            integration_id = kwargs['integrationId']
+
         _setter("create_table", create_table)
         if integration_id is not None:
             _setter("integration_id", integration_id)
@@ -1938,7 +2096,11 @@ class FlinkComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -2033,7 +2195,11 @@ class FlinkFlinkArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              host_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_ports is None and 'hostPorts' in kwargs:
+            host_ports = kwargs['hostPorts']
+
         if host_ports is not None:
             _setter("host_ports", host_ports)
 
@@ -2085,7 +2251,21 @@ class FlinkFlinkUserConfigArgs:
              ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              number_of_task_slots: Optional[pulumi.Input[int]] = None,
              privatelink_access: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if flink_version is None and 'flinkVersion' in kwargs:
+            flink_version = kwargs['flinkVersion']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if number_of_task_slots is None and 'numberOfTaskSlots' in kwargs:
+            number_of_task_slots = kwargs['numberOfTaskSlots']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+
         if flink_version is not None:
             _setter("flink_version", flink_version)
         if ip_filter_objects is not None:
@@ -2195,9 +2375,13 @@ class FlinkFlinkUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -2246,7 +2430,9 @@ class FlinkFlinkUserConfigPrivatelinkAccessArgs:
              _setter: Callable[[Any, Any], None],
              flink: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if flink is not None:
             _setter("flink", flink)
         if prometheus is not None:
@@ -2294,9 +2480,19 @@ class FlinkServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -2342,9 +2538,15 @@ class FlinkTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -2403,7 +2605,11 @@ class GrafanaComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -2490,8 +2696,10 @@ class GrafanaGrafanaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -2623,7 +2831,89 @@ class GrafanaGrafanaUserConfigArgs:
              user_auto_assign_org: Optional[pulumi.Input[bool]] = None,
              user_auto_assign_org_role: Optional[pulumi.Input[str]] = None,
              viewers_can_edit: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if alerting_enabled is None and 'alertingEnabled' in kwargs:
+            alerting_enabled = kwargs['alertingEnabled']
+        if alerting_error_or_timeout is None and 'alertingErrorOrTimeout' in kwargs:
+            alerting_error_or_timeout = kwargs['alertingErrorOrTimeout']
+        if alerting_max_annotations_to_keep is None and 'alertingMaxAnnotationsToKeep' in kwargs:
+            alerting_max_annotations_to_keep = kwargs['alertingMaxAnnotationsToKeep']
+        if alerting_nodata_or_nullvalues is None and 'alertingNodataOrNullvalues' in kwargs:
+            alerting_nodata_or_nullvalues = kwargs['alertingNodataOrNullvalues']
+        if allow_embedding is None and 'allowEmbedding' in kwargs:
+            allow_embedding = kwargs['allowEmbedding']
+        if auth_azuread is None and 'authAzuread' in kwargs:
+            auth_azuread = kwargs['authAzuread']
+        if auth_basic_enabled is None and 'authBasicEnabled' in kwargs:
+            auth_basic_enabled = kwargs['authBasicEnabled']
+        if auth_generic_oauth is None and 'authGenericOauth' in kwargs:
+            auth_generic_oauth = kwargs['authGenericOauth']
+        if auth_github is None and 'authGithub' in kwargs:
+            auth_github = kwargs['authGithub']
+        if auth_gitlab is None and 'authGitlab' in kwargs:
+            auth_gitlab = kwargs['authGitlab']
+        if auth_google is None and 'authGoogle' in kwargs:
+            auth_google = kwargs['authGoogle']
+        if cookie_samesite is None and 'cookieSamesite' in kwargs:
+            cookie_samesite = kwargs['cookieSamesite']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+        if dashboard_previews_enabled is None and 'dashboardPreviewsEnabled' in kwargs:
+            dashboard_previews_enabled = kwargs['dashboardPreviewsEnabled']
+        if dashboards_min_refresh_interval is None and 'dashboardsMinRefreshInterval' in kwargs:
+            dashboards_min_refresh_interval = kwargs['dashboardsMinRefreshInterval']
+        if dashboards_versions_to_keep is None and 'dashboardsVersionsToKeep' in kwargs:
+            dashboards_versions_to_keep = kwargs['dashboardsVersionsToKeep']
+        if dataproxy_send_user_header is None and 'dataproxySendUserHeader' in kwargs:
+            dataproxy_send_user_header = kwargs['dataproxySendUserHeader']
+        if dataproxy_timeout is None and 'dataproxyTimeout' in kwargs:
+            dataproxy_timeout = kwargs['dataproxyTimeout']
+        if date_formats is None and 'dateFormats' in kwargs:
+            date_formats = kwargs['dateFormats']
+        if disable_gravatar is None and 'disableGravatar' in kwargs:
+            disable_gravatar = kwargs['disableGravatar']
+        if editors_can_admin is None and 'editorsCanAdmin' in kwargs:
+            editors_can_admin = kwargs['editorsCanAdmin']
+        if external_image_storage is None and 'externalImageStorage' in kwargs:
+            external_image_storage = kwargs['externalImageStorage']
+        if google_analytics_ua_id is None and 'googleAnalyticsUaId' in kwargs:
+            google_analytics_ua_id = kwargs['googleAnalyticsUaId']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if metrics_enabled is None and 'metricsEnabled' in kwargs:
+            metrics_enabled = kwargs['metricsEnabled']
+        if oauth_allow_insecure_email_lookup is None and 'oauthAllowInsecureEmailLookup' in kwargs:
+            oauth_allow_insecure_email_lookup = kwargs['oauthAllowInsecureEmailLookup']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if recovery_basebackup_name is None and 'recoveryBasebackupName' in kwargs:
+            recovery_basebackup_name = kwargs['recoveryBasebackupName']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if smtp_server is None and 'smtpServer' in kwargs:
+            smtp_server = kwargs['smtpServer']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+        if user_auto_assign_org is None and 'userAutoAssignOrg' in kwargs:
+            user_auto_assign_org = kwargs['userAutoAssignOrg']
+        if user_auto_assign_org_role is None and 'userAutoAssignOrgRole' in kwargs:
+            user_auto_assign_org_role = kwargs['userAutoAssignOrgRole']
+        if viewers_can_edit is None and 'viewersCanEdit' in kwargs:
+            viewers_can_edit = kwargs['viewersCanEdit']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if alerting_enabled is not None:
@@ -3095,14 +3385,38 @@ class GrafanaGrafanaUserConfigAuthAzureadArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: pulumi.Input[str],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
-             token_url: pulumi.Input[str],
+             auth_url: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             token_url: Optional[pulumi.Input[str]] = None,
              allow_sign_up: Optional[pulumi.Input[bool]] = None,
              allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allowed_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_url is None and 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if token_url is None and 'tokenUrl' in kwargs:
+            token_url = kwargs['tokenUrl']
+        if token_url is None:
+            raise TypeError("Missing 'token_url' argument")
+        if allow_sign_up is None and 'allowSignUp' in kwargs:
+            allow_sign_up = kwargs['allowSignUp']
+        if allowed_domains is None and 'allowedDomains' in kwargs:
+            allowed_domains = kwargs['allowedDomains']
+        if allowed_groups is None and 'allowedGroups' in kwargs:
+            allowed_groups = kwargs['allowedGroups']
+
         _setter("auth_url", auth_url)
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
@@ -3209,18 +3523,48 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_url: pulumi.Input[str],
-             auth_url: pulumi.Input[str],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
-             token_url: pulumi.Input[str],
+             api_url: Optional[pulumi.Input[str]] = None,
+             auth_url: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             token_url: Optional[pulumi.Input[str]] = None,
              allow_sign_up: Optional[pulumi.Input[bool]] = None,
              allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allowed_organizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              auto_login: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if api_url is None:
+            raise TypeError("Missing 'api_url' argument")
+        if auth_url is None and 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if token_url is None and 'tokenUrl' in kwargs:
+            token_url = kwargs['tokenUrl']
+        if token_url is None:
+            raise TypeError("Missing 'token_url' argument")
+        if allow_sign_up is None and 'allowSignUp' in kwargs:
+            allow_sign_up = kwargs['allowSignUp']
+        if allowed_domains is None and 'allowedDomains' in kwargs:
+            allowed_domains = kwargs['allowedDomains']
+        if allowed_organizations is None and 'allowedOrganizations' in kwargs:
+            allowed_organizations = kwargs['allowedOrganizations']
+        if auto_login is None and 'autoLogin' in kwargs:
+            auto_login = kwargs['autoLogin']
+
         _setter("api_url", api_url)
         _setter("auth_url", auth_url)
         _setter("client_id", client_id)
@@ -3358,12 +3702,28 @@ class GrafanaGrafanaUserConfigAuthGithubArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
              allow_sign_up: Optional[pulumi.Input[bool]] = None,
              allowed_organizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              team_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if allow_sign_up is None and 'allowSignUp' in kwargs:
+            allow_sign_up = kwargs['allowSignUp']
+        if allowed_organizations is None and 'allowedOrganizations' in kwargs:
+            allowed_organizations = kwargs['allowedOrganizations']
+        if team_ids is None and 'teamIds' in kwargs:
+            team_ids = kwargs['teamIds']
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         if allow_sign_up is not None:
@@ -3442,14 +3802,34 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
              allow_sign_up: Optional[pulumi.Input[bool]] = None,
              allowed_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              api_url: Optional[pulumi.Input[str]] = None,
              auth_url: Optional[pulumi.Input[str]] = None,
              token_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if allow_sign_up is None and 'allowSignUp' in kwargs:
+            allow_sign_up = kwargs['allowSignUp']
+        if allowed_groups is None and 'allowedGroups' in kwargs:
+            allowed_groups = kwargs['allowedGroups']
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if auth_url is None and 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if token_url is None and 'tokenUrl' in kwargs:
+            token_url = kwargs['tokenUrl']
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         if allow_sign_up is not None:
@@ -3544,11 +3924,25 @@ class GrafanaGrafanaUserConfigAuthGoogleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
              allow_sign_up: Optional[pulumi.Input[bool]] = None,
              allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if allow_sign_up is None and 'allowSignUp' in kwargs:
+            allow_sign_up = kwargs['allowSignUp']
+        if allowed_domains is None and 'allowedDomains' in kwargs:
+            allowed_domains = kwargs['allowedDomains']
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         if allow_sign_up is not None:
@@ -3626,7 +4020,25 @@ class GrafanaGrafanaUserConfigDateFormatsArgs:
              interval_month: Optional[pulumi.Input[str]] = None,
              interval_second: Optional[pulumi.Input[str]] = None,
              interval_year: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_timezone is None and 'defaultTimezone' in kwargs:
+            default_timezone = kwargs['defaultTimezone']
+        if full_date is None and 'fullDate' in kwargs:
+            full_date = kwargs['fullDate']
+        if interval_day is None and 'intervalDay' in kwargs:
+            interval_day = kwargs['intervalDay']
+        if interval_hour is None and 'intervalHour' in kwargs:
+            interval_hour = kwargs['intervalHour']
+        if interval_minute is None and 'intervalMinute' in kwargs:
+            interval_minute = kwargs['intervalMinute']
+        if interval_month is None and 'intervalMonth' in kwargs:
+            interval_month = kwargs['intervalMonth']
+        if interval_second is None and 'intervalSecond' in kwargs:
+            interval_second = kwargs['intervalSecond']
+        if interval_year is None and 'intervalYear' in kwargs:
+            interval_year = kwargs['intervalYear']
+
         if default_timezone is not None:
             _setter("default_timezone", default_timezone)
         if full_date is not None:
@@ -3734,11 +4146,27 @@ class GrafanaGrafanaUserConfigExternalImageStorageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: pulumi.Input[str],
-             bucket_url: pulumi.Input[str],
-             provider: pulumi.Input[str],
-             secret_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_key: Optional[pulumi.Input[str]] = None,
+             bucket_url: Optional[pulumi.Input[str]] = None,
+             provider: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if bucket_url is None and 'bucketUrl' in kwargs:
+            bucket_url = kwargs['bucketUrl']
+        if bucket_url is None:
+            raise TypeError("Missing 'bucket_url' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+
         _setter("access_key", access_key)
         _setter("bucket_url", bucket_url)
         _setter("provider", provider)
@@ -3794,9 +4222,13 @@ class GrafanaGrafanaUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -3832,7 +4264,9 @@ class GrafanaGrafanaUserConfigPrivateAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              grafana: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if grafana is not None:
             _setter("grafana", grafana)
 
@@ -3858,7 +4292,9 @@ class GrafanaGrafanaUserConfigPrivatelinkAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              grafana: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if grafana is not None:
             _setter("grafana", grafana)
 
@@ -3884,7 +4320,9 @@ class GrafanaGrafanaUserConfigPublicAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              grafana: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if grafana is not None:
             _setter("grafana", grafana)
 
@@ -3923,15 +4361,31 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_address: pulumi.Input[str],
-             host: pulumi.Input[str],
-             port: pulumi.Input[int],
+             from_address: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              from_name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              skip_verify: Optional[pulumi.Input[bool]] = None,
              starttls_policy: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if from_address is None and 'fromAddress' in kwargs:
+            from_address = kwargs['fromAddress']
+        if from_address is None:
+            raise TypeError("Missing 'from_address' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if from_name is None and 'fromName' in kwargs:
+            from_name = kwargs['fromName']
+        if skip_verify is None and 'skipVerify' in kwargs:
+            skip_verify = kwargs['skipVerify']
+        if starttls_policy is None and 'starttlsPolicy' in kwargs:
+            starttls_policy = kwargs['starttlsPolicy']
+
         _setter("from_address", from_address)
         _setter("host", host)
         _setter("port", port)
@@ -4032,9 +4486,19 @@ class GrafanaServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -4070,9 +4534,15 @@ class GrafanaTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -4125,7 +4595,11 @@ class InfluxDbComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -4217,7 +4691,11 @@ class InfluxDbInfluxdbArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              database_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+
         if database_name is not None:
             _setter("database_name", database_name)
 
@@ -4294,7 +4772,33 @@ class InfluxDbInfluxdbUserConfigArgs:
              recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if recovery_basebackup_name is None and 'recoveryBasebackupName' in kwargs:
+            recovery_basebackup_name = kwargs['recoveryBasebackupName']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -4524,7 +5028,23 @@ class InfluxDbInfluxdbUserConfigInfluxdbArgs:
              max_select_point: Optional[pulumi.Input[int]] = None,
              query_log_enabled: Optional[pulumi.Input[bool]] = None,
              query_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_queries_after is None and 'logQueriesAfter' in kwargs:
+            log_queries_after = kwargs['logQueriesAfter']
+        if max_connection_limit is None and 'maxConnectionLimit' in kwargs:
+            max_connection_limit = kwargs['maxConnectionLimit']
+        if max_row_limit is None and 'maxRowLimit' in kwargs:
+            max_row_limit = kwargs['maxRowLimit']
+        if max_select_buckets is None and 'maxSelectBuckets' in kwargs:
+            max_select_buckets = kwargs['maxSelectBuckets']
+        if max_select_point is None and 'maxSelectPoint' in kwargs:
+            max_select_point = kwargs['maxSelectPoint']
+        if query_log_enabled is None and 'queryLogEnabled' in kwargs:
+            query_log_enabled = kwargs['queryLogEnabled']
+        if query_timeout is None and 'queryTimeout' in kwargs:
+            query_timeout = kwargs['queryTimeout']
+
         if log_queries_after is not None:
             _setter("log_queries_after", log_queries_after)
         if max_connection_limit is not None:
@@ -4642,9 +5162,13 @@ class InfluxDbInfluxdbUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -4689,7 +5213,9 @@ class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              influxdb: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if influxdb is not None:
             _setter("influxdb", influxdb)
 
@@ -4721,7 +5247,9 @@ class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              influxdb: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if influxdb is not None:
             _setter("influxdb", influxdb)
 
@@ -4753,7 +5281,9 @@ class InfluxDbInfluxdbUserConfigPublicAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              influxdb: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if influxdb is not None:
             _setter("influxdb", influxdb)
 
@@ -4787,9 +5317,19 @@ class InfluxDbServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -4835,9 +5375,15 @@ class InfluxDbTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -4896,7 +5442,11 @@ class KafkaComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -5006,7 +5556,11 @@ class KafkaConnectComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -5093,8 +5647,10 @@ class KafkaConnectKafkaConnectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -5133,7 +5689,27 @@ class KafkaConnectKafkaConnectUserConfigArgs:
              privatelink_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs']] = None,
              public_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs']] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
@@ -5254,9 +5830,13 @@ class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -5337,7 +5917,41 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
              producer_max_request_size: Optional[pulumi.Input[int]] = None,
              scheduled_rebalance_max_delay_ms: Optional[pulumi.Input[int]] = None,
              session_timeout_ms: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connector_client_config_override_policy is None and 'connectorClientConfigOverridePolicy' in kwargs:
+            connector_client_config_override_policy = kwargs['connectorClientConfigOverridePolicy']
+        if consumer_auto_offset_reset is None and 'consumerAutoOffsetReset' in kwargs:
+            consumer_auto_offset_reset = kwargs['consumerAutoOffsetReset']
+        if consumer_fetch_max_bytes is None and 'consumerFetchMaxBytes' in kwargs:
+            consumer_fetch_max_bytes = kwargs['consumerFetchMaxBytes']
+        if consumer_isolation_level is None and 'consumerIsolationLevel' in kwargs:
+            consumer_isolation_level = kwargs['consumerIsolationLevel']
+        if consumer_max_partition_fetch_bytes is None and 'consumerMaxPartitionFetchBytes' in kwargs:
+            consumer_max_partition_fetch_bytes = kwargs['consumerMaxPartitionFetchBytes']
+        if consumer_max_poll_interval_ms is None and 'consumerMaxPollIntervalMs' in kwargs:
+            consumer_max_poll_interval_ms = kwargs['consumerMaxPollIntervalMs']
+        if consumer_max_poll_records is None and 'consumerMaxPollRecords' in kwargs:
+            consumer_max_poll_records = kwargs['consumerMaxPollRecords']
+        if offset_flush_interval_ms is None and 'offsetFlushIntervalMs' in kwargs:
+            offset_flush_interval_ms = kwargs['offsetFlushIntervalMs']
+        if offset_flush_timeout_ms is None and 'offsetFlushTimeoutMs' in kwargs:
+            offset_flush_timeout_ms = kwargs['offsetFlushTimeoutMs']
+        if producer_batch_size is None and 'producerBatchSize' in kwargs:
+            producer_batch_size = kwargs['producerBatchSize']
+        if producer_buffer_memory is None and 'producerBufferMemory' in kwargs:
+            producer_buffer_memory = kwargs['producerBufferMemory']
+        if producer_compression_type is None and 'producerCompressionType' in kwargs:
+            producer_compression_type = kwargs['producerCompressionType']
+        if producer_linger_ms is None and 'producerLingerMs' in kwargs:
+            producer_linger_ms = kwargs['producerLingerMs']
+        if producer_max_request_size is None and 'producerMaxRequestSize' in kwargs:
+            producer_max_request_size = kwargs['producerMaxRequestSize']
+        if scheduled_rebalance_max_delay_ms is None and 'scheduledRebalanceMaxDelayMs' in kwargs:
+            scheduled_rebalance_max_delay_ms = kwargs['scheduledRebalanceMaxDelayMs']
+        if session_timeout_ms is None and 'sessionTimeoutMs' in kwargs:
+            session_timeout_ms = kwargs['sessionTimeoutMs']
+
         if connector_client_config_override_policy is not None:
             _setter("connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -5531,7 +6145,11 @@ class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs:
              _setter: Callable[[Any, Any], None],
              kafka_connect: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+
         if kafka_connect is not None:
             _setter("kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -5574,7 +6192,11 @@ class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs:
              jolokia: Optional[pulumi.Input[bool]] = None,
              kafka_connect: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+
         if jolokia is not None:
             _setter("jolokia", jolokia)
         if kafka_connect is not None:
@@ -5625,7 +6247,11 @@ class KafkaConnectKafkaConnectUserConfigPublicAccessArgs:
              _setter: Callable[[Any, Any], None],
              kafka_connect: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+
         if kafka_connect is not None:
             _setter("kafka_connect", kafka_connect)
         if prometheus is not None:
@@ -5663,9 +6289,19 @@ class KafkaConnectServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -5701,9 +6337,15 @@ class KafkaConnectTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -5741,7 +6383,9 @@ class KafkaConnectorTaskArgs:
              _setter: Callable[[Any, Any], None],
              connector: Optional[pulumi.Input[str]] = None,
              task: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if connector is not None:
             _setter("connector", connector)
         if task is not None:
@@ -5790,7 +6434,19 @@ class KafkaKafkaArgs:
              connect_uri: Optional[pulumi.Input[str]] = None,
              rest_uri: Optional[pulumi.Input[str]] = None,
              schema_registry_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_cert is None and 'accessCert' in kwargs:
+            access_cert = kwargs['accessCert']
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if connect_uri is None and 'connectUri' in kwargs:
+            connect_uri = kwargs['connectUri']
+        if rest_uri is None and 'restUri' in kwargs:
+            rest_uri = kwargs['restUri']
+        if schema_registry_uri is None and 'schemaRegistryUri' in kwargs:
+            schema_registry_uri = kwargs['schemaRegistryUri']
+
         if access_cert is not None:
             _setter("access_cert", access_cert)
         if access_key is not None:
@@ -5935,7 +6591,45 @@ class KafkaKafkaUserConfigArgs:
              schema_registry: Optional[pulumi.Input[bool]] = None,
              schema_registry_config: Optional[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs']] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if kafka_authentication_methods is None and 'kafkaAuthenticationMethods' in kwargs:
+            kafka_authentication_methods = kwargs['kafkaAuthenticationMethods']
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+        if kafka_connect_config is None and 'kafkaConnectConfig' in kwargs:
+            kafka_connect_config = kwargs['kafkaConnectConfig']
+        if kafka_rest is None and 'kafkaRest' in kwargs:
+            kafka_rest = kwargs['kafkaRest']
+        if kafka_rest_authorization is None and 'kafkaRestAuthorization' in kwargs:
+            kafka_rest_authorization = kwargs['kafkaRestAuthorization']
+        if kafka_rest_config is None and 'kafkaRestConfig' in kwargs:
+            kafka_rest_config = kwargs['kafkaRestConfig']
+        if kafka_version is None and 'kafkaVersion' in kwargs:
+            kafka_version = kwargs['kafkaVersion']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if schema_registry is None and 'schemaRegistry' in kwargs:
+            schema_registry = kwargs['schemaRegistry']
+        if schema_registry_config is None and 'schemaRegistryConfig' in kwargs:
+            schema_registry_config = kwargs['schemaRegistryConfig']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -6227,9 +6921,13 @@ class KafkaKafkaUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -6426,7 +7124,87 @@ class KafkaKafkaUserConfigKafkaArgs:
              socket_request_max_bytes: Optional[pulumi.Input[int]] = None,
              transaction_remove_expired_transaction_cleanup_interval_ms: Optional[pulumi.Input[int]] = None,
              transaction_state_log_segment_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_create_topics_enable is None and 'autoCreateTopicsEnable' in kwargs:
+            auto_create_topics_enable = kwargs['autoCreateTopicsEnable']
+        if compression_type is None and 'compressionType' in kwargs:
+            compression_type = kwargs['compressionType']
+        if connections_max_idle_ms is None and 'connectionsMaxIdleMs' in kwargs:
+            connections_max_idle_ms = kwargs['connectionsMaxIdleMs']
+        if default_replication_factor is None and 'defaultReplicationFactor' in kwargs:
+            default_replication_factor = kwargs['defaultReplicationFactor']
+        if group_initial_rebalance_delay_ms is None and 'groupInitialRebalanceDelayMs' in kwargs:
+            group_initial_rebalance_delay_ms = kwargs['groupInitialRebalanceDelayMs']
+        if group_max_session_timeout_ms is None and 'groupMaxSessionTimeoutMs' in kwargs:
+            group_max_session_timeout_ms = kwargs['groupMaxSessionTimeoutMs']
+        if group_min_session_timeout_ms is None and 'groupMinSessionTimeoutMs' in kwargs:
+            group_min_session_timeout_ms = kwargs['groupMinSessionTimeoutMs']
+        if log_cleaner_delete_retention_ms is None and 'logCleanerDeleteRetentionMs' in kwargs:
+            log_cleaner_delete_retention_ms = kwargs['logCleanerDeleteRetentionMs']
+        if log_cleaner_max_compaction_lag_ms is None and 'logCleanerMaxCompactionLagMs' in kwargs:
+            log_cleaner_max_compaction_lag_ms = kwargs['logCleanerMaxCompactionLagMs']
+        if log_cleaner_min_cleanable_ratio is None and 'logCleanerMinCleanableRatio' in kwargs:
+            log_cleaner_min_cleanable_ratio = kwargs['logCleanerMinCleanableRatio']
+        if log_cleaner_min_compaction_lag_ms is None and 'logCleanerMinCompactionLagMs' in kwargs:
+            log_cleaner_min_compaction_lag_ms = kwargs['logCleanerMinCompactionLagMs']
+        if log_cleanup_policy is None and 'logCleanupPolicy' in kwargs:
+            log_cleanup_policy = kwargs['logCleanupPolicy']
+        if log_flush_interval_messages is None and 'logFlushIntervalMessages' in kwargs:
+            log_flush_interval_messages = kwargs['logFlushIntervalMessages']
+        if log_flush_interval_ms is None and 'logFlushIntervalMs' in kwargs:
+            log_flush_interval_ms = kwargs['logFlushIntervalMs']
+        if log_index_interval_bytes is None and 'logIndexIntervalBytes' in kwargs:
+            log_index_interval_bytes = kwargs['logIndexIntervalBytes']
+        if log_index_size_max_bytes is None and 'logIndexSizeMaxBytes' in kwargs:
+            log_index_size_max_bytes = kwargs['logIndexSizeMaxBytes']
+        if log_message_downconversion_enable is None and 'logMessageDownconversionEnable' in kwargs:
+            log_message_downconversion_enable = kwargs['logMessageDownconversionEnable']
+        if log_message_timestamp_difference_max_ms is None and 'logMessageTimestampDifferenceMaxMs' in kwargs:
+            log_message_timestamp_difference_max_ms = kwargs['logMessageTimestampDifferenceMaxMs']
+        if log_message_timestamp_type is None and 'logMessageTimestampType' in kwargs:
+            log_message_timestamp_type = kwargs['logMessageTimestampType']
+        if log_preallocate is None and 'logPreallocate' in kwargs:
+            log_preallocate = kwargs['logPreallocate']
+        if log_retention_bytes is None and 'logRetentionBytes' in kwargs:
+            log_retention_bytes = kwargs['logRetentionBytes']
+        if log_retention_hours is None and 'logRetentionHours' in kwargs:
+            log_retention_hours = kwargs['logRetentionHours']
+        if log_retention_ms is None and 'logRetentionMs' in kwargs:
+            log_retention_ms = kwargs['logRetentionMs']
+        if log_roll_jitter_ms is None and 'logRollJitterMs' in kwargs:
+            log_roll_jitter_ms = kwargs['logRollJitterMs']
+        if log_roll_ms is None and 'logRollMs' in kwargs:
+            log_roll_ms = kwargs['logRollMs']
+        if log_segment_bytes is None and 'logSegmentBytes' in kwargs:
+            log_segment_bytes = kwargs['logSegmentBytes']
+        if log_segment_delete_delay_ms is None and 'logSegmentDeleteDelayMs' in kwargs:
+            log_segment_delete_delay_ms = kwargs['logSegmentDeleteDelayMs']
+        if max_connections_per_ip is None and 'maxConnectionsPerIp' in kwargs:
+            max_connections_per_ip = kwargs['maxConnectionsPerIp']
+        if max_incremental_fetch_session_cache_slots is None and 'maxIncrementalFetchSessionCacheSlots' in kwargs:
+            max_incremental_fetch_session_cache_slots = kwargs['maxIncrementalFetchSessionCacheSlots']
+        if message_max_bytes is None and 'messageMaxBytes' in kwargs:
+            message_max_bytes = kwargs['messageMaxBytes']
+        if min_insync_replicas is None and 'minInsyncReplicas' in kwargs:
+            min_insync_replicas = kwargs['minInsyncReplicas']
+        if num_partitions is None and 'numPartitions' in kwargs:
+            num_partitions = kwargs['numPartitions']
+        if offsets_retention_minutes is None and 'offsetsRetentionMinutes' in kwargs:
+            offsets_retention_minutes = kwargs['offsetsRetentionMinutes']
+        if producer_purgatory_purge_interval_requests is None and 'producerPurgatoryPurgeIntervalRequests' in kwargs:
+            producer_purgatory_purge_interval_requests = kwargs['producerPurgatoryPurgeIntervalRequests']
+        if replica_fetch_max_bytes is None and 'replicaFetchMaxBytes' in kwargs:
+            replica_fetch_max_bytes = kwargs['replicaFetchMaxBytes']
+        if replica_fetch_response_max_bytes is None and 'replicaFetchResponseMaxBytes' in kwargs:
+            replica_fetch_response_max_bytes = kwargs['replicaFetchResponseMaxBytes']
+        if socket_request_max_bytes is None and 'socketRequestMaxBytes' in kwargs:
+            socket_request_max_bytes = kwargs['socketRequestMaxBytes']
+        if transaction_remove_expired_transaction_cleanup_interval_ms is None and 'transactionRemoveExpiredTransactionCleanupIntervalMs' in kwargs:
+            transaction_remove_expired_transaction_cleanup_interval_ms = kwargs['transactionRemoveExpiredTransactionCleanupIntervalMs']
+        if transaction_state_log_segment_bytes is None and 'transactionStateLogSegmentBytes' in kwargs:
+            transaction_state_log_segment_bytes = kwargs['transactionStateLogSegmentBytes']
+
         if auto_create_topics_enable is not None:
             _setter("auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -6994,7 +7772,9 @@ class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs:
              _setter: Callable[[Any, Any], None],
              certificate: Optional[pulumi.Input[bool]] = None,
              sasl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if certificate is not None:
             _setter("certificate", certificate)
         if sasl is not None:
@@ -7100,7 +7880,41 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
              producer_max_request_size: Optional[pulumi.Input[int]] = None,
              scheduled_rebalance_max_delay_ms: Optional[pulumi.Input[int]] = None,
              session_timeout_ms: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connector_client_config_override_policy is None and 'connectorClientConfigOverridePolicy' in kwargs:
+            connector_client_config_override_policy = kwargs['connectorClientConfigOverridePolicy']
+        if consumer_auto_offset_reset is None and 'consumerAutoOffsetReset' in kwargs:
+            consumer_auto_offset_reset = kwargs['consumerAutoOffsetReset']
+        if consumer_fetch_max_bytes is None and 'consumerFetchMaxBytes' in kwargs:
+            consumer_fetch_max_bytes = kwargs['consumerFetchMaxBytes']
+        if consumer_isolation_level is None and 'consumerIsolationLevel' in kwargs:
+            consumer_isolation_level = kwargs['consumerIsolationLevel']
+        if consumer_max_partition_fetch_bytes is None and 'consumerMaxPartitionFetchBytes' in kwargs:
+            consumer_max_partition_fetch_bytes = kwargs['consumerMaxPartitionFetchBytes']
+        if consumer_max_poll_interval_ms is None and 'consumerMaxPollIntervalMs' in kwargs:
+            consumer_max_poll_interval_ms = kwargs['consumerMaxPollIntervalMs']
+        if consumer_max_poll_records is None and 'consumerMaxPollRecords' in kwargs:
+            consumer_max_poll_records = kwargs['consumerMaxPollRecords']
+        if offset_flush_interval_ms is None and 'offsetFlushIntervalMs' in kwargs:
+            offset_flush_interval_ms = kwargs['offsetFlushIntervalMs']
+        if offset_flush_timeout_ms is None and 'offsetFlushTimeoutMs' in kwargs:
+            offset_flush_timeout_ms = kwargs['offsetFlushTimeoutMs']
+        if producer_batch_size is None and 'producerBatchSize' in kwargs:
+            producer_batch_size = kwargs['producerBatchSize']
+        if producer_buffer_memory is None and 'producerBufferMemory' in kwargs:
+            producer_buffer_memory = kwargs['producerBufferMemory']
+        if producer_compression_type is None and 'producerCompressionType' in kwargs:
+            producer_compression_type = kwargs['producerCompressionType']
+        if producer_linger_ms is None and 'producerLingerMs' in kwargs:
+            producer_linger_ms = kwargs['producerLingerMs']
+        if producer_max_request_size is None and 'producerMaxRequestSize' in kwargs:
+            producer_max_request_size = kwargs['producerMaxRequestSize']
+        if scheduled_rebalance_max_delay_ms is None and 'scheduledRebalanceMaxDelayMs' in kwargs:
+            scheduled_rebalance_max_delay_ms = kwargs['scheduledRebalanceMaxDelayMs']
+        if session_timeout_ms is None and 'sessionTimeoutMs' in kwargs:
+            session_timeout_ms = kwargs['sessionTimeoutMs']
+
         if connector_client_config_override_policy is not None:
             _setter("connector_client_config_override_policy", connector_client_config_override_policy)
         if consumer_auto_offset_reset is not None:
@@ -7370,7 +8184,25 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
              producer_linger_ms: Optional[pulumi.Input[int]] = None,
              producer_max_request_size: Optional[pulumi.Input[int]] = None,
              simpleconsumer_pool_size_max: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_enable_auto_commit is None and 'consumerEnableAutoCommit' in kwargs:
+            consumer_enable_auto_commit = kwargs['consumerEnableAutoCommit']
+        if consumer_request_max_bytes is None and 'consumerRequestMaxBytes' in kwargs:
+            consumer_request_max_bytes = kwargs['consumerRequestMaxBytes']
+        if consumer_request_timeout_ms is None and 'consumerRequestTimeoutMs' in kwargs:
+            consumer_request_timeout_ms = kwargs['consumerRequestTimeoutMs']
+        if producer_acks is None and 'producerAcks' in kwargs:
+            producer_acks = kwargs['producerAcks']
+        if producer_compression_type is None and 'producerCompressionType' in kwargs:
+            producer_compression_type = kwargs['producerCompressionType']
+        if producer_linger_ms is None and 'producerLingerMs' in kwargs:
+            producer_linger_ms = kwargs['producerLingerMs']
+        if producer_max_request_size is None and 'producerMaxRequestSize' in kwargs:
+            producer_max_request_size = kwargs['producerMaxRequestSize']
+        if simpleconsumer_pool_size_max is None and 'simpleconsumerPoolSizeMax' in kwargs:
+            simpleconsumer_pool_size_max = kwargs['simpleconsumerPoolSizeMax']
+
         if consumer_enable_auto_commit is not None:
             _setter("consumer_enable_auto_commit", consumer_enable_auto_commit)
         if consumer_request_max_bytes is not None:
@@ -7516,7 +8348,15 @@ class KafkaKafkaUserConfigPrivateAccessArgs:
              kafka_rest: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
              schema_registry: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+        if kafka_rest is None and 'kafkaRest' in kwargs:
+            kafka_rest = kwargs['kafkaRest']
+        if schema_registry is None and 'schemaRegistry' in kwargs:
+            schema_registry = kwargs['schemaRegistry']
+
         if kafka is not None:
             _setter("kafka", kafka)
         if kafka_connect is not None:
@@ -7624,7 +8464,15 @@ class KafkaKafkaUserConfigPrivatelinkAccessArgs:
              kafka_rest: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
              schema_registry: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+        if kafka_rest is None and 'kafkaRest' in kwargs:
+            kafka_rest = kwargs['kafkaRest']
+        if schema_registry is None and 'schemaRegistry' in kwargs:
+            schema_registry = kwargs['schemaRegistry']
+
         if jolokia is not None:
             _setter("jolokia", jolokia)
         if kafka is not None:
@@ -7742,7 +8590,15 @@ class KafkaKafkaUserConfigPublicAccessArgs:
              kafka_rest: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
              schema_registry: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+        if kafka_rest is None and 'kafkaRest' in kwargs:
+            kafka_rest = kwargs['kafkaRest']
+        if schema_registry is None and 'schemaRegistry' in kwargs:
+            schema_registry = kwargs['schemaRegistry']
+
         if kafka is not None:
             _setter("kafka", kafka)
         if kafka_connect is not None:
@@ -7834,7 +8690,13 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
              _setter: Callable[[Any, Any], None],
              leader_eligibility: Optional[pulumi.Input[bool]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if leader_eligibility is None and 'leaderEligibility' in kwargs:
+            leader_eligibility = kwargs['leaderEligibility']
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if leader_eligibility is not None:
             _setter("leader_eligibility", leader_eligibility)
         if topic_name is not None:
@@ -7895,7 +8757,11 @@ class KafkaMirrorMakerComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -7982,8 +8848,10 @@ class KafkaMirrorMakerKafkaMirrormakerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -8013,7 +8881,21 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
              ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              kafka_mirrormaker: Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if kafka_mirrormaker is None and 'kafkaMirrormaker' in kwargs:
+            kafka_mirrormaker = kwargs['kafkaMirrormaker']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
@@ -8101,9 +8983,13 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -8166,7 +9052,29 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
              sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
              sync_topic_configs_enabled: Optional[pulumi.Input[bool]] = None,
              tasks_max_per_cpu: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if emit_checkpoints_enabled is None and 'emitCheckpointsEnabled' in kwargs:
+            emit_checkpoints_enabled = kwargs['emitCheckpointsEnabled']
+        if emit_checkpoints_interval_seconds is None and 'emitCheckpointsIntervalSeconds' in kwargs:
+            emit_checkpoints_interval_seconds = kwargs['emitCheckpointsIntervalSeconds']
+        if refresh_groups_enabled is None and 'refreshGroupsEnabled' in kwargs:
+            refresh_groups_enabled = kwargs['refreshGroupsEnabled']
+        if refresh_groups_interval_seconds is None and 'refreshGroupsIntervalSeconds' in kwargs:
+            refresh_groups_interval_seconds = kwargs['refreshGroupsIntervalSeconds']
+        if refresh_topics_enabled is None and 'refreshTopicsEnabled' in kwargs:
+            refresh_topics_enabled = kwargs['refreshTopicsEnabled']
+        if refresh_topics_interval_seconds is None and 'refreshTopicsIntervalSeconds' in kwargs:
+            refresh_topics_interval_seconds = kwargs['refreshTopicsIntervalSeconds']
+        if sync_group_offsets_enabled is None and 'syncGroupOffsetsEnabled' in kwargs:
+            sync_group_offsets_enabled = kwargs['syncGroupOffsetsEnabled']
+        if sync_group_offsets_interval_seconds is None and 'syncGroupOffsetsIntervalSeconds' in kwargs:
+            sync_group_offsets_interval_seconds = kwargs['syncGroupOffsetsIntervalSeconds']
+        if sync_topic_configs_enabled is None and 'syncTopicConfigsEnabled' in kwargs:
+            sync_topic_configs_enabled = kwargs['syncTopicConfigsEnabled']
+        if tasks_max_per_cpu is None and 'tasksMaxPerCpu' in kwargs:
+            tasks_max_per_cpu = kwargs['tasksMaxPerCpu']
+
         if emit_checkpoints_enabled is not None:
             _setter("emit_checkpoints_enabled", emit_checkpoints_enabled)
         if emit_checkpoints_interval_seconds is not None:
@@ -8292,9 +9200,19 @@ class KafkaMirrorMakerServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -8330,9 +9248,15 @@ class KafkaMirrorMakerTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -8372,9 +9296,19 @@ class KafkaServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -8420,9 +9354,15 @@ class KafkaTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -8558,7 +9498,55 @@ class KafkaTopicConfigArgs:
              segment_jitter_ms: Optional[pulumi.Input[str]] = None,
              segment_ms: Optional[pulumi.Input[str]] = None,
              unclean_leader_election_enable: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cleanup_policy is None and 'cleanupPolicy' in kwargs:
+            cleanup_policy = kwargs['cleanupPolicy']
+        if compression_type is None and 'compressionType' in kwargs:
+            compression_type = kwargs['compressionType']
+        if delete_retention_ms is None and 'deleteRetentionMs' in kwargs:
+            delete_retention_ms = kwargs['deleteRetentionMs']
+        if file_delete_delay_ms is None and 'fileDeleteDelayMs' in kwargs:
+            file_delete_delay_ms = kwargs['fileDeleteDelayMs']
+        if flush_messages is None and 'flushMessages' in kwargs:
+            flush_messages = kwargs['flushMessages']
+        if flush_ms is None and 'flushMs' in kwargs:
+            flush_ms = kwargs['flushMs']
+        if index_interval_bytes is None and 'indexIntervalBytes' in kwargs:
+            index_interval_bytes = kwargs['indexIntervalBytes']
+        if max_compaction_lag_ms is None and 'maxCompactionLagMs' in kwargs:
+            max_compaction_lag_ms = kwargs['maxCompactionLagMs']
+        if max_message_bytes is None and 'maxMessageBytes' in kwargs:
+            max_message_bytes = kwargs['maxMessageBytes']
+        if message_downconversion_enable is None and 'messageDownconversionEnable' in kwargs:
+            message_downconversion_enable = kwargs['messageDownconversionEnable']
+        if message_format_version is None and 'messageFormatVersion' in kwargs:
+            message_format_version = kwargs['messageFormatVersion']
+        if message_timestamp_difference_max_ms is None and 'messageTimestampDifferenceMaxMs' in kwargs:
+            message_timestamp_difference_max_ms = kwargs['messageTimestampDifferenceMaxMs']
+        if message_timestamp_type is None and 'messageTimestampType' in kwargs:
+            message_timestamp_type = kwargs['messageTimestampType']
+        if min_cleanable_dirty_ratio is None and 'minCleanableDirtyRatio' in kwargs:
+            min_cleanable_dirty_ratio = kwargs['minCleanableDirtyRatio']
+        if min_compaction_lag_ms is None and 'minCompactionLagMs' in kwargs:
+            min_compaction_lag_ms = kwargs['minCompactionLagMs']
+        if min_insync_replicas is None and 'minInsyncReplicas' in kwargs:
+            min_insync_replicas = kwargs['minInsyncReplicas']
+        if retention_bytes is None and 'retentionBytes' in kwargs:
+            retention_bytes = kwargs['retentionBytes']
+        if retention_ms is None and 'retentionMs' in kwargs:
+            retention_ms = kwargs['retentionMs']
+        if segment_bytes is None and 'segmentBytes' in kwargs:
+            segment_bytes = kwargs['segmentBytes']
+        if segment_index_bytes is None and 'segmentIndexBytes' in kwargs:
+            segment_index_bytes = kwargs['segmentIndexBytes']
+        if segment_jitter_ms is None and 'segmentJitterMs' in kwargs:
+            segment_jitter_ms = kwargs['segmentJitterMs']
+        if segment_ms is None and 'segmentMs' in kwargs:
+            segment_ms = kwargs['segmentMs']
+        if unclean_leader_election_enable is None and 'uncleanLeaderElectionEnable' in kwargs:
+            unclean_leader_election_enable = kwargs['uncleanLeaderElectionEnable']
+
         if cleanup_policy is not None:
             _setter("cleanup_policy", cleanup_policy)
         if compression_type is not None:
@@ -8920,9 +9908,13 @@ class KafkaTopicTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if value is not None:
             _setter("value", value)
@@ -8982,7 +9974,11 @@ class M3AggregatorComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -9069,8 +10065,10 @@ class M3AggregatorM3aggregatorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -9103,7 +10101,23 @@ class M3AggregatorM3aggregatorUserConfigArgs:
              m3_version: Optional[pulumi.Input[str]] = None,
              m3aggregator_version: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if m3_version is None and 'm3Version' in kwargs:
+            m3_version = kwargs['m3Version']
+        if m3aggregator_version is None and 'm3aggregatorVersion' in kwargs:
+            m3aggregator_version = kwargs['m3aggregatorVersion']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if custom_domain is not None:
             _setter("custom_domain", custom_domain)
         if ip_filter_objects is not None:
@@ -9208,9 +10222,13 @@ class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -9247,9 +10265,19 @@ class M3AggregatorServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -9285,9 +10313,15 @@ class M3AggregatorTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -9340,7 +10374,11 @@ class M3DbComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -9427,8 +10465,10 @@ class M3DbM3dbArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -9491,7 +10531,35 @@ class M3DbM3dbUserConfigArgs:
              rules: Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']] = None,
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if m3_version is None and 'm3Version' in kwargs:
+            m3_version = kwargs['m3Version']
+        if m3coordinator_enable_graphite_carbon_ingest is None and 'm3coordinatorEnableGraphiteCarbonIngest' in kwargs:
+            m3coordinator_enable_graphite_carbon_ingest = kwargs['m3coordinatorEnableGraphiteCarbonIngest']
+        if m3db_version is None and 'm3dbVersion' in kwargs:
+            m3db_version = kwargs['m3dbVersion']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -9706,9 +10774,13 @@ class M3DbM3dbUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -9759,7 +10831,21 @@ class M3DbM3dbUserConfigLimitsArgs:
              query_docs: Optional[pulumi.Input[int]] = None,
              query_require_exhaustive: Optional[pulumi.Input[bool]] = None,
              query_series: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_recently_queried_series_blocks is None and 'maxRecentlyQueriedSeriesBlocks' in kwargs:
+            max_recently_queried_series_blocks = kwargs['maxRecentlyQueriedSeriesBlocks']
+        if max_recently_queried_series_disk_bytes_read is None and 'maxRecentlyQueriedSeriesDiskBytesRead' in kwargs:
+            max_recently_queried_series_disk_bytes_read = kwargs['maxRecentlyQueriedSeriesDiskBytesRead']
+        if max_recently_queried_series_lookback is None and 'maxRecentlyQueriedSeriesLookback' in kwargs:
+            max_recently_queried_series_lookback = kwargs['maxRecentlyQueriedSeriesLookback']
+        if query_docs is None and 'queryDocs' in kwargs:
+            query_docs = kwargs['queryDocs']
+        if query_require_exhaustive is None and 'queryRequireExhaustive' in kwargs:
+            query_require_exhaustive = kwargs['queryRequireExhaustive']
+        if query_series is None and 'querySeries' in kwargs:
+            query_series = kwargs['querySeries']
+
         if max_recently_queried_series_blocks is not None:
             _setter("max_recently_queried_series_blocks", max_recently_queried_series_blocks)
         if max_recently_queried_series_disk_bytes_read is not None:
@@ -9840,7 +10926,11 @@ class M3DbM3dbUserConfigM3Args:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag_options: Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag_options is None and 'tagOptions' in kwargs:
+            tag_options = kwargs['tagOptions']
+
         if tag_options is not None:
             _setter("tag_options", tag_options)
 
@@ -9869,7 +10959,13 @@ class M3DbM3dbUserConfigM3TagOptionsArgs:
              _setter: Callable[[Any, Any], None],
              allow_tag_name_duplicates: Optional[pulumi.Input[bool]] = None,
              allow_tag_value_empty: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_tag_name_duplicates is None and 'allowTagNameDuplicates' in kwargs:
+            allow_tag_name_duplicates = kwargs['allowTagNameDuplicates']
+        if allow_tag_value_empty is None and 'allowTagValueEmpty' in kwargs:
+            allow_tag_value_empty = kwargs['allowTagValueEmpty']
+
         if allow_tag_name_duplicates is not None:
             _setter("allow_tag_name_duplicates", allow_tag_name_duplicates)
         if allow_tag_value_empty is not None:
@@ -9911,11 +11007,17 @@ class M3DbM3dbUserConfigNamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgs']] = None,
              resolution: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("name", name)
         _setter("type", type)
         if options is not None:
@@ -9978,7 +11080,15 @@ class M3DbM3dbUserConfigNamespaceOptionsArgs:
              retention_options: Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs']] = None,
              snapshot_enabled: Optional[pulumi.Input[bool]] = None,
              writes_to_commitlog: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if retention_options is None and 'retentionOptions' in kwargs:
+            retention_options = kwargs['retentionOptions']
+        if snapshot_enabled is None and 'snapshotEnabled' in kwargs:
+            snapshot_enabled = kwargs['snapshotEnabled']
+        if writes_to_commitlog is None and 'writesToCommitlog' in kwargs:
+            writes_to_commitlog = kwargs['writesToCommitlog']
+
         if retention_options is not None:
             _setter("retention_options", retention_options)
         if snapshot_enabled is not None:
@@ -10038,7 +11148,19 @@ class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs:
              buffer_future_duration: Optional[pulumi.Input[str]] = None,
              buffer_past_duration: Optional[pulumi.Input[str]] = None,
              retention_period_duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if block_data_expiry_duration is None and 'blockDataExpiryDuration' in kwargs:
+            block_data_expiry_duration = kwargs['blockDataExpiryDuration']
+        if blocksize_duration is None and 'blocksizeDuration' in kwargs:
+            blocksize_duration = kwargs['blocksizeDuration']
+        if buffer_future_duration is None and 'bufferFutureDuration' in kwargs:
+            buffer_future_duration = kwargs['bufferFutureDuration']
+        if buffer_past_duration is None and 'bufferPastDuration' in kwargs:
+            buffer_past_duration = kwargs['bufferPastDuration']
+        if retention_period_duration is None and 'retentionPeriodDuration' in kwargs:
+            retention_period_duration = kwargs['retentionPeriodDuration']
+
         if block_data_expiry_duration is not None:
             _setter("block_data_expiry_duration", block_data_expiry_duration)
         if blocksize_duration is not None:
@@ -10108,7 +11230,9 @@ class M3DbM3dbUserConfigPrivateAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              m3coordinator: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if m3coordinator is not None:
             _setter("m3coordinator", m3coordinator)
 
@@ -10134,7 +11258,9 @@ class M3DbM3dbUserConfigPublicAccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              m3coordinator: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if m3coordinator is not None:
             _setter("m3coordinator", m3coordinator)
 
@@ -10160,7 +11286,9 @@ class M3DbM3dbUserConfigRulesArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              mappings: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mappings is not None:
             _setter("mappings", mappings)
 
@@ -10199,7 +11327,7 @@ class M3DbM3dbUserConfigRulesMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
              aggregations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              drop: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -10207,7 +11335,15 @@ class M3DbM3dbUserConfigRulesMappingArgs:
              namespaces_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]] = None,
              namespaces_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if namespaces_objects is None and 'namespacesObjects' in kwargs:
+            namespaces_objects = kwargs['namespacesObjects']
+        if namespaces_strings is None and 'namespacesStrings' in kwargs:
+            namespaces_strings = kwargs['namespacesStrings']
+
         _setter("filter", filter)
         if aggregations is not None:
             _setter("aggregations", aggregations)
@@ -10318,7 +11454,9 @@ class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs:
              _setter: Callable[[Any, Any], None],
              resolution: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if resolution is not None:
             _setter("resolution", resolution)
         if retention is not None:
@@ -10356,9 +11494,15 @@ class M3DbM3dbUserConfigRulesMappingTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -10394,9 +11538,19 @@ class M3DbServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -10432,9 +11586,15 @@ class M3DbTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -10487,7 +11647,11 @@ class MySqlComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -10574,8 +11738,10 @@ class MySqlMysqlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -10644,7 +11810,43 @@ class MySqlMysqlUserConfigArgs:
              recovery_target_time: Optional[pulumi.Input[str]] = None,
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if admin_password is None and 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if admin_username is None and 'adminUsername' in kwargs:
+            admin_username = kwargs['adminUsername']
+        if backup_hour is None and 'backupHour' in kwargs:
+            backup_hour = kwargs['backupHour']
+        if backup_minute is None and 'backupMinute' in kwargs:
+            backup_minute = kwargs['backupMinute']
+        if binlog_retention_period is None and 'binlogRetentionPeriod' in kwargs:
+            binlog_retention_period = kwargs['binlogRetentionPeriod']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if mysql_version is None and 'mysqlVersion' in kwargs:
+            mysql_version = kwargs['mysqlVersion']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if recovery_target_time is None and 'recoveryTargetTime' in kwargs:
+            recovery_target_time = kwargs['recoveryTargetTime']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if admin_password is not None:
@@ -10875,9 +12077,13 @@ class MySqlMysqlUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -10926,15 +12132,23 @@ class MySqlMysqlUserConfigMigrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             port: pulumi.Input[int],
+             host: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              dbname: Optional[pulumi.Input[str]] = None,
              ignore_dbs: Optional[pulumi.Input[str]] = None,
              method: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if ignore_dbs is None and 'ignoreDbs' in kwargs:
+            ignore_dbs = kwargs['ignoreDbs']
+
         _setter("host", host)
         _setter("port", port)
         if dbname is not None:
@@ -11122,7 +12336,69 @@ class MySqlMysqlUserConfigMysqlArgs:
              sql_require_primary_key: Optional[pulumi.Input[bool]] = None,
              tmp_table_size: Optional[pulumi.Input[int]] = None,
              wait_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
+            default_time_zone = kwargs['defaultTimeZone']
+        if group_concat_max_len is None and 'groupConcatMaxLen' in kwargs:
+            group_concat_max_len = kwargs['groupConcatMaxLen']
+        if information_schema_stats_expiry is None and 'informationSchemaStatsExpiry' in kwargs:
+            information_schema_stats_expiry = kwargs['informationSchemaStatsExpiry']
+        if innodb_change_buffer_max_size is None and 'innodbChangeBufferMaxSize' in kwargs:
+            innodb_change_buffer_max_size = kwargs['innodbChangeBufferMaxSize']
+        if innodb_flush_neighbors is None and 'innodbFlushNeighbors' in kwargs:
+            innodb_flush_neighbors = kwargs['innodbFlushNeighbors']
+        if innodb_ft_min_token_size is None and 'innodbFtMinTokenSize' in kwargs:
+            innodb_ft_min_token_size = kwargs['innodbFtMinTokenSize']
+        if innodb_ft_server_stopword_table is None and 'innodbFtServerStopwordTable' in kwargs:
+            innodb_ft_server_stopword_table = kwargs['innodbFtServerStopwordTable']
+        if innodb_lock_wait_timeout is None and 'innodbLockWaitTimeout' in kwargs:
+            innodb_lock_wait_timeout = kwargs['innodbLockWaitTimeout']
+        if innodb_log_buffer_size is None and 'innodbLogBufferSize' in kwargs:
+            innodb_log_buffer_size = kwargs['innodbLogBufferSize']
+        if innodb_online_alter_log_max_size is None and 'innodbOnlineAlterLogMaxSize' in kwargs:
+            innodb_online_alter_log_max_size = kwargs['innodbOnlineAlterLogMaxSize']
+        if innodb_print_all_deadlocks is None and 'innodbPrintAllDeadlocks' in kwargs:
+            innodb_print_all_deadlocks = kwargs['innodbPrintAllDeadlocks']
+        if innodb_read_io_threads is None and 'innodbReadIoThreads' in kwargs:
+            innodb_read_io_threads = kwargs['innodbReadIoThreads']
+        if innodb_rollback_on_timeout is None and 'innodbRollbackOnTimeout' in kwargs:
+            innodb_rollback_on_timeout = kwargs['innodbRollbackOnTimeout']
+        if innodb_thread_concurrency is None and 'innodbThreadConcurrency' in kwargs:
+            innodb_thread_concurrency = kwargs['innodbThreadConcurrency']
+        if innodb_write_io_threads is None and 'innodbWriteIoThreads' in kwargs:
+            innodb_write_io_threads = kwargs['innodbWriteIoThreads']
+        if interactive_timeout is None and 'interactiveTimeout' in kwargs:
+            interactive_timeout = kwargs['interactiveTimeout']
+        if internal_tmp_mem_storage_engine is None and 'internalTmpMemStorageEngine' in kwargs:
+            internal_tmp_mem_storage_engine = kwargs['internalTmpMemStorageEngine']
+        if long_query_time is None and 'longQueryTime' in kwargs:
+            long_query_time = kwargs['longQueryTime']
+        if max_allowed_packet is None and 'maxAllowedPacket' in kwargs:
+            max_allowed_packet = kwargs['maxAllowedPacket']
+        if max_heap_table_size is None and 'maxHeapTableSize' in kwargs:
+            max_heap_table_size = kwargs['maxHeapTableSize']
+        if net_buffer_length is None and 'netBufferLength' in kwargs:
+            net_buffer_length = kwargs['netBufferLength']
+        if net_read_timeout is None and 'netReadTimeout' in kwargs:
+            net_read_timeout = kwargs['netReadTimeout']
+        if net_write_timeout is None and 'netWriteTimeout' in kwargs:
+            net_write_timeout = kwargs['netWriteTimeout']
+        if slow_query_log is None and 'slowQueryLog' in kwargs:
+            slow_query_log = kwargs['slowQueryLog']
+        if sort_buffer_size is None and 'sortBufferSize' in kwargs:
+            sort_buffer_size = kwargs['sortBufferSize']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+        if sql_require_primary_key is None and 'sqlRequirePrimaryKey' in kwargs:
+            sql_require_primary_key = kwargs['sqlRequirePrimaryKey']
+        if tmp_table_size is None and 'tmpTableSize' in kwargs:
+            tmp_table_size = kwargs['tmpTableSize']
+        if wait_timeout is None and 'waitTimeout' in kwargs:
+            wait_timeout = kwargs['waitTimeout']
+
         if connect_timeout is not None:
             _setter("connect_timeout", connect_timeout)
         if default_time_zone is not None:
@@ -11473,7 +12749,9 @@ class MySqlMysqlUserConfigPrivateAccessArgs:
              mysql: Optional[pulumi.Input[bool]] = None,
              mysqlx: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mysql is not None:
             _setter("mysql", mysql)
         if mysqlx is not None:
@@ -11527,7 +12805,9 @@ class MySqlMysqlUserConfigPrivatelinkAccessArgs:
              mysql: Optional[pulumi.Input[bool]] = None,
              mysqlx: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mysql is not None:
             _setter("mysql", mysql)
         if mysqlx is not None:
@@ -11581,7 +12861,9 @@ class MySqlMysqlUserConfigPublicAccessArgs:
              mysql: Optional[pulumi.Input[bool]] = None,
              mysqlx: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mysql is not None:
             _setter("mysql", mysql)
         if mysqlx is not None:
@@ -11630,9 +12912,19 @@ class MySqlServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -11668,9 +12960,15 @@ class MySqlTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -11723,7 +13021,11 @@ class OpenSearchComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -11815,7 +13117,11 @@ class OpenSearchOpensearchArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              opensearch_dashboards_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if opensearch_dashboards_uri is None and 'opensearchDashboardsUri' in kwargs:
+            opensearch_dashboards_uri = kwargs['opensearchDashboardsUri']
+
         if opensearch_dashboards_uri is not None:
             _setter("opensearch_dashboards_uri", opensearch_dashboards_uri)
 
@@ -11928,7 +13234,47 @@ class OpenSearchOpensearchUserConfigArgs:
              saml: Optional[pulumi.Input['OpenSearchOpensearchUserConfigSamlArgs']] = None,
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+        if disable_replication_factor_adjustment is None and 'disableReplicationFactorAdjustment' in kwargs:
+            disable_replication_factor_adjustment = kwargs['disableReplicationFactorAdjustment']
+        if index_patterns is None and 'indexPatterns' in kwargs:
+            index_patterns = kwargs['indexPatterns']
+        if index_template is None and 'indexTemplate' in kwargs:
+            index_template = kwargs['indexTemplate']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if keep_index_refresh_interval is None and 'keepIndexRefreshInterval' in kwargs:
+            keep_index_refresh_interval = kwargs['keepIndexRefreshInterval']
+        if max_index_count is None and 'maxIndexCount' in kwargs:
+            max_index_count = kwargs['maxIndexCount']
+        if opensearch_dashboards is None and 'opensearchDashboards' in kwargs:
+            opensearch_dashboards = kwargs['opensearchDashboards']
+        if opensearch_version is None and 'opensearchVersion' in kwargs:
+            opensearch_version = kwargs['opensearchVersion']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if recovery_basebackup_name is None and 'recoveryBasebackupName' in kwargs:
+            recovery_basebackup_name = kwargs['recoveryBasebackupName']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -12277,10 +13623,20 @@ class OpenSearchOpensearchUserConfigIndexPatternArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_index_count: pulumi.Input[int],
-             pattern: pulumi.Input[str],
+             max_index_count: Optional[pulumi.Input[int]] = None,
+             pattern: Optional[pulumi.Input[str]] = None,
              sorting_algorithm: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_index_count is None and 'maxIndexCount' in kwargs:
+            max_index_count = kwargs['maxIndexCount']
+        if max_index_count is None:
+            raise TypeError("Missing 'max_index_count' argument")
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if sorting_algorithm is None and 'sortingAlgorithm' in kwargs:
+            sorting_algorithm = kwargs['sortingAlgorithm']
+
         _setter("max_index_count", max_index_count)
         _setter("pattern", pattern)
         if sorting_algorithm is not None:
@@ -12346,7 +13702,15 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
              mapping_nested_objects_limit: Optional[pulumi.Input[int]] = None,
              number_of_replicas: Optional[pulumi.Input[int]] = None,
              number_of_shards: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mapping_nested_objects_limit is None and 'mappingNestedObjectsLimit' in kwargs:
+            mapping_nested_objects_limit = kwargs['mappingNestedObjectsLimit']
+        if number_of_replicas is None and 'numberOfReplicas' in kwargs:
+            number_of_replicas = kwargs['numberOfReplicas']
+        if number_of_shards is None and 'numberOfShards' in kwargs:
+            number_of_shards = kwargs['numberOfShards']
+
         if mapping_nested_objects_limit is not None:
             _setter("mapping_nested_objects_limit", mapping_nested_objects_limit)
         if number_of_replicas is not None:
@@ -12408,9 +13772,13 @@ class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -12487,9 +13855,9 @@ class OpenSearchOpensearchUserConfigOpenidArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
-             connect_url: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             connect_url: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              header: Optional[pulumi.Input[str]] = None,
              jwt_header: Optional[pulumi.Input[str]] = None,
@@ -12499,7 +13867,33 @@ class OpenSearchOpensearchUserConfigOpenidArgs:
              roles_key: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              subject_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if connect_url is None and 'connectUrl' in kwargs:
+            connect_url = kwargs['connectUrl']
+        if connect_url is None:
+            raise TypeError("Missing 'connect_url' argument")
+        if jwt_header is None and 'jwtHeader' in kwargs:
+            jwt_header = kwargs['jwtHeader']
+        if jwt_url_parameter is None and 'jwtUrlParameter' in kwargs:
+            jwt_url_parameter = kwargs['jwtUrlParameter']
+        if refresh_rate_limit_count is None and 'refreshRateLimitCount' in kwargs:
+            refresh_rate_limit_count = kwargs['refreshRateLimitCount']
+        if refresh_rate_limit_time_window_ms is None and 'refreshRateLimitTimeWindowMs' in kwargs:
+            refresh_rate_limit_time_window_ms = kwargs['refreshRateLimitTimeWindowMs']
+        if roles_key is None and 'rolesKey' in kwargs:
+            roles_key = kwargs['rolesKey']
+        if subject_key is None and 'subjectKey' in kwargs:
+            subject_key = kwargs['subjectKey']
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         _setter("connect_url", connect_url)
@@ -12802,7 +14196,71 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
              thread_pool_search_throttled_size: Optional[pulumi.Input[int]] = None,
              thread_pool_write_queue_size: Optional[pulumi.Input[int]] = None,
              thread_pool_write_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action_auto_create_index_enabled is None and 'actionAutoCreateIndexEnabled' in kwargs:
+            action_auto_create_index_enabled = kwargs['actionAutoCreateIndexEnabled']
+        if action_destructive_requires_name is None and 'actionDestructiveRequiresName' in kwargs:
+            action_destructive_requires_name = kwargs['actionDestructiveRequiresName']
+        if cluster_max_shards_per_node is None and 'clusterMaxShardsPerNode' in kwargs:
+            cluster_max_shards_per_node = kwargs['clusterMaxShardsPerNode']
+        if cluster_routing_allocation_node_concurrent_recoveries is None and 'clusterRoutingAllocationNodeConcurrentRecoveries' in kwargs:
+            cluster_routing_allocation_node_concurrent_recoveries = kwargs['clusterRoutingAllocationNodeConcurrentRecoveries']
+        if email_sender_name is None and 'emailSenderName' in kwargs:
+            email_sender_name = kwargs['emailSenderName']
+        if email_sender_password is None and 'emailSenderPassword' in kwargs:
+            email_sender_password = kwargs['emailSenderPassword']
+        if email_sender_username is None and 'emailSenderUsername' in kwargs:
+            email_sender_username = kwargs['emailSenderUsername']
+        if http_max_content_length is None and 'httpMaxContentLength' in kwargs:
+            http_max_content_length = kwargs['httpMaxContentLength']
+        if http_max_header_size is None and 'httpMaxHeaderSize' in kwargs:
+            http_max_header_size = kwargs['httpMaxHeaderSize']
+        if http_max_initial_line_length is None and 'httpMaxInitialLineLength' in kwargs:
+            http_max_initial_line_length = kwargs['httpMaxInitialLineLength']
+        if indices_fielddata_cache_size is None and 'indicesFielddataCacheSize' in kwargs:
+            indices_fielddata_cache_size = kwargs['indicesFielddataCacheSize']
+        if indices_memory_index_buffer_size is None and 'indicesMemoryIndexBufferSize' in kwargs:
+            indices_memory_index_buffer_size = kwargs['indicesMemoryIndexBufferSize']
+        if indices_queries_cache_size is None and 'indicesQueriesCacheSize' in kwargs:
+            indices_queries_cache_size = kwargs['indicesQueriesCacheSize']
+        if indices_query_bool_max_clause_count is None and 'indicesQueryBoolMaxClauseCount' in kwargs:
+            indices_query_bool_max_clause_count = kwargs['indicesQueryBoolMaxClauseCount']
+        if indices_recovery_max_bytes_per_sec is None and 'indicesRecoveryMaxBytesPerSec' in kwargs:
+            indices_recovery_max_bytes_per_sec = kwargs['indicesRecoveryMaxBytesPerSec']
+        if indices_recovery_max_concurrent_file_chunks is None and 'indicesRecoveryMaxConcurrentFileChunks' in kwargs:
+            indices_recovery_max_concurrent_file_chunks = kwargs['indicesRecoveryMaxConcurrentFileChunks']
+        if override_main_response_version is None and 'overrideMainResponseVersion' in kwargs:
+            override_main_response_version = kwargs['overrideMainResponseVersion']
+        if reindex_remote_whitelists is None and 'reindexRemoteWhitelists' in kwargs:
+            reindex_remote_whitelists = kwargs['reindexRemoteWhitelists']
+        if script_max_compilations_rate is None and 'scriptMaxCompilationsRate' in kwargs:
+            script_max_compilations_rate = kwargs['scriptMaxCompilationsRate']
+        if search_max_buckets is None and 'searchMaxBuckets' in kwargs:
+            search_max_buckets = kwargs['searchMaxBuckets']
+        if thread_pool_analyze_queue_size is None and 'threadPoolAnalyzeQueueSize' in kwargs:
+            thread_pool_analyze_queue_size = kwargs['threadPoolAnalyzeQueueSize']
+        if thread_pool_analyze_size is None and 'threadPoolAnalyzeSize' in kwargs:
+            thread_pool_analyze_size = kwargs['threadPoolAnalyzeSize']
+        if thread_pool_force_merge_size is None and 'threadPoolForceMergeSize' in kwargs:
+            thread_pool_force_merge_size = kwargs['threadPoolForceMergeSize']
+        if thread_pool_get_queue_size is None and 'threadPoolGetQueueSize' in kwargs:
+            thread_pool_get_queue_size = kwargs['threadPoolGetQueueSize']
+        if thread_pool_get_size is None and 'threadPoolGetSize' in kwargs:
+            thread_pool_get_size = kwargs['threadPoolGetSize']
+        if thread_pool_search_queue_size is None and 'threadPoolSearchQueueSize' in kwargs:
+            thread_pool_search_queue_size = kwargs['threadPoolSearchQueueSize']
+        if thread_pool_search_size is None and 'threadPoolSearchSize' in kwargs:
+            thread_pool_search_size = kwargs['threadPoolSearchSize']
+        if thread_pool_search_throttled_queue_size is None and 'threadPoolSearchThrottledQueueSize' in kwargs:
+            thread_pool_search_throttled_queue_size = kwargs['threadPoolSearchThrottledQueueSize']
+        if thread_pool_search_throttled_size is None and 'threadPoolSearchThrottledSize' in kwargs:
+            thread_pool_search_throttled_size = kwargs['threadPoolSearchThrottledSize']
+        if thread_pool_write_queue_size is None and 'threadPoolWriteQueueSize' in kwargs:
+            thread_pool_write_queue_size = kwargs['threadPoolWriteQueueSize']
+        if thread_pool_write_size is None and 'threadPoolWriteSize' in kwargs:
+            thread_pool_write_size = kwargs['threadPoolWriteSize']
+
         if action_auto_create_index_enabled is not None:
             _setter("action_auto_create_index_enabled", action_auto_create_index_enabled)
         if action_destructive_requires_name is not None:
@@ -13262,7 +14720,13 @@ class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              max_old_space_size: Optional[pulumi.Input[int]] = None,
              opensearch_request_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_old_space_size is None and 'maxOldSpaceSize' in kwargs:
+            max_old_space_size = kwargs['maxOldSpaceSize']
+        if opensearch_request_timeout is None and 'opensearchRequestTimeout' in kwargs:
+            opensearch_request_timeout = kwargs['opensearchRequestTimeout']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if max_old_space_size is not None:
@@ -13330,7 +14794,11 @@ class OpenSearchOpensearchUserConfigPrivateAccessArgs:
              opensearch: Optional[pulumi.Input[bool]] = None,
              opensearch_dashboards: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if opensearch_dashboards is None and 'opensearchDashboards' in kwargs:
+            opensearch_dashboards = kwargs['opensearchDashboards']
+
         if opensearch is not None:
             _setter("opensearch", opensearch)
         if opensearch_dashboards is not None:
@@ -13398,7 +14866,11 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs:
              opensearch: Optional[pulumi.Input[bool]] = None,
              opensearch_dashboards: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if opensearch_dashboards is None and 'opensearchDashboards' in kwargs:
+            opensearch_dashboards = kwargs['opensearchDashboards']
+
         if opensearch is not None:
             _setter("opensearch", opensearch)
         if opensearch_dashboards is not None:
@@ -13466,7 +14938,11 @@ class OpenSearchOpensearchUserConfigPublicAccessArgs:
              opensearch: Optional[pulumi.Input[bool]] = None,
              opensearch_dashboards: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if opensearch_dashboards is None and 'opensearchDashboards' in kwargs:
+            opensearch_dashboards = kwargs['opensearchDashboards']
+
         if opensearch is not None:
             _setter("opensearch", opensearch)
         if opensearch_dashboards is not None:
@@ -13543,14 +15019,36 @@ class OpenSearchOpensearchUserConfigSamlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             idp_entity_id: pulumi.Input[str],
-             idp_metadata_url: pulumi.Input[str],
-             sp_entity_id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             idp_entity_id: Optional[pulumi.Input[str]] = None,
+             idp_metadata_url: Optional[pulumi.Input[str]] = None,
+             sp_entity_id: Optional[pulumi.Input[str]] = None,
              idp_pemtrustedcas_content: Optional[pulumi.Input[str]] = None,
              roles_key: Optional[pulumi.Input[str]] = None,
              subject_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if idp_entity_id is None and 'idpEntityId' in kwargs:
+            idp_entity_id = kwargs['idpEntityId']
+        if idp_entity_id is None:
+            raise TypeError("Missing 'idp_entity_id' argument")
+        if idp_metadata_url is None and 'idpMetadataUrl' in kwargs:
+            idp_metadata_url = kwargs['idpMetadataUrl']
+        if idp_metadata_url is None:
+            raise TypeError("Missing 'idp_metadata_url' argument")
+        if sp_entity_id is None and 'spEntityId' in kwargs:
+            sp_entity_id = kwargs['spEntityId']
+        if sp_entity_id is None:
+            raise TypeError("Missing 'sp_entity_id' argument")
+        if idp_pemtrustedcas_content is None and 'idpPemtrustedcasContent' in kwargs:
+            idp_pemtrustedcas_content = kwargs['idpPemtrustedcasContent']
+        if roles_key is None and 'rolesKey' in kwargs:
+            roles_key = kwargs['rolesKey']
+        if subject_key is None and 'subjectKey' in kwargs:
+            subject_key = kwargs['subjectKey']
+
         _setter("enabled", enabled)
         _setter("idp_entity_id", idp_entity_id)
         _setter("idp_metadata_url", idp_metadata_url)
@@ -13664,9 +15162,19 @@ class OpenSearchServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -13712,9 +15220,15 @@ class OpenSearchTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -13770,7 +15284,9 @@ class OrganizationTimeoutsArgs:
              delete: Optional[pulumi.Input[str]] = None,
              read: Optional[pulumi.Input[str]] = None,
              update: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if create is not None:
             _setter("create", create)
         if delete is not None:
@@ -13859,7 +15375,11 @@ class PgComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -13986,7 +15506,13 @@ class PgPgArgs:
              sslmode: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if replica_uri is None and 'replicaUri' in kwargs:
+            replica_uri = kwargs['replicaUri']
+
         if dbname is not None:
             _setter("dbname", dbname)
         if host is not None:
@@ -14242,7 +15768,55 @@ class PgPgUserConfigArgs:
              timescaledb: Optional[pulumi.Input['PgPgUserConfigTimescaledbArgs']] = None,
              variant: Optional[pulumi.Input[str]] = None,
              work_mem: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if admin_password is None and 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if admin_username is None and 'adminUsername' in kwargs:
+            admin_username = kwargs['adminUsername']
+        if backup_hour is None and 'backupHour' in kwargs:
+            backup_hour = kwargs['backupHour']
+        if backup_minute is None and 'backupMinute' in kwargs:
+            backup_minute = kwargs['backupMinute']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if pg_read_replica is None and 'pgReadReplica' in kwargs:
+            pg_read_replica = kwargs['pgReadReplica']
+        if pg_service_to_fork_from is None and 'pgServiceToForkFrom' in kwargs:
+            pg_service_to_fork_from = kwargs['pgServiceToForkFrom']
+        if pg_stat_monitor_enable is None and 'pgStatMonitorEnable' in kwargs:
+            pg_stat_monitor_enable = kwargs['pgStatMonitorEnable']
+        if pg_version is None and 'pgVersion' in kwargs:
+            pg_version = kwargs['pgVersion']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if recovery_target_time is None and 'recoveryTargetTime' in kwargs:
+            recovery_target_time = kwargs['recoveryTargetTime']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if shared_buffers_percentage is None and 'sharedBuffersPercentage' in kwargs:
+            shared_buffers_percentage = kwargs['sharedBuffersPercentage']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+        if synchronous_replication is None and 'synchronousReplication' in kwargs:
+            synchronous_replication = kwargs['synchronousReplication']
+        if work_mem is None and 'workMem' in kwargs:
+            work_mem = kwargs['workMem']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if admin_password is not None:
@@ -14686,9 +16260,13 @@ class PgPgUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -14750,15 +16328,23 @@ class PgPgUserConfigMigrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             port: pulumi.Input[int],
+             host: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              dbname: Optional[pulumi.Input[str]] = None,
              ignore_dbs: Optional[pulumi.Input[str]] = None,
              method: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if ignore_dbs is None and 'ignoreDbs' in kwargs:
+            ignore_dbs = kwargs['ignoreDbs']
+
         _setter("host", host)
         _setter("port", port)
         if dbname is not None:
@@ -15069,7 +16655,103 @@ class PgPgUserConfigPgArgs:
              track_io_timing: Optional[pulumi.Input[str]] = None,
              wal_sender_timeout: Optional[pulumi.Input[int]] = None,
              wal_writer_delay: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autovacuum_analyze_scale_factor is None and 'autovacuumAnalyzeScaleFactor' in kwargs:
+            autovacuum_analyze_scale_factor = kwargs['autovacuumAnalyzeScaleFactor']
+        if autovacuum_analyze_threshold is None and 'autovacuumAnalyzeThreshold' in kwargs:
+            autovacuum_analyze_threshold = kwargs['autovacuumAnalyzeThreshold']
+        if autovacuum_freeze_max_age is None and 'autovacuumFreezeMaxAge' in kwargs:
+            autovacuum_freeze_max_age = kwargs['autovacuumFreezeMaxAge']
+        if autovacuum_max_workers is None and 'autovacuumMaxWorkers' in kwargs:
+            autovacuum_max_workers = kwargs['autovacuumMaxWorkers']
+        if autovacuum_naptime is None and 'autovacuumNaptime' in kwargs:
+            autovacuum_naptime = kwargs['autovacuumNaptime']
+        if autovacuum_vacuum_cost_delay is None and 'autovacuumVacuumCostDelay' in kwargs:
+            autovacuum_vacuum_cost_delay = kwargs['autovacuumVacuumCostDelay']
+        if autovacuum_vacuum_cost_limit is None and 'autovacuumVacuumCostLimit' in kwargs:
+            autovacuum_vacuum_cost_limit = kwargs['autovacuumVacuumCostLimit']
+        if autovacuum_vacuum_scale_factor is None and 'autovacuumVacuumScaleFactor' in kwargs:
+            autovacuum_vacuum_scale_factor = kwargs['autovacuumVacuumScaleFactor']
+        if autovacuum_vacuum_threshold is None and 'autovacuumVacuumThreshold' in kwargs:
+            autovacuum_vacuum_threshold = kwargs['autovacuumVacuumThreshold']
+        if bgwriter_delay is None and 'bgwriterDelay' in kwargs:
+            bgwriter_delay = kwargs['bgwriterDelay']
+        if bgwriter_flush_after is None and 'bgwriterFlushAfter' in kwargs:
+            bgwriter_flush_after = kwargs['bgwriterFlushAfter']
+        if bgwriter_lru_maxpages is None and 'bgwriterLruMaxpages' in kwargs:
+            bgwriter_lru_maxpages = kwargs['bgwriterLruMaxpages']
+        if bgwriter_lru_multiplier is None and 'bgwriterLruMultiplier' in kwargs:
+            bgwriter_lru_multiplier = kwargs['bgwriterLruMultiplier']
+        if deadlock_timeout is None and 'deadlockTimeout' in kwargs:
+            deadlock_timeout = kwargs['deadlockTimeout']
+        if default_toast_compression is None and 'defaultToastCompression' in kwargs:
+            default_toast_compression = kwargs['defaultToastCompression']
+        if idle_in_transaction_session_timeout is None and 'idleInTransactionSessionTimeout' in kwargs:
+            idle_in_transaction_session_timeout = kwargs['idleInTransactionSessionTimeout']
+        if log_autovacuum_min_duration is None and 'logAutovacuumMinDuration' in kwargs:
+            log_autovacuum_min_duration = kwargs['logAutovacuumMinDuration']
+        if log_error_verbosity is None and 'logErrorVerbosity' in kwargs:
+            log_error_verbosity = kwargs['logErrorVerbosity']
+        if log_line_prefix is None and 'logLinePrefix' in kwargs:
+            log_line_prefix = kwargs['logLinePrefix']
+        if log_min_duration_statement is None and 'logMinDurationStatement' in kwargs:
+            log_min_duration_statement = kwargs['logMinDurationStatement']
+        if log_temp_files is None and 'logTempFiles' in kwargs:
+            log_temp_files = kwargs['logTempFiles']
+        if max_files_per_process is None and 'maxFilesPerProcess' in kwargs:
+            max_files_per_process = kwargs['maxFilesPerProcess']
+        if max_locks_per_transaction is None and 'maxLocksPerTransaction' in kwargs:
+            max_locks_per_transaction = kwargs['maxLocksPerTransaction']
+        if max_logical_replication_workers is None and 'maxLogicalReplicationWorkers' in kwargs:
+            max_logical_replication_workers = kwargs['maxLogicalReplicationWorkers']
+        if max_parallel_workers is None and 'maxParallelWorkers' in kwargs:
+            max_parallel_workers = kwargs['maxParallelWorkers']
+        if max_parallel_workers_per_gather is None and 'maxParallelWorkersPerGather' in kwargs:
+            max_parallel_workers_per_gather = kwargs['maxParallelWorkersPerGather']
+        if max_pred_locks_per_transaction is None and 'maxPredLocksPerTransaction' in kwargs:
+            max_pred_locks_per_transaction = kwargs['maxPredLocksPerTransaction']
+        if max_prepared_transactions is None and 'maxPreparedTransactions' in kwargs:
+            max_prepared_transactions = kwargs['maxPreparedTransactions']
+        if max_replication_slots is None and 'maxReplicationSlots' in kwargs:
+            max_replication_slots = kwargs['maxReplicationSlots']
+        if max_slot_wal_keep_size is None and 'maxSlotWalKeepSize' in kwargs:
+            max_slot_wal_keep_size = kwargs['maxSlotWalKeepSize']
+        if max_stack_depth is None and 'maxStackDepth' in kwargs:
+            max_stack_depth = kwargs['maxStackDepth']
+        if max_standby_archive_delay is None and 'maxStandbyArchiveDelay' in kwargs:
+            max_standby_archive_delay = kwargs['maxStandbyArchiveDelay']
+        if max_standby_streaming_delay is None and 'maxStandbyStreamingDelay' in kwargs:
+            max_standby_streaming_delay = kwargs['maxStandbyStreamingDelay']
+        if max_wal_senders is None and 'maxWalSenders' in kwargs:
+            max_wal_senders = kwargs['maxWalSenders']
+        if max_worker_processes is None and 'maxWorkerProcesses' in kwargs:
+            max_worker_processes = kwargs['maxWorkerProcesses']
+        if pg_partman_bgw_dot_interval is None and 'pgPartmanBgwDotInterval' in kwargs:
+            pg_partman_bgw_dot_interval = kwargs['pgPartmanBgwDotInterval']
+        if pg_partman_bgw_dot_role is None and 'pgPartmanBgwDotRole' in kwargs:
+            pg_partman_bgw_dot_role = kwargs['pgPartmanBgwDotRole']
+        if pg_stat_monitor_dot_pgsm_enable_query_plan is None and 'pgStatMonitorDotPgsmEnableQueryPlan' in kwargs:
+            pg_stat_monitor_dot_pgsm_enable_query_plan = kwargs['pgStatMonitorDotPgsmEnableQueryPlan']
+        if pg_stat_monitor_dot_pgsm_max_buckets is None and 'pgStatMonitorDotPgsmMaxBuckets' in kwargs:
+            pg_stat_monitor_dot_pgsm_max_buckets = kwargs['pgStatMonitorDotPgsmMaxBuckets']
+        if pg_stat_statements_dot_track is None and 'pgStatStatementsDotTrack' in kwargs:
+            pg_stat_statements_dot_track = kwargs['pgStatStatementsDotTrack']
+        if temp_file_limit is None and 'tempFileLimit' in kwargs:
+            temp_file_limit = kwargs['tempFileLimit']
+        if track_activity_query_size is None and 'trackActivityQuerySize' in kwargs:
+            track_activity_query_size = kwargs['trackActivityQuerySize']
+        if track_commit_timestamp is None and 'trackCommitTimestamp' in kwargs:
+            track_commit_timestamp = kwargs['trackCommitTimestamp']
+        if track_functions is None and 'trackFunctions' in kwargs:
+            track_functions = kwargs['trackFunctions']
+        if track_io_timing is None and 'trackIoTiming' in kwargs:
+            track_io_timing = kwargs['trackIoTiming']
+        if wal_sender_timeout is None and 'walSenderTimeout' in kwargs:
+            wal_sender_timeout = kwargs['walSenderTimeout']
+        if wal_writer_delay is None and 'walWriterDelay' in kwargs:
+            wal_writer_delay = kwargs['walWriterDelay']
+
         if autovacuum_analyze_scale_factor is not None:
             _setter("autovacuum_analyze_scale_factor", autovacuum_analyze_scale_factor)
         if autovacuum_analyze_threshold is not None:
@@ -15805,7 +17487,27 @@ class PgPgUserConfigPgbouncerArgs:
              server_idle_timeout: Optional[pulumi.Input[int]] = None,
              server_lifetime: Optional[pulumi.Input[int]] = None,
              server_reset_query_always: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autodb_idle_timeout is None and 'autodbIdleTimeout' in kwargs:
+            autodb_idle_timeout = kwargs['autodbIdleTimeout']
+        if autodb_max_db_connections is None and 'autodbMaxDbConnections' in kwargs:
+            autodb_max_db_connections = kwargs['autodbMaxDbConnections']
+        if autodb_pool_mode is None and 'autodbPoolMode' in kwargs:
+            autodb_pool_mode = kwargs['autodbPoolMode']
+        if autodb_pool_size is None and 'autodbPoolSize' in kwargs:
+            autodb_pool_size = kwargs['autodbPoolSize']
+        if ignore_startup_parameters is None and 'ignoreStartupParameters' in kwargs:
+            ignore_startup_parameters = kwargs['ignoreStartupParameters']
+        if min_pool_size is None and 'minPoolSize' in kwargs:
+            min_pool_size = kwargs['minPoolSize']
+        if server_idle_timeout is None and 'serverIdleTimeout' in kwargs:
+            server_idle_timeout = kwargs['serverIdleTimeout']
+        if server_lifetime is None and 'serverLifetime' in kwargs:
+            server_lifetime = kwargs['serverLifetime']
+        if server_reset_query_always is None and 'serverResetQueryAlways' in kwargs:
+            server_reset_query_always = kwargs['serverResetQueryAlways']
+
         if autodb_idle_timeout is not None:
             _setter("autodb_idle_timeout", autodb_idle_timeout)
         if autodb_max_db_connections is not None:
@@ -15949,7 +17651,11 @@ class PgPgUserConfigPglookoutArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_failover_replication_time_lag: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_failover_replication_time_lag is None and 'maxFailoverReplicationTimeLag' in kwargs:
+            max_failover_replication_time_lag = kwargs['maxFailoverReplicationTimeLag']
+
         if max_failover_replication_time_lag is not None:
             _setter("max_failover_replication_time_lag", max_failover_replication_time_lag)
 
@@ -15989,7 +17695,9 @@ class PgPgUserConfigPrivateAccessArgs:
              pg: Optional[pulumi.Input[bool]] = None,
              pgbouncer: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if pg is not None:
             _setter("pg", pg)
         if pgbouncer is not None:
@@ -16057,7 +17765,9 @@ class PgPgUserConfigPrivatelinkAccessArgs:
              pg: Optional[pulumi.Input[bool]] = None,
              pgbouncer: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if pg is not None:
             _setter("pg", pg)
         if pgbouncer is not None:
@@ -16125,7 +17835,9 @@ class PgPgUserConfigPublicAccessArgs:
              pg: Optional[pulumi.Input[bool]] = None,
              pgbouncer: Optional[pulumi.Input[bool]] = None,
              prometheus: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if pg is not None:
             _setter("pg", pg)
         if pgbouncer is not None:
@@ -16185,7 +17897,11 @@ class PgPgUserConfigTimescaledbArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_background_workers: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_background_workers is None and 'maxBackgroundWorkers' in kwargs:
+            max_background_workers = kwargs['maxBackgroundWorkers']
+
         if max_background_workers is not None:
             _setter("max_background_workers", max_background_workers)
 
@@ -16219,9 +17935,19 @@ class PgServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -16267,9 +17993,15 @@ class PgTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -16315,9 +18047,15 @@ class ProjectTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -16376,7 +18114,11 @@ class RedisComponentArgs:
              route: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              usage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_authentication_method is None and 'kafkaAuthenticationMethod' in kwargs:
+            kafka_authentication_method = kwargs['kafkaAuthenticationMethod']
+
         if component is not None:
             _setter("component", component)
         if host is not None:
@@ -16463,8 +18205,10 @@ class RedisRediArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -16545,7 +18289,53 @@ class RedisRedisUserConfigArgs:
              redis_timeout: Optional[pulumi.Input[int]] = None,
              service_to_fork_from: Optional[pulumi.Input[str]] = None,
              static_ips: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_backup_regions is None and 'additionalBackupRegions' in kwargs:
+            additional_backup_regions = kwargs['additionalBackupRegions']
+        if ip_filter_objects is None and 'ipFilterObjects' in kwargs:
+            ip_filter_objects = kwargs['ipFilterObjects']
+        if ip_filter_strings is None and 'ipFilterStrings' in kwargs:
+            ip_filter_strings = kwargs['ipFilterStrings']
+        if ip_filters is None and 'ipFilters' in kwargs:
+            ip_filters = kwargs['ipFilters']
+        if private_access is None and 'privateAccess' in kwargs:
+            private_access = kwargs['privateAccess']
+        if privatelink_access is None and 'privatelinkAccess' in kwargs:
+            privatelink_access = kwargs['privatelinkAccess']
+        if project_to_fork_from is None and 'projectToForkFrom' in kwargs:
+            project_to_fork_from = kwargs['projectToForkFrom']
+        if public_access is None and 'publicAccess' in kwargs:
+            public_access = kwargs['publicAccess']
+        if recovery_basebackup_name is None and 'recoveryBasebackupName' in kwargs:
+            recovery_basebackup_name = kwargs['recoveryBasebackupName']
+        if redis_acl_channels_default is None and 'redisAclChannelsDefault' in kwargs:
+            redis_acl_channels_default = kwargs['redisAclChannelsDefault']
+        if redis_io_threads is None and 'redisIoThreads' in kwargs:
+            redis_io_threads = kwargs['redisIoThreads']
+        if redis_lfu_decay_time is None and 'redisLfuDecayTime' in kwargs:
+            redis_lfu_decay_time = kwargs['redisLfuDecayTime']
+        if redis_lfu_log_factor is None and 'redisLfuLogFactor' in kwargs:
+            redis_lfu_log_factor = kwargs['redisLfuLogFactor']
+        if redis_maxmemory_policy is None and 'redisMaxmemoryPolicy' in kwargs:
+            redis_maxmemory_policy = kwargs['redisMaxmemoryPolicy']
+        if redis_notify_keyspace_events is None and 'redisNotifyKeyspaceEvents' in kwargs:
+            redis_notify_keyspace_events = kwargs['redisNotifyKeyspaceEvents']
+        if redis_number_of_databases is None and 'redisNumberOfDatabases' in kwargs:
+            redis_number_of_databases = kwargs['redisNumberOfDatabases']
+        if redis_persistence is None and 'redisPersistence' in kwargs:
+            redis_persistence = kwargs['redisPersistence']
+        if redis_pubsub_client_output_buffer_limit is None and 'redisPubsubClientOutputBufferLimit' in kwargs:
+            redis_pubsub_client_output_buffer_limit = kwargs['redisPubsubClientOutputBufferLimit']
+        if redis_ssl is None and 'redisSsl' in kwargs:
+            redis_ssl = kwargs['redisSsl']
+        if redis_timeout is None and 'redisTimeout' in kwargs:
+            redis_timeout = kwargs['redisTimeout']
+        if service_to_fork_from is None and 'serviceToForkFrom' in kwargs:
+            service_to_fork_from = kwargs['serviceToForkFrom']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+
         if additional_backup_regions is not None:
             _setter("additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
@@ -16820,9 +18610,13 @@ class RedisRedisUserConfigIpFilterObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -16871,15 +18665,23 @@ class RedisRedisUserConfigMigrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             port: pulumi.Input[int],
+             host: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              dbname: Optional[pulumi.Input[str]] = None,
              ignore_dbs: Optional[pulumi.Input[str]] = None,
              method: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              ssl: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if ignore_dbs is None and 'ignoreDbs' in kwargs:
+            ignore_dbs = kwargs['ignoreDbs']
+
         _setter("host", host)
         _setter("port", port)
         if dbname is not None:
@@ -16983,7 +18785,9 @@ class RedisRedisUserConfigPrivateAccessArgs:
              _setter: Callable[[Any, Any], None],
              prometheus: Optional[pulumi.Input[bool]] = None,
              redis: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if prometheus is not None:
             _setter("prometheus", prometheus)
         if redis is not None:
@@ -17023,7 +18827,9 @@ class RedisRedisUserConfigPrivatelinkAccessArgs:
              _setter: Callable[[Any, Any], None],
              prometheus: Optional[pulumi.Input[bool]] = None,
              redis: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if prometheus is not None:
             _setter("prometheus", prometheus)
         if redis is not None:
@@ -17063,7 +18869,9 @@ class RedisRedisUserConfigPublicAccessArgs:
              _setter: Callable[[Any, Any], None],
              prometheus: Optional[pulumi.Input[bool]] = None,
              redis: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if prometheus is not None:
             _setter("prometheus", prometheus)
         if redis is not None:
@@ -17101,9 +18909,19 @@ class RedisServiceIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: pulumi.Input[str],
-             source_service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             integration_type: Optional[pulumi.Input[str]] = None,
+             source_service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if source_service_name is None and 'sourceServiceName' in kwargs:
+            source_service_name = kwargs['sourceServiceName']
+        if source_service_name is None:
+            raise TypeError("Missing 'source_service_name' argument")
+
         _setter("integration_type", integration_type)
         _setter("source_service_name", source_service_name)
 
@@ -17139,9 +18957,15 @@ class RedisTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -17179,7 +19003,9 @@ class ServiceIntegrationClickhouseKafkaUserConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tables: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tables is not None:
             _setter("tables", tables)
 
@@ -17246,9 +19072,9 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_format: pulumi.Input[str],
-             group_name: pulumi.Input[str],
-             name: pulumi.Input[str],
+             data_format: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              auto_offset_reset: Optional[pulumi.Input[str]] = None,
              columns: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs']]]] = None,
              date_time_input_format: Optional[pulumi.Input[str]] = None,
@@ -17259,7 +19085,35 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
              poll_max_batch_size: Optional[pulumi.Input[int]] = None,
              skip_broken_messages: Optional[pulumi.Input[int]] = None,
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_format is None and 'dataFormat' in kwargs:
+            data_format = kwargs['dataFormat']
+        if data_format is None:
+            raise TypeError("Missing 'data_format' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if auto_offset_reset is None and 'autoOffsetReset' in kwargs:
+            auto_offset_reset = kwargs['autoOffsetReset']
+        if date_time_input_format is None and 'dateTimeInputFormat' in kwargs:
+            date_time_input_format = kwargs['dateTimeInputFormat']
+        if handle_error_mode is None and 'handleErrorMode' in kwargs:
+            handle_error_mode = kwargs['handleErrorMode']
+        if max_block_size is None and 'maxBlockSize' in kwargs:
+            max_block_size = kwargs['maxBlockSize']
+        if max_rows_per_message is None and 'maxRowsPerMessage' in kwargs:
+            max_rows_per_message = kwargs['maxRowsPerMessage']
+        if num_consumers is None and 'numConsumers' in kwargs:
+            num_consumers = kwargs['numConsumers']
+        if poll_max_batch_size is None and 'pollMaxBatchSize' in kwargs:
+            poll_max_batch_size = kwargs['pollMaxBatchSize']
+        if skip_broken_messages is None and 'skipBrokenMessages' in kwargs:
+            skip_broken_messages = kwargs['skipBrokenMessages']
+
         _setter("data_format", data_format)
         _setter("group_name", group_name)
         _setter("name", name)
@@ -17458,9 +19312,15 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("name", name)
         _setter("type", type)
 
@@ -17503,8 +19363,12 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -17535,7 +19399,9 @@ class ServiceIntegrationClickhousePostgresqlUserConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              databases: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if databases is not None:
             _setter("databases", databases)
 
@@ -17571,7 +19437,9 @@ class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs:
              _setter: Callable[[Any, Any], None],
              database: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if database is not None:
             _setter("database", database)
         if schema is not None:
@@ -17653,7 +19521,25 @@ class ServiceIntegrationDatadogUserConfigArgs:
              max_jmx_metrics: Optional[pulumi.Input[int]] = None,
              opensearch: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgs']] = None,
              redis: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if datadog_dbm_enabled is None and 'datadogDbmEnabled' in kwargs:
+            datadog_dbm_enabled = kwargs['datadogDbmEnabled']
+        if datadog_tags is None and 'datadogTags' in kwargs:
+            datadog_tags = kwargs['datadogTags']
+        if exclude_consumer_groups is None and 'excludeConsumerGroups' in kwargs:
+            exclude_consumer_groups = kwargs['excludeConsumerGroups']
+        if exclude_topics is None and 'excludeTopics' in kwargs:
+            exclude_topics = kwargs['excludeTopics']
+        if include_consumer_groups is None and 'includeConsumerGroups' in kwargs:
+            include_consumer_groups = kwargs['includeConsumerGroups']
+        if include_topics is None and 'includeTopics' in kwargs:
+            include_topics = kwargs['includeTopics']
+        if kafka_custom_metrics is None and 'kafkaCustomMetrics' in kwargs:
+            kafka_custom_metrics = kwargs['kafkaCustomMetrics']
+        if max_jmx_metrics is None and 'maxJmxMetrics' in kwargs:
+            max_jmx_metrics = kwargs['maxJmxMetrics']
+
         if datadog_dbm_enabled is not None:
             _setter("datadog_dbm_enabled", datadog_dbm_enabled)
         if datadog_tags is not None:
@@ -17813,9 +19699,13 @@ class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag: pulumi.Input[str],
+             tag: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+
         _setter("tag", tag)
         if comment is not None:
             _setter("comment", comment)
@@ -17868,7 +19758,15 @@ class ServiceIntegrationDatadogUserConfigOpensearchArgs:
              index_stats_enabled: Optional[pulumi.Input[bool]] = None,
              pending_task_stats_enabled: Optional[pulumi.Input[bool]] = None,
              pshard_stats_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index_stats_enabled is None and 'indexStatsEnabled' in kwargs:
+            index_stats_enabled = kwargs['indexStatsEnabled']
+        if pending_task_stats_enabled is None and 'pendingTaskStatsEnabled' in kwargs:
+            pending_task_stats_enabled = kwargs['pendingTaskStatsEnabled']
+        if pshard_stats_enabled is None and 'pshardStatsEnabled' in kwargs:
+            pshard_stats_enabled = kwargs['pshardStatsEnabled']
+
         if index_stats_enabled is not None:
             _setter("index_stats_enabled", index_stats_enabled)
         if pending_task_stats_enabled is not None:
@@ -17928,7 +19826,11 @@ class ServiceIntegrationDatadogUserConfigRedisArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              command_stats_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if command_stats_enabled is None and 'commandStatsEnabled' in kwargs:
+            command_stats_enabled = kwargs['commandStatsEnabled']
+
         if command_stats_enabled is not None:
             _setter("command_stats_enabled", command_stats_enabled)
 
@@ -17977,14 +19879,30 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datadog_api_key: pulumi.Input[str],
+             datadog_api_key: Optional[pulumi.Input[str]] = None,
              datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]] = None,
              disable_consumer_stats: Optional[pulumi.Input[bool]] = None,
              kafka_consumer_check_instances: Optional[pulumi.Input[int]] = None,
              kafka_consumer_stats_timeout: Optional[pulumi.Input[int]] = None,
              max_partition_contexts: Optional[pulumi.Input[int]] = None,
              site: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if datadog_api_key is None and 'datadogApiKey' in kwargs:
+            datadog_api_key = kwargs['datadogApiKey']
+        if datadog_api_key is None:
+            raise TypeError("Missing 'datadog_api_key' argument")
+        if datadog_tags is None and 'datadogTags' in kwargs:
+            datadog_tags = kwargs['datadogTags']
+        if disable_consumer_stats is None and 'disableConsumerStats' in kwargs:
+            disable_consumer_stats = kwargs['disableConsumerStats']
+        if kafka_consumer_check_instances is None and 'kafkaConsumerCheckInstances' in kwargs:
+            kafka_consumer_check_instances = kwargs['kafkaConsumerCheckInstances']
+        if kafka_consumer_stats_timeout is None and 'kafkaConsumerStatsTimeout' in kwargs:
+            kafka_consumer_stats_timeout = kwargs['kafkaConsumerStatsTimeout']
+        if max_partition_contexts is None and 'maxPartitionContexts' in kwargs:
+            max_partition_contexts = kwargs['maxPartitionContexts']
+
         _setter("datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
             _setter("datadog_tags", datadog_tags)
@@ -18101,9 +20019,13 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag: pulumi.Input[str],
+             tag: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+
         _setter("tag", tag)
         if comment is not None:
             _setter("comment", comment)
@@ -18156,11 +20078,25 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: pulumi.Input[str],
-             region: pulumi.Input[str],
-             secret_key: pulumi.Input[str],
+             access_key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
              log_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if log_group_name is None and 'logGroupName' in kwargs:
+            log_group_name = kwargs['logGroupName']
+
         _setter("access_key", access_key)
         _setter("region", region)
         _setter("secret_key", secret_key)
@@ -18239,11 +20175,25 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             region: pulumi.Input[str],
-             secret_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_key: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+
         _setter("access_key", access_key)
         _setter("namespace", namespace)
         _setter("region", region)
@@ -18324,12 +20274,22 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             index_prefix: pulumi.Input[str],
-             url: pulumi.Input[str],
+             index_prefix: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              ca: Optional[pulumi.Input[str]] = None,
              index_days_max: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index_prefix is None and 'indexPrefix' in kwargs:
+            index_prefix = kwargs['indexPrefix']
+        if index_prefix is None:
+            raise TypeError("Missing 'index_prefix' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if index_days_max is None and 'indexDaysMax' in kwargs:
+            index_days_max = kwargs['indexDaysMax']
+
         _setter("index_prefix", index_prefix)
         _setter("url", url)
         if ca is not None:
@@ -18420,10 +20380,24 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_id: pulumi.Input[str],
-             project_id: pulumi.Input[str],
-             service_account_credentials: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             log_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             service_account_credentials: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_id is None and 'logId' in kwargs:
+            log_id = kwargs['logId']
+        if log_id is None:
+            raise TypeError("Missing 'log_id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if service_account_credentials is None and 'serviceAccountCredentials' in kwargs:
+            service_account_credentials = kwargs['serviceAccountCredentials']
+        if service_account_credentials is None:
+            raise TypeError("Missing 'service_account_credentials' argument")
+
         _setter("log_id", log_id)
         _setter("project_id", project_id)
         _setter("service_account_credentials", service_account_credentials)
@@ -18503,8 +20477,8 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bootstrap_servers: pulumi.Input[str],
-             security_protocol: pulumi.Input[str],
+             bootstrap_servers: Optional[pulumi.Input[str]] = None,
+             security_protocol: Optional[pulumi.Input[str]] = None,
              sasl_mechanism: Optional[pulumi.Input[str]] = None,
              sasl_plain_password: Optional[pulumi.Input[str]] = None,
              sasl_plain_username: Optional[pulumi.Input[str]] = None,
@@ -18512,7 +20486,31 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
              ssl_client_cert: Optional[pulumi.Input[str]] = None,
              ssl_client_key: Optional[pulumi.Input[str]] = None,
              ssl_endpoint_identification_algorithm: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bootstrap_servers is None and 'bootstrapServers' in kwargs:
+            bootstrap_servers = kwargs['bootstrapServers']
+        if bootstrap_servers is None:
+            raise TypeError("Missing 'bootstrap_servers' argument")
+        if security_protocol is None and 'securityProtocol' in kwargs:
+            security_protocol = kwargs['securityProtocol']
+        if security_protocol is None:
+            raise TypeError("Missing 'security_protocol' argument")
+        if sasl_mechanism is None and 'saslMechanism' in kwargs:
+            sasl_mechanism = kwargs['saslMechanism']
+        if sasl_plain_password is None and 'saslPlainPassword' in kwargs:
+            sasl_plain_password = kwargs['saslPlainPassword']
+        if sasl_plain_username is None and 'saslPlainUsername' in kwargs:
+            sasl_plain_username = kwargs['saslPlainUsername']
+        if ssl_ca_cert is None and 'sslCaCert' in kwargs:
+            ssl_ca_cert = kwargs['sslCaCert']
+        if ssl_client_cert is None and 'sslClientCert' in kwargs:
+            ssl_client_cert = kwargs['sslClientCert']
+        if ssl_client_key is None and 'sslClientKey' in kwargs:
+            ssl_client_key = kwargs['sslClientKey']
+        if ssl_endpoint_identification_algorithm is None and 'sslEndpointIdentificationAlgorithm' in kwargs:
+            ssl_endpoint_identification_algorithm = kwargs['sslEndpointIdentificationAlgorithm']
+
         _setter("bootstrap_servers", bootstrap_servers)
         _setter("security_protocol", security_protocol)
         if sasl_mechanism is not None:
@@ -18665,12 +20663,22 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             index_prefix: pulumi.Input[str],
-             url: pulumi.Input[str],
+             index_prefix: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              ca: Optional[pulumi.Input[str]] = None,
              index_days_max: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index_prefix is None and 'indexPrefix' in kwargs:
+            index_prefix = kwargs['indexPrefix']
+        if index_prefix is None:
+            raise TypeError("Missing 'index_prefix' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if index_days_max is None and 'indexDaysMax' in kwargs:
+            index_days_max = kwargs['indexDaysMax']
+
         _setter("index_prefix", index_prefix)
         _setter("url", url)
         if ca is not None:
@@ -18764,11 +20772,21 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authentication: pulumi.Input[str],
-             url: pulumi.Input[str],
+             authentication: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              basic_auth_password: Optional[pulumi.Input[str]] = None,
              basic_auth_username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authentication is None:
+            raise TypeError("Missing 'authentication' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if basic_auth_password is None and 'basicAuthPassword' in kwargs:
+            basic_auth_password = kwargs['basicAuthPassword']
+        if basic_auth_username is None and 'basicAuthUsername' in kwargs:
+            basic_auth_username = kwargs['basicAuthUsername']
+
         _setter("authentication", authentication)
         _setter("url", url)
         if basic_auth_password is not None:
@@ -18844,7 +20862,13 @@ class ServiceIntegrationEndpointJolokiaUserConfigArgs:
              _setter: Callable[[Any, Any], None],
              basic_auth_password: Optional[pulumi.Input[str]] = None,
              basic_auth_username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_auth_password is None and 'basicAuthPassword' in kwargs:
+            basic_auth_password = kwargs['basicAuthPassword']
+        if basic_auth_username is None and 'basicAuthUsername' in kwargs:
+            basic_auth_username = kwargs['basicAuthUsername']
+
         if basic_auth_password is not None:
             _setter("basic_auth_password", basic_auth_password)
         if basic_auth_username is not None:
@@ -18894,7 +20918,13 @@ class ServiceIntegrationEndpointPrometheusUserConfigArgs:
              _setter: Callable[[Any, Any], None],
              basic_auth_password: Optional[pulumi.Input[str]] = None,
              basic_auth_username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_auth_password is None and 'basicAuthPassword' in kwargs:
+            basic_auth_password = kwargs['basicAuthPassword']
+        if basic_auth_username is None and 'basicAuthUsername' in kwargs:
+            basic_auth_username = kwargs['basicAuthUsername']
+
         if basic_auth_password is not None:
             _setter("basic_auth_password", basic_auth_password)
         if basic_auth_username is not None:
@@ -18963,16 +20993,26 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: pulumi.Input[str],
-             port: pulumi.Input[int],
-             server: pulumi.Input[str],
-             tls: pulumi.Input[bool],
+             format: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             server: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[bool]] = None,
              ca: Optional[pulumi.Input[str]] = None,
              cert: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              logline: Optional[pulumi.Input[str]] = None,
              sd: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if tls is None:
+            raise TypeError("Missing 'tls' argument")
+
         _setter("format", format)
         _setter("port", port)
         _setter("server", server)
@@ -19116,7 +21156,13 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
              _setter: Callable[[Any, Any], None],
              dropped_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]] = None,
              extra_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dropped_metrics is None and 'droppedMetrics' in kwargs:
+            dropped_metrics = kwargs['droppedMetrics']
+        if extra_metrics is None and 'extraMetrics' in kwargs:
+            extra_metrics = kwargs['extraMetrics']
+
         if dropped_metrics is not None:
             _setter("dropped_metrics", dropped_metrics)
         if extra_metrics is not None:
@@ -19164,9 +21210,15 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field: pulumi.Input[str],
-             metric: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             field: Optional[pulumi.Input[str]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if metric is None:
+            raise TypeError("Missing 'metric' argument")
+
         _setter("field", field)
         _setter("metric", metric)
 
@@ -19212,9 +21264,15 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field: pulumi.Input[str],
-             metric: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             field: Optional[pulumi.Input[str]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if metric is None:
+            raise TypeError("Missing 'metric' argument")
+
         _setter("field", field)
         _setter("metric", metric)
 
@@ -19258,7 +21316,11 @@ class ServiceIntegrationKafkaConnectUserConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              kafka_connect: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_connect is None and 'kafkaConnect' in kwargs:
+            kafka_connect = kwargs['kafkaConnect']
+
         if kafka_connect is not None:
             _setter("kafka_connect", kafka_connect)
 
@@ -19302,7 +21364,17 @@ class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs:
              group_id: Optional[pulumi.Input[str]] = None,
              offset_storage_topic: Optional[pulumi.Input[str]] = None,
              status_storage_topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_storage_topic is None and 'configStorageTopic' in kwargs:
+            config_storage_topic = kwargs['configStorageTopic']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if offset_storage_topic is None and 'offsetStorageTopic' in kwargs:
+            offset_storage_topic = kwargs['offsetStorageTopic']
+        if status_storage_topic is None and 'statusStorageTopic' in kwargs:
+            status_storage_topic = kwargs['statusStorageTopic']
+
         if config_storage_topic is not None:
             _setter("config_storage_topic", config_storage_topic)
         if group_id is not None:
@@ -19378,9 +21450,17 @@ class ServiceIntegrationKafkaLogsUserConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kafka_topic: pulumi.Input[str],
+             kafka_topic: Optional[pulumi.Input[str]] = None,
              selected_log_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kafka_topic is None and 'kafkaTopic' in kwargs:
+            kafka_topic = kwargs['kafkaTopic']
+        if kafka_topic is None:
+            raise TypeError("Missing 'kafka_topic' argument")
+        if selected_log_fields is None and 'selectedLogFields' in kwargs:
+            selected_log_fields = kwargs['selectedLogFields']
+
         _setter("kafka_topic", kafka_topic)
         if selected_log_fields is not None:
             _setter("selected_log_fields", selected_log_fields)
@@ -19429,7 +21509,13 @@ class ServiceIntegrationKafkaMirrormakerUserConfigArgs:
              _setter: Callable[[Any, Any], None],
              cluster_alias: Optional[pulumi.Input[str]] = None,
              kafka_mirrormaker: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_alias is None and 'clusterAlias' in kwargs:
+            cluster_alias = kwargs['clusterAlias']
+        if kafka_mirrormaker is None and 'kafkaMirrormaker' in kwargs:
+            kafka_mirrormaker = kwargs['kafkaMirrormaker']
+
         if cluster_alias is not None:
             _setter("cluster_alias", cluster_alias)
         if kafka_mirrormaker is not None:
@@ -19495,7 +21581,21 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
              producer_compression_type: Optional[pulumi.Input[str]] = None,
              producer_linger_ms: Optional[pulumi.Input[int]] = None,
              producer_max_request_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_fetch_min_bytes is None and 'consumerFetchMinBytes' in kwargs:
+            consumer_fetch_min_bytes = kwargs['consumerFetchMinBytes']
+        if producer_batch_size is None and 'producerBatchSize' in kwargs:
+            producer_batch_size = kwargs['producerBatchSize']
+        if producer_buffer_memory is None and 'producerBufferMemory' in kwargs:
+            producer_buffer_memory = kwargs['producerBufferMemory']
+        if producer_compression_type is None and 'producerCompressionType' in kwargs:
+            producer_compression_type = kwargs['producerCompressionType']
+        if producer_linger_ms is None and 'producerLingerMs' in kwargs:
+            producer_linger_ms = kwargs['producerLingerMs']
+        if producer_max_request_size is None and 'producerMaxRequestSize' in kwargs:
+            producer_max_request_size = kwargs['producerMaxRequestSize']
+
         if consumer_fetch_min_bytes is not None:
             _setter("consumer_fetch_min_bytes", consumer_fetch_min_bytes)
         if producer_batch_size is not None:
@@ -19605,7 +21705,15 @@ class ServiceIntegrationLogsUserConfigArgs:
              elasticsearch_index_days_max: Optional[pulumi.Input[int]] = None,
              elasticsearch_index_prefix: Optional[pulumi.Input[str]] = None,
              selected_log_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if elasticsearch_index_days_max is None and 'elasticsearchIndexDaysMax' in kwargs:
+            elasticsearch_index_days_max = kwargs['elasticsearchIndexDaysMax']
+        if elasticsearch_index_prefix is None and 'elasticsearchIndexPrefix' in kwargs:
+            elasticsearch_index_prefix = kwargs['elasticsearchIndexPrefix']
+        if selected_log_fields is None and 'selectedLogFields' in kwargs:
+            selected_log_fields = kwargs['selectedLogFields']
+
         if elasticsearch_index_days_max is not None:
             _setter("elasticsearch_index_days_max", elasticsearch_index_days_max)
         if elasticsearch_index_prefix is not None:
@@ -19681,7 +21789,15 @@ class ServiceIntegrationMetricsUserConfigArgs:
              ro_username: Optional[pulumi.Input[str]] = None,
              source_mysql: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgs']] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if ro_username is None and 'roUsername' in kwargs:
+            ro_username = kwargs['roUsername']
+        if source_mysql is None and 'sourceMysql' in kwargs:
+            source_mysql = kwargs['sourceMysql']
+
         if database is not None:
             _setter("database", database)
         if retention_days is not None:
@@ -19769,7 +21885,9 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              telegraf: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if telegraf is not None:
             _setter("telegraf", telegraf)
 
@@ -19853,7 +21971,37 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
              perf_events_statements_digest_text_limit: Optional[pulumi.Input[int]] = None,
              perf_events_statements_limit: Optional[pulumi.Input[int]] = None,
              perf_events_statements_time_limit: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gather_event_waits is None and 'gatherEventWaits' in kwargs:
+            gather_event_waits = kwargs['gatherEventWaits']
+        if gather_file_events_stats is None and 'gatherFileEventsStats' in kwargs:
+            gather_file_events_stats = kwargs['gatherFileEventsStats']
+        if gather_index_io_waits is None and 'gatherIndexIoWaits' in kwargs:
+            gather_index_io_waits = kwargs['gatherIndexIoWaits']
+        if gather_info_schema_auto_inc is None and 'gatherInfoSchemaAutoInc' in kwargs:
+            gather_info_schema_auto_inc = kwargs['gatherInfoSchemaAutoInc']
+        if gather_innodb_metrics is None and 'gatherInnodbMetrics' in kwargs:
+            gather_innodb_metrics = kwargs['gatherInnodbMetrics']
+        if gather_perf_events_statements is None and 'gatherPerfEventsStatements' in kwargs:
+            gather_perf_events_statements = kwargs['gatherPerfEventsStatements']
+        if gather_process_list is None and 'gatherProcessList' in kwargs:
+            gather_process_list = kwargs['gatherProcessList']
+        if gather_slave_status is None and 'gatherSlaveStatus' in kwargs:
+            gather_slave_status = kwargs['gatherSlaveStatus']
+        if gather_table_io_waits is None and 'gatherTableIoWaits' in kwargs:
+            gather_table_io_waits = kwargs['gatherTableIoWaits']
+        if gather_table_lock_waits is None and 'gatherTableLockWaits' in kwargs:
+            gather_table_lock_waits = kwargs['gatherTableLockWaits']
+        if gather_table_schema is None and 'gatherTableSchema' in kwargs:
+            gather_table_schema = kwargs['gatherTableSchema']
+        if perf_events_statements_digest_text_limit is None and 'perfEventsStatementsDigestTextLimit' in kwargs:
+            perf_events_statements_digest_text_limit = kwargs['perfEventsStatementsDigestTextLimit']
+        if perf_events_statements_limit is None and 'perfEventsStatementsLimit' in kwargs:
+            perf_events_statements_limit = kwargs['perfEventsStatementsLimit']
+        if perf_events_statements_time_limit is None and 'perfEventsStatementsTimeLimit' in kwargs:
+            perf_events_statements_time_limit = kwargs['perfEventsStatementsTimeLimit']
+
         if gather_event_waits is not None:
             _setter("gather_event_waits", gather_event_waits)
         if gather_file_events_stats is not None:

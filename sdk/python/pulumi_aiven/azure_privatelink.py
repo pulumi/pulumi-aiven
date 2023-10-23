@@ -32,10 +32,22 @@ class AzurePrivatelinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             user_subscription_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             user_subscription_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if user_subscription_ids is None and 'userSubscriptionIds' in kwargs:
+            user_subscription_ids = kwargs['userSubscriptionIds']
+        if user_subscription_ids is None:
+            raise TypeError("Missing 'user_subscription_ids' argument")
+
         _setter("project", project)
         _setter("service_name", service_name)
         _setter("user_subscription_ids", user_subscription_ids)
@@ -117,7 +129,17 @@ class _AzurePrivatelinkState:
              service_name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              user_subscription_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if azure_service_alias is None and 'azureServiceAlias' in kwargs:
+            azure_service_alias = kwargs['azureServiceAlias']
+        if azure_service_id is None and 'azureServiceId' in kwargs:
+            azure_service_id = kwargs['azureServiceId']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if user_subscription_ids is None and 'userSubscriptionIds' in kwargs:
+            user_subscription_ids = kwargs['userSubscriptionIds']
+
         if azure_service_alias is not None:
             _setter("azure_service_alias", azure_service_alias)
         if azure_service_id is not None:

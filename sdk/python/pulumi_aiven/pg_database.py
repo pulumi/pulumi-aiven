@@ -42,13 +42,31 @@ class PgDatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_name: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             database_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              lc_collate: Optional[pulumi.Input[str]] = None,
              lc_ctype: Optional[pulumi.Input[str]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if database_name is None:
+            raise TypeError("Missing 'database_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if lc_collate is None and 'lcCollate' in kwargs:
+            lc_collate = kwargs['lcCollate']
+        if lc_ctype is None and 'lcCtype' in kwargs:
+            lc_ctype = kwargs['lcCtype']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         _setter("database_name", database_name)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -170,7 +188,19 @@ class _PgDatabaseState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if lc_collate is None and 'lcCollate' in kwargs:
+            lc_collate = kwargs['lcCollate']
+        if lc_ctype is None and 'lcCtype' in kwargs:
+            lc_ctype = kwargs['lcCtype']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         if database_name is not None:
             _setter("database_name", database_name)
         if lc_collate is not None:

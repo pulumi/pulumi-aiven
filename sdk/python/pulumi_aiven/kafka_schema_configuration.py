@@ -32,10 +32,20 @@ class KafkaSchemaConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              compatibility_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if compatibility_level is None and 'compatibilityLevel' in kwargs:
+            compatibility_level = kwargs['compatibilityLevel']
+
         _setter("project", project)
         _setter("service_name", service_name)
         if compatibility_level is not None:
@@ -102,7 +112,13 @@ class _KafkaSchemaConfigurationState:
              compatibility_level: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compatibility_level is None and 'compatibilityLevel' in kwargs:
+            compatibility_level = kwargs['compatibilityLevel']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if compatibility_level is not None:
             _setter("compatibility_level", compatibility_level)
         if project is not None:

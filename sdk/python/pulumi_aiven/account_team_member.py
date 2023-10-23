@@ -32,10 +32,24 @@ class AccountTeamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             team_id: pulumi.Input[str],
-             user_email: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account_id: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             user_email: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if team_id is None:
+            raise TypeError("Missing 'team_id' argument")
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+        if user_email is None:
+            raise TypeError("Missing 'user_email' argument")
+
         _setter("account_id", account_id)
         _setter("team_id", team_id)
         _setter("user_email", user_email)
@@ -113,7 +127,19 @@ class _AccountTeamMemberState:
              invited_by_user_email: Optional[pulumi.Input[str]] = None,
              team_id: Optional[pulumi.Input[str]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if invited_by_user_email is None and 'invitedByUserEmail' in kwargs:
+            invited_by_user_email = kwargs['invitedByUserEmail']
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         if accepted is not None:
             _setter("accepted", accepted)
         if account_id is not None:

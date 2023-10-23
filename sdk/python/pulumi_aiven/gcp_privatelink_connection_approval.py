@@ -34,10 +34,22 @@ class GcpPrivatelinkConnectionApprovalArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             user_ip_address: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             user_ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if user_ip_address is None and 'userIpAddress' in kwargs:
+            user_ip_address = kwargs['userIpAddress']
+        if user_ip_address is None:
+            raise TypeError("Missing 'user_ip_address' argument")
+
         _setter("project", project)
         _setter("service_name", service_name)
         _setter("user_ip_address", user_ip_address)
@@ -119,7 +131,17 @@ class _GcpPrivatelinkConnectionApprovalState:
              service_name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              user_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if privatelink_connection_id is None and 'privatelinkConnectionId' in kwargs:
+            privatelink_connection_id = kwargs['privatelinkConnectionId']
+        if psc_connection_id is None and 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if user_ip_address is None and 'userIpAddress' in kwargs:
+            user_ip_address = kwargs['userIpAddress']
+
         if privatelink_connection_id is not None:
             _setter("privatelink_connection_id", privatelink_connection_id)
         if project is not None:
