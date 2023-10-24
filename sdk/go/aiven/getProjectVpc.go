@@ -13,39 +13,6 @@ import (
 )
 
 // The Project VPC data source provides information about the existing Aiven Project VPC.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-//				Project:   pulumi.StringRef(aiven_project.Myproject.Project),
-//				CloudName: pulumi.StringRef("google-europe-west1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-//				VpcId: pulumi.StringRef(aiven_project_vpc.Vpc.Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...pulumi.InvokeOption) (*LookupProjectVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectVpcResult

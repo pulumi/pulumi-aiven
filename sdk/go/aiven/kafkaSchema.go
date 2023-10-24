@@ -15,51 +15,6 @@ import (
 
 // The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaSchema(ctx, "kafka-schema1", &aiven.KafkaSchemaArgs{
-//				Project:            pulumi.Any(aiven_project.KafkaSchemasProject1.Project),
-//				ServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),
-//				SubjectName:        pulumi.String("kafka-schema1"),
-//				CompatibilityLevel: pulumi.String("FORWARD"),
-//				Schema: pulumi.String(`    {
-//	       "doc": "example",
-//	       "fields": [{
-//	           "default": 5,
-//	           "doc": "my test number",
-//	           "name": "test",
-//	           "namespace": "test",
-//	           "type": "int"
-//	       }],
-//	       "name": "example",
-//	       "namespace": "example",
-//	       "type": "record"
-//	    }
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

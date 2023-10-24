@@ -35,11 +35,25 @@ class AccountTeamProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             team_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
              project_name: Optional[pulumi.Input[str]] = None,
              team_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if team_id is None:
+            raise TypeError("Missing 'team_id' argument")
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if team_type is None and 'teamType' in kwargs:
+            team_type = kwargs['teamType']
+
         _setter("account_id", account_id)
         _setter("team_id", team_id)
         if project_name is not None:
@@ -124,7 +138,17 @@ class _AccountTeamProjectState:
              project_name: Optional[pulumi.Input[str]] = None,
              team_id: Optional[pulumi.Input[str]] = None,
              team_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if team_type is None and 'teamType' in kwargs:
+            team_type = kwargs['teamType']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if project_name is not None:

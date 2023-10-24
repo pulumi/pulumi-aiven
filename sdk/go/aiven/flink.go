@@ -15,40 +15,6 @@ import (
 
 // The Flink resource allows the creation and management of Aiven Flink services.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlink(ctx, "flink", &aiven.FlinkArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-flink"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					FlinkVersion: pulumi.String("1.16"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

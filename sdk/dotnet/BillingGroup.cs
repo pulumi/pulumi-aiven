@@ -12,31 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bybg1 = new Aiven.BillingGroup("bybg1", new()
-    ///     {
-    ///         BillingCurrency = "USD",
-    ///         VatId = "123ABC",
-    ///     });
-    /// 
-    ///     var pr1 = new Aiven.Project("pr1", new()
-    ///     {
-    ///         ProjectName = "pr1",
-    ///         BillingGroup = bybg1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

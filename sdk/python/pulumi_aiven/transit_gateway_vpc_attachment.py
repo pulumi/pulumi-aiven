@@ -38,12 +38,32 @@ class TransitGatewayVpcAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_cloud_account: pulumi.Input[str],
-             peer_vpc: pulumi.Input[str],
-             user_peer_network_cidrs: pulumi.Input[Sequence[pulumi.Input[str]]],
-             vpc_id: pulumi.Input[str],
+             peer_cloud_account: Optional[pulumi.Input[str]] = None,
+             peer_vpc: Optional[pulumi.Input[str]] = None,
+             user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              peer_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_cloud_account is None and 'peerCloudAccount' in kwargs:
+            peer_cloud_account = kwargs['peerCloudAccount']
+        if peer_cloud_account is None:
+            raise TypeError("Missing 'peer_cloud_account' argument")
+        if peer_vpc is None and 'peerVpc' in kwargs:
+            peer_vpc = kwargs['peerVpc']
+        if peer_vpc is None:
+            raise TypeError("Missing 'peer_vpc' argument")
+        if user_peer_network_cidrs is None and 'userPeerNetworkCidrs' in kwargs:
+            user_peer_network_cidrs = kwargs['userPeerNetworkCidrs']
+        if user_peer_network_cidrs is None:
+            raise TypeError("Missing 'user_peer_network_cidrs' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if peer_region is None and 'peerRegion' in kwargs:
+            peer_region = kwargs['peerRegion']
+
         _setter("peer_cloud_account", peer_cloud_account)
         _setter("peer_vpc", peer_vpc)
         _setter("user_peer_network_cidrs", user_peer_network_cidrs)
@@ -162,7 +182,23 @@ class _TransitGatewayVpcAttachmentState:
              state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_cloud_account is None and 'peerCloudAccount' in kwargs:
+            peer_cloud_account = kwargs['peerCloudAccount']
+        if peer_region is None and 'peerRegion' in kwargs:
+            peer_region = kwargs['peerRegion']
+        if peer_vpc is None and 'peerVpc' in kwargs:
+            peer_vpc = kwargs['peerVpc']
+        if peering_connection_id is None and 'peeringConnectionId' in kwargs:
+            peering_connection_id = kwargs['peeringConnectionId']
+        if state_info is None and 'stateInfo' in kwargs:
+            state_info = kwargs['stateInfo']
+        if user_peer_network_cidrs is None and 'userPeerNetworkCidrs' in kwargs:
+            user_peer_network_cidrs = kwargs['userPeerNetworkCidrs']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if peer_cloud_account is not None:
             _setter("peer_cloud_account", peer_cloud_account)
         if peer_region is not None:
@@ -297,20 +333,6 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         """
         The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        attachment = aiven.TransitGatewayVpcAttachment("attachment",
-            vpc_id=aiven_project_vpc["bar"]["id"],
-            peer_cloud_account="<PEER_ACCOUNT_ID>",
-            peer_vpc="google-project1",
-            peer_region="aws-eu-west-1",
-            user_peer_network_cidrs=["10.0.0.0/24"])
-        ```
-
         ## Import
 
         ```sh
@@ -333,20 +355,6 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        attachment = aiven.TransitGatewayVpcAttachment("attachment",
-            vpc_id=aiven_project_vpc["bar"]["id"],
-            peer_cloud_account="<PEER_ACCOUNT_ID>",
-            peer_vpc="google-project1",
-            peer_region="aws-eu-west-1",
-            user_peer_network_cidrs=["10.0.0.0/24"])
-        ```
 
         ## Import
 

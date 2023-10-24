@@ -13,33 +13,6 @@ import (
 )
 
 // The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupAwsPrivatelink(ctx, &aiven.LookupAwsPrivatelinkArgs{
-//				Project:     data.Aiven_project.Foo.Project,
-//				ServiceName: aiven_kafka.Bar.Service_name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAwsPrivatelink(ctx *pulumi.Context, args *LookupAwsPrivatelinkArgs, opts ...pulumi.InvokeOption) (*LookupAwsPrivatelinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsPrivatelinkResult

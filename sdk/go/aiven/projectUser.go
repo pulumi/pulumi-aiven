@@ -15,34 +15,6 @@ import (
 
 // The Project User resource allows the creation and management of Aiven Project Users.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewProjectUser(ctx, "mytestuser", &aiven.ProjectUserArgs{
-//				Project:    pulumi.Any(aiven_project.Myproject.Project),
-//				Email:      pulumi.String("john.doe@example.com"),
-//				MemberType: pulumi.String("admin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

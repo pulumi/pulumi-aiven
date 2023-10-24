@@ -147,17 +147,6 @@ def get_connection_pool(pool_name: Optional[str] = None,
     """
     The Connection Pool data source provides information about the existing Aiven Connection Pool.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
-        pool_name="mypool")
-    ```
-
 
     :param str pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -189,17 +178,6 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionPoolResult]:
     """
     The Connection Pool data source provides information about the existing Aiven Connection Pool.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
-        pool_name="mypool")
-    ```
 
 
     :param str pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.

@@ -123,17 +123,6 @@ def get_clickhouse_user(project: Optional[str] = None,
     """
     The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    ch_user = aiven.get_clickhouse_user(project=aiven_project["myproject"]["project"],
-        service_name=aiven_clickhouse["myservice"]["service_name"],
-        username="<USERNAME>")
-    ```
-
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -163,17 +152,6 @@ def get_clickhouse_user_output(project: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClickhouseUserResult]:
     """
     The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    ch_user = aiven.get_clickhouse_user(project=aiven_project["myproject"]["project"],
-        service_name=aiven_clickhouse["myservice"]["service_name"],
-        username="<USERNAME>")
-    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

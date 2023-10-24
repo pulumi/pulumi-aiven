@@ -12,37 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Redis resource allows the creation and management of Aiven Redis services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var redis1 = new Aiven.Redis("redis1", new()
-    ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         ServiceName = "my-redis1",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         RedisUserConfig = new Aiven.Inputs.RedisRedisUserConfigArgs
-    ///         {
-    ///             RedisMaxmemoryPolicy = "allkeys-random",
-    ///             PublicAccess = new Aiven.Inputs.RedisRedisUserConfigPublicAccessArgs
-    ///             {
-    ///                 Redis = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

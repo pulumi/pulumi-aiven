@@ -13,33 +13,6 @@ import (
 )
 
 // The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupM3Aggregator(ctx, &aiven.LookupM3AggregatorArgs{
-//				Project:     data.Aiven_project.Foo.Project,
-//				ServiceName: "my-m3a",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupM3Aggregator(ctx *pulumi.Context, args *LookupM3AggregatorArgs, opts ...pulumi.InvokeOption) (*LookupM3AggregatorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3AggregatorResult

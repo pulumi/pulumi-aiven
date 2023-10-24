@@ -6,17 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about an organization from Aiven.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const organization1 = aiven.getOrganization({
- *     name: "<ORGANIZATION_NAME>",
- * });
- * ```
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
@@ -69,17 +58,6 @@ export interface GetOrganizationResult {
 }
 /**
  * Retrieves information about an organization from Aiven.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const organization1 = aiven.getOrganization({
- *     name: "<ORGANIZATION_NAME>",
- * });
- * ```
  */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
     return pulumi.output(args).apply((a: any) => getOrganization(a, opts))

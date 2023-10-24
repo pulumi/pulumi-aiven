@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The Flink Application resource allows the creation and management of Aiven Flink Applications.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.FlinkApplication("foo", {
- *     project: aiven_project.foo.project,
- *     serviceName: "flink-service-1",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

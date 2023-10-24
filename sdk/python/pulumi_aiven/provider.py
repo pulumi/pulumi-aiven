@@ -27,7 +27,11 @@ class ProviderArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              api_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_token is None and 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+
         if api_token is not None:
             _setter("api_token", api_token)
 

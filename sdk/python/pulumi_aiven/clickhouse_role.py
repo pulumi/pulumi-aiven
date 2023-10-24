@@ -32,10 +32,20 @@ class ClickhouseRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             role: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("project", project)
         _setter("role", role)
         _setter("service_name", service_name)
@@ -101,7 +111,11 @@ class _ClickhouseRoleState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if project is not None:
             _setter("project", project)
         if role is not None:
@@ -158,25 +172,6 @@ class ClickhouseRole(pulumi.CustomResource):
         """
         The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        bar = aiven.Clickhouse("bar",
-            project="example-project",
-            cloud_name="google-europe-west1",
-            plan="startup-beta-8",
-            service_name="example-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo = aiven.ClickhouseRole("foo",
-            service_name=bar.service_name,
-            project=bar.project,
-            role="writer")
-        ```
-
         ## Import
 
         ```sh
@@ -197,25 +192,6 @@ class ClickhouseRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        bar = aiven.Clickhouse("bar",
-            project="example-project",
-            cloud_name="google-europe-west1",
-            plan="startup-beta-8",
-            service_name="example-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo = aiven.ClickhouseRole("foo",
-            service_name=bar.service_name,
-            project=bar.project,
-            role="writer")
-        ```
 
         ## Import
 

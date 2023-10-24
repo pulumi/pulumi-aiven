@@ -44,14 +44,34 @@ class ConnectionPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_name: pulumi.Input[str],
-             pool_name: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             database_name: Optional[pulumi.Input[str]] = None,
+             pool_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              pool_mode: Optional[pulumi.Input[str]] = None,
              pool_size: Optional[pulumi.Input[int]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if database_name is None:
+            raise TypeError("Missing 'database_name' argument")
+        if pool_name is None and 'poolName' in kwargs:
+            pool_name = kwargs['poolName']
+        if pool_name is None:
+            raise TypeError("Missing 'pool_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if pool_mode is None and 'poolMode' in kwargs:
+            pool_mode = kwargs['poolMode']
+        if pool_size is None and 'poolSize' in kwargs:
+            pool_size = kwargs['poolSize']
+
         _setter("database_name", database_name)
         _setter("pool_name", pool_name)
         _setter("project", project)
@@ -192,7 +212,21 @@ class _ConnectionPoolState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_uri is None and 'connectionUri' in kwargs:
+            connection_uri = kwargs['connectionUri']
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if pool_mode is None and 'poolMode' in kwargs:
+            pool_mode = kwargs['poolMode']
+        if pool_name is None and 'poolName' in kwargs:
+            pool_name = kwargs['poolName']
+        if pool_size is None and 'poolSize' in kwargs:
+            pool_size = kwargs['poolSize']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if connection_uri is not None:
             _setter("connection_uri", connection_uri)
         if database_name is not None:
@@ -323,22 +357,6 @@ class ConnectionPool(pulumi.CustomResource):
         """
         The Connection Pool resource allows the creation and management of Aiven Connection Pools.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytestpool = aiven.ConnectionPool("mytestpool",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_pg["mypg"]["service_name"],
-            database_name=aiven_pg_database["mypgdatabase"]["database_name"],
-            pool_mode="transaction",
-            pool_name="mypool",
-            pool_size=10,
-            username=aiven_pg_user["mypguser"]["username"])
-        ```
-
         ## Import
 
         ```sh
@@ -363,22 +381,6 @@ class ConnectionPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Connection Pool resource allows the creation and management of Aiven Connection Pools.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytestpool = aiven.ConnectionPool("mytestpool",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_pg["mypg"]["service_name"],
-            database_name=aiven_pg_database["mypgdatabase"]["database_name"],
-            pool_mode="transaction",
-            pool_name="mypool",
-            pool_size=10,
-            username=aiven_pg_user["mypguser"]["username"])
-        ```
 
         ## Import
 

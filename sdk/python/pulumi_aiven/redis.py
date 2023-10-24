@@ -87,9 +87,9 @@ class RedisArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             plan: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              additional_disk_space: Optional[pulumi.Input[str]] = None,
              cloud_name: Optional[pulumi.Input[str]] = None,
              disk_space: Optional[pulumi.Input[str]] = None,
@@ -101,7 +101,37 @@ class RedisArgs:
              static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if additional_disk_space is None and 'additionalDiskSpace' in kwargs:
+            additional_disk_space = kwargs['additionalDiskSpace']
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if disk_space is None and 'diskSpace' in kwargs:
+            disk_space = kwargs['diskSpace']
+        if maintenance_window_dow is None and 'maintenanceWindowDow' in kwargs:
+            maintenance_window_dow = kwargs['maintenanceWindowDow']
+        if maintenance_window_time is None and 'maintenanceWindowTime' in kwargs:
+            maintenance_window_time = kwargs['maintenanceWindowTime']
+        if project_vpc_id is None and 'projectVpcId' in kwargs:
+            project_vpc_id = kwargs['projectVpcId']
+        if redis_user_config is None and 'redisUserConfig' in kwargs:
+            redis_user_config = kwargs['redisUserConfig']
+        if service_integrations is None and 'serviceIntegrations' in kwargs:
+            service_integrations = kwargs['serviceIntegrations']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         _setter("plan", plan)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -465,7 +495,51 @@ class _RedisState:
              static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_disk_space is None and 'additionalDiskSpace' in kwargs:
+            additional_disk_space = kwargs['additionalDiskSpace']
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if disk_space is None and 'diskSpace' in kwargs:
+            disk_space = kwargs['diskSpace']
+        if disk_space_cap is None and 'diskSpaceCap' in kwargs:
+            disk_space_cap = kwargs['diskSpaceCap']
+        if disk_space_default is None and 'diskSpaceDefault' in kwargs:
+            disk_space_default = kwargs['diskSpaceDefault']
+        if disk_space_step is None and 'diskSpaceStep' in kwargs:
+            disk_space_step = kwargs['diskSpaceStep']
+        if disk_space_used is None and 'diskSpaceUsed' in kwargs:
+            disk_space_used = kwargs['diskSpaceUsed']
+        if maintenance_window_dow is None and 'maintenanceWindowDow' in kwargs:
+            maintenance_window_dow = kwargs['maintenanceWindowDow']
+        if maintenance_window_time is None and 'maintenanceWindowTime' in kwargs:
+            maintenance_window_time = kwargs['maintenanceWindowTime']
+        if project_vpc_id is None and 'projectVpcId' in kwargs:
+            project_vpc_id = kwargs['projectVpcId']
+        if redis_user_config is None and 'redisUserConfig' in kwargs:
+            redis_user_config = kwargs['redisUserConfig']
+        if service_host is None and 'serviceHost' in kwargs:
+            service_host = kwargs['serviceHost']
+        if service_integrations is None and 'serviceIntegrations' in kwargs:
+            service_integrations = kwargs['serviceIntegrations']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_password is None and 'servicePassword' in kwargs:
+            service_password = kwargs['servicePassword']
+        if service_port is None and 'servicePort' in kwargs:
+            service_port = kwargs['servicePort']
+        if service_type is None and 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if service_uri is None and 'serviceUri' in kwargs:
+            service_uri = kwargs['serviceUri']
+        if service_username is None and 'serviceUsername' in kwargs:
+            service_username = kwargs['serviceUsername']
+        if static_ips is None and 'staticIps' in kwargs:
+            static_ips = kwargs['staticIps']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         if additional_disk_space is not None:
             _setter("additional_disk_space", additional_disk_space)
         if cloud_name is not None:
@@ -897,27 +971,6 @@ class Redis(pulumi.CustomResource):
         """
         The Redis resource allows the creation and management of Aiven Redis services.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        redis1 = aiven.Redis("redis1",
-            project=data["aiven_project"]["pr1"]["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="my-redis1",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            redis_user_config=aiven.RedisRedisUserConfigArgs(
-                redis_maxmemory_policy="allkeys-random",
-                public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
-                    redis=True,
-                ),
-            ))
-        ```
-
         ## Import
 
         ```sh
@@ -969,27 +1022,6 @@ class Redis(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Redis resource allows the creation and management of Aiven Redis services.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        redis1 = aiven.Redis("redis1",
-            project=data["aiven_project"]["pr1"]["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="my-redis1",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            redis_user_config=aiven.RedisRedisUserConfigArgs(
-                redis_maxmemory_policy="allkeys-random",
-                public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
-                    redis=True,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -1051,11 +1083,7 @@ class Redis(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_vpc_id"] = project_vpc_id
-            if redis_user_config is not None and not isinstance(redis_user_config, RedisRedisUserConfigArgs):
-                redis_user_config = redis_user_config or {}
-                def _setter(key, value):
-                    redis_user_config[key] = value
-                RedisRedisUserConfigArgs._configure(_setter, **redis_user_config)
+            redis_user_config = _utilities.configure(redis_user_config, RedisRedisUserConfigArgs, True)
             __props__.__dict__["redis_user_config"] = redis_user_config
             __props__.__dict__["service_integrations"] = service_integrations
             if service_name is None and not opts.urn:

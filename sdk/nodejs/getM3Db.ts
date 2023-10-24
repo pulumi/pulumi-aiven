@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The M3 DB data source provides information about the existing Aiven M3 services.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const m3 = aiven.getM3Db({
- *     project: data.aiven_project.foo.project,
- *     serviceName: "my-m3db",
- * });
- * ```
  */
 export function getM3Db(args: GetM3DbArgs, opts?: pulumi.InvokeOptions): Promise<GetM3DbResult> {
 
@@ -163,18 +151,6 @@ export interface GetM3DbResult {
 }
 /**
  * The M3 DB data source provides information about the existing Aiven M3 services.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const m3 = aiven.getM3Db({
- *     project: data.aiven_project.foo.project,
- *     serviceName: "my-m3db",
- * });
- * ```
  */
 export function getM3DbOutput(args: GetM3DbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3DbResult> {
     return pulumi.output(args).apply((a: any) => getM3Db(a, opts))

@@ -247,18 +247,6 @@ def get_service_integration(destination_service_name: Optional[str] = None,
 
     Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
-        destination_service_name="<DESTINATION_SERVICE_NAME>",
-        integration_type="datadog",
-        source_service_name="<SOURCE_SERVICE_NAME>")
-    ```
-
 
     :param str destination_service_name: Destination service for the integration (if any)
     :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
@@ -303,18 +291,6 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     The Service Integration data source provides information about the existing Aiven Service Integration.
 
     Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
-        destination_service_name="<DESTINATION_SERVICE_NAME>",
-        integration_type="datadog",
-        source_service_name="<SOURCE_SERVICE_NAME>")
-    ```
 
 
     :param str destination_service_name: Destination service for the integration (if any)

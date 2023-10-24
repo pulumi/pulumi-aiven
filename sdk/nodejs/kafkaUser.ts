@@ -7,20 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The Kafka User resource allows the creation and management of Aiven Kafka Users.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.KafkaUser("foo", {
- *     serviceName: aiven_kafka.bar.service_name,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

@@ -96,17 +96,6 @@ def get_mysql_database(database_name: Optional[str] = None,
     """
     The MySQL Database data source provides information about the existing Aiven MySQL Database.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mydatabase = aiven.get_mysql_database(project=aiven_project["myproject"]["project"],
-        service_name=aiven_mysql["mymysql"]["service_name"],
-        database_name="<DATABASE_NAME>")
-    ```
-
 
     :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -134,17 +123,6 @@ def get_mysql_database_output(database_name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMysqlDatabaseResult]:
     """
     The MySQL Database data source provides information about the existing Aiven MySQL Database.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    mydatabase = aiven.get_mysql_database(project=aiven_project["myproject"]["project"],
-        service_name=aiven_mysql["mymysql"]["service_name"],
-        database_name="<DATABASE_NAME>")
-    ```
 
 
     :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.

@@ -12,46 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka resource allows the creation and management of Aiven Kafka services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var kafka1 = new Aiven.Kafka("kafka1", new()
-    ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         ServiceName = "my-kafka1",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         KafkaUserConfig = new Aiven.Inputs.KafkaKafkaUserConfigArgs
-    ///         {
-    ///             KafkaRest = true,
-    ///             KafkaConnect = true,
-    ///             SchemaRegistry = true,
-    ///             KafkaVersion = "3.1",
-    ///             Kafka = new Aiven.Inputs.KafkaKafkaUserConfigKafkaArgs
-    ///             {
-    ///                 GroupMaxSessionTimeoutMs = 70000,
-    ///                 LogRetentionBytes = 1000000000,
-    ///             },
-    ///             PublicAccess = new Aiven.Inputs.KafkaKafkaUserConfigPublicAccessArgs
-    ///             {
-    ///                 KafkaRest = true,
-    ///                 KafkaConnect = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

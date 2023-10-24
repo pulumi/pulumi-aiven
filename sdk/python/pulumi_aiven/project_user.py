@@ -32,10 +32,20 @@ class ProjectUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             member_type: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             email: Optional[pulumi.Input[str]] = None,
+             member_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if member_type is None and 'memberType' in kwargs:
+            member_type = kwargs['memberType']
+        if member_type is None:
+            raise TypeError("Missing 'member_type' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("email", email)
         _setter("member_type", member_type)
         _setter("project", project)
@@ -105,7 +115,11 @@ class _ProjectUserState:
              email: Optional[pulumi.Input[str]] = None,
              member_type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member_type is None and 'memberType' in kwargs:
+            member_type = kwargs['memberType']
+
         if accepted is not None:
             _setter("accepted", accepted)
         if email is not None:
@@ -176,18 +190,6 @@ class ProjectUser(pulumi.CustomResource):
         """
         The Project User resource allows the creation and management of Aiven Project Users.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytestuser = aiven.ProjectUser("mytestuser",
-            project=aiven_project["myproject"]["project"],
-            email="john.doe@example.com",
-            member_type="admin")
-        ```
-
         ## Import
 
         ```sh
@@ -208,18 +210,6 @@ class ProjectUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Project User resource allows the creation and management of Aiven Project Users.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mytestuser = aiven.ProjectUser("mytestuser",
-            project=aiven_project["myproject"]["project"],
-            email="john.doe@example.com",
-            member_type="admin")
-        ```
 
         ## Import
 

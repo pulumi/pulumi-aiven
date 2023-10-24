@@ -12,36 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Grafana resource allows the creation and management of Aiven Grafana services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var gr1 = new Aiven.Grafana("gr1", new()
-    ///     {
-    ///         Project = data.Aiven_project.Ps1.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-1",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         GrafanaUserConfig = new Aiven.Inputs.GrafanaGrafanaUserConfigArgs
-    ///         {
-    ///             AlertingEnabled = true,
-    ///             PublicAccess = new Aiven.Inputs.GrafanaGrafanaUserConfigPublicAccessArgs
-    ///             {
-    ///                 Grafana = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

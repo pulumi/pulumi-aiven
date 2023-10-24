@@ -15,32 +15,6 @@ namespace Pulumi.Aiven
         /// The Service Component data source provides information about the existing Aiven service Component.
         /// 
         /// Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
-        ///     {
-        ///         Project = aiven_kafka.Project1.Project,
-        ///         ServiceName = aiven_kafka.Service1.Service_name,
-        ///         Component = "kafka",
-        ///         Route = "dynamic",
-        ///         KafkaAuthenticationMethod = "certificate",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceComponentResult> InvokeAsync(GetServiceComponentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentArgs(), options.WithDefaults());
@@ -49,32 +23,6 @@ namespace Pulumi.Aiven
         /// The Service Component data source provides information about the existing Aiven service Component.
         /// 
         /// Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
-        ///     {
-        ///         Project = aiven_kafka.Project1.Project,
-        ///         ServiceName = aiven_kafka.Service1.Service_name,
-        ///         Component = "kafka",
-        ///         Route = "dynamic",
-        ///         KafkaAuthenticationMethod = "certificate",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceComponentResult> Invoke(GetServiceComponentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithDefaults());

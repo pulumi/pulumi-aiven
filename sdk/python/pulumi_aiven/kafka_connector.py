@@ -37,11 +37,25 @@ class KafkaConnectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             connector_name: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             connector_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if connector_name is None and 'connectorName' in kwargs:
+            connector_name = kwargs['connectorName']
+        if connector_name is None:
+            raise TypeError("Missing 'connector_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("config", config)
         _setter("connector_name", connector_name)
         _setter("project", project)
@@ -152,7 +166,25 @@ class _KafkaConnectorState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              tasks: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connector_name is None and 'connectorName' in kwargs:
+            connector_name = kwargs['connectorName']
+        if plugin_author is None and 'pluginAuthor' in kwargs:
+            plugin_author = kwargs['pluginAuthor']
+        if plugin_class is None and 'pluginClass' in kwargs:
+            plugin_class = kwargs['pluginClass']
+        if plugin_doc_url is None and 'pluginDocUrl' in kwargs:
+            plugin_doc_url = kwargs['pluginDocUrl']
+        if plugin_title is None and 'pluginTitle' in kwargs:
+            plugin_title = kwargs['pluginTitle']
+        if plugin_type is None and 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+        if plugin_version is None and 'pluginVersion' in kwargs:
+            plugin_version = kwargs['pluginVersion']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if config is not None:
             _setter("config", config)
         if connector_name is not None:
@@ -322,27 +354,6 @@ class KafkaConnector(pulumi.CustomResource):
         """
         The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
-            project=aiven_project["kafka-con-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
-            connector_name="kafka-os-con1",
-            config={
-                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
-                "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
-                "type.name": "os-connector",
-                "name": "kafka-os-con1",
-                "connection.url": aiven_elasticsearch["os-service1"]["service_uri"],
-                "connection.username": aiven_opensearch["os-service1"]["service_username"],
-                "connection.password": aiven_opensearch["os-service1"]["service_password"],
-            })
-        ```
-
         ## Import
 
         ```sh
@@ -364,27 +375,6 @@ class KafkaConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
-            project=aiven_project["kafka-con-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
-            connector_name="kafka-os-con1",
-            config={
-                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
-                "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
-                "type.name": "os-connector",
-                "name": "kafka-os-con1",
-                "connection.url": aiven_elasticsearch["os-service1"]["service_uri"],
-                "connection.username": aiven_opensearch["os-service1"]["service_username"],
-                "connection.password": aiven_opensearch["os-service1"]["service_password"],
-            })
-        ```
 
         ## Import
 

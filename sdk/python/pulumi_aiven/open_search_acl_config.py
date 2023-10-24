@@ -35,11 +35,21 @@ class OpenSearchAclConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              extended_acl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if extended_acl is None and 'extendedAcl' in kwargs:
+            extended_acl = kwargs['extendedAcl']
+
         _setter("project", project)
         _setter("service_name", service_name)
         if enabled is not None:
@@ -124,7 +134,13 @@ class _OpenSearchAclConfigState:
              extended_acl: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if extended_acl is None and 'extendedAcl' in kwargs:
+            extended_acl = kwargs['extendedAcl']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if extended_acl is not None:
@@ -196,31 +212,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         """
         The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo_project = aiven.get_project(project="example_project")
-        bar = aiven.OpenSearch("bar",
-            project=foo_project.project,
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example_service_name",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
-            service_name=bar.service_name,
-            project=foo_project.project,
-            username="user-example")
-        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
-            project=foo_project.project,
-            service_name=bar.service_name,
-            enabled=True,
-            extended_acl=False)
-        ```
-
         ## Import
 
         ```sh
@@ -242,31 +233,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo_project = aiven.get_project(project="example_project")
-        bar = aiven.OpenSearch("bar",
-            project=foo_project.project,
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example_service_name",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
-            service_name=bar.service_name,
-            project=foo_project.project,
-            username="user-example")
-        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
-            project=foo_project.project,
-            service_name=bar.service_name,
-            enabled=True,
-            extended_acl=False)
-        ```
 
         ## Import
 

@@ -29,9 +29,17 @@ class StaticIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_name: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if cloud_name is None:
+            raise TypeError("Missing 'cloud_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("cloud_name", cloud_name)
         _setter("project", project)
 
@@ -96,7 +104,17 @@ class _StaticIpState:
              service_name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              static_ip_address_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if static_ip_address_id is None and 'staticIpAddressId' in kwargs:
+            static_ip_address_id = kwargs['staticIpAddressId']
+
         if cloud_name is not None:
             _setter("cloud_name", cloud_name)
         if ip_address is not None:

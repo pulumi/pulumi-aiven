@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The MySQL User data source provides information about the existing Aiven MySQL User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const user = aiven.getMysqlUser({
- *     project: "my-project",
- *     serviceName: "my-service",
- *     username: "user1",
- * });
- * ```
  */
 export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlUserResult> {
 
@@ -91,19 +78,6 @@ export interface GetMysqlUserResult {
 }
 /**
  * The MySQL User data source provides information about the existing Aiven MySQL User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const user = aiven.getMysqlUser({
- *     project: "my-project",
- *     serviceName: "my-service",
- *     username: "user1",
- * });
- * ```
  */
 export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlUserResult> {
     return pulumi.output(args).apply((a: any) => getMysqlUser(a, opts))

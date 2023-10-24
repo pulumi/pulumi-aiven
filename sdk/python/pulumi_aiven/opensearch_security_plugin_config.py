@@ -32,10 +32,22 @@ class OpensearchSecurityPluginConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_password: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_password: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_password is None and 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if admin_password is None:
+            raise TypeError("Missing 'admin_password' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("admin_password", admin_password)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -113,7 +125,15 @@ class _OpensearchSecurityPluginConfigState:
              enabled: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_enabled is None and 'adminEnabled' in kwargs:
+            admin_enabled = kwargs['adminEnabled']
+        if admin_password is None and 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if admin_enabled is not None:
             _setter("admin_enabled", admin_enabled)
         if admin_password is not None:

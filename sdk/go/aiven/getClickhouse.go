@@ -13,33 +13,6 @@ import (
 )
 
 // The Clickhouse data source provides information about the existing Aiven Clickhouse service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupClickhouse(ctx, &aiven.LookupClickhouseArgs{
-//				Project:     data.Aiven_project.Pr1.Project,
-//				ServiceName: "<SERVICE_NAME>",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupClickhouse(ctx *pulumi.Context, args *LookupClickhouseArgs, opts ...pulumi.InvokeOption) (*LookupClickhouseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClickhouseResult

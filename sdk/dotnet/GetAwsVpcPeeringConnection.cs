@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
-        ///     {
-        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
-        ///         AwsAccountId = "XXXXX",
-        ///         AwsVpcId = "XXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAwsVpcPeeringConnectionResult> InvokeAsync(GetAwsVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsVpcPeeringConnectionResult>("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args ?? new GetAwsVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
-        ///     {
-        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
-        ///         AwsAccountId = "XXXXX",
-        ///         AwsVpcId = "XXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAwsVpcPeeringConnectionResult> Invoke(GetAwsVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsVpcPeeringConnectionResult>("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args ?? new GetAwsVpcPeeringConnectionInvokeArgs(), options.WithDefaults());

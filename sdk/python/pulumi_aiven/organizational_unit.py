@@ -29,9 +29,15 @@ class OrganizationalUnitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent_id: pulumi.Input[str],
+             parent_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+
         _setter("parent_id", parent_id)
         if name is not None:
             _setter("name", name)
@@ -93,7 +99,17 @@ class _OrganizationalUnitState:
              parent_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if name is not None:
@@ -177,15 +193,6 @@ class OrganizationalUnit(pulumi.CustomResource):
         """
         The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
-        ```
-
         ## Import
 
         ```sh
@@ -205,15 +212,6 @@ class OrganizationalUnit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
-        ```
 
         ## Import
 

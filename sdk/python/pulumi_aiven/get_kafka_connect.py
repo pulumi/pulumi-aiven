@@ -375,16 +375,6 @@ def get_kafka_connect(project: Optional[str] = None,
     """
     The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    kc1 = aiven.get_kafka_connect(project=data["aiven_project"]["pr1"]["project"],
-        service_name="my-kc1")
-    ```
-
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -432,16 +422,6 @@ def get_kafka_connect_output(project: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaConnectResult]:
     """
     The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    kc1 = aiven.get_kafka_connect(project=data["aiven_project"]["pr1"]["project"],
-        service_name="my-kc1")
-    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

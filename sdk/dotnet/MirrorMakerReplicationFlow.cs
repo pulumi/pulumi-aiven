@@ -12,38 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var f1 = new Aiven.MirrorMakerReplicationFlow("f1", new()
-    ///     {
-    ///         Project = aiven_project.Kafka_mm_project1.Project,
-    ///         ServiceName = aiven_kafka.Mm.Service_name,
-    ///         SourceCluster = aiven_kafka.Source.Service_name,
-    ///         TargetCluster = aiven_kafka.Target.Service_name,
-    ///         Enable = true,
-    ///         Topics = new[]
-    ///         {
-    ///             ".*",
-    ///         },
-    ///         TopicsBlacklists = new[]
-    ///         {
-    ///             ".*[\\-\\.]internal",
-    ///             ".*\\.replica",
-    ///             "__.*",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

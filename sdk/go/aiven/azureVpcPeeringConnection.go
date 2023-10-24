@@ -15,37 +15,6 @@ import (
 
 // The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAzureVpcPeeringConnection(ctx, "foo", &aiven.AzureVpcPeeringConnectionArgs{
-//				VpcId:               pulumi.Any(data.Aiven_project_vpc.Vpc.Id),
-//				AzureSubscriptionId: pulumi.String("xxxxxx"),
-//				PeerResourceGroup:   pulumi.String("my-pr1"),
-//				VnetName:            pulumi.String("my-vnet1"),
-//				PeerAzureAppId:      pulumi.String("xxxxxx"),
-//				PeerAzureTenantId:   pulumi.String("xxxxxx"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

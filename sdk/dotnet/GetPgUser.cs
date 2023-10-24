@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The PG User data source provides information about the existing Aiven PG User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetPgUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPgUserResult> InvokeAsync(GetPgUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The PG User data source provides information about the existing Aiven PG User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetPgUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPgUserResult> Invoke(GetPgUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserInvokeArgs(), options.WithDefaults());

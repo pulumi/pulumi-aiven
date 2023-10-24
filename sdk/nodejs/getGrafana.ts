@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Grafana data source provides information about the existing Aiven Grafana service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const gr1 = aiven.getGrafana({
- *     project: data.aiven_project.ps1.project,
- *     serviceName: "my-gr1",
- * });
- * ```
  */
 export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): Promise<GetGrafanaResult> {
 
@@ -163,18 +151,6 @@ export interface GetGrafanaResult {
 }
 /**
  * The Grafana data source provides information about the existing Aiven Grafana service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const gr1 = aiven.getGrafana({
- *     project: data.aiven_project.ps1.project,
- *     serviceName: "my-gr1",
- * });
- * ```
  */
 export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrafanaResult> {
     return pulumi.output(args).apply((a: any) => getGrafana(a, opts))

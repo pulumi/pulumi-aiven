@@ -15,48 +15,6 @@ import (
 
 // The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOpenSearch(ctx, "os1", &aiven.OpenSearchArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("my-os1"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				OpensearchUserConfig: &aiven.OpenSearchOpensearchUserConfigArgs{
-//					OpensearchVersion: pulumi.String("1"),
-//					OpensearchDashboards: &aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
-//						Enabled:                  pulumi.Bool(true),
-//						OpensearchRequestTimeout: pulumi.Int(30000),
-//					},
-//					PublicAccess: &aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{
-//						Opensearch:           pulumi.Bool(true),
-//						OpensearchDashboards: pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
