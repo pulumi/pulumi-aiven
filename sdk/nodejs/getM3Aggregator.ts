@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const m3a = aiven.getM3Aggregator({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "my-m3a",
+ * });
+ * ```
  */
 export function getM3Aggregator(args: GetM3AggregatorArgs, opts?: pulumi.InvokeOptions): Promise<GetM3AggregatorResult> {
 
@@ -151,6 +163,18 @@ export interface GetM3AggregatorResult {
 }
 /**
  * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const m3a = aiven.getM3Aggregator({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "my-m3a",
+ * });
+ * ```
  */
 export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3AggregatorResult> {
     return pulumi.output(args).apply((a: any) => getM3Aggregator(a, opts))

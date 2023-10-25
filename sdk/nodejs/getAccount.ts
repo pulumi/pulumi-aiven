@@ -6,6 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * The Account data source provides information about the existing Aiven Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const account1 = aiven.getAccount({
+ *     name: "<ACCOUNT_NAME>",
+ * });
+ * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
@@ -68,6 +79,17 @@ export interface GetAccountResult {
 }
 /**
  * The Account data source provides information about the existing Aiven Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const account1 = aiven.getAccount({
+ *     name: "<ACCOUNT_NAME>",
+ * });
+ * ```
  */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(args).apply((a: any) => getAccount(a, opts))

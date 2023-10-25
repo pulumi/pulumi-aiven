@@ -248,6 +248,65 @@ class OpenSearchAclRule(pulumi.CustomResource):
         """
         The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        os_user = aiven.OpensearchUser("osUser",
+            project=var["aiven_project_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
+            username="documentation-user-1")
+        os_user2 = aiven.OpensearchUser("osUser2",
+            project=var["aiven_project_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
+            username="documentation-user-2")
+        os_acls_config = aiven.OpenSearchAclConfig("osAclsConfig",
+            project=var["aiven_project_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
+            enabled=True,
+            extended_acl=False)
+        acl_rules = [
+            {
+                "username": os_user.username,
+                "index": "index2",
+                "permission": "readwrite",
+            },
+            {
+                "username": os_user.username,
+                "index": "index3",
+                "permission": "read",
+            },
+            {
+                "username": os_user.username,
+                "index": "index5",
+                "permission": "deny",
+            },
+            {
+                "username": os_user2.username,
+                "index": "index3",
+                "permission": "write",
+            },
+            {
+                "username": os_user2.username,
+                "index": "index7",
+                "permission": "readwrite",
+            },
+        ]
+        os_acl_rule = []
+        def create_os_acl_rule(range_body):
+            for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+                os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                    project=os_acls_config.project,
+                    service_name=os_acls_config.service_name,
+                    username=range["value"]["username"],
+                    index=range["value"]["index"],
+                    permission=range["value"]["permission"]))
+
+        pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        ```
+
         ## Import
 
         ```sh
@@ -270,6 +329,65 @@ class OpenSearchAclRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        os_user = aiven.OpensearchUser("osUser",
+            project=var["aiven_project_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
+            username="documentation-user-1")
+        os_user2 = aiven.OpensearchUser("osUser2",
+            project=var["aiven_project_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
+            username="documentation-user-2")
+        os_acls_config = aiven.OpenSearchAclConfig("osAclsConfig",
+            project=var["aiven_project_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
+            enabled=True,
+            extended_acl=False)
+        acl_rules = [
+            {
+                "username": os_user.username,
+                "index": "index2",
+                "permission": "readwrite",
+            },
+            {
+                "username": os_user.username,
+                "index": "index3",
+                "permission": "read",
+            },
+            {
+                "username": os_user.username,
+                "index": "index5",
+                "permission": "deny",
+            },
+            {
+                "username": os_user2.username,
+                "index": "index3",
+                "permission": "write",
+            },
+            {
+                "username": os_user2.username,
+                "index": "index7",
+                "permission": "readwrite",
+            },
+        ]
+        os_acl_rule = []
+        def create_os_acl_rule(range_body):
+            for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+                os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                    project=os_acls_config.project,
+                    service_name=os_acls_config.service_name,
+                    username=range["value"]["username"],
+                    index=range["value"]["index"],
+                    permission=range["value"]["permission"]))
+
+        pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        ```
 
         ## Import
 

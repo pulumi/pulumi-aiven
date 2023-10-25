@@ -212,6 +212,31 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         """
         The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo_project = aiven.get_project(project="example_project")
+        bar = aiven.OpenSearch("bar",
+            project=foo_project.project,
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example_service_name",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
+            service_name=bar.service_name,
+            project=foo_project.project,
+            username="user-example")
+        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
+            project=foo_project.project,
+            service_name=bar.service_name,
+            enabled=True,
+            extended_acl=False)
+        ```
+
         ## Import
 
         ```sh
@@ -233,6 +258,31 @@ class OpenSearchAclConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo_project = aiven.get_project(project="example_project")
+        bar = aiven.OpenSearch("bar",
+            project=foo_project.project,
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example_service_name",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
+            service_name=bar.service_name,
+            project=foo_project.project,
+            username="user-example")
+        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
+            project=foo_project.project,
+            service_name=bar.service_name,
+            enabled=True,
+            extended_acl=False)
+        ```
 
         ## Import
 

@@ -13,6 +13,33 @@ import (
 )
 
 // The M3 DB data source provides information about the existing Aiven M3 services.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupM3Db(ctx, &aiven.LookupM3DbArgs{
+//				Project:     data.Aiven_project.Foo.Project,
+//				ServiceName: "my-m3db",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupM3Db(ctx *pulumi.Context, args *LookupM3DbArgs, opts ...pulumi.InvokeOption) (*LookupM3DbResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3DbResult

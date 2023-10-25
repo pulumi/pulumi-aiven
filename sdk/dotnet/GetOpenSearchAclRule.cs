@@ -13,12 +13,62 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
+        ///     {
+        ///         Project = aiven_opensearch_acl_config.Os_acls_config.Project,
+        ///         ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,
+        ///         Username = "&lt;USERNAME&gt;",
+        ///         Index = "&lt;INDEX&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenSearchAclRuleResult> InvokeAsync(GetOpenSearchAclRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
+        ///     {
+        ///         Project = aiven_opensearch_acl_config.Os_acls_config.Project,
+        ///         ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,
+        ///         Username = "&lt;USERNAME&gt;",
+        ///         Index = "&lt;INDEX&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenSearchAclRuleResult> Invoke(GetOpenSearchAclRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleInvokeArgs(), options.WithDefaults());

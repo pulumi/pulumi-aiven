@@ -14,12 +14,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Cassandra data source provides information about the existing Aiven Cassandra service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bar = Aiven.GetCassandra.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Foo.Project,
+        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCassandaResult> InvokeAsync(GetCassandaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Cassandra data source provides information about the existing Aiven Cassandra service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bar = Aiven.GetCassandra.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Foo.Project,
+        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCassandaResult> Invoke(GetCassandaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaInvokeArgs(), options.WithDefaults());

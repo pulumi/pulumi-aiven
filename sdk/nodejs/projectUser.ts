@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The Project User resource allows the creation and management of Aiven Project Users.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestuser = new aiven.ProjectUser("mytestuser", {
+ *     project: aiven_project.myproject.project,
+ *     email: "john.doe@example.com",
+ *     memberType: "admin",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

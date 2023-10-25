@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var clickhouse = Aiven.GetClickhouse.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClickhouseResult> InvokeAsync(GetClickhouseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var clickhouse = Aiven.GetClickhouse.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClickhouseResult> Invoke(GetClickhouseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseInvokeArgs(), options.WithDefaults());

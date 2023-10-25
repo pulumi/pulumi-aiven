@@ -280,6 +280,18 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         """
         The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AwsVpcPeeringConnection("foo",
+            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+            aws_account_id="XXXXX",
+            aws_vpc_id="XXXXX")
+        ```
+
         ## Import
 
         ```sh
@@ -301,6 +313,18 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AwsVpcPeeringConnection("foo",
+            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+            aws_account_id="XXXXX",
+            aws_vpc_id="XXXXX")
+        ```
 
         ## Import
 

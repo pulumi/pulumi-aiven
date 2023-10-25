@@ -15,6 +15,45 @@ import (
 
 // The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewKafkaMirrorMaker(ctx, "mm1", &aiven.KafkaMirrorMakerArgs{
+//				Project:     pulumi.Any(data.Aiven_project.Pr1.Project),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("my-mm1"),
+//				KafkaMirrormakerUserConfig: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{
+//					IpFilters: pulumi.StringArray{
+//						pulumi.String("0.0.0.0/0"),
+//					},
+//					KafkaMirrormaker: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{
+//						RefreshGroupsIntervalSeconds: pulumi.Int(600),
+//						RefreshTopicsEnabled:         pulumi.Bool(true),
+//						RefreshTopicsIntervalSeconds: pulumi.Int(600),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

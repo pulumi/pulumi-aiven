@@ -6,6 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestacl = aiven.getKafkaAcl({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.mykafka.service_name,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     permission: "<PERMISSON>",
+ *     username: "<USERNAME_PATTERN>",
+ * });
+ * ```
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
 
@@ -80,6 +95,21 @@ export interface GetKafkaAclResult {
 }
 /**
  * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestacl = aiven.getKafkaAcl({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.mykafka.service_name,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     permission: "<PERMISSON>",
+ *     username: "<USERNAME_PATTERN>",
+ * });
+ * ```
  */
 export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
     return pulumi.output(args).apply((a: any) => getKafkaAcl(a, opts))

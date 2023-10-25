@@ -15,6 +15,44 @@ import (
 
 // The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "f1", &aiven.MirrorMakerReplicationFlowArgs{
+//				Project:       pulumi.Any(aiven_project.KafkaMmProject1.Project),
+//				ServiceName:   pulumi.Any(aiven_kafka.Mm.Service_name),
+//				SourceCluster: pulumi.Any(aiven_kafka.Source.Service_name),
+//				TargetCluster: pulumi.Any(aiven_kafka.Target.Service_name),
+//				Enable:        pulumi.Bool(true),
+//				Topics: pulumi.StringArray{
+//					pulumi.String(".*"),
+//				},
+//				TopicsBlacklists: pulumi.StringArray{
+//					pulumi.String(".*[\\-\\.]internal"),
+//					pulumi.String(".*\\.replica"),
+//					pulumi.String("__.*"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

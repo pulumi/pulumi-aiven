@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const m3a = new aiven.M3Aggregator("m3a", {
+ *     project: data.aiven_project.foo.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-8",
+ *     serviceName: "my-m3a",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     m3aggregatorUserConfig: {
+ *         m3aggregatorVersion: "0.15",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

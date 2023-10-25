@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The Redis data source provides information about the existing Aiven Redis service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const redis1 = aiven.getRedis({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-redis1",
+ * });
+ * ```
  */
 export function getRedis(args: GetRedisArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisResult> {
 
@@ -151,6 +163,18 @@ export interface GetRedisResult {
 }
 /**
  * The Redis data source provides information about the existing Aiven Redis service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const redis1 = aiven.getRedis({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-redis1",
+ * });
+ * ```
  */
 export function getRedisOutput(args: GetRedisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisResult> {
     return pulumi.output(args).apply((a: any) => getRedis(a, opts))

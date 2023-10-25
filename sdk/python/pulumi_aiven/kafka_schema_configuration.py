@@ -175,6 +175,18 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         """
         The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        config = aiven.KafkaSchemaConfiguration("config",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            compatibility_level="BACKWARD")
+        ```
+
         ## Import
 
         ```sh
@@ -195,6 +207,18 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        config = aiven.KafkaSchemaConfiguration("config",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            compatibility_level="BACKWARD")
+        ```
 
         ## Import
 

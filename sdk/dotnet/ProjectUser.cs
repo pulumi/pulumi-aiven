@@ -12,6 +12,26 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Project User resource allows the creation and management of Aiven Project Users.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytestuser = new Aiven.ProjectUser("mytestuser", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         Email = "john.doe@example.com",
+    ///         MemberType = "admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

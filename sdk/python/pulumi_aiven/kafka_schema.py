@@ -314,6 +314,33 @@ class KafkaSchema(pulumi.CustomResource):
         """
         The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            subject_name="kafka-schema1",
+            compatibility_level="FORWARD",
+            schema=\"\"\"    {
+               "doc": "example",
+               "fields": [{
+                   "default": 5,
+                   "doc": "my test number",
+                   "name": "test",
+                   "namespace": "test",
+                   "type": "int"
+               }],
+               "name": "example",
+               "namespace": "example",
+               "type": "record"
+            }
+        \"\"\")
+        ```
+
         ## Import
 
         ```sh
@@ -337,6 +364,33 @@ class KafkaSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
+            project=aiven_project["kafka-schemas-project1"]["project"],
+            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            subject_name="kafka-schema1",
+            compatibility_level="FORWARD",
+            schema=\"\"\"    {
+               "doc": "example",
+               "fields": [{
+                   "default": 5,
+                   "doc": "my test number",
+                   "name": "test",
+                   "namespace": "test",
+                   "type": "int"
+               }],
+               "name": "example",
+               "namespace": "example",
+               "type": "record"
+            }
+        \"\"\")
+        ```
 
         ## Import
 

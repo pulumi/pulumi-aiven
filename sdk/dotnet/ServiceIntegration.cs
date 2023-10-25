@@ -19,6 +19,27 @@ namespace Pulumi.Aiven
     /// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
     /// Elasticsearch, etc.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myIntegrationMetrics = new Aiven.ServiceIntegration("myIntegrationMetrics", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         IntegrationType = "metrics",
+    ///         SourceServiceName = aiven_kafka.Kfk1.Service_name,
+    ///         DestinationServiceName = aiven_m3db.M3db.Service_name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

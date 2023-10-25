@@ -7,6 +7,34 @@ import * as utilities from "./utilities";
 /**
  * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka_schema1 = new aiven.KafkaSchema("kafka-schema1", {
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     subjectName: "kafka-schema1",
+ *     compatibilityLevel: "FORWARD",
+ *     schema: `    {
+ *        "doc": "example",
+ *        "fields": [{
+ *            "default": 5,
+ *            "doc": "my test number",
+ *            "name": "test",
+ *            "namespace": "test",
+ *            "type": "int"
+ *        }],
+ *        "name": "example",
+ *        "namespace": "example",
+ *        "type": "record"
+ *     }
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -123,6 +123,17 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    foo = aiven.get_gcp_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+        gcp_project_id="xxxx",
+        peer_vpc="xxxx")
+    ```
+
 
     :param str gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
     :param str peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
@@ -152,6 +163,17 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGcpVpcPeeringConnectionResult]:
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    foo = aiven.get_gcp_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+        gcp_project_id="xxxx",
+        peer_vpc="xxxx")
+    ```
 
 
     :param str gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.

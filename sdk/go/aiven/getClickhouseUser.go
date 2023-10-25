@@ -13,6 +13,34 @@ import (
 )
 
 // The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupClickhouseUser(ctx, &aiven.LookupClickhouseUserArgs{
+//				Project:     aiven_project.Myproject.Project,
+//				ServiceName: aiven_clickhouse.Myservice.Service_name,
+//				Username:    "<USERNAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupClickhouseUser(ctx *pulumi.Context, args *LookupClickhouseUserArgs, opts ...pulumi.InvokeOption) (*LookupClickhouseUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClickhouseUserResult

@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The InfluxDB data source provides information about the existing Aiven InfluxDB service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var inf1 = Aiven.GetInfluxDb.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "my-inf1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInfluxDbResult> InvokeAsync(GetInfluxDbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbArgs(), options.WithDefaults());
 
         /// <summary>
         /// The InfluxDB data source provides information about the existing Aiven InfluxDB service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var inf1 = Aiven.GetInfluxDb.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "my-inf1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInfluxDbResult> Invoke(GetInfluxDbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbInvokeArgs(), options.WithDefaults());

@@ -13,6 +13,33 @@ import (
 )
 
 // The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
+//				Project:      aiven_project.Myproject.Project,
+//				EndpointName: "<ENDPOINT_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIntegrationEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceIntegrationEndpointResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceIntegrationEndpointResult

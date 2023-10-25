@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The Cassandra data source provides information about the existing Aiven Cassandra service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const bar = aiven.getCassandra({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getCassandra(args: GetCassandraArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraResult> {
 
@@ -151,6 +163,18 @@ export interface GetCassandraResult {
 }
 /**
  * The Cassandra data source provides information about the existing Aiven Cassandra service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const bar = aiven.getCassandra({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getCassandraOutput(args: GetCassandraOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraResult> {
     return pulumi.output(args).apply((a: any) => getCassandra(a, opts))

@@ -182,6 +182,15 @@ class Organization(pulumi.CustomResource):
         """
         Creates and manages an organization in Aiven.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        organization1 = aiven.Organization("organization1")
+        ```
+
         ## Import
 
         ```sh
@@ -200,6 +209,15 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages an organization in Aiven.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        organization1 = aiven.Organization("organization1")
+        ```
 
         ## Import
 

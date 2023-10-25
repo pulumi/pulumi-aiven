@@ -12,6 +12,26 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.AwsVpcPeeringConnection("foo", new()
+    ///     {
+    ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+    ///         AwsAccountId = "XXXXX",
+    ///         AwsVpcId = "XXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

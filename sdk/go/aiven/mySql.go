@@ -15,6 +15,47 @@ import (
 
 // The MySQL resource allows the creation and management of Aiven MySQL services.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewMySql(ctx, "mysql1", &aiven.MySqlArgs{
+//				Project:               pulumi.Any(data.Aiven_project.Foo.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("business-4"),
+//				ServiceName:           pulumi.String("my-mysql1"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//				MysqlUserConfig: &aiven.MySqlMysqlUserConfigArgs{
+//					MysqlVersion: pulumi.String("8"),
+//					Mysql: &aiven.MySqlMysqlUserConfigMysqlArgs{
+//						SqlMode:              pulumi.String("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"),
+//						SqlRequirePrimaryKey: pulumi.Bool(true),
+//					},
+//					PublicAccess: &aiven.MySqlMysqlUserConfigPublicAccessArgs{
+//						Mysql: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

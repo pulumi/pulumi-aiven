@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = new aiven.AwsVpcPeeringConnection("foo", {
+ *     vpcId: data.aiven_project_vpc.vpc.id,
+ *     awsAccountId: "XXXXX",
+ *     awsVpcId: "XXXXX",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

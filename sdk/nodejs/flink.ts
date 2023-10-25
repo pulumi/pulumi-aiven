@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * The Flink resource allows the creation and management of Aiven Flink services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const flink = new aiven.Flink("flink", {
+ *     project: data.aiven_project.pr1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-4",
+ *     serviceName: "my-flink",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     flinkUserConfig: {
+ *         flinkVersion: "1.16",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

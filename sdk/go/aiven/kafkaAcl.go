@@ -15,6 +15,36 @@ import (
 
 // The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewKafkaAcl(ctx, "mytestacl", &aiven.KafkaAclArgs{
+//				Project:     pulumi.Any(aiven_project.Myproject.Project),
+//				ServiceName: pulumi.Any(aiven_kafka.Myservice.Service_name),
+//				Topic:       pulumi.String("<TOPIC_NAME_PATTERN>"),
+//				Permission:  pulumi.String("admin"),
+//				Username:    pulumi.String("<USERNAME_PATTERN>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

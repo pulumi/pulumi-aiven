@@ -12,6 +12,36 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bar = new Aiven.Clickhouse("bar", new()
+    ///     {
+    ///         Project = "example-project",
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-beta-8",
+    ///         ServiceName = "example-service",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///     });
+    /// 
+    ///     var foo = new Aiven.ClickhouseRole("foo", new()
+    ///     {
+    ///         ServiceName = bar.ServiceName,
+    ///         Project = bar.Project,
+    ///         Role = "writer",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

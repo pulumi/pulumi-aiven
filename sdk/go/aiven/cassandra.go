@@ -15,6 +15,43 @@ import (
 
 // The Cassandra resource allows the creation and management of Aiven Cassandra services.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewCassandra(ctx, "bar", &aiven.CassandraArgs{
+//				Project:               pulumi.Any(data.Aiven_project.Foo.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-4"),
+//				ServiceName:           pulumi.String("test-service-name"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//				CassandraUserConfig: &aiven.CassandraCassandraUserConfigArgs{
+//					MigrateSstableloader: pulumi.Bool(true),
+//					PublicAccess: &aiven.CassandraCassandraUserConfigPublicAccessArgs{
+//						Prometheus: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

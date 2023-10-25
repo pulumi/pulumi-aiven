@@ -971,6 +971,28 @@ class M3Db(pulumi.CustomResource):
         """
         The M3 DB resource allows the creation and management of Aiven M3 services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        m3 = aiven.M3Db("m3",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-8",
+            service_name="my-m3db",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            m3db_user_config=aiven.M3DbM3dbUserConfigArgs(
+                m3db_version="1.1",
+                namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(
+                    name="my_ns1",
+                    type="unaggregated",
+                )],
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -1022,6 +1044,28 @@ class M3Db(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The M3 DB resource allows the creation and management of Aiven M3 services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        m3 = aiven.M3Db("m3",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-8",
+            service_name="my-m3db",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            m3db_user_config=aiven.M3DbM3dbUserConfigArgs(
+                m3db_version="1.1",
+                namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(
+                    name="my_ns1",
+                    type="unaggregated",
+                )],
+            ))
+        ```
 
         ## Import
 

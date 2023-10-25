@@ -13,12 +13,64 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_kafka.Mykafka.Service_name,
+        ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///         Permission = "&lt;PERMISSON&gt;",
+        ///         Username = "&lt;USERNAME_PATTERN&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_kafka.Mykafka.Service_name,
+        ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///         Permission = "&lt;PERMISSON&gt;",
+        ///         Username = "&lt;USERNAME_PATTERN&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaAclResult> Invoke(GetKafkaAclInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithDefaults());

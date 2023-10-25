@@ -19,6 +19,90 @@ import (
 // * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
 // * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
 // * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			clickhouse, err := aiven.NewClickhouse(ctx, "clickhouse", &aiven.ClickhouseArgs{
+//				Project:     pulumi.Any(_var.Aiven_project_name),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				Plan:        pulumi.String("startup-8"),
+//				ServiceName: pulumi.String("exapmle-clickhouse"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			demodb, err := aiven.NewClickhouseDatabase(ctx, "demodb", &aiven.ClickhouseDatabaseArgs{
+//				Project:     clickhouse.Project,
+//				ServiceName: clickhouse.ServiceName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			demoClickhouseRole, err := aiven.NewClickhouseRole(ctx, "demoClickhouseRole", &aiven.ClickhouseRoleArgs{
+//				Project:     clickhouse.Project,
+//				ServiceName: clickhouse.ServiceName,
+//				Role:        pulumi.String("demo-role"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewClickhouseGrant(ctx, "demo-role-grant", &aiven.ClickhouseGrantArgs{
+//				Project:     clickhouse.Project,
+//				ServiceName: clickhouse.ServiceName,
+//				Role:        demoClickhouseRole.Role,
+//				PrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{
+//					&aiven.ClickhouseGrantPrivilegeGrantArgs{
+//						Privilege: pulumi.String("INSERT"),
+//						Database:  demodb.Name,
+//						Table:     pulumi.String("demo-table"),
+//					},
+//					&aiven.ClickhouseGrantPrivilegeGrantArgs{
+//						Privilege: pulumi.String("SELECT"),
+//						Database:  demodb.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			demoClickhouseUser, err := aiven.NewClickhouseUser(ctx, "demoClickhouseUser", &aiven.ClickhouseUserArgs{
+//				Project:     clickhouse.Project,
+//				ServiceName: clickhouse.ServiceName,
+//				Username:    pulumi.String("demo-user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewClickhouseGrant(ctx, "demo-user-grant", &aiven.ClickhouseGrantArgs{
+//				Project:     clickhouse.Project,
+//				ServiceName: clickhouse.ServiceName,
+//				User:        demoClickhouseUser.Username,
+//				RoleGrants: aiven.ClickhouseGrantRoleGrantArray{
+//					&aiven.ClickhouseGrantRoleGrantArgs{
+//						Role: demoClickhouseRole.Role,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ClickhouseGrant struct {
 	pulumi.CustomResourceState
 

@@ -887,6 +887,27 @@ class Cassandra(pulumi.CustomResource):
         """
         The Cassandra resource allows the creation and management of Aiven Cassandra services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bar = aiven.Cassandra("bar",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="test-service-name",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            cassandra_user_config=aiven.CassandraCassandraUserConfigArgs(
+                migrate_sstableloader=True,
+                public_access=aiven.CassandraCassandraUserConfigPublicAccessArgs(
+                    prometheus=True,
+                ),
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -918,6 +939,27 @@ class Cassandra(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Cassandra resource allows the creation and management of Aiven Cassandra services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bar = aiven.Cassandra("bar",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="test-service-name",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            cassandra_user_config=aiven.CassandraCassandraUserConfigArgs(
+                migrate_sstableloader=True,
+                public_access=aiven.CassandraCassandraUserConfigPublicAccessArgs(
+                    prometheus=True,
+                ),
+            ))
+        ```
 
         ## Import
 

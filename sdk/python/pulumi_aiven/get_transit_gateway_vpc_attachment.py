@@ -147,6 +147,17 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
     """
     The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=aiven_project_vpc["bar"]["id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="google-project1")
+    ```
+
 
     :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
     :param str peer_vpc: Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -178,6 +189,17 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitGatewayVpcAttachmentResult]:
     """
     The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=aiven_project_vpc["bar"]["id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="google-project1")
+    ```
 
 
     :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.

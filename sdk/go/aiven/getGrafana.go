@@ -13,6 +13,33 @@ import (
 )
 
 // The Grafana data source provides information about the existing Aiven Grafana service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupGrafana(ctx, &aiven.LookupGrafanaArgs{
+//				Project:     data.Aiven_project.Ps1.Project,
+//				ServiceName: "my-gr1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.InvokeOption) (*LookupGrafanaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGrafanaResult

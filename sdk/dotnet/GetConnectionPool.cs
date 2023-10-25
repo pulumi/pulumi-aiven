@@ -13,12 +13,60 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Connection Pool data source provides information about the existing Aiven Connection Pool.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mytestpool = Aiven.GetConnectionPool.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
+        ///         PoolName = "mypool",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectionPoolResult> InvokeAsync(GetConnectionPoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Connection Pool data source provides information about the existing Aiven Connection Pool.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mytestpool = Aiven.GetConnectionPool.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
+        ///         PoolName = "mypool",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConnectionPoolResult> Invoke(GetConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolInvokeArgs(), options.WithDefaults());

@@ -12,6 +12,27 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The M3DB User resource allows the creation and management of Aiven M3DB Users.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.M3dbUser("foo", new()
+    ///     {
+    ///         ServiceName = aiven_m3db.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

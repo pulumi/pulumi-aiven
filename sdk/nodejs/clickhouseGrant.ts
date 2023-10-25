@@ -13,6 +13,58 @@ import * as utilities from "./utilities";
  * * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
  * * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
  * * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const clickhouse = new aiven.Clickhouse("clickhouse", {
+ *     project: _var.aiven_project_name,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-8",
+ *     serviceName: "exapmle-clickhouse",
+ * });
+ * const demodb = new aiven.ClickhouseDatabase("demodb", {
+ *     project: clickhouse.project,
+ *     serviceName: clickhouse.serviceName,
+ * });
+ * const demoClickhouseRole = new aiven.ClickhouseRole("demoClickhouseRole", {
+ *     project: clickhouse.project,
+ *     serviceName: clickhouse.serviceName,
+ *     role: "demo-role",
+ * });
+ * const demo_role_grant = new aiven.ClickhouseGrant("demo-role-grant", {
+ *     project: clickhouse.project,
+ *     serviceName: clickhouse.serviceName,
+ *     role: demoClickhouseRole.role,
+ *     privilegeGrants: [
+ *         {
+ *             privilege: "INSERT",
+ *             database: demodb.name,
+ *             table: "demo-table",
+ *         },
+ *         {
+ *             privilege: "SELECT",
+ *             database: demodb.name,
+ *         },
+ *     ],
+ * });
+ * const demoClickhouseUser = new aiven.ClickhouseUser("demoClickhouseUser", {
+ *     project: clickhouse.project,
+ *     serviceName: clickhouse.serviceName,
+ *     username: "demo-user",
+ * });
+ * const demo_user_grant = new aiven.ClickhouseGrant("demo-user-grant", {
+ *     project: clickhouse.project,
+ *     serviceName: clickhouse.serviceName,
+ *     user: demoClickhouseUser.username,
+ *     roleGrants: [{
+ *         role: demoClickhouseRole.role,
+ *     }],
+ * });
+ * ```
  */
 export class ClickhouseGrant extends pulumi.CustomResource {
     /**

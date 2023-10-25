@@ -197,6 +197,18 @@ def get_flink_application_version(application_id: Optional[str] = None,
     """
     The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    app1 = aiven.get_flink_application_version(project=data["aiven_project"]["pr1"]["project"],
+        service_name="<SERVICE_NAME>",
+        application_id="<APPLICATION_ID>",
+        application_version_id="<APPLICATION_VERSION_ID>")
+    ```
+
 
     :param str application_id: Application ID
     :param str application_version_id: Application version ID
@@ -235,6 +247,18 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlinkApplicationVersionResult]:
     """
     The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    app1 = aiven.get_flink_application_version(project=data["aiven_project"]["pr1"]["project"],
+        service_name="<SERVICE_NAME>",
+        application_id="<APPLICATION_ID>",
+        application_version_id="<APPLICATION_VERSION_ID>")
+    ```
 
 
     :param str application_id: Application ID

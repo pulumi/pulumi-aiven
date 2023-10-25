@@ -268,6 +268,20 @@ class KafkaAcl(pulumi.CustomResource):
         """
         The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestacl = aiven.KafkaAcl("mytestacl",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_kafka["myservice"]["service_name"],
+            topic="<TOPIC_NAME_PATTERN>",
+            permission="admin",
+            username="<USERNAME_PATTERN>")
+        ```
+
         ## Import
 
         ```sh
@@ -290,6 +304,20 @@ class KafkaAcl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestacl = aiven.KafkaAcl("mytestacl",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_kafka["myservice"]["service_name"],
+            topic="<TOPIC_NAME_PATTERN>",
+            permission="admin",
+            username="<USERNAME_PATTERN>")
+        ```
 
         ## Import
 

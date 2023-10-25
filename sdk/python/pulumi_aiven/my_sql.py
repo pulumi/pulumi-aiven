@@ -971,6 +971,31 @@ class MySql(pulumi.CustomResource):
         """
         The MySQL resource allows the creation and management of Aiven MySQL services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mysql1 = aiven.MySql("mysql1",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-mysql1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            mysql_user_config=aiven.MySqlMysqlUserConfigArgs(
+                mysql_version="8",
+                mysql=aiven.MySqlMysqlUserConfigMysqlArgs(
+                    sql_mode="ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
+                    sql_require_primary_key=True,
+                ),
+                public_access=aiven.MySqlMysqlUserConfigPublicAccessArgs(
+                    mysql=True,
+                ),
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -1022,6 +1047,31 @@ class MySql(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The MySQL resource allows the creation and management of Aiven MySQL services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mysql1 = aiven.MySql("mysql1",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-mysql1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            mysql_user_config=aiven.MySqlMysqlUserConfigArgs(
+                mysql_version="8",
+                mysql=aiven.MySqlMysqlUserConfigMysqlArgs(
+                    sql_mode="ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
+                    sql_require_primary_key=True,
+                ),
+                public_access=aiven.MySqlMysqlUserConfigPublicAccessArgs(
+                    mysql=True,
+                ),
+            ))
+        ```
 
         ## Import
 

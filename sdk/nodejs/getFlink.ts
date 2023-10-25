@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The Flink data source provides information about the existing Aiven Flink service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const flink = aiven.getFlink({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getFlink(args: GetFlinkArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkResult> {
 
@@ -151,6 +163,18 @@ export interface GetFlinkResult {
 }
 /**
  * The Flink data source provides information about the existing Aiven Flink service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const flink = aiven.getFlink({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "<SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getFlinkOutput(args: GetFlinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkResult> {
     return pulumi.output(args).apply((a: any) => getFlink(a, opts))

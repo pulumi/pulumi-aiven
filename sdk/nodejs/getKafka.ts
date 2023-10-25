@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The Kafka data source provides information about the existing Aiven Kafka services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka1 = aiven.getKafka({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-kafka1",
+ * });
+ * ```
  */
 export function getKafka(args: GetKafkaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaResult> {
 
@@ -159,6 +171,18 @@ export interface GetKafkaResult {
 }
 /**
  * The Kafka data source provides information about the existing Aiven Kafka services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka1 = aiven.getKafka({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-kafka1",
+ * });
+ * ```
  */
 export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaResult> {
     return pulumi.output(args).apply((a: any) => getKafka(a, opts))

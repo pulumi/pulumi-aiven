@@ -971,6 +971,24 @@ class M3Aggregator(pulumi.CustomResource):
         """
         The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        m3a = aiven.M3Aggregator("m3a",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-8",
+            service_name="my-m3a",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            m3aggregator_user_config=aiven.M3AggregatorM3aggregatorUserConfigArgs(
+                m3aggregator_version="0.15",
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -1022,6 +1040,24 @@ class M3Aggregator(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        m3a = aiven.M3Aggregator("m3a",
+            project=data["aiven_project"]["foo"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-8",
+            service_name="my-m3a",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            m3aggregator_user_config=aiven.M3AggregatorM3aggregatorUserConfigArgs(
+                m3aggregator_version="0.15",
+            ))
+        ```
 
         ## Import
 

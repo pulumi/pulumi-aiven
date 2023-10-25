@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const os-sec-config = aiven.getOpensearchSecurityPluginConfig({
+ *     project: aiven_project["os-project"].project,
+ *     serviceName: aiven_opensearch.os.service_name,
+ * });
+ * ```
  */
 export function getOpensearchSecurityPluginConfig(args: GetOpensearchSecurityPluginConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOpensearchSecurityPluginConfigResult> {
 
@@ -65,6 +77,18 @@ export interface GetOpensearchSecurityPluginConfigResult {
 }
 /**
  * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const os-sec-config = aiven.getOpensearchSecurityPluginConfig({
+ *     project: aiven_project["os-project"].project,
+ *     serviceName: aiven_opensearch.os.service_name,
+ * });
+ * ```
  */
 export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecurityPluginConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchSecurityPluginConfigResult> {
     return pulumi.output(args).apply((a: any) => getOpensearchSecurityPluginConfig(a, opts))

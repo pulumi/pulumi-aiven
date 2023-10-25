@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * The Project data source provides information about the existing Aiven Project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myproject = aiven.getProject({
+ *     project: "<PROJECT_NAME>",
+ * });
+ * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
 
@@ -94,6 +105,17 @@ export interface GetProjectResult {
 }
 /**
  * The Project data source provides information about the existing Aiven Project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myproject = aiven.getProject({
+ *     project: "<PROJECT_NAME>",
+ * });
+ * ```
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

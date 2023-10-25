@@ -16,6 +16,20 @@ import * as utilities from "./utilities";
  * getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
  * Elasticsearch, etc.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myIntegrationMetrics = new aiven.ServiceIntegration("myIntegrationMetrics", {
+ *     project: aiven_project.myproject.project,
+ *     integrationType: "metrics",
+ *     sourceServiceName: aiven_kafka.kfk1.service_name,
+ *     destinationServiceName: aiven_m3db.m3db.service_name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

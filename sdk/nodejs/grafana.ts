@@ -9,6 +9,27 @@ import * as utilities from "./utilities";
 /**
  * The Grafana resource allows the creation and management of Aiven Grafana services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const gr1 = new aiven.Grafana("gr1", {
+ *     project: data.aiven_project.ps1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     grafanaUserConfig: {
+ *         alertingEnabled: true,
+ *         publicAccess: {
+ *             grafana: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

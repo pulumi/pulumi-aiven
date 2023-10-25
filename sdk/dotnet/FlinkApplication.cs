@@ -12,6 +12,25 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Flink Application resource allows the creation and management of Aiven Flink Applications.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.FlinkApplication("foo", new()
+    ///     {
+    ///         Project = aiven_project.Foo.Project,
+    ///         ServiceName = "flink-service-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

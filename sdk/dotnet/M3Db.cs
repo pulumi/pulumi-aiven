@@ -12,6 +12,41 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The M3 DB resource allows the creation and management of Aiven M3 services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var m3 = new Aiven.M3Db("m3", new()
+    ///     {
+    ///         Project = data.Aiven_project.Foo.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "business-8",
+    ///         ServiceName = "my-m3db",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///         M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs
+    ///         {
+    ///             M3dbVersion = "1.1",
+    ///             Namespaces = new[]
+    ///             {
+    ///                 new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs
+    ///                 {
+    ///                     Name = "my_ns1",
+    ///                     Type = "unaggregated",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -12,6 +12,29 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.AzureVpcPeeringConnection("foo", new()
+    ///     {
+    ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+    ///         AzureSubscriptionId = "xxxxxx",
+    ///         PeerResourceGroup = "my-pr1",
+    ///         VnetName = "my-vnet1",
+    ///         PeerAzureAppId = "xxxxxx",
+    ///         PeerAzureTenantId = "xxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

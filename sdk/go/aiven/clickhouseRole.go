@@ -15,6 +15,45 @@ import (
 
 // The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bar, err := aiven.NewClickhouse(ctx, "bar", &aiven.ClickhouseArgs{
+//				Project:               pulumi.String("example-project"),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-beta-8"),
+//				ServiceName:           pulumi.String("example-service"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewClickhouseRole(ctx, "foo", &aiven.ClickhouseRoleArgs{
+//				ServiceName: bar.ServiceName,
+//				Project:     bar.Project,
+//				Role:        pulumi.String("writer"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

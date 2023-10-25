@@ -696,6 +696,19 @@ class ServiceIntegration(pulumi.CustomResource):
         getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
         Elasticsearch, etc.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        my_integration_metrics = aiven.ServiceIntegration("myIntegrationMetrics",
+            project=aiven_project["myproject"]["project"],
+            integration_type="metrics",
+            source_service_name=aiven_kafka["kfk1"]["service_name"],
+            destination_service_name=aiven_m3db["m3db"]["service_name"])
+        ```
+
         ## Import
 
         ```sh
@@ -735,6 +748,19 @@ class ServiceIntegration(pulumi.CustomResource):
         integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
         getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
         Elasticsearch, etc.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        my_integration_metrics = aiven.ServiceIntegration("myIntegrationMetrics",
+            project=aiven_project["myproject"]["project"],
+            integration_type="metrics",
+            source_service_name=aiven_kafka["kfk1"]["service_name"],
+            destination_service_name=aiven_m3db["m3db"]["service_name"])
+        ```
 
         ## Import
 

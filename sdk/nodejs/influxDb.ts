@@ -9,6 +9,27 @@ import * as utilities from "./utilities";
 /**
  * The InfluxDB resource allows the creation and management of Aiven InfluxDB services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const inf1 = new aiven.InfluxDb("inf1", {
+ *     project: data.aiven_project.pr1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "my-inf1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     influxdbUserConfig: {
+ *         publicAccess: {
+ *             influxdb: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

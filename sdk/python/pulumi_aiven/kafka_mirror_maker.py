@@ -973,6 +973,27 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         """
         The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mm1 = aiven.KafkaMirrorMaker("mm1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-mm1",
+            kafka_mirrormaker_user_config=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs(
+                ip_filters=["0.0.0.0/0"],
+                kafka_mirrormaker=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(
+                    refresh_groups_interval_seconds=600,
+                    refresh_topics_enabled=True,
+                    refresh_topics_interval_seconds=600,
+                ),
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -1024,6 +1045,27 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mm1 = aiven.KafkaMirrorMaker("mm1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-mm1",
+            kafka_mirrormaker_user_config=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs(
+                ip_filters=["0.0.0.0/0"],
+                kafka_mirrormaker=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(
+                    refresh_groups_interval_seconds=600,
+                    refresh_topics_enabled=True,
+                    refresh_topics_interval_seconds=600,
+                ),
+            ))
+        ```
 
         ## Import
 

@@ -15,6 +15,60 @@ import (
 
 // The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooProject, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
+//				Project: "example_project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := aiven.NewOpenSearch(ctx, "bar", &aiven.OpenSearchArgs{
+//				Project:               *pulumi.String(fooProject.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-4"),
+//				ServiceName:           pulumi.String("example_service_name"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOpensearchUser(ctx, "fooOpensearchUser", &aiven.OpensearchUserArgs{
+//				ServiceName: bar.ServiceName,
+//				Project:     *pulumi.String(fooProject.Project),
+//				Username:    pulumi.String("user-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOpenSearchAclConfig(ctx, "fooOpenSearchAclConfig", &aiven.OpenSearchAclConfigArgs{
+//				Project:     *pulumi.String(fooProject.Project),
+//				ServiceName: bar.ServiceName,
+//				Enabled:     pulumi.Bool(true),
+//				ExtendedAcl: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

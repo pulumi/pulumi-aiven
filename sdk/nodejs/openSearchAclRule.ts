@@ -7,6 +7,69 @@ import * as utilities from "./utilities";
 /**
  * The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const osUser = new aiven.OpensearchUser("osUser", {
+ *     project: _var.aiven_project_name,
+ *     serviceName: aiven_opensearch.os_test.service_name,
+ *     username: "documentation-user-1",
+ * });
+ * const osUser2 = new aiven.OpensearchUser("osUser2", {
+ *     project: _var.aiven_project_name,
+ *     serviceName: aiven_opensearch.os_test.service_name,
+ *     username: "documentation-user-2",
+ * });
+ * const osAclsConfig = new aiven.OpenSearchAclConfig("osAclsConfig", {
+ *     project: _var.aiven_project_name,
+ *     serviceName: aiven_opensearch.os_test.service_name,
+ *     enabled: true,
+ *     extendedAcl: false,
+ * });
+ * const aclRules = [
+ *     {
+ *         username: osUser.username,
+ *         index: "index2",
+ *         permission: "readwrite",
+ *     },
+ *     {
+ *         username: osUser.username,
+ *         index: "index3",
+ *         permission: "read",
+ *     },
+ *     {
+ *         username: osUser.username,
+ *         index: "index5",
+ *         permission: "deny",
+ *     },
+ *     {
+ *         username: osUser2.username,
+ *         index: "index3",
+ *         permission: "write",
+ *     },
+ *     {
+ *         username: osUser2.username,
+ *         index: "index7",
+ *         permission: "readwrite",
+ *     },
+ * ];
+ * const osAclRule: aiven.OpenSearchAclRule[] = [];
+ * pulumi.all(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => ({ ...__obj, [i]: v }))).apply(rangeBody => {
+ *     for (const range of Object.entries(rangeBody).map(([k, v]) => ({key: k, value: v}))) {
+ *         osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {
+ *             project: osAclsConfig.project,
+ *             serviceName: osAclsConfig.serviceName,
+ *             username: range.value.username,
+ *             index: range.value.index,
+ *             permission: range.value.permission,
+ *         }));
+ *     }
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

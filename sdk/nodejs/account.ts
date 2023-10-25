@@ -7,6 +7,15 @@ import * as utilities from "./utilities";
 /**
  * The Account resource allows the creation and management of an Aiven Account.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const account1 = new aiven.Account("account1", {});
+ * ```
+ *
  * ## Import
  *
  * ```sh

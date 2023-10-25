@@ -12,6 +12,24 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organizationalUnit1 = new Aiven.OrganizationalUnit("organizationalUnit1", new()
+    ///     {
+    ///         ParentId = "&lt;ORGANIZATION_ID&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

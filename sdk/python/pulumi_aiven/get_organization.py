@@ -98,6 +98,15 @@ def get_organization(id: Optional[str] = None,
     """
     Retrieves information about an organization from Aiven.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    organization1 = aiven.get_organization(name="<ORGANIZATION_NAME>")
+    ```
+
 
     :param str id: Identifier of the organization.
     :param str name: Name of the organization.
@@ -122,6 +131,15 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Retrieves information about an organization from Aiven.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    organization1 = aiven.get_organization(name="<ORGANIZATION_NAME>")
+    ```
 
 
     :param str id: Identifier of the organization.

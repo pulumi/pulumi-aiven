@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kc1 = Aiven.GetKafkaConnect.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "my-kc1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaConnectResult> InvokeAsync(GetKafkaConnectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kc1 = Aiven.GetKafkaConnect.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "my-kc1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaConnectResult> Invoke(GetKafkaConnectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectInvokeArgs(), options.WithDefaults());

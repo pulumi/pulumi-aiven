@@ -15,6 +15,40 @@ import (
 
 // The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewM3Aggregator(ctx, "m3a", &aiven.M3AggregatorArgs{
+//				Project:               pulumi.Any(data.Aiven_project.Foo.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("business-8"),
+//				ServiceName:           pulumi.String("my-m3a"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//				M3aggregatorUserConfig: &aiven.M3AggregatorM3aggregatorUserConfigArgs{
+//					M3aggregatorVersion: pulumi.String("0.15"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

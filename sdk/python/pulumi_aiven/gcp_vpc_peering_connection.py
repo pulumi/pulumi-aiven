@@ -238,6 +238,18 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         """
         The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.GcpVpcPeeringConnection("foo",
+            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+            gcp_project_id="xxxx",
+            peer_vpc="xxxx")
+        ```
+
         ## Import
 
         ```sh
@@ -258,6 +270,18 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.GcpVpcPeeringConnection("foo",
+            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+            gcp_project_id="xxxx",
+            peer_vpc="xxxx")
+        ```
 
         ## Import
 

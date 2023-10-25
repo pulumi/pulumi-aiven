@@ -193,6 +193,15 @@ class OrganizationalUnit(pulumi.CustomResource):
         """
         The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
+        ```
+
         ## Import
 
         ```sh
@@ -212,6 +221,15 @@ class OrganizationalUnit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
+        ```
 
         ## Import
 

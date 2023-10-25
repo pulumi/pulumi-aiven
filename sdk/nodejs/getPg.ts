@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The PG data source provides information about the existing Aiven PostgreSQL service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const pg = aiven.getPg({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-pg1",
+ * });
+ * ```
  */
 export function getPg(args: GetPgArgs, opts?: pulumi.InvokeOptions): Promise<GetPgResult> {
 
@@ -151,6 +163,18 @@ export interface GetPgResult {
 }
 /**
  * The PG data source provides information about the existing Aiven PostgreSQL service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const pg = aiven.getPg({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-pg1",
+ * });
+ * ```
  */
 export function getPgOutput(args: GetPgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgResult> {
     return pulumi.output(args).apply((a: any) => getPg(a, opts))

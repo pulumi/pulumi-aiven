@@ -15,6 +15,33 @@ import (
 
 // The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewClickhouseDatabase(ctx, "clickhouseDb", &aiven.ClickhouseDatabaseArgs{
+//				Project:     pulumi.Any(aiven_clickhouse.Ch.Project),
+//				ServiceName: pulumi.Any(aiven_clickhouse.Ch.Service_name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

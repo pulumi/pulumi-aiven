@@ -13,12 +13,60 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
+        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPgDatabaseResult> InvokeAsync(GetPgDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_pg.Mypg.Service_name,
+        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPgDatabaseResult> Invoke(GetPgDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseInvokeArgs(), options.WithDefaults());

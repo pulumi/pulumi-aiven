@@ -220,6 +220,17 @@ class ClickhouseDatabase(pulumi.CustomResource):
         """
         The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
+            project=aiven_clickhouse["ch"]["project"],
+            service_name=aiven_clickhouse["ch"]["service_name"])
+        ```
+
         ## Import
 
         ```sh
@@ -243,6 +254,17 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
+            project=aiven_clickhouse["ch"]["project"],
+            service_name=aiven_clickhouse["ch"]["service_name"])
+        ```
 
         ## Import
 

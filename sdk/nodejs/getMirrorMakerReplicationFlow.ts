@@ -6,6 +6,20 @@ import * as utilities from "./utilities";
 
 /**
  * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const f1 = aiven.getMirrorMakerReplicationFlow({
+ *     project: aiven_project["kafka-mm-project1"].project,
+ *     serviceName: aiven_kafka.mm.service_name,
+ *     sourceCluster: aiven_kafka.source.service_name,
+ *     targetCluster: aiven_kafka.target.service_name,
+ * });
+ * ```
  */
 export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetMirrorMakerReplicationFlowResult> {
 
@@ -99,6 +113,20 @@ export interface GetMirrorMakerReplicationFlowResult {
 }
 /**
  * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const f1 = aiven.getMirrorMakerReplicationFlow({
+ *     project: aiven_project["kafka-mm-project1"].project,
+ *     serviceName: aiven_kafka.mm.service_name,
+ *     sourceCluster: aiven_kafka.source.service_name,
+ *     targetCluster: aiven_kafka.target.service_name,
+ * });
+ * ```
  */
 export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
     return pulumi.output(args).apply((a: any) => getMirrorMakerReplicationFlow(a, opts))

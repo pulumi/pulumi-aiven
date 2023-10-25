@@ -971,6 +971,27 @@ class Redis(pulumi.CustomResource):
         """
         The Redis resource allows the creation and management of Aiven Redis services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        redis1 = aiven.Redis("redis1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-redis1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            redis_user_config=aiven.RedisRedisUserConfigArgs(
+                redis_maxmemory_policy="allkeys-random",
+                public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
+                    redis=True,
+                ),
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -1022,6 +1043,27 @@ class Redis(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Redis resource allows the creation and management of Aiven Redis services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        redis1 = aiven.Redis("redis1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-redis1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            redis_user_config=aiven.RedisRedisUserConfigArgs(
+                redis_maxmemory_policy="allkeys-random",
+                public_access=aiven.RedisRedisUserConfigPublicAccessArgs(
+                    redis=True,
+                ),
+            ))
+        ```
 
         ## Import
 
