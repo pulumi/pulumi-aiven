@@ -7,20 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The Cassandra User resource allows the creation and management of Aiven Cassandra Users.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.CassandraUser("foo", {
- *     serviceName: aiven_cassandra.bar.service_name,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

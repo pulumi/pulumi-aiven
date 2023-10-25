@@ -15,34 +15,6 @@ import (
 
 // The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewGcpVpcPeeringConnection(ctx, "foo", &aiven.GcpVpcPeeringConnectionArgs{
-//				VpcId:        pulumi.Any(data.Aiven_project_vpc.Vpc.Id),
-//				GcpProjectId: pulumi.String("xxxx"),
-//				PeerVpc:      pulumi.String("xxxx"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

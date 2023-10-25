@@ -13,34 +13,6 @@ import (
 )
 
 // The MySQL Database data source provides information about the existing Aiven MySQL Database.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupMysqlDatabase(ctx, &aiven.LookupMysqlDatabaseArgs{
-//				Project:      aiven_project.Myproject.Project,
-//				ServiceName:  aiven_mysql.Mymysql.Service_name,
-//				DatabaseName: "<DATABASE_NAME>",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupMysqlDatabase(ctx *pulumi.Context, args *LookupMysqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupMysqlDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMysqlDatabaseResult

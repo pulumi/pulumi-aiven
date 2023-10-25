@@ -7,20 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.OpensearchUser("foo", {
- *     serviceName: aiven_opensearch.bar.service_name,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

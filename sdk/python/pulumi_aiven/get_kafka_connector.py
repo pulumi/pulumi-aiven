@@ -184,17 +184,6 @@ def get_kafka_connector(connector_name: Optional[str] = None,
     """
     The Kafka connector data source provides information about the existing Aiven Kafka connector.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    kafka_es_con1 = aiven.get_kafka_connector(project=aiven_project["kafka-con-project1"]["project"],
-        service_name=aiven_kafka["kafka-service1"]["service_name"],
-        connector_name="kafka-es-con1")
-    ```
-
 
     :param str connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -229,17 +218,6 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaConnectorResult]:
     """
     The Kafka connector data source provides information about the existing Aiven Kafka connector.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    kafka_es_con1 = aiven.get_kafka_connector(project=aiven_project["kafka-con-project1"]["project"],
-        service_name=aiven_kafka["kafka-service1"]["service_name"],
-        connector_name="kafka-es-con1")
-    ```
 
 
     :param str connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.

@@ -12,49 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fooProject = Aiven.GetProject.Invoke(new()
-    ///     {
-    ///         Project = "example_project",
-    ///     });
-    /// 
-    ///     var bar = new Aiven.OpenSearch("bar", new()
-    ///     {
-    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "example_service_name",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///     });
-    /// 
-    ///     var fooOpensearchUser = new Aiven.OpensearchUser("fooOpensearchUser", new()
-    ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         Username = "user-example",
-    ///     });
-    /// 
-    ///     var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig("fooOpenSearchAclConfig", new()
-    ///     {
-    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         ServiceName = bar.ServiceName,
-    ///         Enabled = true,
-    ///         ExtendedAcl = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

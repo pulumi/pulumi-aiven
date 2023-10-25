@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const inf1 = aiven.getInfluxDb({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "my-inf1",
- * });
- * ```
  */
 export function getInfluxDb(args: GetInfluxDbArgs, opts?: pulumi.InvokeOptions): Promise<GetInfluxDbResult> {
 
@@ -163,18 +151,6 @@ export interface GetInfluxDbResult {
 }
 /**
  * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const inf1 = aiven.getInfluxDb({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "my-inf1",
- * });
- * ```
  */
 export function getInfluxDbOutput(args: GetInfluxDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxDbResult> {
     return pulumi.output(args).apply((a: any) => getInfluxDb(a, opts))

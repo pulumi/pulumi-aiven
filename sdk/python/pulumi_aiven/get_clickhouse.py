@@ -375,16 +375,6 @@ def get_clickhouse(project: Optional[str] = None,
     """
     The Clickhouse data source provides information about the existing Aiven Clickhouse service.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    clickhouse = aiven.get_clickhouse(project=data["aiven_project"]["pr1"]["project"],
-        service_name="<SERVICE_NAME>")
-    ```
-
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -432,16 +422,6 @@ def get_clickhouse_output(project: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClickhouseResult]:
     """
     The Clickhouse data source provides information about the existing Aiven Clickhouse service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    clickhouse = aiven.get_clickhouse(project=data["aiven_project"]["pr1"]["project"],
-        service_name="<SERVICE_NAME>")
-    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

@@ -13,33 +13,6 @@ import (
 )
 
 // The Project User data source provides information about the existing Aiven Project User.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupProjectUser(ctx, &aiven.LookupProjectUserArgs{
-//				Project: aiven_project.Myproject.Project,
-//				Email:   "john.doe@example.com",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupProjectUser(ctx *pulumi.Context, args *LookupProjectUserArgs, opts ...pulumi.InvokeOption) (*LookupProjectUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectUserResult

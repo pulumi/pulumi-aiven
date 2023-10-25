@@ -13,34 +13,6 @@ import (
 )
 
 // The Connection Pool data source provides information about the existing Aiven Connection Pool.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
-//				Project:     aiven_project.Myproject.Project,
-//				ServiceName: aiven_pg.Mypg.Service_name,
-//				PoolName:    "mypool",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupConnectionPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionPoolResult

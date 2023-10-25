@@ -15,34 +15,6 @@ import (
 
 // The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMysqlDatabase(ctx, "mydatabase", &aiven.MysqlDatabaseArgs{
-//				Project:      pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName:  pulumi.Any(aiven_mysql.Mymysql.Service_name),
-//				DatabaseName: pulumi.String("<DATABASE_NAME>"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

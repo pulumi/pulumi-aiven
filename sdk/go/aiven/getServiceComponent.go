@@ -15,36 +15,6 @@ import (
 // The Service Component data source provides information about the existing Aiven service Component.
 //
 // Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.GetServiceComponent(ctx, &aiven.GetServiceComponentArgs{
-//				Project:                   aiven_kafka.Project1.Project,
-//				ServiceName:               pulumi.StringRef(aiven_kafka.Service1.Service_name),
-//				Component:                 "kafka",
-//				Route:                     pulumi.StringRef("dynamic"),
-//				KafkaAuthenticationMethod: pulumi.StringRef("certificate"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opts ...pulumi.InvokeOption) (*GetServiceComponentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceComponentResult

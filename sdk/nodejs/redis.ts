@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
 /**
  * The Redis resource allows the creation and management of Aiven Redis services.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const redis1 = new aiven.Redis("redis1", {
- *     project: data.aiven_project.pr1.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     serviceName: "my-redis1",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     redisUserConfig: {
- *         redisMaxmemoryPolicy: "allkeys-random",
- *         publicAccess: {
- *             redis: true,
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

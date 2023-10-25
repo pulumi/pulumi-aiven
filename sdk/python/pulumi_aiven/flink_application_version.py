@@ -49,15 +49,29 @@ class FlinkApplicationVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             statement: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             statement: Optional[pulumi.Input[str]] = None,
              sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
              sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
              source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if statement is None:
+            raise TypeError("Missing 'statement' argument")
+
         _setter("application_id", application_id)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -240,7 +254,19 @@ class _FlinkApplicationVersionState:
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
              statement: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_version_id is None and 'applicationVersionId' in kwargs:
+            application_version_id = kwargs['applicationVersionId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if application_id is not None:
             _setter("application_id", application_id)
         if application_version_id is not None:

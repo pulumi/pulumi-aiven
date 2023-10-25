@@ -196,18 +196,6 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     """
     The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
-        service_name=aiven_kafka["mm"]["service_name"],
-        source_cluster=aiven_kafka["source"]["service_name"],
-        target_cluster=aiven_kafka["target"]["service_name"])
-    ```
-
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -246,18 +234,6 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
     """
     The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
-        service_name=aiven_kafka["mm"]["service_name"],
-        source_cluster=aiven_kafka["source"]["service_name"],
-        target_cluster=aiven_kafka["target"]["service_name"])
-    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

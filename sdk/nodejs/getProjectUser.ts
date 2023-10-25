@@ -6,18 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Project User data source provides information about the existing Aiven Project User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestuser = aiven.getProjectUser({
- *     project: aiven_project.myproject.project,
- *     email: "john.doe@example.com",
- * });
- * ```
  */
 export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {
 
@@ -69,18 +57,6 @@ export interface GetProjectUserResult {
 }
 /**
  * The Project User data source provides information about the existing Aiven Project User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestuser = aiven.getProjectUser({
- *     project: aiven_project.myproject.project,
- *     email: "john.doe@example.com",
- * });
- * ```
  */
 export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectUserResult> {
     return pulumi.output(args).apply((a: any) => getProjectUser(a, opts))

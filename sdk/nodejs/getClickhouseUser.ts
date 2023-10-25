@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const ch-user = aiven.getClickhouseUser({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_clickhouse.myservice.service_name,
- *     username: "<USERNAME>",
- * });
- * ```
  */
 export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseUserResult> {
 
@@ -83,19 +70,6 @@ export interface GetClickhouseUserResult {
 }
 /**
  * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const ch-user = aiven.getClickhouseUser({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_clickhouse.myservice.service_name,
- *     username: "<USERNAME>",
- * });
- * ```
  */
 export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseUserResult> {
     return pulumi.output(args).apply((a: any) => getClickhouseUser(a, opts))

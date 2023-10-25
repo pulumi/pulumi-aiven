@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: aiven_project.myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
- * });
- * ```
  */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
 
@@ -115,18 +103,6 @@ export interface GetServiceIntegrationEndpointResult {
 }
 /**
  * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: aiven_project.myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
- * });
- * ```
  */
 export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationEndpointResult> {
     return pulumi.output(args).apply((a: any) => getServiceIntegrationEndpoint(a, opts))

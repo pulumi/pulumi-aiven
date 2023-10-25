@@ -12,40 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var kc1 = new Aiven.KafkaConnect("kc1", new()
-    ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "my-kc1",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         KafkaConnectUserConfig = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigArgs
-    ///         {
-    ///             KafkaConnect = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs
-    ///             {
-    ///                 ConsumerIsolationLevel = "read_committed",
-    ///             },
-    ///             PublicAccess = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs
-    ///             {
-    ///                 KafkaConnect = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

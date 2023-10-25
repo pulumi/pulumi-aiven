@@ -15,34 +15,6 @@ import (
 
 // The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAwsVpcPeeringConnection(ctx, "foo", &aiven.AwsVpcPeeringConnectionArgs{
-//				VpcId:        pulumi.Any(data.Aiven_project_vpc.Vpc.Id),
-//				AwsAccountId: pulumi.String("XXXXX"),
-//				AwsVpcId:     pulumi.String("XXXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

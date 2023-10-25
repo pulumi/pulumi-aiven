@@ -9,22 +9,6 @@ import * as utilities from "./utilities";
 /**
  * The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const clickhouse = new aiven.Clickhouse("clickhouse", {
- *     project: data.aiven_project.pr1.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     serviceName: "my-clickhouse",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

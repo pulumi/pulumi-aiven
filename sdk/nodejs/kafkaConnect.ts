@@ -9,30 +9,6 @@ import * as utilities from "./utilities";
 /**
  * The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const kc1 = new aiven.KafkaConnect("kc1", {
- *     project: data.aiven_project.pr1.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "my-kc1",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     kafkaConnectUserConfig: {
- *         kafkaConnect: {
- *             consumerIsolationLevel: "read_committed",
- *         },
- *         publicAccess: {
- *             kafkaConnect: true,
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

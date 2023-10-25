@@ -12,37 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Cassandra resource allows the creation and management of Aiven Cassandra services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bar = new Aiven.Cassandra("bar", new()
-    ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "test-service-name",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         CassandraUserConfig = new Aiven.Inputs.CassandraCassandraUserConfigArgs
-    ///         {
-    ///             MigrateSstableloader = true,
-    ///             PublicAccess = new Aiven.Inputs.CassandraCassandraUserConfigPublicAccessArgs
-    ///             {
-    ///                 Prometheus = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

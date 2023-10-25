@@ -98,16 +98,6 @@ def get_open_search_acl_config(project: Optional[str] = None,
     """
     The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    os_acl_config = aiven.get_open_search_acl_config(project=aiven_project["os-project"]["project"],
-        service_name=aiven_opensearch["os"]["service_name"])
-    ```
-
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -132,16 +122,6 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[str]] = Non
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchAclConfigResult]:
     """
     The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    os_acl_config = aiven.get_open_search_acl_config(project=aiven_project["os-project"]["project"],
-        service_name=aiven_opensearch["os"]["service_name"])
-    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

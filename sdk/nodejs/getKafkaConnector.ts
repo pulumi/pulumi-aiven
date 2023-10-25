@@ -8,19 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Kafka connector data source provides information about the existing Aiven Kafka connector.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const kafka-es-con1 = aiven.getKafkaConnector({
- *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
- *     connectorName: "kafka-es-con1",
- * });
- * ```
  */
 export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectorResult> {
 
@@ -105,19 +92,6 @@ export interface GetKafkaConnectorResult {
 }
 /**
  * The Kafka connector data source provides information about the existing Aiven Kafka connector.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const kafka-es-con1 = aiven.getKafkaConnector({
- *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
- *     connectorName: "kafka-es-con1",
- * });
- * ```
  */
 export function getKafkaConnectorOutput(args: GetKafkaConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConnectorResult> {
     return pulumi.output(args).apply((a: any) => getKafkaConnector(a, opts))

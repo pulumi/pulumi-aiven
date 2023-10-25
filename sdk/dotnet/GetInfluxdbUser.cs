@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetInfluxdbUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInfluxdbUserResult> InvokeAsync(GetInfluxdbUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfluxdbUserResult>("aiven:index/getInfluxdbUser:getInfluxdbUser", args ?? new GetInfluxdbUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetInfluxdbUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInfluxdbUserResult> Invoke(GetInfluxdbUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfluxdbUserResult>("aiven:index/getInfluxdbUser:getInfluxdbUser", args ?? new GetInfluxdbUserInvokeArgs(), options.WithDefaults());

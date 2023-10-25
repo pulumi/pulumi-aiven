@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const clickhouseDb = aiven.getClickhouseDatabase({
- *     project: aiven_clickhouse.ch.project,
- *     serviceName: aiven_clickhouse.ch.service_name,
- *     name: "my-ch-db",
- * });
- * ```
  */
 export function getClickhouseDatabase(args: GetClickhouseDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseDatabaseResult> {
 
@@ -72,19 +59,6 @@ export interface GetClickhouseDatabaseResult {
 }
 /**
  * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const clickhouseDb = aiven.getClickhouseDatabase({
- *     project: aiven_clickhouse.ch.project,
- *     serviceName: aiven_clickhouse.ch.service_name,
- *     name: "my-ch-db",
- * });
- * ```
  */
 export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getClickhouseDatabase(a, opts))

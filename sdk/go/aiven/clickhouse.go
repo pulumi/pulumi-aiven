@@ -15,37 +15,6 @@ import (
 
 // The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewClickhouse(ctx, "clickhouse", &aiven.ClickhouseArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-clickhouse"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

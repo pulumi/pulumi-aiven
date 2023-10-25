@@ -46,14 +46,34 @@ class FlinkApplicationDeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             version_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
              parallelism: Optional[pulumi.Input[int]] = None,
              restart_enabled: Optional[pulumi.Input[bool]] = None,
              starting_savepoint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if version_id is None:
+            raise TypeError("Missing 'version_id' argument")
+        if restart_enabled is None and 'restartEnabled' in kwargs:
+            restart_enabled = kwargs['restartEnabled']
+        if starting_savepoint is None and 'startingSavepoint' in kwargs:
+            starting_savepoint = kwargs['startingSavepoint']
+
         _setter("application_id", application_id)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -202,7 +222,23 @@ class _FlinkApplicationDeploymentState:
              service_name: Optional[pulumi.Input[str]] = None,
              starting_savepoint: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if restart_enabled is None and 'restartEnabled' in kwargs:
+            restart_enabled = kwargs['restartEnabled']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if starting_savepoint is None and 'startingSavepoint' in kwargs:
+            starting_savepoint = kwargs['startingSavepoint']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if application_id is not None:
             _setter("application_id", application_id)
         if created_at is not None:

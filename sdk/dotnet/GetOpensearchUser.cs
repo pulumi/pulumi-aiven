@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetOpensearchUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpensearchUserResult> InvokeAsync(GetOpensearchUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetOpensearchUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpensearchUserResult> Invoke(GetOpensearchUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserInvokeArgs(), options.WithDefaults());

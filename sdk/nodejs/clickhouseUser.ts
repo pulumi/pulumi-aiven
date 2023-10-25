@@ -7,19 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const ch_user = new aiven.ClickhouseUser("ch-user", {
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_clickhouse.myservice.service_name,
- *     username: "<USERNAME>",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

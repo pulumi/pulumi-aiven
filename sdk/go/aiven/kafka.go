@@ -15,51 +15,6 @@ import (
 
 // The Kafka resource allows the creation and management of Aiven Kafka services.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafka(ctx, "kafka1", &aiven.KafkaArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-kafka1"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				KafkaUserConfig: &aiven.KafkaKafkaUserConfigArgs{
-//					KafkaRest:      pulumi.Bool(true),
-//					KafkaConnect:   pulumi.Bool(true),
-//					SchemaRegistry: pulumi.Bool(true),
-//					KafkaVersion:   pulumi.String("3.1"),
-//					Kafka: &aiven.KafkaKafkaUserConfigKafkaArgs{
-//						GroupMaxSessionTimeoutMs: pulumi.Int(70000),
-//						LogRetentionBytes:        pulumi.Int(1000000000),
-//					},
-//					PublicAccess: &aiven.KafkaKafkaUserConfigPublicAccessArgs{
-//						KafkaRest:    pulumi.Bool(true),
-//						KafkaConnect: pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

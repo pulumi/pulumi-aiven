@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = aiven.getGcpVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.vpc.id,
- *     gcpProjectId: "xxxx",
- *     peerVpc: "xxxx",
- * });
- * ```
  */
 export function getGcpVpcPeeringConnection(args: GetGcpVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpVpcPeeringConnectionResult> {
 
@@ -83,19 +70,6 @@ export interface GetGcpVpcPeeringConnectionResult {
 }
 /**
  * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = aiven.getGcpVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.vpc.id,
- *     gcpProjectId: "xxxx",
- *     peerVpc: "xxxx",
- * });
- * ```
  */
 export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpVpcPeeringConnectionResult> {
     return pulumi.output(args).apply((a: any) => getGcpVpcPeeringConnection(a, opts))

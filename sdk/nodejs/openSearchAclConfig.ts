@@ -7,36 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const fooProject = aiven.getProject({
- *     project: "example_project",
- * });
- * const bar = new aiven.OpenSearch("bar", {
- *     project: fooProject.then(fooProject => fooProject.project),
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example_service_name",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- * });
- * const fooOpensearchUser = new aiven.OpensearchUser("fooOpensearchUser", {
- *     serviceName: bar.serviceName,
- *     project: fooProject.then(fooProject => fooProject.project),
- *     username: "user-example",
- * });
- * const fooOpenSearchAclConfig = new aiven.OpenSearchAclConfig("fooOpenSearchAclConfig", {
- *     project: fooProject.then(fooProject => fooProject.project),
- *     serviceName: bar.serviceName,
- *     enabled: true,
- *     extendedAcl: false,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

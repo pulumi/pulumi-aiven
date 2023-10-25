@@ -13,58 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Aiven.GetAwsPrivatelink.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
-        ///         ServiceName = aiven_kafka.Bar.Service_name,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAwsPrivatelinkResult> InvokeAsync(GetAwsPrivatelinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Aiven.GetAwsPrivatelink.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
-        ///         ServiceName = aiven_kafka.Bar.Service_name,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAwsPrivatelinkResult> Invoke(GetAwsPrivatelinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkInvokeArgs(), options.WithDefaults());

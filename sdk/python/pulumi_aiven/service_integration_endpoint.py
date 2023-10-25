@@ -67,9 +67,9 @@ class ServiceIntegrationEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_name: pulumi.Input[str],
-             endpoint_type: pulumi.Input[str],
-             project: pulumi.Input[str],
+             endpoint_name: Optional[pulumi.Input[str]] = None,
+             endpoint_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              datadog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs']] = None,
              external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
              external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
@@ -81,7 +81,41 @@ class ServiceIntegrationEndpointArgs:
              jolokia_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs']] = None,
              prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs']] = None,
              rsyslog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_name is None and 'endpointName' in kwargs:
+            endpoint_name = kwargs['endpointName']
+        if endpoint_name is None:
+            raise TypeError("Missing 'endpoint_name' argument")
+        if endpoint_type is None and 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if datadog_user_config is None and 'datadogUserConfig' in kwargs:
+            datadog_user_config = kwargs['datadogUserConfig']
+        if external_aws_cloudwatch_logs_user_config is None and 'externalAwsCloudwatchLogsUserConfig' in kwargs:
+            external_aws_cloudwatch_logs_user_config = kwargs['externalAwsCloudwatchLogsUserConfig']
+        if external_aws_cloudwatch_metrics_user_config is None and 'externalAwsCloudwatchMetricsUserConfig' in kwargs:
+            external_aws_cloudwatch_metrics_user_config = kwargs['externalAwsCloudwatchMetricsUserConfig']
+        if external_elasticsearch_logs_user_config is None and 'externalElasticsearchLogsUserConfig' in kwargs:
+            external_elasticsearch_logs_user_config = kwargs['externalElasticsearchLogsUserConfig']
+        if external_google_cloud_logging_user_config is None and 'externalGoogleCloudLoggingUserConfig' in kwargs:
+            external_google_cloud_logging_user_config = kwargs['externalGoogleCloudLoggingUserConfig']
+        if external_kafka_user_config is None and 'externalKafkaUserConfig' in kwargs:
+            external_kafka_user_config = kwargs['externalKafkaUserConfig']
+        if external_opensearch_logs_user_config is None and 'externalOpensearchLogsUserConfig' in kwargs:
+            external_opensearch_logs_user_config = kwargs['externalOpensearchLogsUserConfig']
+        if external_schema_registry_user_config is None and 'externalSchemaRegistryUserConfig' in kwargs:
+            external_schema_registry_user_config = kwargs['externalSchemaRegistryUserConfig']
+        if jolokia_user_config is None and 'jolokiaUserConfig' in kwargs:
+            jolokia_user_config = kwargs['jolokiaUserConfig']
+        if prometheus_user_config is None and 'prometheusUserConfig' in kwargs:
+            prometheus_user_config = kwargs['prometheusUserConfig']
+        if rsyslog_user_config is None and 'rsyslogUserConfig' in kwargs:
+            rsyslog_user_config = kwargs['rsyslogUserConfig']
+
         _setter("endpoint_name", endpoint_name)
         _setter("endpoint_type", endpoint_type)
         _setter("project", project)
@@ -349,7 +383,37 @@ class _ServiceIntegrationEndpointState:
              project: Optional[pulumi.Input[str]] = None,
              prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs']] = None,
              rsyslog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datadog_user_config is None and 'datadogUserConfig' in kwargs:
+            datadog_user_config = kwargs['datadogUserConfig']
+        if endpoint_config is None and 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if endpoint_name is None and 'endpointName' in kwargs:
+            endpoint_name = kwargs['endpointName']
+        if endpoint_type is None and 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if external_aws_cloudwatch_logs_user_config is None and 'externalAwsCloudwatchLogsUserConfig' in kwargs:
+            external_aws_cloudwatch_logs_user_config = kwargs['externalAwsCloudwatchLogsUserConfig']
+        if external_aws_cloudwatch_metrics_user_config is None and 'externalAwsCloudwatchMetricsUserConfig' in kwargs:
+            external_aws_cloudwatch_metrics_user_config = kwargs['externalAwsCloudwatchMetricsUserConfig']
+        if external_elasticsearch_logs_user_config is None and 'externalElasticsearchLogsUserConfig' in kwargs:
+            external_elasticsearch_logs_user_config = kwargs['externalElasticsearchLogsUserConfig']
+        if external_google_cloud_logging_user_config is None and 'externalGoogleCloudLoggingUserConfig' in kwargs:
+            external_google_cloud_logging_user_config = kwargs['externalGoogleCloudLoggingUserConfig']
+        if external_kafka_user_config is None and 'externalKafkaUserConfig' in kwargs:
+            external_kafka_user_config = kwargs['externalKafkaUserConfig']
+        if external_opensearch_logs_user_config is None and 'externalOpensearchLogsUserConfig' in kwargs:
+            external_opensearch_logs_user_config = kwargs['externalOpensearchLogsUserConfig']
+        if external_schema_registry_user_config is None and 'externalSchemaRegistryUserConfig' in kwargs:
+            external_schema_registry_user_config = kwargs['externalSchemaRegistryUserConfig']
+        if jolokia_user_config is None and 'jolokiaUserConfig' in kwargs:
+            jolokia_user_config = kwargs['jolokiaUserConfig']
+        if prometheus_user_config is None and 'prometheusUserConfig' in kwargs:
+            prometheus_user_config = kwargs['prometheusUserConfig']
+        if rsyslog_user_config is None and 'rsyslogUserConfig' in kwargs:
+            rsyslog_user_config = kwargs['rsyslogUserConfig']
+
         if datadog_user_config is not None:
             _setter("datadog_user_config", datadog_user_config)
         if endpoint_config is not None:
@@ -653,11 +717,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIntegrationEndpointArgs.__new__(ServiceIntegrationEndpointArgs)
 
-            if datadog_user_config is not None and not isinstance(datadog_user_config, ServiceIntegrationEndpointDatadogUserConfigArgs):
-                datadog_user_config = datadog_user_config or {}
-                def _setter(key, value):
-                    datadog_user_config[key] = value
-                ServiceIntegrationEndpointDatadogUserConfigArgs._configure(_setter, **datadog_user_config)
+            datadog_user_config = _utilities.configure(datadog_user_config, ServiceIntegrationEndpointDatadogUserConfigArgs, True)
             __props__.__dict__["datadog_user_config"] = datadog_user_config
             if endpoint_name is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_name'")
@@ -665,68 +725,28 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             if endpoint_type is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_type'")
             __props__.__dict__["endpoint_type"] = endpoint_type
-            if external_aws_cloudwatch_logs_user_config is not None and not isinstance(external_aws_cloudwatch_logs_user_config, ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs):
-                external_aws_cloudwatch_logs_user_config = external_aws_cloudwatch_logs_user_config or {}
-                def _setter(key, value):
-                    external_aws_cloudwatch_logs_user_config[key] = value
-                ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs._configure(_setter, **external_aws_cloudwatch_logs_user_config)
+            external_aws_cloudwatch_logs_user_config = _utilities.configure(external_aws_cloudwatch_logs_user_config, ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs, True)
             __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
-            if external_aws_cloudwatch_metrics_user_config is not None and not isinstance(external_aws_cloudwatch_metrics_user_config, ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs):
-                external_aws_cloudwatch_metrics_user_config = external_aws_cloudwatch_metrics_user_config or {}
-                def _setter(key, value):
-                    external_aws_cloudwatch_metrics_user_config[key] = value
-                ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs._configure(_setter, **external_aws_cloudwatch_metrics_user_config)
+            external_aws_cloudwatch_metrics_user_config = _utilities.configure(external_aws_cloudwatch_metrics_user_config, ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs, True)
             __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
-            if external_elasticsearch_logs_user_config is not None and not isinstance(external_elasticsearch_logs_user_config, ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs):
-                external_elasticsearch_logs_user_config = external_elasticsearch_logs_user_config or {}
-                def _setter(key, value):
-                    external_elasticsearch_logs_user_config[key] = value
-                ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs._configure(_setter, **external_elasticsearch_logs_user_config)
+            external_elasticsearch_logs_user_config = _utilities.configure(external_elasticsearch_logs_user_config, ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs, True)
             __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
-            if external_google_cloud_logging_user_config is not None and not isinstance(external_google_cloud_logging_user_config, ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs):
-                external_google_cloud_logging_user_config = external_google_cloud_logging_user_config or {}
-                def _setter(key, value):
-                    external_google_cloud_logging_user_config[key] = value
-                ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs._configure(_setter, **external_google_cloud_logging_user_config)
+            external_google_cloud_logging_user_config = _utilities.configure(external_google_cloud_logging_user_config, ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs, True)
             __props__.__dict__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
-            if external_kafka_user_config is not None and not isinstance(external_kafka_user_config, ServiceIntegrationEndpointExternalKafkaUserConfigArgs):
-                external_kafka_user_config = external_kafka_user_config or {}
-                def _setter(key, value):
-                    external_kafka_user_config[key] = value
-                ServiceIntegrationEndpointExternalKafkaUserConfigArgs._configure(_setter, **external_kafka_user_config)
+            external_kafka_user_config = _utilities.configure(external_kafka_user_config, ServiceIntegrationEndpointExternalKafkaUserConfigArgs, True)
             __props__.__dict__["external_kafka_user_config"] = external_kafka_user_config
-            if external_opensearch_logs_user_config is not None and not isinstance(external_opensearch_logs_user_config, ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs):
-                external_opensearch_logs_user_config = external_opensearch_logs_user_config or {}
-                def _setter(key, value):
-                    external_opensearch_logs_user_config[key] = value
-                ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs._configure(_setter, **external_opensearch_logs_user_config)
+            external_opensearch_logs_user_config = _utilities.configure(external_opensearch_logs_user_config, ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs, True)
             __props__.__dict__["external_opensearch_logs_user_config"] = external_opensearch_logs_user_config
-            if external_schema_registry_user_config is not None and not isinstance(external_schema_registry_user_config, ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs):
-                external_schema_registry_user_config = external_schema_registry_user_config or {}
-                def _setter(key, value):
-                    external_schema_registry_user_config[key] = value
-                ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs._configure(_setter, **external_schema_registry_user_config)
+            external_schema_registry_user_config = _utilities.configure(external_schema_registry_user_config, ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs, True)
             __props__.__dict__["external_schema_registry_user_config"] = external_schema_registry_user_config
-            if jolokia_user_config is not None and not isinstance(jolokia_user_config, ServiceIntegrationEndpointJolokiaUserConfigArgs):
-                jolokia_user_config = jolokia_user_config or {}
-                def _setter(key, value):
-                    jolokia_user_config[key] = value
-                ServiceIntegrationEndpointJolokiaUserConfigArgs._configure(_setter, **jolokia_user_config)
+            jolokia_user_config = _utilities.configure(jolokia_user_config, ServiceIntegrationEndpointJolokiaUserConfigArgs, True)
             __props__.__dict__["jolokia_user_config"] = jolokia_user_config
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if prometheus_user_config is not None and not isinstance(prometheus_user_config, ServiceIntegrationEndpointPrometheusUserConfigArgs):
-                prometheus_user_config = prometheus_user_config or {}
-                def _setter(key, value):
-                    prometheus_user_config[key] = value
-                ServiceIntegrationEndpointPrometheusUserConfigArgs._configure(_setter, **prometheus_user_config)
+            prometheus_user_config = _utilities.configure(prometheus_user_config, ServiceIntegrationEndpointPrometheusUserConfigArgs, True)
             __props__.__dict__["prometheus_user_config"] = prometheus_user_config
-            if rsyslog_user_config is not None and not isinstance(rsyslog_user_config, ServiceIntegrationEndpointRsyslogUserConfigArgs):
-                rsyslog_user_config = rsyslog_user_config or {}
-                def _setter(key, value):
-                    rsyslog_user_config[key] = value
-                ServiceIntegrationEndpointRsyslogUserConfigArgs._configure(_setter, **rsyslog_user_config)
+            rsyslog_user_config = _utilities.configure(rsyslog_user_config, ServiceIntegrationEndpointRsyslogUserConfigArgs, True)
             __props__.__dict__["rsyslog_user_config"] = rsyslog_user_config
             __props__.__dict__["endpoint_config"] = None
         super(ServiceIntegrationEndpoint, __self__).__init__(

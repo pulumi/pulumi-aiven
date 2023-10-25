@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const os1 = aiven.getOpenSearch({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "my-os1",
- * });
- * ```
  */
 export function getOpenSearch(args: GetOpenSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchResult> {
 
@@ -163,18 +151,6 @@ export interface GetOpenSearchResult {
 }
 /**
  * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const os1 = aiven.getOpenSearch({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "my-os1",
- * });
- * ```
  */
 export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearch(a, opts))

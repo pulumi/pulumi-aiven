@@ -13,33 +13,6 @@ import (
 )
 
 // The Redis data source provides information about the existing Aiven Redis service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupRedis(ctx, &aiven.LookupRedisArgs{
-//				Project:     data.Aiven_project.Pr1.Project,
-//				ServiceName: "my-redis1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.InvokeOption) (*LookupRedisResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRedisResult

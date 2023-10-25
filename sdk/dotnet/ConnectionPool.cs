@@ -12,30 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Connection Pool resource allows the creation and management of Aiven Connection Pools.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mytestpool = new Aiven.ConnectionPool("mytestpool", new()
-    ///     {
-    ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_pg.Mypg.Service_name,
-    ///         DatabaseName = aiven_pg_database.Mypgdatabase.Database_name,
-    ///         PoolMode = "transaction",
-    ///         PoolName = "mypool",
-    ///         PoolSize = 10,
-    ///         Username = aiven_pg_user.Mypguser.Username,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

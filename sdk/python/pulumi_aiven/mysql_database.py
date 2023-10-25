@@ -36,11 +36,25 @@ class MysqlDatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_name: pulumi.Input[str],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             database_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if database_name is None:
+            raise TypeError("Missing 'database_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         _setter("database_name", database_name)
         _setter("project", project)
         _setter("service_name", service_name)
@@ -126,7 +140,15 @@ class _MysqlDatabaseState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         if database_name is not None:
             _setter("database_name", database_name)
         if project is not None:
@@ -199,18 +221,6 @@ class MysqlDatabase(pulumi.CustomResource):
         """
         The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mydatabase = aiven.MysqlDatabase("mydatabase",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_mysql["mymysql"]["service_name"],
-            database_name="<DATABASE_NAME>")
-        ```
-
         ## Import
 
         ```sh
@@ -233,18 +243,6 @@ class MysqlDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mydatabase = aiven.MysqlDatabase("mydatabase",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_mysql["mymysql"]["service_name"],
-            database_name="<DATABASE_NAME>")
-        ```
 
         ## Import
 

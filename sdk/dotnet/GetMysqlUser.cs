@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The MySQL User data source provides information about the existing Aiven MySQL User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetMysqlUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMysqlUserResult> InvokeAsync(GetMysqlUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The MySQL User data source provides information about the existing Aiven MySQL User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetMysqlUser.Invoke(new()
-        ///     {
-        ///         Project = "my-project",
-        ///         ServiceName = "my-service",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMysqlUserResult> Invoke(GetMysqlUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserInvokeArgs(), options.WithDefaults());

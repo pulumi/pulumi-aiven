@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mm1 = aiven.getKafkaMirrorMaker({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "my-mm1",
- * });
- * ```
  */
 export function getKafkaMirrorMaker(args: GetKafkaMirrorMakerArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaMirrorMakerResult> {
 
@@ -163,18 +151,6 @@ export interface GetKafkaMirrorMakerResult {
 }
 /**
  * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mm1 = aiven.getKafkaMirrorMaker({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "my-mm1",
- * });
- * ```
  */
 export function getKafkaMirrorMakerOutput(args: GetKafkaMirrorMakerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaMirrorMakerResult> {
     return pulumi.output(args).apply((a: any) => getKafkaMirrorMaker(a, opts))

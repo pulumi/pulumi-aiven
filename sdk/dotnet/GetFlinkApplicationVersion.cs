@@ -13,62 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         ApplicationId = "&lt;APPLICATION_ID&gt;",
-        ///         ApplicationVersionId = "&lt;APPLICATION_VERSION_ID&gt;",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlinkApplicationVersionResult> InvokeAsync(GetFlinkApplicationVersionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         ApplicationId = "&lt;APPLICATION_ID&gt;",
-        ///         ApplicationVersionId = "&lt;APPLICATION_VERSION_ID&gt;",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlinkApplicationVersionResult> Invoke(GetFlinkApplicationVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionInvokeArgs(), options.WithDefaults());

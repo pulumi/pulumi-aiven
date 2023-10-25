@@ -31,9 +31,17 @@ class GcpPrivatelinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("project", project)
         _setter("service_name", service_name)
 
@@ -98,7 +106,13 @@ class _GcpPrivatelinkState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if google_service_attachment is None and 'googleServiceAttachment' in kwargs:
+            google_service_attachment = kwargs['googleServiceAttachment']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if google_service_attachment is not None:
             _setter("google_service_attachment", google_service_attachment)
         if message is not None:

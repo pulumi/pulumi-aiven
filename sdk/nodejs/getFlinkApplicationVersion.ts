@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const app1 = aiven.getFlinkApplicationVersion({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- *     applicationId: "<APPLICATION_ID>",
- *     applicationVersionId: "<APPLICATION_VERSION_ID>",
- * });
- * ```
  */
 export function getFlinkApplicationVersion(args: GetFlinkApplicationVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkApplicationVersionResult> {
 
@@ -115,20 +101,6 @@ export interface GetFlinkApplicationVersionResult {
 }
 /**
  * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const app1 = aiven.getFlinkApplicationVersion({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- *     applicationId: "<APPLICATION_ID>",
- *     applicationVersionId: "<APPLICATION_VERSION_ID>",
- * });
- * ```
  */
 export function getFlinkApplicationVersionOutput(args: GetFlinkApplicationVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationVersionResult> {
     return pulumi.output(args).apply((a: any) => getFlinkApplicationVersion(a, opts))

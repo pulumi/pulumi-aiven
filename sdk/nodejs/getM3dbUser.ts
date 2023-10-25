@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The M3DB User data source provides information about the existing Aiven M3DB User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const user = aiven.getM3dbUser({
- *     project: "my-project",
- *     serviceName: "my-service",
- *     username: "user1",
- * });
- * ```
  */
 export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbUserResult> {
 
@@ -79,19 +66,6 @@ export interface GetM3dbUserResult {
 }
 /**
  * The M3DB User data source provides information about the existing Aiven M3DB User.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const user = aiven.getM3dbUser({
- *     project: "my-project",
- *     serviceName: "my-service",
- *     username: "user1",
- * });
- * ```
  */
 export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {
     return pulumi.output(args).apply((a: any) => getM3dbUser(a, opts))
