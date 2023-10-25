@@ -906,6 +906,24 @@ class Flink(pulumi.CustomResource):
         """
         The Flink resource allows the creation and management of Aiven Flink services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        flink = aiven.Flink("flink",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-flink",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            flink_user_config=aiven.FlinkFlinkUserConfigArgs(
+                flink_version="1.16",
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -938,6 +956,24 @@ class Flink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Flink resource allows the creation and management of Aiven Flink services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        flink = aiven.Flink("flink",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="my-flink",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            flink_user_config=aiven.FlinkFlinkUserConfigArgs(
+                flink_version="1.16",
+            ))
+        ```
 
         ## Import
 

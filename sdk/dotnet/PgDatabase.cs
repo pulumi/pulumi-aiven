@@ -12,6 +12,26 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydatabase = new Aiven.PgDatabase("mydatabase", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_pg.Mypg.Service_name,
+    ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

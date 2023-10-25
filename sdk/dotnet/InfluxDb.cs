@@ -12,6 +12,36 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The InfluxDB resource allows the creation and management of Aiven InfluxDB services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var inf1 = new Aiven.InfluxDb("inf1", new()
+    ///     {
+    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "my-inf1",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///         InfluxdbUserConfig = new Aiven.Inputs.InfluxDbInfluxdbUserConfigArgs
+    ///         {
+    ///             PublicAccess = new Aiven.Inputs.InfluxDbInfluxdbUserConfigPublicAccessArgs
+    ///             {
+    ///                 Influxdb = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

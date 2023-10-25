@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mm1 = Aiven.GetKafkaMirrorMaker.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "my-mm1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaMirrorMakerResult> InvokeAsync(GetKafkaMirrorMakerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mm1 = Aiven.GetKafkaMirrorMaker.Invoke(new()
+        ///     {
+        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         ServiceName = "my-mm1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaMirrorMakerResult> Invoke(GetKafkaMirrorMakerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerInvokeArgs(), options.WithDefaults());

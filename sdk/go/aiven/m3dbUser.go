@@ -15,6 +15,35 @@ import (
 
 // The M3DB User resource allows the creation and management of Aiven M3DB Users.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewM3dbUser(ctx, "foo", &aiven.M3dbUserArgs{
+//				ServiceName: pulumi.Any(aiven_m3db.Bar.Service_name),
+//				Project:     pulumi.String("my-project"),
+//				Username:    pulumi.String("user-1"),
+//				Password:    pulumi.String("Test$1234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

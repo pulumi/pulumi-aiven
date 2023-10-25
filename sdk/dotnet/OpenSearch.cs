@@ -12,6 +12,43 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var os1 = new Aiven.OpenSearch("os1", new()
+    ///     {
+    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "my-os1",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///         OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs
+    ///         {
+    ///             OpensearchVersion = "1",
+    ///             OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 OpensearchRequestTimeout = 30000,
+    ///             },
+    ///             PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs
+    ///             {
+    ///                 Opensearch = true,
+    ///                 OpensearchDashboards = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

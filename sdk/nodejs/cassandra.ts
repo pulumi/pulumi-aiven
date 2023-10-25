@@ -9,6 +9,28 @@ import * as utilities from "./utilities";
 /**
  * The Cassandra resource allows the creation and management of Aiven Cassandra services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const bar = new aiven.Cassandra("bar", {
+ *     project: data.aiven_project.foo.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "test-service-name",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     cassandraUserConfig: {
+ *         migrateSstableloader: true,
+ *         publicAccess: {
+ *             prometheus: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

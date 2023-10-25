@@ -12,6 +12,87 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var osUser = new Aiven.OpensearchUser("osUser", new()
+    ///     {
+    ///         Project = @var.Aiven_project_name,
+    ///         ServiceName = aiven_opensearch.Os_test.Service_name,
+    ///         Username = "documentation-user-1",
+    ///     });
+    /// 
+    ///     var osUser2 = new Aiven.OpensearchUser("osUser2", new()
+    ///     {
+    ///         Project = @var.Aiven_project_name,
+    ///         ServiceName = aiven_opensearch.Os_test.Service_name,
+    ///         Username = "documentation-user-2",
+    ///     });
+    /// 
+    ///     var osAclsConfig = new Aiven.OpenSearchAclConfig("osAclsConfig", new()
+    ///     {
+    ///         Project = @var.Aiven_project_name,
+    ///         ServiceName = aiven_opensearch.Os_test.Service_name,
+    ///         Enabled = true,
+    ///         ExtendedAcl = false,
+    ///     });
+    /// 
+    ///     var aclRules = new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "username", osUser.Username },
+    ///             { "index", "index2" },
+    ///             { "permission", "readwrite" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "username", osUser.Username },
+    ///             { "index", "index3" },
+    ///             { "permission", "read" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "username", osUser.Username },
+    ///             { "index", "index5" },
+    ///             { "permission", "deny" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "username", osUser2.Username },
+    ///             { "index", "index3" },
+    ///             { "permission", "write" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "username", osUser2.Username },
+    ///             { "index", "index7" },
+    ///             { "permission", "readwrite" },
+    ///         },
+    ///     };
+    /// 
+    ///     var osAclRule = new List&lt;Aiven.OpenSearchAclRule&gt;();
+    ///     foreach (var range in aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(pair =&gt; new { pair.Key, pair.Value }))
+    ///     {
+    ///         osAclRule.Add(new Aiven.OpenSearchAclRule($"osAclRule-{range.Key}", new()
+    ///         {
+    ///             Project = osAclsConfig.Project,
+    ///             ServiceName = osAclsConfig.ServiceName,
+    ///             Username = range.Value.Username,
+    ///             Index = range.Value.Index,
+    ///             Permission = range.Value.Permission,
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

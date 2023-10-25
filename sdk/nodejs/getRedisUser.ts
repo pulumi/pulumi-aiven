@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * The Redis User data source provides information about the existing Aiven Redis User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getRedisUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisUserResult> {
 
@@ -82,6 +95,19 @@ export interface GetRedisUserResult {
 }
 /**
  * The Redis User data source provides information about the existing Aiven Redis User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getRedisUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {
     return pulumi.output(args).apply((a: any) => getRedisUser(a, opts))

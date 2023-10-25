@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getInfluxdbUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getInfluxdbUser(args: GetInfluxdbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetInfluxdbUserResult> {
 
@@ -74,6 +87,19 @@ export interface GetInfluxdbUserResult {
 }
 /**
  * The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getInfluxdbUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getInfluxdbUserOutput(args: GetInfluxdbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxdbUserResult> {
     return pulumi.output(args).apply((a: any) => getInfluxdbUser(a, opts))

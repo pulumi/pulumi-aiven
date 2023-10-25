@@ -12,6 +12,36 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka_os_con1 = new Aiven.KafkaConnector("kafka-os-con1", new()
+    ///     {
+    ///         Project = aiven_project.Kafka_con_project1.Project,
+    ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+    ///         ConnectorName = "kafka-os-con1",
+    ///         Config = 
+    ///         {
+    ///             { "topics", aiven_kafka_topic.Kafka_topic1.Topic_name },
+    ///             { "connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector" },
+    ///             { "type.name", "os-connector" },
+    ///             { "name", "kafka-os-con1" },
+    ///             { "connection.url", aiven_elasticsearch.Os_service1.Service_uri },
+    ///             { "connection.username", aiven_opensearch.Os_service1.Service_username },
+    ///             { "connection.password", aiven_opensearch.Os_service1.Service_password },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -887,6 +887,32 @@ class OpenSearch(pulumi.CustomResource):
         """
         The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        os1 = aiven.OpenSearch("os1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-os1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(
+                opensearch_version="1",
+                opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(
+                    enabled=True,
+                    opensearch_request_timeout=30000,
+                ),
+                public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(
+                    opensearch=True,
+                    opensearch_dashboards=True,
+                ),
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -918,6 +944,32 @@ class OpenSearch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        os1 = aiven.OpenSearch("os1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-os1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(
+                opensearch_version="1",
+                opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(
+                    enabled=True,
+                    opensearch_request_timeout=30000,
+                ),
+                public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(
+                    opensearch=True,
+                    opensearch_dashboards=True,
+                ),
+            ))
+        ```
 
         ## Import
 

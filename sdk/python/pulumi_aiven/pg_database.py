@@ -303,6 +303,18 @@ class PgDatabase(pulumi.CustomResource):
         """
         The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mydatabase = aiven.PgDatabase("mydatabase",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_pg["mypg"]["service_name"],
+            database_name="<DATABASE_NAME>")
+        ```
+
         ## Import
 
         ```sh
@@ -327,6 +339,18 @@ class PgDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mydatabase = aiven.PgDatabase("mydatabase",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_pg["mypg"]["service_name"],
+            database_name="<DATABASE_NAME>")
+        ```
 
         ## Import
 

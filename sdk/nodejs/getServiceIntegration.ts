@@ -10,6 +10,20 @@ import * as utilities from "./utilities";
  * The Service Integration data source provides information about the existing Aiven Service Integration.
  *
  * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myintegration = aiven.getServiceIntegration({
+ *     project: aiven_project.myproject.project,
+ *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
+ *     integrationType: "datadog",
+ *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationResult> {
 
@@ -121,6 +135,20 @@ export interface GetServiceIntegrationResult {
  * The Service Integration data source provides information about the existing Aiven Service Integration.
  *
  * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myintegration = aiven.getServiceIntegration({
+ *     project: aiven_project.myproject.project,
+ *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
+ *     integrationType: "datadog",
+ *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * });
+ * ```
  */
 export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationResult> {
     return pulumi.output(args).apply((a: any) => getServiceIntegration(a, opts))

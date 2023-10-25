@@ -125,6 +125,19 @@ def get_kafka_acl(permission: Optional[str] = None,
     """
     The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
+        service_name=aiven_kafka["mykafka"]["service_name"],
+        topic="<TOPIC_NAME_PATTERN>",
+        permission="<PERMISSON>",
+        username="<USERNAME_PATTERN>")
+    ```
+
 
     :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -160,6 +173,19 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaAclResult]:
     """
     The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
+        service_name=aiven_kafka["mykafka"]["service_name"],
+        topic="<TOPIC_NAME_PATTERN>",
+        permission="<PERMISSON>",
+        username="<USERNAME_PATTERN>")
+    ```
 
 
     :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.

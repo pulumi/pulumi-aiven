@@ -354,6 +354,27 @@ class KafkaConnector(pulumi.CustomResource):
         """
         The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
+            project=aiven_project["kafka-con-project1"]["project"],
+            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            connector_name="kafka-os-con1",
+            config={
+                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
+                "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
+                "type.name": "os-connector",
+                "name": "kafka-os-con1",
+                "connection.url": aiven_elasticsearch["os-service1"]["service_uri"],
+                "connection.username": aiven_opensearch["os-service1"]["service_username"],
+                "connection.password": aiven_opensearch["os-service1"]["service_password"],
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -375,6 +396,27 @@ class KafkaConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
+            project=aiven_project["kafka-con-project1"]["project"],
+            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            connector_name="kafka-os-con1",
+            config={
+                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
+                "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
+                "type.name": "os-connector",
+                "name": "kafka-os-con1",
+                "connection.url": aiven_elasticsearch["os-service1"]["service_uri"],
+                "connection.username": aiven_opensearch["os-service1"]["service_username"],
+                "connection.password": aiven_opensearch["os-service1"]["service_password"],
+            })
+        ```
 
         ## Import
 

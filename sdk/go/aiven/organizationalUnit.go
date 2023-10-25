@@ -15,6 +15,32 @@ import (
 
 // The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewOrganizationalUnit(ctx, "organizationalUnit1", &aiven.OrganizationalUnitArgs{
+//				ParentId: pulumi.String("<ORGANIZATION_ID>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

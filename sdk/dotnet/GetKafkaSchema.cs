@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Kafka_schemas_project1.Project,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaSchemaResult> InvokeAsync(GetKafkaSchemaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Kafka_schemas_project1.Project,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaSchemaResult> Invoke(GetKafkaSchemaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithDefaults());

@@ -9,6 +9,36 @@ import * as utilities from "./utilities";
 /**
  * The Kafka resource allows the creation and management of Aiven Kafka services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka1 = new aiven.Kafka("kafka1", {
+ *     project: data.aiven_project.pr1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-4",
+ *     serviceName: "my-kafka1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     kafkaUserConfig: {
+ *         kafkaRest: true,
+ *         kafkaConnect: true,
+ *         schemaRegistry: true,
+ *         kafkaVersion: "3.1",
+ *         kafka: {
+ *             groupMaxSessionTimeoutMs: 70000,
+ *             logRetentionBytes: 1000000000,
+ *         },
+ *         publicAccess: {
+ *             kafkaRest: true,
+ *             kafkaConnect: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

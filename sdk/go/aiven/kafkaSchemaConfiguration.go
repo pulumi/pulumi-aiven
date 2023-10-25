@@ -15,6 +15,34 @@ import (
 
 // The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewKafkaSchemaConfiguration(ctx, "config", &aiven.KafkaSchemaConfigurationArgs{
+//				Project:            pulumi.Any(aiven_project.KafkaSchemasProject1.Project),
+//				ServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),
+//				CompatibilityLevel: pulumi.String("BACKWARD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

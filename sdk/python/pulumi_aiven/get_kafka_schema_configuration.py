@@ -134,6 +134,18 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
     """
     The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    config = aiven.KafkaSchemaConfiguration("config",
+        project=aiven_project["kafka-schemas-project1"]["project"],
+        service_name=aiven_kafka["kafka-service1"]["service_name"],
+        compatibility_level="BACKWARD")
+    ```
+
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -161,6 +173,18 @@ def get_kafka_schema_configuration_output(project: Optional[pulumi.Input[str]] =
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaSchemaConfigurationResult]:
     """
     The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    config = aiven.KafkaSchemaConfiguration("config",
+        project=aiven_project["kafka-schemas-project1"]["project"],
+        service_name=aiven_kafka["kafka-service1"]["service_name"],
+        compatibility_level="BACKWARD")
+    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

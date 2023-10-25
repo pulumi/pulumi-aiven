@@ -212,6 +212,18 @@ class AwsPrivatelink(pulumi.CustomResource):
         """
         The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AwsPrivatelink("foo",
+            project=data["aiven_project"]["foo"]["project"],
+            service_name=aiven_kafka["bar"]["service_name"],
+            principals=["arn:aws:iam::012345678901:user/mwf"])
+        ```
+
         ## Import
 
         ```sh
@@ -232,6 +244,18 @@ class AwsPrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AwsPrivatelink("foo",
+            project=data["aiven_project"]["foo"]["project"],
+            service_name=aiven_kafka["bar"]["service_name"],
+            principals=["arn:aws:iam::012345678901:user/mwf"])
+        ```
 
         ## Import
 

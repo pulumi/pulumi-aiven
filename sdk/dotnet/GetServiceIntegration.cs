@@ -15,6 +15,31 @@ namespace Pulumi.Aiven
         /// The Service Integration data source provides information about the existing Aiven Service Integration.
         /// 
         /// Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
+        ///         IntegrationType = "datadog",
+        ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceIntegrationResult> InvokeAsync(GetServiceIntegrationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.Aiven
         /// The Service Integration data source provides information about the existing Aiven Service Integration.
         /// 
         /// Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
+        ///         IntegrationType = "datadog",
+        ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceIntegrationResult> Invoke(GetServiceIntegrationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithDefaults());

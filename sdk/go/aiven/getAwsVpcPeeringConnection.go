@@ -13,6 +13,34 @@ import (
 )
 
 // The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupAwsVpcPeeringConnection(ctx, &aiven.LookupAwsVpcPeeringConnectionArgs{
+//				VpcId:        data.Aiven_project_vpc.Vpc.Id,
+//				AwsAccountId: "XXXXX",
+//				AwsVpcId:     "XXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAwsVpcPeeringConnection(ctx *pulumi.Context, args *LookupAwsVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAwsVpcPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsVpcPeeringConnectionResult

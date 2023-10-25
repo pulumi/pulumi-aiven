@@ -221,6 +221,18 @@ class MysqlDatabase(pulumi.CustomResource):
         """
         The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mydatabase = aiven.MysqlDatabase("mydatabase",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_mysql["mymysql"]["service_name"],
+            database_name="<DATABASE_NAME>")
+        ```
+
         ## Import
 
         ```sh
@@ -243,6 +255,18 @@ class MysqlDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mydatabase = aiven.MysqlDatabase("mydatabase",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_mysql["mymysql"]["service_name"],
+            database_name="<DATABASE_NAME>")
+        ```
 
         ## Import
 

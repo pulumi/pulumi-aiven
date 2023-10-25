@@ -13,12 +13,60 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
+        ///     {
+        ///         VpcId = aiven_project_vpc.Bar.Id,
+        ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+        ///         PeerVpc = "google-project1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitGatewayVpcAttachmentResult> InvokeAsync(GetTransitGatewayVpcAttachmentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
+        ///     {
+        ///         VpcId = aiven_project_vpc.Bar.Id,
+        ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+        ///         PeerVpc = "google-project1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitGatewayVpcAttachmentResult> Invoke(GetTransitGatewayVpcAttachmentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentInvokeArgs(), options.WithDefaults());

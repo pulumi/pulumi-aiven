@@ -7,6 +7,18 @@ import * as utilities from "./utilities";
 /**
  * The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const clickhouseDb = new aiven.ClickhouseDatabase("clickhouseDb", {
+ *     project: aiven_clickhouse.ch.project,
+ *     serviceName: aiven_clickhouse.ch.service_name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

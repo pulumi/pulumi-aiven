@@ -12,6 +12,26 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Aiven.KafkaSchemaConfiguration("config", new()
+    ///     {
+    ///         Project = aiven_project.Kafka_schemas_project1.Project,
+    ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+    ///         CompatibilityLevel = "BACKWARD",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

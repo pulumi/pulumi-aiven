@@ -9,6 +9,28 @@ import * as utilities from "./utilities";
 /**
  * The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka_os_con1 = new aiven.KafkaConnector("kafka-os-con1", {
+ *     project: aiven_project["kafka-con-project1"].project,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     connectorName: "kafka-os-con1",
+ *     config: {
+ *         topics: aiven_kafka_topic["kafka-topic1"].topic_name,
+ *         "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
+ *         "type.name": "os-connector",
+ *         name: "kafka-os-con1",
+ *         "connection.url": aiven_elasticsearch["os-service1"].service_uri,
+ *         "connection.username": aiven_opensearch["os-service1"].service_username,
+ *         "connection.password": aiven_opensearch["os-service1"].service_password,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

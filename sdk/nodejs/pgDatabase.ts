@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mydatabase = new aiven.PgDatabase("mydatabase", {
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_pg.mypg.service_name,
+ *     databaseName: "<DATABASE_NAME>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -13,12 +13,60 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Redis User data source provides information about the existing Aiven Redis User.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Aiven.GetRedisUser.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRedisUserResult> InvokeAsync(GetRedisUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRedisUserResult>("aiven:index/getRedisUser:getRedisUser", args ?? new GetRedisUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Redis User data source provides information about the existing Aiven Redis User.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Aiven.GetRedisUser.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRedisUserResult> Invoke(GetRedisUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisUserResult>("aiven:index/getRedisUser:getRedisUser", args ?? new GetRedisUserInvokeArgs(), options.WithDefaults());

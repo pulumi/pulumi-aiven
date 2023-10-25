@@ -113,6 +113,18 @@ def get_open_search_acl_rule(index: Optional[str] = None,
     """
     The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    os_acl_rule = aiven.get_open_search_acl_rule(project=aiven_opensearch_acl_config["os_acls_config"]["project"],
+        service_name=aiven_opensearch_acl_config["os_acls_config"]["service_name"],
+        username="<USERNAME>",
+        index="<INDEX>")
+    ```
+
 
     :param str index: The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
     :param str permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
@@ -147,6 +159,18 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchAclRuleResult]:
     """
     The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    os_acl_rule = aiven.get_open_search_acl_rule(project=aiven_opensearch_acl_config["os_acls_config"]["project"],
+        service_name=aiven_opensearch_acl_config["os_acls_config"]["service_name"],
+        username="<USERNAME>",
+        index="<INDEX>")
+    ```
 
 
     :param str index: The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.

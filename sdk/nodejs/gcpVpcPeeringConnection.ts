@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = new aiven.GcpVpcPeeringConnection("foo", {
+ *     vpcId: data.aiven_project_vpc.vpc.id,
+ *     gcpProjectId: "xxxx",
+ *     peerVpc: "xxxx",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -12,6 +12,33 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Flink resource allows the creation and management of Aiven Flink services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var flink = new Aiven.Flink("flink", new()
+    ///     {
+    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "business-4",
+    ///         ServiceName = "my-flink",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
+    ///         {
+    ///             FlinkVersion = "1.16",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

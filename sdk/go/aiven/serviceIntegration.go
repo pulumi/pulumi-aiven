@@ -22,6 +22,35 @@ import (
 // getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
 // Elasticsearch, etc.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewServiceIntegration(ctx, "myIntegrationMetrics", &aiven.ServiceIntegrationArgs{
+//				Project:                pulumi.Any(aiven_project.Myproject.Project),
+//				IntegrationType:        pulumi.String("metrics"),
+//				SourceServiceName:      pulumi.Any(aiven_kafka.Kfk1.Service_name),
+//				DestinationServiceName: pulumi.Any(aiven_m3db.M3db.Service_name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

@@ -12,6 +12,40 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mm1 = new Aiven.KafkaMirrorMaker("mm1", new()
+    ///     {
+    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "my-mm1",
+    ///         KafkaMirrormakerUserConfig = new Aiven.Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs
+    ///         {
+    ///             IpFilters = new[]
+    ///             {
+    ///                 "0.0.0.0/0",
+    ///             },
+    ///             KafkaMirrormaker = new Aiven.Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs
+    ///             {
+    ///                 RefreshGroupsIntervalSeconds = 600,
+    ///                 RefreshTopicsEnabled = true,
+    ///                 RefreshTopicsIntervalSeconds = 600,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

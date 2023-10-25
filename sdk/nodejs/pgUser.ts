@@ -7,6 +7,20 @@ import * as utilities from "./utilities";
 /**
  * The PG User resource allows the creation and management of Aiven PG Users.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = new aiven.PgUser("foo", {
+ *     serviceName: aiven_pg.bar.service_name,
+ *     project: "my-project",
+ *     username: "user-1",
+ *     password: "Test$1234",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

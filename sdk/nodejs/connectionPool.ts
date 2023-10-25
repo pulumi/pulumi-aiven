@@ -7,6 +7,23 @@ import * as utilities from "./utilities";
 /**
  * The Connection Pool resource allows the creation and management of Aiven Connection Pools.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestpool = new aiven.ConnectionPool("mytestpool", {
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_pg.mypg.service_name,
+ *     databaseName: aiven_pg_database.mypgdatabase.database_name,
+ *     poolMode: "transaction",
+ *     poolName: "mypool",
+ *     poolSize: 10,
+ *     username: aiven_pg_user.mypguser.username,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

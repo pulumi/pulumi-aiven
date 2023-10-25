@@ -190,6 +190,18 @@ class ProjectUser(pulumi.CustomResource):
         """
         The Project User resource allows the creation and management of Aiven Project Users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestuser = aiven.ProjectUser("mytestuser",
+            project=aiven_project["myproject"]["project"],
+            email="john.doe@example.com",
+            member_type="admin")
+        ```
+
         ## Import
 
         ```sh
@@ -210,6 +222,18 @@ class ProjectUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Project User resource allows the creation and management of Aiven Project Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytestuser = aiven.ProjectUser("mytestuser",
+            project=aiven_project["myproject"]["project"],
+            email="john.doe@example.com",
+            member_type="admin")
+        ```
 
         ## Import
 

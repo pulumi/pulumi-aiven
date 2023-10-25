@@ -12,6 +12,27 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The InfluxDB User resource allows the creation and management of Aiven InfluxDB Users.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.InfluxdbUser("foo", new()
+    ///     {
+    ///         ServiceName = aiven_influxdb.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

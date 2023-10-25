@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytesttopic = aiven.getKafkaTopic({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.myservice.service_name,
+ *     topicName: "<TOPIC_NAME>",
+ * });
+ * ```
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
 
@@ -77,6 +90,19 @@ export interface GetKafkaTopicResult {
 }
 /**
  * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytesttopic = aiven.getKafkaTopic({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.myservice.service_name,
+ *     topicName: "<TOPIC_NAME>",
+ * });
+ * ```
  */
 export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
     return pulumi.output(args).apply((a: any) => getKafkaTopic(a, opts))

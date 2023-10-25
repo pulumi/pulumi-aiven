@@ -12,6 +12,28 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytestacl = new Aiven.KafkaAcl("mytestacl", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_kafka.Myservice.Service_name,
+    ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+    ///         Permission = "admin",
+    ///         Username = "&lt;USERNAME_PATTERN&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

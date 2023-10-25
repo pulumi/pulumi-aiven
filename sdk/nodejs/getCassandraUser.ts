@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getCassandraUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getCassandraUser(args: GetCassandraUserArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraUserResult> {
 
@@ -74,6 +87,19 @@ export interface GetCassandraUserResult {
 }
 /**
  * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getCassandraUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getCassandraUserOutput(args: GetCassandraUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraUserResult> {
     return pulumi.output(args).apply((a: any) => getCassandraUser(a, opts))

@@ -13,6 +13,33 @@ import (
 )
 
 // The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupKafkaMirrorMaker(ctx, &aiven.LookupKafkaMirrorMakerArgs{
+//				Project:     data.Aiven_project.Pr1.Project,
+//				ServiceName: "my-mm1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKafkaMirrorMaker(ctx *pulumi.Context, args *LookupKafkaMirrorMakerArgs, opts ...pulumi.InvokeOption) (*LookupKafkaMirrorMakerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaMirrorMakerResult

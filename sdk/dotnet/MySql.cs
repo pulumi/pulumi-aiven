@@ -12,6 +12,42 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The MySQL resource allows the creation and management of Aiven MySQL services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mysql1 = new Aiven.MySql("mysql1", new()
+    ///     {
+    ///         Project = data.Aiven_project.Foo.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "business-4",
+    ///         ServiceName = "my-mysql1",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///         MysqlUserConfig = new Aiven.Inputs.MySqlMysqlUserConfigArgs
+    ///         {
+    ///             MysqlVersion = "8",
+    ///             Mysql = new Aiven.Inputs.MySqlMysqlUserConfigMysqlArgs
+    ///             {
+    ///                 SqlMode = "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
+    ///                 SqlRequirePrimaryKey = true,
+    ///             },
+    ///             PublicAccess = new Aiven.Inputs.MySqlMysqlUserConfigPublicAccessArgs
+    ///             {
+    ///                 Mysql = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

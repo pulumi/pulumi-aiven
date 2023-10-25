@@ -13,6 +13,34 @@ import (
 )
 
 // The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupOpensearchUser(ctx, &aiven.LookupOpensearchUserArgs{
+//				Project:     "my-project",
+//				ServiceName: "my-service",
+//				Username:    "user1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOpensearchUser(ctx *pulumi.Context, args *LookupOpensearchUserArgs, opts ...pulumi.InvokeOption) (*LookupOpensearchUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpensearchUserResult

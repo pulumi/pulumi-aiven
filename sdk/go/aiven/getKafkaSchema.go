@@ -13,6 +13,33 @@ import (
 )
 
 // The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupKafkaSchemaConfiguration(ctx, &aiven.LookupKafkaSchemaConfigurationArgs{
+//				Project:     aiven_project.KafkaSchemasProject1.Project,
+//				ServiceName: aiven_kafka.KafkaService1.Service_name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKafkaSchema(ctx *pulumi.Context, args *LookupKafkaSchemaArgs, opts ...pulumi.InvokeOption) (*LookupKafkaSchemaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaSchemaResult

@@ -13,6 +13,33 @@ import (
 )
 
 // The InfluxDB data source provides information about the existing Aiven InfluxDB service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupInfluxDb(ctx, &aiven.LookupInfluxDbArgs{
+//				Project:     data.Aiven_project.Pr1.Project,
+//				ServiceName: "my-inf1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInfluxDb(ctx *pulumi.Context, args *LookupInfluxDbArgs, opts ...pulumi.InvokeOption) (*LookupInfluxDbResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInfluxDbResult

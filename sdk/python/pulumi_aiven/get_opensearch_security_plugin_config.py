@@ -122,6 +122,16 @@ def get_opensearch_security_plugin_config(project: Optional[str] = None,
     """
     The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    os_sec_config = aiven.get_opensearch_security_plugin_config(project=aiven_project["os-project"]["project"],
+        service_name=aiven_opensearch["os"]["service_name"])
+    ```
+
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -148,6 +158,16 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
     """
     The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    os_sec_config = aiven.get_opensearch_security_plugin_config(project=aiven_project["os-project"]["project"],
+        service_name=aiven_opensearch["os"]["service_name"])
+    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

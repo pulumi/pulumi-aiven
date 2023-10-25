@@ -8,6 +8,21 @@ import * as utilities from "./utilities";
  * The Service Component data source provides information about the existing Aiven service Component.
  *
  * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const sc1 = aiven.getServiceComponent({
+ *     project: aiven_kafka.project1.project,
+ *     serviceName: aiven_kafka.service1.service_name,
+ *     component: "kafka",
+ *     route: "dynamic",
+ *     kafkaAuthenticationMethod: "certificate",
+ * });
+ * ```
  */
 export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceComponentResult> {
 
@@ -106,6 +121,21 @@ export interface GetServiceComponentResult {
  * The Service Component data source provides information about the existing Aiven service Component.
  *
  * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const sc1 = aiven.getServiceComponent({
+ *     project: aiven_kafka.project1.project,
+ *     serviceName: aiven_kafka.service1.service_name,
+ *     component: "kafka",
+ *     route: "dynamic",
+ *     kafkaAuthenticationMethod: "certificate",
+ * });
+ * ```
  */
 export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceComponentResult> {
     return pulumi.output(args).apply((a: any) => getServiceComponent(a, opts))

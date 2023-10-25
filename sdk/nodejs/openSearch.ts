@@ -9,6 +9,33 @@ import * as utilities from "./utilities";
 /**
  * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const os1 = new aiven.OpenSearch("os1", {
+ *     project: data.aiven_project.pr1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "my-os1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     opensearchUserConfig: {
+ *         opensearchVersion: "1",
+ *         opensearchDashboards: {
+ *             enabled: true,
+ *             opensearchRequestTimeout: 30000,
+ *         },
+ *         publicAccess: {
+ *             opensearch: true,
+ *             opensearchDashboards: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

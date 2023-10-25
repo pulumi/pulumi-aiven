@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * The PG User data source provides information about the existing Aiven PG User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getPgUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getPgUser(args: GetPgUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPgUserResult> {
 
@@ -78,6 +91,19 @@ export interface GetPgUserResult {
 }
 /**
  * The PG User data source provides information about the existing Aiven PG User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getPgUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgUserResult> {
     return pulumi.output(args).apply((a: any) => getPgUser(a, opts))

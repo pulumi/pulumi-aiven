@@ -6,6 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * The Project VPC data source provides information about the existing Aiven Project VPC.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myvpc = aiven.getProjectVpc({
+ *     project: aiven_project.myproject.project,
+ *     cloudName: "google-europe-west1",
+ * });
+ * const myvpcId = aiven.getProjectVpc({
+ *     vpcId: aiven_project_vpc.vpc.id,
+ * });
+ * ```
  */
 export function getProjectVpc(args?: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     args = args || {};
@@ -67,6 +82,21 @@ export interface GetProjectVpcResult {
 }
 /**
  * The Project VPC data source provides information about the existing Aiven Project VPC.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const myvpc = aiven.getProjectVpc({
+ *     project: aiven_project.myproject.project,
+ *     cloudName: "google-europe-west1",
+ * });
+ * const myvpcId = aiven.getProjectVpc({
+ *     vpcId: aiven_project_vpc.vpc.id,
+ * });
+ * ```
  */
 export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVpcResult> {
     return pulumi.output(args).apply((a: any) => getProjectVpc(a, opts))

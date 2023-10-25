@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = new aiven.AwsPrivatelink("foo", {
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: aiven_kafka.bar.service_name,
+ *     principals: ["arn:aws:iam::012345678901:user/mwf"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

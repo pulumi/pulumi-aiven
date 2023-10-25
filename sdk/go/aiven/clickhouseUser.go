@@ -15,6 +15,34 @@ import (
 
 // The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewClickhouseUser(ctx, "ch-user", &aiven.ClickhouseUserArgs{
+//				Project:     pulumi.Any(aiven_project.Myproject.Project),
+//				ServiceName: pulumi.Any(aiven_clickhouse.Myservice.Service_name),
+//				Username:    pulumi.String("<USERNAME>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

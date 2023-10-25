@@ -7,6 +7,21 @@ import * as utilities from "./utilities";
 /**
  * The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytestacl = new aiven.KafkaAcl("mytestacl", {
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.myservice.service_name,
+ *     topic: "<TOPIC_NAME_PATTERN>",
+ *     permission: "admin",
+ *     username: "<USERNAME_PATTERN>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

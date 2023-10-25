@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myendpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceIntegrationEndpointResult> InvokeAsync(GetServiceIntegrationEndpointArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myendpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Myproject.Project,
+        ///         EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceIntegrationEndpointResult> Invoke(GetServiceIntegrationEndpointInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointInvokeArgs(), options.WithDefaults());

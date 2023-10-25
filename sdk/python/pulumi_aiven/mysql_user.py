@@ -304,6 +304,19 @@ class MysqlUser(pulumi.CustomResource):
         """
         The MySQL User resource allows the creation and management of Aiven MySQL Users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.MysqlUser("foo",
+            service_name=aiven_mysql["bar"]["service_name"],
+            project="my-project",
+            username="user-1",
+            password="Test$1234")
+        ```
+
         ## Import
 
         ```sh
@@ -326,6 +339,19 @@ class MysqlUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The MySQL User resource allows the creation and management of Aiven MySQL Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.MysqlUser("foo",
+            service_name=aiven_mysql["bar"]["service_name"],
+            project="my-project",
+            username="user-1",
+            password="Test$1234")
+        ```
 
         ## Import
 

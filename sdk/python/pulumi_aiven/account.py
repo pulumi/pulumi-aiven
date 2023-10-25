@@ -282,6 +282,15 @@ class Account(pulumi.CustomResource):
         """
         The Account resource allows the creation and management of an Aiven Account.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        account1 = aiven.Account("account1")
+        ```
+
         ## Import
 
         ```sh
@@ -301,6 +310,15 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Account resource allows the creation and management of an Aiven Account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        account1 = aiven.Account("account1")
+        ```
 
         ## Import
 

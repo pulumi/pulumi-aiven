@@ -13,6 +13,34 @@ import (
 )
 
 // The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupTransitGatewayVpcAttachment(ctx, &aiven.LookupTransitGatewayVpcAttachmentArgs{
+//				VpcId:            aiven_project_vpc.Bar.Id,
+//				PeerCloudAccount: "<PEER_ACCOUNT_ID>",
+//				PeerVpc:          "google-project1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTransitGatewayVpcAttachment(ctx *pulumi.Context, args *LookupTransitGatewayVpcAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupTransitGatewayVpcAttachmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransitGatewayVpcAttachmentResult

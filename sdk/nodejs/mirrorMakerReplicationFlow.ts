@@ -7,6 +7,27 @@ import * as utilities from "./utilities";
 /**
  * The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const f1 = new aiven.MirrorMakerReplicationFlow("f1", {
+ *     project: aiven_project["kafka-mm-project1"].project,
+ *     serviceName: aiven_kafka.mm.service_name,
+ *     sourceCluster: aiven_kafka.source.service_name,
+ *     targetCluster: aiven_kafka.target.service_name,
+ *     enable: true,
+ *     topics: [".*"],
+ *     topicsBlacklists: [
+ *         ".*[\\-\\.]internal",
+ *         ".*\\.replica",
+ *         "__.*",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

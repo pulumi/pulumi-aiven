@@ -12,6 +12,29 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.AwsPrivatelink("foo", new()
+    ///     {
+    ///         Project = data.Aiven_project.Foo.Project,
+    ///         ServiceName = aiven_kafka.Bar.Service_name,
+    ///         Principals = new[]
+    ///         {
+    ///             "arn:aws:iam::012345678901:user/mwf",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

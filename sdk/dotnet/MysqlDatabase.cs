@@ -12,6 +12,26 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydatabase = new Aiven.MysqlDatabase("mydatabase", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_mysql.Mymysql.Service_name,
+    ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

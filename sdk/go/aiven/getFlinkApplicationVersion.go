@@ -13,6 +13,35 @@ import (
 )
 
 // The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupFlinkApplicationVersion(ctx, &aiven.LookupFlinkApplicationVersionArgs{
+//				Project:              data.Aiven_project.Pr1.Project,
+//				ServiceName:          "<SERVICE_NAME>",
+//				ApplicationId:        "<APPLICATION_ID>",
+//				ApplicationVersionId: "<APPLICATION_VERSION_ID>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFlinkApplicationVersion(ctx *pulumi.Context, args *LookupFlinkApplicationVersionArgs, opts ...pulumi.InvokeOption) (*LookupFlinkApplicationVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlinkApplicationVersionResult

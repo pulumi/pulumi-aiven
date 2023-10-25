@@ -231,6 +231,16 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     """
     The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
+        endpoint_name="<ENDPOINT_NAME>")
+    ```
+
 
     :param str endpoint_name: Name of the service integration endpoint
     :param str project: Project the service integration endpoint belongs to
@@ -266,6 +276,16 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
     """
     The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
+        endpoint_name="<ENDPOINT_NAME>")
+    ```
 
 
     :param str endpoint_name: Name of the service integration endpoint

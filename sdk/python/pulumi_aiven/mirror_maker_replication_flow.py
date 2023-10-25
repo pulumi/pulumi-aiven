@@ -539,6 +539,26 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         """
         The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        f1 = aiven.MirrorMakerReplicationFlow("f1",
+            project=aiven_project["kafka-mm-project1"]["project"],
+            service_name=aiven_kafka["mm"]["service_name"],
+            source_cluster=aiven_kafka["source"]["service_name"],
+            target_cluster=aiven_kafka["target"]["service_name"],
+            enable=True,
+            topics=[".*"],
+            topics_blacklists=[
+                ".*[\\\\-\\\\.]internal",
+                ".*\\\\.replica",
+                "__.*",
+            ])
+        ```
+
         ## Import
 
         ```sh
@@ -568,6 +588,26 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        f1 = aiven.MirrorMakerReplicationFlow("f1",
+            project=aiven_project["kafka-mm-project1"]["project"],
+            service_name=aiven_kafka["mm"]["service_name"],
+            source_cluster=aiven_kafka["source"]["service_name"],
+            target_cluster=aiven_kafka["target"]["service_name"],
+            enable=True,
+            topics=[".*"],
+            topics_blacklists=[
+                ".*[\\\\-\\\\.]internal",
+                ".*\\\\.replica",
+                "__.*",
+            ])
+        ```
 
         ## Import
 

@@ -12,6 +12,25 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var clickhouseDb = new Aiven.ClickhouseDatabase("clickhouseDb", new()
+    ///     {
+    ///         Project = aiven_clickhouse.Ch.Project,
+    ///         ServiceName = aiven_clickhouse.Ch.Service_name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

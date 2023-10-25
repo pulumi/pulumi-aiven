@@ -145,6 +145,15 @@ def get_account(name: Optional[str] = None,
     """
     The Account data source provides information about the existing Aiven Account.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    account1 = aiven.get_account(name="<ACCOUNT_NAME>")
+    ```
+
 
     :param str name: Account name
     """
@@ -170,6 +179,15 @@ def get_account_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
     The Account data source provides information about the existing Aiven Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    account1 = aiven.get_account(name="<ACCOUNT_NAME>")
+    ```
 
 
     :param str name: Account name

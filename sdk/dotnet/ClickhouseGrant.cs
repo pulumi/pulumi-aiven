@@ -16,6 +16,82 @@ namespace Pulumi.Aiven
     /// * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
     /// * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
     /// * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var clickhouse = new Aiven.Clickhouse("clickhouse", new()
+    ///     {
+    ///         Project = @var.Aiven_project_name,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-8",
+    ///         ServiceName = "exapmle-clickhouse",
+    ///     });
+    /// 
+    ///     var demodb = new Aiven.ClickhouseDatabase("demodb", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///     });
+    /// 
+    ///     var demoClickhouseRole = new Aiven.ClickhouseRole("demoClickhouseRole", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         Role = "demo-role",
+    ///     });
+    /// 
+    ///     var demo_role_grant = new Aiven.ClickhouseGrant("demo-role-grant", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         Role = demoClickhouseRole.Role,
+    ///         PrivilegeGrants = new[]
+    ///         {
+    ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
+    ///             {
+    ///                 Privilege = "INSERT",
+    ///                 Database = demodb.Name,
+    ///                 Table = "demo-table",
+    ///             },
+    ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
+    ///             {
+    ///                 Privilege = "SELECT",
+    ///                 Database = demodb.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var demoClickhouseUser = new Aiven.ClickhouseUser("demoClickhouseUser", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         Username = "demo-user",
+    ///     });
+    /// 
+    ///     var demo_user_grant = new Aiven.ClickhouseGrant("demo-user-grant", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         User = demoClickhouseUser.Username,
+    ///         RoleGrants = new[]
+    ///         {
+    ///             new Aiven.Inputs.ClickhouseGrantRoleGrantArgs
+    ///             {
+    ///                 Role = demoClickhouseRole.Role,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseGrant:ClickhouseGrant")]
     public partial class ClickhouseGrant : global::Pulumi.CustomResource

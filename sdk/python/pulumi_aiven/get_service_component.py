@@ -165,6 +165,19 @@ def get_service_component(component: Optional[str] = None,
 
     Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
+        service_name=aiven_kafka["service1"]["service_name"],
+        component="kafka",
+        route="dynamic",
+        kafka_authentication_method="certificate")
+    ```
+
 
     :param str component: Service component name
     :param str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
@@ -211,6 +224,19 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
     The Service Component data source provides information about the existing Aiven service Component.
 
     Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
+        service_name=aiven_kafka["service1"]["service_name"],
+        component="kafka",
+        route="dynamic",
+        kafka_authentication_method="certificate")
+    ```
 
 
     :param str component: Service component name

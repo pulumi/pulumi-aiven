@@ -13,6 +13,36 @@ import (
 )
 
 // The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupKafkaAcl(ctx, &aiven.LookupKafkaAclArgs{
+//				Project:     aiven_project.Myproject.Project,
+//				ServiceName: aiven_kafka.Mykafka.Service_name,
+//				Topic:       "<TOPIC_NAME_PATTERN>",
+//				Permission:  "<PERMISSON>",
+//				Username:    "<USERNAME_PATTERN>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulumi.InvokeOption) (*LookupKafkaAclResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaAclResult

@@ -15,6 +15,43 @@ import (
 
 // The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewKafkaConnector(ctx, "kafka-os-con1", &aiven.KafkaConnectorArgs{
+//				Project:       pulumi.Any(aiven_project.KafkaConProject1.Project),
+//				ServiceName:   pulumi.Any(aiven_kafka.KafkaService1.Service_name),
+//				ConnectorName: pulumi.String("kafka-os-con1"),
+//				Config: pulumi.StringMap{
+//					"topics":              pulumi.Any(aiven_kafka_topic.KafkaTopic1.Topic_name),
+//					"connector.class":     pulumi.String("io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
+//					"type.name":           pulumi.String("os-connector"),
+//					"name":                pulumi.String("kafka-os-con1"),
+//					"connection.url":      pulumi.Any(aiven_elasticsearch.OsService1.Service_uri),
+//					"connection.username": pulumi.Any(aiven_opensearch.OsService1.Service_username),
+//					"connection.password": pulumi.Any(aiven_opensearch.OsService1.Service_password),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

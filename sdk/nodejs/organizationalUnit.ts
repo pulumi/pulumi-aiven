@@ -7,6 +7,15 @@ import * as utilities from "./utilities";
 /**
  * The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const organizationalUnit1 = new aiven.OrganizationalUnit("organizationalUnit1", {parentId: "<ORGANIZATION_ID>"});
+ * ```
+ *
  * ## Import
  *
  * ```sh

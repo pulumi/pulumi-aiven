@@ -12,6 +12,41 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka_schema1 = new Aiven.KafkaSchema("kafka-schema1", new()
+    ///     {
+    ///         Project = aiven_project.Kafka_schemas_project1.Project,
+    ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+    ///         SubjectName = "kafka-schema1",
+    ///         CompatibilityLevel = "FORWARD",
+    ///         Schema = @"    {
+    ///        ""doc"": ""example"",
+    ///        ""fields"": [{
+    ///            ""default"": 5,
+    ///            ""doc"": ""my test number"",
+    ///            ""name"": ""test"",
+    ///            ""namespace"": ""test"",
+    ///            ""type"": ""int""
+    ///        }],
+    ///        ""name"": ""example"",
+    ///        ""namespace"": ""example"",
+    ///        ""type"": ""record""
+    ///     }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

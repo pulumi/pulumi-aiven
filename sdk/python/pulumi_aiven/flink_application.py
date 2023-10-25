@@ -271,6 +271,17 @@ class FlinkApplication(pulumi.CustomResource):
         """
         The Flink Application resource allows the creation and management of Aiven Flink Applications.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.FlinkApplication("foo",
+            project=aiven_project["foo"]["project"],
+            service_name="flink-service-1")
+        ```
+
         ## Import
 
         ```sh
@@ -291,6 +302,17 @@ class FlinkApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Flink Application resource allows the creation and management of Aiven Flink Applications.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.FlinkApplication("foo",
+            project=aiven_project["foo"]["project"],
+            service_name="flink-service-1")
+        ```
 
         ## Import
 

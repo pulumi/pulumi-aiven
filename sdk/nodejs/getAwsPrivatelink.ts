@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = aiven.getAwsPrivatelink({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: aiven_kafka.bar.service_name,
+ * });
+ * ```
  */
 export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsPrivatelinkResult> {
 
@@ -61,6 +73,18 @@ export interface GetAwsPrivatelinkResult {
 }
 /**
  * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = aiven.getAwsPrivatelink({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: aiven_kafka.bar.service_name,
+ * });
+ * ```
  */
 export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsPrivatelinkResult> {
     return pulumi.output(args).apply((a: any) => getAwsPrivatelink(a, opts))

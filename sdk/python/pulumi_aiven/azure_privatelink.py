@@ -252,6 +252,18 @@ class AzurePrivatelink(pulumi.CustomResource):
         """
         The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AzurePrivatelink("foo",
+            project=data["aiven_project"]["foo"]["project"],
+            service_name=aiven_kafka["bar"]["service_name"],
+            user_subscription_ids=["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"])
+        ```
+
         ## Import
 
         ```sh
@@ -272,6 +284,18 @@ class AzurePrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.AzurePrivatelink("foo",
+            project=data["aiven_project"]["foo"]["project"],
+            service_name=aiven_kafka["bar"]["service_name"],
+            user_subscription_ids=["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"])
+        ```
 
         ## Import
 

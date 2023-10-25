@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kc1 = aiven.getKafkaConnect({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-kc1",
+ * });
+ * ```
  */
 export function getKafkaConnect(args: GetKafkaConnectArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectResult> {
 
@@ -151,6 +163,18 @@ export interface GetKafkaConnectResult {
 }
 /**
  * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kc1 = aiven.getKafkaConnect({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "my-kc1",
+ * });
+ * ```
  */
 export function getKafkaConnectOutput(args: GetKafkaConnectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConnectResult> {
     return pulumi.output(args).apply((a: any) => getKafkaConnect(a, opts))

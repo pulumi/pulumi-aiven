@@ -12,6 +12,26 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ch_user = new Aiven.ClickhouseUser("ch-user", new()
+    ///     {
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_clickhouse.Myservice.Service_name,
+    ///         Username = "&lt;USERNAME&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

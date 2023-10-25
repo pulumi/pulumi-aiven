@@ -111,6 +111,17 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     """
     The Project VPC data source provides information about the existing Aiven Project VPC.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
+        cloud_name="google-europe-west1")
+    myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
+    ```
+
 
     :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
     :param str project: Identifies the project this resource belongs to.
@@ -139,6 +150,17 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVpcResult]:
     """
     The Project VPC data source provides information about the existing Aiven Project VPC.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
+        cloud_name="google-europe-west1")
+    myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
+    ```
 
 
     :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.

@@ -333,6 +333,20 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         """
         The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        attachment = aiven.TransitGatewayVpcAttachment("attachment",
+            vpc_id=aiven_project_vpc["bar"]["id"],
+            peer_cloud_account="<PEER_ACCOUNT_ID>",
+            peer_vpc="google-project1",
+            peer_region="aws-eu-west-1",
+            user_peer_network_cidrs=["10.0.0.0/24"])
+        ```
+
         ## Import
 
         ```sh
@@ -355,6 +369,20 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        attachment = aiven.TransitGatewayVpcAttachment("attachment",
+            vpc_id=aiven_project_vpc["bar"]["id"],
+            peer_cloud_account="<PEER_ACCOUNT_ID>",
+            peer_vpc="google-project1",
+            peer_region="aws-eu-west-1",
+            user_peer_network_cidrs=["10.0.0.0/24"])
+        ```
 
         ## Import
 

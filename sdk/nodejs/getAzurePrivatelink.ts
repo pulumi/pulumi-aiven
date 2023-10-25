@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = aiven.getAzurePrivatelink({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: aiven_kafka.bar.service_name,
+ * });
+ * ```
  */
 export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetAzurePrivatelinkResult> {
 
@@ -69,6 +81,18 @@ export interface GetAzurePrivatelinkResult {
 }
 /**
  * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = aiven.getAzurePrivatelink({
+ *     project: data.aiven_project.foo.project,
+ *     serviceName: aiven_kafka.bar.service_name,
+ * });
+ * ```
  */
 export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzurePrivatelinkResult> {
     return pulumi.output(args).apply((a: any) => getAzurePrivatelink(a, opts))

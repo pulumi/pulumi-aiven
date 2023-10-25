@@ -227,6 +227,19 @@ class M3dbUser(pulumi.CustomResource):
         """
         The M3DB User resource allows the creation and management of Aiven M3DB Users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.M3dbUser("foo",
+            service_name=aiven_m3db["bar"]["service_name"],
+            project="my-project",
+            username="user-1",
+            password="Test$1234")
+        ```
+
         ## Import
 
         ```sh
@@ -248,6 +261,19 @@ class M3dbUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The M3DB User resource allows the creation and management of Aiven M3DB Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.M3dbUser("foo",
+            service_name=aiven_m3db["bar"]["service_name"],
+            project="my-project",
+            username="user-1",
+            password="Test$1234")
+        ```
 
         ## Import
 

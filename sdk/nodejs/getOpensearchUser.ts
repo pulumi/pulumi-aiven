@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getOpensearchUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getOpensearchUser(args: GetOpensearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpensearchUserResult> {
 
@@ -66,6 +79,19 @@ export interface GetOpensearchUserResult {
 }
 /**
  * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const user = aiven.getOpensearchUser({
+ *     project: "my-project",
+ *     serviceName: "my-service",
+ *     username: "user1",
+ * });
+ * ```
  */
 export function getOpensearchUserOutput(args: GetOpensearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchUserResult> {
     return pulumi.output(args).apply((a: any) => getOpensearchUser(a, opts))

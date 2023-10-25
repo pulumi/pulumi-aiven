@@ -15,6 +15,45 @@ import (
 
 // The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewKafkaConnect(ctx, "kc1", &aiven.KafkaConnectArgs{
+//				Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-4"),
+//				ServiceName:           pulumi.String("my-kc1"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//				KafkaConnectUserConfig: &aiven.KafkaConnectKafkaConnectUserConfigArgs{
+//					KafkaConnect: &aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{
+//						ConsumerIsolationLevel: pulumi.String("read_committed"),
+//					},
+//					PublicAccess: &aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs{
+//						KafkaConnect: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

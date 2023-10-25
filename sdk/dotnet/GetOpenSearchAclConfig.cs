@@ -13,12 +13,58 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Os_project.Project,
+        ///         ServiceName = aiven_opensearch.Os.Service_name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenSearchAclConfigResult> InvokeAsync(GetOpenSearchAclConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
+        ///     {
+        ///         Project = aiven_project.Os_project.Project,
+        ///         ServiceName = aiven_opensearch.Os.Service_name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenSearchAclConfigResult> Invoke(GetOpenSearchAclConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigInvokeArgs(), options.WithDefaults());

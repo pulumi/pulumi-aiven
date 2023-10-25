@@ -973,6 +973,29 @@ class KafkaConnect(pulumi.CustomResource):
         """
         The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kc1 = aiven.KafkaConnect("kc1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-kc1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            kafka_connect_user_config=aiven.KafkaConnectKafkaConnectUserConfigArgs(
+                kafka_connect=aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs(
+                    consumer_isolation_level="read_committed",
+                ),
+                public_access=aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs(
+                    kafka_connect=True,
+                ),
+            ))
+        ```
+
         ## Import
 
         ```sh
@@ -1024,6 +1047,29 @@ class KafkaConnect(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        kc1 = aiven.KafkaConnect("kc1",
+            project=data["aiven_project"]["pr1"]["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="my-kc1",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            kafka_connect_user_config=aiven.KafkaConnectKafkaConnectUserConfigArgs(
+                kafka_connect=aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs(
+                    consumer_isolation_level="read_committed",
+                ),
+                public_access=aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs(
+                    kafka_connect=True,
+                ),
+            ))
+        ```
 
         ## Import
 

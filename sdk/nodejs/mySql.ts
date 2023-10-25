@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * The MySQL resource allows the creation and management of Aiven MySQL services.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mysql1 = new aiven.MySql("mysql1", {
+ *     project: data.aiven_project.foo.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-4",
+ *     serviceName: "my-mysql1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     mysqlUserConfig: {
+ *         mysqlVersion: "8",
+ *         mysql: {
+ *             sqlMode: "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
+ *             sqlRequirePrimaryKey: true,
+ *         },
+ *         publicAccess: {
+ *             mysql: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

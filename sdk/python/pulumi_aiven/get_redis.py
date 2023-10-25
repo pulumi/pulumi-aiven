@@ -375,6 +375,16 @@ def get_redis(project: Optional[str] = None,
     """
     The Redis data source provides information about the existing Aiven Redis service.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    redis1 = aiven.get_redis(project=data["aiven_project"]["pr1"]["project"],
+        service_name="my-redis1")
+    ```
+
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -422,6 +432,16 @@ def get_redis_output(project: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRedisResult]:
     """
     The Redis data source provides information about the existing Aiven Redis service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    redis1 = aiven.get_redis(project=data["aiven_project"]["pr1"]["project"],
+        service_name="my-redis1")
+    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

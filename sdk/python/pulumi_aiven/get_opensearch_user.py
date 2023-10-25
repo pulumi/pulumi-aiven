@@ -111,6 +111,17 @@ def get_opensearch_user(project: Optional[str] = None,
     """
     The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    user = aiven.get_opensearch_user(project="my-project",
+        service_name="my-service",
+        username="user1")
+    ```
+
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -139,6 +150,17 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpensearchUserResult]:
     """
     The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    user = aiven.get_opensearch_user(project="my-project",
+        service_name="my-service",
+        username="user1")
+    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

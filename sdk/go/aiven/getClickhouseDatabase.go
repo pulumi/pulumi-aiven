@@ -13,6 +13,34 @@ import (
 )
 
 // The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupClickhouseDatabase(ctx, &aiven.LookupClickhouseDatabaseArgs{
+//				Project:     aiven_clickhouse.Ch.Project,
+//				ServiceName: aiven_clickhouse.Ch.Service_name,
+//				Name:        "my-ch-db",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupClickhouseDatabase(ctx *pulumi.Context, args *LookupClickhouseDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupClickhouseDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClickhouseDatabaseResult

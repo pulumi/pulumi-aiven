@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mydatabase = new aiven.MysqlDatabase("mydatabase", {
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_mysql.mymysql.service_name,
+ *     databaseName: "<DATABASE_NAME>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

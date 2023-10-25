@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * The Flink Application data source provides information about the existing Aiven Flink Application.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const app1 = aiven.getFlinkApplication({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "<SERVICE_NAME>",
+ *     name: "<APPLICATION_NAME>",
+ * });
+ * ```
  */
 export function getFlinkApplication(args: GetFlinkApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkApplicationResult> {
 
@@ -78,6 +91,19 @@ export interface GetFlinkApplicationResult {
 }
 /**
  * The Flink Application data source provides information about the existing Aiven Flink Application.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const app1 = aiven.getFlinkApplication({
+ *     project: data.aiven_project.pr1.project,
+ *     serviceName: "<SERVICE_NAME>",
+ *     name: "<APPLICATION_NAME>",
+ * });
+ * ```
  */
 export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationResult> {
     return pulumi.output(args).apply((a: any) => getFlinkApplication(a, opts))

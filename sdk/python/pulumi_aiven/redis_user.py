@@ -391,6 +391,19 @@ class RedisUser(pulumi.CustomResource):
         """
         The Redis User resource allows the creation and management of Aiven Redis Users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.RedisUser("foo",
+            service_name=aiven_redis["bar"]["service_name"],
+            project="my-project",
+            username="user-1",
+            password="Test$1234")
+        ```
+
         ## Import
 
         ```sh
@@ -416,6 +429,19 @@ class RedisUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Redis User resource allows the creation and management of Aiven Redis Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.RedisUser("foo",
+            service_name=aiven_redis["bar"]["service_name"],
+            project="my-project",
+            username="user-1",
+            password="Test$1234")
+        ```
 
         ## Import
 

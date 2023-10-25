@@ -13,6 +13,35 @@ import (
 )
 
 // The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupOpenSearchAclRule(ctx, &aiven.LookupOpenSearchAclRuleArgs{
+//				Project:     aiven_opensearch_acl_config.Os_acls_config.Project,
+//				ServiceName: aiven_opensearch_acl_config.Os_acls_config.Service_name,
+//				Username:    "<USERNAME>",
+//				Index:       "<INDEX>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOpenSearchAclRule(ctx *pulumi.Context, args *LookupOpenSearchAclRuleArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchAclRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenSearchAclRuleResult

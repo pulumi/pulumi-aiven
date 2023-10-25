@@ -226,6 +226,18 @@ class ClickhouseUser(pulumi.CustomResource):
         """
         The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        ch_user = aiven.ClickhouseUser("ch-user",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_clickhouse["myservice"]["service_name"],
+            username="<USERNAME>")
+        ```
+
         ## Import
 
         ```sh
@@ -246,6 +258,18 @@ class ClickhouseUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        ch_user = aiven.ClickhouseUser("ch-user",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_clickhouse["myservice"]["service_name"],
+            username="<USERNAME>")
+        ```
 
         ## Import
 

@@ -665,6 +665,20 @@ class BillingGroup(pulumi.CustomResource):
         """
         The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bybg1 = aiven.BillingGroup("bybg1",
+            billing_currency="USD",
+            vat_id="123ABC")
+        pr1 = aiven.Project("pr1",
+            project="pr1",
+            billing_group=bybg1.id)
+        ```
+
         ## Import
 
         ```sh
@@ -697,6 +711,20 @@ class BillingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bybg1 = aiven.BillingGroup("bybg1",
+            billing_currency="USD",
+            vat_id="123ABC")
+        pr1 = aiven.Project("pr1",
+            project="pr1",
+            billing_group=bybg1.id)
+        ```
 
         ## Import
 
