@@ -12,27 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The PG User resource allows the creation and management of Aiven PG Users.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new Aiven.PgUser("foo", new()
-    ///     {
-    ///         ServiceName = aiven_pg.Bar.Service_name,
-    ///         Project = "my-project",
-    ///         Username = "user-1",
-    ///         Password = "Test$1234",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

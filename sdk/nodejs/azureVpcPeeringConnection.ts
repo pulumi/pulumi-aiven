@@ -7,22 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.AzureVpcPeeringConnection("foo", {
- *     vpcId: data.aiven_project_vpc.vpc.id,
- *     azureSubscriptionId: "xxxxxx",
- *     peerResourceGroup: "my-pr1",
- *     vnetName: "my-vnet1",
- *     peerAzureAppId: "xxxxxx",
- *     peerAzureTenantId: "xxxxxx",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

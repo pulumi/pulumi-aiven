@@ -12,29 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new Aiven.AzurePrivatelink("foo", new()
-    ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
-    ///         ServiceName = aiven_kafka.Bar.Service_name,
-    ///         UserSubscriptionIds = new[]
-    ///         {
-    ///             "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

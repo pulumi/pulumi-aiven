@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const clickhouse = aiven.getClickhouse({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- * });
- * ```
  */
 export function getClickhouse(args: GetClickhouseArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseResult> {
 
@@ -163,18 +151,6 @@ export interface GetClickhouseResult {
 }
 /**
  * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const clickhouse = aiven.getClickhouse({
- *     project: data.aiven_project.pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- * });
- * ```
  */
 export function getClickhouseOutput(args: GetClickhouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseResult> {
     return pulumi.output(args).apply((a: any) => getClickhouse(a, opts))

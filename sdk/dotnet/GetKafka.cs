@@ -13,58 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Kafka data source provides information about the existing Aiven Kafka services.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kafka1 = Aiven.GetKafka.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "my-kafka1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaResult> InvokeAsync(GetKafkaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Kafka data source provides information about the existing Aiven Kafka services.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kafka1 = Aiven.GetKafka.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "my-kafka1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaResult> Invoke(GetKafkaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaInvokeArgs(), options.WithDefaults());

@@ -136,17 +136,6 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
     """
     The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    foo = aiven.get_aws_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-        aws_account_id="XXXXX",
-        aws_vpc_id="XXXXX")
-    ```
-
 
     :param str aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
     :param str aws_vpc_id: AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -180,17 +169,6 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsVpcPeeringConnectionResult]:
     """
     The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    foo = aiven.get_aws_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-        aws_account_id="XXXXX",
-        aws_vpc_id="XXXXX")
-    ```
 
 
     :param str aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.

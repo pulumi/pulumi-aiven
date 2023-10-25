@@ -43,13 +43,25 @@ class ClickhouseGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if privilege_grants is None and 'privilegeGrants' in kwargs:
+            privilege_grants = kwargs['privilegeGrants']
+        if role_grants is None and 'roleGrants' in kwargs:
+            role_grants = kwargs['roleGrants']
+
         _setter("project", project)
         _setter("service_name", service_name)
         if privilege_grants is not None:
@@ -170,7 +182,15 @@ class _ClickhouseGrantState:
              role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if privilege_grants is None and 'privilegeGrants' in kwargs:
+            privilege_grants = kwargs['privilegeGrants']
+        if role_grants is None and 'roleGrants' in kwargs:
+            role_grants = kwargs['roleGrants']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if privilege_grants is not None:
             _setter("privilege_grants", privilege_grants)
         if project is not None:
@@ -277,52 +297,6 @@ class ClickhouseGrant(pulumi.CustomResource):
         * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
         * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        clickhouse = aiven.Clickhouse("clickhouse",
-            project=var["aiven_project_name"],
-            cloud_name="google-europe-west1",
-            plan="startup-8",
-            service_name="exapmle-clickhouse")
-        demodb = aiven.ClickhouseDatabase("demodb",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name)
-        demo_clickhouse_role = aiven.ClickhouseRole("demoClickhouseRole",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role="demo-role")
-        demo_role_grant = aiven.ClickhouseGrant("demo-role-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role=demo_clickhouse_role.role,
-            privilege_grants=[
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="INSERT",
-                    database=demodb.name,
-                    table="demo-table",
-                ),
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="SELECT",
-                    database=demodb.name,
-                ),
-            ])
-        demo_clickhouse_user = aiven.ClickhouseUser("demoClickhouseUser",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            username="demo-user")
-        demo_user_grant = aiven.ClickhouseGrant("demo-user-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            user=demo_clickhouse_user.username,
-            role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=demo_clickhouse_role.role,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
@@ -345,52 +319,6 @@ class ClickhouseGrant(pulumi.CustomResource):
         * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
         * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
         * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        clickhouse = aiven.Clickhouse("clickhouse",
-            project=var["aiven_project_name"],
-            cloud_name="google-europe-west1",
-            plan="startup-8",
-            service_name="exapmle-clickhouse")
-        demodb = aiven.ClickhouseDatabase("demodb",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name)
-        demo_clickhouse_role = aiven.ClickhouseRole("demoClickhouseRole",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role="demo-role")
-        demo_role_grant = aiven.ClickhouseGrant("demo-role-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role=demo_clickhouse_role.role,
-            privilege_grants=[
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="INSERT",
-                    database=demodb.name,
-                    table="demo-table",
-                ),
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="SELECT",
-                    database=demodb.name,
-                ),
-            ])
-        demo_clickhouse_user = aiven.ClickhouseUser("demoClickhouseUser",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            username="demo-user")
-        demo_user_grant = aiven.ClickhouseGrant("demo-user-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            user=demo_clickhouse_user.username,
-            role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=demo_clickhouse_role.role,
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param ClickhouseGrantArgs args: The arguments to use to populate this resource's properties.

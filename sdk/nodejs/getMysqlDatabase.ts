@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The MySQL Database data source provides information about the existing Aiven MySQL Database.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mydatabase = aiven.getMysqlDatabase({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_mysql.mymysql.service_name,
- *     databaseName: "<DATABASE_NAME>",
- * });
- * ```
  */
 export function getMysqlDatabase(args: GetMysqlDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlDatabaseResult> {
 
@@ -72,19 +59,6 @@ export interface GetMysqlDatabaseResult {
 }
 /**
  * The MySQL Database data source provides information about the existing Aiven MySQL Database.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mydatabase = aiven.getMysqlDatabase({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_mysql.mymysql.service_name,
- *     databaseName: "<DATABASE_NAME>",
- * });
- * ```
  */
 export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getMysqlDatabase(a, opts))

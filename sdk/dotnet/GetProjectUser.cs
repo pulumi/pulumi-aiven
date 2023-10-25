@@ -13,58 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Project User data source provides information about the existing Aiven Project User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
-        ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         Email = "john.doe@example.com",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectUserResult> InvokeAsync(GetProjectUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Project User data source provides information about the existing Aiven Project User.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
-        ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         Email = "john.doe@example.com",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectUserResult> Invoke(GetProjectUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserInvokeArgs(), options.WithDefaults());

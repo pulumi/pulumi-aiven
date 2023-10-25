@@ -35,11 +35,21 @@ class CassandraUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             username: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("project", project)
         _setter("service_name", service_name)
         _setter("username", username)
@@ -135,7 +145,15 @@ class _CassandraUserState:
              service_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_cert is None and 'accessCert' in kwargs:
+            access_cert = kwargs['accessCert']
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if access_cert is not None:
             _setter("access_cert", access_cert)
         if access_key is not None:
@@ -249,19 +267,6 @@ class CassandraUser(pulumi.CustomResource):
         """
         The Cassandra User resource allows the creation and management of Aiven Cassandra Users.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.CassandraUser("foo",
-            service_name=aiven_cassandra["bar"]["service_name"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
-        ```
-
         ## Import
 
         ```sh
@@ -283,19 +288,6 @@ class CassandraUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Cassandra User resource allows the creation and management of Aiven Cassandra Users.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.CassandraUser("foo",
-            service_name=aiven_cassandra["bar"]["service_name"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
-        ```
 
         ## Import
 

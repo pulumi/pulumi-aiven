@@ -13,58 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Flink data source provides information about the existing Aiven Flink service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var flink = Aiven.GetFlink.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlinkResult> InvokeAsync(GetFlinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Flink data source provides information about the existing Aiven Flink service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var flink = Aiven.GetFlink.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlinkResult> Invoke(GetFlinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkInvokeArgs(), options.WithDefaults());

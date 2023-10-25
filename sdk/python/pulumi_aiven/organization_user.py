@@ -29,9 +29,19 @@ class OrganizationUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             organization_id: pulumi.Input[str],
-             user_email: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             organization_id: Optional[pulumi.Input[str]] = None,
+             user_email: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+        if user_email is None:
+            raise TypeError("Missing 'user_email' argument")
+
         _setter("organization_id", organization_id)
         _setter("user_email", user_email)
 
@@ -92,7 +102,17 @@ class _OrganizationUserState:
              invited_by: Optional[pulumi.Input[str]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if invited_by is None and 'invitedBy' in kwargs:
+            invited_by = kwargs['invitedBy']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         if accepted is not None:
             _setter("accepted", accepted)
         if create_time is not None:

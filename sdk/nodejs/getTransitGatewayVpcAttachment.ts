@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const attachment = aiven.getTransitGatewayVpcAttachment({
- *     vpcId: aiven_project_vpc.bar.id,
- *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
- *     peerVpc: "google-project1",
- * });
- * ```
  */
 export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitGatewayVpcAttachmentResult> {
 
@@ -91,19 +78,6 @@ export interface GetTransitGatewayVpcAttachmentResult {
 }
 /**
  * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const attachment = aiven.getTransitGatewayVpcAttachment({
- *     vpcId: aiven_project_vpc.bar.id,
- *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
- *     peerVpc: "google-project1",
- * });
- * ```
  */
 export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayVpcAttachmentResult> {
     return pulumi.output(args).apply((a: any) => getTransitGatewayVpcAttachment(a, opts))

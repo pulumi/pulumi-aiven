@@ -12,33 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var m3a = new Aiven.M3Aggregator("m3a", new()
-    ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-8",
-    ///         ServiceName = "my-m3a",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         M3aggregatorUserConfig = new Aiven.Inputs.M3AggregatorM3aggregatorUserConfigArgs
-    ///         {
-    ///             M3aggregatorVersion = "0.15",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

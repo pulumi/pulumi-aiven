@@ -13,58 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var os1 = Aiven.GetOpenSearch.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "my-os1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenSearchResult> InvokeAsync(GetOpenSearchArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchArgs(), options.WithDefaults());
 
         /// <summary>
         /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var os1 = Aiven.GetOpenSearch.Invoke(new()
-        ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
-        ///         ServiceName = "my-os1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenSearchResult> Invoke(GetOpenSearchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchInvokeArgs(), options.WithDefaults());

@@ -37,11 +37,21 @@ class ClickhouseDatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         _setter("project", project)
         _setter("service_name", service_name)
         if name is not None:
@@ -130,7 +140,13 @@ class _ClickhouseDatabaseState:
              project: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         if name is not None:
             _setter("name", name)
         if project is not None:
@@ -204,17 +220,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
         """
         The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
-            project=aiven_clickhouse["ch"]["project"],
-            service_name=aiven_clickhouse["ch"]["service_name"])
-        ```
-
         ## Import
 
         ```sh
@@ -238,17 +243,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
-            project=aiven_clickhouse["ch"]["project"],
-            service_name=aiven_clickhouse["ch"]["service_name"])
-        ```
 
         ## Import
 

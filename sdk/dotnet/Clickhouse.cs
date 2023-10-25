@@ -12,29 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var clickhouse = new Aiven.Clickhouse("clickhouse", new()
-    ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         ServiceName = "my-clickhouse",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

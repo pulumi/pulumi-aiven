@@ -32,7 +32,9 @@ class OrganizationArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if timeouts is not None:
@@ -91,7 +93,15 @@ class _OrganizationState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if name is not None:
@@ -172,15 +182,6 @@ class Organization(pulumi.CustomResource):
         """
         Creates and manages an organization in Aiven.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        organization1 = aiven.Organization("organization1")
-        ```
-
         ## Import
 
         ```sh
@@ -199,15 +200,6 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages an organization in Aiven.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        organization1 = aiven.Organization("organization1")
-        ```
 
         ## Import
 
@@ -246,11 +238,7 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["name"] = name
-            if timeouts is not None and not isinstance(timeouts, OrganizationTimeoutsArgs):
-                timeouts = timeouts or {}
-                def _setter(key, value):
-                    timeouts[key] = value
-                OrganizationTimeoutsArgs._configure(_setter, **timeouts)
+            timeouts = _utilities.configure(timeouts, OrganizationTimeoutsArgs, True)
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["create_time"] = None
             __props__.__dict__["tenant_id"] = None

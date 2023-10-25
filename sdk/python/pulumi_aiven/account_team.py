@@ -29,9 +29,15 @@ class AccountTeamArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+
         _setter("account_id", account_id)
         if name is not None:
             _setter("name", name)
@@ -93,7 +99,17 @@ class _AccountTeamState:
              name: Optional[pulumi.Input[str]] = None,
              team_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if create_time is not None:

@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Connection Pool data source provides information about the existing Aiven Connection Pool.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestpool = aiven.getConnectionPool({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
- *     poolName: "mypool",
- * });
- * ```
  */
 export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {
 
@@ -91,19 +78,6 @@ export interface GetConnectionPoolResult {
 }
 /**
  * The Connection Pool data source provides information about the existing Aiven Connection Pool.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mytestpool = aiven.getConnectionPool({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
- *     poolName: "mypool",
- * });
- * ```
  */
 export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionPoolResult> {
     return pulumi.output(args).apply((a: any) => getConnectionPool(a, opts))

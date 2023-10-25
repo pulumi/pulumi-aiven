@@ -15,46 +15,6 @@ import (
 
 // The M3 DB resource allows the creation and management of Aiven M3 services.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewM3Db(ctx, "m3", &aiven.M3DbArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Foo.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-8"),
-//				ServiceName:           pulumi.String("my-m3db"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				M3dbUserConfig: &aiven.M3DbM3dbUserConfigArgs{
-//					M3dbVersion: pulumi.String("1.1"),
-//					Namespaces: aiven.M3DbM3dbUserConfigNamespaceArray{
-//						&aiven.M3DbM3dbUserConfigNamespaceArgs{
-//							Name: pulumi.String("my_ns1"),
-//							Type: pulumi.String("unaggregated"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

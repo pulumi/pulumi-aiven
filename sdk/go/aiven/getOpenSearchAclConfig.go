@@ -13,33 +13,6 @@ import (
 )
 
 // The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOpenSearchAclConfig(ctx, &aiven.LookupOpenSearchAclConfigArgs{
-//				Project:     aiven_project.OsProject.Project,
-//				ServiceName: aiven_opensearch.Os.Service_name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupOpenSearchAclConfig(ctx *pulumi.Context, args *LookupOpenSearchAclConfigArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchAclConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenSearchAclConfigResult

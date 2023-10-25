@@ -13,34 +13,6 @@ import (
 )
 
 // The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaSchemaConfiguration(ctx, "config", &aiven.KafkaSchemaConfigurationArgs{
-//				Project:            pulumi.Any(aiven_project.KafkaSchemasProject1.Project),
-//				ServiceName:        pulumi.Any(aiven_kafka.KafkaService1.Service_name),
-//				CompatibilityLevel: pulumi.String("BACKWARD"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupKafkaSchemaConfiguration(ctx *pulumi.Context, args *LookupKafkaSchemaConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKafkaSchemaConfigurationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaSchemaConfigurationResult

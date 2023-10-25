@@ -41,13 +41,39 @@ class AzureVpcPeeringConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             azure_subscription_id: pulumi.Input[str],
-             peer_azure_app_id: pulumi.Input[str],
-             peer_azure_tenant_id: pulumi.Input[str],
-             peer_resource_group: pulumi.Input[str],
-             vnet_name: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             azure_subscription_id: Optional[pulumi.Input[str]] = None,
+             peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+             peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+             peer_resource_group: Optional[pulumi.Input[str]] = None,
+             vnet_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if azure_subscription_id is None and 'azureSubscriptionId' in kwargs:
+            azure_subscription_id = kwargs['azureSubscriptionId']
+        if azure_subscription_id is None:
+            raise TypeError("Missing 'azure_subscription_id' argument")
+        if peer_azure_app_id is None and 'peerAzureAppId' in kwargs:
+            peer_azure_app_id = kwargs['peerAzureAppId']
+        if peer_azure_app_id is None:
+            raise TypeError("Missing 'peer_azure_app_id' argument")
+        if peer_azure_tenant_id is None and 'peerAzureTenantId' in kwargs:
+            peer_azure_tenant_id = kwargs['peerAzureTenantId']
+        if peer_azure_tenant_id is None:
+            raise TypeError("Missing 'peer_azure_tenant_id' argument")
+        if peer_resource_group is None and 'peerResourceGroup' in kwargs:
+            peer_resource_group = kwargs['peerResourceGroup']
+        if peer_resource_group is None:
+            raise TypeError("Missing 'peer_resource_group' argument")
+        if vnet_name is None and 'vnetName' in kwargs:
+            vnet_name = kwargs['vnetName']
+        if vnet_name is None:
+            raise TypeError("Missing 'vnet_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
         _setter("azure_subscription_id", azure_subscription_id)
         _setter("peer_azure_app_id", peer_azure_app_id)
         _setter("peer_azure_tenant_id", peer_azure_tenant_id)
@@ -176,7 +202,25 @@ class _AzureVpcPeeringConnectionState:
              state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vnet_name: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if azure_subscription_id is None and 'azureSubscriptionId' in kwargs:
+            azure_subscription_id = kwargs['azureSubscriptionId']
+        if peer_azure_app_id is None and 'peerAzureAppId' in kwargs:
+            peer_azure_app_id = kwargs['peerAzureAppId']
+        if peer_azure_tenant_id is None and 'peerAzureTenantId' in kwargs:
+            peer_azure_tenant_id = kwargs['peerAzureTenantId']
+        if peer_resource_group is None and 'peerResourceGroup' in kwargs:
+            peer_resource_group = kwargs['peerResourceGroup']
+        if peering_connection_id is None and 'peeringConnectionId' in kwargs:
+            peering_connection_id = kwargs['peeringConnectionId']
+        if state_info is None and 'stateInfo' in kwargs:
+            state_info = kwargs['stateInfo']
+        if vnet_name is None and 'vnetName' in kwargs:
+            vnet_name = kwargs['vnetName']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if azure_subscription_id is not None:
             _setter("azure_subscription_id", azure_subscription_id)
         if peer_azure_app_id is not None:
@@ -320,21 +364,6 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         """
         The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.AzureVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-            azure_subscription_id="xxxxxx",
-            peer_resource_group="my-pr1",
-            vnet_name="my-vnet1",
-            peer_azure_app_id="xxxxxx",
-            peer_azure_tenant_id="xxxxxx")
-        ```
-
         ## Import
 
         ```sh
@@ -358,21 +387,6 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.AzureVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-            azure_subscription_id="xxxxxx",
-            peer_resource_group="my-pr1",
-            vnet_name="my-vnet1",
-            peer_azure_app_id="xxxxxx",
-            peer_azure_tenant_id="xxxxxx")
-        ```
 
         ## Import
 

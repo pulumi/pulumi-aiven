@@ -35,11 +35,29 @@ class AwsVpcPeeringConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aws_account_id: pulumi.Input[str],
-             aws_vpc_id: pulumi.Input[str],
-             aws_vpc_region: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             aws_account_id: Optional[pulumi.Input[str]] = None,
+             aws_vpc_id: Optional[pulumi.Input[str]] = None,
+             aws_vpc_region: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_account_id is None and 'awsAccountId' in kwargs:
+            aws_account_id = kwargs['awsAccountId']
+        if aws_account_id is None:
+            raise TypeError("Missing 'aws_account_id' argument")
+        if aws_vpc_id is None and 'awsVpcId' in kwargs:
+            aws_vpc_id = kwargs['awsVpcId']
+        if aws_vpc_id is None:
+            raise TypeError("Missing 'aws_vpc_id' argument")
+        if aws_vpc_region is None and 'awsVpcRegion' in kwargs:
+            aws_vpc_region = kwargs['awsVpcRegion']
+        if aws_vpc_region is None:
+            raise TypeError("Missing 'aws_vpc_region' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
         _setter("aws_account_id", aws_account_id)
         _setter("aws_vpc_id", aws_vpc_id)
         _setter("aws_vpc_region", aws_vpc_region)
@@ -134,7 +152,21 @@ class _AwsVpcPeeringConnectionState:
              state: Optional[pulumi.Input[str]] = None,
              state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_account_id is None and 'awsAccountId' in kwargs:
+            aws_account_id = kwargs['awsAccountId']
+        if aws_vpc_id is None and 'awsVpcId' in kwargs:
+            aws_vpc_id = kwargs['awsVpcId']
+        if aws_vpc_peering_connection_id is None and 'awsVpcPeeringConnectionId' in kwargs:
+            aws_vpc_peering_connection_id = kwargs['awsVpcPeeringConnectionId']
+        if aws_vpc_region is None and 'awsVpcRegion' in kwargs:
+            aws_vpc_region = kwargs['awsVpcRegion']
+        if state_info is None and 'stateInfo' in kwargs:
+            state_info = kwargs['stateInfo']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if aws_account_id is not None:
             _setter("aws_account_id", aws_account_id)
         if aws_vpc_id is not None:
@@ -248,18 +280,6 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         """
         The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.AwsVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-            aws_account_id="XXXXX",
-            aws_vpc_id="XXXXX")
-        ```
-
         ## Import
 
         ```sh
@@ -281,18 +301,6 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.AwsVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-            aws_account_id="XXXXX",
-            aws_vpc_id="XXXXX")
-        ```
 
         ## Import
 

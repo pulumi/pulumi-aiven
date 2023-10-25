@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var clickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
-        ///     {
-        ///         Project = aiven_clickhouse.Ch.Project,
-        ///         ServiceName = aiven_clickhouse.Ch.Service_name,
-        ///         Name = "my-ch-db",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClickhouseDatabaseResult> InvokeAsync(GetClickhouseDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseDatabaseResult>("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args ?? new GetClickhouseDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var clickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
-        ///     {
-        ///         Project = aiven_clickhouse.Ch.Project,
-        ///         ServiceName = aiven_clickhouse.Ch.Service_name,
-        ///         Name = "my-ch-db",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClickhouseDatabaseResult> Invoke(GetClickhouseDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseDatabaseResult>("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args ?? new GetClickhouseDatabaseInvokeArgs(), options.WithDefaults());

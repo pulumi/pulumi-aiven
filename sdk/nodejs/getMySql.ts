@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The MySQL data source provides information about the existing Aiven MySQL service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mysql1 = aiven.getMySql({
- *     project: data.aiven_project.foo.project,
- *     serviceName: "my-mysql1",
- * });
- * ```
  */
 export function getMySql(args: GetMySqlArgs, opts?: pulumi.InvokeOptions): Promise<GetMySqlResult> {
 
@@ -163,18 +151,6 @@ export interface GetMySqlResult {
 }
 /**
  * The MySQL data source provides information about the existing Aiven MySQL service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const mysql1 = aiven.getMySql({
- *     project: data.aiven_project.foo.project,
- *     serviceName: "my-mysql1",
- * });
- * ```
  */
 export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMySqlResult> {
     return pulumi.output(args).apply((a: any) => getMySql(a, opts))

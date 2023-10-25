@@ -14,40 +14,6 @@ import (
 
 // The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bybg1, err := aiven.NewBillingGroup(ctx, "bybg1", &aiven.BillingGroupArgs{
-//				BillingCurrency: pulumi.String("USD"),
-//				VatId:           pulumi.String("123ABC"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewProject(ctx, "pr1", &aiven.ProjectArgs{
-//				Project:      pulumi.String("pr1"),
-//				BillingGroup: bybg1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

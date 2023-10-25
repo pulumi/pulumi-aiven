@@ -32,10 +32,22 @@ class ProjectVpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_name: pulumi.Input[str],
-             network_cidr: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             network_cidr: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if cloud_name is None:
+            raise TypeError("Missing 'cloud_name' argument")
+        if network_cidr is None and 'networkCidr' in kwargs:
+            network_cidr = kwargs['networkCidr']
+        if network_cidr is None:
+            raise TypeError("Missing 'network_cidr' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("cloud_name", cloud_name)
         _setter("network_cidr", network_cidr)
         _setter("project", project)
@@ -105,7 +117,13 @@ class _ProjectVpcState:
              network_cidr: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if network_cidr is None and 'networkCidr' in kwargs:
+            network_cidr = kwargs['networkCidr']
+
         if cloud_name is not None:
             _setter("cloud_name", cloud_name)
         if network_cidr is not None:

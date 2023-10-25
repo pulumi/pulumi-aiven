@@ -9,15 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages an organization in Aiven.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const organization1 = new aiven.Organization("organization1", {});
- * ```
- *
  * ## Import
  *
  * ```sh

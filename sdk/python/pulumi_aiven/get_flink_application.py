@@ -147,17 +147,6 @@ def get_flink_application(name: Optional[str] = None,
     """
     The Flink Application data source provides information about the existing Aiven Flink Application.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    app1 = aiven.get_flink_application(project=data["aiven_project"]["pr1"]["project"],
-        service_name="<SERVICE_NAME>",
-        name="<APPLICATION_NAME>")
-    ```
-
 
     :param str name: Application name
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -189,17 +178,6 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlinkApplicationResult]:
     """
     The Flink Application data source provides information about the existing Aiven Flink Application.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    app1 = aiven.get_flink_application(project=data["aiven_project"]["pr1"]["project"],
-        service_name="<SERVICE_NAME>",
-        name="<APPLICATION_NAME>")
-    ```
 
 
     :param str name: Application name

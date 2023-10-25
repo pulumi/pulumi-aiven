@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
-        ///     {
-        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
-        ///         GcpProjectId = "xxxx",
-        ///         PeerVpc = "xxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGcpVpcPeeringConnectionResult> InvokeAsync(GetGcpVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
-        ///     {
-        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
-        ///         GcpProjectId = "xxxx",
-        ///         PeerVpc = "xxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGcpVpcPeeringConnectionResult> Invoke(GetGcpVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionInvokeArgs(), options.WithDefaults());

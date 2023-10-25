@@ -13,33 +13,6 @@ import (
 )
 
 // The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOpensearchSecurityPluginConfig(ctx, &aiven.LookupOpensearchSecurityPluginConfigArgs{
-//				Project:     aiven_project.OsProject.Project,
-//				ServiceName: aiven_opensearch.Os.Service_name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupOpensearchSecurityPluginConfig(ctx *pulumi.Context, args *LookupOpensearchSecurityPluginConfigArgs, opts ...pulumi.InvokeOption) (*LookupOpensearchSecurityPluginConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpensearchSecurityPluginConfigResult

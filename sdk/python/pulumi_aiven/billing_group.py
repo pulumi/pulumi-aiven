@@ -83,7 +83,31 @@ class BillingGroupArgs:
              state: Optional[pulumi.Input[str]] = None,
              vat_id: Optional[pulumi.Input[str]] = None,
              zip_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if address_lines is None and 'addressLines' in kwargs:
+            address_lines = kwargs['addressLines']
+        if billing_currency is None and 'billingCurrency' in kwargs:
+            billing_currency = kwargs['billingCurrency']
+        if billing_emails is None and 'billingEmails' in kwargs:
+            billing_emails = kwargs['billingEmails']
+        if billing_extra_text is None and 'billingExtraText' in kwargs:
+            billing_extra_text = kwargs['billingExtraText']
+        if card_id is None and 'cardId' in kwargs:
+            card_id = kwargs['cardId']
+        if copy_from_billing_group is None and 'copyFromBillingGroup' in kwargs:
+            copy_from_billing_group = kwargs['copyFromBillingGroup']
+        if country_code is None and 'countryCode' in kwargs:
+            country_code = kwargs['countryCode']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if vat_id is None and 'vatId' in kwargs:
+            vat_id = kwargs['vatId']
+        if zip_code is None and 'zipCode' in kwargs:
+            zip_code = kwargs['zipCode']
+
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
@@ -374,7 +398,31 @@ class _BillingGroupState:
              state: Optional[pulumi.Input[str]] = None,
              vat_id: Optional[pulumi.Input[str]] = None,
              zip_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if address_lines is None and 'addressLines' in kwargs:
+            address_lines = kwargs['addressLines']
+        if billing_currency is None and 'billingCurrency' in kwargs:
+            billing_currency = kwargs['billingCurrency']
+        if billing_emails is None and 'billingEmails' in kwargs:
+            billing_emails = kwargs['billingEmails']
+        if billing_extra_text is None and 'billingExtraText' in kwargs:
+            billing_extra_text = kwargs['billingExtraText']
+        if card_id is None and 'cardId' in kwargs:
+            card_id = kwargs['cardId']
+        if copy_from_billing_group is None and 'copyFromBillingGroup' in kwargs:
+            copy_from_billing_group = kwargs['copyFromBillingGroup']
+        if country_code is None and 'countryCode' in kwargs:
+            country_code = kwargs['countryCode']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if vat_id is None and 'vatId' in kwargs:
+            vat_id = kwargs['vatId']
+        if zip_code is None and 'zipCode' in kwargs:
+            zip_code = kwargs['zipCode']
+
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
@@ -617,20 +665,6 @@ class BillingGroup(pulumi.CustomResource):
         """
         The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        bybg1 = aiven.BillingGroup("bybg1",
-            billing_currency="USD",
-            vat_id="123ABC")
-        pr1 = aiven.Project("pr1",
-            project="pr1",
-            billing_group=bybg1.id)
-        ```
-
         ## Import
 
         ```sh
@@ -663,20 +697,6 @@ class BillingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        bybg1 = aiven.BillingGroup("bybg1",
-            billing_currency="USD",
-            vat_id="123ABC")
-        pr1 = aiven.Project("pr1",
-            project="pr1",
-            billing_group=bybg1.id)
-        ```
 
         ## Import
 

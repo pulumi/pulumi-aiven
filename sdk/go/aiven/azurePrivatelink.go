@@ -15,36 +15,6 @@ import (
 
 // The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAzurePrivatelink(ctx, "foo", &aiven.AzurePrivatelinkArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Foo.Project),
-//				ServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),
-//				UserSubscriptionIds: pulumi.StringArray{
-//					pulumi.String("xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

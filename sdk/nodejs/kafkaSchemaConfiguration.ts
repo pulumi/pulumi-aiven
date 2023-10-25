@@ -7,19 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const config = new aiven.KafkaSchemaConfiguration("config", {
- *     project: aiven_project["kafka-schemas-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
- *     compatibilityLevel: "BACKWARD",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

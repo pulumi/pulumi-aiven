@@ -375,16 +375,6 @@ def get_m3_db(project: Optional[str] = None,
     """
     The M3 DB data source provides information about the existing Aiven M3 services.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    m3 = aiven.get_m3_db(project=data["aiven_project"]["foo"]["project"],
-        service_name="my-m3db")
-    ```
-
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -432,16 +422,6 @@ def get_m3_db_output(project: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetM3DbResult]:
     """
     The M3 DB data source provides information about the existing Aiven M3 services.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    m3 = aiven.get_m3_db(project=data["aiven_project"]["foo"]["project"],
-        service_name="my-m3db")
-    ```
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
