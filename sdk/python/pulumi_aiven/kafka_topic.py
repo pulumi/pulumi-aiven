@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,58 +36,17 @@ class KafkaTopicArgs:
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
         """
-        KafkaTopicArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            partitions=partitions,
-            project=project,
-            replication=replication,
-            service_name=service_name,
-            topic_name=topic_name,
-            config=config,
-            tags=tags,
-            termination_protection=termination_protection,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             partitions: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             replication: Optional[pulumi.Input[int]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             topic_name: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input['KafkaTopicConfigArgs']] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if partitions is None:
-            raise TypeError("Missing 'partitions' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if replication is None:
-            raise TypeError("Missing 'replication' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if topic_name is None and 'topicName' in kwargs:
-            topic_name = kwargs['topicName']
-        if topic_name is None:
-            raise TypeError("Missing 'topic_name' argument")
-        if termination_protection is None and 'terminationProtection' in kwargs:
-            termination_protection = kwargs['terminationProtection']
-
-        _setter("partitions", partitions)
-        _setter("project", project)
-        _setter("replication", replication)
-        _setter("service_name", service_name)
-        _setter("topic_name", topic_name)
+        pulumi.set(__self__, "partitions", partitions)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "topic_name", topic_name)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
     @pulumi.getter
@@ -210,53 +169,22 @@ class _KafkaTopicState:
                enable this for any production Kafka topic containing critical data.
         :param pulumi.Input[str] topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
         """
-        _KafkaTopicState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            partitions=partitions,
-            project=project,
-            replication=replication,
-            service_name=service_name,
-            tags=tags,
-            termination_protection=termination_protection,
-            topic_name=topic_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input['KafkaTopicConfigArgs']] = None,
-             partitions: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             replication: Optional[pulumi.Input[int]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if termination_protection is None and 'terminationProtection' in kwargs:
-            termination_protection = kwargs['terminationProtection']
-        if topic_name is None and 'topicName' in kwargs:
-            topic_name = kwargs['topicName']
-
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if partitions is not None:
-            _setter("partitions", partitions)
+            pulumi.set(__self__, "partitions", partitions)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if replication is not None:
-            _setter("replication", replication)
+            pulumi.set(__self__, "replication", replication)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
         if topic_name is not None:
-            _setter("topic_name", topic_name)
+            pulumi.set(__self__, "topic_name", topic_name)
 
     @property
     @pulumi.getter
@@ -416,10 +344,6 @@ class KafkaTopic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KafkaTopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -442,7 +366,6 @@ class KafkaTopic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KafkaTopicArgs.__new__(KafkaTopicArgs)
 
-            config = _utilities.configure(config, KafkaTopicConfigArgs, True)
             __props__.__dict__["config"] = config
             if partitions is None and not opts.urn:
                 raise TypeError("Missing required property 'partitions'")

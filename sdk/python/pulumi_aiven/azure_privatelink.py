@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AzurePrivatelinkArgs', 'AzurePrivatelink']
@@ -23,34 +23,9 @@ class AzurePrivatelinkArgs:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_subscription_ids: A List of allowed Subscription IDs. Maximum length: `16`.
         """
-        AzurePrivatelinkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            service_name=service_name,
-            user_subscription_ids=user_subscription_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             user_subscription_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if user_subscription_ids is None and 'userSubscriptionIds' in kwargs:
-            user_subscription_ids = kwargs['userSubscriptionIds']
-        if user_subscription_ids is None:
-            raise TypeError("Missing 'user_subscription_ids' argument")
-
-        _setter("project", project)
-        _setter("service_name", service_name)
-        _setter("user_subscription_ids", user_subscription_ids)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "user_subscription_ids", user_subscription_ids)
 
     @property
     @pulumi.getter
@@ -109,51 +84,20 @@ class _AzurePrivatelinkState:
         :param pulumi.Input[str] state: Privatelink resource state
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_subscription_ids: A List of allowed Subscription IDs. Maximum length: `16`.
         """
-        _AzurePrivatelinkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            azure_service_alias=azure_service_alias,
-            azure_service_id=azure_service_id,
-            message=message,
-            project=project,
-            service_name=service_name,
-            state=state,
-            user_subscription_ids=user_subscription_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             azure_service_alias: Optional[pulumi.Input[str]] = None,
-             azure_service_id: Optional[pulumi.Input[str]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             user_subscription_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if azure_service_alias is None and 'azureServiceAlias' in kwargs:
-            azure_service_alias = kwargs['azureServiceAlias']
-        if azure_service_id is None and 'azureServiceId' in kwargs:
-            azure_service_id = kwargs['azureServiceId']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if user_subscription_ids is None and 'userSubscriptionIds' in kwargs:
-            user_subscription_ids = kwargs['userSubscriptionIds']
-
         if azure_service_alias is not None:
-            _setter("azure_service_alias", azure_service_alias)
+            pulumi.set(__self__, "azure_service_alias", azure_service_alias)
         if azure_service_id is not None:
-            _setter("azure_service_id", azure_service_id)
+            pulumi.set(__self__, "azure_service_id", azure_service_id)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if user_subscription_ids is not None:
-            _setter("user_subscription_ids", user_subscription_ids)
+            pulumi.set(__self__, "user_subscription_ids", user_subscription_ids)
 
     @property
     @pulumi.getter(name="azureServiceAlias")
@@ -313,10 +257,6 @@ class AzurePrivatelink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AzurePrivatelinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

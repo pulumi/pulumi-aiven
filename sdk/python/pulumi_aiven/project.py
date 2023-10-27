@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,81 +39,34 @@ class ProjectArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            account_id=account_id,
-            add_account_owners_admin_access=add_account_owners_admin_access,
-            billing_group=billing_group,
-            copy_from_project=copy_from_project,
-            default_cloud=default_cloud,
-            parent_id=parent_id,
-            tags=tags,
-            technical_emails=technical_emails,
-            use_source_project_billing_group=use_source_project_billing_group,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
-             billing_group: Optional[pulumi.Input[str]] = None,
-             copy_from_project: Optional[pulumi.Input[str]] = None,
-             default_cloud: Optional[pulumi.Input[str]] = None,
-             parent_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
-             technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if add_account_owners_admin_access is None and 'addAccountOwnersAdminAccess' in kwargs:
-            add_account_owners_admin_access = kwargs['addAccountOwnersAdminAccess']
-        if billing_group is None and 'billingGroup' in kwargs:
-            billing_group = kwargs['billingGroup']
-        if copy_from_project is None and 'copyFromProject' in kwargs:
-            copy_from_project = kwargs['copyFromProject']
-        if default_cloud is None and 'defaultCloud' in kwargs:
-            default_cloud = kwargs['defaultCloud']
-        if parent_id is None and 'parentId' in kwargs:
-            parent_id = kwargs['parentId']
-        if technical_emails is None and 'technicalEmails' in kwargs:
-            technical_emails = kwargs['technicalEmails']
-        if use_source_project_billing_group is None and 'useSourceProjectBillingGroup' in kwargs:
-            use_source_project_billing_group = kwargs['useSourceProjectBillingGroup']
-
-        _setter("project", project)
+        pulumi.set(__self__, "project", project)
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if add_account_owners_admin_access is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
             pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
         if add_account_owners_admin_access is not None:
-            _setter("add_account_owners_admin_access", add_account_owners_admin_access)
+            pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if billing_group is not None:
-            _setter("billing_group", billing_group)
+            pulumi.set(__self__, "billing_group", billing_group)
         if copy_from_project is not None:
-            _setter("copy_from_project", copy_from_project)
+            pulumi.set(__self__, "copy_from_project", copy_from_project)
         if default_cloud is not None:
-            _setter("default_cloud", default_cloud)
+            pulumi.set(__self__, "default_cloud", default_cloud)
         if parent_id is not None:
-            _setter("parent_id", parent_id)
+            pulumi.set(__self__, "parent_id", parent_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
-            _setter("technical_emails", technical_emails)
+            pulumi.set(__self__, "technical_emails", technical_emails)
         if use_source_project_billing_group is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
         if use_source_project_billing_group is not None:
-            _setter("use_source_project_billing_group", use_source_project_billing_group)
+            pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
 
     @property
     @pulumi.getter
@@ -279,104 +232,43 @@ class _ProjectState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            add_account_owners_admin_access=add_account_owners_admin_access,
-            available_credits=available_credits,
-            billing_group=billing_group,
-            ca_cert=ca_cert,
-            copy_from_project=copy_from_project,
-            default_cloud=default_cloud,
-            estimated_balance=estimated_balance,
-            parent_id=parent_id,
-            payment_method=payment_method,
-            project=project,
-            tags=tags,
-            technical_emails=technical_emails,
-            use_source_project_billing_group=use_source_project_billing_group,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
-             available_credits: Optional[pulumi.Input[str]] = None,
-             billing_group: Optional[pulumi.Input[str]] = None,
-             ca_cert: Optional[pulumi.Input[str]] = None,
-             copy_from_project: Optional[pulumi.Input[str]] = None,
-             default_cloud: Optional[pulumi.Input[str]] = None,
-             estimated_balance: Optional[pulumi.Input[str]] = None,
-             parent_id: Optional[pulumi.Input[str]] = None,
-             payment_method: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
-             technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if add_account_owners_admin_access is None and 'addAccountOwnersAdminAccess' in kwargs:
-            add_account_owners_admin_access = kwargs['addAccountOwnersAdminAccess']
-        if available_credits is None and 'availableCredits' in kwargs:
-            available_credits = kwargs['availableCredits']
-        if billing_group is None and 'billingGroup' in kwargs:
-            billing_group = kwargs['billingGroup']
-        if ca_cert is None and 'caCert' in kwargs:
-            ca_cert = kwargs['caCert']
-        if copy_from_project is None and 'copyFromProject' in kwargs:
-            copy_from_project = kwargs['copyFromProject']
-        if default_cloud is None and 'defaultCloud' in kwargs:
-            default_cloud = kwargs['defaultCloud']
-        if estimated_balance is None and 'estimatedBalance' in kwargs:
-            estimated_balance = kwargs['estimatedBalance']
-        if parent_id is None and 'parentId' in kwargs:
-            parent_id = kwargs['parentId']
-        if payment_method is None and 'paymentMethod' in kwargs:
-            payment_method = kwargs['paymentMethod']
-        if technical_emails is None and 'technicalEmails' in kwargs:
-            technical_emails = kwargs['technicalEmails']
-        if use_source_project_billing_group is None and 'useSourceProjectBillingGroup' in kwargs:
-            use_source_project_billing_group = kwargs['useSourceProjectBillingGroup']
-
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if add_account_owners_admin_access is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
             pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
         if add_account_owners_admin_access is not None:
-            _setter("add_account_owners_admin_access", add_account_owners_admin_access)
+            pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if available_credits is not None:
-            _setter("available_credits", available_credits)
+            pulumi.set(__self__, "available_credits", available_credits)
         if billing_group is not None:
-            _setter("billing_group", billing_group)
+            pulumi.set(__self__, "billing_group", billing_group)
         if ca_cert is not None:
-            _setter("ca_cert", ca_cert)
+            pulumi.set(__self__, "ca_cert", ca_cert)
         if copy_from_project is not None:
-            _setter("copy_from_project", copy_from_project)
+            pulumi.set(__self__, "copy_from_project", copy_from_project)
         if default_cloud is not None:
-            _setter("default_cloud", default_cloud)
+            pulumi.set(__self__, "default_cloud", default_cloud)
         if estimated_balance is not None:
-            _setter("estimated_balance", estimated_balance)
+            pulumi.set(__self__, "estimated_balance", estimated_balance)
         if parent_id is not None:
-            _setter("parent_id", parent_id)
+            pulumi.set(__self__, "parent_id", parent_id)
         if payment_method is not None:
-            _setter("payment_method", payment_method)
+            pulumi.set(__self__, "payment_method", payment_method)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
-            _setter("technical_emails", technical_emails)
+            pulumi.set(__self__, "technical_emails", technical_emails)
         if use_source_project_billing_group is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
         if use_source_project_billing_group is not None:
-            _setter("use_source_project_billing_group", use_source_project_billing_group)
+            pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
 
     @property
     @pulumi.getter(name="accountId")
@@ -619,10 +511,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

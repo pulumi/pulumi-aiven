@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PgDatabaseArgs', 'PgDatabase']
@@ -30,52 +30,15 @@ class PgDatabaseArgs:
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
-        PgDatabaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database_name=database_name,
-            project=project,
-            service_name=service_name,
-            lc_collate=lc_collate,
-            lc_ctype=lc_ctype,
-            termination_protection=termination_protection,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             lc_collate: Optional[pulumi.Input[str]] = None,
-             lc_ctype: Optional[pulumi.Input[str]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if database_name is None and 'databaseName' in kwargs:
-            database_name = kwargs['databaseName']
-        if database_name is None:
-            raise TypeError("Missing 'database_name' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if lc_collate is None and 'lcCollate' in kwargs:
-            lc_collate = kwargs['lcCollate']
-        if lc_ctype is None and 'lcCtype' in kwargs:
-            lc_ctype = kwargs['lcCtype']
-        if termination_protection is None and 'terminationProtection' in kwargs:
-            termination_protection = kwargs['terminationProtection']
-
-        _setter("database_name", database_name)
-        _setter("project", project)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
         if lc_collate is not None:
-            _setter("lc_collate", lc_collate)
+            pulumi.set(__self__, "lc_collate", lc_collate)
         if lc_ctype is not None:
-            _setter("lc_ctype", lc_ctype)
+            pulumi.set(__self__, "lc_ctype", lc_ctype)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -170,49 +133,18 @@ class _PgDatabaseState:
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
-        _PgDatabaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database_name=database_name,
-            lc_collate=lc_collate,
-            lc_ctype=lc_ctype,
-            project=project,
-            service_name=service_name,
-            termination_protection=termination_protection,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database_name: Optional[pulumi.Input[str]] = None,
-             lc_collate: Optional[pulumi.Input[str]] = None,
-             lc_ctype: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if database_name is None and 'databaseName' in kwargs:
-            database_name = kwargs['databaseName']
-        if lc_collate is None and 'lcCollate' in kwargs:
-            lc_collate = kwargs['lcCollate']
-        if lc_ctype is None and 'lcCtype' in kwargs:
-            lc_ctype = kwargs['lcCtype']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if termination_protection is None and 'terminationProtection' in kwargs:
-            termination_protection = kwargs['terminationProtection']
-
         if database_name is not None:
-            _setter("database_name", database_name)
+            pulumi.set(__self__, "database_name", database_name)
         if lc_collate is not None:
-            _setter("lc_collate", lc_collate)
+            pulumi.set(__self__, "lc_collate", lc_collate)
         if lc_ctype is not None:
-            _setter("lc_ctype", lc_ctype)
+            pulumi.set(__self__, "lc_ctype", lc_ctype)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -368,10 +300,6 @@ class PgDatabase(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PgDatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
