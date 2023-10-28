@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['KafkaSchemaArgs', 'KafkaSchema']
@@ -29,51 +29,14 @@ class KafkaSchemaArgs:
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
         """
-        KafkaSchemaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            schema=schema,
-            service_name=service_name,
-            subject_name=subject_name,
-            compatibility_level=compatibility_level,
-            schema_type=schema_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             subject_name: Optional[pulumi.Input[str]] = None,
-             compatibility_level: Optional[pulumi.Input[str]] = None,
-             schema_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if schema is None:
-            raise TypeError("Missing 'schema' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if subject_name is None and 'subjectName' in kwargs:
-            subject_name = kwargs['subjectName']
-        if subject_name is None:
-            raise TypeError("Missing 'subject_name' argument")
-        if compatibility_level is None and 'compatibilityLevel' in kwargs:
-            compatibility_level = kwargs['compatibilityLevel']
-        if schema_type is None and 'schemaType' in kwargs:
-            schema_type = kwargs['schemaType']
-
-        _setter("project", project)
-        _setter("schema", schema)
-        _setter("service_name", service_name)
-        _setter("subject_name", subject_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "subject_name", subject_name)
         if compatibility_level is not None:
-            _setter("compatibility_level", compatibility_level)
+            pulumi.set(__self__, "compatibility_level", compatibility_level)
         if schema_type is not None:
-            _setter("schema_type", schema_type)
+            pulumi.set(__self__, "schema_type", schema_type)
 
     @property
     @pulumi.getter
@@ -168,51 +131,20 @@ class _KafkaSchemaState:
         :param pulumi.Input[str] subject_name: The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[int] version: Kafka Schema configuration version.
         """
-        _KafkaSchemaState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compatibility_level=compatibility_level,
-            project=project,
-            schema=schema,
-            schema_type=schema_type,
-            service_name=service_name,
-            subject_name=subject_name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compatibility_level: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             schema_type: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             subject_name: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compatibility_level is None and 'compatibilityLevel' in kwargs:
-            compatibility_level = kwargs['compatibilityLevel']
-        if schema_type is None and 'schemaType' in kwargs:
-            schema_type = kwargs['schemaType']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if subject_name is None and 'subjectName' in kwargs:
-            subject_name = kwargs['subjectName']
-
         if compatibility_level is not None:
-            _setter("compatibility_level", compatibility_level)
+            pulumi.set(__self__, "compatibility_level", compatibility_level)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if schema_type is not None:
-            _setter("schema_type", schema_type)
+            pulumi.set(__self__, "schema_type", schema_type)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if subject_name is not None:
-            _setter("subject_name", subject_name)
+            pulumi.set(__self__, "subject_name", subject_name)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="compatibilityLevel")
@@ -408,10 +340,6 @@ class KafkaSchema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KafkaSchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

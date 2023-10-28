@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,105 +49,34 @@ class ServiceIntegrationArgs:
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
-        ServiceIntegrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            integration_type=integration_type,
-            project=project,
-            clickhouse_kafka_user_config=clickhouse_kafka_user_config,
-            clickhouse_postgresql_user_config=clickhouse_postgresql_user_config,
-            datadog_user_config=datadog_user_config,
-            destination_endpoint_id=destination_endpoint_id,
-            destination_service_name=destination_service_name,
-            external_aws_cloudwatch_metrics_user_config=external_aws_cloudwatch_metrics_user_config,
-            kafka_connect_user_config=kafka_connect_user_config,
-            kafka_logs_user_config=kafka_logs_user_config,
-            kafka_mirrormaker_user_config=kafka_mirrormaker_user_config,
-            logs_user_config=logs_user_config,
-            metrics_user_config=metrics_user_config,
-            source_endpoint_id=source_endpoint_id,
-            source_service_name=source_service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             integration_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
-             clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
-             datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
-             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
-             destination_service_name: Optional[pulumi.Input[str]] = None,
-             external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
-             kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
-             kafka_logs_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
-             kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
-             logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
-             metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
-             source_endpoint_id: Optional[pulumi.Input[str]] = None,
-             source_service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if integration_type is None and 'integrationType' in kwargs:
-            integration_type = kwargs['integrationType']
-        if integration_type is None:
-            raise TypeError("Missing 'integration_type' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if clickhouse_kafka_user_config is None and 'clickhouseKafkaUserConfig' in kwargs:
-            clickhouse_kafka_user_config = kwargs['clickhouseKafkaUserConfig']
-        if clickhouse_postgresql_user_config is None and 'clickhousePostgresqlUserConfig' in kwargs:
-            clickhouse_postgresql_user_config = kwargs['clickhousePostgresqlUserConfig']
-        if datadog_user_config is None and 'datadogUserConfig' in kwargs:
-            datadog_user_config = kwargs['datadogUserConfig']
-        if destination_endpoint_id is None and 'destinationEndpointId' in kwargs:
-            destination_endpoint_id = kwargs['destinationEndpointId']
-        if destination_service_name is None and 'destinationServiceName' in kwargs:
-            destination_service_name = kwargs['destinationServiceName']
-        if external_aws_cloudwatch_metrics_user_config is None and 'externalAwsCloudwatchMetricsUserConfig' in kwargs:
-            external_aws_cloudwatch_metrics_user_config = kwargs['externalAwsCloudwatchMetricsUserConfig']
-        if kafka_connect_user_config is None and 'kafkaConnectUserConfig' in kwargs:
-            kafka_connect_user_config = kwargs['kafkaConnectUserConfig']
-        if kafka_logs_user_config is None and 'kafkaLogsUserConfig' in kwargs:
-            kafka_logs_user_config = kwargs['kafkaLogsUserConfig']
-        if kafka_mirrormaker_user_config is None and 'kafkaMirrormakerUserConfig' in kwargs:
-            kafka_mirrormaker_user_config = kwargs['kafkaMirrormakerUserConfig']
-        if logs_user_config is None and 'logsUserConfig' in kwargs:
-            logs_user_config = kwargs['logsUserConfig']
-        if metrics_user_config is None and 'metricsUserConfig' in kwargs:
-            metrics_user_config = kwargs['metricsUserConfig']
-        if source_endpoint_id is None and 'sourceEndpointId' in kwargs:
-            source_endpoint_id = kwargs['sourceEndpointId']
-        if source_service_name is None and 'sourceServiceName' in kwargs:
-            source_service_name = kwargs['sourceServiceName']
-
-        _setter("integration_type", integration_type)
-        _setter("project", project)
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "project", project)
         if clickhouse_kafka_user_config is not None:
-            _setter("clickhouse_kafka_user_config", clickhouse_kafka_user_config)
+            pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
         if clickhouse_postgresql_user_config is not None:
-            _setter("clickhouse_postgresql_user_config", clickhouse_postgresql_user_config)
+            pulumi.set(__self__, "clickhouse_postgresql_user_config", clickhouse_postgresql_user_config)
         if datadog_user_config is not None:
-            _setter("datadog_user_config", datadog_user_config)
+            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if destination_endpoint_id is not None:
-            _setter("destination_endpoint_id", destination_endpoint_id)
+            pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
-            _setter("destination_service_name", destination_service_name)
+            pulumi.set(__self__, "destination_service_name", destination_service_name)
         if external_aws_cloudwatch_metrics_user_config is not None:
-            _setter("external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
+            pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if kafka_connect_user_config is not None:
-            _setter("kafka_connect_user_config", kafka_connect_user_config)
+            pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
         if kafka_logs_user_config is not None:
-            _setter("kafka_logs_user_config", kafka_logs_user_config)
+            pulumi.set(__self__, "kafka_logs_user_config", kafka_logs_user_config)
         if kafka_mirrormaker_user_config is not None:
-            _setter("kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
+            pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
         if logs_user_config is not None:
-            _setter("logs_user_config", logs_user_config)
+            pulumi.set(__self__, "logs_user_config", logs_user_config)
         if metrics_user_config is not None:
-            _setter("metrics_user_config", metrics_user_config)
+            pulumi.set(__self__, "metrics_user_config", metrics_user_config)
         if source_endpoint_id is not None:
-            _setter("source_endpoint_id", source_endpoint_id)
+            pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
-            _setter("source_service_name", source_service_name)
+            pulumi.set(__self__, "source_service_name", source_service_name)
 
     @property
     @pulumi.getter(name="integrationType")
@@ -368,109 +297,38 @@ class _ServiceIntegrationState:
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
-        _ServiceIntegrationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            clickhouse_kafka_user_config=clickhouse_kafka_user_config,
-            clickhouse_postgresql_user_config=clickhouse_postgresql_user_config,
-            datadog_user_config=datadog_user_config,
-            destination_endpoint_id=destination_endpoint_id,
-            destination_service_name=destination_service_name,
-            external_aws_cloudwatch_metrics_user_config=external_aws_cloudwatch_metrics_user_config,
-            integration_id=integration_id,
-            integration_type=integration_type,
-            kafka_connect_user_config=kafka_connect_user_config,
-            kafka_logs_user_config=kafka_logs_user_config,
-            kafka_mirrormaker_user_config=kafka_mirrormaker_user_config,
-            logs_user_config=logs_user_config,
-            metrics_user_config=metrics_user_config,
-            project=project,
-            source_endpoint_id=source_endpoint_id,
-            source_service_name=source_service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
-             clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
-             datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
-             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
-             destination_service_name: Optional[pulumi.Input[str]] = None,
-             external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
-             integration_id: Optional[pulumi.Input[str]] = None,
-             integration_type: Optional[pulumi.Input[str]] = None,
-             kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
-             kafka_logs_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
-             kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
-             logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
-             metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             source_endpoint_id: Optional[pulumi.Input[str]] = None,
-             source_service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if clickhouse_kafka_user_config is None and 'clickhouseKafkaUserConfig' in kwargs:
-            clickhouse_kafka_user_config = kwargs['clickhouseKafkaUserConfig']
-        if clickhouse_postgresql_user_config is None and 'clickhousePostgresqlUserConfig' in kwargs:
-            clickhouse_postgresql_user_config = kwargs['clickhousePostgresqlUserConfig']
-        if datadog_user_config is None and 'datadogUserConfig' in kwargs:
-            datadog_user_config = kwargs['datadogUserConfig']
-        if destination_endpoint_id is None and 'destinationEndpointId' in kwargs:
-            destination_endpoint_id = kwargs['destinationEndpointId']
-        if destination_service_name is None and 'destinationServiceName' in kwargs:
-            destination_service_name = kwargs['destinationServiceName']
-        if external_aws_cloudwatch_metrics_user_config is None and 'externalAwsCloudwatchMetricsUserConfig' in kwargs:
-            external_aws_cloudwatch_metrics_user_config = kwargs['externalAwsCloudwatchMetricsUserConfig']
-        if integration_id is None and 'integrationId' in kwargs:
-            integration_id = kwargs['integrationId']
-        if integration_type is None and 'integrationType' in kwargs:
-            integration_type = kwargs['integrationType']
-        if kafka_connect_user_config is None and 'kafkaConnectUserConfig' in kwargs:
-            kafka_connect_user_config = kwargs['kafkaConnectUserConfig']
-        if kafka_logs_user_config is None and 'kafkaLogsUserConfig' in kwargs:
-            kafka_logs_user_config = kwargs['kafkaLogsUserConfig']
-        if kafka_mirrormaker_user_config is None and 'kafkaMirrormakerUserConfig' in kwargs:
-            kafka_mirrormaker_user_config = kwargs['kafkaMirrormakerUserConfig']
-        if logs_user_config is None and 'logsUserConfig' in kwargs:
-            logs_user_config = kwargs['logsUserConfig']
-        if metrics_user_config is None and 'metricsUserConfig' in kwargs:
-            metrics_user_config = kwargs['metricsUserConfig']
-        if source_endpoint_id is None and 'sourceEndpointId' in kwargs:
-            source_endpoint_id = kwargs['sourceEndpointId']
-        if source_service_name is None and 'sourceServiceName' in kwargs:
-            source_service_name = kwargs['sourceServiceName']
-
         if clickhouse_kafka_user_config is not None:
-            _setter("clickhouse_kafka_user_config", clickhouse_kafka_user_config)
+            pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
         if clickhouse_postgresql_user_config is not None:
-            _setter("clickhouse_postgresql_user_config", clickhouse_postgresql_user_config)
+            pulumi.set(__self__, "clickhouse_postgresql_user_config", clickhouse_postgresql_user_config)
         if datadog_user_config is not None:
-            _setter("datadog_user_config", datadog_user_config)
+            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if destination_endpoint_id is not None:
-            _setter("destination_endpoint_id", destination_endpoint_id)
+            pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
-            _setter("destination_service_name", destination_service_name)
+            pulumi.set(__self__, "destination_service_name", destination_service_name)
         if external_aws_cloudwatch_metrics_user_config is not None:
-            _setter("external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
+            pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if integration_id is not None:
-            _setter("integration_id", integration_id)
+            pulumi.set(__self__, "integration_id", integration_id)
         if integration_type is not None:
-            _setter("integration_type", integration_type)
+            pulumi.set(__self__, "integration_type", integration_type)
         if kafka_connect_user_config is not None:
-            _setter("kafka_connect_user_config", kafka_connect_user_config)
+            pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
         if kafka_logs_user_config is not None:
-            _setter("kafka_logs_user_config", kafka_logs_user_config)
+            pulumi.set(__self__, "kafka_logs_user_config", kafka_logs_user_config)
         if kafka_mirrormaker_user_config is not None:
-            _setter("kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
+            pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
         if logs_user_config is not None:
-            _setter("logs_user_config", logs_user_config)
+            pulumi.set(__self__, "logs_user_config", logs_user_config)
         if metrics_user_config is not None:
-            _setter("metrics_user_config", metrics_user_config)
+            pulumi.set(__self__, "metrics_user_config", metrics_user_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if source_endpoint_id is not None:
-            _setter("source_endpoint_id", source_endpoint_id)
+            pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
-            _setter("source_service_name", source_service_name)
+            pulumi.set(__self__, "source_service_name", source_service_name)
 
     @property
     @pulumi.getter(name="clickhouseKafkaUserConfig")
@@ -778,10 +636,6 @@ class ServiceIntegration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceIntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -811,28 +665,19 @@ class ServiceIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIntegrationArgs.__new__(ServiceIntegrationArgs)
 
-            clickhouse_kafka_user_config = _utilities.configure(clickhouse_kafka_user_config, ServiceIntegrationClickhouseKafkaUserConfigArgs, True)
             __props__.__dict__["clickhouse_kafka_user_config"] = clickhouse_kafka_user_config
-            clickhouse_postgresql_user_config = _utilities.configure(clickhouse_postgresql_user_config, ServiceIntegrationClickhousePostgresqlUserConfigArgs, True)
             __props__.__dict__["clickhouse_postgresql_user_config"] = clickhouse_postgresql_user_config
-            datadog_user_config = _utilities.configure(datadog_user_config, ServiceIntegrationDatadogUserConfigArgs, True)
             __props__.__dict__["datadog_user_config"] = datadog_user_config
             __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
             __props__.__dict__["destination_service_name"] = destination_service_name
-            external_aws_cloudwatch_metrics_user_config = _utilities.configure(external_aws_cloudwatch_metrics_user_config, ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs, True)
             __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
             if integration_type is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_type'")
             __props__.__dict__["integration_type"] = integration_type
-            kafka_connect_user_config = _utilities.configure(kafka_connect_user_config, ServiceIntegrationKafkaConnectUserConfigArgs, True)
             __props__.__dict__["kafka_connect_user_config"] = kafka_connect_user_config
-            kafka_logs_user_config = _utilities.configure(kafka_logs_user_config, ServiceIntegrationKafkaLogsUserConfigArgs, True)
             __props__.__dict__["kafka_logs_user_config"] = kafka_logs_user_config
-            kafka_mirrormaker_user_config = _utilities.configure(kafka_mirrormaker_user_config, ServiceIntegrationKafkaMirrormakerUserConfigArgs, True)
             __props__.__dict__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
-            logs_user_config = _utilities.configure(logs_user_config, ServiceIntegrationLogsUserConfigArgs, True)
             __props__.__dict__["logs_user_config"] = logs_user_config
-            metrics_user_config = _utilities.configure(metrics_user_config, ServiceIntegrationMetricsUserConfigArgs, True)
             __props__.__dict__["metrics_user_config"] = metrics_user_config
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

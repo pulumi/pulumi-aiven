@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AzurePrivatelinkConnectionApprovalArgs', 'AzurePrivatelinkConnectionApproval']
@@ -23,33 +23,10 @@ class AzurePrivatelinkConnectionApprovalArgs:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint
         """
-        AzurePrivatelinkConnectionApprovalArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            service_name=service_name,
-            endpoint_ip_address=endpoint_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             endpoint_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if endpoint_ip_address is None and 'endpointIpAddress' in kwargs:
-            endpoint_ip_address = kwargs['endpointIpAddress']
-
-        _setter("project", project)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
         if endpoint_ip_address is not None:
-            _setter("endpoint_ip_address", endpoint_ip_address)
+            pulumi.set(__self__, "endpoint_ip_address", endpoint_ip_address)
 
     @property
     @pulumi.getter
@@ -104,41 +81,16 @@ class _AzurePrivatelinkConnectionApprovalState:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] state: Privatelink connection state
         """
-        _AzurePrivatelinkConnectionApprovalState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_ip_address=endpoint_ip_address,
-            privatelink_connection_id=privatelink_connection_id,
-            project=project,
-            service_name=service_name,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_ip_address: Optional[pulumi.Input[str]] = None,
-             privatelink_connection_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_ip_address is None and 'endpointIpAddress' in kwargs:
-            endpoint_ip_address = kwargs['endpointIpAddress']
-        if privatelink_connection_id is None and 'privatelinkConnectionId' in kwargs:
-            privatelink_connection_id = kwargs['privatelinkConnectionId']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if endpoint_ip_address is not None:
-            _setter("endpoint_ip_address", endpoint_ip_address)
+            pulumi.set(__self__, "endpoint_ip_address", endpoint_ip_address)
         if privatelink_connection_id is not None:
-            _setter("privatelink_connection_id", privatelink_connection_id)
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="endpointIpAddress")
@@ -250,10 +202,6 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AzurePrivatelinkConnectionApprovalArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

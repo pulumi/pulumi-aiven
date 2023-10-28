@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccountTeamMemberArgs', 'AccountTeamMember']
@@ -23,36 +23,9 @@ class AccountTeamMemberArgs:
         :param pulumi.Input[str] team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         """
-        AccountTeamMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            team_id=team_id,
-            user_email=user_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             team_id: Optional[pulumi.Input[str]] = None,
-             user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if team_id is None and 'teamId' in kwargs:
-            team_id = kwargs['teamId']
-        if team_id is None:
-            raise TypeError("Missing 'team_id' argument")
-        if user_email is None and 'userEmail' in kwargs:
-            user_email = kwargs['userEmail']
-        if user_email is None:
-            raise TypeError("Missing 'user_email' argument")
-
-        _setter("account_id", account_id)
-        _setter("team_id", team_id)
-        _setter("user_email", user_email)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "team_id", team_id)
+        pulumi.set(__self__, "user_email", user_email)
 
     @property
     @pulumi.getter(name="accountId")
@@ -109,49 +82,18 @@ class _AccountTeamMemberState:
         :param pulumi.Input[str] team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         """
-        _AccountTeamMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accepted=accepted,
-            account_id=account_id,
-            create_time=create_time,
-            invited_by_user_email=invited_by_user_email,
-            team_id=team_id,
-            user_email=user_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accepted: Optional[pulumi.Input[bool]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             invited_by_user_email: Optional[pulumi.Input[str]] = None,
-             team_id: Optional[pulumi.Input[str]] = None,
-             user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if invited_by_user_email is None and 'invitedByUserEmail' in kwargs:
-            invited_by_user_email = kwargs['invitedByUserEmail']
-        if team_id is None and 'teamId' in kwargs:
-            team_id = kwargs['teamId']
-        if user_email is None and 'userEmail' in kwargs:
-            user_email = kwargs['userEmail']
-
         if accepted is not None:
-            _setter("accepted", accepted)
+            pulumi.set(__self__, "accepted", accepted)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if invited_by_user_email is not None:
-            _setter("invited_by_user_email", invited_by_user_email)
+            pulumi.set(__self__, "invited_by_user_email", invited_by_user_email)
         if team_id is not None:
-            _setter("team_id", team_id)
+            pulumi.set(__self__, "team_id", team_id)
         if user_email is not None:
-            _setter("user_email", user_email)
+            pulumi.set(__self__, "user_email", user_email)
 
     @property
     @pulumi.getter
@@ -287,10 +229,6 @@ class AccountTeamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountTeamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

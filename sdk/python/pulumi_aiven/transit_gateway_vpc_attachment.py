@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TransitGatewayVpcAttachmentArgs', 'TransitGatewayVpcAttachment']
@@ -27,52 +27,15 @@ class TransitGatewayVpcAttachmentArgs:
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
-        TransitGatewayVpcAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_cloud_account=peer_cloud_account,
-            peer_vpc=peer_vpc,
-            user_peer_network_cidrs=user_peer_network_cidrs,
-            vpc_id=vpc_id,
-            peer_region=peer_region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_cloud_account: Optional[pulumi.Input[str]] = None,
-             peer_vpc: Optional[pulumi.Input[str]] = None,
-             user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             peer_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_cloud_account is None and 'peerCloudAccount' in kwargs:
-            peer_cloud_account = kwargs['peerCloudAccount']
-        if peer_cloud_account is None:
-            raise TypeError("Missing 'peer_cloud_account' argument")
-        if peer_vpc is None and 'peerVpc' in kwargs:
-            peer_vpc = kwargs['peerVpc']
-        if peer_vpc is None:
-            raise TypeError("Missing 'peer_vpc' argument")
-        if user_peer_network_cidrs is None and 'userPeerNetworkCidrs' in kwargs:
-            user_peer_network_cidrs = kwargs['userPeerNetworkCidrs']
-        if user_peer_network_cidrs is None:
-            raise TypeError("Missing 'user_peer_network_cidrs' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if peer_region is None and 'peerRegion' in kwargs:
-            peer_region = kwargs['peerRegion']
-
-        _setter("peer_cloud_account", peer_cloud_account)
-        _setter("peer_vpc", peer_vpc)
-        _setter("user_peer_network_cidrs", user_peer_network_cidrs)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
+        pulumi.set(__self__, "peer_vpc", peer_vpc)
+        pulumi.set(__self__, "user_peer_network_cidrs", user_peer_network_cidrs)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if peer_region is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
         if peer_region is not None:
-            _setter("peer_region", peer_region)
+            pulumi.set(__self__, "peer_region", peer_region)
 
     @property
     @pulumi.getter(name="peerCloudAccount")
@@ -160,64 +123,25 @@ class _TransitGatewayVpcAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        _TransitGatewayVpcAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_cloud_account=peer_cloud_account,
-            peer_region=peer_region,
-            peer_vpc=peer_vpc,
-            peering_connection_id=peering_connection_id,
-            state=state,
-            state_info=state_info,
-            user_peer_network_cidrs=user_peer_network_cidrs,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_cloud_account: Optional[pulumi.Input[str]] = None,
-             peer_region: Optional[pulumi.Input[str]] = None,
-             peer_vpc: Optional[pulumi.Input[str]] = None,
-             peering_connection_id: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_cloud_account is None and 'peerCloudAccount' in kwargs:
-            peer_cloud_account = kwargs['peerCloudAccount']
-        if peer_region is None and 'peerRegion' in kwargs:
-            peer_region = kwargs['peerRegion']
-        if peer_vpc is None and 'peerVpc' in kwargs:
-            peer_vpc = kwargs['peerVpc']
-        if peering_connection_id is None and 'peeringConnectionId' in kwargs:
-            peering_connection_id = kwargs['peeringConnectionId']
-        if state_info is None and 'stateInfo' in kwargs:
-            state_info = kwargs['stateInfo']
-        if user_peer_network_cidrs is None and 'userPeerNetworkCidrs' in kwargs:
-            user_peer_network_cidrs = kwargs['userPeerNetworkCidrs']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
         if peer_cloud_account is not None:
-            _setter("peer_cloud_account", peer_cloud_account)
+            pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
         if peer_region is not None:
             warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
         if peer_region is not None:
-            _setter("peer_region", peer_region)
+            pulumi.set(__self__, "peer_region", peer_region)
         if peer_vpc is not None:
-            _setter("peer_vpc", peer_vpc)
+            pulumi.set(__self__, "peer_vpc", peer_vpc)
         if peering_connection_id is not None:
-            _setter("peering_connection_id", peering_connection_id)
+            pulumi.set(__self__, "peering_connection_id", peering_connection_id)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if state_info is not None:
-            _setter("state_info", state_info)
+            pulumi.set(__self__, "state_info", state_info)
         if user_peer_network_cidrs is not None:
-            _setter("user_peer_network_cidrs", user_peer_network_cidrs)
+            pulumi.set(__self__, "user_peer_network_cidrs", user_peer_network_cidrs)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="peerCloudAccount")
@@ -400,10 +324,6 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitGatewayVpcAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,99 +47,34 @@ class CassandraArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
-        CassandraArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            plan=plan,
-            project=project,
-            service_name=service_name,
-            additional_disk_space=additional_disk_space,
-            cassandra_user_config=cassandra_user_config,
-            cloud_name=cloud_name,
-            disk_space=disk_space,
-            maintenance_window_dow=maintenance_window_dow,
-            maintenance_window_time=maintenance_window_time,
-            project_vpc_id=project_vpc_id,
-            service_integrations=service_integrations,
-            static_ips=static_ips,
-            tags=tags,
-            termination_protection=termination_protection,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             plan: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             additional_disk_space: Optional[pulumi.Input[str]] = None,
-             cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
-             cloud_name: Optional[pulumi.Input[str]] = None,
-             disk_space: Optional[pulumi.Input[str]] = None,
-             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
-             maintenance_window_time: Optional[pulumi.Input[str]] = None,
-             project_vpc_id: Optional[pulumi.Input[str]] = None,
-             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
-             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if plan is None:
-            raise TypeError("Missing 'plan' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if additional_disk_space is None and 'additionalDiskSpace' in kwargs:
-            additional_disk_space = kwargs['additionalDiskSpace']
-        if cassandra_user_config is None and 'cassandraUserConfig' in kwargs:
-            cassandra_user_config = kwargs['cassandraUserConfig']
-        if cloud_name is None and 'cloudName' in kwargs:
-            cloud_name = kwargs['cloudName']
-        if disk_space is None and 'diskSpace' in kwargs:
-            disk_space = kwargs['diskSpace']
-        if maintenance_window_dow is None and 'maintenanceWindowDow' in kwargs:
-            maintenance_window_dow = kwargs['maintenanceWindowDow']
-        if maintenance_window_time is None and 'maintenanceWindowTime' in kwargs:
-            maintenance_window_time = kwargs['maintenanceWindowTime']
-        if project_vpc_id is None and 'projectVpcId' in kwargs:
-            project_vpc_id = kwargs['projectVpcId']
-        if service_integrations is None and 'serviceIntegrations' in kwargs:
-            service_integrations = kwargs['serviceIntegrations']
-        if static_ips is None and 'staticIps' in kwargs:
-            static_ips = kwargs['staticIps']
-        if termination_protection is None and 'terminationProtection' in kwargs:
-            termination_protection = kwargs['terminationProtection']
-
-        _setter("plan", plan)
-        _setter("project", project)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
         if additional_disk_space is not None:
-            _setter("additional_disk_space", additional_disk_space)
+            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cassandra_user_config is not None:
-            _setter("cassandra_user_config", cassandra_user_config)
+            pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name is not None:
-            _setter("cloud_name", cloud_name)
+            pulumi.set(__self__, "cloud_name", cloud_name)
         if disk_space is not None:
             warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
-            _setter("disk_space", disk_space)
+            pulumi.set(__self__, "disk_space", disk_space)
         if maintenance_window_dow is not None:
-            _setter("maintenance_window_dow", maintenance_window_dow)
+            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
-            _setter("maintenance_window_time", maintenance_window_time)
+            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
         if project_vpc_id is not None:
-            _setter("project_vpc_id", project_vpc_id)
+            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_integrations is not None:
-            _setter("service_integrations", service_integrations)
+            pulumi.set(__self__, "service_integrations", service_integrations)
         if static_ips is not None:
-            _setter("static_ips", static_ips)
+            pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
     @pulumi.getter
@@ -373,168 +308,63 @@ class _CassandraState:
         :param pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
-        _CassandraState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_disk_space=additional_disk_space,
-            cassandra_user_config=cassandra_user_config,
-            cassandras=cassandras,
-            cloud_name=cloud_name,
-            components=components,
-            disk_space=disk_space,
-            disk_space_cap=disk_space_cap,
-            disk_space_default=disk_space_default,
-            disk_space_step=disk_space_step,
-            disk_space_used=disk_space_used,
-            maintenance_window_dow=maintenance_window_dow,
-            maintenance_window_time=maintenance_window_time,
-            plan=plan,
-            project=project,
-            project_vpc_id=project_vpc_id,
-            service_host=service_host,
-            service_integrations=service_integrations,
-            service_name=service_name,
-            service_password=service_password,
-            service_port=service_port,
-            service_type=service_type,
-            service_uri=service_uri,
-            service_username=service_username,
-            state=state,
-            static_ips=static_ips,
-            tags=tags,
-            termination_protection=termination_protection,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_disk_space: Optional[pulumi.Input[str]] = None,
-             cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
-             cassandras: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]]] = None,
-             cloud_name: Optional[pulumi.Input[str]] = None,
-             components: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]]] = None,
-             disk_space: Optional[pulumi.Input[str]] = None,
-             disk_space_cap: Optional[pulumi.Input[str]] = None,
-             disk_space_default: Optional[pulumi.Input[str]] = None,
-             disk_space_step: Optional[pulumi.Input[str]] = None,
-             disk_space_used: Optional[pulumi.Input[str]] = None,
-             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
-             maintenance_window_time: Optional[pulumi.Input[str]] = None,
-             plan: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             project_vpc_id: Optional[pulumi.Input[str]] = None,
-             service_host: Optional[pulumi.Input[str]] = None,
-             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             service_password: Optional[pulumi.Input[str]] = None,
-             service_port: Optional[pulumi.Input[int]] = None,
-             service_type: Optional[pulumi.Input[str]] = None,
-             service_uri: Optional[pulumi.Input[str]] = None,
-             service_username: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_disk_space is None and 'additionalDiskSpace' in kwargs:
-            additional_disk_space = kwargs['additionalDiskSpace']
-        if cassandra_user_config is None and 'cassandraUserConfig' in kwargs:
-            cassandra_user_config = kwargs['cassandraUserConfig']
-        if cloud_name is None and 'cloudName' in kwargs:
-            cloud_name = kwargs['cloudName']
-        if disk_space is None and 'diskSpace' in kwargs:
-            disk_space = kwargs['diskSpace']
-        if disk_space_cap is None and 'diskSpaceCap' in kwargs:
-            disk_space_cap = kwargs['diskSpaceCap']
-        if disk_space_default is None and 'diskSpaceDefault' in kwargs:
-            disk_space_default = kwargs['diskSpaceDefault']
-        if disk_space_step is None and 'diskSpaceStep' in kwargs:
-            disk_space_step = kwargs['diskSpaceStep']
-        if disk_space_used is None and 'diskSpaceUsed' in kwargs:
-            disk_space_used = kwargs['diskSpaceUsed']
-        if maintenance_window_dow is None and 'maintenanceWindowDow' in kwargs:
-            maintenance_window_dow = kwargs['maintenanceWindowDow']
-        if maintenance_window_time is None and 'maintenanceWindowTime' in kwargs:
-            maintenance_window_time = kwargs['maintenanceWindowTime']
-        if project_vpc_id is None and 'projectVpcId' in kwargs:
-            project_vpc_id = kwargs['projectVpcId']
-        if service_host is None and 'serviceHost' in kwargs:
-            service_host = kwargs['serviceHost']
-        if service_integrations is None and 'serviceIntegrations' in kwargs:
-            service_integrations = kwargs['serviceIntegrations']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_password is None and 'servicePassword' in kwargs:
-            service_password = kwargs['servicePassword']
-        if service_port is None and 'servicePort' in kwargs:
-            service_port = kwargs['servicePort']
-        if service_type is None and 'serviceType' in kwargs:
-            service_type = kwargs['serviceType']
-        if service_uri is None and 'serviceUri' in kwargs:
-            service_uri = kwargs['serviceUri']
-        if service_username is None and 'serviceUsername' in kwargs:
-            service_username = kwargs['serviceUsername']
-        if static_ips is None and 'staticIps' in kwargs:
-            static_ips = kwargs['staticIps']
-        if termination_protection is None and 'terminationProtection' in kwargs:
-            termination_protection = kwargs['terminationProtection']
-
         if additional_disk_space is not None:
-            _setter("additional_disk_space", additional_disk_space)
+            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cassandra_user_config is not None:
-            _setter("cassandra_user_config", cassandra_user_config)
+            pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cassandras is not None:
-            _setter("cassandras", cassandras)
+            pulumi.set(__self__, "cassandras", cassandras)
         if cloud_name is not None:
-            _setter("cloud_name", cloud_name)
+            pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
-            _setter("components", components)
+            pulumi.set(__self__, "components", components)
         if disk_space is not None:
             warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
-            _setter("disk_space", disk_space)
+            pulumi.set(__self__, "disk_space", disk_space)
         if disk_space_cap is not None:
-            _setter("disk_space_cap", disk_space_cap)
+            pulumi.set(__self__, "disk_space_cap", disk_space_cap)
         if disk_space_default is not None:
-            _setter("disk_space_default", disk_space_default)
+            pulumi.set(__self__, "disk_space_default", disk_space_default)
         if disk_space_step is not None:
-            _setter("disk_space_step", disk_space_step)
+            pulumi.set(__self__, "disk_space_step", disk_space_step)
         if disk_space_used is not None:
-            _setter("disk_space_used", disk_space_used)
+            pulumi.set(__self__, "disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
-            _setter("maintenance_window_dow", maintenance_window_dow)
+            pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
-            _setter("maintenance_window_time", maintenance_window_time)
+            pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
         if plan is not None:
-            _setter("plan", plan)
+            pulumi.set(__self__, "plan", plan)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if project_vpc_id is not None:
-            _setter("project_vpc_id", project_vpc_id)
+            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_host is not None:
-            _setter("service_host", service_host)
+            pulumi.set(__self__, "service_host", service_host)
         if service_integrations is not None:
-            _setter("service_integrations", service_integrations)
+            pulumi.set(__self__, "service_integrations", service_integrations)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if service_password is not None:
-            _setter("service_password", service_password)
+            pulumi.set(__self__, "service_password", service_password)
         if service_port is not None:
-            _setter("service_port", service_port)
+            pulumi.set(__self__, "service_port", service_port)
         if service_type is not None:
-            _setter("service_type", service_type)
+            pulumi.set(__self__, "service_type", service_type)
         if service_uri is not None:
-            _setter("service_uri", service_uri)
+            pulumi.set(__self__, "service_uri", service_uri)
         if service_username is not None:
-            _setter("service_username", service_username)
+            pulumi.set(__self__, "service_username", service_username)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if static_ips is not None:
-            _setter("static_ips", static_ips)
+            pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
@@ -977,10 +807,6 @@ class Cassandra(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CassandraArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1010,7 +836,6 @@ class Cassandra(pulumi.CustomResource):
             __props__ = CassandraArgs.__new__(CassandraArgs)
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
-            cassandra_user_config = _utilities.configure(cassandra_user_config, CassandraCassandraUserConfigArgs, True)
             __props__.__dict__["cassandra_user_config"] = cassandra_user_config
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
