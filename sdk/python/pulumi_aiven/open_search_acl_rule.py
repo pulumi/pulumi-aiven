@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OpenSearchAclRuleArgs', 'OpenSearchAclRule']
@@ -27,42 +27,11 @@ class OpenSearchAclRuleArgs:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        OpenSearchAclRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            index=index,
-            permission=permission,
-            project=project,
-            service_name=service_name,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             index: Optional[pulumi.Input[str]] = None,
-             permission: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if index is None:
-            raise TypeError("Missing 'index' argument")
-        if permission is None:
-            raise TypeError("Missing 'permission' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-
-        _setter("index", index)
-        _setter("permission", permission)
-        _setter("project", project)
-        _setter("service_name", service_name)
-        _setter("username", username)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -141,37 +110,16 @@ class _OpenSearchAclRuleState:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        _OpenSearchAclRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            index=index,
-            permission=permission,
-            project=project,
-            service_name=service_name,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             index: Optional[pulumi.Input[str]] = None,
-             permission: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if index is not None:
-            _setter("index", index)
+            pulumi.set(__self__, "index", index)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -405,10 +353,6 @@ class OpenSearchAclRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OpenSearchAclRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

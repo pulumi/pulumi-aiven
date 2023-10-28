@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OpenSearchAclConfigArgs', 'OpenSearchAclConfig']
@@ -25,37 +25,12 @@ class OpenSearchAclConfigArgs:
         :param pulumi.Input[bool] enabled: Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         """
-        OpenSearchAclConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            service_name=service_name,
-            enabled=enabled,
-            extended_acl=extended_acl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             extended_acl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if extended_acl is None and 'extendedAcl' in kwargs:
-            extended_acl = kwargs['extendedAcl']
-
-        _setter("project", project)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if extended_acl is not None:
-            _setter("extended_acl", extended_acl)
+            pulumi.set(__self__, "extended_acl", extended_acl)
 
     @property
     @pulumi.getter
@@ -120,35 +95,14 @@ class _OpenSearchAclConfigState:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        _OpenSearchAclConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            extended_acl=extended_acl,
-            project=project,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             extended_acl: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if extended_acl is None and 'extendedAcl' in kwargs:
-            extended_acl = kwargs['extendedAcl']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if extended_acl is not None:
-            _setter("extended_acl", extended_acl)
+            pulumi.set(__self__, "extended_acl", extended_acl)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter
@@ -300,10 +254,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OpenSearchAclConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
