@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The M3 DB data source provides information about the existing Aiven M3 services.
@@ -156,12 +155,6 @@ func (o LookupM3DbResultOutput) ToLookupM3DbResultOutput() LookupM3DbResultOutpu
 
 func (o LookupM3DbResultOutput) ToLookupM3DbResultOutputWithContext(ctx context.Context) LookupM3DbResultOutput {
 	return o
-}
-
-func (o LookupM3DbResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupM3DbResult] {
-	return pulumix.Output[LookupM3DbResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

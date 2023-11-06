@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch data source provides information about the existing Aiven OpenSearch service.
@@ -156,12 +155,6 @@ func (o LookupOpenSearchResultOutput) ToLookupOpenSearchResultOutput() LookupOpe
 
 func (o LookupOpenSearchResultOutput) ToLookupOpenSearchResultOutputWithContext(ctx context.Context) LookupOpenSearchResultOutput {
 	return o
-}
-
-func (o LookupOpenSearchResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpenSearchResult] {
-	return pulumix.Output[LookupOpenSearchResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

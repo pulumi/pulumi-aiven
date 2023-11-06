@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
@@ -189,12 +188,6 @@ func (i *AzurePrivatelink) ToAzurePrivatelinkOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePrivatelinkOutput)
 }
 
-func (i *AzurePrivatelink) ToOutput(ctx context.Context) pulumix.Output[*AzurePrivatelink] {
-	return pulumix.Output[*AzurePrivatelink]{
-		OutputState: i.ToAzurePrivatelinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzurePrivatelinkArrayInput is an input type that accepts AzurePrivatelinkArray and AzurePrivatelinkArrayOutput values.
 // You can construct a concrete instance of `AzurePrivatelinkArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i AzurePrivatelinkArray) ToAzurePrivatelinkArrayOutput() AzurePrivatelinkA
 
 func (i AzurePrivatelinkArray) ToAzurePrivatelinkArrayOutputWithContext(ctx context.Context) AzurePrivatelinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePrivatelinkArrayOutput)
-}
-
-func (i AzurePrivatelinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*AzurePrivatelink] {
-	return pulumix.Output[[]*AzurePrivatelink]{
-		OutputState: i.ToAzurePrivatelinkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AzurePrivatelinkMapInput is an input type that accepts AzurePrivatelinkMap and AzurePrivatelinkMapOutput values.
@@ -251,12 +238,6 @@ func (i AzurePrivatelinkMap) ToAzurePrivatelinkMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePrivatelinkMapOutput)
 }
 
-func (i AzurePrivatelinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzurePrivatelink] {
-	return pulumix.Output[map[string]*AzurePrivatelink]{
-		OutputState: i.ToAzurePrivatelinkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzurePrivatelinkOutput struct{ *pulumi.OutputState }
 
 func (AzurePrivatelinkOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o AzurePrivatelinkOutput) ToAzurePrivatelinkOutput() AzurePrivatelinkOutpu
 
 func (o AzurePrivatelinkOutput) ToAzurePrivatelinkOutputWithContext(ctx context.Context) AzurePrivatelinkOutput {
 	return o
-}
-
-func (o AzurePrivatelinkOutput) ToOutput(ctx context.Context) pulumix.Output[*AzurePrivatelink] {
-	return pulumix.Output[*AzurePrivatelink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Privatelink service alias
@@ -326,12 +301,6 @@ func (o AzurePrivatelinkArrayOutput) ToAzurePrivatelinkArrayOutputWithContext(ct
 	return o
 }
 
-func (o AzurePrivatelinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AzurePrivatelink] {
-	return pulumix.Output[[]*AzurePrivatelink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AzurePrivatelinkArrayOutput) Index(i pulumi.IntInput) AzurePrivatelinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzurePrivatelink {
 		return vs[0].([]*AzurePrivatelink)[vs[1].(int)]
@@ -350,12 +319,6 @@ func (o AzurePrivatelinkMapOutput) ToAzurePrivatelinkMapOutput() AzurePrivatelin
 
 func (o AzurePrivatelinkMapOutput) ToAzurePrivatelinkMapOutputWithContext(ctx context.Context) AzurePrivatelinkMapOutput {
 	return o
-}
-
-func (o AzurePrivatelinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzurePrivatelink] {
-	return pulumix.Output[map[string]*AzurePrivatelink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzurePrivatelinkMapOutput) MapIndex(k pulumi.StringInput) AzurePrivatelinkOutput {

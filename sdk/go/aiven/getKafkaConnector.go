@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka connector data source provides information about the existing Aiven Kafka connector.
@@ -129,12 +128,6 @@ func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutput() L
 
 func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutputWithContext(ctx context.Context) LookupKafkaConnectorResultOutput {
 	return o
-}
-
-func (o LookupKafkaConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaConnectorResult] {
-	return pulumix.Output[LookupKafkaConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kafka Connector configuration parameters.

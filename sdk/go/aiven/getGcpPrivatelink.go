@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupGcpPrivatelink(ctx *pulumi.Context, args *LookupGcpPrivatelinkArgs, opts ...pulumi.InvokeOption) (*LookupGcpPrivatelinkResult, error) {
@@ -75,12 +74,6 @@ func (o LookupGcpPrivatelinkResultOutput) ToLookupGcpPrivatelinkResultOutput() L
 
 func (o LookupGcpPrivatelinkResultOutput) ToLookupGcpPrivatelinkResultOutputWithContext(ctx context.Context) LookupGcpPrivatelinkResultOutput {
 	return o
-}
-
-func (o LookupGcpPrivatelinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGcpPrivatelinkResult] {
-	return pulumix.Output[LookupGcpPrivatelinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupGcpPrivatelinkResultOutput) GoogleServiceAttachment() pulumi.StringOutput {

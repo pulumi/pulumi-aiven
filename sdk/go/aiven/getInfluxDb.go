@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The InfluxDB data source provides information about the existing Aiven InfluxDB service.
@@ -156,12 +155,6 @@ func (o LookupInfluxDbResultOutput) ToLookupInfluxDbResultOutput() LookupInfluxD
 
 func (o LookupInfluxDbResultOutput) ToLookupInfluxDbResultOutputWithContext(ctx context.Context) LookupInfluxDbResultOutput {
 	return o
-}
-
-func (o LookupInfluxDbResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInfluxDbResult] {
-	return pulumix.Output[LookupInfluxDbResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

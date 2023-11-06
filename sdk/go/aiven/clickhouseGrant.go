@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
@@ -243,12 +242,6 @@ func (i *ClickhouseGrant) ToClickhouseGrantOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseGrantOutput)
 }
 
-func (i *ClickhouseGrant) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseGrant] {
-	return pulumix.Output[*ClickhouseGrant]{
-		OutputState: i.ToClickhouseGrantOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClickhouseGrantArrayInput is an input type that accepts ClickhouseGrantArray and ClickhouseGrantArrayOutput values.
 // You can construct a concrete instance of `ClickhouseGrantArrayInput` via:
 //
@@ -272,12 +265,6 @@ func (i ClickhouseGrantArray) ToClickhouseGrantArrayOutput() ClickhouseGrantArra
 
 func (i ClickhouseGrantArray) ToClickhouseGrantArrayOutputWithContext(ctx context.Context) ClickhouseGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseGrantArrayOutput)
-}
-
-func (i ClickhouseGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseGrant] {
-	return pulumix.Output[[]*ClickhouseGrant]{
-		OutputState: i.ToClickhouseGrantArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClickhouseGrantMapInput is an input type that accepts ClickhouseGrantMap and ClickhouseGrantMapOutput values.
@@ -305,12 +292,6 @@ func (i ClickhouseGrantMap) ToClickhouseGrantMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseGrantMapOutput)
 }
 
-func (i ClickhouseGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseGrant] {
-	return pulumix.Output[map[string]*ClickhouseGrant]{
-		OutputState: i.ToClickhouseGrantMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClickhouseGrantOutput struct{ *pulumi.OutputState }
 
 func (ClickhouseGrantOutput) ElementType() reflect.Type {
@@ -323,12 +304,6 @@ func (o ClickhouseGrantOutput) ToClickhouseGrantOutput() ClickhouseGrantOutput {
 
 func (o ClickhouseGrantOutput) ToClickhouseGrantOutputWithContext(ctx context.Context) ClickhouseGrantOutput {
 	return o
-}
-
-func (o ClickhouseGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*ClickhouseGrant] {
-	return pulumix.Output[*ClickhouseGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
@@ -375,12 +350,6 @@ func (o ClickhouseGrantArrayOutput) ToClickhouseGrantArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ClickhouseGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClickhouseGrant] {
-	return pulumix.Output[[]*ClickhouseGrant]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClickhouseGrantArrayOutput) Index(i pulumi.IntInput) ClickhouseGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClickhouseGrant {
 		return vs[0].([]*ClickhouseGrant)[vs[1].(int)]
@@ -399,12 +368,6 @@ func (o ClickhouseGrantMapOutput) ToClickhouseGrantMapOutput() ClickhouseGrantMa
 
 func (o ClickhouseGrantMapOutput) ToClickhouseGrantMapOutputWithContext(ctx context.Context) ClickhouseGrantMapOutput {
 	return o
-}
-
-func (o ClickhouseGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClickhouseGrant] {
-	return pulumix.Output[map[string]*ClickhouseGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClickhouseGrantMapOutput) MapIndex(k pulumi.StringInput) ClickhouseGrantOutput {

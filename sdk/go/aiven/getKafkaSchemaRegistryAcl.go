@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
@@ -99,12 +98,6 @@ func (o LookupKafkaSchemaRegistryAclResultOutput) ToLookupKafkaSchemaRegistryAcl
 
 func (o LookupKafkaSchemaRegistryAclResultOutput) ToLookupKafkaSchemaRegistryAclResultOutputWithContext(ctx context.Context) LookupKafkaSchemaRegistryAclResultOutput {
 	return o
-}
-
-func (o LookupKafkaSchemaRegistryAclResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaSchemaRegistryAclResult] {
-	return pulumix.Output[LookupKafkaSchemaRegistryAclResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kafka Schema Registry ACL ID

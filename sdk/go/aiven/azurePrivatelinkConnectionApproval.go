@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
@@ -144,12 +143,6 @@ func (i *AzurePrivatelinkConnectionApproval) ToAzurePrivatelinkConnectionApprova
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePrivatelinkConnectionApprovalOutput)
 }
 
-func (i *AzurePrivatelinkConnectionApproval) ToOutput(ctx context.Context) pulumix.Output[*AzurePrivatelinkConnectionApproval] {
-	return pulumix.Output[*AzurePrivatelinkConnectionApproval]{
-		OutputState: i.ToAzurePrivatelinkConnectionApprovalOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzurePrivatelinkConnectionApprovalArrayInput is an input type that accepts AzurePrivatelinkConnectionApprovalArray and AzurePrivatelinkConnectionApprovalArrayOutput values.
 // You can construct a concrete instance of `AzurePrivatelinkConnectionApprovalArrayInput` via:
 //
@@ -173,12 +166,6 @@ func (i AzurePrivatelinkConnectionApprovalArray) ToAzurePrivatelinkConnectionApp
 
 func (i AzurePrivatelinkConnectionApprovalArray) ToAzurePrivatelinkConnectionApprovalArrayOutputWithContext(ctx context.Context) AzurePrivatelinkConnectionApprovalArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePrivatelinkConnectionApprovalArrayOutput)
-}
-
-func (i AzurePrivatelinkConnectionApprovalArray) ToOutput(ctx context.Context) pulumix.Output[[]*AzurePrivatelinkConnectionApproval] {
-	return pulumix.Output[[]*AzurePrivatelinkConnectionApproval]{
-		OutputState: i.ToAzurePrivatelinkConnectionApprovalArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AzurePrivatelinkConnectionApprovalMapInput is an input type that accepts AzurePrivatelinkConnectionApprovalMap and AzurePrivatelinkConnectionApprovalMapOutput values.
@@ -206,12 +193,6 @@ func (i AzurePrivatelinkConnectionApprovalMap) ToAzurePrivatelinkConnectionAppro
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePrivatelinkConnectionApprovalMapOutput)
 }
 
-func (i AzurePrivatelinkConnectionApprovalMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzurePrivatelinkConnectionApproval] {
-	return pulumix.Output[map[string]*AzurePrivatelinkConnectionApproval]{
-		OutputState: i.ToAzurePrivatelinkConnectionApprovalMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzurePrivatelinkConnectionApprovalOutput struct{ *pulumi.OutputState }
 
 func (AzurePrivatelinkConnectionApprovalOutput) ElementType() reflect.Type {
@@ -224,12 +205,6 @@ func (o AzurePrivatelinkConnectionApprovalOutput) ToAzurePrivatelinkConnectionAp
 
 func (o AzurePrivatelinkConnectionApprovalOutput) ToAzurePrivatelinkConnectionApprovalOutputWithContext(ctx context.Context) AzurePrivatelinkConnectionApprovalOutput {
 	return o
-}
-
-func (o AzurePrivatelinkConnectionApprovalOutput) ToOutput(ctx context.Context) pulumix.Output[*AzurePrivatelinkConnectionApproval] {
-	return pulumix.Output[*AzurePrivatelinkConnectionApproval]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP address of Azure private endpoint
@@ -271,12 +246,6 @@ func (o AzurePrivatelinkConnectionApprovalArrayOutput) ToAzurePrivatelinkConnect
 	return o
 }
 
-func (o AzurePrivatelinkConnectionApprovalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AzurePrivatelinkConnectionApproval] {
-	return pulumix.Output[[]*AzurePrivatelinkConnectionApproval]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AzurePrivatelinkConnectionApprovalArrayOutput) Index(i pulumi.IntInput) AzurePrivatelinkConnectionApprovalOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzurePrivatelinkConnectionApproval {
 		return vs[0].([]*AzurePrivatelinkConnectionApproval)[vs[1].(int)]
@@ -295,12 +264,6 @@ func (o AzurePrivatelinkConnectionApprovalMapOutput) ToAzurePrivatelinkConnectio
 
 func (o AzurePrivatelinkConnectionApprovalMapOutput) ToAzurePrivatelinkConnectionApprovalMapOutputWithContext(ctx context.Context) AzurePrivatelinkConnectionApprovalMapOutput {
 	return o
-}
-
-func (o AzurePrivatelinkConnectionApprovalMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzurePrivatelinkConnectionApproval] {
-	return pulumix.Output[map[string]*AzurePrivatelinkConnectionApproval]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzurePrivatelinkConnectionApprovalMapOutput) MapIndex(k pulumi.StringInput) AzurePrivatelinkConnectionApprovalOutput {

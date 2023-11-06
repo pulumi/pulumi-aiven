@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
@@ -81,12 +80,6 @@ func (o LookupOrganizationalUnitResultOutput) ToLookupOrganizationalUnitResultOu
 
 func (o LookupOrganizationalUnitResultOutput) ToLookupOrganizationalUnitResultOutputWithContext(ctx context.Context) LookupOrganizationalUnitResultOutput {
 	return o
-}
-
-func (o LookupOrganizationalUnitResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationalUnitResult] {
-	return pulumix.Output[LookupOrganizationalUnitResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of creation

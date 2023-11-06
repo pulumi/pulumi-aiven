@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
@@ -119,12 +118,6 @@ func (o LookupClickhouseUserResultOutput) ToLookupClickhouseUserResultOutput() L
 
 func (o LookupClickhouseUserResultOutput) ToLookupClickhouseUserResultOutputWithContext(ctx context.Context) LookupClickhouseUserResultOutput {
 	return o
-}
-
-func (o LookupClickhouseUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClickhouseUserResult] {
-	return pulumix.Output[LookupClickhouseUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

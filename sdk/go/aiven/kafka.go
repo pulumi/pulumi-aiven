@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka resource allows the creation and management of Aiven Kafka services.
@@ -413,12 +412,6 @@ func (i *Kafka) ToKafkaOutputWithContext(ctx context.Context) KafkaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaOutput)
 }
 
-func (i *Kafka) ToOutput(ctx context.Context) pulumix.Output[*Kafka] {
-	return pulumix.Output[*Kafka]{
-		OutputState: i.ToKafkaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaArrayInput is an input type that accepts KafkaArray and KafkaArrayOutput values.
 // You can construct a concrete instance of `KafkaArrayInput` via:
 //
@@ -442,12 +435,6 @@ func (i KafkaArray) ToKafkaArrayOutput() KafkaArrayOutput {
 
 func (i KafkaArray) ToKafkaArrayOutputWithContext(ctx context.Context) KafkaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaArrayOutput)
-}
-
-func (i KafkaArray) ToOutput(ctx context.Context) pulumix.Output[[]*Kafka] {
-	return pulumix.Output[[]*Kafka]{
-		OutputState: i.ToKafkaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaMapInput is an input type that accepts KafkaMap and KafkaMapOutput values.
@@ -475,12 +462,6 @@ func (i KafkaMap) ToKafkaMapOutputWithContext(ctx context.Context) KafkaMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMapOutput)
 }
 
-func (i KafkaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Kafka] {
-	return pulumix.Output[map[string]*Kafka]{
-		OutputState: i.ToKafkaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaOutput struct{ *pulumi.OutputState }
 
 func (KafkaOutput) ElementType() reflect.Type {
@@ -493,12 +474,6 @@ func (o KafkaOutput) ToKafkaOutput() KafkaOutput {
 
 func (o KafkaOutput) ToKafkaOutputWithContext(ctx context.Context) KafkaOutput {
 	return o
-}
-
-func (o KafkaOutput) ToOutput(ctx context.Context) pulumix.Output[*Kafka] {
-	return pulumix.Output[*Kafka]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -664,12 +639,6 @@ func (o KafkaArrayOutput) ToKafkaArrayOutputWithContext(ctx context.Context) Kaf
 	return o
 }
 
-func (o KafkaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Kafka] {
-	return pulumix.Output[[]*Kafka]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaArrayOutput) Index(i pulumi.IntInput) KafkaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Kafka {
 		return vs[0].([]*Kafka)[vs[1].(int)]
@@ -688,12 +657,6 @@ func (o KafkaMapOutput) ToKafkaMapOutput() KafkaMapOutput {
 
 func (o KafkaMapOutput) ToKafkaMapOutputWithContext(ctx context.Context) KafkaMapOutput {
 	return o
-}
-
-func (o KafkaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Kafka] {
-	return pulumix.Output[map[string]*Kafka]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaMapOutput) MapIndex(k pulumi.StringInput) KafkaOutput {

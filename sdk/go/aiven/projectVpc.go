@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Project VPC resource allows the creation and management of Aiven Project VPCs.
@@ -141,12 +140,6 @@ func (i *ProjectVpc) ToProjectVpcOutputWithContext(ctx context.Context) ProjectV
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcOutput)
 }
 
-func (i *ProjectVpc) ToOutput(ctx context.Context) pulumix.Output[*ProjectVpc] {
-	return pulumix.Output[*ProjectVpc]{
-		OutputState: i.ToProjectVpcOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectVpcArrayInput is an input type that accepts ProjectVpcArray and ProjectVpcArrayOutput values.
 // You can construct a concrete instance of `ProjectVpcArrayInput` via:
 //
@@ -170,12 +163,6 @@ func (i ProjectVpcArray) ToProjectVpcArrayOutput() ProjectVpcArrayOutput {
 
 func (i ProjectVpcArray) ToProjectVpcArrayOutputWithContext(ctx context.Context) ProjectVpcArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcArrayOutput)
-}
-
-func (i ProjectVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectVpc] {
-	return pulumix.Output[[]*ProjectVpc]{
-		OutputState: i.ToProjectVpcArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectVpcMapInput is an input type that accepts ProjectVpcMap and ProjectVpcMapOutput values.
@@ -203,12 +190,6 @@ func (i ProjectVpcMap) ToProjectVpcMapOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcMapOutput)
 }
 
-func (i ProjectVpcMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectVpc] {
-	return pulumix.Output[map[string]*ProjectVpc]{
-		OutputState: i.ToProjectVpcMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectVpcOutput struct{ *pulumi.OutputState }
 
 func (ProjectVpcOutput) ElementType() reflect.Type {
@@ -221,12 +202,6 @@ func (o ProjectVpcOutput) ToProjectVpcOutput() ProjectVpcOutput {
 
 func (o ProjectVpcOutput) ToProjectVpcOutputWithContext(ctx context.Context) ProjectVpcOutput {
 	return o
-}
-
-func (o ProjectVpcOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectVpc] {
-	return pulumix.Output[*ProjectVpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
@@ -263,12 +238,6 @@ func (o ProjectVpcArrayOutput) ToProjectVpcArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ProjectVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectVpc] {
-	return pulumix.Output[[]*ProjectVpc]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectVpcArrayOutput) Index(i pulumi.IntInput) ProjectVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectVpc {
 		return vs[0].([]*ProjectVpc)[vs[1].(int)]
@@ -287,12 +256,6 @@ func (o ProjectVpcMapOutput) ToProjectVpcMapOutput() ProjectVpcMapOutput {
 
 func (o ProjectVpcMapOutput) ToProjectVpcMapOutputWithContext(ctx context.Context) ProjectVpcMapOutput {
 	return o
-}
-
-func (o ProjectVpcMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectVpc] {
-	return pulumix.Output[map[string]*ProjectVpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectVpcMapOutput) MapIndex(k pulumi.StringInput) ProjectVpcOutput {

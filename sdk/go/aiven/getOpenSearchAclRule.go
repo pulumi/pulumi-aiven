@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
@@ -126,12 +125,6 @@ func (o LookupOpenSearchAclRuleResultOutput) ToLookupOpenSearchAclRuleResultOutp
 
 func (o LookupOpenSearchAclRuleResultOutput) ToLookupOpenSearchAclRuleResultOutputWithContext(ctx context.Context) LookupOpenSearchAclRuleResultOutput {
 	return o
-}
-
-func (o LookupOpenSearchAclRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpenSearchAclRuleResult] {
-	return pulumix.Output[LookupOpenSearchAclRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
