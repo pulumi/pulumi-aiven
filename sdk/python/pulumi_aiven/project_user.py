@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectUserArgs', 'ProjectUser']
@@ -23,9 +23,32 @@ class ProjectUserArgs:
         :param pulumi.Input[str] member_type: Project membership type. The possible values are `admin`, `developer` and `operator`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "member_type", member_type)
-        pulumi.set(__self__, "project", project)
+        ProjectUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            member_type=member_type,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             member_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if member_type is None and 'memberType' in kwargs:
+            member_type = kwargs['memberType']
+        if member_type is None:
+            raise TypeError("Missing 'member_type' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("email", email)
+        _setter("member_type", member_type)
+        _setter("project", project)
 
     @property
     @pulumi.getter
@@ -78,14 +101,33 @@ class _ProjectUserState:
         :param pulumi.Input[str] member_type: Project membership type. The possible values are `admin`, `developer` and `operator`.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _ProjectUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepted=accepted,
+            email=email,
+            member_type=member_type,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepted: Optional[pulumi.Input[bool]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             member_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member_type is None and 'memberType' in kwargs:
+            member_type = kwargs['memberType']
+
         if accepted is not None:
-            pulumi.set(__self__, "accepted", accepted)
+            _setter("accepted", accepted)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if member_type is not None:
-            pulumi.set(__self__, "member_type", member_type)
+            _setter("member_type", member_type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -209,6 +251,10 @@ class ProjectUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

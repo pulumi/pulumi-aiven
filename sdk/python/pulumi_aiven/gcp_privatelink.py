@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GcpPrivatelinkArgs', 'GcpPrivatelink']
@@ -23,8 +23,27 @@ class GcpPrivatelinkArgs:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
                variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        GcpPrivatelinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
+        _setter("project", project)
+        _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -71,16 +90,39 @@ class _GcpPrivatelinkState:
                variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] state: Privatelink resource state
         """
+        _GcpPrivatelinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            google_service_attachment=google_service_attachment,
+            message=message,
+            project=project,
+            service_name=service_name,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             google_service_attachment: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if google_service_attachment is None and 'googleServiceAttachment' in kwargs:
+            google_service_attachment = kwargs['googleServiceAttachment']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if google_service_attachment is not None:
-            pulumi.set(__self__, "google_service_attachment", google_service_attachment)
+            _setter("google_service_attachment", google_service_attachment)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="googleServiceAttachment")
@@ -180,6 +222,10 @@ class GcpPrivatelink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GcpPrivatelinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

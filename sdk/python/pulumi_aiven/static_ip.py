@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['StaticIpArgs', 'StaticIp']
@@ -21,8 +21,27 @@ class StaticIpArgs:
         :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "cloud_name", cloud_name)
-        pulumi.set(__self__, "project", project)
+        StaticIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_name=cloud_name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if cloud_name is None:
+            raise TypeError("Missing 'cloud_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("cloud_name", cloud_name)
+        _setter("project", project)
 
     @property
     @pulumi.getter(name="cloudName")
@@ -67,18 +86,47 @@ class _StaticIpState:
         :param pulumi.Input[str] state: The state the static ip is in.
         :param pulumi.Input[str] static_ip_address_id: The static ip id of the resource. Should be used as a reference elsewhere.
         """
+        _StaticIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_name=cloud_name,
+            ip_address=ip_address,
+            project=project,
+            service_name=service_name,
+            state=state,
+            static_ip_address_id=static_ip_address_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_name: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             static_ip_address_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_name is None and 'cloudName' in kwargs:
+            cloud_name = kwargs['cloudName']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if static_ip_address_id is None and 'staticIpAddressId' in kwargs:
+            static_ip_address_id = kwargs['staticIpAddressId']
+
         if cloud_name is not None:
-            pulumi.set(__self__, "cloud_name", cloud_name)
+            _setter("cloud_name", cloud_name)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if static_ip_address_id is not None:
-            pulumi.set(__self__, "static_ip_address_id", static_ip_address_id)
+            _setter("static_ip_address_id", static_ip_address_id)
 
     @property
     @pulumi.getter(name="cloudName")
@@ -188,6 +236,10 @@ class StaticIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StaticIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

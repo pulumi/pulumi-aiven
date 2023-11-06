@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PgUserArgs', 'PgUser']
@@ -27,13 +27,42 @@ class PgUserArgs:
         :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
         :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "username", username)
+        PgUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+            username=username,
+            password=password,
+            pg_allow_replication=pg_allow_replication,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             pg_allow_replication: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if pg_allow_replication is None and 'pgAllowReplication' in kwargs:
+            pg_allow_replication = kwargs['pgAllowReplication']
+
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("username", username)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if pg_allow_replication is not None:
-            pulumi.set(__self__, "pg_allow_replication", pg_allow_replication)
+            _setter("pg_allow_replication", pg_allow_replication)
 
     @property
     @pulumi.getter
@@ -118,22 +147,55 @@ class _PgUserState:
         :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
         :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _PgUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_cert=access_cert,
+            access_key=access_key,
+            password=password,
+            pg_allow_replication=pg_allow_replication,
+            project=project,
+            service_name=service_name,
+            type=type,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_cert: Optional[pulumi.Input[str]] = None,
+             access_key: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             pg_allow_replication: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_cert is None and 'accessCert' in kwargs:
+            access_cert = kwargs['accessCert']
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if pg_allow_replication is None and 'pgAllowReplication' in kwargs:
+            pg_allow_replication = kwargs['pgAllowReplication']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if access_cert is not None:
-            pulumi.set(__self__, "access_cert", access_cert)
+            _setter("access_cert", access_cert)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if pg_allow_replication is not None:
-            pulumi.set(__self__, "pg_allow_replication", pg_allow_replication)
+            _setter("pg_allow_replication", pg_allow_replication)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="accessCert")
@@ -311,6 +373,10 @@ class PgUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PgUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

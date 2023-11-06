@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,47 @@ class ClickhouseGrantArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        ClickhouseGrantArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+            privilege_grants=privilege_grants,
+            role=role,
+            role_grants=role_grants,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if privilege_grants is None and 'privilegeGrants' in kwargs:
+            privilege_grants = kwargs['privilegeGrants']
+        if role_grants is None and 'roleGrants' in kwargs:
+            role_grants = kwargs['roleGrants']
+
+        _setter("project", project)
+        _setter("service_name", service_name)
         if privilege_grants is not None:
-            pulumi.set(__self__, "privilege_grants", privilege_grants)
+            _setter("privilege_grants", privilege_grants)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if role_grants is not None:
-            pulumi.set(__self__, "role_grants", role_grants)
+            _setter("role_grants", role_grants)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -133,18 +164,45 @@ class _ClickhouseGrantState:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _ClickhouseGrantState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            privilege_grants=privilege_grants,
+            project=project,
+            role=role,
+            role_grants=role_grants,
+            service_name=service_name,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if privilege_grants is None and 'privilegeGrants' in kwargs:
+            privilege_grants = kwargs['privilegeGrants']
+        if role_grants is None and 'roleGrants' in kwargs:
+            role_grants = kwargs['roleGrants']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if privilege_grants is not None:
-            pulumi.set(__self__, "privilege_grants", privilege_grants)
+            _setter("privilege_grants", privilege_grants)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if role_grants is not None:
-            pulumi.set(__self__, "role_grants", role_grants)
+            _setter("role_grants", role_grants)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="privilegeGrants")
@@ -364,6 +422,10 @@ class ClickhouseGrant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClickhouseGrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

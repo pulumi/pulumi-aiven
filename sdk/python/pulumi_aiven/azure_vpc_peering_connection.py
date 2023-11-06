@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AzureVpcPeeringConnectionArgs', 'AzureVpcPeeringConnection']
@@ -29,12 +29,57 @@ class AzureVpcPeeringConnectionArgs:
         :param pulumi.Input[str] vnet_name: Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "azure_subscription_id", azure_subscription_id)
-        pulumi.set(__self__, "peer_azure_app_id", peer_azure_app_id)
-        pulumi.set(__self__, "peer_azure_tenant_id", peer_azure_tenant_id)
-        pulumi.set(__self__, "peer_resource_group", peer_resource_group)
-        pulumi.set(__self__, "vnet_name", vnet_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        AzureVpcPeeringConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            azure_subscription_id=azure_subscription_id,
+            peer_azure_app_id=peer_azure_app_id,
+            peer_azure_tenant_id=peer_azure_tenant_id,
+            peer_resource_group=peer_resource_group,
+            vnet_name=vnet_name,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             azure_subscription_id: Optional[pulumi.Input[str]] = None,
+             peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+             peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+             peer_resource_group: Optional[pulumi.Input[str]] = None,
+             vnet_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if azure_subscription_id is None and 'azureSubscriptionId' in kwargs:
+            azure_subscription_id = kwargs['azureSubscriptionId']
+        if azure_subscription_id is None:
+            raise TypeError("Missing 'azure_subscription_id' argument")
+        if peer_azure_app_id is None and 'peerAzureAppId' in kwargs:
+            peer_azure_app_id = kwargs['peerAzureAppId']
+        if peer_azure_app_id is None:
+            raise TypeError("Missing 'peer_azure_app_id' argument")
+        if peer_azure_tenant_id is None and 'peerAzureTenantId' in kwargs:
+            peer_azure_tenant_id = kwargs['peerAzureTenantId']
+        if peer_azure_tenant_id is None:
+            raise TypeError("Missing 'peer_azure_tenant_id' argument")
+        if peer_resource_group is None and 'peerResourceGroup' in kwargs:
+            peer_resource_group = kwargs['peerResourceGroup']
+        if peer_resource_group is None:
+            raise TypeError("Missing 'peer_resource_group' argument")
+        if vnet_name is None and 'vnetName' in kwargs:
+            vnet_name = kwargs['vnetName']
+        if vnet_name is None:
+            raise TypeError("Missing 'vnet_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
+        _setter("azure_subscription_id", azure_subscription_id)
+        _setter("peer_azure_app_id", peer_azure_app_id)
+        _setter("peer_azure_tenant_id", peer_azure_tenant_id)
+        _setter("peer_resource_group", peer_resource_group)
+        _setter("vnet_name", vnet_name)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="azureSubscriptionId")
@@ -133,24 +178,67 @@ class _AzureVpcPeeringConnectionState:
         :param pulumi.Input[str] vnet_name: Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _AzureVpcPeeringConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            azure_subscription_id=azure_subscription_id,
+            peer_azure_app_id=peer_azure_app_id,
+            peer_azure_tenant_id=peer_azure_tenant_id,
+            peer_resource_group=peer_resource_group,
+            peering_connection_id=peering_connection_id,
+            state=state,
+            state_info=state_info,
+            vnet_name=vnet_name,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             azure_subscription_id: Optional[pulumi.Input[str]] = None,
+             peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+             peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+             peer_resource_group: Optional[pulumi.Input[str]] = None,
+             peering_connection_id: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vnet_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if azure_subscription_id is None and 'azureSubscriptionId' in kwargs:
+            azure_subscription_id = kwargs['azureSubscriptionId']
+        if peer_azure_app_id is None and 'peerAzureAppId' in kwargs:
+            peer_azure_app_id = kwargs['peerAzureAppId']
+        if peer_azure_tenant_id is None and 'peerAzureTenantId' in kwargs:
+            peer_azure_tenant_id = kwargs['peerAzureTenantId']
+        if peer_resource_group is None and 'peerResourceGroup' in kwargs:
+            peer_resource_group = kwargs['peerResourceGroup']
+        if peering_connection_id is None and 'peeringConnectionId' in kwargs:
+            peering_connection_id = kwargs['peeringConnectionId']
+        if state_info is None and 'stateInfo' in kwargs:
+            state_info = kwargs['stateInfo']
+        if vnet_name is None and 'vnetName' in kwargs:
+            vnet_name = kwargs['vnetName']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if azure_subscription_id is not None:
-            pulumi.set(__self__, "azure_subscription_id", azure_subscription_id)
+            _setter("azure_subscription_id", azure_subscription_id)
         if peer_azure_app_id is not None:
-            pulumi.set(__self__, "peer_azure_app_id", peer_azure_app_id)
+            _setter("peer_azure_app_id", peer_azure_app_id)
         if peer_azure_tenant_id is not None:
-            pulumi.set(__self__, "peer_azure_tenant_id", peer_azure_tenant_id)
+            _setter("peer_azure_tenant_id", peer_azure_tenant_id)
         if peer_resource_group is not None:
-            pulumi.set(__self__, "peer_resource_group", peer_resource_group)
+            _setter("peer_resource_group", peer_resource_group)
         if peering_connection_id is not None:
-            pulumi.set(__self__, "peering_connection_id", peering_connection_id)
+            _setter("peering_connection_id", peering_connection_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_info is not None:
-            pulumi.set(__self__, "state_info", state_info)
+            _setter("state_info", state_info)
         if vnet_name is not None:
-            pulumi.set(__self__, "vnet_name", vnet_name)
+            _setter("vnet_name", vnet_name)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="azureSubscriptionId")
@@ -346,6 +434,10 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AzureVpcPeeringConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

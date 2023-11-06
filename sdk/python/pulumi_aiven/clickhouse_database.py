@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClickhouseDatabaseArgs', 'ClickhouseDatabase']
@@ -27,12 +27,37 @@ class ClickhouseDatabaseArgs:
                Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
                default value is `false`.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
+        ClickhouseDatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+            name=name,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
+        _setter("project", project)
+        _setter("service_name", service_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter
@@ -101,14 +126,35 @@ class _ClickhouseDatabaseState:
                Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
                default value is `false`.
         """
+        _ClickhouseDatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            project=project,
+            service_name=service_name,
+            termination_protection=termination_protection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if termination_protection is None and 'terminationProtection' in kwargs:
+            termination_protection = kwargs['terminationProtection']
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
 
     @property
     @pulumi.getter
@@ -236,6 +282,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClickhouseDatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

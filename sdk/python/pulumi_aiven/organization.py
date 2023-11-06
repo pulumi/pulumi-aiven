@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,10 +22,23 @@ class OrganizationArgs:
         The set of arguments for constructing a Organization resource.
         :param pulumi.Input[str] name: Name of the organization.
         """
+        OrganizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            timeouts=timeouts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if timeouts is not None:
-            pulumi.set(__self__, "timeouts", timeouts)
+            _setter("timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -64,16 +77,41 @@ class _OrganizationState:
         :param pulumi.Input[str] tenant_id: Tenant identifier of the organization.
         :param pulumi.Input[str] update_time: Timestamp of the last update of the organization.
         """
+        _OrganizationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            name=name,
+            tenant_id=tenant_id,
+            timeouts=timeouts,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if timeouts is not None:
-            pulumi.set(__self__, "timeouts", timeouts)
+            _setter("timeouts", timeouts)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -197,6 +235,10 @@ class Organization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -214,6 +256,11 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["name"] = name
+            if timeouts is not None and not isinstance(timeouts, OrganizationTimeoutsArgs):
+                timeouts = timeouts or {}
+                def _setter(key, value):
+                    timeouts[key] = value
+                OrganizationTimeoutsArgs._configure(_setter, **timeouts)
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["create_time"] = None
             __props__.__dict__["tenant_id"] = None

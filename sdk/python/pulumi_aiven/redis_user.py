@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RedisUserArgs', 'RedisUser']
@@ -33,19 +33,60 @@ class RedisUserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "username", username)
+        RedisUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            service_name=service_name,
+            username=username,
+            password=password,
+            redis_acl_categories=redis_acl_categories,
+            redis_acl_channels=redis_acl_channels,
+            redis_acl_commands=redis_acl_commands,
+            redis_acl_keys=redis_acl_keys,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if redis_acl_categories is None and 'redisAclCategories' in kwargs:
+            redis_acl_categories = kwargs['redisAclCategories']
+        if redis_acl_channels is None and 'redisAclChannels' in kwargs:
+            redis_acl_channels = kwargs['redisAclChannels']
+        if redis_acl_commands is None and 'redisAclCommands' in kwargs:
+            redis_acl_commands = kwargs['redisAclCommands']
+        if redis_acl_keys is None and 'redisAclKeys' in kwargs:
+            redis_acl_keys = kwargs['redisAclKeys']
+
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("username", username)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if redis_acl_categories is not None:
-            pulumi.set(__self__, "redis_acl_categories", redis_acl_categories)
+            _setter("redis_acl_categories", redis_acl_categories)
         if redis_acl_channels is not None:
-            pulumi.set(__self__, "redis_acl_channels", redis_acl_channels)
+            _setter("redis_acl_channels", redis_acl_channels)
         if redis_acl_commands is not None:
-            pulumi.set(__self__, "redis_acl_commands", redis_acl_commands)
+            _setter("redis_acl_commands", redis_acl_commands)
         if redis_acl_keys is not None:
-            pulumi.set(__self__, "redis_acl_keys", redis_acl_keys)
+            _setter("redis_acl_keys", redis_acl_keys)
 
     @property
     @pulumi.getter
@@ -168,24 +209,61 @@ class _RedisUserState:
         :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
         :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _RedisUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            project=project,
+            redis_acl_categories=redis_acl_categories,
+            redis_acl_channels=redis_acl_channels,
+            redis_acl_commands=redis_acl_commands,
+            redis_acl_keys=redis_acl_keys,
+            service_name=service_name,
+            type=type,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redis_acl_categories is None and 'redisAclCategories' in kwargs:
+            redis_acl_categories = kwargs['redisAclCategories']
+        if redis_acl_channels is None and 'redisAclChannels' in kwargs:
+            redis_acl_channels = kwargs['redisAclChannels']
+        if redis_acl_commands is None and 'redisAclCommands' in kwargs:
+            redis_acl_commands = kwargs['redisAclCommands']
+        if redis_acl_keys is None and 'redisAclKeys' in kwargs:
+            redis_acl_keys = kwargs['redisAclKeys']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if redis_acl_categories is not None:
-            pulumi.set(__self__, "redis_acl_categories", redis_acl_categories)
+            _setter("redis_acl_categories", redis_acl_categories)
         if redis_acl_channels is not None:
-            pulumi.set(__self__, "redis_acl_channels", redis_acl_channels)
+            _setter("redis_acl_channels", redis_acl_channels)
         if redis_acl_commands is not None:
-            pulumi.set(__self__, "redis_acl_commands", redis_acl_commands)
+            _setter("redis_acl_commands", redis_acl_commands)
         if redis_acl_keys is not None:
-            pulumi.set(__self__, "redis_acl_keys", redis_acl_keys)
+            _setter("redis_acl_keys", redis_acl_keys)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -381,6 +459,10 @@ class RedisUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RedisUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

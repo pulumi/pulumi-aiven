@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GcpVpcPeeringConnectionArgs', 'GcpVpcPeeringConnection']
@@ -23,9 +23,36 @@ class GcpVpcPeeringConnectionArgs:
         :param pulumi.Input[str] peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
-        pulumi.set(__self__, "peer_vpc", peer_vpc)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GcpVpcPeeringConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gcp_project_id=gcp_project_id,
+            peer_vpc=peer_vpc,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gcp_project_id: Optional[pulumi.Input[str]] = None,
+             peer_vpc: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_project_id is None and 'gcpProjectId' in kwargs:
+            gcp_project_id = kwargs['gcpProjectId']
+        if gcp_project_id is None:
+            raise TypeError("Missing 'gcp_project_id' argument")
+        if peer_vpc is None and 'peerVpc' in kwargs:
+            peer_vpc = kwargs['peerVpc']
+        if peer_vpc is None:
+            raise TypeError("Missing 'peer_vpc' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
+        _setter("gcp_project_id", gcp_project_id)
+        _setter("peer_vpc", peer_vpc)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="gcpProjectId")
@@ -82,18 +109,49 @@ class _GcpVpcPeeringConnectionState:
         :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _GcpVpcPeeringConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gcp_project_id=gcp_project_id,
+            peer_vpc=peer_vpc,
+            self_link=self_link,
+            state=state,
+            state_info=state_info,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gcp_project_id: Optional[pulumi.Input[str]] = None,
+             peer_vpc: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_project_id is None and 'gcpProjectId' in kwargs:
+            gcp_project_id = kwargs['gcpProjectId']
+        if peer_vpc is None and 'peerVpc' in kwargs:
+            peer_vpc = kwargs['peerVpc']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if state_info is None and 'stateInfo' in kwargs:
+            state_info = kwargs['stateInfo']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if gcp_project_id is not None:
-            pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+            _setter("gcp_project_id", gcp_project_id)
         if peer_vpc is not None:
-            pulumi.set(__self__, "peer_vpc", peer_vpc)
+            _setter("peer_vpc", peer_vpc)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_info is not None:
-            pulumi.set(__self__, "state_info", state_info)
+            _setter("state_info", state_info)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="gcpProjectId")
@@ -241,6 +299,10 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GcpVpcPeeringConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['KafkaAclArgs', 'KafkaAcl']
@@ -27,11 +27,42 @@ class KafkaAclArgs:
         :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         """
-        pulumi.set(__self__, "permission", permission)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "topic", topic)
-        pulumi.set(__self__, "username", username)
+        KafkaAclArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            project=project,
+            service_name=service_name,
+            topic=topic,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
+        _setter("permission", permission)
+        _setter("project", project)
+        _setter("service_name", service_name)
+        _setter("topic", topic)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -112,18 +143,43 @@ class _KafkaAclState:
         :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         """
+        _KafkaAclState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            permission=permission,
+            project=project,
+            service_name=service_name,
+            topic=topic,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             permission: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_id is None and 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
+            _setter("acl_id", acl_id)
         if permission is not None:
-            pulumi.set(__self__, "permission", permission)
+            _setter("permission", permission)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="aclId")
@@ -279,6 +335,10 @@ class KafkaAcl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KafkaAclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
