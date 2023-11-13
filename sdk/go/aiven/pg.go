@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The PG resource allows the creation and management of Aiven PostgreSQL services.
@@ -339,12 +338,6 @@ func (i *Pg) ToPgOutputWithContext(ctx context.Context) PgOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgOutput)
 }
 
-func (i *Pg) ToOutput(ctx context.Context) pulumix.Output[*Pg] {
-	return pulumix.Output[*Pg]{
-		OutputState: i.ToPgOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PgArrayInput is an input type that accepts PgArray and PgArrayOutput values.
 // You can construct a concrete instance of `PgArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i PgArray) ToPgArrayOutput() PgArrayOutput {
 
 func (i PgArray) ToPgArrayOutputWithContext(ctx context.Context) PgArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgArrayOutput)
-}
-
-func (i PgArray) ToOutput(ctx context.Context) pulumix.Output[[]*Pg] {
-	return pulumix.Output[[]*Pg]{
-		OutputState: i.ToPgArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PgMapInput is an input type that accepts PgMap and PgMapOutput values.
@@ -401,12 +388,6 @@ func (i PgMap) ToPgMapOutputWithContext(ctx context.Context) PgMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PgMapOutput)
 }
 
-func (i PgMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Pg] {
-	return pulumix.Output[map[string]*Pg]{
-		OutputState: i.ToPgMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PgOutput struct{ *pulumi.OutputState }
 
 func (PgOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o PgOutput) ToPgOutput() PgOutput {
 
 func (o PgOutput) ToPgOutputWithContext(ctx context.Context) PgOutput {
 	return o
-}
-
-func (o PgOutput) ToOutput(ctx context.Context) pulumix.Output[*Pg] {
-	return pulumix.Output[*Pg]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -578,12 +553,6 @@ func (o PgArrayOutput) ToPgArrayOutputWithContext(ctx context.Context) PgArrayOu
 	return o
 }
 
-func (o PgArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Pg] {
-	return pulumix.Output[[]*Pg]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PgArrayOutput) Index(i pulumi.IntInput) PgOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Pg {
 		return vs[0].([]*Pg)[vs[1].(int)]
@@ -602,12 +571,6 @@ func (o PgMapOutput) ToPgMapOutput() PgMapOutput {
 
 func (o PgMapOutput) ToPgMapOutputWithContext(ctx context.Context) PgMapOutput {
 	return o
-}
-
-func (o PgMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Pg] {
-	return pulumix.Output[map[string]*Pg]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PgMapOutput) MapIndex(k pulumi.StringInput) PgOutput {

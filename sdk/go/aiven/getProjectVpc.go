@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Project VPC data source provides information about the existing Aiven Project VPC.
@@ -122,12 +121,6 @@ func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutput() LookupPro
 
 func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutputWithContext(ctx context.Context) LookupProjectVpcResultOutput {
 	return o
-}
-
-func (o LookupProjectVpcResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectVpcResult] {
-	return pulumix.Output[LookupProjectVpcResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.

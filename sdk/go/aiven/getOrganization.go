@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about an organization from Aiven.
@@ -109,12 +108,6 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutput() Looku
 
 func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithContext(ctx context.Context) LookupOrganizationResultOutput {
 	return o
-}
-
-func (o LookupOrganizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationResult] {
-	return pulumix.Output[LookupOrganizationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp of the creation of the organization.

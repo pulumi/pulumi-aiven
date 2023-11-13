@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
@@ -289,12 +288,6 @@ func (i *BillingGroup) ToBillingGroupOutputWithContext(ctx context.Context) Bill
 	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupOutput)
 }
 
-func (i *BillingGroup) ToOutput(ctx context.Context) pulumix.Output[*BillingGroup] {
-	return pulumix.Output[*BillingGroup]{
-		OutputState: i.ToBillingGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BillingGroupArrayInput is an input type that accepts BillingGroupArray and BillingGroupArrayOutput values.
 // You can construct a concrete instance of `BillingGroupArrayInput` via:
 //
@@ -318,12 +311,6 @@ func (i BillingGroupArray) ToBillingGroupArrayOutput() BillingGroupArrayOutput {
 
 func (i BillingGroupArray) ToBillingGroupArrayOutputWithContext(ctx context.Context) BillingGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupArrayOutput)
-}
-
-func (i BillingGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*BillingGroup] {
-	return pulumix.Output[[]*BillingGroup]{
-		OutputState: i.ToBillingGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BillingGroupMapInput is an input type that accepts BillingGroupMap and BillingGroupMapOutput values.
@@ -351,12 +338,6 @@ func (i BillingGroupMap) ToBillingGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupMapOutput)
 }
 
-func (i BillingGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingGroup] {
-	return pulumix.Output[map[string]*BillingGroup]{
-		OutputState: i.ToBillingGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingGroupOutput struct{ *pulumi.OutputState }
 
 func (BillingGroupOutput) ElementType() reflect.Type {
@@ -369,12 +350,6 @@ func (o BillingGroupOutput) ToBillingGroupOutput() BillingGroupOutput {
 
 func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context) BillingGroupOutput {
 	return o
-}
-
-func (o BillingGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingGroup] {
-	return pulumix.Output[*BillingGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account id
@@ -468,12 +443,6 @@ func (o BillingGroupArrayOutput) ToBillingGroupArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o BillingGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BillingGroup] {
-	return pulumix.Output[[]*BillingGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BillingGroupArrayOutput) Index(i pulumi.IntInput) BillingGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BillingGroup {
 		return vs[0].([]*BillingGroup)[vs[1].(int)]
@@ -492,12 +461,6 @@ func (o BillingGroupMapOutput) ToBillingGroupMapOutput() BillingGroupMapOutput {
 
 func (o BillingGroupMapOutput) ToBillingGroupMapOutputWithContext(ctx context.Context) BillingGroupMapOutput {
 	return o
-}
-
-func (o BillingGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingGroup] {
-	return pulumix.Output[map[string]*BillingGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingGroupMapOutput) MapIndex(k pulumi.StringInput) BillingGroupOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The M3DB User resource allows the creation and management of Aiven M3DB Users.
@@ -187,12 +186,6 @@ func (i *M3dbUser) ToM3dbUserOutputWithContext(ctx context.Context) M3dbUserOutp
 	return pulumi.ToOutputWithContext(ctx, i).(M3dbUserOutput)
 }
 
-func (i *M3dbUser) ToOutput(ctx context.Context) pulumix.Output[*M3dbUser] {
-	return pulumix.Output[*M3dbUser]{
-		OutputState: i.ToM3dbUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // M3dbUserArrayInput is an input type that accepts M3dbUserArray and M3dbUserArrayOutput values.
 // You can construct a concrete instance of `M3dbUserArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i M3dbUserArray) ToM3dbUserArrayOutput() M3dbUserArrayOutput {
 
 func (i M3dbUserArray) ToM3dbUserArrayOutputWithContext(ctx context.Context) M3dbUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3dbUserArrayOutput)
-}
-
-func (i M3dbUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*M3dbUser] {
-	return pulumix.Output[[]*M3dbUser]{
-		OutputState: i.ToM3dbUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // M3dbUserMapInput is an input type that accepts M3dbUserMap and M3dbUserMapOutput values.
@@ -249,12 +236,6 @@ func (i M3dbUserMap) ToM3dbUserMapOutputWithContext(ctx context.Context) M3dbUse
 	return pulumi.ToOutputWithContext(ctx, i).(M3dbUserMapOutput)
 }
 
-func (i M3dbUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3dbUser] {
-	return pulumix.Output[map[string]*M3dbUser]{
-		OutputState: i.ToM3dbUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type M3dbUserOutput struct{ *pulumi.OutputState }
 
 func (M3dbUserOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o M3dbUserOutput) ToM3dbUserOutput() M3dbUserOutput {
 
 func (o M3dbUserOutput) ToM3dbUserOutputWithContext(ctx context.Context) M3dbUserOutput {
 	return o
-}
-
-func (o M3dbUserOutput) ToOutput(ctx context.Context) pulumix.Output[*M3dbUser] {
-	return pulumix.Output[*M3dbUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The password of the M3DB User.
@@ -314,12 +289,6 @@ func (o M3dbUserArrayOutput) ToM3dbUserArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o M3dbUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*M3dbUser] {
-	return pulumix.Output[[]*M3dbUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o M3dbUserArrayOutput) Index(i pulumi.IntInput) M3dbUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *M3dbUser {
 		return vs[0].([]*M3dbUser)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o M3dbUserMapOutput) ToM3dbUserMapOutput() M3dbUserMapOutput {
 
 func (o M3dbUserMapOutput) ToM3dbUserMapOutputWithContext(ctx context.Context) M3dbUserMapOutput {
 	return o
-}
-
-func (o M3dbUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*M3dbUser] {
-	return pulumix.Output[map[string]*M3dbUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o M3dbUserMapOutput) MapIndex(k pulumi.StringInput) M3dbUserOutput {

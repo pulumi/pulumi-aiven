@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Project User resource allows the creation and management of Aiven Project Users.
@@ -169,12 +168,6 @@ func (i *ProjectUser) ToProjectUserOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserOutput)
 }
 
-func (i *ProjectUser) ToOutput(ctx context.Context) pulumix.Output[*ProjectUser] {
-	return pulumix.Output[*ProjectUser]{
-		OutputState: i.ToProjectUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectUserArrayInput is an input type that accepts ProjectUserArray and ProjectUserArrayOutput values.
 // You can construct a concrete instance of `ProjectUserArrayInput` via:
 //
@@ -198,12 +191,6 @@ func (i ProjectUserArray) ToProjectUserArrayOutput() ProjectUserArrayOutput {
 
 func (i ProjectUserArray) ToProjectUserArrayOutputWithContext(ctx context.Context) ProjectUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserArrayOutput)
-}
-
-func (i ProjectUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectUser] {
-	return pulumix.Output[[]*ProjectUser]{
-		OutputState: i.ToProjectUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectUserMapInput is an input type that accepts ProjectUserMap and ProjectUserMapOutput values.
@@ -231,12 +218,6 @@ func (i ProjectUserMap) ToProjectUserMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserMapOutput)
 }
 
-func (i ProjectUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectUser] {
-	return pulumix.Output[map[string]*ProjectUser]{
-		OutputState: i.ToProjectUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectUserOutput struct{ *pulumi.OutputState }
 
 func (ProjectUserOutput) ElementType() reflect.Type {
@@ -249,12 +230,6 @@ func (o ProjectUserOutput) ToProjectUserOutput() ProjectUserOutput {
 
 func (o ProjectUserOutput) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
 	return o
-}
-
-func (o ProjectUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectUser] {
-	return pulumix.Output[*ProjectUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
@@ -291,12 +266,6 @@ func (o ProjectUserArrayOutput) ToProjectUserArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProjectUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectUser] {
-	return pulumix.Output[[]*ProjectUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectUserArrayOutput) Index(i pulumi.IntInput) ProjectUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectUser {
 		return vs[0].([]*ProjectUser)[vs[1].(int)]
@@ -315,12 +284,6 @@ func (o ProjectUserMapOutput) ToProjectUserMapOutput() ProjectUserMapOutput {
 
 func (o ProjectUserMapOutput) ToProjectUserMapOutputWithContext(ctx context.Context) ProjectUserMapOutput {
 	return o
-}
-
-func (o ProjectUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectUser] {
-	return pulumix.Output[map[string]*ProjectUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectUserMapOutput) MapIndex(k pulumi.StringInput) ProjectUserOutput {

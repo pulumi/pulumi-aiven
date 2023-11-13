@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
@@ -483,12 +482,6 @@ func (i *KafkaMirrorMaker) ToKafkaMirrorMakerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerOutput)
 }
 
-func (i *KafkaMirrorMaker) ToOutput(ctx context.Context) pulumix.Output[*KafkaMirrorMaker] {
-	return pulumix.Output[*KafkaMirrorMaker]{
-		OutputState: i.ToKafkaMirrorMakerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaMirrorMakerArrayInput is an input type that accepts KafkaMirrorMakerArray and KafkaMirrorMakerArrayOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerArrayInput` via:
 //
@@ -512,12 +505,6 @@ func (i KafkaMirrorMakerArray) ToKafkaMirrorMakerArrayOutput() KafkaMirrorMakerA
 
 func (i KafkaMirrorMakerArray) ToKafkaMirrorMakerArrayOutputWithContext(ctx context.Context) KafkaMirrorMakerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerArrayOutput)
-}
-
-func (i KafkaMirrorMakerArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaMirrorMaker] {
-	return pulumix.Output[[]*KafkaMirrorMaker]{
-		OutputState: i.ToKafkaMirrorMakerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaMirrorMakerMapInput is an input type that accepts KafkaMirrorMakerMap and KafkaMirrorMakerMapOutput values.
@@ -545,12 +532,6 @@ func (i KafkaMirrorMakerMap) ToKafkaMirrorMakerMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerMapOutput)
 }
 
-func (i KafkaMirrorMakerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaMirrorMaker] {
-	return pulumix.Output[map[string]*KafkaMirrorMaker]{
-		OutputState: i.ToKafkaMirrorMakerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaMirrorMakerOutput struct{ *pulumi.OutputState }
 
 func (KafkaMirrorMakerOutput) ElementType() reflect.Type {
@@ -563,12 +544,6 @@ func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutpu
 
 func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput {
 	return o
-}
-
-func (o KafkaMirrorMakerOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaMirrorMaker] {
-	return pulumix.Output[*KafkaMirrorMaker]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -746,12 +721,6 @@ func (o KafkaMirrorMakerArrayOutput) ToKafkaMirrorMakerArrayOutputWithContext(ct
 	return o
 }
 
-func (o KafkaMirrorMakerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaMirrorMaker] {
-	return pulumix.Output[[]*KafkaMirrorMaker]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaMirrorMakerArrayOutput) Index(i pulumi.IntInput) KafkaMirrorMakerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaMirrorMaker {
 		return vs[0].([]*KafkaMirrorMaker)[vs[1].(int)]
@@ -770,12 +739,6 @@ func (o KafkaMirrorMakerMapOutput) ToKafkaMirrorMakerMapOutput() KafkaMirrorMake
 
 func (o KafkaMirrorMakerMapOutput) ToKafkaMirrorMakerMapOutputWithContext(ctx context.Context) KafkaMirrorMakerMapOutput {
 	return o
-}
-
-func (o KafkaMirrorMakerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaMirrorMaker] {
-	return pulumix.Output[map[string]*KafkaMirrorMaker]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaMirrorMakerMapOutput) MapIndex(k pulumi.StringInput) KafkaMirrorMakerOutput {

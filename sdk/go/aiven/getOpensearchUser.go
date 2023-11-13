@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
@@ -117,12 +116,6 @@ func (o LookupOpensearchUserResultOutput) ToLookupOpensearchUserResultOutput() L
 
 func (o LookupOpensearchUserResultOutput) ToLookupOpensearchUserResultOutputWithContext(ctx context.Context) LookupOpensearchUserResultOutput {
 	return o
-}
-
-func (o LookupOpensearchUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpensearchUserResult] {
-	return pulumix.Output[LookupOpensearchUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

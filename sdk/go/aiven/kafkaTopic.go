@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
@@ -196,12 +195,6 @@ func (i *KafkaTopic) ToKafkaTopicOutputWithContext(ctx context.Context) KafkaTop
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicOutput)
 }
 
-func (i *KafkaTopic) ToOutput(ctx context.Context) pulumix.Output[*KafkaTopic] {
-	return pulumix.Output[*KafkaTopic]{
-		OutputState: i.ToKafkaTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaTopicArrayInput is an input type that accepts KafkaTopicArray and KafkaTopicArrayOutput values.
 // You can construct a concrete instance of `KafkaTopicArrayInput` via:
 //
@@ -225,12 +218,6 @@ func (i KafkaTopicArray) ToKafkaTopicArrayOutput() KafkaTopicArrayOutput {
 
 func (i KafkaTopicArray) ToKafkaTopicArrayOutputWithContext(ctx context.Context) KafkaTopicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicArrayOutput)
-}
-
-func (i KafkaTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaTopic] {
-	return pulumix.Output[[]*KafkaTopic]{
-		OutputState: i.ToKafkaTopicArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaTopicMapInput is an input type that accepts KafkaTopicMap and KafkaTopicMapOutput values.
@@ -258,12 +245,6 @@ func (i KafkaTopicMap) ToKafkaTopicMapOutputWithContext(ctx context.Context) Kaf
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicMapOutput)
 }
 
-func (i KafkaTopicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaTopic] {
-	return pulumix.Output[map[string]*KafkaTopic]{
-		OutputState: i.ToKafkaTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaTopicOutput struct{ *pulumi.OutputState }
 
 func (KafkaTopicOutput) ElementType() reflect.Type {
@@ -276,12 +257,6 @@ func (o KafkaTopicOutput) ToKafkaTopicOutput() KafkaTopicOutput {
 
 func (o KafkaTopicOutput) ToKafkaTopicOutputWithContext(ctx context.Context) KafkaTopicOutput {
 	return o
-}
-
-func (o KafkaTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaTopic] {
-	return pulumix.Output[*KafkaTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kafka topic configuration
@@ -339,12 +314,6 @@ func (o KafkaTopicArrayOutput) ToKafkaTopicArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o KafkaTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaTopic] {
-	return pulumix.Output[[]*KafkaTopic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaTopicArrayOutput) Index(i pulumi.IntInput) KafkaTopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaTopic {
 		return vs[0].([]*KafkaTopic)[vs[1].(int)]
@@ -363,12 +332,6 @@ func (o KafkaTopicMapOutput) ToKafkaTopicMapOutput() KafkaTopicMapOutput {
 
 func (o KafkaTopicMapOutput) ToKafkaTopicMapOutputWithContext(ctx context.Context) KafkaTopicMapOutput {
 	return o
-}
-
-func (o KafkaTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaTopic] {
-	return pulumix.Output[map[string]*KafkaTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaTopicMapOutput) MapIndex(k pulumi.StringInput) KafkaTopicOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
@@ -160,12 +159,6 @@ func (i *OpensearchSecurityPluginConfig) ToOpensearchSecurityPluginConfigOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchSecurityPluginConfigOutput)
 }
 
-func (i *OpensearchSecurityPluginConfig) ToOutput(ctx context.Context) pulumix.Output[*OpensearchSecurityPluginConfig] {
-	return pulumix.Output[*OpensearchSecurityPluginConfig]{
-		OutputState: i.ToOpensearchSecurityPluginConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpensearchSecurityPluginConfigArrayInput is an input type that accepts OpensearchSecurityPluginConfigArray and OpensearchSecurityPluginConfigArrayOutput values.
 // You can construct a concrete instance of `OpensearchSecurityPluginConfigArrayInput` via:
 //
@@ -189,12 +182,6 @@ func (i OpensearchSecurityPluginConfigArray) ToOpensearchSecurityPluginConfigArr
 
 func (i OpensearchSecurityPluginConfigArray) ToOpensearchSecurityPluginConfigArrayOutputWithContext(ctx context.Context) OpensearchSecurityPluginConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchSecurityPluginConfigArrayOutput)
-}
-
-func (i OpensearchSecurityPluginConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpensearchSecurityPluginConfig] {
-	return pulumix.Output[[]*OpensearchSecurityPluginConfig]{
-		OutputState: i.ToOpensearchSecurityPluginConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OpensearchSecurityPluginConfigMapInput is an input type that accepts OpensearchSecurityPluginConfigMap and OpensearchSecurityPluginConfigMapOutput values.
@@ -222,12 +209,6 @@ func (i OpensearchSecurityPluginConfigMap) ToOpensearchSecurityPluginConfigMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchSecurityPluginConfigMapOutput)
 }
 
-func (i OpensearchSecurityPluginConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpensearchSecurityPluginConfig] {
-	return pulumix.Output[map[string]*OpensearchSecurityPluginConfig]{
-		OutputState: i.ToOpensearchSecurityPluginConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpensearchSecurityPluginConfigOutput struct{ *pulumi.OutputState }
 
 func (OpensearchSecurityPluginConfigOutput) ElementType() reflect.Type {
@@ -240,12 +221,6 @@ func (o OpensearchSecurityPluginConfigOutput) ToOpensearchSecurityPluginConfigOu
 
 func (o OpensearchSecurityPluginConfigOutput) ToOpensearchSecurityPluginConfigOutputWithContext(ctx context.Context) OpensearchSecurityPluginConfigOutput {
 	return o
-}
-
-func (o OpensearchSecurityPluginConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*OpensearchSecurityPluginConfig] {
-	return pulumix.Output[*OpensearchSecurityPluginConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
@@ -292,12 +267,6 @@ func (o OpensearchSecurityPluginConfigArrayOutput) ToOpensearchSecurityPluginCon
 	return o
 }
 
-func (o OpensearchSecurityPluginConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpensearchSecurityPluginConfig] {
-	return pulumix.Output[[]*OpensearchSecurityPluginConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OpensearchSecurityPluginConfigArrayOutput) Index(i pulumi.IntInput) OpensearchSecurityPluginConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpensearchSecurityPluginConfig {
 		return vs[0].([]*OpensearchSecurityPluginConfig)[vs[1].(int)]
@@ -316,12 +285,6 @@ func (o OpensearchSecurityPluginConfigMapOutput) ToOpensearchSecurityPluginConfi
 
 func (o OpensearchSecurityPluginConfigMapOutput) ToOpensearchSecurityPluginConfigMapOutputWithContext(ctx context.Context) OpensearchSecurityPluginConfigMapOutput {
 	return o
-}
-
-func (o OpensearchSecurityPluginConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpensearchSecurityPluginConfig] {
-	return pulumix.Output[map[string]*OpensearchSecurityPluginConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpensearchSecurityPluginConfigMapOutput) MapIndex(k pulumi.StringInput) OpensearchSecurityPluginConfigOutput {

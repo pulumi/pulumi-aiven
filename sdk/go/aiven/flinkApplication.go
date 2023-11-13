@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Flink Application resource allows the creation and management of Aiven Flink Applications.
@@ -189,12 +188,6 @@ func (i *FlinkApplication) ToFlinkApplicationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationOutput)
 }
 
-func (i *FlinkApplication) ToOutput(ctx context.Context) pulumix.Output[*FlinkApplication] {
-	return pulumix.Output[*FlinkApplication]{
-		OutputState: i.ToFlinkApplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlinkApplicationArrayInput is an input type that accepts FlinkApplicationArray and FlinkApplicationArrayOutput values.
 // You can construct a concrete instance of `FlinkApplicationArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i FlinkApplicationArray) ToFlinkApplicationArrayOutput() FlinkApplicationA
 
 func (i FlinkApplicationArray) ToFlinkApplicationArrayOutputWithContext(ctx context.Context) FlinkApplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationArrayOutput)
-}
-
-func (i FlinkApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlinkApplication] {
-	return pulumix.Output[[]*FlinkApplication]{
-		OutputState: i.ToFlinkApplicationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlinkApplicationMapInput is an input type that accepts FlinkApplicationMap and FlinkApplicationMapOutput values.
@@ -251,12 +238,6 @@ func (i FlinkApplicationMap) ToFlinkApplicationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationMapOutput)
 }
 
-func (i FlinkApplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlinkApplication] {
-	return pulumix.Output[map[string]*FlinkApplication]{
-		OutputState: i.ToFlinkApplicationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlinkApplicationOutput struct{ *pulumi.OutputState }
 
 func (FlinkApplicationOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o FlinkApplicationOutput) ToFlinkApplicationOutput() FlinkApplicationOutpu
 
 func (o FlinkApplicationOutput) ToFlinkApplicationOutputWithContext(ctx context.Context) FlinkApplicationOutput {
 	return o
-}
-
-func (o FlinkApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkApplication] {
-	return pulumix.Output[*FlinkApplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application ID
@@ -331,12 +306,6 @@ func (o FlinkApplicationArrayOutput) ToFlinkApplicationArrayOutputWithContext(ct
 	return o
 }
 
-func (o FlinkApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlinkApplication] {
-	return pulumix.Output[[]*FlinkApplication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlinkApplicationArrayOutput) Index(i pulumi.IntInput) FlinkApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlinkApplication {
 		return vs[0].([]*FlinkApplication)[vs[1].(int)]
@@ -355,12 +324,6 @@ func (o FlinkApplicationMapOutput) ToFlinkApplicationMapOutput() FlinkApplicatio
 
 func (o FlinkApplicationMapOutput) ToFlinkApplicationMapOutputWithContext(ctx context.Context) FlinkApplicationMapOutput {
 	return o
-}
-
-func (o FlinkApplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlinkApplication] {
-	return pulumix.Output[map[string]*FlinkApplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlinkApplicationMapOutput) MapIndex(k pulumi.StringInput) FlinkApplicationOutput {

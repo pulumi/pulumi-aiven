@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account Team Member data source provides information about the existing Aiven Account Team Member.
@@ -91,12 +90,6 @@ func (o LookupAccountTeamMemberResultOutput) ToLookupAccountTeamMemberResultOutp
 
 func (o LookupAccountTeamMemberResultOutput) ToLookupAccountTeamMemberResultOutputWithContext(ctx context.Context) LookupAccountTeamMemberResultOutput {
 	return o
-}
-
-func (o LookupAccountTeamMemberResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountTeamMemberResult] {
-	return pulumix.Output[LookupAccountTeamMemberResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.

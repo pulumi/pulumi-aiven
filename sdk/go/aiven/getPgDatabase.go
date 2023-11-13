@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The PG Database data source provides information about the existing Aiven PostgreSQL Database.
@@ -118,12 +117,6 @@ func (o LookupPgDatabaseResultOutput) ToLookupPgDatabaseResultOutput() LookupPgD
 
 func (o LookupPgDatabaseResultOutput) ToLookupPgDatabaseResultOutputWithContext(ctx context.Context) LookupPgDatabaseResultOutput {
 	return o
-}
-
-func (o LookupPgDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPgDatabaseResult] {
-	return pulumix.Output[LookupPgDatabaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the service database. This property cannot be changed, doing so forces recreation of the resource.

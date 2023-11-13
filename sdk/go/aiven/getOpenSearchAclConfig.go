@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
@@ -110,12 +109,6 @@ func (o LookupOpenSearchAclConfigResultOutput) ToLookupOpenSearchAclConfigResult
 
 func (o LookupOpenSearchAclConfigResultOutput) ToLookupOpenSearchAclConfigResultOutputWithContext(ctx context.Context) LookupOpenSearchAclConfigResultOutput {
 	return o
-}
-
-func (o LookupOpenSearchAclConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpenSearchAclConfigResult] {
-	return pulumix.Output[LookupOpenSearchAclConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.

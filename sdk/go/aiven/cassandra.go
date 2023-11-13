@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Cassandra resource allows the creation and management of Aiven Cassandra services.
@@ -375,12 +374,6 @@ func (i *Cassandra) ToCassandraOutputWithContext(ctx context.Context) CassandraO
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraOutput)
 }
 
-func (i *Cassandra) ToOutput(ctx context.Context) pulumix.Output[*Cassandra] {
-	return pulumix.Output[*Cassandra]{
-		OutputState: i.ToCassandraOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CassandraArrayInput is an input type that accepts CassandraArray and CassandraArrayOutput values.
 // You can construct a concrete instance of `CassandraArrayInput` via:
 //
@@ -404,12 +397,6 @@ func (i CassandraArray) ToCassandraArrayOutput() CassandraArrayOutput {
 
 func (i CassandraArray) ToCassandraArrayOutputWithContext(ctx context.Context) CassandraArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraArrayOutput)
-}
-
-func (i CassandraArray) ToOutput(ctx context.Context) pulumix.Output[[]*Cassandra] {
-	return pulumix.Output[[]*Cassandra]{
-		OutputState: i.ToCassandraArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CassandraMapInput is an input type that accepts CassandraMap and CassandraMapOutput values.
@@ -437,12 +424,6 @@ func (i CassandraMap) ToCassandraMapOutputWithContext(ctx context.Context) Cassa
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraMapOutput)
 }
 
-func (i CassandraMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cassandra] {
-	return pulumix.Output[map[string]*Cassandra]{
-		OutputState: i.ToCassandraMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CassandraOutput struct{ *pulumi.OutputState }
 
 func (CassandraOutput) ElementType() reflect.Type {
@@ -455,12 +436,6 @@ func (o CassandraOutput) ToCassandraOutput() CassandraOutput {
 
 func (o CassandraOutput) ToCassandraOutputWithContext(ctx context.Context) CassandraOutput {
 	return o
-}
-
-func (o CassandraOutput) ToOutput(ctx context.Context) pulumix.Output[*Cassandra] {
-	return pulumix.Output[*Cassandra]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -614,12 +589,6 @@ func (o CassandraArrayOutput) ToCassandraArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CassandraArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Cassandra] {
-	return pulumix.Output[[]*Cassandra]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CassandraArrayOutput) Index(i pulumi.IntInput) CassandraOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cassandra {
 		return vs[0].([]*Cassandra)[vs[1].(int)]
@@ -638,12 +607,6 @@ func (o CassandraMapOutput) ToCassandraMapOutput() CassandraMapOutput {
 
 func (o CassandraMapOutput) ToCassandraMapOutputWithContext(ctx context.Context) CassandraMapOutput {
 	return o
-}
-
-func (o CassandraMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cassandra] {
-	return pulumix.Output[map[string]*Cassandra]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CassandraMapOutput) MapIndex(k pulumi.StringInput) CassandraOutput {

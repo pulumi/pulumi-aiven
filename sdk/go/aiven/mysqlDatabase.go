@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
@@ -178,12 +177,6 @@ func (i *MysqlDatabase) ToMysqlDatabaseOutputWithContext(ctx context.Context) My
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseOutput)
 }
 
-func (i *MysqlDatabase) ToOutput(ctx context.Context) pulumix.Output[*MysqlDatabase] {
-	return pulumix.Output[*MysqlDatabase]{
-		OutputState: i.ToMysqlDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MysqlDatabaseArrayInput is an input type that accepts MysqlDatabaseArray and MysqlDatabaseArrayOutput values.
 // You can construct a concrete instance of `MysqlDatabaseArrayInput` via:
 //
@@ -207,12 +200,6 @@ func (i MysqlDatabaseArray) ToMysqlDatabaseArrayOutput() MysqlDatabaseArrayOutpu
 
 func (i MysqlDatabaseArray) ToMysqlDatabaseArrayOutputWithContext(ctx context.Context) MysqlDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseArrayOutput)
-}
-
-func (i MysqlDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*MysqlDatabase] {
-	return pulumix.Output[[]*MysqlDatabase]{
-		OutputState: i.ToMysqlDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MysqlDatabaseMapInput is an input type that accepts MysqlDatabaseMap and MysqlDatabaseMapOutput values.
@@ -240,12 +227,6 @@ func (i MysqlDatabaseMap) ToMysqlDatabaseMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseMapOutput)
 }
 
-func (i MysqlDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MysqlDatabase] {
-	return pulumix.Output[map[string]*MysqlDatabase]{
-		OutputState: i.ToMysqlDatabaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MysqlDatabaseOutput struct{ *pulumi.OutputState }
 
 func (MysqlDatabaseOutput) ElementType() reflect.Type {
@@ -258,12 +239,6 @@ func (o MysqlDatabaseOutput) ToMysqlDatabaseOutput() MysqlDatabaseOutput {
 
 func (o MysqlDatabaseOutput) ToMysqlDatabaseOutputWithContext(ctx context.Context) MysqlDatabaseOutput {
 	return o
-}
-
-func (o MysqlDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*MysqlDatabase] {
-	return pulumix.Output[*MysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -301,12 +276,6 @@ func (o MysqlDatabaseArrayOutput) ToMysqlDatabaseArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o MysqlDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MysqlDatabase] {
-	return pulumix.Output[[]*MysqlDatabase]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MysqlDatabaseArrayOutput) Index(i pulumi.IntInput) MysqlDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MysqlDatabase {
 		return vs[0].([]*MysqlDatabase)[vs[1].(int)]
@@ -325,12 +294,6 @@ func (o MysqlDatabaseMapOutput) ToMysqlDatabaseMapOutput() MysqlDatabaseMapOutpu
 
 func (o MysqlDatabaseMapOutput) ToMysqlDatabaseMapOutputWithContext(ctx context.Context) MysqlDatabaseMapOutput {
 	return o
-}
-
-func (o MysqlDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MysqlDatabase] {
-	return pulumix.Output[map[string]*MysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlDatabaseMapOutput) MapIndex(k pulumi.StringInput) MysqlDatabaseOutput {

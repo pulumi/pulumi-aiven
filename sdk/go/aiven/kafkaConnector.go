@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
@@ -227,12 +226,6 @@ func (i *KafkaConnector) ToKafkaConnectorOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorOutput)
 }
 
-func (i *KafkaConnector) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnector] {
-	return pulumix.Output[*KafkaConnector]{
-		OutputState: i.ToKafkaConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaConnectorArrayInput is an input type that accepts KafkaConnectorArray and KafkaConnectorArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectorArrayInput` via:
 //
@@ -256,12 +249,6 @@ func (i KafkaConnectorArray) ToKafkaConnectorArrayOutput() KafkaConnectorArrayOu
 
 func (i KafkaConnectorArray) ToKafkaConnectorArrayOutputWithContext(ctx context.Context) KafkaConnectorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorArrayOutput)
-}
-
-func (i KafkaConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaConnector] {
-	return pulumix.Output[[]*KafkaConnector]{
-		OutputState: i.ToKafkaConnectorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaConnectorMapInput is an input type that accepts KafkaConnectorMap and KafkaConnectorMapOutput values.
@@ -289,12 +276,6 @@ func (i KafkaConnectorMap) ToKafkaConnectorMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorMapOutput)
 }
 
-func (i KafkaConnectorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaConnector] {
-	return pulumix.Output[map[string]*KafkaConnector]{
-		OutputState: i.ToKafkaConnectorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaConnectorOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorOutput) ElementType() reflect.Type {
@@ -307,12 +288,6 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutput() KafkaConnectorOutput {
 
 func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Context) KafkaConnectorOutput {
 	return o
-}
-
-func (o KafkaConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnector] {
-	return pulumix.Output[*KafkaConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kafka Connector configuration parameters.
@@ -384,12 +359,6 @@ func (o KafkaConnectorArrayOutput) ToKafkaConnectorArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o KafkaConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaConnector] {
-	return pulumix.Output[[]*KafkaConnector]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaConnectorArrayOutput) Index(i pulumi.IntInput) KafkaConnectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaConnector {
 		return vs[0].([]*KafkaConnector)[vs[1].(int)]
@@ -408,12 +377,6 @@ func (o KafkaConnectorMapOutput) ToKafkaConnectorMapOutput() KafkaConnectorMapOu
 
 func (o KafkaConnectorMapOutput) ToKafkaConnectorMapOutputWithContext(ctx context.Context) KafkaConnectorMapOutput {
 	return o
-}
-
-func (o KafkaConnectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaConnector] {
-	return pulumix.Output[map[string]*KafkaConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaConnectorMapOutput) MapIndex(k pulumi.StringInput) KafkaConnectorOutput {

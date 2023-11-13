@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
@@ -114,12 +113,6 @@ func (o LookupClickhouseDatabaseResultOutput) ToLookupClickhouseDatabaseResultOu
 
 func (o LookupClickhouseDatabaseResultOutput) ToLookupClickhouseDatabaseResultOutputWithContext(ctx context.Context) LookupClickhouseDatabaseResultOutput {
 	return o
-}
-
-func (o LookupClickhouseDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClickhouseDatabaseResult] {
-	return pulumix.Output[LookupClickhouseDatabaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

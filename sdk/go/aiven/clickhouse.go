@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
@@ -369,12 +368,6 @@ func (i *Clickhouse) ToClickhouseOutputWithContext(ctx context.Context) Clickhou
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseOutput)
 }
 
-func (i *Clickhouse) ToOutput(ctx context.Context) pulumix.Output[*Clickhouse] {
-	return pulumix.Output[*Clickhouse]{
-		OutputState: i.ToClickhouseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClickhouseArrayInput is an input type that accepts ClickhouseArray and ClickhouseArrayOutput values.
 // You can construct a concrete instance of `ClickhouseArrayInput` via:
 //
@@ -398,12 +391,6 @@ func (i ClickhouseArray) ToClickhouseArrayOutput() ClickhouseArrayOutput {
 
 func (i ClickhouseArray) ToClickhouseArrayOutputWithContext(ctx context.Context) ClickhouseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseArrayOutput)
-}
-
-func (i ClickhouseArray) ToOutput(ctx context.Context) pulumix.Output[[]*Clickhouse] {
-	return pulumix.Output[[]*Clickhouse]{
-		OutputState: i.ToClickhouseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClickhouseMapInput is an input type that accepts ClickhouseMap and ClickhouseMapOutput values.
@@ -431,12 +418,6 @@ func (i ClickhouseMap) ToClickhouseMapOutputWithContext(ctx context.Context) Cli
 	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseMapOutput)
 }
 
-func (i ClickhouseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Clickhouse] {
-	return pulumix.Output[map[string]*Clickhouse]{
-		OutputState: i.ToClickhouseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClickhouseOutput struct{ *pulumi.OutputState }
 
 func (ClickhouseOutput) ElementType() reflect.Type {
@@ -449,12 +430,6 @@ func (o ClickhouseOutput) ToClickhouseOutput() ClickhouseOutput {
 
 func (o ClickhouseOutput) ToClickhouseOutputWithContext(ctx context.Context) ClickhouseOutput {
 	return o
-}
-
-func (o ClickhouseOutput) ToOutput(ctx context.Context) pulumix.Output[*Clickhouse] {
-	return pulumix.Output[*Clickhouse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -608,12 +583,6 @@ func (o ClickhouseArrayOutput) ToClickhouseArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ClickhouseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Clickhouse] {
-	return pulumix.Output[[]*Clickhouse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClickhouseArrayOutput) Index(i pulumi.IntInput) ClickhouseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Clickhouse {
 		return vs[0].([]*Clickhouse)[vs[1].(int)]
@@ -632,12 +601,6 @@ func (o ClickhouseMapOutput) ToClickhouseMapOutput() ClickhouseMapOutput {
 
 func (o ClickhouseMapOutput) ToClickhouseMapOutputWithContext(ctx context.Context) ClickhouseMapOutput {
 	return o
-}
-
-func (o ClickhouseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Clickhouse] {
-	return pulumix.Output[map[string]*Clickhouse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClickhouseMapOutput) MapIndex(k pulumi.StringInput) ClickhouseOutput {
