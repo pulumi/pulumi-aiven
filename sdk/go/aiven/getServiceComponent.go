@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Service Component data source provides information about the existing Aiven service Component.
@@ -145,12 +144,6 @@ func (o GetServiceComponentResultOutput) ToGetServiceComponentResultOutput() Get
 
 func (o GetServiceComponentResultOutput) ToGetServiceComponentResultOutputWithContext(ctx context.Context) GetServiceComponentResultOutput {
 	return o
-}
-
-func (o GetServiceComponentResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceComponentResult] {
-	return pulumix.Output[GetServiceComponentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Service component name

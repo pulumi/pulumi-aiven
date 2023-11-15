@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
@@ -132,12 +131,6 @@ func (o LookupServiceIntegrationEndpointResultOutput) ToLookupServiceIntegration
 
 func (o LookupServiceIntegrationEndpointResultOutput) ToLookupServiceIntegrationEndpointResultOutputWithContext(ctx context.Context) LookupServiceIntegrationEndpointResultOutput {
 	return o
-}
-
-func (o LookupServiceIntegrationEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceIntegrationEndpointResult] {
-	return pulumix.Output[LookupServiceIntegrationEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datadog user configurable settings

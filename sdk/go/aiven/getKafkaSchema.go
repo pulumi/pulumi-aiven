@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
@@ -120,12 +119,6 @@ func (o LookupKafkaSchemaResultOutput) ToLookupKafkaSchemaResultOutput() LookupK
 
 func (o LookupKafkaSchemaResultOutput) ToLookupKafkaSchemaResultOutputWithContext(ctx context.Context) LookupKafkaSchemaResultOutput {
 	return o
-}
-
-func (o LookupKafkaSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaSchemaResult] {
-	return pulumix.Output[LookupKafkaSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
@@ -196,12 +195,6 @@ func (i *OpenSearchAclConfig) ToOpenSearchAclConfigOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclConfigOutput)
 }
 
-func (i *OpenSearchAclConfig) ToOutput(ctx context.Context) pulumix.Output[*OpenSearchAclConfig] {
-	return pulumix.Output[*OpenSearchAclConfig]{
-		OutputState: i.ToOpenSearchAclConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpenSearchAclConfigArrayInput is an input type that accepts OpenSearchAclConfigArray and OpenSearchAclConfigArrayOutput values.
 // You can construct a concrete instance of `OpenSearchAclConfigArrayInput` via:
 //
@@ -225,12 +218,6 @@ func (i OpenSearchAclConfigArray) ToOpenSearchAclConfigArrayOutput() OpenSearchA
 
 func (i OpenSearchAclConfigArray) ToOpenSearchAclConfigArrayOutputWithContext(ctx context.Context) OpenSearchAclConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclConfigArrayOutput)
-}
-
-func (i OpenSearchAclConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpenSearchAclConfig] {
-	return pulumix.Output[[]*OpenSearchAclConfig]{
-		OutputState: i.ToOpenSearchAclConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OpenSearchAclConfigMapInput is an input type that accepts OpenSearchAclConfigMap and OpenSearchAclConfigMapOutput values.
@@ -258,12 +245,6 @@ func (i OpenSearchAclConfigMap) ToOpenSearchAclConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclConfigMapOutput)
 }
 
-func (i OpenSearchAclConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenSearchAclConfig] {
-	return pulumix.Output[map[string]*OpenSearchAclConfig]{
-		OutputState: i.ToOpenSearchAclConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpenSearchAclConfigOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchAclConfigOutput) ElementType() reflect.Type {
@@ -276,12 +257,6 @@ func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigOutput() OpenSearchAclCo
 
 func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigOutputWithContext(ctx context.Context) OpenSearchAclConfigOutput {
 	return o
-}
-
-func (o OpenSearchAclConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenSearchAclConfig] {
-	return pulumix.Output[*OpenSearchAclConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
@@ -318,12 +293,6 @@ func (o OpenSearchAclConfigArrayOutput) ToOpenSearchAclConfigArrayOutputWithCont
 	return o
 }
 
-func (o OpenSearchAclConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpenSearchAclConfig] {
-	return pulumix.Output[[]*OpenSearchAclConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OpenSearchAclConfigArrayOutput) Index(i pulumi.IntInput) OpenSearchAclConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpenSearchAclConfig {
 		return vs[0].([]*OpenSearchAclConfig)[vs[1].(int)]
@@ -342,12 +311,6 @@ func (o OpenSearchAclConfigMapOutput) ToOpenSearchAclConfigMapOutput() OpenSearc
 
 func (o OpenSearchAclConfigMapOutput) ToOpenSearchAclConfigMapOutputWithContext(ctx context.Context) OpenSearchAclConfigMapOutput {
 	return o
-}
-
-func (o OpenSearchAclConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenSearchAclConfig] {
-	return pulumix.Output[map[string]*OpenSearchAclConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenSearchAclConfigMapOutput) MapIndex(k pulumi.StringInput) OpenSearchAclConfigOutput {

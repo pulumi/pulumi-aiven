@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
@@ -129,12 +128,6 @@ func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutput() LookupKafkaAc
 
 func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx context.Context) LookupKafkaAclResultOutput {
 	return o
-}
-
-func (o LookupKafkaAclResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaAclResult] {
-	return pulumix.Output[LookupKafkaAclResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kafka ACL ID

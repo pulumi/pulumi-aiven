@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
@@ -232,12 +231,6 @@ func (i *FlinkApplicationVersion) ToFlinkApplicationVersionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionOutput)
 }
 
-func (i *FlinkApplicationVersion) ToOutput(ctx context.Context) pulumix.Output[*FlinkApplicationVersion] {
-	return pulumix.Output[*FlinkApplicationVersion]{
-		OutputState: i.ToFlinkApplicationVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlinkApplicationVersionArrayInput is an input type that accepts FlinkApplicationVersionArray and FlinkApplicationVersionArrayOutput values.
 // You can construct a concrete instance of `FlinkApplicationVersionArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i FlinkApplicationVersionArray) ToFlinkApplicationVersionArrayOutput() Fli
 
 func (i FlinkApplicationVersionArray) ToFlinkApplicationVersionArrayOutputWithContext(ctx context.Context) FlinkApplicationVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionArrayOutput)
-}
-
-func (i FlinkApplicationVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlinkApplicationVersion] {
-	return pulumix.Output[[]*FlinkApplicationVersion]{
-		OutputState: i.ToFlinkApplicationVersionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlinkApplicationVersionMapInput is an input type that accepts FlinkApplicationVersionMap and FlinkApplicationVersionMapOutput values.
@@ -294,12 +281,6 @@ func (i FlinkApplicationVersionMap) ToFlinkApplicationVersionMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkApplicationVersionMapOutput)
 }
 
-func (i FlinkApplicationVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlinkApplicationVersion] {
-	return pulumix.Output[map[string]*FlinkApplicationVersion]{
-		OutputState: i.ToFlinkApplicationVersionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlinkApplicationVersionOutput struct{ *pulumi.OutputState }
 
 func (FlinkApplicationVersionOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o FlinkApplicationVersionOutput) ToFlinkApplicationVersionOutput() FlinkAp
 
 func (o FlinkApplicationVersionOutput) ToFlinkApplicationVersionOutputWithContext(ctx context.Context) FlinkApplicationVersionOutput {
 	return o
-}
-
-func (o FlinkApplicationVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkApplicationVersion] {
-	return pulumix.Output[*FlinkApplicationVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application ID
@@ -398,12 +373,6 @@ func (o FlinkApplicationVersionArrayOutput) ToFlinkApplicationVersionArrayOutput
 	return o
 }
 
-func (o FlinkApplicationVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlinkApplicationVersion] {
-	return pulumix.Output[[]*FlinkApplicationVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlinkApplicationVersionArrayOutput) Index(i pulumi.IntInput) FlinkApplicationVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlinkApplicationVersion {
 		return vs[0].([]*FlinkApplicationVersion)[vs[1].(int)]
@@ -422,12 +391,6 @@ func (o FlinkApplicationVersionMapOutput) ToFlinkApplicationVersionMapOutput() F
 
 func (o FlinkApplicationVersionMapOutput) ToFlinkApplicationVersionMapOutputWithContext(ctx context.Context) FlinkApplicationVersionMapOutput {
 	return o
-}
-
-func (o FlinkApplicationVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlinkApplicationVersion] {
-	return pulumix.Output[map[string]*FlinkApplicationVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlinkApplicationVersionMapOutput) MapIndex(k pulumi.StringInput) FlinkApplicationVersionOutput {

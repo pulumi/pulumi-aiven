@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type GcpPrivatelink struct {
@@ -141,12 +140,6 @@ func (i *GcpPrivatelink) ToGcpPrivatelinkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GcpPrivatelinkOutput)
 }
 
-func (i *GcpPrivatelink) ToOutput(ctx context.Context) pulumix.Output[*GcpPrivatelink] {
-	return pulumix.Output[*GcpPrivatelink]{
-		OutputState: i.ToGcpPrivatelinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GcpPrivatelinkArrayInput is an input type that accepts GcpPrivatelinkArray and GcpPrivatelinkArrayOutput values.
 // You can construct a concrete instance of `GcpPrivatelinkArrayInput` via:
 //
@@ -170,12 +163,6 @@ func (i GcpPrivatelinkArray) ToGcpPrivatelinkArrayOutput() GcpPrivatelinkArrayOu
 
 func (i GcpPrivatelinkArray) ToGcpPrivatelinkArrayOutputWithContext(ctx context.Context) GcpPrivatelinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpPrivatelinkArrayOutput)
-}
-
-func (i GcpPrivatelinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*GcpPrivatelink] {
-	return pulumix.Output[[]*GcpPrivatelink]{
-		OutputState: i.ToGcpPrivatelinkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GcpPrivatelinkMapInput is an input type that accepts GcpPrivatelinkMap and GcpPrivatelinkMapOutput values.
@@ -203,12 +190,6 @@ func (i GcpPrivatelinkMap) ToGcpPrivatelinkMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GcpPrivatelinkMapOutput)
 }
 
-func (i GcpPrivatelinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpPrivatelink] {
-	return pulumix.Output[map[string]*GcpPrivatelink]{
-		OutputState: i.ToGcpPrivatelinkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GcpPrivatelinkOutput struct{ *pulumi.OutputState }
 
 func (GcpPrivatelinkOutput) ElementType() reflect.Type {
@@ -221,12 +202,6 @@ func (o GcpPrivatelinkOutput) ToGcpPrivatelinkOutput() GcpPrivatelinkOutput {
 
 func (o GcpPrivatelinkOutput) ToGcpPrivatelinkOutputWithContext(ctx context.Context) GcpPrivatelinkOutput {
 	return o
-}
-
-func (o GcpPrivatelinkOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpPrivatelink] {
-	return pulumix.Output[*GcpPrivatelink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Privatelink resource Google Service Attachment
@@ -270,12 +245,6 @@ func (o GcpPrivatelinkArrayOutput) ToGcpPrivatelinkArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GcpPrivatelinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GcpPrivatelink] {
-	return pulumix.Output[[]*GcpPrivatelink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GcpPrivatelinkArrayOutput) Index(i pulumi.IntInput) GcpPrivatelinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpPrivatelink {
 		return vs[0].([]*GcpPrivatelink)[vs[1].(int)]
@@ -294,12 +263,6 @@ func (o GcpPrivatelinkMapOutput) ToGcpPrivatelinkMapOutput() GcpPrivatelinkMapOu
 
 func (o GcpPrivatelinkMapOutput) ToGcpPrivatelinkMapOutputWithContext(ctx context.Context) GcpPrivatelinkMapOutput {
 	return o
-}
-
-func (o GcpPrivatelinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpPrivatelink] {
-	return pulumix.Output[map[string]*GcpPrivatelink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcpPrivatelinkMapOutput) MapIndex(k pulumi.StringInput) GcpPrivatelinkOutput {

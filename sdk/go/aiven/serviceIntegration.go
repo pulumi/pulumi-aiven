@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Service Integration resource allows the creation and management of Aiven Service Integrations.
@@ -294,12 +293,6 @@ func (i *ServiceIntegration) ToServiceIntegrationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationOutput)
 }
 
-func (i *ServiceIntegration) ToOutput(ctx context.Context) pulumix.Output[*ServiceIntegration] {
-	return pulumix.Output[*ServiceIntegration]{
-		OutputState: i.ToServiceIntegrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceIntegrationArrayInput is an input type that accepts ServiceIntegrationArray and ServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `ServiceIntegrationArrayInput` via:
 //
@@ -323,12 +316,6 @@ func (i ServiceIntegrationArray) ToServiceIntegrationArrayOutput() ServiceIntegr
 
 func (i ServiceIntegrationArray) ToServiceIntegrationArrayOutputWithContext(ctx context.Context) ServiceIntegrationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationArrayOutput)
-}
-
-func (i ServiceIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIntegration] {
-	return pulumix.Output[[]*ServiceIntegration]{
-		OutputState: i.ToServiceIntegrationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceIntegrationMapInput is an input type that accepts ServiceIntegrationMap and ServiceIntegrationMapOutput values.
@@ -356,12 +343,6 @@ func (i ServiceIntegrationMap) ToServiceIntegrationMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationMapOutput)
 }
 
-func (i ServiceIntegrationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIntegration] {
-	return pulumix.Output[map[string]*ServiceIntegration]{
-		OutputState: i.ToServiceIntegrationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceIntegrationOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationOutput) ElementType() reflect.Type {
@@ -374,12 +355,6 @@ func (o ServiceIntegrationOutput) ToServiceIntegrationOutput() ServiceIntegratio
 
 func (o ServiceIntegrationOutput) ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput {
 	return o
-}
-
-func (o ServiceIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIntegration] {
-	return pulumix.Output[*ServiceIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ClickhouseKafka user configurable settings
@@ -488,12 +463,6 @@ func (o ServiceIntegrationArrayOutput) ToServiceIntegrationArrayOutputWithContex
 	return o
 }
 
-func (o ServiceIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIntegration] {
-	return pulumix.Output[[]*ServiceIntegration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceIntegrationArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIntegration {
 		return vs[0].([]*ServiceIntegration)[vs[1].(int)]
@@ -512,12 +481,6 @@ func (o ServiceIntegrationMapOutput) ToServiceIntegrationMapOutput() ServiceInte
 
 func (o ServiceIntegrationMapOutput) ToServiceIntegrationMapOutputWithContext(ctx context.Context) ServiceIntegrationMapOutput {
 	return o
-}
-
-func (o ServiceIntegrationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIntegration] {
-	return pulumix.Output[map[string]*ServiceIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIntegrationMapOutput) MapIndex(k pulumi.StringInput) ServiceIntegrationOutput {

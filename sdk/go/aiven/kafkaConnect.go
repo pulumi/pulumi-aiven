@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
@@ -483,12 +482,6 @@ func (i *KafkaConnect) ToKafkaConnectOutputWithContext(ctx context.Context) Kafk
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectOutput)
 }
 
-func (i *KafkaConnect) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnect] {
-	return pulumix.Output[*KafkaConnect]{
-		OutputState: i.ToKafkaConnectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaConnectArrayInput is an input type that accepts KafkaConnectArray and KafkaConnectArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectArrayInput` via:
 //
@@ -512,12 +505,6 @@ func (i KafkaConnectArray) ToKafkaConnectArrayOutput() KafkaConnectArrayOutput {
 
 func (i KafkaConnectArray) ToKafkaConnectArrayOutputWithContext(ctx context.Context) KafkaConnectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectArrayOutput)
-}
-
-func (i KafkaConnectArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaConnect] {
-	return pulumix.Output[[]*KafkaConnect]{
-		OutputState: i.ToKafkaConnectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaConnectMapInput is an input type that accepts KafkaConnectMap and KafkaConnectMapOutput values.
@@ -545,12 +532,6 @@ func (i KafkaConnectMap) ToKafkaConnectMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectMapOutput)
 }
 
-func (i KafkaConnectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaConnect] {
-	return pulumix.Output[map[string]*KafkaConnect]{
-		OutputState: i.ToKafkaConnectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaConnectOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectOutput) ElementType() reflect.Type {
@@ -563,12 +544,6 @@ func (o KafkaConnectOutput) ToKafkaConnectOutput() KafkaConnectOutput {
 
 func (o KafkaConnectOutput) ToKafkaConnectOutputWithContext(ctx context.Context) KafkaConnectOutput {
 	return o
-}
-
-func (o KafkaConnectOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnect] {
-	return pulumix.Output[*KafkaConnect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -744,12 +719,6 @@ func (o KafkaConnectArrayOutput) ToKafkaConnectArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o KafkaConnectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaConnect] {
-	return pulumix.Output[[]*KafkaConnect]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaConnectArrayOutput) Index(i pulumi.IntInput) KafkaConnectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaConnect {
 		return vs[0].([]*KafkaConnect)[vs[1].(int)]
@@ -768,12 +737,6 @@ func (o KafkaConnectMapOutput) ToKafkaConnectMapOutput() KafkaConnectMapOutput {
 
 func (o KafkaConnectMapOutput) ToKafkaConnectMapOutputWithContext(ctx context.Context) KafkaConnectMapOutput {
 	return o
-}
-
-func (o KafkaConnectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaConnect] {
-	return pulumix.Output[map[string]*KafkaConnect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaConnectMapOutput) MapIndex(k pulumi.StringInput) KafkaConnectOutput {

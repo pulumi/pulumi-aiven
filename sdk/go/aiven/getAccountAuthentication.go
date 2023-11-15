@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account Authentication data source provides information about the existing Aiven Account Authentication.
@@ -111,12 +110,6 @@ func (o LookupAccountAuthenticationResultOutput) ToLookupAccountAuthenticationRe
 
 func (o LookupAccountAuthenticationResultOutput) ToLookupAccountAuthenticationResultOutputWithContext(ctx context.Context) LookupAccountAuthenticationResultOutput {
 	return o
-}
-
-func (o LookupAccountAuthenticationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountAuthenticationResult] {
-	return pulumix.Output[LookupAccountAuthenticationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique id of the account.

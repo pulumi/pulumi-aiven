@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
@@ -156,12 +155,6 @@ func (o LookupKafkaMirrorMakerResultOutput) ToLookupKafkaMirrorMakerResultOutput
 
 func (o LookupKafkaMirrorMakerResultOutput) ToLookupKafkaMirrorMakerResultOutputWithContext(ctx context.Context) LookupKafkaMirrorMakerResultOutput {
 	return o
-}
-
-func (o LookupKafkaMirrorMakerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaMirrorMakerResult] {
-	return pulumix.Output[LookupKafkaMirrorMakerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

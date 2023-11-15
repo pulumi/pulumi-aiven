@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka User resource allows the creation and management of Aiven Kafka Users.
@@ -201,12 +200,6 @@ func (i *KafkaUser) ToKafkaUserOutputWithContext(ctx context.Context) KafkaUserO
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaUserOutput)
 }
 
-func (i *KafkaUser) ToOutput(ctx context.Context) pulumix.Output[*KafkaUser] {
-	return pulumix.Output[*KafkaUser]{
-		OutputState: i.ToKafkaUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaUserArrayInput is an input type that accepts KafkaUserArray and KafkaUserArrayOutput values.
 // You can construct a concrete instance of `KafkaUserArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i KafkaUserArray) ToKafkaUserArrayOutput() KafkaUserArrayOutput {
 
 func (i KafkaUserArray) ToKafkaUserArrayOutputWithContext(ctx context.Context) KafkaUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaUserArrayOutput)
-}
-
-func (i KafkaUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaUser] {
-	return pulumix.Output[[]*KafkaUser]{
-		OutputState: i.ToKafkaUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KafkaUserMapInput is an input type that accepts KafkaUserMap and KafkaUserMapOutput values.
@@ -263,12 +250,6 @@ func (i KafkaUserMap) ToKafkaUserMapOutputWithContext(ctx context.Context) Kafka
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaUserMapOutput)
 }
 
-func (i KafkaUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaUser] {
-	return pulumix.Output[map[string]*KafkaUser]{
-		OutputState: i.ToKafkaUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaUserOutput struct{ *pulumi.OutputState }
 
 func (KafkaUserOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o KafkaUserOutput) ToKafkaUserOutput() KafkaUserOutput {
 
 func (o KafkaUserOutput) ToKafkaUserOutputWithContext(ctx context.Context) KafkaUserOutput {
 	return o
-}
-
-func (o KafkaUserOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaUser] {
-	return pulumix.Output[*KafkaUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access certificate for the user
@@ -338,12 +313,6 @@ func (o KafkaUserArrayOutput) ToKafkaUserArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o KafkaUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KafkaUser] {
-	return pulumix.Output[[]*KafkaUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KafkaUserArrayOutput) Index(i pulumi.IntInput) KafkaUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaUser {
 		return vs[0].([]*KafkaUser)[vs[1].(int)]
@@ -362,12 +331,6 @@ func (o KafkaUserMapOutput) ToKafkaUserMapOutput() KafkaUserMapOutput {
 
 func (o KafkaUserMapOutput) ToKafkaUserMapOutputWithContext(ctx context.Context) KafkaUserMapOutput {
 	return o
-}
-
-func (o KafkaUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KafkaUser] {
-	return pulumix.Output[map[string]*KafkaUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaUserMapOutput) MapIndex(k pulumi.StringInput) KafkaUserOutput {

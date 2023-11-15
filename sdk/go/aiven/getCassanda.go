@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Cassandra data source provides information about the existing Aiven Cassandra service.
@@ -158,12 +157,6 @@ func (o GetCassandaResultOutput) ToGetCassandaResultOutput() GetCassandaResultOu
 
 func (o GetCassandaResultOutput) ToGetCassandaResultOutputWithContext(ctx context.Context) GetCassandaResultOutput {
 	return o
-}
-
-func (o GetCassandaResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCassandaResult] {
-	return pulumix.Output[GetCassandaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

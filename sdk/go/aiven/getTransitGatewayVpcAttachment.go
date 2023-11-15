@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
@@ -123,12 +122,6 @@ func (o LookupTransitGatewayVpcAttachmentResultOutput) ToLookupTransitGatewayVpc
 
 func (o LookupTransitGatewayVpcAttachmentResultOutput) ToLookupTransitGatewayVpcAttachmentResultOutputWithContext(ctx context.Context) LookupTransitGatewayVpcAttachmentResultOutput {
 	return o
-}
-
-func (o LookupTransitGatewayVpcAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransitGatewayVpcAttachmentResult] {
-	return pulumix.Output[LookupTransitGatewayVpcAttachmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

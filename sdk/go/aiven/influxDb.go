@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The InfluxDB resource allows the creation and management of Aiven InfluxDB services.
@@ -374,12 +373,6 @@ func (i *InfluxDb) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbOutput)
 }
 
-func (i *InfluxDb) ToOutput(ctx context.Context) pulumix.Output[*InfluxDb] {
-	return pulumix.Output[*InfluxDb]{
-		OutputState: i.ToInfluxDbOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InfluxDbArrayInput is an input type that accepts InfluxDbArray and InfluxDbArrayOutput values.
 // You can construct a concrete instance of `InfluxDbArrayInput` via:
 //
@@ -403,12 +396,6 @@ func (i InfluxDbArray) ToInfluxDbArrayOutput() InfluxDbArrayOutput {
 
 func (i InfluxDbArray) ToInfluxDbArrayOutputWithContext(ctx context.Context) InfluxDbArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbArrayOutput)
-}
-
-func (i InfluxDbArray) ToOutput(ctx context.Context) pulumix.Output[[]*InfluxDb] {
-	return pulumix.Output[[]*InfluxDb]{
-		OutputState: i.ToInfluxDbArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InfluxDbMapInput is an input type that accepts InfluxDbMap and InfluxDbMapOutput values.
@@ -436,12 +423,6 @@ func (i InfluxDbMap) ToInfluxDbMapOutputWithContext(ctx context.Context) InfluxD
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbMapOutput)
 }
 
-func (i InfluxDbMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InfluxDb] {
-	return pulumix.Output[map[string]*InfluxDb]{
-		OutputState: i.ToInfluxDbMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InfluxDbOutput struct{ *pulumi.OutputState }
 
 func (InfluxDbOutput) ElementType() reflect.Type {
@@ -454,12 +435,6 @@ func (o InfluxDbOutput) ToInfluxDbOutput() InfluxDbOutput {
 
 func (o InfluxDbOutput) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput {
 	return o
-}
-
-func (o InfluxDbOutput) ToOutput(ctx context.Context) pulumix.Output[*InfluxDb] {
-	return pulumix.Output[*InfluxDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -613,12 +588,6 @@ func (o InfluxDbArrayOutput) ToInfluxDbArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InfluxDbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InfluxDb] {
-	return pulumix.Output[[]*InfluxDb]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InfluxDbArrayOutput) Index(i pulumi.IntInput) InfluxDbOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InfluxDb {
 		return vs[0].([]*InfluxDb)[vs[1].(int)]
@@ -637,12 +606,6 @@ func (o InfluxDbMapOutput) ToInfluxDbMapOutput() InfluxDbMapOutput {
 
 func (o InfluxDbMapOutput) ToInfluxDbMapOutputWithContext(ctx context.Context) InfluxDbMapOutput {
 	return o
-}
-
-func (o InfluxDbMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InfluxDb] {
-	return pulumix.Output[map[string]*InfluxDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InfluxDbMapOutput) MapIndex(k pulumi.StringInput) InfluxDbOutput {
