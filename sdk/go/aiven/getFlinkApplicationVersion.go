@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
@@ -136,12 +135,6 @@ func (o LookupFlinkApplicationVersionResultOutput) ToLookupFlinkApplicationVersi
 
 func (o LookupFlinkApplicationVersionResultOutput) ToLookupFlinkApplicationVersionResultOutputWithContext(ctx context.Context) LookupFlinkApplicationVersionResultOutput {
 	return o
-}
-
-func (o LookupFlinkApplicationVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFlinkApplicationVersionResult] {
-	return pulumix.Output[LookupFlinkApplicationVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application ID

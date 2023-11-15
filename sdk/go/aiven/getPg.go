@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The PG data source provides information about the existing Aiven PostgreSQL service.
@@ -156,12 +155,6 @@ func (o LookupPgResultOutput) ToLookupPgResultOutput() LookupPgResultOutput {
 
 func (o LookupPgResultOutput) ToLookupPgResultOutputWithContext(ctx context.Context) LookupPgResultOutput {
 	return o
-}
-
-func (o LookupPgResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPgResult] {
-	return pulumix.Output[LookupPgResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Organization User data source provides information about the existing Aiven Organization User.
@@ -85,12 +84,6 @@ func (o LookupOrganizationUserResultOutput) ToLookupOrganizationUserResultOutput
 
 func (o LookupOrganizationUserResultOutput) ToLookupOrganizationUserResultOutputWithContext(ctx context.Context) LookupOrganizationUserResultOutput {
 	return o
-}
-
-func (o LookupOrganizationUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationUserResult] {
-	return pulumix.Output[LookupOrganizationUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.

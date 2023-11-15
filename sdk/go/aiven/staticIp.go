@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The StaticIp resource allows the creation and deletion of static ips. Please not that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
@@ -138,12 +137,6 @@ func (i *StaticIp) ToStaticIpOutputWithContext(ctx context.Context) StaticIpOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpOutput)
 }
 
-func (i *StaticIp) ToOutput(ctx context.Context) pulumix.Output[*StaticIp] {
-	return pulumix.Output[*StaticIp]{
-		OutputState: i.ToStaticIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StaticIpArrayInput is an input type that accepts StaticIpArray and StaticIpArrayOutput values.
 // You can construct a concrete instance of `StaticIpArrayInput` via:
 //
@@ -167,12 +160,6 @@ func (i StaticIpArray) ToStaticIpArrayOutput() StaticIpArrayOutput {
 
 func (i StaticIpArray) ToStaticIpArrayOutputWithContext(ctx context.Context) StaticIpArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpArrayOutput)
-}
-
-func (i StaticIpArray) ToOutput(ctx context.Context) pulumix.Output[[]*StaticIp] {
-	return pulumix.Output[[]*StaticIp]{
-		OutputState: i.ToStaticIpArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StaticIpMapInput is an input type that accepts StaticIpMap and StaticIpMapOutput values.
@@ -200,12 +187,6 @@ func (i StaticIpMap) ToStaticIpMapOutputWithContext(ctx context.Context) StaticI
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpMapOutput)
 }
 
-func (i StaticIpMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StaticIp] {
-	return pulumix.Output[map[string]*StaticIp]{
-		OutputState: i.ToStaticIpMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StaticIpOutput struct{ *pulumi.OutputState }
 
 func (StaticIpOutput) ElementType() reflect.Type {
@@ -218,12 +199,6 @@ func (o StaticIpOutput) ToStaticIpOutput() StaticIpOutput {
 
 func (o StaticIpOutput) ToStaticIpOutputWithContext(ctx context.Context) StaticIpOutput {
 	return o
-}
-
-func (o StaticIpOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticIp] {
-	return pulumix.Output[*StaticIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
@@ -270,12 +245,6 @@ func (o StaticIpArrayOutput) ToStaticIpArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o StaticIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StaticIp] {
-	return pulumix.Output[[]*StaticIp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StaticIpArrayOutput) Index(i pulumi.IntInput) StaticIpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StaticIp {
 		return vs[0].([]*StaticIp)[vs[1].(int)]
@@ -294,12 +263,6 @@ func (o StaticIpMapOutput) ToStaticIpMapOutput() StaticIpMapOutput {
 
 func (o StaticIpMapOutput) ToStaticIpMapOutputWithContext(ctx context.Context) StaticIpMapOutput {
 	return o
-}
-
-func (o StaticIpMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StaticIp] {
-	return pulumix.Output[map[string]*StaticIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticIpMapOutput) MapIndex(k pulumi.StringInput) StaticIpOutput {

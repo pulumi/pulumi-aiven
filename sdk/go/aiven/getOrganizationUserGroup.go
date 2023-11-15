@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
@@ -85,12 +84,6 @@ func (o LookupOrganizationUserGroupResultOutput) ToLookupOrganizationUserGroupRe
 
 func (o LookupOrganizationUserGroupResultOutput) ToLookupOrganizationUserGroupResultOutputWithContext(ctx context.Context) LookupOrganizationUserGroupResultOutput {
 	return o
-}
-
-func (o LookupOrganizationUserGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationUserGroupResult] {
-	return pulumix.Output[LookupOrganizationUserGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of creation

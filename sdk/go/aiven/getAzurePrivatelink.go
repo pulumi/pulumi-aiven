@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
@@ -116,12 +115,6 @@ func (o LookupAzurePrivatelinkResultOutput) ToLookupAzurePrivatelinkResultOutput
 
 func (o LookupAzurePrivatelinkResultOutput) ToLookupAzurePrivatelinkResultOutputWithContext(ctx context.Context) LookupAzurePrivatelinkResultOutput {
 	return o
-}
-
-func (o LookupAzurePrivatelinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzurePrivatelinkResult] {
-	return pulumix.Output[LookupAzurePrivatelinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Privatelink service alias

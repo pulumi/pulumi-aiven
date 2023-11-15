@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Flink resource allows the creation and management of Aiven Flink services.
@@ -376,12 +375,6 @@ func (i *Flink) ToFlinkOutputWithContext(ctx context.Context) FlinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkOutput)
 }
 
-func (i *Flink) ToOutput(ctx context.Context) pulumix.Output[*Flink] {
-	return pulumix.Output[*Flink]{
-		OutputState: i.ToFlinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlinkArrayInput is an input type that accepts FlinkArray and FlinkArrayOutput values.
 // You can construct a concrete instance of `FlinkArrayInput` via:
 //
@@ -405,12 +398,6 @@ func (i FlinkArray) ToFlinkArrayOutput() FlinkArrayOutput {
 
 func (i FlinkArray) ToFlinkArrayOutputWithContext(ctx context.Context) FlinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkArrayOutput)
-}
-
-func (i FlinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*Flink] {
-	return pulumix.Output[[]*Flink]{
-		OutputState: i.ToFlinkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlinkMapInput is an input type that accepts FlinkMap and FlinkMapOutput values.
@@ -438,12 +425,6 @@ func (i FlinkMap) ToFlinkMapOutputWithContext(ctx context.Context) FlinkMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkMapOutput)
 }
 
-func (i FlinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flink] {
-	return pulumix.Output[map[string]*Flink]{
-		OutputState: i.ToFlinkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlinkOutput struct{ *pulumi.OutputState }
 
 func (FlinkOutput) ElementType() reflect.Type {
@@ -456,12 +437,6 @@ func (o FlinkOutput) ToFlinkOutput() FlinkOutput {
 
 func (o FlinkOutput) ToFlinkOutputWithContext(ctx context.Context) FlinkOutput {
 	return o
-}
-
-func (o FlinkOutput) ToOutput(ctx context.Context) pulumix.Output[*Flink] {
-	return pulumix.Output[*Flink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -615,12 +590,6 @@ func (o FlinkArrayOutput) ToFlinkArrayOutputWithContext(ctx context.Context) Fli
 	return o
 }
 
-func (o FlinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Flink] {
-	return pulumix.Output[[]*Flink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlinkArrayOutput) Index(i pulumi.IntInput) FlinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Flink {
 		return vs[0].([]*Flink)[vs[1].(int)]
@@ -639,12 +608,6 @@ func (o FlinkMapOutput) ToFlinkMapOutput() FlinkMapOutput {
 
 func (o FlinkMapOutput) ToFlinkMapOutputWithContext(ctx context.Context) FlinkMapOutput {
 	return o
-}
-
-func (o FlinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flink] {
-	return pulumix.Output[map[string]*Flink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlinkMapOutput) MapIndex(k pulumi.StringInput) FlinkOutput {

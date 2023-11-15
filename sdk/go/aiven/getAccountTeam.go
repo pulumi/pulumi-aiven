@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Account Team data source provides information about the existing Account Team.
@@ -85,12 +84,6 @@ func (o LookupAccountTeamResultOutput) ToLookupAccountTeamResultOutput() LookupA
 
 func (o LookupAccountTeamResultOutput) ToLookupAccountTeamResultOutputWithContext(ctx context.Context) LookupAccountTeamResultOutput {
 	return o
-}
-
-func (o LookupAccountTeamResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountTeamResult] {
-	return pulumix.Output[LookupAccountTeamResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique account id

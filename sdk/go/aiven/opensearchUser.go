@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
@@ -187,12 +186,6 @@ func (i *OpensearchUser) ToOpensearchUserOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchUserOutput)
 }
 
-func (i *OpensearchUser) ToOutput(ctx context.Context) pulumix.Output[*OpensearchUser] {
-	return pulumix.Output[*OpensearchUser]{
-		OutputState: i.ToOpensearchUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpensearchUserArrayInput is an input type that accepts OpensearchUserArray and OpensearchUserArrayOutput values.
 // You can construct a concrete instance of `OpensearchUserArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i OpensearchUserArray) ToOpensearchUserArrayOutput() OpensearchUserArrayOu
 
 func (i OpensearchUserArray) ToOpensearchUserArrayOutputWithContext(ctx context.Context) OpensearchUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchUserArrayOutput)
-}
-
-func (i OpensearchUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpensearchUser] {
-	return pulumix.Output[[]*OpensearchUser]{
-		OutputState: i.ToOpensearchUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OpensearchUserMapInput is an input type that accepts OpensearchUserMap and OpensearchUserMapOutput values.
@@ -249,12 +236,6 @@ func (i OpensearchUserMap) ToOpensearchUserMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OpensearchUserMapOutput)
 }
 
-func (i OpensearchUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpensearchUser] {
-	return pulumix.Output[map[string]*OpensearchUser]{
-		OutputState: i.ToOpensearchUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpensearchUserOutput struct{ *pulumi.OutputState }
 
 func (OpensearchUserOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o OpensearchUserOutput) ToOpensearchUserOutput() OpensearchUserOutput {
 
 func (o OpensearchUserOutput) ToOpensearchUserOutputWithContext(ctx context.Context) OpensearchUserOutput {
 	return o
-}
-
-func (o OpensearchUserOutput) ToOutput(ctx context.Context) pulumix.Output[*OpensearchUser] {
-	return pulumix.Output[*OpensearchUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The password of the OpenSearch User.
@@ -314,12 +289,6 @@ func (o OpensearchUserArrayOutput) ToOpensearchUserArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o OpensearchUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpensearchUser] {
-	return pulumix.Output[[]*OpensearchUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OpensearchUserArrayOutput) Index(i pulumi.IntInput) OpensearchUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpensearchUser {
 		return vs[0].([]*OpensearchUser)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o OpensearchUserMapOutput) ToOpensearchUserMapOutput() OpensearchUserMapOu
 
 func (o OpensearchUserMapOutput) ToOpensearchUserMapOutputWithContext(ctx context.Context) OpensearchUserMapOutput {
 	return o
-}
-
-func (o OpensearchUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpensearchUser] {
-	return pulumix.Output[map[string]*OpensearchUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpensearchUserMapOutput) MapIndex(k pulumi.StringInput) OpensearchUserOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Organization User resource allows the creation and management of an Aiven Organization User.
@@ -138,12 +137,6 @@ func (i *OrganizationUser) ToOrganizationUserOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationUserOutput)
 }
 
-func (i *OrganizationUser) ToOutput(ctx context.Context) pulumix.Output[*OrganizationUser] {
-	return pulumix.Output[*OrganizationUser]{
-		OutputState: i.ToOrganizationUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationUserArrayInput is an input type that accepts OrganizationUserArray and OrganizationUserArrayOutput values.
 // You can construct a concrete instance of `OrganizationUserArrayInput` via:
 //
@@ -167,12 +160,6 @@ func (i OrganizationUserArray) ToOrganizationUserArrayOutput() OrganizationUserA
 
 func (i OrganizationUserArray) ToOrganizationUserArrayOutputWithContext(ctx context.Context) OrganizationUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationUserArrayOutput)
-}
-
-func (i OrganizationUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationUser] {
-	return pulumix.Output[[]*OrganizationUser]{
-		OutputState: i.ToOrganizationUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationUserMapInput is an input type that accepts OrganizationUserMap and OrganizationUserMapOutput values.
@@ -200,12 +187,6 @@ func (i OrganizationUserMap) ToOrganizationUserMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationUserMapOutput)
 }
 
-func (i OrganizationUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationUser] {
-	return pulumix.Output[map[string]*OrganizationUser]{
-		OutputState: i.ToOrganizationUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationUserOutput struct{ *pulumi.OutputState }
 
 func (OrganizationUserOutput) ElementType() reflect.Type {
@@ -218,12 +199,6 @@ func (o OrganizationUserOutput) ToOrganizationUserOutput() OrganizationUserOutpu
 
 func (o OrganizationUserOutput) ToOrganizationUserOutputWithContext(ctx context.Context) OrganizationUserOutput {
 	return o
-}
-
-func (o OrganizationUserOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationUser] {
-	return pulumix.Output[*OrganizationUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
@@ -265,12 +240,6 @@ func (o OrganizationUserArrayOutput) ToOrganizationUserArrayOutputWithContext(ct
 	return o
 }
 
-func (o OrganizationUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationUser] {
-	return pulumix.Output[[]*OrganizationUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationUserArrayOutput) Index(i pulumi.IntInput) OrganizationUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationUser {
 		return vs[0].([]*OrganizationUser)[vs[1].(int)]
@@ -289,12 +258,6 @@ func (o OrganizationUserMapOutput) ToOrganizationUserMapOutput() OrganizationUse
 
 func (o OrganizationUserMapOutput) ToOrganizationUserMapOutputWithContext(ctx context.Context) OrganizationUserMapOutput {
 	return o
-}
-
-func (o OrganizationUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationUser] {
-	return pulumix.Output[map[string]*OrganizationUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationUserMapOutput) MapIndex(k pulumi.StringInput) OrganizationUserOutput {

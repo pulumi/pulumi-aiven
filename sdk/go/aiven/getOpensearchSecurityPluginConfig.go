@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
@@ -114,12 +113,6 @@ func (o LookupOpensearchSecurityPluginConfigResultOutput) ToLookupOpensearchSecu
 
 func (o LookupOpensearchSecurityPluginConfigResultOutput) ToLookupOpensearchSecurityPluginConfigResultOutputWithContext(ctx context.Context) LookupOpensearchSecurityPluginConfigResultOutput {
 	return o
-}
-
-func (o LookupOpensearchSecurityPluginConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpensearchSecurityPluginConfigResult] {
-	return pulumix.Output[LookupOpensearchSecurityPluginConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.

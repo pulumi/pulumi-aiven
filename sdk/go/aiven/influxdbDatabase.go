@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The InfluxDB Database resource allows the creation and management of Aiven InfluxDB Databases.
@@ -142,12 +141,6 @@ func (i *InfluxdbDatabase) ToInfluxdbDatabaseOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxdbDatabaseOutput)
 }
 
-func (i *InfluxdbDatabase) ToOutput(ctx context.Context) pulumix.Output[*InfluxdbDatabase] {
-	return pulumix.Output[*InfluxdbDatabase]{
-		OutputState: i.ToInfluxdbDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InfluxdbDatabaseArrayInput is an input type that accepts InfluxdbDatabaseArray and InfluxdbDatabaseArrayOutput values.
 // You can construct a concrete instance of `InfluxdbDatabaseArrayInput` via:
 //
@@ -171,12 +164,6 @@ func (i InfluxdbDatabaseArray) ToInfluxdbDatabaseArrayOutput() InfluxdbDatabaseA
 
 func (i InfluxdbDatabaseArray) ToInfluxdbDatabaseArrayOutputWithContext(ctx context.Context) InfluxdbDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxdbDatabaseArrayOutput)
-}
-
-func (i InfluxdbDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*InfluxdbDatabase] {
-	return pulumix.Output[[]*InfluxdbDatabase]{
-		OutputState: i.ToInfluxdbDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InfluxdbDatabaseMapInput is an input type that accepts InfluxdbDatabaseMap and InfluxdbDatabaseMapOutput values.
@@ -204,12 +191,6 @@ func (i InfluxdbDatabaseMap) ToInfluxdbDatabaseMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxdbDatabaseMapOutput)
 }
 
-func (i InfluxdbDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InfluxdbDatabase] {
-	return pulumix.Output[map[string]*InfluxdbDatabase]{
-		OutputState: i.ToInfluxdbDatabaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InfluxdbDatabaseOutput struct{ *pulumi.OutputState }
 
 func (InfluxdbDatabaseOutput) ElementType() reflect.Type {
@@ -222,12 +203,6 @@ func (o InfluxdbDatabaseOutput) ToInfluxdbDatabaseOutput() InfluxdbDatabaseOutpu
 
 func (o InfluxdbDatabaseOutput) ToInfluxdbDatabaseOutputWithContext(ctx context.Context) InfluxdbDatabaseOutput {
 	return o
-}
-
-func (o InfluxdbDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*InfluxdbDatabase] {
-	return pulumix.Output[*InfluxdbDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -265,12 +240,6 @@ func (o InfluxdbDatabaseArrayOutput) ToInfluxdbDatabaseArrayOutputWithContext(ct
 	return o
 }
 
-func (o InfluxdbDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InfluxdbDatabase] {
-	return pulumix.Output[[]*InfluxdbDatabase]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InfluxdbDatabaseArrayOutput) Index(i pulumi.IntInput) InfluxdbDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InfluxdbDatabase {
 		return vs[0].([]*InfluxdbDatabase)[vs[1].(int)]
@@ -289,12 +258,6 @@ func (o InfluxdbDatabaseMapOutput) ToInfluxdbDatabaseMapOutput() InfluxdbDatabas
 
 func (o InfluxdbDatabaseMapOutput) ToInfluxdbDatabaseMapOutputWithContext(ctx context.Context) InfluxdbDatabaseMapOutput {
 	return o
-}
-
-func (o InfluxdbDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InfluxdbDatabase] {
-	return pulumix.Output[map[string]*InfluxdbDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InfluxdbDatabaseMapOutput) MapIndex(k pulumi.StringInput) InfluxdbDatabaseOutput {

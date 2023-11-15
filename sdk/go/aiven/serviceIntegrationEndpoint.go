@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
@@ -243,12 +242,6 @@ func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointOutput)
 }
 
-func (i *ServiceIntegrationEndpoint) ToOutput(ctx context.Context) pulumix.Output[*ServiceIntegrationEndpoint] {
-	return pulumix.Output[*ServiceIntegrationEndpoint]{
-		OutputState: i.ToServiceIntegrationEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceIntegrationEndpointArrayInput is an input type that accepts ServiceIntegrationEndpointArray and ServiceIntegrationEndpointArrayOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointArrayInput` via:
 //
@@ -272,12 +265,6 @@ func (i ServiceIntegrationEndpointArray) ToServiceIntegrationEndpointArrayOutput
 
 func (i ServiceIntegrationEndpointArray) ToServiceIntegrationEndpointArrayOutputWithContext(ctx context.Context) ServiceIntegrationEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointArrayOutput)
-}
-
-func (i ServiceIntegrationEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIntegrationEndpoint] {
-	return pulumix.Output[[]*ServiceIntegrationEndpoint]{
-		OutputState: i.ToServiceIntegrationEndpointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceIntegrationEndpointMapInput is an input type that accepts ServiceIntegrationEndpointMap and ServiceIntegrationEndpointMapOutput values.
@@ -305,12 +292,6 @@ func (i ServiceIntegrationEndpointMap) ToServiceIntegrationEndpointMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointMapOutput)
 }
 
-func (i ServiceIntegrationEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIntegrationEndpoint] {
-	return pulumix.Output[map[string]*ServiceIntegrationEndpoint]{
-		OutputState: i.ToServiceIntegrationEndpointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceIntegrationEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationEndpointOutput) ElementType() reflect.Type {
@@ -323,12 +304,6 @@ func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutput() S
 
 func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutputWithContext(ctx context.Context) ServiceIntegrationEndpointOutput {
 	return o
-}
-
-func (o ServiceIntegrationEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIntegrationEndpoint] {
-	return pulumix.Output[*ServiceIntegrationEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datadog user configurable settings
@@ -442,12 +417,6 @@ func (o ServiceIntegrationEndpointArrayOutput) ToServiceIntegrationEndpointArray
 	return o
 }
 
-func (o ServiceIntegrationEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIntegrationEndpoint] {
-	return pulumix.Output[[]*ServiceIntegrationEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceIntegrationEndpointArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIntegrationEndpoint {
 		return vs[0].([]*ServiceIntegrationEndpoint)[vs[1].(int)]
@@ -466,12 +435,6 @@ func (o ServiceIntegrationEndpointMapOutput) ToServiceIntegrationEndpointMapOutp
 
 func (o ServiceIntegrationEndpointMapOutput) ToServiceIntegrationEndpointMapOutputWithContext(ctx context.Context) ServiceIntegrationEndpointMapOutput {
 	return o
-}
-
-func (o ServiceIntegrationEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIntegrationEndpoint] {
-	return pulumix.Output[map[string]*ServiceIntegrationEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIntegrationEndpointMapOutput) MapIndex(k pulumi.StringInput) ServiceIntegrationEndpointOutput {

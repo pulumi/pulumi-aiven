@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
@@ -163,12 +162,6 @@ func (i *OrganizationalUnit) ToOrganizationalUnitOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitOutput)
 }
 
-func (i *OrganizationalUnit) ToOutput(ctx context.Context) pulumix.Output[*OrganizationalUnit] {
-	return pulumix.Output[*OrganizationalUnit]{
-		OutputState: i.ToOrganizationalUnitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationalUnitArrayInput is an input type that accepts OrganizationalUnitArray and OrganizationalUnitArrayOutput values.
 // You can construct a concrete instance of `OrganizationalUnitArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i OrganizationalUnitArray) ToOrganizationalUnitArrayOutput() Organizationa
 
 func (i OrganizationalUnitArray) ToOrganizationalUnitArrayOutputWithContext(ctx context.Context) OrganizationalUnitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitArrayOutput)
-}
-
-func (i OrganizationalUnitArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationalUnit] {
-	return pulumix.Output[[]*OrganizationalUnit]{
-		OutputState: i.ToOrganizationalUnitArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationalUnitMapInput is an input type that accepts OrganizationalUnitMap and OrganizationalUnitMapOutput values.
@@ -225,12 +212,6 @@ func (i OrganizationalUnitMap) ToOrganizationalUnitMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitMapOutput)
 }
 
-func (i OrganizationalUnitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationalUnit] {
-	return pulumix.Output[map[string]*OrganizationalUnit]{
-		OutputState: i.ToOrganizationalUnitMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationalUnitOutput struct{ *pulumi.OutputState }
 
 func (OrganizationalUnitOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o OrganizationalUnitOutput) ToOrganizationalUnitOutput() OrganizationalUni
 
 func (o OrganizationalUnitOutput) ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput {
 	return o
-}
-
-func (o OrganizationalUnitOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationalUnit] {
-	return pulumix.Output[*OrganizationalUnit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of creation
@@ -290,12 +265,6 @@ func (o OrganizationalUnitArrayOutput) ToOrganizationalUnitArrayOutputWithContex
 	return o
 }
 
-func (o OrganizationalUnitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationalUnit] {
-	return pulumix.Output[[]*OrganizationalUnit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationalUnitArrayOutput) Index(i pulumi.IntInput) OrganizationalUnitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationalUnit {
 		return vs[0].([]*OrganizationalUnit)[vs[1].(int)]
@@ -314,12 +283,6 @@ func (o OrganizationalUnitMapOutput) ToOrganizationalUnitMapOutput() Organizatio
 
 func (o OrganizationalUnitMapOutput) ToOrganizationalUnitMapOutputWithContext(ctx context.Context) OrganizationalUnitMapOutput {
 	return o
-}
-
-func (o OrganizationalUnitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationalUnit] {
-	return pulumix.Output[map[string]*OrganizationalUnit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationalUnitMapOutput) MapIndex(k pulumi.StringInput) OrganizationalUnitOutput {

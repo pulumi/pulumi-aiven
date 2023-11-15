@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
@@ -122,12 +121,6 @@ func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutput() LookupKaf
 
 func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutputWithContext(ctx context.Context) LookupKafkaTopicResultOutput {
 	return o
-}
-
-func (o LookupKafkaTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaTopicResult] {
-	return pulumix.Output[LookupKafkaTopicResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kafka topic configuration

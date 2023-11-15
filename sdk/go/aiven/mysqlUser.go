@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The MySQL User resource allows the creation and management of Aiven MySQL Users.
@@ -211,12 +210,6 @@ func (i *MysqlUser) ToMysqlUserOutputWithContext(ctx context.Context) MysqlUserO
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlUserOutput)
 }
 
-func (i *MysqlUser) ToOutput(ctx context.Context) pulumix.Output[*MysqlUser] {
-	return pulumix.Output[*MysqlUser]{
-		OutputState: i.ToMysqlUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MysqlUserArrayInput is an input type that accepts MysqlUserArray and MysqlUserArrayOutput values.
 // You can construct a concrete instance of `MysqlUserArrayInput` via:
 //
@@ -240,12 +233,6 @@ func (i MysqlUserArray) ToMysqlUserArrayOutput() MysqlUserArrayOutput {
 
 func (i MysqlUserArray) ToMysqlUserArrayOutputWithContext(ctx context.Context) MysqlUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlUserArrayOutput)
-}
-
-func (i MysqlUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*MysqlUser] {
-	return pulumix.Output[[]*MysqlUser]{
-		OutputState: i.ToMysqlUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MysqlUserMapInput is an input type that accepts MysqlUserMap and MysqlUserMapOutput values.
@@ -273,12 +260,6 @@ func (i MysqlUserMap) ToMysqlUserMapOutputWithContext(ctx context.Context) Mysql
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlUserMapOutput)
 }
 
-func (i MysqlUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MysqlUser] {
-	return pulumix.Output[map[string]*MysqlUser]{
-		OutputState: i.ToMysqlUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MysqlUserOutput struct{ *pulumi.OutputState }
 
 func (MysqlUserOutput) ElementType() reflect.Type {
@@ -291,12 +272,6 @@ func (o MysqlUserOutput) ToMysqlUserOutput() MysqlUserOutput {
 
 func (o MysqlUserOutput) ToMysqlUserOutputWithContext(ctx context.Context) MysqlUserOutput {
 	return o
-}
-
-func (o MysqlUserOutput) ToOutput(ctx context.Context) pulumix.Output[*MysqlUser] {
-	return pulumix.Output[*MysqlUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access certificate for the user
@@ -353,12 +328,6 @@ func (o MysqlUserArrayOutput) ToMysqlUserArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o MysqlUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MysqlUser] {
-	return pulumix.Output[[]*MysqlUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MysqlUserArrayOutput) Index(i pulumi.IntInput) MysqlUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MysqlUser {
 		return vs[0].([]*MysqlUser)[vs[1].(int)]
@@ -377,12 +346,6 @@ func (o MysqlUserMapOutput) ToMysqlUserMapOutput() MysqlUserMapOutput {
 
 func (o MysqlUserMapOutput) ToMysqlUserMapOutputWithContext(ctx context.Context) MysqlUserMapOutput {
 	return o
-}
-
-func (o MysqlUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MysqlUser] {
-	return pulumix.Output[map[string]*MysqlUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlUserMapOutput) MapIndex(k pulumi.StringInput) MysqlUserOutput {
