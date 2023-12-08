@@ -49,10 +49,10 @@ public final class GetRedisTag {
             return this;
         }
         public GetRedisTag build() {
-            final var o = new GetRedisTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRedisTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

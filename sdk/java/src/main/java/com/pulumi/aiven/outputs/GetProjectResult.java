@@ -321,23 +321,23 @@ public final class GetProjectResult {
             return this;
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.accountId = accountId;
-            o.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
-            o.availableCredits = availableCredits;
-            o.billingGroup = billingGroup;
-            o.caCert = caCert;
-            o.copyFromProject = copyFromProject;
-            o.defaultCloud = defaultCloud;
-            o.estimatedBalance = estimatedBalance;
-            o.id = id;
-            o.parentId = parentId;
-            o.paymentMethod = paymentMethod;
-            o.project = project;
-            o.tags = tags;
-            o.technicalEmails = technicalEmails;
-            o.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.accountId = accountId;
+            _resultValue.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
+            _resultValue.availableCredits = availableCredits;
+            _resultValue.billingGroup = billingGroup;
+            _resultValue.caCert = caCert;
+            _resultValue.copyFromProject = copyFromProject;
+            _resultValue.defaultCloud = defaultCloud;
+            _resultValue.estimatedBalance = estimatedBalance;
+            _resultValue.id = id;
+            _resultValue.parentId = parentId;
+            _resultValue.paymentMethod = paymentMethod;
+            _resultValue.project = project;
+            _resultValue.tags = tags;
+            _resultValue.technicalEmails = technicalEmails;
+            _resultValue.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
+            return _resultValue;
         }
     }
 }

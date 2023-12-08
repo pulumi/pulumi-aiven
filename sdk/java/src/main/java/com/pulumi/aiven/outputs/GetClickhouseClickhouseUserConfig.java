@@ -166,18 +166,18 @@ public final class GetClickhouseClickhouseUserConfig {
             return this;
         }
         public GetClickhouseClickhouseUserConfig build() {
-            final var o = new GetClickhouseClickhouseUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetClickhouseClickhouseUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

@@ -124,13 +124,13 @@ public final class GetOrganizationResult {
             return this;
         }
         public GetOrganizationResult build() {
-            final var o = new GetOrganizationResult();
-            o.createTime = createTime;
-            o.id = id;
-            o.name = name;
-            o.tenantId = tenantId;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetOrganizationResult();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.tenantId = tenantId;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

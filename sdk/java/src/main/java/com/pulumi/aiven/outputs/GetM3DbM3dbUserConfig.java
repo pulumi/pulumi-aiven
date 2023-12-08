@@ -261,25 +261,25 @@ public final class GetM3DbM3dbUserConfig {
             return this;
         }
         public GetM3DbM3dbUserConfig build() {
-            final var o = new GetM3DbM3dbUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.customDomain = customDomain;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.limits = limits;
-            o.m3 = m3;
-            o.m3Version = m3Version;
-            o.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
-            o.m3dbVersion = m3dbVersion;
-            o.namespaces = namespaces;
-            o.privateAccess = privateAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.rules = rules;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetM3DbM3dbUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.customDomain = customDomain;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.limits = limits;
+            _resultValue.m3 = m3;
+            _resultValue.m3Version = m3Version;
+            _resultValue.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
+            _resultValue.m3dbVersion = m3dbVersion;
+            _resultValue.namespaces = namespaces;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.rules = rules;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

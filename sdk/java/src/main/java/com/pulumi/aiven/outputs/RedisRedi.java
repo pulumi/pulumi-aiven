@@ -25,8 +25,8 @@ public final class RedisRedi {
         }
 
         public RedisRedi build() {
-            final var o = new RedisRedi();
-            return o;
+            final var _resultValue = new RedisRedi();
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class ProjectTag {
             return this;
         }
         public ProjectTag build() {
-            final var o = new ProjectTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ProjectTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

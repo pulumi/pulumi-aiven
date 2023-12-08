@@ -40,9 +40,9 @@ public final class GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
             return this;
         }
         public GetInfluxDbInfluxdbUserConfigPrivatelinkAccess build() {
-            final var o = new GetInfluxDbInfluxdbUserConfigPrivatelinkAccess();
-            o.influxdb = influxdb;
-            return o;
+            final var _resultValue = new GetInfluxDbInfluxdbUserConfigPrivatelinkAccess();
+            _resultValue.influxdb = influxdb;
+            return _resultValue;
         }
     }
 }

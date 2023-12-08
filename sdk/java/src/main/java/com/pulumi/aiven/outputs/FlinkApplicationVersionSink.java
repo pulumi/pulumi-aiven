@@ -67,10 +67,10 @@ public final class FlinkApplicationVersionSink {
             return this;
         }
         public FlinkApplicationVersionSink build() {
-            final var o = new FlinkApplicationVersionSink();
-            o.createTable = createTable;
-            o.integrationId = integrationId;
-            return o;
+            final var _resultValue = new FlinkApplicationVersionSink();
+            _resultValue.createTable = createTable;
+            _resultValue.integrationId = integrationId;
+            return _resultValue;
         }
     }
 }

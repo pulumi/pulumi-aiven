@@ -25,8 +25,8 @@ public final class GetCassandraCassandra {
         }
 
         public GetCassandraCassandra build() {
-            final var o = new GetCassandraCassandra();
-            return o;
+            final var _resultValue = new GetCassandraCassandra();
+            return _resultValue;
         }
     }
 }

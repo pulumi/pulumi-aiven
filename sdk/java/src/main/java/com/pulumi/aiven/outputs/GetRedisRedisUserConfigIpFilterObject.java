@@ -51,10 +51,10 @@ public final class GetRedisRedisUserConfigIpFilterObject {
             return this;
         }
         public GetRedisRedisUserConfigIpFilterObject build() {
-            final var o = new GetRedisRedisUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetRedisRedisUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

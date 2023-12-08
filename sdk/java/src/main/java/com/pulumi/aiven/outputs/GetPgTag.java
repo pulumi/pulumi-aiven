@@ -49,10 +49,10 @@ public final class GetPgTag {
             return this;
         }
         public GetPgTag build() {
-            final var o = new GetPgTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetPgTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

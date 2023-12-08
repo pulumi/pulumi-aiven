@@ -49,10 +49,10 @@ public final class GetCassandaTag {
             return this;
         }
         public GetCassandaTag build() {
-            final var o = new GetCassandaTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetCassandaTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class KafkaConnectorTask {
             return this;
         }
         public KafkaConnectorTask build() {
-            final var o = new KafkaConnectorTask();
-            o.connector = connector;
-            o.task = task;
-            return o;
+            final var _resultValue = new KafkaConnectorTask();
+            _resultValue.connector = connector;
+            _resultValue.task = task;
+            return _resultValue;
         }
     }
 }

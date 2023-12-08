@@ -67,10 +67,10 @@ public final class InfluxDbInfluxdbUserConfigIpFilterObject {
             return this;
         }
         public InfluxDbInfluxdbUserConfigIpFilterObject build() {
-            final var o = new InfluxDbInfluxdbUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new InfluxDbInfluxdbUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

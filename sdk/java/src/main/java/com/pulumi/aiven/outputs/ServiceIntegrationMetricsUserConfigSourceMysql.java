@@ -48,9 +48,9 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysql {
             return this;
         }
         public ServiceIntegrationMetricsUserConfigSourceMysql build() {
-            final var o = new ServiceIntegrationMetricsUserConfigSourceMysql();
-            o.telegraf = telegraf;
-            return o;
+            final var _resultValue = new ServiceIntegrationMetricsUserConfigSourceMysql();
+            _resultValue.telegraf = telegraf;
+            return _resultValue;
         }
     }
 }

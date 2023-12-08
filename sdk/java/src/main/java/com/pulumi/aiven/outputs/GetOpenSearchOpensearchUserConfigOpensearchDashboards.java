@@ -63,11 +63,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
             return this;
         }
         public GetOpenSearchOpensearchUserConfigOpensearchDashboards build() {
-            final var o = new GetOpenSearchOpensearchUserConfigOpensearchDashboards();
-            o.enabled = enabled;
-            o.maxOldSpaceSize = maxOldSpaceSize;
-            o.opensearchRequestTimeout = opensearchRequestTimeout;
-            return o;
+            final var _resultValue = new GetOpenSearchOpensearchUserConfigOpensearchDashboards();
+            _resultValue.enabled = enabled;
+            _resultValue.maxOldSpaceSize = maxOldSpaceSize;
+            _resultValue.opensearchRequestTimeout = opensearchRequestTimeout;
+            return _resultValue;
         }
     }
 }

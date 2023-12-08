@@ -51,10 +51,10 @@ public final class M3AggregatorM3aggregatorUserConfigIpFilterObject {
             return this;
         }
         public M3AggregatorM3aggregatorUserConfigIpFilterObject build() {
-            final var o = new M3AggregatorM3aggregatorUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new M3AggregatorM3aggregatorUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

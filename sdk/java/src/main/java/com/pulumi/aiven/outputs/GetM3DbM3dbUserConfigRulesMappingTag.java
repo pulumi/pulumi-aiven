@@ -49,10 +49,10 @@ public final class GetM3DbM3dbUserConfigRulesMappingTag {
             return this;
         }
         public GetM3DbM3dbUserConfigRulesMappingTag build() {
-            final var o = new GetM3DbM3dbUserConfigRulesMappingTag();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetM3DbM3dbUserConfigRulesMappingTag();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

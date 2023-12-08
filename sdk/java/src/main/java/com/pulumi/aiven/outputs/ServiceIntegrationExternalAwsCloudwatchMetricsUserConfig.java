@@ -74,10 +74,10 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
             return extraMetrics(List.of(extraMetrics));
         }
         public ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig build() {
-            final var o = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig();
-            o.droppedMetrics = droppedMetrics;
-            o.extraMetrics = extraMetrics;
-            return o;
+            final var _resultValue = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig();
+            _resultValue.droppedMetrics = droppedMetrics;
+            _resultValue.extraMetrics = extraMetrics;
+            return _resultValue;
         }
     }
 }

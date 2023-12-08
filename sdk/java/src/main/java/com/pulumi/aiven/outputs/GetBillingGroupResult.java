@@ -357,25 +357,25 @@ public final class GetBillingGroupResult {
             return this;
         }
         public GetBillingGroupResult build() {
-            final var o = new GetBillingGroupResult();
-            o.accountId = accountId;
-            o.addressLines = addressLines;
-            o.billingCurrency = billingCurrency;
-            o.billingEmails = billingEmails;
-            o.billingExtraText = billingExtraText;
-            o.billingGroupId = billingGroupId;
-            o.cardId = cardId;
-            o.city = city;
-            o.company = company;
-            o.copyFromBillingGroup = copyFromBillingGroup;
-            o.countryCode = countryCode;
-            o.id = id;
-            o.name = name;
-            o.parentId = parentId;
-            o.state = state;
-            o.vatId = vatId;
-            o.zipCode = zipCode;
-            return o;
+            final var _resultValue = new GetBillingGroupResult();
+            _resultValue.accountId = accountId;
+            _resultValue.addressLines = addressLines;
+            _resultValue.billingCurrency = billingCurrency;
+            _resultValue.billingEmails = billingEmails;
+            _resultValue.billingExtraText = billingExtraText;
+            _resultValue.billingGroupId = billingGroupId;
+            _resultValue.cardId = cardId;
+            _resultValue.city = city;
+            _resultValue.company = company;
+            _resultValue.copyFromBillingGroup = copyFromBillingGroup;
+            _resultValue.countryCode = countryCode;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.parentId = parentId;
+            _resultValue.state = state;
+            _resultValue.vatId = vatId;
+            _resultValue.zipCode = zipCode;
+            return _resultValue;
         }
     }
 }

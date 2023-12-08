@@ -113,15 +113,15 @@ public final class GetServiceIntegrationEndpointDatadogUserConfig {
             return this;
         }
         public GetServiceIntegrationEndpointDatadogUserConfig build() {
-            final var o = new GetServiceIntegrationEndpointDatadogUserConfig();
-            o.datadogApiKey = datadogApiKey;
-            o.datadogTags = datadogTags;
-            o.disableConsumerStats = disableConsumerStats;
-            o.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
-            o.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
-            o.maxPartitionContexts = maxPartitionContexts;
-            o.site = site;
-            return o;
+            final var _resultValue = new GetServiceIntegrationEndpointDatadogUserConfig();
+            _resultValue.datadogApiKey = datadogApiKey;
+            _resultValue.datadogTags = datadogTags;
+            _resultValue.disableConsumerStats = disableConsumerStats;
+            _resultValue.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
+            _resultValue.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
+            _resultValue.maxPartitionContexts = maxPartitionContexts;
+            _resultValue.site = site;
+            return _resultValue;
         }
     }
 }

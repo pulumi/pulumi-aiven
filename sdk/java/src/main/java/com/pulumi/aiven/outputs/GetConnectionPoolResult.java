@@ -199,17 +199,17 @@ public final class GetConnectionPoolResult {
             return this;
         }
         public GetConnectionPoolResult build() {
-            final var o = new GetConnectionPoolResult();
-            o.connectionUri = connectionUri;
-            o.databaseName = databaseName;
-            o.id = id;
-            o.poolMode = poolMode;
-            o.poolName = poolName;
-            o.poolSize = poolSize;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetConnectionPoolResult();
+            _resultValue.connectionUri = connectionUri;
+            _resultValue.databaseName = databaseName;
+            _resultValue.id = id;
+            _resultValue.poolMode = poolMode;
+            _resultValue.poolName = poolName;
+            _resultValue.poolSize = poolSize;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

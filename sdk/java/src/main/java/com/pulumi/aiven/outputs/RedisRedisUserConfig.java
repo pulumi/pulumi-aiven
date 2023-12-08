@@ -311,31 +311,31 @@ public final class RedisRedisUserConfig {
             return this;
         }
         public RedisRedisUserConfig build() {
-            final var o = new RedisRedisUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.migration = migration;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.recoveryBasebackupName = recoveryBasebackupName;
-            o.redisAclChannelsDefault = redisAclChannelsDefault;
-            o.redisIoThreads = redisIoThreads;
-            o.redisLfuDecayTime = redisLfuDecayTime;
-            o.redisLfuLogFactor = redisLfuLogFactor;
-            o.redisMaxmemoryPolicy = redisMaxmemoryPolicy;
-            o.redisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
-            o.redisNumberOfDatabases = redisNumberOfDatabases;
-            o.redisPersistence = redisPersistence;
-            o.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
-            o.redisSsl = redisSsl;
-            o.redisTimeout = redisTimeout;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new RedisRedisUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.migration = migration;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.redisAclChannelsDefault = redisAclChannelsDefault;
+            _resultValue.redisIoThreads = redisIoThreads;
+            _resultValue.redisLfuDecayTime = redisLfuDecayTime;
+            _resultValue.redisLfuLogFactor = redisLfuLogFactor;
+            _resultValue.redisMaxmemoryPolicy = redisMaxmemoryPolicy;
+            _resultValue.redisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
+            _resultValue.redisNumberOfDatabases = redisNumberOfDatabases;
+            _resultValue.redisPersistence = redisPersistence;
+            _resultValue.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
+            _resultValue.redisSsl = redisSsl;
+            _resultValue.redisTimeout = redisTimeout;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

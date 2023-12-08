@@ -219,18 +219,18 @@ public final class GetAzureVpcPeeringConnectionResult {
             return this;
         }
         public GetAzureVpcPeeringConnectionResult build() {
-            final var o = new GetAzureVpcPeeringConnectionResult();
-            o.azureSubscriptionId = azureSubscriptionId;
-            o.id = id;
-            o.peerAzureAppId = peerAzureAppId;
-            o.peerAzureTenantId = peerAzureTenantId;
-            o.peerResourceGroup = peerResourceGroup;
-            o.peeringConnectionId = peeringConnectionId;
-            o.state = state;
-            o.stateInfo = stateInfo;
-            o.vnetName = vnetName;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetAzureVpcPeeringConnectionResult();
+            _resultValue.azureSubscriptionId = azureSubscriptionId;
+            _resultValue.id = id;
+            _resultValue.peerAzureAppId = peerAzureAppId;
+            _resultValue.peerAzureTenantId = peerAzureTenantId;
+            _resultValue.peerResourceGroup = peerResourceGroup;
+            _resultValue.peeringConnectionId = peeringConnectionId;
+            _resultValue.state = state;
+            _resultValue.stateInfo = stateInfo;
+            _resultValue.vnetName = vnetName;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

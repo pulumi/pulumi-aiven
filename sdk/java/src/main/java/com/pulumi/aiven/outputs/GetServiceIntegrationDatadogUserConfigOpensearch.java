@@ -62,11 +62,11 @@ public final class GetServiceIntegrationDatadogUserConfigOpensearch {
             return this;
         }
         public GetServiceIntegrationDatadogUserConfigOpensearch build() {
-            final var o = new GetServiceIntegrationDatadogUserConfigOpensearch();
-            o.indexStatsEnabled = indexStatsEnabled;
-            o.pendingTaskStatsEnabled = pendingTaskStatsEnabled;
-            o.pshardStatsEnabled = pshardStatsEnabled;
-            return o;
+            final var _resultValue = new GetServiceIntegrationDatadogUserConfigOpensearch();
+            _resultValue.indexStatsEnabled = indexStatsEnabled;
+            _resultValue.pendingTaskStatsEnabled = pendingTaskStatsEnabled;
+            _resultValue.pshardStatsEnabled = pshardStatsEnabled;
+            return _resultValue;
         }
     }
 }

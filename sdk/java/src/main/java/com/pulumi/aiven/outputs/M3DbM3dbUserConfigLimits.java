@@ -97,14 +97,14 @@ public final class M3DbM3dbUserConfigLimits {
             return this;
         }
         public M3DbM3dbUserConfigLimits build() {
-            final var o = new M3DbM3dbUserConfigLimits();
-            o.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
-            o.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
-            o.maxRecentlyQueriedSeriesLookback = maxRecentlyQueriedSeriesLookback;
-            o.queryDocs = queryDocs;
-            o.queryRequireExhaustive = queryRequireExhaustive;
-            o.querySeries = querySeries;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigLimits();
+            _resultValue.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
+            _resultValue.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
+            _resultValue.maxRecentlyQueriedSeriesLookback = maxRecentlyQueriedSeriesLookback;
+            _resultValue.queryDocs = queryDocs;
+            _resultValue.queryRequireExhaustive = queryRequireExhaustive;
+            _resultValue.querySeries = querySeries;
+            return _resultValue;
         }
     }
 }

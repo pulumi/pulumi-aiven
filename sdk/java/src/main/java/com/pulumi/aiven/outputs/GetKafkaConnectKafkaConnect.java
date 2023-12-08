@@ -25,8 +25,8 @@ public final class GetKafkaConnectKafkaConnect {
         }
 
         public GetKafkaConnectKafkaConnect build() {
-            final var o = new GetKafkaConnectKafkaConnect();
-            return o;
+            final var _resultValue = new GetKafkaConnectKafkaConnect();
+            return _resultValue;
         }
     }
 }

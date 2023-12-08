@@ -67,11 +67,11 @@ public final class GetServiceIntegrationLogsUserConfig {
             return selectedLogFields(List.of(selectedLogFields));
         }
         public GetServiceIntegrationLogsUserConfig build() {
-            final var o = new GetServiceIntegrationLogsUserConfig();
-            o.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
-            o.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
-            o.selectedLogFields = selectedLogFields;
-            return o;
+            final var _resultValue = new GetServiceIntegrationLogsUserConfig();
+            _resultValue.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
+            _resultValue.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
+            _resultValue.selectedLogFields = selectedLogFields;
+            return _resultValue;
         }
     }
 }

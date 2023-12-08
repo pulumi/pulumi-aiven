@@ -261,20 +261,20 @@ public final class GetKafkaConnectorResult {
             return tasks(List.of(tasks));
         }
         public GetKafkaConnectorResult build() {
-            final var o = new GetKafkaConnectorResult();
-            o.config = config;
-            o.connectorName = connectorName;
-            o.id = id;
-            o.pluginAuthor = pluginAuthor;
-            o.pluginClass = pluginClass;
-            o.pluginDocUrl = pluginDocUrl;
-            o.pluginTitle = pluginTitle;
-            o.pluginType = pluginType;
-            o.pluginVersion = pluginVersion;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.tasks = tasks;
-            return o;
+            final var _resultValue = new GetKafkaConnectorResult();
+            _resultValue.config = config;
+            _resultValue.connectorName = connectorName;
+            _resultValue.id = id;
+            _resultValue.pluginAuthor = pluginAuthor;
+            _resultValue.pluginClass = pluginClass;
+            _resultValue.pluginDocUrl = pluginDocUrl;
+            _resultValue.pluginTitle = pluginTitle;
+            _resultValue.pluginType = pluginType;
+            _resultValue.pluginVersion = pluginVersion;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.tasks = tasks;
+            return _resultValue;
         }
     }
 }

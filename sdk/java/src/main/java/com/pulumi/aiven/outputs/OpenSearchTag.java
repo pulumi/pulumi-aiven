@@ -65,10 +65,10 @@ public final class OpenSearchTag {
             return this;
         }
         public OpenSearchTag build() {
-            final var o = new OpenSearchTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OpenSearchTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

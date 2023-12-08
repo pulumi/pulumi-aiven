@@ -49,10 +49,10 @@ public final class M3AggregatorTag {
             return this;
         }
         public M3AggregatorTag build() {
-            final var o = new M3AggregatorTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new M3AggregatorTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetInfluxDbTag {
             return this;
         }
         public GetInfluxDbTag build() {
-            final var o = new GetInfluxDbTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetInfluxDbTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

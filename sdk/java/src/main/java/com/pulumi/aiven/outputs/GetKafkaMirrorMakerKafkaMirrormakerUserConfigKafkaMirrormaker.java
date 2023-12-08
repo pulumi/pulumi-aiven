@@ -140,18 +140,18 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
             return this;
         }
         public GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker build() {
-            final var o = new GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker();
-            o.emitCheckpointsEnabled = emitCheckpointsEnabled;
-            o.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
-            o.refreshGroupsEnabled = refreshGroupsEnabled;
-            o.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
-            o.refreshTopicsEnabled = refreshTopicsEnabled;
-            o.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
-            o.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
-            o.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
-            o.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
-            o.tasksMaxPerCpu = tasksMaxPerCpu;
-            return o;
+            final var _resultValue = new GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker();
+            _resultValue.emitCheckpointsEnabled = emitCheckpointsEnabled;
+            _resultValue.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
+            _resultValue.refreshGroupsEnabled = refreshGroupsEnabled;
+            _resultValue.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
+            _resultValue.refreshTopicsEnabled = refreshTopicsEnabled;
+            _resultValue.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
+            _resultValue.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            _resultValue.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
+            _resultValue.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
+            _resultValue.tasksMaxPerCpu = tasksMaxPerCpu;
+            return _resultValue;
         }
     }
 }

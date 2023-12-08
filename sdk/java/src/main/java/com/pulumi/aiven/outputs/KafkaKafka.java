@@ -84,13 +84,13 @@ public final class KafkaKafka {
             return this;
         }
         public KafkaKafka build() {
-            final var o = new KafkaKafka();
-            o.accessCert = accessCert;
-            o.accessKey = accessKey;
-            o.connectUri = connectUri;
-            o.restUri = restUri;
-            o.schemaRegistryUri = schemaRegistryUri;
-            return o;
+            final var _resultValue = new KafkaKafka();
+            _resultValue.accessCert = accessCert;
+            _resultValue.accessKey = accessKey;
+            _resultValue.connectUri = connectUri;
+            _resultValue.restUri = restUri;
+            _resultValue.schemaRegistryUri = schemaRegistryUri;
+            return _resultValue;
         }
     }
 }

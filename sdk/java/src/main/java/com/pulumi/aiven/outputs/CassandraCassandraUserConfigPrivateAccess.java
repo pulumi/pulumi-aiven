@@ -48,9 +48,9 @@ public final class CassandraCassandraUserConfigPrivateAccess {
             return this;
         }
         public CassandraCassandraUserConfigPrivateAccess build() {
-            final var o = new CassandraCassandraUserConfigPrivateAccess();
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new CassandraCassandraUserConfigPrivateAccess();
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

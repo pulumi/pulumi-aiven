@@ -67,10 +67,10 @@ public final class KafkaTopicTag {
             return this;
         }
         public KafkaTopicTag build() {
-            final var o = new KafkaTopicTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new KafkaTopicTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

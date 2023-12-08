@@ -49,10 +49,10 @@ public final class GetMySqlTag {
             return this;
         }
         public GetMySqlTag build() {
-            final var o = new GetMySqlTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetMySqlTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

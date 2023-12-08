@@ -162,15 +162,15 @@ public final class GetGcpVpcPeeringConnectionResult {
             return this;
         }
         public GetGcpVpcPeeringConnectionResult build() {
-            final var o = new GetGcpVpcPeeringConnectionResult();
-            o.gcpProjectId = gcpProjectId;
-            o.id = id;
-            o.peerVpc = peerVpc;
-            o.selfLink = selfLink;
-            o.state = state;
-            o.stateInfo = stateInfo;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetGcpVpcPeeringConnectionResult();
+            _resultValue.gcpProjectId = gcpProjectId;
+            _resultValue.id = id;
+            _resultValue.peerVpc = peerVpc;
+            _resultValue.selfLink = selfLink;
+            _resultValue.state = state;
+            _resultValue.stateInfo = stateInfo;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

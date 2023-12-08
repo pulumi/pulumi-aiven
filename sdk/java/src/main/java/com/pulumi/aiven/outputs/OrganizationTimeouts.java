@@ -105,12 +105,12 @@ public final class OrganizationTimeouts {
             return this;
         }
         public OrganizationTimeouts build() {
-            final var o = new OrganizationTimeouts();
-            o.create = create;
-            o.delete = delete;
-            o.read = read;
-            o.update = update;
-            return o;
+            final var _resultValue = new OrganizationTimeouts();
+            _resultValue.create = create;
+            _resultValue.delete = delete;
+            _resultValue.read = read;
+            _resultValue.update = update;
+            return _resultValue;
         }
     }
 }

@@ -200,17 +200,17 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
             return this;
         }
         public ServiceIntegrationEndpointExternalKafkaUserConfig build() {
-            final var o = new ServiceIntegrationEndpointExternalKafkaUserConfig();
-            o.bootstrapServers = bootstrapServers;
-            o.saslMechanism = saslMechanism;
-            o.saslPlainPassword = saslPlainPassword;
-            o.saslPlainUsername = saslPlainUsername;
-            o.securityProtocol = securityProtocol;
-            o.sslCaCert = sslCaCert;
-            o.sslClientCert = sslClientCert;
-            o.sslClientKey = sslClientKey;
-            o.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
-            return o;
+            final var _resultValue = new ServiceIntegrationEndpointExternalKafkaUserConfig();
+            _resultValue.bootstrapServers = bootstrapServers;
+            _resultValue.saslMechanism = saslMechanism;
+            _resultValue.saslPlainPassword = saslPlainPassword;
+            _resultValue.saslPlainUsername = saslPlainUsername;
+            _resultValue.securityProtocol = securityProtocol;
+            _resultValue.sslCaCert = sslCaCert;
+            _resultValue.sslClientCert = sslClientCert;
+            _resultValue.sslClientKey = sslClientKey;
+            _resultValue.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
+            return _resultValue;
         }
     }
 }

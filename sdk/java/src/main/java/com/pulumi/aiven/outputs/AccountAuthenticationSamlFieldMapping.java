@@ -124,13 +124,13 @@ public final class AccountAuthenticationSamlFieldMapping {
             return this;
         }
         public AccountAuthenticationSamlFieldMapping build() {
-            final var o = new AccountAuthenticationSamlFieldMapping();
-            o.email = email;
-            o.firstName = firstName;
-            o.identity = identity;
-            o.lastName = lastName;
-            o.realName = realName;
-            return o;
+            final var _resultValue = new AccountAuthenticationSamlFieldMapping();
+            _resultValue.email = email;
+            _resultValue.firstName = firstName;
+            _resultValue.identity = identity;
+            _resultValue.lastName = lastName;
+            _resultValue.realName = realName;
+            return _resultValue;
         }
     }
 }

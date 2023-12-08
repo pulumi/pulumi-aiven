@@ -51,10 +51,10 @@ public final class GetServiceIntegrationEndpointJolokiaUserConfig {
             return this;
         }
         public GetServiceIntegrationEndpointJolokiaUserConfig build() {
-            final var o = new GetServiceIntegrationEndpointJolokiaUserConfig();
-            o.basicAuthPassword = basicAuthPassword;
-            o.basicAuthUsername = basicAuthUsername;
-            return o;
+            final var _resultValue = new GetServiceIntegrationEndpointJolokiaUserConfig();
+            _resultValue.basicAuthPassword = basicAuthPassword;
+            _resultValue.basicAuthUsername = basicAuthUsername;
+            return _resultValue;
         }
     }
 }

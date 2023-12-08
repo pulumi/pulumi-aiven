@@ -163,20 +163,20 @@ public final class GetOpenSearchOpensearchUserConfigOpenid {
             return this;
         }
         public GetOpenSearchOpensearchUserConfigOpenid build() {
-            final var o = new GetOpenSearchOpensearchUserConfigOpenid();
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.connectUrl = connectUrl;
-            o.enabled = enabled;
-            o.header = header;
-            o.jwtHeader = jwtHeader;
-            o.jwtUrlParameter = jwtUrlParameter;
-            o.refreshRateLimitCount = refreshRateLimitCount;
-            o.refreshRateLimitTimeWindowMs = refreshRateLimitTimeWindowMs;
-            o.rolesKey = rolesKey;
-            o.scope = scope;
-            o.subjectKey = subjectKey;
-            return o;
+            final var _resultValue = new GetOpenSearchOpensearchUserConfigOpenid();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.connectUrl = connectUrl;
+            _resultValue.enabled = enabled;
+            _resultValue.header = header;
+            _resultValue.jwtHeader = jwtHeader;
+            _resultValue.jwtUrlParameter = jwtUrlParameter;
+            _resultValue.refreshRateLimitCount = refreshRateLimitCount;
+            _resultValue.refreshRateLimitTimeWindowMs = refreshRateLimitTimeWindowMs;
+            _resultValue.rolesKey = rolesKey;
+            _resultValue.scope = scope;
+            _resultValue.subjectKey = subjectKey;
+            return _resultValue;
         }
     }
 }

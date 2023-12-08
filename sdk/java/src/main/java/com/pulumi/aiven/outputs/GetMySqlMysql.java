@@ -25,8 +25,8 @@ public final class GetMySqlMysql {
         }
 
         public GetMySqlMysql build() {
-            final var o = new GetMySqlMysql();
-            return o;
+            final var _resultValue = new GetMySqlMysql();
+            return _resultValue;
         }
     }
 }

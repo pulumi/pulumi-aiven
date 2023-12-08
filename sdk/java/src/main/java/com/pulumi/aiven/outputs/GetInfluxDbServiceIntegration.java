@@ -49,10 +49,10 @@ public final class GetInfluxDbServiceIntegration {
             return this;
         }
         public GetInfluxDbServiceIntegration build() {
-            final var o = new GetInfluxDbServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetInfluxDbServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

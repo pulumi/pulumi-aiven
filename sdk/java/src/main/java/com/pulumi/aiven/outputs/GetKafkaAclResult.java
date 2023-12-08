@@ -160,15 +160,15 @@ public final class GetKafkaAclResult {
             return this;
         }
         public GetKafkaAclResult build() {
-            final var o = new GetKafkaAclResult();
-            o.aclId = aclId;
-            o.id = id;
-            o.permission = permission;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.topic = topic;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetKafkaAclResult();
+            _resultValue.aclId = aclId;
+            _resultValue.id = id;
+            _resultValue.permission = permission;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.topic = topic;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

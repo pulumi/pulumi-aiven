@@ -221,18 +221,18 @@ public final class GetServiceComponentResult {
             return this;
         }
         public GetServiceComponentResult build() {
-            final var o = new GetServiceComponentResult();
-            o.component = component;
-            o.host = host;
-            o.id = id;
-            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-            o.port = port;
-            o.project = project;
-            o.route = route;
-            o.serviceName = serviceName;
-            o.ssl = ssl;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetServiceComponentResult();
+            _resultValue.component = component;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.port = port;
+            _resultValue.project = project;
+            _resultValue.route = route;
+            _resultValue.serviceName = serviceName;
+            _resultValue.ssl = ssl;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

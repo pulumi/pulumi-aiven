@@ -51,9 +51,9 @@ public final class FlinkFlink {
             return hostPorts(List.of(hostPorts));
         }
         public FlinkFlink build() {
-            final var o = new FlinkFlink();
-            o.hostPorts = hostPorts;
-            return o;
+            final var _resultValue = new FlinkFlink();
+            _resultValue.hostPorts = hostPorts;
+            return _resultValue;
         }
     }
 }

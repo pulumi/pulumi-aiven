@@ -51,10 +51,10 @@ public final class GetKafkaKafkaUserConfigIpFilterObject {
             return this;
         }
         public GetKafkaKafkaUserConfigIpFilterObject build() {
-            final var o = new GetKafkaKafkaUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetKafkaKafkaUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

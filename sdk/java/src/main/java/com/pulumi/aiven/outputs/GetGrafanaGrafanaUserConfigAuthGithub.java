@@ -93,13 +93,13 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
             return teamIds(List.of(teamIds));
         }
         public GetGrafanaGrafanaUserConfigAuthGithub build() {
-            final var o = new GetGrafanaGrafanaUserConfigAuthGithub();
-            o.allowSignUp = allowSignUp;
-            o.allowedOrganizations = allowedOrganizations;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.teamIds = teamIds;
-            return o;
+            final var _resultValue = new GetGrafanaGrafanaUserConfigAuthGithub();
+            _resultValue.allowSignUp = allowSignUp;
+            _resultValue.allowedOrganizations = allowedOrganizations;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.teamIds = teamIds;
+            return _resultValue;
         }
     }
 }

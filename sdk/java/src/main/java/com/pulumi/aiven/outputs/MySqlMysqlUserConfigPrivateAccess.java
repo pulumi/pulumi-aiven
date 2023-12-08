@@ -62,11 +62,11 @@ public final class MySqlMysqlUserConfigPrivateAccess {
             return this;
         }
         public MySqlMysqlUserConfigPrivateAccess build() {
-            final var o = new MySqlMysqlUserConfigPrivateAccess();
-            o.mysql = mysql;
-            o.mysqlx = mysqlx;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new MySqlMysqlUserConfigPrivateAccess();
+            _resultValue.mysql = mysql;
+            _resultValue.mysqlx = mysqlx;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

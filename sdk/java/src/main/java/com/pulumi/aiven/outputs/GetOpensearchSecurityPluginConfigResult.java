@@ -161,15 +161,15 @@ public final class GetOpensearchSecurityPluginConfigResult {
             return this;
         }
         public GetOpensearchSecurityPluginConfigResult build() {
-            final var o = new GetOpensearchSecurityPluginConfigResult();
-            o.adminEnabled = adminEnabled;
-            o.adminPassword = adminPassword;
-            o.available = available;
-            o.enabled = enabled;
-            o.id = id;
-            o.project = project;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetOpensearchSecurityPluginConfigResult();
+            _resultValue.adminEnabled = adminEnabled;
+            _resultValue.adminPassword = adminPassword;
+            _resultValue.available = available;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccess {
             return this;
         }
         public InfluxDbInfluxdbUserConfigPrivateAccess build() {
-            final var o = new InfluxDbInfluxdbUserConfigPrivateAccess();
-            o.influxdb = influxdb;
-            return o;
+            final var _resultValue = new InfluxDbInfluxdbUserConfigPrivateAccess();
+            _resultValue.influxdb = influxdb;
+            return _resultValue;
         }
     }
 }

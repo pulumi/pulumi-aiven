@@ -84,13 +84,13 @@ public final class GetKafkaKafkaUserConfigPublicAccess {
             return this;
         }
         public GetKafkaKafkaUserConfigPublicAccess build() {
-            final var o = new GetKafkaKafkaUserConfigPublicAccess();
-            o.kafka = kafka;
-            o.kafkaConnect = kafkaConnect;
-            o.kafkaRest = kafkaRest;
-            o.prometheus = prometheus;
-            o.schemaRegistry = schemaRegistry;
-            return o;
+            final var _resultValue = new GetKafkaKafkaUserConfigPublicAccess();
+            _resultValue.kafka = kafka;
+            _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.kafkaRest = kafkaRest;
+            _resultValue.prometheus = prometheus;
+            _resultValue.schemaRegistry = schemaRegistry;
+            return _resultValue;
         }
     }
 }

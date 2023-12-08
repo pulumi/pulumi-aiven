@@ -163,15 +163,15 @@ public final class OpenSearchOpensearchUserConfigSaml {
             return this;
         }
         public OpenSearchOpensearchUserConfigSaml build() {
-            final var o = new OpenSearchOpensearchUserConfigSaml();
-            o.enabled = enabled;
-            o.idpEntityId = idpEntityId;
-            o.idpMetadataUrl = idpMetadataUrl;
-            o.idpPemtrustedcasContent = idpPemtrustedcasContent;
-            o.rolesKey = rolesKey;
-            o.spEntityId = spEntityId;
-            o.subjectKey = subjectKey;
-            return o;
+            final var _resultValue = new OpenSearchOpensearchUserConfigSaml();
+            _resultValue.enabled = enabled;
+            _resultValue.idpEntityId = idpEntityId;
+            _resultValue.idpMetadataUrl = idpMetadataUrl;
+            _resultValue.idpPemtrustedcasContent = idpPemtrustedcasContent;
+            _resultValue.rolesKey = rolesKey;
+            _resultValue.spEntityId = spEntityId;
+            _resultValue.subjectKey = subjectKey;
+            return _resultValue;
         }
     }
 }

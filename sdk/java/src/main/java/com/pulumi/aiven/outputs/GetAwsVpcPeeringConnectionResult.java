@@ -181,16 +181,16 @@ public final class GetAwsVpcPeeringConnectionResult {
             return this;
         }
         public GetAwsVpcPeeringConnectionResult build() {
-            final var o = new GetAwsVpcPeeringConnectionResult();
-            o.awsAccountId = awsAccountId;
-            o.awsVpcId = awsVpcId;
-            o.awsVpcPeeringConnectionId = awsVpcPeeringConnectionId;
-            o.awsVpcRegion = awsVpcRegion;
-            o.id = id;
-            o.state = state;
-            o.stateInfo = stateInfo;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetAwsVpcPeeringConnectionResult();
+            _resultValue.awsAccountId = awsAccountId;
+            _resultValue.awsVpcId = awsVpcId;
+            _resultValue.awsVpcPeeringConnectionId = awsVpcPeeringConnectionId;
+            _resultValue.awsVpcRegion = awsVpcRegion;
+            _resultValue.id = id;
+            _resultValue.state = state;
+            _resultValue.stateInfo = stateInfo;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

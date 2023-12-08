@@ -143,14 +143,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
             return this;
         }
         public KafkaKafkaUserConfigPrivatelinkAccess build() {
-            final var o = new KafkaKafkaUserConfigPrivatelinkAccess();
-            o.jolokia = jolokia;
-            o.kafka = kafka;
-            o.kafkaConnect = kafkaConnect;
-            o.kafkaRest = kafkaRest;
-            o.prometheus = prometheus;
-            o.schemaRegistry = schemaRegistry;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfigPrivatelinkAccess();
+            _resultValue.jolokia = jolokia;
+            _resultValue.kafka = kafka;
+            _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.kafkaRest = kafkaRest;
+            _resultValue.prometheus = prometheus;
+            _resultValue.schemaRegistry = schemaRegistry;
+            return _resultValue;
         }
     }
 }

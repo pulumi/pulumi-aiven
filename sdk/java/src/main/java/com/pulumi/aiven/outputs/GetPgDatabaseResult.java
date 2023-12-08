@@ -153,15 +153,15 @@ public final class GetPgDatabaseResult {
             return this;
         }
         public GetPgDatabaseResult build() {
-            final var o = new GetPgDatabaseResult();
-            o.databaseName = databaseName;
-            o.id = id;
-            o.lcCollate = lcCollate;
-            o.lcCtype = lcCtype;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.terminationProtection = terminationProtection;
-            return o;
+            final var _resultValue = new GetPgDatabaseResult();
+            _resultValue.databaseName = databaseName;
+            _resultValue.id = id;
+            _resultValue.lcCollate = lcCollate;
+            _resultValue.lcCtype = lcCtype;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.terminationProtection = terminationProtection;
+            return _resultValue;
         }
     }
 }

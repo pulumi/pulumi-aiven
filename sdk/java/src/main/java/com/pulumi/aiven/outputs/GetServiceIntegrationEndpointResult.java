@@ -377,24 +377,24 @@ public final class GetServiceIntegrationEndpointResult {
             return rsyslogUserConfigs(List.of(rsyslogUserConfigs));
         }
         public GetServiceIntegrationEndpointResult build() {
-            final var o = new GetServiceIntegrationEndpointResult();
-            o.datadogUserConfigs = datadogUserConfigs;
-            o.endpointConfig = endpointConfig;
-            o.endpointName = endpointName;
-            o.endpointType = endpointType;
-            o.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
-            o.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
-            o.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
-            o.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
-            o.externalKafkaUserConfigs = externalKafkaUserConfigs;
-            o.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
-            o.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
-            o.id = id;
-            o.jolokiaUserConfigs = jolokiaUserConfigs;
-            o.project = project;
-            o.prometheusUserConfigs = prometheusUserConfigs;
-            o.rsyslogUserConfigs = rsyslogUserConfigs;
-            return o;
+            final var _resultValue = new GetServiceIntegrationEndpointResult();
+            _resultValue.datadogUserConfigs = datadogUserConfigs;
+            _resultValue.endpointConfig = endpointConfig;
+            _resultValue.endpointName = endpointName;
+            _resultValue.endpointType = endpointType;
+            _resultValue.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
+            _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            _resultValue.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
+            _resultValue.externalKafkaUserConfigs = externalKafkaUserConfigs;
+            _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
+            _resultValue.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
+            _resultValue.id = id;
+            _resultValue.jolokiaUserConfigs = jolokiaUserConfigs;
+            _resultValue.project = project;
+            _resultValue.prometheusUserConfigs = prometheusUserConfigs;
+            _resultValue.rsyslogUserConfigs = rsyslogUserConfigs;
+            return _resultValue;
         }
     }
 }

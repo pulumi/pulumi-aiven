@@ -115,13 +115,13 @@ public final class GetClickhouseDatabaseResult {
             return this;
         }
         public GetClickhouseDatabaseResult build() {
-            final var o = new GetClickhouseDatabaseResult();
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.terminationProtection = terminationProtection;
-            return o;
+            final var _resultValue = new GetClickhouseDatabaseResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.terminationProtection = terminationProtection;
+            return _resultValue;
         }
     }
 }

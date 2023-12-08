@@ -106,15 +106,15 @@ public final class GetRedisComponent {
             return this;
         }
         public GetRedisComponent build() {
-            final var o = new GetRedisComponent();
-            o.component = component;
-            o.host = host;
-            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-            o.port = port;
-            o.route = route;
-            o.ssl = ssl;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetRedisComponent();
+            _resultValue.component = component;
+            _resultValue.host = host;
+            _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.port = port;
+            _resultValue.route = route;
+            _resultValue.ssl = ssl;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

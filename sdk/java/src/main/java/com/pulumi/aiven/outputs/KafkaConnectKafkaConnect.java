@@ -25,8 +25,8 @@ public final class KafkaConnectKafkaConnect {
         }
 
         public KafkaConnectKafkaConnect build() {
-            final var o = new KafkaConnectKafkaConnect();
-            return o;
+            final var _resultValue = new KafkaConnectKafkaConnect();
+            return _resultValue;
         }
     }
 }

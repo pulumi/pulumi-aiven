@@ -68,10 +68,10 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
             return this;
         }
         public KafkaKafkaUserConfigSchemaRegistryConfig build() {
-            final var o = new KafkaKafkaUserConfigSchemaRegistryConfig();
-            o.leaderEligibility = leaderEligibility;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfigSchemaRegistryConfig();
+            _resultValue.leaderEligibility = leaderEligibility;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

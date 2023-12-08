@@ -130,17 +130,17 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         public GetServiceIntegrationEndpointRsyslogUserConfig build() {
-            final var o = new GetServiceIntegrationEndpointRsyslogUserConfig();
-            o.ca = ca;
-            o.cert = cert;
-            o.format = format;
-            o.key = key;
-            o.logline = logline;
-            o.port = port;
-            o.sd = sd;
-            o.server = server;
-            o.tls = tls;
-            return o;
+            final var _resultValue = new GetServiceIntegrationEndpointRsyslogUserConfig();
+            _resultValue.ca = ca;
+            _resultValue.cert = cert;
+            _resultValue.format = format;
+            _resultValue.key = key;
+            _resultValue.logline = logline;
+            _resultValue.port = port;
+            _resultValue.sd = sd;
+            _resultValue.server = server;
+            _resultValue.tls = tls;
+            return _resultValue;
         }
     }
 }

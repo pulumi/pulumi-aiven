@@ -49,10 +49,10 @@ public final class GetM3AggregatorTag {
             return this;
         }
         public GetM3AggregatorTag build() {
-            final var o = new GetM3AggregatorTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetM3AggregatorTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

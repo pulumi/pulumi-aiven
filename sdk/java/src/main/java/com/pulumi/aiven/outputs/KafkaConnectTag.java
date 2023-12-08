@@ -49,10 +49,10 @@ public final class KafkaConnectTag {
             return this;
         }
         public KafkaConnectTag build() {
-            final var o = new KafkaConnectTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new KafkaConnectTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

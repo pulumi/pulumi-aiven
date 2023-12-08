@@ -49,10 +49,10 @@ public final class GetM3DbTag {
             return this;
         }
         public GetM3DbTag build() {
-            final var o = new GetM3DbTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetM3DbTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

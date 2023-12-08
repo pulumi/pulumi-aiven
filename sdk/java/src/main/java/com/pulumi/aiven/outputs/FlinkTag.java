@@ -65,10 +65,10 @@ public final class FlinkTag {
             return this;
         }
         public FlinkTag build() {
-            final var o = new FlinkTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new FlinkTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }
