@@ -1,7 +1,6 @@
 .idea
 .code
 **/vendor/
-.pulumi
 **/bin/
 **/obj/
 Pulumi.*.yaml
