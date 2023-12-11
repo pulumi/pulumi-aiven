@@ -10,10 +10,10 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.21.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.0
-	github.com/pulumi/pulumi/pkg/v3 v3.95.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.95.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.21.1-0.20231211191944-3ea1c58acb4b
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.1-0.20231211191944-3ea1c58acb4b
+	github.com/pulumi/pulumi/pkg/v3 v3.96.2 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.96.2
 )
 
 require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
@@ -83,6 +83,7 @@ require (
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
 	github.com/dave/jennifer v1.7.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
