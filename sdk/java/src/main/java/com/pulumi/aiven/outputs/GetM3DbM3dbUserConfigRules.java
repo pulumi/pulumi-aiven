@@ -43,9 +43,9 @@ public final class GetM3DbM3dbUserConfigRules {
             return mappings(List.of(mappings));
         }
         public GetM3DbM3dbUserConfigRules build() {
-            final var o = new GetM3DbM3dbUserConfigRules();
-            o.mappings = mappings;
-            return o;
+            final var _resultValue = new GetM3DbM3dbUserConfigRules();
+            _resultValue.mappings = mappings;
+            return _resultValue;
         }
     }
 }

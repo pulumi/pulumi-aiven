@@ -25,8 +25,8 @@ public final class KafkaMirrorMakerKafkaMirrormaker {
         }
 
         public KafkaMirrorMakerKafkaMirrormaker build() {
-            final var o = new KafkaMirrorMakerKafkaMirrormaker();
-            return o;
+            final var _resultValue = new KafkaMirrorMakerKafkaMirrormaker();
+            return _resultValue;
         }
     }
 }

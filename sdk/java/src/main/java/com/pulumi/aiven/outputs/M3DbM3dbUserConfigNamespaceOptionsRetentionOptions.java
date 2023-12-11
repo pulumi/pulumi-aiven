@@ -84,13 +84,13 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
             return this;
         }
         public M3DbM3dbUserConfigNamespaceOptionsRetentionOptions build() {
-            final var o = new M3DbM3dbUserConfigNamespaceOptionsRetentionOptions();
-            o.blockDataExpiryDuration = blockDataExpiryDuration;
-            o.blocksizeDuration = blocksizeDuration;
-            o.bufferFutureDuration = bufferFutureDuration;
-            o.bufferPastDuration = bufferPastDuration;
-            o.retentionPeriodDuration = retentionPeriodDuration;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigNamespaceOptionsRetentionOptions();
+            _resultValue.blockDataExpiryDuration = blockDataExpiryDuration;
+            _resultValue.blocksizeDuration = blocksizeDuration;
+            _resultValue.bufferFutureDuration = bufferFutureDuration;
+            _resultValue.bufferPastDuration = bufferPastDuration;
+            _resultValue.retentionPeriodDuration = retentionPeriodDuration;
+            return _resultValue;
         }
     }
 }

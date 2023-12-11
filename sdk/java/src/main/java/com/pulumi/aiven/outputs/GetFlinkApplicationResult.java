@@ -198,17 +198,17 @@ public final class GetFlinkApplicationResult {
             return this;
         }
         public GetFlinkApplicationResult build() {
-            final var o = new GetFlinkApplicationResult();
-            o.applicationId = applicationId;
-            o.createdAt = createdAt;
-            o.createdBy = createdBy;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.updatedAt = updatedAt;
-            o.updatedBy = updatedBy;
-            return o;
+            final var _resultValue = new GetFlinkApplicationResult();
+            _resultValue.applicationId = applicationId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.updatedBy = updatedBy;
+            return _resultValue;
         }
     }
 }

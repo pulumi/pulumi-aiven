@@ -62,11 +62,11 @@ public final class GetMySqlMysqlUserConfigPublicAccess {
             return this;
         }
         public GetMySqlMysqlUserConfigPublicAccess build() {
-            final var o = new GetMySqlMysqlUserConfigPublicAccess();
-            o.mysql = mysql;
-            o.mysqlx = mysqlx;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new GetMySqlMysqlUserConfigPublicAccess();
+            _resultValue.mysql = mysql;
+            _resultValue.mysqlx = mysqlx;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

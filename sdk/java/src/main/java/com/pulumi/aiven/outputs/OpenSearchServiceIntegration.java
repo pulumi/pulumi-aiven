@@ -65,10 +65,10 @@ public final class OpenSearchServiceIntegration {
             return this;
         }
         public OpenSearchServiceIntegration build() {
-            final var o = new OpenSearchServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new OpenSearchServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

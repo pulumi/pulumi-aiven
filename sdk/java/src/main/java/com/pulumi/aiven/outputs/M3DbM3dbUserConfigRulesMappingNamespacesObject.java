@@ -51,10 +51,10 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObject {
             return this;
         }
         public M3DbM3dbUserConfigRulesMappingNamespacesObject build() {
-            final var o = new M3DbM3dbUserConfigRulesMappingNamespacesObject();
-            o.resolution = resolution;
-            o.retention = retention;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigRulesMappingNamespacesObject();
+            _resultValue.resolution = resolution;
+            _resultValue.retention = retention;
+            return _resultValue;
         }
     }
 }

@@ -183,16 +183,16 @@ public final class GetAzurePrivatelinkResult {
             return userSubscriptionIds(List.of(userSubscriptionIds));
         }
         public GetAzurePrivatelinkResult build() {
-            final var o = new GetAzurePrivatelinkResult();
-            o.azureServiceAlias = azureServiceAlias;
-            o.azureServiceId = azureServiceId;
-            o.id = id;
-            o.message = message;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.state = state;
-            o.userSubscriptionIds = userSubscriptionIds;
-            return o;
+            final var _resultValue = new GetAzurePrivatelinkResult();
+            _resultValue.azureServiceAlias = azureServiceAlias;
+            _resultValue.azureServiceId = azureServiceId;
+            _resultValue.id = id;
+            _resultValue.message = message;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.state = state;
+            _resultValue.userSubscriptionIds = userSubscriptionIds;
+            return _resultValue;
         }
     }
 }

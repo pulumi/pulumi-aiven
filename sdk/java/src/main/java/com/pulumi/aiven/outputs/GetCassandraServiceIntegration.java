@@ -49,10 +49,10 @@ public final class GetCassandraServiceIntegration {
             return this;
         }
         public GetCassandraServiceIntegration build() {
-            final var o = new GetCassandraServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetCassandraServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

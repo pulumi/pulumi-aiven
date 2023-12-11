@@ -115,13 +115,13 @@ public final class GetInfluxdbDatabaseResult {
             return this;
         }
         public GetInfluxdbDatabaseResult build() {
-            final var o = new GetInfluxdbDatabaseResult();
-            o.databaseName = databaseName;
-            o.id = id;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.terminationProtection = terminationProtection;
-            return o;
+            final var _resultValue = new GetInfluxdbDatabaseResult();
+            _resultValue.databaseName = databaseName;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.terminationProtection = terminationProtection;
+            return _resultValue;
         }
     }
 }

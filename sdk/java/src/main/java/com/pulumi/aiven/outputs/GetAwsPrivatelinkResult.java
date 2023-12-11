@@ -145,14 +145,14 @@ public final class GetAwsPrivatelinkResult {
             return this;
         }
         public GetAwsPrivatelinkResult build() {
-            final var o = new GetAwsPrivatelinkResult();
-            o.awsServiceId = awsServiceId;
-            o.awsServiceName = awsServiceName;
-            o.id = id;
-            o.principals = principals;
-            o.project = project;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetAwsPrivatelinkResult();
+            _resultValue.awsServiceId = awsServiceId;
+            _resultValue.awsServiceName = awsServiceName;
+            _resultValue.id = id;
+            _resultValue.principals = principals;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

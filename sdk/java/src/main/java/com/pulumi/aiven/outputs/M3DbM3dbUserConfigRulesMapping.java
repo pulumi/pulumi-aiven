@@ -148,16 +148,16 @@ public final class M3DbM3dbUserConfigRulesMapping {
             return tags(List.of(tags));
         }
         public M3DbM3dbUserConfigRulesMapping build() {
-            final var o = new M3DbM3dbUserConfigRulesMapping();
-            o.aggregations = aggregations;
-            o.drop = drop;
-            o.filter = filter;
-            o.name = name;
-            o.namespaces = namespaces;
-            o.namespacesObjects = namespacesObjects;
-            o.namespacesStrings = namespacesStrings;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigRulesMapping();
+            _resultValue.aggregations = aggregations;
+            _resultValue.drop = drop;
+            _resultValue.filter = filter;
+            _resultValue.name = name;
+            _resultValue.namespaces = namespaces;
+            _resultValue.namespacesObjects = namespacesObjects;
+            _resultValue.namespacesStrings = namespacesStrings;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

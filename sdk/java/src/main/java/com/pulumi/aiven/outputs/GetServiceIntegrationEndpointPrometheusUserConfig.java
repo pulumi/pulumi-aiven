@@ -51,10 +51,10 @@ public final class GetServiceIntegrationEndpointPrometheusUserConfig {
             return this;
         }
         public GetServiceIntegrationEndpointPrometheusUserConfig build() {
-            final var o = new GetServiceIntegrationEndpointPrometheusUserConfig();
-            o.basicAuthPassword = basicAuthPassword;
-            o.basicAuthUsername = basicAuthUsername;
-            return o;
+            final var _resultValue = new GetServiceIntegrationEndpointPrometheusUserConfig();
+            _resultValue.basicAuthPassword = basicAuthPassword;
+            _resultValue.basicAuthUsername = basicAuthUsername;
+            return _resultValue;
         }
     }
 }

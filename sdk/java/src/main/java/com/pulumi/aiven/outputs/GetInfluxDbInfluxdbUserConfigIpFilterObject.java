@@ -51,10 +51,10 @@ public final class GetInfluxDbInfluxdbUserConfigIpFilterObject {
             return this;
         }
         public GetInfluxDbInfluxdbUserConfigIpFilterObject build() {
-            final var o = new GetInfluxDbInfluxdbUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetInfluxDbInfluxdbUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

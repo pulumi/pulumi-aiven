@@ -161,15 +161,15 @@ public final class GetClickhouseUserResult {
             return this;
         }
         public GetClickhouseUserResult build() {
-            final var o = new GetClickhouseUserResult();
-            o.id = id;
-            o.password = password;
-            o.project = project;
-            o.required = required;
-            o.serviceName = serviceName;
-            o.username = username;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetClickhouseUserResult();
+            _resultValue.id = id;
+            _resultValue.password = password;
+            _resultValue.project = project;
+            _resultValue.required = required;
+            _resultValue.serviceName = serviceName;
+            _resultValue.username = username;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

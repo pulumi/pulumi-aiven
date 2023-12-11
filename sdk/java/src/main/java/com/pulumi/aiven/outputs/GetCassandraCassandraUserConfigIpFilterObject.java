@@ -51,10 +51,10 @@ public final class GetCassandraCassandraUserConfigIpFilterObject {
             return this;
         }
         public GetCassandraCassandraUserConfigIpFilterObject build() {
-            final var o = new GetCassandraCassandraUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetCassandraCassandraUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class FlinkFlinkUserConfigPrivatelinkAccess {
             return this;
         }
         public FlinkFlinkUserConfigPrivatelinkAccess build() {
-            final var o = new FlinkFlinkUserConfigPrivatelinkAccess();
-            o.flink = flink;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new FlinkFlinkUserConfigPrivatelinkAccess();
+            _resultValue.flink = flink;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

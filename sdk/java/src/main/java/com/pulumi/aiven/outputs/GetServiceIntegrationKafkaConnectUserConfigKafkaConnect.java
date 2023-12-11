@@ -73,12 +73,12 @@ public final class GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
             return this;
         }
         public GetServiceIntegrationKafkaConnectUserConfigKafkaConnect build() {
-            final var o = new GetServiceIntegrationKafkaConnectUserConfigKafkaConnect();
-            o.configStorageTopic = configStorageTopic;
-            o.groupId = groupId;
-            o.offsetStorageTopic = offsetStorageTopic;
-            o.statusStorageTopic = statusStorageTopic;
-            return o;
+            final var _resultValue = new GetServiceIntegrationKafkaConnectUserConfigKafkaConnect();
+            _resultValue.configStorageTopic = configStorageTopic;
+            _resultValue.groupId = groupId;
+            _resultValue.offsetStorageTopic = offsetStorageTopic;
+            _resultValue.statusStorageTopic = statusStorageTopic;
+            return _resultValue;
         }
     }
 }

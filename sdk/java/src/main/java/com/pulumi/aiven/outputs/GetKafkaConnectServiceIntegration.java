@@ -49,10 +49,10 @@ public final class GetKafkaConnectServiceIntegration {
             return this;
         }
         public GetKafkaConnectServiceIntegration build() {
-            final var o = new GetKafkaConnectServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetKafkaConnectServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

@@ -394,27 +394,27 @@ public final class GetAccountAuthenticationResult {
             return this;
         }
         public GetAccountAuthenticationResult build() {
-            final var o = new GetAccountAuthenticationResult();
-            o.accountId = accountId;
-            o.authenticationId = authenticationId;
-            o.autoJoinTeamId = autoJoinTeamId;
-            o.createTime = createTime;
-            o.enabled = enabled;
-            o.id = id;
-            o.name = name;
-            o.samlAcsUrl = samlAcsUrl;
-            o.samlCertificate = samlCertificate;
-            o.samlDigestAlgorithm = samlDigestAlgorithm;
-            o.samlEntityId = samlEntityId;
-            o.samlFieldMappings = samlFieldMappings;
-            o.samlIdpLoginAllowed = samlIdpLoginAllowed;
-            o.samlIdpUrl = samlIdpUrl;
-            o.samlMetadataUrl = samlMetadataUrl;
-            o.samlSignatureAlgorithm = samlSignatureAlgorithm;
-            o.samlVariant = samlVariant;
-            o.type = type;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetAccountAuthenticationResult();
+            _resultValue.accountId = accountId;
+            _resultValue.authenticationId = authenticationId;
+            _resultValue.autoJoinTeamId = autoJoinTeamId;
+            _resultValue.createTime = createTime;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.samlAcsUrl = samlAcsUrl;
+            _resultValue.samlCertificate = samlCertificate;
+            _resultValue.samlDigestAlgorithm = samlDigestAlgorithm;
+            _resultValue.samlEntityId = samlEntityId;
+            _resultValue.samlFieldMappings = samlFieldMappings;
+            _resultValue.samlIdpLoginAllowed = samlIdpLoginAllowed;
+            _resultValue.samlIdpUrl = samlIdpUrl;
+            _resultValue.samlMetadataUrl = samlMetadataUrl;
+            _resultValue.samlSignatureAlgorithm = samlSignatureAlgorithm;
+            _resultValue.samlVariant = samlVariant;
+            _resultValue.type = type;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

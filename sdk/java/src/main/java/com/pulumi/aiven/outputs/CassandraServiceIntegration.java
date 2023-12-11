@@ -65,10 +65,10 @@ public final class CassandraServiceIntegration {
             return this;
         }
         public CassandraServiceIntegration build() {
-            final var o = new CassandraServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new CassandraServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

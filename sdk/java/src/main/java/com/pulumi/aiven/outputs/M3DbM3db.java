@@ -25,8 +25,8 @@ public final class M3DbM3db {
         }
 
         public M3DbM3db build() {
-            final var o = new M3DbM3db();
-            return o;
+            final var _resultValue = new M3DbM3db();
+            return _resultValue;
         }
     }
 }

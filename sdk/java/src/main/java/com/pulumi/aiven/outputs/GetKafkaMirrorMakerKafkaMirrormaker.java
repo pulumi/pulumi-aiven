@@ -25,8 +25,8 @@ public final class GetKafkaMirrorMakerKafkaMirrormaker {
         }
 
         public GetKafkaMirrorMakerKafkaMirrormaker build() {
-            final var o = new GetKafkaMirrorMakerKafkaMirrormaker();
-            return o;
+            final var _resultValue = new GetKafkaMirrorMakerKafkaMirrormaker();
+            return _resultValue;
         }
     }
 }

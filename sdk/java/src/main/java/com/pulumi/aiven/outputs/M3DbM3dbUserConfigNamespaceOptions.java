@@ -63,11 +63,11 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
             return this;
         }
         public M3DbM3dbUserConfigNamespaceOptions build() {
-            final var o = new M3DbM3dbUserConfigNamespaceOptions();
-            o.retentionOptions = retentionOptions;
-            o.snapshotEnabled = snapshotEnabled;
-            o.writesToCommitlog = writesToCommitlog;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigNamespaceOptions();
+            _resultValue.retentionOptions = retentionOptions;
+            _resultValue.snapshotEnabled = snapshotEnabled;
+            _resultValue.writesToCommitlog = writesToCommitlog;
+            return _resultValue;
         }
     }
 }

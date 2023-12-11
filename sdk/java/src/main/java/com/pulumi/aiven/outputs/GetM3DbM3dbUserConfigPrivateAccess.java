@@ -40,9 +40,9 @@ public final class GetM3DbM3dbUserConfigPrivateAccess {
             return this;
         }
         public GetM3DbM3dbUserConfigPrivateAccess build() {
-            final var o = new GetM3DbM3dbUserConfigPrivateAccess();
-            o.m3coordinator = m3coordinator;
-            return o;
+            final var _resultValue = new GetM3DbM3dbUserConfigPrivateAccess();
+            _resultValue.m3coordinator = m3coordinator;
+            return _resultValue;
         }
     }
 }

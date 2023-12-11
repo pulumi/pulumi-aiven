@@ -49,10 +49,10 @@ public final class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigEx
             return this;
         }
         public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric build() {
-            final var o = new GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric();
-            o.field = field;
-            o.metric = metric;
-            return o;
+            final var _resultValue = new GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric();
+            _resultValue.field = field;
+            _resultValue.metric = metric;
+            return _resultValue;
         }
     }
 }

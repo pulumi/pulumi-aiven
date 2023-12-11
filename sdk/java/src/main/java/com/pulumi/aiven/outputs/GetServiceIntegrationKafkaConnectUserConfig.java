@@ -40,9 +40,9 @@ public final class GetServiceIntegrationKafkaConnectUserConfig {
             return this;
         }
         public GetServiceIntegrationKafkaConnectUserConfig build() {
-            final var o = new GetServiceIntegrationKafkaConnectUserConfig();
-            o.kafkaConnect = kafkaConnect;
-            return o;
+            final var _resultValue = new GetServiceIntegrationKafkaConnectUserConfig();
+            _resultValue.kafkaConnect = kafkaConnect;
+            return _resultValue;
         }
     }
 }

@@ -332,30 +332,30 @@ public final class GetOpenSearchOpensearchUserConfig {
             return this;
         }
         public GetOpenSearchOpensearchUserConfig build() {
-            final var o = new GetOpenSearchOpensearchUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.customDomain = customDomain;
-            o.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
-            o.indexPatterns = indexPatterns;
-            o.indexTemplate = indexTemplate;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.keepIndexRefreshInterval = keepIndexRefreshInterval;
-            o.maxIndexCount = maxIndexCount;
-            o.openid = openid;
-            o.opensearch = opensearch;
-            o.opensearchDashboards = opensearchDashboards;
-            o.opensearchVersion = opensearchVersion;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.recoveryBasebackupName = recoveryBasebackupName;
-            o.saml = saml;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetOpenSearchOpensearchUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.customDomain = customDomain;
+            _resultValue.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
+            _resultValue.indexPatterns = indexPatterns;
+            _resultValue.indexTemplate = indexTemplate;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.keepIndexRefreshInterval = keepIndexRefreshInterval;
+            _resultValue.maxIndexCount = maxIndexCount;
+            _resultValue.openid = openid;
+            _resultValue.opensearch = opensearch;
+            _resultValue.opensearchDashboards = opensearchDashboards;
+            _resultValue.opensearchVersion = opensearchVersion;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.saml = saml;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

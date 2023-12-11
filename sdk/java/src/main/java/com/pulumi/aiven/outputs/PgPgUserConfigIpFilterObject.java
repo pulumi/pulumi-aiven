@@ -67,10 +67,10 @@ public final class PgPgUserConfigIpFilterObject {
             return this;
         }
         public PgPgUserConfigIpFilterObject build() {
-            final var o = new PgPgUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new PgPgUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

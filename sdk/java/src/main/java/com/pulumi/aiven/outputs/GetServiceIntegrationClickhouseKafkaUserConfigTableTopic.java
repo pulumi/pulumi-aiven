@@ -38,9 +38,9 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
             return this;
         }
         public GetServiceIntegrationClickhouseKafkaUserConfigTableTopic build() {
-            final var o = new GetServiceIntegrationClickhouseKafkaUserConfigTableTopic();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetServiceIntegrationClickhouseKafkaUserConfigTableTopic();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

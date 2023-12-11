@@ -164,14 +164,14 @@ public final class FlinkFlinkUserConfig {
             return this;
         }
         public FlinkFlinkUserConfig build() {
-            final var o = new FlinkFlinkUserConfig();
-            o.flinkVersion = flinkVersion;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.numberOfTaskSlots = numberOfTaskSlots;
-            o.privatelinkAccess = privatelinkAccess;
-            return o;
+            final var _resultValue = new FlinkFlinkUserConfig();
+            _resultValue.flinkVersion = flinkVersion;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.numberOfTaskSlots = numberOfTaskSlots;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            return _resultValue;
         }
     }
 }

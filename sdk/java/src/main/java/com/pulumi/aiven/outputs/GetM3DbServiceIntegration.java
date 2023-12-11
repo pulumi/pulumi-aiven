@@ -49,10 +49,10 @@ public final class GetM3DbServiceIntegration {
             return this;
         }
         public GetM3DbServiceIntegration build() {
-            final var o = new GetM3DbServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetM3DbServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

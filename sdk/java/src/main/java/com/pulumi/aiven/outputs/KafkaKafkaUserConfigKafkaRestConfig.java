@@ -183,16 +183,16 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
             return this;
         }
         public KafkaKafkaUserConfigKafkaRestConfig build() {
-            final var o = new KafkaKafkaUserConfigKafkaRestConfig();
-            o.consumerEnableAutoCommit = consumerEnableAutoCommit;
-            o.consumerRequestMaxBytes = consumerRequestMaxBytes;
-            o.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
-            o.producerAcks = producerAcks;
-            o.producerCompressionType = producerCompressionType;
-            o.producerLingerMs = producerLingerMs;
-            o.producerMaxRequestSize = producerMaxRequestSize;
-            o.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfigKafkaRestConfig();
+            _resultValue.consumerEnableAutoCommit = consumerEnableAutoCommit;
+            _resultValue.consumerRequestMaxBytes = consumerRequestMaxBytes;
+            _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            _resultValue.producerAcks = producerAcks;
+            _resultValue.producerCompressionType = producerCompressionType;
+            _resultValue.producerLingerMs = producerLingerMs;
+            _resultValue.producerMaxRequestSize = producerMaxRequestSize;
+            _resultValue.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
+            return _resultValue;
         }
     }
 }

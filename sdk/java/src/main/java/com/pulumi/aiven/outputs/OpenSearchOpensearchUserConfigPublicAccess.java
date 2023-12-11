@@ -86,11 +86,11 @@ public final class OpenSearchOpensearchUserConfigPublicAccess {
             return this;
         }
         public OpenSearchOpensearchUserConfigPublicAccess build() {
-            final var o = new OpenSearchOpensearchUserConfigPublicAccess();
-            o.opensearch = opensearch;
-            o.opensearchDashboards = opensearchDashboards;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new OpenSearchOpensearchUserConfigPublicAccess();
+            _resultValue.opensearch = opensearch;
+            _resultValue.opensearchDashboards = opensearchDashboards;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

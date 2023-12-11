@@ -161,15 +161,15 @@ public final class GetAccountTeamMemberResult {
             return this;
         }
         public GetAccountTeamMemberResult build() {
-            final var o = new GetAccountTeamMemberResult();
-            o.accepted = accepted;
-            o.accountId = accountId;
-            o.createTime = createTime;
-            o.id = id;
-            o.invitedByUserEmail = invitedByUserEmail;
-            o.teamId = teamId;
-            o.userEmail = userEmail;
-            return o;
+            final var _resultValue = new GetAccountTeamMemberResult();
+            _resultValue.accepted = accepted;
+            _resultValue.accountId = accountId;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.invitedByUserEmail = invitedByUserEmail;
+            _resultValue.teamId = teamId;
+            _resultValue.userEmail = userEmail;
+            return _resultValue;
         }
     }
 }

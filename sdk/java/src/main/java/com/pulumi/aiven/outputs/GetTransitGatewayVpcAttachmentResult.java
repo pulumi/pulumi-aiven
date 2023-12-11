@@ -204,17 +204,17 @@ public final class GetTransitGatewayVpcAttachmentResult {
             return this;
         }
         public GetTransitGatewayVpcAttachmentResult build() {
-            final var o = new GetTransitGatewayVpcAttachmentResult();
-            o.id = id;
-            o.peerCloudAccount = peerCloudAccount;
-            o.peerRegion = peerRegion;
-            o.peerVpc = peerVpc;
-            o.peeringConnectionId = peeringConnectionId;
-            o.state = state;
-            o.stateInfo = stateInfo;
-            o.userPeerNetworkCidrs = userPeerNetworkCidrs;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetTransitGatewayVpcAttachmentResult();
+            _resultValue.id = id;
+            _resultValue.peerCloudAccount = peerCloudAccount;
+            _resultValue.peerRegion = peerRegion;
+            _resultValue.peerVpc = peerVpc;
+            _resultValue.peeringConnectionId = peeringConnectionId;
+            _resultValue.state = state;
+            _resultValue.stateInfo = stateInfo;
+            _resultValue.userPeerNetworkCidrs = userPeerNetworkCidrs;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

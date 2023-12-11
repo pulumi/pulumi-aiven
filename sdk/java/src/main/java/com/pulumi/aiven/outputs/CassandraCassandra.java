@@ -25,8 +25,8 @@ public final class CassandraCassandra {
         }
 
         public CassandraCassandra build() {
-            final var o = new CassandraCassandra();
-            return o;
+            final var _resultValue = new CassandraCassandra();
+            return _resultValue;
         }
     }
 }

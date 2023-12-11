@@ -163,18 +163,18 @@ public final class GetServiceIntegrationDatadogUserConfig {
             return this;
         }
         public GetServiceIntegrationDatadogUserConfig build() {
-            final var o = new GetServiceIntegrationDatadogUserConfig();
-            o.datadogDbmEnabled = datadogDbmEnabled;
-            o.datadogTags = datadogTags;
-            o.excludeConsumerGroups = excludeConsumerGroups;
-            o.excludeTopics = excludeTopics;
-            o.includeConsumerGroups = includeConsumerGroups;
-            o.includeTopics = includeTopics;
-            o.kafkaCustomMetrics = kafkaCustomMetrics;
-            o.maxJmxMetrics = maxJmxMetrics;
-            o.opensearch = opensearch;
-            o.redis = redis;
-            return o;
+            final var _resultValue = new GetServiceIntegrationDatadogUserConfig();
+            _resultValue.datadogDbmEnabled = datadogDbmEnabled;
+            _resultValue.datadogTags = datadogTags;
+            _resultValue.excludeConsumerGroups = excludeConsumerGroups;
+            _resultValue.excludeTopics = excludeTopics;
+            _resultValue.includeConsumerGroups = includeConsumerGroups;
+            _resultValue.includeTopics = includeTopics;
+            _resultValue.kafkaCustomMetrics = kafkaCustomMetrics;
+            _resultValue.maxJmxMetrics = maxJmxMetrics;
+            _resultValue.opensearch = opensearch;
+            _resultValue.redis = redis;
+            return _resultValue;
         }
     }
 }

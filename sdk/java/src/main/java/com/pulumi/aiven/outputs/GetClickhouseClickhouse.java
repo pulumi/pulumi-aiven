@@ -25,8 +25,8 @@ public final class GetClickhouseClickhouse {
         }
 
         public GetClickhouseClickhouse build() {
-            final var o = new GetClickhouseClickhouse();
-            return o;
+            final var _resultValue = new GetClickhouseClickhouse();
+            return _resultValue;
         }
     }
 }

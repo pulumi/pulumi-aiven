@@ -48,9 +48,9 @@ public final class ServiceIntegrationKafkaConnectUserConfig {
             return this;
         }
         public ServiceIntegrationKafkaConnectUserConfig build() {
-            final var o = new ServiceIntegrationKafkaConnectUserConfig();
-            o.kafkaConnect = kafkaConnect;
-            return o;
+            final var _resultValue = new ServiceIntegrationKafkaConnectUserConfig();
+            _resultValue.kafkaConnect = kafkaConnect;
+            return _resultValue;
         }
     }
 }

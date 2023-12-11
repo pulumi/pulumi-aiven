@@ -84,11 +84,11 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
             return this;
         }
         public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {
-            final var o = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig();
-            o.logId = logId;
-            o.projectId = projectId;
-            o.serviceAccountCredentials = serviceAccountCredentials;
-            return o;
+            final var _resultValue = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig();
+            _resultValue.logId = logId;
+            _resultValue.projectId = projectId;
+            _resultValue.serviceAccountCredentials = serviceAccountCredentials;
+            return _resultValue;
         }
     }
 }

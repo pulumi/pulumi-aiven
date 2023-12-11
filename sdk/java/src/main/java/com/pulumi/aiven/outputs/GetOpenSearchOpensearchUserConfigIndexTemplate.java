@@ -62,11 +62,11 @@ public final class GetOpenSearchOpensearchUserConfigIndexTemplate {
             return this;
         }
         public GetOpenSearchOpensearchUserConfigIndexTemplate build() {
-            final var o = new GetOpenSearchOpensearchUserConfigIndexTemplate();
-            o.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
-            o.numberOfReplicas = numberOfReplicas;
-            o.numberOfShards = numberOfShards;
-            return o;
+            final var _resultValue = new GetOpenSearchOpensearchUserConfigIndexTemplate();
+            _resultValue.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
+            _resultValue.numberOfReplicas = numberOfReplicas;
+            _resultValue.numberOfShards = numberOfShards;
+            return _resultValue;
         }
     }
 }

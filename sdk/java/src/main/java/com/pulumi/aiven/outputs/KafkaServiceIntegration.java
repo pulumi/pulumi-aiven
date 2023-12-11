@@ -65,10 +65,10 @@ public final class KafkaServiceIntegration {
             return this;
         }
         public KafkaServiceIntegration build() {
-            final var o = new KafkaServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new KafkaServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

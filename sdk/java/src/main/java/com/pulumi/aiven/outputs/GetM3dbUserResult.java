@@ -141,14 +141,14 @@ public final class GetM3dbUserResult {
             return this;
         }
         public GetM3dbUserResult build() {
-            final var o = new GetM3dbUserResult();
-            o.id = id;
-            o.password = password;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.type = type;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetM3dbUserResult();
+            _resultValue.id = id;
+            _resultValue.password = password;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

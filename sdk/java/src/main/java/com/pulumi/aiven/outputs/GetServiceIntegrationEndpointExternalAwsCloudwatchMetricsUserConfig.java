@@ -71,12 +71,12 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUser
             return this;
         }
         public GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig build() {
-            final var o = new GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig();
-            o.accessKey = accessKey;
-            o.namespace = namespace;
-            o.region = region;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.namespace = namespace;
+            _resultValue.region = region;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

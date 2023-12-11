@@ -65,10 +65,10 @@ public final class FlinkServiceIntegration {
             return this;
         }
         public FlinkServiceIntegration build() {
-            final var o = new FlinkServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new FlinkServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

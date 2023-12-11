@@ -51,10 +51,10 @@ public final class GetM3DbM3dbUserConfigIpFilterObject {
             return this;
         }
         public GetM3DbM3dbUserConfigIpFilterObject build() {
-            final var o = new GetM3DbM3dbUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetM3DbM3dbUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

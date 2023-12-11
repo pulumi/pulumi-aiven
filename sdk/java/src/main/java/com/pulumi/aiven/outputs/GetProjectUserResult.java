@@ -123,13 +123,13 @@ public final class GetProjectUserResult {
             return this;
         }
         public GetProjectUserResult build() {
-            final var o = new GetProjectUserResult();
-            o.accepted = accepted;
-            o.email = email;
-            o.id = id;
-            o.memberType = memberType;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetProjectUserResult();
+            _resultValue.accepted = accepted;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.memberType = memberType;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

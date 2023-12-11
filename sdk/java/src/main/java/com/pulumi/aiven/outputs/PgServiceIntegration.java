@@ -65,10 +65,10 @@ public final class PgServiceIntegration {
             return this;
         }
         public PgServiceIntegration build() {
-            final var o = new PgServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new PgServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

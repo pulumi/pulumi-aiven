@@ -78,12 +78,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
             return this;
         }
         public GetGrafanaGrafanaUserConfigAuthGoogle build() {
-            final var o = new GetGrafanaGrafanaUserConfigAuthGoogle();
-            o.allowSignUp = allowSignUp;
-            o.allowedDomains = allowedDomains;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            return o;
+            final var _resultValue = new GetGrafanaGrafanaUserConfigAuthGoogle();
+            _resultValue.allowSignUp = allowSignUp;
+            _resultValue.allowedDomains = allowedDomains;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            return _resultValue;
         }
     }
 }

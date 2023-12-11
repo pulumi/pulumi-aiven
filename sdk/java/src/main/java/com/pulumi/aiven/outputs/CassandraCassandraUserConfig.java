@@ -338,23 +338,23 @@ public final class CassandraCassandraUserConfig {
             return this;
         }
         public CassandraCassandraUserConfig build() {
-            final var o = new CassandraCassandraUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.backupHour = backupHour;
-            o.backupMinute = backupMinute;
-            o.cassandra = cassandra;
-            o.cassandraVersion = cassandraVersion;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.migrateSstableloader = migrateSstableloader;
-            o.privateAccess = privateAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.serviceToJoinWith = serviceToJoinWith;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new CassandraCassandraUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.backupHour = backupHour;
+            _resultValue.backupMinute = backupMinute;
+            _resultValue.cassandra = cassandra;
+            _resultValue.cassandraVersion = cassandraVersion;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.migrateSstableloader = migrateSstableloader;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.serviceToJoinWith = serviceToJoinWith;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

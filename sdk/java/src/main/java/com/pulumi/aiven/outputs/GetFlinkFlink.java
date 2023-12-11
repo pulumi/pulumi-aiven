@@ -42,9 +42,9 @@ public final class GetFlinkFlink {
             return hostPorts(List.of(hostPorts));
         }
         public GetFlinkFlink build() {
-            final var o = new GetFlinkFlink();
-            o.hostPorts = hostPorts;
-            return o;
+            final var _resultValue = new GetFlinkFlink();
+            _resultValue.hostPorts = hostPorts;
+            return _resultValue;
         }
     }
 }

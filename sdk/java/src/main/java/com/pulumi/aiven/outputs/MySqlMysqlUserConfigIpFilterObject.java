@@ -51,10 +51,10 @@ public final class MySqlMysqlUserConfigIpFilterObject {
             return this;
         }
         public MySqlMysqlUserConfigIpFilterObject build() {
-            final var o = new MySqlMysqlUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new MySqlMysqlUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

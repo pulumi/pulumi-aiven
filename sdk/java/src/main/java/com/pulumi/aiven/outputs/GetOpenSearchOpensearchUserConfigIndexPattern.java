@@ -63,11 +63,11 @@ public final class GetOpenSearchOpensearchUserConfigIndexPattern {
             return this;
         }
         public GetOpenSearchOpensearchUserConfigIndexPattern build() {
-            final var o = new GetOpenSearchOpensearchUserConfigIndexPattern();
-            o.maxIndexCount = maxIndexCount;
-            o.pattern = pattern;
-            o.sortingAlgorithm = sortingAlgorithm;
-            return o;
+            final var _resultValue = new GetOpenSearchOpensearchUserConfigIndexPattern();
+            _resultValue.maxIndexCount = maxIndexCount;
+            _resultValue.pattern = pattern;
+            _resultValue.sortingAlgorithm = sortingAlgorithm;
+            return _resultValue;
         }
     }
 }

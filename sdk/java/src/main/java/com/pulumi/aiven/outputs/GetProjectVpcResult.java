@@ -143,14 +143,14 @@ public final class GetProjectVpcResult {
             return this;
         }
         public GetProjectVpcResult build() {
-            final var o = new GetProjectVpcResult();
-            o.cloudName = cloudName;
-            o.id = id;
-            o.networkCidr = networkCidr;
-            o.project = project;
-            o.state = state;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetProjectVpcResult();
+            _resultValue.cloudName = cloudName;
+            _resultValue.id = id;
+            _resultValue.networkCidr = networkCidr;
+            _resultValue.project = project;
+            _resultValue.state = state;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

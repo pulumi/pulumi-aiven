@@ -49,10 +49,10 @@ public final class GetGrafanaServiceIntegration {
             return this;
         }
         public GetGrafanaServiceIntegration build() {
-            final var o = new GetGrafanaServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetGrafanaServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

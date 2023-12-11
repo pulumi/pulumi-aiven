@@ -134,17 +134,17 @@ public final class GetPgPgUserConfigPgbouncer {
             return this;
         }
         public GetPgPgUserConfigPgbouncer build() {
-            final var o = new GetPgPgUserConfigPgbouncer();
-            o.autodbIdleTimeout = autodbIdleTimeout;
-            o.autodbMaxDbConnections = autodbMaxDbConnections;
-            o.autodbPoolMode = autodbPoolMode;
-            o.autodbPoolSize = autodbPoolSize;
-            o.ignoreStartupParameters = ignoreStartupParameters;
-            o.minPoolSize = minPoolSize;
-            o.serverIdleTimeout = serverIdleTimeout;
-            o.serverLifetime = serverLifetime;
-            o.serverResetQueryAlways = serverResetQueryAlways;
-            return o;
+            final var _resultValue = new GetPgPgUserConfigPgbouncer();
+            _resultValue.autodbIdleTimeout = autodbIdleTimeout;
+            _resultValue.autodbMaxDbConnections = autodbMaxDbConnections;
+            _resultValue.autodbPoolMode = autodbPoolMode;
+            _resultValue.autodbPoolSize = autodbPoolSize;
+            _resultValue.ignoreStartupParameters = ignoreStartupParameters;
+            _resultValue.minPoolSize = minPoolSize;
+            _resultValue.serverIdleTimeout = serverIdleTimeout;
+            _resultValue.serverLifetime = serverLifetime;
+            _resultValue.serverResetQueryAlways = serverResetQueryAlways;
+            return _resultValue;
         }
     }
 }

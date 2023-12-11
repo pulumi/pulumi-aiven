@@ -62,11 +62,11 @@ public final class GetClickhouseClickhouseUserConfigPublicAccess {
             return this;
         }
         public GetClickhouseClickhouseUserConfigPublicAccess build() {
-            final var o = new GetClickhouseClickhouseUserConfigPublicAccess();
-            o.clickhouse = clickhouse;
-            o.clickhouseHttps = clickhouseHttps;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new GetClickhouseClickhouseUserConfigPublicAccess();
+            _resultValue.clickhouse = clickhouse;
+            _resultValue.clickhouseHttps = clickhouseHttps;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

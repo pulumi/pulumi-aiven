@@ -49,10 +49,10 @@ public final class KafkaMirrorMakerServiceIntegration {
             return this;
         }
         public KafkaMirrorMakerServiceIntegration build() {
-            final var o = new KafkaMirrorMakerServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new KafkaMirrorMakerServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

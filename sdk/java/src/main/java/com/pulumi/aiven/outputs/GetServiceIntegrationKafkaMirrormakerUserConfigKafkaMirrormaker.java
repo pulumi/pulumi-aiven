@@ -96,14 +96,14 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
             return this;
         }
         public GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker build() {
-            final var o = new GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker();
-            o.consumerFetchMinBytes = consumerFetchMinBytes;
-            o.producerBatchSize = producerBatchSize;
-            o.producerBufferMemory = producerBufferMemory;
-            o.producerCompressionType = producerCompressionType;
-            o.producerLingerMs = producerLingerMs;
-            o.producerMaxRequestSize = producerMaxRequestSize;
-            return o;
+            final var _resultValue = new GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker();
+            _resultValue.consumerFetchMinBytes = consumerFetchMinBytes;
+            _resultValue.producerBatchSize = producerBatchSize;
+            _resultValue.producerBufferMemory = producerBufferMemory;
+            _resultValue.producerCompressionType = producerCompressionType;
+            _resultValue.producerLingerMs = producerLingerMs;
+            _resultValue.producerMaxRequestSize = producerMaxRequestSize;
+            return _resultValue;
         }
     }
 }
