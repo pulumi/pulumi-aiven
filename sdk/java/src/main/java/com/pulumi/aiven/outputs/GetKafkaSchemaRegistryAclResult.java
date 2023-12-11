@@ -160,15 +160,15 @@ public final class GetKafkaSchemaRegistryAclResult {
             return this;
         }
         public GetKafkaSchemaRegistryAclResult build() {
-            final var o = new GetKafkaSchemaRegistryAclResult();
-            o.aclId = aclId;
-            o.id = id;
-            o.permission = permission;
-            o.project = project;
-            o.resource = resource;
-            o.serviceName = serviceName;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetKafkaSchemaRegistryAclResult();
+            _resultValue.aclId = aclId;
+            _resultValue.id = id;
+            _resultValue.permission = permission;
+            _resultValue.project = project;
+            _resultValue.resource = resource;
+            _resultValue.serviceName = serviceName;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

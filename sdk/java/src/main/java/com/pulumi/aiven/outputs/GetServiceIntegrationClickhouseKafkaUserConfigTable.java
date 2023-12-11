@@ -182,21 +182,21 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
             return topics(List.of(topics));
         }
         public GetServiceIntegrationClickhouseKafkaUserConfigTable build() {
-            final var o = new GetServiceIntegrationClickhouseKafkaUserConfigTable();
-            o.autoOffsetReset = autoOffsetReset;
-            o.columns = columns;
-            o.dataFormat = dataFormat;
-            o.dateTimeInputFormat = dateTimeInputFormat;
-            o.groupName = groupName;
-            o.handleErrorMode = handleErrorMode;
-            o.maxBlockSize = maxBlockSize;
-            o.maxRowsPerMessage = maxRowsPerMessage;
-            o.name = name;
-            o.numConsumers = numConsumers;
-            o.pollMaxBatchSize = pollMaxBatchSize;
-            o.skipBrokenMessages = skipBrokenMessages;
-            o.topics = topics;
-            return o;
+            final var _resultValue = new GetServiceIntegrationClickhouseKafkaUserConfigTable();
+            _resultValue.autoOffsetReset = autoOffsetReset;
+            _resultValue.columns = columns;
+            _resultValue.dataFormat = dataFormat;
+            _resultValue.dateTimeInputFormat = dateTimeInputFormat;
+            _resultValue.groupName = groupName;
+            _resultValue.handleErrorMode = handleErrorMode;
+            _resultValue.maxBlockSize = maxBlockSize;
+            _resultValue.maxRowsPerMessage = maxRowsPerMessage;
+            _resultValue.name = name;
+            _resultValue.numConsumers = numConsumers;
+            _resultValue.pollMaxBatchSize = pollMaxBatchSize;
+            _resultValue.skipBrokenMessages = skipBrokenMessages;
+            _resultValue.topics = topics;
+            return _resultValue;
         }
     }
 }

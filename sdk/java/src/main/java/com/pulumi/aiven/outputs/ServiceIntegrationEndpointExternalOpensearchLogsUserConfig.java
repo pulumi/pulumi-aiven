@@ -126,13 +126,13 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
             return this;
         }
         public ServiceIntegrationEndpointExternalOpensearchLogsUserConfig build() {
-            final var o = new ServiceIntegrationEndpointExternalOpensearchLogsUserConfig();
-            o.ca = ca;
-            o.indexDaysMax = indexDaysMax;
-            o.indexPrefix = indexPrefix;
-            o.timeout = timeout;
-            o.url = url;
-            return o;
+            final var _resultValue = new ServiceIntegrationEndpointExternalOpensearchLogsUserConfig();
+            _resultValue.ca = ca;
+            _resultValue.indexDaysMax = indexDaysMax;
+            _resultValue.indexPrefix = indexPrefix;
+            _resultValue.timeout = timeout;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

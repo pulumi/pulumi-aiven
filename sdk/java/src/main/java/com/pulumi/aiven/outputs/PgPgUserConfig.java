@@ -626,37 +626,37 @@ public final class PgPgUserConfig {
             return this;
         }
         public PgPgUserConfig build() {
-            final var o = new PgPgUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.adminPassword = adminPassword;
-            o.adminUsername = adminUsername;
-            o.backupHour = backupHour;
-            o.backupMinute = backupMinute;
-            o.enableIpv6 = enableIpv6;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.migration = migration;
-            o.pg = pg;
-            o.pgReadReplica = pgReadReplica;
-            o.pgServiceToForkFrom = pgServiceToForkFrom;
-            o.pgStatMonitorEnable = pgStatMonitorEnable;
-            o.pgVersion = pgVersion;
-            o.pgbouncer = pgbouncer;
-            o.pglookout = pglookout;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.recoveryTargetTime = recoveryTargetTime;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.sharedBuffersPercentage = sharedBuffersPercentage;
-            o.staticIps = staticIps;
-            o.synchronousReplication = synchronousReplication;
-            o.timescaledb = timescaledb;
-            o.variant = variant;
-            o.workMem = workMem;
-            return o;
+            final var _resultValue = new PgPgUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.adminPassword = adminPassword;
+            _resultValue.adminUsername = adminUsername;
+            _resultValue.backupHour = backupHour;
+            _resultValue.backupMinute = backupMinute;
+            _resultValue.enableIpv6 = enableIpv6;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.migration = migration;
+            _resultValue.pg = pg;
+            _resultValue.pgReadReplica = pgReadReplica;
+            _resultValue.pgServiceToForkFrom = pgServiceToForkFrom;
+            _resultValue.pgStatMonitorEnable = pgStatMonitorEnable;
+            _resultValue.pgVersion = pgVersion;
+            _resultValue.pgbouncer = pgbouncer;
+            _resultValue.pglookout = pglookout;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.recoveryTargetTime = recoveryTargetTime;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.sharedBuffersPercentage = sharedBuffersPercentage;
+            _resultValue.staticIps = staticIps;
+            _resultValue.synchronousReplication = synchronousReplication;
+            _resultValue.timescaledb = timescaledb;
+            _resultValue.variant = variant;
+            _resultValue.workMem = workMem;
+            return _resultValue;
         }
     }
 }

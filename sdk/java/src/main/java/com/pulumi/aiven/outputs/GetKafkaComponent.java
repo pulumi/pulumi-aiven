@@ -106,15 +106,15 @@ public final class GetKafkaComponent {
             return this;
         }
         public GetKafkaComponent build() {
-            final var o = new GetKafkaComponent();
-            o.component = component;
-            o.host = host;
-            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-            o.port = port;
-            o.route = route;
-            o.ssl = ssl;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetKafkaComponent();
+            _resultValue.component = component;
+            _resultValue.host = host;
+            _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.port = port;
+            _resultValue.route = route;
+            _resultValue.ssl = ssl;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

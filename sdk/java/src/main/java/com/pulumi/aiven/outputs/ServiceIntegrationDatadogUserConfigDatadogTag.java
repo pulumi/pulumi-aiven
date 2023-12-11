@@ -67,10 +67,10 @@ public final class ServiceIntegrationDatadogUserConfigDatadogTag {
             return this;
         }
         public ServiceIntegrationDatadogUserConfigDatadogTag build() {
-            final var o = new ServiceIntegrationDatadogUserConfigDatadogTag();
-            o.comment = comment;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new ServiceIntegrationDatadogUserConfigDatadogTag();
+            _resultValue.comment = comment;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

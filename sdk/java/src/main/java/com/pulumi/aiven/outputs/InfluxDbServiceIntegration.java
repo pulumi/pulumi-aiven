@@ -65,10 +65,10 @@ public final class InfluxDbServiceIntegration {
             return this;
         }
         public InfluxDbServiceIntegration build() {
-            final var o = new InfluxDbServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new InfluxDbServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

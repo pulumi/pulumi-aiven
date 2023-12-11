@@ -65,10 +65,10 @@ public final class PgTag {
             return this;
         }
         public PgTag build() {
-            final var o = new PgTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new PgTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -184,22 +184,22 @@ public final class GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
             return this;
         }
         public GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf build() {
-            final var o = new GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf();
-            o.gatherEventWaits = gatherEventWaits;
-            o.gatherFileEventsStats = gatherFileEventsStats;
-            o.gatherIndexIoWaits = gatherIndexIoWaits;
-            o.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
-            o.gatherInnodbMetrics = gatherInnodbMetrics;
-            o.gatherPerfEventsStatements = gatherPerfEventsStatements;
-            o.gatherProcessList = gatherProcessList;
-            o.gatherSlaveStatus = gatherSlaveStatus;
-            o.gatherTableIoWaits = gatherTableIoWaits;
-            o.gatherTableLockWaits = gatherTableLockWaits;
-            o.gatherTableSchema = gatherTableSchema;
-            o.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
-            o.perfEventsStatementsLimit = perfEventsStatementsLimit;
-            o.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
-            return o;
+            final var _resultValue = new GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf();
+            _resultValue.gatherEventWaits = gatherEventWaits;
+            _resultValue.gatherFileEventsStats = gatherFileEventsStats;
+            _resultValue.gatherIndexIoWaits = gatherIndexIoWaits;
+            _resultValue.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
+            _resultValue.gatherInnodbMetrics = gatherInnodbMetrics;
+            _resultValue.gatherPerfEventsStatements = gatherPerfEventsStatements;
+            _resultValue.gatherProcessList = gatherProcessList;
+            _resultValue.gatherSlaveStatus = gatherSlaveStatus;
+            _resultValue.gatherTableIoWaits = gatherTableIoWaits;
+            _resultValue.gatherTableLockWaits = gatherTableLockWaits;
+            _resultValue.gatherTableSchema = gatherTableSchema;
+            _resultValue.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
+            _resultValue.perfEventsStatementsLimit = perfEventsStatementsLimit;
+            _resultValue.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
+            return _resultValue;
         }
     }
 }

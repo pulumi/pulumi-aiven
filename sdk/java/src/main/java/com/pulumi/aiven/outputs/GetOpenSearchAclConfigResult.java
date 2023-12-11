@@ -123,13 +123,13 @@ public final class GetOpenSearchAclConfigResult {
             return this;
         }
         public GetOpenSearchAclConfigResult build() {
-            final var o = new GetOpenSearchAclConfigResult();
-            o.enabled = enabled;
-            o.extendedAcl = extendedAcl;
-            o.id = id;
-            o.project = project;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetOpenSearchAclConfigResult();
+            _resultValue.enabled = enabled;
+            _resultValue.extendedAcl = extendedAcl;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

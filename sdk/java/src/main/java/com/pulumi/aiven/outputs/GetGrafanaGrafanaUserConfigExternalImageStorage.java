@@ -71,12 +71,12 @@ public final class GetGrafanaGrafanaUserConfigExternalImageStorage {
             return this;
         }
         public GetGrafanaGrafanaUserConfigExternalImageStorage build() {
-            final var o = new GetGrafanaGrafanaUserConfigExternalImageStorage();
-            o.accessKey = accessKey;
-            o.bucketUrl = bucketUrl;
-            o.provider = provider;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new GetGrafanaGrafanaUserConfigExternalImageStorage();
+            _resultValue.accessKey = accessKey;
+            _resultValue.bucketUrl = bucketUrl;
+            _resultValue.provider = provider;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

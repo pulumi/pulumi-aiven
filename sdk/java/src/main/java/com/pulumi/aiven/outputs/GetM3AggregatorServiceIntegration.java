@@ -49,10 +49,10 @@ public final class GetM3AggregatorServiceIntegration {
             return this;
         }
         public GetM3AggregatorServiceIntegration build() {
-            final var o = new GetM3AggregatorServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetM3AggregatorServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

@@ -82,13 +82,13 @@ public final class GetKafkaKafka {
             return this;
         }
         public GetKafkaKafka build() {
-            final var o = new GetKafkaKafka();
-            o.accessCert = accessCert;
-            o.accessKey = accessKey;
-            o.connectUri = connectUri;
-            o.restUri = restUri;
-            o.schemaRegistryUri = schemaRegistryUri;
-            return o;
+            final var _resultValue = new GetKafkaKafka();
+            _resultValue.accessCert = accessCert;
+            _resultValue.accessKey = accessKey;
+            _resultValue.connectUri = connectUri;
+            _resultValue.restUri = restUri;
+            _resultValue.schemaRegistryUri = schemaRegistryUri;
+            return _resultValue;
         }
     }
 }

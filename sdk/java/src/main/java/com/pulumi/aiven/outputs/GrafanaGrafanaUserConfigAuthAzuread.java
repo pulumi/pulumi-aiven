@@ -114,15 +114,15 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
             return this;
         }
         public GrafanaGrafanaUserConfigAuthAzuread build() {
-            final var o = new GrafanaGrafanaUserConfigAuthAzuread();
-            o.allowSignUp = allowSignUp;
-            o.allowedDomains = allowedDomains;
-            o.allowedGroups = allowedGroups;
-            o.authUrl = authUrl;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.tokenUrl = tokenUrl;
-            return o;
+            final var _resultValue = new GrafanaGrafanaUserConfigAuthAzuread();
+            _resultValue.allowSignUp = allowSignUp;
+            _resultValue.allowedDomains = allowedDomains;
+            _resultValue.allowedGroups = allowedGroups;
+            _resultValue.authUrl = authUrl;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.tokenUrl = tokenUrl;
+            return _resultValue;
         }
     }
 }

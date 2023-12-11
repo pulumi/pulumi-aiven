@@ -67,10 +67,10 @@ public final class FlinkFlinkUserConfigIpFilterObject {
             return this;
         }
         public FlinkFlinkUserConfigIpFilterObject build() {
-            final var o = new FlinkFlinkUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new FlinkFlinkUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

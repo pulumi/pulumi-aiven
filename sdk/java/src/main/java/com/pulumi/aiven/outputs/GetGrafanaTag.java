@@ -49,10 +49,10 @@ public final class GetGrafanaTag {
             return this;
         }
         public GetGrafanaTag build() {
-            final var o = new GetGrafanaTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetGrafanaTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

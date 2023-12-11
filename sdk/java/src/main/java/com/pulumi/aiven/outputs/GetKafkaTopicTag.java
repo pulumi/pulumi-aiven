@@ -51,10 +51,10 @@ public final class GetKafkaTopicTag {
             return this;
         }
         public GetKafkaTopicTag build() {
-            final var o = new GetKafkaTopicTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetKafkaTopicTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

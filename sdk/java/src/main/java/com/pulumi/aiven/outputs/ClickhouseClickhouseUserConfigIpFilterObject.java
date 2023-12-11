@@ -67,10 +67,10 @@ public final class ClickhouseClickhouseUserConfigIpFilterObject {
             return this;
         }
         public ClickhouseClickhouseUserConfigIpFilterObject build() {
-            final var o = new ClickhouseClickhouseUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new ClickhouseClickhouseUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

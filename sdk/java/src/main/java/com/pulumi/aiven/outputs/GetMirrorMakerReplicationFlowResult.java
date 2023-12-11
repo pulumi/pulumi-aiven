@@ -283,21 +283,21 @@ public final class GetMirrorMakerReplicationFlowResult {
             return topicsBlacklists(List.of(topicsBlacklists));
         }
         public GetMirrorMakerReplicationFlowResult build() {
-            final var o = new GetMirrorMakerReplicationFlowResult();
-            o.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
-            o.enable = enable;
-            o.id = id;
-            o.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
-            o.project = project;
-            o.replicationPolicyClass = replicationPolicyClass;
-            o.serviceName = serviceName;
-            o.sourceCluster = sourceCluster;
-            o.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
-            o.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
-            o.targetCluster = targetCluster;
-            o.topics = topics;
-            o.topicsBlacklists = topicsBlacklists;
-            return o;
+            final var _resultValue = new GetMirrorMakerReplicationFlowResult();
+            _resultValue.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
+            _resultValue.project = project;
+            _resultValue.replicationPolicyClass = replicationPolicyClass;
+            _resultValue.serviceName = serviceName;
+            _resultValue.sourceCluster = sourceCluster;
+            _resultValue.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            _resultValue.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
+            _resultValue.targetCluster = targetCluster;
+            _resultValue.topics = topics;
+            _resultValue.topicsBlacklists = topicsBlacklists;
+            return _resultValue;
         }
     }
 }

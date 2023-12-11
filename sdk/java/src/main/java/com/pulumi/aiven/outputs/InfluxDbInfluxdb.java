@@ -40,9 +40,9 @@ public final class InfluxDbInfluxdb {
             return this;
         }
         public InfluxDbInfluxdb build() {
-            final var o = new InfluxDbInfluxdb();
-            o.databaseName = databaseName;
-            return o;
+            final var _resultValue = new InfluxDbInfluxdb();
+            _resultValue.databaseName = databaseName;
+            return _resultValue;
         }
     }
 }

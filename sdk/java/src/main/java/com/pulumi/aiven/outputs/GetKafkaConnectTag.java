@@ -49,10 +49,10 @@ public final class GetKafkaConnectTag {
             return this;
         }
         public GetKafkaConnectTag build() {
-            final var o = new GetKafkaConnectTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetKafkaConnectTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

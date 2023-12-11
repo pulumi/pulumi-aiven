@@ -40,9 +40,9 @@ public final class M3DbM3dbUserConfigM3 {
             return this;
         }
         public M3DbM3dbUserConfigM3 build() {
-            final var o = new M3DbM3dbUserConfigM3();
-            o.tagOptions = tagOptions;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigM3();
+            _resultValue.tagOptions = tagOptions;
+            return _resultValue;
         }
     }
 }

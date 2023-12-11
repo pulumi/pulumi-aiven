@@ -51,10 +51,10 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
             return this;
         }
         public KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject build() {
-            final var o = new KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

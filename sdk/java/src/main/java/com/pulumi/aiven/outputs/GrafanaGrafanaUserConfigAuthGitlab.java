@@ -111,15 +111,15 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
             return this;
         }
         public GrafanaGrafanaUserConfigAuthGitlab build() {
-            final var o = new GrafanaGrafanaUserConfigAuthGitlab();
-            o.allowSignUp = allowSignUp;
-            o.allowedGroups = allowedGroups;
-            o.apiUrl = apiUrl;
-            o.authUrl = authUrl;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.tokenUrl = tokenUrl;
-            return o;
+            final var _resultValue = new GrafanaGrafanaUserConfigAuthGitlab();
+            _resultValue.allowSignUp = allowSignUp;
+            _resultValue.allowedGroups = allowedGroups;
+            _resultValue.apiUrl = apiUrl;
+            _resultValue.authUrl = authUrl;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.tokenUrl = tokenUrl;
+            return _resultValue;
         }
     }
 }

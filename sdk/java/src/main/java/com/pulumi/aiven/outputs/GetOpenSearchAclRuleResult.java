@@ -141,14 +141,14 @@ public final class GetOpenSearchAclRuleResult {
             return this;
         }
         public GetOpenSearchAclRuleResult build() {
-            final var o = new GetOpenSearchAclRuleResult();
-            o.id = id;
-            o.index = index;
-            o.permission = permission;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetOpenSearchAclRuleResult();
+            _resultValue.id = id;
+            _resultValue.index = index;
+            _resultValue.permission = permission;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

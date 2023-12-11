@@ -117,16 +117,16 @@ public final class GrafanaGrafanaUserConfigDateFormats {
             return this;
         }
         public GrafanaGrafanaUserConfigDateFormats build() {
-            final var o = new GrafanaGrafanaUserConfigDateFormats();
-            o.defaultTimezone = defaultTimezone;
-            o.fullDate = fullDate;
-            o.intervalDay = intervalDay;
-            o.intervalHour = intervalHour;
-            o.intervalMinute = intervalMinute;
-            o.intervalMonth = intervalMonth;
-            o.intervalSecond = intervalSecond;
-            o.intervalYear = intervalYear;
-            return o;
+            final var _resultValue = new GrafanaGrafanaUserConfigDateFormats();
+            _resultValue.defaultTimezone = defaultTimezone;
+            _resultValue.fullDate = fullDate;
+            _resultValue.intervalDay = intervalDay;
+            _resultValue.intervalHour = intervalHour;
+            _resultValue.intervalMinute = intervalMinute;
+            _resultValue.intervalMonth = intervalMonth;
+            _resultValue.intervalSecond = intervalSecond;
+            _resultValue.intervalYear = intervalYear;
+            return _resultValue;
         }
     }
 }

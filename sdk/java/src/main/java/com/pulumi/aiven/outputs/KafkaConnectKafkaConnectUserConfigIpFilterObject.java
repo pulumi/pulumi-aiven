@@ -51,10 +51,10 @@ public final class KafkaConnectKafkaConnectUserConfigIpFilterObject {
             return this;
         }
         public KafkaConnectKafkaConnectUserConfigIpFilterObject build() {
-            final var o = new KafkaConnectKafkaConnectUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new KafkaConnectKafkaConnectUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

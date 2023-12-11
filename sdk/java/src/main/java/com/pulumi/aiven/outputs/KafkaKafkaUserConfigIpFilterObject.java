@@ -67,10 +67,10 @@ public final class KafkaKafkaUserConfigIpFilterObject {
             return this;
         }
         public KafkaKafkaUserConfigIpFilterObject build() {
-            final var o = new KafkaKafkaUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

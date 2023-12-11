@@ -70,10 +70,10 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
             return selectedLogFields(List.of(selectedLogFields));
         }
         public ServiceIntegrationKafkaLogsUserConfig build() {
-            final var o = new ServiceIntegrationKafkaLogsUserConfig();
-            o.kafkaTopic = kafkaTopic;
-            o.selectedLogFields = selectedLogFields;
-            return o;
+            final var _resultValue = new ServiceIntegrationKafkaLogsUserConfig();
+            _resultValue.kafkaTopic = kafkaTopic;
+            _resultValue.selectedLogFields = selectedLogFields;
+            return _resultValue;
         }
     }
 }

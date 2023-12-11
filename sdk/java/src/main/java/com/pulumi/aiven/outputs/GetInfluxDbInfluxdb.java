@@ -38,9 +38,9 @@ public final class GetInfluxDbInfluxdb {
             return this;
         }
         public GetInfluxDbInfluxdb build() {
-            final var o = new GetInfluxDbInfluxdb();
-            o.databaseName = databaseName;
-            return o;
+            final var _resultValue = new GetInfluxDbInfluxdb();
+            _resultValue.databaseName = databaseName;
+            return _resultValue;
         }
     }
 }

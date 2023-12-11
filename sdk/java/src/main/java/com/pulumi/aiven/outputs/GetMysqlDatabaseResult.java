@@ -115,13 +115,13 @@ public final class GetMysqlDatabaseResult {
             return this;
         }
         public GetMysqlDatabaseResult build() {
-            final var o = new GetMysqlDatabaseResult();
-            o.databaseName = databaseName;
-            o.id = id;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.terminationProtection = terminationProtection;
-            return o;
+            final var _resultValue = new GetMysqlDatabaseResult();
+            _resultValue.databaseName = databaseName;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.terminationProtection = terminationProtection;
+            return _resultValue;
         }
     }
 }

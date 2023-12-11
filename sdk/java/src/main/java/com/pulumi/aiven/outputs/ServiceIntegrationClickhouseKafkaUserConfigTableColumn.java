@@ -65,10 +65,10 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
             return this;
         }
         public ServiceIntegrationClickhouseKafkaUserConfigTableColumn build() {
-            final var o = new ServiceIntegrationClickhouseKafkaUserConfigTableColumn();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new ServiceIntegrationClickhouseKafkaUserConfigTableColumn();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfig {
             return databases(List.of(databases));
         }
         public ServiceIntegrationClickhousePostgresqlUserConfig build() {
-            final var o = new ServiceIntegrationClickhousePostgresqlUserConfig();
-            o.databases = databases;
-            return o;
+            final var _resultValue = new ServiceIntegrationClickhousePostgresqlUserConfig();
+            _resultValue.databases = databases;
+            return _resultValue;
         }
     }
 }

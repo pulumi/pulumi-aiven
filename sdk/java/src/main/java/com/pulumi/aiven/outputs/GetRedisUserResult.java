@@ -230,18 +230,18 @@ public final class GetRedisUserResult {
             return this;
         }
         public GetRedisUserResult build() {
-            final var o = new GetRedisUserResult();
-            o.id = id;
-            o.password = password;
-            o.project = project;
-            o.redisAclCategories = redisAclCategories;
-            o.redisAclChannels = redisAclChannels;
-            o.redisAclCommands = redisAclCommands;
-            o.redisAclKeys = redisAclKeys;
-            o.serviceName = serviceName;
-            o.type = type;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetRedisUserResult();
+            _resultValue.id = id;
+            _resultValue.password = password;
+            _resultValue.project = project;
+            _resultValue.redisAclCategories = redisAclCategories;
+            _resultValue.redisAclChannels = redisAclChannels;
+            _resultValue.redisAclCommands = redisAclCommands;
+            _resultValue.redisAclKeys = redisAclKeys;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

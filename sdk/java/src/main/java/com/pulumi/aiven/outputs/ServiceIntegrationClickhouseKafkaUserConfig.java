@@ -51,9 +51,9 @@ public final class ServiceIntegrationClickhouseKafkaUserConfig {
             return tables(List.of(tables));
         }
         public ServiceIntegrationClickhouseKafkaUserConfig build() {
-            final var o = new ServiceIntegrationClickhouseKafkaUserConfig();
-            o.tables = tables;
-            return o;
+            final var _resultValue = new ServiceIntegrationClickhouseKafkaUserConfig();
+            _resultValue.tables = tables;
+            return _resultValue;
         }
     }
 }

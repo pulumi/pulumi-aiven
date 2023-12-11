@@ -40,9 +40,9 @@ public final class GrafanaGrafanaUserConfigPublicAccess {
             return this;
         }
         public GrafanaGrafanaUserConfigPublicAccess build() {
-            final var o = new GrafanaGrafanaUserConfigPublicAccess();
-            o.grafana = grafana;
-            return o;
+            final var _resultValue = new GrafanaGrafanaUserConfigPublicAccess();
+            _resultValue.grafana = grafana;
+            return _resultValue;
         }
     }
 }

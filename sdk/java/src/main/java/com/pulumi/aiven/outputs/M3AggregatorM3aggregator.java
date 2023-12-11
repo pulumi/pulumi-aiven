@@ -25,8 +25,8 @@ public final class M3AggregatorM3aggregator {
         }
 
         public M3AggregatorM3aggregator build() {
-            final var o = new M3AggregatorM3aggregator();
-            return o;
+            final var _resultValue = new M3AggregatorM3aggregator();
+            return _resultValue;
         }
     }
 }

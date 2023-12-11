@@ -105,12 +105,12 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
             return this;
         }
         public ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig build() {
-            final var o = new ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig();
-            o.accessKey = accessKey;
-            o.logGroupName = logGroupName;
-            o.region = region;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.logGroupName = logGroupName;
+            _resultValue.region = region;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

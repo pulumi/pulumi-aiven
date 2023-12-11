@@ -120,14 +120,14 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
             return this;
         }
         public GetKafkaMirrorMakerKafkaMirrormakerUserConfig build() {
-            final var o = new GetKafkaMirrorMakerKafkaMirrormakerUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.kafkaMirrormaker = kafkaMirrormaker;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetKafkaMirrorMakerKafkaMirrormakerUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.kafkaMirrormaker = kafkaMirrormaker;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

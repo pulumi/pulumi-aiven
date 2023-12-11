@@ -105,12 +105,12 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
             return this;
         }
         public ServiceIntegrationEndpointExternalSchemaRegistryUserConfig build() {
-            final var o = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfig();
-            o.authentication = authentication;
-            o.basicAuthPassword = basicAuthPassword;
-            o.basicAuthUsername = basicAuthUsername;
-            o.url = url;
-            return o;
+            final var _resultValue = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfig();
+            _resultValue.authentication = authentication;
+            _resultValue.basicAuthPassword = basicAuthPassword;
+            _resultValue.basicAuthUsername = basicAuthUsername;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

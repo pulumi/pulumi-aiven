@@ -49,10 +49,10 @@ public final class GetClickhouseTag {
             return this;
         }
         public GetClickhouseTag build() {
-            final var o = new GetClickhouseTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetClickhouseTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

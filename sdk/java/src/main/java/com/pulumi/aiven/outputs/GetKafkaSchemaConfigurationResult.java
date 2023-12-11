@@ -180,16 +180,16 @@ public final class GetKafkaSchemaConfigurationResult {
             return this;
         }
         public GetKafkaSchemaConfigurationResult build() {
-            final var o = new GetKafkaSchemaConfigurationResult();
-            o.compatibilityLevel = compatibilityLevel;
-            o.id = id;
-            o.project = project;
-            o.schema = schema;
-            o.schemaType = schemaType;
-            o.serviceName = serviceName;
-            o.subjectName = subjectName;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKafkaSchemaConfigurationResult();
+            _resultValue.compatibilityLevel = compatibilityLevel;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.schema = schema;
+            _resultValue.schemaType = schemaType;
+            _resultValue.serviceName = serviceName;
+            _resultValue.subjectName = subjectName;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ServiceIntegrationDatadogUserConfigRedis {
             return this;
         }
         public ServiceIntegrationDatadogUserConfigRedis build() {
-            final var o = new ServiceIntegrationDatadogUserConfigRedis();
-            o.commandStatsEnabled = commandStatsEnabled;
-            return o;
+            final var _resultValue = new ServiceIntegrationDatadogUserConfigRedis();
+            _resultValue.commandStatsEnabled = commandStatsEnabled;
+            return _resultValue;
         }
     }
 }

@@ -122,13 +122,13 @@ public final class GetAccountTeamProjectResult {
             return this;
         }
         public GetAccountTeamProjectResult build() {
-            final var o = new GetAccountTeamProjectResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.projectName = projectName;
-            o.teamId = teamId;
-            o.teamType = teamType;
-            return o;
+            final var _resultValue = new GetAccountTeamProjectResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.projectName = projectName;
+            _resultValue.teamId = teamId;
+            _resultValue.teamType = teamType;
+            return _resultValue;
         }
     }
 }

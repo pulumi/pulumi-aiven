@@ -49,10 +49,10 @@ public final class MySqlServiceIntegration {
             return this;
         }
         public MySqlServiceIntegration build() {
-            final var o = new MySqlServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new MySqlServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

@@ -101,14 +101,14 @@ public final class GetGcpPrivatelinkResult {
             return this;
         }
         public GetGcpPrivatelinkResult build() {
-            final var o = new GetGcpPrivatelinkResult();
-            o.googleServiceAttachment = googleServiceAttachment;
-            o.id = id;
-            o.message = message;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetGcpPrivatelinkResult();
+            _resultValue.googleServiceAttachment = googleServiceAttachment;
+            _resultValue.id = id;
+            _resultValue.message = message;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

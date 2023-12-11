@@ -52,10 +52,10 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
             return this;
         }
         public GetKafkaKafkaUserConfigSchemaRegistryConfig build() {
-            final var o = new GetKafkaKafkaUserConfigSchemaRegistryConfig();
-            o.leaderEligibility = leaderEligibility;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new GetKafkaKafkaUserConfigSchemaRegistryConfig();
+            _resultValue.leaderEligibility = leaderEligibility;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

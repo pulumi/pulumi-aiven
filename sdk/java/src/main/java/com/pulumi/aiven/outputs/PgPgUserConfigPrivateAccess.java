@@ -86,11 +86,11 @@ public final class PgPgUserConfigPrivateAccess {
             return this;
         }
         public PgPgUserConfigPrivateAccess build() {
-            final var o = new PgPgUserConfigPrivateAccess();
-            o.pg = pg;
-            o.pgbouncer = pgbouncer;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new PgPgUserConfigPrivateAccess();
+            _resultValue.pg = pg;
+            _resultValue.pgbouncer = pgbouncer;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

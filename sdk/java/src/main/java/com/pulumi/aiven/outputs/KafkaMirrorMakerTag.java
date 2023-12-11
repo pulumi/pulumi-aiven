@@ -49,10 +49,10 @@ public final class KafkaMirrorMakerTag {
             return this;
         }
         public KafkaMirrorMakerTag build() {
-            final var o = new KafkaMirrorMakerTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new KafkaMirrorMakerTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

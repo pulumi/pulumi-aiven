@@ -334,24 +334,24 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
             return this;
         }
         public KafkaKafkaUserConfigKafkaConnectConfig build() {
-            final var o = new KafkaKafkaUserConfigKafkaConnectConfig();
-            o.connectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
-            o.consumerAutoOffsetReset = consumerAutoOffsetReset;
-            o.consumerFetchMaxBytes = consumerFetchMaxBytes;
-            o.consumerIsolationLevel = consumerIsolationLevel;
-            o.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
-            o.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
-            o.consumerMaxPollRecords = consumerMaxPollRecords;
-            o.offsetFlushIntervalMs = offsetFlushIntervalMs;
-            o.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
-            o.producerBatchSize = producerBatchSize;
-            o.producerBufferMemory = producerBufferMemory;
-            o.producerCompressionType = producerCompressionType;
-            o.producerLingerMs = producerLingerMs;
-            o.producerMaxRequestSize = producerMaxRequestSize;
-            o.scheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
-            o.sessionTimeoutMs = sessionTimeoutMs;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfigKafkaConnectConfig();
+            _resultValue.connectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
+            _resultValue.consumerAutoOffsetReset = consumerAutoOffsetReset;
+            _resultValue.consumerFetchMaxBytes = consumerFetchMaxBytes;
+            _resultValue.consumerIsolationLevel = consumerIsolationLevel;
+            _resultValue.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
+            _resultValue.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
+            _resultValue.consumerMaxPollRecords = consumerMaxPollRecords;
+            _resultValue.offsetFlushIntervalMs = offsetFlushIntervalMs;
+            _resultValue.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            _resultValue.producerBatchSize = producerBatchSize;
+            _resultValue.producerBufferMemory = producerBufferMemory;
+            _resultValue.producerCompressionType = producerCompressionType;
+            _resultValue.producerLingerMs = producerLingerMs;
+            _resultValue.producerMaxRequestSize = producerMaxRequestSize;
+            _resultValue.scheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
+            _resultValue.sessionTimeoutMs = sessionTimeoutMs;
+            return _resultValue;
         }
     }
 }

@@ -141,14 +141,14 @@ public final class GetAccountTeamResult {
             return this;
         }
         public GetAccountTeamResult build() {
-            final var o = new GetAccountTeamResult();
-            o.accountId = accountId;
-            o.createTime = createTime;
-            o.id = id;
-            o.name = name;
-            o.teamId = teamId;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetAccountTeamResult();
+            _resultValue.accountId = accountId;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.teamId = teamId;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

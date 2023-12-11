@@ -119,16 +119,16 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
             return this;
         }
         public GetKafkaKafkaUserConfigKafkaRestConfig build() {
-            final var o = new GetKafkaKafkaUserConfigKafkaRestConfig();
-            o.consumerEnableAutoCommit = consumerEnableAutoCommit;
-            o.consumerRequestMaxBytes = consumerRequestMaxBytes;
-            o.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
-            o.producerAcks = producerAcks;
-            o.producerCompressionType = producerCompressionType;
-            o.producerLingerMs = producerLingerMs;
-            o.producerMaxRequestSize = producerMaxRequestSize;
-            o.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
-            return o;
+            final var _resultValue = new GetKafkaKafkaUserConfigKafkaRestConfig();
+            _resultValue.consumerEnableAutoCommit = consumerEnableAutoCommit;
+            _resultValue.consumerRequestMaxBytes = consumerRequestMaxBytes;
+            _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            _resultValue.producerAcks = producerAcks;
+            _resultValue.producerCompressionType = producerCompressionType;
+            _resultValue.producerLingerMs = producerLingerMs;
+            _resultValue.producerMaxRequestSize = producerMaxRequestSize;
+            _resultValue.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
+            return _resultValue;
         }
     }
 }

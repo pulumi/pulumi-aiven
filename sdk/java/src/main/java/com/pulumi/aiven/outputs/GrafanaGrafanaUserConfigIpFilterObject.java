@@ -51,10 +51,10 @@ public final class GrafanaGrafanaUserConfigIpFilterObject {
             return this;
         }
         public GrafanaGrafanaUserConfigIpFilterObject build() {
-            final var o = new GrafanaGrafanaUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GrafanaGrafanaUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

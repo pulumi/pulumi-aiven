@@ -418,27 +418,27 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         public KafkaKafkaUserConfig build() {
-            final var o = new KafkaKafkaUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.customDomain = customDomain;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.kafka = kafka;
-            o.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
-            o.kafkaConnect = kafkaConnect;
-            o.kafkaConnectConfig = kafkaConnectConfig;
-            o.kafkaRest = kafkaRest;
-            o.kafkaRestAuthorization = kafkaRestAuthorization;
-            o.kafkaRestConfig = kafkaRestConfig;
-            o.kafkaVersion = kafkaVersion;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.publicAccess = publicAccess;
-            o.schemaRegistry = schemaRegistry;
-            o.schemaRegistryConfig = schemaRegistryConfig;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.customDomain = customDomain;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.kafka = kafka;
+            _resultValue.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
+            _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.kafkaConnectConfig = kafkaConnectConfig;
+            _resultValue.kafkaRest = kafkaRest;
+            _resultValue.kafkaRestAuthorization = kafkaRestAuthorization;
+            _resultValue.kafkaRestConfig = kafkaRestConfig;
+            _resultValue.kafkaVersion = kafkaVersion;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.schemaRegistry = schemaRegistry;
+            _resultValue.schemaRegistryConfig = schemaRegistryConfig;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

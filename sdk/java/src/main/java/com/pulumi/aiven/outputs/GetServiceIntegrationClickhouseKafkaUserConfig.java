@@ -43,9 +43,9 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfig {
             return tables(List.of(tables));
         }
         public GetServiceIntegrationClickhouseKafkaUserConfig build() {
-            final var o = new GetServiceIntegrationClickhouseKafkaUserConfig();
-            o.tables = tables;
-            return o;
+            final var _resultValue = new GetServiceIntegrationClickhouseKafkaUserConfig();
+            _resultValue.tables = tables;
+            return _resultValue;
         }
     }
 }

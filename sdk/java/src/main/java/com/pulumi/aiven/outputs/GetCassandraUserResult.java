@@ -179,16 +179,16 @@ public final class GetCassandraUserResult {
             return this;
         }
         public GetCassandraUserResult build() {
-            final var o = new GetCassandraUserResult();
-            o.accessCert = accessCert;
-            o.accessKey = accessKey;
-            o.id = id;
-            o.password = password;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.type = type;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetCassandraUserResult();
+            _resultValue.accessCert = accessCert;
+            _resultValue.accessKey = accessKey;
+            _resultValue.id = id;
+            _resultValue.password = password;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }
