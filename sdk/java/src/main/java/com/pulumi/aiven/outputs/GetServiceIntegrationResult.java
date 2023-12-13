@@ -387,25 +387,25 @@ public final class GetServiceIntegrationResult {
             return this;
         }
         public GetServiceIntegrationResult build() {
-            final var o = new GetServiceIntegrationResult();
-            o.clickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
-            o.clickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
-            o.datadogUserConfigs = datadogUserConfigs;
-            o.destinationEndpointId = destinationEndpointId;
-            o.destinationServiceName = destinationServiceName;
-            o.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
-            o.id = id;
-            o.integrationId = integrationId;
-            o.integrationType = integrationType;
-            o.kafkaConnectUserConfigs = kafkaConnectUserConfigs;
-            o.kafkaLogsUserConfigs = kafkaLogsUserConfigs;
-            o.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
-            o.logsUserConfigs = logsUserConfigs;
-            o.metricsUserConfigs = metricsUserConfigs;
-            o.project = project;
-            o.sourceEndpointId = sourceEndpointId;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetServiceIntegrationResult();
+            _resultValue.clickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
+            _resultValue.clickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
+            _resultValue.datadogUserConfigs = datadogUserConfigs;
+            _resultValue.destinationEndpointId = destinationEndpointId;
+            _resultValue.destinationServiceName = destinationServiceName;
+            _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            _resultValue.id = id;
+            _resultValue.integrationId = integrationId;
+            _resultValue.integrationType = integrationType;
+            _resultValue.kafkaConnectUserConfigs = kafkaConnectUserConfigs;
+            _resultValue.kafkaLogsUserConfigs = kafkaLogsUserConfigs;
+            _resultValue.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
+            _resultValue.logsUserConfigs = logsUserConfigs;
+            _resultValue.metricsUserConfigs = metricsUserConfigs;
+            _resultValue.project = project;
+            _resultValue.sourceEndpointId = sourceEndpointId;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

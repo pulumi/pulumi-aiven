@@ -51,10 +51,10 @@ public final class GetOpenSearchOpensearchUserConfigIpFilterObject {
             return this;
         }
         public GetOpenSearchOpensearchUserConfigIpFilterObject build() {
-            final var o = new GetOpenSearchOpensearchUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetOpenSearchOpensearchUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

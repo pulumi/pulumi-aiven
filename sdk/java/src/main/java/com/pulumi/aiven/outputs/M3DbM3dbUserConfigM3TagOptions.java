@@ -51,10 +51,10 @@ public final class M3DbM3dbUserConfigM3TagOptions {
             return this;
         }
         public M3DbM3dbUserConfigM3TagOptions build() {
-            final var o = new M3DbM3dbUserConfigM3TagOptions();
-            o.allowTagNameDuplicates = allowTagNameDuplicates;
-            o.allowTagValueEmpty = allowTagValueEmpty;
-            return o;
+            final var _resultValue = new M3DbM3dbUserConfigM3TagOptions();
+            _resultValue.allowTagNameDuplicates = allowTagNameDuplicates;
+            _resultValue.allowTagValueEmpty = allowTagValueEmpty;
+            return _resultValue;
         }
     }
 }

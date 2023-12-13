@@ -585,36 +585,36 @@ public final class GetGrafanaResult {
             return this;
         }
         public GetGrafanaResult build() {
-            final var o = new GetGrafanaResult();
-            o.additionalDiskSpace = additionalDiskSpace;
-            o.cloudName = cloudName;
-            o.components = components;
-            o.diskSpace = diskSpace;
-            o.diskSpaceCap = diskSpaceCap;
-            o.diskSpaceDefault = diskSpaceDefault;
-            o.diskSpaceStep = diskSpaceStep;
-            o.diskSpaceUsed = diskSpaceUsed;
-            o.grafanaUserConfigs = grafanaUserConfigs;
-            o.grafanas = grafanas;
-            o.id = id;
-            o.maintenanceWindowDow = maintenanceWindowDow;
-            o.maintenanceWindowTime = maintenanceWindowTime;
-            o.plan = plan;
-            o.project = project;
-            o.projectVpcId = projectVpcId;
-            o.serviceHost = serviceHost;
-            o.serviceIntegrations = serviceIntegrations;
-            o.serviceName = serviceName;
-            o.servicePassword = servicePassword;
-            o.servicePort = servicePort;
-            o.serviceType = serviceType;
-            o.serviceUri = serviceUri;
-            o.serviceUsername = serviceUsername;
-            o.state = state;
-            o.staticIps = staticIps;
-            o.tags = tags;
-            o.terminationProtection = terminationProtection;
-            return o;
+            final var _resultValue = new GetGrafanaResult();
+            _resultValue.additionalDiskSpace = additionalDiskSpace;
+            _resultValue.cloudName = cloudName;
+            _resultValue.components = components;
+            _resultValue.diskSpace = diskSpace;
+            _resultValue.diskSpaceCap = diskSpaceCap;
+            _resultValue.diskSpaceDefault = diskSpaceDefault;
+            _resultValue.diskSpaceStep = diskSpaceStep;
+            _resultValue.diskSpaceUsed = diskSpaceUsed;
+            _resultValue.grafanaUserConfigs = grafanaUserConfigs;
+            _resultValue.grafanas = grafanas;
+            _resultValue.id = id;
+            _resultValue.maintenanceWindowDow = maintenanceWindowDow;
+            _resultValue.maintenanceWindowTime = maintenanceWindowTime;
+            _resultValue.plan = plan;
+            _resultValue.project = project;
+            _resultValue.projectVpcId = projectVpcId;
+            _resultValue.serviceHost = serviceHost;
+            _resultValue.serviceIntegrations = serviceIntegrations;
+            _resultValue.serviceName = serviceName;
+            _resultValue.servicePassword = servicePassword;
+            _resultValue.servicePort = servicePort;
+            _resultValue.serviceType = serviceType;
+            _resultValue.serviceUri = serviceUri;
+            _resultValue.serviceUsername = serviceUsername;
+            _resultValue.state = state;
+            _resultValue.staticIps = staticIps;
+            _resultValue.tags = tags;
+            _resultValue.terminationProtection = terminationProtection;
+            return _resultValue;
         }
     }
 }

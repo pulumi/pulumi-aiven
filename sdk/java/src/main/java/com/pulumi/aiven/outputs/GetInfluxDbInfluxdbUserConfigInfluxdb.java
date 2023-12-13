@@ -107,15 +107,15 @@ public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
             return this;
         }
         public GetInfluxDbInfluxdbUserConfigInfluxdb build() {
-            final var o = new GetInfluxDbInfluxdbUserConfigInfluxdb();
-            o.logQueriesAfter = logQueriesAfter;
-            o.maxConnectionLimit = maxConnectionLimit;
-            o.maxRowLimit = maxRowLimit;
-            o.maxSelectBuckets = maxSelectBuckets;
-            o.maxSelectPoint = maxSelectPoint;
-            o.queryLogEnabled = queryLogEnabled;
-            o.queryTimeout = queryTimeout;
-            return o;
+            final var _resultValue = new GetInfluxDbInfluxdbUserConfigInfluxdb();
+            _resultValue.logQueriesAfter = logQueriesAfter;
+            _resultValue.maxConnectionLimit = maxConnectionLimit;
+            _resultValue.maxRowLimit = maxRowLimit;
+            _resultValue.maxSelectBuckets = maxSelectBuckets;
+            _resultValue.maxSelectPoint = maxSelectPoint;
+            _resultValue.queryLogEnabled = queryLogEnabled;
+            _resultValue.queryTimeout = queryTimeout;
+            return _resultValue;
         }
     }
 }

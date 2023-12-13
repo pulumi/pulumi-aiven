@@ -51,10 +51,10 @@ public final class GetRedisRedisUserConfigPrivatelinkAccess {
             return this;
         }
         public GetRedisRedisUserConfigPrivatelinkAccess build() {
-            final var o = new GetRedisRedisUserConfigPrivatelinkAccess();
-            o.prometheus = prometheus;
-            o.redis = redis;
-            return o;
+            final var _resultValue = new GetRedisRedisUserConfigPrivatelinkAccess();
+            _resultValue.prometheus = prometheus;
+            _resultValue.redis = redis;
+            return _resultValue;
         }
     }
 }

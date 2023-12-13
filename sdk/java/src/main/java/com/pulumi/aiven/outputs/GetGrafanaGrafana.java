@@ -25,8 +25,8 @@ public final class GetGrafanaGrafana {
         }
 
         public GetGrafanaGrafana build() {
-            final var o = new GetGrafanaGrafana();
-            return o;
+            final var _resultValue = new GetGrafanaGrafana();
+            return _resultValue;
         }
     }
 }

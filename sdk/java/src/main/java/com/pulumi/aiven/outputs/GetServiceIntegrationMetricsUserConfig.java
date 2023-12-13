@@ -86,13 +86,13 @@ public final class GetServiceIntegrationMetricsUserConfig {
             return this;
         }
         public GetServiceIntegrationMetricsUserConfig build() {
-            final var o = new GetServiceIntegrationMetricsUserConfig();
-            o.database = database;
-            o.retentionDays = retentionDays;
-            o.roUsername = roUsername;
-            o.sourceMysql = sourceMysql;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetServiceIntegrationMetricsUserConfig();
+            _resultValue.database = database;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.roUsername = roUsername;
+            _resultValue.sourceMysql = sourceMysql;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

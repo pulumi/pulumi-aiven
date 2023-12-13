@@ -40,9 +40,9 @@ public final class GetPgPgUserConfigTimescaledb {
             return this;
         }
         public GetPgPgUserConfigTimescaledb build() {
-            final var o = new GetPgPgUserConfigTimescaledb();
-            o.maxBackgroundWorkers = maxBackgroundWorkers;
-            return o;
+            final var _resultValue = new GetPgPgUserConfigTimescaledb();
+            _resultValue.maxBackgroundWorkers = maxBackgroundWorkers;
+            return _resultValue;
         }
     }
 }

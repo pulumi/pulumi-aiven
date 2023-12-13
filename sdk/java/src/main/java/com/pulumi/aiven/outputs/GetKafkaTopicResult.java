@@ -201,17 +201,17 @@ public final class GetKafkaTopicResult {
             return this;
         }
         public GetKafkaTopicResult build() {
-            final var o = new GetKafkaTopicResult();
-            o.configs = configs;
-            o.id = id;
-            o.partitions = partitions;
-            o.project = project;
-            o.replication = replication;
-            o.serviceName = serviceName;
-            o.tags = tags;
-            o.terminationProtection = terminationProtection;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new GetKafkaTopicResult();
+            _resultValue.configs = configs;
+            _resultValue.id = id;
+            _resultValue.partitions = partitions;
+            _resultValue.project = project;
+            _resultValue.replication = replication;
+            _resultValue.serviceName = serviceName;
+            _resultValue.tags = tags;
+            _resultValue.terminationProtection = terminationProtection;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

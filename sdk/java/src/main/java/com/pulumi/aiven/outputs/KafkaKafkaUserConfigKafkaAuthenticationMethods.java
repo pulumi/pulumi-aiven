@@ -67,10 +67,10 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethods {
             return this;
         }
         public KafkaKafkaUserConfigKafkaAuthenticationMethods build() {
-            final var o = new KafkaKafkaUserConfigKafkaAuthenticationMethods();
-            o.certificate = certificate;
-            o.sasl = sasl;
-            return o;
+            final var _resultValue = new KafkaKafkaUserConfigKafkaAuthenticationMethods();
+            _resultValue.certificate = certificate;
+            _resultValue.sasl = sasl;
+            return _resultValue;
         }
     }
 }

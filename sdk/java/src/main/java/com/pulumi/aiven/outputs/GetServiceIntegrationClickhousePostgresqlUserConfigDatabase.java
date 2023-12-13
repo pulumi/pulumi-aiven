@@ -51,10 +51,10 @@ public final class GetServiceIntegrationClickhousePostgresqlUserConfigDatabase {
             return this;
         }
         public GetServiceIntegrationClickhousePostgresqlUserConfigDatabase build() {
-            final var o = new GetServiceIntegrationClickhousePostgresqlUserConfigDatabase();
-            o.database = database;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new GetServiceIntegrationClickhousePostgresqlUserConfigDatabase();
+            _resultValue.database = database;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

@@ -161,19 +161,19 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
             return this;
         }
         public GetGrafanaGrafanaUserConfigAuthGenericOauth build() {
-            final var o = new GetGrafanaGrafanaUserConfigAuthGenericOauth();
-            o.allowSignUp = allowSignUp;
-            o.allowedDomains = allowedDomains;
-            o.allowedOrganizations = allowedOrganizations;
-            o.apiUrl = apiUrl;
-            o.authUrl = authUrl;
-            o.autoLogin = autoLogin;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.name = name;
-            o.scopes = scopes;
-            o.tokenUrl = tokenUrl;
-            return o;
+            final var _resultValue = new GetGrafanaGrafanaUserConfigAuthGenericOauth();
+            _resultValue.allowSignUp = allowSignUp;
+            _resultValue.allowedDomains = allowedDomains;
+            _resultValue.allowedOrganizations = allowedOrganizations;
+            _resultValue.apiUrl = apiUrl;
+            _resultValue.authUrl = authUrl;
+            _resultValue.autoLogin = autoLogin;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.name = name;
+            _resultValue.scopes = scopes;
+            _resultValue.tokenUrl = tokenUrl;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class PgPgUserConfigTimescaledb {
             return this;
         }
         public PgPgUserConfigTimescaledb build() {
-            final var o = new PgPgUserConfigTimescaledb();
-            o.maxBackgroundWorkers = maxBackgroundWorkers;
-            return o;
+            final var _resultValue = new PgPgUserConfigTimescaledb();
+            _resultValue.maxBackgroundWorkers = maxBackgroundWorkers;
+            return _resultValue;
         }
     }
 }

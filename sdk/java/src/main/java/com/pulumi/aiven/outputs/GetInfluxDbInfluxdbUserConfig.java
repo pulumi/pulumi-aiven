@@ -200,21 +200,21 @@ public final class GetInfluxDbInfluxdbUserConfig {
             return this;
         }
         public GetInfluxDbInfluxdbUserConfig build() {
-            final var o = new GetInfluxDbInfluxdbUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.customDomain = customDomain;
-            o.influxdb = influxdb;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.recoveryBasebackupName = recoveryBasebackupName;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetInfluxDbInfluxdbUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.customDomain = customDomain;
+            _resultValue.influxdb = influxdb;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

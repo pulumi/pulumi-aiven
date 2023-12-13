@@ -141,14 +141,14 @@ public final class GetOrganizationUserGroupResult {
             return this;
         }
         public GetOrganizationUserGroupResult build() {
-            final var o = new GetOrganizationUserGroupResult();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.organizationId = organizationId;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetOrganizationUserGroupResult();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.organizationId = organizationId;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

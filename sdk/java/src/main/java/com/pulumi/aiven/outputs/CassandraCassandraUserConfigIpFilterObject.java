@@ -67,10 +67,10 @@ public final class CassandraCassandraUserConfigIpFilterObject {
             return this;
         }
         public CassandraCassandraUserConfigIpFilterObject build() {
-            final var o = new CassandraCassandraUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new CassandraCassandraUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

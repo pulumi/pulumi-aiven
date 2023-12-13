@@ -65,10 +65,10 @@ public final class KafkaTag {
             return this;
         }
         public KafkaTag build() {
-            final var o = new KafkaTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new KafkaTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

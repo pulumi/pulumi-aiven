@@ -51,10 +51,10 @@ public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
             return this;
         }
         public GetKafkaConnectKafkaConnectUserConfigPublicAccess build() {
-            final var o = new GetKafkaConnectKafkaConnectUserConfigPublicAccess();
-            o.kafkaConnect = kafkaConnect;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new GetKafkaConnectKafkaConnectUserConfigPublicAccess();
+            _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

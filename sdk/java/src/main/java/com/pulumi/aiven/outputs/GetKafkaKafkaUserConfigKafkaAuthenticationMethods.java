@@ -51,10 +51,10 @@ public final class GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
             return this;
         }
         public GetKafkaKafkaUserConfigKafkaAuthenticationMethods build() {
-            final var o = new GetKafkaKafkaUserConfigKafkaAuthenticationMethods();
-            o.certificate = certificate;
-            o.sasl = sasl;
-            return o;
+            final var _resultValue = new GetKafkaKafkaUserConfigKafkaAuthenticationMethods();
+            _resultValue.certificate = certificate;
+            _resultValue.sasl = sasl;
+            return _resultValue;
         }
     }
 }

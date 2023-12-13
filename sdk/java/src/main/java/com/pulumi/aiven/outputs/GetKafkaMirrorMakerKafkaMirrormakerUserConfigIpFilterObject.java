@@ -51,10 +51,10 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
             return this;
         }
         public GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject build() {
-            final var o = new GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

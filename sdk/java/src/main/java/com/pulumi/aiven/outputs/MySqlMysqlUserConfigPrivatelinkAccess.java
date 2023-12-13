@@ -62,11 +62,11 @@ public final class MySqlMysqlUserConfigPrivatelinkAccess {
             return this;
         }
         public MySqlMysqlUserConfigPrivatelinkAccess build() {
-            final var o = new MySqlMysqlUserConfigPrivatelinkAccess();
-            o.mysql = mysql;
-            o.mysqlx = mysqlx;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new MySqlMysqlUserConfigPrivatelinkAccess();
+            _resultValue.mysql = mysql;
+            _resultValue.mysqlx = mysqlx;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

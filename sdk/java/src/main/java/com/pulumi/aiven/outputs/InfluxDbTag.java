@@ -65,10 +65,10 @@ public final class InfluxDbTag {
             return this;
         }
         public InfluxDbTag build() {
-            final var o = new InfluxDbTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new InfluxDbTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

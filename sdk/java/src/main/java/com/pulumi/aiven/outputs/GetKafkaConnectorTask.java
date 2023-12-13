@@ -50,10 +50,10 @@ public final class GetKafkaConnectorTask {
             return this;
         }
         public GetKafkaConnectorTask build() {
-            final var o = new GetKafkaConnectorTask();
-            o.connector = connector;
-            o.task = task;
-            return o;
+            final var _resultValue = new GetKafkaConnectorTask();
+            _resultValue.connector = connector;
+            _resultValue.task = task;
+            return _resultValue;
         }
     }
 }

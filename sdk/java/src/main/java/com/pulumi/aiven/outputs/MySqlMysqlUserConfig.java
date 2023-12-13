@@ -268,27 +268,27 @@ public final class MySqlMysqlUserConfig {
             return this;
         }
         public MySqlMysqlUserConfig build() {
-            final var o = new MySqlMysqlUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.adminPassword = adminPassword;
-            o.adminUsername = adminUsername;
-            o.backupHour = backupHour;
-            o.backupMinute = backupMinute;
-            o.binlogRetentionPeriod = binlogRetentionPeriod;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.migration = migration;
-            o.mysql = mysql;
-            o.mysqlVersion = mysqlVersion;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.projectToForkFrom = projectToForkFrom;
-            o.publicAccess = publicAccess;
-            o.recoveryTargetTime = recoveryTargetTime;
-            o.serviceToForkFrom = serviceToForkFrom;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new MySqlMysqlUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.adminPassword = adminPassword;
+            _resultValue.adminUsername = adminUsername;
+            _resultValue.backupHour = backupHour;
+            _resultValue.backupMinute = backupMinute;
+            _resultValue.binlogRetentionPeriod = binlogRetentionPeriod;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.migration = migration;
+            _resultValue.mysql = mysql;
+            _resultValue.mysqlVersion = mysqlVersion;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.projectToForkFrom = projectToForkFrom;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.recoveryTargetTime = recoveryTargetTime;
+            _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

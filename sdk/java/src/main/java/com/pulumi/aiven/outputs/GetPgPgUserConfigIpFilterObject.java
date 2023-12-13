@@ -51,10 +51,10 @@ public final class GetPgPgUserConfigIpFilterObject {
             return this;
         }
         public GetPgPgUserConfigIpFilterObject build() {
-            final var o = new GetPgPgUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetPgPgUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

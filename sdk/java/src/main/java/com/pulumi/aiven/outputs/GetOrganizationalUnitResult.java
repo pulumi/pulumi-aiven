@@ -141,14 +141,14 @@ public final class GetOrganizationalUnitResult {
             return this;
         }
         public GetOrganizationalUnitResult build() {
-            final var o = new GetOrganizationalUnitResult();
-            o.createTime = createTime;
-            o.id = id;
-            o.name = name;
-            o.parentId = parentId;
-            o.tenantId = tenantId;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetOrganizationalUnitResult();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.parentId = parentId;
+            _resultValue.tenantId = tenantId;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

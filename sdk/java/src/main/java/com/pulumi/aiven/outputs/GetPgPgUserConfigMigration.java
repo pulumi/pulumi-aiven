@@ -119,16 +119,16 @@ public final class GetPgPgUserConfigMigration {
             return this;
         }
         public GetPgPgUserConfigMigration build() {
-            final var o = new GetPgPgUserConfigMigration();
-            o.dbname = dbname;
-            o.host = host;
-            o.ignoreDbs = ignoreDbs;
-            o.method = method;
-            o.password = password;
-            o.port = port;
-            o.ssl = ssl;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetPgPgUserConfigMigration();
+            _resultValue.dbname = dbname;
+            _resultValue.host = host;
+            _resultValue.ignoreDbs = ignoreDbs;
+            _resultValue.method = method;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.ssl = ssl;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

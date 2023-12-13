@@ -290,21 +290,21 @@ public final class GetFlinkApplicationVersionResult {
             return this;
         }
         public GetFlinkApplicationVersionResult build() {
-            final var o = new GetFlinkApplicationVersionResult();
-            o.applicationId = applicationId;
-            o.applicationVersionId = applicationVersionId;
-            o.createdAt = createdAt;
-            o.createdBy = createdBy;
-            o.id = id;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.sink = sink;
-            o.sinks = sinks;
-            o.source = source;
-            o.sources = sources;
-            o.statement = statement;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetFlinkApplicationVersionResult();
+            _resultValue.applicationId = applicationId;
+            _resultValue.applicationVersionId = applicationVersionId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.sink = sink;
+            _resultValue.sinks = sinks;
+            _resultValue.source = source;
+            _resultValue.sources = sources;
+            _resultValue.statement = statement;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

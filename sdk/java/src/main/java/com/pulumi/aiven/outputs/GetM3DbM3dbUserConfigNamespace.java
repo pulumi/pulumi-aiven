@@ -74,12 +74,12 @@ public final class GetM3DbM3dbUserConfigNamespace {
             return this;
         }
         public GetM3DbM3dbUserConfigNamespace build() {
-            final var o = new GetM3DbM3dbUserConfigNamespace();
-            o.name = name;
-            o.options = options;
-            o.resolution = resolution;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetM3DbM3dbUserConfigNamespace();
+            _resultValue.name = name;
+            _resultValue.options = options;
+            _resultValue.resolution = resolution;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

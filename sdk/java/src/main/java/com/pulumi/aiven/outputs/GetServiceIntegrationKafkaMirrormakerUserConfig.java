@@ -52,10 +52,10 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
             return this;
         }
         public GetServiceIntegrationKafkaMirrormakerUserConfig build() {
-            final var o = new GetServiceIntegrationKafkaMirrormakerUserConfig();
-            o.clusterAlias = clusterAlias;
-            o.kafkaMirrormaker = kafkaMirrormaker;
-            return o;
+            final var _resultValue = new GetServiceIntegrationKafkaMirrormakerUserConfig();
+            _resultValue.clusterAlias = clusterAlias;
+            _resultValue.kafkaMirrormaker = kafkaMirrormaker;
+            return _resultValue;
         }
     }
 }

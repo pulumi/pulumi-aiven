@@ -49,10 +49,10 @@ public final class GetOpenSearchServiceIntegration {
             return this;
         }
         public GetOpenSearchServiceIntegration build() {
-            final var o = new GetOpenSearchServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetOpenSearchServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

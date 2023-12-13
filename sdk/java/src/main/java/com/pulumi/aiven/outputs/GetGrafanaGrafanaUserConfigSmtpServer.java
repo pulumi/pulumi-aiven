@@ -119,16 +119,16 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
             return this;
         }
         public GetGrafanaGrafanaUserConfigSmtpServer build() {
-            final var o = new GetGrafanaGrafanaUserConfigSmtpServer();
-            o.fromAddress = fromAddress;
-            o.fromName = fromName;
-            o.host = host;
-            o.password = password;
-            o.port = port;
-            o.skipVerify = skipVerify;
-            o.starttlsPolicy = starttlsPolicy;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetGrafanaGrafanaUserConfigSmtpServer();
+            _resultValue.fromAddress = fromAddress;
+            _resultValue.fromName = fromName;
+            _resultValue.host = host;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.skipVerify = skipVerify;
+            _resultValue.starttlsPolicy = starttlsPolicy;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

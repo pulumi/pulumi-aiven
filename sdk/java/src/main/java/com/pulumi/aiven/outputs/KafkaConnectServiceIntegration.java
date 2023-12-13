@@ -49,10 +49,10 @@ public final class KafkaConnectServiceIntegration {
             return this;
         }
         public KafkaConnectServiceIntegration build() {
-            final var o = new KafkaConnectServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new KafkaConnectServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

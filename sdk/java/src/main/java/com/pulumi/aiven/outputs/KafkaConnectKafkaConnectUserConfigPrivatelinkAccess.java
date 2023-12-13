@@ -62,11 +62,11 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
             return this;
         }
         public KafkaConnectKafkaConnectUserConfigPrivatelinkAccess build() {
-            final var o = new KafkaConnectKafkaConnectUserConfigPrivatelinkAccess();
-            o.jolokia = jolokia;
-            o.kafkaConnect = kafkaConnect;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new KafkaConnectKafkaConnectUserConfigPrivatelinkAccess();
+            _resultValue.jolokia = jolokia;
+            _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

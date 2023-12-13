@@ -63,11 +63,11 @@ public final class GetCassandraCassandraUserConfigCassandra {
             return this;
         }
         public GetCassandraCassandraUserConfigCassandra build() {
-            final var o = new GetCassandraCassandraUserConfigCassandra();
-            o.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
-            o.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
-            o.datacenter = datacenter;
-            return o;
+            final var _resultValue = new GetCassandraCassandraUserConfigCassandra();
+            _resultValue.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
+            _resultValue.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
+            _resultValue.datacenter = datacenter;
+            return _resultValue;
         }
     }
 }

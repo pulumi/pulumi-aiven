@@ -40,9 +40,9 @@ public final class OpenSearchOpensearch {
             return this;
         }
         public OpenSearchOpensearch build() {
-            final var o = new OpenSearchOpensearch();
-            o.opensearchDashboardsUri = opensearchDashboardsUri;
-            return o;
+            final var _resultValue = new OpenSearchOpensearch();
+            _resultValue.opensearchDashboardsUri = opensearchDashboardsUri;
+            return _resultValue;
         }
     }
 }

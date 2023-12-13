@@ -156,17 +156,17 @@ public final class KafkaConnectKafkaConnectUserConfig {
             return this;
         }
         public KafkaConnectKafkaConnectUserConfig build() {
-            final var o = new KafkaConnectKafkaConnectUserConfig();
-            o.additionalBackupRegions = additionalBackupRegions;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.kafkaConnect = kafkaConnect;
-            o.privateAccess = privateAccess;
-            o.privatelinkAccess = privatelinkAccess;
-            o.publicAccess = publicAccess;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new KafkaConnectKafkaConnectUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class PgPgUserConfigPrivatelinkAccess {
             return this;
         }
         public PgPgUserConfigPrivatelinkAccess build() {
-            final var o = new PgPgUserConfigPrivatelinkAccess();
-            o.pg = pg;
-            o.pgbouncer = pgbouncer;
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new PgPgUserConfigPrivatelinkAccess();
+            _resultValue.pg = pg;
+            _resultValue.pgbouncer = pgbouncer;
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

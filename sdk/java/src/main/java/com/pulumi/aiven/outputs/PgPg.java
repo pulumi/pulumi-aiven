@@ -201,17 +201,17 @@ public final class PgPg {
             return this;
         }
         public PgPg build() {
-            final var o = new PgPg();
-            o.dbname = dbname;
-            o.host = host;
-            o.maxConnections = maxConnections;
-            o.password = password;
-            o.port = port;
-            o.replicaUri = replicaUri;
-            o.sslmode = sslmode;
-            o.uri = uri;
-            o.user = user;
-            return o;
+            final var _resultValue = new PgPg();
+            _resultValue.dbname = dbname;
+            _resultValue.host = host;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.replicaUri = replicaUri;
+            _resultValue.sslmode = sslmode;
+            _resultValue.uri = uri;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

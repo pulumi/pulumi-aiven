@@ -48,9 +48,9 @@ public final class ClickhouseGrantRoleGrant {
             return this;
         }
         public ClickhouseGrantRoleGrant build() {
-            final var o = new ClickhouseGrantRoleGrant();
-            o.role = role;
-            return o;
+            final var _resultValue = new ClickhouseGrantRoleGrant();
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

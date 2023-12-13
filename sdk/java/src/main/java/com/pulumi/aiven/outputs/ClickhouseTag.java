@@ -65,10 +65,10 @@ public final class ClickhouseTag {
             return this;
         }
         public ClickhouseTag build() {
-            final var o = new ClickhouseTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClickhouseTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class GetFlinkFlinkUserConfigIpFilterObject {
             return this;
         }
         public GetFlinkFlinkUserConfigIpFilterObject build() {
-            final var o = new GetFlinkFlinkUserConfigIpFilterObject();
-            o.description = description;
-            o.network = network;
-            return o;
+            final var _resultValue = new GetFlinkFlinkUserConfigIpFilterObject();
+            _resultValue.description = description;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

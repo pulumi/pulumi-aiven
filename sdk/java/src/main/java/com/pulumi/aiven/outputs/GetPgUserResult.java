@@ -199,17 +199,17 @@ public final class GetPgUserResult {
             return this;
         }
         public GetPgUserResult build() {
-            final var o = new GetPgUserResult();
-            o.accessCert = accessCert;
-            o.accessKey = accessKey;
-            o.id = id;
-            o.password = password;
-            o.pgAllowReplication = pgAllowReplication;
-            o.project = project;
-            o.serviceName = serviceName;
-            o.type = type;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetPgUserResult();
+            _resultValue.accessCert = accessCert;
+            _resultValue.accessKey = accessKey;
+            _resultValue.id = id;
+            _resultValue.password = password;
+            _resultValue.pgAllowReplication = pgAllowReplication;
+            _resultValue.project = project;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

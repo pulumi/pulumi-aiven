@@ -142,15 +142,15 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
             return this;
         }
         public GetM3AggregatorM3aggregatorUserConfig build() {
-            final var o = new GetM3AggregatorM3aggregatorUserConfig();
-            o.customDomain = customDomain;
-            o.ipFilterObjects = ipFilterObjects;
-            o.ipFilterStrings = ipFilterStrings;
-            o.ipFilters = ipFilters;
-            o.m3Version = m3Version;
-            o.m3aggregatorVersion = m3aggregatorVersion;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetM3AggregatorM3aggregatorUserConfig();
+            _resultValue.customDomain = customDomain;
+            _resultValue.ipFilterObjects = ipFilterObjects;
+            _resultValue.ipFilterStrings = ipFilterStrings;
+            _resultValue.ipFilters = ipFilters;
+            _resultValue.m3Version = m3Version;
+            _resultValue.m3aggregatorVersion = m3aggregatorVersion;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

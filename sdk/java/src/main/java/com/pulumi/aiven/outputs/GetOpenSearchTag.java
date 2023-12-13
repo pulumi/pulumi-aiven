@@ -49,10 +49,10 @@ public final class GetOpenSearchTag {
             return this;
         }
         public GetOpenSearchTag build() {
-            final var o = new GetOpenSearchTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetOpenSearchTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

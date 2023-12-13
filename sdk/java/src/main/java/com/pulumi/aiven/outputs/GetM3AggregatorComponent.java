@@ -106,15 +106,15 @@ public final class GetM3AggregatorComponent {
             return this;
         }
         public GetM3AggregatorComponent build() {
-            final var o = new GetM3AggregatorComponent();
-            o.component = component;
-            o.host = host;
-            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-            o.port = port;
-            o.route = route;
-            o.ssl = ssl;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetM3AggregatorComponent();
+            _resultValue.component = component;
+            _resultValue.host = host;
+            _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.port = port;
+            _resultValue.route = route;
+            _resultValue.ssl = ssl;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetRedisServiceIntegration {
             return this;
         }
         public GetRedisServiceIntegration build() {
-            final var o = new GetRedisServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetRedisServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }

@@ -199,17 +199,17 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.accountId = accountId;
-            o.createTime = createTime;
-            o.id = id;
-            o.isAccountOwner = isAccountOwner;
-            o.name = name;
-            o.ownerTeamId = ownerTeamId;
-            o.primaryBillingGroupId = primaryBillingGroupId;
-            o.tenantId = tenantId;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.accountId = accountId;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.isAccountOwner = isAccountOwner;
+            _resultValue.name = name;
+            _resultValue.ownerTeamId = ownerTeamId;
+            _resultValue.primaryBillingGroupId = primaryBillingGroupId;
+            _resultValue.tenantId = tenantId;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

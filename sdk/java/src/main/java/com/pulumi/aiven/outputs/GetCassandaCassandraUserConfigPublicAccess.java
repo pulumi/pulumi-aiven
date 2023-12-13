@@ -40,9 +40,9 @@ public final class GetCassandaCassandraUserConfigPublicAccess {
             return this;
         }
         public GetCassandaCassandraUserConfigPublicAccess build() {
-            final var o = new GetCassandaCassandraUserConfigPublicAccess();
-            o.prometheus = prometheus;
-            return o;
+            final var _resultValue = new GetCassandaCassandraUserConfigPublicAccess();
+            _resultValue.prometheus = prometheus;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class GetPgPgUserConfigPglookout {
             return this;
         }
         public GetPgPgUserConfigPglookout build() {
-            final var o = new GetPgPgUserConfigPglookout();
-            o.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
-            return o;
+            final var _resultValue = new GetPgPgUserConfigPglookout();
+            _resultValue.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
+            return _resultValue;
         }
     }
 }

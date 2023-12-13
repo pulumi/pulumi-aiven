@@ -125,13 +125,13 @@ public final class ClickhouseGrantPrivilegeGrant {
             return this;
         }
         public ClickhouseGrantPrivilegeGrant build() {
-            final var o = new ClickhouseGrantPrivilegeGrant();
-            o.column = column;
-            o.database = database;
-            o.privilege = privilege;
-            o.table = table;
-            o.withGrant = withGrant;
-            return o;
+            final var _resultValue = new ClickhouseGrantPrivilegeGrant();
+            _resultValue.column = column;
+            _resultValue.database = database;
+            _resultValue.privilege = privilege;
+            _resultValue.table = table;
+            _resultValue.withGrant = withGrant;
+            return _resultValue;
         }
     }
 }

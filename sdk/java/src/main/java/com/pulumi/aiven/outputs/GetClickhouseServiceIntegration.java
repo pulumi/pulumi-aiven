@@ -49,10 +49,10 @@ public final class GetClickhouseServiceIntegration {
             return this;
         }
         public GetClickhouseServiceIntegration build() {
-            final var o = new GetClickhouseServiceIntegration();
-            o.integrationType = integrationType;
-            o.sourceServiceName = sourceServiceName;
-            return o;
+            final var _resultValue = new GetClickhouseServiceIntegration();
+            _resultValue.integrationType = integrationType;
+            _resultValue.sourceServiceName = sourceServiceName;
+            return _resultValue;
         }
     }
 }
