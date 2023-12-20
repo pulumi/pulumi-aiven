@@ -2734,6 +2734,7 @@
             }
         }
     },
+    "auto-settings": {},
     "mux": {
         "resources": {
             "aiven:index/account:Account": 0,
