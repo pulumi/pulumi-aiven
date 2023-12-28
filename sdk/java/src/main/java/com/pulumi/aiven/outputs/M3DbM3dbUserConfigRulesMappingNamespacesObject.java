@@ -42,11 +42,13 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObject {
 
         @CustomType.Setter
         public Builder resolution(@Nullable String resolution) {
+
             this.resolution = resolution;
             return this;
         }
         @CustomType.Setter
         public Builder retention(@Nullable String retention) {
+
             this.retention = retention;
             return this;
         }

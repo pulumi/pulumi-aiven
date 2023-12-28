@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
+        /// Allow access to read Kafka topic messages in the Aiven Console and REST API.
+        /// </summary>
+        public readonly bool? AivenKafkaTopicMessages;
+        /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         public readonly string? CustomDomain;
@@ -86,13 +90,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigSchemaRegistryConfig? SchemaRegistryConfig;
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
         /// Use static public IP addresses.
         /// </summary>
         public readonly bool? StaticIps;
+        /// <summary>
+        /// Tiered storage configuration.
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigTieredStorage? TieredStorage;
 
         [OutputConstructor]
         private KafkaKafkaUserConfig(
             string? additionalBackupRegions,
+
+            bool? aivenKafkaTopicMessages,
 
             string? customDomain,
 
@@ -128,9 +142,14 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaKafkaUserConfigSchemaRegistryConfig? schemaRegistryConfig,
 
-            bool? staticIps)
+            bool? serviceLog,
+
+            bool? staticIps,
+
+            Outputs.KafkaKafkaUserConfigTieredStorage? tieredStorage)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            AivenKafkaTopicMessages = aivenKafkaTopicMessages;
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
@@ -148,7 +167,9 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;
+            ServiceLog = serviceLog;
             StaticIps = staticIps;
+            TieredStorage = tieredStorage;
         }
     }
 }

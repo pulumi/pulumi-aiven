@@ -90,6 +90,13 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.publicAccess);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="staticIps")
     private @Nullable Output<Boolean> staticIps;
 
@@ -108,6 +115,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
+        this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
     }
 
@@ -235,6 +243,15 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
 
         public Builder publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
+        }
+
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         public Builder staticIps(@Nullable Output<Boolean> staticIps) {

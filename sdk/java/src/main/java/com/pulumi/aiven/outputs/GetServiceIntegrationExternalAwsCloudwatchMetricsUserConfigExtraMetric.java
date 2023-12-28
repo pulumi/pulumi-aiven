@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigEx
 
         @CustomType.Setter
         public Builder field(String field) {
-            this.field = Objects.requireNonNull(field);
+            if (field == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric", "field");
+            }
+            this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder metric(String metric) {
-            this.metric = Objects.requireNonNull(metric);
+            if (metric == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric", "metric");
+            }
+            this.metric = metric;
             return this;
         }
         public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric build() {

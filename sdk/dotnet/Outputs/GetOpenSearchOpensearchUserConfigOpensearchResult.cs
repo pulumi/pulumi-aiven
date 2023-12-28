@@ -15,20 +15,30 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly bool? ActionAutoCreateIndexEnabled;
         public readonly bool? ActionDestructiveRequiresName;
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult? AuthFailureListeners;
         public readonly int? ClusterMaxShardsPerNode;
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
         public readonly string? EmailSenderName;
         public readonly string? EmailSenderPassword;
         public readonly string? EmailSenderUsername;
+        public readonly bool? EnableSecurityAudit;
         public readonly int? HttpMaxContentLength;
         public readonly int? HttpMaxHeaderSize;
         public readonly int? HttpMaxInitialLineLength;
         public readonly int? IndicesFielddataCacheSize;
         public readonly int? IndicesMemoryIndexBufferSize;
+        public readonly int? IndicesMemoryMaxIndexBufferSize;
+        public readonly int? IndicesMemoryMinIndexBufferSize;
         public readonly int? IndicesQueriesCacheSize;
         public readonly int? IndicesQueryBoolMaxClauseCount;
         public readonly int? IndicesRecoveryMaxBytesPerSec;
         public readonly int? IndicesRecoveryMaxConcurrentFileChunks;
+        public readonly bool? IsmEnabled;
+        public readonly bool? IsmHistoryEnabled;
+        public readonly int? IsmHistoryMaxAge;
+        public readonly int? IsmHistoryMaxDocs;
+        public readonly int? IsmHistoryRolloverCheckPeriod;
+        public readonly int? IsmHistoryRolloverRetentionPeriod;
         public readonly bool? OverrideMainResponseVersion;
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
         public readonly string? ScriptMaxCompilationsRate;
@@ -51,6 +61,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? actionDestructiveRequiresName,
 
+            Outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult? authFailureListeners,
+
             int? clusterMaxShardsPerNode,
 
             int? clusterRoutingAllocationNodeConcurrentRecoveries,
@@ -60,6 +72,8 @@ namespace Pulumi.Aiven.Outputs
             string? emailSenderPassword,
 
             string? emailSenderUsername,
+
+            bool? enableSecurityAudit,
 
             int? httpMaxContentLength,
 
@@ -71,6 +85,10 @@ namespace Pulumi.Aiven.Outputs
 
             int? indicesMemoryIndexBufferSize,
 
+            int? indicesMemoryMaxIndexBufferSize,
+
+            int? indicesMemoryMinIndexBufferSize,
+
             int? indicesQueriesCacheSize,
 
             int? indicesQueryBoolMaxClauseCount,
@@ -78,6 +96,18 @@ namespace Pulumi.Aiven.Outputs
             int? indicesRecoveryMaxBytesPerSec,
 
             int? indicesRecoveryMaxConcurrentFileChunks,
+
+            bool? ismEnabled,
+
+            bool? ismHistoryEnabled,
+
+            int? ismHistoryMaxAge,
+
+            int? ismHistoryMaxDocs,
+
+            int? ismHistoryRolloverCheckPeriod,
+
+            int? ismHistoryRolloverRetentionPeriod,
 
             bool? overrideMainResponseVersion,
 
@@ -111,20 +141,30 @@ namespace Pulumi.Aiven.Outputs
         {
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
+            AuthFailureListeners = authFailureListeners;
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             EmailSenderName = emailSenderName;
             EmailSenderPassword = emailSenderPassword;
             EmailSenderUsername = emailSenderUsername;
+            EnableSecurityAudit = enableSecurityAudit;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;
             IndicesFielddataCacheSize = indicesFielddataCacheSize;
             IndicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
+            IndicesMemoryMaxIndexBufferSize = indicesMemoryMaxIndexBufferSize;
+            IndicesMemoryMinIndexBufferSize = indicesMemoryMinIndexBufferSize;
             IndicesQueriesCacheSize = indicesQueriesCacheSize;
             IndicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             IndicesRecoveryMaxBytesPerSec = indicesRecoveryMaxBytesPerSec;
             IndicesRecoveryMaxConcurrentFileChunks = indicesRecoveryMaxConcurrentFileChunks;
+            IsmEnabled = ismEnabled;
+            IsmHistoryEnabled = ismHistoryEnabled;
+            IsmHistoryMaxAge = ismHistoryMaxAge;
+            IsmHistoryMaxDocs = ismHistoryMaxDocs;
+            IsmHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
+            IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;

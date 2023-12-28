@@ -130,6 +130,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
@@ -138,6 +141,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
+
+        [Input("unifiedAlertingEnabled")]
+        public Input<bool>? UnifiedAlertingEnabled { get; set; }
 
         [Input("userAutoAssignOrg")]
         public Input<bool>? UserAutoAssignOrg { get; set; }

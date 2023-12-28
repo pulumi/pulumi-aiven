@@ -59,11 +59,13 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfig {
 
         @CustomType.Setter
         public Builder clusterAlias(@Nullable String clusterAlias) {
+
             this.clusterAlias = clusterAlias;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaMirrormaker(@Nullable ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker) {
+
             this.kafkaMirrormaker = kafkaMirrormaker;
             return this;
         }

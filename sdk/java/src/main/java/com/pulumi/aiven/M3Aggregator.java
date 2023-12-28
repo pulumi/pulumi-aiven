@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.M3AggregatorM3aggregator;
 import com.pulumi.aiven.outputs.M3AggregatorM3aggregatorUserConfig;
 import com.pulumi.aiven.outputs.M3AggregatorServiceIntegration;
 import com.pulumi.aiven.outputs.M3AggregatorTag;
+import com.pulumi.aiven.outputs.M3AggregatorTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -480,6 +481,22 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<M3AggregatorTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,M3AggregatorTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<M3AggregatorTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Output<Optional<List<M3AggregatorTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

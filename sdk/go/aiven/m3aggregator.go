@@ -132,6 +132,9 @@ type M3Aggregator struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags M3AggregatorTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails M3AggregatorTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -256,6 +259,9 @@ type m3aggregatorState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []M3AggregatorTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []M3AggregatorTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -337,6 +343,9 @@ type M3AggregatorState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags M3AggregatorTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails M3AggregatorTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -394,6 +403,9 @@ type m3aggregatorArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []M3AggregatorTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []M3AggregatorTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -448,6 +460,9 @@ type M3AggregatorArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags M3AggregatorTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails M3AggregatorTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -691,6 +706,12 @@ func (o M3AggregatorOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o M3AggregatorOutput) Tags() M3AggregatorTagArrayOutput {
 	return o.ApplyT(func(v *M3Aggregator) M3AggregatorTagArrayOutput { return v.Tags }).(M3AggregatorTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+// instability.
+func (o M3AggregatorOutput) TechEmails() M3AggregatorTechEmailArrayOutput {
+	return o.ApplyT(func(v *M3Aggregator) M3AggregatorTechEmailArrayOutput { return v.TechEmails }).(M3AggregatorTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

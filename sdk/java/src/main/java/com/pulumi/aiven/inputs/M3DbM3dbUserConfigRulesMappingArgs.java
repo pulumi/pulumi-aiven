@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArg
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigRulesMappingTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -235,7 +236,9 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         public M3DbM3dbUserConfigRulesMappingArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("M3DbM3dbUserConfigRulesMappingArgs", "filter");
+            }
             return $;
         }
     }

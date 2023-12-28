@@ -47,9 +47,11 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GrafanaGrafanaUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly Outputs.GrafanaGrafanaUserConfigSmtpServer? SmtpServer;
         public readonly bool? StaticIps;
+        public readonly bool? UnifiedAlertingEnabled;
         public readonly bool? UserAutoAssignOrg;
         public readonly string? UserAutoAssignOrgRole;
         public readonly bool? ViewersCanEdit;
@@ -124,11 +126,15 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             Outputs.GrafanaGrafanaUserConfigSmtpServer? smtpServer,
 
             bool? staticIps,
+
+            bool? unifiedAlertingEnabled,
 
             bool? userAutoAssignOrg,
 
@@ -170,9 +176,11 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             SmtpServer = smtpServer;
             StaticIps = staticIps;
+            UnifiedAlertingEnabled = unifiedAlertingEnabled;
             UserAutoAssignOrg = userAutoAssignOrg;
             UserAutoAssignOrgRole = userAutoAssignOrgRole;
             ViewersCanEdit = viewersCanEdit;

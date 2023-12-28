@@ -12,6 +12,7 @@ import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigTieredStorage;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -27,6 +28,11 @@ public final class KafkaKafkaUserConfig {
      * 
      */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Allow access to read Kafka topic messages in the Aiven Console and REST API.
+     * 
+     */
+    private @Nullable Boolean aivenKafkaTopicMessages;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      * 
@@ -117,10 +123,20 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
     /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    private @Nullable Boolean serviceLog;
+    /**
      * @return Use static public IP addresses.
      * 
      */
     private @Nullable Boolean staticIps;
+    /**
+     * @return Tiered storage configuration.
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigTieredStorage tieredStorage;
 
     private KafkaKafkaUserConfig() {}
     /**
@@ -129,6 +145,13 @@ public final class KafkaKafkaUserConfig {
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Allow access to read Kafka topic messages in the Aiven Console and REST API.
+     * 
+     */
+    public Optional<Boolean> aivenKafkaTopicMessages() {
+        return Optional.ofNullable(this.aivenKafkaTopicMessages);
     }
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -254,11 +277,25 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
     /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+    /**
      * @return Use static public IP addresses.
      * 
      */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
+    }
+    /**
+     * @return Tiered storage configuration.
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigTieredStorage> tieredStorage() {
+        return Optional.ofNullable(this.tieredStorage);
     }
 
     public static Builder builder() {
@@ -271,6 +308,7 @@ public final class KafkaKafkaUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable Boolean aivenKafkaTopicMessages;
         private @Nullable String customDomain;
         private @Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -288,11 +326,14 @@ public final class KafkaKafkaUserConfig {
         private @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
         private @Nullable Boolean schemaRegistry;
         private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
+        private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
+        private @Nullable KafkaKafkaUserConfigTieredStorage tieredStorage;
         public Builder() {}
         public Builder(KafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.aivenKafkaTopicMessages = defaults.aivenKafkaTopicMessages;
     	      this.customDomain = defaults.customDomain;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -310,21 +351,32 @@ public final class KafkaKafkaUserConfig {
     	      this.publicAccess = defaults.publicAccess;
     	      this.schemaRegistry = defaults.schemaRegistry;
     	      this.schemaRegistryConfig = defaults.schemaRegistryConfig;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
+    	      this.tieredStorage = defaults.tieredStorage;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
+        public Builder aivenKafkaTopicMessages(@Nullable Boolean aivenKafkaTopicMessages) {
+
+            this.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
+
             this.customDomain = customDomain;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -333,6 +385,7 @@ public final class KafkaKafkaUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -341,6 +394,7 @@ public final class KafkaKafkaUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -349,77 +403,104 @@ public final class KafkaKafkaUserConfig {
         }
         @CustomType.Setter
         public Builder kafka(@Nullable KafkaKafkaUserConfigKafka kafka) {
+
             this.kafka = kafka;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaAuthenticationMethods(@Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods) {
+
             this.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnectConfig(@Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig) {
+
             this.kafkaConnectConfig = kafkaConnectConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRest(@Nullable Boolean kafkaRest) {
+
             this.kafkaRest = kafkaRest;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRestAuthorization(@Nullable Boolean kafkaRestAuthorization) {
+
             this.kafkaRestAuthorization = kafkaRestAuthorization;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRestConfig(@Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig) {
+
             this.kafkaRestConfig = kafkaRestConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaVersion(@Nullable String kafkaVersion) {
+
             this.kafkaVersion = kafkaVersion;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable KafkaKafkaUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable KafkaKafkaUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
+
             this.schemaRegistry = schemaRegistry;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistryConfig(@Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig) {
+
             this.schemaRegistryConfig = schemaRegistryConfig;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tieredStorage(@Nullable KafkaKafkaUserConfigTieredStorage tieredStorage) {
+
+            this.tieredStorage = tieredStorage;
             return this;
         }
         public KafkaKafkaUserConfig build() {
             final var _resultValue = new KafkaKafkaUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
             _resultValue.customDomain = customDomain;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
@@ -437,7 +518,9 @@ public final class KafkaKafkaUserConfig {
             _resultValue.publicAccess = publicAccess;
             _resultValue.schemaRegistry = schemaRegistry;
             _resultValue.schemaRegistryConfig = schemaRegistryConfig;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
+            _resultValue.tieredStorage = tieredStorage;
             return _resultValue;
         }
     }

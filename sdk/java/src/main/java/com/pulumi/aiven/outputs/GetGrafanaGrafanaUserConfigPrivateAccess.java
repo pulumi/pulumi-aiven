@@ -36,6 +36,7 @@ public final class GetGrafanaGrafanaUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder grafana(@Nullable Boolean grafana) {
+
             this.grafana = grafana;
             return this;
         }

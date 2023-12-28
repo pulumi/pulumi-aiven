@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -36,7 +37,7 @@ public final class GetOrganizationUserResult {
      */
     private String organizationId;
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String userEmail;
@@ -78,7 +79,7 @@ public final class GetOrganizationUserResult {
         return this.organizationId;
     }
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String userEmail() {
@@ -113,32 +114,50 @@ public final class GetOrganizationUserResult {
 
         @CustomType.Setter
         public Builder accepted(Boolean accepted) {
-            this.accepted = Objects.requireNonNull(accepted);
+            if (accepted == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "accepted");
+            }
+            this.accepted = accepted;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invitedBy(String invitedBy) {
-            this.invitedBy = Objects.requireNonNull(invitedBy);
+            if (invitedBy == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "invitedBy");
+            }
+            this.invitedBy = invitedBy;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(String organizationId) {
-            this.organizationId = Objects.requireNonNull(organizationId);
+            if (organizationId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "organizationId");
+            }
+            this.organizationId = organizationId;
             return this;
         }
         @CustomType.Setter
         public Builder userEmail(String userEmail) {
-            this.userEmail = Objects.requireNonNull(userEmail);
+            if (userEmail == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "userEmail");
+            }
+            this.userEmail = userEmail;
             return this;
         }
         public GetOrganizationUserResult build() {

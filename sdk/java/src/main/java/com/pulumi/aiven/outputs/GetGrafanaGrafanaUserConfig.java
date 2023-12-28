@@ -66,9 +66,11 @@ public final class GetGrafanaGrafanaUserConfig {
     private @Nullable String projectToForkFrom;
     private @Nullable GetGrafanaGrafanaUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryBasebackupName;
+    private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable GetGrafanaGrafanaUserConfigSmtpServer smtpServer;
     private @Nullable Boolean staticIps;
+    private @Nullable Boolean unifiedAlertingEnabled;
     private @Nullable Boolean userAutoAssignOrg;
     private @Nullable String userAutoAssignOrgRole;
     private @Nullable Boolean viewersCanEdit;
@@ -182,6 +184,9 @@ public final class GetGrafanaGrafanaUserConfig {
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -190,6 +195,9 @@ public final class GetGrafanaGrafanaUserConfig {
     }
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
+    }
+    public Optional<Boolean> unifiedAlertingEnabled() {
+        return Optional.ofNullable(this.unifiedAlertingEnabled);
     }
     public Optional<Boolean> userAutoAssignOrg() {
         return Optional.ofNullable(this.userAutoAssignOrg);
@@ -244,9 +252,11 @@ public final class GetGrafanaGrafanaUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable GetGrafanaGrafanaUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable GetGrafanaGrafanaUserConfigSmtpServer smtpServer;
         private @Nullable Boolean staticIps;
+        private @Nullable Boolean unifiedAlertingEnabled;
         private @Nullable Boolean userAutoAssignOrg;
         private @Nullable String userAutoAssignOrgRole;
         private @Nullable Boolean viewersCanEdit;
@@ -287,9 +297,11 @@ public final class GetGrafanaGrafanaUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.smtpServer = defaults.smtpServer;
     	      this.staticIps = defaults.staticIps;
+    	      this.unifiedAlertingEnabled = defaults.unifiedAlertingEnabled;
     	      this.userAutoAssignOrg = defaults.userAutoAssignOrg;
     	      this.userAutoAssignOrgRole = defaults.userAutoAssignOrgRole;
     	      this.viewersCanEdit = defaults.viewersCanEdit;
@@ -297,126 +309,151 @@ public final class GetGrafanaGrafanaUserConfig {
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder alertingEnabled(@Nullable Boolean alertingEnabled) {
+
             this.alertingEnabled = alertingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder alertingErrorOrTimeout(@Nullable String alertingErrorOrTimeout) {
+
             this.alertingErrorOrTimeout = alertingErrorOrTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder alertingMaxAnnotationsToKeep(@Nullable Integer alertingMaxAnnotationsToKeep) {
+
             this.alertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
             return this;
         }
         @CustomType.Setter
         public Builder alertingNodataOrNullvalues(@Nullable String alertingNodataOrNullvalues) {
+
             this.alertingNodataOrNullvalues = alertingNodataOrNullvalues;
             return this;
         }
         @CustomType.Setter
         public Builder allowEmbedding(@Nullable Boolean allowEmbedding) {
+
             this.allowEmbedding = allowEmbedding;
             return this;
         }
         @CustomType.Setter
         public Builder authAzuread(@Nullable GetGrafanaGrafanaUserConfigAuthAzuread authAzuread) {
+
             this.authAzuread = authAzuread;
             return this;
         }
         @CustomType.Setter
         public Builder authBasicEnabled(@Nullable Boolean authBasicEnabled) {
+
             this.authBasicEnabled = authBasicEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder authGenericOauth(@Nullable GetGrafanaGrafanaUserConfigAuthGenericOauth authGenericOauth) {
+
             this.authGenericOauth = authGenericOauth;
             return this;
         }
         @CustomType.Setter
         public Builder authGithub(@Nullable GetGrafanaGrafanaUserConfigAuthGithub authGithub) {
+
             this.authGithub = authGithub;
             return this;
         }
         @CustomType.Setter
         public Builder authGitlab(@Nullable GetGrafanaGrafanaUserConfigAuthGitlab authGitlab) {
+
             this.authGitlab = authGitlab;
             return this;
         }
         @CustomType.Setter
         public Builder authGoogle(@Nullable GetGrafanaGrafanaUserConfigAuthGoogle authGoogle) {
+
             this.authGoogle = authGoogle;
             return this;
         }
         @CustomType.Setter
         public Builder cookieSamesite(@Nullable String cookieSamesite) {
+
             this.cookieSamesite = cookieSamesite;
             return this;
         }
         @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
+
             this.customDomain = customDomain;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardPreviewsEnabled(@Nullable Boolean dashboardPreviewsEnabled) {
+
             this.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardsMinRefreshInterval(@Nullable String dashboardsMinRefreshInterval) {
+
             this.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardsVersionsToKeep(@Nullable Integer dashboardsVersionsToKeep) {
+
             this.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             return this;
         }
         @CustomType.Setter
         public Builder dataproxySendUserHeader(@Nullable Boolean dataproxySendUserHeader) {
+
             this.dataproxySendUserHeader = dataproxySendUserHeader;
             return this;
         }
         @CustomType.Setter
         public Builder dataproxyTimeout(@Nullable Integer dataproxyTimeout) {
+
             this.dataproxyTimeout = dataproxyTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder dateFormats(@Nullable GetGrafanaGrafanaUserConfigDateFormats dateFormats) {
+
             this.dateFormats = dateFormats;
             return this;
         }
         @CustomType.Setter
         public Builder disableGravatar(@Nullable Boolean disableGravatar) {
+
             this.disableGravatar = disableGravatar;
             return this;
         }
         @CustomType.Setter
         public Builder editorsCanAdmin(@Nullable Boolean editorsCanAdmin) {
+
             this.editorsCanAdmin = editorsCanAdmin;
             return this;
         }
         @CustomType.Setter
         public Builder externalImageStorage(@Nullable GetGrafanaGrafanaUserConfigExternalImageStorage externalImageStorage) {
+
             this.externalImageStorage = externalImageStorage;
             return this;
         }
         @CustomType.Setter
         public Builder googleAnalyticsUaId(@Nullable String googleAnalyticsUaId) {
+
             this.googleAnalyticsUaId = googleAnalyticsUaId;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -425,6 +462,7 @@ public final class GetGrafanaGrafanaUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -433,6 +471,7 @@ public final class GetGrafanaGrafanaUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -441,66 +480,91 @@ public final class GetGrafanaGrafanaUserConfig {
         }
         @CustomType.Setter
         public Builder metricsEnabled(@Nullable Boolean metricsEnabled) {
+
             this.metricsEnabled = metricsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder oauthAllowInsecureEmailLookup(@Nullable Boolean oauthAllowInsecureEmailLookup) {
+
             this.oauthAllowInsecureEmailLookup = oauthAllowInsecureEmailLookup;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetGrafanaGrafanaUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetGrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetGrafanaGrafanaUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryBasebackupName(@Nullable String recoveryBasebackupName) {
+
             this.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder smtpServer(@Nullable GetGrafanaGrafanaUserConfigSmtpServer smtpServer) {
+
             this.smtpServer = smtpServer;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
         @CustomType.Setter
+        public Builder unifiedAlertingEnabled(@Nullable Boolean unifiedAlertingEnabled) {
+
+            this.unifiedAlertingEnabled = unifiedAlertingEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userAutoAssignOrg(@Nullable Boolean userAutoAssignOrg) {
+
             this.userAutoAssignOrg = userAutoAssignOrg;
             return this;
         }
         @CustomType.Setter
         public Builder userAutoAssignOrgRole(@Nullable String userAutoAssignOrgRole) {
+
             this.userAutoAssignOrgRole = userAutoAssignOrgRole;
             return this;
         }
         @CustomType.Setter
         public Builder viewersCanEdit(@Nullable Boolean viewersCanEdit) {
+
             this.viewersCanEdit = viewersCanEdit;
             return this;
         }
@@ -540,9 +604,11 @@ public final class GetGrafanaGrafanaUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.smtpServer = smtpServer;
             _resultValue.staticIps = staticIps;
+            _resultValue.unifiedAlertingEnabled = unifiedAlertingEnabled;
             _resultValue.userAutoAssignOrg = userAutoAssignOrg;
             _resultValue.userAutoAssignOrgRole = userAutoAssignOrgRole;
             _resultValue.viewersCanEdit = viewersCanEdit;

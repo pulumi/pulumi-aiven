@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         public GcpVpcPeeringConnectionArgs build() {
-            $.gcpProjectId = Objects.requireNonNull($.gcpProjectId, "expected parameter 'gcpProjectId' to be non-null");
-            $.peerVpc = Objects.requireNonNull($.peerVpc, "expected parameter 'peerVpc' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.gcpProjectId == null) {
+                throw new MissingRequiredPropertyException("GcpVpcPeeringConnectionArgs", "gcpProjectId");
+            }
+            if ($.peerVpc == null) {
+                throw new MissingRequiredPropertyException("GcpVpcPeeringConnectionArgs", "peerVpc");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GcpVpcPeeringConnectionArgs", "vpcId");
+            }
             return $;
         }
     }

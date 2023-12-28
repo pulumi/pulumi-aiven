@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         public ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.authentication == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs", "authentication");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs", "url");
+            }
             return $;
         }
     }

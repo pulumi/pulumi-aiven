@@ -87,26 +87,31 @@ public final class GetPgPgUserConfigPgbouncer {
 
         @CustomType.Setter
         public Builder autodbIdleTimeout(@Nullable Integer autodbIdleTimeout) {
+
             this.autodbIdleTimeout = autodbIdleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder autodbMaxDbConnections(@Nullable Integer autodbMaxDbConnections) {
+
             this.autodbMaxDbConnections = autodbMaxDbConnections;
             return this;
         }
         @CustomType.Setter
         public Builder autodbPoolMode(@Nullable String autodbPoolMode) {
+
             this.autodbPoolMode = autodbPoolMode;
             return this;
         }
         @CustomType.Setter
         public Builder autodbPoolSize(@Nullable Integer autodbPoolSize) {
+
             this.autodbPoolSize = autodbPoolSize;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreStartupParameters(@Nullable List<String> ignoreStartupParameters) {
+
             this.ignoreStartupParameters = ignoreStartupParameters;
             return this;
         }
@@ -115,21 +120,25 @@ public final class GetPgPgUserConfigPgbouncer {
         }
         @CustomType.Setter
         public Builder minPoolSize(@Nullable Integer minPoolSize) {
+
             this.minPoolSize = minPoolSize;
             return this;
         }
         @CustomType.Setter
         public Builder serverIdleTimeout(@Nullable Integer serverIdleTimeout) {
+
             this.serverIdleTimeout = serverIdleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder serverLifetime(@Nullable Integer serverLifetime) {
+
             this.serverLifetime = serverLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder serverResetQueryAlways(@Nullable Boolean serverResetQueryAlways) {
+
             this.serverResetQueryAlways = serverResetQueryAlways;
             return this;
         }

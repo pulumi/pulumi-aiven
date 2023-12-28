@@ -25,6 +25,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ActionDestructiveRequiresName { get; set; }
 
         /// <summary>
+        /// Opensearch Security Plugin Settings.
+        /// </summary>
+        [Input("authFailureListeners")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs>? AuthFailureListeners { get; set; }
+
+        /// <summary>
         /// Controls the number of shards allowed in the cluster per data node.
         /// </summary>
         [Input("clusterMaxShardsPerNode")]
@@ -65,6 +71,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? EmailSenderUsername { get; set; }
 
         /// <summary>
+        /// Enable/Disable security audit. The default value is `false`.
+        /// </summary>
+        [Input("enableSecurityAudit")]
+        public Input<bool>? EnableSecurityAudit { get; set; }
+
+        /// <summary>
         /// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         /// </summary>
         [Input("httpMaxContentLength")]
@@ -95,6 +107,18 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? IndicesMemoryIndexBufferSize { get; set; }
 
         /// <summary>
+        /// Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+        /// </summary>
+        [Input("indicesMemoryMaxIndexBufferSize")]
+        public Input<int>? IndicesMemoryMaxIndexBufferSize { get; set; }
+
+        /// <summary>
+        /// Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+        /// </summary>
+        [Input("indicesMemoryMinIndexBufferSize")]
+        public Input<int>? IndicesMemoryMinIndexBufferSize { get; set; }
+
+        /// <summary>
         /// Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
         /// </summary>
         [Input("indicesQueriesCacheSize")]
@@ -117,6 +141,42 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("indicesRecoveryMaxConcurrentFileChunks")]
         public Input<int>? IndicesRecoveryMaxConcurrentFileChunks { get; set; }
+
+        /// <summary>
+        /// Specifies whether ISM is enabled or not. The default value is `true`.
+        /// </summary>
+        [Input("ismEnabled")]
+        public Input<bool>? IsmEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+        /// </summary>
+        [Input("ismHistoryEnabled")]
+        public Input<bool>? IsmHistoryEnabled { get; set; }
+
+        /// <summary>
+        /// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+        /// </summary>
+        [Input("ismHistoryMaxAge")]
+        public Input<int>? IsmHistoryMaxAge { get; set; }
+
+        /// <summary>
+        /// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+        /// </summary>
+        [Input("ismHistoryMaxDocs")]
+        public Input<int>? IsmHistoryMaxDocs { get; set; }
+
+        /// <summary>
+        /// The time between rollover checks for the audit history index in hours. The default value is `8`.
+        /// </summary>
+        [Input("ismHistoryRolloverCheckPeriod")]
+        public Input<int>? IsmHistoryRolloverCheckPeriod { get; set; }
+
+        /// <summary>
+        /// How long audit history indices are kept in days. The default value is `30`.
+        /// </summary>
+        [Input("ismHistoryRolloverRetentionPeriod")]
+        public Input<int>? IsmHistoryRolloverRetentionPeriod { get; set; }
 
         /// <summary>
         /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.

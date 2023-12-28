@@ -60,26 +60,31 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
 
         @CustomType.Setter
         public Builder blockDataExpiryDuration(@Nullable String blockDataExpiryDuration) {
+
             this.blockDataExpiryDuration = blockDataExpiryDuration;
             return this;
         }
         @CustomType.Setter
         public Builder blocksizeDuration(@Nullable String blocksizeDuration) {
+
             this.blocksizeDuration = blocksizeDuration;
             return this;
         }
         @CustomType.Setter
         public Builder bufferFutureDuration(@Nullable String bufferFutureDuration) {
+
             this.bufferFutureDuration = bufferFutureDuration;
             return this;
         }
         @CustomType.Setter
         public Builder bufferPastDuration(@Nullable String bufferPastDuration) {
+
             this.bufferPastDuration = bufferPastDuration;
             return this;
         }
         @CustomType.Setter
         public Builder retentionPeriodDuration(@Nullable String retentionPeriodDuration) {
+
             this.retentionPeriodDuration = retentionPeriodDuration;
             return this;
         }

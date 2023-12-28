@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetOpenSearchOpensearch {
 
         @CustomType.Setter
         public Builder opensearchDashboardsUri(String opensearchDashboardsUri) {
-            this.opensearchDashboardsUri = Objects.requireNonNull(opensearchDashboardsUri);
+            if (opensearchDashboardsUri == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearch", "opensearchDashboardsUri");
+            }
+            this.opensearchDashboardsUri = opensearchDashboardsUri;
             return this;
         }
         public GetOpenSearchOpensearch build() {

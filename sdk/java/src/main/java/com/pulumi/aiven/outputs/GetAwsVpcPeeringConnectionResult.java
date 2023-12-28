@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -142,42 +143,66 @@ public final class GetAwsVpcPeeringConnectionResult {
 
         @CustomType.Setter
         public Builder awsAccountId(String awsAccountId) {
-            this.awsAccountId = Objects.requireNonNull(awsAccountId);
+            if (awsAccountId == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "awsAccountId");
+            }
+            this.awsAccountId = awsAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder awsVpcId(String awsVpcId) {
-            this.awsVpcId = Objects.requireNonNull(awsVpcId);
+            if (awsVpcId == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "awsVpcId");
+            }
+            this.awsVpcId = awsVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder awsVpcPeeringConnectionId(String awsVpcPeeringConnectionId) {
-            this.awsVpcPeeringConnectionId = Objects.requireNonNull(awsVpcPeeringConnectionId);
+            if (awsVpcPeeringConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "awsVpcPeeringConnectionId");
+            }
+            this.awsVpcPeeringConnectionId = awsVpcPeeringConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder awsVpcRegion(String awsVpcRegion) {
-            this.awsVpcRegion = Objects.requireNonNull(awsVpcRegion);
+            if (awsVpcRegion == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "awsVpcRegion");
+            }
+            this.awsVpcRegion = awsVpcRegion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
-            this.stateInfo = Objects.requireNonNull(stateInfo);
+            if (stateInfo == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "stateInfo");
+            }
+            this.stateInfo = stateInfo;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetAwsVpcPeeringConnectionResult build() {

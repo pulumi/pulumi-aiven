@@ -91,51 +91,61 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 
         @CustomType.Setter
         public Builder emitCheckpointsEnabled(@Nullable Boolean emitCheckpointsEnabled) {
+
             this.emitCheckpointsEnabled = emitCheckpointsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder emitCheckpointsIntervalSeconds(@Nullable Integer emitCheckpointsIntervalSeconds) {
+
             this.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder refreshGroupsEnabled(@Nullable Boolean refreshGroupsEnabled) {
+
             this.refreshGroupsEnabled = refreshGroupsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder refreshGroupsIntervalSeconds(@Nullable Integer refreshGroupsIntervalSeconds) {
+
             this.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder refreshTopicsEnabled(@Nullable Boolean refreshTopicsEnabled) {
+
             this.refreshTopicsEnabled = refreshTopicsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder refreshTopicsIntervalSeconds(@Nullable Integer refreshTopicsIntervalSeconds) {
+
             this.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder syncGroupOffsetsEnabled(@Nullable Boolean syncGroupOffsetsEnabled) {
+
             this.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder syncGroupOffsetsIntervalSeconds(@Nullable Integer syncGroupOffsetsIntervalSeconds) {
+
             this.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder syncTopicConfigsEnabled(@Nullable Boolean syncTopicConfigsEnabled) {
+
             this.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder tasksMaxPerCpu(@Nullable Integer tasksMaxPerCpu) {
+
             this.tasksMaxPerCpu = tasksMaxPerCpu;
             return this;
         }

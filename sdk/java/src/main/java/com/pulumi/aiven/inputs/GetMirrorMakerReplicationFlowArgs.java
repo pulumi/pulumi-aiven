@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
         }
 
         public GetMirrorMakerReplicationFlowArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.sourceCluster = Objects.requireNonNull($.sourceCluster, "expected parameter 'sourceCluster' to be non-null");
-            $.targetCluster = Objects.requireNonNull($.targetCluster, "expected parameter 'targetCluster' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowArgs", "serviceName");
+            }
+            if ($.sourceCluster == null) {
+                throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowArgs", "sourceCluster");
+            }
+            if ($.targetCluster == null) {
+                throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowArgs", "targetCluster");
+            }
             return $;
         }
     }

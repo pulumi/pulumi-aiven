@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.M3DbM3db;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfig;
 import com.pulumi.aiven.outputs.M3DbServiceIntegration;
 import com.pulumi.aiven.outputs.M3DbTag;
+import com.pulumi.aiven.outputs.M3DbTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -484,6 +485,22 @@ public class M3Db extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<M3DbTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,M3DbTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<M3DbTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Output<Optional<List<M3DbTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

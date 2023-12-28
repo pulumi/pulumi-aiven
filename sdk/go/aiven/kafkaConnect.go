@@ -137,6 +137,9 @@ type KafkaConnect struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaConnectTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails KafkaConnectTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -261,6 +264,9 @@ type kafkaConnectState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []KafkaConnectTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []KafkaConnectTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -342,6 +348,9 @@ type KafkaConnectState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaConnectTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails KafkaConnectTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -399,6 +408,9 @@ type kafkaConnectArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []KafkaConnectTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []KafkaConnectTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -453,6 +465,9 @@ type KafkaConnectArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaConnectTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails KafkaConnectTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -696,6 +711,12 @@ func (o KafkaConnectOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o KafkaConnectOutput) Tags() KafkaConnectTagArrayOutput {
 	return o.ApplyT(func(v *KafkaConnect) KafkaConnectTagArrayOutput { return v.Tags }).(KafkaConnectTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+// instability.
+func (o KafkaConnectOutput) TechEmails() KafkaConnectTechEmailArrayOutput {
+	return o.ApplyT(func(v *KafkaConnect) KafkaConnectTechEmailArrayOutput { return v.TechEmails }).(KafkaConnectTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

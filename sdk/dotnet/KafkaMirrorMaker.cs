@@ -232,6 +232,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.KafkaMirrorMakerTag>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        [Output("techEmails")]
+        public Output<ImmutableArray<Outputs.KafkaMirrorMakerTechEmail>> TechEmails { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
         /// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
         /// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -402,6 +409,19 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.KafkaMirrorMakerTagArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.KafkaMirrorMakerTechEmailArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        public InputList<Inputs.KafkaMirrorMakerTechEmailArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.KafkaMirrorMakerTechEmailArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>
@@ -644,6 +664,19 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.KafkaMirrorMakerTagGetArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.KafkaMirrorMakerTechEmailGetArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        public InputList<Inputs.KafkaMirrorMakerTechEmailGetArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.KafkaMirrorMakerTechEmailGetArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>

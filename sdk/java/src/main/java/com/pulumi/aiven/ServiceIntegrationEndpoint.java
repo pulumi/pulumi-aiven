@@ -10,9 +10,11 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalKafkaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointPrometheusUserConfig;
@@ -75,14 +77,14 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return this.endpointName;
     }
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     public Output<String> endpointType() {
@@ -131,6 +133,20 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.externalElasticsearchLogsUserConfig);
     }
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    @Export(name="externalGoogleCloudBigquery", refs={ServiceIntegrationEndpointExternalGoogleCloudBigquery.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigquery;
+
+    /**
+     * @return ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalGoogleCloudBigquery>> externalGoogleCloudBigquery() {
+        return Codegen.optional(this.externalGoogleCloudBigquery);
+    }
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      * 
      */
@@ -171,6 +187,20 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>> externalOpensearchLogsUserConfig() {
         return Codegen.optional(this.externalOpensearchLogsUserConfig);
+    }
+    /**
+     * ExternalPostgresql user configurable settings
+     * 
+     */
+    @Export(name="externalPostgresql", refs={ServiceIntegrationEndpointExternalPostgresql.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalPostgresql> externalPostgresql;
+
+    /**
+     * @return ExternalPostgresql user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalPostgresql>> externalPostgresql() {
+        return Codegen.optional(this.externalPostgresql);
     }
     /**
      * ExternalSchemaRegistry user configurable settings

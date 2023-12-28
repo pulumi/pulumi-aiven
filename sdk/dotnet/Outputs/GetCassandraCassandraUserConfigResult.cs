@@ -25,6 +25,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetCassandraCassandraUserConfigPrivateAccessResult? PrivateAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetCassandraCassandraUserConfigPublicAccessResult? PublicAccess;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly string? ServiceToJoinWith;
         public readonly bool? StaticIps;
@@ -55,6 +56,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetCassandraCassandraUserConfigPublicAccessResult? publicAccess,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             string? serviceToJoinWith,
@@ -73,6 +76,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             ServiceToJoinWith = serviceToJoinWith;
             StaticIps = staticIps;

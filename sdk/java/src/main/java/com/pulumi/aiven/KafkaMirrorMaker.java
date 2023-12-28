@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormaker;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerServiceIntegration;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerTag;
+import com.pulumi.aiven.outputs.KafkaMirrorMakerTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -484,6 +485,22 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<KafkaMirrorMakerTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,KafkaMirrorMakerTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KafkaMirrorMakerTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Output<Optional<List<KafkaMirrorMakerTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

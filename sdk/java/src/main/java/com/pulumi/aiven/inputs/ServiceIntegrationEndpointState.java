@@ -7,9 +7,11 @@ import com.pulumi.aiven.inputs.ServiceIntegrationEndpointDatadogUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalPostgresqlArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs;
@@ -73,14 +75,14 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -133,6 +135,21 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
     }
 
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    @Import(name="externalGoogleCloudBigquery")
+    private @Nullable Output<ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs> externalGoogleCloudBigquery;
+
+    /**
+     * @return ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs>> externalGoogleCloudBigquery() {
+        return Optional.ofNullable(this.externalGoogleCloudBigquery);
+    }
+
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      * 
      */
@@ -175,6 +192,21 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
      */
     public Optional<Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>> externalOpensearchLogsUserConfig() {
         return Optional.ofNullable(this.externalOpensearchLogsUserConfig);
+    }
+
+    /**
+     * ExternalPostgresql user configurable settings
+     * 
+     */
+    @Import(name="externalPostgresql")
+    private @Nullable Output<ServiceIntegrationEndpointExternalPostgresqlArgs> externalPostgresql;
+
+    /**
+     * @return ExternalPostgresql user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalPostgresqlArgs>> externalPostgresql() {
+        return Optional.ofNullable(this.externalPostgresql);
     }
 
     /**
@@ -262,9 +294,11 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         this.externalAwsCloudwatchLogsUserConfig = $.externalAwsCloudwatchLogsUserConfig;
         this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
         this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
+        this.externalGoogleCloudBigquery = $.externalGoogleCloudBigquery;
         this.externalGoogleCloudLoggingUserConfig = $.externalGoogleCloudLoggingUserConfig;
         this.externalKafkaUserConfig = $.externalKafkaUserConfig;
         this.externalOpensearchLogsUserConfig = $.externalOpensearchLogsUserConfig;
+        this.externalPostgresql = $.externalPostgresql;
         this.externalSchemaRegistryUserConfig = $.externalSchemaRegistryUserConfig;
         this.jolokiaUserConfig = $.jolokiaUserConfig;
         this.project = $.project;
@@ -354,7 +388,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
          * 
          * @return builder
          * 
@@ -365,7 +399,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
-         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
          * 
          * @return builder
          * 
@@ -438,6 +472,27 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         }
 
         /**
+         * @param externalGoogleCloudBigquery ExternalGoogleCloudBigquery user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalGoogleCloudBigquery(@Nullable Output<ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs> externalGoogleCloudBigquery) {
+            $.externalGoogleCloudBigquery = externalGoogleCloudBigquery;
+            return this;
+        }
+
+        /**
+         * @param externalGoogleCloudBigquery ExternalGoogleCloudBigquery user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalGoogleCloudBigquery(ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs externalGoogleCloudBigquery) {
+            return externalGoogleCloudBigquery(Output.of(externalGoogleCloudBigquery));
+        }
+
+        /**
          * @param externalGoogleCloudLoggingUserConfig ExternalGoogleCloudLogging user configurable settings
          * 
          * @return builder
@@ -498,6 +553,27 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
          */
         public Builder externalOpensearchLogsUserConfig(ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs externalOpensearchLogsUserConfig) {
             return externalOpensearchLogsUserConfig(Output.of(externalOpensearchLogsUserConfig));
+        }
+
+        /**
+         * @param externalPostgresql ExternalPostgresql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPostgresql(@Nullable Output<ServiceIntegrationEndpointExternalPostgresqlArgs> externalPostgresql) {
+            $.externalPostgresql = externalPostgresql;
+            return this;
+        }
+
+        /**
+         * @param externalPostgresql ExternalPostgresql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPostgresql(ServiceIntegrationEndpointExternalPostgresqlArgs externalPostgresql) {
+            return externalPostgresql(Output.of(externalPostgresql));
         }
 
         /**

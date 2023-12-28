@@ -48,16 +48,19 @@ public final class MySqlMysqlUserConfigPublicAccess {
 
         @CustomType.Setter
         public Builder mysql(@Nullable Boolean mysql) {
+
             this.mysql = mysql;
             return this;
         }
         @CustomType.Setter
         public Builder mysqlx(@Nullable Boolean mysqlx) {
+
             this.mysqlx = mysqlx;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

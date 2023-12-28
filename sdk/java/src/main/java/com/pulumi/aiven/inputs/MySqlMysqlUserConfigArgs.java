@@ -155,6 +155,13 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.recoveryTargetTime);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
@@ -189,6 +196,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryTargetTime = $.recoveryTargetTime;
+        this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
     }
@@ -398,6 +406,15 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
 
         public Builder recoveryTargetTime(String recoveryTargetTime) {
             return recoveryTargetTime(Output.of(recoveryTargetTime));
+        }
+
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {

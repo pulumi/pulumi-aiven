@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class FlinkApplicationVersionSourceArgs extends com.pulumi.resource
         }
 
         public FlinkApplicationVersionSourceArgs build() {
-            $.createTable = Objects.requireNonNull($.createTable, "expected parameter 'createTable' to be non-null");
+            if ($.createTable == null) {
+                throw new MissingRequiredPropertyException("FlinkApplicationVersionSourceArgs", "createTable");
+            }
             return $;
         }
     }

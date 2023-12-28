@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -169,22 +170,34 @@ public final class GetRedisUserResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder redisAclCategories(List<String> redisAclCategories) {
-            this.redisAclCategories = Objects.requireNonNull(redisAclCategories);
+            if (redisAclCategories == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "redisAclCategories");
+            }
+            this.redisAclCategories = redisAclCategories;
             return this;
         }
         public Builder redisAclCategories(String... redisAclCategories) {
@@ -192,7 +205,10 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder redisAclChannels(List<String> redisAclChannels) {
-            this.redisAclChannels = Objects.requireNonNull(redisAclChannels);
+            if (redisAclChannels == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "redisAclChannels");
+            }
+            this.redisAclChannels = redisAclChannels;
             return this;
         }
         public Builder redisAclChannels(String... redisAclChannels) {
@@ -200,7 +216,10 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder redisAclCommands(List<String> redisAclCommands) {
-            this.redisAclCommands = Objects.requireNonNull(redisAclCommands);
+            if (redisAclCommands == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "redisAclCommands");
+            }
+            this.redisAclCommands = redisAclCommands;
             return this;
         }
         public Builder redisAclCommands(String... redisAclCommands) {
@@ -208,7 +227,10 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder redisAclKeys(List<String> redisAclKeys) {
-            this.redisAclKeys = Objects.requireNonNull(redisAclKeys);
+            if (redisAclKeys == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "redisAclKeys");
+            }
+            this.redisAclKeys = redisAclKeys;
             return this;
         }
         public Builder redisAclKeys(String... redisAclKeys) {
@@ -216,17 +238,26 @@ public final class GetRedisUserResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetRedisUserResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetRedisUserResult build() {

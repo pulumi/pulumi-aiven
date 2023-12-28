@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public string UserEmail { get; set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly string UserEmail;
 

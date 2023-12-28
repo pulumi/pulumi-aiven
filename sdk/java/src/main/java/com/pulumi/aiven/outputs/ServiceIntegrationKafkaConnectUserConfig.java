@@ -44,6 +44,7 @@ public final class ServiceIntegrationKafkaConnectUserConfig {
 
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class InfluxdbUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InfluxdbUserArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("InfluxdbUserArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("InfluxdbUserArgs", "serviceName");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("InfluxdbUserArgs", "username");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetFlinkFlink {
 
         @CustomType.Setter
         public Builder hostPorts(List<String> hostPorts) {
-            this.hostPorts = Objects.requireNonNull(hostPorts);
+            if (hostPorts == null) {
+              throw new MissingRequiredPropertyException("GetFlinkFlink", "hostPorts");
+            }
+            this.hostPorts = hostPorts;
             return this;
         }
         public Builder hostPorts(String... hostPorts) {

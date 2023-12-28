@@ -33,8 +33,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
         /// HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.

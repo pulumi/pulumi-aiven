@@ -31,6 +31,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
+        /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+        /// </summary>
+        [Input("nameStrategyValidation")]
+        public Input<bool>? NameStrategyValidation { get; set; }
+
+        /// <summary>
         /// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         /// </summary>
         [Input("producerAcks")]

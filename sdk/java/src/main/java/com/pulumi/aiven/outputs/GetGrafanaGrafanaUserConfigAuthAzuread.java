@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -74,11 +75,13 @@ public final class GetGrafanaGrafanaUserConfigAuthAzuread {
 
         @CustomType.Setter
         public Builder allowSignUp(@Nullable Boolean allowSignUp) {
+
             this.allowSignUp = allowSignUp;
             return this;
         }
         @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
+
             this.allowedDomains = allowedDomains;
             return this;
         }
@@ -87,6 +90,7 @@ public final class GetGrafanaGrafanaUserConfigAuthAzuread {
         }
         @CustomType.Setter
         public Builder allowedGroups(@Nullable List<String> allowedGroups) {
+
             this.allowedGroups = allowedGroups;
             return this;
         }
@@ -95,22 +99,34 @@ public final class GetGrafanaGrafanaUserConfigAuthAzuread {
         }
         @CustomType.Setter
         public Builder authUrl(String authUrl) {
-            this.authUrl = Objects.requireNonNull(authUrl);
+            if (authUrl == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigAuthAzuread", "authUrl");
+            }
+            this.authUrl = authUrl;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigAuthAzuread", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigAuthAzuread", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder tokenUrl(String tokenUrl) {
-            this.tokenUrl = Objects.requireNonNull(tokenUrl);
+            if (tokenUrl == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigAuthAzuread", "tokenUrl");
+            }
+            this.tokenUrl = tokenUrl;
             return this;
         }
         public GetGrafanaGrafanaUserConfigAuthAzuread build() {

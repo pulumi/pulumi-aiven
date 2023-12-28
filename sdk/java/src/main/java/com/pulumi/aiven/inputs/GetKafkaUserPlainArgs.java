@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -117,9 +118,15 @@ public final class GetKafkaUserPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetKafkaUserPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetKafkaUserPlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetKafkaUserPlainArgs", "serviceName");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetKafkaUserPlainArgs", "username");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,11 +59,15 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
 
         @CustomType.Setter
         public Builder kafkaTopic(String kafkaTopic) {
-            this.kafkaTopic = Objects.requireNonNull(kafkaTopic);
+            if (kafkaTopic == null) {
+              throw new MissingRequiredPropertyException("ServiceIntegrationKafkaLogsUserConfig", "kafkaTopic");
+            }
+            this.kafkaTopic = kafkaTopic;
             return this;
         }
         @CustomType.Setter
         public Builder selectedLogFields(@Nullable List<String> selectedLogFields) {
+
             this.selectedLogFields = selectedLogFields;
             return this;
         }

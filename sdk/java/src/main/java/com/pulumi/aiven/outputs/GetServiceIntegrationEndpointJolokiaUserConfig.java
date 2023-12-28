@@ -42,11 +42,13 @@ public final class GetServiceIntegrationEndpointJolokiaUserConfig {
 
         @CustomType.Setter
         public Builder basicAuthPassword(@Nullable String basicAuthPassword) {
+
             this.basicAuthPassword = basicAuthPassword;
             return this;
         }
         @CustomType.Setter
         public Builder basicAuthUsername(@Nullable String basicAuthUsername) {
+
             this.basicAuthUsername = basicAuthUsername;
             return this;
         }

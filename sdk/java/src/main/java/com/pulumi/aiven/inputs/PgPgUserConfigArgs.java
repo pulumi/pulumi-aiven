@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.PgPgUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigMigrationArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgArgs;
+import com.pulumi.aiven.inputs.PgPgUserConfigPgQualstatsArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgbouncerArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPglookoutArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPrivateAccessArgs;
@@ -202,6 +203,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * System-wide settings for the pg*qualstats extension.
+     * 
+     */
+    @Import(name="pgQualstats")
+    private @Nullable Output<PgPgUserConfigPgQualstatsArgs> pgQualstats;
+
+    /**
+     * @return System-wide settings for the pg*qualstats extension.
+     * 
+     */
+    public Optional<Output<PgPgUserConfigPgQualstatsArgs>> pgQualstats() {
+        return Optional.ofNullable(this.pgQualstats);
+    }
+
+    /**
      * Use read_replica service integration instead.
      * 
      * @deprecated
@@ -293,14 +309,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * PGLookout settings.
+     * System-wide settings for pglookout.
      * 
      */
     @Import(name="pglookout")
     private @Nullable Output<PgPgUserConfigPglookoutArgs> pglookout;
 
     /**
-     * @return PGLookout settings.
+     * @return System-wide settings for pglookout.
      * 
      */
     public Optional<Output<PgPgUserConfigPglookoutArgs>> pglookout() {
@@ -383,6 +399,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -443,14 +474,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * TimescaleDB extension configuration values.
+     * System-wide settings for the timescaledb extension.
      * 
      */
     @Import(name="timescaledb")
     private @Nullable Output<PgPgUserConfigTimescaledbArgs> timescaledb;
 
     /**
-     * @return TimescaleDB extension configuration values.
+     * @return System-wide settings for the timescaledb extension.
      * 
      */
     public Optional<Output<PgPgUserConfigTimescaledbArgs>> timescaledb() {
@@ -501,6 +532,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.ipFilters = $.ipFilters;
         this.migration = $.migration;
         this.pg = $.pg;
+        this.pgQualstats = $.pgQualstats;
         this.pgReadReplica = $.pgReadReplica;
         this.pgServiceToForkFrom = $.pgServiceToForkFrom;
         this.pgStatMonitorEnable = $.pgStatMonitorEnable;
@@ -512,6 +544,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryTargetTime = $.recoveryTargetTime;
+        this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.sharedBuffersPercentage = $.sharedBuffersPercentage;
         this.staticIps = $.staticIps;
@@ -813,6 +846,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param pgQualstats System-wide settings for the pg*qualstats extension.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgQualstats(@Nullable Output<PgPgUserConfigPgQualstatsArgs> pgQualstats) {
+            $.pgQualstats = pgQualstats;
+            return this;
+        }
+
+        /**
+         * @param pgQualstats System-wide settings for the pg*qualstats extension.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgQualstats(PgPgUserConfigPgQualstatsArgs pgQualstats) {
+            return pgQualstats(Output.of(pgQualstats));
+        }
+
+        /**
          * @param pgReadReplica Use read_replica service integration instead.
          * 
          * @return builder
@@ -934,7 +988,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pglookout PGLookout settings.
+         * @param pglookout System-wide settings for pglookout.
          * 
          * @return builder
          * 
@@ -945,7 +999,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pglookout PGLookout settings.
+         * @param pglookout System-wide settings for pglookout.
          * 
          * @return builder
          * 
@@ -1060,6 +1114,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
+        }
+
+        /**
          * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
          * 
          * @return builder
@@ -1144,7 +1219,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timescaledb TimescaleDB extension configuration values.
+         * @param timescaledb System-wide settings for the timescaledb extension.
          * 
          * @return builder
          * 
@@ -1155,7 +1230,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timescaledb TimescaleDB extension configuration values.
+         * @param timescaledb System-wide settings for the timescaledb extension.
          * 
          * @return builder
          * 

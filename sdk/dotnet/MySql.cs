@@ -234,6 +234,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.MySqlTag>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        [Output("techEmails")]
+        public Output<ImmutableArray<Outputs.MySqlTechEmail>> TechEmails { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
         /// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
         /// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -404,6 +411,19 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.MySqlTagArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.MySqlTechEmailArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        public InputList<Inputs.MySqlTechEmailArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.MySqlTechEmailArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>
@@ -646,6 +666,19 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.MySqlTagGetArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.MySqlTechEmailGetArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        public InputList<Inputs.MySqlTechEmailGetArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.MySqlTechEmailGetArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>

@@ -109,6 +109,18 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogIndexSizeMaxBytes { get; set; }
 
         /// <summary>
+        /// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+        /// </summary>
+        [Input("logLocalRetentionBytes")]
+        public Input<int>? LogLocalRetentionBytes { get; set; }
+
+        /// <summary>
+        /// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+        /// </summary>
+        [Input("logLocalRetentionMs")]
+        public Input<int>? LogLocalRetentionMs { get; set; }
+
+        /// <summary>
         /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
         /// </summary>
         [Input("logMessageDownconversionEnable")]
@@ -229,10 +241,40 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ReplicaFetchResponseMaxBytes { get; set; }
 
         /// <summary>
+        /// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+        /// </summary>
+        [Input("saslOauthbearerExpectedAudience")]
+        public Input<string>? SaslOauthbearerExpectedAudience { get; set; }
+
+        /// <summary>
+        /// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+        /// </summary>
+        [Input("saslOauthbearerExpectedIssuer")]
+        public Input<string>? SaslOauthbearerExpectedIssuer { get; set; }
+
+        /// <summary>
+        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+        /// </summary>
+        [Input("saslOauthbearerJwksEndpointUrl")]
+        public Input<string>? SaslOauthbearerJwksEndpointUrl { get; set; }
+
+        /// <summary>
+        /// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+        /// </summary>
+        [Input("saslOauthbearerSubClaimName")]
+        public Input<string>? SaslOauthbearerSubClaimName { get; set; }
+
+        /// <summary>
         /// The maximum number of bytes in a socket request (defaults to 104857600).
         /// </summary>
         [Input("socketRequestMaxBytes")]
         public Input<int>? SocketRequestMaxBytes { get; set; }
+
+        /// <summary>
+        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+        /// </summary>
+        [Input("transactionPartitionVerificationEnable")]
+        public Input<bool>? TransactionPartitionVerificationEnable { get; set; }
 
         /// <summary>
         /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).

@@ -58,11 +58,13 @@ public final class FlinkFlinkUserConfigPrivatelinkAccess {
 
         @CustomType.Setter
         public Builder flink(@Nullable Boolean flink) {
+
             this.flink = flink;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

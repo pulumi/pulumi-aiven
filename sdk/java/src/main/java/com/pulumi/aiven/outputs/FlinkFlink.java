@@ -44,6 +44,7 @@ public final class FlinkFlink {
 
         @CustomType.Setter
         public Builder hostPorts(@Nullable List<String> hostPorts) {
+
             this.hostPorts = hostPorts;
             return this;
         }

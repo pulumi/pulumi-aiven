@@ -28,6 +28,12 @@ namespace Pulumi.Aiven
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The unique organization user group ID
+        /// </summary>
+        [Output("groupId")]
+        public Output<string> GroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("name")]
@@ -128,6 +134,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The unique organization user group ID
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         /// <summary>
         /// The organization user group name. This property cannot be changed, doing so forces recreation of the resource.

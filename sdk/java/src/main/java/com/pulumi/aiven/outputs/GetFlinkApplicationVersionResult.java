@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetFlinkApplicationVersionSink;
 import com.pulumi.aiven.outputs.GetFlinkApplicationVersionSource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -214,42 +215,66 @@ public final class GetFlinkApplicationVersionResult {
 
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder applicationVersionId(String applicationVersionId) {
-            this.applicationVersionId = Objects.requireNonNull(applicationVersionId);
+            if (applicationVersionId == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "applicationVersionId");
+            }
+            this.applicationVersionId = applicationVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder sink(List<GetFlinkApplicationVersionSink> sink) {
-            this.sink = Objects.requireNonNull(sink);
+            if (sink == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "sink");
+            }
+            this.sink = sink;
             return this;
         }
         public Builder sink(GetFlinkApplicationVersionSink... sink) {
@@ -257,7 +282,10 @@ public final class GetFlinkApplicationVersionResult {
         }
         @CustomType.Setter
         public Builder sinks(List<GetFlinkApplicationVersionSink> sinks) {
-            this.sinks = Objects.requireNonNull(sinks);
+            if (sinks == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "sinks");
+            }
+            this.sinks = sinks;
             return this;
         }
         public Builder sinks(GetFlinkApplicationVersionSink... sinks) {
@@ -265,7 +293,10 @@ public final class GetFlinkApplicationVersionResult {
         }
         @CustomType.Setter
         public Builder source(List<GetFlinkApplicationVersionSource> source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "source");
+            }
+            this.source = source;
             return this;
         }
         public Builder source(GetFlinkApplicationVersionSource... source) {
@@ -273,7 +304,10 @@ public final class GetFlinkApplicationVersionResult {
         }
         @CustomType.Setter
         public Builder sources(List<GetFlinkApplicationVersionSource> sources) {
-            this.sources = Objects.requireNonNull(sources);
+            if (sources == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "sources");
+            }
+            this.sources = sources;
             return this;
         }
         public Builder sources(GetFlinkApplicationVersionSource... sources) {
@@ -281,12 +315,18 @@ public final class GetFlinkApplicationVersionResult {
         }
         @CustomType.Setter
         public Builder statement(String statement) {
-            this.statement = Objects.requireNonNull(statement);
+            if (statement == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "statement");
+            }
+            this.statement = statement;
             return this;
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetFlinkApplicationVersionResult build() {

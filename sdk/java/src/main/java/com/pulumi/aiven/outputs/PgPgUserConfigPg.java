@@ -719,246 +719,295 @@ public final class PgPgUserConfigPg {
 
         @CustomType.Setter
         public Builder autovacuumAnalyzeScaleFactor(@Nullable Double autovacuumAnalyzeScaleFactor) {
+
             this.autovacuumAnalyzeScaleFactor = autovacuumAnalyzeScaleFactor;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumAnalyzeThreshold(@Nullable Integer autovacuumAnalyzeThreshold) {
+
             this.autovacuumAnalyzeThreshold = autovacuumAnalyzeThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumFreezeMaxAge(@Nullable Integer autovacuumFreezeMaxAge) {
+
             this.autovacuumFreezeMaxAge = autovacuumFreezeMaxAge;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumMaxWorkers(@Nullable Integer autovacuumMaxWorkers) {
+
             this.autovacuumMaxWorkers = autovacuumMaxWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumNaptime(@Nullable Integer autovacuumNaptime) {
+
             this.autovacuumNaptime = autovacuumNaptime;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumVacuumCostDelay(@Nullable Integer autovacuumVacuumCostDelay) {
+
             this.autovacuumVacuumCostDelay = autovacuumVacuumCostDelay;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumVacuumCostLimit(@Nullable Integer autovacuumVacuumCostLimit) {
+
             this.autovacuumVacuumCostLimit = autovacuumVacuumCostLimit;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumVacuumScaleFactor(@Nullable Double autovacuumVacuumScaleFactor) {
+
             this.autovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             return this;
         }
         @CustomType.Setter
         public Builder autovacuumVacuumThreshold(@Nullable Integer autovacuumVacuumThreshold) {
+
             this.autovacuumVacuumThreshold = autovacuumVacuumThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder bgwriterDelay(@Nullable Integer bgwriterDelay) {
+
             this.bgwriterDelay = bgwriterDelay;
             return this;
         }
         @CustomType.Setter
         public Builder bgwriterFlushAfter(@Nullable Integer bgwriterFlushAfter) {
+
             this.bgwriterFlushAfter = bgwriterFlushAfter;
             return this;
         }
         @CustomType.Setter
         public Builder bgwriterLruMaxpages(@Nullable Integer bgwriterLruMaxpages) {
+
             this.bgwriterLruMaxpages = bgwriterLruMaxpages;
             return this;
         }
         @CustomType.Setter
         public Builder bgwriterLruMultiplier(@Nullable Double bgwriterLruMultiplier) {
+
             this.bgwriterLruMultiplier = bgwriterLruMultiplier;
             return this;
         }
         @CustomType.Setter
         public Builder deadlockTimeout(@Nullable Integer deadlockTimeout) {
+
             this.deadlockTimeout = deadlockTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder defaultToastCompression(@Nullable String defaultToastCompression) {
+
             this.defaultToastCompression = defaultToastCompression;
             return this;
         }
         @CustomType.Setter
         public Builder idleInTransactionSessionTimeout(@Nullable Integer idleInTransactionSessionTimeout) {
+
             this.idleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder jit(@Nullable Boolean jit) {
+
             this.jit = jit;
             return this;
         }
         @CustomType.Setter
         public Builder logAutovacuumMinDuration(@Nullable Integer logAutovacuumMinDuration) {
+
             this.logAutovacuumMinDuration = logAutovacuumMinDuration;
             return this;
         }
         @CustomType.Setter
         public Builder logErrorVerbosity(@Nullable String logErrorVerbosity) {
+
             this.logErrorVerbosity = logErrorVerbosity;
             return this;
         }
         @CustomType.Setter
         public Builder logLinePrefix(@Nullable String logLinePrefix) {
+
             this.logLinePrefix = logLinePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder logMinDurationStatement(@Nullable Integer logMinDurationStatement) {
+
             this.logMinDurationStatement = logMinDurationStatement;
             return this;
         }
         @CustomType.Setter
         public Builder logTempFiles(@Nullable Integer logTempFiles) {
+
             this.logTempFiles = logTempFiles;
             return this;
         }
         @CustomType.Setter
         public Builder maxFilesPerProcess(@Nullable Integer maxFilesPerProcess) {
+
             this.maxFilesPerProcess = maxFilesPerProcess;
             return this;
         }
         @CustomType.Setter
         public Builder maxLocksPerTransaction(@Nullable Integer maxLocksPerTransaction) {
+
             this.maxLocksPerTransaction = maxLocksPerTransaction;
             return this;
         }
         @CustomType.Setter
         public Builder maxLogicalReplicationWorkers(@Nullable Integer maxLogicalReplicationWorkers) {
+
             this.maxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder maxParallelWorkers(@Nullable Integer maxParallelWorkers) {
+
             this.maxParallelWorkers = maxParallelWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder maxParallelWorkersPerGather(@Nullable Integer maxParallelWorkersPerGather) {
+
             this.maxParallelWorkersPerGather = maxParallelWorkersPerGather;
             return this;
         }
         @CustomType.Setter
         public Builder maxPredLocksPerTransaction(@Nullable Integer maxPredLocksPerTransaction) {
+
             this.maxPredLocksPerTransaction = maxPredLocksPerTransaction;
             return this;
         }
         @CustomType.Setter
         public Builder maxPreparedTransactions(@Nullable Integer maxPreparedTransactions) {
+
             this.maxPreparedTransactions = maxPreparedTransactions;
             return this;
         }
         @CustomType.Setter
         public Builder maxReplicationSlots(@Nullable Integer maxReplicationSlots) {
+
             this.maxReplicationSlots = maxReplicationSlots;
             return this;
         }
         @CustomType.Setter
         public Builder maxSlotWalKeepSize(@Nullable Integer maxSlotWalKeepSize) {
+
             this.maxSlotWalKeepSize = maxSlotWalKeepSize;
             return this;
         }
         @CustomType.Setter
         public Builder maxStackDepth(@Nullable Integer maxStackDepth) {
+
             this.maxStackDepth = maxStackDepth;
             return this;
         }
         @CustomType.Setter
         public Builder maxStandbyArchiveDelay(@Nullable Integer maxStandbyArchiveDelay) {
+
             this.maxStandbyArchiveDelay = maxStandbyArchiveDelay;
             return this;
         }
         @CustomType.Setter
         public Builder maxStandbyStreamingDelay(@Nullable Integer maxStandbyStreamingDelay) {
+
             this.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
             return this;
         }
         @CustomType.Setter
         public Builder maxWalSenders(@Nullable Integer maxWalSenders) {
+
             this.maxWalSenders = maxWalSenders;
             return this;
         }
         @CustomType.Setter
         public Builder maxWorkerProcesses(@Nullable Integer maxWorkerProcesses) {
+
             this.maxWorkerProcesses = maxWorkerProcesses;
             return this;
         }
         @CustomType.Setter
         public Builder pgPartmanBgwDotInterval(@Nullable Integer pgPartmanBgwDotInterval) {
+
             this.pgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             return this;
         }
         @CustomType.Setter
         public Builder pgPartmanBgwDotRole(@Nullable String pgPartmanBgwDotRole) {
+
             this.pgPartmanBgwDotRole = pgPartmanBgwDotRole;
             return this;
         }
         @CustomType.Setter
         public Builder pgStatMonitorDotPgsmEnableQueryPlan(@Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan) {
+
             this.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
             return this;
         }
         @CustomType.Setter
         public Builder pgStatMonitorDotPgsmMaxBuckets(@Nullable Integer pgStatMonitorDotPgsmMaxBuckets) {
+
             this.pgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder pgStatStatementsDotTrack(@Nullable String pgStatStatementsDotTrack) {
+
             this.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
             return this;
         }
         @CustomType.Setter
         public Builder tempFileLimit(@Nullable Integer tempFileLimit) {
+
             this.tempFileLimit = tempFileLimit;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(@Nullable String timezone) {
+
             this.timezone = timezone;
             return this;
         }
         @CustomType.Setter
         public Builder trackActivityQuerySize(@Nullable Integer trackActivityQuerySize) {
+
             this.trackActivityQuerySize = trackActivityQuerySize;
             return this;
         }
         @CustomType.Setter
         public Builder trackCommitTimestamp(@Nullable String trackCommitTimestamp) {
+
             this.trackCommitTimestamp = trackCommitTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder trackFunctions(@Nullable String trackFunctions) {
+
             this.trackFunctions = trackFunctions;
             return this;
         }
         @CustomType.Setter
         public Builder trackIoTiming(@Nullable String trackIoTiming) {
+
             this.trackIoTiming = trackIoTiming;
             return this;
         }
         @CustomType.Setter
         public Builder walSenderTimeout(@Nullable Integer walSenderTimeout) {
+
             this.walSenderTimeout = walSenderTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder walWriterDelay(@Nullable Integer walWriterDelay) {
+
             this.walWriterDelay = walWriterDelay;
             return this;
         }

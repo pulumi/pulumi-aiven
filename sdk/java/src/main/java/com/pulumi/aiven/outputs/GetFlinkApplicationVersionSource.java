@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,11 +43,15 @@ public final class GetFlinkApplicationVersionSource {
 
         @CustomType.Setter
         public Builder createTable(String createTable) {
-            this.createTable = Objects.requireNonNull(createTable);
+            if (createTable == null) {
+              throw new MissingRequiredPropertyException("GetFlinkApplicationVersionSource", "createTable");
+            }
+            this.createTable = createTable;
             return this;
         }
         @CustomType.Setter
         public Builder integrationId(@Nullable String integrationId) {
+
             this.integrationId = integrationId;
             return this;
         }

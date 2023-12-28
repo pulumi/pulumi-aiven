@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -259,12 +260,24 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
         }
 
         public AzureVpcPeeringConnectionArgs build() {
-            $.azureSubscriptionId = Objects.requireNonNull($.azureSubscriptionId, "expected parameter 'azureSubscriptionId' to be non-null");
-            $.peerAzureAppId = Objects.requireNonNull($.peerAzureAppId, "expected parameter 'peerAzureAppId' to be non-null");
-            $.peerAzureTenantId = Objects.requireNonNull($.peerAzureTenantId, "expected parameter 'peerAzureTenantId' to be non-null");
-            $.peerResourceGroup = Objects.requireNonNull($.peerResourceGroup, "expected parameter 'peerResourceGroup' to be non-null");
-            $.vnetName = Objects.requireNonNull($.vnetName, "expected parameter 'vnetName' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.azureSubscriptionId == null) {
+                throw new MissingRequiredPropertyException("AzureVpcPeeringConnectionArgs", "azureSubscriptionId");
+            }
+            if ($.peerAzureAppId == null) {
+                throw new MissingRequiredPropertyException("AzureVpcPeeringConnectionArgs", "peerAzureAppId");
+            }
+            if ($.peerAzureTenantId == null) {
+                throw new MissingRequiredPropertyException("AzureVpcPeeringConnectionArgs", "peerAzureTenantId");
+            }
+            if ($.peerResourceGroup == null) {
+                throw new MissingRequiredPropertyException("AzureVpcPeeringConnectionArgs", "peerResourceGroup");
+            }
+            if ($.vnetName == null) {
+                throw new MissingRequiredPropertyException("AzureVpcPeeringConnectionArgs", "vnetName");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("AzureVpcPeeringConnectionArgs", "vpcId");
+            }
             return $;
         }
     }

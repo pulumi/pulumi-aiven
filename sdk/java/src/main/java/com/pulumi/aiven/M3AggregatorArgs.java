@@ -6,8 +6,10 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.M3AggregatorM3aggregatorUserConfigArgs;
 import com.pulumi.aiven.inputs.M3AggregatorServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.M3AggregatorTagArgs;
+import com.pulumi.aiven.inputs.M3AggregatorTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -260,6 +262,23 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<M3AggregatorTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Optional<Output<List<M3AggregatorTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
+    }
+
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
      * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
      * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -294,6 +313,7 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceName = $.serviceName;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -664,6 +684,40 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<M3AggregatorTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<M3AggregatorTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(M3AggregatorTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
+        }
+
+        /**
          * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
          * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
          * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -689,9 +743,15 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public M3AggregatorArgs build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("M3AggregatorArgs", "plan");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("M3AggregatorArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("M3AggregatorArgs", "serviceName");
+            }
             return $;
         }
     }

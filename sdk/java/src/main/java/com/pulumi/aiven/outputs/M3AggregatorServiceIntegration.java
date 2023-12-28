@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class M3AggregatorServiceIntegration {
 
         @CustomType.Setter
         public Builder integrationType(String integrationType) {
-            this.integrationType = Objects.requireNonNull(integrationType);
+            if (integrationType == null) {
+              throw new MissingRequiredPropertyException("M3AggregatorServiceIntegration", "integrationType");
+            }
+            this.integrationType = integrationType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
-            this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
+            if (sourceServiceName == null) {
+              throw new MissingRequiredPropertyException("M3AggregatorServiceIntegration", "sourceServiceName");
+            }
+            this.sourceServiceName = sourceServiceName;
             return this;
         }
         public M3AggregatorServiceIntegration build() {

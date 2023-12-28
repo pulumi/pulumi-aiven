@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetKafkaSchemaRegistryAclResult {
 
         @CustomType.Setter
         public Builder aclId(String aclId) {
-            this.aclId = Objects.requireNonNull(aclId);
+            if (aclId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "aclId");
+            }
+            this.aclId = aclId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder permission(String permission) {
-            this.permission = Objects.requireNonNull(permission);
+            if (permission == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "permission");
+            }
+            this.permission = permission;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder resource(String resource) {
-            this.resource = Objects.requireNonNull(resource);
+            if (resource == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "resource");
+            }
+            this.resource = resource;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetKafkaSchemaRegistryAclResult build() {

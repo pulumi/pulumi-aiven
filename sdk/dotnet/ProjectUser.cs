@@ -48,7 +48,7 @@ namespace Pulumi.Aiven
         public Output<bool> Accepted { get; private set; } = null!;
 
         /// <summary>
-        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        /// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Aiven
     public sealed class ProjectUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        /// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        /// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

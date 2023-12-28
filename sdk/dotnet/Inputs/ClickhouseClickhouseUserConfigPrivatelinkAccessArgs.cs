@@ -25,6 +25,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ClickhouseHttps { get; set; }
 
         /// <summary>
+        /// Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
+        [Input("clickhouseMysql")]
+        public Input<bool>? ClickhouseMysql { get; set; }
+
+        /// <summary>
         /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("prometheus")]

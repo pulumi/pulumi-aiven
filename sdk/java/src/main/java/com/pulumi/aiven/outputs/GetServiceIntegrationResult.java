@@ -13,6 +13,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationMetricsUserConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -276,7 +277,10 @@ public final class GetServiceIntegrationResult {
 
         @CustomType.Setter
         public Builder clickhouseKafkaUserConfigs(List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs) {
-            this.clickhouseKafkaUserConfigs = Objects.requireNonNull(clickhouseKafkaUserConfigs);
+            if (clickhouseKafkaUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "clickhouseKafkaUserConfigs");
+            }
+            this.clickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
             return this;
         }
         public Builder clickhouseKafkaUserConfigs(GetServiceIntegrationClickhouseKafkaUserConfig... clickhouseKafkaUserConfigs) {
@@ -284,7 +288,10 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder clickhousePostgresqlUserConfigs(List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs) {
-            this.clickhousePostgresqlUserConfigs = Objects.requireNonNull(clickhousePostgresqlUserConfigs);
+            if (clickhousePostgresqlUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "clickhousePostgresqlUserConfigs");
+            }
+            this.clickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
             return this;
         }
         public Builder clickhousePostgresqlUserConfigs(GetServiceIntegrationClickhousePostgresqlUserConfig... clickhousePostgresqlUserConfigs) {
@@ -292,7 +299,10 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder datadogUserConfigs(List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs) {
-            this.datadogUserConfigs = Objects.requireNonNull(datadogUserConfigs);
+            if (datadogUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "datadogUserConfigs");
+            }
+            this.datadogUserConfigs = datadogUserConfigs;
             return this;
         }
         public Builder datadogUserConfigs(GetServiceIntegrationDatadogUserConfig... datadogUserConfigs) {
@@ -300,17 +310,26 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder destinationEndpointId(String destinationEndpointId) {
-            this.destinationEndpointId = Objects.requireNonNull(destinationEndpointId);
+            if (destinationEndpointId == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "destinationEndpointId");
+            }
+            this.destinationEndpointId = destinationEndpointId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationServiceName(String destinationServiceName) {
-            this.destinationServiceName = Objects.requireNonNull(destinationServiceName);
+            if (destinationServiceName == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "destinationServiceName");
+            }
+            this.destinationServiceName = destinationServiceName;
             return this;
         }
         @CustomType.Setter
         public Builder externalAwsCloudwatchMetricsUserConfigs(List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs) {
-            this.externalAwsCloudwatchMetricsUserConfigs = Objects.requireNonNull(externalAwsCloudwatchMetricsUserConfigs);
+            if (externalAwsCloudwatchMetricsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "externalAwsCloudwatchMetricsUserConfigs");
+            }
+            this.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             return this;
         }
         public Builder externalAwsCloudwatchMetricsUserConfigs(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig... externalAwsCloudwatchMetricsUserConfigs) {
@@ -318,22 +337,34 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder integrationId(String integrationId) {
-            this.integrationId = Objects.requireNonNull(integrationId);
+            if (integrationId == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "integrationId");
+            }
+            this.integrationId = integrationId;
             return this;
         }
         @CustomType.Setter
         public Builder integrationType(String integrationType) {
-            this.integrationType = Objects.requireNonNull(integrationType);
+            if (integrationType == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "integrationType");
+            }
+            this.integrationType = integrationType;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnectUserConfigs(List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs) {
-            this.kafkaConnectUserConfigs = Objects.requireNonNull(kafkaConnectUserConfigs);
+            if (kafkaConnectUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "kafkaConnectUserConfigs");
+            }
+            this.kafkaConnectUserConfigs = kafkaConnectUserConfigs;
             return this;
         }
         public Builder kafkaConnectUserConfigs(GetServiceIntegrationKafkaConnectUserConfig... kafkaConnectUserConfigs) {
@@ -341,7 +372,10 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder kafkaLogsUserConfigs(List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs) {
-            this.kafkaLogsUserConfigs = Objects.requireNonNull(kafkaLogsUserConfigs);
+            if (kafkaLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "kafkaLogsUserConfigs");
+            }
+            this.kafkaLogsUserConfigs = kafkaLogsUserConfigs;
             return this;
         }
         public Builder kafkaLogsUserConfigs(GetServiceIntegrationKafkaLogsUserConfig... kafkaLogsUserConfigs) {
@@ -349,7 +383,10 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder kafkaMirrormakerUserConfigs(List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs) {
-            this.kafkaMirrormakerUserConfigs = Objects.requireNonNull(kafkaMirrormakerUserConfigs);
+            if (kafkaMirrormakerUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "kafkaMirrormakerUserConfigs");
+            }
+            this.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
             return this;
         }
         public Builder kafkaMirrormakerUserConfigs(GetServiceIntegrationKafkaMirrormakerUserConfig... kafkaMirrormakerUserConfigs) {
@@ -357,7 +394,10 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder logsUserConfigs(List<GetServiceIntegrationLogsUserConfig> logsUserConfigs) {
-            this.logsUserConfigs = Objects.requireNonNull(logsUserConfigs);
+            if (logsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "logsUserConfigs");
+            }
+            this.logsUserConfigs = logsUserConfigs;
             return this;
         }
         public Builder logsUserConfigs(GetServiceIntegrationLogsUserConfig... logsUserConfigs) {
@@ -365,7 +405,10 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder metricsUserConfigs(List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs) {
-            this.metricsUserConfigs = Objects.requireNonNull(metricsUserConfigs);
+            if (metricsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "metricsUserConfigs");
+            }
+            this.metricsUserConfigs = metricsUserConfigs;
             return this;
         }
         public Builder metricsUserConfigs(GetServiceIntegrationMetricsUserConfig... metricsUserConfigs) {
@@ -373,17 +416,26 @@ public final class GetServiceIntegrationResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointId(String sourceEndpointId) {
-            this.sourceEndpointId = Objects.requireNonNull(sourceEndpointId);
+            if (sourceEndpointId == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "sourceEndpointId");
+            }
+            this.sourceEndpointId = sourceEndpointId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
-            this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
+            if (sourceServiceName == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "sourceServiceName");
+            }
+            this.sourceServiceName = sourceServiceName;
             return this;
         }
         public GetServiceIntegrationResult build() {

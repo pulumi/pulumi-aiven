@@ -29,6 +29,7 @@ class InfluxDbArgs:
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a InfluxDb resource.
@@ -45,6 +46,7 @@ class InfluxDbArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "plan", plan)
@@ -73,6 +75,8 @@ class InfluxDbArgs:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -236,6 +240,18 @@ class InfluxDbArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -277,6 +293,7 @@ class _InfluxDbState:
                  state: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering InfluxDb resources.
@@ -306,6 +323,7 @@ class _InfluxDbState:
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if additional_disk_space is not None:
@@ -363,6 +381,8 @@ class _InfluxDbState:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -682,6 +702,18 @@ class _InfluxDbState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -712,6 +744,7 @@ class InfluxDb(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -758,6 +791,7 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -823,6 +857,7 @@ class InfluxDb(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -852,6 +887,7 @@ class InfluxDb(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tech_emails"] = tech_emails
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["components"] = None
             __props__.__dict__["disk_space_cap"] = None
@@ -904,6 +940,7 @@ class InfluxDb(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]]] = None,
+            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'InfluxDb':
         """
         Get an existing InfluxDb resource's state with the given name, id, and optional extra
@@ -938,6 +975,7 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -970,6 +1008,7 @@ class InfluxDb(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tech_emails"] = tech_emails
         __props__.__dict__["termination_protection"] = termination_protection
         return InfluxDb(resource_name, opts=opts, __props__=__props__)
 
@@ -1183,6 +1222,14 @@ class InfluxDb(pulumi.CustomResource):
         Tags are key-value pairs that allow you to categorize services.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.InfluxDbTechEmail']]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
 
     @property
     @pulumi.getter(name="terminationProtection")

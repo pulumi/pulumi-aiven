@@ -7,14 +7,17 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigquery;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +41,7 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private String endpointName;
     /**
-     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     private String endpointType;
@@ -58,6 +61,11 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
     /**
+     * @return ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries;
+    /**
      * @return ExternalGoogleCloudLogging user configurable settings
      * 
      */
@@ -72,6 +80,11 @@ public final class GetServiceIntegrationEndpointResult {
      * 
      */
     private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
+    /**
+     * @return ExternalPostgresql user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls;
     /**
      * @return ExternalSchemaRegistry user configurable settings
      * 
@@ -126,7 +139,7 @@ public final class GetServiceIntegrationEndpointResult {
         return this.endpointName;
     }
     /**
-     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     public String endpointType() {
@@ -154,6 +167,13 @@ public final class GetServiceIntegrationEndpointResult {
         return this.externalElasticsearchLogsUserConfigs;
     }
     /**
+     * @return ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries() {
+        return this.externalGoogleCloudBigqueries;
+    }
+    /**
      * @return ExternalGoogleCloudLogging user configurable settings
      * 
      */
@@ -173,6 +193,13 @@ public final class GetServiceIntegrationEndpointResult {
      */
     public List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs() {
         return this.externalOpensearchLogsUserConfigs;
+    }
+    /**
+     * @return ExternalPostgresql user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls() {
+        return this.externalPostgresqls;
     }
     /**
      * @return ExternalSchemaRegistry user configurable settings
@@ -233,9 +260,11 @@ public final class GetServiceIntegrationEndpointResult {
         private List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
+        private List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries;
         private List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
         private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
         private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
+        private List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls;
         private List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
         private String id;
         private List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
@@ -252,9 +281,11 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.externalAwsCloudwatchLogsUserConfigs = defaults.externalAwsCloudwatchLogsUserConfigs;
     	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
     	      this.externalElasticsearchLogsUserConfigs = defaults.externalElasticsearchLogsUserConfigs;
+    	      this.externalGoogleCloudBigqueries = defaults.externalGoogleCloudBigqueries;
     	      this.externalGoogleCloudLoggingUserConfigs = defaults.externalGoogleCloudLoggingUserConfigs;
     	      this.externalKafkaUserConfigs = defaults.externalKafkaUserConfigs;
     	      this.externalOpensearchLogsUserConfigs = defaults.externalOpensearchLogsUserConfigs;
+    	      this.externalPostgresqls = defaults.externalPostgresqls;
     	      this.externalSchemaRegistryUserConfigs = defaults.externalSchemaRegistryUserConfigs;
     	      this.id = defaults.id;
     	      this.jolokiaUserConfigs = defaults.jolokiaUserConfigs;
@@ -265,7 +296,10 @@ public final class GetServiceIntegrationEndpointResult {
 
         @CustomType.Setter
         public Builder datadogUserConfigs(List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs) {
-            this.datadogUserConfigs = Objects.requireNonNull(datadogUserConfigs);
+            if (datadogUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "datadogUserConfigs");
+            }
+            this.datadogUserConfigs = datadogUserConfigs;
             return this;
         }
         public Builder datadogUserConfigs(GetServiceIntegrationEndpointDatadogUserConfig... datadogUserConfigs) {
@@ -273,22 +307,34 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder endpointConfig(Map<String,String> endpointConfig) {
-            this.endpointConfig = Objects.requireNonNull(endpointConfig);
+            if (endpointConfig == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "endpointConfig");
+            }
+            this.endpointConfig = endpointConfig;
             return this;
         }
         @CustomType.Setter
         public Builder endpointName(String endpointName) {
-            this.endpointName = Objects.requireNonNull(endpointName);
+            if (endpointName == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "endpointName");
+            }
+            this.endpointName = endpointName;
             return this;
         }
         @CustomType.Setter
         public Builder endpointType(String endpointType) {
-            this.endpointType = Objects.requireNonNull(endpointType);
+            if (endpointType == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "endpointType");
+            }
+            this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
         public Builder externalAwsCloudwatchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs) {
-            this.externalAwsCloudwatchLogsUserConfigs = Objects.requireNonNull(externalAwsCloudwatchLogsUserConfigs);
+            if (externalAwsCloudwatchLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalAwsCloudwatchLogsUserConfigs");
+            }
+            this.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             return this;
         }
         public Builder externalAwsCloudwatchLogsUserConfigs(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig... externalAwsCloudwatchLogsUserConfigs) {
@@ -296,7 +342,10 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder externalAwsCloudwatchMetricsUserConfigs(List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs) {
-            this.externalAwsCloudwatchMetricsUserConfigs = Objects.requireNonNull(externalAwsCloudwatchMetricsUserConfigs);
+            if (externalAwsCloudwatchMetricsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalAwsCloudwatchMetricsUserConfigs");
+            }
+            this.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             return this;
         }
         public Builder externalAwsCloudwatchMetricsUserConfigs(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig... externalAwsCloudwatchMetricsUserConfigs) {
@@ -304,15 +353,32 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder externalElasticsearchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs) {
-            this.externalElasticsearchLogsUserConfigs = Objects.requireNonNull(externalElasticsearchLogsUserConfigs);
+            if (externalElasticsearchLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalElasticsearchLogsUserConfigs");
+            }
+            this.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             return this;
         }
         public Builder externalElasticsearchLogsUserConfigs(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig... externalElasticsearchLogsUserConfigs) {
             return externalElasticsearchLogsUserConfigs(List.of(externalElasticsearchLogsUserConfigs));
         }
         @CustomType.Setter
+        public Builder externalGoogleCloudBigqueries(List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries) {
+            if (externalGoogleCloudBigqueries == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalGoogleCloudBigqueries");
+            }
+            this.externalGoogleCloudBigqueries = externalGoogleCloudBigqueries;
+            return this;
+        }
+        public Builder externalGoogleCloudBigqueries(GetServiceIntegrationEndpointExternalGoogleCloudBigquery... externalGoogleCloudBigqueries) {
+            return externalGoogleCloudBigqueries(List.of(externalGoogleCloudBigqueries));
+        }
+        @CustomType.Setter
         public Builder externalGoogleCloudLoggingUserConfigs(List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs) {
-            this.externalGoogleCloudLoggingUserConfigs = Objects.requireNonNull(externalGoogleCloudLoggingUserConfigs);
+            if (externalGoogleCloudLoggingUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalGoogleCloudLoggingUserConfigs");
+            }
+            this.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             return this;
         }
         public Builder externalGoogleCloudLoggingUserConfigs(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig... externalGoogleCloudLoggingUserConfigs) {
@@ -320,7 +386,10 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder externalKafkaUserConfigs(List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs) {
-            this.externalKafkaUserConfigs = Objects.requireNonNull(externalKafkaUserConfigs);
+            if (externalKafkaUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalKafkaUserConfigs");
+            }
+            this.externalKafkaUserConfigs = externalKafkaUserConfigs;
             return this;
         }
         public Builder externalKafkaUserConfigs(GetServiceIntegrationEndpointExternalKafkaUserConfig... externalKafkaUserConfigs) {
@@ -328,15 +397,32 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder externalOpensearchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs) {
-            this.externalOpensearchLogsUserConfigs = Objects.requireNonNull(externalOpensearchLogsUserConfigs);
+            if (externalOpensearchLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalOpensearchLogsUserConfigs");
+            }
+            this.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             return this;
         }
         public Builder externalOpensearchLogsUserConfigs(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig... externalOpensearchLogsUserConfigs) {
             return externalOpensearchLogsUserConfigs(List.of(externalOpensearchLogsUserConfigs));
         }
         @CustomType.Setter
+        public Builder externalPostgresqls(List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls) {
+            if (externalPostgresqls == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalPostgresqls");
+            }
+            this.externalPostgresqls = externalPostgresqls;
+            return this;
+        }
+        public Builder externalPostgresqls(GetServiceIntegrationEndpointExternalPostgresql... externalPostgresqls) {
+            return externalPostgresqls(List.of(externalPostgresqls));
+        }
+        @CustomType.Setter
         public Builder externalSchemaRegistryUserConfigs(List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs) {
-            this.externalSchemaRegistryUserConfigs = Objects.requireNonNull(externalSchemaRegistryUserConfigs);
+            if (externalSchemaRegistryUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalSchemaRegistryUserConfigs");
+            }
+            this.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             return this;
         }
         public Builder externalSchemaRegistryUserConfigs(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig... externalSchemaRegistryUserConfigs) {
@@ -344,12 +430,18 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder jolokiaUserConfigs(List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs) {
-            this.jolokiaUserConfigs = Objects.requireNonNull(jolokiaUserConfigs);
+            if (jolokiaUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "jolokiaUserConfigs");
+            }
+            this.jolokiaUserConfigs = jolokiaUserConfigs;
             return this;
         }
         public Builder jolokiaUserConfigs(GetServiceIntegrationEndpointJolokiaUserConfig... jolokiaUserConfigs) {
@@ -357,12 +449,18 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder prometheusUserConfigs(List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs) {
-            this.prometheusUserConfigs = Objects.requireNonNull(prometheusUserConfigs);
+            if (prometheusUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "prometheusUserConfigs");
+            }
+            this.prometheusUserConfigs = prometheusUserConfigs;
             return this;
         }
         public Builder prometheusUserConfigs(GetServiceIntegrationEndpointPrometheusUserConfig... prometheusUserConfigs) {
@@ -370,7 +468,10 @@ public final class GetServiceIntegrationEndpointResult {
         }
         @CustomType.Setter
         public Builder rsyslogUserConfigs(List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs) {
-            this.rsyslogUserConfigs = Objects.requireNonNull(rsyslogUserConfigs);
+            if (rsyslogUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "rsyslogUserConfigs");
+            }
+            this.rsyslogUserConfigs = rsyslogUserConfigs;
             return this;
         }
         public Builder rsyslogUserConfigs(GetServiceIntegrationEndpointRsyslogUserConfig... rsyslogUserConfigs) {
@@ -385,9 +486,11 @@ public final class GetServiceIntegrationEndpointResult {
             _resultValue.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            _resultValue.externalGoogleCloudBigqueries = externalGoogleCloudBigqueries;
             _resultValue.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             _resultValue.externalKafkaUserConfigs = externalKafkaUserConfigs;
             _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
+            _resultValue.externalPostgresqls = externalPostgresqls;
             _resultValue.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             _resultValue.id = id;
             _resultValue.jolokiaUserConfigs = jolokiaUserConfigs;

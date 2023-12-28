@@ -58,11 +58,13 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
 
         @CustomType.Setter
         public Builder database(@Nullable String database) {
+
             this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder schema(@Nullable String schema) {
+
             this.schema = schema;
             return this;
         }

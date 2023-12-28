@@ -134,6 +134,9 @@ type Grafana struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags GrafanaTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails GrafanaTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -255,6 +258,9 @@ type grafanaState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GrafanaTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []GrafanaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -336,6 +342,9 @@ type GrafanaState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags GrafanaTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails GrafanaTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -393,6 +402,9 @@ type grafanaArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GrafanaTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []GrafanaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -447,6 +459,9 @@ type GrafanaArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags GrafanaTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails GrafanaTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -690,6 +705,12 @@ func (o GrafanaOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o GrafanaOutput) Tags() GrafanaTagArrayOutput {
 	return o.ApplyT(func(v *Grafana) GrafanaTagArrayOutput { return v.Tags }).(GrafanaTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+// instability.
+func (o GrafanaOutput) TechEmails() GrafanaTechEmailArrayOutput {
+	return o.ApplyT(func(v *Grafana) GrafanaTechEmailArrayOutput { return v.TechEmails }).(GrafanaTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

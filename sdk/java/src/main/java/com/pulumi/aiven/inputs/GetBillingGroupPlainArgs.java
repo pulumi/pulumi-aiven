@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetBillingGroupPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetBillingGroupPlainArgs build() {
-            $.billingGroupId = Objects.requireNonNull($.billingGroupId, "expected parameter 'billingGroupId' to be non-null");
+            if ($.billingGroupId == null) {
+                throw new MissingRequiredPropertyException("GetBillingGroupPlainArgs", "billingGroupId");
+            }
             return $;
         }
     }

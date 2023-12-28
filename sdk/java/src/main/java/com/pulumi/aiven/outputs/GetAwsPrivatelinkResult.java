@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -113,22 +114,34 @@ public final class GetAwsPrivatelinkResult {
 
         @CustomType.Setter
         public Builder awsServiceId(String awsServiceId) {
-            this.awsServiceId = Objects.requireNonNull(awsServiceId);
+            if (awsServiceId == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "awsServiceId");
+            }
+            this.awsServiceId = awsServiceId;
             return this;
         }
         @CustomType.Setter
         public Builder awsServiceName(String awsServiceName) {
-            this.awsServiceName = Objects.requireNonNull(awsServiceName);
+            if (awsServiceName == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "awsServiceName");
+            }
+            this.awsServiceName = awsServiceName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder principals(List<String> principals) {
-            this.principals = Objects.requireNonNull(principals);
+            if (principals == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "principals");
+            }
+            this.principals = principals;
             return this;
         }
         public Builder principals(String... principals) {
@@ -136,12 +149,18 @@ public final class GetAwsPrivatelinkResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetAwsPrivatelinkResult build() {

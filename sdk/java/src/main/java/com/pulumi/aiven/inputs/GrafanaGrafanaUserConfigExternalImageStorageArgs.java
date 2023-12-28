@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -105,10 +106,18 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         public GrafanaGrafanaUserConfigExternalImageStorageArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.bucketUrl = Objects.requireNonNull($.bucketUrl, "expected parameter 'bucketUrl' to be non-null");
-            $.provider = Objects.requireNonNull($.provider, "expected parameter 'provider' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigExternalImageStorageArgs", "accessKey");
+            }
+            if ($.bucketUrl == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigExternalImageStorageArgs", "bucketUrl");
+            }
+            if ($.provider == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigExternalImageStorageArgs", "provider");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigExternalImageStorageArgs", "secretKey");
+            }
             return $;
         }
     }

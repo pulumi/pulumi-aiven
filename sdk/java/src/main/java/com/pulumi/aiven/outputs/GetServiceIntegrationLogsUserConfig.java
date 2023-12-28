@@ -50,16 +50,19 @@ public final class GetServiceIntegrationLogsUserConfig {
 
         @CustomType.Setter
         public Builder elasticsearchIndexDaysMax(@Nullable Integer elasticsearchIndexDaysMax) {
+
             this.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             return this;
         }
         @CustomType.Setter
         public Builder elasticsearchIndexPrefix(@Nullable String elasticsearchIndexPrefix) {
+
             this.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder selectedLogFields(@Nullable List<String> selectedLogFields) {
+
             this.selectedLogFields = selectedLogFields;
             return this;
         }

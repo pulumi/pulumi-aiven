@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -62,27 +63,36 @@ public final class GetServiceIntegrationEndpointExternalElasticsearchLogsUserCon
 
         @CustomType.Setter
         public Builder ca(@Nullable String ca) {
+
             this.ca = ca;
             return this;
         }
         @CustomType.Setter
         public Builder indexDaysMax(@Nullable Integer indexDaysMax) {
+
             this.indexDaysMax = indexDaysMax;
             return this;
         }
         @CustomType.Setter
         public Builder indexPrefix(String indexPrefix) {
-            this.indexPrefix = Objects.requireNonNull(indexPrefix);
+            if (indexPrefix == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig", "indexPrefix");
+            }
+            this.indexPrefix = indexPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Double timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {

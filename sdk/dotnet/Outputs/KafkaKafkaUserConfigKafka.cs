@@ -78,6 +78,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogIndexSizeMaxBytes;
         /// <summary>
+        /// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+        /// </summary>
+        public readonly int? LogLocalRetentionBytes;
+        /// <summary>
+        /// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+        /// </summary>
+        public readonly int? LogLocalRetentionMs;
+        /// <summary>
         /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
         /// </summary>
         public readonly bool? LogMessageDownconversionEnable;
@@ -158,9 +166,29 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ReplicaFetchResponseMaxBytes;
         /// <summary>
+        /// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+        /// </summary>
+        public readonly string? SaslOauthbearerExpectedAudience;
+        /// <summary>
+        /// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+        /// </summary>
+        public readonly string? SaslOauthbearerExpectedIssuer;
+        /// <summary>
+        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+        /// </summary>
+        public readonly string? SaslOauthbearerJwksEndpointUrl;
+        /// <summary>
+        /// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+        /// </summary>
+        public readonly string? SaslOauthbearerSubClaimName;
+        /// <summary>
         /// The maximum number of bytes in a socket request (defaults to 104857600).
         /// </summary>
         public readonly int? SocketRequestMaxBytes;
+        /// <summary>
+        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+        /// </summary>
+        public readonly bool? TransactionPartitionVerificationEnable;
         /// <summary>
         /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
         /// </summary>
@@ -204,6 +232,10 @@ namespace Pulumi.Aiven.Outputs
 
             int? logIndexSizeMaxBytes,
 
+            int? logLocalRetentionBytes,
+
+            int? logLocalRetentionMs,
+
             bool? logMessageDownconversionEnable,
 
             int? logMessageTimestampDifferenceMaxMs,
@@ -244,7 +276,17 @@ namespace Pulumi.Aiven.Outputs
 
             int? replicaFetchResponseMaxBytes,
 
+            string? saslOauthbearerExpectedAudience,
+
+            string? saslOauthbearerExpectedIssuer,
+
+            string? saslOauthbearerJwksEndpointUrl,
+
+            string? saslOauthbearerSubClaimName,
+
             int? socketRequestMaxBytes,
+
+            bool? transactionPartitionVerificationEnable,
 
             int? transactionRemoveExpiredTransactionCleanupIntervalMs,
 
@@ -266,6 +308,8 @@ namespace Pulumi.Aiven.Outputs
             LogFlushIntervalMs = logFlushIntervalMs;
             LogIndexIntervalBytes = logIndexIntervalBytes;
             LogIndexSizeMaxBytes = logIndexSizeMaxBytes;
+            LogLocalRetentionBytes = logLocalRetentionBytes;
+            LogLocalRetentionMs = logLocalRetentionMs;
             LogMessageDownconversionEnable = logMessageDownconversionEnable;
             LogMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             LogMessageTimestampType = logMessageTimestampType;
@@ -286,7 +330,12 @@ namespace Pulumi.Aiven.Outputs
             ProducerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;
             ReplicaFetchMaxBytes = replicaFetchMaxBytes;
             ReplicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
+            SaslOauthbearerExpectedAudience = saslOauthbearerExpectedAudience;
+            SaslOauthbearerExpectedIssuer = saslOauthbearerExpectedIssuer;
+            SaslOauthbearerJwksEndpointUrl = saslOauthbearerJwksEndpointUrl;
+            SaslOauthbearerSubClaimName = saslOauthbearerSubClaimName;
             SocketRequestMaxBytes = socketRequestMaxBytes;
+            TransactionPartitionVerificationEnable = transactionPartitionVerificationEnable;
             TransactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
             TransactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
         }

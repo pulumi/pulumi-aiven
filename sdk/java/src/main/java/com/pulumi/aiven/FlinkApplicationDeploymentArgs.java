@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -308,10 +309,18 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         public FlinkApplicationDeploymentArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.versionId = Objects.requireNonNull($.versionId, "expected parameter 'versionId' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("FlinkApplicationDeploymentArgs", "applicationId");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("FlinkApplicationDeploymentArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("FlinkApplicationDeploymentArgs", "serviceName");
+            }
+            if ($.versionId == null) {
+                throw new MissingRequiredPropertyException("FlinkApplicationDeploymentArgs", "versionId");
+            }
             return $;
         }
     }

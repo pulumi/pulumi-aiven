@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,14 +56,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * @return The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     public Optional<Output<String>> method() {
@@ -196,7 +197,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param method The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+         * @param method The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
          * 
          * @return builder
          * 
@@ -207,7 +208,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param method The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+         * @param method The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
          * 
          * @return builder
          * 
@@ -277,8 +278,12 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         public PgPgUserConfigMigrationArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("PgPgUserConfigMigrationArgs", "host");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("PgPgUserConfigMigrationArgs", "port");
+            }
             return $;
         }
     }

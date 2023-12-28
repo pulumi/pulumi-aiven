@@ -48,16 +48,19 @@ public final class GetOpenSearchOpensearchUserConfigPublicAccess {
 
         @CustomType.Setter
         public Builder opensearch(@Nullable Boolean opensearch) {
+
             this.opensearch = opensearch;
             return this;
         }
         @CustomType.Setter
         public Builder opensearchDashboards(@Nullable Boolean opensearchDashboards) {
+
             this.opensearchDashboards = opensearchDashboards;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

@@ -30,6 +30,7 @@ class FlinkArgs:
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Flink resource.
@@ -45,8 +46,9 @@ class FlinkArgs:
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "plan", plan)
@@ -77,6 +79,8 @@ class FlinkArgs:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -231,7 +235,7 @@ class FlinkArgs:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
@@ -250,6 +254,18 @@ class FlinkArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
 
     @property
     @pulumi.getter(name="terminationProtection")
@@ -293,6 +309,7 @@ class _FlinkState:
                  state: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Flink resources.
@@ -320,8 +337,9 @@ class _FlinkState:
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if additional_disk_space is not None:
@@ -379,6 +397,8 @@ class _FlinkState:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -677,7 +697,7 @@ class _FlinkState:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
@@ -696,6 +716,18 @@ class _FlinkState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
 
     @property
     @pulumi.getter(name="terminationProtection")
@@ -729,6 +761,7 @@ class Flink(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -772,8 +805,9 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -838,6 +872,7 @@ class Flink(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -868,6 +903,7 @@ class Flink(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tech_emails"] = tech_emails
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["components"] = None
             __props__.__dict__["disk_space_cap"] = None
@@ -919,6 +955,7 @@ class Flink(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]]] = None,
+            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Flink':
         """
         Get an existing Flink resource's state with the given name, id, and optional extra
@@ -951,8 +988,9 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -985,6 +1023,7 @@ class Flink(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tech_emails"] = tech_emails
         __props__.__dict__["termination_protection"] = termination_protection
         return Flink(resource_name, opts=opts, __props__=__props__)
 
@@ -1187,7 +1226,7 @@ class Flink(pulumi.CustomResource):
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
 
@@ -1198,6 +1237,14 @@ class Flink(pulumi.CustomResource):
         Tags are key-value pairs that allow you to categorize services.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkTechEmail']]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
 
     @property
     @pulumi.getter(name="terminationProtection")

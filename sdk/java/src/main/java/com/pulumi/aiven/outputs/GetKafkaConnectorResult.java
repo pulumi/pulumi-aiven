@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetKafkaConnectorTask;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -199,62 +200,98 @@ public final class GetKafkaConnectorResult {
 
         @CustomType.Setter
         public Builder config(Map<String,String> config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder connectorName(String connectorName) {
-            this.connectorName = Objects.requireNonNull(connectorName);
+            if (connectorName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "connectorName");
+            }
+            this.connectorName = connectorName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pluginAuthor(String pluginAuthor) {
-            this.pluginAuthor = Objects.requireNonNull(pluginAuthor);
+            if (pluginAuthor == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "pluginAuthor");
+            }
+            this.pluginAuthor = pluginAuthor;
             return this;
         }
         @CustomType.Setter
         public Builder pluginClass(String pluginClass) {
-            this.pluginClass = Objects.requireNonNull(pluginClass);
+            if (pluginClass == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "pluginClass");
+            }
+            this.pluginClass = pluginClass;
             return this;
         }
         @CustomType.Setter
         public Builder pluginDocUrl(String pluginDocUrl) {
-            this.pluginDocUrl = Objects.requireNonNull(pluginDocUrl);
+            if (pluginDocUrl == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "pluginDocUrl");
+            }
+            this.pluginDocUrl = pluginDocUrl;
             return this;
         }
         @CustomType.Setter
         public Builder pluginTitle(String pluginTitle) {
-            this.pluginTitle = Objects.requireNonNull(pluginTitle);
+            if (pluginTitle == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "pluginTitle");
+            }
+            this.pluginTitle = pluginTitle;
             return this;
         }
         @CustomType.Setter
         public Builder pluginType(String pluginType) {
-            this.pluginType = Objects.requireNonNull(pluginType);
+            if (pluginType == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "pluginType");
+            }
+            this.pluginType = pluginType;
             return this;
         }
         @CustomType.Setter
         public Builder pluginVersion(String pluginVersion) {
-            this.pluginVersion = Objects.requireNonNull(pluginVersion);
+            if (pluginVersion == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "pluginVersion");
+            }
+            this.pluginVersion = pluginVersion;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder tasks(List<GetKafkaConnectorTask> tasks) {
-            this.tasks = Objects.requireNonNull(tasks);
+            if (tasks == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorResult", "tasks");
+            }
+            this.tasks = tasks;
             return this;
         }
         public Builder tasks(GetKafkaConnectorTask... tasks) {

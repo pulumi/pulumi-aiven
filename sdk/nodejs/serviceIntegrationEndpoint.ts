@@ -50,7 +50,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -66,6 +66,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     */
+    public readonly externalGoogleCloudBigquery!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery | undefined>;
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      */
     public readonly externalGoogleCloudLoggingUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
@@ -77,6 +81,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      * ExternalOpensearchLogs user configurable settings
      */
     public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
+    /**
+     * ExternalPostgresql user configurable settings
+     */
+    public readonly externalPostgresql!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalPostgresql | undefined>;
     /**
      * ExternalSchemaRegistry user configurable settings
      */
@@ -118,9 +126,11 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalGoogleCloudBigquery"] = state ? state.externalGoogleCloudBigquery : undefined;
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
             resourceInputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
             resourceInputs["externalOpensearchLogsUserConfig"] = state ? state.externalOpensearchLogsUserConfig : undefined;
+            resourceInputs["externalPostgresql"] = state ? state.externalPostgresql : undefined;
             resourceInputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
             resourceInputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -143,9 +153,11 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalGoogleCloudBigquery"] = args ? args.externalGoogleCloudBigquery : undefined;
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
             resourceInputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
             resourceInputs["externalOpensearchLogsUserConfig"] = args ? args.externalOpensearchLogsUserConfig : undefined;
+            resourceInputs["externalPostgresql"] = args ? args.externalPostgresql : undefined;
             resourceInputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
             resourceInputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -175,7 +187,7 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -191,6 +203,10 @@ export interface ServiceIntegrationEndpointState {
      */
     externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     */
+    externalGoogleCloudBigquery?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery>;
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      */
     externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
@@ -202,6 +218,10 @@ export interface ServiceIntegrationEndpointState {
      * ExternalOpensearchLogs user configurable settings
      */
     externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
+    /**
+     * ExternalPostgresql user configurable settings
+     */
+    externalPostgresql?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPostgresql>;
     /**
      * ExternalSchemaRegistry user configurable settings
      */
@@ -237,7 +257,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -253,6 +273,10 @@ export interface ServiceIntegrationEndpointArgs {
      */
     externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     */
+    externalGoogleCloudBigquery?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery>;
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      */
     externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
@@ -264,6 +288,10 @@ export interface ServiceIntegrationEndpointArgs {
      * ExternalOpensearchLogs user configurable settings
      */
     externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
+    /**
+     * ExternalPostgresql user configurable settings
+     */
+    externalPostgresql?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPostgresql>;
     /**
      * ExternalSchemaRegistry user configurable settings
      */

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,8 +227,12 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         public ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs build() {
-            $.indexPrefix = Objects.requireNonNull($.indexPrefix, "expected parameter 'indexPrefix' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.indexPrefix == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs", "indexPrefix");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs", "url");
+            }
             return $;
         }
     }

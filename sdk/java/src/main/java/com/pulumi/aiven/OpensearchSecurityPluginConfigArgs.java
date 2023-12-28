@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         public OpensearchSecurityPluginConfigArgs build() {
-            $.adminPassword = Objects.requireNonNull($.adminPassword, "expected parameter 'adminPassword' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.adminPassword == null) {
+                throw new MissingRequiredPropertyException("OpensearchSecurityPluginConfigArgs", "adminPassword");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("OpensearchSecurityPluginConfigArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("OpensearchSecurityPluginConfigArgs", "serviceName");
+            }
             return $;
         }
     }

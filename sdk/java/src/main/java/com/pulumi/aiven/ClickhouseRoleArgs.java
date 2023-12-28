@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ClickhouseRoleArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ClickhouseRoleArgs", "project");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ClickhouseRoleArgs", "role");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ClickhouseRoleArgs", "serviceName");
+            }
             return $;
         }
     }

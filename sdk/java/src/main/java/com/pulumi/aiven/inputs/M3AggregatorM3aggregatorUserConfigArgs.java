@@ -84,6 +84,13 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="staticIps")
     private @Nullable Output<Boolean> staticIps;
 
@@ -100,6 +107,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         this.ipFilters = $.ipFilters;
         this.m3Version = $.m3Version;
         this.m3aggregatorVersion = $.m3aggregatorVersion;
+        this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
     }
 
@@ -225,6 +233,15 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
 
         public Builder m3aggregatorVersion(String m3aggregatorVersion) {
             return m3aggregatorVersion(Output.of(m3aggregatorVersion));
+        }
+
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         public Builder staticIps(@Nullable Output<Boolean> staticIps) {

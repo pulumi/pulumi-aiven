@@ -44,6 +44,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfig {
 
         @CustomType.Setter
         public Builder databases(@Nullable List<ServiceIntegrationClickhousePostgresqlUserConfigDatabase> databases) {
+
             this.databases = databases;
             return this;
         }

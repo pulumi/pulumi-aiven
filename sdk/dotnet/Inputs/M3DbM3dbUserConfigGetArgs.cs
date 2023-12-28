@@ -78,6 +78,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("rules")]
         public Input<Inputs.M3DbM3dbUserConfigRulesGetArgs>? Rules { get; set; }
 
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 

@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ConsumerRequestTimeoutMs;
         /// <summary>
+        /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+        /// </summary>
+        public readonly bool? NameStrategyValidation;
+        /// <summary>
         /// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         /// </summary>
         public readonly string? ProducerAcks;
@@ -54,6 +58,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? consumerRequestTimeoutMs,
 
+            bool? nameStrategyValidation,
+
             string? producerAcks,
 
             string? producerCompressionType,
@@ -67,6 +73,7 @@ namespace Pulumi.Aiven.Outputs
             ConsumerEnableAutoCommit = consumerEnableAutoCommit;
             ConsumerRequestMaxBytes = consumerRequestMaxBytes;
             ConsumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            NameStrategyValidation = nameStrategyValidation;
             ProducerAcks = producerAcks;
             ProducerCompressionType = producerCompressionType;
             ProducerLingerMs = producerLingerMs;

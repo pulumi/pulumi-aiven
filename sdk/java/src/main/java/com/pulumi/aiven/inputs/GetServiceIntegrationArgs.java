@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
         }
 
         public GetServiceIntegrationArgs build() {
-            $.destinationServiceName = Objects.requireNonNull($.destinationServiceName, "expected parameter 'destinationServiceName' to be non-null");
-            $.integrationType = Objects.requireNonNull($.integrationType, "expected parameter 'integrationType' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.sourceServiceName = Objects.requireNonNull($.sourceServiceName, "expected parameter 'sourceServiceName' to be non-null");
+            if ($.destinationServiceName == null) {
+                throw new MissingRequiredPropertyException("GetServiceIntegrationArgs", "destinationServiceName");
+            }
+            if ($.integrationType == null) {
+                throw new MissingRequiredPropertyException("GetServiceIntegrationArgs", "integrationType");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetServiceIntegrationArgs", "project");
+            }
+            if ($.sourceServiceName == null) {
+                throw new MissingRequiredPropertyException("GetServiceIntegrationArgs", "sourceServiceName");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetKafkaTopicConfig;
 import com.pulumi.aiven.outputs.GetKafkaTopicTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -151,7 +152,10 @@ public final class GetKafkaTopicResult {
 
         @CustomType.Setter
         public Builder configs(List<GetKafkaTopicConfig> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(GetKafkaTopicConfig... configs) {
@@ -159,32 +163,50 @@ public final class GetKafkaTopicResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder partitions(Integer partitions) {
-            this.partitions = Objects.requireNonNull(partitions);
+            if (partitions == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "partitions");
+            }
+            this.partitions = partitions;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder replication(Integer replication) {
-            this.replication = Objects.requireNonNull(replication);
+            if (replication == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "replication");
+            }
+            this.replication = replication;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<GetKafkaTopicTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetKafkaTopicTag... tags) {
@@ -192,12 +214,18 @@ public final class GetKafkaTopicResult {
         }
         @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
-            this.terminationProtection = Objects.requireNonNull(terminationProtection);
+            if (terminationProtection == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "terminationProtection");
+            }
+            this.terminationProtection = terminationProtection;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(String topicName) {
-            this.topicName = Objects.requireNonNull(topicName);
+            if (topicName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "topicName");
+            }
+            this.topicName = topicName;
             return this;
         }
         public GetKafkaTopicResult build() {

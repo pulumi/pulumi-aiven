@@ -341,6 +341,8 @@ type CassandraCassandraUserConfig struct {
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *CassandraCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 	// When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
@@ -387,6 +389,8 @@ type CassandraCassandraUserConfigArgs struct {
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess CassandraCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 	// When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
@@ -536,6 +540,11 @@ func (o CassandraCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtr
 // Allow access to selected service ports from the public Internet.
 func (o CassandraCassandraUserConfigOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess { return v.PublicAccess }).(CassandraCassandraUserConfigPublicAccessPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o CassandraCassandraUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CassandraCassandraUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -697,6 +706,16 @@ func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandra
 		}
 		return v.PublicAccess
 	}).(CassandraCassandraUserConfigPublicAccessPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o CassandraCassandraUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CassandraCassandraUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -1286,6 +1305,7 @@ func (o CassandraCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi.B
 
 type CassandraComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -1307,6 +1327,7 @@ type CassandraComponentInput interface {
 
 type CassandraComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -1368,6 +1389,10 @@ func (o CassandraComponentOutput) ToCassandraComponentOutputWithContext(ctx cont
 
 func (o CassandraComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o CassandraComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CassandraComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o CassandraComponentOutput) Host() pulumi.StringPtrOutput {
@@ -1626,6 +1651,103 @@ func (o CassandraTagArrayOutput) Index(i pulumi.IntInput) CassandraTagOutput {
 	}).(CassandraTagOutput)
 }
 
+type CassandraTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// CassandraTechEmailInput is an input type that accepts CassandraTechEmailArgs and CassandraTechEmailOutput values.
+// You can construct a concrete instance of `CassandraTechEmailInput` via:
+//
+//	CassandraTechEmailArgs{...}
+type CassandraTechEmailInput interface {
+	pulumi.Input
+
+	ToCassandraTechEmailOutput() CassandraTechEmailOutput
+	ToCassandraTechEmailOutputWithContext(context.Context) CassandraTechEmailOutput
+}
+
+type CassandraTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (CassandraTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraTechEmail)(nil)).Elem()
+}
+
+func (i CassandraTechEmailArgs) ToCassandraTechEmailOutput() CassandraTechEmailOutput {
+	return i.ToCassandraTechEmailOutputWithContext(context.Background())
+}
+
+func (i CassandraTechEmailArgs) ToCassandraTechEmailOutputWithContext(ctx context.Context) CassandraTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraTechEmailOutput)
+}
+
+// CassandraTechEmailArrayInput is an input type that accepts CassandraTechEmailArray and CassandraTechEmailArrayOutput values.
+// You can construct a concrete instance of `CassandraTechEmailArrayInput` via:
+//
+//	CassandraTechEmailArray{ CassandraTechEmailArgs{...} }
+type CassandraTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToCassandraTechEmailArrayOutput() CassandraTechEmailArrayOutput
+	ToCassandraTechEmailArrayOutputWithContext(context.Context) CassandraTechEmailArrayOutput
+}
+
+type CassandraTechEmailArray []CassandraTechEmailInput
+
+func (CassandraTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CassandraTechEmail)(nil)).Elem()
+}
+
+func (i CassandraTechEmailArray) ToCassandraTechEmailArrayOutput() CassandraTechEmailArrayOutput {
+	return i.ToCassandraTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i CassandraTechEmailArray) ToCassandraTechEmailArrayOutputWithContext(ctx context.Context) CassandraTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraTechEmailArrayOutput)
+}
+
+type CassandraTechEmailOutput struct{ *pulumi.OutputState }
+
+func (CassandraTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraTechEmail)(nil)).Elem()
+}
+
+func (o CassandraTechEmailOutput) ToCassandraTechEmailOutput() CassandraTechEmailOutput {
+	return o
+}
+
+func (o CassandraTechEmailOutput) ToCassandraTechEmailOutputWithContext(ctx context.Context) CassandraTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o CassandraTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v CassandraTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type CassandraTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (CassandraTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CassandraTechEmail)(nil)).Elem()
+}
+
+func (o CassandraTechEmailArrayOutput) ToCassandraTechEmailArrayOutput() CassandraTechEmailArrayOutput {
+	return o
+}
+
+func (o CassandraTechEmailArrayOutput) ToCassandraTechEmailArrayOutputWithContext(ctx context.Context) CassandraTechEmailArrayOutput {
+	return o
+}
+
+func (o CassandraTechEmailArrayOutput) Index(i pulumi.IntInput) CassandraTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CassandraTechEmail {
+		return vs[0].([]CassandraTechEmail)[vs[1].(int)]
+	}).(CassandraTechEmailOutput)
+}
+
 type ClickhouseClickhouse struct {
 }
 
@@ -1733,6 +1855,8 @@ type ClickhouseClickhouseUserConfig struct {
 	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess *ClickhouseClickhouseUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 	// Use static public IP addresses.
@@ -1769,6 +1893,8 @@ type ClickhouseClickhouseUserConfigArgs struct {
 	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
 	// Allow access to selected service ports from the public Internet.
 	PublicAccess ClickhouseClickhouseUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 	// Use static public IP addresses.
@@ -1902,6 +2028,11 @@ func (o ClickhouseClickhouseUserConfigOutput) PublicAccess() ClickhouseClickhous
 	}).(ClickhouseClickhouseUserConfigPublicAccessPtrOutput)
 }
 
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o ClickhouseClickhouseUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 // Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
@@ -2016,6 +2147,16 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) PublicAccess() ClickhouseClickh
 		}
 		return v.PublicAccess
 	}).(ClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o ClickhouseClickhouseUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -2149,6 +2290,8 @@ type ClickhouseClickhouseUserConfigPrivateAccess struct {
 	Clickhouse *bool `pulumi:"clickhouse"`
 	// Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ClickhouseMysql *bool `pulumi:"clickhouseMysql"`
 	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	Prometheus *bool `pulumi:"prometheus"`
 }
@@ -2169,6 +2312,8 @@ type ClickhouseClickhouseUserConfigPrivateAccessArgs struct {
 	Clickhouse pulumi.BoolPtrInput `pulumi:"clickhouse"`
 	// Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ClickhouseMysql pulumi.BoolPtrInput `pulumi:"clickhouseMysql"`
 	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
 }
@@ -2260,6 +2405,11 @@ func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ClickhouseHttps() pul
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.ClickhouseMysql }).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 func (o ClickhouseClickhouseUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
@@ -2309,6 +2459,16 @@ func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ClickhouseHttps() 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseMysql
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 func (o ClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivateAccess) *bool {
@@ -2324,6 +2484,8 @@ type ClickhouseClickhouseUserConfigPrivatelinkAccess struct {
 	Clickhouse *bool `pulumi:"clickhouse"`
 	// Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ClickhouseMysql *bool `pulumi:"clickhouseMysql"`
 	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	Prometheus *bool `pulumi:"prometheus"`
 }
@@ -2344,6 +2506,8 @@ type ClickhouseClickhouseUserConfigPrivatelinkAccessArgs struct {
 	Clickhouse pulumi.BoolPtrInput `pulumi:"clickhouse"`
 	// Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ClickhouseMysql pulumi.BoolPtrInput `pulumi:"clickhouseMysql"`
 	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
 }
@@ -2435,6 +2599,11 @@ func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ClickhouseHttps()
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.ClickhouseMysql }).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 func (o ClickhouseClickhouseUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
@@ -2484,6 +2653,16 @@ func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ClickhouseHttp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseMysql
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 func (o ClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
@@ -2499,6 +2678,8 @@ type ClickhouseClickhouseUserConfigPublicAccess struct {
 	Clickhouse *bool `pulumi:"clickhouse"`
 	// Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ClickhouseMysql *bool `pulumi:"clickhouseMysql"`
 	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	Prometheus *bool `pulumi:"prometheus"`
 }
@@ -2519,6 +2700,8 @@ type ClickhouseClickhouseUserConfigPublicAccessArgs struct {
 	Clickhouse pulumi.BoolPtrInput `pulumi:"clickhouse"`
 	// Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ClickhouseMysql pulumi.BoolPtrInput `pulumi:"clickhouseMysql"`
 	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
 }
@@ -2610,6 +2793,11 @@ func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ClickhouseHttps() pulu
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPublicAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o ClickhouseClickhouseUserConfigPublicAccessOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPublicAccess) *bool { return v.ClickhouseMysql }).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 func (o ClickhouseClickhouseUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
@@ -2659,6 +2847,16 @@ func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) ClickhouseHttps() p
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseMysql
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
 func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfigPublicAccess) *bool {
@@ -2671,6 +2869,7 @@ func (o ClickhouseClickhouseUserConfigPublicAccessPtrOutput) Prometheus() pulumi
 
 type ClickhouseComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -2692,6 +2891,7 @@ type ClickhouseComponentInput interface {
 
 type ClickhouseComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -2753,6 +2953,10 @@ func (o ClickhouseComponentOutput) ToClickhouseComponentOutputWithContext(ctx co
 
 func (o ClickhouseComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o ClickhouseComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickhouseComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o ClickhouseComponentOutput) Host() pulumi.StringPtrOutput {
@@ -3241,6 +3445,103 @@ func (o ClickhouseTagArrayOutput) Index(i pulumi.IntInput) ClickhouseTagOutput {
 	}).(ClickhouseTagOutput)
 }
 
+type ClickhouseTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// ClickhouseTechEmailInput is an input type that accepts ClickhouseTechEmailArgs and ClickhouseTechEmailOutput values.
+// You can construct a concrete instance of `ClickhouseTechEmailInput` via:
+//
+//	ClickhouseTechEmailArgs{...}
+type ClickhouseTechEmailInput interface {
+	pulumi.Input
+
+	ToClickhouseTechEmailOutput() ClickhouseTechEmailOutput
+	ToClickhouseTechEmailOutputWithContext(context.Context) ClickhouseTechEmailOutput
+}
+
+type ClickhouseTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (ClickhouseTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseTechEmail)(nil)).Elem()
+}
+
+func (i ClickhouseTechEmailArgs) ToClickhouseTechEmailOutput() ClickhouseTechEmailOutput {
+	return i.ToClickhouseTechEmailOutputWithContext(context.Background())
+}
+
+func (i ClickhouseTechEmailArgs) ToClickhouseTechEmailOutputWithContext(ctx context.Context) ClickhouseTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseTechEmailOutput)
+}
+
+// ClickhouseTechEmailArrayInput is an input type that accepts ClickhouseTechEmailArray and ClickhouseTechEmailArrayOutput values.
+// You can construct a concrete instance of `ClickhouseTechEmailArrayInput` via:
+//
+//	ClickhouseTechEmailArray{ ClickhouseTechEmailArgs{...} }
+type ClickhouseTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToClickhouseTechEmailArrayOutput() ClickhouseTechEmailArrayOutput
+	ToClickhouseTechEmailArrayOutputWithContext(context.Context) ClickhouseTechEmailArrayOutput
+}
+
+type ClickhouseTechEmailArray []ClickhouseTechEmailInput
+
+func (ClickhouseTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClickhouseTechEmail)(nil)).Elem()
+}
+
+func (i ClickhouseTechEmailArray) ToClickhouseTechEmailArrayOutput() ClickhouseTechEmailArrayOutput {
+	return i.ToClickhouseTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i ClickhouseTechEmailArray) ToClickhouseTechEmailArrayOutputWithContext(ctx context.Context) ClickhouseTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickhouseTechEmailArrayOutput)
+}
+
+type ClickhouseTechEmailOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickhouseTechEmail)(nil)).Elem()
+}
+
+func (o ClickhouseTechEmailOutput) ToClickhouseTechEmailOutput() ClickhouseTechEmailOutput {
+	return o
+}
+
+func (o ClickhouseTechEmailOutput) ToClickhouseTechEmailOutputWithContext(ctx context.Context) ClickhouseTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o ClickhouseTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v ClickhouseTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type ClickhouseTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (ClickhouseTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClickhouseTechEmail)(nil)).Elem()
+}
+
+func (o ClickhouseTechEmailArrayOutput) ToClickhouseTechEmailArrayOutput() ClickhouseTechEmailArrayOutput {
+	return o
+}
+
+func (o ClickhouseTechEmailArrayOutput) ToClickhouseTechEmailArrayOutputWithContext(ctx context.Context) ClickhouseTechEmailArrayOutput {
+	return o
+}
+
+func (o ClickhouseTechEmailArrayOutput) Index(i pulumi.IntInput) ClickhouseTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClickhouseTechEmail {
+		return vs[0].([]ClickhouseTechEmail)[vs[1].(int)]
+	}).(ClickhouseTechEmailOutput)
+}
+
 type FlinkApplicationVersionSink struct {
 	// The CREATE TABLE statement
 	CreateTable string `pulumi:"createTable"`
@@ -3455,6 +3756,7 @@ func (o FlinkApplicationVersionSourceArrayOutput) Index(i pulumi.IntInput) Flink
 
 type FlinkComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -3476,6 +3778,7 @@ type FlinkComponentInput interface {
 
 type FlinkComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -3537,6 +3840,10 @@ func (o FlinkComponentOutput) ToFlinkComponentOutputWithContext(ctx context.Cont
 
 func (o FlinkComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o FlinkComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o FlinkComponentOutput) Host() pulumi.StringPtrOutput {
@@ -3721,6 +4028,8 @@ func (o FlinkFlinkPtrOutput) HostPorts() pulumi.StringArrayOutput {
 }
 
 type FlinkFlinkUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
 	// Flink major version.
 	FlinkVersion *string `pulumi:"flinkVersion"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -3735,6 +4044,10 @@ type FlinkFlinkUserConfig struct {
 	NumberOfTaskSlots *int `pulumi:"numberOfTaskSlots"`
 	// Allow access to selected service components through Privatelink.
 	PrivatelinkAccess *FlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
 }
 
 // FlinkFlinkUserConfigInput is an input type that accepts FlinkFlinkUserConfigArgs and FlinkFlinkUserConfigOutput values.
@@ -3749,6 +4062,8 @@ type FlinkFlinkUserConfigInput interface {
 }
 
 type FlinkFlinkUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
 	// Flink major version.
 	FlinkVersion pulumi.StringPtrInput `pulumi:"flinkVersion"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -3763,6 +4078,10 @@ type FlinkFlinkUserConfigArgs struct {
 	NumberOfTaskSlots pulumi.IntPtrInput `pulumi:"numberOfTaskSlots"`
 	// Allow access to selected service components through Privatelink.
 	PrivatelinkAccess FlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 }
 
 func (FlinkFlinkUserConfigArgs) ElementType() reflect.Type {
@@ -3842,6 +4161,11 @@ func (o FlinkFlinkUserConfigOutput) ToFlinkFlinkUserConfigPtrOutputWithContext(c
 	}).(FlinkFlinkUserConfigPtrOutput)
 }
 
+// Additional Cloud Regions for Backup Replication.
+func (o FlinkFlinkUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
 // Flink major version.
 func (o FlinkFlinkUserConfigOutput) FlinkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.FlinkVersion }).(pulumi.StringPtrOutput)
@@ -3874,6 +4198,16 @@ func (o FlinkFlinkUserConfigOutput) PrivatelinkAccess() FlinkFlinkUserConfigPriv
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *FlinkFlinkUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o FlinkFlinkUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlinkFlinkUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o FlinkFlinkUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlinkFlinkUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
 type FlinkFlinkUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (FlinkFlinkUserConfigPtrOutput) ElementType() reflect.Type {
@@ -3896,6 +4230,16 @@ func (o FlinkFlinkUserConfigPtrOutput) Elem() FlinkFlinkUserConfigOutput {
 		var ret FlinkFlinkUserConfig
 		return ret
 	}).(FlinkFlinkUserConfigOutput)
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o FlinkFlinkUserConfigPtrOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalBackupRegions
+	}).(pulumi.StringPtrOutput)
 }
 
 // Flink major version.
@@ -3958,6 +4302,26 @@ func (o FlinkFlinkUserConfigPtrOutput) PrivatelinkAccess() FlinkFlinkUserConfigP
 		}
 		return v.PrivatelinkAccess
 	}).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o FlinkFlinkUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FlinkFlinkUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o FlinkFlinkUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FlinkFlinkUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StaticIps
+	}).(pulumi.BoolPtrOutput)
 }
 
 type FlinkFlinkUserConfigIpFilterObject struct {
@@ -4434,8 +4798,106 @@ func (o FlinkTagArrayOutput) Index(i pulumi.IntInput) FlinkTagOutput {
 	}).(FlinkTagOutput)
 }
 
+type FlinkTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// FlinkTechEmailInput is an input type that accepts FlinkTechEmailArgs and FlinkTechEmailOutput values.
+// You can construct a concrete instance of `FlinkTechEmailInput` via:
+//
+//	FlinkTechEmailArgs{...}
+type FlinkTechEmailInput interface {
+	pulumi.Input
+
+	ToFlinkTechEmailOutput() FlinkTechEmailOutput
+	ToFlinkTechEmailOutputWithContext(context.Context) FlinkTechEmailOutput
+}
+
+type FlinkTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (FlinkTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkTechEmail)(nil)).Elem()
+}
+
+func (i FlinkTechEmailArgs) ToFlinkTechEmailOutput() FlinkTechEmailOutput {
+	return i.ToFlinkTechEmailOutputWithContext(context.Background())
+}
+
+func (i FlinkTechEmailArgs) ToFlinkTechEmailOutputWithContext(ctx context.Context) FlinkTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkTechEmailOutput)
+}
+
+// FlinkTechEmailArrayInput is an input type that accepts FlinkTechEmailArray and FlinkTechEmailArrayOutput values.
+// You can construct a concrete instance of `FlinkTechEmailArrayInput` via:
+//
+//	FlinkTechEmailArray{ FlinkTechEmailArgs{...} }
+type FlinkTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToFlinkTechEmailArrayOutput() FlinkTechEmailArrayOutput
+	ToFlinkTechEmailArrayOutputWithContext(context.Context) FlinkTechEmailArrayOutput
+}
+
+type FlinkTechEmailArray []FlinkTechEmailInput
+
+func (FlinkTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlinkTechEmail)(nil)).Elem()
+}
+
+func (i FlinkTechEmailArray) ToFlinkTechEmailArrayOutput() FlinkTechEmailArrayOutput {
+	return i.ToFlinkTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i FlinkTechEmailArray) ToFlinkTechEmailArrayOutputWithContext(ctx context.Context) FlinkTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkTechEmailArrayOutput)
+}
+
+type FlinkTechEmailOutput struct{ *pulumi.OutputState }
+
+func (FlinkTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkTechEmail)(nil)).Elem()
+}
+
+func (o FlinkTechEmailOutput) ToFlinkTechEmailOutput() FlinkTechEmailOutput {
+	return o
+}
+
+func (o FlinkTechEmailOutput) ToFlinkTechEmailOutputWithContext(ctx context.Context) FlinkTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o FlinkTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v FlinkTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type FlinkTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (FlinkTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlinkTechEmail)(nil)).Elem()
+}
+
+func (o FlinkTechEmailArrayOutput) ToFlinkTechEmailArrayOutput() FlinkTechEmailArrayOutput {
+	return o
+}
+
+func (o FlinkTechEmailArrayOutput) ToFlinkTechEmailArrayOutputWithContext(ctx context.Context) FlinkTechEmailArrayOutput {
+	return o
+}
+
+func (o FlinkTechEmailArrayOutput) Index(i pulumi.IntInput) FlinkTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlinkTechEmail {
+		return vs[0].([]FlinkTechEmail)[vs[1].(int)]
+	}).(FlinkTechEmailOutput)
+}
+
 type GrafanaComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -4457,6 +4919,7 @@ type GrafanaComponentInput interface {
 
 type GrafanaComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -4518,6 +4981,10 @@ func (o GrafanaComponentOutput) ToGrafanaComponentOutputWithContext(ctx context.
 
 func (o GrafanaComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o GrafanaComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafanaComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o GrafanaComponentOutput) Host() pulumi.StringPtrOutput {
@@ -4688,9 +5155,11 @@ type GrafanaGrafanaUserConfig struct {
 	ProjectToForkFrom             *string                                    `pulumi:"projectToForkFrom"`
 	PublicAccess                  *GrafanaGrafanaUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryBasebackupName        *string                                    `pulumi:"recoveryBasebackupName"`
+	ServiceLog                    *bool                                      `pulumi:"serviceLog"`
 	ServiceToForkFrom             *string                                    `pulumi:"serviceToForkFrom"`
 	SmtpServer                    *GrafanaGrafanaUserConfigSmtpServer        `pulumi:"smtpServer"`
 	StaticIps                     *bool                                      `pulumi:"staticIps"`
+	UnifiedAlertingEnabled        *bool                                      `pulumi:"unifiedAlertingEnabled"`
 	UserAutoAssignOrg             *bool                                      `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole         *string                                    `pulumi:"userAutoAssignOrgRole"`
 	ViewersCanEdit                *bool                                      `pulumi:"viewersCanEdit"`
@@ -4743,9 +5212,11 @@ type GrafanaGrafanaUserConfigArgs struct {
 	ProjectToForkFrom             pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
 	PublicAccess                  GrafanaGrafanaUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryBasebackupName        pulumi.StringPtrInput                             `pulumi:"recoveryBasebackupName"`
+	ServiceLog                    pulumi.BoolPtrInput                               `pulumi:"serviceLog"`
 	ServiceToForkFrom             pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
 	SmtpServer                    GrafanaGrafanaUserConfigSmtpServerPtrInput        `pulumi:"smtpServer"`
 	StaticIps                     pulumi.BoolPtrInput                               `pulumi:"staticIps"`
+	UnifiedAlertingEnabled        pulumi.BoolPtrInput                               `pulumi:"unifiedAlertingEnabled"`
 	UserAutoAssignOrg             pulumi.BoolPtrInput                               `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole         pulumi.StringPtrInput                             `pulumi:"userAutoAssignOrgRole"`
 	ViewersCanEdit                pulumi.BoolPtrInput                               `pulumi:"viewersCanEdit"`
@@ -4969,6 +5440,10 @@ func (o GrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPt
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+func (o GrafanaGrafanaUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 func (o GrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -4979,6 +5454,10 @@ func (o GrafanaGrafanaUserConfigOutput) SmtpServer() GrafanaGrafanaUserConfigSmt
 
 func (o GrafanaGrafanaUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigOutput) UnifiedAlertingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *bool { return v.UnifiedAlertingEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrg() pulumi.BoolPtrOutput {
@@ -5324,6 +5803,15 @@ func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GrafanaGrafanaUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -5348,6 +5836,15 @@ func (o GrafanaGrafanaUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.StaticIps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigPtrOutput) UnifiedAlertingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UnifiedAlertingEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -7831,8 +8328,103 @@ func (o GrafanaTagArrayOutput) Index(i pulumi.IntInput) GrafanaTagOutput {
 	}).(GrafanaTagOutput)
 }
 
+type GrafanaTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GrafanaTechEmailInput is an input type that accepts GrafanaTechEmailArgs and GrafanaTechEmailOutput values.
+// You can construct a concrete instance of `GrafanaTechEmailInput` via:
+//
+//	GrafanaTechEmailArgs{...}
+type GrafanaTechEmailInput interface {
+	pulumi.Input
+
+	ToGrafanaTechEmailOutput() GrafanaTechEmailOutput
+	ToGrafanaTechEmailOutputWithContext(context.Context) GrafanaTechEmailOutput
+}
+
+type GrafanaTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GrafanaTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaTechEmail)(nil)).Elem()
+}
+
+func (i GrafanaTechEmailArgs) ToGrafanaTechEmailOutput() GrafanaTechEmailOutput {
+	return i.ToGrafanaTechEmailOutputWithContext(context.Background())
+}
+
+func (i GrafanaTechEmailArgs) ToGrafanaTechEmailOutputWithContext(ctx context.Context) GrafanaTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaTechEmailOutput)
+}
+
+// GrafanaTechEmailArrayInput is an input type that accepts GrafanaTechEmailArray and GrafanaTechEmailArrayOutput values.
+// You can construct a concrete instance of `GrafanaTechEmailArrayInput` via:
+//
+//	GrafanaTechEmailArray{ GrafanaTechEmailArgs{...} }
+type GrafanaTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGrafanaTechEmailArrayOutput() GrafanaTechEmailArrayOutput
+	ToGrafanaTechEmailArrayOutputWithContext(context.Context) GrafanaTechEmailArrayOutput
+}
+
+type GrafanaTechEmailArray []GrafanaTechEmailInput
+
+func (GrafanaTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafanaTechEmail)(nil)).Elem()
+}
+
+func (i GrafanaTechEmailArray) ToGrafanaTechEmailArrayOutput() GrafanaTechEmailArrayOutput {
+	return i.ToGrafanaTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GrafanaTechEmailArray) ToGrafanaTechEmailArrayOutputWithContext(ctx context.Context) GrafanaTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaTechEmailArrayOutput)
+}
+
+type GrafanaTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GrafanaTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaTechEmail)(nil)).Elem()
+}
+
+func (o GrafanaTechEmailOutput) ToGrafanaTechEmailOutput() GrafanaTechEmailOutput {
+	return o
+}
+
+func (o GrafanaTechEmailOutput) ToGrafanaTechEmailOutputWithContext(ctx context.Context) GrafanaTechEmailOutput {
+	return o
+}
+
+func (o GrafanaTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafanaTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GrafanaTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GrafanaTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafanaTechEmail)(nil)).Elem()
+}
+
+func (o GrafanaTechEmailArrayOutput) ToGrafanaTechEmailArrayOutput() GrafanaTechEmailArrayOutput {
+	return o
+}
+
+func (o GrafanaTechEmailArrayOutput) ToGrafanaTechEmailArrayOutputWithContext(ctx context.Context) GrafanaTechEmailArrayOutput {
+	return o
+}
+
+func (o GrafanaTechEmailArrayOutput) Index(i pulumi.IntInput) GrafanaTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrafanaTechEmail {
+		return vs[0].([]GrafanaTechEmail)[vs[1].(int)]
+	}).(GrafanaTechEmailOutput)
+}
+
 type InfluxDbComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -7854,6 +8446,7 @@ type InfluxDbComponentInput interface {
 
 type InfluxDbComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -7915,6 +8508,10 @@ func (o InfluxDbComponentOutput) ToInfluxDbComponentOutputWithContext(ctx contex
 
 func (o InfluxDbComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o InfluxDbComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfluxDbComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o InfluxDbComponentOutput) Host() pulumi.StringPtrOutput {
@@ -8080,6 +8677,8 @@ type InfluxDbInfluxdbUserConfig struct {
 	PublicAccess *InfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
 	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 	// Use static public IP addresses.
@@ -8122,6 +8721,8 @@ type InfluxDbInfluxdbUserConfigArgs struct {
 	PublicAccess InfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service.
 	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 	// Use static public IP addresses.
@@ -8264,6 +8865,11 @@ func (o InfluxDbInfluxdbUserConfigOutput) PublicAccess() InfluxDbInfluxdbUserCon
 // Name of the basebackup to restore in forked service.
 func (o InfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o InfluxDbInfluxdbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -8410,6 +9016,16 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Str
 		}
 		return v.RecoveryBasebackupName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -9412,8 +10028,106 @@ func (o InfluxDbTagArrayOutput) Index(i pulumi.IntInput) InfluxDbTagOutput {
 	}).(InfluxDbTagOutput)
 }
 
+type InfluxDbTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// InfluxDbTechEmailInput is an input type that accepts InfluxDbTechEmailArgs and InfluxDbTechEmailOutput values.
+// You can construct a concrete instance of `InfluxDbTechEmailInput` via:
+//
+//	InfluxDbTechEmailArgs{...}
+type InfluxDbTechEmailInput interface {
+	pulumi.Input
+
+	ToInfluxDbTechEmailOutput() InfluxDbTechEmailOutput
+	ToInfluxDbTechEmailOutputWithContext(context.Context) InfluxDbTechEmailOutput
+}
+
+type InfluxDbTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (InfluxDbTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDbTechEmail)(nil)).Elem()
+}
+
+func (i InfluxDbTechEmailArgs) ToInfluxDbTechEmailOutput() InfluxDbTechEmailOutput {
+	return i.ToInfluxDbTechEmailOutputWithContext(context.Background())
+}
+
+func (i InfluxDbTechEmailArgs) ToInfluxDbTechEmailOutputWithContext(ctx context.Context) InfluxDbTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbTechEmailOutput)
+}
+
+// InfluxDbTechEmailArrayInput is an input type that accepts InfluxDbTechEmailArray and InfluxDbTechEmailArrayOutput values.
+// You can construct a concrete instance of `InfluxDbTechEmailArrayInput` via:
+//
+//	InfluxDbTechEmailArray{ InfluxDbTechEmailArgs{...} }
+type InfluxDbTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToInfluxDbTechEmailArrayOutput() InfluxDbTechEmailArrayOutput
+	ToInfluxDbTechEmailArrayOutputWithContext(context.Context) InfluxDbTechEmailArrayOutput
+}
+
+type InfluxDbTechEmailArray []InfluxDbTechEmailInput
+
+func (InfluxDbTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfluxDbTechEmail)(nil)).Elem()
+}
+
+func (i InfluxDbTechEmailArray) ToInfluxDbTechEmailArrayOutput() InfluxDbTechEmailArrayOutput {
+	return i.ToInfluxDbTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i InfluxDbTechEmailArray) ToInfluxDbTechEmailArrayOutputWithContext(ctx context.Context) InfluxDbTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbTechEmailArrayOutput)
+}
+
+type InfluxDbTechEmailOutput struct{ *pulumi.OutputState }
+
+func (InfluxDbTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfluxDbTechEmail)(nil)).Elem()
+}
+
+func (o InfluxDbTechEmailOutput) ToInfluxDbTechEmailOutput() InfluxDbTechEmailOutput {
+	return o
+}
+
+func (o InfluxDbTechEmailOutput) ToInfluxDbTechEmailOutputWithContext(ctx context.Context) InfluxDbTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o InfluxDbTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v InfluxDbTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type InfluxDbTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (InfluxDbTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfluxDbTechEmail)(nil)).Elem()
+}
+
+func (o InfluxDbTechEmailArrayOutput) ToInfluxDbTechEmailArrayOutput() InfluxDbTechEmailArrayOutput {
+	return o
+}
+
+func (o InfluxDbTechEmailArrayOutput) ToInfluxDbTechEmailArrayOutputWithContext(ctx context.Context) InfluxDbTechEmailArrayOutput {
+	return o
+}
+
+func (o InfluxDbTechEmailArrayOutput) Index(i pulumi.IntInput) InfluxDbTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfluxDbTechEmail {
+		return vs[0].([]InfluxDbTechEmail)[vs[1].(int)]
+	}).(InfluxDbTechEmailOutput)
+}
+
 type KafkaComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -9435,6 +10149,7 @@ type KafkaComponentInput interface {
 
 type KafkaComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -9498,6 +10213,10 @@ func (o KafkaComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
+func (o KafkaComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
+}
+
 func (o KafkaComponentOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaComponent) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -9544,6 +10263,7 @@ func (o KafkaComponentArrayOutput) Index(i pulumi.IntInput) KafkaComponentOutput
 
 type KafkaConnectComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -9565,6 +10285,7 @@ type KafkaConnectComponentInput interface {
 
 type KafkaConnectComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -9626,6 +10347,10 @@ func (o KafkaConnectComponentOutput) ToKafkaConnectComponentOutputWithContext(ct
 
 func (o KafkaConnectComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaConnectComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o KafkaConnectComponentOutput) Host() pulumi.StringPtrOutput {
@@ -9770,6 +10495,7 @@ type KafkaConnectKafkaConnectUserConfig struct {
 	PrivateAccess     *KafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
 	PrivatelinkAccess *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	PublicAccess      *KafkaConnectKafkaConnectUserConfigPublicAccess      `pulumi:"publicAccess"`
+	ServiceLog        *bool                                                `pulumi:"serviceLog"`
 	StaticIps         *bool                                                `pulumi:"staticIps"`
 }
 
@@ -9794,6 +10520,7 @@ type KafkaConnectKafkaConnectUserConfigArgs struct {
 	PrivateAccess     KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
 	PrivatelinkAccess KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	PublicAccess      KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	ServiceLog        pulumi.BoolPtrInput                                         `pulumi:"serviceLog"`
 	StaticIps         pulumi.BoolPtrInput                                         `pulumi:"staticIps"`
 }
 
@@ -9917,6 +10644,10 @@ func (o KafkaConnectKafkaConnectUserConfigOutput) PublicAccess() KafkaConnectKaf
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
+func (o KafkaConnectKafkaConnectUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 func (o KafkaConnectKafkaConnectUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
@@ -10016,6 +10747,15 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnect
 		}
 		return v.PublicAccess
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
+}
+
+func (o KafkaConnectKafkaConnectUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
@@ -11146,6 +11886,100 @@ func (o KafkaConnectTagArrayOutput) Index(i pulumi.IntInput) KafkaConnectTagOutp
 	}).(KafkaConnectTagOutput)
 }
 
+type KafkaConnectTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// KafkaConnectTechEmailInput is an input type that accepts KafkaConnectTechEmailArgs and KafkaConnectTechEmailOutput values.
+// You can construct a concrete instance of `KafkaConnectTechEmailInput` via:
+//
+//	KafkaConnectTechEmailArgs{...}
+type KafkaConnectTechEmailInput interface {
+	pulumi.Input
+
+	ToKafkaConnectTechEmailOutput() KafkaConnectTechEmailOutput
+	ToKafkaConnectTechEmailOutputWithContext(context.Context) KafkaConnectTechEmailOutput
+}
+
+type KafkaConnectTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (KafkaConnectTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (i KafkaConnectTechEmailArgs) ToKafkaConnectTechEmailOutput() KafkaConnectTechEmailOutput {
+	return i.ToKafkaConnectTechEmailOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectTechEmailArgs) ToKafkaConnectTechEmailOutputWithContext(ctx context.Context) KafkaConnectTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectTechEmailOutput)
+}
+
+// KafkaConnectTechEmailArrayInput is an input type that accepts KafkaConnectTechEmailArray and KafkaConnectTechEmailArrayOutput values.
+// You can construct a concrete instance of `KafkaConnectTechEmailArrayInput` via:
+//
+//	KafkaConnectTechEmailArray{ KafkaConnectTechEmailArgs{...} }
+type KafkaConnectTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToKafkaConnectTechEmailArrayOutput() KafkaConnectTechEmailArrayOutput
+	ToKafkaConnectTechEmailArrayOutputWithContext(context.Context) KafkaConnectTechEmailArrayOutput
+}
+
+type KafkaConnectTechEmailArray []KafkaConnectTechEmailInput
+
+func (KafkaConnectTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (i KafkaConnectTechEmailArray) ToKafkaConnectTechEmailArrayOutput() KafkaConnectTechEmailArrayOutput {
+	return i.ToKafkaConnectTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectTechEmailArray) ToKafkaConnectTechEmailArrayOutputWithContext(ctx context.Context) KafkaConnectTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectTechEmailArrayOutput)
+}
+
+type KafkaConnectTechEmailOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (o KafkaConnectTechEmailOutput) ToKafkaConnectTechEmailOutput() KafkaConnectTechEmailOutput {
+	return o
+}
+
+func (o KafkaConnectTechEmailOutput) ToKafkaConnectTechEmailOutputWithContext(ctx context.Context) KafkaConnectTechEmailOutput {
+	return o
+}
+
+func (o KafkaConnectTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaConnectTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type KafkaConnectTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (o KafkaConnectTechEmailArrayOutput) ToKafkaConnectTechEmailArrayOutput() KafkaConnectTechEmailArrayOutput {
+	return o
+}
+
+func (o KafkaConnectTechEmailArrayOutput) ToKafkaConnectTechEmailArrayOutputWithContext(ctx context.Context) KafkaConnectTechEmailArrayOutput {
+	return o
+}
+
+func (o KafkaConnectTechEmailArrayOutput) Index(i pulumi.IntInput) KafkaConnectTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaConnectTechEmail {
+		return vs[0].([]KafkaConnectTechEmail)[vs[1].(int)]
+	}).(KafkaConnectTechEmailOutput)
+}
+
 type KafkaConnectorTask struct {
 	Connector *string `pulumi:"connector"`
 	Task      *int    `pulumi:"task"`
@@ -11367,6 +12201,8 @@ func (o KafkaKafkaArrayOutput) Index(i pulumi.IntInput) KafkaKafkaOutput {
 type KafkaKafkaUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Allow access to read Kafka topic messages in the Aiven Console and REST API.
+	AivenKafkaTopicMessages *bool `pulumi:"aivenKafkaTopicMessages"`
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 	CustomDomain *string `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -11403,8 +12239,12 @@ type KafkaKafkaUserConfig struct {
 	SchemaRegistry *bool `pulumi:"schemaRegistry"`
 	// Schema Registry configuration.
 	SchemaRegistryConfig *KafkaKafkaUserConfigSchemaRegistryConfig `pulumi:"schemaRegistryConfig"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
 	// Use static public IP addresses.
 	StaticIps *bool `pulumi:"staticIps"`
+	// Tiered storage configuration.
+	TieredStorage *KafkaKafkaUserConfigTieredStorage `pulumi:"tieredStorage"`
 }
 
 // KafkaKafkaUserConfigInput is an input type that accepts KafkaKafkaUserConfigArgs and KafkaKafkaUserConfigOutput values.
@@ -11421,6 +12261,8 @@ type KafkaKafkaUserConfigInput interface {
 type KafkaKafkaUserConfigArgs struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Allow access to read Kafka topic messages in the Aiven Console and REST API.
+	AivenKafkaTopicMessages pulumi.BoolPtrInput `pulumi:"aivenKafkaTopicMessages"`
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -11457,8 +12299,12 @@ type KafkaKafkaUserConfigArgs struct {
 	SchemaRegistry pulumi.BoolPtrInput `pulumi:"schemaRegistry"`
 	// Schema Registry configuration.
 	SchemaRegistryConfig KafkaKafkaUserConfigSchemaRegistryConfigPtrInput `pulumi:"schemaRegistryConfig"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Use static public IP addresses.
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+	// Tiered storage configuration.
+	TieredStorage KafkaKafkaUserConfigTieredStoragePtrInput `pulumi:"tieredStorage"`
 }
 
 func (KafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -11541,6 +12387,11 @@ func (o KafkaKafkaUserConfigOutput) ToKafkaKafkaUserConfigPtrOutputWithContext(c
 // Additional Cloud Regions for Backup Replication.
 func (o KafkaKafkaUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to read Kafka topic messages in the Aiven Console and REST API.
+func (o KafkaKafkaUserConfigOutput) AivenKafkaTopicMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfig) *bool { return v.AivenKafkaTopicMessages }).(pulumi.BoolPtrOutput)
 }
 
 // Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -11632,9 +12483,19 @@ func (o KafkaKafkaUserConfigOutput) SchemaRegistryConfig() KafkaKafkaUserConfigS
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig { return v.SchemaRegistryConfig }).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o KafkaKafkaUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 // Use static public IP addresses.
 func (o KafkaKafkaUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+// Tiered storage configuration.
+func (o KafkaKafkaUserConfigOutput) TieredStorage() KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigTieredStorage { return v.TieredStorage }).(KafkaKafkaUserConfigTieredStoragePtrOutput)
 }
 
 type KafkaKafkaUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -11669,6 +12530,16 @@ func (o KafkaKafkaUserConfigPtrOutput) AdditionalBackupRegions() pulumi.StringPt
 		}
 		return v.AdditionalBackupRegions
 	}).(pulumi.StringPtrOutput)
+}
+
+// Allow access to read Kafka topic messages in the Aiven Console and REST API.
+func (o KafkaKafkaUserConfigPtrOutput) AivenKafkaTopicMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AivenKafkaTopicMessages
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -11843,6 +12714,16 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistryConfig() KafkaKafkaUserConf
 	}).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o KafkaKafkaUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Use static public IP addresses.
 func (o KafkaKafkaUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *bool {
@@ -11851,6 +12732,16 @@ func (o KafkaKafkaUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
 		}
 		return v.StaticIps
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Tiered storage configuration.
+func (o KafkaKafkaUserConfigPtrOutput) TieredStorage() KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigTieredStorage {
+		if v == nil {
+			return nil
+		}
+		return v.TieredStorage
+	}).(KafkaKafkaUserConfigTieredStoragePtrOutput)
 }
 
 type KafkaKafkaUserConfigIpFilterObject struct {
@@ -11992,6 +12883,10 @@ type KafkaKafkaUserConfigKafka struct {
 	LogIndexIntervalBytes *int `pulumi:"logIndexIntervalBytes"`
 	// The maximum size in bytes of the offset index.
 	LogIndexSizeMaxBytes *int `pulumi:"logIndexSizeMaxBytes"`
+	// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+	LogLocalRetentionBytes *int `pulumi:"logLocalRetentionBytes"`
+	// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+	LogLocalRetentionMs *int `pulumi:"logLocalRetentionMs"`
 	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
 	LogMessageDownconversionEnable *bool `pulumi:"logMessageDownconversionEnable"`
 	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
@@ -12032,8 +12927,18 @@ type KafkaKafkaUserConfigKafka struct {
 	ReplicaFetchMaxBytes *int `pulumi:"replicaFetchMaxBytes"`
 	// Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
 	ReplicaFetchResponseMaxBytes *int `pulumi:"replicaFetchResponseMaxBytes"`
+	// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+	SaslOauthbearerExpectedAudience *string `pulumi:"saslOauthbearerExpectedAudience"`
+	// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+	SaslOauthbearerExpectedIssuer *string `pulumi:"saslOauthbearerExpectedIssuer"`
+	// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+	SaslOauthbearerJwksEndpointUrl *string `pulumi:"saslOauthbearerJwksEndpointUrl"`
+	// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+	SaslOauthbearerSubClaimName *string `pulumi:"saslOauthbearerSubClaimName"`
 	// The maximum number of bytes in a socket request (defaults to 104857600).
 	SocketRequestMaxBytes *int `pulumi:"socketRequestMaxBytes"`
+	// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+	TransactionPartitionVerificationEnable *bool `pulumi:"transactionPartitionVerificationEnable"`
 	// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
 	TransactionRemoveExpiredTransactionCleanupIntervalMs *int `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
 	// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
@@ -12084,6 +12989,10 @@ type KafkaKafkaUserConfigKafkaArgs struct {
 	LogIndexIntervalBytes pulumi.IntPtrInput `pulumi:"logIndexIntervalBytes"`
 	// The maximum size in bytes of the offset index.
 	LogIndexSizeMaxBytes pulumi.IntPtrInput `pulumi:"logIndexSizeMaxBytes"`
+	// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+	LogLocalRetentionBytes pulumi.IntPtrInput `pulumi:"logLocalRetentionBytes"`
+	// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+	LogLocalRetentionMs pulumi.IntPtrInput `pulumi:"logLocalRetentionMs"`
 	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
 	LogMessageDownconversionEnable pulumi.BoolPtrInput `pulumi:"logMessageDownconversionEnable"`
 	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
@@ -12124,8 +13033,18 @@ type KafkaKafkaUserConfigKafkaArgs struct {
 	ReplicaFetchMaxBytes pulumi.IntPtrInput `pulumi:"replicaFetchMaxBytes"`
 	// Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
 	ReplicaFetchResponseMaxBytes pulumi.IntPtrInput `pulumi:"replicaFetchResponseMaxBytes"`
+	// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+	SaslOauthbearerExpectedAudience pulumi.StringPtrInput `pulumi:"saslOauthbearerExpectedAudience"`
+	// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+	SaslOauthbearerExpectedIssuer pulumi.StringPtrInput `pulumi:"saslOauthbearerExpectedIssuer"`
+	// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+	SaslOauthbearerJwksEndpointUrl pulumi.StringPtrInput `pulumi:"saslOauthbearerJwksEndpointUrl"`
+	// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+	SaslOauthbearerSubClaimName pulumi.StringPtrInput `pulumi:"saslOauthbearerSubClaimName"`
 	// The maximum number of bytes in a socket request (defaults to 104857600).
 	SocketRequestMaxBytes pulumi.IntPtrInput `pulumi:"socketRequestMaxBytes"`
+	// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+	TransactionPartitionVerificationEnable pulumi.BoolPtrInput `pulumi:"transactionPartitionVerificationEnable"`
 	// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
 	TransactionRemoveExpiredTransactionCleanupIntervalMs pulumi.IntPtrInput `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
 	// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
@@ -12289,6 +13208,16 @@ func (o KafkaKafkaUserConfigKafkaOutput) LogIndexSizeMaxBytes() pulumi.IntPtrOut
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.LogIndexSizeMaxBytes }).(pulumi.IntPtrOutput)
 }
 
+// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+func (o KafkaKafkaUserConfigKafkaOutput) LogLocalRetentionBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.LogLocalRetentionBytes }).(pulumi.IntPtrOutput)
+}
+
+// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+func (o KafkaKafkaUserConfigKafkaOutput) LogLocalRetentionMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.LogLocalRetentionMs }).(pulumi.IntPtrOutput)
+}
+
 // This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
 func (o KafkaKafkaUserConfigKafkaOutput) LogMessageDownconversionEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *bool { return v.LogMessageDownconversionEnable }).(pulumi.BoolPtrOutput)
@@ -12389,9 +13318,34 @@ func (o KafkaKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulumi.I
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.ReplicaFetchResponseMaxBytes }).(pulumi.IntPtrOutput)
 }
 
+// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+func (o KafkaKafkaUserConfigKafkaOutput) SaslOauthbearerExpectedAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerExpectedAudience }).(pulumi.StringPtrOutput)
+}
+
+// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+func (o KafkaKafkaUserConfigKafkaOutput) SaslOauthbearerExpectedIssuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerExpectedIssuer }).(pulumi.StringPtrOutput)
+}
+
+// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+func (o KafkaKafkaUserConfigKafkaOutput) SaslOauthbearerJwksEndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerJwksEndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+func (o KafkaKafkaUserConfigKafkaOutput) SaslOauthbearerSubClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerSubClaimName }).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of bytes in a socket request (defaults to 104857600).
 func (o KafkaKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.SocketRequestMaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+func (o KafkaKafkaUserConfigKafkaOutput) TransactionPartitionVerificationEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *bool { return v.TransactionPartitionVerificationEnable }).(pulumi.BoolPtrOutput)
 }
 
 // The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
@@ -12585,6 +13539,26 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) LogIndexSizeMaxBytes() pulumi.IntPtr
 			return nil
 		}
 		return v.LogIndexSizeMaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogLocalRetentionBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogLocalRetentionBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) LogLocalRetentionMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogLocalRetentionMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -12788,6 +13762,46 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerExpectedAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerExpectedAudience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerExpectedIssuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerExpectedIssuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+func (o KafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerJwksEndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerJwksEndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerSubClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerSubClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of bytes in a socket request (defaults to 104857600).
 func (o KafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
@@ -12796,6 +13810,16 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPt
 		}
 		return v.SocketRequestMaxBytes
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) TransactionPartitionVerificationEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionPartitionVerificationEnable
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
@@ -13403,6 +14427,8 @@ type KafkaKafkaUserConfigKafkaRestConfig struct {
 	ConsumerRequestMaxBytes *int `pulumi:"consumerRequestMaxBytes"`
 	// The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
 	ConsumerRequestTimeoutMs *int `pulumi:"consumerRequestTimeoutMs"`
+	// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+	NameStrategyValidation *bool `pulumi:"nameStrategyValidation"`
 	// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
 	ProducerAcks *string `pulumi:"producerAcks"`
 	// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
@@ -13433,6 +14459,8 @@ type KafkaKafkaUserConfigKafkaRestConfigArgs struct {
 	ConsumerRequestMaxBytes pulumi.IntPtrInput `pulumi:"consumerRequestMaxBytes"`
 	// The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
 	ConsumerRequestTimeoutMs pulumi.IntPtrInput `pulumi:"consumerRequestTimeoutMs"`
+	// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+	NameStrategyValidation pulumi.BoolPtrInput `pulumi:"nameStrategyValidation"`
 	// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
 	ProducerAcks pulumi.StringPtrInput `pulumi:"producerAcks"`
 	// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
@@ -13537,6 +14565,11 @@ func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pu
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
 }
 
+// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+func (o KafkaKafkaUserConfigKafkaRestConfigOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *bool { return v.NameStrategyValidation }).(pulumi.BoolPtrOutput)
+}
+
 // The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
@@ -13614,6 +14647,16 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs()
 		}
 		return v.ConsumerRequestTimeoutMs
 	}).(pulumi.IntPtrOutput)
+}
+
+// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NameStrategyValidation
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
@@ -14480,8 +15523,304 @@ func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type KafkaKafkaUserConfigTieredStorage struct {
+	// Whether to enable the tiered storage functionality.
+	Enabled *bool `pulumi:"enabled"`
+	// Local cache configuration.
+	LocalCache *KafkaKafkaUserConfigTieredStorageLocalCache `pulumi:"localCache"`
+}
+
+// KafkaKafkaUserConfigTieredStorageInput is an input type that accepts KafkaKafkaUserConfigTieredStorageArgs and KafkaKafkaUserConfigTieredStorageOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigTieredStorageInput` via:
+//
+//	KafkaKafkaUserConfigTieredStorageArgs{...}
+type KafkaKafkaUserConfigTieredStorageInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigTieredStorageOutput() KafkaKafkaUserConfigTieredStorageOutput
+	ToKafkaKafkaUserConfigTieredStorageOutputWithContext(context.Context) KafkaKafkaUserConfigTieredStorageOutput
+}
+
+type KafkaKafkaUserConfigTieredStorageArgs struct {
+	// Whether to enable the tiered storage functionality.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Local cache configuration.
+	LocalCache KafkaKafkaUserConfigTieredStorageLocalCachePtrInput `pulumi:"localCache"`
+}
+
+func (KafkaKafkaUserConfigTieredStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (i KafkaKafkaUserConfigTieredStorageArgs) ToKafkaKafkaUserConfigTieredStorageOutput() KafkaKafkaUserConfigTieredStorageOutput {
+	return i.ToKafkaKafkaUserConfigTieredStorageOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigTieredStorageArgs) ToKafkaKafkaUserConfigTieredStorageOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigTieredStorageOutput)
+}
+
+func (i KafkaKafkaUserConfigTieredStorageArgs) ToKafkaKafkaUserConfigTieredStoragePtrOutput() KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return i.ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigTieredStorageArgs) ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigTieredStorageOutput).ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx)
+}
+
+// KafkaKafkaUserConfigTieredStoragePtrInput is an input type that accepts KafkaKafkaUserConfigTieredStorageArgs, KafkaKafkaUserConfigTieredStoragePtr and KafkaKafkaUserConfigTieredStoragePtrOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigTieredStoragePtrInput` via:
+//
+//	        KafkaKafkaUserConfigTieredStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaKafkaUserConfigTieredStoragePtrInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigTieredStoragePtrOutput() KafkaKafkaUserConfigTieredStoragePtrOutput
+	ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Context) KafkaKafkaUserConfigTieredStoragePtrOutput
+}
+
+type kafkaKafkaUserConfigTieredStoragePtrType KafkaKafkaUserConfigTieredStorageArgs
+
+func KafkaKafkaUserConfigTieredStoragePtr(v *KafkaKafkaUserConfigTieredStorageArgs) KafkaKafkaUserConfigTieredStoragePtrInput {
+	return (*kafkaKafkaUserConfigTieredStoragePtrType)(v)
+}
+
+func (*kafkaKafkaUserConfigTieredStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (i *kafkaKafkaUserConfigTieredStoragePtrType) ToKafkaKafkaUserConfigTieredStoragePtrOutput() KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return i.ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaKafkaUserConfigTieredStoragePtrType) ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigTieredStoragePtrOutput)
+}
+
+type KafkaKafkaUserConfigTieredStorageOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigTieredStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigTieredStorageOutput) ToKafkaKafkaUserConfigTieredStorageOutput() KafkaKafkaUserConfigTieredStorageOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStorageOutput) ToKafkaKafkaUserConfigTieredStorageOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStorageOutput) ToKafkaKafkaUserConfigTieredStoragePtrOutput() KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (o KafkaKafkaUserConfigTieredStorageOutput) ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaKafkaUserConfigTieredStorage) *KafkaKafkaUserConfigTieredStorage {
+		return &v
+	}).(KafkaKafkaUserConfigTieredStoragePtrOutput)
+}
+
+// Whether to enable the tiered storage functionality.
+func (o KafkaKafkaUserConfigTieredStorageOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigTieredStorage) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Local cache configuration.
+func (o KafkaKafkaUserConfigTieredStorageOutput) LocalCache() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigTieredStorage) *KafkaKafkaUserConfigTieredStorageLocalCache {
+		return v.LocalCache
+	}).(KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type KafkaKafkaUserConfigTieredStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigTieredStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigTieredStoragePtrOutput) ToKafkaKafkaUserConfigTieredStoragePtrOutput() KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStoragePtrOutput) ToKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStoragePtrOutput) Elem() KafkaKafkaUserConfigTieredStorageOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigTieredStorage) KafkaKafkaUserConfigTieredStorage {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaKafkaUserConfigTieredStorage
+		return ret
+	}).(KafkaKafkaUserConfigTieredStorageOutput)
+}
+
+// Whether to enable the tiered storage functionality.
+func (o KafkaKafkaUserConfigTieredStoragePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigTieredStorage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Local cache configuration.
+func (o KafkaKafkaUserConfigTieredStoragePtrOutput) LocalCache() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigTieredStorage) *KafkaKafkaUserConfigTieredStorageLocalCache {
+		if v == nil {
+			return nil
+		}
+		return v.LocalCache
+	}).(KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type KafkaKafkaUserConfigTieredStorageLocalCache struct {
+	// Local cache size in bytes.
+	Size *int `pulumi:"size"`
+}
+
+// KafkaKafkaUserConfigTieredStorageLocalCacheInput is an input type that accepts KafkaKafkaUserConfigTieredStorageLocalCacheArgs and KafkaKafkaUserConfigTieredStorageLocalCacheOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigTieredStorageLocalCacheInput` via:
+//
+//	KafkaKafkaUserConfigTieredStorageLocalCacheArgs{...}
+type KafkaKafkaUserConfigTieredStorageLocalCacheInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigTieredStorageLocalCacheOutput() KafkaKafkaUserConfigTieredStorageLocalCacheOutput
+	ToKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(context.Context) KafkaKafkaUserConfigTieredStorageLocalCacheOutput
+}
+
+type KafkaKafkaUserConfigTieredStorageLocalCacheArgs struct {
+	// Local cache size in bytes.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (KafkaKafkaUserConfigTieredStorageLocalCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (i KafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToKafkaKafkaUserConfigTieredStorageLocalCacheOutput() KafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return i.ToKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigTieredStorageLocalCacheOutput)
+}
+
+func (i KafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return i.ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (i KafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigTieredStorageLocalCacheOutput).ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx)
+}
+
+// KafkaKafkaUserConfigTieredStorageLocalCachePtrInput is an input type that accepts KafkaKafkaUserConfigTieredStorageLocalCacheArgs, KafkaKafkaUserConfigTieredStorageLocalCachePtr and KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput values.
+// You can construct a concrete instance of `KafkaKafkaUserConfigTieredStorageLocalCachePtrInput` via:
+//
+//	        KafkaKafkaUserConfigTieredStorageLocalCacheArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaKafkaUserConfigTieredStorageLocalCachePtrInput interface {
+	pulumi.Input
+
+	ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput
+	ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Context) KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput
+}
+
+type kafkaKafkaUserConfigTieredStorageLocalCachePtrType KafkaKafkaUserConfigTieredStorageLocalCacheArgs
+
+func KafkaKafkaUserConfigTieredStorageLocalCachePtr(v *KafkaKafkaUserConfigTieredStorageLocalCacheArgs) KafkaKafkaUserConfigTieredStorageLocalCachePtrInput {
+	return (*kafkaKafkaUserConfigTieredStorageLocalCachePtrType)(v)
+}
+
+func (*kafkaKafkaUserConfigTieredStorageLocalCachePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (i *kafkaKafkaUserConfigTieredStorageLocalCachePtrType) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return i.ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaKafkaUserConfigTieredStorageLocalCachePtrType) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type KafkaKafkaUserConfigTieredStorageLocalCacheOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigTieredStorageLocalCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToKafkaKafkaUserConfigTieredStorageLocalCacheOutput() KafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaKafkaUserConfigTieredStorageLocalCache) *KafkaKafkaUserConfigTieredStorageLocalCache {
+		return &v
+	}).(KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+// Local cache size in bytes.
+func (o KafkaKafkaUserConfigTieredStorageLocalCacheOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigTieredStorageLocalCache) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ToKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o
+}
+
+func (o KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) Elem() KafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigTieredStorageLocalCache) KafkaKafkaUserConfigTieredStorageLocalCache {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaKafkaUserConfigTieredStorageLocalCache
+		return ret
+	}).(KafkaKafkaUserConfigTieredStorageLocalCacheOutput)
+}
+
+// Local cache size in bytes.
+func (o KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigTieredStorageLocalCache) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
 type KafkaMirrorMakerComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -14503,6 +15842,7 @@ type KafkaMirrorMakerComponentInput interface {
 
 type KafkaMirrorMakerComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -14564,6 +15904,10 @@ func (o KafkaMirrorMakerComponentOutput) ToKafkaMirrorMakerComponentOutputWithCo
 
 func (o KafkaMirrorMakerComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o KafkaMirrorMakerComponentOutput) Host() pulumi.StringPtrOutput {
@@ -14705,6 +16049,7 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfig struct {
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters        []string                                                    `pulumi:"ipFilters"`
 	KafkaMirrormaker *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+	ServiceLog       *bool                                                       `pulumi:"serviceLog"`
 	StaticIps        *bool                                                       `pulumi:"staticIps"`
 }
 
@@ -14726,6 +16071,7 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters        pulumi.StringArrayInput                                            `pulumi:"ipFilters"`
 	KafkaMirrormaker KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
+	ServiceLog       pulumi.BoolPtrInput                                                `pulumi:"serviceLog"`
 	StaticIps        pulumi.BoolPtrInput                                                `pulumi:"staticIps"`
 }
 
@@ -14831,6 +16177,10 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() Kaf
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
@@ -14903,6 +16253,15 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() 
 		}
 		return v.KafkaMirrormaker
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
@@ -15500,6 +16859,100 @@ func (o KafkaMirrorMakerTagArrayOutput) Index(i pulumi.IntInput) KafkaMirrorMake
 	}).(KafkaMirrorMakerTagOutput)
 }
 
+type KafkaMirrorMakerTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// KafkaMirrorMakerTechEmailInput is an input type that accepts KafkaMirrorMakerTechEmailArgs and KafkaMirrorMakerTechEmailOutput values.
+// You can construct a concrete instance of `KafkaMirrorMakerTechEmailInput` via:
+//
+//	KafkaMirrorMakerTechEmailArgs{...}
+type KafkaMirrorMakerTechEmailInput interface {
+	pulumi.Input
+
+	ToKafkaMirrorMakerTechEmailOutput() KafkaMirrorMakerTechEmailOutput
+	ToKafkaMirrorMakerTechEmailOutputWithContext(context.Context) KafkaMirrorMakerTechEmailOutput
+}
+
+type KafkaMirrorMakerTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (KafkaMirrorMakerTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (i KafkaMirrorMakerTechEmailArgs) ToKafkaMirrorMakerTechEmailOutput() KafkaMirrorMakerTechEmailOutput {
+	return i.ToKafkaMirrorMakerTechEmailOutputWithContext(context.Background())
+}
+
+func (i KafkaMirrorMakerTechEmailArgs) ToKafkaMirrorMakerTechEmailOutputWithContext(ctx context.Context) KafkaMirrorMakerTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerTechEmailOutput)
+}
+
+// KafkaMirrorMakerTechEmailArrayInput is an input type that accepts KafkaMirrorMakerTechEmailArray and KafkaMirrorMakerTechEmailArrayOutput values.
+// You can construct a concrete instance of `KafkaMirrorMakerTechEmailArrayInput` via:
+//
+//	KafkaMirrorMakerTechEmailArray{ KafkaMirrorMakerTechEmailArgs{...} }
+type KafkaMirrorMakerTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToKafkaMirrorMakerTechEmailArrayOutput() KafkaMirrorMakerTechEmailArrayOutput
+	ToKafkaMirrorMakerTechEmailArrayOutputWithContext(context.Context) KafkaMirrorMakerTechEmailArrayOutput
+}
+
+type KafkaMirrorMakerTechEmailArray []KafkaMirrorMakerTechEmailInput
+
+func (KafkaMirrorMakerTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (i KafkaMirrorMakerTechEmailArray) ToKafkaMirrorMakerTechEmailArrayOutput() KafkaMirrorMakerTechEmailArrayOutput {
+	return i.ToKafkaMirrorMakerTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaMirrorMakerTechEmailArray) ToKafkaMirrorMakerTechEmailArrayOutputWithContext(ctx context.Context) KafkaMirrorMakerTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerTechEmailArrayOutput)
+}
+
+type KafkaMirrorMakerTechEmailOutput struct{ *pulumi.OutputState }
+
+func (KafkaMirrorMakerTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (o KafkaMirrorMakerTechEmailOutput) ToKafkaMirrorMakerTechEmailOutput() KafkaMirrorMakerTechEmailOutput {
+	return o
+}
+
+func (o KafkaMirrorMakerTechEmailOutput) ToKafkaMirrorMakerTechEmailOutputWithContext(ctx context.Context) KafkaMirrorMakerTechEmailOutput {
+	return o
+}
+
+func (o KafkaMirrorMakerTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type KafkaMirrorMakerTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaMirrorMakerTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (o KafkaMirrorMakerTechEmailArrayOutput) ToKafkaMirrorMakerTechEmailArrayOutput() KafkaMirrorMakerTechEmailArrayOutput {
+	return o
+}
+
+func (o KafkaMirrorMakerTechEmailArrayOutput) ToKafkaMirrorMakerTechEmailArrayOutputWithContext(ctx context.Context) KafkaMirrorMakerTechEmailArrayOutput {
+	return o
+}
+
+func (o KafkaMirrorMakerTechEmailArrayOutput) Index(i pulumi.IntInput) KafkaMirrorMakerTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaMirrorMakerTechEmail {
+		return vs[0].([]KafkaMirrorMakerTechEmail)[vs[1].(int)]
+	}).(KafkaMirrorMakerTechEmailOutput)
+}
+
 type KafkaServiceIntegration struct {
 	// Type of the service integration. The only supported value at the moment is `readReplica`
 	IntegrationType string `pulumi:"integrationType"`
@@ -15710,6 +17163,103 @@ func (o KafkaTagArrayOutput) Index(i pulumi.IntInput) KafkaTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaTag {
 		return vs[0].([]KafkaTag)[vs[1].(int)]
 	}).(KafkaTagOutput)
+}
+
+type KafkaTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// KafkaTechEmailInput is an input type that accepts KafkaTechEmailArgs and KafkaTechEmailOutput values.
+// You can construct a concrete instance of `KafkaTechEmailInput` via:
+//
+//	KafkaTechEmailArgs{...}
+type KafkaTechEmailInput interface {
+	pulumi.Input
+
+	ToKafkaTechEmailOutput() KafkaTechEmailOutput
+	ToKafkaTechEmailOutputWithContext(context.Context) KafkaTechEmailOutput
+}
+
+type KafkaTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (KafkaTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTechEmail)(nil)).Elem()
+}
+
+func (i KafkaTechEmailArgs) ToKafkaTechEmailOutput() KafkaTechEmailOutput {
+	return i.ToKafkaTechEmailOutputWithContext(context.Background())
+}
+
+func (i KafkaTechEmailArgs) ToKafkaTechEmailOutputWithContext(ctx context.Context) KafkaTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTechEmailOutput)
+}
+
+// KafkaTechEmailArrayInput is an input type that accepts KafkaTechEmailArray and KafkaTechEmailArrayOutput values.
+// You can construct a concrete instance of `KafkaTechEmailArrayInput` via:
+//
+//	KafkaTechEmailArray{ KafkaTechEmailArgs{...} }
+type KafkaTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToKafkaTechEmailArrayOutput() KafkaTechEmailArrayOutput
+	ToKafkaTechEmailArrayOutputWithContext(context.Context) KafkaTechEmailArrayOutput
+}
+
+type KafkaTechEmailArray []KafkaTechEmailInput
+
+func (KafkaTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaTechEmail)(nil)).Elem()
+}
+
+func (i KafkaTechEmailArray) ToKafkaTechEmailArrayOutput() KafkaTechEmailArrayOutput {
+	return i.ToKafkaTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaTechEmailArray) ToKafkaTechEmailArrayOutputWithContext(ctx context.Context) KafkaTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaTechEmailArrayOutput)
+}
+
+type KafkaTechEmailOutput struct{ *pulumi.OutputState }
+
+func (KafkaTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaTechEmail)(nil)).Elem()
+}
+
+func (o KafkaTechEmailOutput) ToKafkaTechEmailOutput() KafkaTechEmailOutput {
+	return o
+}
+
+func (o KafkaTechEmailOutput) ToKafkaTechEmailOutputWithContext(ctx context.Context) KafkaTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o KafkaTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type KafkaTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaTechEmail)(nil)).Elem()
+}
+
+func (o KafkaTechEmailArrayOutput) ToKafkaTechEmailArrayOutput() KafkaTechEmailArrayOutput {
+	return o
+}
+
+func (o KafkaTechEmailArrayOutput) ToKafkaTechEmailArrayOutputWithContext(ctx context.Context) KafkaTechEmailArrayOutput {
+	return o
+}
+
+func (o KafkaTechEmailArrayOutput) Index(i pulumi.IntInput) KafkaTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaTechEmail {
+		return vs[0].([]KafkaTechEmail)[vs[1].(int)]
+	}).(KafkaTechEmailOutput)
 }
 
 type KafkaTopicConfig struct {
@@ -16402,6 +17952,7 @@ func (o KafkaTopicTagArrayOutput) Index(i pulumi.IntInput) KafkaTopicTagOutput {
 
 type M3AggregatorComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -16423,6 +17974,7 @@ type M3AggregatorComponentInput interface {
 
 type M3AggregatorComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -16484,6 +18036,10 @@ func (o M3AggregatorComponentOutput) ToM3AggregatorComponentOutputWithContext(ct
 
 func (o M3AggregatorComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o M3AggregatorComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3AggregatorComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o M3AggregatorComponentOutput) Host() pulumi.StringPtrOutput {
@@ -16627,6 +18183,7 @@ type M3AggregatorM3aggregatorUserConfig struct {
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           *string `pulumi:"m3Version"`
 	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
+	ServiceLog          *bool   `pulumi:"serviceLog"`
 	StaticIps           *bool   `pulumi:"staticIps"`
 }
 
@@ -16650,6 +18207,7 @@ type M3AggregatorM3aggregatorUserConfigArgs struct {
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           pulumi.StringPtrInput `pulumi:"m3Version"`
 	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
+	ServiceLog          pulumi.BoolPtrInput   `pulumi:"serviceLog"`
 	StaticIps           pulumi.BoolPtrInput   `pulumi:"staticIps"`
 }
 
@@ -16758,6 +18316,10 @@ func (o M3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.S
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
+func (o M3AggregatorM3aggregatorUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 func (o M3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
@@ -16840,6 +18402,15 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3aggregatorVersion() pulum
 		}
 		return v.M3aggregatorVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o M3AggregatorM3aggregatorUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) StaticIps() pulumi.BoolPtrOutput {
@@ -17151,8 +18722,103 @@ func (o M3AggregatorTagArrayOutput) Index(i pulumi.IntInput) M3AggregatorTagOutp
 	}).(M3AggregatorTagOutput)
 }
 
+type M3AggregatorTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// M3AggregatorTechEmailInput is an input type that accepts M3AggregatorTechEmailArgs and M3AggregatorTechEmailOutput values.
+// You can construct a concrete instance of `M3AggregatorTechEmailInput` via:
+//
+//	M3AggregatorTechEmailArgs{...}
+type M3AggregatorTechEmailInput interface {
+	pulumi.Input
+
+	ToM3AggregatorTechEmailOutput() M3AggregatorTechEmailOutput
+	ToM3AggregatorTechEmailOutputWithContext(context.Context) M3AggregatorTechEmailOutput
+}
+
+type M3AggregatorTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (M3AggregatorTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (i M3AggregatorTechEmailArgs) ToM3AggregatorTechEmailOutput() M3AggregatorTechEmailOutput {
+	return i.ToM3AggregatorTechEmailOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorTechEmailArgs) ToM3AggregatorTechEmailOutputWithContext(ctx context.Context) M3AggregatorTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorTechEmailOutput)
+}
+
+// M3AggregatorTechEmailArrayInput is an input type that accepts M3AggregatorTechEmailArray and M3AggregatorTechEmailArrayOutput values.
+// You can construct a concrete instance of `M3AggregatorTechEmailArrayInput` via:
+//
+//	M3AggregatorTechEmailArray{ M3AggregatorTechEmailArgs{...} }
+type M3AggregatorTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToM3AggregatorTechEmailArrayOutput() M3AggregatorTechEmailArrayOutput
+	ToM3AggregatorTechEmailArrayOutputWithContext(context.Context) M3AggregatorTechEmailArrayOutput
+}
+
+type M3AggregatorTechEmailArray []M3AggregatorTechEmailInput
+
+func (M3AggregatorTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (i M3AggregatorTechEmailArray) ToM3AggregatorTechEmailArrayOutput() M3AggregatorTechEmailArrayOutput {
+	return i.ToM3AggregatorTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i M3AggregatorTechEmailArray) ToM3AggregatorTechEmailArrayOutputWithContext(ctx context.Context) M3AggregatorTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorTechEmailArrayOutput)
+}
+
+type M3AggregatorTechEmailOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (o M3AggregatorTechEmailOutput) ToM3AggregatorTechEmailOutput() M3AggregatorTechEmailOutput {
+	return o
+}
+
+func (o M3AggregatorTechEmailOutput) ToM3AggregatorTechEmailOutputWithContext(ctx context.Context) M3AggregatorTechEmailOutput {
+	return o
+}
+
+func (o M3AggregatorTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v M3AggregatorTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type M3AggregatorTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (M3AggregatorTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (o M3AggregatorTechEmailArrayOutput) ToM3AggregatorTechEmailArrayOutput() M3AggregatorTechEmailArrayOutput {
+	return o
+}
+
+func (o M3AggregatorTechEmailArrayOutput) ToM3AggregatorTechEmailArrayOutputWithContext(ctx context.Context) M3AggregatorTechEmailArrayOutput {
+	return o
+}
+
+func (o M3AggregatorTechEmailArrayOutput) Index(i pulumi.IntInput) M3AggregatorTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3AggregatorTechEmail {
+		return vs[0].([]M3AggregatorTechEmail)[vs[1].(int)]
+	}).(M3AggregatorTechEmailOutput)
+}
+
 type M3DbComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -17174,6 +18840,7 @@ type M3DbComponentInput interface {
 
 type M3DbComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -17235,6 +18902,10 @@ func (o M3DbComponentOutput) ToM3DbComponentOutputWithContext(ctx context.Contex
 
 func (o M3DbComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o M3DbComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o M3DbComponentOutput) Host() pulumi.StringPtrOutput {
@@ -17387,6 +19058,7 @@ type M3DbM3dbUserConfig struct {
 	ProjectToForkFrom                       *string                          `pulumi:"projectToForkFrom"`
 	PublicAccess                            *M3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
 	Rules                                   *M3DbM3dbUserConfigRules         `pulumi:"rules"`
+	ServiceLog                              *bool                            `pulumi:"serviceLog"`
 	ServiceToForkFrom                       *string                          `pulumi:"serviceToForkFrom"`
 	StaticIps                               *bool                            `pulumi:"staticIps"`
 }
@@ -17420,6 +19092,7 @@ type M3DbM3dbUserConfigArgs struct {
 	ProjectToForkFrom                       pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
 	PublicAccess                            M3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	Rules                                   M3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
+	ServiceLog                              pulumi.BoolPtrInput                     `pulumi:"serviceLog"`
 	ServiceToForkFrom                       pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
 	StaticIps                               pulumi.BoolPtrInput                     `pulumi:"staticIps"`
 }
@@ -17561,6 +19234,10 @@ func (o M3DbM3dbUserConfigOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessP
 
 func (o M3DbM3dbUserConfigOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules { return v.Rules }).(M3DbM3dbUserConfigRulesPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o M3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -17730,6 +19407,15 @@ func (o M3DbM3dbUserConfigPtrOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 		}
 		return v.Rules
 	}).(M3DbM3dbUserConfigRulesPtrOutput)
+}
+
+func (o M3DbM3dbUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o M3DbM3dbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -19749,8 +21435,103 @@ func (o M3DbTagArrayOutput) Index(i pulumi.IntInput) M3DbTagOutput {
 	}).(M3DbTagOutput)
 }
 
+type M3DbTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// M3DbTechEmailInput is an input type that accepts M3DbTechEmailArgs and M3DbTechEmailOutput values.
+// You can construct a concrete instance of `M3DbTechEmailInput` via:
+//
+//	M3DbTechEmailArgs{...}
+type M3DbTechEmailInput interface {
+	pulumi.Input
+
+	ToM3DbTechEmailOutput() M3DbTechEmailOutput
+	ToM3DbTechEmailOutputWithContext(context.Context) M3DbTechEmailOutput
+}
+
+type M3DbTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (M3DbTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbTechEmail)(nil)).Elem()
+}
+
+func (i M3DbTechEmailArgs) ToM3DbTechEmailOutput() M3DbTechEmailOutput {
+	return i.ToM3DbTechEmailOutputWithContext(context.Background())
+}
+
+func (i M3DbTechEmailArgs) ToM3DbTechEmailOutputWithContext(ctx context.Context) M3DbTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbTechEmailOutput)
+}
+
+// M3DbTechEmailArrayInput is an input type that accepts M3DbTechEmailArray and M3DbTechEmailArrayOutput values.
+// You can construct a concrete instance of `M3DbTechEmailArrayInput` via:
+//
+//	M3DbTechEmailArray{ M3DbTechEmailArgs{...} }
+type M3DbTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToM3DbTechEmailArrayOutput() M3DbTechEmailArrayOutput
+	ToM3DbTechEmailArrayOutputWithContext(context.Context) M3DbTechEmailArrayOutput
+}
+
+type M3DbTechEmailArray []M3DbTechEmailInput
+
+func (M3DbTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbTechEmail)(nil)).Elem()
+}
+
+func (i M3DbTechEmailArray) ToM3DbTechEmailArrayOutput() M3DbTechEmailArrayOutput {
+	return i.ToM3DbTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i M3DbTechEmailArray) ToM3DbTechEmailArrayOutputWithContext(ctx context.Context) M3DbTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(M3DbTechEmailArrayOutput)
+}
+
+type M3DbTechEmailOutput struct{ *pulumi.OutputState }
+
+func (M3DbTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*M3DbTechEmail)(nil)).Elem()
+}
+
+func (o M3DbTechEmailOutput) ToM3DbTechEmailOutput() M3DbTechEmailOutput {
+	return o
+}
+
+func (o M3DbTechEmailOutput) ToM3DbTechEmailOutputWithContext(ctx context.Context) M3DbTechEmailOutput {
+	return o
+}
+
+func (o M3DbTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v M3DbTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type M3DbTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (M3DbTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]M3DbTechEmail)(nil)).Elem()
+}
+
+func (o M3DbTechEmailArrayOutput) ToM3DbTechEmailArrayOutput() M3DbTechEmailArrayOutput {
+	return o
+}
+
+func (o M3DbTechEmailArrayOutput) ToM3DbTechEmailArrayOutputWithContext(ctx context.Context) M3DbTechEmailArrayOutput {
+	return o
+}
+
+func (o M3DbTechEmailArrayOutput) Index(i pulumi.IntInput) M3DbTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3DbTechEmail {
+		return vs[0].([]M3DbTechEmail)[vs[1].(int)]
+	}).(M3DbTechEmailOutput)
+}
+
 type MySqlComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -19772,6 +21553,7 @@ type MySqlComponentInput interface {
 
 type MySqlComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -19833,6 +21615,10 @@ func (o MySqlComponentOutput) ToMySqlComponentOutputWithContext(ctx context.Cont
 
 func (o MySqlComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o MySqlComponentOutput) Host() pulumi.StringPtrOutput {
@@ -19986,6 +21772,7 @@ type MySqlMysqlUserConfig struct {
 	ProjectToForkFrom  *string                                `pulumi:"projectToForkFrom"`
 	PublicAccess       *MySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryTargetTime *string                                `pulumi:"recoveryTargetTime"`
+	ServiceLog         *bool                                  `pulumi:"serviceLog"`
 	ServiceToForkFrom  *string                                `pulumi:"serviceToForkFrom"`
 	StaticIps          *bool                                  `pulumi:"staticIps"`
 }
@@ -20020,6 +21807,7 @@ type MySqlMysqlUserConfigArgs struct {
 	ProjectToForkFrom  pulumi.StringPtrInput                         `pulumi:"projectToForkFrom"`
 	PublicAccess       MySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryTargetTime pulumi.StringPtrInput                         `pulumi:"recoveryTargetTime"`
+	ServiceLog         pulumi.BoolPtrInput                           `pulumi:"serviceLog"`
 	ServiceToForkFrom  pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
 	StaticIps          pulumi.BoolPtrInput                           `pulumi:"staticIps"`
 }
@@ -20168,6 +21956,10 @@ func (o MySqlMysqlUserConfigOutput) PublicAccess() MySqlMysqlUserConfigPublicAcc
 
 func (o MySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o MySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -20354,6 +22146,15 @@ func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutp
 		}
 		return v.RecoveryTargetTime
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -21969,8 +23770,103 @@ func (o MySqlTagArrayOutput) Index(i pulumi.IntInput) MySqlTagOutput {
 	}).(MySqlTagOutput)
 }
 
+type MySqlTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// MySqlTechEmailInput is an input type that accepts MySqlTechEmailArgs and MySqlTechEmailOutput values.
+// You can construct a concrete instance of `MySqlTechEmailInput` via:
+//
+//	MySqlTechEmailArgs{...}
+type MySqlTechEmailInput interface {
+	pulumi.Input
+
+	ToMySqlTechEmailOutput() MySqlTechEmailOutput
+	ToMySqlTechEmailOutputWithContext(context.Context) MySqlTechEmailOutput
+}
+
+type MySqlTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (MySqlTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySqlTechEmail)(nil)).Elem()
+}
+
+func (i MySqlTechEmailArgs) ToMySqlTechEmailOutput() MySqlTechEmailOutput {
+	return i.ToMySqlTechEmailOutputWithContext(context.Background())
+}
+
+func (i MySqlTechEmailArgs) ToMySqlTechEmailOutputWithContext(ctx context.Context) MySqlTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlTechEmailOutput)
+}
+
+// MySqlTechEmailArrayInput is an input type that accepts MySqlTechEmailArray and MySqlTechEmailArrayOutput values.
+// You can construct a concrete instance of `MySqlTechEmailArrayInput` via:
+//
+//	MySqlTechEmailArray{ MySqlTechEmailArgs{...} }
+type MySqlTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToMySqlTechEmailArrayOutput() MySqlTechEmailArrayOutput
+	ToMySqlTechEmailArrayOutputWithContext(context.Context) MySqlTechEmailArrayOutput
+}
+
+type MySqlTechEmailArray []MySqlTechEmailInput
+
+func (MySqlTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MySqlTechEmail)(nil)).Elem()
+}
+
+func (i MySqlTechEmailArray) ToMySqlTechEmailArrayOutput() MySqlTechEmailArrayOutput {
+	return i.ToMySqlTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i MySqlTechEmailArray) ToMySqlTechEmailArrayOutputWithContext(ctx context.Context) MySqlTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlTechEmailArrayOutput)
+}
+
+type MySqlTechEmailOutput struct{ *pulumi.OutputState }
+
+func (MySqlTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySqlTechEmail)(nil)).Elem()
+}
+
+func (o MySqlTechEmailOutput) ToMySqlTechEmailOutput() MySqlTechEmailOutput {
+	return o
+}
+
+func (o MySqlTechEmailOutput) ToMySqlTechEmailOutputWithContext(ctx context.Context) MySqlTechEmailOutput {
+	return o
+}
+
+func (o MySqlTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type MySqlTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (MySqlTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MySqlTechEmail)(nil)).Elem()
+}
+
+func (o MySqlTechEmailArrayOutput) ToMySqlTechEmailArrayOutput() MySqlTechEmailArrayOutput {
+	return o
+}
+
+func (o MySqlTechEmailArrayOutput) ToMySqlTechEmailArrayOutputWithContext(ctx context.Context) MySqlTechEmailArrayOutput {
+	return o
+}
+
+func (o MySqlTechEmailArrayOutput) Index(i pulumi.IntInput) MySqlTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MySqlTechEmail {
+		return vs[0].([]MySqlTechEmail)[vs[1].(int)]
+	}).(MySqlTechEmailOutput)
+}
+
 type OpenSearchComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -21992,6 +23888,7 @@ type OpenSearchComponentInput interface {
 
 type OpenSearchComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -22053,6 +23950,10 @@ func (o OpenSearchComponentOutput) ToOpenSearchComponentOutputWithContext(ctx co
 
 func (o OpenSearchComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o OpenSearchComponentOutput) Host() pulumi.StringPtrOutput {
@@ -22240,6 +24141,8 @@ type OpenSearchOpensearchUserConfig struct {
 	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
 	// OpenSearch SAML configuration.
 	Saml *OpenSearchOpensearchUserConfigSaml `pulumi:"saml"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 	// Use static public IP addresses.
@@ -22304,6 +24207,8 @@ type OpenSearchOpensearchUserConfigArgs struct {
 	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
 	// OpenSearch SAML configuration.
 	Saml OpenSearchOpensearchUserConfigSamlPtrInput `pulumi:"saml"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 	// Use static public IP addresses.
@@ -22505,6 +24410,11 @@ func (o OpenSearchOpensearchUserConfigOutput) RecoveryBasebackupName() pulumi.St
 // OpenSearch SAML configuration.
 func (o OpenSearchOpensearchUserConfigOutput) Saml() OpenSearchOpensearchUserConfigSamlPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigSaml { return v.Saml }).(OpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o OpenSearchOpensearchUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -22745,6 +24655,16 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) Saml() OpenSearchOpensearchUser
 		}
 		return v.Saml
 	}).(OpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o OpenSearchOpensearchUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Name of another service to fork from. This has effect only when a new service is being created.
@@ -23171,7 +25091,7 @@ type OpenSearchOpensearchUserConfigOpenid struct {
 	// The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
 	ConnectUrl string `pulumi:"connectUrl"`
 	// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
 	Header *string `pulumi:"header"`
 	// The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
@@ -23209,7 +25129,7 @@ type OpenSearchOpensearchUserConfigOpenidArgs struct {
 	// The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
 	ConnectUrl pulumi.StringInput `pulumi:"connectUrl"`
 	// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
 	Header pulumi.StringPtrInput `pulumi:"header"`
 	// The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
@@ -23321,8 +25241,8 @@ func (o OpenSearchOpensearchUserConfigOpenidOutput) ConnectUrl() pulumi.StringOu
 }
 
 // Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
-func (o OpenSearchOpensearchUserConfigOpenidOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o OpenSearchOpensearchUserConfigOpenidOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpenid) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
@@ -23425,7 +25345,7 @@ func (o OpenSearchOpensearchUserConfigOpenidPtrOutput) Enabled() pulumi.BoolPtrO
 		if v == nil {
 			return nil
 		}
-		return v.Enabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -23514,6 +25434,8 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 	ActionAutoCreateIndexEnabled *bool `pulumi:"actionAutoCreateIndexEnabled"`
 	// Require explicit index names when deleting.
 	ActionDestructiveRequiresName *bool `pulumi:"actionDestructiveRequiresName"`
+	// Opensearch Security Plugin Settings.
+	AuthFailureListeners *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners `pulumi:"authFailureListeners"`
 	// Controls the number of shards allowed in the cluster per data node.
 	ClusterMaxShardsPerNode *int `pulumi:"clusterMaxShardsPerNode"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
@@ -23524,6 +25446,8 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 	EmailSenderPassword *string `pulumi:"emailSenderPassword"`
 	// Sender username for Opensearch alerts.
 	EmailSenderUsername *string `pulumi:"emailSenderUsername"`
+	// Enable/Disable security audit. The default value is `false`.
+	EnableSecurityAudit *bool `pulumi:"enableSecurityAudit"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
 	HttpMaxContentLength *int `pulumi:"httpMaxContentLength"`
 	// The max size of allowed headers, in bytes.
@@ -23534,6 +25458,10 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 	IndicesFielddataCacheSize *int `pulumi:"indicesFielddataCacheSize"`
 	// Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
 	IndicesMemoryIndexBufferSize *int `pulumi:"indicesMemoryIndexBufferSize"`
+	// Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+	IndicesMemoryMaxIndexBufferSize *int `pulumi:"indicesMemoryMaxIndexBufferSize"`
+	// Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+	IndicesMemoryMinIndexBufferSize *int `pulumi:"indicesMemoryMinIndexBufferSize"`
 	// Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
 	IndicesQueriesCacheSize *int `pulumi:"indicesQueriesCacheSize"`
 	// Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
@@ -23542,6 +25470,18 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 	IndicesRecoveryMaxBytesPerSec *int `pulumi:"indicesRecoveryMaxBytesPerSec"`
 	// Number of file chunks sent in parallel for each recovery. Defaults to 2.
 	IndicesRecoveryMaxConcurrentFileChunks *int `pulumi:"indicesRecoveryMaxConcurrentFileChunks"`
+	// Specifies whether ISM is enabled or not. The default value is `true`.
+	IsmEnabled *bool `pulumi:"ismEnabled"`
+	// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+	IsmHistoryEnabled *bool `pulumi:"ismHistoryEnabled"`
+	// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+	IsmHistoryMaxAge *int `pulumi:"ismHistoryMaxAge"`
+	// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+	IsmHistoryMaxDocs *int `pulumi:"ismHistoryMaxDocs"`
+	// The time between rollover checks for the audit history index in hours. The default value is `8`.
+	IsmHistoryRolloverCheckPeriod *int `pulumi:"ismHistoryRolloverCheckPeriod"`
+	// How long audit history indices are kept in days. The default value is `30`.
+	IsmHistoryRolloverRetentionPeriod *int `pulumi:"ismHistoryRolloverRetentionPeriod"`
 	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
 	OverrideMainResponseVersion *bool `pulumi:"overrideMainResponseVersion"`
 	// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -23590,6 +25530,8 @@ type OpenSearchOpensearchUserConfigOpensearchArgs struct {
 	ActionAutoCreateIndexEnabled pulumi.BoolPtrInput `pulumi:"actionAutoCreateIndexEnabled"`
 	// Require explicit index names when deleting.
 	ActionDestructiveRequiresName pulumi.BoolPtrInput `pulumi:"actionDestructiveRequiresName"`
+	// Opensearch Security Plugin Settings.
+	AuthFailureListeners OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput `pulumi:"authFailureListeners"`
 	// Controls the number of shards allowed in the cluster per data node.
 	ClusterMaxShardsPerNode pulumi.IntPtrInput `pulumi:"clusterMaxShardsPerNode"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
@@ -23600,6 +25542,8 @@ type OpenSearchOpensearchUserConfigOpensearchArgs struct {
 	EmailSenderPassword pulumi.StringPtrInput `pulumi:"emailSenderPassword"`
 	// Sender username for Opensearch alerts.
 	EmailSenderUsername pulumi.StringPtrInput `pulumi:"emailSenderUsername"`
+	// Enable/Disable security audit. The default value is `false`.
+	EnableSecurityAudit pulumi.BoolPtrInput `pulumi:"enableSecurityAudit"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
 	HttpMaxContentLength pulumi.IntPtrInput `pulumi:"httpMaxContentLength"`
 	// The max size of allowed headers, in bytes.
@@ -23610,6 +25554,10 @@ type OpenSearchOpensearchUserConfigOpensearchArgs struct {
 	IndicesFielddataCacheSize pulumi.IntPtrInput `pulumi:"indicesFielddataCacheSize"`
 	// Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
 	IndicesMemoryIndexBufferSize pulumi.IntPtrInput `pulumi:"indicesMemoryIndexBufferSize"`
+	// Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+	IndicesMemoryMaxIndexBufferSize pulumi.IntPtrInput `pulumi:"indicesMemoryMaxIndexBufferSize"`
+	// Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+	IndicesMemoryMinIndexBufferSize pulumi.IntPtrInput `pulumi:"indicesMemoryMinIndexBufferSize"`
 	// Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
 	IndicesQueriesCacheSize pulumi.IntPtrInput `pulumi:"indicesQueriesCacheSize"`
 	// Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
@@ -23618,6 +25566,18 @@ type OpenSearchOpensearchUserConfigOpensearchArgs struct {
 	IndicesRecoveryMaxBytesPerSec pulumi.IntPtrInput `pulumi:"indicesRecoveryMaxBytesPerSec"`
 	// Number of file chunks sent in parallel for each recovery. Defaults to 2.
 	IndicesRecoveryMaxConcurrentFileChunks pulumi.IntPtrInput `pulumi:"indicesRecoveryMaxConcurrentFileChunks"`
+	// Specifies whether ISM is enabled or not. The default value is `true`.
+	IsmEnabled pulumi.BoolPtrInput `pulumi:"ismEnabled"`
+	// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+	IsmHistoryEnabled pulumi.BoolPtrInput `pulumi:"ismHistoryEnabled"`
+	// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+	IsmHistoryMaxAge pulumi.IntPtrInput `pulumi:"ismHistoryMaxAge"`
+	// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+	IsmHistoryMaxDocs pulumi.IntPtrInput `pulumi:"ismHistoryMaxDocs"`
+	// The time between rollover checks for the audit history index in hours. The default value is `8`.
+	IsmHistoryRolloverCheckPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverCheckPeriod"`
+	// How long audit history indices are kept in days. The default value is `30`.
+	IsmHistoryRolloverRetentionPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverRetentionPeriod"`
 	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
 	OverrideMainResponseVersion pulumi.BoolPtrInput `pulumi:"overrideMainResponseVersion"`
 	// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -23737,6 +25697,13 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) ActionDestructiveRequire
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.ActionDestructiveRequiresName }).(pulumi.BoolPtrOutput)
 }
 
+// Opensearch Security Plugin Settings.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) AuthFailureListeners() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		return v.AuthFailureListeners
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
 // Controls the number of shards allowed in the cluster per data node.
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.ClusterMaxShardsPerNode }).(pulumi.IntPtrOutput)
@@ -23764,6 +25731,11 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderUsername() pu
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderUsername }).(pulumi.StringPtrOutput)
 }
 
+// Enable/Disable security audit. The default value is `false`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) EnableSecurityAudit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableSecurityAudit }).(pulumi.BoolPtrOutput)
+}
+
 // Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.HttpMaxContentLength }).(pulumi.IntPtrOutput)
@@ -23789,6 +25761,16 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) IndicesMemoryIndexBuffer
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesMemoryIndexBufferSize }).(pulumi.IntPtrOutput)
 }
 
+// Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IndicesMemoryMaxIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesMemoryMaxIndexBufferSize }).(pulumi.IntPtrOutput)
+}
+
+// Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IndicesMemoryMinIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesMemoryMinIndexBufferSize }).(pulumi.IntPtrOutput)
+}
+
 // Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesQueriesCacheSize }).(pulumi.IntPtrOutput)
@@ -23807,6 +25789,36 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) IndicesRecoveryMaxBytesP
 // Number of file chunks sent in parallel for each recovery. Defaults to 2.
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) IndicesRecoveryMaxConcurrentFileChunks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesRecoveryMaxConcurrentFileChunks }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether ISM is enabled or not. The default value is `true`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.IsmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.IsmHistoryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryMaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryMaxAge }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryMaxDocs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryMaxDocs }).(pulumi.IntPtrOutput)
+}
+
+// The time between rollover checks for the audit history index in hours. The default value is `8`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryRolloverCheckPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryRolloverCheckPeriod }).(pulumi.IntPtrOutput)
+}
+
+// How long audit history indices are kept in days. The default value is `30`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryRolloverRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryRolloverRetentionPeriod }).(pulumi.IntPtrOutput)
 }
 
 // Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
@@ -23928,6 +25940,16 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) ActionDestructiveRequ
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Opensearch Security Plugin Settings.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) AuthFailureListeners() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		if v == nil {
+			return nil
+		}
+		return v.AuthFailureListeners
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
 // Controls the number of shards allowed in the cluster per data node.
 func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
@@ -23976,6 +25998,16 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderUsername()
 		}
 		return v.EmailSenderUsername
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable/Disable security audit. The default value is `false`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableSecurityAudit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecurityAudit
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -24028,6 +26060,26 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesMemoryIndexBuf
 	}).(pulumi.IntPtrOutput)
 }
 
+// Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesMemoryMaxIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesMemoryMaxIndexBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesMemoryMinIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesMemoryMinIndexBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
 // Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
 func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
@@ -24065,6 +26117,66 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesRecoveryMaxCon
 			return nil
 		}
 		return v.IndicesRecoveryMaxConcurrentFileChunks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether ISM is enabled or not. The default value is `true`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsmEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryMaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryMaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryMaxDocs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryMaxDocs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time between rollover checks for the audit history index in hours. The default value is `8`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryRolloverCheckPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryRolloverCheckPeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+// How long audit history indices are kept in days. The default value is `30`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryRolloverRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryRolloverRetentionPeriod
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -24216,6 +26328,675 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) ThreadPoolWriteSize()
 		}
 		return v.ThreadPoolWriteSize
 	}).(pulumi.IntPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners struct {
+	// .
+	InternalAuthenticationBackendLimiting *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting `pulumi:"internalAuthenticationBackendLimiting"`
+	// IP address rate limiting settings.
+	IpRateLimiting *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting `pulumi:"ipRateLimiting"`
+}
+
+// OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs and OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput` via:
+//
+//	OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{...}
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs struct {
+	// .
+	InternalAuthenticationBackendLimiting OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput `pulumi:"internalAuthenticationBackendLimiting"`
+	// IP address rate limiting settings.
+	IpRateLimiting OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput `pulumi:"ipRateLimiting"`
+}
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput)
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput).ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx)
+}
+
+// OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs, OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtr and OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput` via:
+//
+//	        OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput
+}
+
+type openSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs
+
+func OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtr(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput {
+	return (*openSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType)(v)
+}
+
+func (*openSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (i *openSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Background())
+}
+
+func (i *openSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Background())
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		return &v
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
+// .
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) InternalAuthenticationBackendLimiting() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		return v.InternalAuthenticationBackendLimiting
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+// IP address rate limiting settings.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) IpRateLimiting() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		return v.IpRateLimiting
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) Elem() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		if v != nil {
+			return *v
+		}
+		var ret OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
+		return ret
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput)
+}
+
+// .
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) InternalAuthenticationBackendLimiting() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		if v == nil {
+			return nil
+		}
+		return v.InternalAuthenticationBackendLimiting
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+// IP address rate limiting settings.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) IpRateLimiting() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		if v == nil {
+			return nil
+		}
+		return v.IpRateLimiting
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting struct {
+	// The number of login attempts allowed before login is blocked.
+	AllowedTries *int `pulumi:"allowedTries"`
+	// The internal backend. Enter `internal`.
+	AuthenticationBackend *string `pulumi:"authenticationBackend"`
+	// The duration of time that login remains blocked after a failed login.
+	BlockExpirySeconds *int `pulumi:"blockExpirySeconds"`
+	// The maximum number of blocked IP addresses.
+	MaxBlockedClients *int `pulumi:"maxBlockedClients"`
+	// The maximum number of tracked IP addresses that have failed login.
+	MaxTrackedClients *int `pulumi:"maxTrackedClients"`
+	// The window of time in which the value for `allowedTries` is enforced.
+	TimeWindowSeconds *int `pulumi:"timeWindowSeconds"`
+	// The type of rate limiting.
+	Type *string `pulumi:"type"`
+}
+
+// OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs and OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput` via:
+//
+//	OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{...}
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs struct {
+	// The number of login attempts allowed before login is blocked.
+	AllowedTries pulumi.IntPtrInput `pulumi:"allowedTries"`
+	// The internal backend. Enter `internal`.
+	AuthenticationBackend pulumi.StringPtrInput `pulumi:"authenticationBackend"`
+	// The duration of time that login remains blocked after a failed login.
+	BlockExpirySeconds pulumi.IntPtrInput `pulumi:"blockExpirySeconds"`
+	// The maximum number of blocked IP addresses.
+	MaxBlockedClients pulumi.IntPtrInput `pulumi:"maxBlockedClients"`
+	// The maximum number of tracked IP addresses that have failed login.
+	MaxTrackedClients pulumi.IntPtrInput `pulumi:"maxTrackedClients"`
+	// The window of time in which the value for `allowedTries` is enforced.
+	TimeWindowSeconds pulumi.IntPtrInput `pulumi:"timeWindowSeconds"`
+	// The type of rate limiting.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput)
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput).ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx)
+}
+
+// OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs, OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtr and OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput` via:
+//
+//	        OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput
+}
+
+type openSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs
+
+func OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtr(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput {
+	return (*openSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType)(v)
+}
+
+func (*openSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (i *openSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i *openSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Background())
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		return &v
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+// The number of login attempts allowed before login is blocked.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The internal backend. Enter `internal`.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) AuthenticationBackend() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		return v.AuthenticationBackend
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration of time that login remains blocked after a failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of blocked IP addresses.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of tracked IP addresses that have failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The window of time in which the value for `allowedTries` is enforced.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of rate limiting.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) Elem() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		if v != nil {
+			return *v
+		}
+		var ret OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting
+		return ret
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput)
+}
+
+// The number of login attempts allowed before login is blocked.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The internal backend. Enter `internal`.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) AuthenticationBackend() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationBackend
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration of time that login remains blocked after a failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of blocked IP addresses.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of tracked IP addresses that have failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The window of time in which the value for `allowedTries` is enforced.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of rate limiting.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting struct {
+	// The number of login attempts allowed before login is blocked.
+	AllowedTries *int `pulumi:"allowedTries"`
+	// The duration of time that login remains blocked after a failed login.
+	BlockExpirySeconds *int `pulumi:"blockExpirySeconds"`
+	// The maximum number of blocked IP addresses.
+	MaxBlockedClients *int `pulumi:"maxBlockedClients"`
+	// The maximum number of tracked IP addresses that have failed login.
+	MaxTrackedClients *int `pulumi:"maxTrackedClients"`
+	// The window of time in which the value for `allowedTries` is enforced.
+	TimeWindowSeconds *int `pulumi:"timeWindowSeconds"`
+	// The type of rate limiting.
+	Type *string `pulumi:"type"`
+}
+
+// OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs and OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput` via:
+//
+//	OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{...}
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs struct {
+	// The number of login attempts allowed before login is blocked.
+	AllowedTries pulumi.IntPtrInput `pulumi:"allowedTries"`
+	// The duration of time that login remains blocked after a failed login.
+	BlockExpirySeconds pulumi.IntPtrInput `pulumi:"blockExpirySeconds"`
+	// The maximum number of blocked IP addresses.
+	MaxBlockedClients pulumi.IntPtrInput `pulumi:"maxBlockedClients"`
+	// The maximum number of tracked IP addresses that have failed login.
+	MaxTrackedClients pulumi.IntPtrInput `pulumi:"maxTrackedClients"`
+	// The window of time in which the value for `allowedTries` is enforced.
+	TimeWindowSeconds pulumi.IntPtrInput `pulumi:"timeWindowSeconds"`
+	// The type of rate limiting.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput)
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput).ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx)
+}
+
+// OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs, OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtr and OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput values.
+// You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput` via:
+//
+//	        OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput interface {
+	pulumi.Input
+
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput
+	ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput
+}
+
+type openSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs
+
+func OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtr(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput {
+	return (*openSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType)(v)
+}
+
+func (*openSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (i *openSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return i.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i *openSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Background())
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		return &v
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+// The number of login attempts allowed before login is blocked.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration of time that login remains blocked after a failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of blocked IP addresses.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of tracked IP addresses that have failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The window of time in which the value for `allowedTries` is enforced.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of rate limiting.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) ToOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) Elem() OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		if v != nil {
+			return *v
+		}
+		var ret OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
+		return ret
+	}).(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput)
+}
+
+// The number of login attempts allowed before login is blocked.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration of time that login remains blocked after a failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of blocked IP addresses.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of tracked IP addresses that have failed login.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The window of time in which the value for `allowedTries` is enforced.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of rate limiting.
+func (o OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type OpenSearchOpensearchUserConfigOpensearchDashboards struct {
@@ -25381,6 +28162,103 @@ func (o OpenSearchTagArrayOutput) Index(i pulumi.IntInput) OpenSearchTagOutput {
 	}).(OpenSearchTagOutput)
 }
 
+type OpenSearchTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// OpenSearchTechEmailInput is an input type that accepts OpenSearchTechEmailArgs and OpenSearchTechEmailOutput values.
+// You can construct a concrete instance of `OpenSearchTechEmailInput` via:
+//
+//	OpenSearchTechEmailArgs{...}
+type OpenSearchTechEmailInput interface {
+	pulumi.Input
+
+	ToOpenSearchTechEmailOutput() OpenSearchTechEmailOutput
+	ToOpenSearchTechEmailOutputWithContext(context.Context) OpenSearchTechEmailOutput
+}
+
+type OpenSearchTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (OpenSearchTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i OpenSearchTechEmailArgs) ToOpenSearchTechEmailOutput() OpenSearchTechEmailOutput {
+	return i.ToOpenSearchTechEmailOutputWithContext(context.Background())
+}
+
+func (i OpenSearchTechEmailArgs) ToOpenSearchTechEmailOutputWithContext(ctx context.Context) OpenSearchTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchTechEmailOutput)
+}
+
+// OpenSearchTechEmailArrayInput is an input type that accepts OpenSearchTechEmailArray and OpenSearchTechEmailArrayOutput values.
+// You can construct a concrete instance of `OpenSearchTechEmailArrayInput` via:
+//
+//	OpenSearchTechEmailArray{ OpenSearchTechEmailArgs{...} }
+type OpenSearchTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToOpenSearchTechEmailArrayOutput() OpenSearchTechEmailArrayOutput
+	ToOpenSearchTechEmailArrayOutputWithContext(context.Context) OpenSearchTechEmailArrayOutput
+}
+
+type OpenSearchTechEmailArray []OpenSearchTechEmailInput
+
+func (OpenSearchTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i OpenSearchTechEmailArray) ToOpenSearchTechEmailArrayOutput() OpenSearchTechEmailArrayOutput {
+	return i.ToOpenSearchTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i OpenSearchTechEmailArray) ToOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) OpenSearchTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchTechEmailArrayOutput)
+}
+
+type OpenSearchTechEmailOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o OpenSearchTechEmailOutput) ToOpenSearchTechEmailOutput() OpenSearchTechEmailOutput {
+	return o
+}
+
+func (o OpenSearchTechEmailOutput) ToOpenSearchTechEmailOutputWithContext(ctx context.Context) OpenSearchTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o OpenSearchTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenSearchTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type OpenSearchTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenSearchTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o OpenSearchTechEmailArrayOutput) ToOpenSearchTechEmailArrayOutput() OpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o OpenSearchTechEmailArrayOutput) ToOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) OpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o OpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) OpenSearchTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenSearchTechEmail {
+		return vs[0].([]OpenSearchTechEmail)[vs[1].(int)]
+	}).(OpenSearchTechEmailOutput)
+}
+
 type OrganizationTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -25577,6 +28455,7 @@ func (o OrganizationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 
 type PgComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -25598,6 +28477,7 @@ type PgComponentInput interface {
 
 type PgComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -25659,6 +28539,10 @@ func (o PgComponentOutput) ToPgComponentOutputWithContext(ctx context.Context) P
 
 func (o PgComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o PgComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o PgComponentOutput) Host() pulumi.StringPtrOutput {
@@ -26019,6 +28903,8 @@ type PgPgUserConfig struct {
 	Migration *PgPgUserConfigMigration `pulumi:"migration"`
 	// postgresql.conf configuration values.
 	Pg *PgPgUserConfigPg `pulumi:"pg"`
+	// System-wide settings for the pg*qualstats extension.
+	PgQualstats *PgPgUserConfigPgQualstats `pulumi:"pgQualstats"`
 	// Use readReplica service integration instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
@@ -26033,7 +28919,7 @@ type PgPgUserConfig struct {
 	PgVersion *string `pulumi:"pgVersion"`
 	// PGBouncer connection pooling settings.
 	Pgbouncer *PgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
-	// PGLookout settings.
+	// System-wide settings for pglookout.
 	Pglookout *PgPgUserConfigPglookout `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -26045,6 +28931,8 @@ type PgPgUserConfig struct {
 	PublicAccess *PgPgUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect only when a new service is being created.
 	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
@@ -26053,7 +28941,7 @@ type PgPgUserConfig struct {
 	StaticIps *bool `pulumi:"staticIps"`
 	// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 	SynchronousReplication *string `pulumi:"synchronousReplication"`
-	// TimescaleDB extension configuration values.
+	// System-wide settings for the timescaledb extension.
 	Timescaledb *PgPgUserConfigTimescaledb `pulumi:"timescaledb"`
 	// Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant *string `pulumi:"variant"`
@@ -26097,6 +28985,8 @@ type PgPgUserConfigArgs struct {
 	Migration PgPgUserConfigMigrationPtrInput `pulumi:"migration"`
 	// postgresql.conf configuration values.
 	Pg PgPgUserConfigPgPtrInput `pulumi:"pg"`
+	// System-wide settings for the pg*qualstats extension.
+	PgQualstats PgPgUserConfigPgQualstatsPtrInput `pulumi:"pgQualstats"`
 	// Use readReplica service integration instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
@@ -26111,7 +29001,7 @@ type PgPgUserConfigArgs struct {
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
 	// PGBouncer connection pooling settings.
 	Pgbouncer PgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
-	// PGLookout settings.
+	// System-wide settings for pglookout.
 	Pglookout PgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
 	// Allow access to selected service ports from private networks.
 	PrivateAccess PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -26123,6 +29013,8 @@ type PgPgUserConfigArgs struct {
 	PublicAccess PgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Recovery target time when forking a service. This has effect only when a new service is being created.
 	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
@@ -26131,7 +29023,7 @@ type PgPgUserConfigArgs struct {
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 	// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
-	// TimescaleDB extension configuration values.
+	// System-wide settings for the timescaledb extension.
 	Timescaledb PgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
 	// Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant pulumi.StringPtrInput `pulumi:"variant"`
@@ -26273,6 +29165,11 @@ func (o PgPgUserConfigOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPg { return v.Pg }).(PgPgUserConfigPgPtrOutput)
 }
 
+// System-wide settings for the pg*qualstats extension.
+func (o PgPgUserConfigOutput) PgQualstats() PgPgUserConfigPgQualstatsPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPgQualstats { return v.PgQualstats }).(PgPgUserConfigPgQualstatsPtrOutput)
+}
+
 // Use readReplica service integration instead.
 //
 // Deprecated: Usage of this field is discouraged.
@@ -26302,7 +29199,7 @@ func (o PgPgUserConfigOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPgbouncer { return v.Pgbouncer }).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
-// PGLookout settings.
+// System-wide settings for pglookout.
 func (o PgPgUserConfigOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPglookout { return v.Pglookout }).(PgPgUserConfigPglookoutPtrOutput)
 }
@@ -26332,6 +29229,11 @@ func (o PgPgUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o PgPgUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 // Name of another service to fork from. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
@@ -26352,7 +29254,7 @@ func (o PgPgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
 }
 
-// TimescaleDB extension configuration values.
+// System-wide settings for the timescaledb extension.
 func (o PgPgUserConfigOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigTimescaledb { return v.Timescaledb }).(PgPgUserConfigTimescaledbPtrOutput)
 }
@@ -26503,6 +29405,16 @@ func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	}).(PgPgUserConfigPgPtrOutput)
 }
 
+// System-wide settings for the pg*qualstats extension.
+func (o PgPgUserConfigPtrOutput) PgQualstats() PgPgUserConfigPgQualstatsPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPgQualstats {
+		if v == nil {
+			return nil
+		}
+		return v.PgQualstats
+	}).(PgPgUserConfigPgQualstatsPtrOutput)
+}
+
 // Use readReplica service integration instead.
 //
 // Deprecated: Usage of this field is discouraged.
@@ -26557,7 +29469,7 @@ func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	}).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
-// PGLookout settings.
+// System-wide settings for pglookout.
 func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPglookout {
 		if v == nil {
@@ -26617,6 +29529,16 @@ func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o PgPgUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Name of another service to fork from. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
@@ -26657,7 +29579,7 @@ func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimescaleDB extension configuration values.
+// System-wide settings for the timescaledb extension.
 func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigTimescaledb {
 		if v == nil {
@@ -26799,7 +29721,7 @@ type PgPgUserConfigMigration struct {
 	Host   string  `pulumi:"host"`
 	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
 	IgnoreDbs *string `pulumi:"ignoreDbs"`
-	// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+	// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 	Method *string `pulumi:"method"`
 	// PostgreSQL admin user password
 	Password *string `pulumi:"password"`
@@ -26826,7 +29748,7 @@ type PgPgUserConfigMigrationArgs struct {
 	Host   pulumi.StringInput    `pulumi:"host"`
 	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
 	IgnoreDbs pulumi.StringPtrInput `pulumi:"ignoreDbs"`
-	// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+	// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// PostgreSQL admin user password
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -26927,7 +29849,7 @@ func (o PgPgUserConfigMigrationOutput) IgnoreDbs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.IgnoreDbs }).(pulumi.StringPtrOutput)
 }
 
-// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 func (o PgPgUserConfigMigrationOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigMigration) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
@@ -27003,7 +29925,7 @@ func (o PgPgUserConfigMigrationPtrOutput) IgnoreDbs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 func (o PgPgUserConfigMigrationPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigMigration) *string {
 		if v == nil {
@@ -28100,6 +31022,219 @@ func (o PgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type PgPgUserConfigPgQualstats struct {
+	// Enable / Disable pg_qualstats. The default value is `false`.
+	Enabled *bool `pulumi:"enabled"`
+	// Error estimation num threshold to save quals. The default value is `0`.
+	MinErrEstimateNum *int `pulumi:"minErrEstimateNum"`
+	// Error estimation ratio threshold to save quals. The default value is `0`.
+	MinErrEstimateRatio *int `pulumi:"minErrEstimateRatio"`
+	// Enable / Disable pgQualstats constants tracking. The default value is `true`.
+	TrackConstants *bool `pulumi:"trackConstants"`
+	// Track quals on system catalogs too. The default value is `false`.
+	TrackPgCatalog *bool `pulumi:"trackPgCatalog"`
+}
+
+// PgPgUserConfigPgQualstatsInput is an input type that accepts PgPgUserConfigPgQualstatsArgs and PgPgUserConfigPgQualstatsOutput values.
+// You can construct a concrete instance of `PgPgUserConfigPgQualstatsInput` via:
+//
+//	PgPgUserConfigPgQualstatsArgs{...}
+type PgPgUserConfigPgQualstatsInput interface {
+	pulumi.Input
+
+	ToPgPgUserConfigPgQualstatsOutput() PgPgUserConfigPgQualstatsOutput
+	ToPgPgUserConfigPgQualstatsOutputWithContext(context.Context) PgPgUserConfigPgQualstatsOutput
+}
+
+type PgPgUserConfigPgQualstatsArgs struct {
+	// Enable / Disable pg_qualstats. The default value is `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Error estimation num threshold to save quals. The default value is `0`.
+	MinErrEstimateNum pulumi.IntPtrInput `pulumi:"minErrEstimateNum"`
+	// Error estimation ratio threshold to save quals. The default value is `0`.
+	MinErrEstimateRatio pulumi.IntPtrInput `pulumi:"minErrEstimateRatio"`
+	// Enable / Disable pgQualstats constants tracking. The default value is `true`.
+	TrackConstants pulumi.BoolPtrInput `pulumi:"trackConstants"`
+	// Track quals on system catalogs too. The default value is `false`.
+	TrackPgCatalog pulumi.BoolPtrInput `pulumi:"trackPgCatalog"`
+}
+
+func (PgPgUserConfigPgQualstatsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (i PgPgUserConfigPgQualstatsArgs) ToPgPgUserConfigPgQualstatsOutput() PgPgUserConfigPgQualstatsOutput {
+	return i.ToPgPgUserConfigPgQualstatsOutputWithContext(context.Background())
+}
+
+func (i PgPgUserConfigPgQualstatsArgs) ToPgPgUserConfigPgQualstatsOutputWithContext(ctx context.Context) PgPgUserConfigPgQualstatsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigPgQualstatsOutput)
+}
+
+func (i PgPgUserConfigPgQualstatsArgs) ToPgPgUserConfigPgQualstatsPtrOutput() PgPgUserConfigPgQualstatsPtrOutput {
+	return i.ToPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (i PgPgUserConfigPgQualstatsArgs) ToPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) PgPgUserConfigPgQualstatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigPgQualstatsOutput).ToPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx)
+}
+
+// PgPgUserConfigPgQualstatsPtrInput is an input type that accepts PgPgUserConfigPgQualstatsArgs, PgPgUserConfigPgQualstatsPtr and PgPgUserConfigPgQualstatsPtrOutput values.
+// You can construct a concrete instance of `PgPgUserConfigPgQualstatsPtrInput` via:
+//
+//	        PgPgUserConfigPgQualstatsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PgPgUserConfigPgQualstatsPtrInput interface {
+	pulumi.Input
+
+	ToPgPgUserConfigPgQualstatsPtrOutput() PgPgUserConfigPgQualstatsPtrOutput
+	ToPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Context) PgPgUserConfigPgQualstatsPtrOutput
+}
+
+type pgPgUserConfigPgQualstatsPtrType PgPgUserConfigPgQualstatsArgs
+
+func PgPgUserConfigPgQualstatsPtr(v *PgPgUserConfigPgQualstatsArgs) PgPgUserConfigPgQualstatsPtrInput {
+	return (*pgPgUserConfigPgQualstatsPtrType)(v)
+}
+
+func (*pgPgUserConfigPgQualstatsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (i *pgPgUserConfigPgQualstatsPtrType) ToPgPgUserConfigPgQualstatsPtrOutput() PgPgUserConfigPgQualstatsPtrOutput {
+	return i.ToPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (i *pgPgUserConfigPgQualstatsPtrType) ToPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) PgPgUserConfigPgQualstatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgPgUserConfigPgQualstatsPtrOutput)
+}
+
+type PgPgUserConfigPgQualstatsOutput struct{ *pulumi.OutputState }
+
+func (PgPgUserConfigPgQualstatsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (o PgPgUserConfigPgQualstatsOutput) ToPgPgUserConfigPgQualstatsOutput() PgPgUserConfigPgQualstatsOutput {
+	return o
+}
+
+func (o PgPgUserConfigPgQualstatsOutput) ToPgPgUserConfigPgQualstatsOutputWithContext(ctx context.Context) PgPgUserConfigPgQualstatsOutput {
+	return o
+}
+
+func (o PgPgUserConfigPgQualstatsOutput) ToPgPgUserConfigPgQualstatsPtrOutput() PgPgUserConfigPgQualstatsPtrOutput {
+	return o.ToPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (o PgPgUserConfigPgQualstatsOutput) ToPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) PgPgUserConfigPgQualstatsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PgPgUserConfigPgQualstats) *PgPgUserConfigPgQualstats {
+		return &v
+	}).(PgPgUserConfigPgQualstatsPtrOutput)
+}
+
+// Enable / Disable pg_qualstats. The default value is `false`.
+func (o PgPgUserConfigPgQualstatsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgQualstats) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Error estimation num threshold to save quals. The default value is `0`.
+func (o PgPgUserConfigPgQualstatsOutput) MinErrEstimateNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgQualstats) *int { return v.MinErrEstimateNum }).(pulumi.IntPtrOutput)
+}
+
+// Error estimation ratio threshold to save quals. The default value is `0`.
+func (o PgPgUserConfigPgQualstatsOutput) MinErrEstimateRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgQualstats) *int { return v.MinErrEstimateRatio }).(pulumi.IntPtrOutput)
+}
+
+// Enable / Disable pgQualstats constants tracking. The default value is `true`.
+func (o PgPgUserConfigPgQualstatsOutput) TrackConstants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgQualstats) *bool { return v.TrackConstants }).(pulumi.BoolPtrOutput)
+}
+
+// Track quals on system catalogs too. The default value is `false`.
+func (o PgPgUserConfigPgQualstatsOutput) TrackPgCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPgQualstats) *bool { return v.TrackPgCatalog }).(pulumi.BoolPtrOutput)
+}
+
+type PgPgUserConfigPgQualstatsPtrOutput struct{ *pulumi.OutputState }
+
+func (PgPgUserConfigPgQualstatsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (o PgPgUserConfigPgQualstatsPtrOutput) ToPgPgUserConfigPgQualstatsPtrOutput() PgPgUserConfigPgQualstatsPtrOutput {
+	return o
+}
+
+func (o PgPgUserConfigPgQualstatsPtrOutput) ToPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) PgPgUserConfigPgQualstatsPtrOutput {
+	return o
+}
+
+func (o PgPgUserConfigPgQualstatsPtrOutput) Elem() PgPgUserConfigPgQualstatsOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgQualstats) PgPgUserConfigPgQualstats {
+		if v != nil {
+			return *v
+		}
+		var ret PgPgUserConfigPgQualstats
+		return ret
+	}).(PgPgUserConfigPgQualstatsOutput)
+}
+
+// Enable / Disable pg_qualstats. The default value is `false`.
+func (o PgPgUserConfigPgQualstatsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Error estimation num threshold to save quals. The default value is `0`.
+func (o PgPgUserConfigPgQualstatsPtrOutput) MinErrEstimateNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgQualstats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinErrEstimateNum
+	}).(pulumi.IntPtrOutput)
+}
+
+// Error estimation ratio threshold to save quals. The default value is `0`.
+func (o PgPgUserConfigPgQualstatsPtrOutput) MinErrEstimateRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgQualstats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinErrEstimateRatio
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable / Disable pgQualstats constants tracking. The default value is `true`.
+func (o PgPgUserConfigPgQualstatsPtrOutput) TrackConstants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackConstants
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Track quals on system catalogs too. The default value is `false`.
+func (o PgPgUserConfigPgQualstatsPtrOutput) TrackPgCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackPgCatalog
+	}).(pulumi.BoolPtrOutput)
+}
+
 type PgPgUserConfigPgbouncer struct {
 	// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
 	AutodbIdleTimeout *int `pulumi:"autodbIdleTimeout"`
@@ -29052,7 +32187,7 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 }
 
 type PgPgUserConfigTimescaledb struct {
-	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
 	MaxBackgroundWorkers *int `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -29068,7 +32203,7 @@ type PgPgUserConfigTimescaledbInput interface {
 }
 
 type PgPgUserConfigTimescaledbArgs struct {
-	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
 	MaxBackgroundWorkers pulumi.IntPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -29149,7 +32284,7 @@ func (o PgPgUserConfigTimescaledbOutput) ToPgPgUserConfigTimescaledbPtrOutputWit
 	}).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
-// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
 func (o PgPgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
 }
@@ -29178,7 +32313,7 @@ func (o PgPgUserConfigTimescaledbPtrOutput) Elem() PgPgUserConfigTimescaledbOutp
 	}).(PgPgUserConfigTimescaledbOutput)
 }
 
-// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
 func (o PgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigTimescaledb) *int {
 		if v == nil {
@@ -29400,6 +32535,103 @@ func (o PgTagArrayOutput) Index(i pulumi.IntInput) PgTagOutput {
 	}).(PgTagOutput)
 }
 
+type PgTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// PgTechEmailInput is an input type that accepts PgTechEmailArgs and PgTechEmailOutput values.
+// You can construct a concrete instance of `PgTechEmailInput` via:
+//
+//	PgTechEmailArgs{...}
+type PgTechEmailInput interface {
+	pulumi.Input
+
+	ToPgTechEmailOutput() PgTechEmailOutput
+	ToPgTechEmailOutputWithContext(context.Context) PgTechEmailOutput
+}
+
+type PgTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (PgTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgTechEmail)(nil)).Elem()
+}
+
+func (i PgTechEmailArgs) ToPgTechEmailOutput() PgTechEmailOutput {
+	return i.ToPgTechEmailOutputWithContext(context.Background())
+}
+
+func (i PgTechEmailArgs) ToPgTechEmailOutputWithContext(ctx context.Context) PgTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgTechEmailOutput)
+}
+
+// PgTechEmailArrayInput is an input type that accepts PgTechEmailArray and PgTechEmailArrayOutput values.
+// You can construct a concrete instance of `PgTechEmailArrayInput` via:
+//
+//	PgTechEmailArray{ PgTechEmailArgs{...} }
+type PgTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToPgTechEmailArrayOutput() PgTechEmailArrayOutput
+	ToPgTechEmailArrayOutputWithContext(context.Context) PgTechEmailArrayOutput
+}
+
+type PgTechEmailArray []PgTechEmailInput
+
+func (PgTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PgTechEmail)(nil)).Elem()
+}
+
+func (i PgTechEmailArray) ToPgTechEmailArrayOutput() PgTechEmailArrayOutput {
+	return i.ToPgTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i PgTechEmailArray) ToPgTechEmailArrayOutputWithContext(ctx context.Context) PgTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgTechEmailArrayOutput)
+}
+
+type PgTechEmailOutput struct{ *pulumi.OutputState }
+
+func (PgTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgTechEmail)(nil)).Elem()
+}
+
+func (o PgTechEmailOutput) ToPgTechEmailOutput() PgTechEmailOutput {
+	return o
+}
+
+func (o PgTechEmailOutput) ToPgTechEmailOutputWithContext(ctx context.Context) PgTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o PgTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v PgTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type PgTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (PgTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PgTechEmail)(nil)).Elem()
+}
+
+func (o PgTechEmailArrayOutput) ToPgTechEmailArrayOutput() PgTechEmailArrayOutput {
+	return o
+}
+
+func (o PgTechEmailArrayOutput) ToPgTechEmailArrayOutputWithContext(ctx context.Context) PgTechEmailArrayOutput {
+	return o
+}
+
+func (o PgTechEmailArrayOutput) Index(i pulumi.IntInput) PgTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PgTechEmail {
+		return vs[0].([]PgTechEmail)[vs[1].(int)]
+	}).(PgTechEmailOutput)
+}
+
 type ProjectTag struct {
 	// Project tag key
 	Key string `pulumi:"key"`
@@ -29508,6 +32740,7 @@ func (o ProjectTagArrayOutput) Index(i pulumi.IntInput) ProjectTagOutput {
 
 type RedisComponent struct {
 	Component                 *string `pulumi:"component"`
+	ConnectionUri             *string `pulumi:"connectionUri"`
 	Host                      *string `pulumi:"host"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      *int    `pulumi:"port"`
@@ -29529,6 +32762,7 @@ type RedisComponentInput interface {
 
 type RedisComponentArgs struct {
 	Component                 pulumi.StringPtrInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringPtrInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringPtrInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntPtrInput    `pulumi:"port"`
@@ -29590,6 +32824,10 @@ func (o RedisComponentOutput) ToRedisComponentOutputWithContext(ctx context.Cont
 
 func (o RedisComponentOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisComponent) *string { return v.Component }).(pulumi.StringPtrOutput)
+}
+
+func (o RedisComponentOutput) ConnectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisComponent) *string { return v.ConnectionUri }).(pulumi.StringPtrOutput)
 }
 
 func (o RedisComponentOutput) Host() pulumi.StringPtrOutput {
@@ -29747,6 +32985,7 @@ type RedisRedisUserConfig struct {
 	RedisPubsubClientOutputBufferLimit *int                                   `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           *bool                                  `pulumi:"redisSsl"`
 	RedisTimeout                       *int                                   `pulumi:"redisTimeout"`
+	ServiceLog                         *bool                                  `pulumi:"serviceLog"`
 	ServiceToForkFrom                  *string                                `pulumi:"serviceToForkFrom"`
 	StaticIps                          *bool                                  `pulumi:"staticIps"`
 }
@@ -29785,6 +33024,7 @@ type RedisRedisUserConfigArgs struct {
 	RedisPubsubClientOutputBufferLimit pulumi.IntPtrInput                            `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           pulumi.BoolPtrInput                           `pulumi:"redisSsl"`
 	RedisTimeout                       pulumi.IntPtrInput                            `pulumi:"redisTimeout"`
+	ServiceLog                         pulumi.BoolPtrInput                           `pulumi:"serviceLog"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
 	StaticIps                          pulumi.BoolPtrInput                           `pulumi:"staticIps"`
 }
@@ -29949,6 +33189,10 @@ func (o RedisRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
 
 func (o RedisRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o RedisRedisUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o RedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -30171,6 +33415,15 @@ func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.IntPtrOutput {
 		}
 		return v.RedisTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o RedisRedisUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLog
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -31171,6 +34424,100 @@ func (o RedisTagArrayOutput) Index(i pulumi.IntInput) RedisTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RedisTag {
 		return vs[0].([]RedisTag)[vs[1].(int)]
 	}).(RedisTagOutput)
+}
+
+type RedisTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// RedisTechEmailInput is an input type that accepts RedisTechEmailArgs and RedisTechEmailOutput values.
+// You can construct a concrete instance of `RedisTechEmailInput` via:
+//
+//	RedisTechEmailArgs{...}
+type RedisTechEmailInput interface {
+	pulumi.Input
+
+	ToRedisTechEmailOutput() RedisTechEmailOutput
+	ToRedisTechEmailOutputWithContext(context.Context) RedisTechEmailOutput
+}
+
+type RedisTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (RedisTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedisTechEmail)(nil)).Elem()
+}
+
+func (i RedisTechEmailArgs) ToRedisTechEmailOutput() RedisTechEmailOutput {
+	return i.ToRedisTechEmailOutputWithContext(context.Background())
+}
+
+func (i RedisTechEmailArgs) ToRedisTechEmailOutputWithContext(ctx context.Context) RedisTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedisTechEmailOutput)
+}
+
+// RedisTechEmailArrayInput is an input type that accepts RedisTechEmailArray and RedisTechEmailArrayOutput values.
+// You can construct a concrete instance of `RedisTechEmailArrayInput` via:
+//
+//	RedisTechEmailArray{ RedisTechEmailArgs{...} }
+type RedisTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToRedisTechEmailArrayOutput() RedisTechEmailArrayOutput
+	ToRedisTechEmailArrayOutputWithContext(context.Context) RedisTechEmailArrayOutput
+}
+
+type RedisTechEmailArray []RedisTechEmailInput
+
+func (RedisTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RedisTechEmail)(nil)).Elem()
+}
+
+func (i RedisTechEmailArray) ToRedisTechEmailArrayOutput() RedisTechEmailArrayOutput {
+	return i.ToRedisTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i RedisTechEmailArray) ToRedisTechEmailArrayOutputWithContext(ctx context.Context) RedisTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedisTechEmailArrayOutput)
+}
+
+type RedisTechEmailOutput struct{ *pulumi.OutputState }
+
+func (RedisTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedisTechEmail)(nil)).Elem()
+}
+
+func (o RedisTechEmailOutput) ToRedisTechEmailOutput() RedisTechEmailOutput {
+	return o
+}
+
+func (o RedisTechEmailOutput) ToRedisTechEmailOutputWithContext(ctx context.Context) RedisTechEmailOutput {
+	return o
+}
+
+func (o RedisTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v RedisTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type RedisTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (RedisTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RedisTechEmail)(nil)).Elem()
+}
+
+func (o RedisTechEmailArrayOutput) ToRedisTechEmailArrayOutput() RedisTechEmailArrayOutput {
+	return o
+}
+
+func (o RedisTechEmailArrayOutput) ToRedisTechEmailArrayOutputWithContext(ctx context.Context) RedisTechEmailArrayOutput {
+	return o
+}
+
+func (o RedisTechEmailArrayOutput) Index(i pulumi.IntInput) RedisTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RedisTechEmail {
+		return vs[0].([]RedisTechEmail)[vs[1].(int)]
+	}).(RedisTechEmailOutput)
 }
 
 type ServiceIntegrationClickhouseKafkaUserConfig struct {
@@ -33659,6 +37006,164 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceIntegrationEndpointExternalGoogleCloudBigquery struct {
+	// GCP project id.
+	ProjectId string `pulumi:"projectId"`
+	// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+	ServiceAccountCredentials string `pulumi:"serviceAccountCredentials"`
+}
+
+// ServiceIntegrationEndpointExternalGoogleCloudBigqueryInput is an input type that accepts ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs and ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalGoogleCloudBigqueryInput` via:
+//
+//	ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{...}
+type ServiceIntegrationEndpointExternalGoogleCloudBigqueryInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput
+	ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs struct {
+	// GCP project id.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+	ServiceAccountCredentials pulumi.StringInput `pulumi:"serviceAccountCredentials"`
+}
+
+func (ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return i.ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput)
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput).ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput is an input type that accepts ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs, ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtr and ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput` via:
+//
+//	        ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput
+	ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput
+}
+
+type serviceIntegrationEndpointExternalGoogleCloudBigqueryPtrType ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs
+
+func ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtr(v *ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput {
+	return (*serviceIntegrationEndpointExternalGoogleCloudBigqueryPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointExternalGoogleCloudBigqueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointExternalGoogleCloudBigqueryPtrType) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointExternalGoogleCloudBigqueryPtrType) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return o.ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegrationEndpointExternalGoogleCloudBigquery) *ServiceIntegrationEndpointExternalGoogleCloudBigquery {
+		return &v
+	}).(ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput)
+}
+
+// GCP project id.
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudBigquery) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ServiceAccountCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudBigquery) string {
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringOutput)
+}
+
+type ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput() ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput) ToServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput) Elem() ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudBigquery) ServiceIntegrationEndpointExternalGoogleCloudBigquery {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIntegrationEndpointExternalGoogleCloudBigquery
+		return ret
+	}).(ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput)
+}
+
+// GCP project id.
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudBigquery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+func (o ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudBigquery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
 	// Google Cloud Logging log id.
 	LogId string `pulumi:"logId"`
@@ -34337,6 +37842,238 @@ func (o ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput) Url
 			return nil
 		}
 		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalPostgresql struct {
+	// Hostname or IP address of the server.
+	Host string `pulumi:"host"`
+	// Password.
+	Password string `pulumi:"password"`
+	// Port number of the server.
+	Port int `pulumi:"port"`
+	// SSL Mode. The default value is `verify-full`.
+	SslMode *string `pulumi:"sslMode"`
+	// SSL Root Cert.
+	SslRootCert *string `pulumi:"sslRootCert"`
+	// User name.
+	Username string `pulumi:"username"`
+}
+
+// ServiceIntegrationEndpointExternalPostgresqlInput is an input type that accepts ServiceIntegrationEndpointExternalPostgresqlArgs and ServiceIntegrationEndpointExternalPostgresqlOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalPostgresqlInput` via:
+//
+//	ServiceIntegrationEndpointExternalPostgresqlArgs{...}
+type ServiceIntegrationEndpointExternalPostgresqlInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalPostgresqlOutput() ServiceIntegrationEndpointExternalPostgresqlOutput
+	ToServiceIntegrationEndpointExternalPostgresqlOutputWithContext(context.Context) ServiceIntegrationEndpointExternalPostgresqlOutput
+}
+
+type ServiceIntegrationEndpointExternalPostgresqlArgs struct {
+	// Hostname or IP address of the server.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Port number of the server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// SSL Mode. The default value is `verify-full`.
+	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
+	// SSL Root Cert.
+	SslRootCert pulumi.StringPtrInput `pulumi:"sslRootCert"`
+	// User name.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ServiceIntegrationEndpointExternalPostgresqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (i ServiceIntegrationEndpointExternalPostgresqlArgs) ToServiceIntegrationEndpointExternalPostgresqlOutput() ServiceIntegrationEndpointExternalPostgresqlOutput {
+	return i.ToServiceIntegrationEndpointExternalPostgresqlOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalPostgresqlArgs) ToServiceIntegrationEndpointExternalPostgresqlOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalPostgresqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalPostgresqlOutput)
+}
+
+func (i ServiceIntegrationEndpointExternalPostgresqlArgs) ToServiceIntegrationEndpointExternalPostgresqlPtrOutput() ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationEndpointExternalPostgresqlArgs) ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalPostgresqlOutput).ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(ctx)
+}
+
+// ServiceIntegrationEndpointExternalPostgresqlPtrInput is an input type that accepts ServiceIntegrationEndpointExternalPostgresqlArgs, ServiceIntegrationEndpointExternalPostgresqlPtr and ServiceIntegrationEndpointExternalPostgresqlPtrOutput values.
+// You can construct a concrete instance of `ServiceIntegrationEndpointExternalPostgresqlPtrInput` via:
+//
+//	        ServiceIntegrationEndpointExternalPostgresqlArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIntegrationEndpointExternalPostgresqlPtrInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationEndpointExternalPostgresqlPtrOutput() ServiceIntegrationEndpointExternalPostgresqlPtrOutput
+	ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(context.Context) ServiceIntegrationEndpointExternalPostgresqlPtrOutput
+}
+
+type serviceIntegrationEndpointExternalPostgresqlPtrType ServiceIntegrationEndpointExternalPostgresqlArgs
+
+func ServiceIntegrationEndpointExternalPostgresqlPtr(v *ServiceIntegrationEndpointExternalPostgresqlArgs) ServiceIntegrationEndpointExternalPostgresqlPtrInput {
+	return (*serviceIntegrationEndpointExternalPostgresqlPtrType)(v)
+}
+
+func (*serviceIntegrationEndpointExternalPostgresqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (i *serviceIntegrationEndpointExternalPostgresqlPtrType) ToServiceIntegrationEndpointExternalPostgresqlPtrOutput() ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return i.ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIntegrationEndpointExternalPostgresqlPtrType) ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointExternalPostgresqlPtrOutput)
+}
+
+type ServiceIntegrationEndpointExternalPostgresqlOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalPostgresqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) ToServiceIntegrationEndpointExternalPostgresqlOutput() ServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) ToServiceIntegrationEndpointExternalPostgresqlOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) ToServiceIntegrationEndpointExternalPostgresqlPtrOutput() ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return o.ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegrationEndpointExternalPostgresql) *ServiceIntegrationEndpointExternalPostgresql {
+		return &v
+	}).(ServiceIntegrationEndpointExternalPostgresqlPtrOutput)
+}
+
+// Hostname or IP address of the server.
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalPostgresql) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Password.
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalPostgresql) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port number of the server.
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalPostgresql) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// SSL Mode. The default value is `verify-full`.
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalPostgresql) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+// SSL Root Cert.
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) SslRootCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalPostgresql) *string { return v.SslRootCert }).(pulumi.StringPtrOutput)
+}
+
+// User name.
+func (o ServiceIntegrationEndpointExternalPostgresqlOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointExternalPostgresql) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ServiceIntegrationEndpointExternalPostgresqlPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationEndpointExternalPostgresqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) ToServiceIntegrationEndpointExternalPostgresqlPtrOutput() ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) ToServiceIntegrationEndpointExternalPostgresqlPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return o
+}
+
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) Elem() ServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) ServiceIntegrationEndpointExternalPostgresql {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIntegrationEndpointExternalPostgresql
+		return ret
+	}).(ServiceIntegrationEndpointExternalPostgresqlOutput)
+}
+
+// Hostname or IP address of the server.
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password.
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server.
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// SSL Mode. The default value is `verify-full`.
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL Root Cert.
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) SslRootCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslRootCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name.
+func (o ServiceIntegrationEndpointExternalPostgresqlPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalPostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37535,6 +41272,7 @@ type GetCassandaCassandraUserConfig struct {
 	PrivateAccess        *GetCassandaCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
 	ProjectToForkFrom    *string                                      `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetCassandaCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
+	ServiceLog           *bool                                        `pulumi:"serviceLog"`
 	ServiceToForkFrom    *string                                      `pulumi:"serviceToForkFrom"`
 	ServiceToJoinWith    *string                                      `pulumi:"serviceToJoinWith"`
 	StaticIps            *bool                                        `pulumi:"staticIps"`
@@ -37565,6 +41303,7 @@ type GetCassandaCassandraUserConfigArgs struct {
 	PrivateAccess        GetCassandaCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	ProjectToForkFrom    pulumi.StringPtrInput                               `pulumi:"projectToForkFrom"`
 	PublicAccess         GetCassandaCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	ServiceLog           pulumi.BoolPtrInput                                 `pulumi:"serviceLog"`
 	ServiceToForkFrom    pulumi.StringPtrInput                               `pulumi:"serviceToForkFrom"`
 	ServiceToJoinWith    pulumi.StringPtrInput                               `pulumi:"serviceToJoinWith"`
 	StaticIps            pulumi.BoolPtrInput                                 `pulumi:"staticIps"`
@@ -37674,6 +41413,10 @@ func (o GetCassandaCassandraUserConfigOutput) PublicAccess() GetCassandaCassandr
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *GetCassandaCassandraUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetCassandaCassandraUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetCassandaCassandraUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCassandaCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -38239,6 +41982,7 @@ func (o GetCassandaCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulumi
 
 type GetCassandaComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -38260,6 +42004,7 @@ type GetCassandaComponentInput interface {
 
 type GetCassandaComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -38321,6 +42066,10 @@ func (o GetCassandaComponentOutput) ToGetCassandaComponentOutputWithContext(ctx 
 
 func (o GetCassandaComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetCassandaComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetCassandaComponentOutput) Host() pulumi.StringOutput {
@@ -38567,6 +42316,100 @@ func (o GetCassandaTagArrayOutput) Index(i pulumi.IntInput) GetCassandaTagOutput
 	}).(GetCassandaTagOutput)
 }
 
+type GetCassandaTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetCassandaTechEmailInput is an input type that accepts GetCassandaTechEmailArgs and GetCassandaTechEmailOutput values.
+// You can construct a concrete instance of `GetCassandaTechEmailInput` via:
+//
+//	GetCassandaTechEmailArgs{...}
+type GetCassandaTechEmailInput interface {
+	pulumi.Input
+
+	ToGetCassandaTechEmailOutput() GetCassandaTechEmailOutput
+	ToGetCassandaTechEmailOutputWithContext(context.Context) GetCassandaTechEmailOutput
+}
+
+type GetCassandaTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetCassandaTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCassandaTechEmail)(nil)).Elem()
+}
+
+func (i GetCassandaTechEmailArgs) ToGetCassandaTechEmailOutput() GetCassandaTechEmailOutput {
+	return i.ToGetCassandaTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetCassandaTechEmailArgs) ToGetCassandaTechEmailOutputWithContext(ctx context.Context) GetCassandaTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCassandaTechEmailOutput)
+}
+
+// GetCassandaTechEmailArrayInput is an input type that accepts GetCassandaTechEmailArray and GetCassandaTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetCassandaTechEmailArrayInput` via:
+//
+//	GetCassandaTechEmailArray{ GetCassandaTechEmailArgs{...} }
+type GetCassandaTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetCassandaTechEmailArrayOutput() GetCassandaTechEmailArrayOutput
+	ToGetCassandaTechEmailArrayOutputWithContext(context.Context) GetCassandaTechEmailArrayOutput
+}
+
+type GetCassandaTechEmailArray []GetCassandaTechEmailInput
+
+func (GetCassandaTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCassandaTechEmail)(nil)).Elem()
+}
+
+func (i GetCassandaTechEmailArray) ToGetCassandaTechEmailArrayOutput() GetCassandaTechEmailArrayOutput {
+	return i.ToGetCassandaTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetCassandaTechEmailArray) ToGetCassandaTechEmailArrayOutputWithContext(ctx context.Context) GetCassandaTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCassandaTechEmailArrayOutput)
+}
+
+type GetCassandaTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetCassandaTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCassandaTechEmail)(nil)).Elem()
+}
+
+func (o GetCassandaTechEmailOutput) ToGetCassandaTechEmailOutput() GetCassandaTechEmailOutput {
+	return o
+}
+
+func (o GetCassandaTechEmailOutput) ToGetCassandaTechEmailOutputWithContext(ctx context.Context) GetCassandaTechEmailOutput {
+	return o
+}
+
+func (o GetCassandaTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetCassandaTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCassandaTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCassandaTechEmail)(nil)).Elem()
+}
+
+func (o GetCassandaTechEmailArrayOutput) ToGetCassandaTechEmailArrayOutput() GetCassandaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetCassandaTechEmailArrayOutput) ToGetCassandaTechEmailArrayOutputWithContext(ctx context.Context) GetCassandaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetCassandaTechEmailArrayOutput) Index(i pulumi.IntInput) GetCassandaTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCassandaTechEmail {
+		return vs[0].([]GetCassandaTechEmail)[vs[1].(int)]
+	}).(GetCassandaTechEmailOutput)
+}
+
 type GetCassandraCassandra struct {
 }
 
@@ -38669,6 +42512,7 @@ type GetCassandraCassandraUserConfig struct {
 	PrivateAccess        *GetCassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
 	ProjectToForkFrom    *string                                       `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetCassandraCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
+	ServiceLog           *bool                                         `pulumi:"serviceLog"`
 	ServiceToForkFrom    *string                                       `pulumi:"serviceToForkFrom"`
 	ServiceToJoinWith    *string                                       `pulumi:"serviceToJoinWith"`
 	StaticIps            *bool                                         `pulumi:"staticIps"`
@@ -38699,6 +42543,7 @@ type GetCassandraCassandraUserConfigArgs struct {
 	PrivateAccess        GetCassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
 	ProjectToForkFrom    pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
 	PublicAccess         GetCassandraCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	ServiceLog           pulumi.BoolPtrInput                                  `pulumi:"serviceLog"`
 	ServiceToForkFrom    pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
 	ServiceToJoinWith    pulumi.StringPtrInput                                `pulumi:"serviceToJoinWith"`
 	StaticIps            pulumi.BoolPtrInput                                  `pulumi:"staticIps"`
@@ -38808,6 +42653,10 @@ func (o GetCassandraCassandraUserConfigOutput) PublicAccess() GetCassandraCassan
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *GetCassandraCassandraUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetCassandraCassandraUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetCassandraCassandraUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCassandraCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -39373,6 +43222,7 @@ func (o GetCassandraCassandraUserConfigPublicAccessPtrOutput) Prometheus() pulum
 
 type GetCassandraComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -39394,6 +43244,7 @@ type GetCassandraComponentInput interface {
 
 type GetCassandraComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -39455,6 +43306,10 @@ func (o GetCassandraComponentOutput) ToGetCassandraComponentOutputWithContext(ct
 
 func (o GetCassandraComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandraComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetCassandraComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandraComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetCassandraComponentOutput) Host() pulumi.StringOutput {
@@ -39701,6 +43556,100 @@ func (o GetCassandraTagArrayOutput) Index(i pulumi.IntInput) GetCassandraTagOutp
 	}).(GetCassandraTagOutput)
 }
 
+type GetCassandraTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetCassandraTechEmailInput is an input type that accepts GetCassandraTechEmailArgs and GetCassandraTechEmailOutput values.
+// You can construct a concrete instance of `GetCassandraTechEmailInput` via:
+//
+//	GetCassandraTechEmailArgs{...}
+type GetCassandraTechEmailInput interface {
+	pulumi.Input
+
+	ToGetCassandraTechEmailOutput() GetCassandraTechEmailOutput
+	ToGetCassandraTechEmailOutputWithContext(context.Context) GetCassandraTechEmailOutput
+}
+
+type GetCassandraTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetCassandraTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCassandraTechEmail)(nil)).Elem()
+}
+
+func (i GetCassandraTechEmailArgs) ToGetCassandraTechEmailOutput() GetCassandraTechEmailOutput {
+	return i.ToGetCassandraTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetCassandraTechEmailArgs) ToGetCassandraTechEmailOutputWithContext(ctx context.Context) GetCassandraTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCassandraTechEmailOutput)
+}
+
+// GetCassandraTechEmailArrayInput is an input type that accepts GetCassandraTechEmailArray and GetCassandraTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetCassandraTechEmailArrayInput` via:
+//
+//	GetCassandraTechEmailArray{ GetCassandraTechEmailArgs{...} }
+type GetCassandraTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetCassandraTechEmailArrayOutput() GetCassandraTechEmailArrayOutput
+	ToGetCassandraTechEmailArrayOutputWithContext(context.Context) GetCassandraTechEmailArrayOutput
+}
+
+type GetCassandraTechEmailArray []GetCassandraTechEmailInput
+
+func (GetCassandraTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCassandraTechEmail)(nil)).Elem()
+}
+
+func (i GetCassandraTechEmailArray) ToGetCassandraTechEmailArrayOutput() GetCassandraTechEmailArrayOutput {
+	return i.ToGetCassandraTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetCassandraTechEmailArray) ToGetCassandraTechEmailArrayOutputWithContext(ctx context.Context) GetCassandraTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCassandraTechEmailArrayOutput)
+}
+
+type GetCassandraTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetCassandraTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCassandraTechEmail)(nil)).Elem()
+}
+
+func (o GetCassandraTechEmailOutput) ToGetCassandraTechEmailOutput() GetCassandraTechEmailOutput {
+	return o
+}
+
+func (o GetCassandraTechEmailOutput) ToGetCassandraTechEmailOutputWithContext(ctx context.Context) GetCassandraTechEmailOutput {
+	return o
+}
+
+func (o GetCassandraTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandraTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetCassandraTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCassandraTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCassandraTechEmail)(nil)).Elem()
+}
+
+func (o GetCassandraTechEmailArrayOutput) ToGetCassandraTechEmailArrayOutput() GetCassandraTechEmailArrayOutput {
+	return o
+}
+
+func (o GetCassandraTechEmailArrayOutput) ToGetCassandraTechEmailArrayOutputWithContext(ctx context.Context) GetCassandraTechEmailArrayOutput {
+	return o
+}
+
+func (o GetCassandraTechEmailArrayOutput) Index(i pulumi.IntInput) GetCassandraTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCassandraTechEmail {
+		return vs[0].([]GetCassandraTechEmail)[vs[1].(int)]
+	}).(GetCassandraTechEmailOutput)
+}
+
 type GetClickhouseClickhouse struct {
 }
 
@@ -39799,6 +43748,7 @@ type GetClickhouseClickhouseUserConfig struct {
 	PrivatelinkAccess *GetClickhouseClickhouseUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	ProjectToForkFrom *string                                             `pulumi:"projectToForkFrom"`
 	PublicAccess      *GetClickhouseClickhouseUserConfigPublicAccess      `pulumi:"publicAccess"`
+	ServiceLog        *bool                                               `pulumi:"serviceLog"`
 	ServiceToForkFrom *string                                             `pulumi:"serviceToForkFrom"`
 	StaticIps         *bool                                               `pulumi:"staticIps"`
 }
@@ -39824,6 +43774,7 @@ type GetClickhouseClickhouseUserConfigArgs struct {
 	PrivatelinkAccess GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	ProjectToForkFrom pulumi.StringPtrInput                                      `pulumi:"projectToForkFrom"`
 	PublicAccess      GetClickhouseClickhouseUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	ServiceLog        pulumi.BoolPtrInput                                        `pulumi:"serviceLog"`
 	ServiceToForkFrom pulumi.StringPtrInput                                      `pulumi:"serviceToForkFrom"`
 	StaticIps         pulumi.BoolPtrInput                                        `pulumi:"staticIps"`
 }
@@ -39918,6 +43869,10 @@ func (o GetClickhouseClickhouseUserConfigOutput) PublicAccess() GetClickhouseCli
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *GetClickhouseClickhouseUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetClickhouseClickhouseUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetClickhouseClickhouseUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetClickhouseClickhouseUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -40051,6 +44006,7 @@ func (o GetClickhouseClickhouseUserConfigIpFilterObjectArrayOutput) Index(i pulu
 type GetClickhouseClickhouseUserConfigPrivateAccess struct {
 	Clickhouse      *bool `pulumi:"clickhouse"`
 	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	ClickhouseMysql *bool `pulumi:"clickhouseMysql"`
 	Prometheus      *bool `pulumi:"prometheus"`
 }
 
@@ -40068,6 +44024,7 @@ type GetClickhouseClickhouseUserConfigPrivateAccessInput interface {
 type GetClickhouseClickhouseUserConfigPrivateAccessArgs struct {
 	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
 	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	ClickhouseMysql pulumi.BoolPtrInput `pulumi:"clickhouseMysql"`
 	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
 }
 
@@ -40156,6 +44113,10 @@ func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ClickhouseHttps() 
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.ClickhouseMysql }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
 }
@@ -40202,6 +44163,15 @@ func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ClickhouseHttps
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseMysql
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivateAccess) *bool {
 		if v == nil {
@@ -40214,6 +44184,7 @@ func (o GetClickhouseClickhouseUserConfigPrivateAccessPtrOutput) Prometheus() pu
 type GetClickhouseClickhouseUserConfigPrivatelinkAccess struct {
 	Clickhouse      *bool `pulumi:"clickhouse"`
 	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	ClickhouseMysql *bool `pulumi:"clickhouseMysql"`
 	Prometheus      *bool `pulumi:"prometheus"`
 }
 
@@ -40231,6 +44202,7 @@ type GetClickhouseClickhouseUserConfigPrivatelinkAccessInput interface {
 type GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs struct {
 	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
 	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	ClickhouseMysql pulumi.BoolPtrInput `pulumi:"clickhouseMysql"`
 	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
 }
 
@@ -40319,6 +44291,10 @@ func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ClickhouseHttp
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.ClickhouseMysql }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
 }
@@ -40365,6 +44341,15 @@ func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ClickhouseH
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseMysql
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPrivatelinkAccess) *bool {
 		if v == nil {
@@ -40377,6 +44362,7 @@ func (o GetClickhouseClickhouseUserConfigPrivatelinkAccessPtrOutput) Prometheus(
 type GetClickhouseClickhouseUserConfigPublicAccess struct {
 	Clickhouse      *bool `pulumi:"clickhouse"`
 	ClickhouseHttps *bool `pulumi:"clickhouseHttps"`
+	ClickhouseMysql *bool `pulumi:"clickhouseMysql"`
 	Prometheus      *bool `pulumi:"prometheus"`
 }
 
@@ -40394,6 +44380,7 @@ type GetClickhouseClickhouseUserConfigPublicAccessInput interface {
 type GetClickhouseClickhouseUserConfigPublicAccessArgs struct {
 	Clickhouse      pulumi.BoolPtrInput `pulumi:"clickhouse"`
 	ClickhouseHttps pulumi.BoolPtrInput `pulumi:"clickhouseHttps"`
+	ClickhouseMysql pulumi.BoolPtrInput `pulumi:"clickhouseMysql"`
 	Prometheus      pulumi.BoolPtrInput `pulumi:"prometheus"`
 }
 
@@ -40482,6 +44469,10 @@ func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ClickhouseHttps() p
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPublicAccess) *bool { return v.ClickhouseHttps }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPublicAccess) *bool { return v.ClickhouseMysql }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClickhouseClickhouseUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
 }
@@ -40528,6 +44519,15 @@ func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) ClickhouseHttps(
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) ClickhouseMysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClickhouseMysql
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClickhouseClickhouseUserConfigPublicAccess) *bool {
 		if v == nil {
@@ -40539,6 +44539,7 @@ func (o GetClickhouseClickhouseUserConfigPublicAccessPtrOutput) Prometheus() pul
 
 type GetClickhouseComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -40560,6 +44561,7 @@ type GetClickhouseComponentInput interface {
 
 type GetClickhouseComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -40621,6 +44623,10 @@ func (o GetClickhouseComponentOutput) ToGetClickhouseComponentOutputWithContext(
 
 func (o GetClickhouseComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClickhouseComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetClickhouseComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClickhouseComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetClickhouseComponentOutput) Host() pulumi.StringOutput {
@@ -40867,6 +44873,100 @@ func (o GetClickhouseTagArrayOutput) Index(i pulumi.IntInput) GetClickhouseTagOu
 	}).(GetClickhouseTagOutput)
 }
 
+type GetClickhouseTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetClickhouseTechEmailInput is an input type that accepts GetClickhouseTechEmailArgs and GetClickhouseTechEmailOutput values.
+// You can construct a concrete instance of `GetClickhouseTechEmailInput` via:
+//
+//	GetClickhouseTechEmailArgs{...}
+type GetClickhouseTechEmailInput interface {
+	pulumi.Input
+
+	ToGetClickhouseTechEmailOutput() GetClickhouseTechEmailOutput
+	ToGetClickhouseTechEmailOutputWithContext(context.Context) GetClickhouseTechEmailOutput
+}
+
+type GetClickhouseTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetClickhouseTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseTechEmail)(nil)).Elem()
+}
+
+func (i GetClickhouseTechEmailArgs) ToGetClickhouseTechEmailOutput() GetClickhouseTechEmailOutput {
+	return i.ToGetClickhouseTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseTechEmailArgs) ToGetClickhouseTechEmailOutputWithContext(ctx context.Context) GetClickhouseTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseTechEmailOutput)
+}
+
+// GetClickhouseTechEmailArrayInput is an input type that accepts GetClickhouseTechEmailArray and GetClickhouseTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetClickhouseTechEmailArrayInput` via:
+//
+//	GetClickhouseTechEmailArray{ GetClickhouseTechEmailArgs{...} }
+type GetClickhouseTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetClickhouseTechEmailArrayOutput() GetClickhouseTechEmailArrayOutput
+	ToGetClickhouseTechEmailArrayOutputWithContext(context.Context) GetClickhouseTechEmailArrayOutput
+}
+
+type GetClickhouseTechEmailArray []GetClickhouseTechEmailInput
+
+func (GetClickhouseTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClickhouseTechEmail)(nil)).Elem()
+}
+
+func (i GetClickhouseTechEmailArray) ToGetClickhouseTechEmailArrayOutput() GetClickhouseTechEmailArrayOutput {
+	return i.ToGetClickhouseTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetClickhouseTechEmailArray) ToGetClickhouseTechEmailArrayOutputWithContext(ctx context.Context) GetClickhouseTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClickhouseTechEmailArrayOutput)
+}
+
+type GetClickhouseTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClickhouseTechEmail)(nil)).Elem()
+}
+
+func (o GetClickhouseTechEmailOutput) ToGetClickhouseTechEmailOutput() GetClickhouseTechEmailOutput {
+	return o
+}
+
+func (o GetClickhouseTechEmailOutput) ToGetClickhouseTechEmailOutputWithContext(ctx context.Context) GetClickhouseTechEmailOutput {
+	return o
+}
+
+func (o GetClickhouseTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClickhouseTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetClickhouseTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClickhouseTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClickhouseTechEmail)(nil)).Elem()
+}
+
+func (o GetClickhouseTechEmailArrayOutput) ToGetClickhouseTechEmailArrayOutput() GetClickhouseTechEmailArrayOutput {
+	return o
+}
+
+func (o GetClickhouseTechEmailArrayOutput) ToGetClickhouseTechEmailArrayOutputWithContext(ctx context.Context) GetClickhouseTechEmailArrayOutput {
+	return o
+}
+
+func (o GetClickhouseTechEmailArrayOutput) Index(i pulumi.IntInput) GetClickhouseTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClickhouseTechEmail {
+		return vs[0].([]GetClickhouseTechEmail)[vs[1].(int)]
+	}).(GetClickhouseTechEmailOutput)
+}
+
 type GetFlinkApplicationVersionSink struct {
 	CreateTable   string  `pulumi:"createTable"`
 	IntegrationId *string `pulumi:"integrationId"`
@@ -41069,6 +45169,7 @@ func (o GetFlinkApplicationVersionSourceArrayOutput) Index(i pulumi.IntInput) Ge
 
 type GetFlinkComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -41090,6 +45191,7 @@ type GetFlinkComponentInput interface {
 
 type GetFlinkComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -41151,6 +45253,10 @@ func (o GetFlinkComponentOutput) ToGetFlinkComponentOutputWithContext(ctx contex
 
 func (o GetFlinkComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlinkComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetFlinkComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlinkComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetFlinkComponentOutput) Host() pulumi.StringOutput {
@@ -41292,13 +45398,16 @@ func (o GetFlinkFlinkArrayOutput) Index(i pulumi.IntInput) GetFlinkFlinkOutput {
 }
 
 type GetFlinkFlinkUserConfig struct {
-	FlinkVersion    *string                                 `pulumi:"flinkVersion"`
-	IpFilterObjects []GetFlinkFlinkUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	IpFilterStrings []string                                `pulumi:"ipFilterStrings"`
+	AdditionalBackupRegions *string                                 `pulumi:"additionalBackupRegions"`
+	FlinkVersion            *string                                 `pulumi:"flinkVersion"`
+	IpFilterObjects         []GetFlinkFlinkUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	IpFilterStrings         []string                                `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters         []string                                  `pulumi:"ipFilters"`
 	NumberOfTaskSlots *int                                      `pulumi:"numberOfTaskSlots"`
 	PrivatelinkAccess *GetFlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ServiceLog        *bool                                     `pulumi:"serviceLog"`
+	StaticIps         *bool                                     `pulumi:"staticIps"`
 }
 
 // GetFlinkFlinkUserConfigInput is an input type that accepts GetFlinkFlinkUserConfigArgs and GetFlinkFlinkUserConfigOutput values.
@@ -41313,13 +45422,16 @@ type GetFlinkFlinkUserConfigInput interface {
 }
 
 type GetFlinkFlinkUserConfigArgs struct {
-	FlinkVersion    pulumi.StringPtrInput                           `pulumi:"flinkVersion"`
-	IpFilterObjects GetFlinkFlinkUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	IpFilterStrings pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
+	AdditionalBackupRegions pulumi.StringPtrInput                           `pulumi:"additionalBackupRegions"`
+	FlinkVersion            pulumi.StringPtrInput                           `pulumi:"flinkVersion"`
+	IpFilterObjects         GetFlinkFlinkUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	IpFilterStrings         pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters         pulumi.StringArrayInput                          `pulumi:"ipFilters"`
 	NumberOfTaskSlots pulumi.IntPtrInput                               `pulumi:"numberOfTaskSlots"`
 	PrivatelinkAccess GetFlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ServiceLog        pulumi.BoolPtrInput                              `pulumi:"serviceLog"`
+	StaticIps         pulumi.BoolPtrInput                              `pulumi:"staticIps"`
 }
 
 func (GetFlinkFlinkUserConfigArgs) ElementType() reflect.Type {
@@ -41373,6 +45485,10 @@ func (o GetFlinkFlinkUserConfigOutput) ToGetFlinkFlinkUserConfigOutputWithContex
 	return o
 }
 
+func (o GetFlinkFlinkUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlinkFlinkUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
 func (o GetFlinkFlinkUserConfigOutput) FlinkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlinkFlinkUserConfig) *string { return v.FlinkVersion }).(pulumi.StringPtrOutput)
 }
@@ -41396,6 +45512,14 @@ func (o GetFlinkFlinkUserConfigOutput) NumberOfTaskSlots() pulumi.IntPtrOutput {
 
 func (o GetFlinkFlinkUserConfigOutput) PrivatelinkAccess() GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v GetFlinkFlinkUserConfig) *GetFlinkFlinkUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
+}
+
+func (o GetFlinkFlinkUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetFlinkFlinkUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetFlinkFlinkUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetFlinkFlinkUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
 
 type GetFlinkFlinkUserConfigArrayOutput struct{ *pulumi.OutputState }
@@ -41866,8 +45990,103 @@ func (o GetFlinkTagArrayOutput) Index(i pulumi.IntInput) GetFlinkTagOutput {
 	}).(GetFlinkTagOutput)
 }
 
+type GetFlinkTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetFlinkTechEmailInput is an input type that accepts GetFlinkTechEmailArgs and GetFlinkTechEmailOutput values.
+// You can construct a concrete instance of `GetFlinkTechEmailInput` via:
+//
+//	GetFlinkTechEmailArgs{...}
+type GetFlinkTechEmailInput interface {
+	pulumi.Input
+
+	ToGetFlinkTechEmailOutput() GetFlinkTechEmailOutput
+	ToGetFlinkTechEmailOutputWithContext(context.Context) GetFlinkTechEmailOutput
+}
+
+type GetFlinkTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetFlinkTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlinkTechEmail)(nil)).Elem()
+}
+
+func (i GetFlinkTechEmailArgs) ToGetFlinkTechEmailOutput() GetFlinkTechEmailOutput {
+	return i.ToGetFlinkTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetFlinkTechEmailArgs) ToGetFlinkTechEmailOutputWithContext(ctx context.Context) GetFlinkTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlinkTechEmailOutput)
+}
+
+// GetFlinkTechEmailArrayInput is an input type that accepts GetFlinkTechEmailArray and GetFlinkTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetFlinkTechEmailArrayInput` via:
+//
+//	GetFlinkTechEmailArray{ GetFlinkTechEmailArgs{...} }
+type GetFlinkTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetFlinkTechEmailArrayOutput() GetFlinkTechEmailArrayOutput
+	ToGetFlinkTechEmailArrayOutputWithContext(context.Context) GetFlinkTechEmailArrayOutput
+}
+
+type GetFlinkTechEmailArray []GetFlinkTechEmailInput
+
+func (GetFlinkTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlinkTechEmail)(nil)).Elem()
+}
+
+func (i GetFlinkTechEmailArray) ToGetFlinkTechEmailArrayOutput() GetFlinkTechEmailArrayOutput {
+	return i.ToGetFlinkTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlinkTechEmailArray) ToGetFlinkTechEmailArrayOutputWithContext(ctx context.Context) GetFlinkTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlinkTechEmailArrayOutput)
+}
+
+type GetFlinkTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetFlinkTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlinkTechEmail)(nil)).Elem()
+}
+
+func (o GetFlinkTechEmailOutput) ToGetFlinkTechEmailOutput() GetFlinkTechEmailOutput {
+	return o
+}
+
+func (o GetFlinkTechEmailOutput) ToGetFlinkTechEmailOutputWithContext(ctx context.Context) GetFlinkTechEmailOutput {
+	return o
+}
+
+func (o GetFlinkTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlinkTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetFlinkTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlinkTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlinkTechEmail)(nil)).Elem()
+}
+
+func (o GetFlinkTechEmailArrayOutput) ToGetFlinkTechEmailArrayOutput() GetFlinkTechEmailArrayOutput {
+	return o
+}
+
+func (o GetFlinkTechEmailArrayOutput) ToGetFlinkTechEmailArrayOutputWithContext(ctx context.Context) GetFlinkTechEmailArrayOutput {
+	return o
+}
+
+func (o GetFlinkTechEmailArrayOutput) Index(i pulumi.IntInput) GetFlinkTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlinkTechEmail {
+		return vs[0].([]GetFlinkTechEmail)[vs[1].(int)]
+	}).(GetFlinkTechEmailOutput)
+}
+
 type GetGrafanaComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -41889,6 +46108,7 @@ type GetGrafanaComponentInput interface {
 
 type GetGrafanaComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -41950,6 +46170,10 @@ func (o GetGrafanaComponentOutput) ToGetGrafanaComponentOutputWithContext(ctx co
 
 func (o GetGrafanaComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetGrafanaComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGrafanaComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetGrafanaComponentOutput) Host() pulumi.StringOutput {
@@ -42120,9 +46344,11 @@ type GetGrafanaGrafanaUserConfig struct {
 	ProjectToForkFrom             *string                                       `pulumi:"projectToForkFrom"`
 	PublicAccess                  *GetGrafanaGrafanaUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryBasebackupName        *string                                       `pulumi:"recoveryBasebackupName"`
+	ServiceLog                    *bool                                         `pulumi:"serviceLog"`
 	ServiceToForkFrom             *string                                       `pulumi:"serviceToForkFrom"`
 	SmtpServer                    *GetGrafanaGrafanaUserConfigSmtpServer        `pulumi:"smtpServer"`
 	StaticIps                     *bool                                         `pulumi:"staticIps"`
+	UnifiedAlertingEnabled        *bool                                         `pulumi:"unifiedAlertingEnabled"`
 	UserAutoAssignOrg             *bool                                         `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole         *string                                       `pulumi:"userAutoAssignOrgRole"`
 	ViewersCanEdit                *bool                                         `pulumi:"viewersCanEdit"`
@@ -42175,9 +46401,11 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	ProjectToForkFrom             pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
 	PublicAccess                  GetGrafanaGrafanaUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryBasebackupName        pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
+	ServiceLog                    pulumi.BoolPtrInput                                  `pulumi:"serviceLog"`
 	ServiceToForkFrom             pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
 	SmtpServer                    GetGrafanaGrafanaUserConfigSmtpServerPtrInput        `pulumi:"smtpServer"`
 	StaticIps                     pulumi.BoolPtrInput                                  `pulumi:"staticIps"`
+	UnifiedAlertingEnabled        pulumi.BoolPtrInput                                  `pulumi:"unifiedAlertingEnabled"`
 	UserAutoAssignOrg             pulumi.BoolPtrInput                                  `pulumi:"userAutoAssignOrg"`
 	UserAutoAssignOrgRole         pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrgRole"`
 	ViewersCanEdit                pulumi.BoolPtrInput                                  `pulumi:"viewersCanEdit"`
@@ -42379,6 +46607,10 @@ func (o GetGrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.Strin
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+func (o GetGrafanaGrafanaUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetGrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -42389,6 +46621,10 @@ func (o GetGrafanaGrafanaUserConfigOutput) SmtpServer() GetGrafanaGrafanaUserCon
 
 func (o GetGrafanaGrafanaUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigOutput) UnifiedAlertingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *bool { return v.UnifiedAlertingEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGrafanaGrafanaUserConfigOutput) UserAutoAssignOrg() pulumi.BoolPtrOutput {
@@ -44876,8 +49112,103 @@ func (o GetGrafanaTagArrayOutput) Index(i pulumi.IntInput) GetGrafanaTagOutput {
 	}).(GetGrafanaTagOutput)
 }
 
+type GetGrafanaTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetGrafanaTechEmailInput is an input type that accepts GetGrafanaTechEmailArgs and GetGrafanaTechEmailOutput values.
+// You can construct a concrete instance of `GetGrafanaTechEmailInput` via:
+//
+//	GetGrafanaTechEmailArgs{...}
+type GetGrafanaTechEmailInput interface {
+	pulumi.Input
+
+	ToGetGrafanaTechEmailOutput() GetGrafanaTechEmailOutput
+	ToGetGrafanaTechEmailOutputWithContext(context.Context) GetGrafanaTechEmailOutput
+}
+
+type GetGrafanaTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetGrafanaTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGrafanaTechEmail)(nil)).Elem()
+}
+
+func (i GetGrafanaTechEmailArgs) ToGetGrafanaTechEmailOutput() GetGrafanaTechEmailOutput {
+	return i.ToGetGrafanaTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetGrafanaTechEmailArgs) ToGetGrafanaTechEmailOutputWithContext(ctx context.Context) GetGrafanaTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGrafanaTechEmailOutput)
+}
+
+// GetGrafanaTechEmailArrayInput is an input type that accepts GetGrafanaTechEmailArray and GetGrafanaTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetGrafanaTechEmailArrayInput` via:
+//
+//	GetGrafanaTechEmailArray{ GetGrafanaTechEmailArgs{...} }
+type GetGrafanaTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetGrafanaTechEmailArrayOutput() GetGrafanaTechEmailArrayOutput
+	ToGetGrafanaTechEmailArrayOutputWithContext(context.Context) GetGrafanaTechEmailArrayOutput
+}
+
+type GetGrafanaTechEmailArray []GetGrafanaTechEmailInput
+
+func (GetGrafanaTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGrafanaTechEmail)(nil)).Elem()
+}
+
+func (i GetGrafanaTechEmailArray) ToGetGrafanaTechEmailArrayOutput() GetGrafanaTechEmailArrayOutput {
+	return i.ToGetGrafanaTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetGrafanaTechEmailArray) ToGetGrafanaTechEmailArrayOutputWithContext(ctx context.Context) GetGrafanaTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGrafanaTechEmailArrayOutput)
+}
+
+type GetGrafanaTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetGrafanaTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGrafanaTechEmail)(nil)).Elem()
+}
+
+func (o GetGrafanaTechEmailOutput) ToGetGrafanaTechEmailOutput() GetGrafanaTechEmailOutput {
+	return o
+}
+
+func (o GetGrafanaTechEmailOutput) ToGetGrafanaTechEmailOutputWithContext(ctx context.Context) GetGrafanaTechEmailOutput {
+	return o
+}
+
+func (o GetGrafanaTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGrafanaTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetGrafanaTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGrafanaTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGrafanaTechEmail)(nil)).Elem()
+}
+
+func (o GetGrafanaTechEmailArrayOutput) ToGetGrafanaTechEmailArrayOutput() GetGrafanaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetGrafanaTechEmailArrayOutput) ToGetGrafanaTechEmailArrayOutputWithContext(ctx context.Context) GetGrafanaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetGrafanaTechEmailArrayOutput) Index(i pulumi.IntInput) GetGrafanaTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGrafanaTechEmail {
+		return vs[0].([]GetGrafanaTechEmail)[vs[1].(int)]
+	}).(GetGrafanaTechEmailOutput)
+}
+
 type GetInfluxDbComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -44899,6 +49230,7 @@ type GetInfluxDbComponentInput interface {
 
 type GetInfluxDbComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -44960,6 +49292,10 @@ func (o GetInfluxDbComponentOutput) ToGetInfluxDbComponentOutputWithContext(ctx 
 
 func (o GetInfluxDbComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfluxDbComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetInfluxDbComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfluxDbComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetInfluxDbComponentOutput) Host() pulumi.StringOutput {
@@ -45113,6 +49449,7 @@ type GetInfluxDbInfluxdbUserConfig struct {
 	ProjectToForkFrom      *string                                         `pulumi:"projectToForkFrom"`
 	PublicAccess           *GetInfluxDbInfluxdbUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryBasebackupName *string                                         `pulumi:"recoveryBasebackupName"`
+	ServiceLog             *bool                                           `pulumi:"serviceLog"`
 	ServiceToForkFrom      *string                                         `pulumi:"serviceToForkFrom"`
 	StaticIps              *bool                                           `pulumi:"staticIps"`
 }
@@ -45141,6 +49478,7 @@ type GetInfluxDbInfluxdbUserConfigArgs struct {
 	ProjectToForkFrom      pulumi.StringPtrInput                                  `pulumi:"projectToForkFrom"`
 	PublicAccess           GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryBasebackupName pulumi.StringPtrInput                                  `pulumi:"recoveryBasebackupName"`
+	ServiceLog             pulumi.BoolPtrInput                                    `pulumi:"serviceLog"`
 	ServiceToForkFrom      pulumi.StringPtrInput                                  `pulumi:"serviceToForkFrom"`
 	StaticIps              pulumi.BoolPtrInput                                    `pulumi:"staticIps"`
 }
@@ -45247,6 +49585,10 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) PublicAccess() GetInfluxDbInfluxdbU
 
 func (o GetInfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -46199,8 +50541,103 @@ func (o GetInfluxDbTagArrayOutput) Index(i pulumi.IntInput) GetInfluxDbTagOutput
 	}).(GetInfluxDbTagOutput)
 }
 
+type GetInfluxDbTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetInfluxDbTechEmailInput is an input type that accepts GetInfluxDbTechEmailArgs and GetInfluxDbTechEmailOutput values.
+// You can construct a concrete instance of `GetInfluxDbTechEmailInput` via:
+//
+//	GetInfluxDbTechEmailArgs{...}
+type GetInfluxDbTechEmailInput interface {
+	pulumi.Input
+
+	ToGetInfluxDbTechEmailOutput() GetInfluxDbTechEmailOutput
+	ToGetInfluxDbTechEmailOutputWithContext(context.Context) GetInfluxDbTechEmailOutput
+}
+
+type GetInfluxDbTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetInfluxDbTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfluxDbTechEmail)(nil)).Elem()
+}
+
+func (i GetInfluxDbTechEmailArgs) ToGetInfluxDbTechEmailOutput() GetInfluxDbTechEmailOutput {
+	return i.ToGetInfluxDbTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetInfluxDbTechEmailArgs) ToGetInfluxDbTechEmailOutputWithContext(ctx context.Context) GetInfluxDbTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfluxDbTechEmailOutput)
+}
+
+// GetInfluxDbTechEmailArrayInput is an input type that accepts GetInfluxDbTechEmailArray and GetInfluxDbTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetInfluxDbTechEmailArrayInput` via:
+//
+//	GetInfluxDbTechEmailArray{ GetInfluxDbTechEmailArgs{...} }
+type GetInfluxDbTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetInfluxDbTechEmailArrayOutput() GetInfluxDbTechEmailArrayOutput
+	ToGetInfluxDbTechEmailArrayOutputWithContext(context.Context) GetInfluxDbTechEmailArrayOutput
+}
+
+type GetInfluxDbTechEmailArray []GetInfluxDbTechEmailInput
+
+func (GetInfluxDbTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfluxDbTechEmail)(nil)).Elem()
+}
+
+func (i GetInfluxDbTechEmailArray) ToGetInfluxDbTechEmailArrayOutput() GetInfluxDbTechEmailArrayOutput {
+	return i.ToGetInfluxDbTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfluxDbTechEmailArray) ToGetInfluxDbTechEmailArrayOutputWithContext(ctx context.Context) GetInfluxDbTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfluxDbTechEmailArrayOutput)
+}
+
+type GetInfluxDbTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetInfluxDbTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfluxDbTechEmail)(nil)).Elem()
+}
+
+func (o GetInfluxDbTechEmailOutput) ToGetInfluxDbTechEmailOutput() GetInfluxDbTechEmailOutput {
+	return o
+}
+
+func (o GetInfluxDbTechEmailOutput) ToGetInfluxDbTechEmailOutputWithContext(ctx context.Context) GetInfluxDbTechEmailOutput {
+	return o
+}
+
+func (o GetInfluxDbTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfluxDbTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetInfluxDbTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfluxDbTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfluxDbTechEmail)(nil)).Elem()
+}
+
+func (o GetInfluxDbTechEmailArrayOutput) ToGetInfluxDbTechEmailArrayOutput() GetInfluxDbTechEmailArrayOutput {
+	return o
+}
+
+func (o GetInfluxDbTechEmailArrayOutput) ToGetInfluxDbTechEmailArrayOutputWithContext(ctx context.Context) GetInfluxDbTechEmailArrayOutput {
+	return o
+}
+
+func (o GetInfluxDbTechEmailArrayOutput) Index(i pulumi.IntInput) GetInfluxDbTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfluxDbTechEmail {
+		return vs[0].([]GetInfluxDbTechEmail)[vs[1].(int)]
+	}).(GetInfluxDbTechEmailOutput)
+}
+
 type GetKafkaComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -46222,6 +50659,7 @@ type GetKafkaComponentInput interface {
 
 type GetKafkaComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -46285,6 +50723,10 @@ func (o GetKafkaComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaComponent) string { return v.Component }).(pulumi.StringOutput)
 }
 
+func (o GetKafkaComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
 func (o GetKafkaComponentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaComponent) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -46331,6 +50773,7 @@ func (o GetKafkaComponentArrayOutput) Index(i pulumi.IntInput) GetKafkaComponent
 
 type GetKafkaConnectComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -46352,6 +50795,7 @@ type GetKafkaConnectComponentInput interface {
 
 type GetKafkaConnectComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -46413,6 +50857,10 @@ func (o GetKafkaConnectComponentOutput) ToGetKafkaConnectComponentOutputWithCont
 
 func (o GetKafkaConnectComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaConnectComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetKafkaConnectComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaConnectComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetKafkaConnectComponentOutput) Host() pulumi.StringOutput {
@@ -46557,6 +51005,7 @@ type GetKafkaConnectKafkaConnectUserConfig struct {
 	PrivateAccess     *GetKafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
 	PrivatelinkAccess *GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	PublicAccess      *GetKafkaConnectKafkaConnectUserConfigPublicAccess      `pulumi:"publicAccess"`
+	ServiceLog        *bool                                                   `pulumi:"serviceLog"`
 	StaticIps         *bool                                                   `pulumi:"staticIps"`
 }
 
@@ -46581,6 +51030,7 @@ type GetKafkaConnectKafkaConnectUserConfigArgs struct {
 	PrivateAccess     GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
 	PrivatelinkAccess GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	PublicAccess      GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	ServiceLog        pulumi.BoolPtrInput                                            `pulumi:"serviceLog"`
 	StaticIps         pulumi.BoolPtrInput                                            `pulumi:"staticIps"`
 }
 
@@ -46676,6 +51126,10 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) PublicAccess() GetKafkaConn
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *GetKafkaConnectKafkaConnectUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
@@ -47823,6 +52277,100 @@ func (o GetKafkaConnectTagArrayOutput) Index(i pulumi.IntInput) GetKafkaConnectT
 	}).(GetKafkaConnectTagOutput)
 }
 
+type GetKafkaConnectTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetKafkaConnectTechEmailInput is an input type that accepts GetKafkaConnectTechEmailArgs and GetKafkaConnectTechEmailOutput values.
+// You can construct a concrete instance of `GetKafkaConnectTechEmailInput` via:
+//
+//	GetKafkaConnectTechEmailArgs{...}
+type GetKafkaConnectTechEmailInput interface {
+	pulumi.Input
+
+	ToGetKafkaConnectTechEmailOutput() GetKafkaConnectTechEmailOutput
+	ToGetKafkaConnectTechEmailOutputWithContext(context.Context) GetKafkaConnectTechEmailOutput
+}
+
+type GetKafkaConnectTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetKafkaConnectTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaConnectTechEmailArgs) ToGetKafkaConnectTechEmailOutput() GetKafkaConnectTechEmailOutput {
+	return i.ToGetKafkaConnectTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetKafkaConnectTechEmailArgs) ToGetKafkaConnectTechEmailOutputWithContext(ctx context.Context) GetKafkaConnectTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaConnectTechEmailOutput)
+}
+
+// GetKafkaConnectTechEmailArrayInput is an input type that accepts GetKafkaConnectTechEmailArray and GetKafkaConnectTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetKafkaConnectTechEmailArrayInput` via:
+//
+//	GetKafkaConnectTechEmailArray{ GetKafkaConnectTechEmailArgs{...} }
+type GetKafkaConnectTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaConnectTechEmailArrayOutput() GetKafkaConnectTechEmailArrayOutput
+	ToGetKafkaConnectTechEmailArrayOutputWithContext(context.Context) GetKafkaConnectTechEmailArrayOutput
+}
+
+type GetKafkaConnectTechEmailArray []GetKafkaConnectTechEmailInput
+
+func (GetKafkaConnectTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaConnectTechEmailArray) ToGetKafkaConnectTechEmailArrayOutput() GetKafkaConnectTechEmailArrayOutput {
+	return i.ToGetKafkaConnectTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaConnectTechEmailArray) ToGetKafkaConnectTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaConnectTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaConnectTechEmailArrayOutput)
+}
+
+type GetKafkaConnectTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaConnectTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaConnectTechEmailOutput) ToGetKafkaConnectTechEmailOutput() GetKafkaConnectTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaConnectTechEmailOutput) ToGetKafkaConnectTechEmailOutputWithContext(ctx context.Context) GetKafkaConnectTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaConnectTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaConnectTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetKafkaConnectTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaConnectTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaConnectTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaConnectTechEmailArrayOutput) ToGetKafkaConnectTechEmailArrayOutput() GetKafkaConnectTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaConnectTechEmailArrayOutput) ToGetKafkaConnectTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaConnectTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaConnectTechEmailArrayOutput) Index(i pulumi.IntInput) GetKafkaConnectTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaConnectTechEmail {
+		return vs[0].([]GetKafkaConnectTechEmail)[vs[1].(int)]
+	}).(GetKafkaConnectTechEmailOutput)
+}
+
 type GetKafkaConnectorTask struct {
 	Connector string `pulumi:"connector"`
 	Task      int    `pulumi:"task"`
@@ -48043,6 +52591,7 @@ func (o GetKafkaKafkaArrayOutput) Index(i pulumi.IntInput) GetKafkaKafkaOutput {
 
 type GetKafkaKafkaUserConfig struct {
 	AdditionalBackupRegions *string                                 `pulumi:"additionalBackupRegions"`
+	AivenKafkaTopicMessages *bool                                   `pulumi:"aivenKafkaTopicMessages"`
 	CustomDomain            *string                                 `pulumi:"customDomain"`
 	IpFilterObjects         []GetKafkaKafkaUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	IpFilterStrings         []string                                `pulumi:"ipFilterStrings"`
@@ -48061,7 +52610,9 @@ type GetKafkaKafkaUserConfig struct {
 	PublicAccess               *GetKafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *bool                                              `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       *GetKafkaKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
+	ServiceLog                 *bool                                              `pulumi:"serviceLog"`
 	StaticIps                  *bool                                              `pulumi:"staticIps"`
+	TieredStorage              *GetKafkaKafkaUserConfigTieredStorage              `pulumi:"tieredStorage"`
 }
 
 // GetKafkaKafkaUserConfigInput is an input type that accepts GetKafkaKafkaUserConfigArgs and GetKafkaKafkaUserConfigOutput values.
@@ -48077,6 +52628,7 @@ type GetKafkaKafkaUserConfigInput interface {
 
 type GetKafkaKafkaUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput                           `pulumi:"additionalBackupRegions"`
+	AivenKafkaTopicMessages pulumi.BoolPtrInput                             `pulumi:"aivenKafkaTopicMessages"`
 	CustomDomain            pulumi.StringPtrInput                           `pulumi:"customDomain"`
 	IpFilterObjects         GetKafkaKafkaUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	IpFilterStrings         pulumi.StringArrayInput                         `pulumi:"ipFilterStrings"`
@@ -48095,7 +52647,9 @@ type GetKafkaKafkaUserConfigArgs struct {
 	PublicAccess               GetKafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.BoolPtrInput                                       `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
+	ServiceLog                 pulumi.BoolPtrInput                                       `pulumi:"serviceLog"`
 	StaticIps                  pulumi.BoolPtrInput                                       `pulumi:"staticIps"`
+	TieredStorage              GetKafkaKafkaUserConfigTieredStoragePtrInput              `pulumi:"tieredStorage"`
 }
 
 func (GetKafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -48151,6 +52705,10 @@ func (o GetKafkaKafkaUserConfigOutput) ToGetKafkaKafkaUserConfigOutputWithContex
 
 func (o GetKafkaKafkaUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigOutput) AivenKafkaTopicMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *bool { return v.AivenKafkaTopicMessages }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaKafkaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
@@ -48228,8 +52786,16 @@ func (o GetKafkaKafkaUserConfigOutput) SchemaRegistryConfig() GetKafkaKafkaUserC
 	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigOutput) TieredStorage() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigTieredStorage { return v.TieredStorage }).(GetKafkaKafkaUserConfigTieredStoragePtrOutput)
 }
 
 type GetKafkaKafkaUserConfigArrayOutput struct{ *pulumi.OutputState }
@@ -48369,6 +52935,8 @@ type GetKafkaKafkaUserConfigKafka struct {
 	LogFlushIntervalMs                                   *int     `pulumi:"logFlushIntervalMs"`
 	LogIndexIntervalBytes                                *int     `pulumi:"logIndexIntervalBytes"`
 	LogIndexSizeMaxBytes                                 *int     `pulumi:"logIndexSizeMaxBytes"`
+	LogLocalRetentionBytes                               *int     `pulumi:"logLocalRetentionBytes"`
+	LogLocalRetentionMs                                  *int     `pulumi:"logLocalRetentionMs"`
 	LogMessageDownconversionEnable                       *bool    `pulumi:"logMessageDownconversionEnable"`
 	LogMessageTimestampDifferenceMaxMs                   *int     `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	LogMessageTimestampType                              *string  `pulumi:"logMessageTimestampType"`
@@ -48389,7 +52957,12 @@ type GetKafkaKafkaUserConfigKafka struct {
 	ProducerPurgatoryPurgeIntervalRequests               *int     `pulumi:"producerPurgatoryPurgeIntervalRequests"`
 	ReplicaFetchMaxBytes                                 *int     `pulumi:"replicaFetchMaxBytes"`
 	ReplicaFetchResponseMaxBytes                         *int     `pulumi:"replicaFetchResponseMaxBytes"`
+	SaslOauthbearerExpectedAudience                      *string  `pulumi:"saslOauthbearerExpectedAudience"`
+	SaslOauthbearerExpectedIssuer                        *string  `pulumi:"saslOauthbearerExpectedIssuer"`
+	SaslOauthbearerJwksEndpointUrl                       *string  `pulumi:"saslOauthbearerJwksEndpointUrl"`
+	SaslOauthbearerSubClaimName                          *string  `pulumi:"saslOauthbearerSubClaimName"`
 	SocketRequestMaxBytes                                *int     `pulumi:"socketRequestMaxBytes"`
+	TransactionPartitionVerificationEnable               *bool    `pulumi:"transactionPartitionVerificationEnable"`
 	TransactionRemoveExpiredTransactionCleanupIntervalMs *int     `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
 	TransactionStateLogSegmentBytes                      *int     `pulumi:"transactionStateLogSegmentBytes"`
 }
@@ -48422,6 +52995,8 @@ type GetKafkaKafkaUserConfigKafkaArgs struct {
 	LogFlushIntervalMs                                   pulumi.IntPtrInput     `pulumi:"logFlushIntervalMs"`
 	LogIndexIntervalBytes                                pulumi.IntPtrInput     `pulumi:"logIndexIntervalBytes"`
 	LogIndexSizeMaxBytes                                 pulumi.IntPtrInput     `pulumi:"logIndexSizeMaxBytes"`
+	LogLocalRetentionBytes                               pulumi.IntPtrInput     `pulumi:"logLocalRetentionBytes"`
+	LogLocalRetentionMs                                  pulumi.IntPtrInput     `pulumi:"logLocalRetentionMs"`
 	LogMessageDownconversionEnable                       pulumi.BoolPtrInput    `pulumi:"logMessageDownconversionEnable"`
 	LogMessageTimestampDifferenceMaxMs                   pulumi.IntPtrInput     `pulumi:"logMessageTimestampDifferenceMaxMs"`
 	LogMessageTimestampType                              pulumi.StringPtrInput  `pulumi:"logMessageTimestampType"`
@@ -48442,7 +53017,12 @@ type GetKafkaKafkaUserConfigKafkaArgs struct {
 	ProducerPurgatoryPurgeIntervalRequests               pulumi.IntPtrInput     `pulumi:"producerPurgatoryPurgeIntervalRequests"`
 	ReplicaFetchMaxBytes                                 pulumi.IntPtrInput     `pulumi:"replicaFetchMaxBytes"`
 	ReplicaFetchResponseMaxBytes                         pulumi.IntPtrInput     `pulumi:"replicaFetchResponseMaxBytes"`
+	SaslOauthbearerExpectedAudience                      pulumi.StringPtrInput  `pulumi:"saslOauthbearerExpectedAudience"`
+	SaslOauthbearerExpectedIssuer                        pulumi.StringPtrInput  `pulumi:"saslOauthbearerExpectedIssuer"`
+	SaslOauthbearerJwksEndpointUrl                       pulumi.StringPtrInput  `pulumi:"saslOauthbearerJwksEndpointUrl"`
+	SaslOauthbearerSubClaimName                          pulumi.StringPtrInput  `pulumi:"saslOauthbearerSubClaimName"`
 	SocketRequestMaxBytes                                pulumi.IntPtrInput     `pulumi:"socketRequestMaxBytes"`
+	TransactionPartitionVerificationEnable               pulumi.BoolPtrInput    `pulumi:"transactionPartitionVerificationEnable"`
 	TransactionRemoveExpiredTransactionCleanupIntervalMs pulumi.IntPtrInput     `pulumi:"transactionRemoveExpiredTransactionCleanupIntervalMs"`
 	TransactionStateLogSegmentBytes                      pulumi.IntPtrInput     `pulumi:"transactionStateLogSegmentBytes"`
 }
@@ -48588,6 +53168,14 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) LogIndexSizeMaxBytes() pulumi.IntPtr
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.LogIndexSizeMaxBytes }).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogLocalRetentionBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.LogLocalRetentionBytes }).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaOutput) LogLocalRetentionMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.LogLocalRetentionMs }).(pulumi.IntPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigKafkaOutput) LogMessageDownconversionEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *bool { return v.LogMessageDownconversionEnable }).(pulumi.BoolPtrOutput)
 }
@@ -48668,8 +53256,28 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) ReplicaFetchResponseMaxBytes() pulum
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.ReplicaFetchResponseMaxBytes }).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaOutput) SaslOauthbearerExpectedAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerExpectedAudience }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaOutput) SaslOauthbearerExpectedIssuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerExpectedIssuer }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaOutput) SaslOauthbearerJwksEndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerJwksEndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaOutput) SaslOauthbearerSubClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *string { return v.SaslOauthbearerSubClaimName }).(pulumi.StringPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigKafkaOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.SocketRequestMaxBytes }).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaOutput) TransactionPartitionVerificationEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *bool { return v.TransactionPartitionVerificationEnable }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaKafkaUserConfigKafkaOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.IntPtrOutput {
@@ -48847,6 +53455,24 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogIndexSizeMaxBytes() pulumi.Int
 			return nil
 		}
 		return v.LogIndexSizeMaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogLocalRetentionBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogLocalRetentionBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) LogLocalRetentionMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogLocalRetentionMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -49030,6 +53656,42 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) ReplicaFetchResponseMaxBytes() pu
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerExpectedAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerExpectedAudience
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerExpectedIssuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerExpectedIssuer
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerJwksEndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerJwksEndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SaslOauthbearerSubClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SaslOauthbearerSubClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
 		if v == nil {
@@ -49037,6 +53699,15 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) SocketRequestMaxBytes() pulumi.In
 		}
 		return v.SocketRequestMaxBytes
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) TransactionPartitionVerificationEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionPartitionVerificationEnable
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaKafkaUserConfigKafkaPtrOutput) TransactionRemoveExpiredTransactionCleanupIntervalMs() pulumi.IntPtrOutput {
@@ -49569,6 +54240,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfig struct {
 	ConsumerEnableAutoCommit  *bool   `pulumi:"consumerEnableAutoCommit"`
 	ConsumerRequestMaxBytes   *int    `pulumi:"consumerRequestMaxBytes"`
 	ConsumerRequestTimeoutMs  *int    `pulumi:"consumerRequestTimeoutMs"`
+	NameStrategyValidation    *bool   `pulumi:"nameStrategyValidation"`
 	ProducerAcks              *string `pulumi:"producerAcks"`
 	ProducerCompressionType   *string `pulumi:"producerCompressionType"`
 	ProducerLingerMs          *int    `pulumi:"producerLingerMs"`
@@ -49591,6 +54263,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfigArgs struct {
 	ConsumerEnableAutoCommit  pulumi.BoolPtrInput   `pulumi:"consumerEnableAutoCommit"`
 	ConsumerRequestMaxBytes   pulumi.IntPtrInput    `pulumi:"consumerRequestMaxBytes"`
 	ConsumerRequestTimeoutMs  pulumi.IntPtrInput    `pulumi:"consumerRequestTimeoutMs"`
+	NameStrategyValidation    pulumi.BoolPtrInput   `pulumi:"nameStrategyValidation"`
 	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
 	ProducerCompressionType   pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	ProducerLingerMs          pulumi.IntPtrInput    `pulumi:"producerLingerMs"`
@@ -49687,6 +54360,10 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs()
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *bool { return v.NameStrategyValidation }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ProducerAcks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.ProducerAcks }).(pulumi.StringPtrOutput)
 }
@@ -49756,6 +54433,15 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutM
 		}
 		return v.ConsumerRequestTimeoutMs
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NameStrategyValidation
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ProducerAcks() pulumi.StringPtrOutput {
@@ -50545,8 +55231,292 @@ func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetKafkaKafkaUserConfigTieredStorage struct {
+	Enabled    *bool                                           `pulumi:"enabled"`
+	LocalCache *GetKafkaKafkaUserConfigTieredStorageLocalCache `pulumi:"localCache"`
+}
+
+// GetKafkaKafkaUserConfigTieredStorageInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageArgs and GetKafkaKafkaUserConfigTieredStorageOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStorageInput` via:
+//
+//	GetKafkaKafkaUserConfigTieredStorageArgs{...}
+type GetKafkaKafkaUserConfigTieredStorageInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStorageOutput() GetKafkaKafkaUserConfigTieredStorageOutput
+	ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStorageOutput
+}
+
+type GetKafkaKafkaUserConfigTieredStorageArgs struct {
+	Enabled    pulumi.BoolPtrInput                                    `pulumi:"enabled"`
+	LocalCache GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput `pulumi:"localCache"`
+}
+
+func (GetKafkaKafkaUserConfigTieredStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStorageOutput() GetKafkaKafkaUserConfigTieredStorageOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageOutput)
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageOutput).ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigTieredStoragePtrInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageArgs, GetKafkaKafkaUserConfigTieredStoragePtr and GetKafkaKafkaUserConfigTieredStoragePtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStoragePtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigTieredStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigTieredStoragePtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput
+	ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput
+}
+
+type getKafkaKafkaUserConfigTieredStoragePtrType GetKafkaKafkaUserConfigTieredStorageArgs
+
+func GetKafkaKafkaUserConfigTieredStoragePtr(v *GetKafkaKafkaUserConfigTieredStorageArgs) GetKafkaKafkaUserConfigTieredStoragePtrInput {
+	return (*getKafkaKafkaUserConfigTieredStoragePtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigTieredStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigTieredStoragePtrType) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigTieredStoragePtrType) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStoragePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStorageOutput() GetKafkaKafkaUserConfigTieredStorageOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigTieredStorage) *GetKafkaKafkaUserConfigTieredStorage {
+		return &v
+	}).(GetKafkaKafkaUserConfigTieredStoragePtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigTieredStorage) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) LocalCache() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigTieredStorage) *GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		return v.LocalCache
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) Elem() GetKafkaKafkaUserConfigTieredStorageOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorage) GetKafkaKafkaUserConfigTieredStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigTieredStorage
+		return ret
+	}).(GetKafkaKafkaUserConfigTieredStorageOutput)
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) LocalCache() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorage) *GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		if v == nil {
+			return nil
+		}
+		return v.LocalCache
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCache struct {
+	Size *int `pulumi:"size"`
+}
+
+// GetKafkaKafkaUserConfigTieredStorageLocalCacheInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs and GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStorageLocalCacheInput` via:
+//
+//	GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{...}
+type GetKafkaKafkaUserConfigTieredStorageLocalCacheInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutput() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs struct {
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutput() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput)
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput).ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs, GetKafkaKafkaUserConfigTieredStorageLocalCachePtr and GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput
+}
+
+type getKafkaKafkaUserConfigTieredStorageLocalCachePtrType GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs
+
+func GetKafkaKafkaUserConfigTieredStorageLocalCachePtr(v *GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput {
+	return (*getKafkaKafkaUserConfigTieredStorageLocalCachePtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigTieredStorageLocalCachePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigTieredStorageLocalCachePtrType) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigTieredStorageLocalCachePtrType) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutput() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigTieredStorageLocalCache) *GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		return &v
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigTieredStorageLocalCache) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) Elem() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorageLocalCache) GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigTieredStorageLocalCache
+		return ret
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput)
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorageLocalCache) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetKafkaMirrorMakerComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -50568,6 +55538,7 @@ type GetKafkaMirrorMakerComponentInput interface {
 
 type GetKafkaMirrorMakerComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -50629,6 +55600,10 @@ func (o GetKafkaMirrorMakerComponentOutput) ToGetKafkaMirrorMakerComponentOutput
 
 func (o GetKafkaMirrorMakerComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetKafkaMirrorMakerComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetKafkaMirrorMakerComponentOutput) Host() pulumi.StringOutput {
@@ -50770,6 +55745,7 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters        []string                                                       `pulumi:"ipFilters"`
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+	ServiceLog       *bool                                                          `pulumi:"serviceLog"`
 	StaticIps        *bool                                                          `pulumi:"staticIps"`
 }
 
@@ -50791,6 +55767,7 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
 	IpFilters        pulumi.StringArrayInput                                               `pulumi:"ipFilters"`
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
+	ServiceLog       pulumi.BoolPtrInput                                                   `pulumi:"serviceLog"`
 	StaticIps        pulumi.BoolPtrInput                                                   `pulumi:"staticIps"`
 }
 
@@ -50868,6 +55845,10 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() 
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
@@ -51480,6 +56461,100 @@ func (o GetKafkaMirrorMakerTagArrayOutput) Index(i pulumi.IntInput) GetKafkaMirr
 	}).(GetKafkaMirrorMakerTagOutput)
 }
 
+type GetKafkaMirrorMakerTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetKafkaMirrorMakerTechEmailInput is an input type that accepts GetKafkaMirrorMakerTechEmailArgs and GetKafkaMirrorMakerTechEmailOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerTechEmailInput` via:
+//
+//	GetKafkaMirrorMakerTechEmailArgs{...}
+type GetKafkaMirrorMakerTechEmailInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerTechEmailOutput() GetKafkaMirrorMakerTechEmailOutput
+	ToGetKafkaMirrorMakerTechEmailOutputWithContext(context.Context) GetKafkaMirrorMakerTechEmailOutput
+}
+
+type GetKafkaMirrorMakerTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetKafkaMirrorMakerTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerTechEmailArgs) ToGetKafkaMirrorMakerTechEmailOutput() GetKafkaMirrorMakerTechEmailOutput {
+	return i.ToGetKafkaMirrorMakerTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerTechEmailArgs) ToGetKafkaMirrorMakerTechEmailOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerTechEmailOutput)
+}
+
+// GetKafkaMirrorMakerTechEmailArrayInput is an input type that accepts GetKafkaMirrorMakerTechEmailArray and GetKafkaMirrorMakerTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerTechEmailArrayInput` via:
+//
+//	GetKafkaMirrorMakerTechEmailArray{ GetKafkaMirrorMakerTechEmailArgs{...} }
+type GetKafkaMirrorMakerTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerTechEmailArrayOutput() GetKafkaMirrorMakerTechEmailArrayOutput
+	ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(context.Context) GetKafkaMirrorMakerTechEmailArrayOutput
+}
+
+type GetKafkaMirrorMakerTechEmailArray []GetKafkaMirrorMakerTechEmailInput
+
+func (GetKafkaMirrorMakerTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerTechEmailArray) ToGetKafkaMirrorMakerTechEmailArrayOutput() GetKafkaMirrorMakerTechEmailArrayOutput {
+	return i.ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerTechEmailArray) ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerTechEmailArrayOutput)
+}
+
+type GetKafkaMirrorMakerTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerTechEmailOutput) ToGetKafkaMirrorMakerTechEmailOutput() GetKafkaMirrorMakerTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailOutput) ToGetKafkaMirrorMakerTechEmailOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetKafkaMirrorMakerTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerTechEmailArrayOutput) ToGetKafkaMirrorMakerTechEmailArrayOutput() GetKafkaMirrorMakerTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailArrayOutput) ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerTechEmail {
+		return vs[0].([]GetKafkaMirrorMakerTechEmail)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerTechEmailOutput)
+}
+
 type GetKafkaServiceIntegration struct {
 	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
@@ -51678,6 +56753,100 @@ func (o GetKafkaTagArrayOutput) Index(i pulumi.IntInput) GetKafkaTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTag {
 		return vs[0].([]GetKafkaTag)[vs[1].(int)]
 	}).(GetKafkaTagOutput)
+}
+
+type GetKafkaTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetKafkaTechEmailInput is an input type that accepts GetKafkaTechEmailArgs and GetKafkaTechEmailOutput values.
+// You can construct a concrete instance of `GetKafkaTechEmailInput` via:
+//
+//	GetKafkaTechEmailArgs{...}
+type GetKafkaTechEmailInput interface {
+	pulumi.Input
+
+	ToGetKafkaTechEmailOutput() GetKafkaTechEmailOutput
+	ToGetKafkaTechEmailOutputWithContext(context.Context) GetKafkaTechEmailOutput
+}
+
+type GetKafkaTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetKafkaTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaTechEmailArgs) ToGetKafkaTechEmailOutput() GetKafkaTechEmailOutput {
+	return i.ToGetKafkaTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTechEmailArgs) ToGetKafkaTechEmailOutputWithContext(ctx context.Context) GetKafkaTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTechEmailOutput)
+}
+
+// GetKafkaTechEmailArrayInput is an input type that accepts GetKafkaTechEmailArray and GetKafkaTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTechEmailArrayInput` via:
+//
+//	GetKafkaTechEmailArray{ GetKafkaTechEmailArgs{...} }
+type GetKafkaTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTechEmailArrayOutput() GetKafkaTechEmailArrayOutput
+	ToGetKafkaTechEmailArrayOutputWithContext(context.Context) GetKafkaTechEmailArrayOutput
+}
+
+type GetKafkaTechEmailArray []GetKafkaTechEmailInput
+
+func (GetKafkaTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaTechEmailArray) ToGetKafkaTechEmailArrayOutput() GetKafkaTechEmailArrayOutput {
+	return i.ToGetKafkaTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTechEmailArray) ToGetKafkaTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTechEmailArrayOutput)
+}
+
+type GetKafkaTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaTechEmailOutput) ToGetKafkaTechEmailOutput() GetKafkaTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailOutput) ToGetKafkaTechEmailOutputWithContext(ctx context.Context) GetKafkaTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetKafkaTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaTechEmailArrayOutput) ToGetKafkaTechEmailArrayOutput() GetKafkaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailArrayOutput) ToGetKafkaTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailArrayOutput) Index(i pulumi.IntInput) GetKafkaTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTechEmail {
+		return vs[0].([]GetKafkaTechEmail)[vs[1].(int)]
+	}).(GetKafkaTechEmailOutput)
 }
 
 type GetKafkaTopicConfig struct {
@@ -52017,6 +57186,7 @@ func (o GetKafkaTopicTagArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicTagOu
 
 type GetM3AggregatorComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -52038,6 +57208,7 @@ type GetM3AggregatorComponentInput interface {
 
 type GetM3AggregatorComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -52099,6 +57270,10 @@ func (o GetM3AggregatorComponentOutput) ToGetM3AggregatorComponentOutputWithCont
 
 func (o GetM3AggregatorComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetM3AggregatorComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetM3AggregatorComponentOutput) Host() pulumi.StringOutput {
@@ -52242,6 +57417,7 @@ type GetM3AggregatorM3aggregatorUserConfig struct {
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           *string `pulumi:"m3Version"`
 	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
+	ServiceLog          *bool   `pulumi:"serviceLog"`
 	StaticIps           *bool   `pulumi:"staticIps"`
 }
 
@@ -52265,6 +57441,7 @@ type GetM3AggregatorM3aggregatorUserConfigArgs struct {
 	// Deprecated: Usage of this field is discouraged.
 	M3Version           pulumi.StringPtrInput `pulumi:"m3Version"`
 	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
+	ServiceLog          pulumi.BoolPtrInput   `pulumi:"serviceLog"`
 	StaticIps           pulumi.BoolPtrInput   `pulumi:"staticIps"`
 }
 
@@ -52345,6 +57522,10 @@ func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPt
 
 func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetM3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
@@ -52671,8 +57852,103 @@ func (o GetM3AggregatorTagArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorT
 	}).(GetM3AggregatorTagOutput)
 }
 
+type GetM3AggregatorTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetM3AggregatorTechEmailInput is an input type that accepts GetM3AggregatorTechEmailArgs and GetM3AggregatorTechEmailOutput values.
+// You can construct a concrete instance of `GetM3AggregatorTechEmailInput` via:
+//
+//	GetM3AggregatorTechEmailArgs{...}
+type GetM3AggregatorTechEmailInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorTechEmailOutput() GetM3AggregatorTechEmailOutput
+	ToGetM3AggregatorTechEmailOutputWithContext(context.Context) GetM3AggregatorTechEmailOutput
+}
+
+type GetM3AggregatorTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetM3AggregatorTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (i GetM3AggregatorTechEmailArgs) ToGetM3AggregatorTechEmailOutput() GetM3AggregatorTechEmailOutput {
+	return i.ToGetM3AggregatorTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorTechEmailArgs) ToGetM3AggregatorTechEmailOutputWithContext(ctx context.Context) GetM3AggregatorTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorTechEmailOutput)
+}
+
+// GetM3AggregatorTechEmailArrayInput is an input type that accepts GetM3AggregatorTechEmailArray and GetM3AggregatorTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorTechEmailArrayInput` via:
+//
+//	GetM3AggregatorTechEmailArray{ GetM3AggregatorTechEmailArgs{...} }
+type GetM3AggregatorTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorTechEmailArrayOutput() GetM3AggregatorTechEmailArrayOutput
+	ToGetM3AggregatorTechEmailArrayOutputWithContext(context.Context) GetM3AggregatorTechEmailArrayOutput
+}
+
+type GetM3AggregatorTechEmailArray []GetM3AggregatorTechEmailInput
+
+func (GetM3AggregatorTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (i GetM3AggregatorTechEmailArray) ToGetM3AggregatorTechEmailArrayOutput() GetM3AggregatorTechEmailArrayOutput {
+	return i.ToGetM3AggregatorTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorTechEmailArray) ToGetM3AggregatorTechEmailArrayOutputWithContext(ctx context.Context) GetM3AggregatorTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorTechEmailArrayOutput)
+}
+
+type GetM3AggregatorTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (o GetM3AggregatorTechEmailOutput) ToGetM3AggregatorTechEmailOutput() GetM3AggregatorTechEmailOutput {
+	return o
+}
+
+func (o GetM3AggregatorTechEmailOutput) ToGetM3AggregatorTechEmailOutputWithContext(ctx context.Context) GetM3AggregatorTechEmailOutput {
+	return o
+}
+
+func (o GetM3AggregatorTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetM3AggregatorTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorTechEmail)(nil)).Elem()
+}
+
+func (o GetM3AggregatorTechEmailArrayOutput) ToGetM3AggregatorTechEmailArrayOutput() GetM3AggregatorTechEmailArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorTechEmailArrayOutput) ToGetM3AggregatorTechEmailArrayOutputWithContext(ctx context.Context) GetM3AggregatorTechEmailArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorTechEmailArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorTechEmail {
+		return vs[0].([]GetM3AggregatorTechEmail)[vs[1].(int)]
+	}).(GetM3AggregatorTechEmailOutput)
+}
+
 type GetM3DbComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -52694,6 +57970,7 @@ type GetM3DbComponentInput interface {
 
 type GetM3DbComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -52755,6 +58032,10 @@ func (o GetM3DbComponentOutput) ToGetM3DbComponentOutputWithContext(ctx context.
 
 func (o GetM3DbComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3DbComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetM3DbComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetM3DbComponentOutput) Host() pulumi.StringOutput {
@@ -52907,6 +58188,7 @@ type GetM3DbM3dbUserConfig struct {
 	ProjectToForkFrom                       *string                             `pulumi:"projectToForkFrom"`
 	PublicAccess                            *GetM3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
 	Rules                                   *GetM3DbM3dbUserConfigRules         `pulumi:"rules"`
+	ServiceLog                              *bool                               `pulumi:"serviceLog"`
 	ServiceToForkFrom                       *string                             `pulumi:"serviceToForkFrom"`
 	StaticIps                               *bool                               `pulumi:"staticIps"`
 }
@@ -52940,6 +58222,7 @@ type GetM3DbM3dbUserConfigArgs struct {
 	ProjectToForkFrom                       pulumi.StringPtrInput                      `pulumi:"projectToForkFrom"`
 	PublicAccess                            GetM3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	Rules                                   GetM3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
+	ServiceLog                              pulumi.BoolPtrInput                        `pulumi:"serviceLog"`
 	ServiceToForkFrom                       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
 	StaticIps                               pulumi.BoolPtrInput                        `pulumi:"staticIps"`
 }
@@ -53055,6 +58338,10 @@ func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicA
 
 func (o GetM3DbM3dbUserConfigOutput) Rules() GetM3DbM3dbUserConfigRulesPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigRules { return v.Rules }).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -55088,8 +60375,103 @@ func (o GetM3DbTagArrayOutput) Index(i pulumi.IntInput) GetM3DbTagOutput {
 	}).(GetM3DbTagOutput)
 }
 
+type GetM3DbTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetM3DbTechEmailInput is an input type that accepts GetM3DbTechEmailArgs and GetM3DbTechEmailOutput values.
+// You can construct a concrete instance of `GetM3DbTechEmailInput` via:
+//
+//	GetM3DbTechEmailArgs{...}
+type GetM3DbTechEmailInput interface {
+	pulumi.Input
+
+	ToGetM3DbTechEmailOutput() GetM3DbTechEmailOutput
+	ToGetM3DbTechEmailOutputWithContext(context.Context) GetM3DbTechEmailOutput
+}
+
+type GetM3DbTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetM3DbTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (i GetM3DbTechEmailArgs) ToGetM3DbTechEmailOutput() GetM3DbTechEmailOutput {
+	return i.ToGetM3DbTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetM3DbTechEmailArgs) ToGetM3DbTechEmailOutputWithContext(ctx context.Context) GetM3DbTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbTechEmailOutput)
+}
+
+// GetM3DbTechEmailArrayInput is an input type that accepts GetM3DbTechEmailArray and GetM3DbTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetM3DbTechEmailArrayInput` via:
+//
+//	GetM3DbTechEmailArray{ GetM3DbTechEmailArgs{...} }
+type GetM3DbTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbTechEmailArrayOutput() GetM3DbTechEmailArrayOutput
+	ToGetM3DbTechEmailArrayOutputWithContext(context.Context) GetM3DbTechEmailArrayOutput
+}
+
+type GetM3DbTechEmailArray []GetM3DbTechEmailInput
+
+func (GetM3DbTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (i GetM3DbTechEmailArray) ToGetM3DbTechEmailArrayOutput() GetM3DbTechEmailArrayOutput {
+	return i.ToGetM3DbTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbTechEmailArray) ToGetM3DbTechEmailArrayOutputWithContext(ctx context.Context) GetM3DbTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbTechEmailArrayOutput)
+}
+
+type GetM3DbTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (o GetM3DbTechEmailOutput) ToGetM3DbTechEmailOutput() GetM3DbTechEmailOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailOutput) ToGetM3DbTechEmailOutputWithContext(ctx context.Context) GetM3DbTechEmailOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetM3DbTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (o GetM3DbTechEmailArrayOutput) ToGetM3DbTechEmailArrayOutput() GetM3DbTechEmailArrayOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailArrayOutput) ToGetM3DbTechEmailArrayOutputWithContext(ctx context.Context) GetM3DbTechEmailArrayOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailArrayOutput) Index(i pulumi.IntInput) GetM3DbTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbTechEmail {
+		return vs[0].([]GetM3DbTechEmail)[vs[1].(int)]
+	}).(GetM3DbTechEmailOutput)
+}
+
 type GetMySqlComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -55111,6 +60493,7 @@ type GetMySqlComponentInput interface {
 
 type GetMySqlComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -55172,6 +60555,10 @@ func (o GetMySqlComponentOutput) ToGetMySqlComponentOutputWithContext(ctx contex
 
 func (o GetMySqlComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMySqlComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetMySqlComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetMySqlComponentOutput) Host() pulumi.StringOutput {
@@ -55325,6 +60712,7 @@ type GetMySqlMysqlUserConfig struct {
 	ProjectToForkFrom  *string                                   `pulumi:"projectToForkFrom"`
 	PublicAccess       *GetMySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryTargetTime *string                                   `pulumi:"recoveryTargetTime"`
+	ServiceLog         *bool                                     `pulumi:"serviceLog"`
 	ServiceToForkFrom  *string                                   `pulumi:"serviceToForkFrom"`
 	StaticIps          *bool                                     `pulumi:"staticIps"`
 }
@@ -55359,6 +60747,7 @@ type GetMySqlMysqlUserConfigArgs struct {
 	ProjectToForkFrom  pulumi.StringPtrInput                            `pulumi:"projectToForkFrom"`
 	PublicAccess       GetMySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryTargetTime pulumi.StringPtrInput                            `pulumi:"recoveryTargetTime"`
+	ServiceLog         pulumi.BoolPtrInput                              `pulumi:"serviceLog"`
 	ServiceToForkFrom  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
 	StaticIps          pulumi.BoolPtrInput                              `pulumi:"staticIps"`
 }
@@ -55481,6 +60870,10 @@ func (o GetMySqlMysqlUserConfigOutput) PublicAccess() GetMySqlMysqlUserConfigPub
 
 func (o GetMySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetMySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -57106,8 +62499,103 @@ func (o GetMySqlTagArrayOutput) Index(i pulumi.IntInput) GetMySqlTagOutput {
 	}).(GetMySqlTagOutput)
 }
 
+type GetMySqlTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetMySqlTechEmailInput is an input type that accepts GetMySqlTechEmailArgs and GetMySqlTechEmailOutput values.
+// You can construct a concrete instance of `GetMySqlTechEmailInput` via:
+//
+//	GetMySqlTechEmailArgs{...}
+type GetMySqlTechEmailInput interface {
+	pulumi.Input
+
+	ToGetMySqlTechEmailOutput() GetMySqlTechEmailOutput
+	ToGetMySqlTechEmailOutputWithContext(context.Context) GetMySqlTechEmailOutput
+}
+
+type GetMySqlTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetMySqlTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (i GetMySqlTechEmailArgs) ToGetMySqlTechEmailOutput() GetMySqlTechEmailOutput {
+	return i.ToGetMySqlTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetMySqlTechEmailArgs) ToGetMySqlTechEmailOutputWithContext(ctx context.Context) GetMySqlTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlTechEmailOutput)
+}
+
+// GetMySqlTechEmailArrayInput is an input type that accepts GetMySqlTechEmailArray and GetMySqlTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetMySqlTechEmailArrayInput` via:
+//
+//	GetMySqlTechEmailArray{ GetMySqlTechEmailArgs{...} }
+type GetMySqlTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlTechEmailArrayOutput() GetMySqlTechEmailArrayOutput
+	ToGetMySqlTechEmailArrayOutputWithContext(context.Context) GetMySqlTechEmailArrayOutput
+}
+
+type GetMySqlTechEmailArray []GetMySqlTechEmailInput
+
+func (GetMySqlTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (i GetMySqlTechEmailArray) ToGetMySqlTechEmailArrayOutput() GetMySqlTechEmailArrayOutput {
+	return i.ToGetMySqlTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlTechEmailArray) ToGetMySqlTechEmailArrayOutputWithContext(ctx context.Context) GetMySqlTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlTechEmailArrayOutput)
+}
+
+type GetMySqlTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (o GetMySqlTechEmailOutput) ToGetMySqlTechEmailOutput() GetMySqlTechEmailOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailOutput) ToGetMySqlTechEmailOutputWithContext(ctx context.Context) GetMySqlTechEmailOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetMySqlTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (o GetMySqlTechEmailArrayOutput) ToGetMySqlTechEmailArrayOutput() GetMySqlTechEmailArrayOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailArrayOutput) ToGetMySqlTechEmailArrayOutputWithContext(ctx context.Context) GetMySqlTechEmailArrayOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailArrayOutput) Index(i pulumi.IntInput) GetMySqlTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlTechEmail {
+		return vs[0].([]GetMySqlTechEmail)[vs[1].(int)]
+	}).(GetMySqlTechEmailOutput)
+}
+
 type GetOpenSearchComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -57129,6 +62617,7 @@ type GetOpenSearchComponentInput interface {
 
 type GetOpenSearchComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -57190,6 +62679,10 @@ func (o GetOpenSearchComponentOutput) ToGetOpenSearchComponentOutputWithContext(
 
 func (o GetOpenSearchComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetOpenSearchComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetOpenSearchComponentOutput) Host() pulumi.StringOutput {
@@ -57354,6 +62847,7 @@ type GetOpenSearchOpensearchUserConfig struct {
 	PublicAccess           *GetOpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
 	RecoveryBasebackupName *string                                                `pulumi:"recoveryBasebackupName"`
 	Saml                   *GetOpenSearchOpensearchUserConfigSaml                 `pulumi:"saml"`
+	ServiceLog             *bool                                                  `pulumi:"serviceLog"`
 	ServiceToForkFrom      *string                                                `pulumi:"serviceToForkFrom"`
 	StaticIps              *bool                                                  `pulumi:"staticIps"`
 }
@@ -57393,6 +62887,7 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	PublicAccess           GetOpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
 	RecoveryBasebackupName pulumi.StringPtrInput                                         `pulumi:"recoveryBasebackupName"`
 	Saml                   GetOpenSearchOpensearchUserConfigSamlPtrInput                 `pulumi:"saml"`
+	ServiceLog             pulumi.BoolPtrInput                                           `pulumi:"serviceLog"`
 	ServiceToForkFrom      pulumi.StringPtrInput                                         `pulumi:"serviceToForkFrom"`
 	StaticIps              pulumi.BoolPtrInput                                           `pulumi:"staticIps"`
 }
@@ -57545,6 +63040,10 @@ func (o GetOpenSearchOpensearchUserConfigOutput) RecoveryBasebackupName() pulumi
 
 func (o GetOpenSearchOpensearchUserConfigOutput) Saml() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigSaml { return v.Saml }).(GetOpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetOpenSearchOpensearchUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -57948,7 +63447,7 @@ type GetOpenSearchOpensearchUserConfigOpenid struct {
 	ClientId                     string  `pulumi:"clientId"`
 	ClientSecret                 string  `pulumi:"clientSecret"`
 	ConnectUrl                   string  `pulumi:"connectUrl"`
-	Enabled                      *bool   `pulumi:"enabled"`
+	Enabled                      bool    `pulumi:"enabled"`
 	Header                       *string `pulumi:"header"`
 	JwtHeader                    *string `pulumi:"jwtHeader"`
 	JwtUrlParameter              *string `pulumi:"jwtUrlParameter"`
@@ -57974,7 +63473,7 @@ type GetOpenSearchOpensearchUserConfigOpenidArgs struct {
 	ClientId                     pulumi.StringInput    `pulumi:"clientId"`
 	ClientSecret                 pulumi.StringInput    `pulumi:"clientSecret"`
 	ConnectUrl                   pulumi.StringInput    `pulumi:"connectUrl"`
-	Enabled                      pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Enabled                      pulumi.BoolInput      `pulumi:"enabled"`
 	Header                       pulumi.StringPtrInput `pulumi:"header"`
 	JwtHeader                    pulumi.StringPtrInput `pulumi:"jwtHeader"`
 	JwtUrlParameter              pulumi.StringPtrInput `pulumi:"jwtUrlParameter"`
@@ -58074,8 +63573,8 @@ func (o GetOpenSearchOpensearchUserConfigOpenidOutput) ConnectUrl() pulumi.Strin
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) string { return v.ConnectUrl }).(pulumi.StringOutput)
 }
 
-func (o GetOpenSearchOpensearchUserConfigOpenidOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o GetOpenSearchOpensearchUserConfigOpenidOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpenid) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o GetOpenSearchOpensearchUserConfigOpenidOutput) Header() pulumi.StringPtrOutput {
@@ -58166,7 +63665,7 @@ func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) Enabled() pulumi.BoolP
 		if v == nil {
 			return nil
 		}
-		return v.Enabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -58243,37 +63742,47 @@ func (o GetOpenSearchOpensearchUserConfigOpenidPtrOutput) SubjectKey() pulumi.St
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearch struct {
-	ActionAutoCreateIndexEnabled                     *bool    `pulumi:"actionAutoCreateIndexEnabled"`
-	ActionDestructiveRequiresName                    *bool    `pulumi:"actionDestructiveRequiresName"`
-	ClusterMaxShardsPerNode                          *int     `pulumi:"clusterMaxShardsPerNode"`
-	ClusterRoutingAllocationNodeConcurrentRecoveries *int     `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
-	EmailSenderName                                  *string  `pulumi:"emailSenderName"`
-	EmailSenderPassword                              *string  `pulumi:"emailSenderPassword"`
-	EmailSenderUsername                              *string  `pulumi:"emailSenderUsername"`
-	HttpMaxContentLength                             *int     `pulumi:"httpMaxContentLength"`
-	HttpMaxHeaderSize                                *int     `pulumi:"httpMaxHeaderSize"`
-	HttpMaxInitialLineLength                         *int     `pulumi:"httpMaxInitialLineLength"`
-	IndicesFielddataCacheSize                        *int     `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize                     *int     `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize                          *int     `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount                   *int     `pulumi:"indicesQueryBoolMaxClauseCount"`
-	IndicesRecoveryMaxBytesPerSec                    *int     `pulumi:"indicesRecoveryMaxBytesPerSec"`
-	IndicesRecoveryMaxConcurrentFileChunks           *int     `pulumi:"indicesRecoveryMaxConcurrentFileChunks"`
-	OverrideMainResponseVersion                      *bool    `pulumi:"overrideMainResponseVersion"`
-	ReindexRemoteWhitelists                          []string `pulumi:"reindexRemoteWhitelists"`
-	ScriptMaxCompilationsRate                        *string  `pulumi:"scriptMaxCompilationsRate"`
-	SearchMaxBuckets                                 *int     `pulumi:"searchMaxBuckets"`
-	ThreadPoolAnalyzeQueueSize                       *int     `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize                            *int     `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize                         *int     `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize                           *int     `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                                *int     `pulumi:"threadPoolGetSize"`
-	ThreadPoolSearchQueueSize                        *int     `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize                             *int     `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize               *int     `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize                    *int     `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize                         *int     `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                              *int     `pulumi:"threadPoolWriteSize"`
+	ActionAutoCreateIndexEnabled                     *bool                                                            `pulumi:"actionAutoCreateIndexEnabled"`
+	ActionDestructiveRequiresName                    *bool                                                            `pulumi:"actionDestructiveRequiresName"`
+	AuthFailureListeners                             *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners `pulumi:"authFailureListeners"`
+	ClusterMaxShardsPerNode                          *int                                                             `pulumi:"clusterMaxShardsPerNode"`
+	ClusterRoutingAllocationNodeConcurrentRecoveries *int                                                             `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	EmailSenderName                                  *string                                                          `pulumi:"emailSenderName"`
+	EmailSenderPassword                              *string                                                          `pulumi:"emailSenderPassword"`
+	EmailSenderUsername                              *string                                                          `pulumi:"emailSenderUsername"`
+	EnableSecurityAudit                              *bool                                                            `pulumi:"enableSecurityAudit"`
+	HttpMaxContentLength                             *int                                                             `pulumi:"httpMaxContentLength"`
+	HttpMaxHeaderSize                                *int                                                             `pulumi:"httpMaxHeaderSize"`
+	HttpMaxInitialLineLength                         *int                                                             `pulumi:"httpMaxInitialLineLength"`
+	IndicesFielddataCacheSize                        *int                                                             `pulumi:"indicesFielddataCacheSize"`
+	IndicesMemoryIndexBufferSize                     *int                                                             `pulumi:"indicesMemoryIndexBufferSize"`
+	IndicesMemoryMaxIndexBufferSize                  *int                                                             `pulumi:"indicesMemoryMaxIndexBufferSize"`
+	IndicesMemoryMinIndexBufferSize                  *int                                                             `pulumi:"indicesMemoryMinIndexBufferSize"`
+	IndicesQueriesCacheSize                          *int                                                             `pulumi:"indicesQueriesCacheSize"`
+	IndicesQueryBoolMaxClauseCount                   *int                                                             `pulumi:"indicesQueryBoolMaxClauseCount"`
+	IndicesRecoveryMaxBytesPerSec                    *int                                                             `pulumi:"indicesRecoveryMaxBytesPerSec"`
+	IndicesRecoveryMaxConcurrentFileChunks           *int                                                             `pulumi:"indicesRecoveryMaxConcurrentFileChunks"`
+	IsmEnabled                                       *bool                                                            `pulumi:"ismEnabled"`
+	IsmHistoryEnabled                                *bool                                                            `pulumi:"ismHistoryEnabled"`
+	IsmHistoryMaxAge                                 *int                                                             `pulumi:"ismHistoryMaxAge"`
+	IsmHistoryMaxDocs                                *int                                                             `pulumi:"ismHistoryMaxDocs"`
+	IsmHistoryRolloverCheckPeriod                    *int                                                             `pulumi:"ismHistoryRolloverCheckPeriod"`
+	IsmHistoryRolloverRetentionPeriod                *int                                                             `pulumi:"ismHistoryRolloverRetentionPeriod"`
+	OverrideMainResponseVersion                      *bool                                                            `pulumi:"overrideMainResponseVersion"`
+	ReindexRemoteWhitelists                          []string                                                         `pulumi:"reindexRemoteWhitelists"`
+	ScriptMaxCompilationsRate                        *string                                                          `pulumi:"scriptMaxCompilationsRate"`
+	SearchMaxBuckets                                 *int                                                             `pulumi:"searchMaxBuckets"`
+	ThreadPoolAnalyzeQueueSize                       *int                                                             `pulumi:"threadPoolAnalyzeQueueSize"`
+	ThreadPoolAnalyzeSize                            *int                                                             `pulumi:"threadPoolAnalyzeSize"`
+	ThreadPoolForceMergeSize                         *int                                                             `pulumi:"threadPoolForceMergeSize"`
+	ThreadPoolGetQueueSize                           *int                                                             `pulumi:"threadPoolGetQueueSize"`
+	ThreadPoolGetSize                                *int                                                             `pulumi:"threadPoolGetSize"`
+	ThreadPoolSearchQueueSize                        *int                                                             `pulumi:"threadPoolSearchQueueSize"`
+	ThreadPoolSearchSize                             *int                                                             `pulumi:"threadPoolSearchSize"`
+	ThreadPoolSearchThrottledQueueSize               *int                                                             `pulumi:"threadPoolSearchThrottledQueueSize"`
+	ThreadPoolSearchThrottledSize                    *int                                                             `pulumi:"threadPoolSearchThrottledSize"`
+	ThreadPoolWriteQueueSize                         *int                                                             `pulumi:"threadPoolWriteQueueSize"`
+	ThreadPoolWriteSize                              *int                                                             `pulumi:"threadPoolWriteSize"`
 }
 
 // GetOpenSearchOpensearchUserConfigOpensearchInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchArgs and GetOpenSearchOpensearchUserConfigOpensearchOutput values.
@@ -58288,37 +63797,47 @@ type GetOpenSearchOpensearchUserConfigOpensearchInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
-	ActionAutoCreateIndexEnabled                     pulumi.BoolPtrInput     `pulumi:"actionAutoCreateIndexEnabled"`
-	ActionDestructiveRequiresName                    pulumi.BoolPtrInput     `pulumi:"actionDestructiveRequiresName"`
-	ClusterMaxShardsPerNode                          pulumi.IntPtrInput      `pulumi:"clusterMaxShardsPerNode"`
-	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput      `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
-	EmailSenderName                                  pulumi.StringPtrInput   `pulumi:"emailSenderName"`
-	EmailSenderPassword                              pulumi.StringPtrInput   `pulumi:"emailSenderPassword"`
-	EmailSenderUsername                              pulumi.StringPtrInput   `pulumi:"emailSenderUsername"`
-	HttpMaxContentLength                             pulumi.IntPtrInput      `pulumi:"httpMaxContentLength"`
-	HttpMaxHeaderSize                                pulumi.IntPtrInput      `pulumi:"httpMaxHeaderSize"`
-	HttpMaxInitialLineLength                         pulumi.IntPtrInput      `pulumi:"httpMaxInitialLineLength"`
-	IndicesFielddataCacheSize                        pulumi.IntPtrInput      `pulumi:"indicesFielddataCacheSize"`
-	IndicesMemoryIndexBufferSize                     pulumi.IntPtrInput      `pulumi:"indicesMemoryIndexBufferSize"`
-	IndicesQueriesCacheSize                          pulumi.IntPtrInput      `pulumi:"indicesQueriesCacheSize"`
-	IndicesQueryBoolMaxClauseCount                   pulumi.IntPtrInput      `pulumi:"indicesQueryBoolMaxClauseCount"`
-	IndicesRecoveryMaxBytesPerSec                    pulumi.IntPtrInput      `pulumi:"indicesRecoveryMaxBytesPerSec"`
-	IndicesRecoveryMaxConcurrentFileChunks           pulumi.IntPtrInput      `pulumi:"indicesRecoveryMaxConcurrentFileChunks"`
-	OverrideMainResponseVersion                      pulumi.BoolPtrInput     `pulumi:"overrideMainResponseVersion"`
-	ReindexRemoteWhitelists                          pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
-	ScriptMaxCompilationsRate                        pulumi.StringPtrInput   `pulumi:"scriptMaxCompilationsRate"`
-	SearchMaxBuckets                                 pulumi.IntPtrInput      `pulumi:"searchMaxBuckets"`
-	ThreadPoolAnalyzeQueueSize                       pulumi.IntPtrInput      `pulumi:"threadPoolAnalyzeQueueSize"`
-	ThreadPoolAnalyzeSize                            pulumi.IntPtrInput      `pulumi:"threadPoolAnalyzeSize"`
-	ThreadPoolForceMergeSize                         pulumi.IntPtrInput      `pulumi:"threadPoolForceMergeSize"`
-	ThreadPoolGetQueueSize                           pulumi.IntPtrInput      `pulumi:"threadPoolGetQueueSize"`
-	ThreadPoolGetSize                                pulumi.IntPtrInput      `pulumi:"threadPoolGetSize"`
-	ThreadPoolSearchQueueSize                        pulumi.IntPtrInput      `pulumi:"threadPoolSearchQueueSize"`
-	ThreadPoolSearchSize                             pulumi.IntPtrInput      `pulumi:"threadPoolSearchSize"`
-	ThreadPoolSearchThrottledQueueSize               pulumi.IntPtrInput      `pulumi:"threadPoolSearchThrottledQueueSize"`
-	ThreadPoolSearchThrottledSize                    pulumi.IntPtrInput      `pulumi:"threadPoolSearchThrottledSize"`
-	ThreadPoolWriteQueueSize                         pulumi.IntPtrInput      `pulumi:"threadPoolWriteQueueSize"`
-	ThreadPoolWriteSize                              pulumi.IntPtrInput      `pulumi:"threadPoolWriteSize"`
+	ActionAutoCreateIndexEnabled                     pulumi.BoolPtrInput                                                     `pulumi:"actionAutoCreateIndexEnabled"`
+	ActionDestructiveRequiresName                    pulumi.BoolPtrInput                                                     `pulumi:"actionDestructiveRequiresName"`
+	AuthFailureListeners                             GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput `pulumi:"authFailureListeners"`
+	ClusterMaxShardsPerNode                          pulumi.IntPtrInput                                                      `pulumi:"clusterMaxShardsPerNode"`
+	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput                                                      `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	EmailSenderName                                  pulumi.StringPtrInput                                                   `pulumi:"emailSenderName"`
+	EmailSenderPassword                              pulumi.StringPtrInput                                                   `pulumi:"emailSenderPassword"`
+	EmailSenderUsername                              pulumi.StringPtrInput                                                   `pulumi:"emailSenderUsername"`
+	EnableSecurityAudit                              pulumi.BoolPtrInput                                                     `pulumi:"enableSecurityAudit"`
+	HttpMaxContentLength                             pulumi.IntPtrInput                                                      `pulumi:"httpMaxContentLength"`
+	HttpMaxHeaderSize                                pulumi.IntPtrInput                                                      `pulumi:"httpMaxHeaderSize"`
+	HttpMaxInitialLineLength                         pulumi.IntPtrInput                                                      `pulumi:"httpMaxInitialLineLength"`
+	IndicesFielddataCacheSize                        pulumi.IntPtrInput                                                      `pulumi:"indicesFielddataCacheSize"`
+	IndicesMemoryIndexBufferSize                     pulumi.IntPtrInput                                                      `pulumi:"indicesMemoryIndexBufferSize"`
+	IndicesMemoryMaxIndexBufferSize                  pulumi.IntPtrInput                                                      `pulumi:"indicesMemoryMaxIndexBufferSize"`
+	IndicesMemoryMinIndexBufferSize                  pulumi.IntPtrInput                                                      `pulumi:"indicesMemoryMinIndexBufferSize"`
+	IndicesQueriesCacheSize                          pulumi.IntPtrInput                                                      `pulumi:"indicesQueriesCacheSize"`
+	IndicesQueryBoolMaxClauseCount                   pulumi.IntPtrInput                                                      `pulumi:"indicesQueryBoolMaxClauseCount"`
+	IndicesRecoveryMaxBytesPerSec                    pulumi.IntPtrInput                                                      `pulumi:"indicesRecoveryMaxBytesPerSec"`
+	IndicesRecoveryMaxConcurrentFileChunks           pulumi.IntPtrInput                                                      `pulumi:"indicesRecoveryMaxConcurrentFileChunks"`
+	IsmEnabled                                       pulumi.BoolPtrInput                                                     `pulumi:"ismEnabled"`
+	IsmHistoryEnabled                                pulumi.BoolPtrInput                                                     `pulumi:"ismHistoryEnabled"`
+	IsmHistoryMaxAge                                 pulumi.IntPtrInput                                                      `pulumi:"ismHistoryMaxAge"`
+	IsmHistoryMaxDocs                                pulumi.IntPtrInput                                                      `pulumi:"ismHistoryMaxDocs"`
+	IsmHistoryRolloverCheckPeriod                    pulumi.IntPtrInput                                                      `pulumi:"ismHistoryRolloverCheckPeriod"`
+	IsmHistoryRolloverRetentionPeriod                pulumi.IntPtrInput                                                      `pulumi:"ismHistoryRolloverRetentionPeriod"`
+	OverrideMainResponseVersion                      pulumi.BoolPtrInput                                                     `pulumi:"overrideMainResponseVersion"`
+	ReindexRemoteWhitelists                          pulumi.StringArrayInput                                                 `pulumi:"reindexRemoteWhitelists"`
+	ScriptMaxCompilationsRate                        pulumi.StringPtrInput                                                   `pulumi:"scriptMaxCompilationsRate"`
+	SearchMaxBuckets                                 pulumi.IntPtrInput                                                      `pulumi:"searchMaxBuckets"`
+	ThreadPoolAnalyzeQueueSize                       pulumi.IntPtrInput                                                      `pulumi:"threadPoolAnalyzeQueueSize"`
+	ThreadPoolAnalyzeSize                            pulumi.IntPtrInput                                                      `pulumi:"threadPoolAnalyzeSize"`
+	ThreadPoolForceMergeSize                         pulumi.IntPtrInput                                                      `pulumi:"threadPoolForceMergeSize"`
+	ThreadPoolGetQueueSize                           pulumi.IntPtrInput                                                      `pulumi:"threadPoolGetQueueSize"`
+	ThreadPoolGetSize                                pulumi.IntPtrInput                                                      `pulumi:"threadPoolGetSize"`
+	ThreadPoolSearchQueueSize                        pulumi.IntPtrInput                                                      `pulumi:"threadPoolSearchQueueSize"`
+	ThreadPoolSearchSize                             pulumi.IntPtrInput                                                      `pulumi:"threadPoolSearchSize"`
+	ThreadPoolSearchThrottledQueueSize               pulumi.IntPtrInput                                                      `pulumi:"threadPoolSearchThrottledQueueSize"`
+	ThreadPoolSearchThrottledSize                    pulumi.IntPtrInput                                                      `pulumi:"threadPoolSearchThrottledSize"`
+	ThreadPoolWriteQueueSize                         pulumi.IntPtrInput                                                      `pulumi:"threadPoolWriteQueueSize"`
+	ThreadPoolWriteSize                              pulumi.IntPtrInput                                                      `pulumi:"threadPoolWriteSize"`
 }
 
 func (GetOpenSearchOpensearchUserConfigOpensearchArgs) ElementType() reflect.Type {
@@ -58406,6 +63925,12 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ActionDestructiveRequ
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.ActionDestructiveRequiresName }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) AuthFailureListeners() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		return v.AuthFailureListeners
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.ClusterMaxShardsPerNode }).(pulumi.IntPtrOutput)
 }
@@ -58428,6 +63953,10 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderUsername()
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderUsername }).(pulumi.StringPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableSecurityAudit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableSecurityAudit }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.HttpMaxContentLength }).(pulumi.IntPtrOutput)
 }
@@ -58448,6 +63977,14 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IndicesMemoryIndexBuf
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesMemoryIndexBufferSize }).(pulumi.IntPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IndicesMemoryMaxIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesMemoryMaxIndexBufferSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IndicesMemoryMinIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesMemoryMinIndexBufferSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IndicesQueriesCacheSize }).(pulumi.IntPtrOutput)
 }
@@ -58464,6 +64001,30 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IndicesRecoveryMaxCon
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int {
 		return v.IndicesRecoveryMaxConcurrentFileChunks
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.IsmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.IsmHistoryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryMaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryMaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryMaxDocs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryMaxDocs }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryRolloverCheckPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryRolloverCheckPeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryRolloverRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryRolloverRetentionPeriod }).(pulumi.IntPtrOutput)
 }
 
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) OverrideMainResponseVersion() pulumi.BoolPtrOutput {
@@ -58568,6 +64129,15 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ActionDestructiveR
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) AuthFailureListeners() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		if v == nil {
+			return nil
+		}
+		return v.AuthFailureListeners
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
 		if v == nil {
@@ -58611,6 +64181,15 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderUsernam
 		}
 		return v.EmailSenderUsername
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableSecurityAudit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecurityAudit
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) HttpMaxContentLength() pulumi.IntPtrOutput {
@@ -58658,6 +64237,24 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesMemoryIndex
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesMemoryMaxIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesMemoryMaxIndexBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesMemoryMinIndexBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesMemoryMinIndexBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesQueriesCacheSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
 		if v == nil {
@@ -58691,6 +64288,60 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IndicesRecoveryMax
 			return nil
 		}
 		return v.IndicesRecoveryMaxConcurrentFileChunks
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsmEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryMaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryMaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryMaxDocs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryMaxDocs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryRolloverCheckPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryRolloverCheckPeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryRolloverRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IsmHistoryRolloverRetentionPeriod
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -58827,6 +64478,615 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ThreadPoolWriteSiz
 		}
 		return v.ThreadPoolWriteSize
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners struct {
+	InternalAuthenticationBackendLimiting *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting `pulumi:"internalAuthenticationBackendLimiting"`
+	IpRateLimiting                        *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting                        `pulumi:"ipRateLimiting"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs and GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs struct {
+	InternalAuthenticationBackendLimiting GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput `pulumi:"internalAuthenticationBackendLimiting"`
+	IpRateLimiting                        GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput                        `pulumi:"ipRateLimiting"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput).ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs, GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtr and GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtr(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) InternalAuthenticationBackendLimiting() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		return v.InternalAuthenticationBackendLimiting
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) IpRateLimiting() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		return v.IpRateLimiting
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) InternalAuthenticationBackendLimiting() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		if v == nil {
+			return nil
+		}
+		return v.InternalAuthenticationBackendLimiting
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) IpRateLimiting() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		if v == nil {
+			return nil
+		}
+		return v.IpRateLimiting
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting struct {
+	AllowedTries          *int    `pulumi:"allowedTries"`
+	AuthenticationBackend *string `pulumi:"authenticationBackend"`
+	BlockExpirySeconds    *int    `pulumi:"blockExpirySeconds"`
+	MaxBlockedClients     *int    `pulumi:"maxBlockedClients"`
+	MaxTrackedClients     *int    `pulumi:"maxTrackedClients"`
+	TimeWindowSeconds     *int    `pulumi:"timeWindowSeconds"`
+	Type                  *string `pulumi:"type"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs and GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs struct {
+	AllowedTries          pulumi.IntPtrInput    `pulumi:"allowedTries"`
+	AuthenticationBackend pulumi.StringPtrInput `pulumi:"authenticationBackend"`
+	BlockExpirySeconds    pulumi.IntPtrInput    `pulumi:"blockExpirySeconds"`
+	MaxBlockedClients     pulumi.IntPtrInput    `pulumi:"maxBlockedClients"`
+	MaxTrackedClients     pulumi.IntPtrInput    `pulumi:"maxTrackedClients"`
+	TimeWindowSeconds     pulumi.IntPtrInput    `pulumi:"timeWindowSeconds"`
+	Type                  pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput).ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs, GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtr and GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtr(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) AuthenticationBackend() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		return v.AuthenticationBackend
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) AuthenticationBackend() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationBackend
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting struct {
+	AllowedTries       *int    `pulumi:"allowedTries"`
+	BlockExpirySeconds *int    `pulumi:"blockExpirySeconds"`
+	MaxBlockedClients  *int    `pulumi:"maxBlockedClients"`
+	MaxTrackedClients  *int    `pulumi:"maxTrackedClients"`
+	TimeWindowSeconds  *int    `pulumi:"timeWindowSeconds"`
+	Type               *string `pulumi:"type"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs and GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs struct {
+	AllowedTries       pulumi.IntPtrInput    `pulumi:"allowedTries"`
+	BlockExpirySeconds pulumi.IntPtrInput    `pulumi:"blockExpirySeconds"`
+	MaxBlockedClients  pulumi.IntPtrInput    `pulumi:"maxBlockedClients"`
+	MaxTrackedClients  pulumi.IntPtrInput    `pulumi:"maxTrackedClients"`
+	TimeWindowSeconds  pulumi.IntPtrInput    `pulumi:"timeWindowSeconds"`
+	Type               pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput).ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs, GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtr and GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtr(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) AllowedTries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedTries
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) BlockExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BlockExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) MaxBlockedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBlockedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) MaxTrackedClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTrackedClients
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) TimeWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchDashboards struct {
@@ -59904,8 +66164,103 @@ func (o GetOpenSearchTagArrayOutput) Index(i pulumi.IntInput) GetOpenSearchTagOu
 	}).(GetOpenSearchTagOutput)
 }
 
+type GetOpenSearchTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetOpenSearchTechEmailInput is an input type that accepts GetOpenSearchTechEmailArgs and GetOpenSearchTechEmailOutput values.
+// You can construct a concrete instance of `GetOpenSearchTechEmailInput` via:
+//
+//	GetOpenSearchTechEmailArgs{...}
+type GetOpenSearchTechEmailInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput
+	ToGetOpenSearchTechEmailOutputWithContext(context.Context) GetOpenSearchTechEmailOutput
+}
+
+type GetOpenSearchTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOpenSearchTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i GetOpenSearchTechEmailArgs) ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput {
+	return i.ToGetOpenSearchTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTechEmailArgs) ToGetOpenSearchTechEmailOutputWithContext(ctx context.Context) GetOpenSearchTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTechEmailOutput)
+}
+
+// GetOpenSearchTechEmailArrayInput is an input type that accepts GetOpenSearchTechEmailArray and GetOpenSearchTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchTechEmailArrayInput` via:
+//
+//	GetOpenSearchTechEmailArray{ GetOpenSearchTechEmailArgs{...} }
+type GetOpenSearchTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput
+	ToGetOpenSearchTechEmailArrayOutputWithContext(context.Context) GetOpenSearchTechEmailArrayOutput
+}
+
+type GetOpenSearchTechEmailArray []GetOpenSearchTechEmailInput
+
+func (GetOpenSearchTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i GetOpenSearchTechEmailArray) ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput {
+	return i.ToGetOpenSearchTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTechEmailArray) ToGetOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) GetOpenSearchTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTechEmailArrayOutput)
+}
+
+type GetOpenSearchTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o GetOpenSearchTechEmailOutput) ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailOutput) ToGetOpenSearchTechEmailOutputWithContext(ctx context.Context) GetOpenSearchTechEmailOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) ToGetOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) GetOpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) GetOpenSearchTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchTechEmail {
+		return vs[0].([]GetOpenSearchTechEmail)[vs[1].(int)]
+	}).(GetOpenSearchTechEmailOutput)
+}
+
 type GetPgComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -59927,6 +66282,7 @@ type GetPgComponentInput interface {
 
 type GetPgComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -59988,6 +66344,10 @@ func (o GetPgComponentOutput) ToGetPgComponentOutputWithContext(ctx context.Cont
 
 func (o GetPgComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetPgComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetPgComponentOutput) Host() pulumi.StringOutput {
@@ -60186,9 +66546,10 @@ type GetPgPgUserConfig struct {
 	IpFilterObjects         []GetPgPgUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	IpFilterStrings         []string                          `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters []string                    `pulumi:"ipFilters"`
-	Migration *GetPgPgUserConfigMigration `pulumi:"migration"`
-	Pg        *GetPgPgUserConfigPg        `pulumi:"pg"`
+	IpFilters   []string                      `pulumi:"ipFilters"`
+	Migration   *GetPgPgUserConfigMigration   `pulumi:"migration"`
+	Pg          *GetPgPgUserConfigPg          `pulumi:"pg"`
+	PgQualstats *GetPgPgUserConfigPgQualstats `pulumi:"pgQualstats"`
 	// Deprecated: Usage of this field is discouraged.
 	PgReadReplica *bool `pulumi:"pgReadReplica"`
 	// Deprecated: Usage of this field is discouraged.
@@ -60202,6 +66563,7 @@ type GetPgPgUserConfig struct {
 	ProjectToForkFrom       *string                             `pulumi:"projectToForkFrom"`
 	PublicAccess            *GetPgPgUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryTargetTime      *string                             `pulumi:"recoveryTargetTime"`
+	ServiceLog              *bool                               `pulumi:"serviceLog"`
 	ServiceToForkFrom       *string                             `pulumi:"serviceToForkFrom"`
 	SharedBuffersPercentage *float64                            `pulumi:"sharedBuffersPercentage"`
 	StaticIps               *bool                               `pulumi:"staticIps"`
@@ -60232,9 +66594,10 @@ type GetPgPgUserConfigArgs struct {
 	IpFilterObjects         GetPgPgUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	IpFilterStrings         pulumi.StringArrayInput                   `pulumi:"ipFilterStrings"`
 	// Deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.
-	IpFilters pulumi.StringArrayInput            `pulumi:"ipFilters"`
-	Migration GetPgPgUserConfigMigrationPtrInput `pulumi:"migration"`
-	Pg        GetPgPgUserConfigPgPtrInput        `pulumi:"pg"`
+	IpFilters   pulumi.StringArrayInput              `pulumi:"ipFilters"`
+	Migration   GetPgPgUserConfigMigrationPtrInput   `pulumi:"migration"`
+	Pg          GetPgPgUserConfigPgPtrInput          `pulumi:"pg"`
+	PgQualstats GetPgPgUserConfigPgQualstatsPtrInput `pulumi:"pgQualstats"`
 	// Deprecated: Usage of this field is discouraged.
 	PgReadReplica pulumi.BoolPtrInput `pulumi:"pgReadReplica"`
 	// Deprecated: Usage of this field is discouraged.
@@ -60248,6 +66611,7 @@ type GetPgPgUserConfigArgs struct {
 	ProjectToForkFrom       pulumi.StringPtrInput                      `pulumi:"projectToForkFrom"`
 	PublicAccess            GetPgPgUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryTargetTime      pulumi.StringPtrInput                      `pulumi:"recoveryTargetTime"`
+	ServiceLog              pulumi.BoolPtrInput                        `pulumi:"serviceLog"`
 	ServiceToForkFrom       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
 	SharedBuffersPercentage pulumi.Float64PtrInput                     `pulumi:"sharedBuffersPercentage"`
 	StaticIps               pulumi.BoolPtrInput                        `pulumi:"staticIps"`
@@ -60353,6 +66717,10 @@ func (o GetPgPgUserConfigOutput) Pg() GetPgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPg { return v.Pg }).(GetPgPgUserConfigPgPtrOutput)
 }
 
+func (o GetPgPgUserConfigOutput) PgQualstats() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPgQualstats { return v.PgQualstats }).(GetPgPgUserConfigPgQualstatsPtrOutput)
+}
+
 // Deprecated: Usage of this field is discouraged.
 func (o GetPgPgUserConfigOutput) PgReadReplica() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.PgReadReplica }).(pulumi.BoolPtrOutput)
@@ -60397,6 +66765,10 @@ func (o GetPgPgUserConfigOutput) PublicAccess() GetPgPgUserConfigPublicAccessPtr
 
 func (o GetPgPgUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetPgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -61638,6 +68010,199 @@ func (o GetPgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetPgPgUserConfigPgQualstats struct {
+	Enabled             *bool `pulumi:"enabled"`
+	MinErrEstimateNum   *int  `pulumi:"minErrEstimateNum"`
+	MinErrEstimateRatio *int  `pulumi:"minErrEstimateRatio"`
+	TrackConstants      *bool `pulumi:"trackConstants"`
+	TrackPgCatalog      *bool `pulumi:"trackPgCatalog"`
+}
+
+// GetPgPgUserConfigPgQualstatsInput is an input type that accepts GetPgPgUserConfigPgQualstatsArgs and GetPgPgUserConfigPgQualstatsOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgQualstatsInput` via:
+//
+//	GetPgPgUserConfigPgQualstatsArgs{...}
+type GetPgPgUserConfigPgQualstatsInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgQualstatsOutput() GetPgPgUserConfigPgQualstatsOutput
+	ToGetPgPgUserConfigPgQualstatsOutputWithContext(context.Context) GetPgPgUserConfigPgQualstatsOutput
+}
+
+type GetPgPgUserConfigPgQualstatsArgs struct {
+	Enabled             pulumi.BoolPtrInput `pulumi:"enabled"`
+	MinErrEstimateNum   pulumi.IntPtrInput  `pulumi:"minErrEstimateNum"`
+	MinErrEstimateRatio pulumi.IntPtrInput  `pulumi:"minErrEstimateRatio"`
+	TrackConstants      pulumi.BoolPtrInput `pulumi:"trackConstants"`
+	TrackPgCatalog      pulumi.BoolPtrInput `pulumi:"trackPgCatalog"`
+}
+
+func (GetPgPgUserConfigPgQualstatsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsOutput() GetPgPgUserConfigPgQualstatsOutput {
+	return i.ToGetPgPgUserConfigPgQualstatsOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgQualstatsOutput)
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return i.ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgQualstatsOutput).ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPgQualstatsPtrInput is an input type that accepts GetPgPgUserConfigPgQualstatsArgs, GetPgPgUserConfigPgQualstatsPtr and GetPgPgUserConfigPgQualstatsPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgQualstatsPtrInput` via:
+//
+//	        GetPgPgUserConfigPgQualstatsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPgQualstatsPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput
+	ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Context) GetPgPgUserConfigPgQualstatsPtrOutput
+}
+
+type getPgPgUserConfigPgQualstatsPtrType GetPgPgUserConfigPgQualstatsArgs
+
+func GetPgPgUserConfigPgQualstatsPtr(v *GetPgPgUserConfigPgQualstatsArgs) GetPgPgUserConfigPgQualstatsPtrInput {
+	return (*getPgPgUserConfigPgQualstatsPtrType)(v)
+}
+
+func (*getPgPgUserConfigPgQualstatsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPgQualstatsPtrType) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return i.ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPgQualstatsPtrType) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgQualstatsPtrOutput)
+}
+
+type GetPgPgUserConfigPgQualstatsOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgQualstatsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsOutput() GetPgPgUserConfigPgQualstatsOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o.ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPgQualstats) *GetPgPgUserConfigPgQualstats {
+		return &v
+	}).(GetPgPgUserConfigPgQualstatsPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) MinErrEstimateNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *int { return v.MinErrEstimateNum }).(pulumi.IntPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) MinErrEstimateRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *int { return v.MinErrEstimateRatio }).(pulumi.IntPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) TrackConstants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *bool { return v.TrackConstants }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) TrackPgCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *bool { return v.TrackPgCatalog }).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPgQualstatsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgQualstatsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) Elem() GetPgPgUserConfigPgQualstatsOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) GetPgPgUserConfigPgQualstats {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPgQualstats
+		return ret
+	}).(GetPgPgUserConfigPgQualstatsOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) MinErrEstimateNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinErrEstimateNum
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) MinErrEstimateRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinErrEstimateRatio
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) TrackConstants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackConstants
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) TrackPgCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackPgCatalog
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetPgPgUserConfigPgbouncer struct {
 	AutodbIdleTimeout       *int     `pulumi:"autodbIdleTimeout"`
 	AutodbMaxDbConnections  *int     `pulumi:"autodbMaxDbConnections"`
@@ -62846,6 +69411,100 @@ func (o GetPgTagArrayOutput) Index(i pulumi.IntInput) GetPgTagOutput {
 	}).(GetPgTagOutput)
 }
 
+type GetPgTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetPgTechEmailInput is an input type that accepts GetPgTechEmailArgs and GetPgTechEmailOutput values.
+// You can construct a concrete instance of `GetPgTechEmailInput` via:
+//
+//	GetPgTechEmailArgs{...}
+type GetPgTechEmailInput interface {
+	pulumi.Input
+
+	ToGetPgTechEmailOutput() GetPgTechEmailOutput
+	ToGetPgTechEmailOutputWithContext(context.Context) GetPgTechEmailOutput
+}
+
+type GetPgTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetPgTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgTechEmail)(nil)).Elem()
+}
+
+func (i GetPgTechEmailArgs) ToGetPgTechEmailOutput() GetPgTechEmailOutput {
+	return i.ToGetPgTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetPgTechEmailArgs) ToGetPgTechEmailOutputWithContext(ctx context.Context) GetPgTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgTechEmailOutput)
+}
+
+// GetPgTechEmailArrayInput is an input type that accepts GetPgTechEmailArray and GetPgTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetPgTechEmailArrayInput` via:
+//
+//	GetPgTechEmailArray{ GetPgTechEmailArgs{...} }
+type GetPgTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetPgTechEmailArrayOutput() GetPgTechEmailArrayOutput
+	ToGetPgTechEmailArrayOutputWithContext(context.Context) GetPgTechEmailArrayOutput
+}
+
+type GetPgTechEmailArray []GetPgTechEmailInput
+
+func (GetPgTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgTechEmail)(nil)).Elem()
+}
+
+func (i GetPgTechEmailArray) ToGetPgTechEmailArrayOutput() GetPgTechEmailArrayOutput {
+	return i.ToGetPgTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgTechEmailArray) ToGetPgTechEmailArrayOutputWithContext(ctx context.Context) GetPgTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgTechEmailArrayOutput)
+}
+
+type GetPgTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetPgTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgTechEmail)(nil)).Elem()
+}
+
+func (o GetPgTechEmailOutput) ToGetPgTechEmailOutput() GetPgTechEmailOutput {
+	return o
+}
+
+func (o GetPgTechEmailOutput) ToGetPgTechEmailOutputWithContext(ctx context.Context) GetPgTechEmailOutput {
+	return o
+}
+
+func (o GetPgTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetPgTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgTechEmail)(nil)).Elem()
+}
+
+func (o GetPgTechEmailArrayOutput) ToGetPgTechEmailArrayOutput() GetPgTechEmailArrayOutput {
+	return o
+}
+
+func (o GetPgTechEmailArrayOutput) ToGetPgTechEmailArrayOutputWithContext(ctx context.Context) GetPgTechEmailArrayOutput {
+	return o
+}
+
+func (o GetPgTechEmailArrayOutput) Index(i pulumi.IntInput) GetPgTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgTechEmail {
+		return vs[0].([]GetPgTechEmail)[vs[1].(int)]
+	}).(GetPgTechEmailOutput)
+}
+
 type GetProjectTag struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
@@ -62948,6 +69607,7 @@ func (o GetProjectTagArrayOutput) Index(i pulumi.IntInput) GetProjectTagOutput {
 
 type GetRedisComponent struct {
 	Component                 string `pulumi:"component"`
+	ConnectionUri             string `pulumi:"connectionUri"`
 	Host                      string `pulumi:"host"`
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
 	Port                      int    `pulumi:"port"`
@@ -62969,6 +69629,7 @@ type GetRedisComponentInput interface {
 
 type GetRedisComponentArgs struct {
 	Component                 pulumi.StringInput `pulumi:"component"`
+	ConnectionUri             pulumi.StringInput `pulumi:"connectionUri"`
 	Host                      pulumi.StringInput `pulumi:"host"`
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
 	Port                      pulumi.IntInput    `pulumi:"port"`
@@ -63030,6 +69691,10 @@ func (o GetRedisComponentOutput) ToGetRedisComponentOutputWithContext(ctx contex
 
 func (o GetRedisComponentOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRedisComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+func (o GetRedisComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
 func (o GetRedisComponentOutput) Host() pulumi.StringOutput {
@@ -63187,6 +69852,7 @@ type GetRedisRedisUserConfig struct {
 	RedisPubsubClientOutputBufferLimit *int                                      `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           *bool                                     `pulumi:"redisSsl"`
 	RedisTimeout                       *int                                      `pulumi:"redisTimeout"`
+	ServiceLog                         *bool                                     `pulumi:"serviceLog"`
 	ServiceToForkFrom                  *string                                   `pulumi:"serviceToForkFrom"`
 	StaticIps                          *bool                                     `pulumi:"staticIps"`
 }
@@ -63225,6 +69891,7 @@ type GetRedisRedisUserConfigArgs struct {
 	RedisPubsubClientOutputBufferLimit pulumi.IntPtrInput                               `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           pulumi.BoolPtrInput                              `pulumi:"redisSsl"`
 	RedisTimeout                       pulumi.IntPtrInput                               `pulumi:"redisTimeout"`
+	ServiceLog                         pulumi.BoolPtrInput                              `pulumi:"serviceLog"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
 	StaticIps                          pulumi.BoolPtrInput                              `pulumi:"staticIps"`
 }
@@ -63363,6 +70030,10 @@ func (o GetRedisRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
 
 func (o GetRedisRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRedisRedisUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetRedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
@@ -64373,6 +71044,100 @@ func (o GetRedisTagArrayOutput) Index(i pulumi.IntInput) GetRedisTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisTag {
 		return vs[0].([]GetRedisTag)[vs[1].(int)]
 	}).(GetRedisTagOutput)
+}
+
+type GetRedisTechEmail struct {
+	Email string `pulumi:"email"`
+}
+
+// GetRedisTechEmailInput is an input type that accepts GetRedisTechEmailArgs and GetRedisTechEmailOutput values.
+// You can construct a concrete instance of `GetRedisTechEmailInput` via:
+//
+//	GetRedisTechEmailArgs{...}
+type GetRedisTechEmailInput interface {
+	pulumi.Input
+
+	ToGetRedisTechEmailOutput() GetRedisTechEmailOutput
+	ToGetRedisTechEmailOutputWithContext(context.Context) GetRedisTechEmailOutput
+}
+
+type GetRedisTechEmailArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetRedisTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisTechEmail)(nil)).Elem()
+}
+
+func (i GetRedisTechEmailArgs) ToGetRedisTechEmailOutput() GetRedisTechEmailOutput {
+	return i.ToGetRedisTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetRedisTechEmailArgs) ToGetRedisTechEmailOutputWithContext(ctx context.Context) GetRedisTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisTechEmailOutput)
+}
+
+// GetRedisTechEmailArrayInput is an input type that accepts GetRedisTechEmailArray and GetRedisTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetRedisTechEmailArrayInput` via:
+//
+//	GetRedisTechEmailArray{ GetRedisTechEmailArgs{...} }
+type GetRedisTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisTechEmailArrayOutput() GetRedisTechEmailArrayOutput
+	ToGetRedisTechEmailArrayOutputWithContext(context.Context) GetRedisTechEmailArrayOutput
+}
+
+type GetRedisTechEmailArray []GetRedisTechEmailInput
+
+func (GetRedisTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisTechEmail)(nil)).Elem()
+}
+
+func (i GetRedisTechEmailArray) ToGetRedisTechEmailArrayOutput() GetRedisTechEmailArrayOutput {
+	return i.ToGetRedisTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisTechEmailArray) ToGetRedisTechEmailArrayOutputWithContext(ctx context.Context) GetRedisTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisTechEmailArrayOutput)
+}
+
+type GetRedisTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetRedisTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisTechEmail)(nil)).Elem()
+}
+
+func (o GetRedisTechEmailOutput) ToGetRedisTechEmailOutput() GetRedisTechEmailOutput {
+	return o
+}
+
+func (o GetRedisTechEmailOutput) ToGetRedisTechEmailOutputWithContext(ctx context.Context) GetRedisTechEmailOutput {
+	return o
+}
+
+func (o GetRedisTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetRedisTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisTechEmail)(nil)).Elem()
+}
+
+func (o GetRedisTechEmailArrayOutput) ToGetRedisTechEmailArrayOutput() GetRedisTechEmailArrayOutput {
+	return o
+}
+
+func (o GetRedisTechEmailArrayOutput) ToGetRedisTechEmailArrayOutputWithContext(ctx context.Context) GetRedisTechEmailArrayOutput {
+	return o
+}
+
+func (o GetRedisTechEmailArrayOutput) Index(i pulumi.IntInput) GetRedisTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisTechEmail {
+		return vs[0].([]GetRedisTechEmail)[vs[1].(int)]
+	}).(GetRedisTechEmailOutput)
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfig struct {
@@ -66157,6 +72922,108 @@ func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOut
 	}).(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput)
 }
 
+type GetServiceIntegrationEndpointExternalGoogleCloudBigquery struct {
+	ProjectId                 string `pulumi:"projectId"`
+	ServiceAccountCredentials string `pulumi:"serviceAccountCredentials"`
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs and GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput` via:
+//
+//	GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{...}
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs struct {
+	ProjectId                 pulumi.StringInput `pulumi:"projectId"`
+	ServiceAccountCredentials pulumi.StringInput `pulumi:"serviceAccountCredentials"`
+}
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput)
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray and GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray{ GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{...} }
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray []GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudBigquery) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ServiceAccountCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudBigquery) string {
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalGoogleCloudBigquery {
+		return vs[0].([]GetServiceIntegrationEndpointExternalGoogleCloudBigquery)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput)
+}
+
 type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
 	LogId                     string `pulumi:"logId"`
 	ProjectId                 string `pulumi:"projectId"`
@@ -66525,6 +73392,130 @@ func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 		return vs[0].([]GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig)[vs[1].(int)]
 	}).(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalPostgresql struct {
+	Host        string  `pulumi:"host"`
+	Password    string  `pulumi:"password"`
+	Port        int     `pulumi:"port"`
+	SslMode     *string `pulumi:"sslMode"`
+	SslRootCert *string `pulumi:"sslRootCert"`
+	Username    string  `pulumi:"username"`
+}
+
+// GetServiceIntegrationEndpointExternalPostgresqlInput is an input type that accepts GetServiceIntegrationEndpointExternalPostgresqlArgs and GetServiceIntegrationEndpointExternalPostgresqlOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalPostgresqlInput` via:
+//
+//	GetServiceIntegrationEndpointExternalPostgresqlArgs{...}
+type GetServiceIntegrationEndpointExternalPostgresqlInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalPostgresqlOutput() GetServiceIntegrationEndpointExternalPostgresqlOutput
+	ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalPostgresqlOutput
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlArgs struct {
+	Host        pulumi.StringInput    `pulumi:"host"`
+	Password    pulumi.StringInput    `pulumi:"password"`
+	Port        pulumi.IntInput       `pulumi:"port"`
+	SslMode     pulumi.StringPtrInput `pulumi:"sslMode"`
+	SslRootCert pulumi.StringPtrInput `pulumi:"sslRootCert"`
+	Username    pulumi.StringInput    `pulumi:"username"`
+}
+
+func (GetServiceIntegrationEndpointExternalPostgresqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArgs) ToGetServiceIntegrationEndpointExternalPostgresqlOutput() GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return i.ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArgs) ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalPostgresqlOutput)
+}
+
+// GetServiceIntegrationEndpointExternalPostgresqlArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalPostgresqlArray and GetServiceIntegrationEndpointExternalPostgresqlArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalPostgresqlArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalPostgresqlArray{ GetServiceIntegrationEndpointExternalPostgresqlArgs{...} }
+type GetServiceIntegrationEndpointExternalPostgresqlArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutput() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput
+	ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalPostgresqlArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlArray []GetServiceIntegrationEndpointExternalPostgresqlInput
+
+func (GetServiceIntegrationEndpointExternalPostgresqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArray) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutput() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArray) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalPostgresqlArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalPostgresqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) ToGetServiceIntegrationEndpointExternalPostgresqlOutput() GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslRootCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslRootCert }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutput() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalPostgresql {
+		return vs[0].([]GetServiceIntegrationEndpointExternalPostgresql)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalPostgresqlOutput)
 }
 
 type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
@@ -68711,6 +75702,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraServiceIntegrationArrayInput)(nil)).Elem(), CassandraServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraTagInput)(nil)).Elem(), CassandraTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraTagArrayInput)(nil)).Elem(), CassandraTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CassandraTechEmailInput)(nil)).Elem(), CassandraTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CassandraTechEmailArrayInput)(nil)).Elem(), CassandraTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseInput)(nil)).Elem(), ClickhouseClickhouseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseArrayInput)(nil)).Elem(), ClickhouseClickhouseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseClickhouseUserConfigInput)(nil)).Elem(), ClickhouseClickhouseUserConfigArgs{})
@@ -68733,6 +75726,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseServiceIntegrationArrayInput)(nil)).Elem(), ClickhouseServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseTagInput)(nil)).Elem(), ClickhouseTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseTagArrayInput)(nil)).Elem(), ClickhouseTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseTechEmailInput)(nil)).Elem(), ClickhouseTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickhouseTechEmailArrayInput)(nil)).Elem(), ClickhouseTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSinkInput)(nil)).Elem(), FlinkApplicationVersionSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSinkArrayInput)(nil)).Elem(), FlinkApplicationVersionSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkApplicationVersionSourceInput)(nil)).Elem(), FlinkApplicationVersionSourceArgs{})
@@ -68751,6 +75746,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkServiceIntegrationArrayInput)(nil)).Elem(), FlinkServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkTagInput)(nil)).Elem(), FlinkTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkTagArrayInput)(nil)).Elem(), FlinkTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkTechEmailInput)(nil)).Elem(), FlinkTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkTechEmailArrayInput)(nil)).Elem(), FlinkTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaComponentInput)(nil)).Elem(), GrafanaComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaComponentArrayInput)(nil)).Elem(), GrafanaComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaGrafanaInput)(nil)).Elem(), GrafanaGrafanaArgs{})
@@ -68785,6 +75782,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaServiceIntegrationArrayInput)(nil)).Elem(), GrafanaServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaTagInput)(nil)).Elem(), GrafanaTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaTagArrayInput)(nil)).Elem(), GrafanaTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaTechEmailInput)(nil)).Elem(), GrafanaTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaTechEmailArrayInput)(nil)).Elem(), GrafanaTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbComponentInput)(nil)).Elem(), InfluxDbComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbComponentArrayInput)(nil)).Elem(), InfluxDbComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbInfluxdbInput)(nil)).Elem(), InfluxDbInfluxdbArgs{})
@@ -68805,6 +75804,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbServiceIntegrationArrayInput)(nil)).Elem(), InfluxDbServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbTagInput)(nil)).Elem(), InfluxDbTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbTagArrayInput)(nil)).Elem(), InfluxDbTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbTechEmailInput)(nil)).Elem(), InfluxDbTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbTechEmailArrayInput)(nil)).Elem(), InfluxDbTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaComponentInput)(nil)).Elem(), KafkaComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaComponentArrayInput)(nil)).Elem(), KafkaComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectComponentInput)(nil)).Elem(), KafkaConnectComponentArgs{})
@@ -68827,6 +75828,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectServiceIntegrationArrayInput)(nil)).Elem(), KafkaConnectServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectTagInput)(nil)).Elem(), KafkaConnectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectTagArrayInput)(nil)).Elem(), KafkaConnectTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectTechEmailInput)(nil)).Elem(), KafkaConnectTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectTechEmailArrayInput)(nil)).Elem(), KafkaConnectTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorTaskInput)(nil)).Elem(), KafkaConnectorTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorTaskArrayInput)(nil)).Elem(), KafkaConnectorTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaInput)(nil)).Elem(), KafkaKafkaArgs{})
@@ -68851,6 +75854,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigPublicAccessPtrInput)(nil)).Elem(), KafkaKafkaUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigSchemaRegistryConfigInput)(nil)).Elem(), KafkaKafkaUserConfigSchemaRegistryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigSchemaRegistryConfigPtrInput)(nil)).Elem(), KafkaKafkaUserConfigSchemaRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigTieredStorageInput)(nil)).Elem(), KafkaKafkaUserConfigTieredStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigTieredStoragePtrInput)(nil)).Elem(), KafkaKafkaUserConfigTieredStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigTieredStorageLocalCacheInput)(nil)).Elem(), KafkaKafkaUserConfigTieredStorageLocalCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaKafkaUserConfigTieredStorageLocalCachePtrInput)(nil)).Elem(), KafkaKafkaUserConfigTieredStorageLocalCacheArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerComponentInput)(nil)).Elem(), KafkaMirrorMakerComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerComponentArrayInput)(nil)).Elem(), KafkaMirrorMakerComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerKafkaMirrormakerInput)(nil)).Elem(), KafkaMirrorMakerKafkaMirrormakerArgs{})
@@ -68865,10 +75872,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerServiceIntegrationArrayInput)(nil)).Elem(), KafkaMirrorMakerServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerTagInput)(nil)).Elem(), KafkaMirrorMakerTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerTagArrayInput)(nil)).Elem(), KafkaMirrorMakerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerTechEmailInput)(nil)).Elem(), KafkaMirrorMakerTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerTechEmailArrayInput)(nil)).Elem(), KafkaMirrorMakerTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaServiceIntegrationInput)(nil)).Elem(), KafkaServiceIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaServiceIntegrationArrayInput)(nil)).Elem(), KafkaServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTagInput)(nil)).Elem(), KafkaTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTagArrayInput)(nil)).Elem(), KafkaTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTechEmailInput)(nil)).Elem(), KafkaTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTechEmailArrayInput)(nil)).Elem(), KafkaTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicConfigInput)(nil)).Elem(), KafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicConfigPtrInput)(nil)).Elem(), KafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicTagInput)(nil)).Elem(), KafkaTopicTagArgs{})
@@ -68885,6 +75896,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorServiceIntegrationArrayInput)(nil)).Elem(), M3AggregatorServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorTagInput)(nil)).Elem(), M3AggregatorTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorTagArrayInput)(nil)).Elem(), M3AggregatorTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorTechEmailInput)(nil)).Elem(), M3AggregatorTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorTechEmailArrayInput)(nil)).Elem(), M3AggregatorTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbComponentInput)(nil)).Elem(), M3DbComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbComponentArrayInput)(nil)).Elem(), M3DbComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbM3dbInput)(nil)).Elem(), M3DbM3dbArgs{})
@@ -68921,6 +75934,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbServiceIntegrationArrayInput)(nil)).Elem(), M3DbServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbTagInput)(nil)).Elem(), M3DbTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbTagArrayInput)(nil)).Elem(), M3DbTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3DbTechEmailInput)(nil)).Elem(), M3DbTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3DbTechEmailArrayInput)(nil)).Elem(), M3DbTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlComponentInput)(nil)).Elem(), MySqlComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlComponentArrayInput)(nil)).Elem(), MySqlComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlMysqlInput)(nil)).Elem(), MySqlMysqlArgs{})
@@ -68943,6 +75958,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlServiceIntegrationArrayInput)(nil)).Elem(), MySqlServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlTagInput)(nil)).Elem(), MySqlTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlTagArrayInput)(nil)).Elem(), MySqlTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlTechEmailInput)(nil)).Elem(), MySqlTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlTechEmailArrayInput)(nil)).Elem(), MySqlTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchComponentInput)(nil)).Elem(), OpenSearchComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchComponentArrayInput)(nil)).Elem(), OpenSearchComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchInput)(nil)).Elem(), OpenSearchOpensearchArgs{})
@@ -68959,6 +75976,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpenidPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpenidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchOpensearchUserConfigPrivateAccessInput)(nil)).Elem(), OpenSearchOpensearchUserConfigPrivateAccessArgs{})
@@ -68973,6 +75996,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchServiceIntegrationArrayInput)(nil)).Elem(), OpenSearchServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchTagInput)(nil)).Elem(), OpenSearchTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchTagArrayInput)(nil)).Elem(), OpenSearchTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchTechEmailInput)(nil)).Elem(), OpenSearchTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchTechEmailArrayInput)(nil)).Elem(), OpenSearchTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTimeoutsInput)(nil)).Elem(), OrganizationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTimeoutsPtrInput)(nil)).Elem(), OrganizationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgComponentInput)(nil)).Elem(), PgComponentArgs{})
@@ -68987,6 +76012,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigMigrationPtrInput)(nil)).Elem(), PgPgUserConfigMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPgInput)(nil)).Elem(), PgPgUserConfigPgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPgPtrInput)(nil)).Elem(), PgPgUserConfigPgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPgQualstatsInput)(nil)).Elem(), PgPgUserConfigPgQualstatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPgQualstatsPtrInput)(nil)).Elem(), PgPgUserConfigPgQualstatsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPgbouncerInput)(nil)).Elem(), PgPgUserConfigPgbouncerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPgbouncerPtrInput)(nil)).Elem(), PgPgUserConfigPgbouncerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgPgUserConfigPglookoutInput)(nil)).Elem(), PgPgUserConfigPglookoutArgs{})
@@ -69003,6 +76030,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PgServiceIntegrationArrayInput)(nil)).Elem(), PgServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgTagInput)(nil)).Elem(), PgTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgTagArrayInput)(nil)).Elem(), PgTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgTechEmailInput)(nil)).Elem(), PgTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgTechEmailArrayInput)(nil)).Elem(), PgTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagInput)(nil)).Elem(), ProjectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagArrayInput)(nil)).Elem(), ProjectTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisComponentInput)(nil)).Elem(), RedisComponentArgs{})
@@ -69025,6 +76054,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisServiceIntegrationArrayInput)(nil)).Elem(), RedisServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisTagInput)(nil)).Elem(), RedisTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisTagArrayInput)(nil)).Elem(), RedisTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedisTechEmailInput)(nil)).Elem(), RedisTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedisTechEmailArrayInput)(nil)).Elem(), RedisTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationClickhouseKafkaUserConfigInput)(nil)).Elem(), ServiceIntegrationClickhouseKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationClickhouseKafkaUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationClickhouseKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationClickhouseKafkaUserConfigTableInput)(nil)).Elem(), ServiceIntegrationClickhouseKafkaUserConfigTableArgs{})
@@ -69055,12 +76086,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudBigqueryInput)(nil)).Elem(), ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalKafkaUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointExternalKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalPostgresqlInput)(nil)).Elem(), ServiceIntegrationEndpointExternalPostgresqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalPostgresqlPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalPostgresqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointJolokiaUserConfigInput)(nil)).Elem(), ServiceIntegrationEndpointJolokiaUserConfigArgs{})
@@ -69113,6 +76148,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaServiceIntegrationArrayInput)(nil)).Elem(), GetCassandaServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaTagInput)(nil)).Elem(), GetCassandaTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaTagArrayInput)(nil)).Elem(), GetCassandaTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaTechEmailInput)(nil)).Elem(), GetCassandaTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaTechEmailArrayInput)(nil)).Elem(), GetCassandaTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraCassandraInput)(nil)).Elem(), GetCassandraCassandraArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraCassandraArrayInput)(nil)).Elem(), GetCassandraCassandraArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraCassandraUserConfigInput)(nil)).Elem(), GetCassandraCassandraUserConfigArgs{})
@@ -69131,6 +76168,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraServiceIntegrationArrayInput)(nil)).Elem(), GetCassandraServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraTagInput)(nil)).Elem(), GetCassandraTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraTagArrayInput)(nil)).Elem(), GetCassandraTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraTechEmailInput)(nil)).Elem(), GetCassandraTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandraTechEmailArrayInput)(nil)).Elem(), GetCassandraTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseInput)(nil)).Elem(), GetClickhouseClickhouseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseArrayInput)(nil)).Elem(), GetClickhouseClickhouseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseClickhouseUserConfigInput)(nil)).Elem(), GetClickhouseClickhouseUserConfigArgs{})
@@ -69149,6 +76188,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseServiceIntegrationArrayInput)(nil)).Elem(), GetClickhouseServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseTagInput)(nil)).Elem(), GetClickhouseTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseTagArrayInput)(nil)).Elem(), GetClickhouseTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseTechEmailInput)(nil)).Elem(), GetClickhouseTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClickhouseTechEmailArrayInput)(nil)).Elem(), GetClickhouseTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSinkInput)(nil)).Elem(), GetFlinkApplicationVersionSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSinkArrayInput)(nil)).Elem(), GetFlinkApplicationVersionSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkApplicationVersionSourceInput)(nil)).Elem(), GetFlinkApplicationVersionSourceArgs{})
@@ -69167,6 +76208,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkServiceIntegrationArrayInput)(nil)).Elem(), GetFlinkServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkTagInput)(nil)).Elem(), GetFlinkTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkTagArrayInput)(nil)).Elem(), GetFlinkTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkTechEmailInput)(nil)).Elem(), GetFlinkTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlinkTechEmailArrayInput)(nil)).Elem(), GetFlinkTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaComponentInput)(nil)).Elem(), GetGrafanaComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaComponentArrayInput)(nil)).Elem(), GetGrafanaComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaGrafanaInput)(nil)).Elem(), GetGrafanaGrafanaArgs{})
@@ -69201,6 +76244,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaServiceIntegrationArrayInput)(nil)).Elem(), GetGrafanaServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaTagInput)(nil)).Elem(), GetGrafanaTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaTagArrayInput)(nil)).Elem(), GetGrafanaTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaTechEmailInput)(nil)).Elem(), GetGrafanaTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGrafanaTechEmailArrayInput)(nil)).Elem(), GetGrafanaTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbComponentInput)(nil)).Elem(), GetInfluxDbComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbComponentArrayInput)(nil)).Elem(), GetInfluxDbComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbInfluxdbInput)(nil)).Elem(), GetInfluxDbInfluxdbArgs{})
@@ -69221,6 +76266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbServiceIntegrationArrayInput)(nil)).Elem(), GetInfluxDbServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbTagInput)(nil)).Elem(), GetInfluxDbTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbTagArrayInput)(nil)).Elem(), GetInfluxDbTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbTechEmailInput)(nil)).Elem(), GetInfluxDbTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfluxDbTechEmailArrayInput)(nil)).Elem(), GetInfluxDbTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaComponentInput)(nil)).Elem(), GetKafkaComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaComponentArrayInput)(nil)).Elem(), GetKafkaComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectComponentInput)(nil)).Elem(), GetKafkaConnectComponentArgs{})
@@ -69243,6 +76290,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectServiceIntegrationArrayInput)(nil)).Elem(), GetKafkaConnectServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectTagInput)(nil)).Elem(), GetKafkaConnectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectTagArrayInput)(nil)).Elem(), GetKafkaConnectTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectTechEmailInput)(nil)).Elem(), GetKafkaConnectTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectTechEmailArrayInput)(nil)).Elem(), GetKafkaConnectTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectorTaskInput)(nil)).Elem(), GetKafkaConnectorTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectorTaskArrayInput)(nil)).Elem(), GetKafkaConnectorTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaInput)(nil)).Elem(), GetKafkaKafkaArgs{})
@@ -69267,6 +76316,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigPublicAccessPtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfigInput)(nil)).Elem(), GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStoragePtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCacheInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerComponentInput)(nil)).Elem(), GetKafkaMirrorMakerComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerComponentArrayInput)(nil)).Elem(), GetKafkaMirrorMakerComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerArgs{})
@@ -69281,10 +76334,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerServiceIntegrationArrayInput)(nil)).Elem(), GetKafkaMirrorMakerServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTagInput)(nil)).Elem(), GetKafkaMirrorMakerTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTagArrayInput)(nil)).Elem(), GetKafkaMirrorMakerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTechEmailInput)(nil)).Elem(), GetKafkaMirrorMakerTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTechEmailArrayInput)(nil)).Elem(), GetKafkaMirrorMakerTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaServiceIntegrationInput)(nil)).Elem(), GetKafkaServiceIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaServiceIntegrationArrayInput)(nil)).Elem(), GetKafkaServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTagInput)(nil)).Elem(), GetKafkaTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTagArrayInput)(nil)).Elem(), GetKafkaTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTechEmailInput)(nil)).Elem(), GetKafkaTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTechEmailArrayInput)(nil)).Elem(), GetKafkaTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicConfigInput)(nil)).Elem(), GetKafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicConfigArrayInput)(nil)).Elem(), GetKafkaTopicConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicTagInput)(nil)).Elem(), GetKafkaTopicTagArgs{})
@@ -69301,6 +76358,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorServiceIntegrationArrayInput)(nil)).Elem(), GetM3AggregatorServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorTagInput)(nil)).Elem(), GetM3AggregatorTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorTagArrayInput)(nil)).Elem(), GetM3AggregatorTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorTechEmailInput)(nil)).Elem(), GetM3AggregatorTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorTechEmailArrayInput)(nil)).Elem(), GetM3AggregatorTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbComponentInput)(nil)).Elem(), GetM3DbComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbComponentArrayInput)(nil)).Elem(), GetM3DbComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbInput)(nil)).Elem(), GetM3DbM3dbArgs{})
@@ -69337,6 +76396,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbServiceIntegrationArrayInput)(nil)).Elem(), GetM3DbServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTagInput)(nil)).Elem(), GetM3DbTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTagArrayInput)(nil)).Elem(), GetM3DbTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTechEmailInput)(nil)).Elem(), GetM3DbTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTechEmailArrayInput)(nil)).Elem(), GetM3DbTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlComponentInput)(nil)).Elem(), GetMySqlComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlComponentArrayInput)(nil)).Elem(), GetMySqlComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlInput)(nil)).Elem(), GetMySqlMysqlArgs{})
@@ -69359,6 +76420,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlServiceIntegrationArrayInput)(nil)).Elem(), GetMySqlServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTagInput)(nil)).Elem(), GetMySqlTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTagArrayInput)(nil)).Elem(), GetMySqlTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTechEmailInput)(nil)).Elem(), GetMySqlTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTechEmailArrayInput)(nil)).Elem(), GetMySqlTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchComponentInput)(nil)).Elem(), GetOpenSearchComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchComponentArrayInput)(nil)).Elem(), GetOpenSearchComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchInput)(nil)).Elem(), GetOpenSearchOpensearchArgs{})
@@ -69375,6 +76438,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenidPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpenidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivateAccessInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPrivateAccessArgs{})
@@ -69389,6 +76458,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchServiceIntegrationArrayInput)(nil)).Elem(), GetOpenSearchServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagInput)(nil)).Elem(), GetOpenSearchTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagArrayInput)(nil)).Elem(), GetOpenSearchTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailInput)(nil)).Elem(), GetOpenSearchTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentInput)(nil)).Elem(), GetPgComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentArrayInput)(nil)).Elem(), GetPgComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgInput)(nil)).Elem(), GetPgPgArgs{})
@@ -69401,6 +76472,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigMigrationPtrInput)(nil)).Elem(), GetPgPgUserConfigMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgInput)(nil)).Elem(), GetPgPgUserConfigPgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgPtrInput)(nil)).Elem(), GetPgPgUserConfigPgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgQualstatsInput)(nil)).Elem(), GetPgPgUserConfigPgQualstatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgQualstatsPtrInput)(nil)).Elem(), GetPgPgUserConfigPgQualstatsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgbouncerInput)(nil)).Elem(), GetPgPgUserConfigPgbouncerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgbouncerPtrInput)(nil)).Elem(), GetPgPgUserConfigPgbouncerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPglookoutInput)(nil)).Elem(), GetPgPgUserConfigPglookoutArgs{})
@@ -69417,6 +76490,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgServiceIntegrationArrayInput)(nil)).Elem(), GetPgServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTagInput)(nil)).Elem(), GetPgTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTagArrayInput)(nil)).Elem(), GetPgTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTechEmailInput)(nil)).Elem(), GetPgTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTechEmailArrayInput)(nil)).Elem(), GetPgTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagInput)(nil)).Elem(), GetProjectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagArrayInput)(nil)).Elem(), GetProjectTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisComponentInput)(nil)).Elem(), GetRedisComponentArgs{})
@@ -69439,6 +76514,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisServiceIntegrationArrayInput)(nil)).Elem(), GetRedisServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTagInput)(nil)).Elem(), GetRedisTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTagArrayInput)(nil)).Elem(), GetRedisTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTechEmailInput)(nil)).Elem(), GetRedisTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTechEmailArrayInput)(nil)).Elem(), GetRedisTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableArgs{})
@@ -69469,12 +76546,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresqlInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalPostgresqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresqlArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalPostgresqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointJolokiaUserConfigArgs{})
@@ -69527,6 +76608,8 @@ func init() {
 	pulumi.RegisterOutputType(CassandraServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(CassandraTagOutput{})
 	pulumi.RegisterOutputType(CassandraTagArrayOutput{})
+	pulumi.RegisterOutputType(CassandraTechEmailOutput{})
+	pulumi.RegisterOutputType(CassandraTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(ClickhouseClickhouseOutput{})
 	pulumi.RegisterOutputType(ClickhouseClickhouseArrayOutput{})
 	pulumi.RegisterOutputType(ClickhouseClickhouseUserConfigOutput{})
@@ -69549,6 +76632,8 @@ func init() {
 	pulumi.RegisterOutputType(ClickhouseServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(ClickhouseTagOutput{})
 	pulumi.RegisterOutputType(ClickhouseTagArrayOutput{})
+	pulumi.RegisterOutputType(ClickhouseTechEmailOutput{})
+	pulumi.RegisterOutputType(ClickhouseTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(FlinkApplicationVersionSinkOutput{})
 	pulumi.RegisterOutputType(FlinkApplicationVersionSinkArrayOutput{})
 	pulumi.RegisterOutputType(FlinkApplicationVersionSourceOutput{})
@@ -69567,6 +76652,8 @@ func init() {
 	pulumi.RegisterOutputType(FlinkServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(FlinkTagOutput{})
 	pulumi.RegisterOutputType(FlinkTagArrayOutput{})
+	pulumi.RegisterOutputType(FlinkTechEmailOutput{})
+	pulumi.RegisterOutputType(FlinkTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GrafanaComponentOutput{})
 	pulumi.RegisterOutputType(GrafanaComponentArrayOutput{})
 	pulumi.RegisterOutputType(GrafanaGrafanaOutput{})
@@ -69601,6 +76688,8 @@ func init() {
 	pulumi.RegisterOutputType(GrafanaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GrafanaTagOutput{})
 	pulumi.RegisterOutputType(GrafanaTagArrayOutput{})
+	pulumi.RegisterOutputType(GrafanaTechEmailOutput{})
+	pulumi.RegisterOutputType(GrafanaTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(InfluxDbComponentOutput{})
 	pulumi.RegisterOutputType(InfluxDbComponentArrayOutput{})
 	pulumi.RegisterOutputType(InfluxDbInfluxdbOutput{})
@@ -69621,6 +76710,8 @@ func init() {
 	pulumi.RegisterOutputType(InfluxDbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(InfluxDbTagOutput{})
 	pulumi.RegisterOutputType(InfluxDbTagArrayOutput{})
+	pulumi.RegisterOutputType(InfluxDbTechEmailOutput{})
+	pulumi.RegisterOutputType(InfluxDbTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(KafkaComponentOutput{})
 	pulumi.RegisterOutputType(KafkaComponentArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectComponentOutput{})
@@ -69643,6 +76734,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaConnectServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectTagOutput{})
 	pulumi.RegisterOutputType(KafkaConnectTagArrayOutput{})
+	pulumi.RegisterOutputType(KafkaConnectTechEmailOutput{})
+	pulumi.RegisterOutputType(KafkaConnectTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorTaskOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorTaskArrayOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaOutput{})
@@ -69667,6 +76760,10 @@ func init() {
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigSchemaRegistryConfigOutput{})
 	pulumi.RegisterOutputType(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigTieredStorageOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigTieredStoragePtrOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigTieredStorageLocalCacheOutput{})
+	pulumi.RegisterOutputType(KafkaKafkaUserConfigTieredStorageLocalCachePtrOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerComponentOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerComponentArrayOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerKafkaMirrormakerOutput{})
@@ -69681,10 +76778,14 @@ func init() {
 	pulumi.RegisterOutputType(KafkaMirrorMakerServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerTagOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerTagArrayOutput{})
+	pulumi.RegisterOutputType(KafkaMirrorMakerTechEmailOutput{})
+	pulumi.RegisterOutputType(KafkaMirrorMakerTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(KafkaServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(KafkaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(KafkaTagOutput{})
 	pulumi.RegisterOutputType(KafkaTagArrayOutput{})
+	pulumi.RegisterOutputType(KafkaTechEmailOutput{})
+	pulumi.RegisterOutputType(KafkaTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(KafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(KafkaTopicConfigPtrOutput{})
 	pulumi.RegisterOutputType(KafkaTopicTagOutput{})
@@ -69701,6 +76802,8 @@ func init() {
 	pulumi.RegisterOutputType(M3AggregatorServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(M3AggregatorTagOutput{})
 	pulumi.RegisterOutputType(M3AggregatorTagArrayOutput{})
+	pulumi.RegisterOutputType(M3AggregatorTechEmailOutput{})
+	pulumi.RegisterOutputType(M3AggregatorTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(M3DbComponentOutput{})
 	pulumi.RegisterOutputType(M3DbComponentArrayOutput{})
 	pulumi.RegisterOutputType(M3DbM3dbOutput{})
@@ -69737,6 +76840,8 @@ func init() {
 	pulumi.RegisterOutputType(M3DbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(M3DbTagOutput{})
 	pulumi.RegisterOutputType(M3DbTagArrayOutput{})
+	pulumi.RegisterOutputType(M3DbTechEmailOutput{})
+	pulumi.RegisterOutputType(M3DbTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(MySqlComponentOutput{})
 	pulumi.RegisterOutputType(MySqlComponentArrayOutput{})
 	pulumi.RegisterOutputType(MySqlMysqlOutput{})
@@ -69759,6 +76864,8 @@ func init() {
 	pulumi.RegisterOutputType(MySqlServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(MySqlTagOutput{})
 	pulumi.RegisterOutputType(MySqlTagArrayOutput{})
+	pulumi.RegisterOutputType(MySqlTechEmailOutput{})
+	pulumi.RegisterOutputType(MySqlTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(OpenSearchComponentOutput{})
 	pulumi.RegisterOutputType(OpenSearchComponentArrayOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchOutput{})
@@ -69775,6 +76882,12 @@ func init() {
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpenidPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchPtrOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput{})
+	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchOpensearchUserConfigPrivateAccessOutput{})
@@ -69789,6 +76902,8 @@ func init() {
 	pulumi.RegisterOutputType(OpenSearchServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(OpenSearchTagOutput{})
 	pulumi.RegisterOutputType(OpenSearchTagArrayOutput{})
+	pulumi.RegisterOutputType(OpenSearchTechEmailOutput{})
+	pulumi.RegisterOutputType(OpenSearchTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationTimeoutsOutput{})
 	pulumi.RegisterOutputType(OrganizationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PgComponentOutput{})
@@ -69803,6 +76918,8 @@ func init() {
 	pulumi.RegisterOutputType(PgPgUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgPtrOutput{})
+	pulumi.RegisterOutputType(PgPgUserConfigPgQualstatsOutput{})
+	pulumi.RegisterOutputType(PgPgUserConfigPgQualstatsPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgbouncerOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPgbouncerPtrOutput{})
 	pulumi.RegisterOutputType(PgPgUserConfigPglookoutOutput{})
@@ -69819,6 +76936,8 @@ func init() {
 	pulumi.RegisterOutputType(PgServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(PgTagOutput{})
 	pulumi.RegisterOutputType(PgTagArrayOutput{})
+	pulumi.RegisterOutputType(PgTechEmailOutput{})
+	pulumi.RegisterOutputType(PgTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(ProjectTagOutput{})
 	pulumi.RegisterOutputType(ProjectTagArrayOutput{})
 	pulumi.RegisterOutputType(RedisComponentOutput{})
@@ -69841,6 +76960,8 @@ func init() {
 	pulumi.RegisterOutputType(RedisServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(RedisTagOutput{})
 	pulumi.RegisterOutputType(RedisTagArrayOutput{})
+	pulumi.RegisterOutputType(RedisTechEmailOutput{})
+	pulumi.RegisterOutputType(RedisTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationClickhouseKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationClickhouseKafkaUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationClickhouseKafkaUserConfigTableOutput{})
@@ -69871,12 +76992,16 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalPostgresqlOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalPostgresqlPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointJolokiaUserConfigOutput{})
@@ -69929,6 +77054,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCassandaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandaTagOutput{})
 	pulumi.RegisterOutputType(GetCassandaTagArrayOutput{})
+	pulumi.RegisterOutputType(GetCassandaTechEmailOutput{})
+	pulumi.RegisterOutputType(GetCassandaTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandraCassandraOutput{})
 	pulumi.RegisterOutputType(GetCassandraCassandraArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandraCassandraUserConfigOutput{})
@@ -69947,6 +77074,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCassandraServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandraTagOutput{})
 	pulumi.RegisterOutputType(GetCassandraTagArrayOutput{})
+	pulumi.RegisterOutputType(GetCassandraTechEmailOutput{})
+	pulumi.RegisterOutputType(GetCassandraTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetClickhouseClickhouseOutput{})
 	pulumi.RegisterOutputType(GetClickhouseClickhouseArrayOutput{})
 	pulumi.RegisterOutputType(GetClickhouseClickhouseUserConfigOutput{})
@@ -69965,6 +77094,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClickhouseServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetClickhouseTagOutput{})
 	pulumi.RegisterOutputType(GetClickhouseTagArrayOutput{})
+	pulumi.RegisterOutputType(GetClickhouseTechEmailOutput{})
+	pulumi.RegisterOutputType(GetClickhouseTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetFlinkApplicationVersionSinkOutput{})
 	pulumi.RegisterOutputType(GetFlinkApplicationVersionSinkArrayOutput{})
 	pulumi.RegisterOutputType(GetFlinkApplicationVersionSourceOutput{})
@@ -69983,6 +77114,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFlinkServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetFlinkTagOutput{})
 	pulumi.RegisterOutputType(GetFlinkTagArrayOutput{})
+	pulumi.RegisterOutputType(GetFlinkTechEmailOutput{})
+	pulumi.RegisterOutputType(GetFlinkTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetGrafanaComponentOutput{})
 	pulumi.RegisterOutputType(GetGrafanaComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetGrafanaGrafanaOutput{})
@@ -70017,6 +77150,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGrafanaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetGrafanaTagOutput{})
 	pulumi.RegisterOutputType(GetGrafanaTagArrayOutput{})
+	pulumi.RegisterOutputType(GetGrafanaTechEmailOutput{})
+	pulumi.RegisterOutputType(GetGrafanaTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbComponentOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbInfluxdbOutput{})
@@ -70037,6 +77172,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInfluxDbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbTagOutput{})
 	pulumi.RegisterOutputType(GetInfluxDbTagArrayOutput{})
+	pulumi.RegisterOutputType(GetInfluxDbTechEmailOutput{})
+	pulumi.RegisterOutputType(GetInfluxDbTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaComponentOutput{})
 	pulumi.RegisterOutputType(GetKafkaComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectComponentOutput{})
@@ -70059,6 +77196,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaConnectServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectTagOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectTagArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaConnectTechEmailOutput{})
+	pulumi.RegisterOutputType(GetKafkaConnectTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectorTaskOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectorTaskArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaOutput{})
@@ -70083,6 +77222,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput{})
 	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStorageOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStoragePtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerComponentOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerOutput{})
@@ -70097,10 +77240,14 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerTagOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerTagArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerTechEmailOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetKafkaServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTagOutput{})
 	pulumi.RegisterOutputType(GetKafkaTagArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTechEmailOutput{})
+	pulumi.RegisterOutputType(GetKafkaTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicTagOutput{})
@@ -70117,6 +77264,8 @@ func init() {
 	pulumi.RegisterOutputType(GetM3AggregatorServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorTagOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorTagArrayOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorTechEmailOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbComponentOutput{})
 	pulumi.RegisterOutputType(GetM3DbComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbOutput{})
@@ -70153,6 +77302,8 @@ func init() {
 	pulumi.RegisterOutputType(GetM3DbServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbTagOutput{})
 	pulumi.RegisterOutputType(GetM3DbTagArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbTechEmailOutput{})
+	pulumi.RegisterOutputType(GetM3DbTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentOutput{})
 	pulumi.RegisterOutputType(GetMySqlComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlOutput{})
@@ -70175,6 +77326,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMySqlServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlTagOutput{})
 	pulumi.RegisterOutputType(GetMySqlTagArrayOutput{})
+	pulumi.RegisterOutputType(GetMySqlTechEmailOutput{})
+	pulumi.RegisterOutputType(GetMySqlTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchComponentOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchOutput{})
@@ -70191,6 +77344,12 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpenidPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPrivateAccessOutput{})
@@ -70205,6 +77364,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTagOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTagArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTechEmailOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetPgComponentOutput{})
 	pulumi.RegisterOutputType(GetPgComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetPgPgOutput{})
@@ -70217,6 +77378,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPgPgUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgQualstatsOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgQualstatsPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgbouncerOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPgbouncerPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPglookoutOutput{})
@@ -70233,6 +77396,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPgServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetPgTagOutput{})
 	pulumi.RegisterOutputType(GetPgTagArrayOutput{})
+	pulumi.RegisterOutputType(GetPgTechEmailOutput{})
+	pulumi.RegisterOutputType(GetPgTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectTagOutput{})
 	pulumi.RegisterOutputType(GetProjectTagArrayOutput{})
 	pulumi.RegisterOutputType(GetRedisComponentOutput{})
@@ -70255,6 +77420,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRedisServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetRedisTagOutput{})
 	pulumi.RegisterOutputType(GetRedisTagArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisTechEmailOutput{})
+	pulumi.RegisterOutputType(GetRedisTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableOutput{})
@@ -70285,12 +77452,16 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalPostgresqlOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalPostgresqlArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigOutput{})

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,10 +300,18 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         public OpenSearchOpensearchUserConfigSamlArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.idpEntityId = Objects.requireNonNull($.idpEntityId, "expected parameter 'idpEntityId' to be non-null");
-            $.idpMetadataUrl = Objects.requireNonNull($.idpMetadataUrl, "expected parameter 'idpMetadataUrl' to be non-null");
-            $.spEntityId = Objects.requireNonNull($.spEntityId, "expected parameter 'spEntityId' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSamlArgs", "enabled");
+            }
+            if ($.idpEntityId == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSamlArgs", "idpEntityId");
+            }
+            if ($.idpMetadataUrl == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSamlArgs", "idpMetadataUrl");
+            }
+            if ($.spEntityId == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSamlArgs", "spEntityId");
+            }
             return $;
         }
     }

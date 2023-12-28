@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,36 +130,51 @@ public final class OpenSearchOpensearchUserConfigSaml {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSaml", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder idpEntityId(String idpEntityId) {
-            this.idpEntityId = Objects.requireNonNull(idpEntityId);
+            if (idpEntityId == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSaml", "idpEntityId");
+            }
+            this.idpEntityId = idpEntityId;
             return this;
         }
         @CustomType.Setter
         public Builder idpMetadataUrl(String idpMetadataUrl) {
-            this.idpMetadataUrl = Objects.requireNonNull(idpMetadataUrl);
+            if (idpMetadataUrl == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSaml", "idpMetadataUrl");
+            }
+            this.idpMetadataUrl = idpMetadataUrl;
             return this;
         }
         @CustomType.Setter
         public Builder idpPemtrustedcasContent(@Nullable String idpPemtrustedcasContent) {
+
             this.idpPemtrustedcasContent = idpPemtrustedcasContent;
             return this;
         }
         @CustomType.Setter
         public Builder rolesKey(@Nullable String rolesKey) {
+
             this.rolesKey = rolesKey;
             return this;
         }
         @CustomType.Setter
         public Builder spEntityId(String spEntityId) {
-            this.spEntityId = Objects.requireNonNull(spEntityId);
+            if (spEntityId == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigSaml", "spEntityId");
+            }
+            this.spEntityId = spEntityId;
             return this;
         }
         @CustomType.Setter
         public Builder subjectKey(@Nullable String subjectKey) {
+
             this.subjectKey = subjectKey;
             return this;
         }

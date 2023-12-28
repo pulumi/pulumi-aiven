@@ -12,6 +12,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigTieredStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -39,6 +40,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * Allow access to read Kafka topic messages in the Aiven Console and REST API.
+     * 
+     */
+    @Import(name="aivenKafkaTopicMessages")
+    private @Nullable Output<Boolean> aivenKafkaTopicMessages;
+
+    /**
+     * @return Allow access to read Kafka topic messages in the Aiven Console and REST API.
+     * 
+     */
+    public Optional<Output<Boolean>> aivenKafkaTopicMessages() {
+        return Optional.ofNullable(this.aivenKafkaTopicMessages);
     }
 
     /**
@@ -305,6 +321,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
+    /**
      * Use static public IP addresses.
      * 
      */
@@ -319,10 +350,26 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.staticIps);
     }
 
+    /**
+     * Tiered storage configuration.
+     * 
+     */
+    @Import(name="tieredStorage")
+    private @Nullable Output<KafkaKafkaUserConfigTieredStorageArgs> tieredStorage;
+
+    /**
+     * @return Tiered storage configuration.
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigTieredStorageArgs>> tieredStorage() {
+        return Optional.ofNullable(this.tieredStorage);
+    }
+
     private KafkaKafkaUserConfigArgs() {}
 
     private KafkaKafkaUserConfigArgs(KafkaKafkaUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.aivenKafkaTopicMessages = $.aivenKafkaTopicMessages;
         this.customDomain = $.customDomain;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -340,7 +387,9 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.publicAccess = $.publicAccess;
         this.schemaRegistry = $.schemaRegistry;
         this.schemaRegistryConfig = $.schemaRegistryConfig;
+        this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
+        this.tieredStorage = $.tieredStorage;
     }
 
     public static Builder builder() {
@@ -380,6 +429,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param aivenKafkaTopicMessages Allow access to read Kafka topic messages in the Aiven Console and REST API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aivenKafkaTopicMessages(@Nullable Output<Boolean> aivenKafkaTopicMessages) {
+            $.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
+            return this;
+        }
+
+        /**
+         * @param aivenKafkaTopicMessages Allow access to read Kafka topic messages in the Aiven Console and REST API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aivenKafkaTopicMessages(Boolean aivenKafkaTopicMessages) {
+            return aivenKafkaTopicMessages(Output.of(aivenKafkaTopicMessages));
         }
 
         /**
@@ -782,6 +852,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
+        }
+
+        /**
          * @param staticIps Use static public IP addresses.
          * 
          * @return builder
@@ -800,6 +891,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
+        }
+
+        /**
+         * @param tieredStorage Tiered storage configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieredStorage(@Nullable Output<KafkaKafkaUserConfigTieredStorageArgs> tieredStorage) {
+            $.tieredStorage = tieredStorage;
+            return this;
+        }
+
+        /**
+         * @param tieredStorage Tiered storage configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieredStorage(KafkaKafkaUserConfigTieredStorageArgs tieredStorage) {
+            return tieredStorage(Output.of(tieredStorage));
         }
 
         public KafkaKafkaUserConfigArgs build() {

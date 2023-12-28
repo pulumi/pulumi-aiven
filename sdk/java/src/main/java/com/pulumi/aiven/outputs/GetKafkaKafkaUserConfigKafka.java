@@ -30,6 +30,8 @@ public final class GetKafkaKafkaUserConfigKafka {
     private @Nullable Integer logFlushIntervalMs;
     private @Nullable Integer logIndexIntervalBytes;
     private @Nullable Integer logIndexSizeMaxBytes;
+    private @Nullable Integer logLocalRetentionBytes;
+    private @Nullable Integer logLocalRetentionMs;
     private @Nullable Boolean logMessageDownconversionEnable;
     private @Nullable Integer logMessageTimestampDifferenceMaxMs;
     private @Nullable String logMessageTimestampType;
@@ -50,7 +52,12 @@ public final class GetKafkaKafkaUserConfigKafka {
     private @Nullable Integer producerPurgatoryPurgeIntervalRequests;
     private @Nullable Integer replicaFetchMaxBytes;
     private @Nullable Integer replicaFetchResponseMaxBytes;
+    private @Nullable String saslOauthbearerExpectedAudience;
+    private @Nullable String saslOauthbearerExpectedIssuer;
+    private @Nullable String saslOauthbearerJwksEndpointUrl;
+    private @Nullable String saslOauthbearerSubClaimName;
     private @Nullable Integer socketRequestMaxBytes;
+    private @Nullable Boolean transactionPartitionVerificationEnable;
     private @Nullable Integer transactionRemoveExpiredTransactionCleanupIntervalMs;
     private @Nullable Integer transactionStateLogSegmentBytes;
 
@@ -102,6 +109,12 @@ public final class GetKafkaKafkaUserConfigKafka {
     }
     public Optional<Integer> logIndexSizeMaxBytes() {
         return Optional.ofNullable(this.logIndexSizeMaxBytes);
+    }
+    public Optional<Integer> logLocalRetentionBytes() {
+        return Optional.ofNullable(this.logLocalRetentionBytes);
+    }
+    public Optional<Integer> logLocalRetentionMs() {
+        return Optional.ofNullable(this.logLocalRetentionMs);
     }
     public Optional<Boolean> logMessageDownconversionEnable() {
         return Optional.ofNullable(this.logMessageDownconversionEnable);
@@ -163,8 +176,23 @@ public final class GetKafkaKafkaUserConfigKafka {
     public Optional<Integer> replicaFetchResponseMaxBytes() {
         return Optional.ofNullable(this.replicaFetchResponseMaxBytes);
     }
+    public Optional<String> saslOauthbearerExpectedAudience() {
+        return Optional.ofNullable(this.saslOauthbearerExpectedAudience);
+    }
+    public Optional<String> saslOauthbearerExpectedIssuer() {
+        return Optional.ofNullable(this.saslOauthbearerExpectedIssuer);
+    }
+    public Optional<String> saslOauthbearerJwksEndpointUrl() {
+        return Optional.ofNullable(this.saslOauthbearerJwksEndpointUrl);
+    }
+    public Optional<String> saslOauthbearerSubClaimName() {
+        return Optional.ofNullable(this.saslOauthbearerSubClaimName);
+    }
     public Optional<Integer> socketRequestMaxBytes() {
         return Optional.ofNullable(this.socketRequestMaxBytes);
+    }
+    public Optional<Boolean> transactionPartitionVerificationEnable() {
+        return Optional.ofNullable(this.transactionPartitionVerificationEnable);
     }
     public Optional<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs() {
         return Optional.ofNullable(this.transactionRemoveExpiredTransactionCleanupIntervalMs);
@@ -198,6 +226,8 @@ public final class GetKafkaKafkaUserConfigKafka {
         private @Nullable Integer logFlushIntervalMs;
         private @Nullable Integer logIndexIntervalBytes;
         private @Nullable Integer logIndexSizeMaxBytes;
+        private @Nullable Integer logLocalRetentionBytes;
+        private @Nullable Integer logLocalRetentionMs;
         private @Nullable Boolean logMessageDownconversionEnable;
         private @Nullable Integer logMessageTimestampDifferenceMaxMs;
         private @Nullable String logMessageTimestampType;
@@ -218,7 +248,12 @@ public final class GetKafkaKafkaUserConfigKafka {
         private @Nullable Integer producerPurgatoryPurgeIntervalRequests;
         private @Nullable Integer replicaFetchMaxBytes;
         private @Nullable Integer replicaFetchResponseMaxBytes;
+        private @Nullable String saslOauthbearerExpectedAudience;
+        private @Nullable String saslOauthbearerExpectedIssuer;
+        private @Nullable String saslOauthbearerJwksEndpointUrl;
+        private @Nullable String saslOauthbearerSubClaimName;
         private @Nullable Integer socketRequestMaxBytes;
+        private @Nullable Boolean transactionPartitionVerificationEnable;
         private @Nullable Integer transactionRemoveExpiredTransactionCleanupIntervalMs;
         private @Nullable Integer transactionStateLogSegmentBytes;
         public Builder() {}
@@ -240,6 +275,8 @@ public final class GetKafkaKafkaUserConfigKafka {
     	      this.logFlushIntervalMs = defaults.logFlushIntervalMs;
     	      this.logIndexIntervalBytes = defaults.logIndexIntervalBytes;
     	      this.logIndexSizeMaxBytes = defaults.logIndexSizeMaxBytes;
+    	      this.logLocalRetentionBytes = defaults.logLocalRetentionBytes;
+    	      this.logLocalRetentionMs = defaults.logLocalRetentionMs;
     	      this.logMessageDownconversionEnable = defaults.logMessageDownconversionEnable;
     	      this.logMessageTimestampDifferenceMaxMs = defaults.logMessageTimestampDifferenceMaxMs;
     	      this.logMessageTimestampType = defaults.logMessageTimestampType;
@@ -260,203 +297,289 @@ public final class GetKafkaKafkaUserConfigKafka {
     	      this.producerPurgatoryPurgeIntervalRequests = defaults.producerPurgatoryPurgeIntervalRequests;
     	      this.replicaFetchMaxBytes = defaults.replicaFetchMaxBytes;
     	      this.replicaFetchResponseMaxBytes = defaults.replicaFetchResponseMaxBytes;
+    	      this.saslOauthbearerExpectedAudience = defaults.saslOauthbearerExpectedAudience;
+    	      this.saslOauthbearerExpectedIssuer = defaults.saslOauthbearerExpectedIssuer;
+    	      this.saslOauthbearerJwksEndpointUrl = defaults.saslOauthbearerJwksEndpointUrl;
+    	      this.saslOauthbearerSubClaimName = defaults.saslOauthbearerSubClaimName;
     	      this.socketRequestMaxBytes = defaults.socketRequestMaxBytes;
+    	      this.transactionPartitionVerificationEnable = defaults.transactionPartitionVerificationEnable;
     	      this.transactionRemoveExpiredTransactionCleanupIntervalMs = defaults.transactionRemoveExpiredTransactionCleanupIntervalMs;
     	      this.transactionStateLogSegmentBytes = defaults.transactionStateLogSegmentBytes;
         }
 
         @CustomType.Setter
         public Builder autoCreateTopicsEnable(@Nullable Boolean autoCreateTopicsEnable) {
+
             this.autoCreateTopicsEnable = autoCreateTopicsEnable;
             return this;
         }
         @CustomType.Setter
         public Builder compressionType(@Nullable String compressionType) {
+
             this.compressionType = compressionType;
             return this;
         }
         @CustomType.Setter
         public Builder connectionsMaxIdleMs(@Nullable Integer connectionsMaxIdleMs) {
+
             this.connectionsMaxIdleMs = connectionsMaxIdleMs;
             return this;
         }
         @CustomType.Setter
         public Builder defaultReplicationFactor(@Nullable Integer defaultReplicationFactor) {
+
             this.defaultReplicationFactor = defaultReplicationFactor;
             return this;
         }
         @CustomType.Setter
         public Builder groupInitialRebalanceDelayMs(@Nullable Integer groupInitialRebalanceDelayMs) {
+
             this.groupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             return this;
         }
         @CustomType.Setter
         public Builder groupMaxSessionTimeoutMs(@Nullable Integer groupMaxSessionTimeoutMs) {
+
             this.groupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             return this;
         }
         @CustomType.Setter
         public Builder groupMinSessionTimeoutMs(@Nullable Integer groupMinSessionTimeoutMs) {
+
             this.groupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
             return this;
         }
         @CustomType.Setter
         public Builder logCleanerDeleteRetentionMs(@Nullable Integer logCleanerDeleteRetentionMs) {
+
             this.logCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             return this;
         }
         @CustomType.Setter
         public Builder logCleanerMaxCompactionLagMs(@Nullable Integer logCleanerMaxCompactionLagMs) {
+
             this.logCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             return this;
         }
         @CustomType.Setter
         public Builder logCleanerMinCleanableRatio(@Nullable Double logCleanerMinCleanableRatio) {
+
             this.logCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
             return this;
         }
         @CustomType.Setter
         public Builder logCleanerMinCompactionLagMs(@Nullable Integer logCleanerMinCompactionLagMs) {
+
             this.logCleanerMinCompactionLagMs = logCleanerMinCompactionLagMs;
             return this;
         }
         @CustomType.Setter
         public Builder logCleanupPolicy(@Nullable String logCleanupPolicy) {
+
             this.logCleanupPolicy = logCleanupPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder logFlushIntervalMessages(@Nullable Integer logFlushIntervalMessages) {
+
             this.logFlushIntervalMessages = logFlushIntervalMessages;
             return this;
         }
         @CustomType.Setter
         public Builder logFlushIntervalMs(@Nullable Integer logFlushIntervalMs) {
+
             this.logFlushIntervalMs = logFlushIntervalMs;
             return this;
         }
         @CustomType.Setter
         public Builder logIndexIntervalBytes(@Nullable Integer logIndexIntervalBytes) {
+
             this.logIndexIntervalBytes = logIndexIntervalBytes;
             return this;
         }
         @CustomType.Setter
         public Builder logIndexSizeMaxBytes(@Nullable Integer logIndexSizeMaxBytes) {
+
             this.logIndexSizeMaxBytes = logIndexSizeMaxBytes;
             return this;
         }
         @CustomType.Setter
+        public Builder logLocalRetentionBytes(@Nullable Integer logLocalRetentionBytes) {
+
+            this.logLocalRetentionBytes = logLocalRetentionBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logLocalRetentionMs(@Nullable Integer logLocalRetentionMs) {
+
+            this.logLocalRetentionMs = logLocalRetentionMs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logMessageDownconversionEnable(@Nullable Boolean logMessageDownconversionEnable) {
+
             this.logMessageDownconversionEnable = logMessageDownconversionEnable;
             return this;
         }
         @CustomType.Setter
         public Builder logMessageTimestampDifferenceMaxMs(@Nullable Integer logMessageTimestampDifferenceMaxMs) {
+
             this.logMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             return this;
         }
         @CustomType.Setter
         public Builder logMessageTimestampType(@Nullable String logMessageTimestampType) {
+
             this.logMessageTimestampType = logMessageTimestampType;
             return this;
         }
         @CustomType.Setter
         public Builder logPreallocate(@Nullable Boolean logPreallocate) {
+
             this.logPreallocate = logPreallocate;
             return this;
         }
         @CustomType.Setter
         public Builder logRetentionBytes(@Nullable Integer logRetentionBytes) {
+
             this.logRetentionBytes = logRetentionBytes;
             return this;
         }
         @CustomType.Setter
         public Builder logRetentionHours(@Nullable Integer logRetentionHours) {
+
             this.logRetentionHours = logRetentionHours;
             return this;
         }
         @CustomType.Setter
         public Builder logRetentionMs(@Nullable Integer logRetentionMs) {
+
             this.logRetentionMs = logRetentionMs;
             return this;
         }
         @CustomType.Setter
         public Builder logRollJitterMs(@Nullable Integer logRollJitterMs) {
+
             this.logRollJitterMs = logRollJitterMs;
             return this;
         }
         @CustomType.Setter
         public Builder logRollMs(@Nullable Integer logRollMs) {
+
             this.logRollMs = logRollMs;
             return this;
         }
         @CustomType.Setter
         public Builder logSegmentBytes(@Nullable Integer logSegmentBytes) {
+
             this.logSegmentBytes = logSegmentBytes;
             return this;
         }
         @CustomType.Setter
         public Builder logSegmentDeleteDelayMs(@Nullable Integer logSegmentDeleteDelayMs) {
+
             this.logSegmentDeleteDelayMs = logSegmentDeleteDelayMs;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnectionsPerIp(@Nullable Integer maxConnectionsPerIp) {
+
             this.maxConnectionsPerIp = maxConnectionsPerIp;
             return this;
         }
         @CustomType.Setter
         public Builder maxIncrementalFetchSessionCacheSlots(@Nullable Integer maxIncrementalFetchSessionCacheSlots) {
+
             this.maxIncrementalFetchSessionCacheSlots = maxIncrementalFetchSessionCacheSlots;
             return this;
         }
         @CustomType.Setter
         public Builder messageMaxBytes(@Nullable Integer messageMaxBytes) {
+
             this.messageMaxBytes = messageMaxBytes;
             return this;
         }
         @CustomType.Setter
         public Builder minInsyncReplicas(@Nullable Integer minInsyncReplicas) {
+
             this.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder numPartitions(@Nullable Integer numPartitions) {
+
             this.numPartitions = numPartitions;
             return this;
         }
         @CustomType.Setter
         public Builder offsetsRetentionMinutes(@Nullable Integer offsetsRetentionMinutes) {
+
             this.offsetsRetentionMinutes = offsetsRetentionMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder producerPurgatoryPurgeIntervalRequests(@Nullable Integer producerPurgatoryPurgeIntervalRequests) {
+
             this.producerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;
             return this;
         }
         @CustomType.Setter
         public Builder replicaFetchMaxBytes(@Nullable Integer replicaFetchMaxBytes) {
+
             this.replicaFetchMaxBytes = replicaFetchMaxBytes;
             return this;
         }
         @CustomType.Setter
         public Builder replicaFetchResponseMaxBytes(@Nullable Integer replicaFetchResponseMaxBytes) {
+
             this.replicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
             return this;
         }
         @CustomType.Setter
+        public Builder saslOauthbearerExpectedAudience(@Nullable String saslOauthbearerExpectedAudience) {
+
+            this.saslOauthbearerExpectedAudience = saslOauthbearerExpectedAudience;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerExpectedIssuer(@Nullable String saslOauthbearerExpectedIssuer) {
+
+            this.saslOauthbearerExpectedIssuer = saslOauthbearerExpectedIssuer;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerJwksEndpointUrl(@Nullable String saslOauthbearerJwksEndpointUrl) {
+
+            this.saslOauthbearerJwksEndpointUrl = saslOauthbearerJwksEndpointUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerSubClaimName(@Nullable String saslOauthbearerSubClaimName) {
+
+            this.saslOauthbearerSubClaimName = saslOauthbearerSubClaimName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder socketRequestMaxBytes(@Nullable Integer socketRequestMaxBytes) {
+
             this.socketRequestMaxBytes = socketRequestMaxBytes;
             return this;
         }
         @CustomType.Setter
+        public Builder transactionPartitionVerificationEnable(@Nullable Boolean transactionPartitionVerificationEnable) {
+
+            this.transactionPartitionVerificationEnable = transactionPartitionVerificationEnable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transactionRemoveExpiredTransactionCleanupIntervalMs(@Nullable Integer transactionRemoveExpiredTransactionCleanupIntervalMs) {
+
             this.transactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
             return this;
         }
         @CustomType.Setter
         public Builder transactionStateLogSegmentBytes(@Nullable Integer transactionStateLogSegmentBytes) {
+
             this.transactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
             return this;
         }
@@ -478,6 +601,8 @@ public final class GetKafkaKafkaUserConfigKafka {
             _resultValue.logFlushIntervalMs = logFlushIntervalMs;
             _resultValue.logIndexIntervalBytes = logIndexIntervalBytes;
             _resultValue.logIndexSizeMaxBytes = logIndexSizeMaxBytes;
+            _resultValue.logLocalRetentionBytes = logLocalRetentionBytes;
+            _resultValue.logLocalRetentionMs = logLocalRetentionMs;
             _resultValue.logMessageDownconversionEnable = logMessageDownconversionEnable;
             _resultValue.logMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             _resultValue.logMessageTimestampType = logMessageTimestampType;
@@ -498,7 +623,12 @@ public final class GetKafkaKafkaUserConfigKafka {
             _resultValue.producerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;
             _resultValue.replicaFetchMaxBytes = replicaFetchMaxBytes;
             _resultValue.replicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
+            _resultValue.saslOauthbearerExpectedAudience = saslOauthbearerExpectedAudience;
+            _resultValue.saslOauthbearerExpectedIssuer = saslOauthbearerExpectedIssuer;
+            _resultValue.saslOauthbearerJwksEndpointUrl = saslOauthbearerJwksEndpointUrl;
+            _resultValue.saslOauthbearerSubClaimName = saslOauthbearerSubClaimName;
             _resultValue.socketRequestMaxBytes = socketRequestMaxBytes;
+            _resultValue.transactionPartitionVerificationEnable = transactionPartitionVerificationEnable;
             _resultValue.transactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
             _resultValue.transactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
             return _resultValue;

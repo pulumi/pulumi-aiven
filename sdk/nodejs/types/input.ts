@@ -83,6 +83,10 @@ export interface CassandraCassandraUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPublicAccess>;
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
@@ -138,6 +142,7 @@ export interface CassandraCassandraUserConfigPublicAccess {
 
 export interface CassandraComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -166,6 +171,13 @@ export interface CassandraTag {
      * Service tag value
      */
     value: pulumi.Input<string>;
+}
+
+export interface CassandraTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
 }
 
 export interface ClickhouseClickhouse {
@@ -207,6 +219,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPublicAccess>;
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
@@ -237,6 +253,10 @@ export interface ClickhouseClickhouseUserConfigPrivateAccess {
      */
     clickhouseHttps?: pulumi.Input<boolean>;
     /**
+     * Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    clickhouseMysql?: pulumi.Input<boolean>;
+    /**
      * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     prometheus?: pulumi.Input<boolean>;
@@ -251,6 +271,10 @@ export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
      * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouseHttps?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    clickhouseMysql?: pulumi.Input<boolean>;
     /**
      * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
@@ -267,6 +291,10 @@ export interface ClickhouseClickhouseUserConfigPublicAccess {
      */
     clickhouseHttps?: pulumi.Input<boolean>;
     /**
+     * Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    clickhouseMysql?: pulumi.Input<boolean>;
+    /**
      * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     prometheus?: pulumi.Input<boolean>;
@@ -274,6 +302,7 @@ export interface ClickhouseClickhouseUserConfigPublicAccess {
 
 export interface ClickhouseComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -334,6 +363,13 @@ export interface ClickhouseTag {
     value: pulumi.Input<string>;
 }
 
+export interface ClickhouseTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
 export interface FlinkApplicationVersionSink {
     /**
      * The CREATE TABLE statement
@@ -358,6 +394,7 @@ export interface FlinkApplicationVersionSource {
 
 export interface FlinkComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -374,6 +411,10 @@ export interface FlinkFlink {
 }
 
 export interface FlinkFlinkUserConfig {
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     */
+    additionalBackupRegions?: pulumi.Input<string>;
     /**
      * Flink major version.
      */
@@ -400,6 +441,14 @@ export interface FlinkFlinkUserConfig {
      * Allow access to selected service components through Privatelink.
      */
     privatelinkAccess?: pulumi.Input<inputs.FlinkFlinkUserConfigPrivatelinkAccess>;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: pulumi.Input<boolean>;
 }
 
 export interface FlinkFlinkUserConfigIpFilterObject {
@@ -446,8 +495,16 @@ export interface FlinkTag {
     value: pulumi.Input<string>;
 }
 
+export interface FlinkTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
 export interface GrafanaComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -497,9 +554,11 @@ export interface GrafanaGrafanaUserConfig {
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
+    serviceLog?: pulumi.Input<boolean>;
     serviceToForkFrom?: pulumi.Input<string>;
     smtpServer?: pulumi.Input<inputs.GrafanaGrafanaUserConfigSmtpServer>;
     staticIps?: pulumi.Input<boolean>;
+    unifiedAlertingEnabled?: pulumi.Input<boolean>;
     userAutoAssignOrg?: pulumi.Input<boolean>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
     viewersCanEdit?: pulumi.Input<boolean>;
@@ -610,8 +669,13 @@ export interface GrafanaTag {
     value: pulumi.Input<string>;
 }
 
+export interface GrafanaTechEmail {
+    email: pulumi.Input<string>;
+}
+
 export interface InfluxDbComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -671,6 +735,10 @@ export interface InfluxDbInfluxdbUserConfig {
      * Name of the basebackup to restore in forked service.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
     /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
@@ -766,8 +834,16 @@ export interface InfluxDbTag {
     value: pulumi.Input<string>;
 }
 
+export interface InfluxDbTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
 export interface KafkaComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -778,6 +854,7 @@ export interface KafkaComponent {
 
 export interface KafkaConnectComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -801,6 +878,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
     privateAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivateAccess>;
     privatelinkAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess>;
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
+    serviceLog?: pulumi.Input<boolean>;
     staticIps?: pulumi.Input<boolean>;
 }
 
@@ -854,6 +932,10 @@ export interface KafkaConnectTag {
     value: pulumi.Input<string>;
 }
 
+export interface KafkaConnectTechEmail {
+    email: pulumi.Input<string>;
+}
+
 export interface KafkaConnectorTask {
     connector?: pulumi.Input<string>;
     task?: pulumi.Input<number>;
@@ -872,6 +954,10 @@ export interface KafkaKafkaUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
+    /**
+     * Allow access to read Kafka topic messages in the Aiven Console and REST API.
+     */
+    aivenKafkaTopicMessages?: pulumi.Input<boolean>;
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
      */
@@ -943,9 +1029,17 @@ export interface KafkaKafkaUserConfig {
      */
     schemaRegistryConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigSchemaRegistryConfig>;
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
      * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<boolean>;
+    /**
+     * Tiered storage configuration.
+     */
+    tieredStorage?: pulumi.Input<inputs.KafkaKafkaUserConfigTieredStorage>;
 }
 
 export interface KafkaKafkaUserConfigIpFilterObject {
@@ -1024,6 +1118,14 @@ export interface KafkaKafkaUserConfigKafka {
      * The maximum size in bytes of the offset index.
      */
     logIndexSizeMaxBytes?: pulumi.Input<number>;
+    /**
+     * The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+     */
+    logLocalRetentionBytes?: pulumi.Input<number>;
+    /**
+     * The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+     */
+    logLocalRetentionMs?: pulumi.Input<number>;
     /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
      */
@@ -1105,9 +1207,29 @@ export interface KafkaKafkaUserConfigKafka {
      */
     replicaFetchResponseMaxBytes?: pulumi.Input<number>;
     /**
+     * The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+     */
+    saslOauthbearerExpectedAudience?: pulumi.Input<string>;
+    /**
+     * Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+     */
+    saslOauthbearerExpectedIssuer?: pulumi.Input<string>;
+    /**
+     * OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     */
+    saslOauthbearerJwksEndpointUrl?: pulumi.Input<string>;
+    /**
+     * Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+     */
+    saslOauthbearerSubClaimName?: pulumi.Input<string>;
+    /**
      * The maximum number of bytes in a socket request (defaults to 104857600).
      */
     socketRequestMaxBytes?: pulumi.Input<number>;
+    /**
+     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+     */
+    transactionPartitionVerificationEnable?: pulumi.Input<boolean>;
     /**
      * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
      */
@@ -1209,6 +1331,10 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      */
     consumerRequestTimeoutMs?: pulumi.Input<number>;
+    /**
+     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     */
+    nameStrategyValidation?: pulumi.Input<boolean>;
     /**
      * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      */
@@ -1315,8 +1441,27 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
     topicName?: pulumi.Input<string>;
 }
 
+export interface KafkaKafkaUserConfigTieredStorage {
+    /**
+     * Whether to enable the tiered storage functionality.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Local cache configuration.
+     */
+    localCache?: pulumi.Input<inputs.KafkaKafkaUserConfigTieredStorageLocalCache>;
+}
+
+export interface KafkaKafkaUserConfigTieredStorageLocalCache {
+    /**
+     * Local cache size in bytes.
+     */
+    size?: pulumi.Input<number>;
+}
+
 export interface KafkaMirrorMakerComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -1337,6 +1482,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
+    serviceLog?: pulumi.Input<boolean>;
     staticIps?: pulumi.Input<boolean>;
 }
 
@@ -1368,6 +1514,10 @@ export interface KafkaMirrorMakerTag {
     value: pulumi.Input<string>;
 }
 
+export interface KafkaMirrorMakerTechEmail {
+    email: pulumi.Input<string>;
+}
+
 export interface KafkaServiceIntegration {
     /**
      * Type of the service integration. The only supported value at the moment is `readReplica`
@@ -1388,6 +1538,13 @@ export interface KafkaTag {
      * Service tag value
      */
     value: pulumi.Input<string>;
+}
+
+export interface KafkaTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
 }
 
 export interface KafkaTopicConfig {
@@ -1504,6 +1661,7 @@ export interface KafkaTopicTag {
 
 export interface M3AggregatorComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -1528,6 +1686,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
      */
     m3Version?: pulumi.Input<string>;
     m3aggregatorVersion?: pulumi.Input<string>;
+    serviceLog?: pulumi.Input<boolean>;
     staticIps?: pulumi.Input<boolean>;
 }
 
@@ -1546,8 +1705,13 @@ export interface M3AggregatorTag {
     value: pulumi.Input<string>;
 }
 
+export interface M3AggregatorTechEmail {
+    email: pulumi.Input<string>;
+}
+
 export interface M3DbComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -1581,6 +1745,7 @@ export interface M3DbM3dbUserConfig {
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPublicAccess>;
     rules?: pulumi.Input<inputs.M3DbM3dbUserConfigRules>;
+    serviceLog?: pulumi.Input<boolean>;
     serviceToForkFrom?: pulumi.Input<string>;
     staticIps?: pulumi.Input<boolean>;
 }
@@ -1675,8 +1840,13 @@ export interface M3DbTag {
     value: pulumi.Input<string>;
 }
 
+export interface M3DbTechEmail {
+    email: pulumi.Input<string>;
+}
+
 export interface MySqlComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -1709,6 +1879,7 @@ export interface MySqlMysqlUserConfig {
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPublicAccess>;
     recoveryTargetTime?: pulumi.Input<string>;
+    serviceLog?: pulumi.Input<boolean>;
     serviceToForkFrom?: pulumi.Input<string>;
     staticIps?: pulumi.Input<boolean>;
 }
@@ -1790,8 +1961,13 @@ export interface MySqlTag {
     value: pulumi.Input<string>;
 }
 
+export interface MySqlTechEmail {
+    email: pulumi.Input<string>;
+}
+
 export interface OpenSearchComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -1892,6 +2068,10 @@ export interface OpenSearchOpensearchUserConfig {
      */
     saml?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigSaml>;
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
@@ -1958,7 +2138,7 @@ export interface OpenSearchOpensearchUserConfigOpenid {
     /**
      * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
      */
@@ -2003,6 +2183,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     actionDestructiveRequiresName?: pulumi.Input<boolean>;
     /**
+     * Opensearch Security Plugin Settings.
+     */
+    authFailureListeners?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners>;
+    /**
      * Controls the number of shards allowed in the cluster per data node.
      */
     clusterMaxShardsPerNode?: pulumi.Input<number>;
@@ -2022,6 +2206,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Sender username for Opensearch alerts.
      */
     emailSenderUsername?: pulumi.Input<string>;
+    /**
+     * Enable/Disable security audit. The default value is `false`.
+     */
+    enableSecurityAudit?: pulumi.Input<boolean>;
     /**
      * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
      */
@@ -2043,6 +2231,14 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     indicesMemoryIndexBufferSize?: pulumi.Input<number>;
     /**
+     * Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+     */
+    indicesMemoryMaxIndexBufferSize?: pulumi.Input<number>;
+    /**
+     * Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+     */
+    indicesMemoryMinIndexBufferSize?: pulumi.Input<number>;
+    /**
      * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      */
     indicesQueriesCacheSize?: pulumi.Input<number>;
@@ -2058,6 +2254,30 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Number of file chunks sent in parallel for each recovery. Defaults to 2.
      */
     indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number>;
+    /**
+     * Specifies whether ISM is enabled or not. The default value is `true`.
+     */
+    ismEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     */
+    ismHistoryEnabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     */
+    ismHistoryMaxAge?: pulumi.Input<number>;
+    /**
+     * The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     */
+    ismHistoryMaxDocs?: pulumi.Input<number>;
+    /**
+     * The time between rollover checks for the audit history index in hours. The default value is `8`.
+     */
+    ismHistoryRolloverCheckPeriod?: pulumi.Input<number>;
+    /**
+     * How long audit history indices are kept in days. The default value is `30`.
+     */
+    ismHistoryRolloverRetentionPeriod?: pulumi.Input<number>;
     /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
@@ -2118,6 +2338,75 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
     threadPoolWriteSize?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
+    /**
+     * .
+     */
+    internalAuthenticationBackendLimiting?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting>;
+    /**
+     * IP address rate limiting settings.
+     */
+    ipRateLimiting?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+    /**
+     * The number of login attempts allowed before login is blocked.
+     */
+    allowedTries?: pulumi.Input<number>;
+    /**
+     * The internal backend. Enter `internal`.
+     */
+    authenticationBackend?: pulumi.Input<string>;
+    /**
+     * The duration of time that login remains blocked after a failed login.
+     */
+    blockExpirySeconds?: pulumi.Input<number>;
+    /**
+     * The maximum number of blocked IP addresses.
+     */
+    maxBlockedClients?: pulumi.Input<number>;
+    /**
+     * The maximum number of tracked IP addresses that have failed login.
+     */
+    maxTrackedClients?: pulumi.Input<number>;
+    /**
+     * The window of time in which the value for `allowedTries` is enforced.
+     */
+    timeWindowSeconds?: pulumi.Input<number>;
+    /**
+     * The type of rate limiting.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
+    /**
+     * The number of login attempts allowed before login is blocked.
+     */
+    allowedTries?: pulumi.Input<number>;
+    /**
+     * The duration of time that login remains blocked after a failed login.
+     */
+    blockExpirySeconds?: pulumi.Input<number>;
+    /**
+     * The maximum number of blocked IP addresses.
+     */
+    maxBlockedClients?: pulumi.Input<number>;
+    /**
+     * The maximum number of tracked IP addresses that have failed login.
+     */
+    maxTrackedClients?: pulumi.Input<number>;
+    /**
+     * The window of time in which the value for `allowedTries` is enforced.
+     */
+    timeWindowSeconds?: pulumi.Input<number>;
+    /**
+     * The type of rate limiting.
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
@@ -2233,6 +2522,13 @@ export interface OpenSearchTag {
     value: pulumi.Input<string>;
 }
 
+export interface OpenSearchTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
 export interface OrganizationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -2254,6 +2550,7 @@ export interface OrganizationTimeouts {
 
 export interface PgComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -2349,6 +2646,10 @@ export interface PgPgUserConfig {
      */
     pg?: pulumi.Input<inputs.PgPgUserConfigPg>;
     /**
+     * System-wide settings for the pg*qualstats extension.
+     */
+    pgQualstats?: pulumi.Input<inputs.PgPgUserConfigPgQualstats>;
+    /**
      * Use readReplica service integration instead.
      *
      * @deprecated Usage of this field is discouraged.
@@ -2373,7 +2674,7 @@ export interface PgPgUserConfig {
      */
     pgbouncer?: pulumi.Input<inputs.PgPgUserConfigPgbouncer>;
     /**
-     * PGLookout settings.
+     * System-wide settings for pglookout.
      */
     pglookout?: pulumi.Input<inputs.PgPgUserConfigPglookout>;
     /**
@@ -2397,6 +2698,10 @@ export interface PgPgUserConfig {
      */
     recoveryTargetTime?: pulumi.Input<string>;
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
@@ -2413,7 +2718,7 @@ export interface PgPgUserConfig {
      */
     synchronousReplication?: pulumi.Input<string>;
     /**
-     * TimescaleDB extension configuration values.
+     * System-wide settings for the timescaledb extension.
      */
     timescaledb?: pulumi.Input<inputs.PgPgUserConfigTimescaledb>;
     /**
@@ -2448,7 +2753,7 @@ export interface PgPgUserConfigMigration {
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
-     * The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: pulumi.Input<string>;
     /**
@@ -2662,6 +2967,29 @@ export interface PgPgUserConfigPg {
     walWriterDelay?: pulumi.Input<number>;
 }
 
+export interface PgPgUserConfigPgQualstats {
+    /**
+     * Enable / Disable pg_qualstats. The default value is `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Error estimation num threshold to save quals. The default value is `0`.
+     */
+    minErrEstimateNum?: pulumi.Input<number>;
+    /**
+     * Error estimation ratio threshold to save quals. The default value is `0`.
+     */
+    minErrEstimateRatio?: pulumi.Input<number>;
+    /**
+     * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     */
+    trackConstants?: pulumi.Input<boolean>;
+    /**
+     * Track quals on system catalogs too. The default value is `false`.
+     */
+    trackPgCatalog?: pulumi.Input<boolean>;
+}
+
 export interface PgPgUserConfigPgbouncer {
     /**
      * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
@@ -2755,7 +3083,7 @@ export interface PgPgUserConfigPublicAccess {
 
 export interface PgPgUserConfigTimescaledb {
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
      */
     maxBackgroundWorkers?: pulumi.Input<number>;
 }
@@ -2782,6 +3110,13 @@ export interface PgTag {
     value: pulumi.Input<string>;
 }
 
+export interface PgTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
 export interface ProjectTag {
     /**
      * Project tag key
@@ -2795,6 +3130,7 @@ export interface ProjectTag {
 
 export interface RedisComponent {
     component?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
@@ -2831,6 +3167,7 @@ export interface RedisRedisUserConfig {
     redisPubsubClientOutputBufferLimit?: pulumi.Input<number>;
     redisSsl?: pulumi.Input<boolean>;
     redisTimeout?: pulumi.Input<number>;
+    serviceLog?: pulumi.Input<boolean>;
     serviceToForkFrom?: pulumi.Input<string>;
     staticIps?: pulumi.Input<boolean>;
 }
@@ -2874,6 +3211,10 @@ export interface RedisServiceIntegration {
 export interface RedisTag {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface RedisTechEmail {
+    email: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {
@@ -3153,6 +3494,17 @@ export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     url: pulumi.Input<string>;
 }
 
+export interface ServiceIntegrationEndpointExternalGoogleCloudBigquery {
+    /**
+     * GCP project id.
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     */
+    serviceAccountCredentials: pulumi.Input<string>;
+}
+
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
      * Google Cloud Logging log id.
@@ -3228,6 +3580,33 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
      * OpenSearch connection URL.
      */
     url: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalPostgresql {
+    /**
+     * Hostname or IP address of the server.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Password.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Port number of the server.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * SSL Mode. The default value is `verify-full`.
+     */
+    sslMode?: pulumi.Input<string>;
+    /**
+     * SSL Root Cert.
+     */
+    sslRootCert?: pulumi.Input<string>;
+    /**
+     * User name.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {

@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IgnoreDbs { get; set; }
 
         /// <summary>
-        /// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+        /// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }

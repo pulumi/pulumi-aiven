@@ -201,6 +201,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ClickhouseTag>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        [Output("techEmails")]
+        public Output<ImmutableArray<Outputs.ClickhouseTechEmail>> TechEmails { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -351,6 +357,18 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.ClickhouseTagArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.ClickhouseTechEmailArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public InputList<Inputs.ClickhouseTechEmailArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.ClickhouseTechEmailArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>
@@ -571,6 +589,18 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.ClickhouseTagGetArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.ClickhouseTechEmailGetArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public InputList<Inputs.ClickhouseTechEmailGetArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.ClickhouseTechEmailGetArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>

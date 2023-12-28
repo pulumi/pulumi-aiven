@@ -32,6 +32,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    private @Nullable Boolean serviceLog;
     private @Nullable Boolean staticIps;
 
     private GetKafkaConnectKafkaConnectUserConfig() {}
@@ -65,6 +66,9 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public Optional<GetKafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -86,6 +90,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+        private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfig defaults) {
@@ -98,16 +103,19 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetKafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -116,6 +124,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -124,6 +133,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -132,26 +142,37 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         }
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -165,6 +186,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
             return _resultValue;
         }

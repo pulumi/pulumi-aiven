@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -117,9 +118,15 @@ public final class GetPgDatabasePlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetPgDatabasePlainArgs build() {
-            $.databaseName = Objects.requireNonNull($.databaseName, "expected parameter 'databaseName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.databaseName == null) {
+                throw new MissingRequiredPropertyException("GetPgDatabasePlainArgs", "databaseName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetPgDatabasePlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetPgDatabasePlainArgs", "serviceName");
+            }
             return $;
         }
     }

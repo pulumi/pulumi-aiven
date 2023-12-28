@@ -259,6 +259,36 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+     * 
+     */
+    @Import(name="logLocalRetentionBytes")
+    private @Nullable Output<Integer> logLocalRetentionBytes;
+
+    /**
+     * @return The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+     * 
+     */
+    public Optional<Output<Integer>> logLocalRetentionBytes() {
+        return Optional.ofNullable(this.logLocalRetentionBytes);
+    }
+
+    /**
+     * The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+     * 
+     */
+    @Import(name="logLocalRetentionMs")
+    private @Nullable Output<Integer> logLocalRetentionMs;
+
+    /**
+     * @return The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+     * 
+     */
+    public Optional<Output<Integer>> logLocalRetentionMs() {
+        return Optional.ofNullable(this.logLocalRetentionMs);
+    }
+
+    /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
      * 
      */
@@ -559,6 +589,66 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+     * 
+     */
+    @Import(name="saslOauthbearerExpectedAudience")
+    private @Nullable Output<String> saslOauthbearerExpectedAudience;
+
+    /**
+     * @return The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+     * 
+     */
+    public Optional<Output<String>> saslOauthbearerExpectedAudience() {
+        return Optional.ofNullable(this.saslOauthbearerExpectedAudience);
+    }
+
+    /**
+     * Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+     * 
+     */
+    @Import(name="saslOauthbearerExpectedIssuer")
+    private @Nullable Output<String> saslOauthbearerExpectedIssuer;
+
+    /**
+     * @return Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+     * 
+     */
+    public Optional<Output<String>> saslOauthbearerExpectedIssuer() {
+        return Optional.ofNullable(this.saslOauthbearerExpectedIssuer);
+    }
+
+    /**
+     * OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * 
+     */
+    @Import(name="saslOauthbearerJwksEndpointUrl")
+    private @Nullable Output<String> saslOauthbearerJwksEndpointUrl;
+
+    /**
+     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * 
+     */
+    public Optional<Output<String>> saslOauthbearerJwksEndpointUrl() {
+        return Optional.ofNullable(this.saslOauthbearerJwksEndpointUrl);
+    }
+
+    /**
+     * Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+     * 
+     */
+    @Import(name="saslOauthbearerSubClaimName")
+    private @Nullable Output<String> saslOauthbearerSubClaimName;
+
+    /**
+     * @return Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+     * 
+     */
+    public Optional<Output<String>> saslOauthbearerSubClaimName() {
+        return Optional.ofNullable(this.saslOauthbearerSubClaimName);
+    }
+
+    /**
      * The maximum number of bytes in a socket request (defaults to 104857600).
      * 
      */
@@ -571,6 +661,21 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<Integer>> socketRequestMaxBytes() {
         return Optional.ofNullable(this.socketRequestMaxBytes);
+    }
+
+    /**
+     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+     * 
+     */
+    @Import(name="transactionPartitionVerificationEnable")
+    private @Nullable Output<Boolean> transactionPartitionVerificationEnable;
+
+    /**
+     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+     * 
+     */
+    public Optional<Output<Boolean>> transactionPartitionVerificationEnable() {
+        return Optional.ofNullable(this.transactionPartitionVerificationEnable);
     }
 
     /**
@@ -622,6 +727,8 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         this.logFlushIntervalMs = $.logFlushIntervalMs;
         this.logIndexIntervalBytes = $.logIndexIntervalBytes;
         this.logIndexSizeMaxBytes = $.logIndexSizeMaxBytes;
+        this.logLocalRetentionBytes = $.logLocalRetentionBytes;
+        this.logLocalRetentionMs = $.logLocalRetentionMs;
         this.logMessageDownconversionEnable = $.logMessageDownconversionEnable;
         this.logMessageTimestampDifferenceMaxMs = $.logMessageTimestampDifferenceMaxMs;
         this.logMessageTimestampType = $.logMessageTimestampType;
@@ -642,7 +749,12 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         this.producerPurgatoryPurgeIntervalRequests = $.producerPurgatoryPurgeIntervalRequests;
         this.replicaFetchMaxBytes = $.replicaFetchMaxBytes;
         this.replicaFetchResponseMaxBytes = $.replicaFetchResponseMaxBytes;
+        this.saslOauthbearerExpectedAudience = $.saslOauthbearerExpectedAudience;
+        this.saslOauthbearerExpectedIssuer = $.saslOauthbearerExpectedIssuer;
+        this.saslOauthbearerJwksEndpointUrl = $.saslOauthbearerJwksEndpointUrl;
+        this.saslOauthbearerSubClaimName = $.saslOauthbearerSubClaimName;
         this.socketRequestMaxBytes = $.socketRequestMaxBytes;
+        this.transactionPartitionVerificationEnable = $.transactionPartitionVerificationEnable;
         this.transactionRemoveExpiredTransactionCleanupIntervalMs = $.transactionRemoveExpiredTransactionCleanupIntervalMs;
         this.transactionStateLogSegmentBytes = $.transactionStateLogSegmentBytes;
     }
@@ -999,6 +1111,48 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
          */
         public Builder logIndexSizeMaxBytes(Integer logIndexSizeMaxBytes) {
             return logIndexSizeMaxBytes(Output.of(logIndexSizeMaxBytes));
+        }
+
+        /**
+         * @param logLocalRetentionBytes The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLocalRetentionBytes(@Nullable Output<Integer> logLocalRetentionBytes) {
+            $.logLocalRetentionBytes = logLocalRetentionBytes;
+            return this;
+        }
+
+        /**
+         * @param logLocalRetentionBytes The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLocalRetentionBytes(Integer logLocalRetentionBytes) {
+            return logLocalRetentionBytes(Output.of(logLocalRetentionBytes));
+        }
+
+        /**
+         * @param logLocalRetentionMs The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLocalRetentionMs(@Nullable Output<Integer> logLocalRetentionMs) {
+            $.logLocalRetentionMs = logLocalRetentionMs;
+            return this;
+        }
+
+        /**
+         * @param logLocalRetentionMs The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLocalRetentionMs(Integer logLocalRetentionMs) {
+            return logLocalRetentionMs(Output.of(logLocalRetentionMs));
         }
 
         /**
@@ -1422,6 +1576,90 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param saslOauthbearerExpectedAudience The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerExpectedAudience(@Nullable Output<String> saslOauthbearerExpectedAudience) {
+            $.saslOauthbearerExpectedAudience = saslOauthbearerExpectedAudience;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerExpectedAudience The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerExpectedAudience(String saslOauthbearerExpectedAudience) {
+            return saslOauthbearerExpectedAudience(Output.of(saslOauthbearerExpectedAudience));
+        }
+
+        /**
+         * @param saslOauthbearerExpectedIssuer Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerExpectedIssuer(@Nullable Output<String> saslOauthbearerExpectedIssuer) {
+            $.saslOauthbearerExpectedIssuer = saslOauthbearerExpectedIssuer;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerExpectedIssuer Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerExpectedIssuer(String saslOauthbearerExpectedIssuer) {
+            return saslOauthbearerExpectedIssuer(Output.of(saslOauthbearerExpectedIssuer));
+        }
+
+        /**
+         * @param saslOauthbearerJwksEndpointUrl OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerJwksEndpointUrl(@Nullable Output<String> saslOauthbearerJwksEndpointUrl) {
+            $.saslOauthbearerJwksEndpointUrl = saslOauthbearerJwksEndpointUrl;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerJwksEndpointUrl OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerJwksEndpointUrl(String saslOauthbearerJwksEndpointUrl) {
+            return saslOauthbearerJwksEndpointUrl(Output.of(saslOauthbearerJwksEndpointUrl));
+        }
+
+        /**
+         * @param saslOauthbearerSubClaimName Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerSubClaimName(@Nullable Output<String> saslOauthbearerSubClaimName) {
+            $.saslOauthbearerSubClaimName = saslOauthbearerSubClaimName;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerSubClaimName Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerSubClaimName(String saslOauthbearerSubClaimName) {
+            return saslOauthbearerSubClaimName(Output.of(saslOauthbearerSubClaimName));
+        }
+
+        /**
          * @param socketRequestMaxBytes The maximum number of bytes in a socket request (defaults to 104857600).
          * 
          * @return builder
@@ -1440,6 +1678,27 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
          */
         public Builder socketRequestMaxBytes(Integer socketRequestMaxBytes) {
             return socketRequestMaxBytes(Output.of(socketRequestMaxBytes));
+        }
+
+        /**
+         * @param transactionPartitionVerificationEnable Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transactionPartitionVerificationEnable(@Nullable Output<Boolean> transactionPartitionVerificationEnable) {
+            $.transactionPartitionVerificationEnable = transactionPartitionVerificationEnable;
+            return this;
+        }
+
+        /**
+         * @param transactionPartitionVerificationEnable Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transactionPartitionVerificationEnable(Boolean transactionPartitionVerificationEnable) {
+            return transactionPartitionVerificationEnable(Output.of(transactionPartitionVerificationEnable));
         }
 
         /**

@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigNamespaceOptions;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,22 +56,30 @@ public final class M3DbM3dbUserConfigNamespace {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("M3DbM3dbUserConfigNamespace", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable M3DbM3dbUserConfigNamespaceOptions options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder resolution(@Nullable String resolution) {
+
             this.resolution = resolution;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("M3DbM3dbUserConfigNamespace", "type");
+            }
+            this.type = type;
             return this;
         }
         public M3DbM3dbUserConfigNamespace build() {

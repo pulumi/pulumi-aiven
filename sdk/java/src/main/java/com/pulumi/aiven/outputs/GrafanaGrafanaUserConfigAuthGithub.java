@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -63,11 +64,13 @@ public final class GrafanaGrafanaUserConfigAuthGithub {
 
         @CustomType.Setter
         public Builder allowSignUp(@Nullable Boolean allowSignUp) {
+
             this.allowSignUp = allowSignUp;
             return this;
         }
         @CustomType.Setter
         public Builder allowedOrganizations(@Nullable List<String> allowedOrganizations) {
+
             this.allowedOrganizations = allowedOrganizations;
             return this;
         }
@@ -76,16 +79,23 @@ public final class GrafanaGrafanaUserConfigAuthGithub {
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGithub", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGithub", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder teamIds(@Nullable List<Integer> teamIds) {
+
             this.teamIds = teamIds;
             return this;
         }

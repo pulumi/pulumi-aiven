@@ -62,7 +62,9 @@ import (
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
 
-	// Emit heartbeats enabled. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitBackwardHeartbeatsEnabled"`
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
@@ -133,7 +135,9 @@ func GetMirrorMakerReplicationFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 type mirrorMakerReplicationFlowState struct {
-	// Emit heartbeats enabled. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled *bool `pulumi:"emitBackwardHeartbeatsEnabled"`
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable *bool `pulumi:"enable"`
@@ -160,7 +164,9 @@ type mirrorMakerReplicationFlowState struct {
 }
 
 type MirrorMakerReplicationFlowState struct {
-	// Emit heartbeats enabled. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrInput
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolPtrInput
@@ -191,7 +197,9 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 }
 
 type mirrorMakerReplicationFlowArgs struct {
-	// Emit heartbeats enabled. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled *bool `pulumi:"emitBackwardHeartbeatsEnabled"`
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
@@ -219,7 +227,9 @@ type mirrorMakerReplicationFlowArgs struct {
 
 // The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 type MirrorMakerReplicationFlowArgs struct {
-	// Emit heartbeats enabled. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrInput
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolInput
@@ -332,7 +342,12 @@ func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutputWith
 	return o
 }
 
-// Emit heartbeats enabled. The default value is `false`.
+// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) EmitBackwardHeartbeatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.EmitBackwardHeartbeatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to emit heartbeats to the target cluster. The default value is `false`.
 func (o MirrorMakerReplicationFlowOutput) EmitHeartbeatsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.EmitHeartbeatsEnabled }).(pulumi.BoolPtrOutput)
 }

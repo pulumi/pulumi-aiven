@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -144,10 +145,18 @@ public final class GetAwsVpcPeeringConnectionPlainArgs extends com.pulumi.resour
         }
 
         public GetAwsVpcPeeringConnectionPlainArgs build() {
-            $.awsAccountId = Objects.requireNonNull($.awsAccountId, "expected parameter 'awsAccountId' to be non-null");
-            $.awsVpcId = Objects.requireNonNull($.awsVpcId, "expected parameter 'awsVpcId' to be non-null");
-            $.awsVpcRegion = Objects.requireNonNull($.awsVpcRegion, "expected parameter 'awsVpcRegion' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.awsAccountId == null) {
+                throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionPlainArgs", "awsAccountId");
+            }
+            if ($.awsVpcId == null) {
+                throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionPlainArgs", "awsVpcId");
+            }
+            if ($.awsVpcRegion == null) {
+                throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionPlainArgs", "awsVpcRegion");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionPlainArgs", "vpcId");
+            }
             return $;
         }
     }

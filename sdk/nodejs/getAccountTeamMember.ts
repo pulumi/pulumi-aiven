@@ -30,7 +30,7 @@ export interface GetAccountTeamMemberArgs {
      */
     teamId: string;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: string;
 }
@@ -64,7 +64,7 @@ export interface GetAccountTeamMemberResult {
      */
     readonly teamId: string;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly userEmail: string;
 }
@@ -88,7 +88,7 @@ export interface GetAccountTeamMemberOutputArgs {
      */
     teamId: pulumi.Input<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

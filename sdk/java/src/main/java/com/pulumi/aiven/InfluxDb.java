@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.InfluxDbInfluxdb;
 import com.pulumi.aiven.outputs.InfluxDbInfluxdbUserConfig;
 import com.pulumi.aiven.outputs.InfluxDbServiceIntegration;
 import com.pulumi.aiven.outputs.InfluxDbTag;
+import com.pulumi.aiven.outputs.InfluxDbTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -443,6 +444,20 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<InfluxDbTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,InfluxDbTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InfluxDbTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Output<Optional<List<InfluxDbTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

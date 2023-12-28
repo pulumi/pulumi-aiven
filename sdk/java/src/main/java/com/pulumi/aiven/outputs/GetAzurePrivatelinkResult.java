@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetAzurePrivatelinkResult {
 
         @CustomType.Setter
         public Builder azureServiceAlias(String azureServiceAlias) {
-            this.azureServiceAlias = Objects.requireNonNull(azureServiceAlias);
+            if (azureServiceAlias == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "azureServiceAlias");
+            }
+            this.azureServiceAlias = azureServiceAlias;
             return this;
         }
         @CustomType.Setter
         public Builder azureServiceId(String azureServiceId) {
-            this.azureServiceId = Objects.requireNonNull(azureServiceId);
+            if (azureServiceId == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "azureServiceId");
+            }
+            this.azureServiceId = azureServiceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder userSubscriptionIds(List<String> userSubscriptionIds) {
-            this.userSubscriptionIds = Objects.requireNonNull(userSubscriptionIds);
+            if (userSubscriptionIds == null) {
+              throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "userSubscriptionIds");
+            }
+            this.userSubscriptionIds = userSubscriptionIds;
             return this;
         }
         public Builder userSubscriptionIds(String... userSubscriptionIds) {

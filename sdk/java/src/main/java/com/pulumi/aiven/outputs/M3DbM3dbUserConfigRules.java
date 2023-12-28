@@ -36,6 +36,7 @@ public final class M3DbM3dbUserConfigRules {
 
         @CustomType.Setter
         public Builder mappings(@Nullable List<M3DbM3dbUserConfigRulesMapping> mappings) {
+
             this.mappings = mappings;
             return this;
         }

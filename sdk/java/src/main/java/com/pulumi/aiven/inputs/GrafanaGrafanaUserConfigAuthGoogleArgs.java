@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -113,8 +114,12 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         public GrafanaGrafanaUserConfigAuthGoogleArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGoogleArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGoogleArgs", "clientSecret");
+            }
             return $;
         }
     }

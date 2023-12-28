@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -28,14 +29,14 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="userEmail", required=true)
     private String userEmail;
 
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String userEmail() {
@@ -79,7 +80,7 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -90,8 +91,12 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetOrganizationUserPlainArgs build() {
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
-            $.userEmail = Objects.requireNonNull($.userEmail, "expected parameter 'userEmail' to be non-null");
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationUserPlainArgs", "organizationId");
+            }
+            if ($.userEmail == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationUserPlainArgs", "userEmail");
+            }
             return $;
         }
     }

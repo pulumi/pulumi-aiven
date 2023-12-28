@@ -36,6 +36,7 @@ public final class GetCassandraCassandraUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

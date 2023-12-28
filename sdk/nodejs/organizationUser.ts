@@ -58,7 +58,7 @@ export class OrganizationUser extends pulumi.CustomResource {
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly userEmail!: pulumi.Output<string>;
 
@@ -120,7 +120,7 @@ export interface OrganizationUserState {
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail?: pulumi.Input<string>;
 }
@@ -134,7 +134,7 @@ export interface OrganizationUserArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

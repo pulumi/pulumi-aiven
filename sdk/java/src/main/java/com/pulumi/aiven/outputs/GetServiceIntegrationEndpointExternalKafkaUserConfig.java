@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -84,46 +85,59 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
 
         @CustomType.Setter
         public Builder bootstrapServers(String bootstrapServers) {
-            this.bootstrapServers = Objects.requireNonNull(bootstrapServers);
+            if (bootstrapServers == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalKafkaUserConfig", "bootstrapServers");
+            }
+            this.bootstrapServers = bootstrapServers;
             return this;
         }
         @CustomType.Setter
         public Builder saslMechanism(@Nullable String saslMechanism) {
+
             this.saslMechanism = saslMechanism;
             return this;
         }
         @CustomType.Setter
         public Builder saslPlainPassword(@Nullable String saslPlainPassword) {
+
             this.saslPlainPassword = saslPlainPassword;
             return this;
         }
         @CustomType.Setter
         public Builder saslPlainUsername(@Nullable String saslPlainUsername) {
+
             this.saslPlainUsername = saslPlainUsername;
             return this;
         }
         @CustomType.Setter
         public Builder securityProtocol(String securityProtocol) {
-            this.securityProtocol = Objects.requireNonNull(securityProtocol);
+            if (securityProtocol == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalKafkaUserConfig", "securityProtocol");
+            }
+            this.securityProtocol = securityProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder sslCaCert(@Nullable String sslCaCert) {
+
             this.sslCaCert = sslCaCert;
             return this;
         }
         @CustomType.Setter
         public Builder sslClientCert(@Nullable String sslClientCert) {
+
             this.sslClientCert = sslClientCert;
             return this;
         }
         @CustomType.Setter
         public Builder sslClientKey(@Nullable String sslClientKey) {
+
             this.sslClientKey = sslClientKey;
             return this;
         }
         @CustomType.Setter
         public Builder sslEndpointIdentificationAlgorithm(@Nullable String sslEndpointIdentificationAlgorithm) {
+
             this.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
             return this;
         }

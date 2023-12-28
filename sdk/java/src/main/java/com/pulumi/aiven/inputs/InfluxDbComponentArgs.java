@@ -24,6 +24,13 @@ public final class InfluxDbComponentArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.component);
     }
 
+    @Import(name="connectionUri")
+    private @Nullable Output<String> connectionUri;
+
+    public Optional<Output<String>> connectionUri() {
+        return Optional.ofNullable(this.connectionUri);
+    }
+
     @Import(name="host")
     private @Nullable Output<String> host;
 
@@ -70,6 +77,7 @@ public final class InfluxDbComponentArgs extends com.pulumi.resources.ResourceAr
 
     private InfluxDbComponentArgs(InfluxDbComponentArgs $) {
         this.component = $.component;
+        this.connectionUri = $.connectionUri;
         this.host = $.host;
         this.kafkaAuthenticationMethod = $.kafkaAuthenticationMethod;
         this.port = $.port;
@@ -103,6 +111,15 @@ public final class InfluxDbComponentArgs extends com.pulumi.resources.ResourceAr
 
         public Builder component(String component) {
             return component(Output.of(component));
+        }
+
+        public Builder connectionUri(@Nullable Output<String> connectionUri) {
+            $.connectionUri = connectionUri;
+            return this;
+        }
+
+        public Builder connectionUri(String connectionUri) {
+            return connectionUri(Output.of(connectionUri));
         }
 
         public Builder host(@Nullable Output<String> host) {

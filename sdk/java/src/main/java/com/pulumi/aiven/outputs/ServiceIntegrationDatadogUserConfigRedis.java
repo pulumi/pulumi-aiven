@@ -44,6 +44,7 @@ public final class ServiceIntegrationDatadogUserConfigRedis {
 
         @CustomType.Setter
         public Builder commandStatsEnabled(@Nullable Boolean commandStatsEnabled) {
+
             this.commandStatsEnabled = commandStatsEnabled;
             return this;
         }

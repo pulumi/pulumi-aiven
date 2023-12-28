@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string ClientId;
         public readonly string ClientSecret;
         public readonly string ConnectUrl;
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
         public readonly string? Header;
         public readonly string? JwtHeader;
         public readonly string? JwtUrlParameter;
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
 
             string connectUrl,
 
-            bool? enabled,
+            bool enabled,
 
             string? header,
 

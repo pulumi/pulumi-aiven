@@ -49,16 +49,19 @@ public final class GetM3DbM3dbUserConfigNamespaceOptions {
 
         @CustomType.Setter
         public Builder retentionOptions(@Nullable GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions) {
+
             this.retentionOptions = retentionOptions;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotEnabled(@Nullable Boolean snapshotEnabled) {
+
             this.snapshotEnabled = snapshotEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder writesToCommitlog(@Nullable Boolean writesToCommitlog) {
+
             this.writesToCommitlog = writesToCommitlog;
             return this;
         }

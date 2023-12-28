@@ -36,6 +36,7 @@ public final class GetPgPgUserConfigTimescaledb {
 
         @CustomType.Setter
         public Builder maxBackgroundWorkers(@Nullable Integer maxBackgroundWorkers) {
+
             this.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
         }

@@ -100,26 +100,31 @@ public final class AccountAuthenticationSamlFieldMapping {
 
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder firstName(@Nullable String firstName) {
+
             this.firstName = firstName;
             return this;
         }
         @CustomType.Setter
         public Builder identity(@Nullable String identity) {
+
             this.identity = identity;
             return this;
         }
         @CustomType.Setter
         public Builder lastName(@Nullable String lastName) {
+
             this.lastName = lastName;
             return this;
         }
         @CustomType.Setter
         public Builder realName(@Nullable String realName) {
+
             this.realName = realName;
             return this;
         }

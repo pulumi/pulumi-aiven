@@ -60,26 +60,31 @@ public final class KafkaKafka {
 
         @CustomType.Setter
         public Builder accessCert(@Nullable String accessCert) {
+
             this.accessCert = accessCert;
             return this;
         }
         @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
+
             this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder connectUri(@Nullable String connectUri) {
+
             this.connectUri = connectUri;
             return this;
         }
         @CustomType.Setter
         public Builder restUri(@Nullable String restUri) {
+
             this.restUri = restUri;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistryUri(@Nullable String schemaRegistryUri) {
+
             this.schemaRegistryUri = schemaRegistryUri;
             return this;
         }

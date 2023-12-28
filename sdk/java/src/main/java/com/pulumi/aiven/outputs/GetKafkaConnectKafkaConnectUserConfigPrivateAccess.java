@@ -42,11 +42,13 @@ public final class GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

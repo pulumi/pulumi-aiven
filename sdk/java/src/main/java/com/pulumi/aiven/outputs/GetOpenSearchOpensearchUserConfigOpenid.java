@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,7 +17,7 @@ public final class GetOpenSearchOpensearchUserConfigOpenid {
     private String clientId;
     private String clientSecret;
     private String connectUrl;
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     private @Nullable String header;
     private @Nullable String jwtHeader;
     private @Nullable String jwtUrlParameter;
@@ -36,8 +37,8 @@ public final class GetOpenSearchOpensearchUserConfigOpenid {
     public String connectUrl() {
         return this.connectUrl;
     }
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     public Optional<String> header() {
         return Optional.ofNullable(this.header);
@@ -76,7 +77,7 @@ public final class GetOpenSearchOpensearchUserConfigOpenid {
         private String clientId;
         private String clientSecret;
         private String connectUrl;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private @Nullable String header;
         private @Nullable String jwtHeader;
         private @Nullable String jwtUrlParameter;
@@ -104,61 +105,81 @@ public final class GetOpenSearchOpensearchUserConfigOpenid {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigOpenid", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigOpenid", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder connectUrl(String connectUrl) {
-            this.connectUrl = Objects.requireNonNull(connectUrl);
+            if (connectUrl == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigOpenid", "connectUrl");
+            }
+            this.connectUrl = connectUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigOpenid", "enabled");
+            }
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable String header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder jwtHeader(@Nullable String jwtHeader) {
+
             this.jwtHeader = jwtHeader;
             return this;
         }
         @CustomType.Setter
         public Builder jwtUrlParameter(@Nullable String jwtUrlParameter) {
+
             this.jwtUrlParameter = jwtUrlParameter;
             return this;
         }
         @CustomType.Setter
         public Builder refreshRateLimitCount(@Nullable Integer refreshRateLimitCount) {
+
             this.refreshRateLimitCount = refreshRateLimitCount;
             return this;
         }
         @CustomType.Setter
         public Builder refreshRateLimitTimeWindowMs(@Nullable Integer refreshRateLimitTimeWindowMs) {
+
             this.refreshRateLimitTimeWindowMs = refreshRateLimitTimeWindowMs;
             return this;
         }
         @CustomType.Setter
         public Builder rolesKey(@Nullable String rolesKey) {
+
             this.rolesKey = rolesKey;
             return this;
         }
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder subjectKey(@Nullable String subjectKey) {
+
             this.subjectKey = subjectKey;
             return this;
         }

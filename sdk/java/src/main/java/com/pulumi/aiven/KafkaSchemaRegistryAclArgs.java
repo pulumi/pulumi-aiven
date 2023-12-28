@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -222,11 +223,21 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         public KafkaSchemaRegistryAclArgs build() {
-            $.permission = Objects.requireNonNull($.permission, "expected parameter 'permission' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.resource = Objects.requireNonNull($.resource, "expected parameter 'resource' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.permission == null) {
+                throw new MissingRequiredPropertyException("KafkaSchemaRegistryAclArgs", "permission");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("KafkaSchemaRegistryAclArgs", "project");
+            }
+            if ($.resource == null) {
+                throw new MissingRequiredPropertyException("KafkaSchemaRegistryAclArgs", "resource");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KafkaSchemaRegistryAclArgs", "serviceName");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("KafkaSchemaRegistryAclArgs", "username");
+            }
             return $;
         }
     }

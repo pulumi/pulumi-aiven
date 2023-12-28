@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetAccountResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isAccountOwner(Boolean isAccountOwner) {
-            this.isAccountOwner = Objects.requireNonNull(isAccountOwner);
+            if (isAccountOwner == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "isAccountOwner");
+            }
+            this.isAccountOwner = isAccountOwner;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ownerTeamId(String ownerTeamId) {
-            this.ownerTeamId = Objects.requireNonNull(ownerTeamId);
+            if (ownerTeamId == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "ownerTeamId");
+            }
+            this.ownerTeamId = ownerTeamId;
             return this;
         }
         @CustomType.Setter
         public Builder primaryBillingGroupId(String primaryBillingGroupId) {
-            this.primaryBillingGroupId = Objects.requireNonNull(primaryBillingGroupId);
+            if (primaryBillingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "primaryBillingGroupId");
+            }
+            this.primaryBillingGroupId = primaryBillingGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetAccountResult build() {

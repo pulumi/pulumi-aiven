@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -157,42 +158,66 @@ public final class GetTransitGatewayVpcAttachmentResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder peerCloudAccount(String peerCloudAccount) {
-            this.peerCloudAccount = Objects.requireNonNull(peerCloudAccount);
+            if (peerCloudAccount == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "peerCloudAccount");
+            }
+            this.peerCloudAccount = peerCloudAccount;
             return this;
         }
         @CustomType.Setter
         public Builder peerRegion(String peerRegion) {
-            this.peerRegion = Objects.requireNonNull(peerRegion);
+            if (peerRegion == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "peerRegion");
+            }
+            this.peerRegion = peerRegion;
             return this;
         }
         @CustomType.Setter
         public Builder peerVpc(String peerVpc) {
-            this.peerVpc = Objects.requireNonNull(peerVpc);
+            if (peerVpc == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "peerVpc");
+            }
+            this.peerVpc = peerVpc;
             return this;
         }
         @CustomType.Setter
         public Builder peeringConnectionId(String peeringConnectionId) {
-            this.peeringConnectionId = Objects.requireNonNull(peeringConnectionId);
+            if (peeringConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "peeringConnectionId");
+            }
+            this.peeringConnectionId = peeringConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
-            this.stateInfo = Objects.requireNonNull(stateInfo);
+            if (stateInfo == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "stateInfo");
+            }
+            this.stateInfo = stateInfo;
             return this;
         }
         @CustomType.Setter
         public Builder userPeerNetworkCidrs(List<String> userPeerNetworkCidrs) {
-            this.userPeerNetworkCidrs = Objects.requireNonNull(userPeerNetworkCidrs);
+            if (userPeerNetworkCidrs == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "userPeerNetworkCidrs");
+            }
+            this.userPeerNetworkCidrs = userPeerNetworkCidrs;
             return this;
         }
         public Builder userPeerNetworkCidrs(String... userPeerNetworkCidrs) {
@@ -200,7 +225,10 @@ public final class GetTransitGatewayVpcAttachmentResult {
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetTransitGatewayVpcAttachmentResult build() {

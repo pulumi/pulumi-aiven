@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         public OpenSearchOpensearchUserConfigIndexPatternArgs build() {
-            $.maxIndexCount = Objects.requireNonNull($.maxIndexCount, "expected parameter 'maxIndexCount' to be non-null");
-            $.pattern = Objects.requireNonNull($.pattern, "expected parameter 'pattern' to be non-null");
+            if ($.maxIndexCount == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigIndexPatternArgs", "maxIndexCount");
+            }
+            if ($.pattern == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigIndexPatternArgs", "pattern");
+            }
             return $;
         }
     }

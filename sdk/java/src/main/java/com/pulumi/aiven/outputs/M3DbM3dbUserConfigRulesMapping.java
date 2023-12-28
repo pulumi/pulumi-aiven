@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigRulesMappingTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -94,6 +95,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
 
         @CustomType.Setter
         public Builder aggregations(@Nullable List<String> aggregations) {
+
             this.aggregations = aggregations;
             return this;
         }
@@ -102,21 +104,27 @@ public final class M3DbM3dbUserConfigRulesMapping {
         }
         @CustomType.Setter
         public Builder drop(@Nullable Boolean drop) {
+
             this.drop = drop;
             return this;
         }
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("M3DbM3dbUserConfigRulesMapping", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaces(@Nullable List<String> namespaces) {
+
             this.namespaces = namespaces;
             return this;
         }
@@ -125,6 +133,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
         }
         @CustomType.Setter
         public Builder namespacesObjects(@Nullable List<M3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects) {
+
             this.namespacesObjects = namespacesObjects;
             return this;
         }
@@ -133,6 +142,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
         }
         @CustomType.Setter
         public Builder namespacesStrings(@Nullable List<String> namespacesStrings) {
+
             this.namespacesStrings = namespacesStrings;
             return this;
         }
@@ -141,6 +151,7 @@ public final class M3DbM3dbUserConfigRulesMapping {
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<M3DbM3dbUserConfigRulesMappingTag> tags) {
+
             this.tags = tags;
             return this;
         }

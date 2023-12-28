@@ -44,6 +44,7 @@ public final class CassandraCassandraUserConfigPublicAccess {
 
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

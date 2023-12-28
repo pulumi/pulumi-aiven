@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetGrafanaGrafanaUserConfigExternalImageStorage {
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigExternalImageStorage", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder bucketUrl(String bucketUrl) {
-            this.bucketUrl = Objects.requireNonNull(bucketUrl);
+            if (bucketUrl == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigExternalImageStorage", "bucketUrl");
+            }
+            this.bucketUrl = bucketUrl;
             return this;
         }
         @CustomType.Setter
         public Builder provider(String provider) {
-            this.provider = Objects.requireNonNull(provider);
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigExternalImageStorage", "provider");
+            }
+            this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigExternalImageStorage", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         public GetGrafanaGrafanaUserConfigExternalImageStorage build() {

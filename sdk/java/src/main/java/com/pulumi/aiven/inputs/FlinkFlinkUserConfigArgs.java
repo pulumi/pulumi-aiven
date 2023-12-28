@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.FlinkFlinkUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.FlinkFlinkUserConfigPrivatelinkAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FlinkFlinkUserConfigArgs Empty = new FlinkFlinkUserConfigArgs();
+
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     * 
+     */
+    @Import(name="additionalBackupRegions")
+    private @Nullable Output<String> additionalBackupRegions;
+
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
+    public Optional<Output<String>> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
 
     /**
      * Flink major version.
@@ -117,15 +133,48 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
+    /**
+     * Use static public IP addresses.
+     * 
+     */
+    @Import(name="staticIps")
+    private @Nullable Output<Boolean> staticIps;
+
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
+    public Optional<Output<Boolean>> staticIps() {
+        return Optional.ofNullable(this.staticIps);
+    }
+
     private FlinkFlinkUserConfigArgs() {}
 
     private FlinkFlinkUserConfigArgs(FlinkFlinkUserConfigArgs $) {
+        this.additionalBackupRegions = $.additionalBackupRegions;
         this.flinkVersion = $.flinkVersion;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.numberOfTaskSlots = $.numberOfTaskSlots;
         this.privatelinkAccess = $.privatelinkAccess;
+        this.serviceLog = $.serviceLog;
+        this.staticIps = $.staticIps;
     }
 
     public static Builder builder() {
@@ -144,6 +193,27 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
 
         public Builder(FlinkFlinkUserConfigArgs defaults) {
             $ = new FlinkFlinkUserConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
+            $.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalBackupRegions(String additionalBackupRegions) {
+            return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
         /**
@@ -312,6 +382,48 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder privatelinkAccess(FlinkFlinkUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
+        }
+
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
+        }
+
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticIps(@Nullable Output<Boolean> staticIps) {
+            $.staticIps = staticIps;
+            return this;
+        }
+
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticIps(Boolean staticIps) {
+            return staticIps(Output.of(staticIps));
         }
 
         public FlinkFlinkUserConfigArgs build() {

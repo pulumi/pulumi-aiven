@@ -21,6 +21,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetClickhouseClickhouseUserConfigPublicAccessResult? PublicAccess;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly bool? StaticIps;
 
@@ -42,6 +43,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetClickhouseClickhouseUserConfigPublicAccessResult? publicAccess,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -54,6 +57,7 @@ namespace Pulumi.Aiven.Outputs
             PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

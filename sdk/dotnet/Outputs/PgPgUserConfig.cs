@@ -58,6 +58,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.PgPgUserConfigPg? Pg;
         /// <summary>
+        /// System-wide settings for the pg*qualstats extension.
+        /// </summary>
+        public readonly Outputs.PgPgUserConfigPgQualstats? PgQualstats;
+        /// <summary>
         /// Use read_replica service integration instead.
         /// </summary>
         public readonly bool? PgReadReplica;
@@ -78,7 +82,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.PgPgUserConfigPgbouncer? Pgbouncer;
         /// <summary>
-        /// PGLookout settings.
+        /// System-wide settings for pglookout.
         /// </summary>
         public readonly Outputs.PgPgUserConfigPglookout? Pglookout;
         /// <summary>
@@ -102,6 +106,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryTargetTime;
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
@@ -118,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SynchronousReplication;
         /// <summary>
-        /// TimescaleDB extension configuration values.
+        /// System-wide settings for the timescaledb extension.
         /// </summary>
         public readonly Outputs.PgPgUserConfigTimescaledb? Timescaledb;
         /// <summary>
@@ -154,6 +162,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.PgPgUserConfigPg? pg,
 
+            Outputs.PgPgUserConfigPgQualstats? pgQualstats,
+
             bool? pgReadReplica,
 
             string? pgServiceToForkFrom,
@@ -175,6 +185,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.PgPgUserConfigPublicAccess? publicAccess,
 
             string? recoveryTargetTime,
+
+            bool? serviceLog,
 
             string? serviceToForkFrom,
 
@@ -201,6 +213,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             Migration = migration;
             Pg = pg;
+            PgQualstats = pgQualstats;
             PgReadReplica = pgReadReplica;
             PgServiceToForkFrom = pgServiceToForkFrom;
             PgStatMonitorEnable = pgStatMonitorEnable;
@@ -212,6 +225,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             SharedBuffersPercentage = sharedBuffersPercentage;
             StaticIps = staticIps;

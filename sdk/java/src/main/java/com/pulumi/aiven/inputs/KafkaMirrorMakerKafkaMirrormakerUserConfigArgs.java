@@ -66,6 +66,13 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="staticIps")
     private @Nullable Output<Boolean> staticIps;
 
@@ -81,6 +88,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.kafkaMirrormaker = $.kafkaMirrormaker;
+        this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
     }
 
@@ -181,6 +189,15 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
 
         public Builder kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs kafkaMirrormaker) {
             return kafkaMirrormaker(Output.of(kafkaMirrormaker));
+        }
+
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         public Builder staticIps(@Nullable Output<Boolean> staticIps) {

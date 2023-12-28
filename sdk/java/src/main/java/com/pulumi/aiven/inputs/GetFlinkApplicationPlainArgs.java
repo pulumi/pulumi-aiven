@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -117,9 +118,15 @@ public final class GetFlinkApplicationPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetFlinkApplicationPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationPlainArgs", "name");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationPlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationPlainArgs", "serviceName");
+            }
             return $;
         }
     }

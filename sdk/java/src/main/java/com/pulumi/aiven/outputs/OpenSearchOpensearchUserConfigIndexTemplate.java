@@ -72,16 +72,19 @@ public final class OpenSearchOpensearchUserConfigIndexTemplate {
 
         @CustomType.Setter
         public Builder mappingNestedObjectsLimit(@Nullable Integer mappingNestedObjectsLimit) {
+
             this.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
             return this;
         }
         @CustomType.Setter
         public Builder numberOfReplicas(@Nullable Integer numberOfReplicas) {
+
             this.numberOfReplicas = numberOfReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder numberOfShards(@Nullable Integer numberOfShards) {
+
             this.numberOfShards = numberOfShards;
             return this;
         }

@@ -36,6 +36,7 @@ public final class GetM3DbM3dbUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder m3coordinator(@Nullable Boolean m3coordinator) {
+
             this.m3coordinator = m3coordinator;
             return this;
         }

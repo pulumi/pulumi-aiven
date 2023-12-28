@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlinkFlinkUserConfig {
+    private @Nullable String additionalBackupRegions;
     private @Nullable String flinkVersion;
     private @Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilterStrings;
@@ -27,8 +29,13 @@ public final class GetFlinkFlinkUserConfig {
     private @Nullable List<String> ipFilters;
     private @Nullable Integer numberOfTaskSlots;
     private @Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable Boolean serviceLog;
+    private @Nullable Boolean staticIps;
 
     private GetFlinkFlinkUserConfig() {}
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     public Optional<String> flinkVersion() {
         return Optional.ofNullable(this.flinkVersion);
     }
@@ -53,6 +60,12 @@ public final class GetFlinkFlinkUserConfig {
     public Optional<GetFlinkFlinkUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+    public Optional<Boolean> staticIps() {
+        return Optional.ofNullable(this.staticIps);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,30 +76,44 @@ public final class GetFlinkFlinkUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String flinkVersion;
         private @Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Integer numberOfTaskSlots;
         private @Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+        private @Nullable Boolean serviceLog;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(GetFlinkFlinkUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.flinkVersion = defaults.flinkVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
+    	      this.serviceLog = defaults.serviceLog;
+    	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder flinkVersion(@Nullable String flinkVersion) {
+
             this.flinkVersion = flinkVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetFlinkFlinkUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -95,6 +122,7 @@ public final class GetFlinkFlinkUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -103,6 +131,7 @@ public final class GetFlinkFlinkUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -111,22 +140,39 @@ public final class GetFlinkFlinkUserConfig {
         }
         @CustomType.Setter
         public Builder numberOfTaskSlots(@Nullable Integer numberOfTaskSlots) {
+
             this.numberOfTaskSlots = numberOfTaskSlots;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder staticIps(@Nullable Boolean staticIps) {
+
+            this.staticIps = staticIps;
             return this;
         }
         public GetFlinkFlinkUserConfig build() {
             final var _resultValue = new GetFlinkFlinkUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.flinkVersion = flinkVersion;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.numberOfTaskSlots = numberOfTaskSlots;
             _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.serviceLog = serviceLog;
+            _resultValue.staticIps = staticIps;
             return _resultValue;
         }
     }

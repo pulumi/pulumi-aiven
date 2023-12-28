@@ -255,81 +255,97 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
 
         @CustomType.Setter
         public Builder connectorClientConfigOverridePolicy(@Nullable String connectorClientConfigOverridePolicy) {
+
             this.connectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder consumerAutoOffsetReset(@Nullable String consumerAutoOffsetReset) {
+
             this.consumerAutoOffsetReset = consumerAutoOffsetReset;
             return this;
         }
         @CustomType.Setter
         public Builder consumerFetchMaxBytes(@Nullable Integer consumerFetchMaxBytes) {
+
             this.consumerFetchMaxBytes = consumerFetchMaxBytes;
             return this;
         }
         @CustomType.Setter
         public Builder consumerIsolationLevel(@Nullable String consumerIsolationLevel) {
+
             this.consumerIsolationLevel = consumerIsolationLevel;
             return this;
         }
         @CustomType.Setter
         public Builder consumerMaxPartitionFetchBytes(@Nullable Integer consumerMaxPartitionFetchBytes) {
+
             this.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             return this;
         }
         @CustomType.Setter
         public Builder consumerMaxPollIntervalMs(@Nullable Integer consumerMaxPollIntervalMs) {
+
             this.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
             return this;
         }
         @CustomType.Setter
         public Builder consumerMaxPollRecords(@Nullable Integer consumerMaxPollRecords) {
+
             this.consumerMaxPollRecords = consumerMaxPollRecords;
             return this;
         }
         @CustomType.Setter
         public Builder offsetFlushIntervalMs(@Nullable Integer offsetFlushIntervalMs) {
+
             this.offsetFlushIntervalMs = offsetFlushIntervalMs;
             return this;
         }
         @CustomType.Setter
         public Builder offsetFlushTimeoutMs(@Nullable Integer offsetFlushTimeoutMs) {
+
             this.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
             return this;
         }
         @CustomType.Setter
         public Builder producerBatchSize(@Nullable Integer producerBatchSize) {
+
             this.producerBatchSize = producerBatchSize;
             return this;
         }
         @CustomType.Setter
         public Builder producerBufferMemory(@Nullable Integer producerBufferMemory) {
+
             this.producerBufferMemory = producerBufferMemory;
             return this;
         }
         @CustomType.Setter
         public Builder producerCompressionType(@Nullable String producerCompressionType) {
+
             this.producerCompressionType = producerCompressionType;
             return this;
         }
         @CustomType.Setter
         public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
+
             this.producerLingerMs = producerLingerMs;
             return this;
         }
         @CustomType.Setter
         public Builder producerMaxRequestSize(@Nullable Integer producerMaxRequestSize) {
+
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
         @CustomType.Setter
         public Builder scheduledRebalanceMaxDelayMs(@Nullable Integer scheduledRebalanceMaxDelayMs) {
+
             this.scheduledRebalanceMaxDelayMs = scheduledRebalanceMaxDelayMs;
             return this;
         }
         @CustomType.Setter
         public Builder sessionTimeoutMs(@Nullable Integer sessionTimeoutMs) {
+
             this.sessionTimeoutMs = sessionTimeoutMs;
             return this;
         }

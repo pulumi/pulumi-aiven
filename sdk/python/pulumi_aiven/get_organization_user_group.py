@@ -21,13 +21,16 @@ class GetOrganizationUserGroupResult:
     """
     A collection of values returned by getOrganizationUserGroup.
     """
-    def __init__(__self__, create_time=None, description=None, id=None, name=None, organization_id=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, group_id=None, id=None, name=None, organization_id=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if group_id and not isinstance(group_id, str):
+            raise TypeError("Expected argument 'group_id' to be a str")
+        pulumi.set(__self__, "group_id", group_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -56,6 +59,14 @@ class GetOrganizationUserGroupResult:
         The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The unique organization user group ID
+        """
+        return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter
@@ -98,6 +109,7 @@ class AwaitableGetOrganizationUserGroupResult(GetOrganizationUserGroupResult):
         return GetOrganizationUserGroupResult(
             create_time=self.create_time,
             description=self.description,
+            group_id=self.group_id,
             id=self.id,
             name=self.name,
             organization_id=self.organization_id,
@@ -123,6 +135,7 @@ def get_organization_user_group(name: Optional[str] = None,
     return AwaitableGetOrganizationUserGroupResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),

@@ -353,6 +353,21 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
+    /**
      * Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -405,6 +420,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         this.publicAccess = $.publicAccess;
         this.recoveryBasebackupName = $.recoveryBasebackupName;
         this.saml = $.saml;
+        this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
     }
@@ -913,6 +929,27 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          */
         public Builder saml(OpenSearchOpensearchUserConfigSamlArgs saml) {
             return saml(Output.of(saml));
+        }
+
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         /**

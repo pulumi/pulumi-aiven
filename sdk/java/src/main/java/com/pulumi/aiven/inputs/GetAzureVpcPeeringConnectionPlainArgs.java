@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -198,12 +199,24 @@ public final class GetAzureVpcPeeringConnectionPlainArgs extends com.pulumi.reso
         }
 
         public GetAzureVpcPeeringConnectionPlainArgs build() {
-            $.azureSubscriptionId = Objects.requireNonNull($.azureSubscriptionId, "expected parameter 'azureSubscriptionId' to be non-null");
-            $.peerAzureAppId = Objects.requireNonNull($.peerAzureAppId, "expected parameter 'peerAzureAppId' to be non-null");
-            $.peerAzureTenantId = Objects.requireNonNull($.peerAzureTenantId, "expected parameter 'peerAzureTenantId' to be non-null");
-            $.peerResourceGroup = Objects.requireNonNull($.peerResourceGroup, "expected parameter 'peerResourceGroup' to be non-null");
-            $.vnetName = Objects.requireNonNull($.vnetName, "expected parameter 'vnetName' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.azureSubscriptionId == null) {
+                throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionPlainArgs", "azureSubscriptionId");
+            }
+            if ($.peerAzureAppId == null) {
+                throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionPlainArgs", "peerAzureAppId");
+            }
+            if ($.peerAzureTenantId == null) {
+                throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionPlainArgs", "peerAzureTenantId");
+            }
+            if ($.peerResourceGroup == null) {
+                throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionPlainArgs", "peerResourceGroup");
+            }
+            if ($.vnetName == null) {
+                throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionPlainArgs", "vnetName");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionPlainArgs", "vpcId");
+            }
             return $;
         }
     }

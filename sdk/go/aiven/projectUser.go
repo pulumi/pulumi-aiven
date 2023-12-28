@@ -54,7 +54,7 @@ type ProjectUser struct {
 
 	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringOutput `pulumi:"memberType"`
@@ -103,7 +103,7 @@ func GetProjectUser(ctx *pulumi.Context,
 type projectUserState struct {
 	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted *bool `pulumi:"accepted"`
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email *string `pulumi:"email"`
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType *string `pulumi:"memberType"`
@@ -114,7 +114,7 @@ type projectUserState struct {
 type ProjectUserState struct {
 	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted pulumi.BoolPtrInput
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringPtrInput
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringPtrInput
@@ -127,7 +127,7 @@ func (ProjectUserState) ElementType() reflect.Type {
 }
 
 type projectUserArgs struct {
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email string `pulumi:"email"`
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType string `pulumi:"memberType"`
@@ -137,7 +137,7 @@ type projectUserArgs struct {
 
 // The set of arguments for constructing a ProjectUser resource.
 type ProjectUserArgs struct {
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringInput
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringInput
@@ -237,7 +237,7 @@ func (o ProjectUserOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
 }
 
-// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 func (o ProjectUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }

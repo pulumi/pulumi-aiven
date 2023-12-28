@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.PgPgUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.PgPgUserConfigMigration;
 import com.pulumi.aiven.outputs.PgPgUserConfigPg;
+import com.pulumi.aiven.outputs.PgPgUserConfigPgQualstats;
 import com.pulumi.aiven.outputs.PgPgUserConfigPgbouncer;
 import com.pulumi.aiven.outputs.PgPgUserConfigPglookout;
 import com.pulumi.aiven.outputs.PgPgUserConfigPrivateAccess;
@@ -84,6 +85,11 @@ public final class PgPgUserConfig {
      */
     private @Nullable PgPgUserConfigPg pg;
     /**
+     * @return System-wide settings for the pg*qualstats extension.
+     * 
+     */
+    private @Nullable PgPgUserConfigPgQualstats pgQualstats;
+    /**
      * @return Use read_replica service integration instead.
      * 
      * @deprecated
@@ -117,7 +123,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable PgPgUserConfigPgbouncer pgbouncer;
     /**
-     * @return PGLookout settings.
+     * @return System-wide settings for pglookout.
      * 
      */
     private @Nullable PgPgUserConfigPglookout pglookout;
@@ -147,6 +153,11 @@ public final class PgPgUserConfig {
      */
     private @Nullable String recoveryTargetTime;
     /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    private @Nullable Boolean serviceLog;
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -167,7 +178,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable String synchronousReplication;
     /**
-     * @return TimescaleDB extension configuration values.
+     * @return System-wide settings for the timescaledb extension.
      * 
      */
     private @Nullable PgPgUserConfigTimescaledb timescaledb;
@@ -265,6 +276,13 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pg);
     }
     /**
+     * @return System-wide settings for the pg*qualstats extension.
+     * 
+     */
+    public Optional<PgPgUserConfigPgQualstats> pgQualstats() {
+        return Optional.ofNullable(this.pgQualstats);
+    }
+    /**
      * @return Use read_replica service integration instead.
      * 
      * @deprecated
@@ -308,7 +326,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgbouncer);
     }
     /**
-     * @return PGLookout settings.
+     * @return System-wide settings for pglookout.
      * 
      */
     public Optional<PgPgUserConfigPglookout> pglookout() {
@@ -350,6 +368,13 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
     /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -378,7 +403,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.synchronousReplication);
     }
     /**
-     * @return TimescaleDB extension configuration values.
+     * @return System-wide settings for the timescaledb extension.
      * 
      */
     public Optional<PgPgUserConfigTimescaledb> timescaledb() {
@@ -419,6 +444,7 @@ public final class PgPgUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable PgPgUserConfigMigration migration;
         private @Nullable PgPgUserConfigPg pg;
+        private @Nullable PgPgUserConfigPgQualstats pgQualstats;
         private @Nullable Boolean pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
         private @Nullable Boolean pgStatMonitorEnable;
@@ -430,6 +456,7 @@ public final class PgPgUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable PgPgUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryTargetTime;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Double sharedBuffersPercentage;
         private @Nullable Boolean staticIps;
@@ -451,6 +478,7 @@ public final class PgPgUserConfig {
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.pg = defaults.pg;
+    	      this.pgQualstats = defaults.pgQualstats;
     	      this.pgReadReplica = defaults.pgReadReplica;
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
     	      this.pgStatMonitorEnable = defaults.pgStatMonitorEnable;
@@ -462,6 +490,7 @@ public final class PgPgUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryTargetTime = defaults.recoveryTargetTime;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.sharedBuffersPercentage = defaults.sharedBuffersPercentage;
     	      this.staticIps = defaults.staticIps;
@@ -473,36 +502,43 @@ public final class PgPgUserConfig {
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
+
             this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
+
             this.adminUsername = adminUsername;
             return this;
         }
         @CustomType.Setter
         public Builder backupHour(@Nullable Integer backupHour) {
+
             this.backupHour = backupHour;
             return this;
         }
         @CustomType.Setter
         public Builder backupMinute(@Nullable Integer backupMinute) {
+
             this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpv6(@Nullable Boolean enableIpv6) {
+
             this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -511,6 +547,7 @@ public final class PgPgUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -519,6 +556,7 @@ public final class PgPgUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -527,101 +565,133 @@ public final class PgPgUserConfig {
         }
         @CustomType.Setter
         public Builder migration(@Nullable PgPgUserConfigMigration migration) {
+
             this.migration = migration;
             return this;
         }
         @CustomType.Setter
         public Builder pg(@Nullable PgPgUserConfigPg pg) {
+
             this.pg = pg;
             return this;
         }
         @CustomType.Setter
+        public Builder pgQualstats(@Nullable PgPgUserConfigPgQualstats pgQualstats) {
+
+            this.pgQualstats = pgQualstats;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgReadReplica(@Nullable Boolean pgReadReplica) {
+
             this.pgReadReplica = pgReadReplica;
             return this;
         }
         @CustomType.Setter
         public Builder pgServiceToForkFrom(@Nullable String pgServiceToForkFrom) {
+
             this.pgServiceToForkFrom = pgServiceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder pgStatMonitorEnable(@Nullable Boolean pgStatMonitorEnable) {
+
             this.pgStatMonitorEnable = pgStatMonitorEnable;
             return this;
         }
         @CustomType.Setter
         public Builder pgVersion(@Nullable String pgVersion) {
+
             this.pgVersion = pgVersion;
             return this;
         }
         @CustomType.Setter
         public Builder pgbouncer(@Nullable PgPgUserConfigPgbouncer pgbouncer) {
+
             this.pgbouncer = pgbouncer;
             return this;
         }
         @CustomType.Setter
         public Builder pglookout(@Nullable PgPgUserConfigPglookout pglookout) {
+
             this.pglookout = pglookout;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable PgPgUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable PgPgUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable PgPgUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryTargetTime(@Nullable String recoveryTargetTime) {
+
             this.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder sharedBuffersPercentage(@Nullable Double sharedBuffersPercentage) {
+
             this.sharedBuffersPercentage = sharedBuffersPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
         @CustomType.Setter
         public Builder synchronousReplication(@Nullable String synchronousReplication) {
+
             this.synchronousReplication = synchronousReplication;
             return this;
         }
         @CustomType.Setter
         public Builder timescaledb(@Nullable PgPgUserConfigTimescaledb timescaledb) {
+
             this.timescaledb = timescaledb;
             return this;
         }
         @CustomType.Setter
         public Builder variant(@Nullable String variant) {
+
             this.variant = variant;
             return this;
         }
         @CustomType.Setter
         public Builder workMem(@Nullable Integer workMem) {
+
             this.workMem = workMem;
             return this;
         }
@@ -638,6 +708,7 @@ public final class PgPgUserConfig {
             _resultValue.ipFilters = ipFilters;
             _resultValue.migration = migration;
             _resultValue.pg = pg;
+            _resultValue.pgQualstats = pgQualstats;
             _resultValue.pgReadReplica = pgReadReplica;
             _resultValue.pgServiceToForkFrom = pgServiceToForkFrom;
             _resultValue.pgStatMonitorEnable = pgStatMonitorEnable;
@@ -649,6 +720,7 @@ public final class PgPgUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryTargetTime = recoveryTargetTime;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.sharedBuffersPercentage = sharedBuffersPercentage;
             _resultValue.staticIps = staticIps;

@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.KafkaMirrorMakerKafkaMirrormakerArgs;
 import com.pulumi.aiven.inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs;
 import com.pulumi.aiven.inputs.KafkaMirrorMakerServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.KafkaMirrorMakerTagArgs;
+import com.pulumi.aiven.inputs.KafkaMirrorMakerTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -462,6 +463,23 @@ public final class KafkaMirrorMakerState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<KafkaMirrorMakerTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Optional<Output<List<KafkaMirrorMakerTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
+    }
+
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
      * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
      * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -509,6 +527,7 @@ public final class KafkaMirrorMakerState extends com.pulumi.resources.ResourceAr
         this.state = $.state;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -1173,6 +1192,40 @@ public final class KafkaMirrorMakerState extends com.pulumi.resources.ResourceAr
          */
         public Builder tags(KafkaMirrorMakerTagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<KafkaMirrorMakerTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<KafkaMirrorMakerTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(KafkaMirrorMakerTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
         }
 
         /**

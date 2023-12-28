@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -83,47 +84,74 @@ public final class GetPgPg {
 
         @CustomType.Setter
         public Builder dbname(String dbname) {
-            this.dbname = Objects.requireNonNull(dbname);
+            if (dbname == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "dbname");
+            }
+            this.dbname = dbname;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder replicaUri(String replicaUri) {
-            this.replicaUri = Objects.requireNonNull(replicaUri);
+            if (replicaUri == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "replicaUri");
+            }
+            this.replicaUri = replicaUri;
             return this;
         }
         @CustomType.Setter
         public Builder sslmode(String sslmode) {
-            this.sslmode = Objects.requireNonNull(sslmode);
+            if (sslmode == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "sslmode");
+            }
+            this.sslmode = sslmode;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetPgPg build() {

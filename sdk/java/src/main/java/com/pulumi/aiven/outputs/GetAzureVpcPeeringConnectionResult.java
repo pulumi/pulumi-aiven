@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -170,52 +171,82 @@ public final class GetAzureVpcPeeringConnectionResult {
 
         @CustomType.Setter
         public Builder azureSubscriptionId(String azureSubscriptionId) {
-            this.azureSubscriptionId = Objects.requireNonNull(azureSubscriptionId);
+            if (azureSubscriptionId == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "azureSubscriptionId");
+            }
+            this.azureSubscriptionId = azureSubscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder peerAzureAppId(String peerAzureAppId) {
-            this.peerAzureAppId = Objects.requireNonNull(peerAzureAppId);
+            if (peerAzureAppId == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "peerAzureAppId");
+            }
+            this.peerAzureAppId = peerAzureAppId;
             return this;
         }
         @CustomType.Setter
         public Builder peerAzureTenantId(String peerAzureTenantId) {
-            this.peerAzureTenantId = Objects.requireNonNull(peerAzureTenantId);
+            if (peerAzureTenantId == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "peerAzureTenantId");
+            }
+            this.peerAzureTenantId = peerAzureTenantId;
             return this;
         }
         @CustomType.Setter
         public Builder peerResourceGroup(String peerResourceGroup) {
-            this.peerResourceGroup = Objects.requireNonNull(peerResourceGroup);
+            if (peerResourceGroup == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "peerResourceGroup");
+            }
+            this.peerResourceGroup = peerResourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder peeringConnectionId(String peeringConnectionId) {
-            this.peeringConnectionId = Objects.requireNonNull(peeringConnectionId);
+            if (peeringConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "peeringConnectionId");
+            }
+            this.peeringConnectionId = peeringConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
-            this.stateInfo = Objects.requireNonNull(stateInfo);
+            if (stateInfo == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "stateInfo");
+            }
+            this.stateInfo = stateInfo;
             return this;
         }
         @CustomType.Setter
         public Builder vnetName(String vnetName) {
-            this.vnetName = Objects.requireNonNull(vnetName);
+            if (vnetName == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "vnetName");
+            }
+            this.vnetName = vnetName;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetAzureVpcPeeringConnectionResult", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetAzureVpcPeeringConnectionResult build() {

@@ -86,21 +86,25 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 
         @CustomType.Setter
         public Builder configStorageTopic(@Nullable String configStorageTopic) {
+
             this.configStorageTopic = configStorageTopic;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder offsetStorageTopic(@Nullable String offsetStorageTopic) {
+
             this.offsetStorageTopic = offsetStorageTopic;
             return this;
         }
         @CustomType.Setter
         public Builder statusStorageTopic(@Nullable String statusStorageTopic) {
+
             this.statusStorageTopic = statusStorageTopic;
             return this;
         }

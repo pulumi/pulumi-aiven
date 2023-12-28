@@ -193,7 +193,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -203,6 +203,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.FlinkTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        [Output("techEmails")]
+        public Output<ImmutableArray<Outputs.FlinkTechEmail>> TechEmails { get; private set; } = null!;
 
         /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -343,7 +349,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -361,6 +367,18 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.FlinkTagArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.FlinkTechEmailArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public InputList<Inputs.FlinkTechEmailArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.FlinkTechEmailArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>
@@ -557,7 +575,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Use static public IP addresses.
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -575,6 +593,18 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.FlinkTagGetArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.FlinkTechEmailGetArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public InputList<Inputs.FlinkTechEmailGetArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.FlinkTechEmailGetArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>

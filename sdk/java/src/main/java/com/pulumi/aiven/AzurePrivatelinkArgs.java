@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         public AzurePrivatelinkArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.userSubscriptionIds = Objects.requireNonNull($.userSubscriptionIds, "expected parameter 'userSubscriptionIds' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("AzurePrivatelinkArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("AzurePrivatelinkArgs", "serviceName");
+            }
+            if ($.userSubscriptionIds == null) {
+                throw new MissingRequiredPropertyException("AzurePrivatelinkArgs", "userSubscriptionIds");
+            }
             return $;
         }
     }

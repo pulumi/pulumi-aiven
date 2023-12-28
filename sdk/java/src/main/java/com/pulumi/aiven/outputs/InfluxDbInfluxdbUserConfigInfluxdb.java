@@ -129,36 +129,43 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
 
         @CustomType.Setter
         public Builder logQueriesAfter(@Nullable Integer logQueriesAfter) {
+
             this.logQueriesAfter = logQueriesAfter;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnectionLimit(@Nullable Integer maxConnectionLimit) {
+
             this.maxConnectionLimit = maxConnectionLimit;
             return this;
         }
         @CustomType.Setter
         public Builder maxRowLimit(@Nullable Integer maxRowLimit) {
+
             this.maxRowLimit = maxRowLimit;
             return this;
         }
         @CustomType.Setter
         public Builder maxSelectBuckets(@Nullable Integer maxSelectBuckets) {
+
             this.maxSelectBuckets = maxSelectBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder maxSelectPoint(@Nullable Integer maxSelectPoint) {
+
             this.maxSelectPoint = maxSelectPoint;
             return this;
         }
         @CustomType.Setter
         public Builder queryLogEnabled(@Nullable Boolean queryLogEnabled) {
+
             this.queryLogEnabled = queryLogEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder queryTimeout(@Nullable Integer queryTimeout) {
+
             this.queryTimeout = queryTimeout;
             return this;
         }

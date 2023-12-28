@@ -115,71 +115,85 @@ public final class GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
 
         @CustomType.Setter
         public Builder gatherEventWaits(@Nullable Boolean gatherEventWaits) {
+
             this.gatherEventWaits = gatherEventWaits;
             return this;
         }
         @CustomType.Setter
         public Builder gatherFileEventsStats(@Nullable Boolean gatherFileEventsStats) {
+
             this.gatherFileEventsStats = gatherFileEventsStats;
             return this;
         }
         @CustomType.Setter
         public Builder gatherIndexIoWaits(@Nullable Boolean gatherIndexIoWaits) {
+
             this.gatherIndexIoWaits = gatherIndexIoWaits;
             return this;
         }
         @CustomType.Setter
         public Builder gatherInfoSchemaAutoInc(@Nullable Boolean gatherInfoSchemaAutoInc) {
+
             this.gatherInfoSchemaAutoInc = gatherInfoSchemaAutoInc;
             return this;
         }
         @CustomType.Setter
         public Builder gatherInnodbMetrics(@Nullable Boolean gatherInnodbMetrics) {
+
             this.gatherInnodbMetrics = gatherInnodbMetrics;
             return this;
         }
         @CustomType.Setter
         public Builder gatherPerfEventsStatements(@Nullable Boolean gatherPerfEventsStatements) {
+
             this.gatherPerfEventsStatements = gatherPerfEventsStatements;
             return this;
         }
         @CustomType.Setter
         public Builder gatherProcessList(@Nullable Boolean gatherProcessList) {
+
             this.gatherProcessList = gatherProcessList;
             return this;
         }
         @CustomType.Setter
         public Builder gatherSlaveStatus(@Nullable Boolean gatherSlaveStatus) {
+
             this.gatherSlaveStatus = gatherSlaveStatus;
             return this;
         }
         @CustomType.Setter
         public Builder gatherTableIoWaits(@Nullable Boolean gatherTableIoWaits) {
+
             this.gatherTableIoWaits = gatherTableIoWaits;
             return this;
         }
         @CustomType.Setter
         public Builder gatherTableLockWaits(@Nullable Boolean gatherTableLockWaits) {
+
             this.gatherTableLockWaits = gatherTableLockWaits;
             return this;
         }
         @CustomType.Setter
         public Builder gatherTableSchema(@Nullable Boolean gatherTableSchema) {
+
             this.gatherTableSchema = gatherTableSchema;
             return this;
         }
         @CustomType.Setter
         public Builder perfEventsStatementsDigestTextLimit(@Nullable Integer perfEventsStatementsDigestTextLimit) {
+
             this.perfEventsStatementsDigestTextLimit = perfEventsStatementsDigestTextLimit;
             return this;
         }
         @CustomType.Setter
         public Builder perfEventsStatementsLimit(@Nullable Integer perfEventsStatementsLimit) {
+
             this.perfEventsStatementsLimit = perfEventsStatementsLimit;
             return this;
         }
         @CustomType.Setter
         public Builder perfEventsStatementsTimeLimit(@Nullable Integer perfEventsStatementsTimeLimit) {
+
             this.perfEventsStatementsTimeLimit = perfEventsStatementsTimeLimit;
             return this;
         }

@@ -78,41 +78,49 @@ public final class GetGrafanaGrafanaUserConfigDateFormats {
 
         @CustomType.Setter
         public Builder defaultTimezone(@Nullable String defaultTimezone) {
+
             this.defaultTimezone = defaultTimezone;
             return this;
         }
         @CustomType.Setter
         public Builder fullDate(@Nullable String fullDate) {
+
             this.fullDate = fullDate;
             return this;
         }
         @CustomType.Setter
         public Builder intervalDay(@Nullable String intervalDay) {
+
             this.intervalDay = intervalDay;
             return this;
         }
         @CustomType.Setter
         public Builder intervalHour(@Nullable String intervalHour) {
+
             this.intervalHour = intervalHour;
             return this;
         }
         @CustomType.Setter
         public Builder intervalMinute(@Nullable String intervalMinute) {
+
             this.intervalMinute = intervalMinute;
             return this;
         }
         @CustomType.Setter
         public Builder intervalMonth(@Nullable String intervalMonth) {
+
             this.intervalMonth = intervalMonth;
             return this;
         }
         @CustomType.Setter
         public Builder intervalSecond(@Nullable String intervalSecond) {
+
             this.intervalSecond = intervalSecond;
             return this;
         }
         @CustomType.Setter
         public Builder intervalYear(@Nullable String intervalYear) {
+
             this.intervalYear = intervalYear;
             return this;
         }

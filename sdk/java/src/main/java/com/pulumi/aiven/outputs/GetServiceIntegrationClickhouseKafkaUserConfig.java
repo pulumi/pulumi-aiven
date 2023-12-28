@@ -36,6 +36,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfig {
 
         @CustomType.Setter
         public Builder tables(@Nullable List<GetServiceIntegrationClickhouseKafkaUserConfigTable> tables) {
+
             this.tables = tables;
             return this;
         }

@@ -166,6 +166,10 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.ClickhouseTag[] | undefined>;
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     */
+    public readonly techEmails!: pulumi.Output<outputs.ClickhouseTechEmail[] | undefined>;
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
@@ -209,6 +213,7 @@ export class Clickhouse extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["staticIps"] = state ? state.staticIps : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["techEmails"] = state ? state.techEmails : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as ClickhouseArgs | undefined;
@@ -234,6 +239,7 @@ export class Clickhouse extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["staticIps"] = args ? args.staticIps : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["techEmails"] = args ? args.techEmails : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             resourceInputs["clickhouses"] = undefined /*out*/;
             resourceInputs["components"] = undefined /*out*/;
@@ -367,6 +373,10 @@ export interface ClickhouseState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ClickhouseTag>[]>;
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     */
+    techEmails?: pulumi.Input<pulumi.Input<inputs.ClickhouseTechEmail>[]>;
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     terminationProtection?: pulumi.Input<boolean>;
@@ -430,6 +440,10 @@ export interface ClickhouseArgs {
      * Tags are key-value pairs that allow you to categorize services.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ClickhouseTag>[]>;
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     */
+    techEmails?: pulumi.Input<pulumi.Input<inputs.ClickhouseTechEmail>[]>;
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */

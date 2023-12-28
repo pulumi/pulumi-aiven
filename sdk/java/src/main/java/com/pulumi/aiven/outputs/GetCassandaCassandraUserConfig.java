@@ -36,6 +36,7 @@ public final class GetCassandaCassandraUserConfig {
     private @Nullable GetCassandaCassandraUserConfigPrivateAccess privateAccess;
     private @Nullable String projectToForkFrom;
     private @Nullable GetCassandaCassandraUserConfigPublicAccess publicAccess;
+    private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable String serviceToJoinWith;
     private @Nullable Boolean staticIps;
@@ -83,6 +84,9 @@ public final class GetCassandaCassandraUserConfig {
     public Optional<GetCassandaCassandraUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -114,6 +118,7 @@ public final class GetCassandaCassandraUserConfig {
         private @Nullable GetCassandaCassandraUserConfigPrivateAccess privateAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable GetCassandaCassandraUserConfigPublicAccess publicAccess;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable String serviceToJoinWith;
         private @Nullable Boolean staticIps;
@@ -132,6 +137,7 @@ public final class GetCassandaCassandraUserConfig {
     	      this.privateAccess = defaults.privateAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.serviceToJoinWith = defaults.serviceToJoinWith;
     	      this.staticIps = defaults.staticIps;
@@ -139,31 +145,37 @@ public final class GetCassandaCassandraUserConfig {
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder backupHour(@Nullable Integer backupHour) {
+
             this.backupHour = backupHour;
             return this;
         }
         @CustomType.Setter
         public Builder backupMinute(@Nullable Integer backupMinute) {
+
             this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
         public Builder cassandra(@Nullable GetCassandaCassandraUserConfigCassandra cassandra) {
+
             this.cassandra = cassandra;
             return this;
         }
         @CustomType.Setter
         public Builder cassandraVersion(@Nullable String cassandraVersion) {
+
             this.cassandraVersion = cassandraVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetCassandaCassandraUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -172,6 +184,7 @@ public final class GetCassandaCassandraUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -180,6 +193,7 @@ public final class GetCassandaCassandraUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -188,36 +202,49 @@ public final class GetCassandaCassandraUserConfig {
         }
         @CustomType.Setter
         public Builder migrateSstableloader(@Nullable Boolean migrateSstableloader) {
+
             this.migrateSstableloader = migrateSstableloader;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetCassandaCassandraUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetCassandaCassandraUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder serviceToJoinWith(@Nullable String serviceToJoinWith) {
+
             this.serviceToJoinWith = serviceToJoinWith;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -235,6 +262,7 @@ public final class GetCassandaCassandraUserConfig {
             _resultValue.privateAccess = privateAccess;
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.serviceToJoinWith = serviceToJoinWith;
             _resultValue.staticIps = staticIps;

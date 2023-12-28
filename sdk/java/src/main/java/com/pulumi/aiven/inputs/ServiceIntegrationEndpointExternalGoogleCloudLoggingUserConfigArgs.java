@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs build() {
-            $.logId = Objects.requireNonNull($.logId, "expected parameter 'logId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.serviceAccountCredentials = Objects.requireNonNull($.serviceAccountCredentials, "expected parameter 'serviceAccountCredentials' to be non-null");
+            if ($.logId == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs", "logId");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs", "projectId");
+            }
+            if ($.serviceAccountCredentials == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs", "serviceAccountCredentials");
+            }
             return $;
         }
     }

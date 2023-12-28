@@ -128,7 +128,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
@@ -144,6 +144,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
         /// <summary>
+        /// ExternalGoogleCloudBigquery user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigqueryResult> ExternalGoogleCloudBigqueries;
+        /// <summary>
         /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> ExternalGoogleCloudLoggingUserConfigs;
@@ -155,6 +159,10 @@ namespace Pulumi.Aiven
         /// ExternalOpensearchLogs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> ExternalOpensearchLogsUserConfigs;
+        /// <summary>
+        /// ExternalPostgresql user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPostgresqlResult> ExternalPostgresqls;
         /// <summary>
         /// ExternalSchemaRegistry user configurable settings
         /// </summary>
@@ -196,11 +204,15 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> externalElasticsearchLogsUserConfigs,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigqueryResult> externalGoogleCloudBigqueries,
+
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> externalGoogleCloudLoggingUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> externalKafkaUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> externalOpensearchLogsUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPostgresqlResult> externalPostgresqls,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> externalSchemaRegistryUserConfigs,
 
@@ -221,9 +233,11 @@ namespace Pulumi.Aiven
             ExternalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            ExternalGoogleCloudBigqueries = externalGoogleCloudBigqueries;
             ExternalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             ExternalKafkaUserConfigs = externalKafkaUserConfigs;
             ExternalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
+            ExternalPostgresqls = externalPostgresqls;
             ExternalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             Id = id;
             JolokiaUserConfigs = jolokiaUserConfigs;

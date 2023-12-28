@@ -36,6 +36,7 @@ public final class OpenSearchOpensearch {
 
         @CustomType.Setter
         public Builder opensearchDashboardsUri(@Nullable String opensearchDashboardsUri) {
+
             this.opensearchDashboardsUri = opensearchDashboardsUri;
             return this;
         }

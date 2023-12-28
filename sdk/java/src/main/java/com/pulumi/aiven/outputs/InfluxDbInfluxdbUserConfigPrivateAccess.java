@@ -44,6 +44,7 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder influxdb(@Nullable Boolean influxdb) {
+
             this.influxdb = influxdb;
             return this;
         }

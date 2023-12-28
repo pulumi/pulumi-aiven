@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,12 +43,16 @@ public final class GetServiceIntegrationDatadogUserConfigDatadogTag {
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationDatadogUserConfigDatadogTag", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         public GetServiceIntegrationDatadogUserConfigDatadogTag build() {

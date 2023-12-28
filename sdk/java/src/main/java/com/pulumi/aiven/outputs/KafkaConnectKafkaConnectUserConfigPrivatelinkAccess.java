@@ -48,16 +48,19 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
 
         @CustomType.Setter
         public Builder jolokia(@Nullable Boolean jolokia) {
+
             this.jolokia = jolokia;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

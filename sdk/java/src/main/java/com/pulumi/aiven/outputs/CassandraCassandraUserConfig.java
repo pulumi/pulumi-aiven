@@ -83,6 +83,11 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
     /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    private @Nullable Boolean serviceLog;
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -188,6 +193,13 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+    /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
@@ -230,6 +242,7 @@ public final class CassandraCassandraUserConfig {
         private @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable String serviceToJoinWith;
         private @Nullable Boolean staticIps;
@@ -248,6 +261,7 @@ public final class CassandraCassandraUserConfig {
     	      this.privateAccess = defaults.privateAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.serviceToJoinWith = defaults.serviceToJoinWith;
     	      this.staticIps = defaults.staticIps;
@@ -255,31 +269,37 @@ public final class CassandraCassandraUserConfig {
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder backupHour(@Nullable Integer backupHour) {
+
             this.backupHour = backupHour;
             return this;
         }
         @CustomType.Setter
         public Builder backupMinute(@Nullable Integer backupMinute) {
+
             this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
         public Builder cassandra(@Nullable CassandraCassandraUserConfigCassandra cassandra) {
+
             this.cassandra = cassandra;
             return this;
         }
         @CustomType.Setter
         public Builder cassandraVersion(@Nullable String cassandraVersion) {
+
             this.cassandraVersion = cassandraVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -288,6 +308,7 @@ public final class CassandraCassandraUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -296,6 +317,7 @@ public final class CassandraCassandraUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -304,36 +326,49 @@ public final class CassandraCassandraUserConfig {
         }
         @CustomType.Setter
         public Builder migrateSstableloader(@Nullable Boolean migrateSstableloader) {
+
             this.migrateSstableloader = migrateSstableloader;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable CassandraCassandraUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable CassandraCassandraUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder serviceToJoinWith(@Nullable String serviceToJoinWith) {
+
             this.serviceToJoinWith = serviceToJoinWith;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -351,6 +386,7 @@ public final class CassandraCassandraUserConfig {
             _resultValue.privateAccess = privateAccess;
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.serviceToJoinWith = serviceToJoinWith;
             _resultValue.staticIps = staticIps;

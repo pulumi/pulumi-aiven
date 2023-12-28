@@ -25,7 +25,7 @@ export interface GetOrganizationUserArgs {
      */
     organizationId: string;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: string;
 }
@@ -55,7 +55,7 @@ export interface GetOrganizationUserResult {
      */
     readonly organizationId: string;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly userEmail: string;
 }
@@ -75,7 +75,7 @@ export interface GetOrganizationUserOutputArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

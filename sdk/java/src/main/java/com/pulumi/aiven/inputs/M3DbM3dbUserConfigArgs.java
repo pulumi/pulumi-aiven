@@ -153,6 +153,13 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.rules);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
@@ -185,6 +192,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.rules = $.rules;
+        this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
     }
@@ -396,6 +404,15 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder rules(M3DbM3dbUserConfigRulesArgs rules) {
             return rules(Output.of(rules));
+        }
+
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {

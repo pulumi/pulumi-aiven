@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GetAccountTeamProjectArgs extends com.pulumi.resources.Invoke
         }
 
         public GetAccountTeamProjectArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
-            $.teamId = Objects.requireNonNull($.teamId, "expected parameter 'teamId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetAccountTeamProjectArgs", "accountId");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("GetAccountTeamProjectArgs", "projectName");
+            }
+            if ($.teamId == null) {
+                throw new MissingRequiredPropertyException("GetAccountTeamProjectArgs", "teamId");
+            }
             return $;
         }
     }

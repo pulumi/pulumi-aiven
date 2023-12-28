@@ -91,6 +91,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("redisTimeout")]
         public Input<int>? RedisTimeout { get; set; }
 
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 

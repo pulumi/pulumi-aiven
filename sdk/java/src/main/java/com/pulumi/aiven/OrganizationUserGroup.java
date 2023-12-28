@@ -49,6 +49,20 @@ public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The unique organization user group ID
+     * 
+     */
+    @Export(name="groupId", refs={String.class}, tree="[0]")
+    private Output<String> groupId;
+
+    /**
+     * @return The unique organization user group ID
+     * 
+     */
+    public Output<String> groupId() {
+        return this.groupId;
+    }
+    /**
      * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
